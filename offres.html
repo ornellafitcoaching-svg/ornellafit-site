@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offres Coaching Sportif Essonne (91) – Ornella Fit Coaching</title>
+<meta name="description" content="Coaching sportif à domicile en Essonne (91) et Île-de-France. Formules présentiel, hybride et distance. Tarifs transparents, bilan offert. Coach féminine sur-mesure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ===== OFFRES SPÉCIFIQUE ===== */
+#offres-detail { background: var(--cream); }
+#offres-detail .inner { max-width: 1000px; margin: 0 auto; }
+
+/* Offre blocs */
+.offre-bloc { margin-top: 60px; }
+.offre-bloc-header {
+  display: flex; align-items: center; gap: 18px;
+  margin-bottom: 28px; padding-bottom: 20px;
+  border-bottom: 2px solid var(--nude); text-align: left;
+}
+.offre-bloc-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem; font-weight: 400; color: var(--accent);
+  line-height: 1; flex-shrink: 0; width: 56px;
+}
+.offre-bloc-titre {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.55rem; font-weight: 600; color: var(--dark); line-height: 1.2;
+}
+.offre-bloc-sub { font-size: 0.85rem; color: var(--text-light); margin-top: 5px; font-style: italic; }
+
+/* Offre card */
+.offre-card {
+  background: white; border-radius: 28px; padding: 36px 28px;
+  text-align: left; box-shadow: 0 4px 24px rgba(139,111,94,0.08);
+  border: 1px solid rgba(201,185,154,0.2);
+  display: flex; flex-direction: column;
+  transition: all 0.3s ease; position: relative; overflow: hidden;
+}
+.offre-card.featured {
+  background: linear-gradient(150deg, #2C1F1A 0%, #3D2B24 100%);
+  border: 1px solid rgba(201,169,110,0.3);
+}
+.offre-card:hover:not(.featured) { transform: translateY(-4px); box-shadow: 0 16px 50px rgba(139,111,94,0.15); }
+.offre-card.featured:hover { transform: translateY(-4px); }
+.offre-tag {
+  display: inline-block;
+  background: rgba(212,165,165,0.2); color: var(--rose-deep);
+  padding: 5px 14px; border-radius: 50px;
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.offre-card.featured .offre-tag { background: var(--gold); color: var(--dark); }
+.offre-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 600;
+  color: var(--dark); margin-bottom: 12px; line-height: 1.2;
+}
+.offre-card.featured .offre-name { color: white; }
+.offre-desc { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 24px; line-height: 1.7; font-weight: 400; }
+.offre-card.featured .offre-desc { color: rgba(255,255,255,0.65); }
+.offre-benefits { list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; }
+.offre-benefit {
+  font-size: 0.88rem; color: var(--text);
+  display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;
+}
+.offre-card.featured .offre-benefit { color: rgba(255,255,255,0.8); }
+.offre-benefit::before { content: '✓'; color: var(--rose-deep); font-weight: 600; flex-shrink: 0; margin-top: 1px; }
+.offre-card.featured .offre-benefit::before { color: var(--gold); }
+.offre-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 600; color: var(--dark); margin-bottom: 20px;
+}
+.offre-card.featured .offre-price { color: white; }
+.offre-price span { font-size: 0.9rem; font-family: 'DM Sans', sans-serif; color: var(--text-mid); font-weight: 400; }
+.offre-card.featured .offre-price span { color: rgba(255,255,255,0.5); }
+.btn-offre {
+  display: block; text-align: center; padding: 16px 24px;
+  border-radius: 50px; text-decoration: none;
+  font-size: 0.92rem; font-weight: 500; transition: all 0.3s ease; margin-top: auto;
+}
+.btn-offre.dark {
+  background: linear-gradient(135deg, var(--logo-red), #C09090);
+  color: white; box-shadow: 0 6px 24px rgba(216,167,160,0.35);
+}
+.btn-offre.dark:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(216,167,160,0.5); }
+.btn-offre.gold {
+  background: linear-gradient(135deg, var(--gold), #A87860);
+  color: white; box-shadow: 0 6px 24px rgba(201,149,122,0.35);
+}
+.btn-offre.gold:hover { transform: translateY(-2px); }
+
+/* Distanciel tiers */
+.distanciel-tiers {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 20px; margin-top: 20px; align-items: start;
+}
+.tier-card {
+  background: white; border-radius: 24px; padding: 28px 22px;
+  border: 1.5px solid rgba(201,185,154,0.3);
+  box-shadow: 0 4px 20px rgba(139,111,94,0.07);
+  display: flex; flex-direction: column;
+  position: relative; transition: all 0.3s ease;
+}
+.tier-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(139,111,94,0.14); }
+.tier-card.featured {
+  background: linear-gradient(150deg, #2C1F1A 0%, #3D2B24 100%);
+  border-color: rgba(201,169,110,0.45);
+  box-shadow: 0 8px 36px rgba(44,31,26,0.25);
+}
+.tier-card.featured:hover { transform: translateY(-4px); }
+.tier-badge {
+  display: inline-block; background: var(--gold); color: var(--dark);
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 4px 12px; border-radius: 50px;
+  margin-bottom: 16px; align-self: flex-start;
+}
+.tier-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 600; color: var(--dark); margin-bottom: 4px;
+}
+.tier-card.featured .tier-name { color: white; }
+.tier-sub { font-size: 0.8rem; color: var(--text-light); margin-bottom: 6px; font-style: italic; }
+.tier-card.featured .tier-sub { color: rgba(255,255,255,0.5); }
+.tier-sub-highlight {
+  font-size: 0.78rem; color: var(--rose-deep); font-weight: 600;
+  margin-bottom: 14px;
+}
+.tier-card.featured .tier-sub-highlight { color: var(--gold); }
+.tier-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem; font-weight: 600; color: var(--dark);
+  line-height: 1; margin-bottom: 4px;
+}
+.tier-card.featured .tier-price { color: white; }
+.tier-price-unit { font-size: 0.82rem; color: var(--text-light); margin-bottom: 12px; line-height: 1.4; }
+.tier-card.featured .tier-price-unit { color: rgba(255,255,255,0.5); }
+.tier-daily {
+  display: inline-block;
+  background: rgba(192,128,128,0.1); color: var(--rose-deep);
+  font-size: 0.75rem; font-weight: 700;
+  padding: 5px 12px; border-radius: 50px;
+  margin-bottom: 18px; align-self: flex-start;
+}
+.tier-card.featured .tier-daily { background: rgba(201,169,110,0.18); color: var(--gold); }
+.tier-saving { font-size: 0.78rem; color: var(--rose-deep); font-weight: 600; margin-bottom: 16px; }
+.tier-card.featured .tier-saving { color: var(--gold); }
+.tier-divider { height: 1px; background: var(--nude); margin-bottom: 18px; }
+.tier-card.featured .tier-divider { background: rgba(255,255,255,0.12); }
+.tier-includes { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 24px; flex: 1; }
+.tier-item {
+  font-size: 0.83rem; color: var(--text);
+  display: flex; align-items: flex-start; gap: 8px; line-height: 1.45;
+}
+.tier-card.featured .tier-item { color: rgba(255,255,255,0.82); }
+.tier-item::before { content: '✓'; color: var(--rose-deep); font-weight: 700; flex-shrink: 0; }
+.tier-card.featured .tier-item::before { color: var(--gold); }
+
+/* Compare table */
+.compare-wrap {
+  background: white; border-radius: 20px;
+  border: 1px solid var(--nude); overflow: hidden;
+  box-shadow: 0 4px 20px rgba(139,111,94,0.07); margin: 28px 0;
+}
+.compare-title {
+  background: var(--dark); color: white;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 600;
+  padding: 14px 20px; text-align: center; letter-spacing: 0.04em;
+}
+.compare-head {
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+  background: rgba(250,247,242,0.9); border-bottom: 1px solid var(--nude);
+}
+.compare-head-cell {
+  padding: 11px 10px; font-size: 0.73rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.07em;
+  color: var(--text-light); text-align: center; line-height: 1.4;
+}
+.compare-head-cell:first-child { text-align: left; padding-left: 18px; }
+.compare-row {
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+  border-bottom: 1px solid rgba(201,185,154,0.15); align-items: center;
+}
+.compare-row:last-child { border-bottom: none; }
+.compare-row:nth-child(even) { background: rgba(250,247,242,0.45); }
+.compare-cell { padding: 10px 10px; font-size: 0.83rem; color: var(--text); text-align: center; }
+.compare-cell:first-child { text-align: left; padding-left: 18px; font-weight: 500; font-size: 0.82rem; }
+.compare-yes { color: var(--rose-deep); font-weight: 700; font-size: 1rem; }
+.compare-no { color: var(--text-light); opacity: 0.45; font-size: 1rem; }
+.compare-stat {
+  background: var(--dark); color: white;
+  border-radius: 12px; padding: 16px 20px;
+  font-size: 0.95rem; line-height: 1.6; margin: 16px 0 0;
+  text-align: center;
+}
+.compare-stat em { color: var(--rose); font-style: italic; }
+
+/* FAQ */
+#faq-offres { background: white; }
+#faq-offres .inner { max-width: 750px; margin: 0 auto; }
+.faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; }
+.faq-item {
+  background: var(--cream); border: 1px solid rgba(201,185,154,0.3);
+  border-radius: 16px; overflow: hidden;
+}
+.faq-q {
+  padding: 20px 24px; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  font-weight: 500; font-size: 0.95rem; color: var(--dark);
+}
+.faq-q:hover { background: rgba(201,185,154,0.1); }
+.faq-arrow {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--rose-deep); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0; transition: transform 0.3s ease;
+}
+.faq-item.open .faq-arrow { transform: rotate(45deg); }
+.faq-a {
+  padding: 0 24px; max-height: 0; overflow: hidden;
+  transition: all 0.4s ease; font-size: 0.9rem;
+  color: var(--text-mid); line-height: 1.8; font-weight: 400;
+}
+.faq-item.open .faq-a { max-height: 500px; padding: 0 24px 20px; }
+
+/* Mobile offres */
+@media (max-width: 768px) {
+  .offre-bloc-num { font-size: 2.2rem; width: 44px; }
+  .offre-bloc-titre { font-size: 1.3rem; }
+  .offre-bloc-header { flex-direction: row; gap: 12px; }
+  .offre-card { padding: 24px 18px; }
+  .distanciel-tiers { grid-template-columns: 1fr; }
+  .tier-card { padding: 22px 16px; }
+  .tier-price { font-size: 2rem; }
+  .compare-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .compare-head, .compare-row { min-width: 480px; }
+  .compare-cell { font-size: 0.75rem; padding: 9px 6px; }
+  .compare-cell:first-child { padding-left: 10px; font-size: 0.75rem; }
+  .compare-head-cell { font-size: 0.65rem; padding: 9px 5px; }
+  .compare-head-cell:first-child { padding-left: 10px; }
+  .bilan-items { grid-template-columns: 1fr; }
+  .btn-offre { font-size: 0.88rem; padding: 14px 18px; }
+  #offres-detail .inner { padding: 0 4px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="Ornella Fit Coaching" class="nav-logo-img">
+  </a>
+  <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  <div class="nav-menu" id="navMenu">
+    <a href="index.html" class="nav-link">Accueil</a>
+    <a href="offres.html" class="nav-link active">Offres</a>
+    <a href="transformations.html" class="nav-link">Transformations</a>
+    <a href="apropos.html" class="nav-link">À propos</a>
+    <a href="https://forms.gle/4ChGL2Evqoq322Lw8" class="nav-cta" target="_blank">Bilan offert →</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <span class="section-label">Mes offres</span>
+  <h1 class="section-title">L'accompagnement <em>fait pour toi</em></h1>
+  <p class="section-subtitle">Coaching sur-mesure à domicile, hybride ou à distance — une formule pour chaque situation.</p>
+  <div style="margin-top:24px;display:inline-flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+    <span style="background:rgba(201,99,88,0.12);border:1px solid rgba(201,99,88,0.28);color:var(--accent);font-size:0.8rem;font-weight:700;padding:6px 16px;border-radius:50px;">⚠️ 3 places disponibles en mai</span>
+    <span style="background:rgba(201,169,110,0.12);border:1px solid rgba(201,169,110,0.28);color:var(--brown);font-size:0.8rem;font-weight:600;padding:6px 16px;border-radius:50px;">✓ Séance découverte 50€ — déduite si engagement</span>
+    <span style="background:rgba(44,31,26,0.07);border:1px solid rgba(44,31,26,0.14);color:var(--dark);font-size:0.8rem;font-weight:600;padding:6px 16px;border-radius:50px;">🏆 Participante aux Championnats de France de Fitness</span>
+  </div>
+</div>
+
+<!-- BANDEAU NOTE GOOGLE -->
+<div style="display:flex;align-items:center;justify-content:center;padding:32px 24px;background:white;">
+  <div style="display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;background:white;border-radius:20px;padding:24px 32px;max-width:520px;width:100%;box-shadow:0 4px 24px rgba(139,111,94,0.1);border:1px solid rgba(201,185,154,0.25);">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      <span style="font-size:0.82rem;font-weight:700;color:#5F6368;letter-spacing:0.04em;">Google</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div style="font-size:2rem;font-weight:800;color:var(--dark);line-height:1;">5,0</div>
+      <div style="color:#FBBC05;font-size:1.2rem;letter-spacing:2px;">★★★★★</div>
+      <div style="font-size:0.78rem;color:var(--text-light);">19 avis vérifiés</div>
+    </div>
+  </div>
+</div>
+
+<!-- BILAN OFFERT -->
+<section style="background:white;padding:48px 24px;">
+  <div class="inner">
+    <div class="bilan-bloc">
+      <div class="bilan-titre">✦ Tout commence ici — Bilan personnalisé offert</div>
+      <p class="bilan-desc">Avant de commencer, je te propose un bilan personnalisé offert. Le but est simple : mieux comprendre ta situation, ton mode de vie et tes objectifs pour pouvoir t'orienter au mieux.</p>
+      <p class="bilan-desc" style="margin-top:8px;">Je prends tout en compte : alimentation, sommeil, habitudes, blessures éventuelles, traitements, organisation, niveau… Rien n'est laissé au hasard.</p>
+      <div class="bilan-items">
+        <div class="bilan-item">Tes objectifs & attentes</div>
+        <div class="bilan-item">Ton niveau sportif actuel</div>
+        <div class="bilan-item">Ton alimentation & sommeil</div>
+        <div class="bilan-item">Tes contraintes & douleurs</div>
+        <div class="bilan-item">Ton organisation & rythme</div>
+        <div class="bilan-item">Tes mensurations (à ton rythme)</div>
+      </div>
+      <div style="margin-top:22px;padding-top:18px;border-top:1px solid rgba(216,167,160,0.3);">
+        <p style="font-size:0.9rem;color:var(--dark);font-weight:600;margin-bottom:8px;">Tu peux commencer directement — ou faire un bilan pour avoir un plan clair.</p>
+        <p style="font-size:0.9rem;color:var(--text-light);margin-bottom:20px;">Le bilan ne t'engage à rien. Il me permet de construire quelque chose de vraiment adapté. Parfois, quelques ajustements suffisent déjà à faire la différence.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
+          <a href="https://wa.me/33756834626" class="btn-main" target="_blank">
+            💬 Je commence avec Ornella → WhatsApp
+          </a>
+          <a href="https://forms.gle/4ChGL2Evqoq322Lw8" class="btn-calendly" target="_blank">
+            📋 Faire mon bilan personnalisé offert (écrit)
+          </a>
+          <a href="https://calendly.com/ornellafit-coaching" class="btn-calendly" target="_blank">
+            📅 Réserver un appel offert (Calendly)
+          </a>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-light);margin-top:14px;font-style:italic;">✓ Gratuit · Sans obligation · Réponse rapide</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFRES DÉTAIL -->
+<section id="offres-detail">
+  <div class="inner">
+
+    <!-- BLOC 1 — COACHING À DOMICILE -->
+    <div class="offre-bloc">
+      <div class="offre-bloc-header">
+        <span class="offre-bloc-num">01</span>
+        <div>
+          <div class="offre-bloc-titre">Coaching à Domicile</div>
+          <div class="offre-bloc-sub">Je me déplace chez toi — coaching présentiel sur-mesure</div>
+        </div>
+      </div>
+      <div class="offre-card featured" style="max-width:700px;margin:0 auto;">
+        <div class="offre-tag">⭐ Coaching Présentiel</div>
+        <div class="offre-name">Je viens à toi</div>
+        <p class="offre-desc">Le coaching le plus personnalisé. Je me déplace chez toi, m'adapte à ton espace et construis un programme entièrement sur-mesure.</p>
+
+        <!-- PITCH DOMICILE -->
+        <div style="background:rgba(255,255,255,0.07);border-radius:14px;padding:22px 24px;margin-bottom:22px;">
+          <p style="font-size:1rem;color:rgba(255,255,255,0.9);line-height:1.7;margin-bottom:18px;">
+            Tu n'as pas le temps d'aller à la salle ?<br>
+            <strong style="color:white;font-weight:600;">Je viens directement chez toi avec tout le matériel.</strong>
+          </p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px;">
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">✓</span>Aucun déplacement</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">✓</span>Gain de temps réel</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">✓</span>Pas de salle bondée</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">✓</span>Pas d'attente sur les machines</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">✓</span>Confort de chez toi</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">✓</span>Adapté à ton emploi du temps</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">✓</span>Programme 100% sur-mesure</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">✓</span>Encadrement complet</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:14px 16px;margin-bottom:14px;font-size:0.87rem;color:rgba(255,255,255,0.6);line-height:1.75;">
+            Entre le temps de trajet, l'attente et l'organisation, une séance en salle peut facilement te prendre 2 heures. <strong style="color:rgba(255,255,255,0.85);">Ici, tu t'entraînes efficacement, directement chez toi.</strong>
+          </div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:rgba(255,255,255,0.82);border-left:2px solid rgba(201,149,122,0.5);padding-left:16px;margin:0;line-height:1.6;">
+            « Tu te concentres uniquement sur ton entraînement. Je m'occupe du reste. »
+          </p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(201,169,110,0.2);border-radius:14px;padding:16px;">
+            <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);font-weight:600;margin-bottom:6px;">Séance découverte</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--gold);line-height:1;">50€</div>
+            <div style="font-size:0.84rem;color:var(--gold);font-weight:700;margin-top:6px;">✓ Déduite du 1er mois si tu t'engages</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(201,169,110,0.2);border-radius:14px;padding:16px;">
+            <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);font-weight:600;margin-bottom:6px;">Séance à l'unité</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--gold);line-height:1;">70€</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(201,169,110,0.25);border-radius:16px;padding:20px;margin-bottom:14px;">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);font-weight:600;margin-bottom:14px;">Solo — abonnement mensuel</div>
+          <div style="display:grid;gap:10px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;color:rgba(255,255,255,0.85);">
+              <span>1 séance / semaine <span style="font-size:0.75rem;color:rgba(255,255,255,0.4);">(4 séances)</span></span>
+              <strong style="color:var(--gold);white-space:nowrap;">260€<span style="font-size:0.75rem;font-weight:400;color:rgba(255,255,255,0.5);">/mois</span></strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;color:rgba(255,255,255,0.85);">
+              <span>2 séances / semaine <span style="font-size:0.75rem;color:rgba(255,255,255,0.4);">(8 séances)</span></span>
+              <strong style="color:var(--gold);white-space:nowrap;">480€<span style="font-size:0.75rem;font-weight:400;color:rgba(255,255,255,0.5);">/mois</span></strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;color:rgba(255,255,255,0.85);">
+              <span>3 séances / semaine <span style="font-size:0.75rem;color:rgba(255,255,255,0.4);">(12 séances)</span></span>
+              <strong style="color:var(--gold);white-space:nowrap;">690€<span style="font-size:0.75rem;font-weight:400;color:rgba(255,255,255,0.5);">/mois</span></strong>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.15);border-radius:16px;padding:20px;margin-bottom:14px;">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);font-weight:600;margin-bottom:14px;">Duo — tarif par personne</div>
+          <div style="display:grid;gap:10px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;color:rgba(255,255,255,0.85);">
+              <span>1 séance / semaine</span>
+              <strong style="color:var(--gold);white-space:nowrap;">180€<span style="font-size:0.75rem;font-weight:400;color:rgba(255,255,255,0.5);">/mois</span></strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;color:rgba(255,255,255,0.85);">
+              <span>2 séances / semaine</span>
+              <strong style="color:var(--gold);white-space:nowrap;">340€<span style="font-size:0.75rem;font-weight:400;color:rgba(255,255,255,0.5);">/mois</span></strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;color:rgba(255,255,255,0.85);">
+              <span>3 séances / semaine</span>
+              <strong style="color:var(--gold);white-space:nowrap;">480€<span style="font-size:0.75rem;font-weight:400;color:rgba(255,255,255,0.5);">/mois</span></strong>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.15);border-radius:16px;padding:20px;margin-bottom:28px;">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);font-weight:600;margin-bottom:14px;">Trio — tarif par personne</div>
+          <div style="display:grid;gap:10px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;color:rgba(255,255,255,0.85);">
+              <span>1 séance / semaine</span>
+              <strong style="color:var(--gold);white-space:nowrap;">150€<span style="font-size:0.75rem;font-weight:400;color:rgba(255,255,255,0.5);">/mois</span></strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;color:rgba(255,255,255,0.85);">
+              <span>2 séances / semaine</span>
+              <strong style="color:var(--gold);white-space:nowrap;">280€<span style="font-size:0.75rem;font-weight:400;color:rgba(255,255,255,0.5);">/mois</span></strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;color:rgba(255,255,255,0.85);">
+              <span>3 séances / semaine</span>
+              <strong style="color:var(--gold);white-space:nowrap;">390€<span style="font-size:0.75rem;font-weight:400;color:rgba(255,255,255,0.5);">/mois</span></strong>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/33756834626" class="btn-offre gold" target="_blank">Réserver ma séance découverte →</a>
+      </div>
+    </div>
+
+    <!-- BLOC 2 — COACHING HYBRIDE -->
+    <div class="offre-bloc">
+      <div class="offre-bloc-header">
+        <span class="offre-bloc-num">02</span>
+        <div>
+          <div class="offre-bloc-titre">Coaching Hybride</div>
+          <div class="offre-bloc-sub">Le meilleur équilibre entre autonomie et accompagnement</div>
+        </div>
+      </div>
+      <div class="offre-card" style="max-width:700px;margin:0 auto;">
+        <div class="offre-tag">🔄 Hybride — Séances + Programme</div>
+        <div class="offre-name">Encadrée & Autonome</div>
+        <p class="offre-desc">Deux séances encadrées avec moi par mois, un programme à réaliser entre les deux — tout suivi de près pour que tu progresses vraiment.</p>
+        <ul class="offre-benefits">
+          <li class="offre-benefit">2 séances encadrées avec moi (1h)</li>
+          <li class="offre-benefit">Programme autonome entre les séances</li>
+          <li class="offre-benefit">Suivi WhatsApp</li>
+          <li class="offre-benefit">Bilan mensuel + évolution du programme</li>
+          <li class="offre-benefit">Reprogrammation si renouvellement</li>
+        </ul>
+        <div class="offre-price">169€ <span>/ mois</span></div>
+        <a href="https://wa.me/33756834626" class="btn-offre dark" target="_blank">Je démarre en hybride →</a>
+      </div>
+    </div>
+
+    <!-- BLOC 3 — COACHING À DISTANCE -->
+    <div class="offre-bloc">
+      <div class="offre-bloc-header">
+        <span class="offre-bloc-num">03</span>
+        <div>
+          <div class="offre-bloc-titre">Coaching à Distance</div>
+          <div class="offre-bloc-sub">Tout l'accompagnement, depuis chez toi</div>
+        </div>
+      </div>
+
+      <!-- Sans suivi -->
+      <div class="offre-card" style="max-width:700px;margin:0 auto 12px;">
+        <div class="offre-tag">📋 Programme sur-mesure — Sans suivi</div>
+        <div class="offre-name">À ton rythme</div>
+        <p class="offre-desc">Ce n'est pas un programme générique. Il est construit à partir de ton bilan complet — habitudes, alimentation, sommeil, blessures éventuelles, traitements, niveau, contraintes — pour coller exactement à ta situation et tes objectifs.</p>
+        <ul class="offre-benefits" style="margin-bottom:20px;">
+          <li class="offre-benefit">Bilan complet préalable (habitudes, alimentation, sommeil, blessures)</li>
+          <li class="offre-benefit">Programme sur-mesure — domicile ou salle, avec ou sans matériel</li>
+          <li class="offre-benefit">Jusqu'à 4 séances par semaine selon tes disponibilités</li>
+          <li class="offre-benefit">Vidéos de démonstration pour chaque exercice</li>
+          <li class="offre-benefit">Bilan de fin de programme à 8 semaines</li>
+        </ul>
+        <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:20px;padding:14px 16px;background:rgba(216,167,160,0.08);border-radius:12px;border-left:3px solid var(--rose-deep);">
+          <p style="font-size:0.87rem;color:var(--text-light);line-height:1.65;margin:0;"><span style="opacity:0.5;">✕</span> Suivi hebdomadaire &nbsp;·&nbsp; <span style="opacity:0.5;">✕</span> Ajustements en cours — <em>pour ça, voir le coaching avec suivi ci-dessous.</em></p>
+        </div>
+        <div class="offre-price">79€ <span>— programme 8 semaines</span></div>
+        <a href="https://buy.stripe.com/8x26oHas9f8n5o9cmh8Vi03" class="btn-offre dark" target="_blank">Je commande mon programme</a>
+        <div style="margin-top:18px;padding:18px 20px;background:rgba(216,167,160,0.08);border-radius:12px;border-left:3px solid var(--rose-deep);">
+          <p style="font-size:0.88rem;color:var(--dark);font-weight:500;margin-bottom:6px;">Programme 100% personnalisé, conçu pour toi après analyse complète de ton bilan.</p>
+          <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:14px;">⏱️ Livraison sous 5 à 7 jours ouvrés après réception de ton bilan</p>
+          <p style="font-size:0.82rem;color:var(--dark);font-weight:600;margin-bottom:8px;">Ce délai n'est pas un hasard.</p>
+          <p style="font-size:0.82rem;color:var(--text-light);line-height:1.7;margin-bottom:10px;">Chaque programme est entièrement construit en fonction de ton niveau, tes objectifs, ton mode de vie, ton alimentation, ton sommeil, tes contraintes et tes éventuelles blessures ou traitements.</p>
+          <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:8px;">👉 Rien n'est généré automatiquement. Rien n'est laissé au hasard.</p>
+          <p style="font-size:0.82rem;color:var(--text-light);font-style:italic;">Tu ne reçois pas un programme générique. Tu reçois un accompagnement pensé spécifiquement pour toi.</p>
+        </div>
+      </div>
+
+      <!-- Tableau comparatif -->
+      <div class="compare-wrap" style="max-width:700px;margin:28px auto 8px;">
+        <div class="compare-title">Programme seul vs. Coaching avec suivi</div>
+        <div class="compare-head">
+          <div class="compare-head-cell">Ce que tu obtiens</div>
+          <div class="compare-head-cell">Sans suivi<br><span style="color:var(--text-light);font-weight:400;text-transform:none;letter-spacing:0;">79€</span></div>
+          <div class="compare-head-cell">Avec suivi<br><span style="color:var(--rose-deep);font-weight:600;text-transform:none;letter-spacing:0;">dès 89€/mois</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Programme sur-mesure</div>
+          <div class="compare-cell compare-yes">✓</div>
+          <div class="compare-cell compare-yes">✓</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Vidéos de démonstration</div>
+          <div class="compare-cell compare-yes">✓</div>
+          <div class="compare-cell compare-yes">✓</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Bilan de fin</div>
+          <div class="compare-cell compare-yes">✓</div>
+          <div class="compare-cell compare-yes">✓</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Suivi WhatsApp régulier</div>
+          <div class="compare-cell compare-no">—</div>
+          <div class="compare-cell compare-yes">✓</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Programme évolutif chaque mois</div>
+          <div class="compare-cell compare-no">—</div>
+          <div class="compare-cell compare-yes">✓</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Ajustements selon ta progression</div>
+          <div class="compare-cell compare-no">—</div>
+          <div class="compare-cell compare-yes">✓</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">Bilan mensuel</div>
+          <div class="compare-cell compare-no">—</div>
+          <div class="compare-cell compare-yes">✓</div>
+        </div>
+        <div class="compare-row" style="background:rgba(192,128,128,0.05);">
+          <div class="compare-cell" style="font-weight:600;color:var(--dark);">Tu es accompagnée</div>
+          <div class="compare-cell" style="font-size:0.78rem;color:var(--text-light);">Autonome</div>
+          <div class="compare-cell compare-yes" style="font-size:0.82rem;font-weight:700;">Accompagnée</div>
+        </div>
+      </div>
+      <div class="compare-stat" style="max-width:700px;margin:0 auto 32px;">
+        <em>90% des personnes seules abandonnent.</em> Avec un suivi, tu avances vraiment.
+      </div>
+
+      <!-- Avec suivi — 3 tiers engagement -->
+      <div style="max-width:780px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:20px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--dark);margin-bottom:10px;">Coaching mensuel évolutif — Avec suivi</div>
+          <p style="font-size:1rem;color:var(--dark);font-weight:600;margin-bottom:8px;">Tu n'es pas seule.</p>
+          <p style="font-size:0.9rem;color:var(--text-light);max-width:500px;margin:0 auto 10px;line-height:1.7;">Je suis là chaque semaine pour t'accompagner, ajuster ton programme selon ta progression et te remotiver quand c'est nécessaire. C'est ça, la vraie différence.</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--brown);max-width:480px;margin:0 auto 10px;line-height:1.6;">Imagine ton évolution en 4 semaines… puis en 8 semaines. C'est ce que vivent les femmes accompagnées.</p>
+          <p style="font-size:0.82rem;color:var(--rose-deep);font-weight:600;">→ 3 mois minimum pour voir un vrai changement physique</p>
+        </div>
+        <div class="distanciel-tiers">
+
+          <!-- 1 mois -->
+          <div class="tier-card">
+            <div class="tier-name">1 mois</div>
+            <div class="tier-sub">Pour découvrir</div>
+            <div class="tier-price">119€</div>
+            <div class="tier-price-unit">/ mois</div>
+            <div class="tier-daily">≈ 4€ / jour</div>
+            <div class="tier-divider"></div>
+            <ul class="tier-includes">
+              <li class="tier-item">Programme sur-mesure évolutif</li>
+              <li class="tier-item">Vidéos de démonstration</li>
+              <li class="tier-item">Suivi WhatsApp régulier</li>
+              <li class="tier-item">Ajustements selon progression</li>
+              <li class="tier-item">Bilan mensuel</li>
+            </ul>
+            <a href="https://buy.stripe.com/9B67sL7fXgcr03P5XT8Vi04" class="btn-offre dark" target="_blank">Je commence mon accompagnement</a>
+            <p style="font-size:0.82rem;color:var(--text-light);margin-top:10px;font-weight:500;text-align:center;">Accompagnement personnalisé, conçu après analyse de ton bilan.</p>
+            <p style="font-size:0.78rem;color:var(--text-light);margin-top:6px;font-style:italic;text-align:center;">⏱️ Livraison sous 5 à 7 jours ouvrés après réception de ton bilan</p>
+            <a href="https://wa.me/33756834626" style="display:block;text-align:center;font-size:0.82rem;color:var(--text-light);margin-top:10px;text-decoration:none;font-weight:500;border-bottom:1px solid rgba(122,101,96,0.25);padding-bottom:2px;align-self:center;" target="_blank">ou parler avec moi d'abord →</a>
+          </div>
+
+          <!-- 3 mois — RECOMMANDÉ -->
+          <div class="tier-card featured">
+            <div class="tier-badge">⭐ Le plus populaire</div>
+            <div class="tier-name">3 mois</div>
+            <div class="tier-sub">Résultats visibles</div>
+            <div class="tier-sub-highlight">Résultats visibles en 4 semaines</div>
+            <div class="tier-price">99€</div>
+            <div class="tier-price-unit">/ mois · soit 297€ au total</div>
+            <div class="tier-daily">≈ 3€30 / jour</div>
+            <div class="tier-saving">Tu économises 60€</div>
+            <div class="tier-divider"></div>
+            <ul class="tier-includes">
+              <li class="tier-item">Programme sur-mesure évolutif</li>
+              <li class="tier-item">Vidéos de démonstration</li>
+              <li class="tier-item">Suivi WhatsApp régulier</li>
+              <li class="tier-item">Ajustements selon progression</li>
+              <li class="tier-item">Bilan mensuel</li>
+            </ul>
+            <a href="https://wa.me/33756834626" class="btn-offre gold" target="_blank" style="margin-top:auto;">Je m'engage 3 mois →</a>
+          </div>
+
+          <!-- 6 mois -->
+          <div class="tier-card">
+            <div class="tier-name">6 mois</div>
+            <div class="tier-sub">Transformation complète</div>
+            <div class="tier-price">89€</div>
+            <div class="tier-price-unit">/ mois · soit 534€ au total</div>
+            <div class="tier-daily">Moins de 3€ / jour</div>
+            <div class="tier-saving">Tu économises 180€</div>
+            <div class="tier-divider"></div>
+            <ul class="tier-includes">
+              <li class="tier-item">Programme sur-mesure évolutif</li>
+              <li class="tier-item">Vidéos de démonstration</li>
+              <li class="tier-item">Suivi WhatsApp régulier</li>
+              <li class="tier-item">Ajustements selon progression</li>
+              <li class="tier-item">Bilan mensuel</li>
+            </ul>
+            <a href="https://wa.me/33756834626" class="btn-offre dark" target="_blank">Je change mon corps pour de vrai →</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- AVIS CLIENTS -->
+<section id="avis-clients">
+  <div class="inner">
+    <span class="section-label">Avis Google ⭐</span>
+    <h2 class="section-title">Elles ont <em>osé.</em> Elles ne regrettent pas.</h2>
+    <p class="section-subtitle" style="margin:0 auto;">Avis réels de clientes — reformulés pour confidentialité, authentiques dans leur fond.</p>
+
+    <div class="avis-grid fade-in">
+
+      <div class="avis-card">
+        <div class="avis-top">
+          <span class="avis-stars">★★★★★</span>
+          <span class="avis-source">Avis Google</span>
+        </div>
+        <p class="avis-quote">Soucieuse de rester en forme et d'entretenir mon corps, j'ai fait appel à Ornella. J'ai particulièrement apprécié la variété des séances, les encouragements et surtout le fait qu'elle corrige chaque mouvement. En seulement quelques séances, j'ai déjà commencé à ressentir les bénéfices.</p>
+        <p class="avis-highlight">Des résultats ressentis dès les premières séances.</p>
+        <div class="avis-author">
+          <strong>Cliente · +40 ans</strong>
+          Coaching à domicile
+        </div>
+      </div>
+
+      <div class="avis-card">
+        <div class="avis-top">
+          <span class="avis-stars">★★★★★</span>
+          <span class="avis-source">Avis Google</span>
+        </div>
+        <p class="avis-quote">Après ma grossesse, je ne me reconnaissais plus du tout physiquement. Ornella a su m'accompagner avec professionnalisme et écoute. Les séances sont efficaces, adaptées à mon niveau et à mon rythme post-partum. En quelques semaines, j'ai retrouvé du tonus, une meilleure posture et surtout confiance en moi. Elle ne promet pas de miracle — elle travaille intelligemment, et les résultats sont là.</p>
+        <p class="avis-highlight">Retrouver confiance après une grossesse, c'est possible.</p>
+        <div class="avis-author">
+          <strong>Maman · Post-partum</strong>
+          Coaching personnalisé
+        </div>
+      </div>
+
+      <div class="avis-card">
+        <div class="avis-top">
+          <span class="avis-stars">★★★★★</span>
+          <span class="avis-source">Avis Google</span>
+        </div>
+        <p class="avis-quote">Après des années en salle sans résultats, j'ai décidé de me faire accompagner. Aujourd'hui, je vois enfin des changements. Le programme est structuré, adapté, et l'accompagnement fait toute la différence. Je ne regrette pas ma décision.</p>
+        <p class="avis-highlight">Ce n'est pas que tu fais mal. C'est que tu n'es pas accompagnée.</p>
+        <div class="avis-author">
+          <strong>Cliente · Reprise sportive</strong>
+          Programme sur-mesure
+        </div>
+      </div>
+
+    </div>
+
+    <div class="avis-closing fade-in">
+      <div class="avis-closing-text">
+        <p class="avis-closing-stat"><em>90%</em> des personnes seules abandonnent.</p>
+        <p class="avis-closing-sub">Celles qui sont accompagnées avancent — semaine après semaine, résultat après résultat.</p>
+      </div>
+      <a href="https://wa.me/33756834626" class="avis-cta-btn" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Je veux mon plan personnalisé
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq-offres">
+  <div class="inner">
+    <span class="section-label">Tes questions</span>
+    <h2 class="section-title">On lève les <em>derniers doutes</em></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Pourquoi prendre un coaching avec suivi plutôt qu'un programme seul ?
+          <div class="faq-arrow">+</div>
+        </div>
+        <div class="faq-a">Un programme seul te donne un plan. Un coaching avec suivi te donne un plan ET quelqu'un qui s'assure que tu l'appliques, que tu progresses, et qui l'adapte si tu stagnes. 90% des personnes qui travaillent seules abandonnent avant d'obtenir des résultats. Le suivi, ce n'est pas un luxe — c'est ce qui fait la différence entre commencer et vraiment changer.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Comment se déroule le bilan personnalisé offert ?
+          <div class="faq-arrow">+</div>
+        </div>
+        <div class="faq-a">C'est un échange de 20-30 min (par WhatsApp ou visio) où on parle de tes objectifs, de ton histoire, de ton mode de vie, et où je prends tes mensurations. Aucune vente forcée — si je ne suis pas la bonne personne pour toi, je te le dirai. L'honnêteté est ma marque de fabrique.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          C'est pour quel niveau sportif ?
+          <div class="faq-arrow">+</div>
+        </div>
+        <div class="faq-a">Tous les niveaux. Que tu n'aies jamais fait de sport ou que tu sois sportive mais sans résultats, le programme s'adapte à toi. Le bilan initial permet de partir de là où tu en es vraiment.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Combien de temps avant de voir des résultats ?
+          <div class="faq-arrow">+</div>
+        </div>
+        <div class="faq-a">Les premières différences se ressentent souvent dès 2-3 semaines (énergie, sommeil, tonus). Les changements visuels apparaissent en général entre 4 et 8 semaines selon ta régularité et ton point de départ. 3 mois minimum pour un vrai changement physique visible.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Est-ce que ça marche vraiment à distance ?
+          <div class="faq-arrow">+</div>
+        </div>
+        <div class="faq-a">Oui — à condition d'être accompagnée correctement. Je fournis des programmes avec vidéos de démonstration, des ajustements techniques, un suivi hebdomadaire et une disponibilité par message. La distance ne change pas les résultats quand l'accompagnement est réel.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Je suis en post-partum, c'est adapté ?
+          <div class="faq-arrow">+</div>
+        </div>
+        <div class="faq-a">Absolument. J'ai moi-même vécu une grossesse avec alitement et une reconstruction complète. Je connais les contraintes du post-partum (diastasis, périnée, fatigue) et adapte chaque programme en conséquence, en toute sécurité.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Quels sont les tarifs exacts ?
+          <div class="faq-arrow">+</div>
+        </div>
+        <div class="faq-a">Coaching présentiel : séance découverte 50€ (déduite du 1er mois si tu continues), séance à l'unité 70€, abonnements solo de 260€ à 690€/mois, duo dès 180€/mois/pers, trio dès 150€/mois/pers. Coaching hybride : 169€/mois. Distanciel sans suivi : 79€ (8 semaines). Distanciel avec suivi : 119€/mois (1 mois), 99€/mois (3 mois), 89€/mois (6 mois). Bilan offert pour toutes les formules.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="cta-final">
+  <div class="inner">
+    <span class="section-label" style="color:var(--gold);">C'est le moment</span>
+    <h2 class="section-title">Prête à <em>passer à l'action ?</em></h2>
+    <p class="section-subtitle">Commence par ton bilan personnalisé offert. Gratuit, sans engagement, sans pression.</p>
+    <div class="cta-buttons">
+      <a href="https://forms.gle/4ChGL2Evqoq322Lw8" class="btn-main" target="_blank">
+        🎯 Je fais mon bilan personnalisé offert
+      </a>
+      <a href="https://wa.me/33756834626" class="btn-whatsapp" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Me contacter sur WhatsApp
+      </a>
+    </div>
+    <p class="cta-reassure">✓ Bilan personnalisé offert · Gratuit · Sans engagement · Réponse sous 24h</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="images/logo.png" alt="Ornella Fit Coaching" class="footer-logo-img">
+  </div>
+  <p class="footer-slogan">« Ton plus bel investissement, c'est toi. »</p>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="offres.html">Offres</a>
+    <a href="transformations.html">Transformations</a>
+    <a href="apropos.html">À propos</a>
+    <a href="https://wa.me/33756834626" target="_blank">WhatsApp</a>
+  </div>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/ornellafit.coaching" target="_blank">📷 Instagram</a>
+    <a href="mailto:ornellafit.coaching@gmail.com">✉️ Email</a>
+    <a href="https://linktr.ee/Ornellafitcoaching" target="_blank">🔗 Linktree</a>
+  </div>
+  <p class="footer-info">Ornella Racano · Coach sportive Essonne (91) · Île-de-France · ornellafit.coaching@gmail.com</p>
+  <p class="footer-copy">© 2026 Ornella Fit Coaching — Tous droits réservés</p>
+  <p class="footer-legal"><a href="mentions-legales.html">Mentions légales</a> · <a href="mentions-legales.html#rgpd">Politique de confidentialité</a></p>
+</footer>
+
+<a href="https://wa.me/33756834626" class="floating-wa" target="_blank" title="WhatsApp">💬</a>
+
+<script>
+function toggleMenu() { document.getElementById('navMenu').classList.toggle('open'); }
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('navMenu');
+  const toggle = document.querySelector('.nav-toggle');
+  if (!menu.contains(e.target) && !toggle.contains(e.target)) menu.classList.remove('open');
+});
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+  if (!isOpen) item.classList.add('open');
+}
+if ('IntersectionObserver' in window) {
+  document.documentElement.classList.add('js-anim');
+  const obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
+}
+</script>
+</body>
+</html>

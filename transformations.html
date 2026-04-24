@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transformations Clients – Coach Sportive Essonne (91) – Ornella Fit Coaching</title>
+<meta name="description" content="Vraies transformations de clientes accompagnées par Ornella, coach sportive en Essonne (91) et Île-de-France. Résultats réels, avant/après, témoignages.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ===== AVANT/APRÈS ===== */
+#avant-apres { background: white; }
+#avant-apres .inner { max-width: 1000px; margin: 0 auto; }
+.aa-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
+.aa-card {
+  border-radius: 14px; overflow: hidden; background: white;
+  box-shadow: 0 2px 24px rgba(44,31,26,0.07);
+  border: 1px solid rgba(201,185,154,0.18);
+  transition: box-shadow 0.3s ease;
+}
+.aa-card:hover { box-shadow: 0 10px 40px rgba(44,31,26,0.12); }
+.aa-info { padding: 22px 20px 24px; border-top: 1px solid rgba(201,185,154,0.15); }
+.aa-tag {
+  font-size: 0.69rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--gold); font-weight: 600; margin-bottom: 8px;
+}
+.aa-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
+  font-weight: 600; color: var(--dark); margin-bottom: 8px;
+}
+.aa-desc { font-size: 0.85rem; color: var(--text-mid); line-height: 1.65; }
+.aa-photo-single { width: 100%; background: var(--cream); overflow: hidden; }
+.aa-photo-single img { width: 100%; height: auto; display: block; object-fit: contain; }
+
+/* ===== TÉMOIGNAGES ===== */
+#temoignages { background: linear-gradient(150deg, var(--cream) 0%, #F2E8DF 100%); text-align: center; }
+#temoignages .inner { max-width: 960px; margin: 0 auto; }
+.temo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 48px; align-items: start; }
+
+/* Vrai témoignage */
+.temo-card {
+  background: white; border-radius: 24px; padding: 30px 26px;
+  text-align: left; box-shadow: 0 6px 28px rgba(139,111,94,0.1);
+  border: 1px solid rgba(201,185,154,0.22);
+  position: relative; overflow: hidden;
+}
+.temo-card::before {
+  content: '"'; position: absolute;
+  top: -8px; left: 18px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 7rem; color: var(--rose); opacity: 0.13;
+  line-height: 1; pointer-events: none;
+}
+.temo-stats { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+.temo-stat {
+  background: rgba(201,99,88,0.1); border: 1px solid rgba(201,99,88,0.22);
+  border-radius: 50px; padding: 4px 12px;
+  font-size: 0.78rem; font-weight: 700; color: #C96358;
+}
+.temo-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.08rem; font-style: italic;
+  color: var(--dark); line-height: 1.65; margin-bottom: 16px;
+}
+.temo-impact {
+  font-size: 0.9rem; color: var(--dark); font-weight: 700;
+  line-height: 1.55; margin-bottom: 12px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, rgba(201,99,88,0.07), rgba(201,99,88,0.03));
+  border-radius: 10px; border-left: 3px solid var(--accent);
+}
+.temo-sub {
+  font-size: 0.84rem; color: var(--text-mid); line-height: 1.85;
+  margin-bottom: 4px;
+}
+.temo-sub strong { color: var(--dark); }
+.temo-author {
+  display: flex; flex-direction: column; gap: 2px;
+  margin-top: 18px; padding-top: 16px;
+  border-top: 1px solid rgba(201,185,154,0.2);
+}
+.temo-author-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; font-weight: 600; color: var(--dark);
+}
+.temo-author-tag { font-size: 0.76rem; color: var(--text-mid); }
+
+/* Slot vide */
+.temo-slot {
+  background: white; border-radius: 20px; padding: 28px 20px;
+  border: 1.5px dashed rgba(201,185,154,0.4);
+  display: flex; flex-direction: column; gap: 12px; min-height: 200px;
+  align-items: center; justify-content: center; text-align: center;
+}
+.temo-slot-icon { font-size: 2rem; opacity: 0.3; }
+.temo-slot-text { font-size: 0.82rem; color: var(--text-light); font-style: italic; line-height: 1.5; }
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .aa-grid { grid-template-columns: 1fr; gap: 20px; }
+  .aa-photo-single img { max-height: none; }
+  .temo-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="Ornella Fit Coaching" class="nav-logo-img">
+  </a>
+  <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  <div class="nav-menu" id="navMenu">
+    <a href="index.html" class="nav-link">Accueil</a>
+    <a href="offres.html" class="nav-link">Offres</a>
+    <a href="transformations.html" class="nav-link active">Transformations</a>
+    <a href="apropos.html" class="nav-link">À propos</a>
+    <a href="https://forms.gle/4ChGL2Evqoq322Lw8" class="nav-cta" target="_blank">Bilan offert →</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <span class="section-label">Preuves réelles</span>
+  <h1 class="section-title">Des transformations <em>vraies</em></h1>
+  <p class="section-subtitle">Obtenues avec méthode, constance et un accompagnement humain réel. Rien n'est retouché, rien n'est inventé.</p>
+</div>
+
+<!-- AVANT / APRÈS -->
+<section id="avant-apres">
+  <div class="inner">
+    <span class="section-label">Avant / Après</span>
+    <h2 class="section-title">Leurs corps <em>ont changé.</em> Le tien peut aussi.</h2>
+    <p class="section-subtitle">Chaque transformation ci-dessous est le résultat d'un accompagnement sur-mesure. Pas de filtre, pas de trucage.</p>
+
+    <div class="aa-grid fade-in">
+
+      <!-- ORNELLA — SA PROPRE TRANSFORMATION -->
+      <div class="aa-card" style="border:2px solid rgba(201,169,110,0.4);position:relative;">
+        <div style="position:absolute;top:12px;left:12px;z-index:2;background:var(--gold);color:var(--dark);font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 12px;border-radius:50px;">⭐ La coach elle-même</div>
+        <div class="aa-photo-single">
+          <img src="images/ornella-postpartum.jpg" alt="Ornella — Transformation post-partum · Coach Ornella Fit Coaching" loading="lazy">
+        </div>
+        <div class="aa-info">
+          <div class="aa-tag">Transformation post-partum · Reconstruction complète</div>
+          <div class="aa-name">Ornella — La coach</div>
+          <p class="aa-desc">Grossesse avec alitement prolongé → reconstruction complète du corps. Si je l'ai fait, tu peux le faire aussi.</p>
+        </div>
+      </div>
+
+      <div class="aa-card">
+        <div class="aa-photo-single">
+          <img src="images/avant-apres-louise.jpg" alt="Transformation Louise — Coaching à domicile" loading="lazy">
+        </div>
+        <div class="aa-info">
+          <div class="aa-tag">Coaching à domicile</div>
+          <div class="aa-name">Louise</div>
+          <p class="aa-desc">Silhouette affinée — transformation obtenue avec méthode et constance.</p>
+        </div>
+      </div>
+
+      <div class="aa-card">
+        <div class="aa-photo-single">
+          <img src="images/avant-apres-1.png" alt="Transformation cliente — Coaching Ornella Fit" loading="lazy">
+        </div>
+        <div class="aa-info">
+          <div class="aa-tag">Coaching Ornella Fit</div>
+          <div class="aa-name">Cliente</div>
+          <p class="aa-desc">Remodelage corporel — programme sur-mesure et suivi WhatsApp personnalisé.</p>
+        </div>
+      </div>
+
+      <div class="aa-card">
+        <div class="aa-photo-single">
+          <img src="images/avant-apres-emeline.jpg" alt="Transformation Emeline — Maman 2 enfants, prise de masse" loading="lazy">
+        </div>
+        <div class="aa-info">
+          <div class="aa-tag">Maman de 2 enfants · Prise de masse</div>
+          <div class="aa-name">Emeline</div>
+          <p class="aa-desc">−3 cm de tour de taille · Fessiers qui remontent · Silhouette redessinée. Et ce n'est pas fini — elle continue. Bravo à elle 👏</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO TRANSFORMATION -->
+<section style="background:linear-gradient(150deg,#2C1F1A 0%,#3D2B24 100%);padding:72px 24px;">
+  <div class="inner" style="max-width:860px;margin:0 auto;text-align:center;">
+    <span class="section-label" style="color:var(--gold);">Résultat réel · En vidéo</span>
+    <h2 class="section-title" style="color:white;margin-bottom:12px;">Elle l'a fait.<br><em>Regarde par toi-même.</em></h2>
+    <p style="font-size:1rem;color:rgba(255,255,255,0.6);margin-bottom:36px;line-height:1.7;">Une vraie cliente. Un vrai résultat. Présenté par Ornella.</p>
+    <div style="border-radius:24px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.4);max-width:640px;margin:0 auto;">
+      <video
+        controls
+        preload="metadata"
+        style="width:100%;display:block;background:#1A110E;"
+        playsinline>
+        <source src="videos/video-transformation.mov" type="video/mp4">
+        <source src="videos/video-transformation.mov" type="video/quicktime">
+      </video>
+    </div>
+    <div style="margin-top:32px;">
+      <a href="https://wa.me/33756834626" class="btn-whatsapp" target="_blank" style="display:inline-flex;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Je veux des résultats comme ça →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section id="temoignages">
+  <div class="inner">
+    <span class="section-label">Elles témoignent</span>
+    <h2 class="section-title">Elles ont <em>osé.</em> Elles ne regrettent pas.</h2>
+    <p class="section-subtitle" style="margin:0 auto;">Des vraies femmes, de vraies vies, de vrais résultats. Sans filtre.</p>
+
+    <div class="temo-grid fade-in">
+
+      <!-- LOUISE — VRAI TÉMOIGNAGE -->
+      <div class="temo-card">
+        <div class="temo-stats">
+          <span class="temo-stat">−5 kg</span>
+          <span class="temo-stat">−6 cm de tour de taille</span>
+        </div>
+        <p class="temo-quote">« Elle ne se sent pas seulement plus mince… elle se sent beaucoup mieux dans son corps, plus en forme et plus confiante au quotidien. »</p>
+        <p class="temo-impact">Elle n'a pas seulement perdu du ventre.<br>Elle a retrouvé un corps dans lequel elle se sent bien.</p>
+        <p class="temo-sub">
+          ✓ <strong>−5 kg</strong> en 4 mois<br>
+          ✓ <strong>−6 cm</strong> de tour de taille<br>
+          ✓ <strong>Confiance retrouvée</strong> au quotidien<br>
+          ✓ Maman, peu de temps — mais des résultats concrets
+        </p>
+        <div class="temo-author">
+          <span class="temo-author-name">Louise</span>
+          <span class="temo-author-tag">Maman de 2 enfants · Coaching à domicile · 4 mois</span>
+        </div>
+      </div>
+
+      <!-- TÉMOIGNAGE 2 — DÉBUTANTE -->
+      <div class="temo-card">
+        <div class="temo-stats">
+          <span class="temo-stat">Débutante totale</span>
+          <span class="temo-stat">Résultats dès 3 sem.</span>
+        </div>
+        <p class="temo-quote">« Je ne suis pas sportive à la base, mais j'ai été accompagnée à mon rythme. Toujours bienveillante, motivante et sans aucun jugement. Aujourd'hui, je progresse — et je me sens vraiment mieux dans mon corps. »</p>
+        <p class="temo-impact">Elle est passée de zéro pratique sportive<br>à une routine régulière qui lui ressemble.</p>
+        <p class="temo-sub">
+          ✓ <strong>Aucune expérience sportive</strong> au départ<br>
+          ✓ Programme adapté à son niveau et ses contraintes<br>
+          ✓ <strong>Progression visible</strong> dès les premières semaines<br>
+          ✓ Plus de confiance, plus d'énergie au quotidien
+        </p>
+        <div class="temo-author">
+          <span class="temo-author-name">Cliente · Débutante</span>
+          <span class="temo-author-tag">Coaching personnalisé · Programme sur-mesure</span>
+        </div>
+      </div>
+
+      <!-- TÉMOIGNAGE 3 — REMISE EN FORME / SANTÉ -->
+      <div class="temo-card">
+        <div class="temo-stats">
+          <span class="temo-stat">+ Énergie</span>
+          <span class="temo-stat">Meilleure condition</span>
+        </div>
+        <p class="temo-quote">« Les séances sont adaptées, variées et vraiment efficaces. Après quelques semaines, j'ai constaté des bénéfices concrets : plus d'énergie, une meilleure condition physique, et moins d'essoufflement au quotidien. »</p>
+        <p class="temo-impact">Ce n'est pas juste l'apparence qui a changé.<br>C'est son quotidien tout entier.</p>
+        <p class="temo-sub">
+          ✓ <strong>Plus d'énergie</strong> dès le réveil<br>
+          ✓ <strong>Moins d'essoufflement</strong> dans la vie de tous les jours<br>
+          ✓ Meilleure condition physique générale<br>
+          ✓ Séances adaptées, <strong>jamais monotones</strong>
+        </p>
+        <div class="temo-author">
+          <span class="temo-author-name">Cliente · Remise en forme</span>
+          <span class="temo-author-tag">Coaching à domicile · Objectif santé & énergie</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:44px;text-align:center;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-style:italic;color:var(--dark);margin-bottom:6px;font-weight:600;">Et toi, c'est quand ton tour ?</p>
+      <p style="font-size:0.88rem;color:var(--text-mid);margin-bottom:24px;">Ton corps peut changer. La seule différence entre elles et toi, c'est qu'elles ont commencé.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;">
+        <a href="https://wa.me/33756834626" class="btn-main" target="_blank" style="display:inline-flex;align-items:center;gap:8px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Je commence ma transformation
+        </a>
+        <a href="https://forms.gle/4ChGL2Evqoq322Lw8" class="btn-outline" target="_blank">
+          Faire mon bilan offert →
+        </a>
+      </div>
+      <p style="font-size:0.78rem;color:var(--text-light);margin-top:14px;font-style:italic;">✓ Sans engagement · Bilan 100% offert · Réponse rapide</p>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS CLIENTS -->
+<section id="avis-clients">
+  <div class="inner">
+    <span class="section-label">Avis Google ⭐</span>
+    <h2 class="section-title">Ce qu'elles <em>en disent</em></h2>
+    <p class="section-subtitle" style="margin:0 auto;">Avis réels de clientes — reformulés pour confidentialité, authentiques dans leur fond.</p>
+
+    <div class="avis-grid fade-in">
+
+      <div class="avis-card">
+        <div class="avis-top">
+          <span class="avis-stars">★★★★★</span>
+          <span class="avis-source">Avis Google</span>
+        </div>
+        <p class="avis-quote">Soucieuse de rester en forme et d'entretenir mon corps, j'ai fait appel à Ornella. J'ai particulièrement apprécié la variété des séances, les encouragements et surtout le fait qu'elle corrige chaque mouvement. En seulement quelques séances, j'ai déjà commencé à ressentir les bénéfices.</p>
+        <p class="avis-highlight">Des résultats ressentis dès les premières séances.</p>
+        <div class="avis-author">
+          <strong>Cliente · +40 ans</strong>
+          Coaching à domicile
+        </div>
+      </div>
+
+      <div class="avis-card">
+        <div class="avis-top">
+          <span class="avis-stars">★★★★★</span>
+          <span class="avis-source">Avis Google</span>
+        </div>
+        <p class="avis-quote">Après ma grossesse, je ne me reconnaissais plus du tout physiquement. Ornella a su m'accompagner avec professionnalisme et écoute. Les séances sont efficaces, adaptées à mon niveau et à mon rythme post-partum. En quelques semaines, j'ai retrouvé du tonus, une meilleure posture et surtout confiance en moi. Elle ne promet pas de miracle — elle travaille intelligemment, et les résultats sont là.</p>
+        <p class="avis-highlight">Retrouver confiance après une grossesse, c'est possible.</p>
+        <div class="avis-author">
+          <strong>Maman · Post-partum</strong>
+          Coaching personnalisé
+        </div>
+      </div>
+
+      <div class="avis-card">
+        <div class="avis-top">
+          <span class="avis-stars">★★★★★</span>
+          <span class="avis-source">Avis Google</span>
+        </div>
+        <p class="avis-quote">Après des années en salle sans résultats, j'ai décidé de me faire accompagner. Aujourd'hui, je vois enfin des changements. Le programme est structuré, adapté, et l'accompagnement fait toute la différence. Je ne regrette pas ma décision.</p>
+        <p class="avis-highlight">Ce n'est pas que tu fais mal. C'est que tu n'es pas accompagnée.</p>
+        <div class="avis-author">
+          <strong>Cliente · Reprise sportive</strong>
+          Programme sur-mesure
+        </div>
+      </div>
+
+    </div>
+
+    <div class="avis-closing fade-in">
+      <div class="avis-closing-text">
+        <p class="avis-closing-stat"><em>90%</em> des personnes seules abandonnent.</p>
+        <p class="avis-closing-sub">Celles qui sont accompagnées avancent — semaine après semaine, résultat après résultat.</p>
+      </div>
+      <a href="https://wa.me/33756834626" class="avis-cta-btn" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Je veux mon plan personnalisé
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta-final">
+  <div class="inner">
+    <span class="section-label" style="color:var(--gold);">À toi de jouer</span>
+    <h2 class="section-title">Tu seras <em>la prochaine transformation.</em></h2>
+    <p class="section-subtitle">Commence par un bilan personnalisé offert — sans engagement, sans pression.</p>
+    <div class="cta-buttons">
+      <a href="https://forms.gle/4ChGL2Evqoq322Lw8" class="btn-main" target="_blank">
+        🎯 Je fais mon bilan personnalisé offert
+      </a>
+      <a href="offres.html" class="btn-outline" style="color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.2);">
+        Voir les offres →
+      </a>
+    </div>
+    <p class="cta-reassure">✓ Bilan personnalisé offert · Gratuit · Sans engagement</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="images/logo.png" alt="Ornella Fit Coaching" class="footer-logo-img">
+  </div>
+  <p class="footer-slogan">« Ton plus bel investissement, c'est toi. »</p>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="offres.html">Offres</a>
+    <a href="transformations.html">Transformations</a>
+    <a href="apropos.html">À propos</a>
+    <a href="https://wa.me/33756834626" target="_blank">WhatsApp</a>
+  </div>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/ornellafit.coaching" target="_blank">📷 Instagram</a>
+    <a href="mailto:ornellafit.coaching@gmail.com">✉️ Email</a>
+    <a href="https://linktr.ee/Ornellafitcoaching" target="_blank">🔗 Linktree</a>
+  </div>
+  <p class="footer-info">Ornella Racano · Coach sportive Essonne (91) · Île-de-France · ornellafit.coaching@gmail.com</p>
+  <p class="footer-copy">© 2026 Ornella Fit Coaching — Tous droits réservés</p>
+  <p class="footer-legal"><a href="mentions-legales.html">Mentions légales</a> · <a href="mentions-legales.html#rgpd">Politique de confidentialité</a></p>
+</footer>
+
+<a href="https://wa.me/33756834626" class="floating-wa" target="_blank" title="WhatsApp">💬</a>
+
+<script>
+function toggleMenu() { document.getElementById('navMenu').classList.toggle('open'); }
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('navMenu');
+  const toggle = document.querySelector('.nav-toggle');
+  if (!menu.contains(e.target) && !toggle.contains(e.target)) menu.classList.remove('open');
+});
+if ('IntersectionObserver' in window) {
+  document.documentElement.classList.add('js-anim');
+  const obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
+}
+</script>
+</body>
+</html>
