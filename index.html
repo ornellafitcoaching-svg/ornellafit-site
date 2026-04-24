@@ -332,6 +332,112 @@
   .hero-ctas { max-width: 100%; }
   .story-photos-grid { grid-template-columns: 1fr; }
 }
+
+/* ===== STICKY BOTTOM BAR — mobile only ===== */
+.sticky-bar {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 998;
+  background: #1A0E0E;
+  border-top: 1px solid rgba(201,99,88,0.25);
+  padding: 10px 14px;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom));
+  gap: 10px;
+}
+.sticky-bar-main {
+  flex: 1;
+  background: var(--accent);
+  color: white; text-decoration: none;
+  border-radius: 50px; padding: 13px 12px;
+  font-size: 0.83rem; font-weight: 700;
+  text-align: center; display: flex;
+  align-items: center; justify-content: center; gap: 6px;
+  letter-spacing: 0.01em;
+}
+.sticky-bar-wa {
+  flex: 0 0 52px;
+  background: rgba(37,211,102,0.12);
+  border: 1px solid rgba(37,211,102,0.3);
+  color: #25D366; text-decoration: none;
+  border-radius: 50px;
+  font-size: 1.25rem;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ===== FAB MENU — mobile only ===== */
+.fab-wrap {
+  display: none;
+  position: fixed;
+  bottom: 82px; right: 16px;
+  z-index: 999;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+}
+.fab-trigger {
+  width: 48px; height: 48px;
+  background: var(--dark);
+  border: 1.5px solid rgba(201,169,110,0.45);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+  font-size: 1.15rem;
+  transition: transform 0.3s ease, background 0.2s;
+  color: var(--gold);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.fab-trigger.open { transform: rotate(45deg); background: var(--accent); color: white; border-color: transparent; }
+.fab-items {
+  display: flex; flex-direction: column; gap: 8px;
+  align-items: flex-end;
+  margin-bottom: 10px;
+  opacity: 0; pointer-events: none;
+  transform: translateY(12px) scale(0.96);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+.fab-items.open {
+  opacity: 1; pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+.fab-item {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; white-space: nowrap;
+  border-radius: 50px;
+  padding: 10px 18px 10px 14px;
+  font-size: 0.8rem; font-weight: 700;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.18);
+  transition: transform 0.15s ease;
+}
+.fab-item:active { transform: scale(0.97); }
+.fab-item-book  { background: var(--accent); color: white; }
+.fab-item-buy   { background: white; color: var(--dark); border: 1px solid rgba(201,185,154,0.3); }
+.fab-item-wa    { background: #25D366; color: white; }
+.fab-item-icon  { font-size: 1rem; flex-shrink: 0; }
+
+/* Backdrop */
+.fab-backdrop {
+  display: none;
+  position: fixed; inset: 0;
+  z-index: 997;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+.fab-backdrop.open { opacity: 1; }
+
+@media (max-width: 768px) {
+  .sticky-bar { display: flex; }
+  .fab-wrap { display: flex; }
+  .fab-backdrop { display: block; }
+  .floating-wa { display: none; }
+  footer { padding-bottom: 84px; }
+  body { padding-bottom: 0; }
+}
 </style>
 </head>
 <body>
@@ -836,6 +942,31 @@
 
 <a href="https://wa.me/33756834626" class="floating-wa" target="_blank" title="WhatsApp">💬</a>
 
+<!-- STICKY BOTTOM BAR (mobile) -->
+<div class="sticky-bar">
+  <a href="https://forms.gle/4ChGL2Evqoq322Lw8" class="sticky-bar-main" target="_blank">🎯 Commencer maintenant</a>
+  <a href="https://wa.me/33756834626" class="sticky-bar-wa" target="_blank" aria-label="WhatsApp">💬</a>
+</div>
+
+<!-- FAB BACKDROP -->
+<div class="fab-backdrop" id="fabBackdrop" onclick="closeFab()"></div>
+
+<!-- FAB MENU (mobile) -->
+<div class="fab-wrap" id="fabWrap">
+  <div class="fab-items" id="fabItems">
+    <a href="https://forms.gle/4ChGL2Evqoq322Lw8" class="fab-item fab-item-book" target="_blank" onclick="closeFab()">
+      <span class="fab-item-icon">📅</span> Réserver un coaching
+    </a>
+    <a href="https://buy.stripe.com/8x26oHas9f8n5o9cmh8Vi03" class="fab-item fab-item-buy" target="_blank" onclick="closeFab()">
+      <span class="fab-item-icon">💳</span> Acheter un programme
+    </a>
+    <a href="https://wa.me/33756834626" class="fab-item fab-item-wa" target="_blank" onclick="closeFab()">
+      <span class="fab-item-icon">💬</span> Me contacter
+    </a>
+  </div>
+  <div class="fab-trigger" id="fabTrigger" onclick="toggleFab()" aria-label="Menu rapide">✦</div>
+</div>
+
 <script>
 function toggleMenu() { document.getElementById('navMenu').classList.toggle('open'); }
 document.addEventListener('click', function(e) {
@@ -843,6 +974,24 @@ document.addEventListener('click', function(e) {
   const toggle = document.querySelector('.nav-toggle');
   if (!menu.contains(e.target) && !toggle.contains(e.target)) menu.classList.remove('open');
 });
+
+function toggleFab() {
+  const trigger = document.getElementById('fabTrigger');
+  const items = document.getElementById('fabItems');
+  const backdrop = document.getElementById('fabBackdrop');
+  const isOpen = items.classList.contains('open');
+  if (isOpen) { closeFab(); } else {
+    trigger.classList.add('open');
+    items.classList.add('open');
+    backdrop.classList.add('open');
+  }
+}
+function closeFab() {
+  document.getElementById('fabTrigger').classList.remove('open');
+  document.getElementById('fabItems').classList.remove('open');
+  document.getElementById('fabBackdrop').classList.remove('open');
+}
+
 if ('IntersectionObserver' in window) {
   document.documentElement.classList.add('js-anim');
   const obs = new IntersectionObserver(function(entries) {
