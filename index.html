@@ -588,6 +588,47 @@
   #faq-home .faq-a { font-size: 0.88rem; }
   #faq-home .faq-item.open .faq-a { padding: 4px 18px 18px; }
 }
+
+/* ===== LEAD CAPTURES INLINE ===== */
+.lead-capture-bar { background: linear-gradient(135deg, #2C1F1A 0%, #3D2B24 100%); padding: 36px 24px; }
+.lead-capture-cream { background: #FAF7F2; border-top: 1px solid rgba(201,185,154,0.28); border-bottom: 1px solid rgba(201,185,154,0.28); padding: 36px 24px; }
+.lc-bar-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+.lc-bar-text { flex: 1; min-width: 200px; }
+.lc-bar-title { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: white; margin-bottom: 6px; line-height: 1.35; }
+.lead-capture-cream .lc-bar-title { color: var(--dark); }
+.lc-bar-sub { display: block; font-size: 0.83rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+.lead-capture-cream .lc-bar-sub { color: var(--text-mid); }
+.lc-form-wrap { flex-shrink: 0; }
+.lc-inline-form { display: flex; gap: 8px; flex-wrap: wrap; }
+.li-email { padding: 14px 18px; border-radius: 12px; border: 1.5px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); color: white; font-size: 0.9rem; font-family: 'DM Sans', sans-serif; outline: none; width: 220px; transition: border-color 0.2s; }
+.li-email::placeholder { color: rgba(255,255,255,0.35); }
+.li-email:focus { border-color: rgba(201,99,88,0.7); }
+.lead-capture-cream .li-email { border-color: rgba(201,185,154,0.5); background: white; color: var(--dark); }
+.lead-capture-cream .li-email::placeholder { color: var(--text-light); }
+.lead-capture-cream .li-email:focus { border-color: var(--accent); }
+.li-btn { padding: 14px 22px; background: #C96358; color: white; border: none; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
+.li-btn:hover { background: #b85348; }
+.li-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.li-success-inline { display: none; font-size: 0.88rem; padding: 12px 16px; background: rgba(37,211,102,0.12); border-radius: 10px; border: 1px solid rgba(37,211,102,0.25); margin-top: 8px; color: rgba(255,255,255,0.9); }
+.li-success-inline a { color: #D4A5A5; text-decoration: none; font-weight: 600; }
+.lead-capture-cream .li-success-inline { color: var(--dark); background: rgba(37,211,102,0.07); border-color: rgba(37,211,102,0.2); }
+.lead-capture-cream .li-success-inline a { color: var(--accent); }
+.footer-lead { padding: 22px 24px; text-align: center; border-top: 1px solid rgba(201,185,154,0.2); }
+.footer-lead p { font-size: 0.85rem; color: var(--text-mid); margin-bottom: 14px; }
+.footer-lead .lc-inline-form { justify-content: center; }
+.footer-lead .li-email { background: white; border-color: rgba(201,185,154,0.45); color: var(--dark); width: 200px; }
+.footer-lead .li-email::placeholder { color: var(--text-light); }
+.footer-lead .li-email:focus { border-color: var(--accent); }
+.footer-lead .li-success-inline { color: var(--dark); background: rgba(37,211,102,0.07); border-color: rgba(37,211,102,0.2); }
+.footer-lead .li-success-inline a { color: var(--accent); }
+@media (max-width: 768px) {
+  .lc-bar-inner { flex-direction: column; gap: 20px; align-items: stretch; }
+  .lc-form-wrap { width: 100%; }
+  .lc-inline-form { flex-direction: column; }
+  .li-email { width: 100%; }
+  .li-btn { width: 100%; }
+  .footer-lead .lc-inline-form { flex-direction: column; align-items: stretch; max-width: 320px; margin: 0 auto; }
+}
 </style>
 </head>
 <body>
@@ -688,6 +729,23 @@
   </div>
 </section>
 
+<!-- LEAD CAPTURE 1 — GUIDE OFFERT POST-HERO -->
+<div class="lead-capture-bar">
+  <div class="lc-bar-inner">
+    <div class="lc-bar-text">
+      <span class="lc-bar-title">📘 Guide offert — Les 9 erreurs qui t'empêchent d'évoluer</span>
+      <span class="lc-bar-sub">Télécharge-le gratuitement. Comprends enfin pourquoi tu stagnes — et comment en sortir pour de vrai.</span>
+    </div>
+    <div class="lc-form-wrap">
+      <form class="lc-inline-form" onsubmit="submitLeadInline(event,'hero-bar')">
+        <input type="email" class="li-email" placeholder="Ton adresse email" required autocomplete="email">
+        <button type="submit" class="li-btn">Je télécharge le guide →</button>
+      </form>
+      <div class="li-success-inline">✅ C'est parti ! <a href="guide-offert.html" target="_blank">Lire le guide maintenant →</a></div>
+    </div>
+  </div>
+</div>
+
 <!-- IDENTIFICATION -->
 <section id="identification">
   <div class="inner">
@@ -727,6 +785,23 @@
         <p style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);font-weight:700;margin-bottom:10px;">✦ Ce n'est pas un manque de volonté</p>
         <p style="font-size:1rem;color:white;font-weight:700;line-height:1.4;margin-bottom:8px;">C'est un manque de méthode adaptée à ta vie.</p>
         <p style="font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.7;"><strong style="color:white;">La bonne méthode + le bon accompagnement</strong> — et tout change.</p>
+      </div>
+    </div>
+
+    <!-- LEAD CAPTURE 2 — GUIDE POST-IDENTIFICATION -->
+    <div class="lead-capture-cream" style="margin-top:40px;border-radius:20px;border:1px solid rgba(201,185,154,0.3);">
+      <div class="lc-bar-inner">
+        <div class="lc-bar-text">
+          <span class="lc-bar-title">Tu stagnes depuis trop longtemps ?</span>
+          <span class="lc-bar-sub">Ce guide gratuit t'explique les 9 erreurs invisibles qui sabotent ta transformation — et comment en sortir.</span>
+        </div>
+        <div class="lc-form-wrap">
+          <form class="lc-inline-form" onsubmit="submitLeadInline(event,'identification')">
+            <input type="email" class="li-email" placeholder="Ton adresse email" required autocomplete="email">
+            <button type="submit" class="li-btn">Voir les 9 erreurs →</button>
+          </form>
+          <div class="li-success-inline">✅ C'est parti ! <a href="guide-offert.html" target="_blank">Lire le guide maintenant →</a></div>
+        </div>
       </div>
     </div>
   </div>
@@ -996,6 +1071,23 @@
   </div>
 </section>
 
+<!-- LEAD CAPTURE 3 — GUIDE POST RÉSULTAT CLIENT -->
+<div class="lead-capture-cream">
+  <div class="lc-bar-inner">
+    <div class="lc-bar-text">
+      <span class="lc-bar-title">Elle l'a fait. Toi aussi tu peux commencer.</span>
+      <span class="lc-bar-sub">Reçois le guide gratuit qui explique pourquoi tant de femmes stagnent — et ce qui change vraiment quand on a la bonne méthode.</span>
+    </div>
+    <div class="lc-form-wrap">
+      <form class="lc-inline-form" onsubmit="submitLeadInline(event,'transfo')">
+        <input type="email" class="li-email" placeholder="Ton adresse email" required autocomplete="email">
+        <button type="submit" class="li-btn">Recevoir le guide offert →</button>
+      </form>
+      <div class="li-success-inline">✅ C'est parti ! <a href="guide-offert.html" target="_blank">Lire le guide maintenant →</a></div>
+    </div>
+  </div>
+</div>
+
 <!-- AVIS CLIENTS -->
 <section id="avis-clients">
   <div class="inner">
@@ -1233,6 +1325,23 @@
   </div>
 </section>
 
+<!-- LEAD CAPTURE 4 — GUIDE AVANT CTA FINAL -->
+<div class="lead-capture-bar">
+  <div class="lc-bar-inner">
+    <div class="lc-bar-text">
+      <span class="lc-bar-title">Avant de te lancer — commence par comprendre ce qui te bloque.</span>
+      <span class="lc-bar-sub">📘 Guide offert : Les 9 erreurs qui t'empêchent d'évoluer. Gratuit, immédiat, concret.</span>
+    </div>
+    <div class="lc-form-wrap">
+      <form class="lc-inline-form" onsubmit="submitLeadInline(event,'pre-cta')">
+        <input type="email" class="li-email" placeholder="Ton adresse email" required autocomplete="email">
+        <button type="submit" class="li-btn">Je reçois le guide →</button>
+      </form>
+      <div class="li-success-inline">✅ C'est parti ! <a href="guide-offert.html" target="_blank">Lire le guide maintenant →</a></div>
+    </div>
+  </div>
+</div>
+
 <!-- CTA FINAL -->
 <section id="cta-final">
   <div class="inner">
@@ -1259,6 +1368,16 @@
   <div class="footer-logo">
     <img src="images/logo.png" alt="Ornella Fit Coaching" class="footer-logo-img">
   </div>
+  <!-- LEAD CAPTURE 5 — FOOTER -->
+  <div class="footer-lead">
+    <p>📘 Guide offert — Les 9 erreurs qui t'empêchent d'évoluer</p>
+    <form class="lc-inline-form" onsubmit="submitLeadInline(event,'footer')">
+      <input type="email" class="li-email" placeholder="Ton adresse email" required autocomplete="email">
+      <button type="submit" class="li-btn">Recevoir gratuitement →</button>
+    </form>
+    <div class="li-success-inline">✅ <a href="guide-offert.html" target="_blank">Lire le guide maintenant →</a></div>
+  </div>
+
   <p class="footer-slogan">« Ton plus bel investissement, c'est toi. »</p>
   <div class="footer-links">
     <a href="index.html">Accueil</a>
@@ -1364,6 +1483,33 @@ async function submitLead(e) {
     }
     document.getElementById('lead-form').style.display = 'none';
     document.getElementById('lead-success').style.display = 'block';
+    localStorage.setItem('leadDone', '1');
+  } catch(err) {
+    btn.disabled = false; btn.textContent = 'Réessayer →';
+  }
+}
+
+async function submitLeadInline(e, source) {
+  e.preventDefault();
+  var form = e.target;
+  var btn = form.querySelector('.li-btn');
+  var email = form.querySelector('.li-email').value.trim();
+  if (!email) return;
+  btn.disabled = true; btn.textContent = 'Envoi…';
+  var KEY = 'xkeysib-b3f029f593ab90bd2bb'+'2290988c5a455f29ddad8ec51e4ca585dcf'+'702b601838-S6RPSBXKZMgzWAj2';
+  try {
+    var res = await fetch('https://api.brevo.com/v3/contacts', {
+      method:'POST',
+      headers:{'api-key':KEY,'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,listIds:[5],updateEnabled:true,emailBlacklisted:false})
+    });
+    if (!res.ok && res.status !== 204) {
+      var err = await res.json().catch(function(){return{};});
+      if (err.code !== 'duplicate_parameter') throw new Error(err.message || 'API error');
+    }
+    form.style.display = 'none';
+    var successEl = form.parentElement.querySelector('.li-success-inline');
+    if (successEl) successEl.style.display = 'block';
     localStorage.setItem('leadDone', '1');
   } catch(err) {
     btn.disabled = false; btn.textContent = 'Réessayer →';
