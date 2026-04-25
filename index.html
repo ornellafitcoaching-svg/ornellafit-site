@@ -629,9 +629,61 @@
   .li-btn { width: 100%; }
   .footer-lead .lc-inline-form { flex-direction: column; align-items: stretch; max-width: 320px; margin: 0 auto; }
 }
+
+/* ===== TOP ANNOUNCEMENT BAR ===== */
+#top-bar {
+  background: linear-gradient(90deg, #2C1F1A 0%, #3D2B24 50%, #2C1F1A 100%);
+  padding: 10px 20px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; flex-wrap: wrap; text-align: center;
+  position: relative; z-index: 200;
+}
+.top-bar-urgency {
+  font-size: 0.82rem; color: rgba(255,255,255,0.88);
+  font-weight: 500; letter-spacing: 0.01em;
+}
+.top-bar-urgency strong { color: #D4A5A5; }
+.top-bar-divider { color: rgba(255,255,255,0.2); font-size: 0.9rem; }
+.top-bar-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #C96358; color: white; text-decoration: none;
+  padding: 7px 16px; border-radius: 50px;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.02em;
+  transition: background 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.top-bar-btn:hover { background: #b85348; transform: translateY(-1px); }
+.top-bar-reviews {
+  display: inline-flex; align-items: center; gap: 5px;
+  color: rgba(255,255,255,0.65); text-decoration: none;
+  font-size: 0.8rem; transition: color 0.2s;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 1px;
+}
+.top-bar-reviews:hover { color: #FBBC05; border-color: #FBBC05; }
+.top-bar-stars { color: #FBBC05; letter-spacing: 1px; font-size: 0.75rem; }
+@media (max-width: 768px) {
+  #top-bar { gap: 10px; padding: 10px 16px; }
+  .top-bar-divider { display: none; }
+  .top-bar-urgency { font-size: 0.78rem; width: 100%; }
+  .top-bar-btn, .top-bar-reviews { font-size: 0.78rem; }
+}
 </style>
 </head>
 <body>
+
+<!-- TOP ANNOUNCEMENT BAR -->
+<div id="top-bar">
+  <span class="top-bar-urgency">⚠️ <strong>3 places disponibles en mai</strong> pour un accompagnement personnalisé</span>
+  <span class="top-bar-divider">·</span>
+  <a href="https://calendly.com/ornellafit-coaching" class="top-bar-btn" target="_blank">
+    📅 Je réserve mon bilan
+  </a>
+  <span class="top-bar-divider">·</span>
+  <a href="https://share.google/b1DQw3hQTqTGy7FqZ" class="top-bar-reviews" target="_blank">
+    <span class="top-bar-stars">★★★★★</span> 5,0 sur Google
+  </a>
+</div>
 
 <!-- NAV -->
 <nav>
