@@ -469,6 +469,36 @@
 }
 #faq-home .faq-item.open .faq-a { max-height: 400px; padding: 4px 24px 22px; }
 
+/* ===== LEAD POPUP ===== */
+#lead-popup { display:none; position:fixed; inset:0; z-index:9999; align-items:center; justify-content:center; padding:20px; }
+#lead-popup.active { display:flex; }
+#lead-overlay { position:absolute; inset:0; background:rgba(30,22,22,0.72); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); }
+#lead-box {
+  position:relative; z-index:1; background:white; border-radius:28px;
+  padding:40px 36px; max-width:480px; width:100%;
+  box-shadow:0 32px 80px rgba(44,31,26,0.3); text-align:center;
+  animation:leadIn 0.35s ease;
+}
+@keyframes leadIn { from { opacity:0; transform:translateY(24px) scale(0.97); } to { opacity:1; transform:none; } }
+#lead-close { position:absolute; top:14px; right:18px; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--text-light); line-height:1; padding:4px; }
+.lead-badge { display:inline-block; background:rgba(201,99,88,0.1); color:var(--accent); border:1px solid rgba(201,99,88,0.22); padding:5px 16px; border-radius:50px; font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px; }
+.lead-title { font-family:'Cormorant Garamond',serif; font-size:1.65rem; font-weight:600; color:var(--dark); line-height:1.25; margin-bottom:10px; }
+.lead-title em { color:var(--accent); font-style:italic; }
+.lead-sub { font-size:0.88rem; color:var(--text-mid); line-height:1.65; margin-bottom:18px; }
+.lead-pills { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:22px; }
+.lead-pill { background:var(--cream); border:1px solid rgba(201,185,154,0.3); border-radius:50px; padding:5px 12px; font-size:0.75rem; color:var(--dark); font-weight:500; }
+#lead-form { display:flex; flex-direction:column; gap:10px; }
+#lead-email { width:100%; padding:16px 20px; border:1.5px solid rgba(201,185,154,0.4); border-radius:14px; font-size:0.95rem; font-family:'DM Sans',sans-serif; outline:none; transition:border-color 0.2s; box-sizing:border-box; }
+#lead-email:focus { border-color:var(--accent); }
+#lead-submit { width:100%; padding:17px; background:#C96358; color:white; border:none; border-radius:14px; font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:700; cursor:pointer; transition:all 0.2s; }
+#lead-submit:hover { background:#b85348; transform:translateY(-1px); }
+#lead-submit:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
+.lead-note { font-size:0.77rem; color:var(--text-light); margin-top:8px; }
+#lead-success { display:none; padding:20px; background:rgba(37,211,102,0.07); border:1px solid rgba(37,211,102,0.2); border-radius:14px; margin-top:14px; }
+#lead-success p { font-size:0.95rem; color:var(--dark); font-weight:600; margin-bottom:12px; }
+#lead-success a { display:inline-block; background:#C96358; color:white; padding:13px 28px; border-radius:50px; font-weight:700; font-size:0.9rem; text-decoration:none; }
+@media(max-width:768px) { #lead-box { padding:30px 20px; border-radius:22px; } .lead-title { font-size:1.35rem; } }
+
 /* ===== MOBILE INDEX ===== */
 @media (max-width: 768px) {
   /* HERO */
@@ -1317,6 +1347,31 @@
   <p class="footer-legal"><a href="mentions-legales.html">Mentions légales</a> · <a href="mentions-legales.html#rgpd">Politique de confidentialité</a> · <a href="cgv.pdf" target="_blank">CGV</a></p>
 </footer>
 
+<!-- LEAD POPUP -->
+<div id="lead-popup">
+  <div id="lead-overlay" onclick="closeLead()"></div>
+  <div id="lead-box">
+    <button id="lead-close" onclick="closeLead()">×</button>
+    <div class="lead-badge">📘 Guide offert · 100% gratuit</div>
+    <h2 class="lead-title">Pourquoi tu n'as pas de résultats<br><em>malgré tous tes efforts</em></h2>
+    <p class="lead-sub">Les 9 erreurs silencieuses qui sabotent ta transformation — et la méthode concrète pour en sortir définitivement.</p>
+    <div class="lead-pills">
+      <span class="lead-pill">📘 6 chapitres</span>
+      <span class="lead-pill">🎯 Plan d'action inclus</span>
+      <span class="lead-pill">✅ Basé sur la science</span>
+    </div>
+    <form id="lead-form" onsubmit="submitLead(event)">
+      <input type="email" id="lead-email" placeholder="Ton adresse email" required autocomplete="email">
+      <button type="submit" id="lead-submit">Recevoir le guide gratuitement →</button>
+    </form>
+    <p class="lead-note">Pas de spam. Désabonnement en 1 clic.</p>
+    <div id="lead-success">
+      <p>✅ C'est parti ! Vérifie ta boîte mail.</p>
+      <a href="guide-offert.html" target="_blank">Lire le guide maintenant →</a>
+    </div>
+  </div>
+</div>
+
 <!-- STICKY MOBILE BAR -->
 <div class="mobile-sticky-bar">
   <a href="https://wa.me/33756834626" class="sticky-cta-main" target="_blank">Commencer maintenant</a>
@@ -1343,6 +1398,53 @@ document.addEventListener('click', function(e) {
     menu.classList.remove('open');
   }
 });
+// LEAD POPUP
+function showLead() {
+  if (localStorage.getItem('leadDone')) return;
+  document.getElementById('lead-popup').classList.add('active');
+}
+function closeLead() {
+  document.getElementById('lead-popup').classList.remove('active');
+  localStorage.setItem('leadDone', '1');
+}
+setTimeout(showLead, 9000);
+window.addEventListener('scroll', function onLeadScroll() {
+  if ((window.scrollY / document.body.scrollHeight) > 0.38) {
+    showLead();
+    window.removeEventListener('scroll', onLeadScroll);
+  }
+}, { passive: true });
+
+async function submitLead(e) {
+  e.preventDefault();
+  var email = document.getElementById('lead-email').value.trim();
+  var btn = document.getElementById('lead-submit');
+  btn.disabled = true; btn.textContent = 'Envoi en cours…';
+  var KEY = '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';
+  try {
+    await fetch('https://api.brevo.com/v3/contacts', {
+      method:'POST',
+      headers:{'api-key':KEY,'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,listIds:[5],updateEnabled:true})
+    });
+    await fetch('https://api.brevo.com/v3/smtp/email', {
+      method:'POST',
+      headers:{'api-key':KEY,'Content-Type':'application/json'},
+      body:JSON.stringify({
+        sender:{name:'Ornella Fit Coaching',email:'contact@ornellafitcoaching.com'},
+        to:[{email:email}],
+        subject:'📘 Ton guide offert — Ornella Fit Coaching',
+        htmlContent:'<div style="font-family:sans-serif;max-width:560px;margin:0 auto;padding:32px 24px;background:#FAF7F2;border-radius:16px;"><h1 style="font-family:Georgia,serif;font-size:22px;color:#1E1616;margin-bottom:8px;">Voici ton guide 🎉</h1><p style="color:#4A3E3E;font-size:15px;line-height:1.7;">Merci pour ta confiance ! Ton guide <strong>« Pourquoi tu n\'as pas de résultats malgré tous tes efforts »</strong> est prêt à lire.</p><div style="text-align:center;margin:28px 0;"><a href="https://www.ornellafitcoaching.com/guide-offert.html" style="display:inline-block;background:#C96358;color:white;padding:16px 36px;border-radius:50px;font-weight:700;font-size:15px;text-decoration:none;">Lire mon guide maintenant →</a></div><p style="color:#4A3E3E;font-size:14px;line-height:1.7;">Si tu veux aller plus loin et démarrer ton accompagnement, réponds à cet email ou écris-moi sur WhatsApp — je te réponds rapidement.</p><p style="color:#4A3E3E;font-size:14px;">À très vite,<br><strong>Ornella</strong></p><hr style="border:none;border-top:1px solid #EDD9C8;margin:24px 0;"><p style="color:#9E8E8E;font-size:12px;">Ornella Fit Coaching · Essonne (91) · <a href="https://www.ornellafitcoaching.com" style="color:#C96358;">ornellafitcoaching.com</a></p></div>'
+      })
+    });
+    document.getElementById('lead-form').style.display = 'none';
+    document.getElementById('lead-success').style.display = 'block';
+    localStorage.setItem('leadDone', '1');
+  } catch(err) {
+    btn.disabled = false; btn.textContent = 'Réessayer →';
+  }
+}
+
 if ('IntersectionObserver' in window) {
   document.documentElement.classList.add('js-anim');
   const obs = new IntersectionObserver(function(entries) {
