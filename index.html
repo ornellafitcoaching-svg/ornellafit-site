@@ -227,6 +227,26 @@
 .hero-price-day strong { color: var(--gold); font-weight: 600; }
 .hero-price-compare { font-size: 0.81rem !important; color: var(--text-light) !important; font-style: italic; margin-top: 5px !important; }
 
+/* ===== HERO PROOF BLOCK ===== */
+.hero-proof {
+  display: flex; gap: 0;
+  background: linear-gradient(135deg, #2C1F1A 0%, #3D2B24 100%);
+  border-radius: 16px; overflow: hidden;
+  margin-bottom: 22px; max-width: 460px;
+  border: 1px solid rgba(201,169,110,0.2);
+}
+.hero-proof-item {
+  flex: 1; padding: 14px 10px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.hero-proof-item:last-child { border-right: none; }
+.hero-proof-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.55rem; font-weight: 700; color: #D4A5A5;
+  display: block; line-height: 1;
+}
+.hero-proof-label { font-size: 0.67rem; color: rgba(255,255,255,0.58); margin-top: 5px; display: block; line-height: 1.3; text-transform: uppercase; letter-spacing: 0.05em; }
+
 /* ===== IDENTIFICATION ===== */
 #identification { background: linear-gradient(180deg, #FAF7F4 0%, #F5EDE5 100%); }
 #identification .inner { max-width: 900px; margin: 0 auto; text-align: center; }
@@ -519,6 +539,8 @@
   .hero-photo-frame video { height: 300px; }
   .hero-badge { font-size: 0.66rem; white-space: normal; line-height: 1.6; text-align: center; }
   .hero-title { max-width: 100%; margin-left: auto; margin-right: auto; font-size: clamp(2.1rem, 8.5vw, 3.2rem); }
+  .hero-proof { max-width: 100%; }
+  .hero-proof-num { font-size: 1.3rem; }
   .hero-sub { max-width: 100%; text-align: left; }
   .hero-stats { max-width: 100%; }
   .hero-stat-num { font-size: 1.25rem; }
@@ -592,34 +614,45 @@
 
     <!-- TEXTE -->
     <div class="hero-content">
-      <div class="hero-badge">✦ Participante aux Championnats de France de Fitness · Coach certifiée · <span style="color:#C96358;font-weight:700;">⚠️ 3 places disponibles en mai</span></div>
+      <div class="hero-badge">✦ Spécialiste transformation féminine · Coach certifiée · <span style="color:#C96358;font-weight:700;">⚠️ 3 places dispo en mai</span></div>
 
       <h1 class="hero-title">
-        Retrouve un corps qui te plaît,<br>
-        une énergie au quotidien,<br>
-        <em>et une vraie confiance en toi.</em>
+        Transforme ton corps.<br>
+        Retrouve ton énergie.<br>
+        <em>Reprends confiance — pour de vrai.</em>
       </h1>
 
-      <p class="hero-sub"><strong>Même si tu pars de zéro. Même si tu n'as jamais fait de sport.</strong><br>Je t'accompagne à chaque étape — à ton rythme, selon ta vie réelle.</p>
+      <!-- PREUVE PHYSIQUE IMMÉDIATE -->
+      <div class="hero-proof">
+        <div class="hero-proof-item">
+          <span class="hero-proof-num">−3 cm</span>
+          <span class="hero-proof-label">tour de taille</span>
+        </div>
+        <div class="hero-proof-item">
+          <span class="hero-proof-num">↑</span>
+          <span class="hero-proof-label">Fessiers galbés &amp; remontés</span>
+        </div>
+        <div class="hero-proof-item">
+          <span class="hero-proof-num">4 sem.</span>
+          <span class="hero-proof-label">Résultats visibles</span>
+        </div>
+      </div>
+
+      <p class="hero-sub"><strong>Même si tu débutes. Même si c'est post-partum. Même si tu n'as plus le temps.</strong><br>Un programme fait pour ta vie réelle — à ton rythme, dans ta vie à toi.</p>
 
       <div class="hero-stats">
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">40+</div>
+          <div class="hero-stat-label">Femmes transformées</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">5★</div>
+          <div class="hero-stat-label">Note Google</div>
+        </div>
         <div class="hero-stat-item">
           <div class="hero-stat-num">100%</div>
           <div class="hero-stat-label">Sur-mesure</div>
         </div>
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">4 sem.</div>
-          <div class="hero-stat-label">Premiers résultats</div>
-        </div>
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">40+</div>
-          <div class="hero-stat-label">Femmes accompagnées</div>
-        </div>
-      </div>
-
-      <div class="hero-global">
-        <p><strong>Imagine-toi dans 4 semaines.</strong></p>
-        <p>Moins d'essoufflement. Plus d'énergie dès le matin. Un corps qui évolue — vraiment. Te regarder dans le miroir et te reconnaître enfin.</p>
       </div>
 
       <p class="hero-postpartum">Post-partum · remise en forme · prise de masse · débutante totale — <strong>tu es au bon endroit.</strong></p>
@@ -627,7 +660,7 @@
 
       <a href="https://wa.me/33756834626" class="hero-cta" target="_blank">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Je commence ma transformation
+        Je veux ces résultats →
       </a>
       <p class="hero-note">✓ Réponse rapide · Bilan offert · Sans engagement</p>
       <div style="margin-top:14px;display:inline-flex;align-items:center;gap:10px;background:rgba(201,99,88,0.08);border:1px solid rgba(201,99,88,0.2);border-radius:10px;padding:10px 16px;">
@@ -635,11 +668,7 @@
         <span style="font-size:0.83rem;color:var(--dark);font-weight:600;">Il ne reste que <strong style="color:var(--accent);">3 places disponibles</strong> en mai — accompagnement individuel.</span>
       </div>
 
-      <div class="hero-price-day">
-        <span>À partir de <strong>4€/jour</strong> — moins qu'un café.</span>
-        <span class="hero-price-compare">Moins qu'un abonnement salle jamais utilisé. Et des résultats réels.</span>
-        <span style="display:block;margin-top:10px;font-size:0.84rem;color:var(--dark);font-weight:600;">Séance découverte à domicile : <strong style="color:var(--accent);">50€</strong> — déduite du 1er mois si tu continues. ✓</span>
-      </div>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--text-mid);margin-top:18px;max-width:400px;">« Ton plus bel investissement, c'est toi. »</p>
     </div>
 
     <!-- VIDEO -->
@@ -663,92 +692,91 @@
 <section id="identification">
   <div class="inner">
     <span class="section-label">Tu te reconnais ?</span>
-    <h2 class="section-title">Tu mérites mieux<br>que de <em>te battre seule.</em></h2>
-    <p class="section-subtitle">Tu travailles, tu t'occupes de tout le monde — mais ton corps et ton énergie, tu les remets à plus tard. Ça pèse, chaque jour.</p>
+    <h2 class="section-title">Tu travailles dur.<br><em>Mais ton corps ne suit pas.</em></h2>
+    <p class="section-subtitle">Tu t'occupes de tout le monde — sauf de toi. Et ça se voit, tu le ressens chaque jour.</p>
     <div class="pain-grid fade-in">
       <div class="pain-card">
         <div class="pain-icon">😮‍💨</div>
-        <div class="pain-title">Tu manques d'énergie</div>
-        <p class="pain-text">Tu t'essouffles vite. La fatigue est devenue ton état normal. <strong>Tu mérites de te sentir vivante.</strong></p>
+        <div class="pain-title">Fatigue chronique</div>
+        <p class="pain-text">Tu t'essouffles vite, tu manques d'énergie dès le matin. <strong>La fatigue est devenue ton état normal.</strong></p>
       </div>
       <div class="pain-card">
         <div class="pain-icon">🪞</div>
         <div class="pain-title">Tu ne te reconnais plus</div>
-        <p class="pain-text">Grossesse, années, stress… Le miroir ne te renvoie plus l'image que tu veux voir. <strong>Tu veux changer — sans savoir par où commencer.</strong></p>
+        <p class="pain-text">Grossesse, stress, années… <strong>Le miroir ne renvoie plus l'image que tu veux voir.</strong></p>
       </div>
       <div class="pain-card">
         <div class="pain-icon">😔</div>
         <div class="pain-title">Tu stagnes malgré tes efforts</div>
-        <p class="pain-text">Tu t'y mets, mais rien ne bouge vraiment. <strong>Sans méthode adaptée à toi, c'est impossible d'avancer.</strong></p>
+        <p class="pain-text">Tu essaies, rien ne bouge. <strong>Sans méthode sur-mesure, avancer seule est impossible.</strong></p>
       </div>
       <div class="pain-card">
-        <div class="pain-icon">💭</div>
-        <div class="pain-title">Tu recommences, tu arrêtes</div>
-        <p class="pain-text">Tu commences, la vie reprend. Sans structure ni soutien, <strong>tenir seule sur la durée est presque impossible.</strong></p>
+        <div class="pain-icon">⏱️</div>
+        <div class="pain-title">Zéro temps pour toi</div>
+        <p class="pain-text">Travail, enfants, charge mentale… <strong>Toi, tu passes toujours en dernier.</strong></p>
       </div>
     </div>
 
-    <!-- BLOC DÉBUTANTE -->
     <div class="id-dual-blocs" style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:18px;">
       <div style="padding:24px 26px;background:white;border-radius:20px;border:2px solid var(--accent);box-shadow:0 4px 20px rgba(201,99,88,0.12);">
-        <p style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);font-weight:700;margin-bottom:10px;">✦ Tu n'as jamais fait de sport ?</p>
-        <p style="font-size:1rem;color:var(--dark);font-weight:700;line-height:1.4;margin-bottom:8px;">C'est exactement pour ça que je suis là.</p>
-        <p style="font-size:0.88rem;color:var(--text-mid);line-height:1.7;">On part de zéro, ensemble. <strong>On construit des bases solides</strong>, à ton rythme, sans jamais te brusquer.</p>
+        <p style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);font-weight:700;margin-bottom:10px;">✦ Post-partum ou débutante ?</p>
+        <p style="font-size:1rem;color:var(--dark);font-weight:700;line-height:1.4;margin-bottom:8px;">C'est exactement pour toi que j'ai créé ce programme.</p>
+        <p style="font-size:0.88rem;color:var(--text-mid);line-height:1.7;">On part de là où tu es — <strong>sans te brusquer, sans te juger, à ton rythme.</strong></p>
       </div>
       <div style="padding:24px 26px;background:linear-gradient(135deg,#2C1F1A,#3D2B24);border-radius:20px;">
         <p style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);font-weight:700;margin-bottom:10px;">✦ Ce n'est pas un manque de volonté</p>
-        <p style="font-size:1rem;color:white;font-weight:700;line-height:1.4;margin-bottom:8px;">C'est un manque de méthode — et d'accompagnement.</p>
-        <p style="font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.7;"><strong style="color:white;">Tu n'es pas seule.</strong> Je t'accompagne à chaque étape, avec un programme fait pour toi.</p>
+        <p style="font-size:1rem;color:white;font-weight:700;line-height:1.4;margin-bottom:8px;">C'est un manque de méthode adaptée à ta vie.</p>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.7;"><strong style="color:white;">La bonne méthode + le bon accompagnement</strong> — et tout change.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTION -->
+<!-- TRANSFORMATION DOUBLE -->
 <section id="projection">
   <div class="inner">
-    <span class="section-label">Dans 4 à 8 semaines</span>
-    <h2 class="section-title">Imagine-toi dans quelques semaines.<br><em>Cette femme, c'est toi.</em></h2>
-    <p class="section-subtitle">Pas une promesse. Ce sont les résultats concrets que vivent les femmes que j'accompagne — semaine après semaine.</p>
+    <span class="section-label">Ce que tu vas vivre</span>
+    <h2 class="section-title">Un corps qui évolue.<br><em>Une vie qui change.</em></h2>
+    <p class="section-subtitle">Pas juste la silhouette. Ton énergie, ta confiance, ta façon d'être dans ta vie. Tout change — en même temps.</p>
     <div class="projection-grid fade-in">
-      <div class="proj-card">
-        <div class="proj-emoji">⚡</div>
-        <div class="proj-title">Une énergie que tu avais perdue</div>
+      <div class="proj-card" style="border-top: 3px solid var(--accent);">
+        <div class="proj-emoji">✨</div>
+        <div class="proj-title">Silhouette redessinée</div>
         <p class="proj-text">
-          ✓ <strong>Moins d'essoufflement</strong><br>
-          ✓ <strong>Plus d'énergie dès le matin</strong><br>
-          ✓ <strong>Tu te sens vivante</strong><br><br>
+          ✓ <strong>Ventre plus plat</strong><br>
+          ✓ <strong>Fessiers galbés &amp; remontés</strong><br>
+          ✓ <strong>Corps redessiné, visible dans le miroir</strong><br><br>
+          Des résultats mesurables, pas des promesses floues.
+        </p>
+      </div>
+      <div class="proj-card" style="border-top: 3px solid var(--accent);">
+        <div class="proj-emoji">⚡</div>
+        <div class="proj-title">Énergie retrouvée</div>
+        <p class="proj-text">
+          ✓ <strong>Tu t'essouffles moins</strong><br>
+          ✓ <strong>Tu te lèves différemment</strong><br>
+          ✓ <strong>Tu vis plus activement</strong><br><br>
           Tu montes les escaliers, tu joues avec tes enfants — sans t'épuiser.
         </p>
       </div>
-      <div class="proj-card">
-        <div class="proj-emoji">✨</div>
-        <div class="proj-title">Un corps transformé</div>
-        <p class="proj-text">
-          ✓ <strong>Ventre plus plat</strong><br>
-          ✓ <strong>Fessiers remontés & galbés</strong><br>
-          ✓ <strong>Silhouette redéfinie</strong><br><br>
-          Pas de miracle. Une méthode qui fonctionne.
-        </p>
-      </div>
-      <div class="proj-card">
+      <div class="proj-card" style="border-top: 3px solid var(--gold);">
         <div class="proj-emoji">💪</div>
-        <div class="proj-title">Une confiance retrouvée</div>
+        <div class="proj-title">Confiance reconstruite</div>
         <p class="proj-text">
           ✓ <strong>Tu t'habilles avec plaisir</strong><br>
           ✓ <strong>Tu te tiens différemment</strong><br>
-          ✓ <strong>Tu es fière de toi</strong><br><br>
-          Cette assurance qui rayonne dans toute ta vie.
+          ✓ <strong>Tu rayonnes — et ça se voit</strong><br><br>
+          Cette assurance qui déborde sur toute ta vie.
         </p>
       </div>
-      <div class="proj-card">
-        <div class="proj-emoji">🩺</div>
-        <div class="proj-title">Une santé renforcée</div>
+      <div class="proj-card" style="border-top: 3px solid var(--gold);">
+        <div class="proj-emoji">🔄</div>
+        <div class="proj-title">Habitudes qui tiennent</div>
         <p class="proj-text">
-          ✓ <strong>Meilleur sommeil</strong><br>
-          ✓ <strong>Moins de douleurs</strong><br>
-          ✓ <strong>Corps plus fort, plus résistant</strong><br><br>
-          Se renforcer, c'est aussi investir dans ta santé de demain.
+          ✓ <strong>Pas un régime. Pas une torture.</strong><br>
+          ✓ <strong>Une routine qui s'installe naturellement</strong><br>
+          ✓ <strong>Des résultats durables — même après</strong><br><br>
+          On construit quelque chose qui ne repart pas en arrière.
         </p>
       </div>
     </div>
@@ -774,7 +802,7 @@
     <div class="teaser-story">
       <span class="section-label">Mon histoire</span>
       <h2 class="section-title">Je suis passée par <em>là, moi aussi.</em></h2>
-      <p class="teaser-text">Adolescente en surpoids. Gardienne de la paix. Participante aux Championnats de France de Fitness. Puis une grossesse avec alitement prolongé, et une reconstruction complète de mon corps.<br><br>Je ne suis pas coach parce que j'ai toujours été mince. <strong style="color:white;">Je suis coach parce que j'ai vécu de l'intérieur</strong> ce que ça fait de ne pas aimer son corps — et ce que ça fait de le transformer vraiment.</p>
+      <p class="teaser-text">Adolescente en surpoids. Gardienne de la paix. Participante aux Championnats de France de Fitness. Puis une grossesse difficile — et une reconstruction complète de mon corps, de zéro.<br><br><strong style="color:white;">Je suis coach parce que j'ai prouvé sur moi-même que le corps peut se transformer à n'importe quel moment de la vie.</strong> Ce que je t'enseigne, je l'ai vécu.</p>
       <div class="teaser-quote">
         « Le corps est modulable à chaque étape de la vie.<br>Je l'ai vécu. Je peux te le prouver. »
       </div>
@@ -847,7 +875,8 @@
         <div class="apercu-num">01</div>
         <div class="apercu-type">Coaching Présentiel</div>
         <div class="apercu-title">À Domicile</div>
-        <p class="apercu-desc">Je me déplace chez toi. Le coaching le plus personnalisé — séances sur-mesure dans ton espace, à ton rythme. Solo, en duo ou en trio.</p>
+        <p class="apercu-desc">Je me déplace chez toi. Séances sur-mesure dans ton espace, à ton rythme. Solo, en duo ou en trio.</p>
+        <div style="background:rgba(201,99,88,0.07);border-radius:8px;padding:8px 12px;margin-bottom:14px;font-size:0.78rem;color:var(--dark);line-height:1.5;">✦ <strong>Résultat typique :</strong> −3 à −5 cm · Tonus retrouvé · Progression visible dès 4 semaines</div>
         <div class="apercu-price">Dès 50€ <span style="font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:300;color:var(--text-light);">— séance découverte</span></div>
         <div class="apercu-cta">Voir les tarifs →</div>
       </a>
@@ -855,7 +884,8 @@
         <div class="apercu-num">02</div>
         <div class="apercu-type">Coaching Hybride</div>
         <div class="apercu-title">Séances + Programme</div>
-        <p class="apercu-desc">Le meilleur équilibre. 2 séances encadrées par mois + programme autonome + suivi WhatsApp + bilan mensuel. Tu n'es jamais seule.</p>
+        <p class="apercu-desc">2 séances par mois + programme autonome + suivi WhatsApp + bilan mensuel. Tu n'es jamais seule.</p>
+        <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:8px 12px;margin-bottom:14px;font-size:0.78rem;color:rgba(255,255,255,0.75);line-height:1.5;">✦ <strong style="color:var(--gold);">Résultat typique :</strong> Corps redessiné · Énergie retrouvée · Constance installée</div>
         <div class="apercu-price" style="color:var(--gold);">169€ <span style="font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:300;color:rgba(255,255,255,0.5);">/ mois</span></div>
         <div class="apercu-cta" style="color:var(--gold);">Voir le détail →</div>
       </a>
@@ -863,7 +893,8 @@
         <div class="apercu-num">03</div>
         <div class="apercu-type">Coaching À Distance</div>
         <div class="apercu-title">Depuis Chez Toi</div>
-        <p class="apercu-desc">Programme sur-mesure ou coaching mensuel évolutif avec suivi WhatsApp, ajustements et bilan. Tout l'accompagnement, sans contrainte géographique.</p>
+        <p class="apercu-desc">Programme sur-mesure + suivi WhatsApp + ajustements + bilan. Tout l'accompagnement, partout en France.</p>
+        <div style="background:rgba(201,99,88,0.07);border-radius:8px;padding:8px 12px;margin-bottom:14px;font-size:0.78rem;color:var(--dark);line-height:1.5;">✦ <strong>Résultat typique :</strong> Résultats mesurables · Programme qui tient · Suivi humain réel</div>
         <div class="apercu-price">Dès 79€ <span style="font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:300;color:var(--text-light);">— programme 8 semaines</span></div>
         <div class="apercu-cta">Voir les formules →</div>
       </a>
@@ -1199,17 +1230,20 @@
 <section id="cta-final">
   <div class="inner">
     <span class="section-label" style="color:var(--gold);">C'est maintenant</span>
-    <h2 class="section-title" style="font-size:clamp(2.2rem,5.5vw,4.2rem);">Dans 4 semaines, tu peux être<br>une <em>version différente de toi.</em></h2>
-    <p class="section-subtitle" style="margin:0 auto 8px;color:rgba(255,255,255,0.75);">Plus d'énergie. Un corps qui change. Une confiance qui se voit. Tu n'es plus seule.</p>
-    <p style="font-size:0.88rem;color:rgba(255,255,255,0.42);font-style:italic;margin-bottom:16px;">Adapté à ton niveau, même si tu pars de zéro. Sans régime extrême.</p>
-    <p style="font-size:0.82rem;color:rgba(255,255,255,0.38);font-style:italic;margin-bottom:36px;">⚠️ Places limitées — accompagnement individuel et suivi personnalisé.</p>
+    <h2 class="section-title" style="font-size:clamp(2.4rem,5.5vw,4.4rem);">La seule décision<br><em>qui change tout.</em></h2>
+    <p class="section-subtitle" style="margin:0 auto 8px;color:rgba(255,255,255,0.8);">Ventre plus plat. Fessiers galbés. Énergie retrouvée. Confiance qui se voit.<br>Tout ça commence par un message.</p>
+    <p style="font-size:0.88rem;color:rgba(255,255,255,0.45);font-style:italic;margin-bottom:12px;">Même si tu pars de zéro. Même si c'est post-partum. Même si tu n'as pas le temps.</p>
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(201,99,88,0.2);border:1px solid rgba(201,99,88,0.35);border-radius:8px;padding:8px 16px;margin-bottom:32px;">
+      <span style="font-size:0.9rem;">⚠️</span>
+      <span style="font-size:0.83rem;color:rgba(255,255,255,0.8);font-weight:600;">Accompagnement individuel — <strong style="color:#D4A5A5;">3 places disponibles en mai</strong></span>
+    </div>
     <div class="cta-buttons">
-      <a href="https://wa.me/33756834626" class="btn-whatsapp" target="_blank" style="font-size:1.05rem;padding:22px 40px;box-shadow:0 12px 40px rgba(37,211,102,0.42);font-weight:700;">
+      <a href="https://wa.me/33756834626" class="btn-whatsapp" target="_blank" style="font-size:1.08rem;padding:22px 44px;box-shadow:0 12px 40px rgba(37,211,102,0.42);font-weight:700;">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Je veux un accompagnement personnalisé →
+        Je décide de changer maintenant →
       </a>
     </div>
-    <p class="cta-reassure" style="margin-top:20px;">✓ Réponse rapide · Sans engagement · Bilan offert · Adapté à ta vie · Même si tu débutes</p>
+    <p class="cta-reassure" style="margin-top:20px;">✓ Réponse rapide · Bilan offert · Sans engagement · Même si tu débutes</p>
   </div>
 </section>
 
