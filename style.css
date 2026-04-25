@@ -449,6 +449,39 @@ footer { background: #1A110E; padding: 48px 24px; text-align: center; }
 }
 .floating-wa:hover { transform: scale(1.1); box-shadow: 0 10px 36px rgba(37,211,102,0.5); }
 
+/* ===== STICKY MOBILE BAR ===== */
+.mobile-sticky-bar { display: none; }
+
+@media (max-width: 768px) {
+  body { padding-bottom: 82px; }
+
+  .mobile-sticky-bar {
+    display: flex;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+    background: white;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    gap: 10px;
+    box-shadow: 0 -3px 20px rgba(44,31,26,0.1);
+    border-top: 1px solid rgba(201,185,154,0.2);
+  }
+  .mobile-sticky-bar a {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    padding: 15px 10px; border-radius: 14px;
+    font-weight: 700; font-size: 0.88rem;
+    text-decoration: none; text-align: center; line-height: 1.2;
+  }
+  .sticky-cta-main { background: #C96358; color: white !important; }
+  .sticky-cta-secondary {
+    background: rgba(201,99,88,0.07);
+    color: #C96358 !important;
+    border: 1.5px solid rgba(201,99,88,0.22);
+  }
+
+  .floating-wa { bottom: 96px; right: 16px; width: 48px; height: 48px; font-size: 1.3rem; }
+
+  .blog-preview-grid { grid-template-columns: 1fr !important; gap: 18px !important; }
+}
+
 /* ===== ANIMATIONS ===== */
 .js-anim .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
 .fade-in.visible { opacity: 1 !important; transform: translateY(0) !important; }
