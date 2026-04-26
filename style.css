@@ -26,10 +26,15 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 nav {
   position: fixed; top: 0; width: 100%; z-index: 100;
   padding: 0 28px; height: 64px;
-  background: rgba(247,243,240,0.97);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  background: #F7F3F0;
   border-bottom: 1px solid rgba(222,200,192,0.4);
   display: flex; align-items: center; gap: 16px;
+}
+/* backdrop-filter uniquement sur desktop (Instagram WebView ne le gère pas correctement) */
+@supports (backdrop-filter: blur(1px)) {
+  @media (min-width: 769px) {
+    nav { background: rgba(247,243,240,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  }
 }
 .nav-logo {
   font-family: 'Cormorant Garamond', serif;
@@ -453,13 +458,14 @@ footer { background: #1A110E; padding: 48px 24px; text-align: center; }
 .mobile-sticky-bar { display: none; }
 
 @media (max-width: 768px) {
-  body { padding-bottom: 82px; }
+  body { padding-bottom: 90px; }
 
   .mobile-sticky-bar {
     display: flex;
     position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
     background: white;
-    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    /* env(safe-area-inset-bottom) couvre iPhone notch ET Instagram WebView toolbar */
+    padding: 10px 14px max(14px, env(safe-area-inset-bottom));
     gap: 10px;
     box-shadow: 0 -3px 20px rgba(44,31,26,0.1);
     border-top: 1px solid rgba(201,185,154,0.2);
@@ -510,11 +516,11 @@ footer { background: #1A110E; padding: 48px 24px; text-align: center; }
   .nav-toggle { display: flex; align-items: center; justify-content: center; }
   .nav-menu {
     position: fixed; top: 64px; left: 0; right: 0;
-    background: rgba(247,243,240,0.99);
-    -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+    background: #F7F3F0;
     flex-direction: column; padding: 12px 24px 28px;
     gap: 0; transform: translateY(-110%); opacity: 0;
-    pointer-events: none; transition: all 0.3s ease;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
     border-bottom: 1px solid var(--nude); margin-left: 0; z-index: 98;
   }
   .nav-menu.open { transform: translateY(0); opacity: 1; pointer-events: all; }

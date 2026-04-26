@@ -37,6 +37,7 @@
   background: white; border: 1px solid rgba(201,185,154,0.3);
   transition: all 0.2s ease;
 }
+.anchor-pill { transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
 .anchor-pill:hover { background: var(--cream); color: var(--dark); border-color: rgba(201,169,110,0.5); }
 .anchor-pill.star { background: linear-gradient(135deg,#2C1F1A,#3D2B24); color: white; border-color: transparent; }
 .anchor-pill.star:hover { opacity: 0.9; }
@@ -1121,11 +1122,19 @@ function toggleFaq(el) {
   document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
   if (!isOpen) item.classList.add('open');
 }
-if ('IntersectionObserver' in window) {
+// Désactiver les animations fade-in dans Instagram/Facebook WebView (comportement instable)
+var ua = navigator.userAgent || '';
+var isWebView = /Instagram|FBAN|FBAV|FB_IAB|Line|Twitter|Snapchat/.test(ua);
+if (!isWebView && 'IntersectionObserver' in window) {
   document.documentElement.classList.add('js-anim');
-  const obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0 });
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
 }
 </script>
