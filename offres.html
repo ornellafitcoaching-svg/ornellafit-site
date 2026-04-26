@@ -11,6 +11,35 @@
 <link rel="preload" as="image" href="images/logo.png">
 <link rel="stylesheet" href="style.css">
 <style>
+/* ===== NAV ANCRES ===== */
+#offres-anchors {
+  position: sticky; top: 64px; z-index: 90;
+  background: rgba(247,243,240,0.97);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(201,185,154,0.25);
+  padding: 0;
+}
+.anchors-inner {
+  display: flex; gap: 6px; align-items: center;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; -ms-overflow-style: none;
+  padding: 10px 16px;
+  max-width: 1000px; margin: 0 auto;
+}
+.anchors-inner::-webkit-scrollbar { display: none; }
+.anchor-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  white-space: nowrap; flex-shrink: 0;
+  padding: 7px 14px; border-radius: 50px;
+  font-size: 0.78rem; font-weight: 600;
+  text-decoration: none; color: var(--text-mid);
+  background: white; border: 1px solid rgba(201,185,154,0.3);
+  transition: all 0.2s ease;
+}
+.anchor-pill:hover { background: var(--cream); color: var(--dark); border-color: rgba(201,169,110,0.5); }
+.anchor-pill.star { background: linear-gradient(135deg,#2C1F1A,#3D2B24); color: white; border-color: transparent; }
+.anchor-pill.star:hover { opacity: 0.9; }
+
 /* ===== OFFRES SPÉCIFIQUE ===== */
 #offres-detail { background: var(--cream); }
 #offres-detail .inner { max-width: 1000px; margin: 0 auto; }
@@ -440,12 +469,23 @@
   </div>
 </section>
 
+<!-- NAV ANCRES -->
+<div id="offres-anchors">
+  <div class="anchors-inner">
+    <a class="anchor-pill star" href="#domicile">🏠 100% à domicile</a>
+    <a class="anchor-pill" href="#hybride">💫 Coaching hybride</a>
+    <a class="anchor-pill" href="#distanciel">💻 À distance</a>
+    <a class="anchor-pill" href="#forfaits">📦 Forfaits séances</a>
+  </div>
+</div>
+
 <!-- OFFRES DÉTAIL -->
 <section id="offres-detail">
   <div class="inner">
 
     <!-- BLOC 1 — COACHING À DOMICILE -->
-    <div class="offre-bloc">
+    <div class="offre-bloc" id="domicile">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#2C1F1A,#3D2B24);color:white;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:14px;">🏠 100% à domicile · Je me déplace chez toi</div>
       <div class="offre-bloc-header">
         <span class="offre-bloc-num">01</span>
         <div>
@@ -552,7 +592,7 @@
     </div>
 
     <!-- BLOC 1B — FORFAITS SÉANCES -->
-    <div class="offre-bloc">
+    <div class="offre-bloc" id="forfaits">
       <div class="offre-bloc-header">
         <span class="offre-bloc-num" style="font-size:1.4rem;width:auto;padding:6px 14px;background:rgba(201,169,110,0.12);border-radius:50px;color:var(--gold);">📦</span>
         <div>
@@ -622,7 +662,7 @@
     </div>
 
     <!-- BLOC 2 — COACHING HYBRIDE -->
-    <div class="offre-bloc">
+    <div class="offre-bloc" id="hybride">
       <div class="offre-bloc-header">
         <span class="offre-bloc-num">02</span>
         <div>
@@ -701,7 +741,7 @@
     </div>
 
     <!-- BLOC 3 — COACHING À DISTANCE -->
-    <div class="offre-bloc">
+    <div class="offre-bloc" id="distanciel">
       <div class="offre-bloc-header">
         <span class="offre-bloc-num">03</span>
         <div>
