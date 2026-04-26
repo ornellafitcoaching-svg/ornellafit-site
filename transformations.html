@@ -49,13 +49,7 @@
   border: 1px solid rgba(201,185,154,0.22);
   position: relative; overflow: hidden;
 }
-.temo-card::before {
-  content: '"'; position: absolute;
-  top: -8px; left: 18px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 7rem; color: var(--rose); opacity: 0.13;
-  line-height: 1; pointer-events: none;
-}
+.temo-card::before { display: none; }
 .temo-stats { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
 .temo-stat {
   background: rgba(201,99,88,0.1); border: 1px solid rgba(201,99,88,0.22);
@@ -141,6 +135,26 @@
   font-size: 1.45rem; font-style: italic; color: white; line-height: 1.65; margin: 0 0 24px;
 }
 .fp-projection strong { color: var(--gold); font-style: normal; }
+
+/* ===== FORCE LISIBILITÉ — tous navigateurs/WebViews ===== */
+h1, h2, h3 { opacity: 1 !important; mix-blend-mode: normal !important; }
+.section-title { color: #1E1616 !important; }
+.section-title em { color: #C96358 !important; opacity: 1 !important; }
+.section-label { color: #C9957A !important; opacity: 1 !important; }
+.section-subtitle { color: #4A3E3E !important; }
+.aa-name { color: #1E1616 !important; }
+.aa-tag { color: #9A7050 !important; }
+.aa-desc { color: #4A3E3E !important; }
+.fp-title { color: #1E1616 !important; }
+.fp-desc { color: #4A3E3E !important; }
+.temo-quote { color: #1E1616 !important; opacity: 1 !important; }
+.temo-impact { color: #1E1616 !important; }
+.temo-sub { color: #4A3E3E !important; }
+.temo-author-name { color: #1E1616 !important; }
+.temo-author-tag { color: #6B5C57 !important; }
+/* Sections sombres — titres explicitement blancs */
+#story .section-title, .fp-projection * { color: white !important; }
+.competition-text p, .competition-text strong { color: white !important; }
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
@@ -246,7 +260,7 @@
       </div>
       <div class="competition-text">
         <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);font-weight:700;margin-bottom:10px;">Parcours · Championnats de France de Fitness</div>
-        <p style="font-size:0.88rem;color:rgba(255,255,255,0.82);line-height:1.75;margin:0;">Condition physique atteinte pour les <strong style="color:white;">Championnats de France de Fitness</strong>. Résultat d'un travail long, d'un entraînement rigoureux et d'une diète stricte.<br><br>Ce niveau n'est pas durable dans le temps — et ce n'est pas l'objectif que je propose. <strong style="color:var(--gold);">Je suis allée jusque-là pour comprendre le corps en profondeur, et aujourd'hui mieux accompagner mes clientes.</strong></p>
+        <p style="font-size:0.88rem;color:white;line-height:1.75;margin:0;">Condition physique atteinte pour les <strong style="color:white;">Championnats de France de Fitness</strong>. Résultat d'un travail long, d'un entraînement rigoureux et d'une diète stricte.<br><br>Ce niveau n'est pas durable dans le temps — et ce n'est pas l'objectif que je propose. <strong style="color:var(--gold);">Je suis allée jusque-là pour comprendre le corps en profondeur, et aujourd'hui mieux accompagner mes clientes.</strong></p>
       </div>
     </div>
 
@@ -297,7 +311,7 @@
   <div class="inner" style="max-width:860px;margin:0 auto;text-align:center;">
     <span class="section-label" style="color:var(--gold);">Résultat réel · En vidéo</span>
     <h2 class="section-title" style="color:white;margin-bottom:12px;">Elle l'a fait.<br><em>Regarde par toi-même.</em></h2>
-    <p style="font-size:1rem;color:rgba(255,255,255,0.6);margin-bottom:36px;line-height:1.7;">Une vraie cliente. Un vrai résultat. Présenté par Ornella.</p>
+    <p style="font-size:1rem;color:rgba(255,255,255,0.88);margin-bottom:36px;line-height:1.7;">Une vraie cliente. Un vrai résultat. Présenté par Ornella.</p>
     <div style="border-radius:24px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.4);max-width:640px;margin:0 auto;">
       <video
         controls
