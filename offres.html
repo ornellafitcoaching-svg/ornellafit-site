@@ -342,6 +342,7 @@
   #distanciel .offre-bloc-titre { font-weight: 700 !important; color: #1E1616 !important; }
 
   .floating-wa { bottom: 90px !important; right: 16px !important; }
+  .tarifs-solo-grid { grid-template-columns: 1fr !important; }
 }
 </style>
 </head>
@@ -565,23 +566,69 @@
           </div>
         </div>
 
-        <!-- ABONNEMENTS SOLO -->
-        <div style="border:1px solid rgba(201,185,154,0.35);border-radius:16px;overflow:hidden;margin-bottom:12px;">
-          <div style="background:#F7F3F0;padding:10px 16px;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#9A8080;font-weight:700;border-bottom:1px solid rgba(201,185,154,0.25);">Solo — abonnement mensuel</div>
-          <div style="padding:0 16px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(201,185,154,0.18);">
-              <div style="font-size:0.88rem;color:#1E1616;line-height:1.4;"><strong style="color:#1E1616;">1×/semaine</strong> <span style="color:#7A6E6E;font-size:0.78rem;">(4 séances · 65€/séance)</span></div>
-              <strong style="color:#1E1616;font-size:1rem;white-space:nowrap;margin-left:12px;">260€<span style="font-size:0.75rem;font-weight:400;color:#7A6E6E;">/mois</span></strong>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(201,185,154,0.18);background:rgba(201,99,88,0.04);">
-              <div style="font-size:0.88rem;color:#1E1616;line-height:1.4;"><strong style="color:#1E1616;">2×/semaine</strong> <span style="color:#7A6E6E;font-size:0.78rem;">(8 séances · 60€/séance)</span><div style="font-size:0.72rem;color:#D8A7A0;font-weight:600;margin-top:2px;">⭐ Résultats visibles en 4 semaines</div></div>
-              <strong style="color:#1E1616;font-size:1rem;white-space:nowrap;margin-left:12px;">480€<span style="font-size:0.75rem;font-weight:400;color:#7A6E6E;">/mois</span></strong>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;">
-              <div style="font-size:0.88rem;color:#1E1616;line-height:1.4;"><strong style="color:#1E1616;">3×/semaine</strong> <span style="color:#7A6E6E;font-size:0.78rem;">(12 séances · 55€/séance)</span></div>
-              <strong style="color:#1E1616;font-size:1rem;white-space:nowrap;margin-left:12px;">660€<span style="font-size:0.75rem;font-weight:400;color:#7A6E6E;">/mois</span></strong>
+        <!-- ABONNEMENTS SOLO — TARIFS DÉGRESSIFS -->
+        <div style="margin-bottom:20px;">
+
+          <!-- Accroche dégressif -->
+          <div style="background:linear-gradient(135deg,rgba(201,99,88,0.07),rgba(201,169,110,0.05));border:1px solid rgba(201,99,88,0.18);border-radius:14px;padding:13px 16px;margin-bottom:14px;display:flex;align-items:center;gap:12px;">
+            <span style="font-size:1.4rem;flex-shrink:0;">📉</span>
+            <div>
+              <div style="font-size:0.88rem;font-weight:700;color:#1E1616;margin-bottom:2px;">Plus tu t'entraînes, moins tu paies par séance</div>
+              <div style="font-size:0.78rem;color:#7A6E6E;line-height:1.5;">Tarif dégressif automatique : <strong style="color:#1E1616;">65€ → 60€ → 55€</strong> selon ton rythme hebdomadaire</div>
             </div>
           </div>
+
+          <!-- 3 cartes dégressives -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;" class="tarifs-solo-grid">
+
+            <!-- 1×/semaine -->
+            <div style="background:white;border:1px solid rgba(201,185,154,0.4);border-radius:18px;padding:18px 14px;display:flex;flex-direction:column;">
+              <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:#9A8080;font-weight:700;margin-bottom:6px;">1×/semaine</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:600;color:#1E1616;line-height:1;">65€<span style="font-size:0.8rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#7A6E6E;">/séance</span></div>
+              <div style="font-size:0.75rem;color:#7A6E6E;margin-top:4px;margin-bottom:10px;">4 séances · <strong style="color:#1E1616;">260€/mois</strong></div>
+              <div style="height:1px;background:rgba(201,185,154,0.3);margin-bottom:10px;"></div>
+              <div style="font-size:0.8rem;font-weight:700;color:#1E1616;">≈ 8,60€ / jour</div>
+              <div style="font-size:0.75rem;color:#9A8080;margin-top:3px;">☕ moins de 3 cafés/jour</div>
+            </div>
+
+            <!-- 2×/semaine — RECOMMANDÉ -->
+            <div style="background:linear-gradient(150deg,#2C1F1A,#3D2B24);border:1.5px solid rgba(201,169,110,0.45);border-radius:18px;padding:18px 14px;display:flex;flex-direction:column;position:relative;">
+              <div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#C9957A,#A87860);color:white;font-size:0.6rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:50px;white-space:nowrap;box-shadow:0 3px 10px rgba(201,149,122,0.4);">⭐ Recommandé</div>
+              <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:#C9957A;font-weight:700;margin-bottom:6px;">2×/semaine</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:600;color:white;line-height:1;">60€<span style="font-size:0.8rem;font-family:'DM Sans',sans-serif;font-weight:400;color:rgba(255,255,255,0.45);">/séance</span></div>
+              <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:4px;margin-bottom:6px;">8 séances · <strong style="color:white;">480€/mois</strong></div>
+              <div style="display:inline-block;font-size:0.68rem;color:#C9957A;font-weight:700;background:rgba(201,169,110,0.18);padding:2px 8px;border-radius:50px;align-self:flex-start;margin-bottom:10px;">−5€/séance</div>
+              <div style="height:1px;background:rgba(255,255,255,0.12);margin-bottom:10px;"></div>
+              <div style="font-size:0.8rem;font-weight:700;color:white;">≈ 16€ / jour</div>
+              <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:3px;">☕ environ 5 cafés/jour</div>
+              <div style="font-size:0.72rem;color:#D8A7A0;font-weight:600;margin-top:6px;">✓ Résultats visibles en 4 sem.</div>
+            </div>
+
+            <!-- 3×/semaine -->
+            <div style="background:white;border:1.5px solid rgba(201,99,88,0.25);border-radius:18px;padding:18px 14px;display:flex;flex-direction:column;">
+              <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:#9A8080;font-weight:700;margin-bottom:6px;">3×/semaine</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:600;color:#1E1616;line-height:1;">55€<span style="font-size:0.8rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#7A6E6E;">/séance</span></div>
+              <div style="font-size:0.75rem;color:#7A6E6E;margin-top:4px;margin-bottom:6px;">12 séances · <strong style="color:#1E1616;">660€/mois</strong></div>
+              <div style="display:inline-block;font-size:0.68rem;color:#C96358;font-weight:700;background:rgba(201,99,88,0.08);padding:2px 8px;border-radius:50px;align-self:flex-start;margin-bottom:10px;">−10€/séance</div>
+              <div style="height:1px;background:rgba(201,185,154,0.3);margin-bottom:10px;"></div>
+              <div style="font-size:0.8rem;font-weight:700;color:#1E1616;">≈ 22€ / jour</div>
+              <div style="font-size:0.75rem;color:#9A8080;margin-top:3px;">☕ l'équiv. de 7 cafés/jour</div>
+              <div style="font-size:0.72rem;color:#C96358;font-weight:600;margin-top:6px;">→ Transformation la plus rapide</div>
+            </div>
+
+          </div>
+
+          <!-- Barre récap dégressif -->
+          <div style="margin-top:10px;padding:11px 16px;background:rgba(201,185,154,0.12);border-radius:12px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
+            <span style="font-size:0.75rem;color:#7A6E6E;">Prix/séance :</span>
+            <span style="font-size:0.82rem;font-weight:600;color:#4A3E3E;">1× → <span style="color:#1E1616;">65€</span></span>
+            <span style="color:#C9957A;font-size:0.8rem;">▶</span>
+            <span style="font-size:0.82rem;font-weight:600;color:#4A3E3E;">2× → <span style="color:#C9957A;">60€</span></span>
+            <span style="color:#C96358;font-size:0.8rem;">▶</span>
+            <span style="font-size:0.82rem;font-weight:600;color:#4A3E3E;">3× → <span style="color:#C96358;">55€</span></span>
+            <span style="font-size:0.72rem;color:#9A8080;font-style:italic;">— meilleur tarif garanti</span>
+          </div>
+
         </div>
 
         <!-- DUO + TRIO -->
