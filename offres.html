@@ -27,7 +27,6 @@
   padding: 10px 16px 10px 16px;
   max-width: 1000px; margin: 0 auto;
 }
-/* Pseudo-élément pour forcer le padding-right scrollable */
 .anchors-inner::after { content: ''; display: block; min-width: 16px; flex-shrink: 0; }
 .anchors-inner::-webkit-scrollbar { display: none; }
 .anchor-pill {
@@ -35,36 +34,36 @@
   white-space: nowrap; flex-shrink: 0;
   padding: 7px 14px; border-radius: 50px;
   font-size: 0.78rem; font-weight: 600;
-  text-decoration: none; color: var(--text-mid);
+  text-decoration: none; color: #4A3E3E;
   background: white; border: 1px solid rgba(201,185,154,0.3);
-  transition: all 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
-.anchor-pill { transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
-.anchor-pill:hover { background: var(--cream); color: var(--dark); border-color: rgba(201,169,110,0.5); }
+.anchor-pill:hover { background: #F7F3F0; color: #1E1616; border-color: rgba(201,169,110,0.5); }
 .anchor-pill.star { background: linear-gradient(135deg,#2C1F1A,#3D2B24); color: white; border-color: transparent; }
 .anchor-pill.star:hover { opacity: 0.9; }
 
 /* ===== OFFRES SPÉCIFIQUE ===== */
-#offres-detail { background: var(--cream); }
+#offres-detail { background: #F7F3F0; padding: 0 0 90px; }
 #offres-detail .inner { max-width: 1000px; margin: 0 auto; }
 
 /* Offre blocs */
-.offre-bloc { margin-top: 60px; }
+.offre-bloc { margin-top: 0; padding: 48px 20px; border-top: 2px solid #F1D1CC; background: #F7F3F0; }
+.offre-bloc:first-child { border-top: none; }
 .offre-bloc-header {
   display: flex; align-items: center; gap: 18px;
   margin-bottom: 28px; padding-bottom: 20px;
-  border-bottom: 2px solid var(--nude); text-align: left;
+  border-bottom: 2px solid #F1D1CC; text-align: left;
 }
 .offre-bloc-num {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 3rem; font-weight: 400; color: var(--accent);
+  font-size: 3rem; font-weight: 400; color: #C96358;
   line-height: 1; flex-shrink: 0; width: 56px;
 }
 .offre-bloc-titre {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.55rem; font-weight: 600; color: var(--dark); line-height: 1.2;
+  font-size: 1.55rem; font-weight: 600; color: #1E1616; line-height: 1.2;
 }
-.offre-bloc-sub { font-size: 0.85rem; color: var(--text-light); margin-top: 5px; font-style: italic; }
+.offre-bloc-sub { font-size: 0.85rem; color: #7A6E6E; margin-top: 5px; font-style: italic; }
 
 /* Offre card */
 .offre-card {
@@ -72,7 +71,7 @@
   text-align: left; box-shadow: 0 4px 24px rgba(139,111,94,0.08);
   border: 1px solid rgba(201,185,154,0.2);
   display: flex; flex-direction: column;
-  transition: all 0.3s ease; position: relative; overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;
 }
 .offre-card.featured {
   background: linear-gradient(150deg, #2C1F1A 0%, #3D2B24 100%);
@@ -82,47 +81,47 @@
 .offre-card.featured:hover { transform: translateY(-4px); }
 .offre-tag {
   display: inline-block;
-  background: rgba(212,165,165,0.2); color: var(--rose-deep);
+  background: rgba(212,165,165,0.2); color: #D8A7A0;
   padding: 5px 14px; border-radius: 50px;
   font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em;
   text-transform: uppercase; margin-bottom: 20px;
 }
-.offre-card.featured .offre-tag { background: var(--gold); color: var(--dark); }
+.offre-card.featured .offre-tag { background: #C9957A; color: #1E1616; }
 .offre-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.6rem; font-weight: 600;
-  color: var(--dark); margin-bottom: 12px; line-height: 1.2;
+  color: #1E1616; margin-bottom: 12px; line-height: 1.2;
 }
 .offre-card.featured .offre-name { color: white; }
-.offre-desc { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 24px; line-height: 1.7; font-weight: 400; }
+.offre-desc { font-size: 0.9rem; color: #4A3E3E; margin-bottom: 24px; line-height: 1.7; font-weight: 400; }
 .offre-card.featured .offre-desc { color: rgba(255,255,255,0.65); }
 .offre-benefits { list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; }
 .offre-benefit {
-  font-size: 0.88rem; color: var(--text);
+  font-size: 0.88rem; color: #1E1616;
   display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;
 }
 .offre-card.featured .offre-benefit { color: rgba(255,255,255,0.8); }
-.offre-benefit::before { content: '✓'; color: var(--rose-deep); font-weight: 600; flex-shrink: 0; margin-top: 1px; }
-.offre-card.featured .offre-benefit::before { color: var(--gold); }
+.offre-benefit::before { content: '✓'; color: #D8A7A0; font-weight: 600; flex-shrink: 0; margin-top: 1px; }
+.offre-card.featured .offre-benefit::before { color: #C9957A; }
 .offre-price {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem; font-weight: 600; color: var(--dark); margin-bottom: 20px;
+  font-size: 2rem; font-weight: 600; color: #1E1616; margin-bottom: 20px;
 }
 .offre-card.featured .offre-price { color: white; }
-.offre-price span { font-size: 0.9rem; font-family: 'DM Sans', sans-serif; color: var(--text-mid); font-weight: 400; }
+.offre-price span { font-size: 0.9rem; font-family: 'DM Sans', sans-serif; color: #4A3E3E; font-weight: 400; }
 .offre-card.featured .offre-price span { color: rgba(255,255,255,0.5); }
 .btn-offre {
   display: block; text-align: center; padding: 16px 24px;
   border-radius: 50px; text-decoration: none;
-  font-size: 0.92rem; font-weight: 500; transition: all 0.3s ease; margin-top: auto;
+  font-size: 0.92rem; font-weight: 500; transition: transform 0.3s ease, box-shadow 0.3s ease; margin-top: auto;
 }
 .btn-offre.dark {
-  background: linear-gradient(135deg, var(--logo-red), #C09090);
+  background: linear-gradient(135deg, #C96358, #C09090);
   color: white; box-shadow: 0 6px 24px rgba(216,167,160,0.35);
 }
 .btn-offre.dark:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(216,167,160,0.5); }
 .btn-offre.gold {
-  background: linear-gradient(135deg, var(--gold), #A87860);
+  background: linear-gradient(135deg, #C9957A, #A87860);
   color: white; box-shadow: 0 6px 24px rgba(201,149,122,0.35);
 }
 .btn-offre.gold:hover { transform: translateY(-2px); }
@@ -137,7 +136,7 @@
   border: 1.5px solid rgba(201,185,154,0.3);
   box-shadow: 0 4px 20px rgba(139,111,94,0.07);
   display: flex; flex-direction: column;
-  position: relative; transition: all 0.3s ease;
+  position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .tier-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(139,111,94,0.14); }
 .tier-card.featured {
@@ -147,72 +146,72 @@
 }
 .tier-card.featured:hover { transform: translateY(-4px); }
 .tier-badge {
-  display: inline-block; background: var(--gold); color: var(--dark);
+  display: inline-block; background: #C9957A; color: #1E1616;
   font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
   text-transform: uppercase; padding: 4px 12px; border-radius: 50px;
   margin-bottom: 16px; align-self: flex-start;
 }
 .tier-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem; font-weight: 600; color: var(--dark); margin-bottom: 4px;
+  font-size: 1.3rem; font-weight: 600; color: #1E1616; margin-bottom: 4px;
 }
 .tier-card.featured .tier-name { color: white; }
-.tier-sub { font-size: 0.8rem; color: var(--text-light); margin-bottom: 6px; font-style: italic; }
+.tier-sub { font-size: 0.8rem; color: #7A6E6E; margin-bottom: 6px; font-style: italic; }
 .tier-card.featured .tier-sub { color: rgba(255,255,255,0.5); }
 .tier-sub-highlight {
-  font-size: 0.78rem; color: var(--rose-deep); font-weight: 600;
+  font-size: 0.78rem; color: #D8A7A0; font-weight: 600;
   margin-bottom: 14px;
 }
-.tier-card.featured .tier-sub-highlight { color: var(--gold); }
+.tier-card.featured .tier-sub-highlight { color: #C9957A; }
 .tier-price {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.4rem; font-weight: 600; color: var(--dark);
+  font-size: 2.4rem; font-weight: 600; color: #1E1616;
   line-height: 1; margin-bottom: 4px;
 }
 .tier-card.featured .tier-price { color: white; }
-.tier-price-unit { font-size: 0.82rem; color: var(--text-light); margin-bottom: 12px; line-height: 1.4; }
+.tier-price-unit { font-size: 0.82rem; color: #7A6E6E; margin-bottom: 12px; line-height: 1.4; }
 .tier-card.featured .tier-price-unit { color: rgba(255,255,255,0.5); }
 .tier-daily {
   display: inline-block;
-  background: rgba(192,128,128,0.1); color: var(--rose-deep);
+  background: rgba(192,128,128,0.1); color: #D8A7A0;
   font-size: 0.75rem; font-weight: 700;
   padding: 5px 12px; border-radius: 50px;
   margin-bottom: 18px; align-self: flex-start;
 }
-.tier-card.featured .tier-daily { background: rgba(201,169,110,0.18); color: var(--gold); }
-.tier-saving { font-size: 0.78rem; color: var(--rose-deep); font-weight: 600; margin-bottom: 16px; }
-.tier-card.featured .tier-saving { color: var(--gold); }
-.tier-divider { height: 1px; background: var(--nude); margin-bottom: 18px; }
+.tier-card.featured .tier-daily { background: rgba(201,169,110,0.18); color: #C9957A; }
+.tier-saving { font-size: 0.78rem; color: #D8A7A0; font-weight: 600; margin-bottom: 16px; }
+.tier-card.featured .tier-saving { color: #C9957A; }
+.tier-divider { height: 1px; background: #F1D1CC; margin-bottom: 18px; }
 .tier-card.featured .tier-divider { background: rgba(255,255,255,0.12); }
 .tier-includes { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 24px; flex: 1; }
 .tier-item {
-  font-size: 0.83rem; color: var(--text);
+  font-size: 0.83rem; color: #1E1616;
   display: flex; align-items: flex-start; gap: 8px; line-height: 1.45;
 }
 .tier-card.featured .tier-item { color: rgba(255,255,255,0.82); }
-.tier-item::before { content: '✓'; color: var(--rose-deep); font-weight: 700; flex-shrink: 0; }
-.tier-card.featured .tier-item::before { color: var(--gold); }
+.tier-item::before { content: '✓'; color: #D8A7A0; font-weight: 700; flex-shrink: 0; }
+.tier-card.featured .tier-item::before { color: #C9957A; }
 
 /* Compare table */
 .compare-wrap {
   background: white; border-radius: 20px;
-  border: 1px solid var(--nude); overflow: hidden;
+  border: 1px solid #F1D1CC; overflow: hidden;
   box-shadow: 0 4px 20px rgba(139,111,94,0.07); margin: 28px 0;
 }
 .compare-title {
-  background: var(--dark); color: white;
+  background: #1E1616; color: white;
   font-family: 'Cormorant Garamond', serif;
   font-size: 1rem; font-weight: 600;
   padding: 14px 20px; text-align: center; letter-spacing: 0.04em;
 }
 .compare-head {
   display: grid; grid-template-columns: 1.4fr 1fr 1fr;
-  background: rgba(250,247,242,0.9); border-bottom: 1px solid var(--nude);
+  background: rgba(250,247,242,0.9); border-bottom: 1px solid #F1D1CC;
 }
 .compare-head-cell {
   padding: 11px 10px; font-size: 0.73rem; font-weight: 600;
   text-transform: uppercase; letter-spacing: 0.07em;
-  color: var(--text-light); text-align: center; line-height: 1.4;
+  color: #7A6E6E; text-align: center; line-height: 1.4;
 }
 .compare-head-cell:first-child { text-align: left; padding-left: 18px; }
 .compare-row {
@@ -221,48 +220,48 @@
 }
 .compare-row:last-child { border-bottom: none; }
 .compare-row:nth-child(even) { background: rgba(250,247,242,0.45); }
-.compare-cell { padding: 10px 10px; font-size: 0.83rem; color: var(--text); text-align: center; }
+.compare-cell { padding: 10px 10px; font-size: 0.83rem; color: #1E1616; text-align: center; }
 .compare-cell:first-child { text-align: left; padding-left: 18px; font-weight: 500; font-size: 0.82rem; }
-.compare-yes { color: var(--rose-deep); font-weight: 700; font-size: 1rem; }
-.compare-no { color: var(--text-light); opacity: 0.45; font-size: 1rem; }
+.compare-yes { color: #D8A7A0; font-weight: 700; font-size: 1rem; }
+.compare-no { color: #7A6E6E; opacity: 0.45; font-size: 1rem; }
 .compare-stat {
-  background: var(--dark); color: white;
+  background: #1E1616; color: white;
   border-radius: 12px; padding: 16px 20px;
   font-size: 0.95rem; line-height: 1.6; margin: 16px 0 0;
   text-align: center;
 }
-.compare-stat em { color: var(--rose); font-style: italic; }
+.compare-stat em { color: #E8B4A0; font-style: italic; }
 
 /* FAQ */
 #faq-offres { background: white; }
 #faq-offres .inner { max-width: 750px; margin: 0 auto; }
 .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; }
 .faq-item {
-  background: var(--cream); border: 1px solid rgba(201,185,154,0.3);
+  background: #F7F3F0; border: 1px solid rgba(201,185,154,0.3);
   border-radius: 16px; overflow: hidden;
 }
 .faq-q {
   padding: 20px 24px; cursor: pointer;
   display: flex; justify-content: space-between; align-items: center; gap: 16px;
-  font-weight: 500; font-size: 0.95rem; color: var(--dark);
+  font-weight: 500; font-size: 0.95rem; color: #1E1616;
 }
 .faq-q:hover { background: rgba(201,185,154,0.1); }
 .faq-arrow {
   width: 28px; height: 28px; border-radius: 50%;
-  background: var(--rose-deep); color: white;
+  background: #D8A7A0; color: white;
   display: flex; align-items: center; justify-content: center;
   font-size: 1rem; flex-shrink: 0; transition: transform 0.3s ease;
 }
 .faq-item.open .faq-arrow { transform: rotate(45deg); }
 .faq-a {
   padding: 0 24px; max-height: 0; overflow: hidden;
-  transition: all 0.4s ease; font-size: 0.9rem;
-  color: var(--text-mid); line-height: 1.8; font-weight: 400;
+  transition: max-height 0.4s ease, padding 0.4s ease; font-size: 0.9rem;
+  color: #4A3E3E; line-height: 1.8; font-weight: 400;
 }
 .faq-item.open .faq-a { max-height: 500px; padding: 0 24px 20px; }
 
 /* ===== 3 OFFRES HERO ===== */
-#offres-hero { background: var(--cream); padding: 44px 20px 52px; }
+#offres-hero { background: #F7F3F0; padding: 44px 20px 52px; }
 .trois-offres { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; max-width: 900px; margin: 0 auto 28px; align-items: start; }
 .offre-hero-card { background: white; border-radius: 24px; padding: 28px 20px; border: 1.5px solid rgba(201,185,154,0.25); box-shadow: 0 4px 24px rgba(139,111,94,0.08); display: flex; flex-direction: column; position: relative; transition: transform 0.3s; }
 .offre-hero-card:hover { transform: translateY(-4px); }
@@ -270,34 +269,34 @@
 .offre-hero-card.main .ohi-name { color: white; }
 .offre-hero-card.main .ohi-desc { color: rgba(255,255,255,0.65); }
 .offre-hero-card.main .ohi-item { color: rgba(255,255,255,0.82); }
-.offre-hero-card.main .ohi-item::before { color: var(--gold); }
+.offre-hero-card.main .ohi-item::before { color: #C9957A; }
 .offre-hero-card.main .ohi-price { color: white; }
 .offre-hero-card.main .ohi-price-sub { color: rgba(255,255,255,0.4); }
-.offre-hero-card.main .ohi-week { color: var(--gold); }
-.offre-hero-card.main .ohi-tag { color: var(--gold); }
-.ohi-top-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg,var(--gold),#A87860); color: white; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 14px; border-radius: 50px; white-space: nowrap; box-shadow: 0 4px 12px rgba(201,149,122,0.4); }
+.offre-hero-card.main .ohi-week { color: #C9957A; }
+.offre-hero-card.main .ohi-tag { color: #C9957A; }
+.ohi-top-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg,#C9957A,#A87860); color: white; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 14px; border-radius: 50px; white-space: nowrap; box-shadow: 0 4px 12px rgba(201,149,122,0.4); }
 .ohi-emoji { font-size: 1.5rem; margin-bottom: 8px; }
-.ohi-tag { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); font-weight: 700; margin-bottom: 5px; }
-.ohi-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
-.ohi-desc { font-size: 0.81rem; color: var(--text-mid); line-height: 1.55; margin-bottom: 14px; }
+.ohi-tag { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.1em; color: #7A6E6E; font-weight: 700; margin-bottom: 5px; }
+.ohi-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: #1E1616; margin-bottom: 8px; }
+.ohi-desc { font-size: 0.81rem; color: #4A3E3E; line-height: 1.55; margin-bottom: 14px; }
 .ohi-items { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; flex: 1; }
-.ohi-item { font-size: 0.81rem; color: var(--text); display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
-.ohi-item::before { content: '✓'; color: var(--rose-deep); font-weight: 700; flex-shrink: 0; }
-.ohi-price { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--dark); line-height: 1; }
-.ohi-price-sub { font-size: 0.74rem; color: var(--text-light); margin: 3px 0 8px; line-height: 1.4; }
-.ohi-week { font-size: 0.73rem; font-weight: 700; color: var(--rose-deep); margin-bottom: 16px; }
-.ohi-btn { display: block; text-align: center; padding: 13px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: all 0.3s; margin-top: auto; }
-.ohi-btn-dark { background: linear-gradient(135deg,var(--accent),#C09090); color: white; box-shadow: 0 4px 16px rgba(201,99,88,0.25); }
-.ohi-btn-gold { background: linear-gradient(135deg,var(--gold),#A87860); color: white; box-shadow: 0 4px 16px rgba(201,149,122,0.3); }
+.ohi-item { font-size: 0.81rem; color: #1E1616; display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+.ohi-item::before { content: '✓'; color: #D8A7A0; font-weight: 700; flex-shrink: 0; }
+.ohi-price { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: #1E1616; line-height: 1; }
+.ohi-price-sub { font-size: 0.74rem; color: #7A6E6E; margin: 3px 0 8px; line-height: 1.4; }
+.ohi-week { font-size: 0.73rem; font-weight: 700; color: #D8A7A0; margin-bottom: 16px; }
+.ohi-btn { display: block; text-align: center; padding: 13px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: transform 0.3s ease; margin-top: auto; }
+.ohi-btn-dark { background: linear-gradient(135deg,#C96358,#C09090); color: white; box-shadow: 0 4px 16px rgba(201,99,88,0.25); }
+.ohi-btn-gold { background: linear-gradient(135deg,#C9957A,#A87860); color: white; box-shadow: 0 4px 16px rgba(201,149,122,0.3); }
 .ohi-btn:hover { transform: translateY(-2px); }
 .ohi-cta-row { max-width: 900px; margin: 0 auto; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center; }
 .quelle-offre { max-width: 900px; margin: 28px auto 0; background: white; border-radius: 20px; padding: 22px 24px; border: 1px solid rgba(201,185,154,0.3); }
-.qo-title { font-size: 0.88rem; font-weight: 700; color: var(--dark); margin-bottom: 14px; }
+.qo-title { font-size: 0.88rem; font-weight: 700; color: #1E1616; margin-bottom: 14px; }
 .qo-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-.qo-item { background: var(--cream); border-radius: 14px; padding: 14px 14px; }
-.qo-if { font-size: 0.68rem; color: var(--text-light); font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 5px; }
-.qo-offre { font-size: 0.8rem; color: var(--text-mid); line-height: 1.4; }
-.qo-result { font-size: 0.78rem; color: var(--rose-deep); font-weight: 700; margin-top: 8px; }
+.qo-item { background: #F7F3F0; border-radius: 14px; padding: 14px 14px; }
+.qo-if { font-size: 0.68rem; color: #7A6E6E; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 5px; }
+.qo-offre { font-size: 0.8rem; color: #4A3E3E; line-height: 1.4; }
+.qo-result { font-size: 0.78rem; color: #D8A7A0; font-weight: 700; margin-top: 8px; }
 
 /* Mobile offres */
 @media (max-width: 768px) {
@@ -326,29 +325,22 @@
   .btn-offre { font-size: 0.88rem; padding: 14px 18px; min-height: 52px; }
   #offres-detail .inner { padding: 0 4px; }
 
-  /* Evite que le bouton chat masque le contenu */
   #offres-detail { padding-bottom: 90px; }
   footer { padding-bottom: 24px; }
 
-  /* Pills nav : taille confortable pour le pouce */
   .anchor-pill { padding: 9px 16px; font-size: 0.82rem; min-height: 40px; }
 
-  /* Section 03 : contraste titre/sous-titre */
-  .offre-bloc-titre { font-size: 1.25rem; color: var(--dark) !important; }
-  .offre-bloc-sub { color: var(--text-mid) !important; font-style: normal; font-size: 0.82rem; }
-  .offre-bloc-num { font-size: 2.2rem; width: 44px; color: var(--accent) !important; }
+  .offre-bloc-titre { font-size: 1.25rem; color: #1E1616 !important; }
+  .offre-bloc-sub { color: #4A3E3E !important; font-style: normal; font-size: 0.82rem; }
+  .offre-bloc-num { font-size: 2.2rem; width: 44px; color: #C96358 !important; }
 
-  /* Espacement entre blocs */
   .offre-bloc { margin-top: 44px; padding-top: 8px; }
 
-  /* CTA boutons plus grands sur mobile */
   .btn-main, .btn-calendly { min-height: 52px; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; }
   .ohi-btn { min-height: 50px; font-size: 0.9rem; }
 
-  /* Texte distanciel — forcer lisibilité mobile */
-  #distanciel .offre-bloc-titre { font-weight: 700 !important; color: #1A1010 !important; }
+  #distanciel .offre-bloc-titre { font-weight: 700 !important; color: #1E1616 !important; }
 
-  /* Floating button — forcer position haute même avec cache */
   .floating-wa { bottom: 90px !important; right: 16px !important; }
 }
 </style>
@@ -377,9 +369,9 @@
   <h1 class="section-title">L'accompagnement <em>fait pour toi</em></h1>
   <p class="section-subtitle">Coaching sur-mesure à domicile, hybride ou à distance — une formule pour chaque situation.</p>
   <div style="margin-top:20px;display:inline-flex;gap:8px;flex-wrap:wrap;justify-content:center;">
-    <span style="background:rgba(201,99,88,0.12);border:1px solid rgba(201,99,88,0.28);color:var(--accent);font-size:0.78rem;font-weight:700;padding:5px 14px;border-radius:50px;">⚠️ 3 créneaux disponibles ce mois-ci</span>
-    <span style="background:rgba(201,169,110,0.12);border:1px solid rgba(201,169,110,0.28);color:var(--brown);font-size:0.78rem;font-weight:600;padding:5px 14px;border-radius:50px;">✓ Bilan offert — gratuit, sans engagement</span>
-    <span style="background:rgba(44,31,26,0.07);border:1px solid rgba(44,31,26,0.14);color:var(--dark);font-size:0.78rem;font-weight:600;padding:5px 14px;border-radius:50px;">🏆 Championne · Coach certifiée</span>
+    <span style="background:rgba(201,99,88,0.12);border:1px solid rgba(201,99,88,0.28);color:#C96358;font-size:0.78rem;font-weight:700;padding:5px 14px;border-radius:50px;">⚠️ 3 créneaux disponibles ce mois-ci</span>
+    <span style="background:rgba(201,169,110,0.12);border:1px solid rgba(201,169,110,0.28);color:#9A8080;font-size:0.78rem;font-weight:600;padding:5px 14px;border-radius:50px;">✓ Bilan offert — gratuit, sans engagement</span>
+    <span style="background:rgba(44,31,26,0.07);border:1px solid rgba(44,31,26,0.14);color:#1E1616;font-size:0.78rem;font-weight:600;padding:5px 14px;border-radius:50px;">🏆 Championne · Coach certifiée</span>
   </div>
 </div>
 
@@ -398,7 +390,7 @@
   <div style="max-width:900px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:28px;">
       <span class="section-label" style="font-size:0.7rem;">Choisir mon accompagnement</span>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.55rem,4vw,2.1rem);font-weight:600;color:var(--dark);line-height:1.2;margin-top:8px;">Les 3 formules <em>les plus choisies</em></h2>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.55rem,4vw,2.1rem);font-weight:600;color:#1E1616;line-height:1.2;margin-top:8px;">Les 3 formules <em>les plus choisies</em></h2>
     </div>
     <div class="trois-offres">
       <!-- ESSENTIELLE -->
@@ -413,7 +405,7 @@
           <li class="ohi-item">Suivi WhatsApp à distance</li>
           <li class="ohi-item">Ajustements mensuels</li>
         </ul>
-        <div class="ohi-price">99€<span style="font-size:0.85rem;font-family:'DM Sans',sans-serif;font-weight:400;color:var(--text-light);"> / mois</span></div>
+        <div class="ohi-price">99€<span style="font-size:0.85rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#7A6E6E;"> / mois</span></div>
         <div class="ohi-price-sub">Valeur réelle estimée : 140€</div>
         <div class="ohi-week">≈ 23€ / semaine · 3× possible sur demande</div>
         <a href="https://wa.me/33756834626" class="ohi-btn ohi-btn-dark" target="_blank">Je démarre →</a>
@@ -448,7 +440,7 @@
           <li class="ohi-item">Suivi WhatsApp hebdomadaire</li>
           <li class="ohi-item">Bilan mensuel + ajustements</li>
         </ul>
-        <div class="ohi-price">89€<span style="font-size:0.85rem;font-family:'DM Sans',sans-serif;font-weight:400;color:var(--text-light);"> / mois</span></div>
+        <div class="ohi-price">89€<span style="font-size:0.85rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#7A6E6E;"> / mois</span></div>
         <div class="ohi-price-sub">Sur 3 mois — ou 119€/mois sans engagement</div>
         <div class="ohi-week">≈ 21€ / semaine · partout en France</div>
         <a href="https://wa.me/33756834626" class="ohi-btn ohi-btn-dark" target="_blank">Je démarre à distance →</a>
@@ -459,7 +451,7 @@
       <a href="https://wa.me/33756834626" class="btn-main" target="_blank">💬 Me contacter sur WhatsApp</a>
       <a href="https://calendly.com/ornellafit-coaching" class="btn-calendly" target="_blank">📅 Réserver un appel offert (Calendly)</a>
     </div>
-    <p style="text-align:center;font-size:0.76rem;color:var(--text-light);margin-top:10px;">✓ Bilan offert · Gratuit · Sans engagement · Paiement 3× sur demande</p>
+    <p style="text-align:center;font-size:0.76rem;color:#7A6E6E;margin-top:10px;">✓ Bilan offert · Gratuit · Sans engagement · Paiement 3× sur demande</p>
     <!-- Guide quelle offre -->
     <div class="quelle-offre">
       <div class="qo-title">🧭 Quelle offre est faite pour toi ?</div>
@@ -492,9 +484,9 @@
       <span style="font-size:0.82rem;font-weight:700;color:#5F6368;letter-spacing:0.04em;">Google</span>
     </div>
     <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
-      <div style="font-size:2rem;font-weight:800;color:var(--dark);line-height:1;">5,0</div>
+      <div style="font-size:2rem;font-weight:800;color:#1E1616;line-height:1;">5,0</div>
       <div style="color:#FBBC05;font-size:1.2rem;letter-spacing:2px;">★★★★★</div>
-      <div style="font-size:0.78rem;color:var(--text-light);">19 avis vérifiés</div>
+      <div style="font-size:0.78rem;color:#7A6E6E;">19 avis vérifiés</div>
     </div>
   </div>
 </div>
@@ -502,9 +494,9 @@
 <!-- BILAN OFFERT COMPACT -->
 <section style="background:white;padding:28px 24px 20px;">
   <div class="inner" style="text-align:center;max-width:560px;">
-    <p style="font-size:0.92rem;color:var(--text-mid);margin-bottom:14px;">Pas sûre de quelle formule choisir ? <strong style="color:var(--dark);">Le bilan offert est fait pour ça</strong> — 20 min ensemble pour identifier ce qui te correspond vraiment.</p>
+    <p style="font-size:0.92rem;color:#4A3E3E;margin-bottom:14px;">Pas sûre de quelle formule choisir ? <strong style="color:#1E1616;">Le bilan offert est fait pour ça</strong> — 20 min ensemble pour identifier ce qui te correspond vraiment.</p>
     <a href="https://wa.me/33756834626" class="btn-main" target="_blank" style="display:inline-block;">💬 Je prends mon bilan gratuit →</a>
-    <p style="font-size:0.76rem;color:var(--text-light);margin-top:10px;">✓ Gratuit · Sans engagement · Réponse rapide</p>
+    <p style="font-size:0.76rem;color:#7A6E6E;margin-top:10px;">✓ Gratuit · Sans engagement · Réponse rapide</p>
   </div>
 </section>
 
@@ -529,32 +521,32 @@
 
         <!-- 4 BÉNÉFICES CLÉS -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;">
-          <div style="background:var(--cream);border-radius:14px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#F7F3F0;border-radius:14px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start;">
             <span style="font-size:1.2rem;line-height:1;flex-shrink:0;">⏱️</span>
             <div>
-              <div style="font-weight:600;font-size:0.85rem;color:var(--dark);margin-bottom:2px;">Zéro trajet</div>
-              <div style="font-size:0.78rem;color:var(--text-light);line-height:1.4;">Je viens chez toi avec le matériel</div>
+              <div style="font-weight:600;font-size:0.85rem;color:#1E1616;margin-bottom:2px;">Zéro trajet</div>
+              <div style="font-size:0.78rem;color:#7A6E6E;line-height:1.4;">Je viens chez toi avec le matériel</div>
             </div>
           </div>
-          <div style="background:var(--cream);border-radius:14px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#F7F3F0;border-radius:14px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start;">
             <span style="font-size:1.2rem;line-height:1;flex-shrink:0;">🎯</span>
             <div>
-              <div style="font-weight:600;font-size:0.85rem;color:var(--dark);margin-bottom:2px;">Programme sur-mesure</div>
-              <div style="font-size:0.78rem;color:var(--text-light);line-height:1.4;">Adapté à tes objectifs et ton corps</div>
+              <div style="font-weight:600;font-size:0.85rem;color:#1E1616;margin-bottom:2px;">Programme sur-mesure</div>
+              <div style="font-size:0.78rem;color:#7A6E6E;line-height:1.4;">Adapté à tes objectifs et ton corps</div>
             </div>
           </div>
-          <div style="background:var(--cream);border-radius:14px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#F7F3F0;border-radius:14px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start;">
             <span style="font-size:1.2rem;line-height:1;flex-shrink:0;">✅</span>
             <div>
-              <div style="font-weight:600;font-size:0.85rem;color:var(--dark);margin-bottom:2px;">Technique corrigée</div>
-              <div style="font-size:0.78rem;color:var(--text-light);line-height:1.4;">Zéro blessure, vrais résultats</div>
+              <div style="font-weight:600;font-size:0.85rem;color:#1E1616;margin-bottom:2px;">Technique corrigée</div>
+              <div style="font-size:0.78rem;color:#7A6E6E;line-height:1.4;">Zéro blessure, vrais résultats</div>
             </div>
           </div>
-          <div style="background:var(--cream);border-radius:14px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#F7F3F0;border-radius:14px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start;">
             <span style="font-size:1.2rem;line-height:1;flex-shrink:0;">💪</span>
             <div>
-              <div style="font-weight:600;font-size:0.85rem;color:var(--dark);margin-bottom:2px;">Résultats en 4 semaines</div>
-              <div style="font-size:0.78rem;color:var(--text-light);line-height:1.4;">Visibles avec 2 séances/sem</div>
+              <div style="font-weight:600;font-size:0.85rem;color:#1E1616;margin-bottom:2px;">Résultats en 4 semaines</div>
+              <div style="font-size:0.78rem;color:#7A6E6E;line-height:1.4;">Visibles avec 2 séances/sem</div>
             </div>
           </div>
         </div>
@@ -562,32 +554,32 @@
         <!-- SÉANCE DÉCOUVERTE + UNITÉ -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
           <div style="background:linear-gradient(135deg,rgba(201,169,110,0.12),rgba(201,169,110,0.06));border:1px solid rgba(201,169,110,0.35);border-radius:14px;padding:16px;">
-            <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--brown);font-weight:700;margin-bottom:6px;">Séance découverte</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;color:var(--dark);line-height:1;">50€</div>
-            <div style="font-size:0.78rem;color:var(--rose-deep);font-weight:600;margin-top:6px;">✓ Déduite du 1er mois</div>
+            <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#9A8080;font-weight:700;margin-bottom:6px;">Séance découverte</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;color:#1E1616;line-height:1;">50€</div>
+            <div style="font-size:0.78rem;color:#D8A7A0;font-weight:600;margin-top:6px;">✓ Déduite du 1er mois</div>
           </div>
-          <div style="background:var(--cream);border:1px solid rgba(201,185,154,0.3);border-radius:14px;padding:16px;">
-            <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-light);font-weight:700;margin-bottom:6px;">Séance à l'unité</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;color:var(--dark);line-height:1;">70€</div>
-            <div style="font-size:0.78rem;color:var(--text-light);margin-top:6px;">Matériel + déplacement inclus</div>
+          <div style="background:#F7F3F0;border:1px solid rgba(201,185,154,0.3);border-radius:14px;padding:16px;">
+            <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#7A6E6E;font-weight:700;margin-bottom:6px;">Séance à l'unité</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;color:#1E1616;line-height:1;">70€</div>
+            <div style="font-size:0.78rem;color:#7A6E6E;margin-top:6px;">Matériel + déplacement inclus</div>
           </div>
         </div>
 
         <!-- ABONNEMENTS SOLO -->
         <div style="border:1px solid rgba(201,185,154,0.35);border-radius:16px;overflow:hidden;margin-bottom:12px;">
-          <div style="background:var(--cream);padding:10px 16px;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--brown);font-weight:700;border-bottom:1px solid rgba(201,185,154,0.25);">Solo — abonnement mensuel</div>
+          <div style="background:#F7F3F0;padding:10px 16px;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#9A8080;font-weight:700;border-bottom:1px solid rgba(201,185,154,0.25);">Solo — abonnement mensuel</div>
           <div style="padding:0 16px;">
             <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(201,185,154,0.18);">
-              <div style="font-size:0.88rem;color:var(--text);line-height:1.4;"><strong style="color:var(--dark);">1×/semaine</strong> <span style="color:var(--text-light);font-size:0.78rem;">(4 séances · 65€/séance)</span></div>
-              <strong style="color:var(--dark);font-size:1rem;white-space:nowrap;margin-left:12px;">260€<span style="font-size:0.75rem;font-weight:400;color:var(--text-light);">/mois</span></strong>
+              <div style="font-size:0.88rem;color:#1E1616;line-height:1.4;"><strong style="color:#1E1616;">1×/semaine</strong> <span style="color:#7A6E6E;font-size:0.78rem;">(4 séances · 65€/séance)</span></div>
+              <strong style="color:#1E1616;font-size:1rem;white-space:nowrap;margin-left:12px;">260€<span style="font-size:0.75rem;font-weight:400;color:#7A6E6E;">/mois</span></strong>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(201,185,154,0.18);background:rgba(201,99,88,0.04);">
-              <div style="font-size:0.88rem;color:var(--text);line-height:1.4;"><strong style="color:var(--dark);">2×/semaine</strong> <span style="color:var(--text-light);font-size:0.78rem;">(8 séances · 60€/séance)</span><div style="font-size:0.72rem;color:var(--rose-deep);font-weight:600;margin-top:2px;">⭐ Résultats visibles en 4 semaines</div></div>
-              <strong style="color:var(--dark);font-size:1rem;white-space:nowrap;margin-left:12px;">480€<span style="font-size:0.75rem;font-weight:400;color:var(--text-light);">/mois</span></strong>
+              <div style="font-size:0.88rem;color:#1E1616;line-height:1.4;"><strong style="color:#1E1616;">2×/semaine</strong> <span style="color:#7A6E6E;font-size:0.78rem;">(8 séances · 60€/séance)</span><div style="font-size:0.72rem;color:#D8A7A0;font-weight:600;margin-top:2px;">⭐ Résultats visibles en 4 semaines</div></div>
+              <strong style="color:#1E1616;font-size:1rem;white-space:nowrap;margin-left:12px;">480€<span style="font-size:0.75rem;font-weight:400;color:#7A6E6E;">/mois</span></strong>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;">
-              <div style="font-size:0.88rem;color:var(--text);line-height:1.4;"><strong style="color:var(--dark);">3×/semaine</strong> <span style="color:var(--text-light);font-size:0.78rem;">(12 séances · 55€/séance)</span></div>
-              <strong style="color:var(--dark);font-size:1rem;white-space:nowrap;margin-left:12px;">660€<span style="font-size:0.75rem;font-weight:400;color:var(--text-light);">/mois</span></strong>
+              <div style="font-size:0.88rem;color:#1E1616;line-height:1.4;"><strong style="color:#1E1616;">3×/semaine</strong> <span style="color:#7A6E6E;font-size:0.78rem;">(12 séances · 55€/séance)</span></div>
+              <strong style="color:#1E1616;font-size:1rem;white-space:nowrap;margin-left:12px;">660€<span style="font-size:0.75rem;font-weight:400;color:#7A6E6E;">/mois</span></strong>
             </div>
           </div>
         </div>
@@ -595,23 +587,23 @@
         <!-- DUO + TRIO -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;">
           <div style="border:1px solid rgba(201,185,154,0.35);border-radius:16px;overflow:hidden;">
-            <div style="background:var(--cream);padding:10px 14px;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--brown);font-weight:700;border-bottom:1px solid rgba(201,185,154,0.25);">Duo · /pers</div>
+            <div style="background:#F7F3F0;padding:10px 14px;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#9A8080;font-weight:700;border-bottom:1px solid rgba(201,185,154,0.25);">Duo · /pers</div>
             <div style="padding:10px 14px;display:flex;flex-direction:column;gap:8px;">
-              <div style="display:flex;justify-content:space-between;font-size:0.83rem;"><span style="color:var(--text-mid);">1×/sem</span><strong style="color:var(--dark);">200€<span style="font-weight:400;color:var(--text-light);font-size:0.75rem;">/mois</span></strong></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.83rem;"><span style="color:#4A3E3E;">1×/sem</span><strong style="color:#1E1616;">200€<span style="font-weight:400;color:#7A6E6E;font-size:0.75rem;">/mois</span></strong></div>
               <div style="height:1px;background:rgba(201,185,154,0.2);"></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.83rem;"><span style="color:var(--text-mid);">2×/sem</span><strong style="color:var(--dark);">340€<span style="font-weight:400;color:var(--text-light);font-size:0.75rem;">/mois</span></strong></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.83rem;"><span style="color:#4A3E3E;">2×/sem</span><strong style="color:#1E1616;">340€<span style="font-weight:400;color:#7A6E6E;font-size:0.75rem;">/mois</span></strong></div>
               <div style="height:1px;background:rgba(201,185,154,0.2);"></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.83rem;"><span style="color:var(--text-mid);">3×/sem</span><strong style="color:var(--dark);">480€<span style="font-weight:400;color:var(--text-light);font-size:0.75rem;">/mois</span></strong></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.83rem;"><span style="color:#4A3E3E;">3×/sem</span><strong style="color:#1E1616;">480€<span style="font-weight:400;color:#7A6E6E;font-size:0.75rem;">/mois</span></strong></div>
             </div>
           </div>
           <div style="border:1px solid rgba(201,185,154,0.35);border-radius:16px;overflow:hidden;">
-            <div style="background:var(--cream);padding:10px 14px;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--brown);font-weight:700;border-bottom:1px solid rgba(201,185,154,0.25);">Trio · /pers</div>
+            <div style="background:#F7F3F0;padding:10px 14px;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#9A8080;font-weight:700;border-bottom:1px solid rgba(201,185,154,0.25);">Trio · /pers</div>
             <div style="padding:10px 14px;display:flex;flex-direction:column;gap:8px;">
-              <div style="display:flex;justify-content:space-between;font-size:0.83rem;"><span style="color:var(--text-mid);">1×/sem</span><strong style="color:var(--dark);">150€<span style="font-weight:400;color:var(--text-light);font-size:0.75rem;">/mois</span></strong></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.83rem;"><span style="color:#4A3E3E;">1×/sem</span><strong style="color:#1E1616;">150€<span style="font-weight:400;color:#7A6E6E;font-size:0.75rem;">/mois</span></strong></div>
               <div style="height:1px;background:rgba(201,185,154,0.2);"></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.83rem;"><span style="color:var(--text-mid);">2×/sem</span><strong style="color:var(--dark);">280€<span style="font-weight:400;color:var(--text-light);font-size:0.75rem;">/mois</span></strong></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.83rem;"><span style="color:#4A3E3E;">2×/sem</span><strong style="color:#1E1616;">280€<span style="font-weight:400;color:#7A6E6E;font-size:0.75rem;">/mois</span></strong></div>
               <div style="height:1px;background:rgba(201,185,154,0.2);"></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.83rem;"><span style="color:var(--text-mid);">3×/sem</span><strong style="color:var(--dark);">390€<span style="font-weight:400;color:var(--text-light);font-size:0.75rem;">/mois</span></strong></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.83rem;"><span style="color:#4A3E3E;">3×/sem</span><strong style="color:#1E1616;">390€<span style="font-weight:400;color:#7A6E6E;font-size:0.75rem;">/mois</span></strong></div>
             </div>
           </div>
         </div>
@@ -623,7 +615,7 @@
     <!-- BLOC 1B — FORFAITS SÉANCES -->
     <div class="offre-bloc" id="forfaits">
       <div class="offre-bloc-header">
-        <span class="offre-bloc-num" style="font-size:1.4rem;width:auto;padding:6px 14px;background:rgba(201,169,110,0.12);border-radius:50px;color:var(--gold);">📦</span>
+        <span class="offre-bloc-num" style="font-size:1.4rem;width:auto;padding:6px 14px;background:rgba(201,169,110,0.12);border-radius:50px;color:#C9957A;">📦</span>
         <div>
           <div class="offre-bloc-titre">Forfaits séances</div>
           <div class="offre-bloc-sub">Sans abonnement mensuel — à ton rythme</div>
@@ -634,55 +626,55 @@
         <div style="background:white;border:1px solid rgba(201,185,154,0.3);border-radius:16px;padding:18px 20px;margin-bottom:20px;display:flex;gap:14px;align-items:flex-start;">
           <span style="font-size:1.4rem;line-height:1;flex-shrink:0;">📦</span>
           <div>
-            <p style="font-size:0.9rem;color:var(--dark);font-weight:600;margin-bottom:4px;">Pas envie de t'engager mensuellement ?</p>
-            <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.65;margin:0;">Achète un bloc de séances, utilise-les quand tu veux. Idéal si ton emploi du temps est variable, si tu te déplaces souvent, ou si tu veux tester avant de t'engager sur la durée. <strong style="color:var(--dark);">Séances valables 6 mois.</strong></p>
+            <p style="font-size:0.9rem;color:#1E1616;font-weight:600;margin-bottom:4px;">Pas envie de t'engager mensuellement ?</p>
+            <p style="font-size:0.85rem;color:#4A3E3E;line-height:1.65;margin:0;">Achète un bloc de séances, utilise-les quand tu veux. Idéal si ton emploi du temps est variable, si tu te déplaces souvent, ou si tu veux tester avant de t'engager sur la durée. <strong style="color:#1E1616;">Séances valables 6 mois.</strong></p>
           </div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px;" class="forfaits-grid">
           <!-- Découverte -->
           <div style="background:white;border-radius:20px;padding:22px 18px;border:1px solid rgba(201,185,154,0.25);box-shadow:0 4px 18px rgba(139,111,94,0.07);display:flex;flex-direction:column;">
-            <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-light);font-weight:600;margin-bottom:8px;">Découverte</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--dark);line-height:1;margin-bottom:4px;">210€</div>
-            <div style="font-size:0.75rem;color:var(--text-light);margin-bottom:12px;">3 séances · 70€/séance</div>
-            <div style="font-size:0.78rem;color:var(--text-mid);line-height:1.5;margin-top:auto;">Idéal pour tester avant de s'engager</div>
+            <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#7A6E6E;font-weight:600;margin-bottom:8px;">Découverte</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#1E1616;line-height:1;margin-bottom:4px;">210€</div>
+            <div style="font-size:0.75rem;color:#7A6E6E;margin-bottom:12px;">3 séances · 70€/séance</div>
+            <div style="font-size:0.78rem;color:#4A3E3E;line-height:1.5;margin-top:auto;">Idéal pour tester avant de s'engager</div>
           </div>
           <!-- Essentiel -->
           <div style="background:white;border-radius:20px;padding:22px 18px;border:1px solid rgba(201,185,154,0.25);box-shadow:0 4px 18px rgba(139,111,94,0.07);display:flex;flex-direction:column;">
-            <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-light);font-weight:600;margin-bottom:8px;">Essentiel</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--dark);line-height:1;margin-bottom:4px;">390€</div>
-            <div style="font-size:0.75rem;color:var(--text-light);margin-bottom:12px;">6 séances · 65€/séance</div>
-            <div style="font-size:0.78rem;color:var(--rose-deep);font-weight:600;margin-top:auto;">Tu économises 30€</div>
+            <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#7A6E6E;font-weight:600;margin-bottom:8px;">Essentiel</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#1E1616;line-height:1;margin-bottom:4px;">390€</div>
+            <div style="font-size:0.75rem;color:#7A6E6E;margin-bottom:12px;">6 séances · 65€/séance</div>
+            <div style="font-size:0.78rem;color:#D8A7A0;font-weight:600;margin-top:auto;">Tu économises 30€</div>
           </div>
           <!-- Performance -->
           <div style="background:white;border-radius:20px;padding:22px 18px;border:1.5px solid rgba(201,99,88,0.3);box-shadow:0 4px 18px rgba(139,111,94,0.07);display:flex;flex-direction:column;position:relative;">
-            <div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),#C09090);color:white;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 12px;border-radius:50px;white-space:nowrap;">⭐ Populaire</div>
-            <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);font-weight:600;margin-bottom:8px;">Performance</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--dark);line-height:1;margin-bottom:4px;">650€</div>
-            <div style="font-size:0.75rem;color:var(--text-light);margin-bottom:12px;">10 séances · 65€/séance</div>
-            <div style="font-size:0.78rem;color:var(--rose-deep);font-weight:600;margin-top:auto;">Tu économises 50€</div>
+            <div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#C96358,#C09090);color:white;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 12px;border-radius:50px;white-space:nowrap;">⭐ Populaire</div>
+            <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#C96358;font-weight:600;margin-bottom:8px;">Performance</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#1E1616;line-height:1;margin-bottom:4px;">650€</div>
+            <div style="font-size:0.75rem;color:#7A6E6E;margin-bottom:12px;">10 séances · 65€/séance</div>
+            <div style="font-size:0.78rem;color:#D8A7A0;font-weight:600;margin-top:auto;">Tu économises 50€</div>
           </div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;" class="forfaits-grid-2">
           <!-- Intensif -->
           <div style="background:white;border-radius:20px;padding:22px 18px;border:1px solid rgba(201,185,154,0.25);box-shadow:0 4px 18px rgba(139,111,94,0.07);display:flex;flex-direction:column;">
-            <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-light);font-weight:600;margin-bottom:8px;">Intensif</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--dark);line-height:1;margin-bottom:4px;">1 100€</div>
-            <div style="font-size:0.75rem;color:var(--text-light);margin-bottom:12px;">20 séances · 55€/séance</div>
-            <div style="font-size:0.78rem;color:var(--rose-deep);font-weight:600;margin-top:auto;">Tu économises 300€</div>
+            <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#7A6E6E;font-weight:600;margin-bottom:8px;">Intensif</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#1E1616;line-height:1;margin-bottom:4px;">1 100€</div>
+            <div style="font-size:0.75rem;color:#7A6E6E;margin-bottom:12px;">20 séances · 55€/séance</div>
+            <div style="font-size:0.78rem;color:#D8A7A0;font-weight:600;margin-top:auto;">Tu économises 300€</div>
           </div>
           <!-- Fidélité -->
           <div style="background:linear-gradient(150deg,#2C1F1A,#3D2B24);border-radius:20px;padding:22px 18px;border:1px solid rgba(201,169,110,0.3);box-shadow:0 4px 18px rgba(44,31,26,0.2);display:flex;flex-direction:column;">
-            <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);font-weight:600;margin-bottom:8px;">Fidélité — coachées existantes</div>
+            <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#C9957A;font-weight:600;margin-bottom:8px;">Fidélité — coachées existantes</div>
             <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:white;line-height:1;margin-bottom:4px;">1 200€</div>
             <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);margin-bottom:12px;">24 séances · 50€/séance</div>
-            <div style="font-size:0.78rem;color:var(--gold);font-weight:600;margin-top:auto;">Meilleur tarif disponible · -480€</div>
+            <div style="font-size:0.78rem;color:#C9957A;font-weight:600;margin-top:auto;">Meilleur tarif disponible · -480€</div>
           </div>
         </div>
-        <div style="margin-top:14px;padding:14px 18px;background:rgba(201,185,154,0.12);border-radius:14px;font-size:0.82rem;color:var(--text-light);text-align:center;line-height:1.6;">
+        <div style="margin-top:14px;padding:14px 18px;background:rgba(201,185,154,0.12);border-radius:14px;font-size:0.82rem;color:#7A6E6E;text-align:center;line-height:1.6;">
           ✓ Séances valables 6 mois · Planification flexible · Décalables si absence
         </div>
-        <div style="margin-top:10px;padding:12px 16px;background:rgba(201,99,88,0.06);border-radius:12px;border-left:3px solid rgba(201,99,88,0.3);font-size:0.82rem;color:var(--text-mid);line-height:1.6;">
-          💡 <strong style="color:var(--dark);">Ces packs sont indépendants du coaching hybride</strong> — ils offrent plus de flexibilité si ton emploi du temps est variable ou si tu préfères avancer à ton propre rythme.
+        <div style="margin-top:10px;padding:12px 16px;background:rgba(201,99,88,0.06);border-radius:12px;border-left:3px solid rgba(201,99,88,0.3);font-size:0.82rem;color:#4A3E3E;line-height:1.6;">
+          💡 <strong style="color:#1E1616;">Ces packs sont indépendants du coaching hybride</strong> — ils offrent plus de flexibilité si ton emploi du temps est variable ou si tu préfères avancer à ton propre rythme.
         </div>
         <div style="margin-top:14px;text-align:center;">
           <a href="https://wa.me/33756834626" class="btn-offre dark" target="_blank" style="display:inline-block;max-width:340px;">Choisir mon forfait →</a>
@@ -704,8 +696,8 @@
       <div style="max-width:700px;margin:0 auto 20px;background:white;border:1px solid rgba(201,185,154,0.3);border-radius:16px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;">
         <span style="font-size:1.3rem;line-height:1;flex-shrink:0;">🔄</span>
         <div>
-          <p style="font-size:0.9rem;color:var(--dark);font-weight:600;margin-bottom:4px;">Séances en présentiel + suivi à distance</p>
-          <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.6;margin:0;">Tu bénéficies d'un encadrement en présentiel chaque mois <strong style="color:var(--dark);">et</strong> d'un suivi personnalisé à distance entre les séances. Idéal pour progresser régulièrement sans te déplacer à chaque fois.</p>
+          <p style="font-size:0.9rem;color:#1E1616;font-weight:600;margin-bottom:4px;">Séances en présentiel + suivi à distance</p>
+          <p style="font-size:0.85rem;color:#4A3E3E;line-height:1.6;margin:0;">Tu bénéficies d'un encadrement en présentiel chaque mois <strong style="color:#1E1616;">et</strong> d'un suivi personnalisé à distance entre les séances. Idéal pour progresser régulièrement sans te déplacer à chaque fois.</p>
         </div>
       </div>
 
@@ -714,7 +706,7 @@
 
         <!-- ESSENTIELLE -->
         <div class="offre-card" style="border:1px solid rgba(201,185,154,0.3);">
-          <div class="offre-tag" style="background:rgba(201,169,110,0.12);color:var(--brown);">💫 Coaching Hybride</div>
+          <div class="offre-tag" style="background:rgba(201,169,110,0.12);color:#9A8080;">💫 Coaching Hybride</div>
           <div class="offre-name" style="font-size:1.35rem;">Essentielle</div>
           <p class="offre-desc" style="font-size:0.85rem;">Offre plus autonome — idéale pour avancer à son rythme avec un encadrement mensuel.</p>
           <ul class="offre-benefits" style="margin-bottom:20px;gap:8px;">
@@ -723,23 +715,23 @@
             <li class="offre-benefit">Ajustements mensuels</li>
             <li class="offre-benefit">1 séance présentiel / mois</li>
           </ul>
-          <div style="background:var(--cream);border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:0.78rem;color:var(--text-light);line-height:1.5;">
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span>1 séance présentiel</span><span style="color:var(--dark);font-weight:600;">70€</span></div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span>Programme + suivi</span><span style="color:var(--dark);font-weight:600;">70€</span></div>
+          <div style="background:#F7F3F0;border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:0.78rem;color:#7A6E6E;line-height:1.5;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span>1 séance présentiel</span><span style="color:#1E1616;font-weight:600;">70€</span></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span>Programme + suivi</span><span style="color:#1E1616;font-weight:600;">70€</span></div>
             <div style="display:flex;justify-content:space-between;padding-top:6px;border-top:1px solid rgba(201,185,154,0.25);font-weight:600;"><span>Valeur réelle</span><span style="text-decoration:line-through;">140€</span></div>
           </div>
           <div style="margin-bottom:6px;">
-            <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--dark);line-height:1;">99€<span style="font-size:0.9rem;font-family:'DM Sans',sans-serif;font-weight:400;color:var(--text-light);"> / mois</span></div>
-            <div style="font-size:0.75rem;color:var(--text-light);margin-top:3px;">≈ 23€ / semaine</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:#1E1616;line-height:1;">99€<span style="font-size:0.9rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#7A6E6E;"> / mois</span></div>
+            <div style="font-size:0.75rem;color:#7A6E6E;margin-top:3px;">≈ 23€ / semaine</div>
           </div>
-          <div style="font-size:0.78rem;color:var(--rose-deep);font-weight:600;margin-bottom:16px;">Tu économises 41€/mois</div>
+          <div style="font-size:0.78rem;color:#D8A7A0;font-weight:600;margin-bottom:16px;">Tu économises 41€/mois</div>
           <a href="https://wa.me/33756834626" class="btn-offre dark" target="_blank" style="margin-top:auto;">Je démarre →</a>
         </div>
 
         <!-- PERFORMANCE — FEATURED -->
         <div class="offre-card featured" style="position:relative;">
-          <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),#A87860);color:white;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 14px;border-radius:50px;white-space:nowrap;box-shadow:0 4px 14px rgba(201,169,110,0.4);">⭐ Offre la plus choisie</div>
-          <div class="offre-tag" style="background:var(--gold);color:var(--dark);">🔥 Coaching Hybride</div>
+          <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#C9957A,#A87860);color:white;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 14px;border-radius:50px;white-space:nowrap;box-shadow:0 4px 14px rgba(201,169,110,0.4);">⭐ Offre la plus choisie</div>
+          <div class="offre-tag" style="background:#C9957A;color:#1E1616;">🔥 Coaching Hybride</div>
           <div class="offre-name" style="font-size:1.35rem;">Performance</div>
           <p class="offre-desc" style="font-size:0.85rem;">Offre principale — plus encadrée pour maximiser vos résultats avec 2 séances par mois.</p>
           <ul class="offre-benefits" style="margin-bottom:20px;gap:8px;">
@@ -749,16 +741,16 @@
             <li class="offre-benefit">2 séances présentiel / mois</li>
           </ul>
           <div style="background:rgba(255,255,255,0.07);border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:0.78rem;color:rgba(255,255,255,0.5);line-height:1.5;">
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span>2 séances présentiel</span><span style="color:var(--gold);font-weight:600;">140€</span></div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span>Programme + suivi</span><span style="color:var(--gold);font-weight:600;">70€</span></div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span>Bilan mensuel</span><span style="color:var(--gold);font-weight:600;">20€</span></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span>2 séances présentiel</span><span style="color:#C9957A;font-weight:600;">140€</span></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span>Programme + suivi</span><span style="color:#C9957A;font-weight:600;">70€</span></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span>Bilan mensuel</span><span style="color:#C9957A;font-weight:600;">20€</span></div>
             <div style="display:flex;justify-content:space-between;padding-top:6px;border-top:1px solid rgba(255,255,255,0.1);font-weight:600;"><span>Valeur réelle</span><span style="text-decoration:line-through;">230€</span></div>
           </div>
           <div style="margin-bottom:6px;">
             <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:white;line-height:1;">169€<span style="font-size:0.9rem;font-family:'DM Sans',sans-serif;font-weight:400;color:rgba(255,255,255,0.45);"> / mois</span></div>
             <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:3px;">≈ 42€ / semaine</div>
           </div>
-          <div style="font-size:0.78rem;color:var(--gold);font-weight:600;margin-bottom:8px;">Tu économises 61€/mois</div>
+          <div style="font-size:0.78rem;color:#C9957A;font-weight:600;margin-bottom:8px;">Tu économises 61€/mois</div>
           <div style="background:rgba(74,124,201,0.12);border:1px solid rgba(74,124,201,0.22);border-radius:10px;padding:10px 12px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;">
             <span style="font-size:0.78rem;color:rgba(255,255,255,0.65);">+ Option nutrition</span>
             <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#7baae0;">+40€/mois</span>
@@ -791,18 +783,18 @@
           <li class="offre-benefit">Vidéos de démonstration pour chaque exercice</li>
           <li class="offre-benefit">Bilan de fin de programme à 8 semaines</li>
         </ul>
-        <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:20px;padding:14px 16px;background:rgba(216,167,160,0.08);border-radius:12px;border-left:3px solid var(--rose-deep);">
-          <p style="font-size:0.87rem;color:var(--text-light);line-height:1.65;margin:0;"><span style="opacity:0.5;">✕</span> Suivi hebdomadaire &nbsp;·&nbsp; <span style="opacity:0.5;">✕</span> Ajustements en cours — <em>pour ça, voir le coaching avec suivi ci-dessous.</em></p>
+        <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:20px;padding:14px 16px;background:rgba(216,167,160,0.08);border-radius:12px;border-left:3px solid #D8A7A0;">
+          <p style="font-size:0.87rem;color:#7A6E6E;line-height:1.65;margin:0;"><span style="opacity:0.5;">✕</span> Suivi hebdomadaire &nbsp;·&nbsp; <span style="opacity:0.5;">✕</span> Ajustements en cours — <em>pour ça, voir le coaching avec suivi ci-dessous.</em></p>
         </div>
         <div class="offre-price">79€ <span>— programme 8 semaines</span></div>
         <a href="https://buy.stripe.com/8x26oHas9f8n5o9cmh8Vi03" class="btn-offre dark" target="_blank">Je commande mon programme</a>
-        <div style="margin-top:18px;padding:18px 20px;background:rgba(216,167,160,0.08);border-radius:12px;border-left:3px solid var(--rose-deep);">
-          <p style="font-size:0.88rem;color:var(--dark);font-weight:500;margin-bottom:6px;">Programme 100% personnalisé, conçu pour toi après analyse complète de ton bilan.</p>
-          <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:14px;">⏱️ Livraison sous 5 à 7 jours ouvrés après réception de ton bilan</p>
-          <p style="font-size:0.82rem;color:var(--dark);font-weight:600;margin-bottom:8px;">Ce délai n'est pas un hasard.</p>
-          <p style="font-size:0.82rem;color:var(--text-light);line-height:1.7;margin-bottom:10px;">Chaque programme est entièrement construit en fonction de ton niveau, tes objectifs, ton mode de vie, ton alimentation, ton sommeil, tes contraintes et tes éventuelles blessures ou traitements.</p>
-          <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:8px;">👉 Rien n'est généré automatiquement. Rien n'est laissé au hasard.</p>
-          <p style="font-size:0.82rem;color:var(--text-light);font-style:italic;">Tu ne reçois pas un programme générique. Tu reçois un accompagnement pensé spécifiquement pour toi.</p>
+        <div style="margin-top:18px;padding:18px 20px;background:rgba(216,167,160,0.08);border-radius:12px;border-left:3px solid #D8A7A0;">
+          <p style="font-size:0.88rem;color:#1E1616;font-weight:500;margin-bottom:6px;">Programme 100% personnalisé, conçu pour toi après analyse complète de ton bilan.</p>
+          <p style="font-size:0.82rem;color:#7A6E6E;margin-bottom:14px;">⏱️ Livraison sous 5 à 7 jours ouvrés après réception de ton bilan</p>
+          <p style="font-size:0.82rem;color:#1E1616;font-weight:600;margin-bottom:8px;">Ce délai n'est pas un hasard.</p>
+          <p style="font-size:0.82rem;color:#7A6E6E;line-height:1.7;margin-bottom:10px;">Chaque programme est entièrement construit en fonction de ton niveau, tes objectifs, ton mode de vie, ton alimentation, ton sommeil, tes contraintes et tes éventuelles blessures ou traitements.</p>
+          <p style="font-size:0.82rem;color:#7A6E6E;margin-bottom:8px;">👉 Rien n'est généré automatiquement. Rien n'est laissé au hasard.</p>
+          <p style="font-size:0.82rem;color:#7A6E6E;font-style:italic;">Tu ne reçois pas un programme générique. Tu reçois un accompagnement pensé spécifiquement pour toi.</p>
         </div>
       </div>
 
@@ -811,8 +803,8 @@
         <div class="compare-title">Programme seul vs. Coaching avec suivi</div>
         <div class="compare-head">
           <div class="compare-head-cell">Ce que tu obtiens</div>
-          <div class="compare-head-cell">Sans suivi<br><span style="color:var(--text-light);font-weight:400;text-transform:none;letter-spacing:0;">79€</span></div>
-          <div class="compare-head-cell">Avec suivi<br><span style="color:var(--rose-deep);font-weight:600;text-transform:none;letter-spacing:0;">dès 89€/mois</span></div>
+          <div class="compare-head-cell">Sans suivi<br><span style="color:#7A6E6E;font-weight:400;text-transform:none;letter-spacing:0;">79€</span></div>
+          <div class="compare-head-cell">Avec suivi<br><span style="color:#D8A7A0;font-weight:600;text-transform:none;letter-spacing:0;">dès 89€/mois</span></div>
         </div>
         <div class="compare-row">
           <div class="compare-cell">Programme sur-mesure</div>
@@ -850,8 +842,8 @@
           <div class="compare-cell compare-yes">✓</div>
         </div>
         <div class="compare-row" style="background:rgba(192,128,128,0.05);">
-          <div class="compare-cell" style="font-weight:600;color:var(--dark);">Tu es accompagnée</div>
-          <div class="compare-cell" style="font-size:0.78rem;color:var(--text-light);">Autonome</div>
+          <div class="compare-cell" style="font-weight:600;color:#1E1616;">Tu es accompagnée</div>
+          <div class="compare-cell" style="font-size:0.78rem;color:#7A6E6E;">Autonome</div>
           <div class="compare-cell compare-yes" style="font-size:0.82rem;font-weight:700;">Accompagnée</div>
         </div>
       </div>
@@ -886,9 +878,9 @@
               <li class="tier-item">Bilan mensuel</li>
             </ul>
             <a href="https://buy.stripe.com/9B67sL7fXgcr03P5XT8Vi04" class="btn-offre dark" target="_blank">Je commence mon accompagnement</a>
-            <p style="font-size:0.82rem;color:var(--text-light);margin-top:10px;font-weight:500;text-align:center;">Accompagnement personnalisé, conçu après analyse de ton bilan.</p>
-            <p style="font-size:0.78rem;color:var(--text-light);margin-top:6px;font-style:italic;text-align:center;">⏱️ Livraison sous 5 à 7 jours ouvrés après réception de ton bilan</p>
-            <a href="https://wa.me/33756834626" style="display:block;text-align:center;font-size:0.82rem;color:var(--text-light);margin-top:10px;text-decoration:none;font-weight:500;border-bottom:1px solid rgba(122,101,96,0.25);padding-bottom:2px;align-self:center;" target="_blank">ou parler avec moi d'abord →</a>
+            <p style="font-size:0.82rem;color:#7A6E6E;margin-top:10px;font-weight:500;text-align:center;">Accompagnement personnalisé, conçu après analyse de ton bilan.</p>
+            <p style="font-size:0.78rem;color:#7A6E6E;margin-top:6px;font-style:italic;text-align:center;">⏱️ Livraison sous 5 à 7 jours ouvrés après réception de ton bilan</p>
+            <a href="https://wa.me/33756834626" style="display:block;text-align:center;font-size:0.82rem;color:#7A6E6E;margin-top:10px;text-decoration:none;font-weight:500;border-bottom:1px solid rgba(122,101,96,0.25);padding-bottom:2px;align-self:center;" target="_blank">ou parler avec moi d'abord →</a>
           </div>
 
           <!-- 3 mois — RECOMMANDÉ -->
@@ -1063,7 +1055,7 @@
 <!-- CTA FINAL -->
 <section id="cta-final">
   <div class="inner">
-    <span class="section-label" style="color:var(--gold);">C'est le moment</span>
+    <span class="section-label" style="color:#C9957A;">C'est le moment</span>
     <h2 class="section-title">Prête à <em>passer à l'action ?</em></h2>
     <p class="section-subtitle">Commence par ton bilan personnalisé offert. Gratuit, sans engagement, sans pression.</p>
     <div class="cta-buttons">
