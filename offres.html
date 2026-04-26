@@ -23,9 +23,11 @@
   display: flex; gap: 6px; align-items: center;
   overflow-x: auto; -webkit-overflow-scrolling: touch;
   scrollbar-width: none; -ms-overflow-style: none;
-  padding: 10px 16px;
+  padding: 10px 16px 10px 16px;
   max-width: 1000px; margin: 0 auto;
 }
+/* Pseudo-élément pour forcer le padding-right scrollable */
+.anchors-inner::after { content: ''; display: block; min-width: 16px; flex-shrink: 0; }
 .anchors-inner::-webkit-scrollbar { display: none; }
 .anchor-pill {
   display: inline-flex; align-items: center; gap: 5px;
@@ -340,6 +342,19 @@
   /* CTA boutons plus grands sur mobile */
   .btn-main, .btn-calendly { min-height: 52px; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; }
   .ohi-btn { min-height: 50px; font-size: 0.9rem; }
+
+  /* Texte distanciel — Cormorant trop fin sur mobile → forcer lisibilité */
+  #distanciel .offre-bloc-titre,
+  #distanciel [style*="Cormorant"] { font-weight: 700 !important; color: #2C1F1A !important; -webkit-text-stroke: 0.2px #2C1F1A; }
+  #distanciel p[style*="color:var(--text-light)"],
+  #distanciel p[style*="color: var(--text-light)"] { color: #6B5C57 !important; }
+  #distanciel p[style*="color:var(--dark)"],
+  #distanciel p[style*="color: var(--dark)"] { font-weight: 700 !important; }
+  #distanciel p[style*="color:var(--brown)"],
+  #distanciel p[style*="color: var(--brown)"] { color: #8B6B52 !important; font-style: italic; font-weight: 600 !important; }
+
+  /* Floating button — forcer position haute même avec cache */
+  .floating-wa { bottom: 90px !important; right: 16px !important; }
 }
 </style>
 </head>
