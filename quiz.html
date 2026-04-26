@@ -531,40 +531,63 @@ async function submitQuiz(skip = false) {
   goToStep(6);
 }
 
+const BREVO_TEMPLATE_IDS = {
+  domicile:   12,
+  hybride:    13,
+  distanciel: 14,
+  autonomie:  15
+};
+
 async function sendToBrevo(email, resultKey) {
   if (!BREVO_API_KEY || BREVO_API_KEY === 'YOUR_BREVO_API_KEY') {
     console.warn('[Ornella Fit Quiz] Clé API Brevo non configurée — aucun email envoyé.');
     return;
   }
 
-  const listId = BREVO_LISTS[resultKey];
-  const payload = {
+  const listId    = BREVO_LISTS[resultKey];
+  const templateId = BREVO_TEMPLATE_IDS[resultKey];
+
+  /* 1 — Ajouter le contact à la liste */
+  const contactPayload = {
     email,
     updateEnabled: true,
     attributes: { QUIZ_RESULT: resultKey }
   };
-
-  if (listId && listId > 0) {
-    payload.listIds = [listId];
-  }
+  if (listId && listId > 0) contactPayload.listIds = [listId];
 
   try {
     const res = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': BREVO_API_KEY
-      },
-      body: JSON.stringify(payload)
+      headers: { 'Content-Type': 'application/json', 'api-key': BREVO_API_KEY },
+      body: JSON.stringify(contactPayload)
     });
-    /* 201 = créé, 204 = mis à jour — les deux sont OK */
     if (!res.ok && res.status !== 204) {
       const err = await res.json().catch(() => ({}));
-      console.warn('[Brevo] Erreur API:', res.status, err);
+      console.warn('[Brevo] Erreur contact:', res.status, err);
     }
   } catch (e) {
-    console.warn('[Brevo] Erreur réseau:', e);
-    /* Silently fail — ne jamais bloquer l'utilisateur */
+    console.warn('[Brevo] Erreur réseau contact:', e);
+  }
+
+  /* 2 — Envoyer l'email transactionnel avec le template */
+  if (!templateId) return;
+  try {
+    const emailPayload = {
+      to: [{ email }],
+      templateId,
+      replyTo: { email: 'ornellaracano@icloud.com', name: 'Ornella Fit Coaching' }
+    };
+    const res2 = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'api-key': BREVO_API_KEY },
+      body: JSON.stringify(emailPayload)
+    });
+    if (!res2.ok) {
+      const err = await res2.json().catch(() => ({}));
+      console.warn('[Brevo] Erreur email:', res2.status, err);
+    }
+  } catch (e) {
+    console.warn('[Brevo] Erreur réseau email:', e);
   }
 }
 
