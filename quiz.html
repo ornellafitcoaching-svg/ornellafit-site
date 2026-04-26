@@ -257,44 +257,43 @@ const BREVO_LISTS = {
 const QUESTIONS = [
   {
     eyebrow: 'Question 1 / 4',
-    title: 'Comment préfères-tu t\'entraîner ?',
-    sub: 'Choisis l\'option qui te correspond le mieux.',
+    title: 'Tu es où ?',
+    sub: 'Ça m\'aide à te proposer ce qui est vraiment possible pour toi.',
     options: [
-      { emoji: '🏠', text: 'Chez moi, à domicile', sub: 'Je veux qu\'on vienne directement chez moi', scores: { domicile: 3 } },
-      { emoji: '🔄', text: 'Présentiel + distance', sub: 'Quelques séances en vrai + suivi à distance', scores: { hybride: 3 } },
-      { emoji: '💻', text: 'À distance uniquement', sub: 'Depuis chez moi, partout en France', scores: { distanciel: 2, autonomie: 1 } }
+      { emoji: '🏠', text: 'En Île-de-France', sub: 'Paris et région parisienne', scores: { domicile: 2, hybride: 1 } },
+      { emoji: '🌍', text: 'En dehors d\'Île-de-France', sub: 'Autre région, DOM-TOM, étranger…', scores: { distanciel: 3, autonomie: 1 } }
     ]
   },
   {
     eyebrow: 'Question 2 / 4',
-    title: 'Quel suivi recherches-tu ?',
-    sub: 'Sois honnête — il n\'y a pas de mauvaise réponse.',
+    title: 'Ta situation en ce moment :',
+    sub: 'Choisis ce qui te ressemble le plus en ce moment.',
     options: [
-      { emoji: '👁️', text: 'Encadrée à chaque séance', sub: 'Présence réelle et correction en direct', scores: { domicile: 3 } },
-      { emoji: '🤝', text: 'Séances + messages réguliers', sub: 'Présentiel + suivi personnalisé entre les séances', scores: { hybride: 3 } },
-      { emoji: '📱', text: 'Suivi à distance, check-ins hebdo', sub: 'Accompagnement sans contrainte géo', scores: { distanciel: 3 } },
-      { emoji: '📋', text: 'Un programme clair, je suis seule', sub: 'Je préfère avancer à mon rythme', scores: { autonomie: 4 } }
+      { emoji: '👶', text: 'Maman débordée', sub: 'Peu de temps, besoin d\'efficacité et de simplicité', scores: { domicile: 3 } },
+      { emoji: '🔥', text: 'Motivée, je veux des résultats rapides', sub: 'Prête à m\'investir à fond pour transformer mon corps', scores: { hybride: 2, domicile: 1 } },
+      { emoji: '🌍', text: 'Souvent en déplacement ou peu disponible', sub: 'Besoin de flexibilité, je ne peux pas m\'engager sur des horaires fixes', scores: { distanciel: 3 } },
+      { emoji: '🌱', text: 'Je veux avancer à mon rythme, sans pression', sub: 'Un programme structuré que je suis seule, quand je veux', scores: { autonomie: 2, distanciel: 1 } }
     ]
   },
   {
     eyebrow: 'Question 3 / 4',
-    title: 'Quel est ton objectif principal ?',
-    sub: 'Celui qui compte le plus pour toi en ce moment.',
+    title: 'Le coaching de tes rêves, c\'est quoi ?',
+    sub: 'Ferme les yeux — qu\'est-ce qui te ferait vraiment vibrer ?',
     options: [
-      { emoji: '🤰', text: 'Remise en forme post-partum', sub: 'Après une grossesse ou un accouchement', scores: { domicile: 2, hybride: 1 } },
-      { emoji: '🔥', text: 'Transformation physique visible', sub: 'Changer son corps rapidement et durablement', scores: { hybride: 2, domicile: 1 } },
-      { emoji: '⚡', text: 'Perdre du poids en douceur', sub: 'Progressif, sans frustration', scores: { distanciel: 2, hybride: 1 } },
-      { emoji: '💪', text: 'Me muscler à mon rythme', sub: 'Tonification, sans pression', scores: { autonomie: 2, distanciel: 1 } }
+      { emoji: '🏠', text: 'Mon coach vient chez moi, je n\'ai qu\'à ouvrir la porte', sub: 'Zéro trajet, zéro organisation, juste moi et mon coach', scores: { domicile: 4 } },
+      { emoji: '✨', text: 'Des séances en vrai + quelqu\'un qui me suit de près', sub: 'Une présence réelle + un suivi personnalisé entre les séances', scores: { hybride: 4 } },
+      { emoji: '📲', text: '100% à distance, depuis chez moi ou n\'importe où', sub: 'Un vrai programme sur-mesure avec un suivi régulier, peu importe où je suis', scores: { distanciel: 4 } },
+      { emoji: '💪', text: 'Un programme béton que je suis seule, à mon rythme', sub: 'Structuré, clair, avec des vidéos — je n\'ai plus qu\'à m\'y mettre', scores: { autonomie: 4 } }
     ]
   },
   {
     eyebrow: 'Question 4 / 4',
-    title: 'Quel budget mensuel envisages-tu ?',
-    sub: 'Pour t\'orienter vers la formule la plus adaptée.',
+    title: 'Tu es prête à investir combien par mois ?',
+    sub: 'Pour t\'orienter vers la formule la plus adaptée à toi.',
     options: [
-      { emoji: '💸', text: 'Moins de 100€ / mois', sub: 'Je veux optimiser mon budget', scores: { autonomie: 3 } },
-      { emoji: '💰', text: 'Entre 100€ et 200€ / mois', sub: 'Investissement raisonnable', scores: { hybride: 2, distanciel: 2 } },
-      { emoji: '🏆', text: 'Plus de 200€ / mois', sub: 'Je veux le meilleur résultat possible', scores: { domicile: 3, hybride: 1 } }
+      { emoji: '💸', text: 'Moins de 100€ / mois', sub: 'Je veux un programme solide sans me ruiner', scores: { autonomie: 3 } },
+      { emoji: '💰', text: 'Entre 100€ et 200€ / mois', sub: 'Investissement sérieux pour des résultats concrets', scores: { hybride: 2, distanciel: 2 } },
+      { emoji: '🏆', text: 'Plus de 200€ / mois', sub: 'Je veux le meilleur accompagnement possible — je m\'en donne les moyens', scores: { domicile: 3, hybride: 1 } }
     ]
   }
 ];
