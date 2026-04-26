@@ -228,8 +228,51 @@
 }
 .faq-item.open .faq-a { max-height: 500px; padding: 0 24px 20px; }
 
+/* ===== 3 OFFRES HERO ===== */
+#offres-hero { background: var(--cream); padding: 44px 20px 52px; }
+.trois-offres { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; max-width: 900px; margin: 0 auto 28px; align-items: start; }
+.offre-hero-card { background: white; border-radius: 24px; padding: 28px 20px; border: 1.5px solid rgba(201,185,154,0.25); box-shadow: 0 4px 24px rgba(139,111,94,0.08); display: flex; flex-direction: column; position: relative; transition: transform 0.3s; }
+.offre-hero-card:hover { transform: translateY(-4px); }
+.offre-hero-card.main { background: linear-gradient(150deg,#2C1F1A,#3D2B24); border-color: rgba(201,169,110,0.4); box-shadow: 0 8px 40px rgba(44,31,26,0.22); padding-top: 44px; }
+.offre-hero-card.main .ohi-name { color: white; }
+.offre-hero-card.main .ohi-desc { color: rgba(255,255,255,0.65); }
+.offre-hero-card.main .ohi-item { color: rgba(255,255,255,0.82); }
+.offre-hero-card.main .ohi-item::before { color: var(--gold); }
+.offre-hero-card.main .ohi-price { color: white; }
+.offre-hero-card.main .ohi-price-sub { color: rgba(255,255,255,0.4); }
+.offre-hero-card.main .ohi-week { color: var(--gold); }
+.offre-hero-card.main .ohi-tag { color: var(--gold); }
+.ohi-top-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg,var(--gold),#A87860); color: white; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 14px; border-radius: 50px; white-space: nowrap; box-shadow: 0 4px 12px rgba(201,149,122,0.4); }
+.ohi-emoji { font-size: 1.5rem; margin-bottom: 8px; }
+.ohi-tag { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); font-weight: 700; margin-bottom: 5px; }
+.ohi-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+.ohi-desc { font-size: 0.81rem; color: var(--text-mid); line-height: 1.55; margin-bottom: 14px; }
+.ohi-items { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; flex: 1; }
+.ohi-item { font-size: 0.81rem; color: var(--text); display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+.ohi-item::before { content: '✓'; color: var(--rose-deep); font-weight: 700; flex-shrink: 0; }
+.ohi-price { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--dark); line-height: 1; }
+.ohi-price-sub { font-size: 0.74rem; color: var(--text-light); margin: 3px 0 8px; line-height: 1.4; }
+.ohi-week { font-size: 0.73rem; font-weight: 700; color: var(--rose-deep); margin-bottom: 16px; }
+.ohi-btn { display: block; text-align: center; padding: 13px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: all 0.3s; margin-top: auto; }
+.ohi-btn-dark { background: linear-gradient(135deg,var(--accent),#C09090); color: white; box-shadow: 0 4px 16px rgba(201,99,88,0.25); }
+.ohi-btn-gold { background: linear-gradient(135deg,var(--gold),#A87860); color: white; box-shadow: 0 4px 16px rgba(201,149,122,0.3); }
+.ohi-btn:hover { transform: translateY(-2px); }
+.ohi-cta-row { max-width: 900px; margin: 0 auto; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center; }
+.quelle-offre { max-width: 900px; margin: 28px auto 0; background: white; border-radius: 20px; padding: 22px 24px; border: 1px solid rgba(201,185,154,0.3); }
+.qo-title { font-size: 0.88rem; font-weight: 700; color: var(--dark); margin-bottom: 14px; }
+.qo-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.qo-item { background: var(--cream); border-radius: 14px; padding: 14px 14px; }
+.qo-if { font-size: 0.68rem; color: var(--text-light); font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 5px; }
+.qo-offre { font-size: 0.8rem; color: var(--text-mid); line-height: 1.4; }
+.qo-result { font-size: 0.78rem; color: var(--rose-deep); font-weight: 700; margin-top: 8px; }
+
 /* Mobile offres */
 @media (max-width: 768px) {
+  .trois-offres { grid-template-columns: 1fr !important; gap: 14px; }
+  .qo-grid { grid-template-columns: 1fr !important; gap: 8px; }
+  .ohi-cta-row { flex-direction: column; align-items: stretch; max-width: 380px; margin: 0 auto; }
+  #offres-hero { padding: 28px 14px 40px; }
+  .quelle-offre { padding: 18px 16px; }
   .forfaits-grid { grid-template-columns: 1fr !important; }
   .forfaits-grid-2 { grid-template-columns: 1fr !important; }
   .hybride-cards { grid-template-columns: 1fr !important; }
@@ -275,12 +318,103 @@
   <span class="section-label">Mes offres</span>
   <h1 class="section-title">L'accompagnement <em>fait pour toi</em></h1>
   <p class="section-subtitle">Coaching sur-mesure à domicile, hybride ou à distance — une formule pour chaque situation.</p>
-  <div style="margin-top:24px;display:inline-flex;gap:10px;flex-wrap:wrap;justify-content:center;">
-    <span style="background:rgba(201,99,88,0.12);border:1px solid rgba(201,99,88,0.28);color:var(--accent);font-size:0.8rem;font-weight:700;padding:6px 16px;border-radius:50px;">⚠️ Places limitées</span>
-    <span style="background:rgba(201,169,110,0.12);border:1px solid rgba(201,169,110,0.28);color:var(--brown);font-size:0.8rem;font-weight:600;padding:6px 16px;border-radius:50px;">✓ Séance découverte 50€ — déduite si engagement</span>
-    <span style="background:rgba(44,31,26,0.07);border:1px solid rgba(44,31,26,0.14);color:var(--dark);font-size:0.8rem;font-weight:600;padding:6px 16px;border-radius:50px;">🏆 Participante aux Championnats de France de Fitness</span>
+  <div style="margin-top:20px;display:inline-flex;gap:8px;flex-wrap:wrap;justify-content:center;">
+    <span style="background:rgba(201,99,88,0.12);border:1px solid rgba(201,99,88,0.28);color:var(--accent);font-size:0.78rem;font-weight:700;padding:5px 14px;border-radius:50px;">⚠️ 3 créneaux disponibles ce mois-ci</span>
+    <span style="background:rgba(201,169,110,0.12);border:1px solid rgba(201,169,110,0.28);color:var(--brown);font-size:0.78rem;font-weight:600;padding:5px 14px;border-radius:50px;">✓ Bilan offert — gratuit, sans engagement</span>
+    <span style="background:rgba(44,31,26,0.07);border:1px solid rgba(44,31,26,0.14);color:var(--dark);font-size:0.78rem;font-weight:600;padding:5px 14px;border-radius:50px;">🏆 Championne · Coach certifiée</span>
   </div>
 </div>
+
+<!-- 3 OFFRES PRINCIPALES -->
+<section id="offres-hero">
+  <div style="max-width:900px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:28px;">
+      <span class="section-label" style="font-size:0.7rem;">Choisir mon accompagnement</span>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.55rem,4vw,2.1rem);font-weight:600;color:var(--dark);line-height:1.2;margin-top:8px;">Les 3 formules <em>les plus choisies</em></h2>
+    </div>
+    <div class="trois-offres">
+      <!-- ESSENTIELLE -->
+      <div class="offre-hero-card">
+        <div class="ohi-emoji">💫</div>
+        <div class="ohi-tag">Coaching Hybride</div>
+        <div class="ohi-name">Essentielle</div>
+        <p class="ohi-desc">Pour avancer à son rythme. Présentiel + suivi à distance chaque mois.</p>
+        <ul class="ohi-items">
+          <li class="ohi-item">1 séance présentiel / mois</li>
+          <li class="ohi-item">Programme 100% sur-mesure</li>
+          <li class="ohi-item">Suivi WhatsApp à distance</li>
+          <li class="ohi-item">Ajustements mensuels</li>
+        </ul>
+        <div class="ohi-price">99€<span style="font-size:0.85rem;font-family:'DM Sans',sans-serif;font-weight:400;color:var(--text-light);"> / mois</span></div>
+        <div class="ohi-price-sub">Valeur réelle estimée : 140€</div>
+        <div class="ohi-week">≈ 23€ / semaine · 3× possible sur demande</div>
+        <a href="https://wa.me/33756834626" class="ohi-btn ohi-btn-dark" target="_blank">Je démarre →</a>
+      </div>
+      <!-- PERFORMANCE -->
+      <div class="offre-hero-card main">
+        <div class="ohi-top-badge">⭐ Offre la plus choisie</div>
+        <div class="ohi-emoji">🔥</div>
+        <div class="ohi-tag">Coaching Hybride</div>
+        <div class="ohi-name">Performance</div>
+        <p class="ohi-desc">Pour des résultats rapides. 2 séances / mois en présentiel + suivi serré.</p>
+        <ul class="ohi-items">
+          <li class="ohi-item">2 séances présentiel / mois</li>
+          <li class="ohi-item">Programme 100% sur-mesure</li>
+          <li class="ohi-item">Suivi personnalisé WhatsApp</li>
+          <li class="ohi-item">Ajustements + bilan mensuel</li>
+        </ul>
+        <div class="ohi-price">169€<span style="font-size:0.85rem;font-family:'DM Sans',sans-serif;font-weight:400;color:rgba(255,255,255,0.4);"> / mois</span></div>
+        <div class="ohi-price-sub">Valeur réelle : 230€ — tu économises 61€</div>
+        <div class="ohi-week">≈ 42€ / semaine · 3× possible sur demande</div>
+        <a href="https://wa.me/33756834626" class="ohi-btn ohi-btn-gold" target="_blank">Je veux ma transformation →</a>
+      </div>
+      <!-- DISTANCIEL -->
+      <div class="offre-hero-card">
+        <div class="ohi-emoji">💻</div>
+        <div class="ohi-tag">Coaching à distance</div>
+        <div class="ohi-name">100% en ligne</div>
+        <p class="ohi-desc">Tout l'accompagnement depuis chez toi, partout en France. Sans présentiel.</p>
+        <ul class="ohi-items">
+          <li class="ohi-item">Programme évolutif sur-mesure</li>
+          <li class="ohi-item">Vidéos de démonstration</li>
+          <li class="ohi-item">Suivi WhatsApp hebdomadaire</li>
+          <li class="ohi-item">Bilan mensuel + ajustements</li>
+        </ul>
+        <div class="ohi-price">89€<span style="font-size:0.85rem;font-family:'DM Sans',sans-serif;font-weight:400;color:var(--text-light);"> / mois</span></div>
+        <div class="ohi-price-sub">Sur 3 mois — ou 119€/mois sans engagement</div>
+        <div class="ohi-week">≈ 21€ / semaine · partout en France</div>
+        <a href="https://wa.me/33756834626" class="ohi-btn ohi-btn-dark" target="_blank">Je démarre à distance →</a>
+      </div>
+    </div>
+    <!-- CTAs doubles -->
+    <div class="ohi-cta-row">
+      <a href="https://wa.me/33756834626" class="btn-main" target="_blank">💬 Me contacter sur WhatsApp</a>
+      <a href="https://calendly.com/ornellafit-coaching" class="btn-calendly" target="_blank">📅 Réserver un appel offert (Calendly)</a>
+    </div>
+    <p style="text-align:center;font-size:0.76rem;color:var(--text-light);margin-top:10px;">✓ Bilan offert · Gratuit · Sans engagement · Paiement 3× sur demande</p>
+    <!-- Guide quelle offre -->
+    <div class="quelle-offre">
+      <div class="qo-title">🧭 Quelle offre est faite pour toi ?</div>
+      <div class="qo-grid">
+        <div class="qo-item">
+          <div class="qo-if">Tu veux avancer à ton rythme avec un peu d'encadrement</div>
+          <div class="qo-offre">Emploi du temps variable · Budget modéré</div>
+          <div class="qo-result">→ Essentielle 99€/mois 💫</div>
+        </div>
+        <div class="qo-item">
+          <div class="qo-if">Tu veux des résultats rapides et un suivi serré</div>
+          <div class="qo-offre">Motivée · Veut maximiser · Post-partum</div>
+          <div class="qo-result">→ Performance 169€/mois 🔥 ⭐</div>
+        </div>
+        <div class="qo-item">
+          <div class="qo-if">Tu habites loin ou tu voyages souvent</div>
+          <div class="qo-offre">Partout en France · Sans contrainte géo</div>
+          <div class="qo-result">→ Distanciel dès 89€/mois 💻</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- BANDEAU NOTE GOOGLE -->
 <div style="display:flex;align-items:center;justify-content:center;padding:32px 24px;background:white;">
@@ -297,38 +431,12 @@
   </div>
 </div>
 
-<!-- BILAN OFFERT -->
-<section style="background:white;padding:48px 24px;">
-  <div class="inner">
-    <div class="bilan-bloc">
-      <div class="bilan-titre">✦ Tout commence ici — Bilan personnalisé offert</div>
-      <p class="bilan-desc">Avant de commencer, je te propose un bilan personnalisé offert. Le but est simple : mieux comprendre ta situation, ton mode de vie et tes objectifs pour pouvoir t'orienter au mieux.</p>
-      <p class="bilan-desc" style="margin-top:8px;">Je prends tout en compte : alimentation, sommeil, habitudes, blessures éventuelles, traitements, organisation, niveau… Rien n'est laissé au hasard.</p>
-      <div class="bilan-items">
-        <div class="bilan-item">Tes objectifs & attentes</div>
-        <div class="bilan-item">Ton niveau sportif actuel</div>
-        <div class="bilan-item">Ton alimentation & sommeil</div>
-        <div class="bilan-item">Tes contraintes & douleurs</div>
-        <div class="bilan-item">Ton organisation & rythme</div>
-        <div class="bilan-item">Tes mensurations (à ton rythme)</div>
-      </div>
-      <div style="margin-top:22px;padding-top:18px;border-top:1px solid rgba(216,167,160,0.3);">
-        <p style="font-size:0.9rem;color:var(--dark);font-weight:600;margin-bottom:8px;">Tu peux commencer directement — ou faire un bilan pour avoir un plan clair.</p>
-        <p style="font-size:0.9rem;color:var(--text-light);margin-bottom:20px;">Le bilan ne t'engage à rien. Il me permet de construire quelque chose de vraiment adapté. Parfois, quelques ajustements suffisent déjà à faire la différence.</p>
-        <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
-          <a href="https://wa.me/33756834626" class="btn-main" target="_blank">
-            💬 Je commence avec Ornella → WhatsApp
-          </a>
-          <a href="https://wa.me/33756834626" class="btn-calendly" target="_blank">
-            📋 Faire mon bilan personnalisé offert (écrit)
-          </a>
-          <a href="https://wa.me/33756834626" class="btn-calendly" target="_blank">
-            📅 Réserver un appel offert (Calendly)
-          </a>
-        </div>
-        <p style="font-size:0.8rem;color:var(--text-light);margin-top:14px;font-style:italic;">✓ Gratuit · Sans obligation · Réponse rapide</p>
-      </div>
-    </div>
+<!-- BILAN OFFERT COMPACT -->
+<section style="background:white;padding:28px 24px 20px;">
+  <div class="inner" style="text-align:center;max-width:560px;">
+    <p style="font-size:0.92rem;color:var(--text-mid);margin-bottom:14px;">Pas sûre de quelle formule choisir ? <strong style="color:var(--dark);">Le bilan offert est fait pour ça</strong> — 20 min ensemble pour identifier ce qui te correspond vraiment.</p>
+    <a href="https://wa.me/33756834626" class="btn-main" target="_blank" style="display:inline-block;">💬 Je prends mon bilan gratuit →</a>
+    <p style="font-size:0.76rem;color:var(--text-light);margin-top:10px;">✓ Gratuit · Sans engagement · Réponse rapide</p>
   </div>
 </section>
 
