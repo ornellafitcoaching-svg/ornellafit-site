@@ -722,7 +722,7 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
     <a href="transformations.html" class="nav-link">Transformations</a>
     <a href="apropos.html" class="nav-link">À propos</a>
     <a href="blog.html" class="nav-link">Blog</a>
-    <a href="quiz.html" class="nav-link">Quiz</a>
+    <a href="quiz.html" class="nav-link">Mon coaching →</a>
     <a href="https://wa.me/33756834626" class="nav-cta" target="_blank">Bilan offert →</a>
   </div>
 </nav>
@@ -782,6 +782,22 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- BLOC RECOMMANDATION COACHING POST-HERO -->
+<section style="background:linear-gradient(135deg,#2C1F1A,#3D2B24);padding:44px 24px;">
+  <div style="max-width:560px;margin:0 auto;text-align:center;">
+    <div style="display:inline-block;background:rgba(201,149,122,0.18);border:1px solid rgba(201,149,122,0.35);color:#C9957A;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:5px 14px;border-radius:50px;margin-bottom:16px;">✨ Recommandation personnalisée</div>
+    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.75rem;font-weight:600;color:white;line-height:1.25;margin-bottom:10px;">Tu ne sais pas quelle offre choisir&nbsp;? 🤔</h2>
+    <p style="font-size:0.9rem;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:20px;">Je t'aide à trouver le coaching le plus adapté à ton objectif en 30 secondes.</p>
+    <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:24px;">
+      <span style="font-size:0.82rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:6px;">⚡ Simple</span>
+      <span style="font-size:0.82rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:6px;">⏱️ Rapide</span>
+      <span style="font-size:0.82rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:6px;">🎯 Personnalisé</span>
+    </div>
+    <a href="quiz.html" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#C96358,#C9957A);color:white;font-weight:700;font-size:0.95rem;padding:17px 32px;border-radius:50px;text-decoration:none;box-shadow:0 8px 28px rgba(201,99,88,0.4);">👉 Je trouve mon coaching</a>
+    <p style="font-size:0.72rem;color:rgba(255,255,255,0.35);margin-top:12px;">Gratuit · 4 questions · Résultat immédiat</p>
   </div>
 </section>
 
@@ -1477,6 +1493,18 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
   </div>
 </div>
 
+<!-- POPUP COACHING -->
+<div id="coaching-popup" style="display:none;position:fixed;bottom:80px;right:16px;z-index:999;max-width:300px;animation:slideUp 0.4s ease;">
+  <div style="background:linear-gradient(135deg,#2C1F1A,#3D2B24);border-radius:20px;padding:20px 18px;box-shadow:0 12px 40px rgba(0,0,0,0.25);border:1px solid rgba(201,149,122,0.2);position:relative;">
+    <button onclick="closeCoachingPopup()" style="position:absolute;top:10px;right:12px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.1rem;cursor:pointer;line-height:1;">×</button>
+    <div style="font-size:1.4rem;margin-bottom:8px;">🤔</div>
+    <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:600;color:white;line-height:1.3;margin-bottom:6px;">Tu hésites ?</div>
+    <p style="font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.55;margin-bottom:14px;">Je t'aide à choisir le bon coaching en 30 secondes.</p>
+    <a href="quiz.html" onclick="closeCoachingPopup()" style="display:block;text-align:center;background:linear-gradient(135deg,#C96358,#C9957A);color:white;font-weight:700;font-size:0.82rem;padding:11px 16px;border-radius:50px;text-decoration:none;">👉 Je trouve mon coaching</a>
+  </div>
+</div>
+<style>@keyframes slideUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }</style>
+
 <!-- STICKY MOBILE BAR -->
 <div class="mobile-sticky-bar">
   <a href="https://wa.me/33756834626" class="sticky-cta-main" target="_blank">Commencer maintenant</a>
@@ -1528,6 +1556,27 @@ function closeLead() {
   localStorage.setItem('leadDone', '1');
 }
 setTimeout(showLead, 9000);
+
+/* Popup coaching — apparaît après 25s si pas déjà vu */
+function closeCoachingPopup() {
+  document.getElementById('coaching-popup').style.display = 'none';
+  sessionStorage.setItem('coachingPopupSeen', '1');
+}
+setTimeout(function() {
+  if (!sessionStorage.getItem('coachingPopupSeen') && !localStorage.getItem('leadDone')) return;
+  if (!sessionStorage.getItem('coachingPopupSeen')) {
+    document.getElementById('coaching-popup').style.display = 'block';
+    sessionStorage.setItem('coachingPopupSeen', '1');
+  }
+}, 25000);
+window.addEventListener('scroll', function onCoachingScroll() {
+  if (sessionStorage.getItem('coachingPopupSeen')) { window.removeEventListener('scroll', onCoachingScroll); return; }
+  if ((window.scrollY / document.body.scrollHeight) > 0.55) {
+    document.getElementById('coaching-popup').style.display = 'block';
+    sessionStorage.setItem('coachingPopupSeen', '1');
+    window.removeEventListener('scroll', onCoachingScroll);
+  }
+}, { passive: true });
 window.addEventListener('scroll', function onLeadScroll() {
   if ((window.scrollY / document.body.scrollHeight) > 0.38) {
     showLead();
