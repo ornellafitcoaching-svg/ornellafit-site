@@ -18,8 +18,21 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
-body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+/* Forcer le mode clair sur tous les navigateurs (Instagram WebView, dark mode système) */
+html {
+  scroll-behavior: smooth; overflow-x: hidden;
+  color-scheme: light only;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+/* Neutraliser toute tentative de dark mode sur les éléments */
+@media (prefers-color-scheme: dark) {
+  html { background: #F7F3F0 !important; color: #1E1616 !important; }
+  body { background: #F7F3F0 !important; color: #1E1616 !important; }
+}
 h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 
 /* ===== NAV ===== */
