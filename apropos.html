@@ -53,12 +53,12 @@
 #story .inner { max-width: 780px; margin: 0 auto; position: relative; z-index: 1; }
 #story .section-label { color: var(--gold); }
 #story .section-title { color: white; }
-#story .section-title em { color: var(--rose); }
+#story .section-title em { color: #D4A5A5; }
 .story-narrative { margin-top: 48px; }
-.story-block { margin-bottom: 32px; }
+.story-block { margin-bottom: 0; }
 .story-para {
-  font-size: 1.05rem; color: rgba(255,255,255,0.85);
-  line-height: 1.95; font-weight: 400; margin-bottom: 14px;
+  font-size: 1.02rem; color: rgba(255,255,255,0.82);
+  line-height: 1.9; font-weight: 400; margin-bottom: 16px;
 }
 .story-para:last-child { margin-bottom: 0; }
 .story-para strong { color: white; font-weight: 600; }
@@ -67,7 +67,7 @@
   border-left: 3px solid var(--gold);
   border-radius: 0 16px 16px 0;
   padding: 28px 32px; margin: 40px 0;
-  font-size: 1.05rem; color: rgba(255,255,255,0.92);
+  font-size: 1.02rem; color: rgba(255,255,255,0.92);
   line-height: 1.9; font-weight: 400;
 }
 .story-highlight p { margin-bottom: 10px; }
@@ -89,6 +89,72 @@
   display: block; margin-top: 16px;
   font-size: 0.82rem; color: var(--gold);
   letter-spacing: 0.08em; text-transform: uppercase;
+}
+/* Phase labels */
+.story-phase {
+  display: flex; align-items: center; gap: 14px;
+  margin: 44px 0 20px;
+}
+.story-phase:first-child { margin-top: 0; }
+.story-phase-tag {
+  font-size: 0.67rem; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--gold); font-weight: 700; white-space: nowrap;
+}
+.story-phase-line {
+  flex: 1; height: 1px; background: rgba(201,169,110,0.22);
+}
+/* Pivot moment */
+.story-pivot {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(201,169,110,0.18);
+  border-radius: 16px; padding: 20px 24px; margin: 24px 0;
+}
+.story-pivot p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.12rem; font-style: italic;
+  color: rgba(255,255,255,0.88); line-height: 1.6; margin: 0;
+}
+/* Signature */
+.story-signature {
+  margin-top: 40px;
+  background: linear-gradient(135deg, rgba(201,99,88,0.15), rgba(201,99,88,0.07));
+  border: 1px solid rgba(201,99,88,0.25);
+  border-radius: 18px; padding: 24px 28px;
+}
+.story-signature p {
+  font-size: 0.98rem; color: white;
+  line-height: 1.75; margin: 0 0 8px;
+}
+.story-signature p:last-child { margin: 0; }
+.story-signature strong { color: #D4A5A5; }
+/* Video in story */
+.story-video-wrap {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,169,110,0.18);
+  border-radius: 20px; overflow: hidden; margin: 40px 0;
+}
+.story-video-wrap video {
+  width: 100%; display: block;
+  max-height: 400px; object-fit: cover;
+  background: #FAF7F2;
+}
+.story-video-caption {
+  padding: 16px 22px;
+}
+.story-video-caption strong {
+  display: block; font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--gold); margin-bottom: 4px;
+}
+.story-video-caption span {
+  font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.55;
+}
+@media (max-width: 768px) {
+  .story-para { font-size: 0.95rem; }
+  .story-highlight { padding: 18px 18px; }
+  .story-pivot p { font-size: 1rem; }
+  .story-signature { padding: 18px 20px; }
+  .story-video-wrap video { max-height: 280px; }
 }
 
 /* ===== MÉTHODE ===== */
@@ -215,12 +281,12 @@ h1, h2, h3 { opacity: 1 !important; mix-blend-mode: normal !important; }
 <!-- PAGE HEADER -->
 <div class="page-header">
   <span class="section-label">Mon histoire</span>
-  <h1 class="section-title">Je ne suis pas <em>née sportive.</em></h1>
-  <p class="section-subtitle">Je suis passée par où tu en es aujourd'hui. C'est précisément pour ça que je sais comment t'en sortir.</p>
+  <h1 class="section-title">Ado, j'étais celle qui se cachait<br><em>pour ne pas courir.</em></h1>
+  <p class="section-subtitle">Je ne suis pas née sportive. Je suis passée par chaque étape que tu vis. C'est pour ça que je sais exactement où tu en es — et comment en sortir.</p>
   <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
     <div style="display:flex;align-items:center;gap:8px;background:white;border:1px solid rgba(201,185,154,0.3);border-radius:50px;padding:8px 18px;box-shadow:0 2px 12px rgba(139,111,94,0.07);">
       <span style="font-size:1.1rem;">🏆</span>
-      <span style="font-size:0.82rem;font-weight:700;color:var(--dark);">Participante aux Championnats de France de Fitness</span>
+      <span style="font-size:0.82rem;font-weight:700;color:var(--dark);">Championnat de France de Fitness</span>
     </div>
     <div style="display:flex;align-items:center;gap:8px;background:white;border:1px solid rgba(201,185,154,0.3);border-radius:50px;padding:8px 18px;box-shadow:0 2px 12px rgba(139,111,94,0.07);">
       <span style="font-size:1.1rem;">👮‍♀️</span>
@@ -228,7 +294,7 @@ h1, h2, h3 { opacity: 1 !important; mix-blend-mode: normal !important; }
     </div>
     <div style="display:flex;align-items:center;gap:8px;background:white;border:1px solid rgba(201,185,154,0.3);border-radius:50px;padding:8px 18px;box-shadow:0 2px 12px rgba(139,111,94,0.07);">
       <span style="font-size:1.1rem;">🎓</span>
-      <span style="font-size:0.82rem;font-weight:700;color:var(--dark);">Coach diplômée · Spécialisée féminin</span>
+      <span style="font-size:0.82rem;font-weight:700;color:var(--dark);">Coach diplômée d'État</span>
     </div>
   </div>
 </div>
@@ -237,45 +303,91 @@ h1, h2, h3 { opacity: 1 !important; mix-blend-mode: normal !important; }
 <section id="story">
   <div class="inner">
     <span class="section-label">Mon parcours</span>
-    <h2 class="section-title">De là où je venais… <em>à ce que je suis devenue.</em></h2>
+    <h2 class="section-title">De là où je venais…<br><em>à ce que je suis devenue.</em></h2>
 
     <div class="story-narrative fade-in">
 
-      <div class="story-block">
-        <p class="story-para">Adolescente, j'étais en surpoids, et clairement… le sport, ce n'était pas mon truc. J'étais celle qui oubliait toujours ses affaires, qui se cachait derrière les bâtiments pour éviter de courir. Oui, vraiment.</p>
-        <p class="story-para">Je sais exactement ce que ça fait de ne pas se reconnaître dans son corps. De manquer de confiance. De ne pas se sentir à sa place.</p>
-        <p class="story-para">Je viens de province — ch'ti d'origine — avec ce côté simple, authentique, et une envie profonde d'aider les autres.</p>
+      <!-- ACTE I -->
+      <div class="story-phase">
+        <span class="story-phase-tag">Acte I — Le point de départ</span>
+        <span class="story-phase-line"></span>
       </div>
 
-      <div class="story-block">
-        <p class="story-para">C'est ce qui m'a poussée à entrer dans la police. Un métier exigeant, où j'ai appris la discipline, le mental, la rigueur. Mais au fond, je sentais que ce n'était pas suffisant. J'avais envie d'aider autrement. Plus profondément. Plus humainement.</p>
-        <p class="story-para">Alors je me suis formée. J'ai travaillé pendant des années. J'ai construit mon corps, étape par étape.</p>
-        <p class="story-para">Jusqu'à atteindre un niveau que je n'aurais jamais imaginé au départ : <strong>les championnats de France de fitness.</strong></p>
+      <p class="story-para">Adolescente, j'étais en surpoids.<br>Le sport, je l'évitais. Je trouvais toujours une excuse.</p>
+
+      <p class="story-para">En cours d'EPS, j'étais celle qui se cachait derrière les bâtiments pour ne pas courir. Celle qui "oubliait" ses affaires. Celle qui regardait les autres sans oser.</p>
+
+      <p class="story-para">Ce n'était pas de la paresse.<br>C'était de la honte.</p>
+
+      <div class="story-pivot">
+        <p>Je ne me reconnaissais pas dans mon corps. Je ne savais pas quoi en faire. Et je n'avais personne pour me montrer comment changer ça.</p>
       </div>
 
-      <div class="story-block">
-        <p class="story-para">Mais la vraie leçon est arrivée après. Une grossesse, avec alitement. Un corps qui change. Un corps qu'on ne contrôle plus. Et une reconstruction, depuis zéro.</p>
-        <p class="story-para">C'est là que tout a pris encore plus de sens. Parce que j'ai vécu les deux extrêmes : ne pas aimer mon corps… le transformer… et devoir le reconstruire complètement.</p>
+      <!-- ACTE II -->
+      <div class="story-phase">
+        <span class="story-phase-tag">Acte II — La discipline</span>
+        <span class="story-phase-line"></span>
       </div>
 
-      <div class="story-highlight">
-        <p>Aujourd'hui, je ne suis pas juste coach.</p>
-        <p>J'accompagne des femmes qui veulent reprendre le contrôle. Retrouver confiance. Se sentir fortes, alignées, et bien dans leur corps.</p>
-        <p>👉 <strong>Le corps est modulable.</strong> Peu importe d'où tu pars. Peu importe ton histoire.</p>
-        <p>Avec la bonne méthode, le bon accompagnement, et la bonne approche… tu peux transformer ton corps. Et je suis là pour t'y amener.</p>
+      <p class="story-para">C'est la police qui m'a structurée.</p>
+
+      <p class="story-para">Gardienne de la paix — un métier exigeant, avec des horaires décalés, un quotidien physiquement dur. J'ai appris ce que c'est de tenir malgré la fatigue. De continuer quand on n'a pas envie.</p>
+
+      <p class="story-para">J'ai commencé à aller en salle. Sérieusement. Mais je me suis perdue. Je faisais des choses sans résultats. Sans méthode, sans repères.</p>
+
+      <p class="story-para"><strong>Alors j'ai pris un coach.</strong></p>
+
+      <div class="story-pivot">
+        <p>Et là — tout a basculé. Pour la première fois, j'ai compris que ce n'était pas un manque de volonté. C'était un manque de méthode.</p>
+      </div>
+
+      <!-- ACTE III -->
+      <div class="story-phase">
+        <span class="story-phase-tag">Acte III — La compétition</span>
+        <span class="story-phase-line"></span>
+      </div>
+
+      <p class="story-para">Je n'avais pas un corps de compétitrice au départ. J'avais quelque chose d'autre : la conviction que le corps répond, si on lui donne les bons outils.</p>
+
+      <p class="story-para">J'ai travaillé. Longtemps. Rigoureusement. Avec un entraînement structuré, une diète précise, un mental à construire semaine après semaine.</p>
+
+      <p class="story-para"><strong>Jusqu'au Championnat de France de Fitness.</strong></p>
+
+      <p class="story-para">Je ne dis pas ça pour impressionner. Je le dis pour que tu comprennes quelque chose d'important :<br>je ne suis pas née avec ce corps. Je l'ai construit. Depuis zéro.</p>
+
+      <!-- ACTE IV -->
+      <div class="story-phase">
+        <span class="story-phase-tag">Acte IV — La vraie vie</span>
+        <span class="story-phase-line"></span>
+      </div>
+
+      <p class="story-para">Et puis est venue la grossesse. Avec alitement.</p>
+
+      <p class="story-para">Corps qui gonfle. Corps qu'on ne contrôle plus. Muscles qui disparaissent. Confiance qui part avec eux.</p>
+
+      <p class="story-para">Après — la vraie vie qui reprend. Bébé. Fatigue. Nuits courtes. Temps qui manque.</p>
+
+      <p class="story-para">Se reconstruire dans ces conditions, ce n'est pas glamour. Personne ne te félicite. Personne ne voit l'effort.</p>
+
+      <p class="story-para"><strong>Je l'ai fait. Pas parfaitement. Pas vite. Mais je l'ai fait.</strong></p>
+
+      <div class="story-pivot">
+        <p>C'est là que tout a pris sens. Ce n'est pas à la compétition que je suis devenue une vraie coach. C'est en reconstruisant ma vie de femme, de maman — avec toutes ses contraintes.</p>
       </div>
 
     </div>
+
+    <!-- PHOTOS -->
     <div class="story-photos">
       <div class="story-photo-card">
-        <img src="images/ornella-competition.jpg" alt="Ornella — De la rue à la compétition" class="story-photo-img" loading="lazy">
+        <img src="images/ornella-competition.jpg" alt="Ornella — Condition physique Championnat de France de Fitness" class="story-photo-img" loading="lazy">
         <div class="story-photo-caption">
           <span class="story-photo-label">Ma transformation 01</span>
-          Sans sport sans diète → Période de compétition
+          Aucune base sportive → Championnat de France
         </div>
       </div>
       <div class="story-photo-card">
-        <img src="images/ornella-transformation.jpg" alt="Ornella — Post-partum, reconstruction complète" class="story-photo-img" loading="lazy">
+        <img src="images/ornella-transformation.jpg" alt="Ornella — Reconstruction post-partum" class="story-photo-img" loading="lazy">
         <div class="story-photo-caption">
           <span class="story-photo-label">Ma transformation 02</span>
           Grossesse avec alitement → Reconstruction complète
@@ -283,23 +395,30 @@ h1, h2, h3 { opacity: 1 !important; mix-blend-mode: normal !important; }
       </div>
     </div>
 
-    <div style="margin:40px 0;">
-      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:20px;overflow:hidden;">
-        <video controls preload="metadata" playsinline
-          style="width:100%;max-height:480px;object-fit:cover;display:block;background:#1A110E;">
-          <source src="videos/video-course.mp4" type="video/mp4">
-        </video>
-        <div style="padding:18px 24px;">
-          <p style="font-size:0.85rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">La vraie vie</p>
-          <p style="font-size:0.95rem;color:rgba(255,255,255,0.85);line-height:1.6;">Un entraînement avec ma fille en poussette — parce que la vie de maman n'attend pas.</p>
-        </div>
+    <!-- VIDÉO -->
+    <div class="story-video-wrap">
+      <video controls preload="none" poster="images/poster-hero.jpg" playsinline style="width:100%;display:block;">
+        <source src="videos/video-course.mp4" type="video/mp4">
+      </video>
+      <div class="story-video-caption">
+        <strong>La vraie vie</strong>
+        <span>Un entraînement avec ma fille en poussette — parce que la vie de maman n'attend pas.</span>
       </div>
     </div>
 
-    <div class="story-quote">
-      <p>« Le corps est modulable à chaque étape de la vie. Je l'ai vécu. Je peux te le prouver. »</p>
-      <span>— Ornella, Ornella Fit Coaching</span>
+    <!-- AUJOURD'HUI -->
+    <div class="story-signature fade-in">
+      <p>Aujourd'hui je suis coach diplômée d'État.</p>
+      <p>Et ce qui me différencie, ce ne sont pas mes diplômes.</p>
+      <p>C'est que j'ai vécu chacune de ces étapes de l'intérieur.<br>L'ado qui n'aimait pas son corps. La sportive qui se perdait en salle. La compétitrice qui a tout donné. La maman qui a tout reconstruit.</p>
+      <p style="margin-top:14px;"><strong>Je ne te parle pas de théorie. Je l'ai vécu.</strong></p>
     </div>
+
+    <div class="story-quote">
+      <p>« Le corps est modulable à chaque étape de la vie.<br>Je l'ai prouvé sur moi-même.<br>Si moi j'ai pu le faire — toi aussi. »</p>
+      <span>— Ornella · Coach diplômée d'État</span>
+    </div>
+
   </div>
 </section>
 
