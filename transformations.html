@@ -389,7 +389,15 @@
 .vs-video-wrap {
   border-radius: 20px; overflow: hidden;
   box-shadow: 0 24px 64px rgba(0,0,0,0.45);
-  margin-bottom: 32px;
+  margin: 0 auto 32px;
+  max-width: 420px;
+  background: #FAF7F2;
+}
+.vs-video-wrap video {
+  width: 100%; display: block;
+  max-height: 72vh;
+  object-fit: contain;
+  background: #FAF7F2;
 }
 
 /* ===== AVIS ===== */
@@ -556,19 +564,16 @@ h1, h2, h3 { opacity: 1 !important; mix-blend-mode: normal !important; }
         </div>
 
         <div class="th-result">
-          <div class="th-result-label">La transformation</div>
-          <div class="th-result-stats">
-            <div class="th-stat">
-              <div class="th-stat-num">−8 cm</div>
-              <div class="th-stat-label">Tour de taille retrouvé, ventre plat</div>
+          <div class="th-result-label">Ce qui a changé</div>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:16px;">
+            <div style="display:flex;align-items:flex-start;gap:12px;">
+              <span style="font-size:1.1rem;flex-shrink:0;margin-top:3px;">🌑</span>
+              <p style="margin:0;font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.65;font-style:italic;">Un corps que je ne reconnaissais plus. Une confiance qui avait disparu. La fatigue comme état normal.</p>
             </div>
-            <div class="th-stat">
-              <div class="th-stat-num">↑</div>
-              <div class="th-stat-label">Fessiers galbés, silhouette redessinée</div>
-            </div>
-            <div class="th-stat">
-              <div class="th-stat-num">100%</div>
-              <div class="th-stat-label">Sans régime extrême, sans me tuer à la salle</div>
+            <div style="height:1px;background:rgba(255,255,255,0.08);"></div>
+            <div style="display:flex;align-items:flex-start;gap:12px;">
+              <span style="font-size:1.1rem;flex-shrink:0;margin-top:3px;">✨</span>
+              <p style="margin:0;font-size:0.88rem;color:rgba(255,255,255,0.88);line-height:1.65;font-weight:500;">Un corps fort, redessiné, qui me ressemble. De l'énergie retrouvée. La fierté de m'être prouvé que c'était possible.</p>
             </div>
           </div>
           <div class="th-feeling">« Je me suis prouvé que le corps est modulable à chaque étape de la vie. Si moi j'y suis arrivée — toi aussi. »</div>
@@ -755,7 +760,7 @@ h1, h2, h3 { opacity: 1 !important; mix-blend-mode: normal !important; }
     <h2 class="vs-title">Elle l'a fait.<br><em>Regarde par toi-même.</em></h2>
     <p class="vs-sub">Laura, 34 ans, maman de 2 enfants. 4 mois d'accompagnement à domicile. Voici ce que ça donne.</p>
     <div class="vs-video-wrap">
-      <video controls preload="metadata" style="width:100%;display:block;background:#1A110E;" playsinline>
+      <video controls preload="none" poster="images/poster-hero.jpg" playsinline style="width:100%;display:block;">
         <source src="videos/video-transformation.mov" type="video/mp4">
         <source src="videos/video-transformation.mov" type="video/quicktime">
       </video>
