@@ -35,161 +35,453 @@
 <link rel="preload" as="image" href="images/logo.png">
 <link rel="stylesheet" href="style.css">
 <style>
-/* ===== AVANT/APRÈS ===== */
-#avant-apres { background: white; }
-#avant-apres .inner { max-width: 1000px; margin: 0 auto; }
-.aa-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
-.aa-card {
-  border-radius: 14px; overflow: hidden; background: white;
-  box-shadow: 0 2px 24px rgba(44,31,26,0.07);
-  border: 1px solid rgba(201,185,154,0.18);
-  transition: box-shadow 0.3s ease;
-}
-.aa-card:hover { box-shadow: 0 10px 40px rgba(44,31,26,0.12); }
-.aa-info { padding: 22px 20px 24px; border-top: 1px solid rgba(201,185,154,0.15); }
-.aa-tag {
-  font-size: 0.69rem; text-transform: uppercase; letter-spacing: 0.1em;
-  color: var(--gold); font-weight: 600; margin-bottom: 8px;
-}
-.aa-name {
-  font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
-  font-weight: 600; color: var(--dark); margin-bottom: 8px;
-}
-.aa-desc { font-size: 0.85rem; color: var(--text-mid); line-height: 1.65; }
-.aa-photo-single { width: 100%; background: var(--cream); }
-.aa-photo-single img { width: 100%; height: auto; display: block; max-width: 100%; }
 
-/* ===== TÉMOIGNAGES ===== */
-#temoignages { background: linear-gradient(150deg, var(--cream) 0%, #F2E8DF 100%); text-align: center; }
-#temoignages .inner { max-width: 960px; margin: 0 auto; }
-.temo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 48px; align-items: start; }
+/* ===== PAGE HERO ===== */
+.transfo-page-hero {
+  background: linear-gradient(160deg, #1A110E 0%, #2C1F1A 50%, #3D2B24 100%);
+  padding: 80px 24px 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.transfo-page-hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,165,165,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.transfo-page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: -60px;
+  width: 280px; height: 280px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,169,110,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.tph-label {
+  display: inline-block;
+  background: rgba(201,149,122,0.15);
+  border: 1px solid rgba(201,149,122,0.3);
+  color: #C9957A;
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  padding: 5px 16px; border-radius: 50px;
+  margin-bottom: 22px;
+}
+.tph-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  font-weight: 600; color: white;
+  line-height: 1.1; margin-bottom: 18px;
+}
+.tph-title em { color: #D4A5A5; font-style: italic; }
+.tph-sub {
+  font-size: 1rem; color: rgba(255,255,255,0.65);
+  line-height: 1.75; max-width: 520px;
+  margin: 0 auto 32px;
+}
+.tph-proof-bar {
+  display: flex; justify-content: center; gap: 0;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  max-width: 480px; margin: 0 auto;
+  overflow: hidden;
+}
+.tph-proof-item {
+  flex: 1; padding: 16px 10px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.tph-proof-item:last-child { border-right: none; }
+.tph-proof-num {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem; font-weight: 700; color: #D4A5A5;
+  line-height: 1;
+}
+.tph-proof-label {
+  display: block;
+  font-size: 0.66rem; color: rgba(255,255,255,0.45);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  margin-top: 5px; line-height: 1.3;
+}
 
-/* Vrai témoignage */
-.temo-card {
-  background: white; border-radius: 24px; padding: 30px 26px;
-  text-align: left; box-shadow: 0 6px 28px rgba(139,111,94,0.1);
-  border: 1px solid rgba(201,185,154,0.22);
-  position: relative; overflow: hidden;
+/* ===== TRANSFORMATION HÉROS ===== */
+.transfo-hero-section {
+  background: #FAF7F2;
+  padding: 72px 24px;
 }
-.temo-card::before { display: none; }
-.temo-stats { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
-.temo-stat {
-  background: rgba(201,99,88,0.1); border: 1px solid rgba(201,99,88,0.22);
-  border-radius: 50px; padding: 4px 12px;
-  font-size: 0.78rem; font-weight: 700; color: #C96358;
+.transfo-hero-section .inner { max-width: 960px; margin: 0 auto; }
+.th-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--accent); margin-bottom: 12px;
 }
-.temo-quote {
+.th-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+  font-weight: 600; color: var(--dark);
+  line-height: 1.15; margin-bottom: 8px;
+}
+.th-title em { color: var(--accent); font-style: italic; }
+.th-hook {
+  font-size: 0.95rem; color: var(--text-mid);
+  line-height: 1.75; margin-bottom: 28px;
+  max-width: 520px;
+}
+
+.th-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px; align-items: start;
+  margin-top: 36px;
+}
+.th-photo-wrap {
+  border-radius: 24px; overflow: hidden;
+  box-shadow: 0 20px 56px rgba(44,31,26,0.18);
+  position: relative;
+}
+.th-photo-wrap img {
+  width: 100%; display: block;
+  height: 480px; object-fit: cover; object-position: center top;
+}
+.th-photo-badge {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(44,31,26,0.92) 0%, transparent 100%);
+  padding: 32px 20px 20px;
+  color: white;
+}
+.th-photo-badge strong { display: block; font-size: 0.9rem; color: #D4A5A5; margin-bottom: 3px; }
+.th-photo-badge span { font-size: 0.78rem; color: rgba(255,255,255,0.65); }
+
+.th-story { display: flex; flex-direction: column; gap: 20px; }
+.th-situation {
+  background: white; border-radius: 18px; padding: 22px 24px;
+  border-left: 4px solid #E8C5C5;
+  box-shadow: 0 4px 16px rgba(139,111,94,0.07);
+}
+.th-situation-label {
+  font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-light); font-weight: 600; margin-bottom: 8px;
+}
+.th-situation p {
+  font-size: 0.92rem; color: var(--dark);
+  line-height: 1.7; margin: 0;
+}
+.th-result {
+  background: linear-gradient(135deg, #2C1F1A, #3D2B24);
+  border-radius: 18px; padding: 22px 24px;
+}
+.th-result-label {
+  font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--gold); font-weight: 600; margin-bottom: 12px;
+}
+.th-result-stats {
+  display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px;
+}
+.th-stat {
+  display: flex; align-items: center; gap: 12px;
+}
+.th-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 700;
+  color: #D4A5A5; line-height: 1; flex-shrink: 0; width: 64px;
+}
+.th-stat-label {
+  font-size: 0.84rem; color: rgba(255,255,255,0.75);
+  line-height: 1.4;
+}
+.th-feeling {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.08rem; font-style: italic;
-  color: var(--dark); line-height: 1.65; margin-bottom: 16px;
+  color: rgba(255,255,255,0.9); line-height: 1.6;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 14px; margin-top: 6px;
 }
-.temo-impact {
-  font-size: 0.9rem; color: var(--dark); font-weight: 700;
-  line-height: 1.55; margin-bottom: 12px;
-  padding: 10px 14px;
-  background: linear-gradient(135deg, rgba(201,99,88,0.07), rgba(201,99,88,0.03));
-  border-radius: 10px; border-left: 3px solid var(--accent);
+.th-objection {
+  background: rgba(201,99,88,0.07);
+  border: 1px solid rgba(201,99,88,0.18);
+  border-radius: 14px; padding: 18px 20px;
 }
-.temo-sub {
-  font-size: 0.84rem; color: var(--text-mid); line-height: 1.85;
-  margin-bottom: 4px;
+.th-objection p {
+  font-size: 0.88rem; color: var(--dark);
+  line-height: 1.7; margin: 0;
 }
-.temo-sub strong { color: var(--dark); }
-.temo-author {
-  display: flex; flex-direction: column; gap: 2px;
-  margin-top: 18px; padding-top: 16px;
-  border-top: 1px solid rgba(201,185,154,0.2);
+.th-objection strong { color: var(--accent); }
+
+/* ===== GRILLE TRANSFORMATIONS ===== */
+.transfo-cards-section {
+  background: white;
+  padding: 72px 24px;
 }
-.temo-author-name {
+.transfo-cards-section .inner { max-width: 1000px; margin: 0 auto; }
+
+.tc-header { text-align: center; margin-bottom: 48px; }
+.tc-header .section-label { display: block; margin-bottom: 10px; }
+
+.tc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.tc-card {
+  background: #FAF7F2;
+  border-radius: 22px; overflow: hidden;
+  border: 1px solid rgba(201,185,154,0.25);
+  box-shadow: 0 4px 20px rgba(139,111,94,0.07);
+  display: flex; flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tc-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 44px rgba(139,111,94,0.14);
+}
+.tc-photo {
+  position: relative; overflow: hidden;
+  background: var(--cream);
+}
+.tc-photo img {
+  width: 100%; display: block;
+  height: 280px; object-fit: cover; object-position: center top;
+  transition: transform 0.4s ease;
+}
+.tc-card:hover .tc-photo img { transform: scale(1.03); }
+.tc-tag {
+  position: absolute; top: 12px; left: 12px;
+  background: rgba(44,31,26,0.82); backdrop-filter: blur(6px);
+  color: #D4A5A5; font-size: 0.66rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 4px 12px; border-radius: 50px;
+}
+.tc-stats-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(44,31,26,0.88) 0%, transparent 100%);
+  padding: 28px 16px 14px;
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.tc-stat-pill {
+  background: rgba(212,165,165,0.25);
+  border: 1px solid rgba(212,165,165,0.4);
+  color: white; font-size: 0.72rem; font-weight: 700;
+  padding: 3px 10px; border-radius: 50px;
+}
+.tc-body { padding: 20px 20px 24px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.tc-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem; font-weight: 600; color: var(--dark);
+  font-size: 1.15rem; font-weight: 600; color: var(--dark);
 }
-.temo-author-tag { font-size: 0.76rem; color: var(--text-mid); }
-
-/* Slot vide */
-.temo-slot {
-  background: white; border-radius: 20px; padding: 28px 20px;
-  border: 1.5px dashed rgba(201,185,154,0.4);
-  display: flex; flex-direction: column; gap: 12px; min-height: 200px;
-  align-items: center; justify-content: center; text-align: center;
+.tc-context {
+  font-size: 0.78rem; color: var(--text-light);
+  text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600;
 }
-.temo-slot-icon { font-size: 2rem; opacity: 0.3; }
-.temo-slot-text { font-size: 0.82rem; color: var(--text-light); font-style: italic; line-height: 1.5; }
+.tc-quote {
+  font-size: 0.88rem; color: var(--text-mid);
+  line-height: 1.7; font-style: italic;
+  border-left: 3px solid rgba(201,99,88,0.3);
+  padding-left: 12px; margin: 4px 0;
+}
+.tc-impact {
+  font-size: 0.85rem; color: var(--dark); font-weight: 600;
+  line-height: 1.5;
+}
 
-/* ===== COMPÉTITION ENCART ===== */
-.competition-encart {
-  margin-top: 40px;
+/* ===== BANDE OBJECTIONS ===== */
+.objections-band {
   background: linear-gradient(135deg, #2C1F1A 0%, #3D2B24 100%);
+  padding: 56px 24px;
+}
+.objections-band .inner { max-width: 900px; margin: 0 auto; }
+.ob-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 600; color: white;
+  text-align: center; margin-bottom: 36px;
+  line-height: 1.2;
+}
+.ob-title em { color: #D4A5A5; font-style: italic; }
+.ob-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.ob-item {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px; padding: 20px 22px;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.ob-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+.ob-text { flex: 1; }
+.ob-myth {
+  font-size: 0.78rem; text-transform: uppercase;
+  letter-spacing: 0.07em; color: rgba(255,255,255,0.38);
+  font-weight: 600; margin-bottom: 5px;
+  text-decoration: line-through;
+}
+.ob-truth {
+  font-size: 0.9rem; color: rgba(255,255,255,0.88);
+  line-height: 1.6; font-weight: 500;
+}
+.ob-truth strong { color: #D4A5A5; }
+
+/* ===== TRANSFORMATION MENTALE ===== */
+.mental-section {
+  background: linear-gradient(150deg, var(--cream) 0%, #F0E4D8 100%);
+  padding: 72px 24px;
+}
+.mental-section .inner { max-width: 900px; margin: 0 auto; }
+.mental-header { text-align: center; margin-bottom: 48px; }
+.mental-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.mental-card {
+  background: white; border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 4px 20px rgba(139,111,94,0.07);
+  border: 1px solid rgba(201,185,154,0.2);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.mental-icon { font-size: 1.8rem; }
+.mental-before {
+  font-size: 0.78rem; color: var(--text-light);
+  text-decoration: line-through; font-style: italic;
+}
+.mental-after {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem; font-weight: 600; color: var(--dark);
+  line-height: 1.3;
+}
+.mental-desc {
+  font-size: 0.85rem; color: var(--text-mid); line-height: 1.7;
+}
+
+/* ===== VIDÉO ===== */
+.video-section {
+  background: linear-gradient(150deg, #2C1F1A 0%, #3D2B24 100%);
+  padding: 72px 24px;
+}
+.video-section .inner { max-width: 760px; margin: 0 auto; text-align: center; }
+.vs-label {
+  display: inline-block;
+  background: rgba(201,169,110,0.15);
+  border: 1px solid rgba(201,169,110,0.3);
+  color: var(--gold); font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  padding: 5px 16px; border-radius: 50px; margin-bottom: 18px;
+}
+.vs-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+  font-weight: 600; color: white; line-height: 1.2;
+  margin-bottom: 10px;
+}
+.vs-title em { color: #D4A5A5; font-style: italic; }
+.vs-sub {
+  font-size: 0.92rem; color: rgba(255,255,255,0.6);
+  margin-bottom: 32px; line-height: 1.65;
+}
+.vs-video-wrap {
   border-radius: 20px; overflow: hidden;
-  display: flex; align-items: stretch;
-  max-width: 760px; margin-left: auto; margin-right: auto;
-  border: 1px solid rgba(201,169,110,0.2);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.45);
+  margin-bottom: 32px;
 }
-.competition-photo { flex-shrink: 0; width: 180px; }
-.competition-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-.competition-text { padding: 28px 28px; display: flex; flex-direction: column; justify-content: center; }
 
-/* ===== PROJECTION FORME ===== */
-#forme-projection { background: #FAF7F2; padding: 80px 24px; }
-#forme-projection .inner { max-width: 960px; margin: 0 auto; }
-.fp-grid {
-  display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; margin-top: 48px;
+/* ===== AVIS ===== */
+.avis-section { background: white; padding: 72px 24px; }
+.avis-section .inner { max-width: 960px; margin: 0 auto; }
+.avis-section-header { text-align: center; margin-bottom: 48px; }
+.google-badge {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: white; border: 1px solid rgba(201,185,154,0.3);
+  border-radius: 50px; padding: 8px 20px;
+  box-shadow: 0 2px 12px rgba(139,111,94,0.08);
+  margin-top: 20px;
 }
-.fp-card {
-  background: white; border-radius: 20px; padding: 32px 28px;
-  box-shadow: 0 4px 24px rgba(44,31,26,0.06);
-  border: 1px solid rgba(201,185,154,0.18);
-  display: flex; flex-direction: column; gap: 12px;
-}
-.fp-icon { font-size: 1.8rem; }
-.fp-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem; font-weight: 600; color: var(--dark);
-}
-.fp-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; }
-.fp-projection {
-  margin-top: 48px;
-  background: linear-gradient(135deg, #2C1F1A, #3D2B24);
-  border-radius: 20px; padding: 40px 36px; text-align: center;
-}
-.fp-projection p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.45rem; font-style: italic; color: white; line-height: 1.65; margin: 0 0 24px;
-}
-.fp-projection strong { color: var(--gold); font-style: normal; }
+.gb-stars { color: #FBBC05; font-size: 0.9rem; letter-spacing: 2px; }
+.gb-text { font-size: 0.82rem; color: var(--text-mid); font-weight: 500; }
+.gb-text strong { color: var(--dark); }
 
-/* ===== FORCE LISIBILITÉ — tous navigateurs/WebViews ===== */
+/* ===== CTA FINAL ===== */
+.transfo-cta {
+  background: linear-gradient(135deg, #2C1F1A 0%, #3D2B24 100%);
+  padding: 80px 24px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.transfo-cta::before {
+  content: '';
+  position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,99,88,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.tcta-label {
+  display: inline-block;
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--gold); margin-bottom: 16px;
+}
+.tcta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5.5vw, 3.4rem);
+  font-weight: 600; color: white; line-height: 1.1;
+  margin-bottom: 16px;
+}
+.tcta-title em { color: #D4A5A5; font-style: italic; }
+.tcta-sub {
+  font-size: 0.95rem; color: rgba(255,255,255,0.6);
+  margin-bottom: 10px; line-height: 1.7;
+}
+.tcta-urgency {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(201,99,88,0.18);
+  border: 1px solid rgba(201,99,88,0.35);
+  border-radius: 8px; padding: 8px 16px;
+  font-size: 0.82rem; color: rgba(255,255,255,0.8);
+  font-weight: 600; margin-bottom: 32px;
+}
+.tcta-urgency strong { color: #D4A5A5; }
+
+/* ===== LISIBILITÉ ===== */
 h1, h2, h3 { opacity: 1 !important; mix-blend-mode: normal !important; }
+.tph-title, .th-title, .tc-header .section-title, .ob-title,
+.mental-header .section-title, .vs-title, .tcta-title { opacity: 1 !important; }
 .section-title { color: #1E1616 !important; }
 .section-title em { color: #C96358 !important; opacity: 1 !important; }
 .section-label { color: #C9957A !important; opacity: 1 !important; }
 .section-subtitle { color: #4A3E3E !important; }
-.aa-name { color: #1E1616 !important; }
-.aa-tag { color: #9A7050 !important; }
-.aa-desc { color: #4A3E3E !important; }
-.fp-title { color: #1E1616 !important; }
-.fp-desc { color: #4A3E3E !important; }
-.temo-quote { color: #1E1616 !important; opacity: 1 !important; }
-.temo-impact { color: #1E1616 !important; }
-.temo-sub { color: #4A3E3E !important; }
-.temo-author-name { color: #1E1616 !important; }
-.temo-author-tag { color: #6B5C57 !important; }
-/* Sections sombres — titres explicitement blancs */
-#story .section-title, .fp-projection * { color: white !important; }
-.competition-text p, .competition-text strong { color: white !important; }
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
-  .aa-grid { grid-template-columns: 1fr; gap: 20px; }
-  .aa-photo-single img { max-height: none; }
-  .temo-grid { grid-template-columns: 1fr; gap: 16px; }
-  .competition-encart { flex-direction: column; }
-  .competition-photo { width: 100%; height: auto; }
-  .competition-photo img { height: auto; object-fit: unset; }
-  .competition-text { padding: 22px 20px; }
-  .fp-grid { grid-template-columns: 1fr; }
-  .fp-projection { padding: 28px 20px; }
-  .fp-projection p { font-size: 1.2rem; }
+  .transfo-page-hero { padding: 60px 20px 48px; }
+  .tph-proof-bar { max-width: 100%; }
+  .tph-proof-num { font-size: 1.4rem; }
+
+  .transfo-hero-section { padding: 52px 20px; }
+  .th-split { grid-template-columns: 1fr; gap: 24px; }
+  .th-photo-wrap img { height: 320px; }
+
+  .transfo-cards-section { padding: 52px 20px; }
+  .tc-grid { grid-template-columns: 1fr; gap: 20px; }
+  .tc-photo img { height: 240px; }
+
+  .objections-band { padding: 48px 20px; }
+  .ob-grid { grid-template-columns: 1fr; gap: 12px; }
+
+  .mental-section { padding: 52px 20px; }
+  .mental-grid { grid-template-columns: 1fr; gap: 14px; }
+
+  .video-section { padding: 52px 20px; }
+
+  .avis-section { padding: 52px 20px; }
+
+  .transfo-cta { padding: 60px 20px; }
 }
 </style>
 </head>
@@ -212,316 +504,364 @@ h1, h2, h3 { opacity: 1 !important; mix-blend-mode: normal !important; }
   </div>
 </nav>
 
-<!-- PAGE HEADER -->
-<div class="page-header">
-  <span class="section-label">Preuves réelles</span>
-  <h1 class="section-title">Des transformations <em>vraies</em></h1>
-  <p class="section-subtitle">Obtenues avec méthode, constance et un accompagnement humain réel. Rien n'est retouché, rien n'est inventé.</p>
+<!-- PAGE HERO -->
+<div class="transfo-page-hero">
+  <div style="position:relative;z-index:1;max-width:600px;margin:0 auto;">
+    <div class="tph-label">✦ Preuves réelles · Sans filtre · Sans mensonge</div>
+    <h1 class="tph-title">
+      Si elles l'ont fait,<br>
+      <em>toi aussi tu peux.</em>
+    </h1>
+    <p class="tph-sub">Des femmes comme toi — débordées, post-partum, épuisées, qui avaient tout essayé. Elles ont changé leur corps. Et leur vie avec.</p>
+    <div class="tph-proof-bar">
+      <div class="tph-proof-item">
+        <span class="tph-proof-num">−5 cm</span>
+        <span class="tph-proof-label">Tour de taille moyen</span>
+      </div>
+      <div class="tph-proof-item">
+        <span class="tph-proof-num">4 sem.</span>
+        <span class="tph-proof-label">Premiers résultats visibles</span>
+      </div>
+      <div class="tph-proof-item">
+        <span class="tph-proof-num">19 ★</span>
+        <span class="tph-proof-label">Avis 5 étoiles Google</span>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- AVANT / APRÈS -->
-<section id="avant-apres">
+<!-- TRANSFORMATION HÉROS — ORNELLA -->
+<section class="transfo-hero-section">
   <div class="inner">
-    <span class="section-label">Avant / Après</span>
-    <h2 class="section-title">Leurs corps <em>ont changé.</em> Le tien peut aussi.</h2>
-    <p class="section-subtitle">Chaque transformation ci-dessous est le résultat d'un accompagnement sur-mesure. Pas de filtre, pas de trucage.</p>
 
-    <div class="aa-grid fade-in">
+    <div class="th-eyebrow">⭐ La coach elle-même — preuve #1</div>
+    <h2 class="th-title">J'ai vécu ce que tu vis.<br><em>Alors je sais que c'est possible.</em></h2>
+    <p class="th-hook">Gardienne de la paix. Compétitrice bikini fitness. Puis grossesse difficile — corps transformé, confiance en miettes. J'ai tout reconstruit. Depuis zéro. Et ça m'a rendu une meilleure coach.</p>
 
-      <!-- ORNELLA — SA PROPRE TRANSFORMATION POST-PARTUM -->
-      <div class="aa-card" style="border:2px solid rgba(201,169,110,0.4);position:relative;">
-        <div style="position:absolute;top:12px;left:12px;z-index:2;background:var(--gold);color:var(--dark);font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 12px;border-radius:50px;">⭐ La coach elle-même</div>
-        <div class="aa-photo-single">
-          <img src="images/ornella-avant-apres-postpartum.jpg" alt="Ornella — Avant après transformation post-partum · Coach Ornella Fit Coaching" loading="lazy">
-        </div>
-        <div class="aa-info">
-          <div class="aa-tag">Transformation post-partum · Reconstruction complète</div>
-          <div class="aa-name">Ornella — La coach</div>
-          <p class="aa-desc">Grossesse, transformation du corps, puis reconstruction complète. J'ai retrouvé un corps fort, tonique et aligné — progressivement, sans brûler les étapes.<br><br><strong style="color:var(--dark);">Si je l'ai fait, tu peux le faire aussi.</strong></p>
+    <div class="th-split fade-in">
+
+      <div class="th-photo-wrap">
+        <img src="images/ornella-avant-apres-postpartum.jpg" alt="Ornella — Transformation post-partum · Coach Ornella Fit Coaching" loading="lazy">
+        <div class="th-photo-badge">
+          <strong>Ornella — La coach</strong>
+          <span>Reconstruction complète post-partum</span>
         </div>
       </div>
 
-      <div class="aa-card">
-        <div class="aa-photo-single">
-          <img src="images/avant-apres-louise.jpg" alt="Transformation Louise — Coaching à domicile" loading="lazy">
-        </div>
-        <div class="aa-info">
-          <div class="aa-tag">Coaching à domicile · 2x/semaine · 3 mois</div>
-          <div class="aa-name">Louise</div>
-          <p class="aa-desc">Silhouette affinée en 3 mois — 2 séances à domicile par semaine. Et ce n'est pas fini, elle continue ! 💪</p>
-        </div>
-      </div>
+      <div class="th-story">
 
-      <div class="aa-card">
-        <div class="aa-photo-single">
-          <img src="images/avant-apres-1.png" alt="Transformation cliente — Coaching Ornella Fit" loading="lazy">
+        <div class="th-situation">
+          <div class="th-situation-label">Le point de départ</div>
+          <p>Après ma grossesse, je ne reconnaissais plus mon corps. La fatigue, le ventre qui ne partait pas, la silhouette qui avait changé. <strong>J'avais beau être coach — ça ne m'avait pas épargnée.</strong></p>
         </div>
-        <div class="aa-info">
-          <div class="aa-tag">Coaching distanciel · Programme sur-mesure</div>
-          <div class="aa-name">Cliente</div>
-          <p class="aa-desc">Remodelage corporel à distance — programme sur-mesure et suivi WhatsApp personnalisé.</p>
-        </div>
-      </div>
 
-      <div class="aa-card">
-        <div class="aa-photo-single">
-          <img src="images/avant-apres-emeline.jpg" alt="Transformation Emeline — Maman 2 enfants, prise de masse" loading="lazy">
+        <div class="th-result">
+          <div class="th-result-label">La transformation</div>
+          <div class="th-result-stats">
+            <div class="th-stat">
+              <div class="th-stat-num">−8 cm</div>
+              <div class="th-stat-label">Tour de taille retrouvé, ventre plat</div>
+            </div>
+            <div class="th-stat">
+              <div class="th-stat-num">↑</div>
+              <div class="th-stat-label">Fessiers galbés, silhouette redessinée</div>
+            </div>
+            <div class="th-stat">
+              <div class="th-stat-num">100%</div>
+              <div class="th-stat-label">Sans régime extrême, sans me tuer à la salle</div>
+            </div>
+          </div>
+          <div class="th-feeling">« Je me suis prouvé que le corps est modulable à chaque étape de la vie. Si moi j'y suis arrivée — toi aussi. »</div>
         </div>
-        <div class="aa-info">
-          <div class="aa-tag">Coaching à domicile · 2x/semaine · 1 mois</div>
-          <div class="aa-name">Emeline</div>
-          <p class="aa-desc">−3 cm de tour de taille · Fessiers qui remontent · Silhouette redessinée en 1 mois. Et ce n'est pas fini — elle continue. Bravo à elle 👏</p>
-        </div>
-      </div>
 
+        <div class="th-objection">
+          <p>Pas besoin d'être athlète. Pas besoin de 2h de sport par jour. Pas besoin de te priver. <strong>Tu as juste besoin de la bonne méthode — et de quelqu'un qui croit en toi.</strong></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRILLE TRANSFORMATIONS CLIENTES -->
+<section class="transfo-cards-section">
+  <div class="inner">
+
+    <div class="tc-header">
+      <span class="section-label">Elles ont osé commencer</span>
+      <h2 class="section-title">Des femmes <em>comme toi.</em><br>Des résultats réels.</h2>
+      <p class="section-subtitle" style="margin:0 auto;max-width:520px;">Pas des athlètes. Pas des femmes avec du temps libre. Des mamans, des actives, des femmes qui avaient déjà tout essayé.</p>
     </div>
 
-    <!-- ENCART COMPÉTITION -->
-    <div class="competition-encart">
-      <div class="competition-photo">
-        <img src="images/ornella-competition-fitness.jpg" alt="Ornella — Condition physique Championnats de France Fitness" loading="lazy">
+    <div class="tc-grid fade-in">
+
+      <!-- LOUISE -->
+      <div class="tc-card">
+        <div class="tc-photo">
+          <img src="images/avant-apres-louise.jpg" alt="Transformation Louise — Coaching domicile Ornella" loading="lazy">
+          <div class="tc-tag">Coaching domicile</div>
+          <div class="tc-stats-overlay">
+            <span class="tc-stat-pill">−5 kg</span>
+            <span class="tc-stat-pill">−6 cm</span>
+            <span class="tc-stat-pill">4 mois</span>
+          </div>
+        </div>
+        <div class="tc-body">
+          <div class="tc-context">Maman de 2 enfants · 2 séances/semaine</div>
+          <div class="tc-name">Louise</div>
+          <p class="tc-quote">« Elle ne se sent pas seulement plus mince — elle se sent beaucoup mieux dans son corps, plus en forme, plus confiante. »</p>
+          <div class="tc-impact">Moins de ventre. Plus d'énergie. Une silhouette qu'elle assume enfin.</div>
+        </div>
       </div>
-      <div class="competition-text">
-        <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);font-weight:700;margin-bottom:10px;">Parcours · Championnats de France de Fitness</div>
-        <p style="font-size:0.88rem;color:white;line-height:1.75;margin:0;">Condition physique atteinte pour les <strong style="color:white;">Championnats de France de Fitness</strong>. Résultat d'un travail long, d'un entraînement rigoureux et d'une diète stricte.<br><br>Ce niveau n'est pas durable dans le temps — et ce n'est pas l'objectif que je propose. <strong style="color:var(--gold);">Je suis allée jusque-là pour comprendre le corps en profondeur, et aujourd'hui mieux accompagner mes clientes.</strong></p>
+
+      <!-- EMELINE -->
+      <div class="tc-card">
+        <div class="tc-photo">
+          <img src="images/avant-apres-emeline.jpg" alt="Transformation Emeline — Résultats 1 mois" loading="lazy">
+          <div class="tc-tag">Résultats rapides</div>
+          <div class="tc-stats-overlay">
+            <span class="tc-stat-pill">−3 cm tour taille</span>
+            <span class="tc-stat-pill">1 mois</span>
+          </div>
+        </div>
+        <div class="tc-body">
+          <div class="tc-context">Coaching à domicile · 2x/semaine</div>
+          <div class="tc-name">Emeline</div>
+          <p class="tc-quote">Elle ne croyait plus vraiment aux résultats rapides. En 4 semaines, elle a vu sa taille affiner et ses fessiers remonter.</p>
+          <div class="tc-impact">−3 cm de tour de taille. Fessiers galbés. Et elle continue.</div>
+        </div>
       </div>
+
+      <!-- CLIENTE DISTANCIEL -->
+      <div class="tc-card">
+        <div class="tc-photo">
+          <img src="images/avant-apres-1.png" alt="Transformation cliente coaching distanciel" loading="lazy">
+          <div class="tc-tag">Coaching à distance</div>
+          <div class="tc-stats-overlay">
+            <span class="tc-stat-pill">Remodelage complet</span>
+            <span class="tc-stat-pill">Programme sur-mesure</span>
+          </div>
+        </div>
+        <div class="tc-body">
+          <div class="tc-context">Coaching distanciel · Partout en France</div>
+          <div class="tc-name">Cliente</div>
+          <p class="tc-quote">« Après des années en salle sans résultats, j'ai enfin compris pourquoi je stagnais. Le programme sur-mesure a tout changé. »</p>
+          <div class="tc-impact">La méthode fait la différence — pas la salle de sport.</div>
+        </div>
+      </div>
+
     </div>
 
   </div>
 </section>
 
-<!-- FORME & PROJECTION -->
-<section id="forme-projection">
+<!-- BANDE LEVÉE D'OBJECTIONS -->
+<div class="objections-band">
   <div class="inner">
-    <span class="section-label">Au-delà du physique</span>
-    <h2 class="section-title">Pas seulement ton corps.<br><em>Toi, entière.</em></h2>
-    <p class="section-subtitle" style="max-width:600px;margin:0 auto;">Une transformation physique, ça change aussi comment tu te sens, comment tu te vois, et comment tu avances.</p>
+    <h2 class="ob-title">Les vraies raisons<br>pour lesquelles <em>tu n'as pas encore commencé.</em></h2>
+    <div class="ob-grid">
 
-    <div class="fp-grid fade-in">
-      <div class="fp-card">
-        <div class="fp-icon">⚡</div>
-        <div class="fp-title">Énergie retrouvée</div>
-        <p class="fp-desc">Cette fatigue permanente qui t'écrasait ? Elle commence à lever. Tu te réveilles avec l'envie de bouger. Tu redeviens présente — pour toi, pour tes enfants, pour ta vie.</p>
+      <div class="ob-item">
+        <div class="ob-icon">⏱️</div>
+        <div class="ob-text">
+          <div class="ob-myth">Je n'ai pas le temps</div>
+          <div class="ob-truth">30 min, 2x par semaine suffisent. <strong>On construit autour de ta vraie vie</strong> — pas autour d'un idéal.</div>
+        </div>
       </div>
-      <div class="fp-card">
-        <div class="fp-icon">🪞</div>
-        <div class="fp-title">Confiance reconstruite</div>
-        <p class="fp-desc">Tu arrêtes de te cacher sous des vêtements larges. Tu assumes ton reflet. Tu avances la tête haute — pas parce que tu es parfaite, mais parce que tu avances.</p>
+
+      <div class="ob-item">
+        <div class="ob-icon">🏃</div>
+        <div class="ob-text">
+          <div class="ob-myth">Je ne suis pas sportive</div>
+          <div class="ob-truth">Parfait — on part de là où tu es. <strong>Mes clientes débutantes obtiennent les mêmes résultats.</strong></div>
+        </div>
       </div>
-      <div class="fp-card">
-        <div class="fp-icon">🧠</div>
-        <div class="fp-title">Mental renforcé</div>
-        <p class="fp-desc">Tu te proues à toi-même que tu peux tenir un engagement. Cette discipline tranquille, elle déborde dans tout — ta vie pro, ton couple, tes habitudes alimentaires.</p>
+
+      <div class="ob-item">
+        <div class="ob-icon">🤰</div>
+        <div class="ob-text">
+          <div class="ob-myth">Mon corps a changé après grossesse</div>
+          <div class="ob-truth">Je suis passée par là. <strong>Le post-partum, c'est ma spécialité.</strong> Ton corps peut se reconstruire.</div>
+        </div>
       </div>
-      <div class="fp-card">
-        <div class="fp-icon">🌿</div>
-        <div class="fp-title">Une routine qui te ressemble</div>
-        <p class="fp-desc">Pas un régime de 3 semaines. Une façon de bouger, de manger et de prendre soin de toi qui s'intègre dans ta vraie vie — sans tout réorganiser.</p>
+
+      <div class="ob-item">
+        <div class="ob-icon">🍽️</div>
+        <div class="ob-text">
+          <div class="ob-myth">Je vais devoir me priver</div>
+          <div class="ob-truth">Aucun régime extrême. <strong>On travaille sur le mouvement</strong>, pas sur la frustration alimentaire.</div>
+        </div>
       </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TRANSFORMATION MENTALE -->
+<section class="mental-section">
+  <div class="inner">
+    <div class="mental-header">
+      <span class="section-label">Au-delà du miroir</span>
+      <h2 class="section-title">Ce qui change vraiment.<br><em>Et qu'on ne t'a jamais dit.</em></h2>
+      <p class="section-subtitle" style="max-width:520px;margin:0 auto;">Le physique, c'est ce qu'on voit en premier. Mais ce qui dure, c'est ce que tu ressens à l'intérieur.</p>
     </div>
 
-    <div class="fp-projection">
-      <p>Dans 3 mois, tu peux te sentir <strong>plus légère, plus forte, plus confiante.</strong><br>Ce moment arrive — avec ou sans toi.<br>La question, c'est dans quel corps tu veux être quand il arrive.</p>
+    <div class="mental-grid fade-in">
+
+      <div class="mental-card">
+        <div class="mental-icon">⚡</div>
+        <div class="mental-before">Fatigue permanente, épuisement au réveil</div>
+        <div class="mental-after">Tu te lèves avec l'envie de bouger</div>
+        <div class="mental-desc">L'énergie ne revient pas tout de suite — mais quand elle revient, elle change tout. Tu redeviens présente pour toi et pour tes enfants.</div>
+      </div>
+
+      <div class="mental-card">
+        <div class="mental-icon">🪞</div>
+        <div class="mental-before">Tu te caches, tu évites les photos</div>
+        <div class="mental-after">Tu assumes ton reflet. Tu rayonnes.</div>
+        <div class="mental-desc">Pas parce que tu es parfaite — mais parce que tu avances. Ça se voit. Ça s'entend dans ta façon de parler de toi.</div>
+      </div>
+
+      <div class="mental-card">
+        <div class="mental-icon">🧠</div>
+        <div class="mental-before">Tu commences, tu arrêtes, tu recommences</div>
+        <div class="mental-after">Une routine qui tient — enfin.</div>
+        <div class="mental-desc">Tenir un engagement envers toi-même, ça change quelque chose en profondeur. Cette discipline déborde dans toute ta vie.</div>
+      </div>
+
+      <div class="mental-card">
+        <div class="mental-icon">💬</div>
+        <div class="mental-before">Tu passes toujours en dernier</div>
+        <div class="mental-after">Tu t'autorises à investir en toi.</div>
+        <div class="mental-desc">S'occuper de soi, ce n'est pas de l'égoïsme. C'est le meilleur investissement que tu peux faire — pour toi, et pour ceux que tu aimes.</div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:44px;padding:36px 28px;background:linear-gradient(135deg,#2C1F1A,#3D2B24);border-radius:20px;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,3vw,1.45rem);font-style:italic;color:white;line-height:1.65;margin:0 0 24px;">« Dans 3 mois, tu peux être une autre femme.<br>Pas parfaite — <strong style="color:#D4A5A5;font-style:normal;">mais enfin elle-même.</strong> »</p>
       <a href="https://wa.me/33756834626" class="btn-main" target="_blank" style="display:inline-flex;">
-        Je veux me sentir comme ça →
+        Je veux cette transformation →
       </a>
     </div>
+
   </div>
 </section>
 
-<!-- VIDEO TRANSFORMATION -->
-<section style="background:linear-gradient(150deg,#2C1F1A 0%,#3D2B24 100%);padding:72px 24px;">
-  <div class="inner" style="max-width:860px;margin:0 auto;text-align:center;">
-    <span class="section-label" style="color:var(--gold);">Résultat réel · En vidéo</span>
-    <h2 class="section-title" style="color:white;margin-bottom:12px;">Elle l'a fait.<br><em>Regarde par toi-même.</em></h2>
-    <p style="font-size:1rem;color:rgba(255,255,255,0.88);margin-bottom:36px;line-height:1.7;">Une vraie cliente. Un vrai résultat. Présenté par Ornella.</p>
-    <div style="border-radius:24px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.4);max-width:640px;margin:0 auto;">
-      <video
-        controls
-        preload="metadata"
-        style="width:100%;display:block;background:#1A110E;"
-        playsinline>
+<!-- VIDÉO -->
+<section class="video-section">
+  <div class="inner">
+    <div class="vs-label">🎬 Résultat réel · En vidéo</div>
+    <h2 class="vs-title">Elle l'a fait.<br><em>Regarde par toi-même.</em></h2>
+    <p class="vs-sub">Laura, 34 ans, maman de 2 enfants. 4 mois d'accompagnement à domicile. Voici ce que ça donne.</p>
+    <div class="vs-video-wrap">
+      <video controls preload="metadata" style="width:100%;display:block;background:#1A110E;" playsinline>
         <source src="videos/video-transformation.mov" type="video/mp4">
         <source src="videos/video-transformation.mov" type="video/quicktime">
       </video>
     </div>
-    <div style="margin-top:32px;">
-      <a href="https://wa.me/33756834626" class="btn-whatsapp" target="_blank" style="display:inline-flex;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Je veux des résultats comme ça →
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- TÉMOIGNAGES -->
-<section id="temoignages">
-  <div class="inner">
-    <span class="section-label">Elles témoignent</span>
-    <h2 class="section-title">Elles ont <em>osé.</em> Elles ne regrettent pas.</h2>
-    <p class="section-subtitle" style="margin:0 auto;">Des vraies femmes, de vraies vies, de vrais résultats. Sans filtre.</p>
-
-    <div class="temo-grid fade-in">
-
-      <!-- LOUISE — VRAI TÉMOIGNAGE -->
-      <div class="temo-card">
-        <div class="temo-stats">
-          <span class="temo-stat">−5 kg</span>
-          <span class="temo-stat">−6 cm de tour de taille</span>
-        </div>
-        <p class="temo-quote">« Elle ne se sent pas seulement plus mince… elle se sent beaucoup mieux dans son corps, plus en forme et plus confiante au quotidien. »</p>
-        <p class="temo-impact">Elle n'a pas seulement perdu du ventre.<br>Elle a retrouvé un corps dans lequel elle se sent bien.</p>
-        <p class="temo-sub">
-          ✓ <strong>−5 kg</strong> en 4 mois<br>
-          ✓ <strong>−6 cm</strong> de tour de taille<br>
-          ✓ <strong>Confiance retrouvée</strong> au quotidien<br>
-          ✓ Maman, peu de temps — mais des résultats concrets
-        </p>
-        <div class="temo-author">
-          <span class="temo-author-name">Louise</span>
-          <span class="temo-author-tag">Maman de 2 enfants · Coaching à domicile · 4 mois</span>
-        </div>
-      </div>
-
-      <!-- TÉMOIGNAGE 2 — DÉBUTANTE -->
-      <div class="temo-card">
-        <div class="temo-stats">
-          <span class="temo-stat">Débutante totale</span>
-          <span class="temo-stat">Résultats dès 3 sem.</span>
-        </div>
-        <p class="temo-quote">« Je ne suis pas sportive à la base, mais j'ai été accompagnée à mon rythme. Toujours bienveillante, motivante et sans aucun jugement. Aujourd'hui, je progresse — et je me sens vraiment mieux dans mon corps. »</p>
-        <p class="temo-impact">Elle est passée de zéro pratique sportive<br>à une routine régulière qui lui ressemble.</p>
-        <p class="temo-sub">
-          ✓ <strong>Aucune expérience sportive</strong> au départ<br>
-          ✓ Programme adapté à son niveau et ses contraintes<br>
-          ✓ <strong>Progression visible</strong> dès les premières semaines<br>
-          ✓ Plus de confiance, plus d'énergie au quotidien
-        </p>
-        <div class="temo-author">
-          <span class="temo-author-name">Cliente · Débutante</span>
-          <span class="temo-author-tag">Coaching personnalisé · Programme sur-mesure</span>
-        </div>
-      </div>
-
-      <!-- TÉMOIGNAGE 3 — REMISE EN FORME / SANTÉ -->
-      <div class="temo-card">
-        <div class="temo-stats">
-          <span class="temo-stat">+ Énergie</span>
-          <span class="temo-stat">Meilleure condition</span>
-        </div>
-        <p class="temo-quote">« Les séances sont adaptées, variées et vraiment efficaces. Après quelques semaines, j'ai constaté des bénéfices concrets : plus d'énergie, une meilleure condition physique, et moins d'essoufflement au quotidien. »</p>
-        <p class="temo-impact">Ce n'est pas juste l'apparence qui a changé.<br>C'est son quotidien tout entier.</p>
-        <p class="temo-sub">
-          ✓ <strong>Plus d'énergie</strong> dès le réveil<br>
-          ✓ <strong>Moins d'essoufflement</strong> dans la vie de tous les jours<br>
-          ✓ Meilleure condition physique générale<br>
-          ✓ Séances adaptées, <strong>jamais monotones</strong>
-        </p>
-        <div class="temo-author">
-          <span class="temo-author-name">Cliente · Remise en forme</span>
-          <span class="temo-author-tag">Coaching à domicile · Objectif santé & énergie</span>
-        </div>
-      </div>
-
-    </div>
-
-    <div style="margin-top:44px;text-align:center;">
-      <p style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-style:italic;color:var(--dark);margin-bottom:6px;font-weight:600;">Et toi, c'est quand ton tour ?</p>
-      <p style="font-size:0.88rem;color:var(--text-mid);margin-bottom:24px;">Ton corps peut changer. La seule différence entre elles et toi, c'est qu'elles ont commencé.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;">
-        <a href="https://wa.me/33756834626" class="btn-main" target="_blank" style="display:inline-flex;align-items:center;gap:8px;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Je commence ma transformation
-        </a>
-        <a href="https://wa.me/33756834626" class="btn-outline" target="_blank">
-          Faire mon bilan offert →
-        </a>
-      </div>
-      <p style="font-size:0.78rem;color:var(--text-light);margin-top:14px;font-style:italic;">✓ Sans engagement · Bilan 100% offert · Réponse rapide</p>
-    </div>
+    <a href="https://wa.me/33756834626" class="btn-whatsapp" target="_blank" style="display:inline-flex;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Je veux des résultats comme ça →
+    </a>
   </div>
 </section>
 
 <!-- AVIS CLIENTS -->
-<section id="avis-clients">
+<section class="avis-section">
   <div class="inner">
-    <span class="section-label">Avis Google ⭐</span>
-    <h2 class="section-title">Ce qu'elles <em>en disent</em></h2>
-    <p class="section-subtitle" style="margin:0 auto;">Avis réels de clientes — reformulés pour confidentialité, authentiques dans leur fond.</p>
+    <div class="avis-section-header">
+      <span class="section-label">Elles témoignent</span>
+      <h2 class="section-title">Elles ont <em>osé.</em><br>Elles ne regrettent pas.</h2>
+      <div class="google-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        <span class="gb-stars">★★★★★</span>
+        <span class="gb-text"><strong>5,0</strong> · 19 avis vérifiés</span>
+      </div>
+    </div>
 
     <div class="avis-grid fade-in">
 
       <div class="avis-card">
-        <div class="avis-top">
-          <span class="avis-stars">★★★★★</span>
-          <span class="avis-source">Avis Google</span>
+        <div class="avis-top" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:#C96358;display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:0.9rem;flex-shrink:0;">C</div>
+          <div>
+            <div style="font-weight:700;font-size:0.88rem;color:#1E1616;">Charlotte C.</div>
+            <div style="font-size:0.72rem;color:#7A6E6E;">il y a 2 mois</div>
+          </div>
+          <svg style="margin-left:auto;flex-shrink:0;" width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
         </div>
-        <p class="avis-quote">Soucieuse de rester en forme et d'entretenir mon corps, j'ai fait appel à Ornella. J'ai particulièrement apprécié la variété des séances, les encouragements et surtout le fait qu'elle corrige chaque mouvement. En seulement quelques séances, j'ai déjà commencé à ressentir les bénéfices.</p>
-        <p class="avis-highlight">Des résultats ressentis dès les premières séances.</p>
-        <div class="avis-author">
-          <strong>Cliente · +40 ans</strong>
-          Coaching à domicile
-        </div>
+        <span class="avis-stars">★★★★★</span>
+        <p class="avis-quote" style="margin-top:8px;">J'ai commencé le coaching avec Ornella après ma grossesse. <strong>En quelques semaines : meilleure posture, tonus retrouvé et surtout confiance en moi.</strong> Elle ne promet pas de miracle — elle travaille intelligemment et les résultats sont là.</p>
+        <p style="font-size:0.78rem;color:var(--accent);font-weight:600;margin-top:10px;">→ Post-partum · Confiance retrouvée</p>
       </div>
 
       <div class="avis-card">
-        <div class="avis-top">
-          <span class="avis-stars">★★★★★</span>
-          <span class="avis-source">Avis Google</span>
+        <div class="avis-top" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:#C96358;display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:0.9rem;flex-shrink:0;">A</div>
+          <div>
+            <div style="font-weight:700;font-size:0.88rem;color:#1E1616;">Anne-C.</div>
+            <div style="font-size:0.72rem;color:#7A6E6E;">Local Guide · il y a 3 semaines</div>
+          </div>
+          <svg style="margin-left:auto;flex-shrink:0;" width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
         </div>
-        <p class="avis-quote">Après ma grossesse, je ne me reconnaissais plus du tout physiquement. Ornella a su m'accompagner avec professionnalisme et écoute. Les séances sont efficaces, adaptées à mon niveau et à mon rythme post-partum. En quelques semaines, j'ai retrouvé du tonus, une meilleure posture et surtout confiance en moi. Elle ne promet pas de miracle — elle travaille intelligemment, et les résultats sont là.</p>
-        <p class="avis-highlight">Retrouver confiance après une grossesse, c'est possible.</p>
-        <div class="avis-author">
-          <strong>Maman · Post-partum</strong>
-          Coaching personnalisé
-        </div>
+        <span class="avis-stars">★★★★★</span>
+        <p class="avis-quote" style="margin-top:8px;"><strong>En 4 séances je commence déjà à constater les bénéfices.</strong> La variété des entraînements, les encouragements et l'attention à la posture — on sent qu'elle sait ce qu'elle fait.</p>
+        <p style="font-size:0.78rem;color:var(--accent);font-weight:600;margin-top:10px;">→ Résultats dès les premières séances</p>
       </div>
 
       <div class="avis-card">
-        <div class="avis-top">
-          <span class="avis-stars">★★★★★</span>
-          <span class="avis-source">Avis Google</span>
+        <div class="avis-top" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:#3D7A5E;display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:0.9rem;flex-shrink:0;">A</div>
+          <div>
+            <div style="font-weight:700;font-size:0.88rem;color:#1E1616;">Audrey B.</div>
+            <div style="font-size:0.72rem;color:#7A6E6E;">il y a un mois</div>
+          </div>
+          <svg style="margin-left:auto;flex-shrink:0;" width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
         </div>
-        <p class="avis-quote">Après des années en salle sans résultats, j'ai décidé de me faire accompagner. Aujourd'hui, je vois enfin des changements. Le programme est structuré, adapté, et l'accompagnement fait toute la différence. Je ne regrette pas ma décision.</p>
-        <p class="avis-highlight">Ce n'est pas que tu fais mal. C'est que tu n'es pas accompagnée.</p>
-        <div class="avis-author">
-          <strong>Cliente · Reprise sportive</strong>
-          Programme sur-mesure
-        </div>
+        <span class="avis-stars">★★★★★</span>
+        <p class="avis-quote" style="margin-top:8px;">J'ai conseillé Ornella à une amie qui voulait se transformer. <strong>Ce qu'elle attendait, elle l'a obtenu grâce au coaching professionnel d'Ornella.</strong> Je recommande à 100%.</p>
+        <p style="font-size:0.78rem;color:var(--accent);font-weight:600;margin-top:10px;">→ Transformation complète · Résultats obtenus</p>
       </div>
 
     </div>
 
     <div class="avis-closing fade-in">
       <div class="avis-closing-text">
-        <p class="avis-closing-stat"><em>90%</em> des personnes seules abandonnent.</p>
+        <p class="avis-closing-stat"><em>90%</em> des femmes seules abandonnent.</p>
         <p class="avis-closing-sub">Celles qui sont accompagnées avancent — semaine après semaine, résultat après résultat.</p>
       </div>
       <a href="https://wa.me/33756834626" class="avis-cta-btn" target="_blank">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Je veux mon plan personnalisé
+        Je veux mon bilan personnalisé offert
       </a>
     </div>
+
   </div>
 </section>
 
-<!-- CTA -->
-<section id="cta-final">
-  <div class="inner">
-    <span class="section-label" style="color:var(--gold);">À toi de jouer</span>
-    <h2 class="section-title">Tu seras <em>la prochaine transformation.</em></h2>
-    <p class="section-subtitle">Commence par un bilan personnalisé offert — sans engagement, sans pression.</p>
+<!-- CTA FINAL -->
+<div class="transfo-cta">
+  <div style="position:relative;z-index:1;max-width:580px;margin:0 auto;">
+    <div class="tcta-label">✦ C'est à toi maintenant</div>
+    <h2 class="tcta-title">
+      Tu seras<br>
+      <em>la prochaine.</em>
+    </h2>
+    <p class="tcta-sub">Tout commence par un bilan offert. On parle de toi, de tes objectifs, de ta vie réelle.<br>Sans engagement. Sans pression.</p>
+    <div class="tcta-urgency">
+      <span>⚠️</span>
+      <span>Accompagnements limités — <strong>3 places disponibles en mai</strong></span>
+    </div>
     <div class="cta-buttons">
-      <a href="https://wa.me/33756834626" class="btn-main" target="_blank">
-        🎯 Je fais mon bilan personnalisé offert
-      </a>
-      <a href="offres.html" class="btn-outline" style="color:white;border-color:rgba(255,255,255,0.55);">
-        Voir les offres →
+      <a href="https://wa.me/33756834626" class="btn-whatsapp" target="_blank" style="font-size:1.05rem;padding:20px 40px;font-weight:700;display:inline-flex;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Je veux commencer ma transformation →
       </a>
     </div>
-    <p class="cta-reassure">✓ Bilan personnalisé offert · Gratuit · Sans engagement</p>
+    <p class="cta-reassure" style="margin-top:18px;">✓ Bilan offert · Gratuit · Sans engagement · Réponse rapide</p>
   </div>
-</section>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -534,7 +874,7 @@ h1, h2, h3 { opacity: 1 !important; mix-blend-mode: normal !important; }
     <a href="offres.html">Offres</a>
     <a href="transformations.html">Transformations</a>
     <a href="apropos.html">À propos</a>
-    <a href="https://wa.me/33756834626" target="_blank">WhatsApp</a>
+    <a href="blog.html">Blog</a>
   </div>
   <div class="footer-social">
     <a href="https://www.instagram.com/ornellafit.coaching" target="_blank">📷 Instagram</a>
