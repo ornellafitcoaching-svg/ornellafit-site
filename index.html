@@ -218,8 +218,16 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
   object-fit: cover; object-position: center top;
   display: block;
 }
+@media (max-width: 1024px) {
+  .hero-split { gap: 32px; }
+  .hero-photo-col { width: 280px; }
+  .hero-photo-frame img, .hero-photo-frame video { height: 460px; }
+}
 @media (max-width: 768px) {
+  .hero-split { flex-direction: column; gap: 24px; }
+  .hero-photo-col { width: 100%; }
   .hero-photo-frame { border-radius: 20px; }
+  .hero-photo-frame img { height: 320px; }
   .hero-photo-frame video {
     height: auto !important;
     max-height: 360px;
@@ -1107,6 +1115,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           preload="metadata"
           style="width:100%;height:480px;object-fit:cover;display:block;background:#1A110E;"
           playsinline>
+          <source src="videos/video-transformation.mp4" type="video/mp4">
           <source src="videos/video-transformation.mov" type="video/quicktime">
         </video>
         <div class="transfo-photo-badge">
