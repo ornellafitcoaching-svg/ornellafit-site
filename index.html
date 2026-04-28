@@ -1477,18 +1477,17 @@ function closeCoachingPopup() {
   document.getElementById('coaching-popup').style.display = 'none';
   sessionStorage.setItem('coachingPopupSeen', '1');
 }
-setTimeout(function() {
-  if (!sessionStorage.getItem('coachingPopupSeen') && !localStorage.getItem('leadDone')) return;
-  if (!sessionStorage.getItem('coachingPopupSeen')) {
-    document.getElementById('coaching-popup').style.display = 'block';
-    sessionStorage.setItem('coachingPopupSeen', '1');
-  }
-}, 25000);
+function showCoachingPopup() {
+  if (sessionStorage.getItem('coachingPopupSeen')) return;
+  if (document.getElementById('lead-popup').classList.contains('active')) return;
+  document.getElementById('coaching-popup').style.display = 'block';
+  sessionStorage.setItem('coachingPopupSeen', '1');
+}
+setTimeout(showCoachingPopup, 18000);
 window.addEventListener('scroll', function onCoachingScroll() {
   if (sessionStorage.getItem('coachingPopupSeen')) { window.removeEventListener('scroll', onCoachingScroll); return; }
-  if ((window.scrollY / document.body.scrollHeight) > 0.55) {
-    document.getElementById('coaching-popup').style.display = 'block';
-    sessionStorage.setItem('coachingPopupSeen', '1');
+  if ((window.scrollY / document.body.scrollHeight) > 0.40) {
+    showCoachingPopup();
     window.removeEventListener('scroll', onCoachingScroll);
   }
 }, { passive: true });
