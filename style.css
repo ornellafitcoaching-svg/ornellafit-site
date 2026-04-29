@@ -469,8 +469,11 @@ footer { background: #1A110E; padding: 48px 24px; text-align: center; }
   width: 56px; height: 56px; background: #25D366;
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
   text-decoration: none; box-shadow: 0 6px 24px rgba(37,211,102,0.4);
-  z-index: 99; transition: all 0.3s ease; font-size: 1.5rem;
+  z-index: 99; font-size: 1.5rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
+.floating-wa.wa-visible { opacity: 1; pointer-events: auto; }
 .floating-wa:hover { transform: scale(1.1); box-shadow: 0 10px 36px rgba(37,211,102,0.5); }
 
 /* ===== STICKY MOBILE BAR ===== */
@@ -502,7 +505,7 @@ footer { background: #1A110E; padding: 48px 24px; text-align: center; }
     border: 1.5px solid rgba(201,99,88,0.22);
   }
 
-  .floating-wa { bottom: 96px; right: 16px; width: 48px; height: 48px; font-size: 1.3rem; }
+  .floating-wa { display: none !important; }
 
   .blog-preview-grid { grid-template-columns: 1fr !important; gap: 18px !important; }
 }
@@ -554,7 +557,7 @@ footer { background: #1A110E; padding: 48px 24px; text-align: center; }
   .bilan-items { grid-template-columns: 1fr 1fr; }
   .cta-buttons { width: 100%; }
   .btn-main, .btn-whatsapp, .btn-calendly { width: 100%; justify-content: center; padding: 18px 24px; }
-  .floating-wa { bottom: 88px; right: 16px; width: 50px; height: 50px; font-size: 1.3rem; }
+  .floating-wa { display: none !important; }
   .page-header { padding: 90px 20px 48px; }
 }
 

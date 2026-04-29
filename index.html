@@ -673,6 +673,12 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
   /* LONGEVITÉ */
   .long-grid { grid-template-columns: 1fr; gap: 14px; }
 
+  /* SPACING GLOBAL MOBILE */
+  section { padding-left: 20px !important; padding-right: 20px !important; }
+  .section-title { font-size: clamp(1.7rem, 7vw, 2.4rem) !important; }
+  .section-subtitle { font-size: 0.9rem; line-height: 1.7; }
+  .pain-card, .avis-card { padding: 22px 18px; }
+  .inner { padding-left: 0 !important; padding-right: 0 !important; }
 
   /* TRANSFORMATION */
   .transfo-split { grid-template-columns: 1fr; gap: 28px; }
@@ -774,7 +780,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- TOP ANNOUNCEMENT BAR -->
 <div id="top-bar">
-  <span class="top-bar-urgency">⚠️ <span class="top-bar-places"><strong>3 places disponibles en mai</strong></span> pour un accompagnement personnalisé</span>
+  <span class="top-bar-urgency">⚠️ <span class="top-bar-places"><strong>Plus que 3 places ce mois-ci</strong></span> — accompagnement personnalisé limité</span>
   <span class="top-bar-divider">·</span>
   <a href="https://share.google/b1DQw3hQTqTGy7FqZ" class="top-bar-reviews" target="_blank">
     <span class="top-bar-stars">★★★★★</span> 5,0 sur Google
@@ -1290,9 +1296,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div style="background:linear-gradient(135deg,#2C1F1A,#3D2B24);border-radius:20px;padding:20px 18px;box-shadow:0 12px 40px rgba(0,0,0,0.25);border:1px solid rgba(201,149,122,0.2);position:relative;">
     <button onclick="closeCoachingPopup()" style="position:absolute;top:10px;right:12px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.1rem;cursor:pointer;line-height:1;">×</button>
     <div style="font-size:1.4rem;margin-bottom:8px;">🤔</div>
-    <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:600;color:white;line-height:1.3;margin-bottom:6px;">Tu hésites ?</div>
-    <p style="font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.55;margin-bottom:14px;">Je t'aide à choisir le bon coaching en 30 secondes.</p>
-    <a href="quiz.html" onclick="closeCoachingPopup()" style="display:block;text-align:center;background:linear-gradient(135deg,#C96358,#C9957A);color:white;font-weight:700;font-size:0.82rem;padding:11px 16px;border-radius:50px;text-decoration:none;margin-bottom:8px;">👉 Je trouve mon coaching</a>
+    <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:600;color:white;line-height:1.3;margin-bottom:6px;">Tu ne sais pas laquelle choisir ?</div>
+    <p style="font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.55;margin-bottom:14px;">En 30 secondes, je te dis exactement quel coaching est fait pour toi.</p>
+    <a href="quiz.html" onclick="closeCoachingPopup()" style="display:block;text-align:center;background:linear-gradient(135deg,#C96358,#C9957A);color:white;font-weight:700;font-size:0.82rem;padding:11px 16px;border-radius:50px;text-decoration:none;margin-bottom:8px;">👉 Je découvre mon coaching idéal →</a>
     <a href="https://calendly.com/ornellafit-coaching/30min" onclick="closeCoachingPopup()" target="_blank" style="display:block;text-align:center;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);font-weight:600;font-size:0.78rem;padding:9px 16px;border-radius:50px;text-decoration:none;border:1px solid rgba(255,255,255,0.15);">📅 Réserver un appel de 30 min</a>
   </div>
 </div>
@@ -1300,8 +1306,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- STICKY MOBILE BAR -->
 <div class="mobile-sticky-bar">
-  <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20viens%20de%20voir%20ton%20site%20et%20j%27aimerais%20commencer.%20Comment%20%C3%A7a%20fonctionne%20%3F" class="sticky-cta-main" id="sticky-main-cta" target="_blank">Commencer maintenant</a>
-  <a href="https://wa.me/33756834626" class="sticky-cta-secondary" target="_blank">M'écrire →</a>
+  <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20viens%20de%20voir%20ton%20site%20et%20j%27aimerais%20transformer%20mon%20corps.%20Comment%20%C3%A7a%20fonctionne%20%3F" class="sticky-cta-main" id="sticky-main-cta" target="_blank">Je veux ma transformation →</a>
+  <a href="quiz.html" class="sticky-cta-secondary">Quel coaching ? →</a>
 </div>
 
 <a href="https://wa.me/33756834626" class="floating-wa" target="_blank" title="WhatsApp">💬</a>
@@ -1314,8 +1320,18 @@ var MOIS_ACTUEL  = 'mai';
 // ============================================================
 document.addEventListener('DOMContentLoaded', function() {
   var el = document.querySelector('.top-bar-places');
-  if (el) el.innerHTML = '<strong>' + PLACES_DISPO + ' place' + (PLACES_DISPO > 1 ? 's' : '') + ' disponible' + (PLACES_DISPO > 1 ? 's' : '') + ' en ' + MOIS_ACTUEL + '</strong>';
+  if (el) el.innerHTML = '<strong>Plus que ' + PLACES_DISPO + ' place' + (PLACES_DISPO > 1 ? 's' : '') + ' ce mois-ci</strong>';
 });
+
+/* Floating WA — apparaît après 300px de scroll sur desktop */
+(function() {
+  var wa = document.querySelector('.floating-wa');
+  if (!wa) return;
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 300) wa.classList.add('wa-visible');
+    else wa.classList.remove('wa-visible');
+  }, { passive: true });
+})();
 
 /* Positionne la nav juste sous le top-bar quelle que soit sa hauteur réelle */
 function syncNavPosition() {
