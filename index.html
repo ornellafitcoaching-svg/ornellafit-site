@@ -923,6 +923,190 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- CHIFFRES RÉELS -->
+<section id="chiffres-reels">
+  <style>
+    #chiffres-reels {
+      background: linear-gradient(135deg, #2C1F1A 0%, #3D2B24 100%);
+      padding: 56px 20px 48px;
+    }
+    .chiffres-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .chiffres-label {
+      text-align: center;
+      font-size: 0.72rem;
+      color: rgba(201,169,110,0.8);
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+    }
+    /* Hero stat — 91% */
+    .chiffres-hero-stat {
+      text-align: center;
+      margin-bottom: 36px;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .chiffres-hero-stat.in-view { opacity: 1; transform: translateY(0); }
+    .chiffres-hero-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5.5rem;
+      font-weight: 600;
+      color: #C9A96E;
+      line-height: 1;
+      display: block;
+    }
+    .chiffres-hero-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.6);
+      margin-top: 10px;
+      display: block;
+    }
+    .chiffres-hero-sub {
+      font-size: 0.75rem;
+      color: rgba(201,169,110,0.55);
+      margin-top: 4px;
+      font-style: italic;
+    }
+    /* Secondary stats row */
+    .chiffres-secondary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .chiffres-stat {
+      text-align: center;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,169,110,0.12);
+      border-radius: 14px;
+      padding: 20px 12px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+    }
+    .chiffres-stat.in-view { opacity: 1; transform: translateY(0); }
+    .chiffres-stat:nth-child(1) { transition-delay: 0.1s; }
+    .chiffres-stat:nth-child(2) { transition-delay: 0.2s; }
+    .chiffres-stat:nth-child(3) { transition-delay: 0.3s; }
+    @media (hover: hover) {
+      .chiffres-stat:hover {
+        background: rgba(201,169,110,0.08);
+        box-shadow: 0 0 24px rgba(201,169,110,0.12);
+        transform: translateY(-3px) scale(1.02);
+      }
+    }
+    .chiffres-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      color: #C9A96E;
+      line-height: 1;
+    }
+    .chiffres-stat-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.42);
+      margin-top: 7px;
+    }
+    .chiffres-footer-note {
+      text-align: center;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.22);
+      font-style: italic;
+      margin-bottom: 28px;
+    }
+    .chiffres-cta-wrap {
+      text-align: center;
+    }
+    .chiffres-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #C96358, #C9957A);
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 14px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 8px 28px rgba(201,99,88,0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .chiffres-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(201,99,88,0.45); }
+    /* Mobile layout */
+    @media (max-width: 560px) {
+      .chiffres-hero-num { font-size: 4.5rem; }
+      .chiffres-secondary { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .chiffres-stat-num { font-size: 2rem; }
+      .chiffres-cta { font-size: 0.88rem; padding: 13px 24px; }
+    }
+  </style>
+  <div class="chiffres-inner">
+    <p class="chiffres-label">Résultats réels · Données vérifiables</p>
+
+    <!-- 91% — stat principale -->
+    <div class="chiffres-hero-stat" id="chiffres-hero-stat-el">
+      <span class="chiffres-hero-num stat-count" data-target="91" data-suffix="%">0</span>
+      <span class="chiffres-hero-label">de mes clientes atteignent leur objectif</span>
+      <p class="chiffres-hero-sub">Suivi clientèle · données réelles</p>
+    </div>
+
+    <!-- Stats secondaires -->
+    <div class="chiffres-secondary">
+      <div class="chiffres-stat">
+        <div class="chiffres-stat-num stat-count" data-target="40" data-suffix="+">0</div>
+        <div class="chiffres-stat-label">femmes accompagnées</div>
+      </div>
+      <div class="chiffres-stat">
+        <div class="chiffres-stat-num">−6 cm</div>
+        <div class="chiffres-stat-label">de tour de taille en moyenne</div>
+      </div>
+      <div class="chiffres-stat">
+        <div class="chiffres-stat-num">5,0 ★</div>
+        <div class="chiffres-stat-label">Google · 19 avis</div>
+      </div>
+    </div>
+
+    <p class="chiffres-footer-note">Résultats réels issus de mes clientes</p>
+
+    <div class="chiffres-cta-wrap">
+      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20viens%20de%20voir%20tes%20r%C3%A9sultats%20et%20j%27aimerais%20commencer%20un%20coaching%20avec%20toi.%20Comment%20%C3%A7a%20se%20passe%20%3F" class="chiffres-cta" target="_blank">
+        Je commence maintenant 🔥
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var heroStat = document.getElementById('chiffres-hero-stat-el');
+  var secStats = document.querySelectorAll('.chiffres-stat');
+  if (!('IntersectionObserver' in window)) {
+    if (heroStat) heroStat.classList.add('in-view');
+    secStats.forEach(function(s) { s.classList.add('in-view'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.25 });
+  if (heroStat) obs.observe(heroStat);
+  secStats.forEach(function(s) { obs.observe(s); });
+})();
+</script>
+
 <!-- LEAD CAPTURE 1 — GUIDE OFFERT POST-HERO -->
 <div class="lead-capture-bar">
   <div class="lc-bar-inner">
@@ -1208,32 +1392,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         Je veux mon programme personnalisé →
       </a>
     </div>
-  </div>
-</section>
-
-<!-- CHIFFRES RÉELS -->
-<section id="chiffres-reels" style="background:linear-gradient(135deg,#2C1F1A,#3D2B24);padding:44px 20px;">
-  <div class="inner" style="max-width:860px;margin:0 auto;">
-    <p style="text-align:center;font-size:0.72rem;color:rgba(201,169,110,0.8);font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:32px;">Résultats réels · Données vérifiables</p>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;" class="stats-chiffres">
-      <div style="text-align:center;">
-        <div class="stat-count" data-target="40" data-suffix="+" style="font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;color:#C9A96E;line-height:1;">0</div>
-        <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.45);margin-top:6px;">femmes accompagnées</div>
-      </div>
-      <div style="text-align:center;">
-        <div class="stat-count" data-target="91" data-suffix="%" style="font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;color:#C9A96E;line-height:1;">0</div>
-        <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.45);margin-top:6px;">atteignent leur objectif</div>
-      </div>
-      <div style="text-align:center;">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;color:#C9A96E;line-height:1;">−4 cm</div>
-        <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.45);margin-top:6px;">de taille en moyenne</div>
-      </div>
-      <div style="text-align:center;">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;color:#C9A96E;line-height:1;">5,0 ★</div>
-        <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.45);margin-top:6px;">Google · 19 avis</div>
-      </div>
-    </div>
-    <p style="text-align:center;font-size:0.73rem;color:rgba(255,255,255,0.25);margin-top:24px;font-style:italic;">Données issues du suivi clientèle — mise à jour régulière</p>
   </div>
 </section>
 
