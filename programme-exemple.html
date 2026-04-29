@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Exemple de Programme — Ornella Fit Coaching</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #C9748F;
+    --rose-light: #E8A0B0;
+    --rose-pale: #F5DDE4;
+    --rose-ultra: #FDF0F3;
+    --rose-deep: #A85570;
+    --text-dark: #2C1A20;
+    --text-mid: #6B3D4D;
+    --text-light: #9E7080;
+    --cream: #FFF9F9;
+    --white: #FFFFFF;
+    --border: #EDD0D8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: linear-gradient(145deg, #A85570 0%, #C9748F 45%, #E8A0B0 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 30px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .cover-ornament {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .cover h1 span {
+    font-style: italic;
+    font-weight: 300;
+  }
+  .cover-name {
+    font-family: 'Jost', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.95);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 24px 0 12px;
+    padding: 10px 30px;
+    border: 1px solid rgba(255,255,255,0.4);
+    display: inline-block;
+    border-radius: 2px;
+  }
+  .cover-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 50px;
+  }
+  .cover-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+  .cover-pill {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 50px;
+  }
+  .cover-line {
+    width: 80px;
+    height: 1px;
+    background: rgba(255,255,255,0.5);
+    margin: 0 auto 16px;
+  }
+  .cover-coach {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── PAGE LAYOUT ── */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 30px;
+  }
+
+  @media print {
+    .page { padding: 20px 25px; }
+    .cover { min-height: auto; padding: 40px 30px; }
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+    margin-top: 36px;
+  }
+  .section-title .icon {
+    width: 38px; height: 38px;
+    background: var(--rose);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .section-title h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text-dark);
+    letter-spacing: 0.5px;
+  }
+  .section-title h2 span {
+    color: var(--rose);
+    font-style: italic;
+  }
+
+  /* ── PROFILE CARDS ── */
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 600px) { .profile-grid { grid-template-columns: 1fr; } }
+
+  .profile-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .profile-card.full { grid-column: 1 / -1; }
+  .profile-card .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 6px;
+  }
+  .profile-card .value {
+    font-size: 14px;
+    color: var(--text-dark);
+    font-weight: 400;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--rose-pale) 0%, #fce8ed 100%);
+    border-left: 4px solid var(--rose);
+    border-radius: 0 12px 12px 0;
+    padding: 16px 20px;
+    margin: 14px 0;
+  }
+  .highlight-box .hl-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--rose-deep);
+    margin-bottom: 6px;
+  }
+  .highlight-box .hl-text {
+    font-size: 14px;
+    color: var(--text-dark);
+  }
+
+  /* ── IMPORTANT NOTE ── */
+  .important-note {
+    background: #FFF3E0;
+    border: 1px solid #FFB74D;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 13px;
+    color: #6D4C00;
+  }
+  .important-note strong { color: #E65100; }
+
+  /* ── MENSURATIONS TABLE ── */
+  .mensuration-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(169,85,112,0.08);
+    margin-bottom: 24px;
+    font-size: 13px;
+  }
+  .mensuration-table thead tr {
+    background: var(--rose);
+  }
+  .mensuration-table thead th {
+    padding: 12px 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .mensuration-table thead th:first-child { text-align: left; padding-left: 16px; }
+  .mensuration-table tbody tr:nth-child(even) { background: var(--rose-ultra); }
+  .mensuration-table tbody tr:nth-child(odd) { background: var(--white); }
+  .mensuration-table tbody td {
+    padding: 11px 10px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-dark);
+  }
+  .mensuration-table tbody td:first-child {
+    text-align: left;
+    padding-left: 16px;
+    font-weight: 500;
+    color: var(--text-mid);
+  }
+  .mensuration-table .initial-val {
+    font-weight: 700;
+    color: var(--rose-deep);
+  }
+  .mensuration-table .empty-cell {
+    color: var(--text-light);
+    font-size: 16px;
+  }
+
+  /* ── RESSENTI TABLE ── */
+  .ressenti-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(169,85,112,0.08);
+    margin-bottom: 24px;
+    font-size: 13px;
+  }
+  .ressenti-table thead tr { background: var(--rose-light); }
+  .ressenti-table thead th {
+    padding: 12px 10px;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .ressenti-table thead th:first-child { text-align: left; padding-left: 16px; }
+  .ressenti-table tbody tr:nth-child(even) { background: var(--rose-ultra); }
+  .ressenti-table tbody tr:nth-child(odd) { background: var(--white); }
+  .ressenti-table tbody td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-dark);
+  }
+  .ressenti-table tbody td:first-child {
+    text-align: left;
+    padding-left: 16px;
+    font-weight: 500;
+    color: var(--text-mid);
+  }
+
+  /* ── NUTRITION SECTION ── */
+  .nutrition-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  @media (max-width: 600px) { .nutrition-grid { grid-template-columns: 1fr; } }
+
+  .nutri-card {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .nutri-card.full { grid-column: 1 / -1; }
+  .nutri-card-header {
+    background: var(--rose-pale);
+    padding: 10px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--rose-deep);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nutri-card-body {
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--text-dark);
+    line-height: 1.7;
+  }
+  .nutri-card-body strong { color: var(--rose-deep); }
+
+  /* ── SEANCE HEADER ── */
+  .seance-header {
+    background: linear-gradient(120deg, var(--rose-deep) 0%, var(--rose) 100%);
+    border-radius: 14px 14px 0 0;
+    padding: 20px 24px 16px;
+    color: white;
+    margin-top: 30px;
+  }
+  .seance-header .day-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.2);
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 50px;
+    margin-bottom: 10px;
+  }
+  .seance-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .seance-header .seance-meta {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .seance-header .meta-item {
+    font-size: 11px;
+    color: rgba(255,255,255,0.85);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .seance-header .seance-objective {
+    margin-top: 10px;
+    font-size: 12px;
+    font-style: italic;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.5;
+  }
+
+  /* ── EXERCISE TABLE ── */
+  .exercise-table-wrapper {
+    background: var(--white);
+    border-radius: 0 0 14px 14px;
+    border: 1px solid var(--border);
+    border-top: none;
+    overflow: hidden;
+    margin-bottom: 8px;
+    page-break-inside: avoid;
+  }
+
+  .exercise-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+  .exercise-table thead tr {
+    background: var(--rose-pale);
+  }
+  .exercise-table thead th {
+    padding: 10px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--rose-deep);
+    text-align: center;
+    border-bottom: 2px solid var(--border);
+  }
+  .exercise-table thead th:first-child { text-align: left; padding-left: 16px; width: 28%; }
+  .exercise-table thead th:last-child { text-align: left; width: 28%; }
+
+  .exercise-table tbody tr:nth-child(even) { background: var(--rose-ultra); }
+  .exercise-table tbody tr:nth-child(odd) { background: var(--white); }
+  .exercise-table tbody tr.warmup-row { background: #FFF8E7; }
+  .exercise-table tbody td {
+    padding: 12px 8px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    text-align: center;
+    color: var(--text-dark);
+  }
+  .exercise-table tbody td:first-child {
+    text-align: left;
+    padding-left: 16px;
+    font-weight: 500;
+  }
+  .exercise-table tbody td:last-child { text-align: left; font-size: 12px; color: var(--text-mid); }
+
+  .exercise-num {
+    display: inline-flex;
+    width: 20px; height: 20px;
+    background: var(--rose);
+    color: white;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    margin-right: 6px;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+  .warmup-num {
+    display: inline-flex;
+    width: 20px; height: 20px;
+    background: #F9A825;
+    color: white;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  .video-link {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 11px;
+    color: var(--rose);
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .video-link:hover { color: var(--rose-deep); }
+
+  /* ── TIPS FOOTER ── */
+  .seance-tips {
+    background: var(--rose-ultra);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 14px 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 20px;
+    margin-bottom: 30px;
+  }
+  @media (max-width: 500px) { .seance-tips { grid-template-columns: 1fr; } }
+  .seance-tip {
+    font-size: 12px;
+    color: var(--text-mid);
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .seance-tip::before {
+    content: '✦';
+    color: var(--rose);
+    font-size: 8px;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+
+  /* ── WEEK HEADER ── */
+  .week-banner {
+    background: linear-gradient(90deg, var(--rose-pale) 0%, #fce8ed 100%);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 22px;
+    margin: 30px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    page-break-after: avoid;
+  }
+  .week-banner .week-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--rose);
+    line-height: 1;
+    min-width: 50px;
+  }
+  .week-banner .week-info h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .week-banner .week-info p {
+    font-size: 12px;
+    color: var(--text-mid);
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  /* ── MONTH JOURNEY ── */
+  .journey-timeline {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 16px 0;
+  }
+  @media (max-width: 500px) { .journey-timeline { grid-template-columns: 1fr; } }
+  .journey-month {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .journey-month::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--rose);
+  }
+  .journey-month.active::before { background: var(--rose-deep); }
+  .journey-month.active { border-color: var(--rose); box-shadow: 0 4px 14px rgba(169,85,112,0.15); }
+  .journey-month .month-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 6px;
+  }
+  .journey-month.active .month-label { color: var(--rose-deep); }
+  .journey-month h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+  .journey-month p {
+    font-size: 12px;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+
+  /* ── PAGE BREAK ── */
+  .page-break { page-break-before: always; padding-top: 30px; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 30px 0;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--rose-deep);
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    border-radius: 16px 16px 0 0;
+  }
+  .footer h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+  .footer p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .footer .coach-sig {
+    margin-top: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* ── BADGE ── */
+  .badge {
+    display: inline-block;
+    background: var(--rose-pale);
+    color: var(--rose-deep);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 50px;
+    margin-right: 6px;
+  }
+
+  /* ── NOTICE BOX ── */
+  .notice-diastasis {
+    background: linear-gradient(135deg, #FFE8E8, #FFF0F2);
+    border: 1.5px solid var(--rose-light);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 13px;
+    color: var(--text-dark);
+    line-height: 1.7;
+  }
+  .notice-diastasis .notice-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--rose-deep);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  @media (max-width: 600px) {
+    .cover h1 { font-size: 36px; }
+  }
+
+  /* ── MOBILE : tables responsives (card layout) ── */
+  @media (max-width: 640px) {
+
+    /* Mensuration & Ressenti : une ligne = une carte */
+    .mensuration-table,
+    .ressenti-table { display: block; }
+    .mensuration-table thead,
+    .ressenti-table thead { display: none; }
+    .mensuration-table tbody,
+    .ressenti-table tbody { display: block; }
+    .mensuration-table tbody tr,
+    .ressenti-table tbody tr {
+      display: block;
+      padding: 12px 14px 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .mensuration-table tbody td,
+    .ressenti-table tbody td {
+      display: inline-block;
+      border: none;
+      padding: 0;
+      vertical-align: top;
+    }
+    .mensuration-table tbody td:first-child,
+    .ressenti-table tbody td:first-child {
+      display: block;
+      width: 100%;
+      text-align: left !important;
+      padding: 0 0 8px 0;
+      font-size: 12px;
+    }
+    .mensuration-table tbody td:not(:first-child),
+    .ressenti-table tbody td:not(:first-child) {
+      background: var(--rose-ultra);
+      border-radius: 8px;
+      min-width: 52px;
+      padding: 5px 8px 4px;
+      margin: 0 4px 4px 0;
+      text-align: center !important;
+      font-size: 12px;
+    }
+    /* Labels semaines via ::before */
+    .mensuration-table tbody td:nth-child(2)::before { content: "Avant"; display: block; font-size: 9px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+    .mensuration-table tbody td:nth-child(3)::before,
+    .ressenti-table tbody td:nth-child(2)::before  { content: "Sem. 1"; display: block; font-size: 9px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+    .mensuration-table tbody td:nth-child(4)::before,
+    .ressenti-table tbody td:nth-child(3)::before  { content: "Sem. 2"; display: block; font-size: 9px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+    .mensuration-table tbody td:nth-child(5)::before,
+    .ressenti-table tbody td:nth-child(4)::before  { content: "Sem. 3"; display: block; font-size: 9px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+    .mensuration-table tbody td:nth-child(6)::before,
+    .ressenti-table tbody td:nth-child(5)::before  { content: "Sem. 4"; display: block; font-size: 9px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+
+    /* Exercise table : une ligne = une carte exercice */
+    .exercise-table { display: block; }
+    .exercise-table thead { display: none; }
+    .exercise-table tbody { display: block; }
+    .exercise-table tbody tr {
+      display: block;
+      padding: 14px 16px 12px;
+      border-bottom: 2px solid var(--border);
+    }
+    .exercise-table tbody tr.warmup-row { background: #FFF8E7; }
+    .exercise-table tbody td {
+      display: block;
+      border: none;
+      padding: 0;
+      text-align: left !important;
+      font-size: 13px;
+    }
+    /* # badge inline avec nom exercice */
+    .exercise-table tbody td:first-child {
+      display: inline-block;
+      vertical-align: top;
+      padding-right: 6px;
+    }
+    .exercise-table tbody td:nth-child(2) {
+      display: inline-block;
+      vertical-align: top;
+      width: calc(100% - 36px);
+      padding-bottom: 10px;
+      line-height: 1.5;
+    }
+    /* Séries / Reps / Repos → pills */
+    .exercise-table tbody td:nth-child(3),
+    .exercise-table tbody td:nth-child(4),
+    .exercise-table tbody td:nth-child(5) {
+      display: inline-block;
+      background: var(--rose-pale);
+      border-radius: 20px;
+      padding: 3px 12px 3px 10px;
+      margin: 0 6px 8px 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--rose-deep);
+      vertical-align: middle;
+    }
+    .exercise-table tbody td:nth-child(3)::before { content: "Séries : "; font-weight: 400; color: var(--text-light); }
+    .exercise-table tbody td:nth-child(4)::before { content: "Reps : ";   font-weight: 400; color: var(--text-light); }
+    .exercise-table tbody td:nth-child(5)::before { content: "Repos : ";  font-weight: 400; color: var(--text-light); }
+    /* Conseils → bloc complet sous les pills */
+    .exercise-table tbody td:last-child {
+      display: block;
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--text-mid);
+      text-align: left !important;
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+      margin-top: 4px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+  COVER PAGE
+══════════════════════════════════════ -->
+<div id="cover" class="cover">
+  <div class="cover-ornament">Ornella Fit Coaching</div>
+  <h1>Programme<br><span>Personnalisé</span></h1>
+  <div class="cover-name">●●●● ●●●●●●●</div>
+  <div class="cover-tagline">Objectif Ventre Plat & Énergie</div>
+  <div class="cover-pills">
+    <span class="cover-pill">1 Mois</span>
+    <span class="cover-pill">2 Séances / Semaine</span>
+    <span class="cover-pill">Salle + Maison</span>
+    <span class="cover-pill">Sans Impact</span>
+    <span class="cover-pill">Gainage Profond</span>
+  </div>
+  <div class="cover-line"></div>
+  <div class="cover-coach">Ornella Fit Coaching</div>
+</div>
+
+<!-- ══════════════════════════════════════
+  PAGE 1 — PROFIL & OBJECTIFS
+══════════════════════════════════════ -->
+<div class="page">
+
+  <div id="profil" class="section-title">
+    <div class="icon">👤</div>
+    <h2>Ton Profil & <span>Tes Motivations</span></h2>
+  </div>
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <div class="label">💭 Ressenti actuel</div>
+      <div class="value">Bien dans ma tête, mais ventre proéminent post-grossesses. Manque de force dans les bras. Fatigue vers 17h avec envies de sucré.</div>
+    </div>
+    <div class="profile-card">
+      <div class="label">🎯 Objectif principal</div>
+      <div class="value">Ventre plat — résultat esthétique prioritaire. Bras plus toniques. Silhouette globale affinée pour l'été.</div>
+    </div>
+    <div class="profile-card">
+      <div class="label">🔥 Ta motivation profonde</div>
+      <div class="value">Retrouver une silhouette dans laquelle tu te sens bien — et avoir un programme clair, structuré, pour avancer sans te disperser.</div>
+    </div>
+    <div class="profile-card">
+      <div class="label">🌟 Vision long terme</div>
+      <div class="value">Plus d'énergie, meilleure composition corporelle. Se sentir forte et légère au quotidien.</div>
+    </div>
+    <div class="profile-card">
+      <div class="label">🏃‍♀️ Style de séances</div>
+      <div class="value">Dynamiques mais SANS IMPACT — tu apportes ta bonne humeur, on fait le reste ensemble !</div>
+    </div>
+    <div class="profile-card">
+      <div class="label">📅 Jours d'entraînement</div>
+      <div class="value">Mercredi (salle) · Samedi (maison) — adaptés à tes disponibilités actuelles. <strong>Ces jours sont flexibles !</strong> Si ton emploi du temps change, dis-le moi et on ajuste sans problème.</div>
+    </div>
+    <div class="profile-card full">
+      <div class="label">💪 Activité passée</div>
+      <div class="value">Pilates · Tapis en salle. Bonne base de gainage conscient — atout majeur pour ce programme !</div>
+    </div>
+  </div>
+
+  <div class="notice-diastasis">
+    <div class="notice-title">⚠️ Point Santé Important — Programme Adapté</div>
+    Tu as eu <strong>4 grossesses</strong> et une <strong>rééducation du périnée</strong>, mais pas de rééducation abdominale. Il est probable que tu aies un diastasis résiduel. C'est pourquoi ce programme <strong>exclut totalement</strong> les crunchs, sit-ups et exercices de flexion abdominale classique. Toutes les séances travaillent le <strong>gainage profond (transverse)</strong>, sécurisé et efficace pour retrouver un ventre plat durablement.
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- MENSURATIONS -->
+  <div id="mensurations" class="section-title">
+    <div class="icon">📏</div>
+    <h2>Mensurations <span>& Suivi</span></h2>
+  </div>
+
+  <p style="font-size:13px;color:var(--text-mid);margin-bottom:16px;line-height:1.6;">Reprends tes mensurations chaque fin de semaine, de préférence le matin à jeun. Les changements se construisent progressivement — les mesures servent à suivre une tendance et rester motivée.</p>
+
+  <div style="overflow-x:auto;">
+  <table class="mensuration-table">
+    <thead>
+      <tr>
+        <th>Mesure</th>
+        <th>AVANT</th>
+        <th>SEM. 1</th>
+        <th>SEM. 2</th>
+        <th>SEM. 3</th>
+        <th>SEM. 4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Poids (kg)</td>
+        <td class="initial-val">—</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+      </tr>
+      <tr>
+        <td>Taille (cm)</td>
+        <td class="initial-val">—</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+      </tr>
+      <tr>
+        <td>Tour de taille — fin (cm)</td>
+        <td class="initial-val">À mesurer</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+      </tr>
+      <tr>
+        <td>Tour de hanches — bassin (cm)</td>
+        <td class="initial-val">À mesurer</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+      </tr>
+      <tr>
+        <td>Tour de ventre — nombril (cm)</td>
+        <td class="initial-val">À mesurer</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+      </tr>
+      <tr>
+        <td>Tour de bras — biceps (cm)</td>
+        <td class="initial-val">À mesurer</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+      </tr>
+      <tr>
+        <td>Tour de cuisse — haut (cm)</td>
+        <td class="initial-val">À mesurer</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+        <td class="empty-cell">—</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- RESSENTI -->
+  <div id="ressenti" class="section-title">
+    <div class="icon">💚</div>
+    <h2>Suivi Ressenti <span>Hebdomadaire</span> (note /10)</h2>
+  </div>
+
+  <div style="overflow-x:auto;">
+  <table class="ressenti-table">
+    <thead>
+      <tr>
+        <th>Indicateur</th>
+        <th>SEM. 1</th>
+        <th>SEM. 2</th>
+        <th>SEM. 3</th>
+        <th>SEM. 4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Niveau d'énergie</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>Ventre gonflé (10 = très gonflé)</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>Confiance en soi</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>Qualité du sommeil</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>Motivation</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>Fringale 17h (10 = très forte)</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+</div><!-- /page -->
+
+<!-- ══════════════════════════════════════
+  PAGE 2 — NUTRITION
+══════════════════════════════════════ -->
+<div class="page page-break">
+
+  <div id="nutrition" class="section-title">
+    <div class="icon">🥗</div>
+    <h2>Plan Nutrition <span>Personnalisé</span> — Ta cliente</h2>
+  </div>
+
+  <p style="font-size:12px;color:var(--text-light);margin-bottom:18px;font-style:italic;">Ces conseils sont des orientations générales adaptées à ton profil. Pour un suivi nutritionnel complet, contacte-moi.</p>
+
+  <div style="background:linear-gradient(135deg,#fff0f3,#fce8ed);border:1.5px solid var(--rose-light);border-radius:14px;padding:18px 22px;margin-bottom:22px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--rose-deep);margin-bottom:10px;">⚠️ Ce que personne ne te dit sur l'alimentation et le ventre</div>
+    <div style="font-size:13px;color:var(--text-dark);line-height:1.8;">
+      Le sport seul ne suffira pas à aplatir ton ventre. <strong>L'alimentation représente 70% des résultats.</strong> Tu peux faire toutes les planches et tous les Dead Bug du monde — si tu continues à manger de façon chaotique le soir, le ventre restera. Ce n'est pas une question de volonté, c'est une question de <strong>comprendre pourquoi ton corps réagit comme il réagit</strong>. Et c'est exactement ce qu'on fait ici.
+    </div>
+  </div>
+
+  <div class="nutrition-grid">
+    <div class="nutri-card">
+      <div class="nutri-card-header">✅ Ce qui est déjà bien</div>
+      <div class="nutri-card-body">
+        Petit-déjeuner protéiné (œuf + tartine), déjeuner équilibré (légumes + protéines + féculents), tu ne grignotas pas en semaine. Tu prends de la <strong>berbérine</strong> — excellent pour la glycémie ! Tu as déjà de très bonnes bases — on va juste combler les failles.
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">🚨 Le problème principal identifié</div>
+      <div class="nutri-card-body">
+        Le <strong>craquage de 17h</strong>. Tu sautes ensuite le dîner car tu as trop mangé. Ce cycle crée un <strong>pic de glycémie brutal</strong> le soir, suivi d'un stockage direct en graisse abdominale pendant la nuit. C'est ton ventre qui en paye le prix chaque matin. <strong>On va casser ce cycle.</strong>
+      </div>
+    </div>
+    <div class="nutri-card full">
+      <div class="nutri-card-header">🍳 Petit-Déjeuner — On Optimise !</div>
+      <div class="nutri-card-body">
+        Tu prends déjà un œuf le matin — c'est une excellente base protéinée ! Mais on retire le beurre, et voilà pourquoi :<br><br>
+        🧈 <strong>Pourquoi on enlève le beurre ?</strong> Le beurre est riche en <strong>acides gras saturés</strong> qui favorisent le stockage des graisses, notamment au niveau du ventre. Il n'apporte ni protéines, ni fibres, ni aucun nutriment utile pour ton objectif ventre plat. À cela s'ajoute qu'il est très calorique pour un apport nutritionnel quasi nul le matin. On le remplace par de l'<strong>avocat</strong> (bons lipides insaturés) ou de l'<strong>huile d'olive</strong> — qui eux, soutiennent le métabolisme et la santé hormonale. Ton ventre te remerciera ! 🙏<br><br>
+        <strong>Option A — Salé (parfait pour toi) :</strong> 2 œufs brouillés sans beurre (huile d'olive ou antiadhésif) + 1 tranche pain complet ou seigle + ½ avocat + café.<br><br>
+        <strong>Option B — Rapide et nourrissant :</strong> Yaourt grec nature 0% + 40g flocons d'avoine + fruits rouges + graines de chia. Rassasiant jusqu'à 13h.<br><br>
+        <strong>Option C — Si pas faim le matin :</strong> Smoothie : lait végétal + 1 banane + 1 c.à.s beurre d'amande + 1 œuf entier mixé. Rapide et buvable.<br><br>
+        💡 <strong>Pourquoi c'est crucial ?</strong> Un petit-déjeuner riche en protéines stabilise ta glycémie jusqu'à midi. Résultat direct : <strong>moins de faim à 17h, moins de craquage, moins de stockage la nuit</strong>. Tout est lié.
+      </div>
+    </div>
+    <div class="nutri-card full">
+      <div class="nutri-card-header">⏰ Priorité Absolue : Briser le Cycle de 17h</div>
+      <div class="nutri-card-body">
+        🔴 <strong>Ce qui se passe dans ton corps à 17h :</strong> Glycémie basse + fatigue + café = cortisol (hormone du stress) qui monte = envie intense de sucré = craquage = pic glycémique = stockage en graisse abdominale + saut du dîner = déséquilibre hormonal nocturne. Ce cycle se répète tous les soirs et entretient directement ton ventre proéminent.<br><br>
+        ✅ <strong>La solution : anticiper avec une collation intelligente à 16h30</strong><br>
+        <strong>Option A :</strong> 1 poignée d'amandes (15–20) + 1 carré chocolat noir 70% → coupe la faim, apporte des bons lipides, zéro pic glycémique.<br>
+        <strong>Option B :</strong> Yaourt grec nature + 1 fruit → protéines + sucres lents = satiété stable jusqu'au dîner.<br><br>
+        💡 <strong>Pourquoi ça marche ?</strong> En mangeant intelligemment à 16h30, tu stabilises ta glycémie AVANT la chute. Tu arrives au dîner avec une faim normale — pas une faim de loup. Tu manges léger, tu dors mieux, et ton corps brûle des graisses la nuit au lieu de stocker.
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">🍽️ Déjeuner & Dîner</div>
+      <div class="nutri-card-body">
+        <strong>Déjeuner :</strong> Continue ! Légumes + protéines + féculents. Préfère riz complet, patate douce, quinoa aux pâtes blanches — index glycémique plus bas = moins de stockage.<br><br>
+        <strong>Dîner :</strong> Léger mais OBLIGATOIRE — soupe + œufs, ou poisson vapeur + légumes verts. <strong>Sauter le dîner ralentit le métabolisme</strong> et perturbe les hormones de la faim (leptine/ghréline) — c'est l'ennemi n°1 de ton ventre plat.<br><br>
+        <strong>À éviter le soir :</strong> Pâtes blanches, pain blanc, fromage en grande quantité, plats sucrés.
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">💧 Hydratation & Anti-Ballonnements</div>
+      <div class="nutri-card-body">
+        <strong>2 à 2,5 L d'eau/jour minimum</strong> — l'eau aide à éliminer la rétention d'eau qui gonfle le ventre. Commence ta journée par un grand verre d'eau avant le café.<br><br>
+        <strong>Anti-gonflements :</strong> Évite choux, lentilles, oignons crus. <strong>Tisane fenouil ou gingembre</strong> après le dîner = dégonfle le ventre pendant la nuit.<br><br>
+        <strong>Mâche lentement</strong> — avaler rapidement = air ingéré = ventre gonflé dès le repas.<br><br>
+        <strong>Berbérine :</strong> Continue avant les repas — stabilise la glycémie et réduit le stockage des graisses. 👏
+      </div>
+    </div>
+    <div class="nutri-card full">
+      <div class="nutri-card-header">🏋️ Nutrition Autour des Séances — Ne Sabote Pas Ton Travail !</div>
+      <div class="nutri-card-body">
+        💡 <strong>Pourquoi c'est important ?</strong> Si tu t'entraînes à jeun ou sans manger après, ton corps puise dans le muscle (pas dans la graisse) pour récupérer. Résultat : moins de tonus, plus de fatigue, moins de résultats.<br><br>
+        <strong>Avant séance (30 min) :</strong> 1 banane ou 1 datte + 1 grand verre d'eau → énergie rapide disponible pour la séance.<br>
+        <strong>Après séance (dans les 30 min) :</strong> <strong>Protéines OBLIGATOIRES</strong> → yaourt grec, 2 œufs durs, ou shake protéiné léger. C'est cette fenêtre anabolique qui construit le muscle et brûle la graisse. Ne la rate pas !
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="hl-label">💡 Le vrai secret du ventre plat pour toi Ta cliente</div>
+    <div class="hl-text">Ton ventre proéminent a <strong>3 causes simultanées</strong> : le diastasis post-grossesses, le cycle glycémique de 17h qui stocke en abdominal, et les ballonnements alimentaires. Ce programme attaque les 3 en même temps — gainage profond + nutrition restructurée + anti-ballonnements. <strong>C'est cette approche combinée qui va faire la différence.</strong> Pas une seule de ces causes seule ne suffit à expliquer, pas une seule solution seule ne suffit à régler.</div>
+  </div>
+
+</div><!-- /page -->
+
+<!-- ══════════════════════════════════════
+  PAGE 3 — PROGRAMME SEMAINE 1 & 2
+══════════════════════════════════════ -->
+<div class="page page-break">
+
+  <div id="seances" class="section-title">
+    <div class="icon">🏋️</div>
+    <h2>Programme des <span>Séances</span></h2>
+  </div>
+
+  <div id="sem12" class="week-banner">
+    <div class="week-num">1&2</div>
+    <div class="week-info">
+      <h3>Semaines 1 & 2 — Fondation</h3>
+      <p>Apprentissage des gestes, activation du transverse, mise en route en douceur et sans impact</p>
+    </div>
+  </div>
+
+  <!-- ── GUIDE DÉBUTANTE SALLE ── -->
+  <div style="background: linear-gradient(135deg, #fff0f3, #fce8ed); border: 1.5px solid var(--rose-light); border-radius: 16px; padding: 24px 24px 20px; margin-bottom: 28px;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--rose-deep); margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+      🏋️ Guide Débutante Salle — Lis ça avant ta première séance
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+
+      <div style="background:white; border-radius:10px; padding:14px 16px; border:1px solid var(--border);">
+        <div style="font-size:11px; font-weight:700; color:var(--rose-deep); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">📍 Ta 1ère visite en salle</div>
+        <div style="font-size:13px; color:var(--text-dark); line-height:1.7;">
+          Demande à un coach ou un conseiller de la salle de te <strong>montrer comment régler chaque machine</strong> de ton programme. C'est leur rôle, n'hésite pas ! Une machine mal réglée = risque de blessure. La 1ère séance, tu peux y consacrer 10 min de plus juste pour apprendre les réglages.
+        </div>
+      </div>
+
+      <div style="background:white; border-radius:10px; padding:14px 16px; border:1px solid var(--border);">
+        <div style="font-size:11px; font-weight:700; color:var(--rose-deep); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">⚙️ Comment régler les machines</div>
+        <div style="font-size:13px; color:var(--text-dark); line-height:1.7;">
+          <strong>Leg Press :</strong> règle le siège pour que les genoux soient à 90° en bas — ni trop près ni trop loin.<br>
+          <strong>Poussée de Hanches :</strong> le pad doit être au niveau des hanches, pas du ventre.<br>
+          <strong>Tirage Vertical :</strong> cale les cuisses sous les appuis pour ne pas te soulever quand tu tires.
+        </div>
+      </div>
+
+      <div style="background:white; border-radius:10px; padding:14px 16px; border:1px solid var(--border);">
+        <div style="font-size:11px; font-weight:700; color:var(--rose-deep); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">🏷️ Charges de départ recommandées</div>
+        <div style="font-size:13px; color:var(--text-dark); line-height:1.7;">
+          <strong>Leg Press :</strong> commence sans charge additionnelle (juste le poids du plateau ~20 kg)<br>
+          <strong>Poussée de Hanches / Hip Thrust :</strong> commence avec le poids minimum de la machine<br>
+          <strong>Tirage Vertical / Lat Pulldown :</strong> 10–15 kg pour débuter<br>
+          <strong>Curl Biceps haltères :</strong> 3–4 kg<br>
+          <strong>Curl Marteau / Hammer Curl :</strong> 4–5 kg<br>
+          Augmente dès que tu peux faire 2–3 reps de plus facilement.
+        </div>
+      </div>
+
+      <div style="background:white; border-radius:10px; padding:14px 16px; border:1px solid var(--border);">
+        <div style="font-size:11px; font-weight:700; color:var(--rose-deep); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">🗺️ Ordre de déplacement conseillé</div>
+        <div style="font-size:13px; color:var(--text-dark); line-height:1.7;">
+          <strong>1.</strong> Vélo ou Elliptique (zone cardio)<br>
+          <strong>2.</strong> Leg Press (zone machines guidées)<br>
+          <strong>3.</strong> Poussée de Hanches / Hip Thrust (zone machines guidées)<br>
+          <strong>4.</strong> Tirage Vertical / Lat Pulldown (zone câbles)<br>
+          <strong>5.</strong> Curl Biceps + Curl Marteau (zone haltères)<br>
+          <strong>6.</strong> Gainage Planche (zone tapis sol)<br>
+          <strong>7.</strong> Dead Bug (zone tapis sol)<br>
+          <strong>8.</strong> Superman (zone tapis sol)
+        </div>
+      </div>
+
+      <div style="background:white; border-radius:10px; padding:14px 16px; border:1px solid var(--border); grid-column: 1 / -1;">
+        <div style="font-size:11px; font-weight:700; color:var(--rose-deep); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">⏱️ Entre chaque série — Ce que tu fais</div>
+        <div style="font-size:13px; color:var(--text-dark); line-height:1.7; display:grid; grid-template-columns:1fr 1fr; gap:6px 20px;">
+          <span>✦ Lance ton chronomètre dès que tu poses les haltères</span>
+          <span>✦ Bois 2–3 gorgées d'eau à chaque pause</span>
+          <span>✦ Reste sur la machine — ne laisse pas ta place</span>
+          <span>✦ Secoue doucement les muscles que tu viens de travailler</span>
+          <span>✦ Relis les conseils d'exécution avant la série suivante</span>
+          <span>✦ Respire calmement — ne te précipite pas</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── MERCREDI SALLE S1&2 ── -->
+  <div id="salle-s12" class="seance-header">
+    <span class="day-badge">Mercredi — Séance Salle</span>
+    <h3>Séance 1 · Ventre Profond, Fessiers & Bras — ⏱ 45 min</h3>
+    <div class="seance-meta">
+      <span class="meta-item">🏢 En salle</span>
+      <span class="meta-item">⚡ Sans impact</span>
+      <span class="meta-item">🎯 Transverse + Fessiers + Bras</span>
+    </div>
+    <div class="seance-objective">Objectif : Activer le gainage profond pour le ventre plat, travailler les fessiers et tonifier les bras — sans crunch, en toute sécurité post-grossesses.</div>
+  </div>
+
+  <div class="notice-diastasis" style="margin-bottom:18px;">
+    <div class="notice-title">🏋️ Comment choisir ta charge en salle — RÈGLE D'OR</div>
+    La bonne charge, c'est celle avec laquelle tu <strong>ne pourrais PAS faire une répétition de plus</strong> à la fin de ta série. Si tu termines tes 15 reps et que tu pourrais en faire 5 de plus facilement → la charge est trop légère, augmente. Si tu n'arrives pas à finir la série avec une bonne technique → la charge est trop lourde, diminue. <strong>L'objectif : finir la dernière rep en étant à la limite, mais sans sacrifier la posture.</strong> C'est ce principe qui crée la progression et les résultats.
+    <br><br>
+    🔒 <strong>Consignes de sécurité pour tous les exercices en salle :</strong><br>
+    • Ne jamais retenir ta respiration — expire à l'effort, inspire au retour<br>
+    • Toujours commencer avec une charge légère pour vérifier la technique, puis augmenter<br>
+    • Si tu ressens une douleur (≠ brûlure musculaire normale) → arrête immédiatement et contacte-moi<br>
+    • Ne jamais verrouiller complètement les articulations (genoux, coudes) en fin de mouvement<br>
+    • Garde le nombril rentré sur TOUS les exercices — protège ta sangle abdominale post-grossesses<br>
+    • En cas de doute sur un appareil, demande à un coach de la salle de t'installer
+  </div>
+
+  <div class="exercise-table-wrapper">
+  <div style="overflow-x:auto;">
+  <table class="exercise-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Exercice</th>
+        <th>Séries</th>
+        <th>Reps</th>
+        <th>Repos</th>
+        <th>Conseils d'exécution</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="warmup-row">
+        <td><span class="warmup-num">✦</span></td>
+        <td><strong>Vélo ou Elliptique (échauffement)</strong></td>
+        <td>—</td>
+        <td>8 min</td>
+        <td>—</td>
+        <td>Allure modérée, pas d'essoufflement. Respiration profonde — prépare le corps en douceur.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">1</span></td>
+        <td><strong>Leg Press (presse à cuisses)</strong><br><a href="https://www.youtube.com/shorts/BnacvXdaxq8" target="_blank" class="video-link">▶ Voir la vidéo</a><br><span style="font-size:11px;color:var(--text-light);font-style:italic;">⚠️ Sur la vidéo c'est une presse inclinée — en tant que débutante, prends la presse normale (horizontale), plus stable et plus sécurisée pour commencer.</span></td>
+        <td>3</td>
+        <td>15</td>
+        <td>45 sec</td>
+        <td>Pieds <strong>larges et orteils pointés vers l'extérieur à 45°</strong>. Pourquoi ? Cette position externe oblige le grand fessier à s'activer en priorité plutôt que les quadriceps — tu cibles exactement la zone qui t'intéresse ! Pousser dans les talons, ne jamais verrouiller les genoux en haut. Dos collé au siège en permanence.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">2</span></td>
+        <td><strong>Poussée de Hanches / Hip Thrust — Machine dédiée en priorité</strong><br><a href="https://www.youtube.com/shorts/PqOnYf6Slkg" target="_blank" class="video-link">▶ Voir la vidéo</a><br><span style="font-size:11px;color:var(--text-light);font-style:italic;">✅ Si ta salle a une machine à hip thrust, utilise-la en priorité — position optimale et sécurisée. Sinon, utilise le Smith Machine (barre guidée).</span></td>
+        <td>3</td>
+        <td>15</td>
+        <td>45 sec</td>
+        <td>Dos appuyé sur le pad, pieds à plat au sol, genoux à 90°. <strong>Sécurité :</strong> vérifie que la barre ou le pad est bien stabilisé avant de commencer. Ne jamais cambrer le bas du dos — si tu cambres, la charge est trop lourde. Serrer les fesses fort en HAUT et tenir 1 sec. Descente contrôlée. Expire en montant, inspire en descendant.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">3</span></td>
+        <td><strong>Tirage Vertical / Lat Pulldown</strong><br><a href="https://www.youtube.com/watch?v=2Y4N2KoFg08" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>12</td>
+        <td>45 sec</td>
+        <td>Assise, cuisses bien calées sous les appuis. Prise large, paumes vers l'avant. <strong>Avant de tirer :</strong> rentrer les épaules vers le bas (jamais hausser les épaules). Tirer la barre vers la poitrine, pas derrière la nuque — risque cervical. Coudes qui descendent vers le bas et l'arrière. Expire en tirant, inspire en remontant. Remontée lente et contrôlée — ne pas lâcher d'un coup. <strong>Sécurité :</strong> ne pas se pencher trop en arrière, le buste reste quasi droit.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">4</span></td>
+        <td><strong>Curl Biceps aux Haltères</strong><br><a href="https://www.youtube.com/watch?v=_O-UxmwbqFc" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>12</td>
+        <td>40 sec</td>
+        <td>Debout, pieds largeur hanches, dos droit. Haltères en prise supination (paumes vers le ciel). <strong>Coudes FIXES contre le corps</strong> — ne jamais les faire partir en avant ou sur les côtés. Montée en 2 sec en contractant le biceps, descente en 3 sec lente et contrôlée — la descente est aussi importante que la montée ! Ne jamais balancer le buste pour tricher. Commence léger et augmente progressivement. <strong>Sécurité :</strong> évite de verrouiller le coude en bas, garde une légère flexion.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">5</span></td>
+        <td><strong>Gainage Planche Avant</strong><br><a href="https://www.youtube.com/watch?v=hoPwUu8vvvw" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>30 sec</td>
+        <td>30 sec</td>
+        <td>Sur les avant-bras, coudes sous les épaules. Corps en ligne droite de la tête aux talons. <strong>3 points clés :</strong> 1) Rentrer le nombril VERS LA COLONNE (activer le transverse — ton exercice roi post-grossesses), 2) Serrer les fessiers, 3) Ne jamais laisser les hanches monter ou descendre. Regard vers le sol, nuque dans le prolongement du dos. Respiration lente et régulière — ne jamais bloquer. <strong>Sécurité :</strong> si les hanches tombent malgré toi, pose les genoux plutôt que de compenser avec le dos.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">6</span></td>
+        <td><strong>Dead Bug — Gainage Profond</strong><br><a href="https://www.youtube.com/watch?v=jbWmbhElf3Q" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>8/côté</td>
+        <td>40 sec</td>
+        <td>Allongée sur le dos. Bras tendus vers le plafond, genoux à 90° (jambes en l'air). <strong>Avant chaque mouvement :</strong> expirer à fond pour plaquer le bas du dos AU SOL — c'est obligatoire. Descendre lentement un bras derrière la tête + la jambe opposée vers le sol, sans que le dos se décolle. Revenir lentement, alterner. Mouvement lent = 3 à 4 sec par côté. <strong>C'est l'exercice le plus important du programme pour ton ventre</strong> — connexion mentale totale requise. <strong>Sécurité :</strong> si le dos se décolle du sol, tu vas trop loin — réduis l'amplitude.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">7</span></td>
+        <td><strong>Superman / Renforcement du Dos</strong><br><a href="https://www.youtube.com/watch?v=dmaDOON5JBU" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>12</td>
+        <td>30 sec</td>
+        <td>Allongée ventre au sol, bras tendus devant toi, front au sol au départ. Inspirer, puis en expirant lever simultanément les bras et les jambes à quelques centimètres du sol. Tenir 2 sec en contractant les fessiers et les muscles du dos. Redescendre doucement. <strong>Ne jamais forcer la tête en arrière</strong> — regard vers le sol. Mouvement lent et contrôlé. <strong>Pourquoi c'est essentiel :</strong> renforce les muscles spinaux qui soutiennent ta colonne — indispensable pour corriger la posture post-grossesses et réduire le ventre proéminent.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+
+  <div class="seance-tips">
+    <div class="seance-tip">Boire de l'eau toutes les 10–15 min pendant la séance</div>
+    <div class="seance-tip">Expire TOUJOURS à l'effort — jamais bloquer la respiration</div>
+    <div class="seance-tip">Si gêne au niveau de la cicatrice césarienne → stop immédiat, contacte-moi</div>
+    <div class="seance-tip">Connexion esprit-muscle : visualise le muscle que tu actives</div>
+    <div class="seance-tip">Dernière rep difficile mais réalisable = charge parfaite ✅</div>
+    <div class="seance-tip">Nombril rentré en permanence — sur TOUS les exercices, même assis en machine</div>
+  </div>
+
+  <!-- ── SAMEDI MAISON S1&2 ── -->
+  <div id="maison-s12" class="seance-header">
+    <span class="day-badge">Samedi — Séance Maison</span>
+    <h3>Séance 2 · Corps Entier Doux — Gainage & Tonus — ⏱ 45 min</h3>
+    <div class="seance-meta">
+      <span class="meta-item">🏠 À domicile</span>
+      <span class="meta-item">⚡ Sans impact</span>
+      <span class="meta-item">🎯 Ventre profond + Fessiers + Bras</span>
+    </div>
+    <div class="seance-objective">Objectif : Travailler le corps entier en douceur, renforcer le plancher pelvien et le transverse, tonifier sans se blesser — tout ça avec juste son tapis !</div>
+  </div>
+
+  <div class="exercise-table-wrapper">
+  <div style="overflow-x:auto;">
+  <table class="exercise-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Exercice</th>
+        <th>Séries</th>
+        <th>Reps</th>
+        <th>Repos</th>
+        <th>Conseils d'exécution</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="warmup-row">
+        <td><span class="warmup-num">✦</span></td>
+        <td><strong>Échauffement Dynamique — Squats + Mobilité</strong></td>
+        <td>—</td>
+        <td>5 min</td>
+        <td>—</td>
+        <td>Enchaîne sans pause : 10 squats lents (descente profonde), 10 cercles de hanches dans chaque sens, 10 fentes arrière légères (5 chaque jambe), 10 rotations d'épaules avant + arrière, 5 flexions latérales du buste. Respiration profonde par le ventre sur chaque mouvement. <strong>Objectif :</strong> mobiliser toutes les articulations et activer le transverse avant même de commencer — les résultats démarrent dès l'échauffement !</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">1</span></td>
+        <td><strong>Squat Largeur Épaules</strong><br><a href="https://www.youtube.com/shorts/LUgOTFvashU" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>15</td>
+        <td>45 sec</td>
+        <td>Pieds largeur épaules, orteils légèrement ouverts vers l'extérieur. <strong>Avant de descendre :</strong> inspirer et rentrer le nombril. Descente en 3 sec : fesses vers l'arrière et le bas comme si tu t'asseyais sur une chaise invisible. Genoux dans l'axe des pieds — ne jamais les laisser rentrer vers l'intérieur. Poids dans les TALONS (tu dois pouvoir lever les orteils en bas du mouvement). Remontée en expirant en poussant dans les talons. <strong>Sécurité :</strong> si les genoux partent en dedans, réduis l'amplitude ou écarte légèrement les pieds.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">2</span></td>
+        <td><strong>Fentes Arrière Alternées</strong><br><a href="https://www.youtube.com/watch?v=9i4YcNHiKbU" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>10/jambe</td>
+        <td>45 sec</td>
+        <td>Debout, pieds joints. Faire un grand pas vers l'ARRIÈRE avec une jambe — genou arrière qui descend proche du sol (sans toucher). Buste droit, regard devant, hanches de face. <strong>Pourquoi fentes arrière et pas avant ?</strong> Moins de pression sur le genou avant, meilleur équilibre — parfait post-grossesses. Pousser sur le talon de la jambe avant pour revenir. Alterner les jambes. Expire en descendant, inspire en remontant. <strong>Sécurité :</strong> si manque d'équilibre, pose une main sur un mur ou le dossier d'une chaise.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">3</span></td>
+        <td><strong>Pont Fessier</strong><br><a href="https://www.youtube.com/watch?v=OUgsJ8-Vi0E" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>20</td>
+        <td>30 sec</td>
+        <td>Allongée sur le dos, genoux fléchis à 90°, pieds à plat à la largeur des hanches. Bras le long du corps. Inspirer, puis en expirant pousser les hanches VERS LE HAUT en serrant les fessiers fort. En haut : corps droit des épaules aux genoux, tenir 2 sec en contractant au maximum. Descendre lentement sans poser les fesses complètement entre les reps (tension continue). <strong>Point clé post-grossesses :</strong> en montant, contracte aussi le périnée (comme si tu retenais une envie pressante) — synchro fessiers + plancher pelvien = ventre plat accéléré. <strong>Sécurité :</strong> si crampe aux mollets, écarter légèrement les pieds.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">4</span></td>
+        <td><strong>Pompes Genoux au Sol</strong><br><a href="https://www.youtube.com/watch?v=qHQbyDAruKg" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>10</td>
+        <td>45 sec</td>
+        <td>À genoux sur le tapis, mains à la largeur des épaules (pas plus larges). Corps droit des genoux aux épaules — fesses pas en l'air. Descendre lentement la poitrine vers le sol en 3 sec, coudes à 45° par rapport au corps (pas à 90°). Remonter en expirant fort. <strong>Rentrer le nombril pendant TOUT l'exercice</strong> — protège ta sangle abdominale. Regard légèrement devant et non sous toi. <strong>Sécurité :</strong> si les poignets font mal, tu peux utiliser des haltères posées au sol comme support pour garder le poignet droit.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">5</span></td>
+        <td><strong>Rowing sur Table (dos)</strong><br><a href="https://www.youtube.com/watch?v=FKKZRwBJDxE&t=13s" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>12</td>
+        <td>45 sec</td>
+        <td>Allongée sous une table solide (teste la stabilité avant !), attraper le bord avec les deux mains, prise largeur épaules. Corps en ligne droite, talons au sol, hanches levées. Tirer la poitrine vers le bord de la table en ramenant les coudes vers l'arrière — penser à rentrer les omoplates ensemble. Descente lente et contrôlée. Expire en tirant, inspire en descendant. <strong>Sécurité :</strong> vérifie que la table ne peut pas glisser — pose un tapis antidérapant dessous si besoin. Si trop difficile, plier les genoux pour réduire le poids.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">6</span></td>
+        <td><strong>Chien-Oiseau / Bird Dog — Équilibre & Gainage</strong><br><a href="https://www.youtube.com/watch?v=BKRlCzV9yto" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>10/côté</td>
+        <td>40 sec</td>
+        <td>À 4 pattes, poignets sous les épaules, genoux sous les hanches. Dos plat comme une table — ni creux ni arrondi. <strong>Avant de bouger :</strong> rentrer le nombril et contracter légèrement le périnée. Étendre lentement le bras droit + la jambe gauche dans le prolongement du corps — ne jamais monter la jambe plus haut que le niveau du dos. Tenir 2 sec sans bouger les hanches (elles doivent rester parfaitement de niveau). Revenir lentement, alterner. <strong>C'est le meilleur exercice pour la stabilité lombo-pelvienne</strong> — essentiel après 4 grossesses. <strong>Sécurité :</strong> si douleur lombaire, réduire l'amplitude.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">7</span></td>
+        <td><strong>Gainage Latéral — Planche Côté Genoux</strong><br><a href="https://www.youtube.com/watch?v=EgguipVm2Ug" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>30 sec/côté</td>
+        <td>30 sec</td>
+        <td>Allongée sur le côté, appui sur l'avant-bras, <strong>genoux au sol fléchis à 90°</strong> — version adaptée débutante, plus stable et sécurisée. Lever les hanches pour aligner le corps des genoux aux épaules en ligne droite. <strong>Points clés :</strong> hanche du dessus ne part pas en avant ni en arrière. Rentrer le nombril, serrer les fessiers. Regard droit devant. Respiration régulière. <strong>Sécurité :</strong> coude bien sous l'épaule — jamais devant. Commence par le côté le plus faible. Les 30 sec doivent faire brûler les obliques en fin de maintien — c'est normal et bon signe !</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+
+  <div class="seance-tips">
+    <div class="seance-tip">Un tapis de yoga et c'est parti — aucun matériel supplémentaire nécessaire !</div>
+    <div class="seance-tip">Prends 2 min de récupération en respiration abdominale profonde à la fin</div>
+    <div class="seance-tip">Si 45 min c'est trop : supprime 1 série par exercice — l'essentiel c'est de commencer</div>
+    <div class="seance-tip">Les courbatures = les muscles se reconstruisent — signe de progression !</div>
+  </div>
+
+</div><!-- /page -->
+
+<!-- ══════════════════════════════════════
+  PAGE 4 — PROGRAMME SEMAINE 3 & 4
+══════════════════════════════════════ -->
+<div class="page page-break">
+
+  <div id="sem34" class="week-banner">
+    <div class="week-num">3&4</div>
+    <div class="week-info">
+      <h3>Semaines 3 & 4 — Progression</h3>
+      <p>On intensifie la charge, on allonge les planchs, on ajoute du tempo — la transformation commence à se voir !</p>
+    </div>
+  </div>
+
+  <!-- ── MERCREDI SALLE S3&4 ── -->
+  <div id="salle-s34" class="seance-header">
+    <span class="day-badge">Mercredi — Séance Salle</span>
+    <h3>Séance 1 · Intensification Core & Sculpture — ⏱ 45 min</h3>
+    <div class="seance-meta">
+      <span class="meta-item">🏢 En salle</span>
+      <span class="meta-item">⚡ Sans impact</span>
+      <span class="meta-item">🎯 Plus de charge + Tempo lent</span>
+    </div>
+    <div class="seance-objective">Objectif : Augmenter la charge de travail, introduire le tempo lent pour maximiser les résultats fessiers et bras, renforcer davantage le transverse.</div>
+  </div>
+
+  <div class="exercise-table-wrapper">
+  <div style="overflow-x:auto;">
+  <table class="exercise-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Exercice</th>
+        <th>Séries</th>
+        <th>Reps</th>
+        <th>Repos</th>
+        <th>Conseils d'exécution</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="warmup-row">
+        <td><span class="warmup-num">✦</span></td>
+        <td><strong>Elliptique — Échauffement Actif</strong></td>
+        <td>—</td>
+        <td>10 min</td>
+        <td>—</td>
+        <td>Plus dynamique qu'avant — tu es prête pour l'intensité ! Augmente progressivement la résistance.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">1</span></td>
+        <td><strong>Leg Press + 3 Pulses en Bas</strong><br><a href="https://www.youtube.com/watch?v=IZxyjW7MPJQ" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>4</td>
+        <td>12 + 3 pulses</td>
+        <td>45 sec</td>
+        <td>Descendre, faire 3 micro-flexions en bas avant de remonter. BRÛLE cuisses et fessiers intensément.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">2</span></td>
+        <td><strong>Poussée de Hanches / Hip Thrust Tempo Lent — Machine ou Smith</strong><br><a href="https://www.youtube.com/shorts/PqOnYf6Slkg" target="_blank" class="video-link">▶ Voir la vidéo</a><br><span style="font-size:11px;color:var(--text-light);font-style:italic;">✅ Machine dédiée en priorité, Smith Machine sinon.</span></td>
+        <td>4</td>
+        <td>12</td>
+        <td>45 sec</td>
+        <td>2 sec montée — 2 sec serrage maximum en haut — 2 sec descente lente. <strong>Sécurité :</strong> si le bas du dos se creuse = charge trop lourde, diminue immédiatement. Pieds bien à plat, ne jamais se mettre sur les pointes. Augmente la charge uniquement si la technique est parfaite.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">3</span></td>
+        <td><strong>Tirage Vertical Unilatéral / Lat Pulldown</strong><br><a href="https://www.youtube.com/watch?v=2Y4N2KoFg08" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>4</td>
+        <td>10/bras</td>
+        <td>40 sec</td>
+        <td>Même base que le tirage semaines 1&2 mais un bras à la fois. Main libre posée sur la cuisse pour stabiliser. Concentre-toi sur le trajet du coude : il descend vers la hanche, pas vers l'arrière. Omoplate qui se rétracte à chaque rep. <strong>Plus ciblé et plus intense</strong> — tu vas sentir le dos travailler de façon asymétrique. Corrige immédiatement si un côté est plus faible. <strong>Sécurité :</strong> même règle — barre vers la poitrine, jamais derrière la nuque.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">4</span></td>
+        <td><strong>Curl Marteau / Hammer Curl</strong><br><a href="https://www.youtube.com/watch?v=-3vQ5tTwubU" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>12</td>
+        <td>40 sec</td>
+        <td>Debout, haltères en prise neutre (pouces vers le haut, paumes face à face). Coudes FIXES contre le corps — c'est la règle absolue. Monter en 2 sec, descendre en 3 sec. <strong>Différence avec le curl classique :</strong> la prise neutre recrute davantage le brachial antérieur et le brachioradial — pour des bras plus complets et plus toniques sur toute la longueur. Ne jamais balancer le buste pour aider la montée. <strong>Sécurité :</strong> ne pas verrouiller le coude en bas — garde une légère flexion permanente.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">5</span></td>
+        <td><strong>Planche + Toucher Épaule</strong><br><a href="https://www.youtube.com/watch?v=-vNcNL60684" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>10/côté</td>
+        <td>30 sec</td>
+        <td>En position planche sur les mains (bras tendus). Corps en ligne droite. <strong>Avant de lever la main :</strong> rentrer fort le nombril et serrer les fessiers pour verrouiller les hanches. Lever lentement une main et toucher l'épaule opposée — les hanches NE BOUGENT PAS, elles restent parfaitement immobiles. Reposer doucement, alterner. Mouvement lent = 3 sec par côté. <strong>C'est l'exercice anti-rotation</strong> — il challenge le transverse de façon intense. <strong>Sécurité :</strong> si les poignets font mal, utilise des haltères comme support ou fais l'exercice sur les avant-bras avec un léger déplacement du coude.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">6</span></td>
+        <td><strong>Dead Bug Lent avec Pause</strong><br><a href="https://www.youtube.com/watch?v=jbWmbhElf3Q" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>4</td>
+        <td>8/côté</td>
+        <td>40 sec</td>
+        <td>Même position qu'en semaines 1&2 mais avec une pause de 2 sec bras/jambe en extension avant de revenir. <strong>Rappel obligatoire :</strong> expirer à fond avant chaque mouvement pour plaquer le dos au sol — sans ça, l'exercice perd 80% de son efficacité. Mouvement total : 4 sec descente — 2 sec pause — 3 sec remontée. <strong>Le dos qui se décolle = STOP</strong>, réduis l'amplitude. Tu dois sentir le bas-ventre travailler profondément à chaque rep. C'est cet exercice qui va aplanir ton ventre sur le long terme — chaque série compte. <strong>Sécurité :</strong> si gêne lombaire, revenir à l'amplitude semaine 1.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+
+  <div class="seance-tips">
+    <div class="seance-tip">Tu as progressé depuis la semaine 1 — augmente la charge des haltères si les exercices deviennent faciles</div>
+    <div class="seance-tip">Prends une photo de ton ventre — la différence est souvent visible dès la semaine 3 !</div>
+    <div class="seance-tip">Compte chaque répétition à voix haute — ça maintient la concentration</div>
+    <div class="seance-tip">Un dos fort = moins de douleurs, meilleure posture, silhouette naturellement affinée</div>
+  </div>
+
+  <!-- ── SAMEDI MAISON S3&4 ── -->
+  <div id="maison-s34" class="seance-header">
+    <span class="day-badge">Samedi — Séance Maison</span>
+    <h3>Séance 2 · Progression Totale — Gainage Avancé & Fessiers — ⏱ 45 min</h3>
+    <div class="seance-meta">
+      <span class="meta-item">🏠 À domicile</span>
+      <span class="meta-item">⚡ Sans impact</span>
+      <span class="meta-item">🎯 Plus de durée + Nouveaux exercices</span>
+    </div>
+    <div class="seance-objective">Objectif : Dépasse tes semaines 1&2 — plus de séries, plus de durée de gainage, nouveaux angles de travail fessier. La transformation s'accélère !</div>
+  </div>
+
+  <div class="exercise-table-wrapper">
+  <div style="overflow-x:auto;">
+  <table class="exercise-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Exercice</th>
+        <th>Séries</th>
+        <th>Reps</th>
+        <th>Repos</th>
+        <th>Conseils d'exécution</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="warmup-row">
+        <td><span class="warmup-num">✦</span></td>
+        <td><strong>Échauffement Dynamique</strong></td>
+        <td>—</td>
+        <td>5 min</td>
+        <td>—</td>
+        <td>Squats dynamiques + rotations hanches + fentes légères. Plus intense qu'avant — les muscles doivent être chauds !</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">1</span></td>
+        <td><strong>Squat Sumo (pieds très écartés)</strong><br><a href="https://www.youtube.com/watch?v=QKKZ9AGYTi8" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>4</td>
+        <td>15</td>
+        <td>45 sec</td>
+        <td>Pieds très écartés (plus larges que les épaules), orteils pointés à 45° vers l'extérieur. Descente lente en 3 sec : hanches au niveau des genoux, dos droit, regard devant. <strong>Pourquoi cette position ?</strong> En écartant les pieds et en ouvrant les orteils, tu recrutes davantage le grand fessier et les adducteurs (intérieur cuisse) — zones souvent négligées. Pousser dans les talons ET les orteils extérieurs pour remonter. Expire en remontant. <strong>Sécurité :</strong> genoux dans l'axe des orteils en permanence — ne jamais les laisser rentrer vers l'intérieur.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">2</span></td>
+        <td><strong>Fentes Latérales</strong><br><a href="https://www.youtube.com/watch?v=YqxR1Xv_o4I" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>12/jambe</td>
+        <td>45 sec</td>
+        <td>Debout, pieds joints. Faire un grand pas sur le côté avec une jambe — genou de la jambe pliée fléchi à 90°, jambe opposée tendue et pied à plat. Dos droit, buste légèrement incliné en avant (naturel). <strong>Pousser FORT sur le talon de la jambe pliée pour revenir</strong> — c'est ce qui active le fessier. Alterner les côtés. Expire en descente, inspire en remontant. <strong>Pourquoi cet exercice en semaines 3&4 ?</strong> Il cible le moyen fessier (côté de la fesse) souvent absent après grossesses — il donne le galbe arrondi sur les côtés. <strong>Sécurité :</strong> appui sur une chaise si déséquilibre.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">3</span></td>
+        <td><strong>Pont Fessier Tempo Lent</strong><br><a href="https://www.youtube.com/watch?v=OUgsJ8-Vi0E" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>4</td>
+        <td>15</td>
+        <td>30 sec</td>
+        <td>Même base que le pont fessier semaines 1&2 mais avec un tempo de 3 sec montée — 3 sec maintien en haut — 3 sec descente. <strong>En haut :</strong> serrage MAXIMUM des fessiers + contraction du périnée + nombril rentré — triple verrouillage. La lenteur crée une tension musculaire prolongée qui multiplie les résultats par rapport à la version rapide. Ne jamais rebondir en bas — chaque rep repart de zéro en tension. <strong>Tu dois sentir les fessiers brûler dès la 8ème rep</strong> — c'est le signe que tu travailles dans la bonne zone. <strong>Sécurité :</strong> si le bas du dos se cambre, pieds plus proches des fesses.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">4</span></td>
+        <td><strong>Pompes Genoux — Version Progressée</strong><br><a href="https://www.youtube.com/watch?v=qHQbyDAruKg" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>4</td>
+        <td>12</td>
+        <td>45 sec</td>
+        <td>Même position qu'en semaines 1&2 — genoux au sol — mais <strong>4 séries au lieu de 3 et 12 reps au lieu de 10</strong>. La progression, c'est ça : plus de volume, pas forcément plus de difficulté technique. Mains largeur épaules, corps droit des genoux aux épaules, coudes à 45°. Descente lente en 3 sec, remontée explosive en expirant. <strong>Nombril rentré en permanence.</strong> Tu dois sentir les bras et la poitrine travailler vraiment sur les dernières reps. <strong>Sécurité :</strong> si les hanches montent ou tombent → reprends ta position avant de continuer.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">5</span></td>
+        <td><strong>Superman avec Pause / Renforcement Dos</strong><br><a href="https://www.youtube.com/watch?v=dmaDOON5JBU" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>12</td>
+        <td>30 sec</td>
+        <td>Même position qu'en semaines 1&2 mais avec une pause de 3 sec en haut au lieu de 2 sec. <strong>La pause isométrique</strong> = les muscles maintiennent une contraction sans mouvement — c'est l'une des techniques les plus efficaces pour renforcer en profondeur. Inspire en bas, expire en montant, respiration lente en maintien. <strong>Ne jamais forcer le cou en arrière</strong> — regard au sol en permanence, nuque dans l'axe du dos. Descente très lente et contrôlée. <strong>Pourquoi c'est crucial pour toi :</strong> renforce les érecteurs spinaux qui compensent la lordose accentuée par 4 grossesses — améliore directement ta posture et réduit le ventre proéminent.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">6</span></td>
+        <td><strong>Chien-Oiseau / Bird Dog Lent avec Pause</strong><br><a href="https://www.youtube.com/watch?v=BKRlCzV9yto" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>4</td>
+        <td>10/côté</td>
+        <td>40 sec</td>
+        <td>Même base qu'en semaines 1&2 mais pause de 3 sec en extension et mouvement encore plus lent. <strong>Check-list avant chaque rep :</strong> dos plat ? nombril rentré ? hanches de niveau ? Si oui → étendre lentement, tenir 3 sec, revenir lentement. <strong>Visualisation :</strong> imagine qu'un verre d'eau est posé sur ton dos — il ne doit pas tomber. C'est ce niveau de stabilité qui construit le gainage profond durable. <strong>Sécurité :</strong> si une épaule ou une hanche monte pendant le mouvement, reviens à l'amplitude semaine 1 et construis progressivement.</td>
+      </tr>
+      <tr>
+        <td><span class="exercise-num">7</span></td>
+        <td><strong>Planche Longue (40 sec)</strong><br><a href="https://www.youtube.com/watch?v=hoPwUu8vvvw" target="_blank" class="video-link">▶ Voir la vidéo</a></td>
+        <td>3</td>
+        <td>40 sec</td>
+        <td>30 sec</td>
+        <td>Même position qu'en semaines 1&2 mais 40 sec au lieu de 30 sec. <strong>Pour tenir plus longtemps :</strong> décompose mentalement en blocs de 10 sec — "10 sec, c'est gérable". Contrôle ta respiration : inspire 4 sec, expire 4 sec. Rename le nombril vers la colonne à chaque expiration. <strong>Si tu sens les hanches qui commencent à tomber</strong> à la fin des 40 sec → pas question de compenser avec le dos. Pose les genoux, reprends 5 sec, et retente. <strong>La qualité prime sur la durée.</strong> <strong>Sécurité :</strong> douleur lombaire → genoux au sol immédiatement, jamais forcer sur une planche qui s'effondre.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+
+  <div class="seance-tips">
+    <div class="seance-tip">Tu es plus forte qu'en semaine 1 — sens la différence dans chaque mouvement !</div>
+    <div class="seance-tip">Prends tes mesures et photos finales — la progression est souvent impressionnante !</div>
+    <div class="seance-tip">Résultats visibles en 1 mois : énergie, ventre moins proéminent, tonus, posture</div>
+    <div class="seance-tip">Félicite-toi — la régularité est ta plus grande victoire ! 🏆</div>
+  </div>
+
+</div><!-- /page -->
+
+<!-- ══════════════════════════════════════
+  PAGE 5 — APRÈS CE PREMIER MOIS
+══════════════════════════════════════ -->
+<div class="page page-break">
+
+  <div id="apres" class="section-title">
+    <div class="icon">🚀</div>
+    <h2>Et Après Ce <span>Premier Mois ?</span></h2>
+  </div>
+
+  <p style="font-size:14px;color:var(--text-mid);margin-bottom:24px;line-height:1.7;">Ta cliente, soyons honnêtes. <strong>1 mois de sport ne transforme pas un corps.</strong> Ce que ce premier mois fait, c'est poser les fondations — activer les bons muscles, créer l'habitude, lancer la machine. Les vraies transformations, celles que tu vois sur les photos avant/après, elles se construisent sur <strong>4 à 6 mois</strong>. Et voilà exactement ce qui t'attend si tu restes dans le programme.</p>
+
+  <div class="journey-timeline">
+    <div class="journey-month active">
+      <div class="month-label">Mois 1 — Tu es ici 📍</div>
+      <h4>Fondation & Réveil Musculaire</h4>
+      <p>Ton corps apprend. Le transverse s'active. La posture s'améliore. Le ventre commence à dégonfler. Tu te sens déjà plus énergique. Ce mois est <strong>indispensable</strong> — sans lui, rien de ce qui suit n'est possible.</p>
+    </div>
+    <div class="journey-month">
+      <div class="month-label">Mois 2 — Le déclic 💡</div>
+      <h4>Les Premières Différences Visibles</h4>
+      <p>C'est ici que ça devient <strong>addictif</strong>. Le ventre se raffermit, les bras se dessinent, les vêtements tombent différemment. Ton entourage commence à remarquer. On intensifie avec des élastiques.</p>
+    </div>
+    <div class="journey-month">
+      <div class="month-label">Mois 3 — La transformation 🔥</div>
+      <h4>La Silhouette Se Redessine</h4>
+      <p>La composition corporelle change vraiment. Moins de graisse, plus de tonus. La confiance en soi remonte naturellement. Les habitudes alimentaires sont installées sans effort. Tu ne veux plus t'arrêter.</p>
+    </div>
+    <div class="journey-month">
+      <div class="month-label">Mois 4–5 — L'objectif 🎯</div>
+      <h4>Le Corps Que Tu Voulais</h4>
+      <p>Ventre plat, bras toniques, silhouette affinée. Énergie au quotidien. <strong>C'est le corps que tu mérites pour cet été.</strong> Celles qui arrivent ici ne reviennent jamais en arrière — parce qu'elles ont compris que le sport est un mode de vie, pas un régime.</p>
+    </div>
+  </div>
+
+  <div style="background: linear-gradient(135deg, #A85570, #C9748F); border-radius: 14px; padding: 24px; margin: 24px 0; color: white; text-align:center;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:10px;">La vraie question</div>
+    <div style="font-family:'Cormorant Garamond',serif; font-size:22px; font-style:italic; font-weight:300; line-height:1.5; margin-bottom:14px;">
+      "Dans 5 mois, tu seras dans la même situation qu'aujourd'hui — ou tu seras la version de toi que tu veux être. La différence, c'est la décision que tu prends maintenant."
+    </div>
+    <div style="font-size:13px; color:rgba(255,255,255,0.85); line-height:1.6;">
+      Les résultats ne viennent pas de la perfection. Ils viennent de la <strong style="color:white;">régularité</strong>.<br>
+      2 séances par semaine × 20 semaines = une transformation réelle et durable. 💪
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top:24px;">
+    <div class="hl-label">📦 Matériel Recommandé pour le Mois 2</div>
+    <div class="hl-text">
+      <strong>1 élastique de résistance (5–10€)</strong> = RÉVOLUTION pour les fessiers et le renforcement global à domicile !<br>
+      <strong>1 paire d'haltères légers 2–3 kg (10–15€)</strong> = pour amplifier le travail des bras et du dos à la maison.<br>
+      Ces deux petits investissements vont transformer tes séances domicile.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="footer">
+    <h3>Ta cliente, ta transformation commence aujourd'hui.</h3>
+    <p>Ce programme est taillé pour toi — tes contraintes, ton corps, tes objectifs. Tout ce qu'il te reste à faire, c'est de te présenter à chaque séance. Je m'occupe du reste. À la fin de ce mois, on fait le point ensemble et on construit la suite pour que l'été soit celui dont tu rêves. 🌸</p>
+    <div style="margin-top:16px; display:inline-block; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); border-radius:50px; padding:10px 28px; font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:white;">
+      📩 Une question ? Contacte-moi à tout moment
+    </div>
+    <div class="coach-sig" style="margin-top:20px;">Ornella Fit Coaching · En route Ta cliente ! 🚀</div>
+  </div>
+
+</div><!-- /page -->
+
+<!-- ── FAB NAVIGATION ── -->
+<style>
+  #fab-nav {
+    position: fixed;
+    bottom: calc(32px + env(safe-area-inset-bottom));
+    right: 20px;
+    z-index: 1000;
+  }
+  #fab-nav summary {
+    list-style: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #A85570, #C9748F);
+    color: #fff;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(169,85,112,0.45);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  #fab-nav summary::-webkit-details-marker { display: none; }
+  #fab-nav[open] summary {
+    background: linear-gradient(135deg, #7A3550, #A85570);
+    transform: scale(0.92);
+    box-shadow: 0 2px 10px rgba(169,85,112,0.3);
+  }
+  .fab-menu {
+    position: absolute;
+    bottom: 62px;
+    right: 0;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 36px rgba(44,26,32,0.18);
+    overflow: hidden;
+    min-width: 230px;
+    border: 1px solid var(--border);
+  }
+  .fab-menu-title {
+    padding: 10px 16px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--rose);
+    background: var(--rose-ultra);
+    border-bottom: 1px solid var(--border);
+  }
+  .fab-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: background 0.15s;
+    border-bottom: 1px solid var(--rose-ultra);
+    font-family: 'Jost', sans-serif;
+  }
+  .fab-menu a:last-child { border-bottom: none; }
+  .fab-menu a:hover, .fab-menu a:active { background: var(--rose-ultra); color: var(--rose-deep); }
+  .fab-menu .fab-group {
+    padding: 6px 16px 2px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    background: #fdf5f7;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .fab-menu .fab-group:first-of-type { border-top: none; }
+</style>
+
+<details id="fab-nav">
+  <summary>☰</summary>
+  <div class="fab-menu">
+    <div class="fab-menu-title">Navigation</div>
+    <a href="#cover">🏠 Accueil</a>
+    <a href="#profil">👤 Mon Profil</a>
+    <div class="fab-group">Suivi</div>
+    <a href="#mensurations">📏 Mensurations</a>
+    <a href="#ressenti">💚 Ressenti hebdo</a>
+    <div class="fab-group">Nutrition</div>
+    <a href="#nutrition">🥗 Plan Nutrition</a>
+    <div class="fab-group">Séances</div>
+    <a href="#seances">🏋️ Programme</a>
+    <a href="#sem12">📅 Semaines 1 &amp; 2</a>
+    <a href="#salle-s12">&nbsp;&nbsp;💪 Salle — S1&amp;2</a>
+    <a href="#maison-s12">&nbsp;&nbsp;🏠 Maison — S1&amp;2</a>
+    <a href="#sem34">📅 Semaines 3 &amp; 4</a>
+    <a href="#salle-s34">&nbsp;&nbsp;💪 Salle — S3&amp;4</a>
+    <a href="#maison-s34">&nbsp;&nbsp;🏠 Maison — S3&amp;4</a>
+    <div class="fab-group">Suite</div>
+    <a href="#apres">🚀 Et après ?</a>
+  </div>
+</details>
+
+</body>
+</html>
