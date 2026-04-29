@@ -249,6 +249,8 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
 }
 .hero-title em { font-style: italic; color: var(--accent); font-weight: 600; }
 .hero-title-mobile { display: none; }
+.hero-video-mobile { display: none; }
+.hero-sub-mobile { display: none; }
 .hero-sub {
   font-size: 1.08rem; color: var(--text-mid);
   max-width: 500px; margin-bottom: 22px;
@@ -628,9 +630,31 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
 /* ===== MOBILE INDEX ===== */
 @media (max-width: 768px) {
   /* HERO */
-  #hero { padding: 80px 18px 48px; }
-  .hero-split { flex-direction: column; gap: 32px; }
+  #hero { padding: 72px 18px 36px; }
+  .hero-split { flex-direction: column; gap: 0; }
   .hero-content { text-align: center; }
+  /* Vidéo inline après le titre */
+  .hero-video-mobile {
+    display: block;
+    margin: 20px auto 20px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(44,31,26,0.15);
+    max-width: 320px;
+  }
+  .hero-video-mobile video {
+    width: 100%; aspect-ratio: 4/5;
+    object-fit: cover; display: block;
+  }
+  /* Cacher colonne vidéo droite */
+  .hero-photo-col { display: none !important; }
+  /* Cacher éléments répétitifs */
+  .hero-proof { display: none; }
+  .hero-postpartum { display: none; }
+  .hero-extras { display: none; }
+  /* Sous-titre mobile court */
+  .hero-sub-desktop { display: none; }
+  .hero-sub-mobile { display: inline; }
   .hero-photo-col { width: 100%; max-width: 300px; margin: 0 auto; }
   .hero-photo-frame img,
   .hero-photo-frame video { height: 300px; }
@@ -822,7 +846,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="hero-title-mobile">J'ai reconstruit<br>mon corps 3 fois.<br><em>Je t'aide à faire pareil.</em></span>
       </h1>
 
-      <p class="hero-sub"><strong>Transforme ta silhouette. Perds du gras. Retrouve ton énergie.</strong><br>Post-partum, remise en forme, perte de poids, tonification — un coaching fait pour ta vie réelle.</p>
+      <!-- VIDÉO MOBILE — affichée après le titre -->
+      <div class="hero-video-mobile">
+        <video controls preload="none" playsinline poster="images/poster-hero.jpg">
+          <source src="videos/video-ornella.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <p class="hero-sub">
+        <span class="hero-sub-desktop"><strong>Transforme ta silhouette. Perds du gras. Retrouve ton énergie.</strong><br>Post-partum, remise en forme, perte de poids, tonification — un coaching fait pour ta vie réelle.</span>
+        <span class="hero-sub-mobile"><strong>Coaching sur-mesure. Résultats visibles.</strong> À domicile ou à distance — pour ta vie réelle.</span>
+      </p>
 
       <div class="hero-proof">
         <div class="hero-proof-item">
@@ -847,8 +881,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         Je veux transformer mon corps →
       </a>
       <p class="hero-note">✓ Réponse rapide · Premier échange sans engagement</p>
-      <p style="font-size:0.82rem;color:#8A7060;margin-top:10px;">💰 Programme <strong style="color:#1E1616;">8 semaines sur-mesure</strong> — <strong style="color:#C96358;">79€</strong></p>
-      <p style="font-size:0.76rem;color:#9A8878;margin-top:4px;line-height:1.5;">Pas de programme copier-coller. Construit selon ton corps, ton niveau et ta vie réelle. Sans suivi mensuel — à ton rythme.</p>
+      <p class="hero-extras" style="font-size:0.82rem;color:#8A7060;margin-top:10px;">💰 Programme <strong style="color:#1E1616;">8 semaines sur-mesure</strong> — <strong style="color:#C96358;">79€</strong></p>
+      <p class="hero-extras" style="font-size:0.76rem;color:#9A8878;margin-top:4px;line-height:1.5;">Pas de programme copier-coller. Construit selon ton corps, ton niveau et ta vie réelle. Sans suivi mensuel — à ton rythme.</p>
     </div>
 
     <!-- VIDEO -->
