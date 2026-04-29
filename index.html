@@ -648,7 +648,28 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
   /* LONGEVITÉ */
   .long-grid { grid-template-columns: 1fr; gap: 14px; }
 
-  /* MÉTHODE */
+  /* MÉTHODE — carrousel swipeable */
+  .methode-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    margin-top: 28px !important;
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+  }
+  .methode-grid::-webkit-scrollbar { display: none; }
+  .methode-card {
+    scroll-snap-align: start;
+    min-width: 82% !important;
+    flex-shrink: 0;
+    grid-column: unset !important;
+  }
+  .methode-swipe-hint { display: block; }
   .methode-step { gap: 16px; }
   .methode-body { padding-top: 8px; }
 
@@ -937,9 +958,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="section-label">Ma méthode</span>
     <h2 class="section-title">Un accompagnement <em>structuré,</em> pas du hasard.</h2>
     <p class="section-subtitle">Rien n'est laissé au hasard. Chaque étape a un rôle dans ta transformation.</p>
-    <div class="methode-steps fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px;">
+    <p class="methode-swipe-hint" style="display:none;font-family:'Arial',sans-serif;font-size:.78rem;color:var(--text-mid);margin-top:28px;margin-bottom:-10px;">Glisse pour voir les étapes →</p>
+    <div class="methode-grid fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px;">
 
-      <div style="background:var(--cream);border-radius:16px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;">
+      <div class="methode-card" style="background:var(--cream);border-radius:16px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;">
         <div class="methode-num" style="flex-shrink:0;">1</div>
         <div>
           <div class="methode-title" style="margin-bottom:4px;">WhatsApp</div>
@@ -947,7 +969,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <div style="background:var(--cream);border-radius:16px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;">
+      <div class="methode-card" style="background:var(--cream);border-radius:16px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;">
         <div class="methode-num" style="flex-shrink:0;">2</div>
         <div>
           <div class="methode-title" style="margin-bottom:4px;">Bilan complet</div>
@@ -955,7 +977,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <div style="background:var(--cream);border-radius:16px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;">
+      <div class="methode-card" style="background:var(--cream);border-radius:16px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;">
         <div class="methode-num" style="flex-shrink:0;">3</div>
         <div>
           <div class="methode-title" style="margin-bottom:4px;">Programme sur-mesure</div>
@@ -963,7 +985,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <div style="background:var(--cream);border-radius:16px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;">
+      <div class="methode-card" style="background:var(--cream);border-radius:16px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;">
         <div class="methode-num" style="flex-shrink:0;">4</div>
         <div>
           <div class="methode-title" style="margin-bottom:4px;">Suivi hebdomadaire</div>
@@ -971,7 +993,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <div style="background:linear-gradient(135deg,rgba(201,99,88,0.08),rgba(201,99,88,0.04));border:1px solid rgba(201,99,88,0.18);border-radius:16px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;grid-column:1/-1;">
+      <div class="methode-card" style="background:linear-gradient(135deg,rgba(201,99,88,0.08),rgba(201,99,88,0.04));border:1px solid rgba(201,99,88,0.18);border-radius:16px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;grid-column:1/-1;">
         <div class="methode-num" style="flex-shrink:0;">5</div>
         <div>
           <div class="methode-title" style="margin-bottom:4px;">Résultats durables</div>
