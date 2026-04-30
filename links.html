@@ -11,7 +11,7 @@
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=26675222578828123&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -22,65 +22,19 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 0 72px;
+  padding: 52px 22px 72px;
   color: #2C1F1A;
-  position: relative;
-  overflow-x: hidden;
-}
-
-/* WARM GRADIENT TOP */
-.top-wash {
-  width: 100%;
-  height: 200px;
-  background: linear-gradient(160deg, #E8C4B0 0%, #F0D4C0 40%, #FDF0E8 100%);
-  position: absolute;
-  top: 0; left: 0;
-  z-index: 0;
-}
-
-/* BLOB SHAPES */
-.blob {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(60px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* SVG DECO */
-.deco-svg {
-  position: fixed;
-  pointer-events: none;
-  z-index: 0;
 }
 
 .page {
-  position: relative;
-  z-index: 1;
   width: 100%;
-  max-width: 420px;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 22px;
 }
 
-/* PHOTO WRAPPER */
-.photo-wrap {
-  margin-top: 52px;
-  margin-bottom: 20px;
-  position: relative;
-}
-.photo-ring {
-  position: absolute;
-  inset: -7px;
-  border-radius: 50%;
-  border: 1.5px dashed #D4957A;
-  opacity: 0.5;
-  animation: spin 18s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-
+/* PHOTO */
 .profile-img {
   width: 110px;
   height: 110px;
@@ -88,28 +42,25 @@ body {
   object-fit: cover;
   object-position: top center;
   border: 3px solid #fff;
-  box-shadow: 0 8px 32px rgba(180,90,60,0.22), 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 24px rgba(180,90,60,0.18);
   display: block;
-  position: relative;
-  z-index: 1;
+  margin-bottom: 18px;
 }
 
-/* NAME */
 .profile-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.55rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: #2C1F1A;
   text-align: center;
   letter-spacing: 0.02em;
-  margin-bottom: 6px;
-  line-height: 1.2;
+  margin-bottom: 8px;
 }
 
 .profile-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   background: #fff;
   border: 1px solid #E8C4B0;
   border-radius: 20px;
@@ -117,9 +68,8 @@ body {
   font-size: 11px;
   font-weight: 500;
   color: #C96358;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   margin-bottom: 10px;
-  box-shadow: 0 2px 8px rgba(201,99,88,0.1);
 }
 
 .profile-tag {
@@ -132,7 +82,6 @@ body {
   margin-bottom: 28px;
 }
 
-/* WARM SEPARATOR */
 .sep {
   display: flex;
   align-items: center;
@@ -141,16 +90,16 @@ body {
   width: 100%;
   justify-content: center;
 }
-.sep-line { flex: 1; max-width: 60px; height: 1px; background: #D4A090; opacity: 0.5; }
-.sep-icon { font-size: 0.75rem; color: #C96358; opacity: 0.7; }
+.sep-line { width: 48px; height: 1px; background: #D4A090; opacity: 0.5; }
+.sep-dot  { width: 4px; height: 4px; border-radius: 50%; background: #C96358; opacity: 0.6; }
 
 /* LINKS */
 .links {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 11px;
-  margin-bottom: 36px;
+  gap: 10px;
+  margin-bottom: 38px;
 }
 
 .link-btn {
@@ -167,131 +116,80 @@ body {
   font-weight: 400;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 0 2px 12px rgba(180,90,60,0.07);
-  gap: 13px;
+  box-shadow: 0 2px 10px rgba(180,90,60,0.07);
+  gap: 12px;
   text-align: left;
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
-
 .link-btn:hover {
-  background: #FFF5F0;
   border-color: #C96358;
-  box-shadow: 0 6px 20px rgba(201,99,88,0.13);
-  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(201,99,88,0.13);
 }
-.link-btn:active { transform: scale(0.98); }
+.link-btn:active { opacity: 0.88; }
 
 .link-btn.featured {
   background: linear-gradient(135deg, #C96358 0%, #D4856A 100%);
   border-color: transparent;
   color: #fff;
-  box-shadow: 0 6px 22px rgba(201,99,88,0.32);
+  box-shadow: 0 4px 18px rgba(201,99,88,0.28);
 }
-.link-btn.featured:hover {
-  box-shadow: 0 8px 28px rgba(201,99,88,0.42);
-  transform: translateY(-2px);
-}
-.link-btn.featured .link-arrow { color: rgba(255,255,255,0.6); }
+.link-btn.featured .link-arrow { color: rgba(255,255,255,0.55); }
+.link-btn.featured .link-sub   { color: rgba(255,255,255,0.7); }
 
 .link-btn.wa {
   background: #fff;
-  border-color: rgba(37,211,102,0.3);
-  color: #1A7A50;
-  box-shadow: 0 2px 12px rgba(37,211,102,0.08);
+  border-color: rgba(37,211,102,0.35);
+  color: #1A6E44;
 }
-.link-btn.wa:hover {
-  background: #F0FFF6;
-  border-color: #25D366;
-  box-shadow: 0 6px 20px rgba(37,211,102,0.15);
-}
-.link-btn.wa .link-arrow { color: #25D366; opacity: 0.6; }
+.link-btn.wa .link-arrow { color: #25D366; opacity: 0.7; }
 
-.link-emoji { font-size: 1.1rem; flex-shrink: 0; line-height: 1; }
+.link-emoji { font-size: 1.05rem; flex-shrink: 0; }
 .link-text  { flex: 1; line-height: 1.35; }
 .link-sub   { display: block; font-size: 11px; font-weight: 300; color: #A08070; margin-top: 2px; }
-.link-btn.featured .link-sub { color: rgba(255,255,255,0.7); }
-.link-arrow { font-size: 16px; color: #D4A090; flex-shrink: 0; }
+.link-arrow { font-size: 15px; color: #D4A090; flex-shrink: 0; }
 
 /* FOOTER */
-.footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
-.footer-icons {
-  display: flex;
-  gap: 12px;
-}
+.footer { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.footer-icons { display: flex; gap: 10px; }
 .footer-icon {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 400;
-  color: #B09080;
-  background: #fff;
-  border: 1px solid rgba(212,160,144,0.35);
-  border-radius: 20px;
-  padding: 7px 14px;
-  transition: all 0.2s;
-  box-shadow: 0 2px 8px rgba(180,90,60,0.06);
+  display: flex; align-items: center; gap: 5px;
+  text-decoration: none; font-size: 12px; font-weight: 400; color: #B09080;
+  background: #fff; border: 1px solid rgba(212,160,144,0.35);
+  border-radius: 20px; padding: 7px 13px;
+  box-shadow: 0 1px 6px rgba(180,90,60,0.05);
+  transition: color 0.2s, border-color 0.2s;
 }
-.footer-icon:hover {
-  color: #C96358;
-  border-color: #C96358;
-  background: #FFF5F0;
-}
+.footer-icon:hover { color: #C96358; border-color: #C96358; }
 .copyright { font-size: 10px; color: #C8B0A8; letter-spacing: 0.06em; }
 
 /* MODAL */
 .modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(44,31,26,0.45);
-  z-index: 999;
-  align-items: flex-end;
-  justify-content: center;
+  display: none; position: fixed; inset: 0;
+  background: rgba(44,31,26,0.45); z-index: 999;
+  align-items: flex-end; justify-content: center;
   backdrop-filter: blur(6px);
 }
 .modal-overlay.open { display: flex; }
 .modal-box {
-  background: #FDF7F3;
-  border-radius: 28px 28px 0 0;
-  padding: 32px 24px 52px;
-  width: 100%;
-  max-width: 480px;
-  position: relative;
-  animation: up 0.3s cubic-bezier(.22,.68,0,1.1);
-  border-top: 3px solid #E8C4B0;
-}
-@keyframes up {
-  from { transform: translateY(60px); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
+  background: #FDF7F3; border-radius: 28px 28px 0 0;
+  padding: 32px 24px 52px; width: 100%; max-width: 480px;
+  position: relative; border-top: 3px solid #E8C4B0;
 }
 .modal-close {
-  position: absolute;
-  top: 16px; right: 18px;
-  background: #F0E0D8;
-  border: none; width: 30px; height: 30px;
-  border-radius: 50%;
-  font-size: 1rem;
-  cursor: pointer; color: #8B6F5E;
+  position: absolute; top: 16px; right: 18px;
+  background: #F0E0D8; border: none; width: 30px; height: 30px;
+  border-radius: 50%; font-size: 1rem; cursor: pointer; color: #8B6F5E;
   display: flex; align-items: center; justify-content: center;
 }
 .modal-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem; font-weight: 600;
-  color: #2C1F1A; margin-bottom: 6px;
-  padding-right: 32px; line-height: 1.3;
+  font-size: 1.4rem; font-weight: 600; color: #2C1F1A;
+  margin-bottom: 6px; padding-right: 32px; line-height: 1.3;
 }
 .modal-sub { font-size: 13px; font-weight: 300; color: #A08070; margin-bottom: 22px; line-height: 1.65; }
 .modal-form { display: flex; flex-direction: column; gap: 10px; }
 .modal-input {
-  padding: 14px 16px;
-  border: 1px solid #E0C8BC; border-radius: 12px;
+  padding: 14px 16px; border: 1px solid #E0C8BC; border-radius: 12px;
   font-size: 14px; font-family: inherit; font-weight: 300;
   outline: none; background: #fff; color: #2C1F1A;
 }
@@ -301,71 +199,27 @@ body {
   color: #fff; border: none; border-radius: 50px;
   padding: 15px; font-size: 14px; font-weight: 600;
   cursor: pointer; font-family: inherit;
-  box-shadow: 0 4px 16px rgba(201,99,88,0.3);
+  box-shadow: 0 4px 14px rgba(201,99,88,0.28);
 }
 .modal-error { color: #C96358; font-size: 12px; display: none; }
 .modal-success { display: none; text-align: center; padding: 20px 0 4px; }
-.modal-success-icon { font-size: 2.4rem; margin-bottom: 12px; }
+.modal-success-icon { font-size: 2.2rem; margin-bottom: 12px; }
 .modal-success-text { font-size: 14px; font-weight: 300; color: #2C1F1A; line-height: 1.7; }
 </style>
 </head>
 <body>
-
-<!-- WARM BACKGROUND -->
-<div class="top-wash"></div>
-
-<div class="blob" style="width:300px;height:300px;background:#F0C4A8;top:-80px;right:-80px;opacity:0.35;"></div>
-<div class="blob" style="width:250px;height:250px;background:#F0C4A8;bottom:100px;left:-80px;opacity:0.25;"></div>
-<div class="blob" style="width:180px;height:180px;background:#E8B0A0;top:45%;right:-40px;opacity:0.18;"></div>
-
-<!-- SVG floral deco -->
-<svg class="deco-svg" style="top:8%;right:4%;opacity:0.22;width:56px" viewBox="0 0 56 56" fill="none">
-  <ellipse cx="28" cy="10" rx="6" ry="10" fill="#D4957A" transform="rotate(0 28 28)"/>
-  <ellipse cx="28" cy="10" rx="6" ry="10" fill="#D4957A" transform="rotate(45 28 28)"/>
-  <ellipse cx="28" cy="10" rx="6" ry="10" fill="#D4957A" transform="rotate(90 28 28)"/>
-  <ellipse cx="28" cy="10" rx="6" ry="10" fill="#D4957A" transform="rotate(135 28 28)"/>
-  <circle cx="28" cy="28" r="6" fill="#C96358"/>
-</svg>
-<svg class="deco-svg" style="bottom:28%;left:3%;opacity:0.18;width:44px" viewBox="0 0 44 44" fill="none">
-  <ellipse cx="22" cy="7" rx="5" ry="8" fill="#D4957A" transform="rotate(0 22 22)"/>
-  <ellipse cx="22" cy="7" rx="5" ry="8" fill="#D4957A" transform="rotate(60 22 22)"/>
-  <ellipse cx="22" cy="7" rx="5" ry="8" fill="#D4957A" transform="rotate(120 22 22)"/>
-  <circle cx="22" cy="22" r="5" fill="#C96358"/>
-</svg>
-<svg class="deco-svg" style="top:38%;left:2%;opacity:0.15;width:32px" viewBox="0 0 32 32" fill="none">
-  <line x1="16" y1="0" x2="16" y2="32" stroke="#C96358" stroke-width="1.5"/>
-  <line x1="0" y1="16" x2="32" y2="16" stroke="#C96358" stroke-width="1.5"/>
-  <circle cx="16" cy="16" r="3" fill="#C96358"/>
-  <circle cx="16" cy="4"  r="2" fill="#D4957A"/>
-  <circle cx="16" cy="28" r="2" fill="#D4957A"/>
-  <circle cx="4"  cy="16" r="2" fill="#D4957A"/>
-  <circle cx="28" cy="16" r="2" fill="#D4957A"/>
-</svg>
-<svg class="deco-svg" style="top:18%;right:3%;opacity:0.12;width:18px" viewBox="0 0 18 18" fill="none">
-  <circle cx="9" cy="9" r="8" stroke="#C96358" stroke-width="1" fill="none"/>
-  <circle cx="9" cy="9" r="3" fill="#C96358"/>
-</svg>
-
-<!-- PAGE -->
 <div class="page">
 
-  <div class="photo-wrap">
-    <div class="photo-ring"></div>
-    <img src="images/ornella-profil.png" alt="Ornella" class="profile-img"
-         onerror="this.src='images/ornella-avant-apres-postpartum.jpg'">
-  </div>
+  <img src="images/ornella-profil.png" alt="Ornella" class="profile-img"
+       onerror="this.src='images/ornella-avant-apres-postpartum.jpg'">
 
   <div class="profile-name">Ornella Fit Coaching</div>
-
   <div class="profile-badge">🏆 Demi-finaliste France de Fitness</div>
-
-  <div class="profile-tag">
-    Coach sportive certifiée · Essonne (91)
-  </div>
+  <div class="profile-tag">Coach sportive certifiée · Essonne (91)</div>
 
   <div class="sep">
     <div class="sep-line"></div>
-    <span class="sep-icon">✦</span>
+    <div class="sep-dot"></div>
     <div class="sep-line"></div>
   </div>
 
@@ -374,8 +228,7 @@ body {
     <a href="https://www.ornellafitcoaching.com/booty-sculpt.html" class="link-btn featured"
        onclick="px('Booty Sculpt 19€')">
       <span class="link-emoji">🔥</span>
-      <span class="link-text">
-        Booty Sculpt — Programme fessiers
+      <span class="link-text">Booty Sculpt — Programme fessiers
         <span class="link-sub">19€ · Accès immédiat</span>
       </span>
       <span class="link-arrow">›</span>
@@ -384,8 +237,7 @@ body {
     <a href="https://www.ornellafitcoaching.com/quiz.html" class="link-btn featured"
        onclick="px('Quiz gratuit')">
       <span class="link-emoji">🎯</span>
-      <span class="link-text">
-        Quel coaching est fait pour toi ?
+      <span class="link-text">Quel coaching est fait pour toi ?
         <span class="link-sub">Quiz gratuit · 2 minutes</span>
       </span>
       <span class="link-arrow">›</span>
@@ -407,8 +259,7 @@ body {
 
     <button class="link-btn" onclick="openGuide()">
       <span class="link-emoji">🎁</span>
-      <span class="link-text">
-        Guide gratuit — Les 9 erreurs
+      <span class="link-text">Guide gratuit — Les 9 erreurs
         <span class="link-sub">PDF · Reçois-le par email</span>
       </span>
       <span class="link-arrow">›</span>
@@ -425,15 +276,9 @@ body {
 
   <div class="footer">
     <div class="footer-icons">
-      <a href="https://www.instagram.com/ornellafit.coaching" target="_blank" class="footer-icon">
-        📷 Instagram
-      </a>
-      <a href="mailto:ornellafit.coaching@gmail.com" class="footer-icon">
-        ✉️ Email
-      </a>
-      <a href="https://www.ornellafitcoaching.com" class="footer-icon">
-        🌐 Site web
-      </a>
+      <a href="https://www.instagram.com/ornellafit.coaching" target="_blank" class="footer-icon">📷 Instagram</a>
+      <a href="mailto:ornellafit.coaching@gmail.com" class="footer-icon">✉️ Email</a>
+      <a href="https://www.ornellafitcoaching.com" class="footer-icon">🌐 Site</a>
     </div>
     <p class="copyright">© 2026 Ornella Fit Coaching</p>
   </div>
