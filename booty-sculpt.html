@@ -193,7 +193,7 @@ footer a:hover{color:var(--accent)}
       <button class="form-btn" onclick="submitWaitlist('hero-email','hero-success')">Je veux mon programme à 19€ →</button>
       <p class="form-note">🔒 Paiement sécurisé · Accès immédiat à la sortie · Remboursement 7 jours</p>
       <div class="form-success" id="hero-success">
-        <p>✅ Tu es sur la liste ! Tu seras prévenue en priorité dès l'ouverture.</p>
+        <p>✅ C'est noté ! Tu seras prévenue en priorité dès l'ouverture. Vérifie tes spams si tu ne reçois pas notre email.</p>
       </div>
     </div>
   </div>
@@ -304,7 +304,7 @@ footer a:hover{color:var(--accent)}
       <button class="urgency-btn" onclick="submitWaitlist('urgency-email','urgency-success')">🔒 Je réserve ma place à 19€ →</button>
       <p class="urgency-note">Accès immédiat à la sortie · Remboursement 7 jours · Pas de spam</p>
       <div class="urgency-success" id="urgency-success">
-        <p>✅ Ta place est réservée au prix de lancement ! Tu recevras un email dès l'ouverture.</p>
+        <p>✅ C'est noté ! Tu seras prévenue en priorité dès l'ouverture. Vérifie tes spams si tu ne reçois pas notre email.</p>
       </div>
     </div>
   </div>
@@ -322,7 +322,7 @@ const BREVO_KEY=_a+_b+_c;
 
 async function submitWaitlist(inputId, successId) {
   const email = document.getElementById(inputId).value.trim();
-  if (!email || !email.includes('@')) {
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     document.getElementById(inputId).focus();
     document.getElementById(inputId).style.borderColor='var(--accent)';
     return;
@@ -332,14 +332,41 @@ async function submitWaitlist(inputId, successId) {
   btn.disabled = true;
 
   try {
+    // Ajoute à la liste Booty Sculpt waitlist [3]
     await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: {'Content-Type':'application/json','api-key':BREVO_KEY},
       body: JSON.stringify({
         email: email,
-        listIds: [5],
-        attributes: {'LISTE':'booty_sculpt_waitlist'},
+        listIds: [3],
+        attributes: {FNAME: '', SOURCE: 'booty-sculpt-waitlist'},
         updateEnabled: true
+      })
+    });
+  } catch(e) {}
+
+  try {
+    // Email de confirmation transactionnel Booty Sculpt
+    await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','api-key':BREVO_KEY},
+      body: JSON.stringify({
+        to: [{email: email}],
+        sender: {name: 'Ornella Fit Coaching', email: 'ornellafit.coaching@gmail.com'},
+        subject: 'Tu es sur la liste Booty Sculpt ! 🍑',
+        textContent: [
+          'Bonjour future transformée,',
+          '',
+          "C'est officiel — tu es sur la liste prioritaire pour le programme Booty Sculpt.",
+          '',
+          "Dès que les places ouvrent au tarif lancement (19€ au lieu de 39€), tu seras la première prévenue.",
+          '',
+          "En attendant, si tu veux commencer à travailler ton corps maintenant :",
+          "→ Découvre mes programmes disponibles : https://www.ornellafitcoaching.com/offres.html",
+          '',
+          'À très vite,',
+          'Ornella 🔥'
+        ].join('\n')
       })
     });
   } catch(e) {}
