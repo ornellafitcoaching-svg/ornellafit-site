@@ -1281,7 +1281,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <input type="email" class="li-email" placeholder="Ton adresse email" required autocomplete="email">
         <button type="submit" class="li-btn">Je télécharge le guide →</button>
       </form>
-      <div class="li-success-inline">✅ C'est parti ! <a href="guide-offert.html" target="_blank">Lire le guide maintenant →</a></div>
+      <div class="li-success-inline">✅ Guide envoyé ! Vérifie ta boîte mail (et les spams).</div>
     </div>
   </div>
 </div>
@@ -1650,8 +1650,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </form>
     <p class="lead-note">Pas de spam. Désabonnement en 1 clic.</p>
     <div id="lead-success">
-      <p>✅ Guide envoyé ! Vérifie ta boîte mail.</p>
-      <a href="guide-offert.html" target="_blank">Lire le guide maintenant →</a>
+      <p>✅ Guide envoyé ! Vérifie ta boîte mail dans 2 minutes.<br><small style="font-weight:400;color:#5C7A5C;">Pense à regarder dans tes spams.</small></p>
     </div>
   </div>
 </div>
@@ -1788,6 +1787,46 @@ window.addEventListener('scroll', function onLeadScroll() {
   }
 }, { passive: true });
 
+function guideEmailHtml(prenom) {
+  return '<html><body style="margin:0;padding:0;background-color:#FDF8F4;font-family:Arial,Helvetica,sans-serif;">' +
+    '<table width="100%" cellpadding="0" cellspacing="0" bgcolor="#FDF8F4"><tr><td align="center" style="padding:32px 16px;">' +
+    '<table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">' +
+
+    '<tr><td bgcolor="#2C1F1A" style="padding:32px 36px;text-align:center;border-radius:14px 14px 0 0;">' +
+    '<div style="font-size:32px;line-height:1;">&#128216;</div>' +
+    '<div style="font-family:Georgia,serif;font-size:20px;font-weight:bold;color:#ffffff;margin-top:8px;">Les 9 Erreurs Silencieuses</div>' +
+    '<div style="font-size:11px;color:#aaaaaa;letter-spacing:2px;margin-top:4px;text-transform:uppercase;">Guide offert · Ornella Fit Coaching</div>' +
+    '</td></tr>' +
+
+    '<tr><td bgcolor="#ffffff" style="padding:32px 36px;">' +
+    '<p style="margin:0 0 20px;"><span style="background-color:#FDF8F4;color:#C96358;border:1px solid #e8c0bb;border-radius:50px;padding:6px 16px;font-size:11px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;">&#10003; Ton guide est pr&#234;t &#224; lire</span></p>' +
+    '<h2 style="font-family:Georgia,serif;font-size:22px;color:#1E1616;margin:0 0 16px;line-height:1.35;">Bonjour ' + prenom + ' &#128293;</h2>' +
+    '<p style="font-size:14px;color:#5C4A40;line-height:1.75;margin:0 0 24px;">Ton guide <strong>&#171;&nbsp;Les 9 erreurs silencieuses qui sabotent ta transformation&nbsp;&#187;</strong> est pr&#234;t.<br><br>Tu vas enfin comprendre pourquoi tu stagnes malgr&#233; tous tes efforts &#8212; et comment en sortir concr&#232;tement.</p>' +
+
+    '<table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px;"><tr><td bgcolor="#FDF8F4" style="padding:18px 20px;border-radius:12px;">' +
+    '<table width="100%" cellpadding="0" cellspacing="0">' +
+    '<tr><td style="padding:4px 0;font-size:13px;color:#5C4A40;">&#128215; <strong>Chapitre 1</strong> &#8212; Pourquoi tu ne vois pas de r&#233;sultats</td></tr>' +
+    '<tr><td style="padding:4px 0;font-size:13px;color:#5C4A40;">&#128215; <strong>Chapitre 2</strong> &#8212; Les 9 erreurs qui sabotent en silence</td></tr>' +
+    '<tr><td style="padding:4px 0;font-size:13px;color:#5C4A40;">&#128215; <strong>Chapitre 3</strong> &#8212; Le vrai probl&#232;me (pas celui que tu crois)</td></tr>' +
+    '<tr><td style="padding:4px 0;font-size:13px;color:#5C4A40;">&#128215; <strong>Chapitre 4</strong> &#8212; Ce qui fonctionne vraiment</td></tr>' +
+    '<tr><td style="padding:4px 0;font-size:13px;color:#5C4A40;">&#128215; <strong>+ Plan d\'action</strong> inclus</td></tr>' +
+    '</table>' +
+    '</td></tr></table>' +
+
+    '<table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:8px;"><tr><td align="center">' +
+    '<a href="https://www.ornellafitcoaching.com/guide-offert.html" style="display:inline-block;background-color:#C96358;color:#ffffff;font-weight:bold;font-size:14px;padding:16px 36px;border-radius:50px;text-decoration:none;">Lire mon guide maintenant &#8594;</a>' +
+    '</td></tr></table>' +
+    '<p style="font-size:12px;color:#aaaaaa;text-align:center;margin:12px 0 0;">Si le bouton ne fonctionne pas : https://www.ornellafitcoaching.com/guide-offert.html</p>' +
+    '</td></tr>' +
+
+    '<tr><td bgcolor="#F5EDE4" style="padding:20px 36px;text-align:center;border-radius:0 0 14px 14px;border-top:1px solid #e8ddd4;">' +
+    '<p style="font-size:13px;color:#8A7060;line-height:1.7;margin:0;">&#192; tr&#232;s vite,<br><strong style="color:#1E1616;">Ornella &#128293;</strong><br><span style="font-size:11px;">ornellafitcoaching.com</span></p>' +
+    '</td></tr>' +
+
+    '</table></td></tr></table>' +
+    '</body></html>';
+}
+
 async function submitLead(e) {
   e.preventDefault();
   var email  = document.getElementById('lead-email').value.trim();
@@ -1806,8 +1845,8 @@ async function submitLead(e) {
     return;
   }
 
-  var payload = { email: email, listIds: [5], updateEnabled: true, emailBlacklisted: false };
-  if (prenom) payload.attributes = { PRENOM: prenom };
+  var payload = { email: email, listIds: [15], updateEnabled: true, emailBlacklisted: false };
+  payload.attributes = { PRENOM: prenom || '', SOURCE: 'guide-popup' };
 
   try {
     var res = await fetch('https://api.brevo.com/v3/contacts', {
@@ -1819,14 +1858,30 @@ async function submitLead(e) {
       var err = await res.json().catch(function() { return {}; });
       if (err.code !== 'duplicate_parameter') throw new Error(err.message || 'Erreur API');
     }
-    document.getElementById('lead-form').style.display = 'none';
-    document.getElementById('lead-success').style.display = 'block';
-    localStorage.setItem('leadDone', '1');
   } catch(err) {
     btn.disabled = false;
     btn.textContent = 'Réessayer →';
     console.warn('[Brevo lead]', err.message);
+    return;
   }
+
+  try {
+    var prenom_display = prenom || 'future transformée';
+    await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        to: [{ email: email }],
+        sender: { name: 'Ornella Fit Coaching', email: 'ornellafit.coaching@gmail.com' },
+        subject: 'Ton guide gratuit est arrivé 📘',
+        htmlContent: guideEmailHtml(prenom_display)
+      })
+    });
+  } catch(e) { console.warn('[Guide email]', e); }
+
+  document.getElementById('lead-form').style.display = 'none';
+  document.getElementById('lead-success').style.display = 'block';
+  localStorage.setItem('leadDone', '1');
 }
 
 async function submitLeadInline(e, source) {
@@ -1843,19 +1898,33 @@ async function submitLeadInline(e, source) {
     var res = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, listIds: [5], updateEnabled: true, emailBlacklisted: false })
+      body: JSON.stringify({ email: email, listIds: [15], updateEnabled: true, emailBlacklisted: false, attributes: { SOURCE: 'guide-bar' } })
     });
     if (!res.ok && res.status !== 204) {
       var err = await res.json().catch(function() { return {}; });
       if (err.code !== 'duplicate_parameter') throw new Error(err.message || 'API error');
     }
-    form.style.display = 'none';
-    var successEl = form.parentElement.querySelector('.li-success-inline');
-    if (successEl) successEl.style.display = 'block';
-    localStorage.setItem('leadDone', '1');
   } catch(err) {
-    btn.disabled = false; btn.textContent = 'Réessayer →';
+    btn.disabled = false; btn.textContent = 'Réessayer →'; return;
   }
+
+  try {
+    await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        to: [{ email: email }],
+        sender: { name: 'Ornella Fit Coaching', email: 'ornellafit.coaching@gmail.com' },
+        subject: 'Ton guide gratuit est arrivé 📘',
+        htmlContent: guideEmailHtml('future transformée')
+      })
+    });
+  } catch(e) { console.warn('[Guide email inline]', e); }
+
+  form.style.display = 'none';
+  var successEl = form.parentElement.querySelector('.li-success-inline');
+  if (successEl) successEl.style.display = 'block';
+  localStorage.setItem('leadDone', '1');
 }
 
 // MICRO-QUIZ OBJECTIONS
