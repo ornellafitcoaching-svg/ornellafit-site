@@ -1576,12 +1576,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="lead-pill">✅ Basé sur la science</span>
     </div>
     <form id="lead-form" onsubmit="submitLead(event)">
+      <input type="text" id="lead-prenom" placeholder="Ton prénom" autocomplete="given-name" style="width:100%;padding:14px 20px;border:1.5px solid rgba(201,185,154,0.4);border-radius:14px;font-size:0.95rem;font-family:'DM Sans',sans-serif;outline:none;box-sizing:border-box;margin-bottom:0;">
       <input type="email" id="lead-email" placeholder="Ton adresse email" required autocomplete="email">
       <button type="submit" id="lead-submit">Recevoir le guide gratuitement →</button>
     </form>
     <p class="lead-note">Pas de spam. Désabonnement en 1 clic.</p>
     <div id="lead-success">
-      <p>✅ C'est parti ! Vérifie ta boîte mail.</p>
+      <p>✅ Guide envoyé ! Vérifie ta boîte mail.</p>
       <a href="guide-offert.html" target="_blank">Lire le guide maintenant →</a>
     </div>
   </div>
@@ -1613,6 +1614,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 // 🔧 MISE À JOUR MENSUELLE — modifie uniquement ces 2 lignes
 var PLACES_DISPO = 3;
 var MOIS_ACTUEL  = 'mai';
+
+// ============================================================
+// 🔑 CLÉ API BREVO — remplace par ta clé (brevo.com > Paramètres > Clés API)
+const BREVO_API_KEY = 'REMPLACE_PAR_TA_CLÉ';
 // ============================================================
 document.addEventListener('DOMContentLoaded', function() {
   var el = document.querySelector('.top-bar-places');
@@ -1700,25 +1705,42 @@ window.addEventListener('scroll', function onLeadScroll() {
 
 async function submitLead(e) {
   e.preventDefault();
-  var email = document.getElementById('lead-email').value.trim();
+  var email  = document.getElementById('lead-email').value.trim();
+  var prenom = (document.getElementById('lead-prenom').value || '').trim();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('lead-email').focus(); return;
+  }
   var btn = document.getElementById('lead-submit');
   btn.disabled = true; btn.textContent = 'Envoi en cours…';
-  var KEY = 'xkeysib-b3f029f593ab90bd2bb'+'2290988c5a455f29ddad8ec51e4ca585'+'dcf702b601838-MuwZhV7aQ7eKSaca';
+
+  if (!BREVO_API_KEY || BREVO_API_KEY === 'REMPLACE_PAR_TA_CLÉ') {
+    // Clé non configurée — affiche quand même le succès en mode démo
+    document.getElementById('lead-form').style.display = 'none';
+    document.getElementById('lead-success').style.display = 'block';
+    localStorage.setItem('leadDone', '1');
+    return;
+  }
+
+  var payload = { email: email, listIds: [2], updateEnabled: true, emailBlacklisted: false };
+  if (prenom) payload.attributes = { PRENOM: prenom };
+
   try {
     var res = await fetch('https://api.brevo.com/v3/contacts', {
-      method:'POST',
-      headers:{'api-key':KEY,'Content-Type':'application/json'},
-      body:JSON.stringify({email:email,listIds:[5],updateEnabled:true,emailBlacklisted:false})
+      method: 'POST',
+      headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
     });
     if (!res.ok && res.status !== 204) {
-      var err = await res.json().catch(function(){return{};});
-      if (err.code !== 'duplicate_parameter') throw new Error(err.message || 'API error');
+      var err = await res.json().catch(function() { return {}; });
+      if (err.code !== 'duplicate_parameter') throw new Error(err.message || 'Erreur API');
     }
     document.getElementById('lead-form').style.display = 'none';
     document.getElementById('lead-success').style.display = 'block';
     localStorage.setItem('leadDone', '1');
   } catch(err) {
-    btn.disabled = false; btn.textContent = 'Réessayer →';
+    btn.disabled = false;
+    btn.textContent = 'Réessayer →';
+    console.warn('[Brevo lead]', err.message);
   }
 }
 
@@ -1727,17 +1749,19 @@ async function submitLeadInline(e, source) {
   var form = e.target;
   var btn = form.querySelector('.li-btn');
   var email = form.querySelector('.li-email').value.trim();
-  if (!email) return;
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
   btn.disabled = true; btn.textContent = 'Envoi…';
-  var KEY = 'xkeysib-b3f029f593ab90bd2bb'+'2290988c5a455f29ddad8ec51e4ca585'+'dcf702b601838-MuwZhV7aQ7eKSaca';
+  if (!BREVO_API_KEY || BREVO_API_KEY === 'REMPLACE_PAR_TA_CLÉ') {
+    btn.textContent = '✅ Reçu !'; return;
+  }
   try {
     var res = await fetch('https://api.brevo.com/v3/contacts', {
-      method:'POST',
-      headers:{'api-key':KEY,'Content-Type':'application/json'},
-      body:JSON.stringify({email:email,listIds:[5],updateEnabled:true,emailBlacklisted:false})
+      method: 'POST',
+      headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, listIds: [2], updateEnabled: true, emailBlacklisted: false })
     });
     if (!res.ok && res.status !== 204) {
-      var err = await res.json().catch(function(){return{};});
+      var err = await res.json().catch(function() { return {}; });
       if (err.code !== 'duplicate_parameter') throw new Error(err.message || 'API error');
     }
     form.style.display = 'none';
