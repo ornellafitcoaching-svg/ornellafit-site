@@ -972,6 +972,10 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
   .top-bar-btn, .top-bar-reviews { font-size: 0.78rem; }
 }
 </style>
+<!-- Meta Pixel -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","TON_PIXEL_ID");fbq("track","PageView");</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=TON_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1865,6 +1869,7 @@ async function submitLead(e) {
     return;
   }
 
+  if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'Guide 9 Erreurs'});
   document.getElementById('lead-form').style.display = 'none';
   document.getElementById('lead-success').style.display = 'block';
   localStorage.setItem('leadDone', '1');
@@ -1894,6 +1899,7 @@ async function submitLeadInline(e, source) {
     btn.disabled = false; btn.textContent = 'Réessayer →'; return;
   }
 
+  if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'Guide 9 Erreurs'});
   form.style.display = 'none';
   var successEl = form.parentElement.querySelector('.li-success-inline');
   if (successEl) successEl.style.display = 'block';
@@ -2100,6 +2106,12 @@ if (!isWebView && 'IntersectionObserver' in window) {
   }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
 }
+
+// Meta Pixel — WhatsApp Contact tracking
+document.addEventListener('click', function(e) {
+  var a = e.target.closest('a[href*="wa.me"]');
+  if (a && typeof fbq !== 'undefined') fbq('track', 'Contact');
+});
 </script>
 </body>
 </html>

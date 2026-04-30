@@ -563,6 +563,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   ]
 }
 </script>
+<!-- Meta Pixel -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","TON_PIXEL_ID");fbq("track","PageView");</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=TON_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -981,7 +985,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Sans suivi WhatsApp ni ajustements mensuels — <a href="https://wa.me/33756834626" style="color:#C96358;font-weight:600;" target="_blank">voir le coaching avec suivi →</a>
         </div>
         <div class="offre-price">79€ <span>· livraison 5–7 jours ouvrés</span></div>
-        <a href="https://buy.stripe.com/8x26oHas9f8n5o9cmh8Vi03" class="btn-offre dark" target="_blank">Je commande mon programme →</a>
+        <a href="https://buy.stripe.com/8x26oHas9f8n5o9cmh8Vi03" class="btn-offre dark" target="_blank" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:79,currency:'EUR'})">Je commande mon programme →</a>
 
         <!-- MINI LIGNE RÉASSURANCE -->
         <p class="reassurance-line">📲 Contact WhatsApp + programme sur-mesure livré en 5–7 jours ouvrés</p>
@@ -1484,6 +1488,12 @@ if (!isWebView && 'IntersectionObserver' in window) {
   }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
 }
+
+// Meta Pixel — WhatsApp Contact tracking
+document.addEventListener('click', function(e) {
+  var a = e.target.closest('a[href*="wa.me"]');
+  if (a && typeof fbq !== 'undefined') fbq('track', 'Contact');
+});
 </script>
 </body>
 </html>
