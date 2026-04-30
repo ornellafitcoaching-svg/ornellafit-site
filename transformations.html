@@ -473,6 +473,99 @@ h1, h2, h3 { opacity: 1 !important; mix-blend-mode: normal !important; }
 .section-label { color: #C9957A !important; opacity: 1 !important; }
 .section-subtitle { color: #4A3E3E !important; }
 
+/* ===== PHOTO BADGES (avant/après) ===== */
+.transfo-img-wrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 32px rgba(44,31,26,0.14);
+}
+.transfo-img-wrap img { width: 100%; display: block; object-fit: cover; }
+.transfo-img-label {
+  position: absolute; top: 10px; left: 10px;
+  background: rgba(44,31,26,0.78); backdrop-filter: blur(6px);
+  color: rgba(255,255,255,0.92); font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 50px;
+}
+.transfo-img-tag {
+  position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+  background: rgba(201,99,88,0.88); backdrop-filter: blur(4px);
+  color: white; font-size: 0.63rem; font-weight: 700;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  padding: 4px 13px; border-radius: 50px; white-space: nowrap;
+}
+
+/* ===== LOUISE — CARTE HÉRO FULL WIDTH ===== */
+.tc-card-featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  background: linear-gradient(150deg, #FAF5F0, #F2E8DF);
+  border: 1.5px solid rgba(201,149,122,0.28);
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 12px 44px rgba(139,111,94,0.13);
+  align-items: center;
+  padding: 28px;
+  margin-bottom: 8px;
+}
+.tc-featured-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.tc-featured-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.tc-featured-eyebrow {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--accent);
+}
+.tc-featured-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 600; color: var(--dark); line-height: 1.1;
+}
+.tc-featured-context {
+  font-size: 0.78rem; color: var(--text-light);
+  text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600;
+  margin-top: -6px;
+}
+.tc-featured-stats {
+  display: flex; gap: 10px; flex-wrap: wrap;
+}
+.tc-featured-stat {
+  background: white;
+  border-radius: 12px;
+  padding: 10px 14px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(139,111,94,0.1);
+  border: 1px solid rgba(201,185,154,0.2);
+  flex: 1; min-width: 72px;
+}
+.tc-featured-stat.accent {
+  background: linear-gradient(135deg, #2C1F1A, #3D2B24);
+  border-color: rgba(201,169,110,0.3);
+}
+.tc-featured-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 700; color: var(--accent); line-height: 1;
+}
+.tc-featured-stat.accent .tc-featured-stat-num { color: #C9A96E; }
+.tc-featured-stat-label {
+  font-size: 0.65rem; text-transform: uppercase;
+  letter-spacing: 0.07em; color: #9A8878; margin-top: 4px;
+}
+.tc-featured-stat.accent .tc-featured-stat-label { color: rgba(245,237,228,0.5); }
+.tc-featured-story {
+  font-size: 0.88rem; color: var(--text-mid); line-height: 1.75;
+  font-style: italic; border-left: 3px solid rgba(201,99,88,0.3); padding-left: 12px;
+}
+.tc-featured-story strong { font-style: normal; color: var(--dark); }
+
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
   .transfo-page-hero { padding: 60px 20px 48px; }
@@ -486,6 +579,10 @@ h1, h2, h3 { opacity: 1 !important; mix-blend-mode: normal !important; }
   .transfo-cards-section { padding: 52px 20px; }
   .tc-grid { grid-template-columns: 1fr; gap: 20px; }
   .tc-photo img { height: auto; }
+  .tc-card-featured { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
+  .tc-featured-photos { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .tc-featured-stat-num { font-size: 1.3rem; }
+  .tc-featured-name { font-size: 1.6rem; }
 
   .objections-band { padding: 48px 20px; }
   .ob-grid { grid-template-columns: 1fr; gap: 12px; }
@@ -537,8 +634,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="tph-sub">Des femmes comme toi — débordées, post-partum, épuisées, qui avaient tout essayé. Elles ont changé leur corps. Et leur vie avec.</p>
     <div class="tph-proof-bar">
       <div class="tph-proof-item">
-        <span class="tph-proof-num">−5 cm</span>
-        <span class="tph-proof-label">Tour de taille moyen</span>
+        <span class="tph-proof-num">−9 cm</span>
+        <span class="tph-proof-label">Tour de taille · Louise</span>
       </div>
       <div class="tph-proof-item">
         <span class="tph-proof-num">4 sem.</span>
@@ -614,22 +711,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="tc-grid fade-in">
 
-      <!-- LOUISE -->
-      <div class="tc-card">
-        <div class="tc-photo">
-          <img src="images/avant-apres-louise.jpg" alt="Transformation Louise — Coaching domicile Ornella" loading="lazy">
-          <div class="tc-tag">Coaching domicile</div>
-          <div class="tc-stats-overlay">
-            <span class="tc-stat-pill">−5 kg</span>
-            <span class="tc-stat-pill">−6 cm</span>
-            <span class="tc-stat-pill">4 mois</span>
+      <!-- LOUISE — CARTE HÉRO FULL WIDTH -->
+      <div class="tc-card-featured">
+        <div class="tc-featured-photos">
+          <div class="transfo-img-wrap">
+            <img src="images/louise-face.jpg" alt="Transformation Louise vue de face — coaching à domicile Ornella Fit" loading="lazy">
+            <div class="transfo-img-label">Vue de face</div>
+            <div class="transfo-img-tag">AVANT → APRÈS</div>
+          </div>
+          <div class="transfo-img-wrap">
+            <img src="images/louise-dos.jpg" alt="Transformation Louise vue de dos — coaching à domicile Ornella Fit" loading="lazy">
+            <div class="transfo-img-label">Vue de dos</div>
+            <div class="transfo-img-tag">AVANT → APRÈS</div>
           </div>
         </div>
-        <div class="tc-body">
-          <div class="tc-context">Maman de 2 enfants · 2 séances/semaine</div>
-          <div class="tc-name">Louise</div>
-          <p class="tc-quote">« Elle ne se sent pas seulement plus mince — elle se sent beaucoup mieux dans son corps, plus en forme, plus confiante. »</p>
-          <div class="tc-impact">Moins de ventre. Plus d'énergie. Une silhouette qu'elle assume enfin.</div>
+        <div class="tc-featured-info">
+          <div class="tc-featured-eyebrow">⭐ Transformation · Résultat réel · Photo non retouchée</div>
+          <div class="tc-featured-name">Louise</div>
+          <div class="tc-featured-context">Coaching à domicile · Essonne (91) · 2 séances / semaine</div>
+          <div class="tc-featured-stats">
+            <div class="tc-featured-stat accent">
+              <div class="tc-featured-stat-num">−9 cm</div>
+              <div class="tc-featured-stat-label">Tour de taille</div>
+            </div>
+            <div class="tc-featured-stat">
+              <div class="tc-featured-stat-num">−5 kg</div>
+              <div class="tc-featured-stat-label">Poids perdu</div>
+            </div>
+            <div class="tc-featured-stat">
+              <div class="tc-featured-stat-num">4 m.</div>
+              <div class="tc-featured-stat-label">Accompagnement</div>
+            </div>
+          </div>
+          <p class="tc-featured-story">Une vraie envie de reprendre le contrôle de son corps, sans se priver ni s'épuiser. Programme sur-mesure, 2 séances par semaine à domicile, adapté à sa vie réelle. <strong>Résultat : −9 cm de tour de taille, un dos redessiné, une silhouette transformée. En 4 mois.</strong></p>
+          <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20vu%20la%20transformation%20de%20Louise%20et%20j%27aimerais%20des%20r%C3%A9sultats%20similaires.%20Comment%20on%20commence%20%3F" class="btn-main" target="_blank" style="display:inline-flex;align-self:flex-start;">Je veux des résultats comme ça →</a>
         </div>
       </div>
 
