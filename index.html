@@ -529,37 +529,125 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
 
 /* ===== TRANSFORMATION PROOF ===== */
 #transfo-proof { background: linear-gradient(150deg, var(--cream) 0%, #F0E4D8 100%); }
-#transfo-proof .inner { max-width: 1000px; margin: 0 auto; }
-.transfo-split {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 56px; align-items: center; margin-top: 48px;
+#transfo-proof .inner { max-width: 900px; margin: 0 auto; text-align: center; }
+
+/* Photos grid */
+.transfo-photos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 36px 0 28px;
 }
-.transfo-stats { display: flex; flex-direction: column; gap: 18px; margin: 28px 0; }
-.transfo-stat {
-  display: flex; align-items: center; gap: 18px;
-  background: white; border-radius: 16px; padding: 16px 22px;
-  box-shadow: 0 4px 16px rgba(139,111,94,0.08);
-  border-left: 4px solid var(--accent);
-}
-.transfo-stat-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.4rem; font-weight: 700; color: var(--accent); line-height: 1; flex-shrink: 0;
-}
-.transfo-stat-label { font-size: 0.88rem; color: var(--text-mid); font-weight: 500; line-height: 1.4; }
-.transfo-stat-label strong { display: block; color: var(--dark); font-size: 0.95rem; }
-.transfo-photo {
-  border-radius: 28px; overflow: hidden;
-  box-shadow: 0 20px 56px rgba(44,31,26,0.18);
+.transfo-img-wrap {
   position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 14px 44px rgba(44,31,26,0.16);
 }
-.transfo-photo img { width: 100%; height: 480px; object-fit: cover; object-position: center; display: block; }
-.transfo-photo-badge {
-  position: absolute; bottom: 16px; left: 16px; right: 16px;
-  background: rgba(44,31,26,0.85); backdrop-filter: blur(8px);
-  border-radius: 12px; padding: 12px 16px; color: white;
-  font-size: 0.82rem; line-height: 1.5;
+.transfo-img-wrap img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
 }
-.transfo-photo-badge strong { color: var(--rose); display: block; margin-bottom: 2px; }
+.transfo-img-label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(44,31,26,0.78);
+  backdrop-filter: blur(6px);
+  color: rgba(255,255,255,0.92);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border-radius: 50px;
+}
+.transfo-img-tag {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(201,99,88,0.88);
+  backdrop-filter: blur(4px);
+  color: white;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+
+/* Stats pills */
+.transfo-stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.transfo-stat-pill {
+  background: white;
+  border-radius: 16px;
+  padding: 14px 20px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(139,111,94,0.1);
+  border: 1px solid rgba(201,185,154,0.25);
+  min-width: 88px;
+  flex: 1;
+  max-width: 140px;
+}
+.transfo-stat-pill.accent {
+  background: linear-gradient(135deg, #2C1F1A, #3D2B24);
+  border-color: rgba(201,169,110,0.3);
+}
+.transfo-stat-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+.transfo-stat-pill.accent .transfo-stat-big { color: #C9A96E; }
+.transfo-stat-desc {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9A8878;
+  margin-top: 5px;
+  line-height: 1.3;
+}
+.transfo-stat-pill.accent .transfo-stat-desc { color: rgba(245,237,228,0.5); }
+
+/* Story block */
+.transfo-story {
+  background: white;
+  border-radius: 18px;
+  padding: 22px 24px;
+  border-left: 3px solid var(--accent);
+  box-shadow: 0 4px 16px rgba(139,111,94,0.08);
+  max-width: 620px;
+  margin: 0 auto 24px;
+  text-align: left;
+}
+.transfo-story-name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.transfo-story-text {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+  font-style: italic;
+}
+.transfo-story-text strong { font-style: normal; color: var(--dark); }
+
 .transfo-link {
   display: inline-flex; align-items: center; gap: 8px;
   color: var(--accent); font-weight: 600; font-size: 0.9rem;
@@ -720,9 +808,10 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
   .inner { padding-left: 0 !important; padding-right: 0 !important; }
 
   /* TRANSFORMATION */
-  .transfo-split { grid-template-columns: 1fr; gap: 28px; }
-  .transfo-photo img { height: 320px; }
-  .transfo-stat-num { font-size: 2rem; }
+  .transfo-photos-grid { grid-template-columns: 1fr; gap: 14px; }
+  .transfo-stat-big { font-size: 1.65rem; }
+  .transfo-stat-pill { padding: 12px 14px; min-width: 76px; }
+  .transfo-story { padding: 18px 18px; }
 
   /* FAQ HOME */
   #faq-home .faq-q { font-size: 0.9rem; padding: 16px 18px; }
@@ -1277,57 +1366,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- TRANSFORMATION PROOF -->
 <section id="transfo-proof">
   <div class="inner">
-    <span class="section-label">Résultats réels</span>
-    <h2 class="section-title">Un cas concret.<br><em>Pas du marketing.</em></h2>
-    <p class="section-subtitle">Voici ce que 4 mois d'accompagnement peuvent vraiment changer. Pas un filtre. Pas un montage. Un vrai travail, semaine après semaine.</p>
+    <span class="section-label">Résultats réels · Photo non retouchée</span>
+    <h2 class="section-title">Elle a transformé son corps.<br><em>En 4 mois.</em></h2>
+    <p class="section-subtitle">Pas un filtre. Pas un montage. Louise, coaching à domicile en Essonne. Les photos parlent d'elles-mêmes.</p>
 
-    <div class="transfo-split fade-in">
-      <div>
-        <p style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);font-weight:700;margin-bottom:18px;">✦ Remise en forme · Galber la silhouette · Coaching à domicile</p>
-        <div class="transfo-stats">
-          <div class="transfo-stat">
-            <div class="transfo-stat-num">−5 cm</div>
-            <div class="transfo-stat-label"><strong>Tour de taille</strong>Silhouette visiblement redessinée</div>
-          </div>
-          <div class="transfo-stat">
-            <div class="transfo-stat-num">−2 cm</div>
-            <div class="transfo-stat-label"><strong>Cuisses affinées</strong>Jambes redessinées, corps galber</div>
-          </div>
-          <div class="transfo-stat">
-            <div class="transfo-stat-num">4 m.</div>
-            <div class="transfo-stat-label"><strong>D'accompagnement</strong>Transformation progressive et durable</div>
-          </div>
-        </div>
-
-        <div style="background:white;border-radius:16px;padding:20px 22px;margin-bottom:20px;border-left:3px solid var(--accent);box-shadow:0 4px 16px rgba(139,111,94,0.08);">
-          <p style="font-size:0.95rem;color:var(--dark);font-weight:700;margin-bottom:10px;">Laura, 34 ans — maman de 2 enfants</p>
-          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:0;">Peu de temps, mais une vraie volonté de se reprendre en main. On a construit un accompagnement à domicile, 2 fois par semaine, adapté à son rythme. Pas de méthode extrême : du progressif, du ciblé, du durable.<br><br><strong style="color:var(--dark);">Résultat : −5 cm de taille, −2 cm de cuisse, et une silhouette visiblement plus galbée.</strong></p>
-        </div>
-
-        <p style="font-size:0.82rem;color:var(--text-light);font-style:italic;margin-bottom:20px;">Un travail progressif, adapté à sa vie réelle, pour des résultats qui durent.</p>
-
-        <a href="transformations.html" class="transfo-link">Voir ce que ça peut donner pour toi →</a>
-        <br>
-        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20vu%20la%20transformation%20de%20Laura%20sur%20ton%20site%20et%20j%27aimerais%20des%20r%C3%A9sultats%20similaires.%20Comment%20on%20commence%20%3F" class="btn-main" target="_blank" style="margin-top:20px;display:inline-flex;">
-          Je veux des résultats comme ça →
-        </a>
+    <!-- 2 photos avant/après -->
+    <div class="transfo-photos-grid fade-in">
+      <div class="transfo-img-wrap">
+        <img src="images/louise-face.jpg" alt="Transformation Louise vue de face — coaching à domicile Ornella Fit" loading="lazy">
+        <div class="transfo-img-label">Vue de face</div>
+        <div class="transfo-img-tag">AVANT &nbsp;→&nbsp; APRÈS</div>
       </div>
-
-      <div class="transfo-photo">
-        <video
-          controls
-          preload="metadata"
-          style="width:100%;height:480px;object-fit:cover;display:block;background:#1A110E;"
-          playsinline>
-          <source src="videos/video-transformation.mp4" type="video/mp4">
-          <source src="videos/video-transformation.mov" type="video/quicktime">
-        </video>
-        <div class="transfo-photo-badge">
-          <strong>Laura · 34 ans · Maman de 2 enfants</strong>
-          −5 cm de taille · −2 cm de cuisse · 4 mois · Coaching à domicile
-        </div>
+      <div class="transfo-img-wrap">
+        <img src="images/louise-dos.jpg" alt="Transformation Louise vue de dos — coaching à domicile Ornella Fit" loading="lazy">
+        <div class="transfo-img-label">Vue de dos</div>
+        <div class="transfo-img-tag">AVANT &nbsp;→&nbsp; APRÈS</div>
       </div>
     </div>
+
+    <!-- Stats -->
+    <div class="transfo-stats-row">
+      <div class="transfo-stat-pill accent">
+        <div class="transfo-stat-big">−9 cm</div>
+        <div class="transfo-stat-desc">Tour de taille</div>
+      </div>
+      <div class="transfo-stat-pill">
+        <div class="transfo-stat-big">−5 kg</div>
+        <div class="transfo-stat-desc">Poids perdu</div>
+      </div>
+      <div class="transfo-stat-pill">
+        <div class="transfo-stat-big">4 m.</div>
+        <div class="transfo-stat-desc">Accompagnement</div>
+      </div>
+    </div>
+
+    <!-- Story -->
+    <div class="transfo-story">
+      <p class="transfo-story-name">Louise · Coaching à domicile · Essonne (91)</p>
+      <p class="transfo-story-text">Une vraie envie de reprendre le contrôle de son corps, sans se priver ni s'épuiser. On a construit un programme sur-mesure, adapté à son rythme, 2 fois par semaine à domicile. Pas de méthode extrême — du progressif, du ciblé, du durable.<br><br><strong>Résultat : −9 cm de tour de taille, un dos redessiné, une silhouette visiblement transformée. En 4 mois.</strong></p>
+    </div>
+
+    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20vu%20la%20transformation%20de%20Louise%20sur%20ton%20site%20et%20j%27aimerais%20des%20r%C3%A9sultats%20similaires.%20Comment%20on%20commence%20%3F" class="btn-main" target="_blank" style="display:inline-flex;margin-top:4px;">
+      Je veux des résultats comme ça →
+    </a>
   </div>
 </section>
 
