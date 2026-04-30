@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ornella Fit Coaching</title>
-<meta name="description" content="Coach sportive certifiée · Essonne (91)">
 <meta name="robots" content="noindex, nofollow">
 <!-- Meta Pixel -->
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","26675222578828123");fbq("track","PageView");</script>
@@ -22,11 +21,101 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 52px 22px 72px;
+  padding: 0 22px 72px;
   color: #2C1F1A;
+  overflow-x: hidden;
 }
 
+/* =====================
+   BACKGROUND ANIMÉ
+   ===================== */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Grands orbes flottants */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  will-change: transform;
+}
+.orb-1 {
+  width: 380px; height: 380px;
+  background: #E8B090;
+  top: -120px; right: -100px;
+  opacity: 0.4;
+  animation: float1 12s ease-in-out infinite;
+}
+.orb-2 {
+  width: 280px; height: 280px;
+  background: #C96358;
+  bottom: 60px; left: -80px;
+  opacity: 0.22;
+  animation: float2 15s ease-in-out infinite;
+}
+.orb-3 {
+  width: 200px; height: 200px;
+  background: #F0C8A0;
+  top: 40%; left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.3;
+  animation: float3 10s ease-in-out infinite;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(-20px, 30px) scale(1.05); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(15px, -25px) scale(1.08); }
+}
+@keyframes float3 {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50%       { transform: translateX(-50%) scale(1.15); }
+}
+
+/* Petits points brillants */
+.sparkle {
+  position: absolute;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #C96358;
+  animation: twinkle var(--d, 4s) ease-in-out infinite var(--delay, 0s);
+  opacity: 0;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50%       { opacity: 0.6; transform: scale(1.3); }
+}
+
+/* SVG fleurs discrètes */
+.flower {
+  position: absolute;
+  opacity: 0;
+  animation: bloomIn 1.2s ease forwards var(--fd, 0.5s),
+             floatSoft var(--fs, 8s) ease-in-out infinite var(--fd, 0.5s);
+}
+@keyframes bloomIn {
+  from { opacity: 0; transform: scale(0.4) rotate(-20deg); }
+  to   { opacity: var(--fo, 0.18); transform: scale(1) rotate(0deg); }
+}
+@keyframes floatSoft {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-10px) rotate(8deg); }
+}
+
+/* =====================
+   PAGE CONTENT
+   ===================== */
 .page {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 400px;
   display: flex;
@@ -35,121 +124,147 @@ body {
 }
 
 /* PHOTO */
+.photo-wrap {
+  margin-top: 56px;
+  margin-bottom: 20px;
+  position: relative;
+  animation: fadeDown 0.8s cubic-bezier(.22,.68,0,1.1) both;
+}
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Halo pulsant autour de la photo */
+.photo-halo {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,99,88,0.2) 0%, transparent 70%);
+  animation: pulse 3s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1);   opacity: 0.7; }
+  50%       { transform: scale(1.15); opacity: 0.3; }
+}
+
 .profile-img {
-  width: 110px;
-  height: 110px;
+  width: 110px; height: 110px;
   border-radius: 50%;
   object-fit: cover;
   object-position: top center;
   border: 3px solid #fff;
-  box-shadow: 0 6px 24px rgba(180,90,60,0.18);
+  box-shadow: 0 8px 30px rgba(180,90,60,0.22);
   display: block;
-  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
 }
 
+/* NOM */
 .profile-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #2C1F1A;
-  text-align: center;
-  letter-spacing: 0.02em;
-  margin-bottom: 8px;
+  font-size: 1.55rem; font-weight: 600;
+  color: #2C1F1A; text-align: center;
+  letter-spacing: 0.02em; margin-bottom: 8px;
+  animation: fadeUp 0.7s 0.2s cubic-bezier(.22,.68,0,1.1) both;
 }
 
 .profile-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: #fff;
-  border: 1px solid #E8C4B0;
-  border-radius: 20px;
-  padding: 4px 12px;
-  font-size: 11px;
-  font-weight: 500;
-  color: #C96358;
-  letter-spacing: 0.03em;
-  margin-bottom: 10px;
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #fff; border: 1px solid #E8C4B0;
+  border-radius: 20px; padding: 4px 12px;
+  font-size: 11px; font-weight: 500; color: #C96358;
+  letter-spacing: 0.03em; margin-bottom: 10px;
+  animation: fadeUp 0.7s 0.35s cubic-bezier(.22,.68,0,1.1) both;
+  box-shadow: 0 2px 8px rgba(201,99,88,0.1);
 }
 
 .profile-tag {
-  font-size: 12px;
-  font-weight: 300;
-  color: #A08070;
-  letter-spacing: 0.06em;
-  text-align: center;
-  line-height: 1.7;
-  margin-bottom: 28px;
+  font-size: 12px; font-weight: 300; color: #A08070;
+  letter-spacing: 0.06em; text-align: center; line-height: 1.7;
+  margin-bottom: 24px;
+  animation: fadeUp 0.7s 0.45s cubic-bezier(.22,.68,0,1.1) both;
 }
 
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* SÉPARATEUR */
 .sep {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 28px;
-  width: 100%;
-  justify-content: center;
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 28px; width: 100%; justify-content: center;
+  animation: fadeUp 0.7s 0.5s both;
 }
 .sep-line { width: 48px; height: 1px; background: #D4A090; opacity: 0.5; }
 .sep-dot  { width: 4px; height: 4px; border-radius: 50%; background: #C96358; opacity: 0.6; }
 
-/* LINKS */
-.links {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 38px;
-}
+/* LIENS */
+.links { width: 100%; display: flex; flex-direction: column; gap: 10px; margin-bottom: 38px; }
 
 .link-btn {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 17px 22px;
-  border-radius: 16px;
-  background: #fff;
-  border: 1px solid rgba(212,160,144,0.4);
-  color: #2C1F1A;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: 0 2px 10px rgba(180,90,60,0.07);
-  gap: 12px;
-  text-align: left;
-  transition: box-shadow 0.2s, border-color 0.2s;
+  display: flex; align-items: center; width: 100%;
+  padding: 17px 22px; border-radius: 16px;
+  background: #fff; border: 1px solid rgba(212,160,144,0.4);
+  color: #2C1F1A; font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 400; text-decoration: none;
+  cursor: pointer; gap: 12px; text-align: left;
+  box-shadow: 0 2px 12px rgba(180,90,60,0.07);
+  transition: transform 0.22s cubic-bezier(.22,.68,0,1.2),
+              box-shadow 0.22s ease,
+              border-color 0.2s;
+  opacity: 0;
+  animation: slideIn 0.55s cubic-bezier(.22,.68,0,1.1) forwards;
 }
 .link-btn:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 8px 24px rgba(201,99,88,0.16);
   border-color: #C96358;
-  box-shadow: 0 4px 16px rgba(201,99,88,0.13);
 }
-.link-btn:active { opacity: 0.88; }
+.link-btn:active { transform: scale(0.97); }
+
+/* Décalage d'entrée pour chaque bouton */
+.links .link-btn:nth-child(1) { animation-delay: 0.55s; }
+.links .link-btn:nth-child(2) { animation-delay: 0.65s; }
+.links .link-btn:nth-child(3) { animation-delay: 0.75s; }
+.links .link-btn:nth-child(4) { animation-delay: 0.85s; }
+.links .link-btn:nth-child(5) { animation-delay: 0.95s; }
+.links .link-btn:nth-child(6) { animation-delay: 1.05s; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
 
 .link-btn.featured {
   background: linear-gradient(135deg, #C96358 0%, #D4856A 100%);
-  border-color: transparent;
-  color: #fff;
-  box-shadow: 0 4px 18px rgba(201,99,88,0.28);
+  border-color: transparent; color: #fff;
+  box-shadow: 0 6px 22px rgba(201,99,88,0.3);
+}
+.link-btn.featured:hover {
+  box-shadow: 0 10px 30px rgba(201,99,88,0.4);
 }
 .link-btn.featured .link-arrow { color: rgba(255,255,255,0.55); }
 .link-btn.featured .link-sub   { color: rgba(255,255,255,0.7); }
 
 .link-btn.wa {
-  background: #fff;
-  border-color: rgba(37,211,102,0.35);
-  color: #1A6E44;
+  border-color: rgba(37,211,102,0.35); color: #1A6E44;
 }
 .link-btn.wa .link-arrow { color: #25D366; opacity: 0.7; }
 
 .link-emoji { font-size: 1.05rem; flex-shrink: 0; }
 .link-text  { flex: 1; line-height: 1.35; }
 .link-sub   { display: block; font-size: 11px; font-weight: 300; color: #A08070; margin-top: 2px; }
-.link-arrow { font-size: 15px; color: #D4A090; flex-shrink: 0; }
+.link-arrow { font-size: 15px; color: #D4A090; flex-shrink: 0;
+              transition: transform 0.2s; }
+.link-btn:hover .link-arrow { transform: translateX(3px); }
 
 /* FOOTER */
-.footer { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.footer {
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  animation: fadeUp 0.7s 1.2s both;
+}
 .footer-icons { display: flex; gap: 10px; }
 .footer-icon {
   display: flex; align-items: center; gap: 5px;
@@ -157,9 +272,9 @@ body {
   background: #fff; border: 1px solid rgba(212,160,144,0.35);
   border-radius: 20px; padding: 7px 13px;
   box-shadow: 0 1px 6px rgba(180,90,60,0.05);
-  transition: color 0.2s, border-color 0.2s;
+  transition: color 0.2s, border-color 0.2s, transform 0.2s;
 }
-.footer-icon:hover { color: #C96358; border-color: #C96358; }
+.footer-icon:hover { color: #C96358; border-color: #C96358; transform: translateY(-2px); }
 .copyright { font-size: 10px; color: #C8B0A8; letter-spacing: 0.06em; }
 
 /* MODAL */
@@ -167,20 +282,27 @@ body {
   display: none; position: fixed; inset: 0;
   background: rgba(44,31,26,0.45); z-index: 999;
   align-items: flex-end; justify-content: center;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
 }
 .modal-overlay.open { display: flex; }
 .modal-box {
   background: #FDF7F3; border-radius: 28px 28px 0 0;
   padding: 32px 24px 52px; width: 100%; max-width: 480px;
   position: relative; border-top: 3px solid #E8C4B0;
+  animation: up 0.35s cubic-bezier(.22,.68,0,1.2);
+}
+@keyframes up {
+  from { transform: translateY(80px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
 }
 .modal-close {
   position: absolute; top: 16px; right: 18px;
   background: #F0E0D8; border: none; width: 30px; height: 30px;
   border-radius: 50%; font-size: 1rem; cursor: pointer; color: #8B6F5E;
   display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
 }
+.modal-close:hover { background: #E8C8BC; }
 .modal-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.4rem; font-weight: 600; color: #2C1F1A;
@@ -192,6 +314,7 @@ body {
   padding: 14px 16px; border: 1px solid #E0C8BC; border-radius: 12px;
   font-size: 14px; font-family: inherit; font-weight: 300;
   outline: none; background: #fff; color: #2C1F1A;
+  transition: border-color 0.2s;
 }
 .modal-input:focus { border-color: #C96358; }
 .modal-submit {
@@ -200,7 +323,9 @@ body {
   padding: 15px; font-size: 14px; font-weight: 600;
   cursor: pointer; font-family: inherit;
   box-shadow: 0 4px 14px rgba(201,99,88,0.28);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
+.modal-submit:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(201,99,88,0.38); }
 .modal-error { color: #C96358; font-size: 12px; display: none; }
 .modal-success { display: none; text-align: center; padding: 20px 0 4px; }
 .modal-success-icon { font-size: 2.2rem; margin-bottom: 12px; }
@@ -208,10 +333,62 @@ body {
 </style>
 </head>
 <body>
+
+<!-- BACKGROUND VIVANT -->
+<div class="bg">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- Petits points brillants -->
+  <div class="sparkle" style="top:15%;left:8%;--d:3.5s;--delay:0s"></div>
+  <div class="sparkle" style="top:25%;right:9%;--d:4.5s;--delay:0.8s"></div>
+  <div class="sparkle" style="top:55%;left:6%;--d:3s;--delay:1.5s"></div>
+  <div class="sparkle" style="top:70%;right:7%;--d:5s;--delay:0.3s"></div>
+  <div class="sparkle" style="top:40%;right:5%;--d:4s;--delay:2s"></div>
+  <div class="sparkle" style="bottom:20%;left:10%;--d:3.8s;--delay:1s;background:#D4957A"></div>
+
+  <!-- Fleurs SVG flottantes -->
+  <svg class="flower" style="top:10%;right:5%;width:52px;--fd:0.6s;--fs:9s;--fo:0.2" viewBox="0 0 52 52" fill="none">
+    <ellipse cx="26" cy="9"  rx="6" ry="10" fill="#D4957A" transform="rotate(0 26 26)"/>
+    <ellipse cx="26" cy="9"  rx="6" ry="10" fill="#C96358" transform="rotate(45 26 26)"/>
+    <ellipse cx="26" cy="9"  rx="6" ry="10" fill="#D4957A" transform="rotate(90 26 26)"/>
+    <ellipse cx="26" cy="9"  rx="6" ry="10" fill="#C96358" transform="rotate(135 26 26)"/>
+    <circle cx="26" cy="26" r="7" fill="#E8A090"/>
+  </svg>
+
+  <svg class="flower" style="bottom:25%;left:4%;width:40px;--fd:1s;--fs:11s;--fo:0.18" viewBox="0 0 40 40" fill="none">
+    <ellipse cx="20" cy="7"  rx="5" ry="8" fill="#C96358" transform="rotate(0 20 20)"/>
+    <ellipse cx="20" cy="7"  rx="5" ry="8" fill="#D4957A" transform="rotate(60 20 20)"/>
+    <ellipse cx="20" cy="7"  rx="5" ry="8" fill="#C96358" transform="rotate(120 20 20)"/>
+    <circle cx="20" cy="20" r="5" fill="#E8A090"/>
+  </svg>
+
+  <svg class="flower" style="top:42%;right:4%;width:28px;--fd:1.5s;--fs:7s;--fo:0.15" viewBox="0 0 28 28" fill="none">
+    <circle cx="14" cy="5"  r="4" fill="#D4957A"/>
+    <circle cx="23" cy="14" r="4" fill="#D4957A"/>
+    <circle cx="14" cy="23" r="4" fill="#D4957A"/>
+    <circle cx="5"  cy="14" r="4" fill="#D4957A"/>
+    <circle cx="14" cy="14" r="5" fill="#C96358"/>
+  </svg>
+
+  <svg class="flower" style="top:65%;left:5%;width:22px;--fd:0.8s;--fs:13s;--fo:0.13" viewBox="0 0 22 22" fill="none">
+    <line x1="11" y1="0" x2="11" y2="22" stroke="#C96358" stroke-width="1.5"/>
+    <line x1="0" y1="11" x2="22" y2="11" stroke="#C96358" stroke-width="1.5"/>
+    <line x1="3" y1="3" x2="19" y2="19" stroke="#D4957A" stroke-width="1"/>
+    <line x1="19" y1="3" x2="3" y2="19" stroke="#D4957A" stroke-width="1"/>
+    <circle cx="11" cy="11" r="2.5" fill="#C96358"/>
+  </svg>
+</div>
+
+<!-- PAGE -->
 <div class="page">
 
-  <img src="images/ornella-profil.png" alt="Ornella" class="profile-img"
-       onerror="this.src='images/ornella-avant-apres-postpartum.jpg'">
+  <div class="photo-wrap">
+    <div class="photo-halo"></div>
+    <img src="images/ornella-profil.png" alt="Ornella" class="profile-img"
+         onerror="this.src='images/ornella-avant-apres-postpartum.jpg'">
+  </div>
 
   <div class="profile-name">Ornella Fit Coaching</div>
   <div class="profile-badge">🏆 Demi-finaliste France de Fitness</div>
@@ -311,7 +488,7 @@ var BK = 'xkeysib-b3f029f593ab90bd2bb'+'2290988c5a455f29ddad8ec51e4ca585'+'dcf70
 function px(n) { if (typeof fbq !== 'undefined') fbq('track', 'ViewContent', {content_name: n}); }
 function openGuide() {
   px('Guide 9 Erreurs');
-  if (localStorage.getItem('guideDone')) { window.location.href = 'https://www.ornellafitcoaching.com/guide-offert.html'; return; }
+  if (localStorage.getItem('guideDone')) { window.location.href='https://www.ornellafitcoaching.com/guide-offert.html'; return; }
   document.getElementById('guideOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -319,31 +496,31 @@ function closeGuide() {
   document.getElementById('guideOverlay').classList.remove('open');
   document.body.style.overflow = '';
 }
-function overlayClick(e) { if (e.target === document.getElementById('guideOverlay')) closeGuide(); }
+function overlayClick(e) { if (e.target===document.getElementById('guideOverlay')) closeGuide(); }
 async function submitGuide(e) {
   e.preventDefault();
-  var email = document.getElementById('guide-email').value.trim();
-  var prenom = document.getElementById('guide-prenom').value.trim();
-  var errEl = document.getElementById('guide-error');
-  var btn = document.getElementById('guide-btn');
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errEl.textContent = 'Entre un email valide.'; errEl.style.display = 'block'; return; }
-  errEl.style.display = 'none'; btn.textContent = 'Envoi…'; btn.disabled = true;
+  var email=document.getElementById('guide-email').value.trim();
+  var prenom=document.getElementById('guide-prenom').value.trim();
+  var errEl=document.getElementById('guide-error');
+  var btn=document.getElementById('guide-btn');
+  if (!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errEl.textContent='Entre un email valide.';errEl.style.display='block';return;}
+  errEl.style.display='none';btn.textContent='Envoi…';btn.disabled=true;
   try {
-    await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {'api-key': BK, 'Content-Type': 'application/json'},
-      body: JSON.stringify({email: email, listIds: [15], updateEnabled: true, attributes: {PRENOM: prenom, SOURCE: 'links-page'}})
+    await fetch('https://api.brevo.com/v3/contacts',{
+      method:'POST',
+      headers:{'api-key':BK,'Content-Type':'application/json'},
+      body:JSON.stringify({email,listIds:[15],updateEnabled:true,attributes:{PRENOM:prenom,SOURCE:'links-page'}})
     });
-    if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'Guide 9 Erreurs'});
-    localStorage.setItem('guideDone', '1'); localStorage.setItem('ornella_lead_email', email);
-    document.getElementById('guide-form-wrap').style.display = 'none';
-    document.getElementById('guide-success').style.display = 'block';
-  } catch(e2) {
-    btn.textContent = 'Recevoir le guide →'; btn.disabled = false;
-    errEl.textContent = 'Erreur, réessaie.'; errEl.style.display = 'block';
+    if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Guide 9 Erreurs'});
+    localStorage.setItem('guideDone','1');localStorage.setItem('ornella_lead_email',email);
+    document.getElementById('guide-form-wrap').style.display='none';
+    document.getElementById('guide-success').style.display='block';
+  } catch(e2){
+    btn.textContent='Recevoir le guide →';btn.disabled=false;
+    errEl.textContent='Erreur, réessaie.';errEl.style.display='block';
   }
 }
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeGuide(); });
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGuide();});
 </script>
 </body>
 </html>
