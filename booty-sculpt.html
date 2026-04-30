@@ -354,19 +354,56 @@ async function submitWaitlist(inputId, successId) {
         to: [{email: email}],
         sender: {name: 'Ornella Fit Coaching', email: 'ornellafit.coaching@gmail.com'},
         subject: 'Tu es sur la liste Booty Sculpt ! 🍑',
-        textContent: [
-          'Bonjour future transformée,',
-          '',
-          "C'est officiel — tu es sur la liste prioritaire pour le programme Booty Sculpt.",
-          '',
-          "Dès que les places ouvrent au tarif lancement (19€ au lieu de 39€), tu seras la première prévenue.",
-          '',
-          "En attendant, si tu veux commencer à travailler ton corps maintenant :",
-          "→ Découvre mes programmes disponibles : https://www.ornellafitcoaching.com/offres.html",
-          '',
-          'À très vite,',
-          'Ornella 🔥'
-        ].join('\n')
+        htmlContent: `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;padding:0;background:#FDF8F4;font-family:'Helvetica Neue',Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#FDF8F4;padding:32px 16px;">
+  <tr><td align="center">
+    <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(44,31,26,0.10);">
+
+      <!-- HEADER -->
+      <tr><td style="background:linear-gradient(135deg,#2C1F1A,#3D2B24);padding:36px 40px;text-align:center;">
+        <div style="font-size:2.4rem;margin-bottom:8px;">🍑</div>
+        <div style="font-family:Georgia,serif;font-size:1.5rem;font-weight:600;color:#ffffff;line-height:1.3;">Booty Sculpt</div>
+        <div style="font-size:0.78rem;color:rgba(255,255,255,0.55);letter-spacing:0.12em;text-transform:uppercase;margin-top:4px;">Programme Ornella Fit Coaching</div>
+      </td></tr>
+
+      <!-- BADGE -->
+      <tr><td style="padding:28px 40px 0;text-align:center;">
+        <span style="display:inline-block;background:rgba(201,99,88,0.10);color:#C96358;border:1px solid rgba(201,99,88,0.25);border-radius:50px;padding:6px 18px;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">✅ Liste prioritaire confirmée</span>
+      </td></tr>
+
+      <!-- BODY -->
+      <tr><td style="padding:24px 40px 32px;">
+        <p style="font-family:Georgia,serif;font-size:1.45rem;font-weight:600;color:#1E1616;line-height:1.35;margin:0 0 16px;">C'est officiel — tu es dans la liste 🔥</p>
+        <p style="font-size:0.93rem;color:#5C4A40;line-height:1.75;margin:0 0 20px;">Bonjour future transformée,<br><br>Tu es désormais sur la <strong style="color:#1E1616;">liste prioritaire Booty Sculpt</strong>. Dès que les places s'ouvrent au tarif lancement, tu seras la toute première prévenue — avant tout le monde.</p>
+
+        <!-- ENCART PRIX -->
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:#FDF8F4;border-radius:14px;margin:0 0 24px;">
+          <tr><td style="padding:20px 24px;text-align:center;">
+            <div style="font-size:0.78rem;color:#8A7060;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">Ton tarif réservé</div>
+            <div style="font-family:Georgia,serif;font-size:2rem;font-weight:700;color:#C96358;line-height:1;">19€</div>
+            <div style="font-size:0.82rem;color:#8A7060;margin-top:4px;"><s>39€</s> &nbsp;·&nbsp; <strong style="color:#1E1616;">−51% de réduction</strong></div>
+          </td></tr>
+        </table>
+
+        <p style="font-size:0.93rem;color:#5C4A40;line-height:1.75;margin:0 0 24px;">En attendant l'ouverture, si tu veux déjà commencer à transformer ton corps :</p>
+
+        <!-- CTA -->
+        <table width="100%" cellpadding="0" cellspacing="0">
+          <tr><td align="center">
+            <a href="https://www.ornellafitcoaching.com/offres.html" style="display:inline-block;background:linear-gradient(135deg,#C96358,#C9957A);color:#ffffff;font-weight:700;font-size:0.92rem;padding:16px 36px;border-radius:50px;text-decoration:none;letter-spacing:0.02em;">Voir mes programmes disponibles →</a>
+          </td></tr>
+        </table>
+      </td></tr>
+
+      <!-- FOOTER -->
+      <tr><td style="background:#F5EDE4;padding:20px 40px;text-align:center;border-top:1px solid rgba(201,185,154,0.25);">
+        <p style="font-size:0.8rem;color:#8A7060;line-height:1.6;margin:0;">À très vite,<br><strong style="color:#1E1616;">Ornella 🔥</strong><br><span style="font-size:0.73rem;color:#B0948A;">Ornella Fit Coaching · ornellafitcoaching.com</span></p>
+      </td></tr>
+
+    </table>
+  </td></tr>
+</table>
+</body></html>`
       })
     });
   } catch(e) {}
