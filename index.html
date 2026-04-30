@@ -734,6 +734,59 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
 #lead-success a { display:inline-block; background:#C96358; color:white; padding:13px 28px; border-radius:50px; font-weight:700; font-size:0.9rem; text-decoration:none; }
 @media(max-width:768px) { #lead-box { padding:30px 20px; border-radius:22px; } .lead-title { font-size:1.35rem; } }
 
+/* ===== SMART CAPTURE ===== */
+#sc-overlay {
+  display:none; position:fixed; inset:0; z-index:10000;
+  align-items:center; justify-content:center; padding:20px;
+  background:rgba(30,22,22,0.72); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
+}
+#sc-overlay.active { display:flex; }
+#sc-box {
+  position:relative; background:white; border-radius:28px;
+  padding:40px 36px; max-width:460px; width:100%;
+  box-shadow:0 32px 80px rgba(44,31,26,0.3); text-align:center;
+  animation:leadIn 0.35s ease;
+}
+#sc-close {
+  position:absolute; top:14px; right:18px;
+  background:none; border:none; font-size:1.6rem; cursor:pointer;
+  color:var(--text-light); line-height:1; padding:4px;
+}
+#sc-title {
+  font-family:'Cormorant Garamond',serif; font-size:1.6rem;
+  font-weight:600; color:var(--dark); line-height:1.3; margin-bottom:10px;
+}
+#sc-sub { font-size:0.88rem; color:var(--text-mid); line-height:1.65; margin-bottom:22px; }
+#sc-form { display:flex; flex-direction:column; gap:10px; }
+#sc-email {
+  width:100%; padding:16px 20px; border:1.5px solid rgba(201,185,154,0.4);
+  border-radius:14px; font-size:0.95rem; font-family:'DM Sans',sans-serif;
+  outline:none; transition:border-color 0.2s; box-sizing:border-box;
+}
+#sc-email:focus { border-color:var(--accent); }
+#sc-submit {
+  width:100%; padding:17px; background:#C96358; color:white;
+  border:none; border-radius:14px; font-family:'DM Sans',sans-serif;
+  font-size:0.95rem; font-weight:700; cursor:pointer; transition:all 0.2s;
+}
+#sc-submit:hover { background:#b85348; transform:translateY(-1px); }
+#sc-submit:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
+#sc-skip {
+  display:block; margin-top:12px; font-size:0.8rem; color:var(--text-light);
+  cursor:pointer; background:none; border:none; font-family:'DM Sans',sans-serif;
+  text-decoration:underline; text-underline-offset:2px;
+}
+#sc-skip:hover { color:var(--text-mid); }
+#sc-success {
+  display:none; padding:20px; background:rgba(37,211,102,0.07);
+  border:1px solid rgba(37,211,102,0.2); border-radius:14px; margin-top:14px;
+}
+#sc-success p { font-size:0.95rem; color:var(--dark); font-weight:600; margin:0; }
+@media(max-width:768px) {
+  #sc-box { padding:30px 20px; border-radius:22px; max-width:100%; }
+  #sc-title { font-size:1.35rem; }
+}
+
 
 /* ===== MOBILE INDEX ===== */
 @media (max-width: 768px) {
@@ -1616,6 +1669,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <style>@keyframes slideUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }</style>
 
+<!-- SMART CAPTURE MODAL -->
+<div id="sc-overlay" onclick="scOverlayClick(event)">
+  <div id="sc-box">
+    <button id="sc-close" onclick="scClose(false)" aria-label="Fermer">×</button>
+    <h2 id="sc-title"></h2>
+    <p id="sc-sub"></p>
+    <div id="sc-form-wrap">
+      <form id="sc-form" onsubmit="scSubmit(event)">
+        <input type="email" id="sc-email" placeholder="ton@email.com" required autocomplete="email" inputmode="email">
+        <button type="submit" id="sc-submit">Je veux ça →</button>
+      </form>
+      <button id="sc-skip" onclick="scClose(true)">Non merci, continuer sans</button>
+    </div>
+    <div id="sc-success"><p>✅ C'est noté — tu peux continuer !</p></div>
+  </div>
+</div>
+
 <!-- STICKY MOBILE BAR -->
 <div class="mobile-sticky-bar">
   <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20viens%20de%20voir%20ton%20site%20et%20j%27aimerais%20transformer%20mon%20corps.%20Comment%20%C3%A7a%20fonctionne%20%3F" class="sticky-cta-main" id="sticky-main-cta" target="_blank">Je veux ma transformation →</a>
@@ -1845,6 +1915,126 @@ function showObjReply(btn, type) {
     });
   }, { threshold: 0.5 });
   counters.forEach(function(c) { obs.observe(c); });
+})();
+
+// ===== SMART CAPTURE SYSTEM =====
+(function() {
+  var _trigger = null;
+  var _pendingUrl = null;
+  var _content = {
+    guide: {
+      title: 'Ton guide arrive — juste ton email',
+      sub:   'Reçois les 9 erreurs qui sabotent ta transformation, directement dans ta boîte.'
+    },
+    transformations: {
+      title: 'Tu veux voir les vraies transformations ?',
+      sub:   'Entre ton email pour accéder aux résultats complets de mes clientes.'
+    },
+    exit: {
+      title: 'Attends — tu repars les mains vides ?',
+      sub:   'Reçois le guide gratuit + mon programme le moins cher. Juste ton email.'
+    }
+  };
+
+  function scShow(trigger, pendingUrl) {
+    if (localStorage.getItem('ornella_lead_email')) {
+      if (pendingUrl) window.location.href = pendingUrl;
+      return;
+    }
+    if (sessionStorage.getItem('sc_' + trigger + '_seen')) {
+      if (pendingUrl) window.location.href = pendingUrl;
+      return;
+    }
+    _trigger = trigger;
+    _pendingUrl = pendingUrl || null;
+    var c = _content[trigger];
+    document.getElementById('sc-title').textContent = c.title;
+    document.getElementById('sc-sub').textContent = c.sub;
+    document.getElementById('sc-form-wrap').style.display = '';
+    document.getElementById('sc-success').style.display = 'none';
+    document.getElementById('sc-email').value = '';
+    var btn = document.getElementById('sc-submit');
+    btn.disabled = false; btn.textContent = 'Je veux ça →';
+    document.getElementById('sc-overlay').classList.add('active');
+    setTimeout(function() { document.getElementById('sc-email').focus(); }, 120);
+  }
+
+  window.scClose = function(proceed) {
+    document.getElementById('sc-overlay').classList.remove('active');
+    if (_trigger) sessionStorage.setItem('sc_' + _trigger + '_seen', '1');
+    var url = _pendingUrl;
+    _trigger = null; _pendingUrl = null;
+    if (proceed && url) window.location.href = url;
+  };
+
+  window.scOverlayClick = function(e) {
+    if (e.target === document.getElementById('sc-overlay')) scClose(false);
+  };
+
+  window.scSubmit = async function(e) {
+    e.preventDefault();
+    var email = document.getElementById('sc-email').value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      document.getElementById('sc-email').focus(); return;
+    }
+    var btn = document.getElementById('sc-submit');
+    btn.disabled = true; btn.textContent = 'Envoi…';
+    localStorage.setItem('ornella_lead_email', email);
+    if (_trigger) sessionStorage.setItem('sc_' + _trigger + '_seen', '1');
+    var url = _pendingUrl;
+    _trigger = null; _pendingUrl = null;
+    try {
+      await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, listIds: [2], updateEnabled: true, emailBlacklisted: false })
+      });
+    } catch(err) { console.warn('[SC Brevo]', err); }
+    document.getElementById('sc-form-wrap').style.display = 'none';
+    document.getElementById('sc-success').style.display = 'block';
+    if (url) {
+      setTimeout(function() { window.location.href = url; }, 800);
+    } else {
+      setTimeout(function() { document.getElementById('sc-overlay').classList.remove('active'); }, 1400);
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Trigger B — Transformations nav & footer links
+    document.querySelectorAll('a[href="transformations.html"]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        if (localStorage.getItem('ornella_lead_email')) return;
+        if (sessionStorage.getItem('sc_transformations_seen')) return;
+        e.preventDefault();
+        scShow('transformations', 'transformations.html');
+      });
+    });
+
+    // Trigger A — Direct guide links (outside success states)
+    document.querySelectorAll('a[href="guide-offert.html"]').forEach(function(a) {
+      var inSuccess = a.closest('#lead-success') || a.closest('.li-success-inline');
+      if (inSuccess) return;
+      a.addEventListener('click', function(e) {
+        if (localStorage.getItem('ornella_lead_email')) return;
+        if (sessionStorage.getItem('sc_guide_seen')) return;
+        e.preventDefault();
+        scShow('guide', 'guide-offert.html');
+      });
+    });
+  });
+
+  // Trigger C — Exit-intent (desktop only, 1× per session)
+  var _exitFired = false;
+  document.addEventListener('mouseleave', function(e) {
+    if (e.clientY >= 10) return;
+    if (_exitFired) return;
+    if (sessionStorage.getItem('sc_exit_seen')) return;
+    if (localStorage.getItem('ornella_lead_email')) return;
+    if (document.getElementById('sc-overlay').classList.contains('active')) return;
+    if (document.getElementById('lead-popup') && document.getElementById('lead-popup').classList.contains('active')) return;
+    _exitFired = true;
+    scShow('exit', null);
+  });
 })();
 
 var ua = navigator.userAgent || '';
