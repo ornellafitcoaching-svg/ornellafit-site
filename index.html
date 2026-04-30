@@ -1721,7 +1721,7 @@ async function submitLead(e) {
     return;
   }
 
-  var payload = { email: email, listIds: [2], updateEnabled: true, emailBlacklisted: false };
+  var payload = { email: email, listIds: [5], updateEnabled: true, emailBlacklisted: false };
   if (prenom) payload.attributes = { PRENOM: prenom };
 
   try {
@@ -1758,7 +1758,7 @@ async function submitLeadInline(e, source) {
     var res = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, listIds: [2], updateEnabled: true, emailBlacklisted: false })
+      body: JSON.stringify({ email: email, listIds: [5], updateEnabled: true, emailBlacklisted: false })
     });
     if (!res.ok && res.status !== 204) {
       var err = await res.json().catch(function() { return {}; });
