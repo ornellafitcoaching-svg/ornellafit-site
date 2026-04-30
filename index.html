@@ -1865,20 +1865,6 @@ async function submitLead(e) {
     return;
   }
 
-  try {
-    var prenom_display = prenom || 'future transformée';
-    await fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        to: [{ email: email }],
-        sender: { name: 'Ornella Fit Coaching', email: 'ornellafit.coaching@gmail.com' },
-        subject: 'Ton guide gratuit est arrivé 📘',
-        htmlContent: guideEmailHtml(prenom_display)
-      })
-    });
-  } catch(e) { console.warn('[Guide email]', e); }
-
   document.getElementById('lead-form').style.display = 'none';
   document.getElementById('lead-success').style.display = 'block';
   localStorage.setItem('leadDone', '1');
@@ -1907,19 +1893,6 @@ async function submitLeadInline(e, source) {
   } catch(err) {
     btn.disabled = false; btn.textContent = 'Réessayer →'; return;
   }
-
-  try {
-    await fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        to: [{ email: email }],
-        sender: { name: 'Ornella Fit Coaching', email: 'ornellafit.coaching@gmail.com' },
-        subject: 'Ton guide gratuit est arrivé 📘',
-        htmlContent: guideEmailHtml('future transformée')
-      })
-    });
-  } catch(e) { console.warn('[Guide email inline]', e); }
 
   form.style.display = 'none';
   var successEl = form.parentElement.querySelector('.li-success-inline');
