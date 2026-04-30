@@ -455,6 +455,25 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
   justify-content: center; font-size: 0.88rem;
 }
 .apercu-note { margin-top: 28px; font-size: 0.85rem; color: var(--text-light); font-style: italic; }
+.apercu-quiz-nudge {
+  margin-top: 20px; font-size: 0.92rem; color: var(--text-mid);
+}
+.apercu-quiz-nudge a {
+  color: var(--rose-deep); font-weight: 700; text-decoration: none;
+  border-bottom: 1px solid currentColor; padding-bottom: 1px;
+}
+.apercu-cta-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: linear-gradient(135deg, #C96358, #C9957A);
+  color: white; padding: 13px 20px; border-radius: 50px;
+  font-size: 0.88rem; font-weight: 700; text-decoration: none;
+  margin-top: auto; transition: opacity 0.2s;
+}
+.apercu-cta-btn:hover { opacity: 0.85; color: white; }
+.apercu-card.featured .apercu-cta-btn {
+  background: linear-gradient(135deg, #F0E4D8, #E4D0BE);
+  color: #1E1616;
+}
 
 /* ===== VALEUR ===== */
 #valeur { background: linear-gradient(150deg, #F5EDE4 0%, #EDD9C8 100%); text-align: center; }
@@ -790,6 +809,7 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
   .apercu-card.featured { transform: none; box-shadow: 0 8px 32px rgba(44,31,26,0.18); }
   .apercu-card.featured:hover { transform: translateY(-4px); }
   .apercu-card.secondary { opacity: 1; }
+  .apercu-card-distance { order: -1; }
 
   /* VALEUR */
   .valeur-compare { grid-template-columns: 1fr; gap: 12px; }
@@ -1323,43 +1343,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="inner">
     <span class="section-label">Mes formules</span>
     <h2 class="section-title">L'accompagnement <em>fait pour toi</em></h2>
-    <p class="section-subtitle" style="margin:0 auto;">Pour celles qui veulent des résultats réels — pas des promesses. Choisissez le niveau d'accompagnement qui vous correspond.</p>
+    <p class="apercu-quiz-nudge">Tu ne sais pas laquelle choisir ? → <a href="quiz.html">Fais le quiz en 30 secondes</a></p>
     <div class="apercu-grid fade-in">
 
       <!-- DOMICILE — offre principale -->
-      <a href="offres.html" class="apercu-card featured">
+      <div class="apercu-card featured">
         <div class="apercu-badge">🔥 Résultats optimaux</div>
-        <div class="apercu-num">01</div>
         <div class="apercu-type">Coaching Présentiel</div>
         <div class="apercu-title">À Domicile</div>
-        <p class="apercu-desc">Je me déplace chez toi. Séances 100% sur-mesure dans ton espace, encadrement total de A à Z. Solo, en duo ou en trio.</p>
-        <p class="apercu-hook">👉 L'accompagnement le plus complet — je viens chez toi, je m'occupe de tout, tu progresses plus vite.</p>
-        <div class="apercu-price">Dès 50€ <span style="font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:300;color:rgba(255,255,255,0.45);">— séance découverte</span></div>
-        <div class="apercu-cta">Je veux des résultats →</div>
-      </a>
+        <p class="apercu-desc">Je viens chez toi — séances 100% sur-mesure, encadrement total.</p>
+        <div class="apercu-price">Dès 50€ <span style="font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:300;color:rgba(255,255,255,0.45);">séance découverte</span></div>
+        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20suis%20int%C3%A9ress%C3%A9e%20par%20le%20coaching%20%C3%A0%20domicile%2C%20on%20peut%20en%20parler%20%3F" target="_blank" class="apercu-cta-btn">Je commence →</a>
+      </div>
 
       <!-- HYBRIDE — alternative -->
-      <a href="offres.html" class="apercu-card secondary">
-        <div class="apercu-num">02</div>
+      <div class="apercu-card secondary">
         <div class="apercu-type">Coaching Hybride</div>
         <div class="apercu-title">Séances + Programme</div>
-        <p class="apercu-desc">2 séances par mois + programme autonome + suivi WhatsApp + bilan mensuel.</p>
+        <p class="apercu-desc">2 séances/mois + programme sur-mesure + suivi WhatsApp.</p>
         <div class="apercu-price">169€ <span style="font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:300;color:var(--text-light);">/ mois</span></div>
-        <div class="apercu-cta">Voir le détail →</div>
-      </a>
+        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20suis%20int%C3%A9ress%C3%A9e%20par%20le%20coaching%20hybride%2C%20on%20peut%20en%20parler%20%3F" target="_blank" class="apercu-cta-btn">Je commence →</a>
+      </div>
 
       <!-- DISTANCE — entrée de gamme -->
-      <a href="offres.html" class="apercu-card secondary">
-        <div class="apercu-num">03</div>
+      <div class="apercu-card secondary apercu-card-distance">
         <div class="apercu-type">Coaching À Distance</div>
         <div class="apercu-title">Depuis Chez Toi</div>
-        <p class="apercu-desc">Programme 8 semaines personnalisé, livré sous 5 à 7 jours. Tu t'entraînes à ton rythme, partout en France.</p>
+        <p class="apercu-desc">Programme 8 semaines personnalisé, livré en 5–7 jours. Partout en France.</p>
         <div class="apercu-price">79€ <span style="font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:300;color:var(--text-light);">— 8 semaines</span></div>
-        <div class="apercu-cta">Voir les formules →</div>
-      </a>
+        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20suis%20int%C3%A9ress%C3%A9e%20par%20le%20programme%208%20semaines%20%C3%A0%2079%E2%82%AC%2C%20on%20peut%20en%20parler%20%3F" target="_blank" class="apercu-cta-btn">Je commence →</a>
+      </div>
 
     </div>
-    <p class="apercu-note">Ton accompagnement commence par un <strong>échange WhatsApp</strong> — puis, si tu te lances, je t'envoie un bilan complet pour construire exactement ce qu'il te faut.</p>
   </div>
 </section>
 
