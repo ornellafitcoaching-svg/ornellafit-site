@@ -571,12 +571,46 @@ async function submitQuiz(skip = false) {
   goToStep(6);
 }
 
-const BREVO_TEMPLATE_IDS = {
-  domicile:   12,
-  hybride:    13,
-  distanciel: 14,
-  autonomie:  15
-};
+function quizEmailHtml(r) {
+  var benefitsRows = r.benefits.map(function(b) {
+    return '<tr><td style="padding:5px 0;font-size:13px;color:#5C4A40;">&#10003;&nbsp; ' + b + '</td></tr>';
+  }).join('');
+
+  return '<html><body style="margin:0;padding:0;background-color:#FDF8F4;font-family:Arial,Helvetica,sans-serif;">' +
+    '<table width="100%" cellpadding="0" cellspacing="0" bgcolor="#FDF8F4"><tr><td align="center" style="padding:32px 16px;">' +
+    '<table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">' +
+
+    '<tr><td bgcolor="#2C1F1A" style="padding:32px 36px;text-align:center;border-radius:14px 14px 0 0;">' +
+    '<div style="font-size:32px;line-height:1;">' + r.emoji + '</div>' +
+    '<div style="font-family:Georgia,serif;font-size:20px;font-weight:bold;color:#ffffff;margin-top:8px;">' + r.title + '</div>' +
+    '<div style="font-size:11px;color:#aaaaaa;letter-spacing:2px;margin-top:4px;text-transform:uppercase;">Ornella Fit Coaching</div>' +
+    '</td></tr>' +
+
+    '<tr><td bgcolor="#ffffff" style="padding:32px 36px;">' +
+    '<p style="margin:0 0 20px;"><span style="background-color:#FDF8F4;color:#C96358;border:1px solid #e8c0bb;border-radius:50px;padding:6px 16px;font-size:11px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;">&#10003; Ton r&#233;sultat personnalis&#233;</span></p>' +
+    '<h2 style="font-family:Georgia,serif;font-size:22px;color:#1E1616;margin:0 0 12px;line-height:1.35;">C\'est fait pour toi &#128293;</h2>' +
+    '<p style="font-size:14px;color:#5C4A40;line-height:1.75;margin:0 0 24px;">' + r.why + '</p>' +
+
+    '<table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px;"><tr><td bgcolor="#FDF8F4" style="padding:20px 24px;border-radius:12px;">' +
+    '<div style="font-size:11px;color:#8A7060;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Ce qui est inclus</div>' +
+    '<table width="100%" cellpadding="0" cellspacing="0">' + benefitsRows + '</table>' +
+    '</td></tr></table>' +
+
+    '<table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:16px;"><tr><td bgcolor="#FDF8F4" style="padding:14px 20px;text-align:center;border-radius:10px;">' +
+    '<div style="font-size:14px;font-weight:bold;color:#C96358;">' + r.price + '</div>' +
+    '</td></tr></table>' +
+
+    '<table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:8px;"><tr><td align="center">' +
+    '<a href="https://www.ornellafitcoaching.com/' + r.url + '" style="display:inline-block;background-color:#C96358;color:#ffffff;font-weight:bold;font-size:14px;padding:16px 36px;border-radius:50px;text-decoration:none;">Voir mon offre en d&#233;tail &#8594;</a>' +
+    '</td></tr></table>' +
+    '<p style="font-size:11px;color:#aaaaaa;text-align:center;margin:12px 0 0;">Des questions ? R&#233;ponds directement &#224; cet email.</p>' +
+    '</td></tr>' +
+
+    '<tr><td bgcolor="#F5EDE4" style="padding:20px 36px;text-align:center;border-radius:0 0 14px 14px;border-top:1px solid #e8ddd4;">' +
+    '<p style="font-size:13px;color:#8A7060;line-height:1.7;margin:0;">&#192; tr&#232;s vite,<br><strong style="color:#1E1616;">Ornella &#128293;</strong><br><span style="font-size:11px;">ornellafitcoaching.com</span></p>' +
+    '</td></tr>' +
+    '</table></td></tr></table></body></html>';
+}
 
 async function sendToBrevo(email, resultKey) {
   if (!BREVO_API_KEY || BREVO_API_KEY === 'YOUR_BREVO_API_KEY') {
@@ -584,8 +618,8 @@ async function sendToBrevo(email, resultKey) {
     return;
   }
 
-  const listId    = BREVO_LISTS[resultKey];
-  const templateId = BREVO_TEMPLATE_IDS[resultKey];
+  const listId = BREVO_LISTS[resultKey];
+  const r      = RESULTS[resultKey];
 
   /* 1 — Ajouter le contact à la liste */
   const contactPayload = {
@@ -609,25 +643,22 @@ async function sendToBrevo(email, resultKey) {
     console.warn('[Brevo] Erreur réseau contact:', e);
   }
 
-  /* 2 — Envoyer l'email transactionnel avec le template */
-  if (!templateId) return;
+  /* 2 — Email transactionnel avec contenu personnalisé selon résultat */
+  if (!r) return;
   try {
-    const emailPayload = {
-      to: [{ email }],
-      templateId,
-      replyTo: { email: 'ornellaracano@icloud.com', name: 'Ornella Fit Coaching' }
-    };
-    const res2 = await fetch('https://api.brevo.com/v3/smtp/email', {
+    await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'api-key': BREVO_API_KEY },
-      body: JSON.stringify(emailPayload)
+      body: JSON.stringify({
+        to: [{ email }],
+        sender: { name: 'Ornella Fit Coaching', email: 'ornellafit.coaching@gmail.com' },
+        replyTo: { email: 'ornellaracano@icloud.com', name: 'Ornella Fit Coaching' },
+        subject: r.emailSubject,
+        htmlContent: quizEmailHtml(r)
+      })
     });
-    if (!res2.ok) {
-      const err = await res2.json().catch(() => ({}));
-      console.warn('[Brevo] Erreur email:', res2.status, err);
-    }
   } catch (e) {
-    console.warn('[Brevo] Erreur réseau email:', e);
+    console.warn('[Brevo] Erreur email quiz:', e);
   }
 }
 
