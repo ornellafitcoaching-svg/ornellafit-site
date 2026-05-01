@@ -760,12 +760,12 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
 }
 #sc-sub { font-size:0.88rem; color:var(--text-mid); line-height:1.65; margin-bottom:22px; }
 #sc-form { display:flex; flex-direction:column; gap:10px; }
-#sc-email {
+#sc-prenom, #sc-email {
   width:100%; padding:16px 20px; border:1.5px solid rgba(201,185,154,0.4);
   border-radius:14px; font-size:0.95rem; font-family:'DM Sans',sans-serif;
   outline:none; transition:border-color 0.2s; box-sizing:border-box;
 }
-#sc-email:focus { border-color:var(--accent); }
+#sc-prenom:focus, #sc-email:focus { border-color:var(--accent); }
 #sc-submit {
   width:100%; padding:17px; background:#C96358; color:white;
   border:none; border-radius:14px; font-family:'DM Sans',sans-serif;
@@ -1682,12 +1682,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p id="sc-sub"></p>
     <div id="sc-form-wrap">
       <form id="sc-form" onsubmit="scSubmit(event)">
+        <input type="text" id="sc-prenom" placeholder="Ton prénom" autocomplete="given-name">
         <input type="email" id="sc-email" placeholder="ton@email.com" required autocomplete="email" inputmode="email">
         <button type="submit" id="sc-submit">Je veux ça →</button>
       </form>
       <button id="sc-skip" onclick="scClose(true)">Non merci, continuer sans</button>
     </div>
-    <div id="sc-success"><p>✅ C'est noté — tu peux continuer !</p></div>
+    <div id="sc-success"><p>✅ C'est noté ! Vérifie ta boîte mail.</p></div>
   </div>
 </div>
 
@@ -1982,7 +1983,7 @@ function showObjReply(btn, type) {
     },
     exit: {
       title: 'Attends — tu repars les mains vides ?',
-      sub:   'Reçois le guide gratuit + mon programme le moins cher. Juste ton email.'
+      sub:   'Laisse ton email, je t\'envoie le guide gratuit + mon offre la moins chère.'
     }
   };
 
@@ -2003,6 +2004,7 @@ function showObjReply(btn, type) {
     document.getElementById('sc-form-wrap').style.display = '';
     document.getElementById('sc-success').style.display = 'none';
     document.getElementById('sc-email').value = '';
+    document.getElementById('sc-prenom').value = '';
     var btn = document.getElementById('sc-submit');
     btn.disabled = false; btn.textContent = 'Je veux ça →';
     document.getElementById('sc-overlay').classList.add('active');
@@ -2027,17 +2029,20 @@ function showObjReply(btn, type) {
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       document.getElementById('sc-email').focus(); return;
     }
+    var prenom = (document.getElementById('sc-prenom').value || '').trim();
     var btn = document.getElementById('sc-submit');
     btn.disabled = true; btn.textContent = 'Envoi…';
     localStorage.setItem('ornella_lead_email', email);
     if (_trigger) sessionStorage.setItem('sc_' + _trigger + '_seen', '1');
     var url = _pendingUrl;
     _trigger = null; _pendingUrl = null;
+    var attrs = { SOURCE: 'smart-capture' };
+    if (prenom) attrs.PRENOM = prenom;
     try {
       await fetch('https://api.brevo.com/v3/contacts', {
         method: 'POST',
         headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, listIds: [2], updateEnabled: true, emailBlacklisted: false, attributes: { SOURCE: 'smart-capture' } })
+        body: JSON.stringify({ email: email, listIds: [2], updateEnabled: true, emailBlacklisted: false, attributes: attrs })
       });
     } catch(err) { console.warn('[SC Brevo]', err); }
     try {
