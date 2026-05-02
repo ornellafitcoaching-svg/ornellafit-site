@@ -2090,18 +2090,38 @@ function showObjReply(btn, type) {
     });
   });
 
-  // Trigger C — Exit-intent (desktop only, 1× per session)
+  // Trigger C — Exit-intent (desktop + mobile)
   var _exitFired = false;
+  function _canShowExit() {
+    if (_exitFired) return false;
+    if (sessionStorage.getItem('sc_exit_seen')) return false;
+    if (localStorage.getItem('ornella_lead_email')) return false;
+    if (document.getElementById('sc-overlay').classList.contains('active')) return false;
+    if (document.getElementById('lead-popup') && document.getElementById('lead-popup').classList.contains('active')) return false;
+    return true;
+  }
+  function _fireExit() { _exitFired = true; scShow('exit', null); }
+
+  // Desktop : souris vers la barre d'adresse
   document.addEventListener('mouseleave', function(e) {
     if (e.clientY >= 10) return;
-    if (_exitFired) return;
-    if (sessionStorage.getItem('sc_exit_seen')) return;
-    if (localStorage.getItem('ornella_lead_email')) return;
-    if (document.getElementById('sc-overlay').classList.contains('active')) return;
-    if (document.getElementById('lead-popup') && document.getElementById('lead-popup').classList.contains('active')) return;
-    _exitFired = true;
-    scShow('exit', null);
+    if (!_canShowExit()) return;
+    _fireExit();
   });
+
+  // Mobile : scroll rapide vers le haut après 40%+ de la page vue
+  (function() {
+    var _maxScroll = 0, _lastY = window.scrollY, _lastTime = Date.now();
+    window.addEventListener('scroll', function() {
+      var y = window.scrollY;
+      var pageH = document.body.scrollHeight - window.innerHeight;
+      if (pageH > 0) _maxScroll = Math.max(_maxScroll, y / pageH);
+      var dy = _lastY - y;
+      var dt = Date.now() - _lastTime;
+      if (dy > 120 && dt < 400 && _maxScroll > 0.4 && _canShowExit()) _fireExit();
+      _lastY = y; _lastTime = Date.now();
+    }, { passive: true });
+  })();
 })();
 
 var ua = navigator.userAgent || '';
