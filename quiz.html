@@ -670,6 +670,50 @@ async function sendToBrevo(email, resultKey) {
 
 function buildResultStep(key, email) {
   const r = RESULTS[key];
+
+  // — EMAIL GATE : afficher le formulaire d'abord —
+  document.getElementById('qStep-6').innerHTML = `
+    <div id="email-gate" style="text-align:center;padding:32px 20px;max-width:480px;margin:0 auto;">
+      <div style="font-size:32px;margin-bottom:12px;">🎯</div>
+      <h3 style="font-size:22px;font-weight:800;color:#1a1a1a;margin:0 0 8px 0;">Ton résultat est prêt !</h3>
+      <p style="font-size:15px;color:#555;margin:0 0 24px 0;">Entre ton email pour recevoir ta recommandation personnalisée.</p>
+      <input id="quiz-email" type="email" placeholder="ton@email.fr"
+        style="width:100%;box-sizing:border-box;padding:14px 18px;font-size:15px;border:2px solid #e0e0e0;border-radius:50px;outline:none;margin-bottom:8px;" />
+      <p id="quiz-email-error" style="color:#e8000d;font-size:13px;margin:0 0 10px 0;display:none;">Entre un email valide.</p>
+      <button id="quiz-email-submit"
+        style="width:100%;padding:15px;background:#e8000d;color:#fff;font-size:16px;font-weight:700;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 16px rgba(232,0,13,.3);">
+        Voir mon résultat →
+      </button>
+      <p style="font-size:12px;color:#aaa;margin:10px 0 0 0;">✓ Pas de spam · Désabonnement en 1 clic</p>
+    </div>`;
+
+  document.getElementById('quiz-email-submit').addEventListener('click', function() {
+    const emailVal = document.getElementById('quiz-email').value.trim();
+    const error    = document.getElementById('quiz-email-error');
+    if (!emailVal || !emailVal.includes('@') || !emailVal.includes('.')) {
+      error.style.display = 'block';
+      return;
+    }
+    error.style.display = 'none';
+
+    const listMap = { domicile: 8, hybride: 9, distanciel: 10, autonomie: 11 };
+    fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'api-key': BREVO_API_KEY },
+      body: JSON.stringify({
+        email: emailVal,
+        listIds: [listMap[key] || 8],
+        updateEnabled: true,
+        attributes: { QUIZ_RESULTAT: key }
+      })
+    }).catch(() => {});
+
+    renderResult(key, emailVal);
+  });
+}
+
+function renderResult(key, email) {
+  const r = RESULTS[key];
   const benefits = r.benefits.map(b => `<li class="quiz-result-benefit">${b}</li>`).join('');
 
   const confirmHTML = email ? `
