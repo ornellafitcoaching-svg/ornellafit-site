@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ornella Fit Coaching — Flyer A6 Impression</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:   #F5EDE8;
+  --rose:    #F0D8D0;
+  --rose-lt: #F7EDEA;
+  --terra:   #C83A36;
+  --terra-lt:#E8B7A8;
+  --peach:   #E8B7A8;
+  --gold:    #EDD9D0;
+  --gold-lt: #F5E8E2;
+  --ink:     #2B2B2B;
+  --soft:    #7A6258;
+  --line:    rgba(200,58,54,0.15);
+  --white:   #FFFFFF;
+}
+
+/* ── Screen preview ── */
+body {
+  background: #7A6258;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 24px 60px;
+  gap: 28px;
+  font-family: 'Jost', sans-serif;
+}
+
+.face-label {
+  font-size: 7px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: #C4B0A8; align-self: flex-start;
+  margin-left: calc(50% - 198px); font-weight: 300;
+}
+
+/* ── A6 = 397x563px screen / 105x148mm print ── */
+.card {
+  width: 397px; height: 563px;
+  position: relative; overflow: hidden; flex-shrink: 0;
+  box-shadow: 0 16px 48px rgba(44,24,16,0.30);
+}
+
+/* ── Print settings ── */
+@media print {
+  @page {
+    size: 105mm 148mm;
+    margin: 0;
+  }
+  body {
+    background: none;
+    padding: 0;
+    gap: 0;
+    display: block;
+  }
+  .face-label { display: none; }
+  .card {
+    width: 105mm;
+    height: 148mm;
+    box-shadow: none;
+    break-after: page;
+    page-break-after: always;
+  }
+  .card:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+}
+
+/* ── Thin rule ── */
+.rule { height: 1px; background: var(--line); margin: 0 20px; flex-shrink: 0; }
+
+/* ══════════════════════════
+   RECTO — dark full-bleed photo
+══════════════════════════ */
+.recto {
+  background: #1A1008;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.recto__photo-full {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block; z-index: 0;
+}
+
+.recto__gradient {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(0,0,0,0.00)  0%,
+    rgba(0,0,0,0.00)  36%,
+    rgba(30,10,10,0.42) 55%,
+    rgba(30,10,10,0.80) 72%,
+    rgba(30,10,10,0.94) 100%);
+  z-index: 1;
+}
+
+.recto__accent        { position: absolute; top: 0;    left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--terra) 0%, var(--terra-lt) 100%); z-index: 5; }
+.recto__bottom-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--terra-lt) 0%, var(--terra) 100%); z-index: 5; }
+
+.recto__header {
+  position: absolute; top: 8px; left: 14px; right: 14px;
+  display: flex; align-items: center; justify-content: space-between;
+  z-index: 4;
+}
+.recto__social { font-size: 6px; color: rgba(255,252,248,0.6); font-weight: 300; letter-spacing: 0.08em; }
+
+.recto__copy-bottom {
+  position: absolute;
+  bottom: 4px; left: 0; right: 0;
+  padding: 0 18px 10px;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recto__eyebrow-line {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 6px; letter-spacing: 0.20em; text-transform: uppercase;
+  color: #E8B7A8; font-weight: 300;
+}
+.recto__eyebrow-line::before {
+  content: ''; display: block; width: 14px; height: 1px;
+  background: #E8B7A8; flex-shrink: 0;
+}
+
+.recto__main-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300; font-size: 27px; line-height: 1.1;
+  color: #FFFFFF;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+}
+.recto__main-title em {
+  font-style: italic; font-weight: 400;
+  color: #E8B7A8; font-size: 31px;
+  display: block;
+}
+
+.recto__main-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 9px; font-style: italic; font-weight: 300;
+  color: rgba(255,255,255,0.72);
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+  margin-top: -3px;
+}
+
+.recto__sarco-box {
+  background: rgba(200,58,54,0.12);
+  border: 1px solid rgba(232,183,168,0.35);
+  border-radius: 6px;
+  padding: 6px 9px;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  max-width: 185px;
+}
+.recto__sarco-box__title {
+  font-size: 6px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #E8B7A8; margin-bottom: 3px;
+}
+.recto__sarco-box__text {
+  font-size: 6px; color: rgba(255,255,255,0.82);
+  font-weight: 300; line-height: 1.55;
+}
+
+.recto__goals { display: flex; flex-wrap: wrap; gap: 4px; }
+.goal-pill {
+  padding: 4px 10px;
+  border-radius: 14px;
+  background: rgba(200,58,54,0.88);
+  border: 1px solid rgba(232,183,168,0.50);
+  font-size: 6px; font-weight: 500;
+  color: #FFFFFF;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.28);
+}
+
+.recto__cred-strip {
+  display: flex; align-items: center;
+  gap: 12px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255,248,240,0.15);
+}
+.recto__cred-item {
+  font-size: 6px; color: rgba(255,255,255,0.85);
+  font-weight: 300; letter-spacing: 0.04em;
+  display: flex; align-items: center; gap: 4px;
+}
+.recto__cred-item::before { content: '✦'; color: #E8B7A8; font-size: 5px; flex-shrink: 0; }
+
+
+/* ══════════════════════════
+   VERSO — clean cream premium
+══════════════════════════ */
+.verso { background: var(--cream); display: flex; flex-direction: column; }
+.verso__topbar { height: 2px; background: linear-gradient(90deg, var(--terra), var(--terra-lt)); flex-shrink: 0; }
+.verso__botbar  { height: 2px; background: linear-gradient(90deg, var(--terra-lt), var(--terra)); flex-shrink: 0; }
+
+/* header */
+.v-header {
+  padding: 8px 17px 7px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--line); flex-shrink: 0;
+}
+.v-brand  { font-family:'Cormorant Garamond',serif; font-weight:400; font-size:9.5px; letter-spacing:0.20em; text-transform:uppercase; color:#C83A36; }
+.v-tag    { font-size:5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--soft); font-weight:300; margin-top:2px; }
+.v-story  { font-size:5px; color:var(--soft); font-style:italic; font-weight:300; margin-top:2px; font-family:'Cormorant Garamond',serif; }
+.v-portrait { width:38px; height:38px; border-radius:50%; overflow:hidden; border:1.5px solid var(--terra-lt); flex-shrink:0; }
+.v-portrait img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
+
+/* price strip */
+.v-price {
+  padding:6px 17px 5px; background:var(--rose); flex-shrink:0;
+  display:flex; align-items:baseline; gap:7px; flex-wrap:wrap;
+}
+.v-price__big  { font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:300; color:var(--ink); white-space:nowrap; }
+.v-price__big em { font-style:italic; color:#C83A36; font-weight:400; }
+.v-price__note { font-size:5px; color:var(--soft); font-weight:300; font-style:italic; }
+
+/* body */
+.v-body { flex:1; padding:8px 17px 6px; display:flex; flex-direction:column; gap:7px; overflow:hidden; }
+
+/* section label */
+.v-sec {
+  font-size:5px; letter-spacing:0.18em; text-transform:uppercase;
+  color:#C83A36; font-weight:400; margin-bottom:4px;
+  display:flex; align-items:center; gap:6px;
+}
+.v-sec::after { content:''; flex:1; height:1px; background:rgba(200,58,54,0.20); }
+
+/* domicile block */
+.v-dom {
+  background:var(--gold-lt); border-radius:7px; padding:8px 10px;
+  border-left:3px solid #C83A36; box-shadow:0 2px 8px rgba(200,58,54,0.12);
+}
+.v-dom__title { font-size:8px; font-weight:700; color:var(--ink); margin-bottom:4px; letter-spacing:0.01em; }
+.v-dom__title em { color:#C83A36; font-style:normal; font-weight:700; }
+.v-dom__grid { display:grid; grid-template-columns:1fr 1fr; gap:2px 8px; }
+.v-dom__pt {
+  font-size:5.5px; color:var(--soft); font-weight:300;
+  display:flex; gap:3px; align-items:flex-start; line-height:1.4;
+}
+.v-dom__pt::before { content:'✓'; color:#C83A36; font-weight:700; font-size:5.5px; flex-shrink:0; }
+.v-dom__essai { margin-top:4px; font-size:5.5px; color:#C83A36; font-weight:500; font-style:italic; }
+
+/* distance */
+.v-dist { background:var(--rose); border-radius:6px; padding:6px 9px; }
+.v-dist__title { font-size:7px; font-weight:500; color:var(--ink); margin-bottom:3px; }
+.v-dist__title em { color:#C83A36; font-style:normal; }
+.v-dist__pts { display:flex; flex-direction:column; gap:1px; }
+.v-dist__pt { font-size:5.5px; color:var(--soft); font-weight:300; display:flex; gap:4px; line-height:1.35; }
+.v-dist__pt::before { content:'—'; color:#E8B7A8; flex-shrink:0; }
+
+/* sarco strip */
+.v-sarco { background:#F7EDEA; border-radius:6px; padding:5px 9px; }
+.v-sarco__t { font-size:5px; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; color:#C83A36; margin-bottom:2px; }
+.v-sarco__b { font-size:5.5px; color:var(--ink); font-weight:300; line-height:1.5; }
+.v-sarco__b strong { color:#C83A36; font-weight:500; }
+
+/* compare */
+.v-compare { display:grid; grid-template-columns:1fr 1fr; gap:4px; }
+.v-col { padding:6px 9px; border-radius:6px; display:flex; flex-direction:column; gap:2px; }
+.v-col--bad  { background:#F0E8E4; border:1px solid #D9D9D9; }
+.v-col--good { background:#C83A36; box-shadow:0 2px 10px rgba(200,58,54,0.28); }
+.v-col__title { font-size:6px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:3px; color:var(--soft); }
+.v-col--good .v-col__title { color:#FFFFFF; }
+.v-col__item { font-size:5.5px; font-weight:300; color:var(--soft); display:flex; gap:3px; line-height:1.4; }
+.v-col--good .v-col__item { color:rgba(255,255,255,0.92); font-weight:400; }
+
+/* creds */
+.v-creds { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+.v-cred {
+  background:var(--rose); border-radius:6px; padding:5px 6px;
+  display:flex; flex-direction:column; align-items:center; gap:2px; text-align:center;
+}
+.v-cred__val { font-family:'Cormorant Garamond',serif; font-size:14px; font-weight:300; color:#C83A36; line-height:1; }
+.v-cred__lbl { font-size:5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--soft); line-height:1.4; font-weight:300; }
+.v-stars { display:flex; gap:1px; justify-content:center; }
+.v-star  { color:#C83A36; font-size:8px; }
+
+/* CTA */
+.v-cta {
+  background:var(--terra); padding:8px 17px;
+  display:flex; align-items:center; justify-content:space-between; flex-shrink:0;
+}
+.v-cta__title { font-family:'Cormorant Garamond',serif; font-size:11px; font-weight:400; color:#FFFCF8; line-height:1.2; }
+.v-cta__sub   { font-size:5px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,252,248,0.65); margin-top:2px; font-weight:300; }
+.v-cta__arrow {
+  width:20px; height:20px; border:1px solid rgba(255,252,248,0.35);
+  display:flex; align-items:center; justify-content:center; margin-left:9px; flex-shrink:0;
+}
+
+/* footer */
+.v-footer {
+  padding:5px 17px 7px;
+  display:flex; align-items:center; justify-content:space-between; flex-shrink:0;
+}
+.v-contacts { display:flex; flex-direction:column; gap:3px; }
+.v-contact  { display:flex; align-items:center; gap:6px; }
+.v-contact-val { font-size:6.5px; color:var(--ink); font-weight:300; letter-spacing:0.02em; }
+.v-contact-val span { color:var(--soft); font-size:6px; }
+.v-qr  { display:flex; flex-direction:column; align-items:center; gap:3px; }
+#qr-box { width:52px; height:52px; padding:3px; background:#FFFFFF; border:1.5px solid #C83A36; border-radius:5px; }
+.v-qr-lbl { font-size:5px; letter-spacing:0.08em; text-transform:uppercase; color:#C83A36; text-align:center; font-weight:500; }
+
+/* ── Differentiation block ── */
+.v-diff {
+  background:#F5EDE8; border-left:2px solid #C83A36; border-radius:5px; padding:6px 9px;
+  flex-shrink:0;
+}
+.v-diff__q   { font-size:7px; font-weight:600; color:#2B2B2B; font-family:'Cormorant Garamond',serif; font-style:italic; margin-bottom:2px; }
+.v-diff__sub { font-size:5.5px; color:#7A6258; font-weight:300; }
+.v-diff__sub strong { color:#C83A36; font-weight:500; }
+
+/* ── Zone block ── */
+.v-zone {
+  background:var(--rose-lt); border-radius:5px; padding:5px 9px;
+  display:flex; align-items:center; justify-content:space-between; flex-shrink:0;
+}
+.v-zone__title { font-size:6px; font-weight:600; color:#2B2B2B; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:1px; }
+.v-zone__main  { font-size:6px; color:#2B2B2B; font-weight:400; }
+.v-zone__sub   { font-size:5px; color:#7A6258; font-weight:300; margin-top:1px; }
+
+</style>
+</head>
+<body>
+
+<!-- ════════ RECTO ════════ -->
+<div class="face-label">— Recto</div>
+<div class="card recto">
+
+  <!-- Full-bleed photo -->
+  <img class="recto__photo-full" src="flyer-assets/Photo pro .PNG" alt="Ornella Fit Coaching">
+  <div class="recto__gradient"></div>
+  <div class="recto__accent"></div>
+  <div class="recto__bottom-accent"></div>
+
+  <!-- Logo + Instagram -->
+  <header class="recto__header">
+    <img src="flyer-assets/Color logo - no background.svg" alt="Ornella Fit Coaching"
+         style="height:26px;width:auto;display:block;filter:drop-shadow(0 1px 4px rgba(0,0,0,0.65));">
+    <div class="recto__social">@ornellafitcoaching</div>
+  </header>
+
+  <!-- Bottom copy -->
+  <div class="recto__copy-bottom">
+
+    <div class="recto__sarco-box">
+      <div class="recto__sarco-box__title">Ton corps change… même sans rien faire</div>
+      <div class="recto__sarco-box__text">En vieillissant, le corps perd du muscle et stocke plus facilement. Ce que tu ne fais pas aujourd'hui, ton corps le paiera demain.</div>
+    </div>
+
+    <div class="recto__eyebrow-line">Coaching sportif personnalisé</div>
+
+    <h1 class="recto__main-title">
+      Ton meilleur investissement,
+      <em>c'est toi.</em>
+    </h1>
+
+    <div class="recto__main-sub">Parce que ton corps, c'est pour toute ta vie.</div>
+
+    <div class="recto__goals">
+      <div class="goal-pill">Perte de poids</div>
+      <div class="goal-pill">Prise de muscle</div>
+      <div class="goal-pill">Ventre plat</div>
+      <div class="goal-pill">Fessiers galbés</div>
+      <div class="goal-pill">Post-accouchement</div>
+    </div>
+
+    <div class="recto__cred-strip">
+      <div class="recto__cred-item">Coach diplômée d'État</div>
+      <div class="recto__cred-item">Demi-finaliste Champ. de France Fitness</div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════ VERSO ════════ -->
+<div class="face-label">— Verso</div>
+<div class="card verso">
+  <div class="verso__topbar"></div>
+
+  <!-- Header -->
+  <header class="v-header">
+    <div>
+      <div class="v-brand">Ornella Fit Coaching</div>
+      <div class="v-tag">Coach diplômée d'État · 7 ans · Demi-finaliste Champ. France Fitness</div>
+      <div class="v-story">"Ancienne policière — je comprends ton quotidien chargé."</div>
+    </div>
+    <div class="v-portrait">
+      <img src="flyer-assets/ornella-profil.png" alt="Ornella">
+    </div>
+  </header>
+
+  <!-- Prix -->
+  <div class="v-price">
+    <div class="v-price__big">Moins de <em>3€ par jour.</em></div>
+    <div class="v-price__note">Bilan offert · Tarifs dégressifs · Tous budgets</div>
+  </div>
+
+  <!-- Body -->
+  <div class="v-body">
+
+    <div>
+      <div class="v-sec">Coaching à domicile</div>
+      <div class="v-dom">
+        <div class="v-dom__title">Je viens chez toi — <em>le coaching le plus efficace</em></div>
+        <div class="v-dom__grid">
+          <div class="v-dom__pt">Zéro déplacement</div>
+          <div class="v-dom__pt">Aucun matériel</div>
+          <div class="v-dom__pt">Gain de temps</div>
+          <div class="v-dom__pt">100% focus sur toi</div>
+          <div class="v-dom__pt">Résultats plus rapides</div>
+          <div class="v-dom__pt">Technique corrigée en direct</div>
+        </div>
+        <div class="v-dom__essai">→ Séance d'essai déductible · 50€</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="v-sec">Coaching à distance</div>
+      <div class="v-dist">
+        <div class="v-dist__title">Programme perso · <em>Liberté totale</em></div>
+        <div class="v-dist__pts">
+          <div class="v-dist__pt">Vidéos perso de chaque exercice · Programme sur-mesure</div>
+          <div class="v-dist__pt">Suivi WhatsApp hebdo · Partout en France</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="v-compare">
+      <div class="v-col v-col--bad">
+        <div class="v-col__title">✕ Salle seule</div>
+        <div class="v-col__item"><span>✕</span> Tu paies sans vraiment y aller</div>
+        <div class="v-col__item"><span>✕</span> Exercices pas adaptés à toi</div>
+        <div class="v-col__item"><span>✕</span> Cours identiques pour toutes</div>
+        <div class="v-col__item"><span>✕</span> Personne ne te suit</div>
+      </div>
+      <div class="v-col v-col--good">
+        <div class="v-col__title">✓ Avec Ornella</div>
+        <div class="v-col__item"><span>✓</span> Tout est adapté à toi</div>
+        <div class="v-col__item"><span>✓</span> Tu es guidée à chaque séance</div>
+        <div class="v-col__item"><span>✓</span> Tu progresses réellement</div>
+        <div class="v-col__item"><span>✓</span> Tu vois des résultats</div>
+      </div>
+    </div>
+
+    <div class="v-creds">
+      <div class="v-cred">
+        <span class="v-cred__val">7</span>
+        <span class="v-cred__lbl">ans<br>d'expérience</span>
+      </div>
+      <div class="v-cred">
+        <div class="v-stars"><span class="v-star">★</span><span class="v-star">★</span><span class="v-star">★</span><span class="v-star">★</span><span class="v-star">★</span></div>
+        <span class="v-cred__lbl">Avis<br>Google</span>
+      </div>
+      <div class="v-cred">
+        <span class="v-cred__val" style="font-size:8px;margin-top:2px;">Dipl.</span>
+        <span class="v-cred__lbl">BPJEPS · Demi-fin.<br>Champ. France</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Différenciation -->
+  <div style="padding:0 17px 5px;flex-shrink:0;">
+    <div class="v-diff">
+      <div class="v-diff__q">"Tu n'as pas besoin de plus de motivation. Tu as besoin d'un accompagnement adapté."</div>
+      <div class="v-diff__sub">Pourquoi ça fonctionne avec moi :
+        <strong> Programme 100% perso · Suivi réel · Tu n'es plus seule</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zone d'intervention -->
+  <div style="padding:0 17px 0;flex-shrink:0;">
+    <div class="v-zone">
+      <div>
+        <div class="v-zone__title">📍 Intervention à domicile</div>
+        <div class="v-zone__main">Saulx-les-Chartreux · Essonne (91) · Hauts-de-Seine (92)</div>
+        <div class="v-zone__sub">Autres secteurs sur demande · Coaching à distance partout en France</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="v-cta">
+    <div>
+      <div class="v-cta__title">Réserve ton bilan personnalisé offert</div>
+      <div class="v-cta__sub">Gratuit · Sans engagement · Places limitées · Résultats dès les premières semaines</div>
+    </div>
+    <div class="v-cta__arrow">
+      <svg width="10" height="10" viewBox="0 0 13 13" fill="none">
+        <path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="v-footer">
+    <div class="v-contacts">
+      <div class="v-contact">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;">
+          <rect x="2" y="2" width="20" height="20" rx="5" stroke="#C83A36" stroke-width="1.5"/>
+          <circle cx="12" cy="12" r="4" stroke="#C83A36" stroke-width="1.5"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="#C83A36"/>
+        </svg>
+        <div class="v-contact-val">@ornellafitcoaching <span>· Instagram</span></div>
+      </div>
+      <div class="v-contact">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;">
+          <path d="M21 11.5C21 12.8 20.7 14.1 20.1 15.3C19.4 16.7 18.3 17.9 17 18.7C15.6 19.6 14.1 20 12.5 20C11.2 20 9.9 19.7 8.7 19.1L3 21L4.9 15.3C4.3 14.1 4 12.8 4 11.5C4 9.9 4.4 8.4 5.3 7C6.1 5.7 7.3 4.6 8.7 3.9C9.9 3.3 11.2 3 12.5 3H13C15.1 3.1 17.1 4 18.5 5.5C20 6.9 20.9 8.9 21 11V11.5Z" stroke="#C83A36" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="v-contact-val">07 56 83 46 26 <span>· WhatsApp</span></div>
+      </div>
+      <div class="v-contact">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;">
+          <path d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z" fill="#C83A36"/>
+        </svg>
+        <div class="v-contact-val">ornellafitcoaching.com</div>
+      </div>
+    </div>
+    <div class="v-qr">
+      <div id="qr-box"></div>
+      <div class="v-qr-lbl">Réserve ton bilan<br>en 30 secondes</div>
+    </div>
+  </div>
+
+  <div class="verso__botbar"></div>
+</div>
+
+<script>
+window.addEventListener('load', function() {
+  var el = document.getElementById('qr-box');
+  if (el && window.QRCode) {
+    new QRCode(el, {
+      text: 'https://www.ornellafitcoaching.com/links.html',
+      width: 46, height: 46,
+      colorDark: '#2B2B2B', colorLight: '#FFFFFF',
+      correctLevel: QRCode.CorrectLevel.M
+    });
+  }
+});
+</script>
+
+</body>
+</html>
