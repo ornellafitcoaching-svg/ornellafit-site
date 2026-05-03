@@ -306,6 +306,7 @@ footer a:hover{color:var(--accent)}
           <div style="font-size:.7rem;color:rgba(255,255,255,.4)">aujourd'hui</div>
         </div>
       </div>
+      <input type="text" id="urgency-fname" class="urgency-input" placeholder="Ton prénom" autocomplete="given-name">
       <input type="email" id="urgency-email" class="urgency-input" placeholder="Ton adresse email" autocomplete="email">
       <button class="urgency-btn" onclick="submitWaitlist('urgency-email','urgency-success')">🔒 Je réserve ma place à 19€ →</button>
       <p class="urgency-note">Accès immédiat à la sortie · Remboursement 7 jours · Pas de spam</p>
@@ -345,7 +346,7 @@ async function submitWaitlist(inputId, successId) {
       body: JSON.stringify({
         email: email,
         listIds: [16],
-        attributes: {FNAME: '', SOURCE: 'booty-sculpt-waitlist'},
+        attributes: {FNAME: document.getElementById('urgency-fname').value.trim(), SOURCE: 'booty-sculpt-waitlist'},
         updateEnabled: true
       })
     });
