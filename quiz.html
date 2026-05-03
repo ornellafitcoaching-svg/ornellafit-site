@@ -677,6 +677,8 @@ function buildResultStep(key, email) {
       <div style="font-size:32px;margin-bottom:12px;">🎯</div>
       <h3 style="font-size:22px;font-weight:800;color:#1a1a1a;margin:0 0 8px 0;">Ton résultat est prêt !</h3>
       <p style="font-size:15px;color:#555;margin:0 0 24px 0;">Entre ton email pour recevoir ta recommandation personnalisée.</p>
+      <input id="quiz-prenom" type="text" placeholder="Ton prénom"
+        style="width:100%;box-sizing:border-box;padding:14px 18px;font-size:15px;border:2px solid #e0e0e0;border-radius:50px;outline:none;margin-bottom:8px;" />
       <input id="quiz-email" type="email" placeholder="ton@email.fr"
         style="width:100%;box-sizing:border-box;padding:14px 18px;font-size:15px;border:2px solid #e0e0e0;border-radius:50px;outline:none;margin-bottom:8px;" />
       <p id="quiz-email-error" style="color:#e8000d;font-size:13px;margin:0 0 10px 0;display:none;">Entre un email valide.</p>
@@ -704,7 +706,7 @@ function buildResultStep(key, email) {
         email: emailVal,
         listIds: [listMap[key] || 8],
         updateEnabled: true,
-        attributes: { QUIZ_RESULTAT: key }
+        attributes: { QUIZ_RESULTAT: key, PRENOM: document.getElementById('quiz-prenom').value.trim() }
       })
     }).catch(() => {});
 

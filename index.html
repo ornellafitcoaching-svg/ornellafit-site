@@ -1250,6 +1250,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="lc-form-wrap">
       <form class="lc-inline-form" onsubmit="submitLeadInline(event,'hero-bar')">
+        <input id="hero-bar-prenom" type="text" placeholder="Ton prénom" class="li-email" autocomplete="given-name">
         <input type="email" class="li-email" placeholder="Ton adresse email" required autocomplete="email">
         <button type="submit" class="li-btn">Je télécharge le guide →</button>
       </form>
@@ -1858,7 +1859,7 @@ async function submitLeadInline(e, source) {
     var res = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, listIds: [15], updateEnabled: true, emailBlacklisted: false, attributes: { SOURCE: 'guide-bar' } })
+      body: JSON.stringify({ email: email, listIds: [15], updateEnabled: true, emailBlacklisted: false, attributes: { SOURCE: 'guide-bar', PRENOM: document.getElementById('hero-bar-prenom').value.trim() } })
     });
     if (!res.ok && res.status !== 204) {
       var err = await res.json().catch(function() { return {}; });
