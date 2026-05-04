@@ -1049,23 +1049,8 @@ document.addEventListener('click', function(e) {
   const toggle = document.querySelector('.nav-toggle');
   if (!menu.contains(e.target) && !toggle.contains(e.target)) menu.classList.remove('open');
 });
-var ua = navigator.userAgent || '';
-var isWebView = /Instagram|FBAN|FBAV|FB_IAB|Line|Twitter|Snapchat/.test(ua);
-if (!isWebView && 'IntersectionObserver' in window) {
-  document.documentElement.classList.add('js-anim');
-  var obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
-}
-// Fallback — force visible après 800ms si pas déclenché
-setTimeout(function() {
-  document.querySelectorAll('.fade-in').forEach(function(el) {
-    el.classList.add('visible');
-  });
-}, 800);
-// Force immédiat pour tc-grid
-document.querySelectorAll('.tc-grid').forEach(function(el) {
+// Force visible immédiat — pas d'animation sur transformations
+document.querySelectorAll('.fade-in').forEach(function(el) {
   el.classList.add('visible');
 });
 </script>
