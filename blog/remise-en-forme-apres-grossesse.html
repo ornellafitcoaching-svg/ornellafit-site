@@ -146,6 +146,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <p>En tant que coach sportive spécialisée en post-partum en Essonne (91), je propose des séances à domicile adaptées à ta réalité de maman — même avec bébé à la maison.</p>
 
+  <div style="max-width:680px;margin:0 auto 32px;padding:0 20px;text-align:center;">
+  <p style="font-size:0.85rem;color:#9A8080;margin-bottom:14px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;">Cet article t'a aidée ? Partage-le 👇</p>
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+    <a id="share-wa" href="#" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:white;font-size:0.85rem;font-weight:700;padding:11px 20px;border-radius:50px;text-decoration:none;">💬 Envoyer sur WhatsApp</a>
+    <a id="share-fb" href="#" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#1877F2;color:white;font-size:0.85rem;font-weight:700;padding:11px 20px;border-radius:50px;text-decoration:none;">📘 Partager sur Facebook</a>
+    <button id="share-copy" onclick="copyLink()" style="display:inline-flex;align-items:center;gap:8px;background:#F7F3F0;color:#1E1616;font-size:0.85rem;font-weight:700;padding:11px 20px;border-radius:50px;border:1.5px solid rgba(201,185,154,0.5);cursor:pointer;">🔗 Copier le lien</button>
+  </div>
+  <p id="copy-confirm" style="font-size:0.8rem;color:#C96358;margin-top:10px;display:none;">✓ Lien copié !</p>
+</div>
+<script>
+(function() {
+  var url = encodeURIComponent(window.location.href);
+  var waText = encodeURIComponent("J'ai lu cet article sur le coaching sportif féminin — ça vaut le coup ! ");
+  document.getElementById('share-wa').href = 'https://wa.me/?text=' + waText + url;
+  document.getElementById('share-fb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+})();
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(function() {
+    var confirm = document.getElementById('copy-confirm');
+    confirm.style.display = 'block';
+    setTimeout(function() { confirm.style.display = 'none'; }, 2500);
+  });
+}
+</script>
+
   <div class="article-cta">
     <h3>Tu veux reprendre en douceur, avec méthode ?</h3>
     <p>On commence par un échange sur WhatsApp — tu me parles de ta situation, je construis avec toi un programme adapté à ton corps post-partum.</p>
