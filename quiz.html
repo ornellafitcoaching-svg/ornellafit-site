@@ -525,6 +525,11 @@ function selectOption(n, j) {
 
 function advance(n) {
   if (selections[n] === undefined) return;
+  if (n === 4) {
+    buildResultStep(calcResult(), '');
+    goToStep(6);
+    return;
+  }
   goToStep(n + 1);
 }
 
