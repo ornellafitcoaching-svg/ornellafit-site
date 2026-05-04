@@ -342,6 +342,7 @@ const QUESTIONS = [
 
 const RESULTS = {
   domicile: {
+    key: 'domicile',
     emoji: '🏠',
     eyebrow: 'Coaching à domicile',
     title: 'Coaching à domicile',
@@ -358,6 +359,7 @@ const RESULTS = {
     emailSubject: 'Ton accompagnement idéal est prêt 🎯'
   },
   hybride: {
+    key: 'hybride',
     emoji: '🔥',
     eyebrow: 'Coaching Hybride Performance',
     title: 'Coaching Hybride Performance',
@@ -375,6 +377,7 @@ const RESULTS = {
     emailSubject: 'Voici l\'offre parfaite pour toi 🔥'
   },
   distanciel: {
+    key: 'distanciel',
     emoji: '💻',
     eyebrow: 'Coaching à distance avec suivi',
     title: 'Coaching à distance avec suivi',
@@ -391,6 +394,7 @@ const RESULTS = {
     emailSubject: 'Ton plan personnalisé à distance est prêt 📩'
   },
   autonomie: {
+    key: 'autonomie',
     emoji: '💪',
     eyebrow: 'Programme en autonomie',
     title: 'Programme en autonomie',
@@ -579,48 +583,185 @@ async function submitQuiz(skip = false) {
   goToStep(6);
 }
 
-function quizEmailHtml(r) {
-  var benefitsRows = r.benefits.map(function(b) {
-    return '<tr><td style="padding:5px 0;font-size:13px;color:#5C4A40;">&#10003;&nbsp; ' + b + '</td></tr>';
-  }).join('');
+function quizEmailHtml(r, email, prenom) {
+  const nom = prenom ? prenom : 'toi';
 
-  return '<html><body style="margin:0;padding:0;background-color:#FDF8F4;font-family:Arial,Helvetica,sans-serif;">' +
-    '<table width="100%" cellpadding="0" cellspacing="0" bgcolor="#FDF8F4"><tr><td align="center" style="padding:32px 16px;">' +
-    '<table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">' +
+  const contents = {
+    domicile: {
+      emoji: '🏠',
+      sujet: 'Je viens chez toi — ton coaching démarre ici',
+      tag: '🏠 Coaching à domicile',
+      titre: 'Je viens chez toi · Séances sur-mesure',
+      intro: `Tu n'as rien à préparer, rien à transporter. Je me déplace directement chez toi avec tout le nécessaire — et je construis chaque séance autour de <strong>toi, ton niveau, tes objectifs</strong>.`,
+      highlight: `💡 <strong>Ce que ça change concrètement :</strong><br>Pas de salle bondée, pas de trajet, pas d'exercices copiés-collés. Une séance d'1h pensée pour toi, chez toi, avec une correction en temps réel à chaque mouvement.`,
+      benefits: [
+        'Je viens directement chez toi — zéro trajet',
+        'Séance d\'1h sur-mesure à chaque fois',
+        'Correction de tes mouvements en temps réel',
+        'Adapté à ton niveau, avec ou sans matériel',
+        'Suivi WhatsApp entre les séances',
+        'Résultats visibles en 4 semaines'
+      ],
+      prix: `<div style="text-align:center;background:#F7F3F0;border-radius:14px;padding:22px 20px;margin:20px 0;">
+        <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#9A8080;margin-bottom:12px;">🎯 Séance découverte</p>
+        <div style="font-family:Georgia,serif;font-size:2.4rem;color:#C96358;font-weight:700;line-height:1;">50€</div>
+        <div style="font-size:0.82rem;color:#9A8080;margin-top:6px;">Pour tester avant de t'engager</div>
+        <div style="height:1px;background:rgba(201,185,154,0.3);margin:14px 0;"></div>
+        <p style="font-size:0.78rem;color:#7A6E6E;">Abonnements dès 260€/mois (1×/semaine) · tarifs dégressifs</p>
+      </div>`,
+      cta_main: 'https://calendly.com/ornellafit-coaching/30min',
+      cta_main_label: '📅 Réserver mon bilan offert',
+      cta_sec: 'https://wa.me/33756834626',
+      cta_sec_label: '💬 Me contacter sur WhatsApp'
+    },
+    hybride: {
+      emoji: '🔥',
+      sujet: 'Voici l\'offre parfaite pour toi',
+      tag: '⭐ Offre la plus choisie',
+      titre: 'Coaching Hybride Performance — 169€/mois',
+      intro: `Tu veux être encadrée à domicile <strong>et</strong> continuer à progresser entre les séances — sans te retrouver seule face à ton programme.`,
+      highlight: `💡 <strong>Ce que tu reçois concrètement :</strong><br>Je viens chez toi en séance + tu reçois un programme sur-mesure avec vidéos — adaptées à ton niveau et à ce qu'on a vu ensemble — pour t'entraîner jusqu'à 4 fois/semaine seule, avec ou sans matériel. Tu es encadrée en présentiel ET en autonomie.`,
+      benefits: [
+        'Je viens chez toi 2 fois/mois',
+        'Programme sur-mesure avec vidéos incluses',
+        'Jusqu\'à 4 séances/semaine en autonomie',
+        'Avec ou sans matériel — salle ou domicile',
+        'Suivi WhatsApp hebdomadaire + bilan mensuel',
+        'Résultats visibles en 4 semaines'
+      ],
+      prix: `<div style="text-align:center;background:#F7F3F0;border-radius:14px;padding:22px 20px;margin:20px 0;">
+        <div style="font-family:Georgia,serif;font-size:2.4rem;color:#C96358;font-weight:700;line-height:1;">169€<span style="font-size:1rem;font-weight:400;color:#9A8080;">/mois</span></div>
+        <div style="font-size:0.82rem;color:#9A8080;margin-top:6px;">≈ 6€/jour · Sans engagement</div>
+      </div>`,
+      cta_main: 'https://calendly.com/ornellafit-coaching/30min',
+      cta_main_label: '📅 Réserver mon bilan offert',
+      cta_sec: 'https://wa.me/33756834626',
+      cta_sec_label: '💬 Me contacter sur WhatsApp'
+    },
+    distanciel: {
+      emoji: '💻',
+      sujet: 'Ton programme sur-mesure est prêt',
+      tag: '💻 Coaching à distance',
+      titre: 'Coaching Distanciel — Programme + Visio',
+      intro: `Tu veux progresser <strong>partout en France</strong>, sans contrainte de déplacement — avec un vrai encadrement personnalisé, pas juste un PDF envoyé dans le vide.`,
+      highlight: `💡 <strong>Ce que tu reçois concrètement :</strong><br>Un programme sur-mesure avec vidéos — adapté à ton niveau et à ce qu'on a vu ensemble en visio — pour t'entraîner jusqu'à 4 fois/semaine, avec ou sans matériel, où tu veux en France.`,
+      benefits: [
+        'Appels visio pour faire le point ensemble',
+        'Programme sur-mesure avec vidéos incluses',
+        'Jusqu\'à 4 séances/semaine en autonomie',
+        'Avec ou sans matériel — salle ou domicile',
+        'Suivi WhatsApp hebdomadaire + bilan mensuel',
+        'Résultats visibles en 4 semaines'
+      ],
+      prix: `<div style="background:#F7F3F0;border-radius:12px;padding:18px 20px;margin:18px 0;">
+        <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#9A8080;margin-bottom:12px;text-align:center;">Tarifs selon ton engagement</p>
+        <div style="display:flex;justify-content:space-between;font-size:0.85rem;padding:7px 0;border-bottom:1px solid rgba(201,185,154,0.3);"><span style="color:#4A3E3E;">1 mois</span><span style="color:#C96358;font-weight:700;">119€/mois</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:0.85rem;padding:7px 0;border-bottom:1px solid rgba(201,185,154,0.3);"><span style="color:#4A3E3E;">3 mois</span><span style="color:#C96358;font-weight:700;">99€/mois</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:0.85rem;padding:7px 0;"><span style="color:#4A3E3E;">6 mois <span style="background:#C9957A;color:white;font-size:0.7rem;padding:2px 8px;border-radius:50px;">Meilleur prix</span></span><span style="color:#C96358;font-weight:700;">89€/mois</span></div>
+        <p style="font-size:0.75rem;color:#9A8080;margin-top:10px;margin-bottom:0;text-align:center;">≈ 3€/jour pour être encadrée partout en France</p>
+      </div>`,
+      cta_main: 'https://calendly.com/ornellafit-coaching/30min',
+      cta_main_label: '📅 Réserver mon bilan offert',
+      cta_sec: 'https://wa.me/33756834626',
+      cta_sec_label: '💬 Me contacter sur WhatsApp'
+    },
+    autonomie: {
+      emoji: '💪',
+      sujet: 'Ton programme sur-mesure t\'attend',
+      tag: '💪 Programme en autonomie',
+      titre: 'Programme sur-mesure — 8 semaines',
+      intro: `Tu sais ce que tu veux et tu es prête à travailler seule — il te manque juste <strong>un programme construit pour toi</strong>, pas un PDF générique téléchargé sur Internet.`,
+      highlight: `💡 <strong>Ce que tu reçois concrètement :</strong><br>Un programme 100% personnalisé avec vidéos — conçu selon ton niveau, tes objectifs et ton matériel disponible — pour t'entraîner jusqu'à 4 fois/semaine, avec ou sans matériel, où tu veux.`,
+      benefits: [
+        'Programme 8 semaines 100% personnalisé',
+        'Vidéos de démonstration pour chaque exercice',
+        'Jusqu\'à 4 séances/semaine en autonomie',
+        'Avec ou sans matériel — salle ou domicile',
+        'Livré en 5–7 jours ouvrés sur WhatsApp',
+        'Pas un template — construit pour toi après bilan'
+      ],
+      prix: `<div style="text-align:center;background:#F7F3F0;border-radius:14px;padding:22px 20px;margin:20px 0;">
+        <div style="font-family:Georgia,serif;font-size:2.4rem;color:#C96358;font-weight:700;line-height:1;">79€</div>
+        <div style="font-size:0.82rem;color:#9A8080;margin-top:6px;">Paiement unique · Sans engagement</div>
+        <div style="font-size:0.78rem;color:#7A6E6E;margin-top:4px;">Programme 8 semaines · Livraison 5–7 jours ouvrés</div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;background:#F7F3F0;border-radius:10px;padding:12px 16px;margin:0 0 24px;">
+        <span style="font-size:1.1rem;">🔒</span>
+        <p style="font-size:0.82rem;color:#4A3E3E;margin:0;line-height:1.5;"><strong>Satisfaite ou remboursée — 7 jours.</strong> Si le programme ne te convient pas, je te rembourse sans question.</p>
+      </div>`,
+      cta_main: 'https://buy.stripe.com/8x26oHas9f8n5o9cmh8Vi03',
+      cta_main_label: '🛒 Je commande mon programme →',
+      cta_sec: 'https://wa.me/33756834626',
+      cta_sec_label: '💬 Une question ? WhatsApp'
+    }
+  };
 
-    '<tr><td bgcolor="#2C1F1A" style="padding:32px 36px;text-align:center;border-radius:14px 14px 0 0;">' +
-    '<div style="font-size:32px;line-height:1;">' + r.emoji + '</div>' +
-    '<div style="font-family:Georgia,serif;font-size:20px;font-weight:bold;color:#ffffff;margin-top:8px;">' + r.title + '</div>' +
-    '<div style="font-size:11px;color:#aaaaaa;letter-spacing:2px;margin-top:4px;text-transform:uppercase;">Ornella Fit Coaching</div>' +
-    '</td></tr>' +
+  const c = contents[r.key] || contents.hybride;
+  const benefitsHtml = c.benefits.map(b =>
+    `<div style="font-size:0.88rem;color:#1E1616;padding:5px 0;display:flex;align-items:flex-start;gap:10px;line-height:1.5;">
+      <span style="color:#C9957A;font-weight:700;flex-shrink:0;">✔️</span>
+      <span>${b}</span>
+    </div>`
+  ).join('');
 
-    '<tr><td bgcolor="#ffffff" style="padding:32px 36px;">' +
-    '<p style="margin:0 0 20px;"><span style="background-color:#FDF8F4;color:#C96358;border:1px solid #e8c0bb;border-radius:50px;padding:6px 16px;font-size:11px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;">&#10003; Ton r&#233;sultat personnalis&#233;</span></p>' +
-    '<h2 style="font-family:Georgia,serif;font-size:22px;color:#1E1616;margin:0 0 12px;line-height:1.35;">C\'est fait pour toi &#128293;</h2>' +
-    '<p style="font-size:14px;color:#5C4A40;line-height:1.75;margin:0 0 24px;">' + r.why + '</p>' +
+  return `<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background:#F7F3F0;font-family:'DM Sans',Arial,sans-serif;">
+<div style="max-width:560px;margin:32px auto;background:white;border-radius:18px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
 
-    '<table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px;"><tr><td bgcolor="#FDF8F4" style="padding:20px 24px;border-radius:12px;">' +
-    '<div style="font-size:11px;color:#8A7060;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Ce qui est inclus</div>' +
-    '<table width="100%" cellpadding="0" cellspacing="0">' + benefitsRows + '</table>' +
-    '</td></tr></table>' +
+  <div style="background:linear-gradient(135deg,#2C1F1A,#3D2B24);padding:40px 32px;text-align:center;">
+    <span style="font-size:2.5rem;display:block;margin-bottom:14px;">${c.emoji}</span>
+    <h1 style="color:white;font-family:Georgia,serif;font-size:1.55rem;line-height:1.3;font-weight:600;margin:0 0 8px;">${c.sujet}</h1>
+    <p style="color:rgba(255,255,255,0.55);font-size:0.82rem;margin:0;">Résultat de ton quiz — Ornella Fit Coaching</p>
+  </div>
 
-    '<table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:16px;"><tr><td bgcolor="#FDF8F4" style="padding:14px 20px;text-align:center;border-radius:10px;">' +
-    '<div style="font-size:14px;font-weight:bold;color:#C96358;">' + r.price + '</div>' +
-    '</td></tr></table>' +
+  <div style="padding:36px 32px;">
+    <p style="font-size:0.9rem;color:#4A3E3E;line-height:1.75;margin-bottom:16px;">Bonjour ${nom},</p>
+    <p style="font-size:0.9rem;color:#4A3E3E;line-height:1.75;margin-bottom:16px;">D'après tes réponses, voici ce qui te correspond le mieux&nbsp;👇</p>
 
-    '<table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:8px;"><tr><td align="center">' +
-    '<a href="https://www.ornellafitcoaching.com/' + r.url + '" style="display:inline-block;background-color:#C96358;color:#ffffff;font-weight:bold;font-size:14px;padding:16px 36px;border-radius:50px;text-decoration:none;">Voir mon offre en d&#233;tail &#8594;</a>' +
-    '</td></tr></table>' +
-    '<p style="font-size:11px;color:#aaaaaa;text-align:center;margin:12px 0 0;">Des questions ? R&#233;ponds directement &#224; cet email.</p>' +
-    '</td></tr>' +
+    <div style="display:inline-block;background:#F7F3F0;border:1px solid rgba(201,149,122,0.4);color:#C96358;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:5px 14px;border-radius:50px;margin-bottom:20px;">${c.tag}</div>
+    <h2 style="font-family:Georgia,serif;font-size:1.35rem;color:#1E1616;margin-bottom:10px;font-weight:600;">${c.titre}</h2>
 
-    '<tr><td bgcolor="#F5EDE4" style="padding:20px 36px;text-align:center;border-radius:0 0 14px 14px;border-top:1px solid #e8ddd4;">' +
-    '<p style="font-size:13px;color:#8A7060;line-height:1.7;margin:0;">&#192; tr&#232;s vite,<br><strong style="color:#1E1616;">Ornella &#128293;</strong><br><span style="font-size:11px;">ornellafitcoaching.com</span></p>' +
-    '</td></tr>' +
-    '</table></td></tr></table></body></html>';
+    <p style="font-size:0.9rem;color:#4A3E3E;line-height:1.75;margin-bottom:16px;">${c.intro}</p>
+
+    <div style="background:#FFF8F5;border-left:3px solid #C9957A;border-radius:8px;padding:14px 18px;margin:18px 0;font-size:0.88rem;color:#3D2B24;line-height:1.7;">${c.highlight}</div>
+
+    <div style="background:#F7F3F0;border-radius:12px;padding:18px 20px;margin:18px 0 24px;">
+      ${benefitsHtml}
+    </div>
+
+    ${c.prix}
+
+    <div style="height:1px;background:rgba(201,185,154,0.3);margin:24px 0;"></div>
+
+    <div style="text-align:center;">
+      <p style="margin-bottom:16px;font-weight:600;color:#1E1616;font-size:0.9rem;">👉 Passe à l'action :</p>
+      <a href="${c.cta_main}" style="display:inline-block;background:linear-gradient(135deg,#C96358,#C9957A);color:white;font-weight:700;font-size:0.95rem;padding:16px 36px;border-radius:50px;text-decoration:none;margin-bottom:12px;">${c.cta_main_label}</a>
+      <br><br>
+      <a href="${c.cta_sec}" style="display:inline-block;background:white;color:#1E1616;font-weight:500;font-size:0.88rem;padding:13px 28px;border-radius:50px;text-decoration:none;border:1.5px solid rgba(201,185,154,0.5);">${c.cta_sec_label}</a>
+    </div>
+
+    <div style="text-align:center;margin-top:24px;font-size:0.9rem;color:#4A3E3E;line-height:1.8;">
+      À très vite,<br>
+      <strong style="color:#1E1616;font-size:1rem;">Ornella</strong><br>
+      <span style="font-size:0.78rem;color:#9A8080;">Ornella Fit Coaching · ornellafitcoaching.com</span>
+    </div>
+  </div>
+
+  <div style="padding:18px 32px;background:#F7F3F0;text-align:center;font-size:0.74rem;color:#9A8080;line-height:1.6;">
+    © 2026 Ornella Fit Coaching
+  </div>
+
+</div>
+</body>
+</html>`;
 }
 
-async function sendToBrevo(email, resultKey) {
+async function sendToBrevo(email, resultKey, prenom = '') {
   if (!BREVO_API_KEY || BREVO_API_KEY === 'YOUR_BREVO_API_KEY') {
     console.warn('[Ornella Fit Quiz] Clé API Brevo non configurée — aucun email envoyé.');
     return;
@@ -659,10 +800,10 @@ async function sendToBrevo(email, resultKey) {
       headers: { 'Content-Type': 'application/json', 'api-key': BREVO_API_KEY },
       body: JSON.stringify({
         to: [{ email }],
-        sender: { name: 'Ornella Fit Coaching', email: 'ornellafit.coaching@gmail.com' },
+        sender: { name: 'Ornella Fit Coaching', email: 'contact@ornellafitcoaching.com' },
         replyTo: { email: 'ornellaracano@icloud.com', name: 'Ornella Fit Coaching' },
         subject: r.emailSubject,
-        htmlContent: quizEmailHtml(r)
+        htmlContent: quizEmailHtml(r, email, prenom)
       })
     });
   } catch (e) {
@@ -716,7 +857,7 @@ function buildResultStep(key, email) {
       })
     }).catch(() => {});
 
-    sendToBrevo(emailVal, key).catch(() => {});
+    sendToBrevo(emailVal, key, document.getElementById('quiz-prenom').value.trim()).catch(() => {});
 
     renderResult(key, emailVal);
   });
