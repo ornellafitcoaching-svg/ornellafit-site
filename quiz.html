@@ -908,40 +908,55 @@ function renderResult(key, email) {
   ` : `<div class="quiz-result-price">${r.price}</div>`;
 
   document.getElementById('qStep-6').innerHTML = `
-    <div class="quiz-result-top">
-      <div class="quiz-result-badge">✓ Ton résultat</div>
-      <div class="quiz-result-tagline">Voici l'offre <em>faite pour toi</em></div>
-    </div>
+      <div style="max-width:520px;margin:0 auto;padding:8px 0;">
 
-    ${confirmHTML}
+        <div style="text-align:center;margin-bottom:20px;">
+          <div style="display:inline-block;background:#F7F3F0;border:1px solid rgba(201,149,122,0.4);color:#C96358;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:5px 14px;border-radius:50px;margin-bottom:12px;">✓ Ton résultat personnalisé</div>
+          <div style="font-family:Georgia,serif;font-size:1.4rem;color:#1E1616;font-weight:600;">Voici l'offre <em>faite pour toi</em></div>
+        </div>
 
-    <div class="quiz-result-card">
-      <span class="quiz-result-emoji">${r.emoji}</span>
-      <div class="quiz-result-eyebrow">${r.eyebrow}</div>
-      <div class="quiz-result-title">${r.title}</div>
-      <div class="quiz-result-subtitle">${r.subtitle}</div>
-      <div class="quiz-result-why">
-        <div class="quiz-result-why-label">Pourquoi cette offre ?</div>
-        <div class="quiz-result-why-text">${r.why}</div>
-      </div>
-      <ul class="quiz-result-benefits">${benefits}</ul>
-      ${domicilePricingHTML}
-    </div>
+        ${confirmHTML}
 
-    <div class="quiz-ctas">
-      <a href="https://wa.me/33756834626" class="quiz-cta-main" target="_blank">
-        💬 Je m'écris à Ornella →
-      </a>
-      <a href="https://calendly.com/ornellafit-coaching" class="quiz-cta-cal" target="_blank">
-        📅 Réserver un appel offert (Calendly)
-      </a>
-      <a href="${r.url}" class="quiz-cta-detail">Voir le détail de cette offre →</a>
-    </div>
+        <div style="background:white;border:1.5px solid rgba(201,185,154,0.4);border-radius:18px;padding:28px 24px;box-shadow:0 4px 24px rgba(0,0,0,0.06);margin-bottom:16px;">
+          <div style="text-align:center;margin-bottom:16px;">
+            <span style="font-size:2.5rem;">${r.emoji}</span>
+            <div style="display:inline-block;background:#F7F3F0;border:1px solid rgba(201,149,122,0.4);color:#C96358;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 12px;border-radius:50px;margin:8px 0 4px;display:block;">${r.eyebrow}</div>
+            <div style="font-family:Georgia,serif;font-size:1.3rem;color:#1E1616;font-weight:600;margin-bottom:4px;">${r.title}</div>
+            <div style="font-size:0.85rem;color:#7A6E6E;">${r.subtitle}</div>
+          </div>
 
-    <div class="quiz-restart">
-      <p>Ce résultat ne te correspond pas ?</p>
-      <button onclick="restart()">Recommencer le quiz →</button>
-    </div>`;
+          <div style="background:#FFF8F5;border-left:3px solid #C9957A;border-radius:8px;padding:12px 16px;margin:16px 0;font-size:0.85rem;color:#3D2B24;line-height:1.7;">
+            <strong>Pourquoi cette offre ?</strong><br>${r.why}
+          </div>
+
+          <ul style="list-style:none;padding:0;margin:16px 0;">
+            ${r.benefits.map(b => `<li style="font-size:0.88rem;color:#1E1616;padding:5px 0;display:flex;align-items:flex-start;gap:10px;line-height:1.5;"><span style="color:#C9957A;font-weight:700;flex-shrink:0;">✔️</span><span>${b}</span></li>`).join('')}
+          </ul>
+
+          ${domicilePricingHTML}
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
+          <a href="https://wa.me/33756834626" target="_blank"
+             style="display:block;text-align:center;background:linear-gradient(135deg,#C96358,#C9957A);color:white;font-weight:700;font-size:0.95rem;padding:16px 24px;border-radius:50px;text-decoration:none;box-shadow:0 4px 16px rgba(201,99,88,0.3);">
+            💬 Je m'écris à Ornella →
+          </a>
+          <a href="https://calendly.com/ornellafit-coaching/30min" target="_blank"
+             style="display:block;text-align:center;background:white;color:#1E1616;font-weight:500;font-size:0.88rem;padding:14px 24px;border-radius:50px;text-decoration:none;border:1.5px solid rgba(201,185,154,0.5);">
+            📅 Réserver un appel offert
+          </a>
+          <a href="${r.url}"
+             style="display:block;text-align:center;color:#C96358;font-size:0.85rem;font-weight:600;text-decoration:none;padding:8px;">
+            Voir le détail de cette offre →
+          </a>
+        </div>
+
+        <div style="text-align:center;padding-top:12px;border-top:1px solid rgba(201,185,154,0.3);">
+          <p style="font-size:0.82rem;color:#9A8080;margin-bottom:8px;">Ce résultat ne te correspond pas ?</p>
+          <button onclick="restart()" style="background:none;border:none;color:#C96358;font-size:0.82rem;font-weight:600;cursor:pointer;text-decoration:underline;">Recommencer le quiz →</button>
+        </div>
+
+      </div>`;
 }
 
 function restart() {
