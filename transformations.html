@@ -496,11 +496,6 @@ h1, h2, h3 { opacity: 1 !important; mix-blend-mode: normal !important; }
   padding: 4px 13px; border-radius: 50px; white-space: nowrap;
 }
 
-/* ===== FORCE VISIBILITÉ GRILLE ===== */
-.tc-grid { opacity: 1 !important; transform: translateY(0) !important; }
-.tc-card { opacity: 1 !important; visibility: visible !important; }
-.tc-card-featured { opacity: 1 !important; visibility: visible !important; }
-
 /* ===== LOUISE — CARTE HÉRO FULL WIDTH ===== */
 .tc-card-featured {
   grid-column: 1 / -1;
@@ -1060,11 +1055,8 @@ if (!isWebView && 'IntersectionObserver' in window) {
   document.documentElement.classList.add('js-anim');
   var obs = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
+  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
-  setTimeout(function() {
-    document.querySelectorAll('.fade-in:not(.visible)').forEach(function(el) { el.classList.add('visible'); });
-  }, 1200);
 }
 </script>
 
