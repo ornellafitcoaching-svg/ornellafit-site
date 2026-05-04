@@ -2098,8 +2098,8 @@ function showObjReply(btn, type) {
       sub:   'Entre ton email pour accéder aux résultats complets de mes clientes.'
     },
     exit: {
-      title: 'Attends — tu repars les mains vides ?',
-      sub:   'Laisse ton email, je t\'envoie le guide gratuit + mon offre la moins chère.'
+      title: 'Attends — tu repars sans ton guide gratuit ?',
+      sub:   'Entre ton email et reçois les 9 erreurs qui sabotent ta transformation + mon offre la moins chère. Gratuit.'
     }
   };
 
@@ -2122,7 +2122,7 @@ function showObjReply(btn, type) {
     document.getElementById('sc-email').value = '';
     document.getElementById('sc-prenom').value = '';
     var btn = document.getElementById('sc-submit');
-    btn.disabled = false; btn.textContent = 'Je veux ça →';
+    btn.disabled = false; btn.textContent = trigger === 'exit' ? 'Je reçois le guide gratuit →' : trigger === 'guide' ? 'Je télécharge le guide →' : 'Je veux voir les résultats →';
     document.getElementById('sc-overlay').classList.add('active');
     setTimeout(function() { document.getElementById('sc-email').focus(); }, 120);
   }
