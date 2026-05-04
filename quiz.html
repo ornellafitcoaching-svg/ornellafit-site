@@ -865,8 +865,6 @@ function buildResultStep(key, email) {
 
 function renderResult(key, email) {
   const r = RESULTS[key];
-  const benefits = r.benefits.map(b => `<li class="quiz-result-benefit">${b}</li>`).join('');
-
   const confirmHTML = email ? `
     <div class="quiz-confirm-box">
       <span>📩 &nbsp;Un email vient d'être envoyé à <strong>${escHtml(email)}</strong> avec le détail de cette offre.</span>
