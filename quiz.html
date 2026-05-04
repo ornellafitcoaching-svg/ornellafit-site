@@ -716,6 +716,8 @@ function buildResultStep(key, email) {
       })
     }).catch(() => {});
 
+    sendToBrevo(emailVal, key).catch(() => {});
+
     renderResult(key, emailVal);
   });
 }
