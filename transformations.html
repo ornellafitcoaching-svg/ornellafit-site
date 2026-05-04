@@ -1058,6 +1058,16 @@ if (!isWebView && 'IntersectionObserver' in window) {
   }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
 }
+// Fallback — force visible après 800ms si pas déclenché
+setTimeout(function() {
+  document.querySelectorAll('.fade-in').forEach(function(el) {
+    el.classList.add('visible');
+  });
+}, 800);
+// Force immédiat pour tc-grid
+document.querySelectorAll('.tc-grid').forEach(function(el) {
+  el.classList.add('visible');
+});
 </script>
 
 <!-- Meta Pixel Events -->
