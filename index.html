@@ -960,6 +960,34 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
   .top-bar-urgency { font-size: 0.78rem; width: 100%; }
   .top-bar-btn, .top-bar-reviews { font-size: 0.78rem; }
 }
+
+/* ===== OBJECTIONS ===== */
+.obj-btn {
+  padding: 12px 20px; border-radius: 50px;
+  border: 2px solid rgba(201,185,154,0.4); background: var(--cream);
+  font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600;
+  color: var(--dark); cursor: pointer; transition: all .2s;
+  -webkit-appearance: none; touch-action: manipulation;
+}
+.obj-btn:hover, .obj-btn.active {
+  background: var(--accent); color: white; border-color: var(--accent);
+}
+.obj-reply {
+  background: var(--cream); border-radius: 20px; padding: 24px 28px;
+  text-align: left; border-left: 3px solid var(--accent); margin-top: 4px;
+}
+.obj-reply-title {
+  font-size: 1rem; font-weight: 700; color: var(--dark); margin: 0 0 10px;
+}
+.obj-reply-body {
+  font-size: 0.92rem; color: var(--text-mid); line-height: 1.8; margin: 0 0 16px;
+}
+.obj-reply-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, #C96358, #C9957A); color: white;
+  font-weight: 700; font-size: 0.88rem; padding: 12px 22px;
+  border-radius: 50px; text-decoration: none;
+}
 </style>
 <!-- Meta Pixel -->
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","26675222578828123");fbq("track","PageView");</script>
@@ -1434,26 +1462,82 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="section-label">Soyons honnêtes</span>
     <h2 class="section-title" style="font-size:clamp(1.8rem,4vw,2.8rem);">Qu'est-ce qui t'arrête <em>vraiment ?</em></h2>
     <p style="font-size:0.95rem;color:var(--text-mid);margin-bottom:28px;">Choisis — je te réponds franchement.</p>
+
     <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:28px;">
-      <button class="obj-btn" onclick="showObjReply(this,'prix')" style="padding:13px 22px;border-radius:50px;border:2px solid rgba(201,185,154,0.4);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:600;color:var(--dark);cursor:pointer;transition:all .2s;-webkit-appearance:none;touch-action:manipulation;">Le prix</button>
-      <button class="obj-btn" onclick="showObjReply(this,'temps')" style="padding:13px 22px;border-radius:50px;border:2px solid rgba(201,185,154,0.4);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:600;color:var(--dark);cursor:pointer;transition:all .2s;-webkit-appearance:none;touch-action:manipulation;">Le temps</button>
-      <button class="obj-btn" onclick="showObjReply(this,'doute')" style="padding:13px 22px;border-radius:50px;border:2px solid rgba(201,185,154,0.4);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:600;color:var(--dark);cursor:pointer;transition:all .2s;-webkit-appearance:none;touch-action:manipulation;">Le doute sur mes résultats</button>
+      <button class="obj-btn" onclick="showObjReply(this,'prix')">💰 Le prix</button>
+      <button class="obj-btn" onclick="showObjReply(this,'temps')">⏱️ Le temps</button>
+      <button class="obj-btn" onclick="showObjReply(this,'doute')">🤔 Le doute</button>
+      <button class="obj-btn" onclick="showObjReply(this,'coach')">😤 J'ai déjà essayé un coach</button>
+      <button class="obj-btn" onclick="showObjReply(this,'debutante')">🙈 Je suis trop débutante</button>
+      <button class="obj-btn" onclick="showObjReply(this,'lieu')">📍 Je n'habite pas en Essonne</button>
+      <button class="obj-btn" onclick="showObjReply(this,'postpartum')">🤰 Enceinte / post-partum</button>
+      <button class="obj-btn" onclick="showObjReply(this,'age')">🎂 Je suis trop âgée</button>
+      <button class="obj-btn" onclick="showObjReply(this,'duree')">⏳ Les résultats vont-ils durer ?</button>
     </div>
-    <div id="obj-reply-prix" class="obj-reply" style="display:none;background:var(--cream);border-radius:20px;padding:24px 28px;text-align:left;border-left:3px solid var(--accent);">
-      <p style="font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:10px;">Le programme en ligne est à 79€ pour 8 semaines complètes.</p>
-      <p style="font-size:0.92rem;color:var(--text-mid);line-height:1.8;margin-bottom:16px;">Soit <strong>moins de 10€ par semaine</strong> pour un programme 100% personnalisé. Une salle de sport coûte 40€/mois sans aucun suivi. <strong>Calcule combien tu as déjà dépensé sans résultat durable.</strong> Pour un accompagnement avec suivi, c'est à partir de 169€/mois.</p>
-      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Le%20prix%20me%20freine%20un%20peu.%20Est-ce%20qu%27on%20peut%20en%20parler%20%3F" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#C96358,#C9957A);color:white;font-weight:700;font-size:0.88rem;padding:12px 22px;border-radius:50px;text-decoration:none;">On en parle — sans engagement →</a>
+
+    <!-- PRIX -->
+    <div id="obj-reply-prix" class="obj-reply" style="display:none;">
+      <p class="obj-reply-title">Salle de sport : 40€/mois. YouTube : 0€. Résultats : 0.</p>
+      <p class="obj-reply-body">Tu connais le scénario. L'abonnement salle que tu utilises 2 fois puis plus. Les vidéos YouTube génériques pas faites pour ton corps. Les cours collectifs où tout le monde fait la même chose — peu importe ton niveau, tes douleurs, tes objectifs. Et cette sensation d'arriver en salle sans savoir quoi faire, de regarder les autres, de repartir sans être sûre d'avoir bien travaillé. Résultat : tu stagnes, tu te décourages, tu recommences à zéro.<br><br>Mes clientes ont perdu en moyenne 6 cm en 4 mois. Louise −9 cm. Émeline transformée en 3 mois. Avec un programme fait uniquement pour toi — pas copié-collé, pas générique, pas le même pour tout le monde.<br><br>✓ 79€ → programme sur-mesure 8 semaines avec vidéos<br>✓ Dès 89€/mois → coaching distanciel + suivi WhatsApp<br>✓ Dès 169€/mois → je viens chez toi + programme + suivi</p>
+      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Le%20prix%20me%20freine%20un%20peu.%20Est-ce%20qu%27on%20peut%20en%20parler%20%3F" class="obj-reply-cta" target="_blank">On en parle — sans engagement →</a>
     </div>
-    <div id="obj-reply-temps" class="obj-reply" style="display:none;background:var(--cream);border-radius:20px;padding:24px 28px;text-align:left;border-left:3px solid var(--accent);">
-      <p style="font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:10px;">Mes programmes commencent à 2 séances par semaine.</p>
-      <p style="font-size:0.92rem;color:var(--text-mid);line-height:1.8;margin-bottom:16px;">En présentiel : <strong>1 heure</strong>. En distanciel : <strong>30 à 40 minutes</strong>. Soit moins qu'un épisode de série. La vraie question : est-ce que tu veux changer, oui ou non ? Si oui, on trouve le temps ensemble — c'est exactement mon rôle.</p>
-      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20tr%C3%A8s%20peu%20de%20temps.%20Peut-on%20quand%20m%C3%AAme%20travailler%20ensemble%20%3F" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#C96358,#C9957A);color:white;font-weight:700;font-size:0.88rem;padding:12px 22px;border-radius:50px;text-decoration:none;">Parlons de mon emploi du temps →</a>
+
+    <!-- TEMPS -->
+    <div id="obj-reply-temps" class="obj-reply" style="display:none;">
+      <p class="obj-reply-title">Tu as 30 minutes ? C'est suffisant.</p>
+      <p class="obj-reply-body">Pas besoin de bloquer 2h dans les transports + salle. Mes séances à domicile durent 1h — je viens chez toi. En distanciel : 30 à 40 minutes chrono. Et si ton emploi du temps change, on adapte. C'est exactement pour ça que je construis ton programme sur-mesure — pour que chaque minute compte vraiment.</p>
+      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20tr%C3%A8s%20peu%20de%20temps.%20Peut-on%20quand%20m%C3%AAme%20travailler%20ensemble%20%3F" class="obj-reply-cta" target="_blank">Dis-moi ce que tu peux faire →</a>
     </div>
-    <div id="obj-reply-doute" class="obj-reply" style="display:none;background:var(--cream);border-radius:20px;padding:24px 28px;text-align:left;border-left:3px solid var(--accent);">
-      <p style="font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:10px;">C'est la question la plus honnête que tu puisses poser.</p>
-      <p style="font-size:0.92rem;color:var(--text-mid);line-height:1.8;margin-bottom:16px;">J'ai 19 avis Google tous à 5 étoiles. Mes clientes ont des résultats mesurables — en centimètres, en énergie, en confiance. <strong>Mais je ne peux pas te promettre des résultats si tu ne te lances pas.</strong> Le premier pas, c'est juste un message. Sans engagement.</p>
-      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20du%20mal%20%C3%A0%20croire%20que%20%C3%A7a%20peut%20marcher%20pour%20moi%20sp%C3%A9cifiquement.%20On%20peut%20en%20parler%20%3F" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#C96358,#C9957A);color:white;font-weight:700;font-size:0.88rem;padding:12px 22px;border-radius:50px;text-decoration:none;">Convaincs-moi →</a>
+
+    <!-- DOUTE -->
+    <div id="obj-reply-doute" class="obj-reply" style="display:none;">
+      <p class="obj-reply-title">Tu doutes de toi. Pas de moi. Et c'est normal.</p>
+      <p class="obj-reply-body">Tu as peut-être déjà essayé. La salle, YouTube, un programme générique acheté en ligne. Et rien n'a vraiment marché. Ce n'est pas ta faute — c'est parce que rien n'était fait pour toi. 19 avis Google 5★. Louise −9 cm en 4 mois. Émeline transformée. Des résultats mesurables, en centimètres, en énergie, en confiance. Le premier message ne t'engage à rien — juste une conversation honnête sur ta situation.</p>
+      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20du%20mal%20%C3%A0%20croire%20que%20%C3%A7a%20peut%20marcher%20pour%20moi.%20On%20peut%20en%20parler%20%3F" class="obj-reply-cta" target="_blank">Parle-moi de ton cas précis →</a>
     </div>
+
+    <!-- COACH -->
+    <div id="obj-reply-coach" class="obj-reply" style="display:none;">
+      <p class="obj-reply-title">Un mauvais coach, ça existe. Un programme générique vendu comme "personnalisé", ça existe aussi.</p>
+      <p class="obj-reply-body">Si ça n'a pas marché, c'est rarement ta faute. C'est souvent un programme pas adapté à ton corps, des objectifs mal définis, ou un suivi inexistant entre les séances. Chez moi : bilan complet avant de commencer, programme reconstruit à zéro pour toi, suivi WhatsApp entre chaque séance. Pas de copier-coller. Pas de "fais ça et on verra". 19 avis 5★ — mes clientes reviennent parce que ça marche vraiment.</p>
+      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20d%C3%A9j%C3%A0%20essay%C3%A9%20un%20coach%20et%20%C3%A7a%20n%27a%20pas%20march%C3%A9.%20On%20peut%20en%20parler%20%3F" class="obj-reply-cta" target="_blank">Dis-moi ce qui n'a pas marché →</a>
+    </div>
+
+    <!-- DÉBUTANTE -->
+    <div id="obj-reply-debutante" class="obj-reply" style="display:none;">
+      <p class="obj-reply-title">Mes clientes qui ont le plus progressé ? Celles qui partaient de zéro.</p>
+      <p class="obj-reply-body">Pas besoin d'être sportive pour commencer. Pas besoin de connaître les exercices. Pas besoin d'avoir un corps "prêt". Je construis ton programme selon TON niveau — que tu n'aies jamais fait de sport ou que tu reprennes après des années. Chez moi tu n'es pas jugée, tu es accompagnée. C'est exactement pour ça que je viens chez toi — pour que tu sois à l'aise, dans ton espace, sans regard extérieur.</p>
+      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20suis%20tr%C3%A8s%20d%C3%A9butante.%20On%20peut%20quand%20m%C3%AAme%20travailler%20ensemble%20%3F" class="obj-reply-cta" target="_blank">Je pars de zéro — on peut quand même travailler ? →</a>
+    </div>
+
+    <!-- LIEU -->
+    <div id="obj-reply-lieu" class="obj-reply" style="display:none;">
+      <p class="obj-reply-title">Je viens en Essonne et Paris. Partout ailleurs — je t'accompagne à distance.</p>
+      <p class="obj-reply-body">Le coaching à domicile c'est pour l'Essonne (91) et Paris. Mais le coaching distanciel, c'est partout en France — même résultat, même suivi WhatsApp, même programme sur-mesure avec vidéos. Mes clientes à distance ont les mêmes résultats que celles que je vois en présentiel. La distance ne change pas la qualité de l'accompagnement.</p>
+      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20n%27habite%20pas%20en%20Essonne.%20Le%20coaching%20%C3%A0%20distance%20m%27int%C3%A9resse." class="obj-reply-cta" target="_blank">Je veux le coaching à distance →</a>
+    </div>
+
+    <!-- POST-PARTUM -->
+    <div id="obj-reply-postpartum" class="obj-reply" style="display:none;">
+      <p class="obj-reply-title">C'est exactement pour ça que je suis là.</p>
+      <p class="obj-reply-body">Le post-partum c'est ma spécialité. J'ai vécu une grossesse avec alitement prolongé — je sais ce que c'est de reconstruire son corps depuis zéro. Pas d'exercices dangereux, pas de pression. Un programme pensé pour ton corps après accouchement — diastasis, périnée, reprise progressive. Pour retrouver ton corps et ton énergie, à ton rythme, en sécurité.</p>
+      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20suis%20en%20post-partum%20et%20je%20voudrais%20reprendre%20le%20sport%20en%20s%C3%A9curit%C3%A9.%20On%20en%20parle%20%3F" class="obj-reply-cta" target="_blank">Je suis post-partum — on en parle ? →</a>
+    </div>
+
+    <!-- ÂGE -->
+    <div id="obj-reply-age" class="obj-reply" style="display:none;">
+      <p class="obj-reply-title">Il n'y a pas d'âge pour retrouver son corps.</p>
+      <p class="obj-reply-body">Mes clientes ont entre 25 et 55 ans. Le corps change avec l'âge — c'est réel. Mais ça ne veut pas dire qu'il ne peut plus évoluer. Ça veut dire qu'il a besoin d'un programme adapté à lui, pas d'un programme YouTube fait pour une fille de 22 ans. Je construis ton programme selon TON corps, TON âge, TON niveau hormonal. Résultats garantis — à ton rythme.</p>
+      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20peur%20que%20mon%20%C3%A2ge%20soit%20un%20frein.%20On%20peut%20en%20parler%20%3F" class="obj-reply-cta" target="_blank">Mon âge est-il un frein ? →</a>
+    </div>
+
+    <!-- DURÉE -->
+    <div id="obj-reply-duree" class="obj-reply" style="display:none;">
+      <p class="obj-reply-title">Un programme générique, les résultats partent avec. Le mien, non.</p>
+      <p class="obj-reply-body">Parce que je ne te donne pas un régime à suivre 30 jours puis arrêter. Je t'apprends à t'entraîner correctement, à comprendre ton corps, à progresser seule entre les séances. Mes clientes qui arrêtent le coaching continuent d'avancer — parce qu'elles ont les outils. C'est ça la vraie différence entre un programme générique et un accompagnement sur-mesure.</p>
+      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20des%20r%C3%A9sultats%20qui%20durent.%20On%20en%20parle%20%3F" class="obj-reply-cta" target="_blank">Je veux des résultats qui durent →</a>
+    </div>
+
   </div>
 </section>
 
