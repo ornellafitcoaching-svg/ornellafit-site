@@ -334,10 +334,16 @@ footer a:hover{color:var(--accent)}
       <div class="urg-bar"></div>
     </div>
 
-    <!-- CTA -->
-    <a href="#hero-fname" onclick="document.getElementById('hero-fname').scrollIntoView({behavior:'smooth'});setTimeout(function(){document.getElementById('hero-fname').focus()},400);return false" class="urg-cta">
+    <!-- MINI FORM -->
+    <input type="text" id="urg-fname" placeholder="Ton prénom" autocomplete="given-name"
+      style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:14px 16px;font-size:.95rem;color:#fff;margin-bottom:10px;outline:none;font-family:'DM Sans',sans-serif"
+      onfocus="this.style.borderColor='rgba(201,99,88,.6)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'">
+    <input type="email" id="urg-email" placeholder="Ton adresse email" autocomplete="email"
+      style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:14px 16px;font-size:.95rem;color:#fff;margin-bottom:16px;outline:none;font-family:'DM Sans',sans-serif"
+      onfocus="this.style.borderColor='rgba(201,99,88,.6)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'">
+    <button onclick="handleUrgPurchase()" class="urg-cta" style="width:100%;border:none;cursor:pointer">
       Je commence ma transformation →
-    </a>
+    </button>
     <p style="font-size:.72rem;color:rgba(255,255,255,.3);margin-top:14px">🔒 Paiement sécurisé · Accès immédiat · Remboursement 7 jours</p>
 
   </div>
@@ -536,6 +542,36 @@ async function handlePurchase() {
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     document.getElementById('hero-email').focus();
     document.getElementById('hero-email').style.borderColor = 'var(--accent)';
+    return;
+  }
+  var btn = event.target;
+  btn.textContent = 'Redirection...';
+  btn.disabled = true;
+  try {
+    await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','api-key':BREVO_KEY},
+      body: JSON.stringify({
+        email: email,
+        listIds: [16],
+        attributes: {FNAME: fname, SOURCE: 'booty-sculpt-purchase'},
+        updateEnabled: true
+      })
+    });
+  } catch(e) {}
+  localStorage.setItem('bs_buyer_email', email);
+  localStorage.setItem('bs_buyer_fname', fname);
+  if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout');
+  window.location.href = 'https://buy.stripe.com/00w00j6bTbWb8Al0Dz8Vi06';
+}
+
+async function handleUrgPurchase() {
+  var fname = document.getElementById('urg-fname').value.trim();
+  var email = document.getElementById('urg-email').value.trim();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    var el = document.getElementById('urg-email');
+    el.focus();
+    el.style.borderColor = 'rgba(201,99,88,.8)';
     return;
   }
   var btn = event.target;
