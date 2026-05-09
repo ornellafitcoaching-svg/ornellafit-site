@@ -306,6 +306,152 @@ footer a:hover{color:var(--accent)}
 </section>
 
 
+<!-- URGENCY BLOCK -->
+<section class="sec" style="background:linear-gradient(160deg,#1C1210 0%,#2C1F1A 60%,#3A1F18 100%);padding:52px 24px">
+  <div class="wrap" style="max-width:480px;margin:0 auto;text-align:center">
+
+    <div class="urg-badge">⚡ Offre limitée · Prix de lancement</div>
+
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,5vw,2.4rem);font-weight:600;color:#fff;line-height:1.15;margin:20px 0 10px">🍑 Accède au programme<br><em style="color:var(--gold);font-weight:400">maintenant</em></h2>
+    <p style="font-size:.9rem;color:rgba(255,255,255,.55);margin-bottom:28px;line-height:1.7">Prix de lancement — offre limitée.<br>Une fois les places épuisées, le tarif revient à 39€.</p>
+
+    <!-- PRIX -->
+    <div class="urg-price-box">
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:10px">
+        <div>
+          <div style="font-size:.7rem;color:rgba(255,255,255,.4);text-decoration:line-through;letter-spacing:.05em">39€</div>
+          <div style="font-size:.7rem;color:rgba(255,255,255,.4)">prix normal</div>
+        </div>
+        <div class="urg-price">19€</div>
+        <div>
+          <div class="urg-reduction">−51%</div>
+          <div style="font-size:.65rem;color:var(--gold);letter-spacing:.05em">AUJOURD'HUI</div>
+        </div>
+      </div>
+      <div style="font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.08em;text-transform:uppercase">🎉 Prix de lancement exclusif</div>
+    </div>
+
+    <!-- COMPTEUR PLACES -->
+    <div class="urg-counter">
+      <div class="urg-counter-dot"></div>
+      <span>⏳ Plus que <strong id="urg-places">30</strong> places au prix de lancement</span>
+    </div>
+
+    <!-- BARRE PROGRESSION -->
+    <div style="background:rgba(255,255,255,.08);border-radius:999px;height:6px;margin:14px 0 28px;overflow:hidden">
+      <div class="urg-bar"></div>
+    </div>
+
+    <!-- CTA -->
+    <a href="booty-sculpt.html#hero-fname" onclick="document.getElementById('hero-fname').scrollIntoView({behavior:'smooth'});document.getElementById('hero-fname').focus();return false" class="urg-cta">
+      Je commence ma transformation →
+    </a>
+    <p style="font-size:.72rem;color:rgba(255,255,255,.3);margin-top:14px">🔒 Paiement sécurisé · Accès immédiat · Remboursement 7 jours</p>
+
+  </div>
+</section>
+
+<style>
+.urg-badge{
+  display:inline-block;
+  background:rgba(201,99,88,.2);
+  border:1px solid rgba(201,99,88,.4);
+  color:#ffb3aa;
+  border-radius:999px;
+  padding:7px 18px;
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  animation:pulseBadge 2.5s ease infinite;
+}
+@keyframes pulseBadge{
+  0%,100%{box-shadow:0 0 0 0 rgba(201,99,88,.3)}
+  50%{box-shadow:0 0 0 8px rgba(201,99,88,0)}
+}
+.urg-price-box{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;
+  padding:22px 24px;
+  margin-bottom:20px;
+  backdrop-filter:blur(10px);
+}
+.urg-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:4rem;
+  font-weight:600;
+  color:#fff;
+  line-height:1;
+  text-shadow:0 0 40px rgba(201,99,88,.6);
+  animation:glowPrice 3s ease infinite;
+}
+@keyframes glowPrice{
+  0%,100%{text-shadow:0 0 30px rgba(201,99,88,.4)}
+  50%{text-shadow:0 0 60px rgba(201,99,88,.8),0 0 20px rgba(255,255,255,.2)}
+}
+.urg-reduction{
+  background:linear-gradient(135deg,var(--accent),#e8705e);
+  color:#fff;
+  border-radius:8px;
+  padding:4px 10px;
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:.05em;
+}
+.urg-counter{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:999px;
+  padding:10px 20px;
+  font-size:.82rem;
+  color:rgba(255,255,255,.8);
+  font-weight:500;
+}
+.urg-counter-dot{
+  width:8px;height:8px;
+  background:#4ade80;
+  border-radius:50%;
+  flex-shrink:0;
+  animation:blink 1.4s ease infinite;
+  box-shadow:0 0 8px rgba(74,222,128,.6);
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.urg-bar{
+  height:100%;
+  width:73%;
+  background:linear-gradient(90deg,var(--accent),var(--gold));
+  border-radius:999px;
+  animation:growBar 2s ease forwards;
+}
+@keyframes growBar{from{width:0}to{width:73%}}
+.urg-cta{
+  display:block;
+  background:linear-gradient(135deg,#C96358,#e8705e);
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+  font-size:1rem;
+  padding:20px 28px;
+  border-radius:999px;
+  letter-spacing:.03em;
+  box-shadow:0 8px 32px rgba(201,99,88,.5),0 0 0 0 rgba(201,99,88,.3);
+  transition:transform .2s,box-shadow .2s;
+  animation:ctaPulse 3s ease infinite;
+}
+.urg-cta:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 48px rgba(201,99,88,.6),0 0 0 6px rgba(201,99,88,.15);
+}
+@keyframes ctaPulse{
+  0%,100%{box-shadow:0 8px 32px rgba(201,99,88,.5),0 0 0 0 rgba(201,99,88,.2)}
+  50%{box-shadow:0 8px 32px rgba(201,99,88,.5),0 0 0 10px rgba(201,99,88,0)}
+}
+</style>
+
 <footer>
   <p>© 2026 Ornella Fit Coaching · <a href="mentions-legales.html">Mentions légales</a> · <a href="index.html">Accueil</a></p>
 </footer>
