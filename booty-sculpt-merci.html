@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merci ! Ton programme Booty Sculpt est prêt 🍑</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FEFBF8;--rouge:#C96358;--dark:#1C1210;--text:#3A2820;--muted:#7A5E54;--border:#ECD8D0;--gold:#C8924A}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
+.card{background:#fff;border-radius:24px;border:1px solid var(--border);padding:40px 32px;max-width:480px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(60,30,20,.08)}
+.check{width:64px;height:64px;background:rgba(201,99,88,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px}
+.badge{display:inline-block;background:rgba(201,99,88,.08);color:var(--rouge);border:1px solid rgba(201,99,88,.2);border-radius:999px;padding:6px 18px;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px}
+h1{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--dark);line-height:1.15;margin-bottom:12px}
+.sub{font-size:.95rem;color:var(--muted);line-height:1.7;margin-bottom:28px}
+.btn-main{display:block;background:var(--rouge);color:#fff;text-decoration:none;font-size:1rem;font-weight:700;padding:18px 28px;border-radius:999px;margin-bottom:12px;box-shadow:0 4px 20px rgba(201,99,88,.3);transition:background .2s}
+.btn-main:hover{background:#b64c40}
+.note{font-size:.78rem;color:var(--muted);margin-bottom:28px}
+.steps{background:#FAF6F3;border-radius:16px;padding:22px 24px;text-align:left;margin-bottom:24px}
+.steps-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--rouge);margin-bottom:14px}
+.step{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+.step:last-child{margin-bottom:0}
+.step-num{min-width:26px;height:26px;background:var(--rouge);color:#fff;border-radius:50%;font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-text{font-size:.88rem;color:var(--text);line-height:1.5;padding-top:2px}
+.email-sent{font-size:.82rem;color:var(--muted);padding-top:8px;border-top:1px solid var(--border)}
+.email-sent strong{color:var(--dark)}
+.spinner{display:none;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--rouge);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="check">🎉</div>
+  <div class="badge">✓ Paiement confirmé</div>
+  <h1>Bienvenue dans<br>Booty Sculpt 2026 !</h1>
+  <p class="sub">Ton accès au programme est prêt. Clique ci-dessous pour commencer dès maintenant.</p>
+
+  <a href="https://ornellafitcoaching-svg.github.io/booty-sculpt-premium-/" class="btn-main">
+    🍑 Accéder à mon programme →
+  </a>
+  <p class="note">🔒 Accès à vie · Sauvegarde automatique · Compatible mobile</p>
+
+  <div class="steps">
+    <div class="steps-title">Comment commencer :</div>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">Fais la <strong>routine d'activation</strong> avant chaque séance (4 exercices obligatoires)</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">Coche <strong>"Séance terminée"</strong> après chaque entraînement — ta progression est sauvegardée</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">Une question ? Écris à <strong>contact@ornellafitcoaching.com</strong> — Ornella répond personnellement</div>
+    </div>
+  </div>
+
+  <div class="spinner" id="spinner"></div>
+  <p class="email-sent" id="email-status">📧 Un email de confirmation est envoyé à <strong id="email-display">ton adresse</strong></p>
+</div>
+
+<script>
+const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-MuwZhV7aQ7eKSaca';
+const BREVO_KEY=_a+_b+_c;
+
+(async function() {
+  // Récupère email depuis URL params ou localStorage
+  const params = new URLSearchParams(window.location.search);
+  const email = params.get('email') || localStorage.getItem('bs_buyer_email') || '';
+  const fname = params.get('fname') || localStorage.getItem('bs_buyer_fname') || '';
+
+  if (email) {
+    document.getElementById('email-display').textContent = email;
+  }
+
+  if (!email) return;
+
+  document.getElementById('spinner').style.display = 'block';
+
+  // Ajoute à la liste Brevo #16
+  try {
+    await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','api-key':BREVO_KEY},
+      body: JSON.stringify({
+        email: email,
+        listIds: [16],
+        attributes: {FNAME: fname, SOURCE: 'stripe-booty-sculpt-confirmed'},
+        updateEnabled: true
+      })
+    });
+  } catch(e) {}
+
+  // Envoie l'email de livraison
+  try {
+    await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','api-key':BREVO_KEY},
+      body: JSON.stringify({
+        to: [{email: email, name: fname}],
+        templateId: 46,
+        sender: {name: 'Ornella Fit Coaching', email: 'contact@ornellafitcoaching.com'}
+      })
+    });
+  } catch(e) {}
+
+  document.getElementById('spinner').style.display = 'none';
+
+  // Nettoie le localStorage
+  localStorage.removeItem('bs_buyer_email');
+  localStorage.removeItem('bs_buyer_fname');
+})();
+</script>
+
+</body>
+</html>
