@@ -462,7 +462,6 @@ var BK='xkeysib-b3f029f593ab90bd2bb'+'2290988c5a455f29ddad8ec51e4ca585'+'dcf702b
 function px(n){if(typeof fbq!=='undefined')fbq('track','ViewContent',{content_name:n});}
 function openGuide(){
   px('Guide 9 Erreurs');
-  if(localStorage.getItem('guideDone')){window.location.href='https://www.ornellafitcoaching.com/guide-offert.html';return;}
   document.getElementById('guideOverlay').classList.add('open');
   document.body.style.overflow='hidden';
 }
@@ -477,11 +476,16 @@ async function submitGuide(e){
   if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errEl.textContent='Entre un email valide.';errEl.style.display='block';return;}
   errEl.style.display='none';btn.textContent='Envoi…';btn.disabled=true;
   try{
+    // 1. Ajoute à Brevo liste 15
     await fetch('https://api.brevo.com/v3/contacts',{method:'POST',headers:{'api-key':BK,'Content-Type':'application/json'},body:JSON.stringify({email,listIds:[15],updateEnabled:true,attributes:{PRENOM:prenom,SOURCE:'links-page'}})});
+    // 2. Envoie le guide par email (template 10)
+    await fetch('https://api.brevo.com/v3/smtp/email',{method:'POST',headers:{'api-key':BK,'Content-Type':'application/json'},body:JSON.stringify({to:[{email:email,name:prenom}],templateId:10,sender:{name:'Ornella Fit Coaching',email:'contact@ornellafitcoaching.com'}})});
     if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Guide 9 Erreurs'});
-    localStorage.setItem('guideDone','1');localStorage.setItem('ornella_lead_email',email);
+    localStorage.setItem('ornella_lead_email',email);
+    // 3. Redirige vers le guide
     document.getElementById('guide-form-wrap').style.display='none';
     document.getElementById('guide-success').style.display='block';
+    setTimeout(function(){window.location.href='https://www.ornellafitcoaching.com/guide-offert.html';},1800);
   }catch(e2){btn.textContent='Recevoir le guide →';btn.disabled=false;errEl.textContent='Erreur, réessaie.';errEl.style.display='block';}
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGuide();});
