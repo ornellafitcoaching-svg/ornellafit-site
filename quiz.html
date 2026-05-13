@@ -13,7 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="color-scheme" content="light">
 <meta name="supported-color-schemes" content="light">
 <title>Quel coaching est fait pour toi ? Quiz gratuit – Coach Sportive Essonne (91) – Ornella Fit Coaching</title>
-<meta name="description" content="Réponds à 4 questions et reçois ta recommandation personnalisée de coaching sportif en Essonne (91) ou à distance. Gratuit, résultat immédiat.">
+<meta name="description" content="Réponds à 5 questions et reçois ta recommandation personnalisée de coaching sportif en Essonne (91) ou à distance. Gratuit, résultat immédiat.">
 <link rel="canonical" href="https://www.ornellafitcoaching.com/quiz.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.ornellafitcoaching.com/quiz.html">
@@ -215,7 +215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="quiz-intro-desc">4 questions simples — je te recommande l'accompagnement qui correspond vraiment à ton profil, tes objectifs et ton mode de vie.</p>
         <div class="quiz-intro-badges">
           <span class="quiz-intro-badge">⏱️ 2 minutes</span>
-          <span class="quiz-intro-badge">🎯 4 questions</span>
+          <span class="quiz-intro-badge">🎯 5 questions</span>
           <span class="quiz-intro-badge">✓ Résultat immédiat</span>
         </div>
         <button class="quiz-btn on" onclick="goToStep(1)">Commencer le quiz →</button>
@@ -225,11 +225,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- ÉTAPES 1-4 : Questions (générées par JS) -->
 
-    <!-- ÉTAPE 5 : Email -->
-    <div class="quiz-step" id="qStep-5"></div>
-
-    <!-- ÉTAPE 6 : Résultat -->
+    <!-- ÉTAPE 6 : Email -->
     <div class="quiz-step" id="qStep-6"></div>
+
+    <!-- ÉTAPE 7 : Résultat -->
+    <div class="quiz-step" id="qStep-7"></div>
 
   </div>
 </div>
@@ -298,7 +298,7 @@ const BREVO_LISTS = {
 
 const QUESTIONS = [
   {
-    eyebrow: 'Question 1 / 4',
+    eyebrow: 'Question 1 / 5',
     title: 'Tu es où ?',
     sub: 'Ça m\'aide à te proposer ce qui est vraiment possible pour toi.',
     options: [
@@ -307,35 +307,46 @@ const QUESTIONS = [
     ]
   },
   {
-    eyebrow: 'Question 2 / 4',
+    eyebrow: 'Question 2 / 5',
     title: 'Ta situation en ce moment :',
     sub: 'Choisis ce qui te ressemble le plus en ce moment.',
     options: [
-      { emoji: '👶', text: 'Maman débordée', sub: 'Peu de temps, besoin d\'efficacité et de simplicité', scores: { domicile: 3 } },
+      { emoji: '👶', text: 'Maman débordée', sub: 'Peu de temps, besoin d\'efficacité et de simplicité', scores: { domicile: 2, hybride: 1 } },
       { emoji: '🔥', text: 'Motivée, je veux des résultats rapides', sub: 'Prête à m\'investir à fond pour transformer mon corps', scores: { hybride: 2, domicile: 1 } },
       { emoji: '🌍', text: 'Souvent en déplacement ou peu disponible', sub: 'Besoin de flexibilité, je ne peux pas m\'engager sur des horaires fixes', scores: { distanciel: 3 } },
       { emoji: '🌱', text: 'Je veux avancer à mon rythme, sans pression', sub: 'Un programme structuré que je suis seule, quand je veux', scores: { autonomie: 2, distanciel: 1 } }
     ]
   },
   {
-    eyebrow: 'Question 3 / 4',
-    title: 'Le coaching de tes rêves, c\'est quoi ?',
-    sub: 'Ferme les yeux — qu\'est-ce qui te ferait vraiment vibrer ?',
+    eyebrow: 'Question 3 / 5',
+    title: 'Tu préfères t\'entraîner comment ?',
+    sub: 'Ce qui te correspond vraiment dans ton quotidien.',
     options: [
-      { emoji: '🏠', text: 'Mon coach vient chez moi, je n\'ai qu\'à ouvrir la porte', sub: 'Zéro trajet, zéro organisation, juste moi et mon coach', scores: { domicile: 4 } },
-      { emoji: '✨', text: 'Des séances en vrai + quelqu\'un qui me suit de près', sub: 'Une présence réelle + un suivi personnalisé entre les séances', scores: { hybride: 4 } },
-      { emoji: '📲', text: '100% à distance, depuis chez moi ou n\'importe où', sub: 'Un vrai programme sur-mesure avec un suivi régulier, peu importe où je suis', scores: { distanciel: 4 } },
-      { emoji: '💪', text: 'Un programme béton que je suis seule, à mon rythme', sub: 'Structuré, clair, avec des vidéos — je n\'ai plus qu\'à m\'y mettre', scores: { autonomie: 4 } }
+      { emoji: '🤝', text: 'Avec mon coach à chaque séance', sub: 'J\'ai besoin d\'être encadrée — seule je me démotive', scores: { domicile: 3, hybride: 2 } },
+      { emoji: '⚡', text: 'Quelques séances avec mon coach + seule le reste', sub: 'Le meilleur des deux mondes — encadrement et liberté', scores: { hybride: 3, distanciel: 1 } },
+      { emoji: '📲', text: 'À distance avec un vrai suivi régulier', sub: 'Un programme évolutif et quelqu\'un qui vérifie ma progression', scores: { distanciel: 3, hybride: 1 } },
+      { emoji: '💪', text: 'Seule — j\'ai juste besoin d\'un bon programme', sub: 'Je suis disciplinée, il me manque juste la structure', scores: { autonomie: 3, distanciel: 1 } }
     ]
   },
   {
-    eyebrow: 'Question 4 / 4',
+    eyebrow: 'Question 4 / 5',
     title: 'Tu es prête à investir combien par mois ?',
     sub: 'Pour t\'orienter vers la formule la plus adaptée à toi.',
     options: [
       { emoji: '💸', text: 'Moins de 100€ / mois', sub: 'Je veux un programme solide sans me ruiner', scores: { autonomie: 3 } },
       { emoji: '💰', text: 'Entre 100€ et 200€ / mois', sub: 'Investissement sérieux pour des résultats concrets', scores: { hybride: 2, distanciel: 2 } },
       { emoji: '🏆', text: 'Plus de 200€ / mois', sub: 'Je veux le meilleur accompagnement possible — je m\'en donne les moyens', scores: { domicile: 3, hybride: 1 } }
+    ]
+  },
+  {
+    eyebrow: 'Question 5 / 5',
+    title: 'Ton objectif principal ?',
+    sub: 'Pour personnaliser ton résultat et te proposer le meilleur plan.',
+    options: [
+      { emoji: '🔥', text: 'Perdre du poids et transformer mon corps', sub: '', scores: {} },
+      { emoji: '🍑', text: 'Sculpter mes fessiers et affiner ma silhouette', sub: '', scores: {} },
+      { emoji: '🌸', text: 'Me remettre en forme', sub: 'Post-grossesse, reprise d\'activité ou remise en route', scores: {} },
+      { emoji: '💪', text: 'Prendre de la force et du muscle', sub: '', scores: {} }
     ]
   }
 ];
@@ -453,7 +464,7 @@ function buildQuestionStep(q, n) {
     <div class="quiz-options">${opts}</div>
     <button class="quiz-btn" id="qBtn-${n}" onclick="advance(${n})">Continuer →</button>`;
 
-  document.getElementById('qStep-5').before(div);
+  document.getElementById('qStep-6').before(div);
 }
 
 function buildEmailStep() {
@@ -495,15 +506,15 @@ function updateProgress(n) {
   const label = document.getElementById('qProgressLabel');
   const pct   = document.getElementById('qProgressPct');
 
-  if (n === 0 || n === 6) { wrap.style.display = 'none'; return; }
+  if (n === 0 || n === 7) { wrap.style.display = 'none'; return; }
   wrap.style.display = 'block';
 
-  if (n >= 1 && n <= 4) {
-    const p = Math.round((n - 1) / 4 * 100);
-    label.textContent = `Question ${n} / 4`;
+  if (n >= 1 && n <= 5) {
+    const p = Math.round((n - 1) / 5 * 100);
+    label.textContent = `Question ${n} / 5`;
     pct.textContent   = p + '%';
     fill.style.width  = p + '%';
-  } else if (n === 5) {
+  } else if (n === 6) {
     label.textContent = 'Presque fini !';
     pct.textContent   = '90%';
     fill.style.width  = '90%';
@@ -529,9 +540,9 @@ function selectOption(n, j) {
 
 function advance(n) {
   if (selections[n] === undefined) return;
-  if (n === 4) {
+  if (n === 5) {
     buildResultStep(calcResult(), '');
-    goToStep(6);
+    goToStep(7);
     return;
   }
   goToStep(n + 1);
@@ -547,14 +558,17 @@ function onEmailChange() {
 
 function calcResult() {
   const s = { domicile: 0, hybride: 0, distanciel: 0, autonomie: 0 };
-  for (let i = 1; i <= 4; i++) {
+  for (let i = 1; i <= 5; i++) {
     if (selections[i] !== undefined) {
       const scores = QUESTIONS[i - 1].options[selections[i]].scores;
-      Object.entries(scores).forEach(([k, v]) => { s[k] += v; });
+      if (scores) Object.entries(scores).forEach(([k, v]) => { s[k] += v; });
     }
   }
-  /* Si hors Île-de-France (Q1 = index 1), domicile et hybride impossibles */
+  /* Filtre géographique : hors IDF → domicile et hybride impossibles */
   if (selections[1] === 1) { s.domicile = 0; s.hybride = 0; }
+  /* Filtre budget : <100€ → domicile/hybride impossible ; 100-200€ → domicile impossible (260€ mini) */
+  if (selections[4] === 0) { s.domicile = 0; s.hybride = 0; }
+  if (selections[4] === 1) { s.domicile = 0; }
   const max = Math.max(...Object.values(s));
   return Object.keys(s).find(k => s[k] === max) || 'distanciel';
 }
@@ -772,11 +786,14 @@ async function sendToBrevo(email, resultKey, prenom = '') {
   const listId = BREVO_LISTS[resultKey];
   const r      = RESULTS[resultKey];
 
+  const OBJECTIF_LABELS = ['poids', 'silhouette', 'remise_forme', 'muscle'];
+  const objectif = selections[5] !== undefined ? OBJECTIF_LABELS[selections[5]] : '';
+
   /* 1 — Ajouter le contact à la liste */
   const contactPayload = {
     email,
     updateEnabled: true,
-    attributes: { QUIZ_RESULT: resultKey }
+    attributes: { QUIZ_RESULT: resultKey, OBJECTIF: objectif, PRENOM: prenom || '' }
   };
   if (listId && listId > 0) contactPayload.listIds = [listId];
 
@@ -823,7 +840,7 @@ function buildResultStep(key, email) {
   const r = RESULTS[key];
 
   // — EMAIL GATE : afficher le formulaire d'abord —
-  document.getElementById('qStep-6').innerHTML = `
+  document.getElementById('qStep-7').innerHTML = `
     <div id="email-gate" style="text-align:center;padding:32px 20px;max-width:480px;margin:0 auto;">
       <div style="font-size:32px;margin-bottom:12px;">🎯</div>
       <h3 style="font-size:22px;font-weight:800;color:#1a1a1a;margin:0 0 8px 0;">Ton résultat est prêt !</h3>
@@ -909,7 +926,7 @@ function renderResult(key, email) {
     <p style="font-size:0.73rem;color:#9A8080;text-align:center;margin-top:4px;">Tarifs dégressifs · Premier échange WhatsApp sans engagement</p>
   ` : `<div class="quiz-result-price">${r.price}</div>`;
 
-  document.getElementById('qStep-6').innerHTML = `
+  document.getElementById('qStep-7').innerHTML = `
       <div style="max-width:520px;margin:0 auto;padding:8px 0;">
 
         <div style="text-align:center;margin-bottom:20px;">
@@ -973,8 +990,8 @@ function restart() {
   });
   const emailInput = document.getElementById('qEmailInput');
   if (emailInput) emailInput.value = '';
-  const btn5 = document.getElementById('qBtn-5');
-  if (btn5) { btn5.classList.remove('on'); btn5.textContent = 'Voir mon offre →'; btn5.style.opacity = ''; }
+  const btn6 = document.getElementById('qBtn-6');
+  if (btn6) { btn6.classList.remove('on'); btn6.textContent = 'Voir mon offre →'; btn6.style.opacity = ''; }
   goToStep(0);
 }
 
