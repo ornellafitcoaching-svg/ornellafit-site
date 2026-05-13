@@ -792,18 +792,20 @@ async function sendToBrevo(email, resultKey, prenom = '') {
     console.warn('[Brevo] Erreur réseau contact:', e);
   }
 
-  /* 2 — Email transactionnel avec contenu personnalisé selon résultat */
-  if (!r) return;
+  /* 2 — Email transactionnel via template Brevo selon résultat */
+  const TEMPLATE_IDS = { domicile: 12, hybride: 13, distanciel: 14, autonomie: 15 };
+  const templateId = TEMPLATE_IDS[resultKey];
+  if (!templateId) return;
   try {
     await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'api-key': BREVO_API_KEY },
       body: JSON.stringify({
-        to: [{ email }],
+        to: [{ email, name: prenom || email }],
         sender: { name: 'Ornella Fit Coaching', email: 'contact@ornellafitcoaching.com' },
         replyTo: { email: 'ornellaracano@icloud.com', name: 'Ornella Fit Coaching' },
-        subject: r.emailSubject,
-        htmlContent: quizEmailHtml(r, email, prenom)
+        templateId: templateId,
+        params: { PRENOM: prenom || '' }
       })
     });
   } catch (e) {
