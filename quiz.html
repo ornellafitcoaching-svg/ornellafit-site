@@ -140,16 +140,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 /* Domicile pricing cards */
 .quiz-pricing-title { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:#C9957A; font-weight:700; margin-bottom:10px; margin-top:18px; }
 .quiz-pricing-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:6px; }
-.quiz-pricing-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:12px 8px; text-align:center; position:relative; }
-.quiz-pricing-card--popular { background:linear-gradient(135deg,rgba(201,99,88,0.25),rgba(201,149,122,0.15)); border-color:rgba(201,149,122,0.5); }
+.quiz-pricing-card { background:#F7F3F0; border:1px solid rgba(201,185,154,0.45); border-radius:14px; padding:12px 8px; text-align:center; position:relative; }
+.quiz-pricing-card--popular { background:linear-gradient(135deg,rgba(201,99,88,0.1),rgba(201,149,122,0.07)); border-color:#C9957A; }
 .quiz-pricing-badge { font-size:0.6rem; font-weight:700; color:#C9957A; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px; }
-.quiz-pricing-freq { font-size:0.7rem; color:rgba(255,255,255,0.55); margin-bottom:6px; line-height:1.3; }
-.quiz-pricing-price { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; color:white; line-height:1; }
-.quiz-pricing-price span { font-size:0.65rem; color:rgba(255,255,255,0.5); font-family:'DM Sans',sans-serif; font-weight:400; }
-.quiz-pricing-month { font-size:0.7rem; color:rgba(255,255,255,0.45); margin-top:4px; }
+.quiz-pricing-freq { font-size:0.7rem; color:#7A6E6E; margin-bottom:6px; line-height:1.3; }
+.quiz-pricing-price { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; color:#1E1616; line-height:1; }
+.quiz-pricing-price span { font-size:0.65rem; color:#9A8080; font-family:'DM Sans',sans-serif; font-weight:400; }
+.quiz-pricing-month { font-size:0.7rem; color:#7A6E6E; margin-top:4px; }
 .quiz-pricing-day { font-size:0.68rem; color:#C9957A; font-weight:600; margin-top:5px; }
-.quiz-pricing-coffee { font-size:0.68rem; color:rgba(255,255,255,0.4); margin-top:2px; }
-.quiz-pricing-save { font-size:0.62rem; color:#C9957A; font-weight:700; margin-top:6px; background:rgba(201,149,122,0.15); border-radius:6px; padding:3px 5px; line-height:1.3; }
+.quiz-pricing-coffee { font-size:0.68rem; color:#9A8080; margin-top:2px; }
+.quiz-pricing-save { font-size:0.62rem; color:#C9957A; font-weight:700; margin-top:6px; background:rgba(201,149,122,0.12); border-radius:6px; padding:3px 5px; line-height:1.3; }
 
 /* Loading spinner */
 .quiz-loading-wrap { text-align: center; padding: 16px 0 4px; }
@@ -553,8 +553,10 @@ function calcResult() {
       Object.entries(scores).forEach(([k, v]) => { s[k] += v; });
     }
   }
+  /* Si hors Île-de-France (Q1 = index 1), domicile et hybride impossibles */
+  if (selections[1] === 1) { s.domicile = 0; s.hybride = 0; }
   const max = Math.max(...Object.values(s));
-  return Object.keys(s).find(k => s[k] === max) || 'hybride';
+  return Object.keys(s).find(k => s[k] === max) || 'distanciel';
 }
 
 /* ===================================================
@@ -904,7 +906,7 @@ function renderResult(key, email) {
       </div>
 
     </div>
-    <p style="font-size:0.73rem;color:rgba(255,255,255,0.4);text-align:center;margin-top:4px;">Tarifs dégressifs · Premier échange WhatsApp sans engagement</p>
+    <p style="font-size:0.73rem;color:#9A8080;text-align:center;margin-top:4px;">Tarifs dégressifs · Premier échange WhatsApp sans engagement</p>
   ` : `<div class="quiz-result-price">${r.price}</div>`;
 
   document.getElementById('qStep-6').innerHTML = `
@@ -920,7 +922,7 @@ function renderResult(key, email) {
         <div style="background:white;border:1.5px solid rgba(201,185,154,0.4);border-radius:18px;padding:28px 24px;box-shadow:0 4px 24px rgba(0,0,0,0.06);margin-bottom:16px;">
           <div style="text-align:center;margin-bottom:16px;">
             <span style="font-size:2.5rem;">${r.emoji}</span>
-            <div style="display:inline-block;background:#F7F3F0;border:1px solid rgba(201,149,122,0.4);color:#C96358;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 12px;border-radius:50px;margin:8px 0 4px;display:block;">${r.eyebrow}</div>
+            <div style="display:inline-block;background:#F7F3F0;border:1px solid rgba(201,149,122,0.4);color:#C96358;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 12px;border-radius:50px;margin:8px 0 4px;">${r.eyebrow}</div>
             <div style="font-family:Georgia,serif;font-size:1.3rem;color:#1E1616;font-weight:600;margin-bottom:4px;">${r.title}</div>
             <div style="font-size:0.85rem;color:#7A6E6E;">${r.subtitle}</div>
           </div>
