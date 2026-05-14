@@ -887,6 +887,123 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
   #faq-home .faq-item.open .faq-a { padding: 4px 18px 18px; }
 }
 
+/* ===== SECTION GUIDE GRATUIT ===== */
+#guide-gratuit {
+  background: linear-gradient(135deg, #1E120F 0%, #2E1A14 60%, #3A2218 100%);
+  padding: 72px 24px;
+  position: relative; overflow: hidden;
+}
+#guide-gratuit::before {
+  content: '';
+  position: absolute; top: -120px; right: -80px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,99,88,.14) 0%, transparent 70%);
+  pointer-events: none;
+}
+.guide-inner {
+  max-width: 920px; margin: 0 auto;
+  display: flex; align-items: center; gap: 56px; flex-wrap: wrap;
+}
+.guide-book-mockup {
+  flex-shrink: 0; width: 190px;
+  background: linear-gradient(160deg, #C96358 0%, #8B3028 100%);
+  border-radius: 4px 14px 14px 4px;
+  padding: 32px 24px;
+  box-shadow: -6px 6px 0 #7a2520, 8px 16px 48px rgba(201,99,88,.45);
+  position: relative;
+  min-height: 260px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.guide-book-mockup::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 10px;
+  background: rgba(0,0,0,.25); border-radius: 4px 0 0 4px;
+}
+.guide-book-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: rgba(255,255,255,.7);
+  margin-bottom: 12px;
+}
+.guide-book-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem; font-weight: 600; color: white;
+  line-height: 1.25; margin-bottom: 10px;
+}
+.guide-book-sub {
+  font-size: 0.72rem; color: rgba(255,255,255,.65);
+  font-style: italic; line-height: 1.5;
+}
+.guide-book-author {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 1px;
+  text-transform: uppercase; color: rgba(255,255,255,.55);
+  margin-top: 14px;
+}
+.guide-book-free {
+  position: absolute; top: -12px; right: -12px;
+  background: #F5C842; color: #1E120F;
+  font-size: 0.68rem; font-weight: 800; letter-spacing: 0.5px;
+  text-transform: uppercase; padding: 6px 14px; border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(245,200,66,.4);
+}
+.guide-content { flex: 1; min-width: 280px; }
+.guide-eyebrow {
+  display: inline-block; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: #C96358; margin-bottom: 14px;
+}
+.guide-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  font-weight: 600; color: white; line-height: 1.2; margin-bottom: 16px;
+}
+.guide-title em { font-style: italic; color: #e8ada6; }
+.guide-desc { font-size: 0.92rem; color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 22px; }
+.guide-promises { list-style: none; padding: 0; margin: 0 0 28px; }
+.guide-promises li {
+  font-size: 0.88rem; color: rgba(255,255,255,.8); line-height: 1.6;
+  padding: 4px 0 4px 24px; position: relative;
+}
+.guide-promises li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: #C96358; font-weight: 700;
+}
+.guide-form { display: flex; flex-direction: column; gap: 10px; max-width: 440px; }
+.guide-form-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.guide-input {
+  flex: 1; min-width: 150px;
+  padding: 14px 18px; border-radius: 12px;
+  border: 1.5px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.07); color: white;
+  font-size: 0.9rem; font-family: 'DM Sans', sans-serif; outline: none;
+  transition: border-color .2s;
+}
+.guide-input::placeholder { color: rgba(255,255,255,.3); }
+.guide-input:focus { border-color: rgba(201,99,88,.6); }
+.guide-submit {
+  width: 100%; padding: 16px 24px;
+  background: linear-gradient(135deg, #C96358 0%, #a84e44 100%);
+  color: white; border: none; border-radius: 12px;
+  font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 700;
+  cursor: pointer; transition: transform .15s, box-shadow .15s;
+  box-shadow: 0 6px 24px rgba(201,99,88,.4);
+}
+.guide-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(201,99,88,.55); }
+.guide-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+.guide-note { font-size: 0.76rem; color: rgba(255,255,255,.35); text-align: center; }
+.guide-success {
+  display: none; text-align: center; padding: 18px;
+  background: rgba(37,211,102,.1); border: 1px solid rgba(37,211,102,.25);
+  border-radius: 12px; color: rgba(255,255,255,.88); font-size: 0.9rem; line-height: 1.6;
+}
+@media (max-width: 680px) {
+  .guide-inner { flex-direction: column; align-items: center; gap: 36px; }
+  .guide-book-mockup { width: 160px; min-height: 220px; }
+  .guide-content { width: 100%; }
+  .guide-form-row { flex-direction: column; }
+  .guide-input { min-width: unset; }
+}
+
 /* ===== LEAD CAPTURES INLINE ===== */
 .lead-capture-bar { background: linear-gradient(135deg, #2C1F1A 0%, #3D2B24 100%); padding: 36px 24px; }
 .lead-capture-cream { background: #FAF7F2; border-top: 1px solid rgba(201,185,154,0.28); border-bottom: 1px solid rgba(201,185,154,0.28); padding: 36px 24px; }
@@ -1314,23 +1431,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 
-<!-- LEAD CAPTURE 1 — GUIDE OFFERT POST-HERO -->
-<div class="lead-capture-bar" style="background:#1a1a1a;border-left:4px solid #C96358;box-shadow:0 4px 24px rgba(232,0,13,.15);">
-  <div class="lc-bar-inner">
-    <div class="lc-bar-text">
-      <span class="lc-bar-title">Guide offert — Les 9 erreurs qui t'empêchent d'évoluer</span>
-      <span class="lc-bar-sub">Télécharge-le gratuitement. Comprends enfin pourquoi tu stagnes — et comment en sortir pour de vrai.</span>
+<!-- SECTION GUIDE GRATUIT -->
+<section id="guide-gratuit">
+  <div class="guide-inner">
+
+    <!-- Mockup livre -->
+    <div class="guide-book-mockup">
+      <span class="guide-book-free">GRATUIT</span>
+      <div>
+        <div class="guide-book-label">Guide · Ornella Fit Coaching</div>
+        <div class="guide-book-title">Les 9 erreurs qui t'empêchent d'évoluer</div>
+        <div class="guide-book-sub">Comprends pourquoi tu stagnes — et comment en sortir.</div>
+      </div>
+      <div class="guide-book-author">Ornella Svobodny</div>
     </div>
-    <div class="lc-form-wrap">
-      <form class="lc-inline-form" onsubmit="submitLeadInline(event,'hero-bar')">
-        <input id="hero-bar-prenom" type="text" placeholder="Ton prénom" class="li-email" autocomplete="given-name">
-        <input type="email" class="li-email" placeholder="Ton adresse email" required autocomplete="email">
-        <button type="submit" class="li-btn">Je télécharge le guide →</button>
+
+    <!-- Contenu + formulaire -->
+    <div class="guide-content">
+      <span class="guide-eyebrow">Guide offert</span>
+      <h2 class="guide-title">Tu fais tout bien —<br><em>et pourtant rien ne change ?</em></h2>
+      <p class="guide-desc">La grande majorité des femmes qui stagnent commettent les mêmes 9 erreurs, souvent sans le savoir. Ce guide te les révèle — avec les solutions concrètes pour chacune.</p>
+      <ul class="guide-promises">
+        <li>Pourquoi le ventre ne change pas malgré les exercices ciblés</li>
+        <li>L'erreur n°1 qui bloque toutes les femmes en post-partum</li>
+        <li>Ce que le cortisol fait à ta silhouette (et comment l'arrêter)</li>
+        <li>La vraie raison pour laquelle les régimes ne marchent pas</li>
+        <li>Comment débloquer ta transformation en 4 semaines</li>
+      </ul>
+      <form class="guide-form" id="guide-form-section" onsubmit="submitGuideSection(event)">
+        <div class="guide-form-row">
+          <input id="guide-section-prenom" type="text" class="guide-input" placeholder="Ton prénom" autocomplete="given-name">
+          <input id="guide-section-email" type="email" class="guide-input" placeholder="Ton adresse email" required autocomplete="email">
+        </div>
+        <button type="submit" class="guide-submit" id="guide-section-btn">📖 Recevoir le guide gratuitement →</button>
+        <p class="guide-note">Pas de spam. Désabonnement en 1 clic.</p>
       </form>
-      <div class="li-success-inline">Guide envoyé ! Vérifie ta boîte mail (et les spams).</div>
+      <div class="guide-success" id="guide-section-success">
+        ✅ Guide envoyé ! Vérifie ta boîte mail.<br>
+        <span style="font-size:0.82rem;opacity:.7;">Tu peux aussi <a href="guide-offert.html" style="color:#e8ada6;text-decoration:underline;" target="_blank">le lire directement ici →</a></span>
+      </div>
     </div>
+
   </div>
-</div>
+</section>
 
 <!-- IDENTIFICATION -->
 <section id="identification">
@@ -2275,6 +2418,36 @@ async function submitLeadInline(e, source) {
   form.style.display = 'none';
   var successEl = form.parentElement.querySelector('.li-success-inline');
   if (successEl) successEl.style.display = 'block';
+  localStorage.setItem('leadDone', '1');
+}
+
+async function submitGuideSection(e) {
+  e.preventDefault();
+  var email  = document.getElementById('guide-section-email').value.trim();
+  var prenom = (document.getElementById('guide-section-prenom').value || '').trim();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+  var btn = document.getElementById('guide-section-btn');
+  btn.disabled = true; btn.textContent = 'Envoi en cours…';
+  try {
+    await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, listIds: [15], updateEnabled: true, emailBlacklisted: false, attributes: { PRENOM: prenom, SOURCE: 'guide-section' } })
+    });
+    await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        to: [{ email: email, name: prenom || 'toi' }],
+        htmlContent: guideEmailHtml(prenom || 'toi'),
+        subject: '📖 Ton guide gratuit — Les 9 erreurs qui t\'empêchent d\'évoluer',
+        sender: { name: 'Ornella – Ornella Fit Coaching', email: 'ornellafit.coaching@gmail.com' }
+      })
+    });
+  } catch(err) { btn.disabled = false; btn.textContent = '📖 Recevoir le guide gratuitement →'; return; }
+  if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'Guide 9 Erreurs - Section'});
+  document.getElementById('guide-form-section').style.display = 'none';
+  document.getElementById('guide-section-success').style.display = 'block';
   localStorage.setItem('leadDone', '1');
 }
 
