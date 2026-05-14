@@ -1345,50 +1345,139 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- TRANSFORMATION PROOF -->
 <section id="transfo-proof">
+  <style>
+    .transfo-duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin: 40px 0 32px;
+    }
+    .transfo-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(44,31,26,0.10);
+      border: 1px solid rgba(201,185,154,0.2);
+      display: flex;
+      flex-direction: column;
+    }
+    .transfo-card-featured {
+      box-shadow: 0 16px 48px rgba(44,31,26,0.15);
+      border-color: rgba(201,149,122,0.3);
+    }
+    .transfo-card-img {
+      position: relative;
+      overflow: hidden;
+    }
+    .transfo-card-img img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .transfo-card-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(201,99,88,0.92);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 5px 12px;
+      border-radius: 50px;
+      text-transform: uppercase;
+    }
+    .transfo-card-body {
+      padding: 22px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .transfo-card-name {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .transfo-card-stats {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .transfo-card-stat {
+      background: rgba(201,149,122,0.1);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .transfo-card-text {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin: 0;
+    }
+    @media (max-width: 680px) {
+      .transfo-duo { grid-template-columns: 1fr; gap: 20px; }
+      .transfo-card-img img { height: 260px; }
+    }
+  </style>
+
   <div class="inner">
-    <span class="section-label">Résultats réels · Photo non retouchée</span>
-    <h2 class="section-title">Elle a transformé son corps.<br><em>En 4 mois.</em></h2>
-    <p class="section-subtitle">Pas un filtre. Pas un montage. Louise, coaching à domicile en Essonne. Les photos parlent d'elles-mêmes.</p>
+    <span class="section-label">Résultats réels · Photos non retouchées</span>
+    <h2 class="section-title">Elles ont transformé leur corps.<br><em>Vraiment.</em></h2>
+    <p class="section-subtitle">Pas des filtres. Pas des montages. Des vraies femmes, du vrai travail, de vrais résultats.</p>
 
-    <!-- 2 photos avant/après -->
-    <div class="transfo-photos-grid fade-in">
-      <div class="transfo-img-wrap">
-        <img src="images/louise-face.jpg" alt="Transformation Louise vue de face — coaching à domicile Ornella Fit" loading="lazy">
-        <div class="transfo-img-label">Vue de face</div>
-        <div class="transfo-img-tag">AVANT &nbsp;→&nbsp; APRÈS</div>
+    <div class="transfo-duo fade-in">
+
+      <!-- LOUISE -->
+      <div class="transfo-card transfo-card-featured">
+        <div class="transfo-card-img">
+          <img src="images/louise-face.jpg" alt="Transformation Louise — coaching à domicile Ornella Fit Essonne" loading="lazy">
+          <div class="transfo-card-tag">AVANT → APRÈS</div>
+        </div>
+        <div class="transfo-card-body">
+          <div class="transfo-card-name">Louise · Coaching à domicile · Essonne (91)</div>
+          <div class="transfo-card-stats">
+            <span class="transfo-card-stat">−9 cm taille</span>
+            <span class="transfo-card-stat">−5 kg</span>
+            <span class="transfo-card-stat">4 mois</span>
+          </div>
+          <p class="transfo-card-text">Pas de méthode extrême — un programme sur-mesure, 2x/semaine à domicile. <strong>Résultat : dos redessiné, silhouette transformée.</strong></p>
+        </div>
       </div>
-      <div class="transfo-img-wrap">
-        <img src="images/louise-dos.jpg" alt="Transformation Louise vue de dos — coaching à domicile Ornella Fit" loading="lazy">
-        <div class="transfo-img-label">Vue de dos</div>
-        <div class="transfo-img-tag">AVANT &nbsp;→&nbsp; APRÈS</div>
+
+      <!-- EMELINE 2 MOIS -->
+      <div class="transfo-card">
+        <div class="transfo-card-img">
+          <img src="images/avant-apres-emeline-2.jpg" alt="Transformation Emeline 2 mois — coaching Ornella Fit" loading="lazy">
+          <div class="transfo-card-tag">AVANT → APRÈS</div>
+        </div>
+        <div class="transfo-card-body">
+          <div class="transfo-card-name">Emeline · Coaching à domicile · 2 mois</div>
+          <div class="transfo-card-stats">
+            <span class="transfo-card-stat">−3 cm taille</span>
+            <span class="transfo-card-stat">Fessiers galbés</span>
+            <span class="transfo-card-stat">2 mois</span>
+          </div>
+          <p class="transfo-card-text">Elle ne croyait plus aux résultats rapides. En 2 mois, taille affinée, fessiers remontés. <strong>La transformation continue.</strong></p>
+        </div>
       </div>
+
     </div>
 
-    <!-- Stats -->
-    <div class="transfo-stats-row">
-      <div class="transfo-stat-pill accent">
-        <div class="transfo-stat-big">−9 cm</div>
-        <div class="transfo-stat-desc">Tour de taille</div>
-      </div>
-      <div class="transfo-stat-pill">
-        <div class="transfo-stat-big">−5 kg</div>
-        <div class="transfo-stat-desc">Poids perdu</div>
-      </div>
-      <div class="transfo-stat-pill">
-        <div class="transfo-stat-big">4 m.</div>
-        <div class="transfo-stat-desc">Accompagnement</div>
-      </div>
-    </div>
+    <a href="transformations.html" style="display:inline-block;margin-bottom:16px;font-size:0.88rem;color:var(--accent);text-decoration:underline;text-underline-offset:3px;">Voir toutes les transformations →</a>
 
-    <!-- Story -->
-    <div class="transfo-story">
-      <p class="transfo-story-name">Louise · Coaching à domicile · Essonne (91)</p>
-      <p class="transfo-story-text">Une vraie envie de reprendre le contrôle de son corps, sans se priver ni s'épuiser. On a construit un programme sur-mesure, adapté à son rythme, 2 fois par semaine à domicile. Pas de méthode extrême — du progressif, du ciblé, du durable.<br><br><strong>Résultat : −9 cm de tour de taille, un dos redessiné, une silhouette visiblement transformée. En 4 mois.</strong></p>
-    </div>
-
-    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20vu%20la%20transformation%20de%20Louise%20sur%20ton%20site%20et%20j%27aimerais%20des%20r%C3%A9sultats%20similaires.%20Comment%20on%20commence%20%3F" class="btn-main" target="_blank" style="display:inline-flex;margin-top:4px;">
+    <div style="display:block;">
+    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20vu%20les%20transformations%20sur%20ton%20site%20et%20j%27aimerais%20des%20r%C3%A9sultats%20similaires.%20Comment%20on%20commence%20%3F" class="btn-main" target="_blank" style="display:inline-flex;margin-top:4px;">
       Je veux des résultats comme ça →
     </a>
+    </div>
   </div>
 </section>
 
