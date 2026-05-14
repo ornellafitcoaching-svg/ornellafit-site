@@ -1347,8 +1347,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section id="transfo-proof">
   <style>
     .transfo-duo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 32px;
       margin: 40px 0 32px;
     }
@@ -1441,18 +1441,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       height: auto;
       display: block;
     }
-    .transfo-card-emeline {
-      grid-column: span 2;
-    }
-    .transfo-card-emeline .transfo-card-img-duo img {
-      width: 50%;
-    }
     @media (max-width: 680px) {
-      .transfo-duo { grid-template-columns: 1fr; gap: 20px; }
-      .transfo-card-emeline { grid-column: span 1; }
+      .transfo-duo { gap: 20px; }
       .transfo-card-img-duo { flex-direction: column; gap: 8px; }
       .transfo-card-img-duo img { width: 100%; }
-      .transfo-card-emeline .transfo-card-img-duo img { width: 100%; }
     }
   </style>
 
@@ -1464,9 +1456,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="transfo-duo fade-in">
 
       <!-- LOUISE -->
-      <div class="transfo-card transfo-card-featured">
-        <div class="transfo-card-img">
-          <img src="images/louise-face.jpg" alt="Transformation Louise — coaching à domicile Ornella Fit Essonne" loading="lazy">
+      <div class="transfo-card transfo-card-featured transfo-card-emeline">
+        <div class="transfo-card-img transfo-card-img-duo">
+          <img src="images/louise-face.jpg" alt="Transformation Louise face — coaching à domicile Ornella Fit Essonne" loading="lazy">
+          <img src="images/louise-dos-avant-apres.jpg" alt="Transformation Louise dos — coaching à domicile Ornella Fit Essonne" loading="lazy">
           <div class="transfo-card-tag">AVANT → APRÈS</div>
         </div>
         <div class="transfo-card-body">
