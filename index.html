@@ -2434,17 +2434,17 @@ async function submitGuideSection(e) {
       headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email, listIds: [15], updateEnabled: true, emailBlacklisted: false, attributes: { PRENOM: prenom, SOURCE: 'guide-section' } })
     });
-    await fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        to: [{ email: email, name: prenom || 'toi' }],
-        htmlContent: guideEmailHtml(prenom || 'toi'),
-        subject: '📖 Ton guide gratuit — Les 9 erreurs qui t\'empêchent d\'évoluer',
-        sender: { name: 'Ornella – Ornella Fit Coaching', email: 'ornellafit.coaching@gmail.com' }
-      })
-    });
   } catch(err) { btn.disabled = false; btn.textContent = '📖 Recevoir le guide gratuitement →'; return; }
+  fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      to: [{ email: email, name: prenom || 'toi' }],
+      htmlContent: guideEmailHtml(prenom || 'toi'),
+      subject: '📖 Ton guide gratuit — Les 9 erreurs qui t\'empêchent d\'évoluer',
+      sender: { name: 'Ornella Fit Coaching', email: 'ornellafit.coaching@gmail.com' }
+    })
+  }).catch(function(err) { console.warn('[guide email]', err); });
   if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'Guide 9 Erreurs - Section'});
   document.getElementById('guide-form-section').style.display = 'none';
   document.getElementById('guide-section-success').style.display = 'block';
