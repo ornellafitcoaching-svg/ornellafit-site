@@ -817,8 +817,8 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
     font-weight: 500; padding: 5px 12px; border-radius: 50px;
   }
   .hero-photo-col { width: 100%; max-width: 300px; margin: 0 auto; }
-  .hero-photo-frame img,
   .hero-photo-frame video { height: 300px; }
+  .hero-photo-frame img { height: auto !important; object-fit: unset !important; }
   .hero-badge { font-size: 0.66rem; white-space: normal; line-height: 1.6; text-align: center; }
   .hero-title { max-width: 100%; margin-left: auto; margin-right: auto; font-size: clamp(1.85rem, 7vw, 2.4rem); line-height: 1.1; }
   .hero-title-desktop { display: none; }
@@ -1099,9 +1099,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
         .hero-photo-frame img {
           width: 100% !important;
-          height: 320px !important;
-          object-fit: cover !important;
-          object-position: top center !important;
+          height: auto !important;
+          object-fit: unset !important;
         }
       }
       </style>
