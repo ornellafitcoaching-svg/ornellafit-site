@@ -1853,6 +1853,124 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq" style="background:#FAF7F2;padding:64px 20px;">
+  <style>
+    #faq .faq-inner { max-width: 720px; margin: 0 auto; }
+    #faq .faq-item {
+      border-bottom: 1px solid rgba(201,185,154,0.35);
+      overflow: hidden;
+    }
+    #faq .faq-item:first-of-type { border-top: 1px solid rgba(201,185,154,0.35); }
+    #faq .faq-question {
+      width: 100%; background: none; border: none;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 4px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.97rem; font-weight: 600;
+      color: var(--dark); cursor: pointer;
+      text-align: left; gap: 16px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #faq .faq-question:hover { color: var(--accent); }
+    #faq .faq-icon {
+      font-size: 1.2rem; color: var(--accent);
+      flex-shrink: 0; transition: transform 0.3s ease;
+      font-weight: 300;
+    }
+    #faq .faq-item.open .faq-icon { transform: rotate(45deg); }
+    #faq .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s ease;
+      font-size: 0.9rem; color: var(--text-mid); line-height: 1.8;
+      padding: 0 4px;
+    }
+    #faq .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding-bottom: 20px;
+    }
+    #faq .faq-cta-wrap { text-align: center; margin-top: 40px; }
+    @media (max-width: 768px) {
+      #faq .faq-question { font-size: 0.91rem; }
+    }
+  </style>
+  <div class="faq-inner">
+    <span class="section-label">Questions fréquentes</span>
+    <h2 class="section-title" style="margin-bottom:36px;">Tu te demandes <em>comment ça marche ?</em></h2>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Quel matériel faut-il avoir chez moi ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Pour le coaching à domicile, je viens avec tout le matériel nécessaire — haltères, élastiques, bandes. Tu n'as rien à acheter. Pour le coaching distanciel, on adapte le programme à ce que tu as : même juste des haltères ou des élastiques, on peut faire un travail sérieux.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Tu te déplaces jusqu'où en Essonne et en IDF ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Je me déplace dans tout le département de l'Essonne (91) et dans les zones proches de Paris. Si tu n'es pas sûre que ta ville est couverte, envoie-moi un message — on voit ensemble. Et si je ne peux pas venir chez toi, le coaching distanciel donne exactement les mêmes résultats.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        C'est quoi la séance découverte à 50€ ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">C'est une première séance à domicile sans engagement. On fait connaissance, j'évalue ton niveau, tes objectifs, tes contraintes. Tu repars avec une première séance complète et une idée claire de comment on pourrait travailler ensemble. Aucune pression pour continuer.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Combien de séances par semaine pour voir des résultats ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">2 séances par semaine suffisent pour obtenir des résultats visibles en 4 à 8 semaines — c'est ce que font la majorité de mes clientes. Avec la formule hybride, on peut aller jusqu'à 4 séances par semaine en combinant présentiel et distanciel. La clé, c'est la régularité, pas le volume.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Quelle différence entre coaching hybride et distanciel ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Le <strong>coaching hybride</strong> : je viens chez toi 1 fois par semaine en séance + je te crée un programme sur-mesure avec vidéos pour 2 à 3 séances en autonomie. Le <strong>coaching distanciel</strong> : tout se fait à distance — programme complet avec vidéos, suivi WhatsApp régulier, bilans mensuels. Mêmes résultats, sans déplacement.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Je suis totalement débutante — c'est fait pour moi ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Oui — et mes clientes qui ont le plus progressé partent souvent de zéro. Pas besoin de connaître les exercices, pas besoin d'un corps "prêt". Je construis ton programme selon ton niveau exact et j'explique chaque mouvement. Chez moi, tu n'es pas jugée — tu es accompagnée.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Est-ce que tu travailles avec les femmes en post-partum ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">C'est ma spécialité. J'ai moi-même vécu une grossesse difficile avec alitement prolongé — je sais ce que c'est de reconstruire son corps depuis zéro après un accouchement. Aucun exercice dangereux, respect du périnée et du diastasis, reprise progressive et sécurisée.</div>
+    </div>
+
+    <div class="faq-cta-wrap">
+      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20une%20question%20avant%20de%20commencer." class="btn-main" target="_blank" style="display:inline-flex;">
+        Une autre question ? Je te réponds →
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function toggleFaq(btn){
+  var item=btn.closest('.faq-item');
+  var isOpen=item.classList.contains('open');
+  document.querySelectorAll('#faq .faq-item.open').forEach(function(el){ el.classList.remove('open'); });
+  if(!isOpen) item.classList.add('open');
+}
+</script>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
