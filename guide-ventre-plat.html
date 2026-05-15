@@ -2088,7 +2088,7 @@ window.addEventListener('scroll', function() {
 <!-- ══ TABLEAU DE SUIVI ══ -->
 <div id="suivi" style="background:#FFFFFF;border-top:1px solid #F0E8E0;border-bottom:1px solid #F0E8E0;">
   <div class="page" style="color:#1E1616;">
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:300;color:#2C1F1A;margin-bottom:8px;">📋 Mon tableau de suivi — à imprimer</h2>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:300;color:#2C1F1A;margin-bottom:8px;">📋 Mon tableau de suivi</h2>
     <div style="overflow-x:auto;margin:24px 0;">
       <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
         <thead>
@@ -2121,8 +2121,30 @@ window.addEventListener('scroll', function() {
         </tbody>
       </table>
     </div>
-    <p style="font-size:0.88rem;color:#7A5E54;line-height:1.7;margin-bottom:20px;">💡 Imprime ce tableau et colle-le sur ton frigo. Cocher une case = dopamine = motivation qui dure.</p>
-    <button onclick="window.print()" style="background:#2C1F1A;color:#E8B4A0;border:none;border-radius:50px;padding:13px 28px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">🖨️ Imprimer mon tableau</button>
+    <p style="font-size:0.88rem;color:#7A5E54;line-height:1.7;margin-bottom:8px;">💡 Cocher une case = dopamine = motivation qui dure. Tes données sont sauvegardées automatiquement dans ce navigateur.</p>
+    <p style="font-size:0.82rem;color:#9A8A80;margin-bottom:20px;">✅ Sauvegarde automatique — tu peux fermer et revenir plus tard, tout sera là.</p>
+    <button onclick="exportSuivi()" style="background:#2C1F1A;color:#E8B4A0;border:none;border-radius:50px;padding:13px 28px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">💾 Sauvegarder mes notes</button>
+    <script>
+    function exportSuivi(){
+      var entries = [
+        {label:'S1 · Séance A', check:'s1a'}, {label:'S1 · Séance B', check:'s1b'}, {label:'S1 · Séance C', check:'s1c'},
+        {label:'S1 · Ressenti', text:'s1r'}, {label:'S1 · Progression', text:'s1p'},
+        {label:'S2 · Séance A', check:'s2a'}, {label:'S2 · Séance B', check:'s2b'}, {label:'S2 · Séance C', check:'s2c'},
+        {label:'S2 · Ressenti', text:'s2r'}, {label:'S2 · Progression', text:'s2p'},
+      ];
+      var lines = ['MON SUIVI VENTRE PLAT — ' + new Date().toLocaleDateString('fr-FR'), ''];
+      entries.forEach(function(e){
+        var val = localStorage.getItem('vp_' + (e.check||e.text)) || '';
+        if(e.check) lines.push(e.label + ' : ' + (val==='1' ? '✓ fait' : '☐ non fait'));
+        else lines.push(e.label + ' : ' + (val||'—'));
+      });
+      var blob = new Blob([lines.join('\n')], {type:'text/plain;charset=utf-8'});
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'suivi-ventre-plat.txt';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    }
+    </script>
   </div>
 </div>
 
