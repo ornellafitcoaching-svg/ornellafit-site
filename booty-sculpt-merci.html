@@ -1,122 +1,381 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Merci ! Ton programme Booty Sculpt est prêt 🍑</title>
-<meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--cream:#FEFBF8;--rouge:#C96358;--dark:#1C1210;--text:#3A2820;--muted:#7A5E54;--border:#ECD8D0;--gold:#C8924A}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
-.card{background:#fff;border-radius:24px;border:1px solid var(--border);padding:40px 32px;max-width:480px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(60,30,20,.08)}
-.check{width:64px;height:64px;background:rgba(201,99,88,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px}
-.badge{display:inline-block;background:rgba(201,99,88,.08);color:var(--rouge);border:1px solid rgba(201,99,88,.2);border-radius:999px;padding:6px 18px;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px}
-h1{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--dark);line-height:1.15;margin-bottom:12px}
-.sub{font-size:.95rem;color:var(--muted);line-height:1.7;margin-bottom:28px}
-.btn-main{display:block;background:var(--rouge);color:#fff;text-decoration:none;font-size:1rem;font-weight:700;padding:18px 28px;border-radius:999px;margin-bottom:12px;box-shadow:0 4px 20px rgba(201,99,88,.3);transition:background .2s}
-.btn-main:hover{background:#b64c40}
-.note{font-size:.78rem;color:var(--muted);margin-bottom:28px}
-.steps{background:#FAF6F3;border-radius:16px;padding:22px 24px;text-align:left;margin-bottom:24px}
-.steps-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--rouge);margin-bottom:14px}
-.step{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
-.step:last-child{margin-bottom:0}
-.step-num{min-width:26px;height:26px;background:var(--rouge);color:#fff;border-radius:50%;font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.step-text{font-size:.88rem;color:var(--text);line-height:1.5;padding-top:2px}
-.email-sent{font-size:.82rem;color:var(--muted);padding-top:8px;border-top:1px solid var(--border)}
-.email-sent strong{color:var(--dark)}
-.spinner{display:none;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--rouge);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 16px}
-@keyframes spin{to{transform:rotate(360deg)}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Merci pour ton achat — Booty Sculpt 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #C96358;
+      --cream: #F7F3F0;
+      --dark: #1E1616;
+      --gold: #C9957A;
+      --nude: #E8B4A0;
+      --brown: #9A8080;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #1A0F0F;
+      color: var(--cream);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 20px 64px;
+    }
+
+    .top-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 24px;
+      box-shadow: 0 0 40px rgba(201, 99, 88, 0.4);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: var(--nude);
+      text-align: center;
+      margin-bottom: 40px;
+      max-width: 420px;
+      line-height: 1.6;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(232, 180, 160, 0.2);
+      border-radius: 16px;
+      padding: 32px 28px;
+      width: 100%;
+      max-width: 480px;
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--nude);
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .code-wrap {
+      background: rgba(201, 99, 88, 0.12);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .code-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .code-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .copy-btn {
+      display: block;
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-bottom: 12px;
+    }
+
+    .copy-btn:hover { background: #b5534a; }
+    .copy-btn.copied { background: #4a9e6e; }
+
+    .access-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: opacity 0.2s;
+      box-shadow: 0 4px 20px rgba(201,99,88,0.3);
+    }
+
+    .access-btn:hover { opacity: 0.9; }
+
+    .steps {
+      list-style: none;
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .steps li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 0.88rem;
+      color: var(--nude);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .steps li .num {
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .form-label {
+      font-size: 0.85rem;
+      color: var(--nude);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .form-input {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(232,180,160,0.3);
+      border-radius: 8px;
+      padding: 13px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--cream);
+      margin-bottom: 12px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus { border-color: var(--accent); }
+    .form-input::placeholder { color: var(--brown); }
+
+    .send-btn {
+      display: block;
+      width: 100%;
+      background: rgba(201, 99, 88, 0.15);
+      border: 1.5px solid var(--accent);
+      color: var(--cream);
+      border-radius: 8px;
+      padding: 13px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .send-btn:hover { background: rgba(201, 99, 88, 0.3); }
+    .send-btn:disabled { opacity: 0.5; cursor: default; }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      color: #7ecba1;
+      font-size: 0.88rem;
+      padding: 14px;
+      background: rgba(126, 203, 161, 0.1);
+      border-radius: 8px;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    .wa-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 10px;
+      padding: 14px 20px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .wa-btn:hover { background: #1db954; }
+
+    .footer-note {
+      font-size: 0.78rem;
+      color: var(--brown);
+      text-align: center;
+      max-width: 380px;
+      line-height: 1.7;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
 
-<div class="card">
-  <div class="check">🎉</div>
-  <div class="badge">✓ Paiement confirmé</div>
-  <h1>Bienvenue dans<br>Booty Sculpt 2026 !</h1>
-  <p class="sub">Ton accès au programme est prêt. Clique ci-dessous pour commencer dès maintenant.</p>
+  <div class="top-icon">🍑</div>
+  <h1>Merci pour ton achat !</h1>
+  <p class="subtitle">Ton programme Booty Sculpt 2026 est prêt. Voici ton code d'accès.</p>
 
-  <a href="https://ornellafitcoaching-svg.github.io/booty-sculpt-premium-/" class="btn-main">
-    🍑 Accéder à mon programme →
-  </a>
-  <p class="note">🔒 Accès à vie · Sauvegarde automatique · Compatible mobile</p>
+  <!-- Code + accès -->
+  <div class="card">
+    <p class="card-title">Ton code d'accès</p>
+    <div class="code-wrap">
+      <p class="code-label">Code à entrer sur le programme</p>
+      <p class="code-value">BS2026</p>
+    </div>
+    <button class="copy-btn" id="copyBtn" onclick="copyCode()">📋 Copier le code</button>
+    <a class="access-btn" href="https://ornellafitcoaching-svg.github.io/booty-sculpt-premium-/?access=BS2026" target="_blank">
+      🚀 Accéder au programme maintenant
+    </a>
+    <ul class="steps">
+      <li><span class="num">1</span><span>Clique sur "Accéder au programme" — le code s'entre automatiquement</span></li>
+      <li><span class="num">2</span><span>Si on te demande un code, entre <strong>BS2026</strong></span></li>
+      <li><span class="num">3</span><span>Mets la page en favori pour y revenir facilement 📌</span></li>
+    </ul>
+  </div>
 
-  <div class="steps">
-    <div class="steps-title">Comment commencer :</div>
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-text">Fais la <strong>routine d'activation</strong> avant chaque séance (4 exercices obligatoires)</div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-text">Coche <strong>"Séance terminée"</strong> après chaque entraînement — ta progression est sauvegardée</div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-text">Une question ? Écris à <strong>contact@ornellafitcoaching.com</strong> — Ornella répond personnellement</div>
+  <!-- Email -->
+  <div class="card">
+    <p class="card-title">Recevoir le code par e-mail</p>
+    <label class="form-label">Entre ton adresse pour garder ton code :</label>
+    <input type="email" class="form-input" id="emailInput" placeholder="ton@email.com">
+    <button class="send-btn" id="sendBtn" onclick="sendEmail()">✉️ M'envoyer le code par e-mail</button>
+    <div class="form-success" id="formSuccess">
+      ✅ Code envoyé ! Vérifie ta boîte de réception<br>(et tes spams si besoin).
     </div>
   </div>
 
-  <div class="spinner" id="spinner"></div>
-  <p class="email-sent" id="email-status">📧 Un email de confirmation est envoyé à <strong id="email-display">ton adresse</strong></p>
-</div>
+  <!-- WhatsApp -->
+  <a class="wa-btn" href="https://wa.me/33756834626" target="_blank">
+    <span style="font-size:1.3rem;">💬</span>
+    Une question ? Écris-moi sur WhatsApp
+  </a>
 
-<script>
-const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-MuwZhV7aQ7eKSaca';
-const BREVO_KEY=_a+_b+_c;
+  <p class="footer-note">
+    Ce lien est personnel — garde-le précieusement.<br>
+    En cas de souci d'accès, contacte-moi directement sur WhatsApp.
+  </p>
 
-(async function() {
-  // Récupère email depuis URL params ou localStorage
-  const params = new URLSearchParams(window.location.search);
-  const email = params.get('email') || localStorage.getItem('bs_buyer_email') || '';
-  const fname = params.get('fname') || localStorage.getItem('bs_buyer_fname') || '';
+  <script>
+    const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-MuwZhV7aQ7eKSaca';
+    const BREVO_KEY=_a+_b+_c;
 
-  if (email) {
-    document.getElementById('email-display').textContent = email;
-  }
+    function copyCode() {
+      navigator.clipboard.writeText('BS2026').then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = '✅ Copié !';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = '📋 Copier le code';
+          btn.classList.remove('copied');
+        }, 2500);
+      });
+    }
 
-  if (!email) return;
+    async function sendEmail() {
+      const email = document.getElementById('emailInput').value.trim();
+      if (!email || !email.includes('@')) {
+        document.getElementById('emailInput').focus();
+        return;
+      }
 
-  document.getElementById('spinner').style.display = 'block';
+      const sendBtn = document.getElementById('sendBtn');
+      sendBtn.disabled = true;
+      sendBtn.textContent = 'Envoi en cours…';
 
-  // Ajoute à la liste Brevo #16
-  try {
-    await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json','api-key':BREVO_KEY},
-      body: JSON.stringify({
-        email: email,
-        listIds: [16],
-        attributes: {FNAME: fname, SOURCE: 'stripe-booty-sculpt-confirmed'},
-        updateEnabled: true
-      })
-    });
-  } catch(e) {}
+      // Ajouter à Brevo liste 15
+      try {
+        await fetch('https://api.brevo.com/v3/contacts', {
+          method: 'POST',
+          headers: { 'api-key': BREVO_KEY, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, listIds: [15], updateEnabled: true })
+        });
+      } catch(e) {}
 
-  // Envoie l'email de livraison
-  try {
-    await fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json','api-key':BREVO_KEY},
-      body: JSON.stringify({
-        to: [{email: email, name: fname}],
-        templateId: 46,
-        sender: {name: 'Ornella Fit Coaching', email: 'contact@ornellafitcoaching.com'}
-      })
-    });
-  } catch(e) {}
+      // Envoyer l'email transactionnel avec le code
+      fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: { 'api-key': BREVO_KEY, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sender: { name: 'Ornella Fit Coaching', email: 'ornellafit.coaching@gmail.com' },
+          to: [{ email }],
+          subject: '🍑 Ton accès Booty Sculpt 2026 — code BS2026',
+          htmlContent: `
+            <div style="font-family:Arial,sans-serif;max-width:520px;margin:0 auto;background:#1A0F0F;color:#F7F3F0;border-radius:12px;padding:40px 32px;">
+              <h1 style="font-family:Georgia,serif;font-size:1.8rem;color:#E8B4A0;margin-bottom:8px;">Booty Sculpt 2026 🍑</h1>
+              <p style="color:#C9957A;font-size:0.95rem;margin-bottom:28px;">Merci pour ton achat ! Ton programme t'attend.</p>
 
-  document.getElementById('spinner').style.display = 'none';
+              <div style="background:rgba(201,99,88,0.15);border:2px solid #C96358;border-radius:10px;padding:28px;text-align:center;margin-bottom:28px;">
+                <p style="font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:#C9957A;margin-bottom:8px;">Ton code d'accès</p>
+                <p style="font-family:Georgia,serif;font-size:3rem;font-weight:700;letter-spacing:0.1em;color:#fff;margin:0;line-height:1;">BS2026</p>
+              </div>
 
-  // Nettoie le localStorage
-  localStorage.removeItem('bs_buyer_email');
-  localStorage.removeItem('bs_buyer_fname');
-})();
-</script>
+              <a href="https://ornellafitcoaching-svg.github.io/booty-sculpt-premium-/?access=BS2026"
+                 style="display:block;background:linear-gradient(135deg,#C9957A,#C96358);color:#fff;text-align:center;padding:18px;border-radius:8px;text-decoration:none;font-weight:700;font-size:1rem;margin-bottom:28px;">
+                🚀 Accéder au programme maintenant
+              </a>
+
+              <p style="font-size:0.88rem;color:#9A8080;line-height:1.6;margin-bottom:12px;">Si le lien ne fonctionne pas, entre le code <strong style="color:#E8B4A0;">BS2026</strong> manuellement sur la page du programme.</p>
+              <p style="font-size:0.88rem;color:#9A8080;line-height:1.6;">Une question ? Écris-moi sur WhatsApp : <a href="https://wa.me/33756834626" style="color:#C9957A;">wa.me/33756834626</a></p>
+
+              <p style="font-size:0.78rem;color:#9A8080;margin-top:28px;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;">Ornella Fit Coaching · ornellafitcoaching.com</p>
+            </div>
+          `
+        })
+      }).catch(() => {});
+
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+  </script>
 
 </body>
 </html>
