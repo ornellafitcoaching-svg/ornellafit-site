@@ -423,6 +423,43 @@ window.addEventListener('scroll', function() {
   var scrolled = (winScroll / height) * 100;
   document.getElementById('progress-bar').style.width = scrolled + '%';
 });
+
+// Section active dans la nav au scroll
+(function(){
+  if (!('IntersectionObserver' in window)) return;
+  var map = [
+    { id: 'page-1',      href: '#page-1' },
+    { id: 'page-2',      href: '#erreurs' },
+    { id: 'page-3',      href: '#exercices' },
+    { id: 'page-4',      href: '#nutrition' },
+    { id: 'page-5',      href: '#action' },
+    { id: 'bonus-1',     href: '#bonus-1' },
+    { id: 'complements', href: '#complements' },
+  ];
+  function setActive(href) {
+    document.querySelectorAll('#nav-pills-wrap a').forEach(function(p) {
+      if (p.getAttribute('href') === href) {
+        p.style.boxShadow = '0 0 0 2px #C96358';
+        p.style.opacity = '1';
+      } else {
+        p.style.boxShadow = '';
+        p.style.opacity = '0.5';
+      }
+    });
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        var s = map.find(function(m){ return m.id === e.target.id; });
+        if (s) setActive(s.href);
+      }
+    });
+  }, { rootMargin: '-15% 0px -65% 0px', threshold: 0 });
+  map.forEach(function(s) {
+    var el = document.getElementById(s.id);
+    if (el) obs.observe(el);
+  });
+})();
 </script>
 
 <!-- ══ COUVERTURE ══ -->
