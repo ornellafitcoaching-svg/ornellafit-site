@@ -349,28 +349,15 @@ details > summary::-webkit-details-marker { display: none; }
   nav#guide-nav {
     overflow: visible !important;
     white-space: normal !important;
-    padding: 0 !important;
+    padding: 0 8px !important;
   }
-  #nav-toggle-btn {
-    display: flex !important;
-    align-items: center;
-    justify-content: space-between;
-    padding: 11px 16px;
-    font-size: 13px;
-    font-weight: 700;
-    color: #C96358;
-    cursor: pointer;
-    width: 100%;
-    background: white;
-    border: none;
-    font-family: 'DM Sans', sans-serif;
-  }
+  #nav-mobile-bar { display: flex !important; }
   #nav-pills-wrap {
     display: none;
     flex-direction: column;
     background: white;
     border-top: 1px solid #F0E8E0;
-    padding: 8px 12px 12px;
+    padding: 8px 4px 12px;
     gap: 4px;
   }
   #nav-pills-wrap.open { display: flex; }
@@ -382,6 +369,7 @@ details > summary::-webkit-details-marker { display: none; }
   }
 }
 @media (min-width: 641px) {
+  #nav-mobile-bar { display: none !important; }
   #nav-toggle-btn { display: none; }
 }
 </style>
@@ -392,10 +380,16 @@ details > summary::-webkit-details-marker { display: none; }
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav id="guide-nav" style="position:sticky;top:0;z-index:100;background:white;border-bottom:1px solid #F0E8E0;padding:10px 16px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch">
-  <button id="nav-toggle-btn" onclick="var w=document.getElementById('nav-pills-wrap');var open=w.classList.toggle('open');this.querySelector('.nav-arrow').textContent=open?'▲':'▼';" aria-label="Ouvrir le menu" style="display:none;">
-    📋 Sections du guide <span class="nav-arrow">▼</span>
-  </button>
+  <!-- Barre mobile : accueil à gauche + toggle à droite -->
+  <div id="nav-mobile-bar" style="display:none;align-items:center;justify-content:space-between;gap:8px;">
+    <a href="https://www.ornellafitcoaching.com/" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:#1E1616;text-decoration:none;padding:7px 12px;background:#F0E8E0;border-radius:20px;flex-shrink:0;">← Accueil</a>
+    <button id="nav-toggle-btn" onclick="var w=document.getElementById('nav-pills-wrap');var open=w.classList.toggle('open');this.querySelector('.nav-arrow').textContent=open?'▲':'▼';" aria-label="Ouvrir le menu" style="display:flex;align-items:center;gap:6px;flex:1;justify-content:flex-end;background:none;border:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:#C96358;cursor:pointer;padding:7px 0;">
+      📋 Sections <span class="nav-arrow">▼</span>
+    </button>
+  </div>
+  <!-- Pills desktop : accueil en premier -->
   <div id="nav-pills-wrap">
+    <a href="https://www.ornellafitcoaching.com/" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:700;color:#1E1616;text-decoration:none;padding:6px 12px;background:#F0E8E0;border-radius:20px">← Accueil</a>
     <a href="#page-1" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">📖 Pourquoi</a>
     <a href="#erreurs" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">❌ 6 Erreurs</a>
     <a href="#exercices" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">💪 Exercices</a>
