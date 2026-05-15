@@ -10,6 +10,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- PWA iPhone / iPad -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ventre Plat">
+<link rel="apple-touch-icon" href="images/logo.png">
+<meta name="theme-color" content="#1E1616">
 <meta name="facebook-domain-verification" content="q0lravv1bfmhpq3dob5d559cyidqq1" />
 <link rel="canonical" href="https://www.ornellafitcoaching.com/guide-ventre-plat.html">
 <title>Programme Ventre Plat — Méthode Expert | Ornella Fit Coaching</title>
@@ -2170,11 +2176,20 @@ function toggleFaq(q) {
 <!-- ══ MINUTEUR FLOTTANT ══ -->
 <div id="timer-widget" style="position:fixed;bottom:20px;left:16px;z-index:998;">
   <button id="timer-fab" onclick="timerTogglePanel()" aria-label="Minuteur" style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#2C1F1A,#3D2820);color:white;font-size:1.2rem;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;">⏱️</button>
-  <div id="timer-panel" style="display:none;position:absolute;bottom:54px;left:0;background:#2C1F1A;border:1px solid rgba(201,99,88,.35);border-radius:16px;padding:16px 14px;min-width:190px;box-shadow:0 8px 40px rgba(0,0,0,.6);">
+  <div id="timer-panel" style="display:none;position:absolute;bottom:54px;left:0;background:#2C1F1A;border:1px solid rgba(201,99,88,.35);border-radius:16px;padding:16px 14px;width:210px;box-shadow:0 8px 40px rgba(0,0,0,.6);">
+
+    <!-- Mode toggle -->
+    <div style="display:flex;gap:4px;margin-bottom:12px;background:rgba(255,255,255,.05);border-radius:8px;padding:3px;">
+      <button id="mode-exo" onclick="timerSwitchMode('exo')" style="flex:1;border:none;border-radius:6px;padding:6px 4px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;background:linear-gradient(135deg,#C96358,#a84e44);color:white;">💪 Exercice</button>
+      <button id="mode-rep" onclick="timerSwitchMode('rep')" style="flex:1;border:none;border-radius:6px;padding:6px 4px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;background:transparent;color:rgba(255,255,255,.5);">😮‍💨 Repos</button>
+    </div>
+
     <!-- Affichage -->
-    <div id="timer-display" style="font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:white;text-align:center;line-height:1;margin-bottom:12px;letter-spacing:0.04em;">00:30</div>
-    <!-- Préréglages -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:12px;">
+    <div id="timer-display" style="font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:white;text-align:center;line-height:1;margin-bottom:4px;letter-spacing:0.04em;">00:30</div>
+    <p id="timer-label" style="font-size:0.7rem;color:rgba(255,255,255,.35);text-align:center;margin:0 0 10px;">Sélectionne une durée</p>
+
+    <!-- Préréglages Exercice -->
+    <div id="presets-exo" style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:12px;">
       <button onclick="timerSet(10)"  class="t-pre">10 s</button>
       <button onclick="timerSet(20)"  class="t-pre">20 s</button>
       <button onclick="timerSet(30)"  class="t-pre">30 s</button>
@@ -2182,73 +2197,135 @@ function toggleFaq(q) {
       <button onclick="timerSet(60)"  class="t-pre">1 min</button>
       <button onclick="timerSet(90)"  class="t-pre">90 s</button>
     </div>
+
+    <!-- Préréglages Repos -->
+    <div id="presets-rep" style="display:none;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:12px;">
+      <button onclick="timerSet(30)"  class="t-pre t-rep">30 s</button>
+      <button onclick="timerSet(45)"  class="t-pre t-rep">45 s</button>
+      <button onclick="timerSet(60)"  class="t-pre t-rep">1 min</button>
+      <button onclick="timerSet(90)"  class="t-pre t-rep">90 s</button>
+      <button onclick="timerSet(120)" class="t-pre t-rep">2 min</button>
+      <button onclick="timerSet(180)" class="t-pre t-rep">3 min</button>
+    </div>
+
     <!-- Contrôles -->
     <div style="display:flex;gap:8px;">
-      <button id="timer-play" onclick="timerPlayPause()" style="flex:1;background:linear-gradient(135deg,#C96358,#a84e44);color:white;border:none;border-radius:8px;padding:10px;font-size:1.1rem;cursor:pointer;">▶</button>
-      <button onclick="timerReset()" style="flex:1;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:10px;font-size:1rem;cursor:pointer;">↺</button>
+      <button id="timer-play" onclick="timerPlayPause()" style="flex:1;background:linear-gradient(135deg,#C96358,#a84e44);color:white;border:none;border-radius:8px;padding:11px;font-size:1.15rem;cursor:pointer;">▶</button>
+      <button onclick="timerReset()" style="flex:1;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:11px;font-size:1rem;cursor:pointer;">↺</button>
     </div>
-    <p id="timer-label" style="font-size:0.72rem;color:rgba(255,255,255,.35);text-align:center;margin-top:8px;margin-bottom:0;">Sélectionne une durée</p>
   </div>
+</div>
+
+<!-- Bannière iPhone "Ajouter à l'écran d'accueil" -->
+<div id="pwa-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#2C1F1A;border-top:1px solid rgba(201,99,88,.35);padding:12px 16px 20px;text-align:center;">
+  <button onclick="document.getElementById('pwa-banner').style.display='none'" style="position:absolute;top:10px;right:14px;background:none;border:none;color:rgba(255,255,255,.4);font-size:1.1rem;cursor:pointer;">✕</button>
+  <p style="font-size:0.8rem;font-weight:700;color:var(--nude);margin-bottom:4px;">📱 Installe l'appli sur ton iPhone</p>
+  <p style="font-size:0.75rem;color:rgba(255,255,255,.55);margin:0;line-height:1.5;">Appuie sur <strong style="color:white;">⬆ Partager</strong> en bas de Safari,<br>puis <strong style="color:white;">"Sur l'écran d'accueil"</strong> → Ajouter</p>
 </div>
 
 <style>
 .t-pre { background:rgba(255,255,255,.07); color:rgba(255,255,255,.75); border:1px solid rgba(255,255,255,.1); border-radius:6px; padding:6px 4px; font-size:0.75rem; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif; transition:background .15s; }
 .t-pre:hover, .t-pre.active { background:rgba(201,99,88,.3); color:white; border-color:rgba(201,99,88,.5); }
+.t-rep.active { background:rgba(106,175,61,.3) !important; border-color:rgba(106,175,61,.5) !important; }
 #timer-display.done { color:#7ecba1; }
+#timer-display.repos { color:#C9957A; }
 </style>
 
 <script>
 (function(){
-  var total = 30, remaining = 30, running = false, interval = null;
+  var total=30, remaining=30, running=false, interval=null, mode='exo';
 
-  function fmt(s) {
-    var m = Math.floor(s/60), sec = s%60;
-    return (m<10?'0':'')+m+':'+(sec<10?'0':'')+sec;
+  function fmt(s){ var m=Math.floor(s/60),sec=s%60; return (m<10?'0':'')+m+':'+(sec<10?'0':'')+sec; }
+
+  function render(){
+    var d=document.getElementById('timer-display');
+    d.textContent=fmt(remaining);
+    d.classList.toggle('done', remaining===0);
+    d.classList.toggle('repos', mode==='rep' && remaining>0);
   }
-  function render() {
-    var d = document.getElementById('timer-display');
-    d.textContent = fmt(remaining);
-    d.classList.toggle('done', remaining === 0);
+
+  function updatePlayBtn(){ document.getElementById('timer-play').textContent = running?'⏸':'▶'; }
+
+  function beep(){
+    try {
+      var ctx=new(window.AudioContext||window.webkitAudioContext)();
+      [0, 0.18, 0.36].forEach(function(t){
+        var o=ctx.createOscillator(), g=ctx.createGain();
+        o.connect(g); g.connect(ctx.destination);
+        o.frequency.value = t===0.36 ? 1046 : 880;
+        g.gain.setValueAtTime(0.25, ctx.currentTime+t);
+        g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime+t+0.25);
+        o.start(ctx.currentTime+t); o.stop(ctx.currentTime+t+0.3);
+      });
+    } catch(e){}
   }
-  function updateBtn() {
-    document.getElementById('timer-play').textContent = running ? '⏸' : '▶';
-  }
-  window.timerSet = function(s) {
-    timerStop(); total = s; remaining = s; render();
-    document.querySelectorAll('.t-pre').forEach(function(b){ b.classList.remove('active'); });
-    event.target.classList.add('active');
-    document.getElementById('timer-label').textContent = 'Prête ?';
+
+  window.timerSwitchMode = function(m){
+    mode=m;
+    document.getElementById('presets-exo').style.display = m==='exo'?'grid':'none';
+    document.getElementById('presets-rep').style.display = m==='rep'?'grid':'none';
+    document.getElementById('mode-exo').style.background = m==='exo'?'linear-gradient(135deg,#C96358,#a84e44)':'transparent';
+    document.getElementById('mode-exo').style.color = m==='exo'?'white':'rgba(255,255,255,.5)';
+    document.getElementById('mode-rep').style.background = m==='rep'?'linear-gradient(135deg,#6AAF3D,#4e8a2c)':'transparent';
+    document.getElementById('mode-rep').style.color = m==='rep'?'white':'rgba(255,255,255,.5)';
+    timerStop(); var def=m==='rep'?60:30; total=def; remaining=def; render();
+    document.querySelectorAll('.t-pre').forEach(function(b){b.classList.remove('active');});
+    document.getElementById('timer-label').textContent = m==='rep'?'Temps de repos':'Durée exercice';
+    updatePlayBtn();
   };
-  window.timerPlayPause = function() {
-    if (remaining === 0) { timerReset(); return; }
+
+  window.timerSet = function(s){
+    timerStop(); total=s; remaining=s; render();
+    document.querySelectorAll('.t-pre').forEach(function(b){b.classList.remove('active');});
+    event.target.classList.add('active');
+    document.getElementById('timer-label').textContent='Prête ?';
+    updatePlayBtn();
+  };
+
+  window.timerPlayPause = function(){
+    if(remaining===0){ timerReset(); return; }
     running ? timerStop() : timerStart();
   };
-  function timerStart() {
-    if (remaining === 0) return;
-    running = true; updateBtn();
-    document.getElementById('timer-label').textContent = 'En cours…';
-    interval = setInterval(function(){
+
+  function timerStart(){
+    if(remaining===0) return;
+    running=true; updatePlayBtn();
+    document.getElementById('timer-label').textContent='En cours…';
+    interval=setInterval(function(){
       remaining--;
       render();
-      if (remaining === 0) {
-        timerStop();
-        document.getElementById('timer-label').textContent = '✅ Terminé !';
-        document.getElementById('timer-play').textContent = '↺';
+      if(remaining<=3 && remaining>0) beep();
+      if(remaining===0){
+        timerStop(); beep();
+        document.getElementById('timer-label').textContent = mode==='rep'?'🏃 C\'est reparti !':'✅ Série terminée !';
+        document.getElementById('timer-play').textContent='↺';
       }
-    }, 1000);
+    },1000);
   }
-  function timerStop() {
-    running = false; clearInterval(interval); interval = null; updateBtn();
+
+  function timerStop(){ running=false; clearInterval(interval); interval=null; updatePlayBtn(); }
+
+  window.timerReset=function(){
+    timerStop(); remaining=total; render();
+    document.getElementById('timer-label').textContent='Prête ?';
+    document.getElementById('timer-play').textContent='▶';
+  };
+
+  window.timerTogglePanel=function(){
+    var p=document.getElementById('timer-panel');
+    p.style.display=p.style.display==='none'?'block':'none';
+  };
+
+  // Bannière iPhone (Safari uniquement, hors standalone)
+  var isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  var isStandalone=window.navigator.standalone===true;
+  var isSafari=/safari/i.test(navigator.userAgent) && !/chrome|crios|fxios/i.test(navigator.userAgent);
+  if(isIOS && !isStandalone && isSafari && !sessionStorage.getItem('pwa-dismissed')){
+    setTimeout(function(){ document.getElementById('pwa-banner').style.display='block'; }, 4000);
+    document.getElementById('pwa-banner').querySelector('button').addEventListener('click',function(){
+      sessionStorage.setItem('pwa-dismissed','1');
+    });
   }
-  window.timerReset = function() {
-    timerStop(); remaining = total; render();
-    document.getElementById('timer-label').textContent = 'Prête ?';
-    document.getElementById('timer-play').textContent = '▶';
-  };
-  window.timerTogglePanel = function() {
-    var p = document.getElementById('timer-panel');
-    p.style.display = p.style.display === 'none' ? 'block' : 'none';
-  };
 })();
 </script>
 
