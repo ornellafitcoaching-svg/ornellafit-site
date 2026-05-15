@@ -962,8 +962,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="offre-bloc-header">
         <span class="offre-bloc-num">02</span>
         <div>
-          <div class="offre-bloc-titre">Coaching Hybride</div>
-          <div class="offre-bloc-sub">Séances chez toi + programme avec vidéos en autonomie</div>
+          <div class="offre-bloc-titre">Coaching Hybride <span style="font-size:0.75rem;font-weight:600;background:#FFF0EE;color:#C96358;padding:3px 10px;border-radius:20px;vertical-align:middle;">🏠 Présentiel — Essonne (91)</span></div>
+          <div class="offre-bloc-sub">Séances à domicile chez toi + programme avec vidéos en autonomie · Sans engagement</div>
         </div>
       </div>
 
@@ -1082,7 +1082,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div style="background:#F0F7E6;border-radius:10px;padding:12px 16px;margin:12px 0;border-left:3px solid #6AAF3D">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
             <span style="font-size:13px;font-weight:700;color:#2D6A4F">🥗 Option Accompagnement Nutrition</span>
-            <span style="font-size:15px;font-weight:800;color:#2D6A4F">+40€</span>
+            <span style="font-size:15px;font-weight:800;color:#2D6A4F">+40€ <span style="font-size:11px;font-weight:600">(unique)</span></span>
           </div>
           <p style="font-size:12px;color:#3D6B4F;margin:0;line-height:1.5">
             Analyse alimentation · Calcul métabolisme de base ·
@@ -1215,7 +1215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="tier-name">3 mois</div>
             <div class="tier-sub">Résultats visibles</div>
             <div class="tier-price">99€</div>
-            <div class="tier-price-unit">/ mois · ≈ 3€30 / jour</div>
+            <div class="tier-price-unit">/ mois · soit 297€ au total · ≈ 3€30 / jour</div>
             <div class="tier-divider"></div>
             <ul class="tier-includes">
               <li class="tier-item">Programme sur-mesure évolutif + vidéos</li>
@@ -1676,6 +1676,22 @@ if (!isWebView && 'IntersectionObserver' in window) {
 document.addEventListener('click', function(e) {
   var a = e.target.closest('a[href*="wa.me"]');
   if (a && typeof fbq !== 'undefined') fbq('track', 'Contact');
+});
+</script>
+<script>
+// Étiquettes WhatsApp / Stripe sous les boutons CTA
+document.querySelectorAll('a.btn-offre, a.ohi-btn').forEach(function(btn) {
+  if (btn.nextElementSibling && btn.nextElementSibling.tagName === 'P') return;
+  var label = document.createElement('p');
+  label.style.cssText = 'font-size:11px;text-align:center;margin:5px 0 0;';
+  if (btn.href && btn.href.includes('buy.stripe.com')) {
+    label.style.color = '#4a9e6e';
+    label.innerHTML = '🔒 Paiement sécurisé en ligne';
+  } else if (btn.href && btn.href.includes('wa.me')) {
+    label.style.color = '#7A6E6E';
+    label.innerHTML = '💬 Redirige vers WhatsApp — pas de paiement immédiat';
+  } else { return; }
+  btn.insertAdjacentElement('afterend', label);
 });
 </script>
 </body>
