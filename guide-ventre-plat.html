@@ -2121,28 +2121,39 @@ window.addEventListener('scroll', function() {
         </tbody>
       </table>
     </div>
-    <p style="font-size:0.88rem;color:#7A5E54;line-height:1.7;margin-bottom:8px;">💡 Cocher une case = dopamine = motivation qui dure. Tes données sont sauvegardées automatiquement dans ce navigateur.</p>
-    <p style="font-size:0.82rem;color:#9A8A80;margin-bottom:20px;">✅ Sauvegarde automatique — tu peux fermer et revenir plus tard, tout sera là.</p>
-    <button onclick="exportSuivi()" style="background:#2C1F1A;color:#E8B4A0;border:none;border-radius:50px;padding:13px 28px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">💾 Sauvegarder mes notes</button>
+    <p style="font-size:0.88rem;color:#7A5E54;line-height:1.7;margin-bottom:8px;">💡 Cocher une case = dopamine = motivation qui dure.</p>
+    <div style="background:#FFF8F0;border:1px solid #F0C4A0;border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:0.82rem;color:#7A5E54;line-height:1.6;">
+      ⚠️ <strong>Sauvegarde uniquement dans ce navigateur</strong> — si tu vides le cache ou changes d'appareil, les données sont perdues.<br>
+      → Utilise le bouton ci-dessous pour copier ton résumé et le coller dans tes <strong>Notes iPhone</strong> (sauvegardé dans iCloud).
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <button id="copy-suivi-btn" onclick="copySuivi()" style="background:#2C1F1A;color:#E8B4A0;border:none;border-radius:50px;padding:13px 24px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;transition:opacity .2s;width:auto !important;">📋 Copier dans Notes</button>
+    </div>
     <script>
-    function exportSuivi(){
+    function buildSuiviText(){
       var entries = [
         {label:'S1 · Séance A', check:'s1a'}, {label:'S1 · Séance B', check:'s1b'}, {label:'S1 · Séance C', check:'s1c'},
         {label:'S1 · Ressenti', text:'s1r'}, {label:'S1 · Progression', text:'s1p'},
         {label:'S2 · Séance A', check:'s2a'}, {label:'S2 · Séance B', check:'s2b'}, {label:'S2 · Séance C', check:'s2c'},
         {label:'S2 · Ressenti', text:'s2r'}, {label:'S2 · Progression', text:'s2p'},
       ];
-      var lines = ['MON SUIVI VENTRE PLAT — ' + new Date().toLocaleDateString('fr-FR'), ''];
+      var lines = ['📋 MON SUIVI VENTRE PLAT — ' + new Date().toLocaleDateString('fr-FR'), ''];
       entries.forEach(function(e){
         var val = localStorage.getItem('vp_' + (e.check||e.text)) || '';
-        if(e.check) lines.push(e.label + ' : ' + (val==='1' ? '✓ fait' : '☐ non fait'));
+        if(e.check) lines.push(e.label + ' : ' + (val==='1' ? '✓ fait' : '☐'));
         else lines.push(e.label + ' : ' + (val||'—'));
       });
-      var blob = new Blob([lines.join('\n')], {type:'text/plain;charset=utf-8'});
-      var a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'suivi-ventre-plat.txt';
-      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      return lines.join('\n');
+    }
+    function copySuivi(){
+      var btn = document.getElementById('copy-suivi-btn');
+      navigator.clipboard.writeText(buildSuiviText()).then(function(){
+        btn.textContent = '✅ Copié ! Colle dans Téléphone > Notes';
+        btn.style.background = '#4a9e6e';
+        setTimeout(function(){ btn.textContent = '📋 Copier dans Notes'; btn.style.background = '#2C1F1A'; }, 3500);
+      }).catch(function(){
+        prompt('Copie ce texte et colle-le dans tes Notes :', buildSuiviText());
+      });
     }
     </script>
   </div>
