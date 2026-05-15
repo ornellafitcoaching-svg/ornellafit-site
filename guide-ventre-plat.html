@@ -319,12 +319,52 @@ body {
   .cta-section { padding: 36px 20px; }
   .stripe-wrap { padding: 32px 20px; }
 }
+
+@media (max-width: 768px) {
+  body { font-size: 15px; padding: 0; }
+  h1 { font-size: 26px !important; }
+  h2 { font-size: 20px !important; }
+  h3 { font-size: 17px !important; }
+  section, .section, [class*="page"],
+  [class*="chapter"] { padding: 24px 16px !important; }
+  img { max-width: 100% !important; }
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  a[style*="display:block"],
+  button { width: 100% !important; padding: 14px !important; font-size: 15px !important; }
+  .grid, [class*="grid"] { grid-template-columns: 1fr !important; }
+}
+details.exo-premium > summary { list-style: none; }
+details.exo-premium > summary::-webkit-details-marker { display: none; }
+details.comp-card > summary { list-style: none; }
+details.comp-card > summary::-webkit-details-marker { display: none; }
 </style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav style="position:sticky;top:0;z-index:100;background:white;border-bottom:1px solid #F0E8E0;padding:10px 16px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch">
+  <a href="#page-1" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">📖 Pourquoi</a>
+  <a href="#erreurs" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">❌ 6 Erreurs</a>
+  <a href="#exercices" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">💪 Exercices</a>
+  <a href="#nutrition" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">🥗 Nutrition</a>
+  <a href="#action" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">🎯 Action</a>
+  <a href="#bonus-1" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:white;text-decoration:none;padding:6px 12px;background:#C96358;border-radius:20px">⭐ Bonus</a>
+</nav>
+<div id="progress-bar" style="height:3px;background:#C96358;width:0%;transition:width 0.1s;position:sticky;top:45px;z-index:99"></div>
+<script>
+window.addEventListener('scroll', function() {
+  var winScroll = document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  document.getElementById('progress-bar').style.width = scrolled + '%';
+});
+</script>
 
 <!-- ══ COUVERTURE ══ -->
 <div id="page-0">
@@ -396,6 +436,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </article>
 
 <!-- ══ PAGE 2 — LES 6 ERREURS ══ -->
+<a id="erreurs" style="display:block;position:relative;top:-55px;visibility:hidden"></a>
 <article class="page" id="page-2">
   <span class="eyebrow">Chapitre 2</span>
   <h2 class="sec-title serif">Les 6 erreurs qui<br><em>sabotent ton ventre plat</em></h2>
@@ -466,6 +507,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!-- ══ PAGE 3 — LES BONS EXERCICES ══ -->
+<a id="exercices" style="display:block;position:relative;top:-55px;visibility:hidden"></a>
 <article class="page" id="page-3">
   <span class="eyebrow">Chapitre 3</span>
   <h2 class="sec-title serif">Les exercices<br><em>qui font vraiment la différence</em></h2>
@@ -521,6 +563,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </article>
 
 <!-- ══ PAGE 4 — NUTRITION ══ -->
+<a id="nutrition" style="display:block;position:relative;top:-55px;visibility:hidden"></a>
 <article class="page" id="page-4">
   <span class="eyebrow">Chapitre 4</span>
   <h2 class="sec-title serif">La nutrition<br><em>anti-ventre ballonné</em></h2>
@@ -554,6 +597,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </article>
 
 <!-- ══ PAGE 5 — PLAN D'ACTION ══ -->
+<a id="action" style="display:block;position:relative;top:-55px;visibility:hidden"></a>
 <article class="page" id="page-5">
   <span class="eyebrow">Chapitre 5</span>
   <h2 class="sec-title serif">Ton plan d'action<br><em>dès demain matin</em></h2>
@@ -820,8 +864,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </style>
 
         <!-- 1. VACUUM -->
-        <div class="exo-premium">
-          <div class="exo-premium-head">🫁 Vacuum abdominal — 3×10 (10s tenu)</div>
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🫁 Vacuum abdominal — 3×10 (10s tenu)<span style="color:#C96358">▼</span></summary>
           <div class="exo-detail">
             <span class="exo-detail-label label-sci">🧬 Pourquoi ça fonctionne</span>
             <div class="exo-detail-text">Le vacuum active le muscle transverse — la ceinture abdominale profonde qui entoure tes organes comme un corset naturel. Des études montrent que le transverse s'active 30ms AVANT tout mouvement du corps — c'est lui qui stabilise ta colonne. En le renforçant, tu crées un ventre naturellement plus plat au repos.</div>
@@ -857,11 +901,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p>Au-delà : debout, puis en marchant</p>
             </div>
           </div>
-        </div>
+        </details>
 
         <!-- 2. DEAD BUG -->
-        <div class="exo-premium">
-          <div class="exo-premium-head">🐛 Dead bug — 3×8/côté</div>
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🐛 Dead bug — 3×8/côté<span style="color:#C96358">▼</span></summary>
           <div class="exo-detail">
             <span class="exo-detail-label label-sci">🧬 Pourquoi ça fonctionne</span>
             <div class="exo-detail-text">Le dead bug est un exercice d'anti-extension — il apprend au corps à stabiliser la colonne contre une force qui veut la creuser. Des recherches en rééducation montrent que c'est l'un des exercices les plus efficaces pour activer le transverse ET les multifides simultanément. Résultat : ventre plat + dos moins douloureux.</div>
@@ -898,11 +942,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p>Sem. 4 : jambes tendues (avancé)</p>
             </div>
           </div>
-        </div>
+        </details>
 
         <!-- 3. PLANCHE -->
-        <div class="exo-premium">
-          <div class="exo-premium-head">🪵 Planche avant — 3×20 secondes</div>
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🪵 Planche avant — 3×20 secondes<span style="color:#C96358">▼</span></summary>
           <div class="exo-detail">
             <span class="exo-detail-label label-sci">🧬 Pourquoi ça fonctionne</span>
             <div class="exo-detail-text">La planche est un exercice d'isométrie — le muscle travaille sans se raccourcir ni s'allonger. Des études montrent que l'isométrie développe la force fonctionnelle 40% plus efficacement que les exercices dynamiques pour le core. Elle active simultanément le transverse, le droit abdominal, les obliques ET les stabilisateurs du dos.</div>
@@ -939,11 +983,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p>Sem. 4 : 3×45s ou planche dynamique</p>
             </div>
           </div>
-        </div>
+        </details>
 
         <!-- 4. BIRD DOG -->
-        <div class="exo-premium">
-          <div class="exo-premium-head">🐦 Bird dog — 3×8/côté</div>
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🐦 Bird dog — 3×8/côté<span style="color:#C96358">▼</span></summary>
           <div class="exo-detail">
             <span class="exo-detail-label label-sci">🧬 Pourquoi ça fonctionne</span>
             <div class="exo-detail-text">Le bird dog est l'exercice préféré des kinésithérapeutes pour la rééducation du dos. Le Pr Stuart McGill (référence mondiale en biomécanique) le classe parmi les 3 exercices les plus efficaces pour protéger la colonne et développer le core fonctionnel. Il travaille en anti-rotation — parfait post-partum.</div>
@@ -980,11 +1024,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p>Sem. 4 : 4×12/côté tempo contrôlé</p>
             </div>
           </div>
-        </div>
+        </details>
 
         <!-- 5. RESPIRATION -->
-        <div class="exo-premium">
-          <div class="exo-premium-head">🌀 Respiration diaphragmatique — 2×10 respirations</div>
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🌀 Respiration diaphragmatique — 2×10 respirations<span style="color:#C96358">▼</span></summary>
           <div class="exo-detail">
             <span class="exo-detail-label label-sci">🧬 Pourquoi ça fonctionne</span>
             <div class="exo-detail-text">Le diaphragme et le plancher pelvien fonctionnent comme des pistons synchronisés. Des études en physiothérapie montrent qu'une rééducation respiratoire de 4 semaines réduit le périmètre abdominal de 2 à 4 cm sans aucun autre exercice. C'est pour ça que le yoga et le pilates donnent des résultats sur le ventre — c'est la respiration, pas les postures.</div>
@@ -1019,7 +1063,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p>Au-delà : pendant l'effort physique</p>
             </div>
           </div>
-        </div>
+        </details>
       </div>
     </div>
 
@@ -1066,8 +1110,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="exo-premium"><div class="exo-premium-head">🐛 Dead bug — 4×10/côté tempo 3s</div></div>
         <div class="exo-premium"><div class="exo-premium-head">🪵 Planche avant — 3×30 secondes</div></div>
         <div class="exo-premium"><div class="exo-premium-head">🐦 Bird dog — 4×10/côté pause 3s</div></div>
-        <div class="exo-premium">
-          <div class="exo-premium-head">🔲 Planche latérale — 3×20s/côté (nouveau)</div>
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🔲 Planche latérale — 3×20s/côté (nouveau)<span style="color:#C96358">▼</span></summary>
           <div class="exo-detail">
             <span class="exo-detail-label label-how">✅ Comment faire</span>
             <div class="exo-detail-text">
@@ -1084,7 +1128,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
             <div class="exo-detail-text">Le côté du ventre doit brûler — si tu ne sens rien monte le bassin plus haut</div>
           </div>
-        </div>
+        </details>
       </div>
     </div>
 
@@ -1194,8 +1238,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </style>
 
     <!-- 1. Probiotiques -->
-    <div class="comp-card">
-      <div class="comp-head">1. 🦠 Probiotiques</div>
+    <details class="comp-card">
+      <summary style="cursor:pointer;font-weight:700;font-size:1rem;color:#2C1F1A;display:flex;justify-content:space-between;align-items:center;list-style:none">1. 🦠 Probiotiques<span style="color:#C96358;font-size:0.85rem">▼</span></summary>
       <div class="comp-section">
         <span class="comp-label comp-why-label">🧬 Pourquoi</span>
         <div class="comp-text">Le microbiote intestinal influence directement les ballonnements et la graisse abdominale. Des études montrent qu'un microbiote déséquilibré augmente l'extraction calorique des aliments et favorise le stockage abdominal. Les souches <strong>Lactobacillus et Bifidobacterium</strong> réduisent les ballonnements en 2-4 semaines.</div>
@@ -1209,11 +1253,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="comp-text">Yaourt grec · Kéfir · Choucroute · Kimchi · Kombucha</div>
       </div>
       <span class="comp-label comp-budget-label">💰 Budget : 15-30€/mois</span>
-    </div>
+    </details>
 
     <!-- 2. Oméga-3 -->
-    <div class="comp-card">
-      <div class="comp-head">2. 🌿 Oméga-3</div>
+    <details class="comp-card">
+      <summary style="cursor:pointer;font-weight:700;font-size:1rem;color:#2C1F1A;display:flex;justify-content:space-between;align-items:center;list-style:none">2. 🌿 Oméga-3<span style="color:#C96358;font-size:0.85rem">▼</span></summary>
       <div class="comp-section">
         <span class="comp-label comp-why-label">🧬 Pourquoi</span>
         <div class="comp-text">Les oméga-3 réduisent l'inflammation chronique qui maintient la graisse viscérale. Une méta-analyse de 21 études montre qu'une supplémentation en oméga-3 réduit le tour de taille de <strong>1,3 cm en moyenne sur 6 semaines</strong> — sans changer l'alimentation.</div>
@@ -1227,11 +1271,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="comp-text">Saumon · Sardines · Maquereaux · Noix · Graines de chia · Huile de colza</div>
       </div>
       <span class="comp-label comp-budget-label">💰 Budget : 15-25€/mois</span>
-    </div>
+    </details>
 
     <!-- 3. Magnésium -->
-    <div class="comp-card">
-      <div class="comp-head">3. 💊 Magnésium</div>
+    <details class="comp-card">
+      <summary style="cursor:pointer;font-weight:700;font-size:1rem;color:#2C1F1A;display:flex;justify-content:space-between;align-items:center;list-style:none">3. 💊 Magnésium<span style="color:#C96358;font-size:0.85rem">▼</span></summary>
       <div class="comp-section">
         <span class="comp-label comp-why-label">🧬 Pourquoi</span>
         <div class="comp-text">Le magnésium régule le cortisol — l'hormone du stress qui stocke la graisse autour du ventre. <strong>70% des femmes sont carencées en magnésium.</strong> Une carence augmente les fringales de sucre, la rétention d'eau et les ballonnements.</div>
@@ -1245,11 +1289,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="comp-text">Chocolat noir 85% · Amandes · Épinards · Légumineuses · Graines de courge</div>
       </div>
       <span class="comp-label comp-budget-label">💰 Budget : 10-20€/mois</span>
-    </div>
+    </details>
 
     <!-- 4. Thé vert -->
-    <div class="comp-card">
-      <div class="comp-head">4. 🍵 Thé vert (EGCG)</div>
+    <details class="comp-card">
+      <summary style="cursor:pointer;font-weight:700;font-size:1rem;color:#2C1F1A;display:flex;justify-content:space-between;align-items:center;list-style:none">4. 🍵 Thé vert (EGCG)<span style="color:#C96358;font-size:0.85rem">▼</span></summary>
       <div class="comp-section">
         <span class="comp-label comp-why-label">🧬 Pourquoi</span>
         <div class="comp-text">Les catéchines du thé vert — notamment l'EGCG — augmentent la thermogenèse et activent la lipolyse (déstockage des graisses). Des études montrent une <strong>réduction de la graisse abdominale de 5% en 12 semaines</strong> avec 3 tasses par jour.</div>
@@ -1263,11 +1307,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="comp-text">"Je bois du thé vert matcha le matin à la place du café quand je prépare une compétition. La clarté mentale est différente — sans pics d'énergie ni crash."</div>
       </div>
       <span class="comp-label comp-budget-label">💰 Budget : 5-15€/mois</span>
-    </div>
+    </details>
 
     <!-- 5. Psyllium -->
-    <div class="comp-card">
-      <div class="comp-head">5. 🌾 Fibres (Psyllium)</div>
+    <details class="comp-card">
+      <summary style="cursor:pointer;font-weight:700;font-size:1rem;color:#2C1F1A;display:flex;justify-content:space-between;align-items:center;list-style:none">5. 🌾 Fibres (Psyllium)<span style="color:#C96358;font-size:0.85rem">▼</span></summary>
       <div class="comp-section">
         <span class="comp-label comp-why-label">🧬 Pourquoi</span>
         <div class="comp-text">Le psyllium est une fibre soluble qui forme un gel dans l'intestin — il ralentit l'absorption des sucres, nourrit le microbiote et améliore le transit en <strong>48-72h</strong>. Un transit régulier réduit visuellement le ventre de plusieurs centimètres.</div>
@@ -1281,7 +1325,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="comp-text">Avoine · Légumineuses · Pommes · Poires · Graines de lin</div>
       </div>
       <span class="comp-label comp-budget-label">💰 Budget : 8-15€/mois</span>
-    </div>
+    </details>
 
     <!-- Tableau récap -->
     <div style="overflow-x:auto;">
@@ -1837,6 +1881,8 @@ function toggleFaq(q) {
     <a href="#booty-cta" role="menuitem" onclick="document.getElementById('fab-check').checked=false">🍑 Booty Sculpt</a>
   </div>
 </nav>
+
+<button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="position:fixed;bottom:20px;right:16px;background:#C96358;color:white;border:none;border-radius:50%;width:44px;height:44px;font-size:18px;cursor:pointer;z-index:999;box-shadow:0 4px 12px rgba(201,99,88,0.4)">↑</button>
 
 </body>
 </html>
