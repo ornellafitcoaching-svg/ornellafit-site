@@ -340,7 +340,9 @@ body {
     -webkit-overflow-scrolling: touch;
   }
   a[style*="display:block"],
-  button:not(#back-to-top) { width: 100% !important; padding: 14px !important; font-size: 15px !important; }
+  button:not(#back-to-top):not(#timer-fab):not(#timer-play):not(.t-pre):not(#mode-exo):not(#mode-rep):not(#nav-toggle-btn):not(.exo-timer-btn) { width: 100% !important; padding: 14px !important; font-size: 15px !important; }
+  .exo-timer-btn { background:rgba(201,99,88,.13); border:1px solid rgba(201,99,88,.4); color:#C96358; border-radius:50px; padding:7px 16px; font-size:0.8rem; font-weight:700; cursor:pointer; width:auto !important; font-family:'DM Sans',sans-serif; transition:background .2s; }
+  .exo-timer-btn:hover { background:rgba(201,99,88,.25); }
   .grid, [class*="grid"] { grid-template-columns: 1fr !important; }
 }
 details.exo-premium > summary { list-style: none; }
@@ -1251,6 +1253,7 @@ window.addEventListener('scroll', function() {
               <p>Au-delà : debout, puis en marchant</p>
             </div>
           </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(10)">⏱️ Lancer 10s</button></div>
         </details>
 
         <!-- 2. DEAD BUG -->
@@ -1292,6 +1295,7 @@ window.addEventListener('scroll', function() {
               <p>Sem. 4 : jambes tendues (avancé)</p>
             </div>
           </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(45)">⏱️ Lancer 45s (série)</button></div>
         </details>
 
         <!-- 3. PLANCHE -->
@@ -1333,6 +1337,7 @@ window.addEventListener('scroll', function() {
               <p>Sem. 4 : 3×45s ou planche dynamique</p>
             </div>
           </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(20)">⏱️ Lancer 20s</button></div>
         </details>
 
         <!-- 4. BIRD DOG -->
@@ -1374,6 +1379,7 @@ window.addEventListener('scroll', function() {
               <p>Sem. 4 : 4×12/côté tempo contrôlé</p>
             </div>
           </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(40)">⏱️ Lancer 40s (série)</button></div>
         </details>
 
         <!-- 5. RESPIRATION -->
@@ -1413,6 +1419,7 @@ window.addEventListener('scroll', function() {
               <p>Au-delà : pendant l'effort physique</p>
             </div>
           </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(60)">⏱️ Lancer 60s (série)</button></div>
         </details>
       </div>
     </div>
@@ -1424,11 +1431,138 @@ window.addEventListener('scroll', function() {
         <span class="seance-arrow">›</span>
       </div>
       <div class="seance-body">
-        <div class="exo-premium"><div class="exo-premium-head">🫁 Vacuum — 3×12 (10s tenu)</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🪵 Planche — 3×25 secondes</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🐛 Dead bug — 3×10/côté</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🐦 Bird dog — 3×10/côté</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🌀 Respiration — 2×10</div></div>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🫁 Vacuum abdominal — 3×12 (10s tenu)<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Debout, pieds largeur hanches</p>
+              <p>2. Inspire par le nez, expire TOUT l'air par la bouche</p>
+              <p>3. Sans reprendre d'air, rentre le ventre au maximum vers la colonne</p>
+              <p>4. Tiens 10 secondes — respire très légèrement si besoin</p>
+              <p>5. Relâche. Répète 12 fois.</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-feel">🎯 Ce que tu dois sentir</span>
+            <div class="exo-detail-text">Une ceinture invisible qui se serre de l'intérieur, pas de tension dans le dos.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-err">❌ Erreur fréquente</span>
+            <div class="exo-detail-text">Rentrer le ventre sans vider l'air d'abord — tu travailles les muscles superficiels, pas le transverse. Expire jusqu'à la dernière goutte.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"12 répétitions en Séance B : tu commences à intégrer le mouvement en automatisme. C'est à cette séance que le transverse se met vraiment à travailler."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(10)">⏱️ Lancer 10s</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🪵 Planche avant — 3×25 secondes<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Sur les avant-bras, coudes sous les épaules</p>
+              <p>2. Corps en ligne droite de la tête aux talons</p>
+              <p>3. Rentre le ventre et serre les fessiers</p>
+              <p>4. Respire normalement — ne bloque pas</p>
+              <p>5. Tiens 25 secondes en maintenant la ligne</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-feel">🎯 Ce que tu dois sentir</span>
+            <div class="exo-detail-text">Une légère brûlure dans les abdominaux. Le ventre travaille, pas le bas du dos.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-err">❌ Erreur fréquente</span>
+            <div class="exo-detail-text">Les fesses qui montent ou s'affaissent — les deux enlèvent 80% du travail abdominal.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"25 secondes = 5s de plus qu'en Séance A. Si c'est trop facile, soulève un pied 5s puis l'autre pour augmenter l'intensité sans changer la durée."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(25)">⏱️ Lancer 25s</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🐛 Dead bug — 3×10/côté<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Allonge-toi sur le dos, bras tendus vers le plafond</p>
+              <p>2. Lève les jambes, genoux à 90°</p>
+              <p>3. Appuie le bas du dos au sol — il ne doit JAMAIS décoller</p>
+              <p>4. Descends lentement bras droit + jambe gauche simultanément</p>
+              <p>5. Expire pendant la descente. Remonte. Change de côté.</p>
+              <p>6. En Séance B : 10 répétitions par côté, amplitude complète</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-feel">🎯 Ce que tu dois sentir</span>
+            <div class="exo-detail-text">L'effort dans le centre du corps. Le bas du dos collé au sol en permanence.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-err">❌ Erreur fréquente</span>
+            <div class="exo-detail-text">Le dos qui se creuse. → Si ça arrive, réduis l'amplitude. La qualité prime sur la quantité.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"Place une main sous ton bas du dos. Si tu sens de l'espace entre ta main et le sol — remonte les jambes immédiatement."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(50)">⏱️ Lancer 50s (série)</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🐦 Bird dog — 3×10/côté<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. À quatre pattes — mains sous les épaules, genoux sous les hanches</p>
+              <p>2. Dos plat comme une table</p>
+              <p>3. Rentre le ventre AVANT de bouger</p>
+              <p>4. Étends bras droit + jambe gauche simultanément</p>
+              <p>5. Tiens 2 secondes. Reviens lentement. Répète 10 fois. Change.</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-feel">🎯 Ce que tu dois sentir</span>
+            <div class="exo-detail-text">L'effort dans le centre du corps. L'équilibre difficile — c'est voulu.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-err">❌ Erreur fréquente</span>
+            <div class="exo-detail-text">La hanche qui monte quand tu lèves la jambe. → Lève la jambe moins haut jusqu'à contrôler parfaitement.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"Imagine un verre d'eau sur ton dos. Il ne doit pas tomber. Cette image corrige 90% des erreurs de bassin."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(50)">⏱️ Lancer 50s (série)</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🌀 Respiration diaphragmatique — 2×10<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Allonge-toi sur le dos, genoux fléchis</p>
+              <p>2. Une main sur la poitrine, une sur le ventre</p>
+              <p>3. Inspire 4s par le nez → le ventre monte, la poitrine reste immobile</p>
+              <p>4. Expire 6s par la bouche → le ventre descend et rentre légèrement</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-feel">🎯 Ce que tu dois sentir</span>
+            <div class="exo-detail-text">La main sur le ventre qui monte et descend. Un calme profond après 5 respirations.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"En fin de séance, c'est ta récupération active. Ça réduit le cortisol post-effort et aide à garder un ventre plat au repos."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(60)">⏱️ Lancer 60s (série)</button></div>
+        </details>
+
       </div>
     </div>
 
@@ -1439,11 +1573,117 @@ window.addEventListener('scroll', function() {
         <span class="seance-arrow">›</span>
       </div>
       <div class="seance-body">
-        <div class="exo-premium"><div class="exo-premium-head">🫁 Vacuum — 4×10 (10s tenu)</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🐛 Dead bug — 3×8/côté tempo lent 3 secondes</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🪵 Planche — 3×30 secondes</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🐦 Bird dog — 3×8/côté pause 3s en haut</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🌀 Respiration — 3×10</div></div>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🫁 Vacuum abdominal — 4×10 (10s tenu)<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Debout, pieds largeur hanches</p>
+              <p>2. Inspire, expire TOUT l'air, rentre le ventre au maximum</p>
+              <p>3. Tiens 10 secondes. Relâche. Répète.</p>
+              <p>4. En Séance C : 4 séries — c'est la séance la plus complète de la semaine</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-feel">🎯 Ce que tu dois sentir</span>
+            <div class="exo-detail-text">Après 4 séries, le transverse est activé en profondeur. Tu devrais sentir une fatigue subtile au centre du ventre.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"En Séance C, tu consolides la semaine. Si tu sens que c'est plus facile qu'en Séance A — c'est la preuve que le transverse progresse."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(10)">⏱️ Lancer 10s</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🐛 Dead bug — 3×8/côté tempo lent 3 secondes<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Allonge-toi sur le dos, bras vers le plafond, jambes à 90°</p>
+              <p>2. Bas du dos collé au sol</p>
+              <p>3. Descends bras droit + jambe gauche en 3 secondes (tempo contrôlé)</p>
+              <p>4. Reviens lentement. La lenteur est l'intensité — ne va pas vite.</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-feel">🎯 Ce que tu dois sentir</span>
+            <div class="exo-detail-text">Le tempo lent rend l'exercice beaucoup plus difficile — ton core doit travailler en continu sans relâche entre les répétitions.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-err">❌ Erreur fréquente</span>
+            <div class="exo-detail-text">Accélérer pour "en finir". → Le tempo 3 secondes EST l'exercice. Compter à voix basse t'aide à maintenir le rythme.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"Compte '1-et-2-et-3' lentement à voix basse pendant la descente. Ça force le tempo et empêche de tricher."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(50)">⏱️ Lancer 50s (série)</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🪵 Planche avant — 3×30 secondes<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Sur les avant-bras, coudes sous les épaules</p>
+              <p>2. Corps en ligne droite, rentre le ventre, serre les fessiers</p>
+              <p>3. Tiens 30 secondes — c'est 10s de plus qu'en Séance A</p>
+              <p>4. Si tu décroches avant les 30s : pose les genoux 3s et reprends</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-feel">🎯 Ce que tu dois sentir</span>
+            <div class="exo-detail-text">Les 10 dernières secondes doivent être difficiles. Si elles sont faciles, la forme n'est pas parfaite.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"Découpe mentalement en 3 blocs de 10s. Focus sur le bloc suivant, pas sur le total. Cette technique de découpage mental fonctionne aussi pour les défis du quotidien."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(30)">⏱️ Lancer 30s</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🐦 Bird dog — 3×8/côté pause 3s en haut<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. À quatre pattes, dos plat, ventre rentré</p>
+              <p>2. Étends bras droit + jambe gauche</p>
+              <p>3. Tiens 3 secondes en position haute — SANS bouger</p>
+              <p>4. Reviens lentement. 8 répétitions par côté.</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-feel">🎯 Ce que tu dois sentir</span>
+            <div class="exo-detail-text">La pause de 3 secondes rend l'exercice beaucoup plus exigeant. Les stabilisateurs du core et du dos travaillent à fond pendant ces 3 secondes.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"Pendant la pause de 3s : contracte encore plus fort le ventre et visualise le nombril qui remonte vers la colonne. L'intensité double."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(3)">⏱️ Lancer 3s (pause)</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🌀 Respiration diaphragmatique — 3×10<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Allongée sur le dos, genoux fléchis</p>
+              <p>2. Inspire 4s par le nez (ventre monte, poitrine immobile)</p>
+              <p>3. Expire 6s par la bouche (ventre descend et rentre)</p>
+              <p>4. 3 séries de 10 respirations — c'est ta récupération active</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"3 séries de respiration en fin de Séance C = tu termines la semaine en réactivant le parasympathique. C'est ce qui permet la récupération musculaire et réduit l'inflammation."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(60)">⏱️ Lancer 60s (série)</button></div>
+        </details>
+
       </div>
     </div>
 
@@ -1456,29 +1696,139 @@ window.addEventListener('scroll', function() {
         <span class="seance-arrow">›</span>
       </div>
       <div class="seance-body">
-        <div class="exo-premium"><div class="exo-premium-head">🫁 Vacuum — 4×10 (15s tenu)</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🐛 Dead bug — 4×10/côté tempo 3s</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🪵 Planche avant — 3×30 secondes</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🐦 Bird dog — 4×10/côté pause 3s</div></div>
+
         <details class="exo-premium" style="margin-bottom:12px">
-          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🔲 Planche latérale — 3×20s/côté (nouveau)<span style="color:#C96358">▼</span></summary>
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🫁 Vacuum abdominal — 4×10 (15s tenu)<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-sci">🧬 Progression semaine 2</span>
+            <div class="exo-detail-text">Tu passes de 10s à 15s de maintien. Ce sont 5 secondes supplémentaires pendant lesquelles le transverse travaille en continu — l'endurance musculaire profonde se construit ici.</div>
+          </div>
           <div class="exo-detail">
             <span class="exo-detail-label label-how">✅ Comment faire</span>
             <div class="exo-detail-text">
-              <p>1. Sur l'avant-bras, corps de côté</p>
-              <p>2. Bassin levé, corps en ligne droite</p>
-              <p>3. Ne laisse pas les hanches tomber</p>
+              <p>1. Debout ou allongée (les deux fonctionnent)</p>
+              <p>2. Expire tout l'air, rentre le ventre au maximum vers la colonne</p>
+              <p>3. Tiens 15 secondes — si tu dois reprendre de l'air, expire à nouveau avant</p>
+              <p>4. 4 séries avec 45s de repos entre chaque</p>
             </div>
           </div>
           <div class="exo-detail">
-            <span class="exo-detail-label label-err">❌ Erreur fréquente</span>
-            <div class="exo-detail-text">Le bassin qui s'affaisse vers le sol</div>
+            <span class="exo-detail-label label-feel">🎯 Ce que tu dois sentir</span>
+            <div class="exo-detail-text">Les 5 dernières secondes doivent être difficiles. Le transverse maintient la contraction plus longtemps — c'est exactement ce qui le renforce.</div>
           </div>
           <div class="exo-detail">
             <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
-            <div class="exo-detail-text">Le côté du ventre doit brûler — si tu ne sens rien monte le bassin plus haut</div>
+            <div class="exo-detail-text">"15 secondes : compte 1001, 1002… jusqu'à 1015. Ne triche pas de 2 secondes — c'est là que l'adaptation se fait."</div>
           </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(15)">⏱️ Lancer 15s</button></div>
         </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🐛 Dead bug — 4×10/côté tempo 3s<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-sci">🧬 Progression semaine 2</span>
+            <div class="exo-detail-text">Tu passes à 4 séries avec amplitude complète ET tempo 3s. L'isométrie du tempo amplifie l'activation du transverse et des multifides simultanément.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Allongée sur le dos, bras vers le plafond, jambes à 90°</p>
+              <p>2. Bas du dos COLLÉ au sol — priorité absolue</p>
+              <p>3. Descends bras + jambe opposés en comptant 3 secondes</p>
+              <p>4. Amplitude complète (jambe proche du sol sans toucher)</p>
+              <p>5. Remonte en 2s. 10 répétitions par côté.</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-feel">🎯 Ce que tu dois sentir</span>
+            <div class="exo-detail-text">Le centre du corps qui travaille sans relâche. 4 séries à ce tempo représentent un vrai défi — c'est normal de sentir que les dernières répétitions sont difficiles.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"Si le bas du dos décolle à la 4ème série, c'est ok de réduire l'amplitude. Ne sacrifie jamais la position du dos pour une répétition de plus."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(60)">⏱️ Lancer 60s (série)</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🪵 Planche avant — 3×30 secondes<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-sci">🧬 Progression semaine 2</span>
+            <div class="exo-detail-text">30 secondes = la durée où l'endurance du core commence à se construire. Ton transverse apprend à maintenir la stabilité sous fatigue — c'est exactement ce dont tu as besoin pour un ventre plat au quotidien.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Sur les avant-bras, coudes sous les épaules</p>
+              <p>2. Corps en ligne droite de la tête aux talons</p>
+              <p>3. Ventre rentré, fessiers serrés, respiration normale</p>
+              <p>4. Si tu décroches : pose les genoux 5s maximum puis reprends</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"Découpe en 3 blocs de 10s. Concentre-toi sur le nombril qui remonte dans les dernières secondes. C'est là que le travail profond se fait."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(30)">⏱️ Lancer 30s</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🐦 Bird dog — 4×10/côté pause 3s<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-sci">🧬 Progression semaine 2</span>
+            <div class="exo-detail-text">4 séries avec pause 3s = l'exercice le plus exigeant de ton programme core. La pause isométrique force le corps à stabiliser sans aide du mouvement — c'est là que les stabilisateurs profonds se renforcent vraiment.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. À quatre pattes, dos plat, ventre rentré</p>
+              <p>2. Étends bras droit + jambe gauche simultanément</p>
+              <p>3. En position haute : tiens 3 secondes en contractant encore plus fort</p>
+              <p>4. Reviens sans toucher le sol. 10 répétitions par côté. 4 séries.</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-feel">🎯 Ce que tu dois sentir</span>
+            <div class="exo-detail-text">Pendant les 3 secondes de pause : un effort intense au centre. Ce n'est pas de l'inconfort à éviter — c'est exactement là que le renforcement se produit.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"Pendant les 3s : visualise le nombril qui remonte vers la colonne ET le bas du dos qui s'allonge. Double stimulation du transverse."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(3)">⏱️ Lancer 3s (pause)</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🔲 Planche latérale — 3×20s/côté <span style="background:#C96358;color:#fff;font-size:0.72rem;padding:2px 8px;border-radius:50px;margin-left:6px;">NOUVEAU</span><span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-sci">🧬 Pourquoi ça fonctionne</span>
+            <div class="exo-detail-text">La planche latérale isole les obliques latéraux — les muscles qui dessinent la taille. Elle travaille aussi le carré des lombes et le fessier moyen. C'est l'exercice qui donne cet effet de "taille resserrée" visible de face.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Sur l'avant-bras, coude sous l'épaule, corps de côté</p>
+              <p>2. Lève le bassin — corps en ligne droite de la tête aux pieds</p>
+              <p>3. L'autre main sur la hanche ou tendue vers le plafond</p>
+              <p>4. Ne laisse pas les hanches tomber. Tiens 20 secondes.</p>
+              <p>5. Change de côté. 3 séries par côté.</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-feel">🎯 Ce que tu dois sentir</span>
+            <div class="exo-detail-text">Une brûlure sur le côté du ventre, pas dans l'épaule. Si l'épaule fatigue plus que le côté — monte le bassin encore plus haut.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-err">❌ Erreur fréquente</span>
+            <div class="exo-detail-text">Le bassin qui s'affaisse vers le sol — ça enlève tout le travail des obliques. → Monte encore plus haut si tu doutes.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"Vers 15s, tu vas avoir envie de baisser les hanches. Résiste : c'est dans ces 5 dernières secondes que l'oblique se renforce vraiment."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(20)">⏱️ Lancer 20s</button></div>
+        </details>
+
       </div>
     </div>
 
@@ -1489,11 +1839,118 @@ window.addEventListener('scroll', function() {
         <span class="seance-arrow">›</span>
       </div>
       <div class="seance-body">
-        <div class="exo-premium"><div class="exo-premium-head">🫁 Vacuum — 4×12 (15s tenu)</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🪵 Planche avant — 3×35 secondes</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🐛 Dead bug — 4×10/côté</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🐦 Bird dog — 4×10/côté</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🔲 Planche latérale — 3×25s/côté</div></div>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🫁 Vacuum abdominal — 4×12 (15s tenu)<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-sci">🧬 Progression semaine 2 · Séance B</span>
+            <div class="exo-detail-text">12 répétitions à 15s = le volume total de travail du transverse monte significativement. C'est cette accumulation qui crée l'adaptation structurelle — le ventre qui reste naturellement plus plat au repos.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Expire tout l'air, rentre le ventre au maximum</p>
+              <p>2. Tiens 15 secondes — respire très légèrement si besoin</p>
+              <p>3. Relâche complètement 3 secondes. Répète 12 fois.</p>
+              <p>4. 45 à 60 secondes de repos entre les séries</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"12 répétitions à 15s : tes abdominaux profonds vont vraiment fatiguer à partir de la 3ème série. C'est ça qui crée le changement."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(15)">⏱️ Lancer 15s</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🪵 Planche avant — 3×35 secondes<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-sci">🧬 Progression semaine 2</span>
+            <div class="exo-detail-text">35 secondes : l'endurance isométrique se construit par paliers de 5 secondes. Chaque palier supplémentaire force le core à recruter plus de fibres musculaires profondes pour maintenir la position.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Sur les avant-bras, corps en ligne droite</p>
+              <p>2. Ventre rentré, fessiers serrés, respiration continue</p>
+              <p>3. Tiens 35 secondes — si tu décroches : genoux au sol 5s et reprends</p>
+              <p>4. À partir de 30s : double l'effort de contraction du ventre</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"Les 5 dernières secondes (30→35) : contracte encore plus le ventre et visualise que le nombril remonte vers le plafond. L'intensité monte sans changer de position."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(35)">⏱️ Lancer 35s</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🐛 Dead bug — 4×10/côté<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Allongée sur le dos, bras vers le plafond, jambes à 90°</p>
+              <p>2. Bas du dos collé au sol — priorité absolue</p>
+              <p>3. Descends bras + jambe opposés, expire pendant la descente</p>
+              <p>4. Amplitude complète, mouvement lent et contrôlé</p>
+              <p>5. 4 séries × 10 répétitions par côté</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-feel">🎯 Ce que tu dois sentir</span>
+            <div class="exo-detail-text">En Séance B, les 4 séries en amplitude complète : le centre du corps fatigue progressivement. C'est le signal que le transverse et les multifides travaillent vraiment.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"Expire à chaque descente — sans exception. La pression intra-abdominale que ça crée protège ton dos et intensifie le travail du core."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(55)">⏱️ Lancer 55s (série)</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🐦 Bird dog — 4×10/côté<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. À quatre pattes, dos plat, ventre rentré avant tout mouvement</p>
+              <p>2. Étends bras droit + jambe gauche simultanément</p>
+              <p>3. Tiens 2 secondes en position haute. Reviens lentement.</p>
+              <p>4. 10 répétitions par côté, 4 séries — rythme régulier</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-feel">🎯 Ce que tu dois sentir</span>
+            <div class="exo-detail-text">Après la Séance A, le bird dog devrait être plus stable cette semaine. Ton corps a commencé à intégrer le schéma moteur — profite-en pour aller chercher plus d'amplitude.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"4 séries : dans les dernières, tu vas avoir envie de te précipiter. Ralentis volontairement. La qualité à la fatigue est ce qui forge la vraie force."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(55)">⏱️ Lancer 55s (série)</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🔲 Planche latérale — 3×25s/côté<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-sci">🧬 Progression</span>
+            <div class="exo-detail-text">+5 secondes par rapport à la Séance A. Les obliques travaillent 25% plus longtemps sous tension — c'est là que la définition latérale de la taille se construit.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Sur l'avant-bras, coude sous l'épaule, corps de côté</p>
+              <p>2. Bassin levé haut, corps en ligne droite</p>
+              <p>3. Tiens 25 secondes sans laisser les hanches tomber</p>
+              <p>4. Change de côté. 3 séries par côté.</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"Si 25s devient facile, soulève la jambe supérieure de 5cm pendant les 10 dernières secondes. Le côté du ventre va immédiatement intensifier la sensation."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(25)">⏱️ Lancer 25s</button></div>
+        </details>
+
       </div>
     </div>
 
@@ -1504,11 +1961,124 @@ window.addEventListener('scroll', function() {
         <span class="seance-arrow">›</span>
       </div>
       <div class="seance-body">
-        <div class="exo-premium"><div class="exo-premium-head">🫁 Vacuum — 5×10 (15s tenu)</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🐛 Dead bug — 4×12/côté tempo 3s</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🪵 Planche avant — 3×40 secondes</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🔲 Planche latérale — 3×30s/côté</div></div>
-        <div class="exo-premium"><div class="exo-premium-head">🐦 Bird dog — 4×12/côté</div></div>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🫁 Vacuum abdominal — 5×10 (15s tenu)<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-sci">🧬 Séance de consolidation — Semaine 2</span>
+            <div class="exo-detail-text">5 séries : le volume le plus élevé du programme. En Séance C de la Semaine 2, ton transverse a été sollicité 6 fois cette semaine (3 séances × 2 semaines). C'est le moment où les adaptations neuromusculaires s'ancrent.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Position debout ou allongée — varie si tu as fait les deux semaines debout</p>
+              <p>2. Expire, rentre le ventre au maximum, tiens 15 secondes</p>
+              <p>3. 5 séries avec 45s de repos. Concentration maximale sur la contraction.</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-feel">🎯 Ce que tu dois sentir</span>
+            <div class="exo-detail-text">À la 4ème et 5ème série, le transverse devrait être fatigué. Si tu ne sens rien — tu n'es pas assez profond dans la contraction. Rentre encore plus.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"5ème série : c'est ta série de championne. Celle que beaucoup abandonnent. Fais-la et tu auras fait quelque chose que peu de femmes font."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(15)">⏱️ Lancer 15s</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🐛 Dead bug — 4×12/côté tempo 3s<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-sci">🧬 Volume maximum du programme</span>
+            <div class="exo-detail-text">4×12 avec tempo 3s = le volume le plus intense du dead bug dans ce programme. Cette combinaison volume + tempo active le système nerveux profondément — les résultats de ces 2 semaines se consolident ici.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Allongée sur le dos, bas du dos collé au sol — toujours</p>
+              <p>2. Descends bras + jambe en 3 secondes (amplitude complète)</p>
+              <p>3. Remonte en 2 secondes. 12 répétitions par côté.</p>
+              <p>4. 4 séries : ne sacrifie pas la qualité pour atteindre 12</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-err">❌ Erreur à éviter en fin de programme</span>
+            <div class="exo-detail-text">Accélérer le tempo quand tu fatigues. → Si le dos décolle ou si le tempo passe sous 2 secondes, arrête la série. Mieux vaut 10 répétitions parfaites que 12 bâclées.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"C'est la séance la plus dure du programme. Si tu la complètes correctement, tu as le niveau pour passer à un programme avancé la semaine suivante."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(72)">⏱️ Lancer 72s (série)</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🪵 Planche avant — 3×40 secondes<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-sci">🧬 Point culminant du programme</span>
+            <div class="exo-detail-text">40 secondes de planche = le point culminant de ce programme. Des études montrent qu'au-delà de 30 secondes, le core recrute ses fibres lentes (endurance) — celles qui maintiennent la posture toute la journée et gardent le ventre plat sans effort conscient.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Sur les avant-bras, position parfaite : ligne de la tête aux talons</p>
+              <p>2. Ventre rentré, fessiers serrés, respiration normale et régulière</p>
+              <p>3. De 0 à 20s : maintiens la forme</p>
+              <p>4. De 20 à 40s : contracte encore plus le ventre et le bas du dos</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"À 35 secondes, ton esprit va vouloir arrêter avant ton corps. Ces 5 dernières secondes sont un travail mental autant que physique. C'est là que les championnes se séparent des autres."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(40)">⏱️ Lancer 40s</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🔲 Planche latérale — 3×30s/côté<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-sci">🧬 Maximum obliques du programme</span>
+            <div class="exo-detail-text">30 secondes par côté = le record de ce programme pour les obliques. C'est la durée où les fibres lentes des obliques commencent à s'adapter structurellement — l'effet "taille dessinée" se crée ici.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Sur l'avant-bras, bassin levé haut, corps en ligne droite</p>
+              <p>2. Tiens 30 secondes — ne laisse pas les hanches tomber</p>
+              <p>3. À 25s : soulève légèrement la hanche encore plus haut</p>
+              <p>4. Change de côté. 3 séries par côté.</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"30 secondes d'obliques chaque côté = 3 minutes de travail latéral total sur cette séance. C'est pourquoi la taille se dessine — certaines voient la différence dès la fin de la semaine 2."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(30)">⏱️ Lancer 30s</button></div>
+        </details>
+
+        <details class="exo-premium" style="margin-bottom:12px">
+          <summary style="cursor:pointer;padding:14px;background:#FAF8F5;border-radius:10px;font-weight:700;color:#1E1616;list-style:none;display:flex;justify-content:space-between;align-items:center">🐦 Bird dog — 4×12/côté<span style="color:#C96358">▼</span></summary>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-sci">🧬 Clôture du programme</span>
+            <div class="exo-detail-text">4×12 en fin de programme : tu termines avec le volume le plus élevé sur l'exercice préféré des kinésithérapeutes. Après ces 2 semaines, ton pattern de stabilisation est ancré — ton corps sait maintenant activer le core automatiquement.</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. À quatre pattes, dos plat, ventre rentré</p>
+              <p>2. Étends bras droit + jambe gauche. Tiens 2 secondes.</p>
+              <p>3. Reviens sans toucher le sol. 12 répétitions par côté.</p>
+              <p>4. 4 séries — cherche la qualité maximale même fatigué(e)</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">"Dernière série du programme : fais-la comme si c'était la première. C'est ta signature — la preuve que tu as tenu jusqu'au bout."</div>
+          </div>
+          <div style="padding:10px 14px 4px;"><button class="exo-timer-btn" onclick="timerLaunch(60)">⏱️ Lancer 60s (série)</button></div>
+        </details>
+
       </div>
     </div>
   </div>
@@ -2375,6 +2945,14 @@ function toggleFaq(q) {
   window.timerTogglePanel=function(){
     var p=document.getElementById('timer-panel');
     p.style.display=p.style.display==='none'?'block':'none';
+  };
+
+  window.timerLaunch=function(s){
+    timerStop(); total=s; remaining=s; render();
+    document.querySelectorAll('.t-pre').forEach(function(b){b.classList.remove('active');});
+    document.getElementById('timer-label').textContent='Prête ?';
+    updatePlayBtn();
+    document.getElementById('timer-panel').style.display='block';
   };
 
   // Bannière iPhone (Safari uniquement, hors standalone)
