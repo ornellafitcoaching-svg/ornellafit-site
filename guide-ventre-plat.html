@@ -341,6 +341,47 @@ details.exo-premium > summary { list-style: none; }
 details.exo-premium > summary::-webkit-details-marker { display: none; }
 details.comp-card > summary { list-style: none; }
 details.comp-card > summary::-webkit-details-marker { display: none; }
+
+/* ── NAV DROPDOWN MOBILE ── */
+@media (max-width: 640px) {
+  nav#guide-nav {
+    overflow: visible !important;
+    white-space: normal !important;
+    padding: 0 !important;
+  }
+  #nav-toggle-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #C96358;
+    cursor: pointer;
+    width: 100%;
+    background: white;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+  #nav-pills-wrap {
+    display: none;
+    flex-direction: column;
+    background: white;
+    border-top: 1px solid #F0E8E0;
+    padding: 8px 12px 12px;
+    gap: 4px;
+  }
+  #nav-pills-wrap.open { display: flex; }
+  #nav-pills-wrap a {
+    display: block !important;
+    margin: 0 !important;
+    white-space: normal !important;
+    border-radius: 10px !important;
+  }
+}
+@media (min-width: 641px) {
+  #nav-toggle-btn { display: none; }
+}
 </style>
 </head>
 <body>
@@ -348,15 +389,30 @@ details.comp-card > summary::-webkit-details-marker { display: none; }
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<nav style="position:sticky;top:0;z-index:100;background:white;border-bottom:1px solid #F0E8E0;padding:10px 16px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch">
-  <a href="#page-1" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">📖 Pourquoi</a>
-  <a href="#erreurs" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">❌ 6 Erreurs</a>
-  <a href="#exercices" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">💪 Exercices</a>
-  <a href="#nutrition" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">🥗 Nutrition</a>
-  <a href="#action" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">🎯 Action</a>
-  <a href="#bonus-1" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:white;text-decoration:none;padding:6px 12px;background:#C96358;border-radius:20px">💪 Programme 2 sem.</a>
-  <a href="#complements" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:white;text-decoration:none;padding:6px 12px;background:#6AAF3D;border-radius:20px">💊 Compléments</a>
+<nav id="guide-nav" style="position:sticky;top:0;z-index:100;background:white;border-bottom:1px solid #F0E8E0;padding:10px 16px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch">
+  <button id="nav-toggle-btn" onclick="var w=document.getElementById('nav-pills-wrap');var open=w.classList.toggle('open');this.querySelector('.nav-arrow').textContent=open?'▲':'▼';" aria-label="Ouvrir le menu" style="display:none;">
+    📋 Sections du guide <span class="nav-arrow">▼</span>
+  </button>
+  <div id="nav-pills-wrap">
+    <a href="#page-1" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">📖 Pourquoi</a>
+    <a href="#erreurs" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">❌ 6 Erreurs</a>
+    <a href="#exercices" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">💪 Exercices</a>
+    <a href="#nutrition" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">🥗 Nutrition</a>
+    <a href="#action" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">🎯 Action</a>
+    <a href="#bonus-1" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:white;text-decoration:none;padding:6px 12px;background:#C96358;border-radius:20px">💪 Programme 2 sem.</a>
+    <a href="#complements" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:white;text-decoration:none;padding:6px 12px;background:#6AAF3D;border-radius:20px">💊 Compléments</a>
+  </div>
 </nav>
+<script>
+// Fermer le menu au clic sur un lien (mobile)
+document.querySelectorAll('#nav-pills-wrap a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    document.getElementById('nav-pills-wrap').classList.remove('open');
+    var arrow = document.querySelector('#nav-toggle-btn .nav-arrow');
+    if (arrow) arrow.textContent = '▼';
+  });
+});
+</script>
 <div id="progress-bar" style="height:3px;background:#C96358;width:0%;transition:width 0.1s;position:sticky;top:48px;z-index:99"></div>
 <script>
 window.addEventListener('scroll', function() {
