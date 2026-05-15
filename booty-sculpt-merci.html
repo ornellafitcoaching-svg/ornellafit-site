@@ -76,8 +76,59 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.4rem;
       color: var(--nude);
-      margin-bottom: 18px;
+      margin-bottom: 6px;
       text-align: center;
+    }
+
+    .card-sub {
+      font-size: 0.85rem;
+      color: var(--brown);
+      text-align: center;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .form-input {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(232,180,160,0.3);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--cream);
+      margin-bottom: 12px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus { border-color: var(--accent); }
+    .form-input::placeholder { color: var(--brown); }
+
+    .send-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      border: none;
+      color: #fff;
+      border-radius: 8px;
+      padding: 15px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      box-shadow: 0 4px 20px rgba(201,99,88,0.3);
+    }
+
+    .send-btn:hover { opacity: 0.9; }
+    .send-btn:disabled { opacity: 0.5; cursor: default; }
+
+    /* Bloc accès — caché par défaut */
+    #access-block {
+      display: none;
+      width: 100%;
+      max-width: 480px;
     }
 
     .code-wrap {
@@ -141,93 +192,16 @@
       text-align: center;
       transition: opacity 0.2s;
       box-shadow: 0 4px 20px rgba(201,99,88,0.3);
+      margin-bottom: 20px;
     }
 
     .access-btn:hover { opacity: 0.9; }
 
-    .steps {
-      list-style: none;
-      text-align: left;
-      margin-top: 20px;
-    }
-
-    .steps li {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      font-size: 0.88rem;
-      color: var(--nude);
-      margin-bottom: 10px;
-      line-height: 1.5;
-    }
-
-    .steps li .num {
-      background: var(--accent);
-      color: #fff;
-      border-radius: 50%;
-      width: 22px;
-      height: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .form-label {
-      font-size: 0.85rem;
-      color: var(--nude);
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .form-input {
-      width: 100%;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(232,180,160,0.3);
-      border-radius: 8px;
-      padding: 13px 16px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      color: var(--cream);
-      margin-bottom: 12px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .form-input:focus { border-color: var(--accent); }
-    .form-input::placeholder { color: var(--brown); }
-
-    .send-btn {
-      display: block;
-      width: 100%;
-      background: rgba(201, 99, 88, 0.15);
-      border: 1.5px solid var(--accent);
-      color: var(--cream);
-      border-radius: 8px;
-      padding: 13px 20px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .send-btn:hover { background: rgba(201, 99, 88, 0.3); }
-    .send-btn:disabled { opacity: 0.5; cursor: default; }
-
-    .form-success {
-      display: none;
-      text-align: center;
+    .email-confirm {
+      font-size: 0.82rem;
       color: #7ecba1;
-      font-size: 0.88rem;
-      padding: 14px;
-      background: rgba(126, 203, 161, 0.1);
-      border-radius: 8px;
-      margin-top: 10px;
-      line-height: 1.5;
+      text-align: center;
+      margin-bottom: 20px;
     }
 
     .wa-btn {
@@ -263,47 +237,41 @@
 
   <div class="top-icon">🍑</div>
   <h1>Merci pour ton achat !</h1>
-  <p class="subtitle">Ton programme Booty Sculpt 2026 est prêt. Voici ton code d'accès.</p>
+  <p class="subtitle">Entre ton adresse e-mail pour recevoir ton accès au programme.</p>
 
-  <!-- Code + accès -->
-  <div class="card">
-    <p class="card-title">Ton code d'accès</p>
-    <div class="code-wrap">
-      <p class="code-label">Code à entrer sur le programme</p>
-      <p class="code-value">BS2026</p>
-    </div>
-    <button class="copy-btn" id="copyBtn" onclick="copyCode()">📋 Copier le code</button>
-    <a class="access-btn" href="https://ornellafitcoaching-svg.github.io/booty-sculpt-premium-/?access=BS2026" target="_blank">
-      🚀 Accéder au programme maintenant
-    </a>
-    <ul class="steps">
-      <li><span class="num">1</span><span>Clique sur "Accéder au programme" — le code s'entre automatiquement</span></li>
-      <li><span class="num">2</span><span>Si on te demande un code, entre <strong>BS2026</strong></span></li>
-      <li><span class="num">3</span><span>Mets la page en favori pour y revenir facilement 📌</span></li>
-    </ul>
-  </div>
-
-  <!-- Email -->
-  <div class="card">
-    <p class="card-title">Recevoir le code par e-mail</p>
-    <label class="form-label">Entre ton adresse pour garder ton code :</label>
+  <!-- Étape 1 : formulaire email -->
+  <div class="card" id="email-card">
+    <p class="card-title">Reçois ton accès par e-mail</p>
+    <p class="card-sub">Ton code + le lien du programme t'arrivent directement dans ta boîte.</p>
     <input type="email" class="form-input" id="emailInput" placeholder="ton@email.com">
-    <button class="send-btn" id="sendBtn" onclick="sendEmail()">✉️ M'envoyer le code par e-mail</button>
-    <div class="form-success" id="formSuccess">
-      ✅ Code envoyé ! Vérifie ta boîte de réception<br>(et tes spams si besoin).
-    </div>
+    <button class="send-btn" id="sendBtn" onclick="sendEmail()">✉️ Recevoir mon accès maintenant</button>
   </div>
 
-  <!-- WhatsApp -->
-  <a class="wa-btn" href="https://wa.me/33756834626" target="_blank">
-    <span style="font-size:1.3rem;">💬</span>
-    Une question ? Écris-moi sur WhatsApp
-  </a>
+  <!-- Étape 2 : code + accès (affiché après soumission email) -->
+  <div id="access-block">
+    <div class="card">
+      <p class="card-title" style="margin-bottom:18px;">Ton code d'accès</p>
+      <div class="code-wrap">
+        <p class="code-label">Code à entrer sur le programme</p>
+        <p class="code-value">BS2026</p>
+      </div>
+      <button class="copy-btn" id="copyBtn" onclick="copyCode()">📋 Copier le code</button>
+      <a class="access-btn" href="https://ornellafitcoaching-svg.github.io/booty-sculpt-premium-/?access=BS2026" target="_blank">
+        🚀 Accéder au programme maintenant
+      </a>
+      <p class="email-confirm" id="emailConfirm">✅ Un e-mail de confirmation a été envoyé.</p>
+    </div>
 
-  <p class="footer-note">
-    Ce lien est personnel — garde-le précieusement.<br>
-    En cas de souci d'accès, contacte-moi directement sur WhatsApp.
-  </p>
+    <a class="wa-btn" href="https://wa.me/33756834626" target="_blank">
+      <span style="font-size:1.3rem;">💬</span>
+      Une question ? Écris-moi sur WhatsApp
+    </a>
+
+    <p class="footer-note">
+      Garde cet e-mail précieusement — il contient ton lien d'accès.<br>
+      En cas de souci, contacte-moi sur WhatsApp.
+    </p>
+  </div>
 
   <script>
     const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-MuwZhV7aQ7eKSaca';
@@ -353,27 +321,26 @@
             <div style="font-family:Arial,sans-serif;max-width:520px;margin:0 auto;background:#1A0F0F;color:#F7F3F0;border-radius:12px;padding:40px 32px;">
               <h1 style="font-family:Georgia,serif;font-size:1.8rem;color:#E8B4A0;margin-bottom:8px;">Booty Sculpt 2026 🍑</h1>
               <p style="color:#C9957A;font-size:0.95rem;margin-bottom:28px;">Merci pour ton achat ! Ton programme t'attend.</p>
-
               <div style="background:rgba(201,99,88,0.15);border:2px solid #C96358;border-radius:10px;padding:28px;text-align:center;margin-bottom:28px;">
                 <p style="font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:#C9957A;margin-bottom:8px;">Ton code d'accès</p>
                 <p style="font-family:Georgia,serif;font-size:3rem;font-weight:700;letter-spacing:0.1em;color:#fff;margin:0;line-height:1;">BS2026</p>
               </div>
-
               <a href="https://ornellafitcoaching-svg.github.io/booty-sculpt-premium-/?access=BS2026"
                  style="display:block;background:linear-gradient(135deg,#C9957A,#C96358);color:#fff;text-align:center;padding:18px;border-radius:8px;text-decoration:none;font-weight:700;font-size:1rem;margin-bottom:28px;">
                 🚀 Accéder au programme maintenant
               </a>
-
               <p style="font-size:0.88rem;color:#9A8080;line-height:1.6;margin-bottom:12px;">Si le lien ne fonctionne pas, entre le code <strong style="color:#E8B4A0;">BS2026</strong> manuellement sur la page du programme.</p>
               <p style="font-size:0.88rem;color:#9A8080;line-height:1.6;">Une question ? Écris-moi sur WhatsApp : <a href="https://wa.me/33756834626" style="color:#C9957A;">wa.me/33756834626</a></p>
-
               <p style="font-size:0.78rem;color:#9A8080;margin-top:28px;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;">Ornella Fit Coaching · ornellafitcoaching.com</p>
             </div>
           `
         })
       }).catch(() => {});
 
-      document.getElementById('formSuccess').style.display = 'block';
+      // Afficher le code + l'accès
+      document.getElementById('email-card').style.display = 'none';
+      document.getElementById('emailConfirm').textContent = '✅ E-mail envoyé à ' + email;
+      document.getElementById('access-block').style.display = 'block';
     }
   </script>
 
