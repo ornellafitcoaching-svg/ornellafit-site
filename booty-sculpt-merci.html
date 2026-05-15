@@ -302,12 +302,14 @@
 
       // Ajouter à Brevo liste 15
       try {
-        await fetch('https://api.brevo.com/v3/contacts', {
+        const r = await fetch('https://api.brevo.com/v3/contacts', {
           method: 'POST',
           headers: { 'api-key': BREVO_KEY, 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, listIds: [18], updateEnabled: true })
         });
-      } catch(e) {}
+        const data = await r.json();
+        if (!r.ok) alert('Erreur Brevo: ' + JSON.stringify(data));
+      } catch(e) { alert('Erreur réseau: ' + e.message); }
 
       // Envoyer l'email transactionnel avec le code
       fetch('https://api.brevo.com/v3/smtp/email', {
