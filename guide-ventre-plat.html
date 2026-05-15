@@ -651,6 +651,706 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div style="font-size:10px;font-weight:300;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:1px;">Ornella Fit Coaching · Ton plus bel investissement, c'est toi.</div>
 </div>
 
+<!-- ══ BONUS 1 — PROGRAMME 2 SEMAINES ══ -->
+<style>
+.bonus-dark { background: #1A0D08; }
+.bonus-light { background: #FAF8F5; color: #1E1616; }
+.bonus-badge {
+  display: inline-block;
+  background: rgba(212,168,83,.15); border: 1px solid rgba(212,168,83,.4);
+  color: #D4A853; padding: 6px 18px; border-radius: 50px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.bonus-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 300; color: #D4A853; line-height: 1.15; margin-bottom: 12px;
+}
+.bonus-sub { font-size: 0.95rem; color: rgba(255,255,255,.6); line-height: 1.7; margin-bottom: 28px; }
+.planning-note {
+  background: rgba(212,168,83,.08); border: 1px solid rgba(212,168,83,.25);
+  border-radius: 14px; padding: 20px 22px; margin-bottom: 36px;
+  font-size: 0.88rem; color: rgba(255,255,255,.75); line-height: 1.8;
+}
+.planning-note strong { color: #D4A853; }
+.semaine-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; color: #D4A853; font-weight: 300;
+  margin: 36px 0 20px; padding-bottom: 10px;
+  border-bottom: 1px solid rgba(212,168,83,.2);
+}
+.seance-block {
+  background: rgba(255,255,255,.04); border: 1px solid rgba(212,168,83,.2);
+  border-radius: 16px; margin-bottom: 16px; overflow: hidden;
+}
+.seance-header {
+  padding: 18px 22px; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  user-select: none;
+}
+.seance-header:hover { background: rgba(212,168,83,.06); }
+.seance-label { font-weight: 700; color: #D4A853; font-size: 0.95rem; }
+.seance-arrow { color: rgba(212,168,83,.6); transition: transform .2s; font-size: 1.1rem; }
+.seance-body { display: none; padding: 0 22px 22px; }
+.seance-body.open { display: block; }
+.seance-arrow.open { transform: rotate(90deg); }
+.exo-premium {
+  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px; padding: 18px 20px; margin-bottom: 12px;
+}
+.exo-premium-head {
+  font-weight: 700; color: white; font-size: 0.95rem; margin-bottom: 12px;
+}
+.exo-detail { margin-bottom: 10px; }
+.exo-detail-label {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 5px; padding: 3px 10px; border-radius: 50px;
+  display: inline-block;
+}
+.label-how { background: rgba(126,203,161,.15); color: #7ecba1; }
+.label-err { background: rgba(201,99,88,.15); color: #e07b71; }
+.label-tip { background: rgba(212,168,83,.15); color: #D4A853; }
+.exo-detail-text { font-size: 0.85rem; color: rgba(255,255,255,.65); line-height: 1.7; }
+.exo-detail-text p { margin-bottom: 4px; }
+
+/* MEAL PLAN */
+.mp-day {
+  background: white; border-radius: 16px; border: 1px solid #ECD8D0;
+  margin-bottom: 16px; overflow: hidden;
+}
+.mp-day-header {
+  background: #2C1F1A; color: #E8B4A0; padding: 16px 22px;
+  font-weight: 700; font-size: 0.95rem;
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer; user-select: none;
+}
+.mp-day-header .mp-arrow { transition: transform .2s; font-size: 1rem; color: #C9957A; }
+.mp-day-header.open .mp-arrow { transform: rotate(90deg); }
+.mp-day-body { display: none; padding: 20px 22px; }
+.mp-day-body.open { display: block; }
+.mp-meal { margin-bottom: 18px; }
+.mp-meal-title { font-weight: 700; font-size: 0.88rem; color: #2C1F1A; margin-bottom: 8px; }
+.mp-item { font-size: 0.85rem; color: #5A3E36; line-height: 1.7; padding-left: 12px; border-left: 2px solid #ECD8D0; margin-bottom: 4px; }
+.mp-proto { font-size: 0.8rem; color: #C96358; font-weight: 600; margin-top: 6px; }
+.mp-total {
+  background: #F7F3F0; border-radius: 10px; padding: 12px 16px;
+  font-size: 0.82rem; color: #5A3E36; font-weight: 600; margin-top: 12px;
+}
+.mp-rules {
+  background: #FFF3F0; border: 1px solid #F0C4BC; border-radius: 14px;
+  padding: 20px 22px; margin-top: 24px; font-size: 0.88rem; color: #3A2820; line-height: 1.8;
+}
+.mp-rules strong { color: #C96358; }
+
+/* ROUTINE MATIN */
+.routine-card {
+  background: rgba(212,168,83,.06); border: 1px solid rgba(212,168,83,.2);
+  border-radius: 14px; padding: 22px 24px; margin-bottom: 14px;
+  display: flex; gap: 18px; align-items: flex-start;
+}
+.routine-num {
+  background: linear-gradient(135deg, #D4A853, #C9957A);
+  color: #1A0D08; font-weight: 800; font-size: 1.1rem;
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.routine-step-title { font-weight: 700; color: #D4A853; font-size: 0.95rem; margin-bottom: 6px; }
+.routine-step-text { font-size: 0.87rem; color: rgba(255,255,255,.65); line-height: 1.7; }
+.routine-quote {
+  background: linear-gradient(135deg, rgba(212,168,83,.12), rgba(201,149,122,.08));
+  border: 1px solid rgba(212,168,83,.3); border-radius: 16px;
+  padding: 28px 28px; text-align: center; margin-top: 32px;
+}
+.routine-quote em {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic;
+  color: rgba(255,255,255,.85); line-height: 1.7; display: block; margin-bottom: 12px;
+}
+.routine-quote span { font-size: 0.85rem; color: #D4A853; font-weight: 600; }
+
+/* CTA FINAL */
+.cta-final-wrap {
+  background: #1A0D08; padding: 56px 28px; text-align: center;
+}
+.cta-final-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent) 0%, #a84e44 100%);
+  color: white; text-decoration: none;
+  padding: 20px 44px; border-radius: 50px;
+  font-size: 1.05rem; font-weight: 700;
+  box-shadow: 0 8px 32px rgba(201,99,88,.45);
+  transition: transform .15s, box-shadow .15s;
+  margin-bottom: 16px; display: inline-block;
+}
+.cta-final-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,99,88,.6); }
+.cta-final-reassurance { font-size: 0.82rem; color: rgba(255,255,255,.5); line-height: 1.8; }
+</style>
+
+<div id="bonus-1" class="bonus-dark">
+  <div class="page">
+    <span class="bonus-badge">⭐ BONUS EXCLUSIF — Programme 2 semaines</span>
+    <h2 class="bonus-title">Ton programme ventre plat<br>— 2 semaines à la maison</h2>
+    <p class="bonus-sub">3 séances par semaine · 20-25 min · Zéro matériel · Tu choisis tes jours</p>
+    <div class="planning-note">
+      <strong>📅 Comment organiser tes séances :</strong><br>
+      → 3 séances par semaine<br>
+      → Au moins 1 jour de repos entre chaque séance<br>
+      → Tu choisis les jours selon tes disponibilités<br>
+      → L'important c'est la régularité, pas le jour
+    </div>
+
+    <p class="semaine-title">SEMAINE 1</p>
+
+    <!-- SÉANCE A -->
+    <div class="seance-block">
+      <div class="seance-header" onclick="toggleSeance(this)">
+        <span class="seance-label">SÉANCE A — Semaine 1</span>
+        <span class="seance-arrow">›</span>
+      </div>
+      <div class="seance-body">
+        <div class="exo-premium">
+          <div class="exo-premium-head">🫁 Vacuum abdominal — 3×10 (10s tenu)</div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Debout ou allongée, inspire normalement</p>
+              <p>2. Expire TOUT l'air de tes poumons</p>
+              <p>3. Rentre le ventre au maximum vers la colonne</p>
+              <p>4. Tiens 10 secondes en respirant légèrement</p>
+              <p>5. Relâche doucement. Répète.</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-err">❌ Erreur fréquente</span>
+            <div class="exo-detail-text">Rentrer le ventre sans vider l'air d'abord — ça ne cible pas le transverse</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">Imagine que tu essaies de faire tenir un jean trop petit — c'est cette sensation que tu cherches</div>
+          </div>
+        </div>
+        <div class="exo-premium">
+          <div class="exo-premium-head">🐛 Dead bug — 3×8/côté</div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Allonge-toi sur le dos, bras tendus vers le plafond</p>
+              <p>2. Lève les jambes, genoux à 90°</p>
+              <p>3. Descends bras droit + jambe gauche simultanément</p>
+              <p>4. SANS décoller le bas du dos du sol</p>
+              <p>5. Remonte et change de côté</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-err">❌ Erreur fréquente</span>
+            <div class="exo-detail-text">Le dos qui se creuse quand tu descends les jambes — si ça arrive, réduis l'amplitude</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">Place une main sous ton dos — tu ne dois jamais sentir d'espace entre ta main et le sol</div>
+          </div>
+        </div>
+        <div class="exo-premium">
+          <div class="exo-premium-head">🪵 Planche avant — 3×20 secondes</div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Sur les avant-bras, coudes sous les épaules</p>
+              <p>2. Corps en ligne droite de la tête aux talons</p>
+              <p>3. Rentre le ventre, fesses ni trop hautes ni trop basses</p>
+              <p>4. Respire normalement, tiens le temps indiqué</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-err">❌ Erreur fréquente</span>
+            <div class="exo-detail-text">Les fesses qui montent en l'air — ça enlève tout le travail du core</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">Imagine une barre posée sur ton dos — elle ne doit pas bouger</div>
+          </div>
+        </div>
+        <div class="exo-premium">
+          <div class="exo-premium-head">🐦 Bird dog — 3×8/côté</div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. À quatre pattes, dos plat comme une table</p>
+              <p>2. Rentre le ventre avant de bouger</p>
+              <p>3. Étends bras droit + jambe gauche simultanément</p>
+              <p>4. Tiens 2 secondes, reviens lentement</p>
+              <p>5. Change de côté</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-err">❌ Erreur fréquente</span>
+            <div class="exo-detail-text">La hanche qui monte d'un côté — garde le bassin parfaitement stable</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">Pose un verre d'eau imaginaire sur ton dos — il ne doit pas tomber</div>
+          </div>
+        </div>
+        <div class="exo-premium">
+          <div class="exo-premium-head">🌀 Respiration diaphragmatique — 2×10 respirations</div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Allongée, une main sur la poitrine, une sur le ventre</p>
+              <p>2. Inspire par le nez en gonflant le VENTRE (pas la poitrine)</p>
+              <p>3. La main sur le ventre monte, celle sur la poitrine reste immobile</p>
+              <p>4. Expire lentement par la bouche en rentrant le ventre</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-err">❌ Erreur fréquente</span>
+            <div class="exo-detail-text">Gonfler la poitrine au lieu du ventre — c'est de la respiration superficielle</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">C'est difficile au début, c'est normal — ton corps a désappris à respirer correctement</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SÉANCE B -->
+    <div class="seance-block">
+      <div class="seance-header" onclick="toggleSeance(this)">
+        <span class="seance-label">SÉANCE B — Semaine 1</span>
+        <span class="seance-arrow">›</span>
+      </div>
+      <div class="seance-body">
+        <div class="exo-premium"><div class="exo-premium-head">🫁 Vacuum — 3×12 (10s tenu)</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🪵 Planche — 3×25 secondes</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🐛 Dead bug — 3×10/côté</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🐦 Bird dog — 3×10/côté</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🌀 Respiration — 2×10</div></div>
+      </div>
+    </div>
+
+    <!-- SÉANCE C -->
+    <div class="seance-block">
+      <div class="seance-header" onclick="toggleSeance(this)">
+        <span class="seance-label">SÉANCE C — Semaine 1</span>
+        <span class="seance-arrow">›</span>
+      </div>
+      <div class="seance-body">
+        <div class="exo-premium"><div class="exo-premium-head">🫁 Vacuum — 4×10 (10s tenu)</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🐛 Dead bug — 3×8/côté tempo lent 3 secondes</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🪵 Planche — 3×30 secondes</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🐦 Bird dog — 3×8/côté pause 3s en haut</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🌀 Respiration — 3×10</div></div>
+      </div>
+    </div>
+
+    <p class="semaine-title">SEMAINE 2 — Progression</p>
+
+    <!-- SÉANCE A S2 -->
+    <div class="seance-block">
+      <div class="seance-header" onclick="toggleSeance(this)">
+        <span class="seance-label">SÉANCE A — Semaine 2</span>
+        <span class="seance-arrow">›</span>
+      </div>
+      <div class="seance-body">
+        <div class="exo-premium"><div class="exo-premium-head">🫁 Vacuum — 4×10 (15s tenu)</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🐛 Dead bug — 4×10/côté tempo 3s</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🪵 Planche avant — 3×30 secondes</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🐦 Bird dog — 4×10/côté pause 3s</div></div>
+        <div class="exo-premium">
+          <div class="exo-premium-head">🔲 Planche latérale — 3×20s/côté (nouveau)</div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-how">✅ Comment faire</span>
+            <div class="exo-detail-text">
+              <p>1. Sur l'avant-bras, corps de côté</p>
+              <p>2. Bassin levé, corps en ligne droite</p>
+              <p>3. Ne laisse pas les hanches tomber</p>
+            </div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-err">❌ Erreur fréquente</span>
+            <div class="exo-detail-text">Le bassin qui s'affaisse vers le sol</div>
+          </div>
+          <div class="exo-detail">
+            <span class="exo-detail-label label-tip">💡 Astuce Ornella</span>
+            <div class="exo-detail-text">Le côté du ventre doit brûler — si tu ne sens rien monte le bassin plus haut</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SÉANCE B S2 -->
+    <div class="seance-block">
+      <div class="seance-header" onclick="toggleSeance(this)">
+        <span class="seance-label">SÉANCE B — Semaine 2</span>
+        <span class="seance-arrow">›</span>
+      </div>
+      <div class="seance-body">
+        <div class="exo-premium"><div class="exo-premium-head">🫁 Vacuum — 4×12 (15s tenu)</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🪵 Planche avant — 3×35 secondes</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🐛 Dead bug — 4×10/côté</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🐦 Bird dog — 4×10/côté</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🔲 Planche latérale — 3×25s/côté</div></div>
+      </div>
+    </div>
+
+    <!-- SÉANCE C S2 -->
+    <div class="seance-block">
+      <div class="seance-header" onclick="toggleSeance(this)">
+        <span class="seance-label">SÉANCE C — Semaine 2</span>
+        <span class="seance-arrow">›</span>
+      </div>
+      <div class="seance-body">
+        <div class="exo-premium"><div class="exo-premium-head">🫁 Vacuum — 5×10 (15s tenu)</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🐛 Dead bug — 4×12/côté tempo 3s</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🪵 Planche avant — 3×40 secondes</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🔲 Planche latérale — 3×30s/côté</div></div>
+        <div class="exo-premium"><div class="exo-premium-head">🐦 Bird dog — 4×12/côté</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BONUS 2 — PLAN REPAS 7 JOURS ══ -->
+<div id="bonus-2" class="bonus-light">
+  <div class="page" style="color:#1E1616;">
+    <span class="bonus-badge" style="background:rgba(201,99,88,.1);border-color:rgba(201,99,88,.3);color:#C96358;">🥗 BONUS — Plan repas 7 jours anti-ballonnement</span>
+    <h2 class="bonus-title" style="color:#C96358;">Plan repas 7 jours<br>anti-ballonnement</h2>
+    <div class="planning-note" style="background:rgba(201,99,88,.06);border-color:rgba(201,99,88,.2);color:#3A2820;">
+      <strong style="color:#C96358;">⚠️ Ces calories sont calculées pour une femme de 55-65 kg avec activité modérée.</strong><br>
+      Ton métabolisme de base est unique — contacte-moi pour un calcul personnalisé.<br>
+      <a href="https://wa.me/33756834626" style="color:#C96358;font-weight:700;">💬 WhatsApp Ornella →</a>
+    </div>
+
+    <!-- JOUR 1 -->
+    <div class="mp-day">
+      <div class="mp-day-header" onclick="toggleDay(this)">
+        <span>JOUR 1 — 1 750 kcal · 125g protéines</span>
+        <span class="mp-arrow">›</span>
+      </div>
+      <div class="mp-day-body">
+        <div class="mp-meal"><div class="mp-meal-title">🌅 Petit-déjeuner — 420 kcal</div>
+          <div class="mp-item">Flocons d'avoine : 80g → 290 kcal</div>
+          <div class="mp-item">Lait végétal non sucré : 200ml → 40 kcal</div>
+          <div class="mp-item">Fruits rouges : 100g → 50 kcal</div>
+          <div class="mp-item">2 œufs brouillés → 140 kcal</div>
+          <div class="mp-proto">Protéines : 24g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🍽️ Déjeuner — 580 kcal</div>
+          <div class="mp-item">Filet de saumon : 150g → 280 kcal</div>
+          <div class="mp-item">Riz complet cuit : 150g → 195 kcal</div>
+          <div class="mp-item">Légumes vapeur : 200g → 60 kcal</div>
+          <div class="mp-item">Huile d'olive : 1 cuillère → 45 kcal</div>
+          <div class="mp-proto">Protéines : 38g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🌙 Dîner — 420 kcal</div>
+          <div class="mp-item">Omelette 3 œufs → 210 kcal</div>
+          <div class="mp-item">Légumes sautés : 200g → 80 kcal</div>
+          <div class="mp-item">Fromage frais 0% : 100g → 65 kcal</div>
+          <div class="mp-item">Salade verte → 65 kcal</div>
+          <div class="mp-proto">Protéines : 32g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🍎 Collation — 180 kcal</div>
+          <div class="mp-item">Yaourt grec 0% : 150g → 90 kcal</div>
+          <div class="mp-item">Noix : 20g → 130 kcal</div>
+          <div class="mp-proto">Protéines : 12g</div>
+        </div>
+        <div class="mp-total">📊 TOTAL : 1 600 kcal · 106g protéines · 148g glucides · 55g lipides</div>
+      </div>
+    </div>
+
+    <!-- JOUR 2 -->
+    <div class="mp-day">
+      <div class="mp-day-header" onclick="toggleDay(this)">
+        <span>JOUR 2 — 1 800 kcal · 130g protéines</span>
+        <span class="mp-arrow">›</span>
+      </div>
+      <div class="mp-day-body">
+        <div class="mp-meal"><div class="mp-meal-title">🌅 Petit-déjeuner — 380 kcal</div>
+          <div class="mp-item">Yaourt grec 0% : 200g → 120 kcal</div>
+          <div class="mp-item">Granola sans sucre : 50g → 200 kcal</div>
+          <div class="mp-item">Banane : 1 → 90 kcal</div>
+          <div class="mp-proto">Protéines : 18g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🍽️ Déjeuner — 620 kcal</div>
+          <div class="mp-item">Poulet grillé : 180g → 300 kcal</div>
+          <div class="mp-item">Quinoa cuit : 150g → 180 kcal</div>
+          <div class="mp-item">Avocat : ½ → 120 kcal</div>
+          <div class="mp-item">Citron + herbes → 20 kcal</div>
+          <div class="mp-proto">Protéines : 42g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🌙 Dîner — 450 kcal</div>
+          <div class="mp-item">Thon en boîte : 150g → 180 kcal</div>
+          <div class="mp-item">Patate douce : 200g → 180 kcal</div>
+          <div class="mp-item">Haricots verts : 200g → 50 kcal</div>
+          <div class="mp-item">Huile d'olive : ½ cuillère → 40 kcal</div>
+          <div class="mp-proto">Protéines : 35g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🍎 Collation — 150 kcal</div>
+          <div class="mp-item">Pomme → 80 kcal</div>
+          <div class="mp-item">Amandes : 20g → 120 kcal</div>
+          <div class="mp-proto">Protéines : 5g</div>
+        </div>
+        <div class="mp-total">📊 TOTAL : 1 600 kcal · 100g protéines · 155g glucides · 52g lipides</div>
+      </div>
+    </div>
+
+    <!-- JOUR 3 -->
+    <div class="mp-day">
+      <div class="mp-day-header" onclick="toggleDay(this)">
+        <span>JOUR 3 — 1 750 kcal · 128g protéines</span>
+        <span class="mp-arrow">›</span>
+      </div>
+      <div class="mp-day-body">
+        <div class="mp-meal"><div class="mp-meal-title">🌅 Petit-déjeuner — 350 kcal</div>
+          <div class="mp-item">Smoothie : épinards 50g + banane 1 + protéine 30g + lait amande 250ml</div>
+          <div class="mp-proto">Protéines : 28g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🍽️ Déjeuner — 560 kcal</div>
+          <div class="mp-item">Bœuf haché 5% : 150g → 220 kcal</div>
+          <div class="mp-item">Riz basmati cuit : 150g → 195 kcal</div>
+          <div class="mp-item">Courgettes sautées : 200g → 50 kcal</div>
+          <div class="mp-item">Huile d'olive → 45 kcal</div>
+          <div class="mp-proto">Protéines : 40g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🌙 Dîner — 480 kcal</div>
+          <div class="mp-item">Filet de cabillaud : 200g → 180 kcal</div>
+          <div class="mp-item">Légumes rôtis : 300g → 120 kcal</div>
+          <div class="mp-item">Pomme de terre : 150g → 120 kcal</div>
+          <div class="mp-item">Huile d'olive → 60 kcal</div>
+          <div class="mp-proto">Protéines : 38g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🍎 Collation — 160 kcal</div>
+          <div class="mp-item">Fromage blanc 0% : 150g → 90 kcal</div>
+          <div class="mp-item">Fruits rouges : 100g → 50 kcal</div>
+          <div class="mp-item">Miel : 1 cuillère → 30 kcal</div>
+          <div class="mp-proto">Protéines : 12g</div>
+        </div>
+        <div class="mp-total">📊 TOTAL : 1 550 kcal · 118g protéines · 140g glucides · 45g lipides</div>
+      </div>
+    </div>
+
+    <!-- JOUR 4 -->
+    <div class="mp-day">
+      <div class="mp-day-header" onclick="toggleDay(this)">
+        <span>JOUR 4 — 1 850 kcal · 135g protéines</span>
+        <span class="mp-arrow">›</span>
+      </div>
+      <div class="mp-day-body">
+        <div class="mp-meal"><div class="mp-meal-title">🌅 Petit-déjeuner — 440 kcal</div>
+          <div class="mp-item">2 œufs brouillés → 140 kcal</div>
+          <div class="mp-item">Avocat ½ → 120 kcal</div>
+          <div class="mp-item">Pain complet : 2 tranches → 160 kcal</div>
+          <div class="mp-item">Café noir → 0 kcal</div>
+          <div class="mp-proto">Protéines : 20g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🍽️ Déjeuner — 600 kcal</div>
+          <div class="mp-item">Saumon fumé : 100g → 180 kcal</div>
+          <div class="mp-item">Pâtes complètes cuites : 150g → 220 kcal</div>
+          <div class="mp-item">Salade verte + vinaigrette légère → 80 kcal</div>
+          <div class="mp-item">Fromage frais allégé : 50g → 70 kcal</div>
+          <div class="mp-proto">Protéines : 35g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🌙 Dîner — 460 kcal</div>
+          <div class="mp-item">Crevettes : 200g → 200 kcal</div>
+          <div class="mp-item">Riz basmati : 100g → 130 kcal</div>
+          <div class="mp-item">Brocolis vapeur : 200g → 70 kcal</div>
+          <div class="mp-item">Sauce soja légère → 30 kcal</div>
+          <div class="mp-proto">Protéines : 42g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🍎 Collation — 170 kcal</div>
+          <div class="mp-item">Cottage cheese : 150g → 120 kcal</div>
+          <div class="mp-item">Concombre → 20 kcal</div>
+          <div class="mp-item">Crackers complets : 2 → 60 kcal</div>
+          <div class="mp-proto">Protéines : 16g</div>
+        </div>
+        <div class="mp-total">📊 TOTAL : 1 670 kcal · 113g protéines · 158g glucides · 48g lipides</div>
+      </div>
+    </div>
+
+    <!-- JOUR 5 -->
+    <div class="mp-day">
+      <div class="mp-day-header" onclick="toggleDay(this)">
+        <span>JOUR 5 — 1 800 kcal · 132g protéines</span>
+        <span class="mp-arrow">›</span>
+      </div>
+      <div class="mp-day-body">
+        <div class="mp-meal"><div class="mp-meal-title">🌅 Petit-déjeuner — 420 kcal</div>
+          <div class="mp-item">Porridge avoine : 80g → 290 kcal</div>
+          <div class="mp-item">Cannelle + vanille → 5 kcal</div>
+          <div class="mp-item">Pomme râpée : 1 → 80 kcal</div>
+          <div class="mp-item">Whey protéine : 25g → 100 kcal</div>
+          <div class="mp-proto">Protéines : 30g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🍽️ Déjeuner — 580 kcal</div>
+          <div class="mp-item">Dinde : 180g → 250 kcal</div>
+          <div class="mp-item">Quinoa : 150g → 180 kcal</div>
+          <div class="mp-item">Poivrons rôtis : 200g → 80 kcal</div>
+          <div class="mp-item">Huile d'olive → 45 kcal</div>
+          <div class="mp-proto">Protéines : 45g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🌙 Dîner — 450 kcal</div>
+          <div class="mp-item">Œufs durs : 3 → 210 kcal</div>
+          <div class="mp-item">Salade niçoise : thon 80g + haricots verts + tomates → 180 kcal</div>
+          <div class="mp-item">Vinaigrette légère → 60 kcal</div>
+          <div class="mp-proto">Protéines : 38g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🍎 Collation — 180 kcal</div>
+          <div class="mp-item">Kéfir : 200ml → 120 kcal</div>
+          <div class="mp-item">Noix de cajou : 20g → 110 kcal</div>
+          <div class="mp-proto">Protéines : 8g</div>
+        </div>
+        <div class="mp-total">📊 TOTAL : 1 630 kcal · 121g protéines · 145g glucides · 50g lipides</div>
+      </div>
+    </div>
+
+    <!-- JOUR 6 -->
+    <div class="mp-day">
+      <div class="mp-day-header" onclick="toggleDay(this)">
+        <span>JOUR 6 — 1 900 kcal · 128g protéines</span>
+        <span class="mp-arrow">›</span>
+      </div>
+      <div class="mp-day-body">
+        <div class="mp-meal"><div class="mp-meal-title">🌅 Petit-déjeuner — 480 kcal</div>
+          <div class="mp-item">Pancakes protéinés : 80g avoine + 2 œufs + 1 banane → 420 kcal</div>
+          <div class="mp-item">Sirop d'érable : 1 cuillère → 60 kcal</div>
+          <div class="mp-proto">Protéines : 22g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🍽️ Déjeuner — 650 kcal</div>
+          <div class="mp-item">Poulet rôti : 200g → 330 kcal</div>
+          <div class="mp-item">Patate douce : 200g → 180 kcal</div>
+          <div class="mp-item">Haricots verts : 200g → 50 kcal</div>
+          <div class="mp-item">Huile d'olive → 90 kcal</div>
+          <div class="mp-proto">Protéines : 48g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🌙 Dîner — 500 kcal</div>
+          <div class="mp-item">Bœuf haché 5% : 150g → 220 kcal</div>
+          <div class="mp-item">Légumes grillés : 300g → 120 kcal</div>
+          <div class="mp-item">Fromage blanc 0% : 100g → 65 kcal</div>
+          <div class="mp-item">Pain complet : 1 tranche → 80 kcal</div>
+          <div class="mp-proto">Protéines : 42g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🍎 Collation — 200 kcal</div>
+          <div class="mp-item">Chocolat noir 85% : 20g → 120 kcal</div>
+          <div class="mp-item">Amandes : 20g → 120 kcal</div>
+          <div class="mp-proto">Protéines : 5g</div>
+        </div>
+        <div class="mp-total">📊 TOTAL : 1 830 kcal · 117g protéines · 178g glucides · 58g lipides</div>
+      </div>
+    </div>
+
+    <!-- JOUR 7 -->
+    <div class="mp-day">
+      <div class="mp-day-header" onclick="toggleDay(this)">
+        <span>JOUR 7 — Repas plaisir contrôlé</span>
+        <span class="mp-arrow">›</span>
+      </div>
+      <div class="mp-day-body">
+        <div class="mp-meal"><div class="mp-meal-title">🌅 Petit-déjeuner — 500 kcal</div>
+          <div class="mp-item">Œufs bénédicte allégés : 2 œufs + saumon fumé 80g + pain complet → 420 kcal</div>
+          <div class="mp-item">Salade verte → 30 kcal</div>
+          <div class="mp-item">Café → 0 kcal</div>
+          <div class="mp-proto">Protéines : 35g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🍽️ Déjeuner — Repas plaisir</div>
+          <div class="mp-item" style="font-style:italic;">Mange ce que tu veux mais en portions raisonnables. Une assiette normale, sans te resservir. Profite sans culpabilité.</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🌙 Dîner — 350 kcal</div>
+          <div class="mp-item">Soupe de légumes maison : 400ml → 120 kcal</div>
+          <div class="mp-item">Fromage blanc 0% : 200g → 130 kcal</div>
+          <div class="mp-item">Fruits de saison : 150g → 100 kcal</div>
+          <div class="mp-proto">Protéines : 20g</div>
+        </div>
+        <div class="mp-meal"><div class="mp-meal-title">🍎 Collation — 100 kcal</div>
+          <div class="mp-item">Tisane + carré de chocolat noir</div>
+        </div>
+        <div class="mp-total" style="font-style:italic;color:#5A3E36;">Le jour plaisir est intentionnel — il évite la frustration et maintient la motivation sur le long terme.</div>
+      </div>
+    </div>
+
+    <div class="mp-rules">
+      <strong>Règles d'or anti-ballonnement</strong><br>
+      ❌ À supprimer : sodas, alcool, chewing-gum, édulcorants, plats ultra-transformés, friture<br>
+      ✅ À privilégier : eau plate 2L/jour, tisanes, eau citronnée le matin
+    </div>
+  </div>
+</div>
+
+<!-- ══ BONUS 3 — ROUTINE MATIN ══ -->
+<div id="bonus-3" class="bonus-dark">
+  <div class="page">
+    <span class="bonus-badge">⭐ SECRET DES ATHLÈTES</span>
+    <h2 class="bonus-title">La routine matin qui change tout</h2>
+    <p class="bonus-sub">5 minutes · Avant le petit-déjeuner · Chaque matin sans exception</p>
+
+    <div class="routine-card">
+      <div class="routine-num">1</div>
+      <div>
+        <div class="routine-step-title">Réveil → NE PAS se lever immédiatement</div>
+        <div class="routine-step-text">Reste allongée 2 minutes. Ton corps se réveille progressivement — c'est le moment idéal pour activer le transverse.</div>
+      </div>
+    </div>
+    <div class="routine-card">
+      <div class="routine-num">2</div>
+      <div>
+        <div class="routine-step-title">10 vacuums abdominaux allongée</div>
+        <div class="routine-step-text">Expire tout l'air, rentre le ventre, tiens 10s. Relâche. Répète 10 fois. C'est l'exercice le plus puissant pour le ventre plat et il se fait au lit.</div>
+      </div>
+    </div>
+    <div class="routine-card">
+      <div class="routine-num">3</div>
+      <div>
+        <div class="routine-step-title">5 respirations diaphragmatiques</div>
+        <div class="routine-step-text">Main sur le ventre. Inspire gonfle le ventre. Expire rentre le ventre. Lentement. Active le système nerveux parasympathique — réduit le cortisol du matin.</div>
+      </div>
+    </div>
+    <div class="routine-card">
+      <div class="routine-num">4</div>
+      <div>
+        <div class="routine-step-title">10 bird dog lents (5/côté)</div>
+        <div class="routine-step-text">À quatre pattes. Lents et contrôlés. Active le core avant de te lever.</div>
+      </div>
+    </div>
+    <div class="routine-card">
+      <div class="routine-num">5</div>
+      <div>
+        <div class="routine-step-title">Se lever → boire 500ml d'eau citronnée</div>
+        <div class="routine-step-text">À jeun. Élimine les toxines, réduit les ballonnements matinaux, booste le métabolisme.</div>
+      </div>
+    </div>
+
+    <div class="routine-quote">
+      <em>"Les résultats ne viennent pas de ce qu'on fait parfois — ils viennent de ce qu'on fait chaque matin. Sans exception."</em>
+      <span>— Ornella</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CTA FINAL ══ -->
+<div id="bonus-cta" class="cta-final-wrap">
+  <a href="#stripe-ventre-plat" class="cta-final-btn">🛒 Accéder au guide complet — 5€</a>
+  <p class="cta-final-reassurance">
+    ✅ Accès immédiat · Programme 2 semaines · Plan repas 7 jours · Routine matin · Paiement sécurisé Stripe
+  </p>
+</div>
+
+<script>
+function toggleSeance(header) {
+  var body = header.nextElementSibling;
+  var arrow = header.querySelector('.seance-arrow');
+  var isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  arrow.classList.toggle('open', !isOpen);
+}
+function toggleDay(header) {
+  var body = header.nextElementSibling;
+  var isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  header.classList.toggle('open', !isOpen);
+}
+</script>
+
 <!-- ══ NAV FLOTTANTE ══ -->
 <nav id="fab-nav" aria-label="Navigation rapide">
   <input type="checkbox" id="fab-check">
@@ -665,6 +1365,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#page-5" role="menuitem" onclick="document.getElementById('fab-check').checked=false">Plan d'action</a>
     <div class="menu-sep"></div>
     <a href="#page-6" role="menuitem" onclick="document.getElementById('fab-check').checked=false">💎 Offres</a>
+    <div class="menu-sep"></div>
+    <a href="#bonus-1" role="menuitem" onclick="document.getElementById('fab-check').checked=false">⭐ Programme 2 sem.</a>
+    <a href="#bonus-2" role="menuitem" onclick="document.getElementById('fab-check').checked=false">🥗 Plan repas 7j</a>
+    <a href="#bonus-3" role="menuitem" onclick="document.getElementById('fab-check').checked=false">🌅 Routine matin</a>
   </div>
 </nav>
 
