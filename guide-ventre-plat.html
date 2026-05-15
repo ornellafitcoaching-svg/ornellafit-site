@@ -1032,19 +1032,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <tbody>
           <tr style="background:#FAF8F5;border-bottom:1px solid #F0E8E0;">
             <td style="padding:20px 16px;font-weight:700;color:#2C1F1A;">Semaine 1</td>
-            <td style="padding:20px 12px;text-align:center;font-size:1.4rem;color:#E0D0C8;">☐</td>
-            <td style="padding:20px 12px;text-align:center;font-size:1.4rem;color:#E0D0C8;">☐</td>
-            <td style="padding:20px 12px;text-align:center;font-size:1.4rem;color:#E0D0C8;">☐</td>
-            <td style="padding:20px 12px;color:#9A8080;font-style:italic;">.....</td>
-            <td style="padding:20px 12px;color:#9A8080;font-style:italic;">.....</td>
+            <td style="padding:20px 12px;text-align:center;"><span class="suivi-check" data-key="s1a" onclick="toggleCheck(this)">☐</span></td>
+            <td style="padding:20px 12px;text-align:center;"><span class="suivi-check" data-key="s1b" onclick="toggleCheck(this)">☐</span></td>
+            <td style="padding:20px 12px;text-align:center;"><span class="suivi-check" data-key="s1c" onclick="toggleCheck(this)">☐</span></td>
+            <td style="padding:8px 12px;"><input class="suivi-input" data-key="s1r" placeholder="Ressenti..." oninput="saveInput(this)"></td>
+            <td style="padding:8px 12px;"><input class="suivi-input" data-key="s1p" placeholder="Progression..." oninput="saveInput(this)"></td>
           </tr>
           <tr style="background:#FFFFFF;border-bottom:1px solid #F0E8E0;">
             <td style="padding:20px 16px;font-weight:700;color:#2C1F1A;">Semaine 2</td>
-            <td style="padding:20px 12px;text-align:center;font-size:1.4rem;color:#E0D0C8;">☐</td>
-            <td style="padding:20px 12px;text-align:center;font-size:1.4rem;color:#E0D0C8;">☐</td>
-            <td style="padding:20px 12px;text-align:center;font-size:1.4rem;color:#E0D0C8;">☐</td>
-            <td style="padding:20px 12px;color:#9A8080;font-style:italic;">.....</td>
-            <td style="padding:20px 12px;color:#9A8080;font-style:italic;">.....</td>
+            <td style="padding:20px 12px;text-align:center;"><span class="suivi-check" data-key="s2a" onclick="toggleCheck(this)">☐</span></td>
+            <td style="padding:20px 12px;text-align:center;"><span class="suivi-check" data-key="s2b" onclick="toggleCheck(this)">☐</span></td>
+            <td style="padding:20px 12px;text-align:center;"><span class="suivi-check" data-key="s2c" onclick="toggleCheck(this)">☐</span></td>
+            <td style="padding:8px 12px;"><input class="suivi-input" data-key="s2r" placeholder="Ressenti..." oninput="saveInput(this)"></td>
+            <td style="padding:8px 12px;"><input class="suivi-input" data-key="s2p" placeholder="Progression..." oninput="saveInput(this)"></td>
           </tr>
         </tbody>
       </table>
@@ -1324,6 +1324,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="page" style="color:#1E1616;">
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:300;color:#2C1F1A;margin-bottom:28px;">❓ Vos questions les plus fréquentes</h2>
     <style>
+    .suivi-check { font-size:1.6rem; color:#E0D0C8; cursor:pointer; user-select:none; transition:color .15s; display:inline-block; }
+    .suivi-check:hover { color:#C96358; }
+    .suivi-input { width:100%; border:1px solid #ECD8D0; border-radius:6px; padding:8px 10px; font-family:'DM Sans',sans-serif; font-size:0.82rem; color:#3A2820; background:#FAF8F5; outline:none; }
+    .suivi-input:focus { border-color:#C96358; }
     .faq-item { border:1px solid #ECD8D0; border-radius:12px; margin-bottom:10px; overflow:hidden; }
     .faq-q { padding:18px 20px; cursor:pointer; font-weight:700; font-size:0.92rem; color:#2C1F1A; display:flex; justify-content:space-between; align-items:center; gap:12px; user-select:none; background:#FFFFFF; }
     .faq-q:hover { background:#FDF6F3; }
@@ -1454,6 +1458,28 @@ function toggleDay(header) {
   var isOpen = body.classList.contains('open');
   body.classList.toggle('open', !isOpen);
   header.classList.toggle('open', !isOpen);
+}
+// Tableau de suivi
+(function(){
+  var checks = document.querySelectorAll('.suivi-check');
+  checks.forEach(function(el){
+    var v = localStorage.getItem('vp_'+el.dataset.key);
+    if(v==='1'){el.textContent='☑';el.style.color='#C96358';}
+  });
+  var inputs = document.querySelectorAll('.suivi-input');
+  inputs.forEach(function(el){
+    var v = localStorage.getItem('vp_'+el.dataset.key);
+    if(v) el.value=v;
+  });
+})();
+function toggleCheck(el){
+  var checked = el.textContent==='☑';
+  el.textContent = checked?'☐':'☑';
+  el.style.color = checked?'#E0D0C8':'#C96358';
+  localStorage.setItem('vp_'+el.dataset.key, checked?'0':'1');
+}
+function saveInput(el){
+  localStorage.setItem('vp_'+el.dataset.key, el.value);
 }
 function toggleFaq(q) {
   var a = q.nextElementSibling;
