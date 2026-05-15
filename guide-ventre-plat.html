@@ -388,14 +388,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav id="guide-nav" style="position:sticky;top:0;z-index:100;background:white;border-bottom:1px solid #F0E8E0;padding:10px 16px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch">
   <!-- Barre mobile : accueil à gauche + toggle à droite -->
   <div id="nav-mobile-bar" style="display:none;align-items:center;justify-content:space-between;gap:8px;">
-    <a href="https://www.ornellafitcoaching.com/" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:#1E1616;text-decoration:none;padding:7px 12px;background:#F0E8E0;border-radius:20px;flex-shrink:0;">← Accueil</a>
+    <a href="#page-0" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:#1E1616;text-decoration:none;padding:7px 12px;background:#F0E8E0;border-radius:20px;flex-shrink:0;">↑ Haut du programme</a>
     <button id="nav-toggle-btn" onclick="var w=document.getElementById('nav-pills-wrap');var open=w.classList.toggle('open');this.querySelector('.nav-arrow').textContent=open?'▲':'▼';" aria-label="Ouvrir le menu" style="display:flex;align-items:center;gap:6px;flex:1;justify-content:flex-end;background:none;border:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:#C96358;cursor:pointer;padding:7px 0;">
       📋 Sections <span class="nav-arrow">▼</span>
     </button>
   </div>
   <!-- Pills desktop : accueil en premier -->
   <div id="nav-pills-wrap">
-    <a href="https://www.ornellafitcoaching.com/" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:700;color:#1E1616;text-decoration:none;padding:6px 12px;background:#F0E8E0;border-radius:20px">← Accueil</a>
+    <a href="#page-0" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:700;color:#1E1616;text-decoration:none;padding:6px 12px;background:#F0E8E0;border-radius:20px">↑ Haut du programme</a>
     <a href="#page-1" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">📖 Pourquoi</a>
     <a href="#erreurs" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">❌ 6 Erreurs</a>
     <a href="#exercices" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">💪 Exercices</a>
@@ -1161,6 +1161,36 @@ window.addEventListener('scroll', function() {
       → Au moins 1 jour de repos entre chaque séance (ex : lundi, mercredi, vendredi)<br>
       → Tu choisis les jours selon tes disponibilités — l'important c'est la régularité<br>
       → Clique sur chaque séance pour l'ouvrir et voir les exercices en détail
+    </div>
+
+    <!-- TEMPS DE REPOS -->
+    <div style="background:rgba(201,149,122,.08);border:1px solid rgba(201,149,122,.25);border-radius:14px;padding:16px 20px;margin-bottom:20px;">
+      <p style="font-size:0.8rem;font-weight:700;color:#C9957A;margin-bottom:10px;">⏱️ Temps de repos entre les séries</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+        <div style="background:rgba(255,255,255,.05);border-radius:8px;padding:10px 12px;">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,.4);margin-bottom:3px;">Exercices de maintien</div>
+          <div style="font-size:0.92rem;font-weight:700;color:white;">30 – 45 sec</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,.4);margin-top:2px;">Vacuum · Planche</div>
+        </div>
+        <div style="background:rgba(255,255,255,.05);border-radius:8px;padding:10px 12px;">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,.4);margin-bottom:3px;">Exercices dynamiques</div>
+          <div style="font-size:0.92rem;font-weight:700;color:white;">45 – 60 sec</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,.4);margin-top:2px;">Dead Bug · Bird Dog</div>
+        </div>
+        <div style="background:rgba(255,255,255,.05);border-radius:8px;padding:10px 12px;">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,.4);margin-bottom:3px;">Entre deux exercices</div>
+          <div style="font-size:0.92rem;font-weight:700;color:white;">60 – 90 sec</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,.4);margin-top:2px;">Transition</div>
+        </div>
+        <div style="background:rgba(255,255,255,.05);border-radius:8px;padding:10px 12px;">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,.4);margin-bottom:3px;">Circuit complet</div>
+          <div style="font-size:0.92rem;font-weight:700;color:white;">90 sec – 2 min</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,.4);margin-top:2px;">Entre les tours</div>
+        </div>
+      </div>
+      <div style="background:rgba(201,99,88,.1);border-radius:8px;padding:10px 14px;font-size:0.8rem;color:rgba(255,255,255,.65);line-height:1.55;">
+        💡 Utilise le <strong style="color:#E8B4A0;">minuteur ⏱️</strong> en bas à gauche de ton écran — appuie dessus, choisis ta durée, et lance le décompte entre chaque série.
+      </div>
     </div>
 
     <p class="semaine-title">SEMAINE 1</p>
