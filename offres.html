@@ -1711,21 +1711,29 @@ document.querySelectorAll('a.btn-offre, a.ohi-btn').forEach(function(btn) {
 <script>
 // Tabs mobile — affiche un seul bloc à la fois sur petit écran
 (function(){
-  if (window.innerWidth > 768) return;
+  if (!window.matchMedia('(max-width: 768px)').matches) return;
   var pills = document.querySelectorAll('#offres-anchors .anchor-pill');
-  var ids = Array.from(pills).map(function(p){ return p.getAttribute('href').slice(1); });
-  var nav = document.getElementById('offres-anchors');
+  var ids = [];
+  pills.forEach(function(p){ ids.push(p.getAttribute('href').slice(1)); });
+  var detail = document.getElementById('offres-detail');
+
   function activate(i) {
     ids.forEach(function(id){ var b=document.getElementById(id); if(b) b.classList.remove('tab-active'); });
     pills.forEach(function(p){ p.classList.remove('tab-active'); });
     var bloc = document.getElementById(ids[i]);
     if (bloc) bloc.classList.add('tab-active');
     pills[i].classList.add('tab-active');
-    if (nav) window.scrollTo({ top: nav.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
+    if (detail) detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+
   activate(0);
-  pills.forEach(function(pill,i){
-    pill.addEventListener('click', function(e){ e.preventDefault(); activate(i); });
+
+  pills.forEach(function(pill, i){
+    pill.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      activate(i);
+    });
   });
 })();
 </script>
