@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Programme Émeline">
+<title>Programme Émeline V2 — Hypertrophie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#C96358;--cream:#F7F3F0;--dark:#1A0F0F;--gold:#C9957A;
+  --nude:#E8B4A0;--brown:#9A8080;--green:#4a9e6e;--card:rgba(255,255,255,0.04);
+  --border:rgba(232,180,160,0.18);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);min-height:100vh;line-height:1.6}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(26,15,15,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:12px 20px;padding-top:max(12px, env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--nude);white-space:nowrap}
+.nav-links{display:flex;gap:8px;flex-wrap:wrap}
+.nav-links a{font-size:0.75rem;color:var(--brown);text-decoration:none;padding:4px 10px;border:1px solid var(--border);border-radius:20px;transition:all .2s;white-space:nowrap}
+.nav-links a:hover{border-color:var(--accent);color:var(--cream)}
+
+/* COVER */
+.cover{text-align:center;padding:60px 20px 40px;border-bottom:1px solid var(--border)}
+.cover-badge{display:inline-block;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,149,122,0.4);border-radius:20px;padding:5px 14px;margin-bottom:18px}
+.cover h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,7vw,3.6rem);font-weight:600;line-height:1.15;margin-bottom:10px}
+.cover h1 em{font-style:italic;color:var(--gold)}
+.cover-sub{font-size:0.95rem;color:var(--brown);max-width:480px;margin:0 auto 28px;line-height:1.7}
+.cover-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.pill{font-size:0.78rem;background:rgba(201,99,88,0.12);border:1px solid rgba(201,99,88,0.3);border-radius:20px;padding:5px 13px;color:var(--nude)}
+
+/* SECTION */
+section{padding:40px 20px;max-width:760px;margin:0 auto}
+section+section{border-top:1px solid var(--border)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:var(--nude);margin-bottom:6px}
+.section-sub{font-size:0.85rem;color:var(--brown);margin-bottom:24px;line-height:1.6}
+
+/* SEMAINE TABS */
+.week-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.week-btn{font-size:0.8rem;padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--brown);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.week-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+/* SEANCE TOGGLE */
+.seance-tabs{display:flex;gap:8px;margin-bottom:24px}
+.seance-btn{flex:1;padding:12px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--brown);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.88rem;transition:all .2s;text-align:center}
+.seance-btn.active{background:rgba(201,99,88,0.15);border-color:var(--accent);color:var(--cream);font-weight:600}
+
+/* SUPERSET */
+.ss-block{margin-bottom:28px;position:relative}
+.ss-label{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);background:rgba(201,149,122,0.12);border:1px solid rgba(201,149,122,0.3);border-radius:20px;padding:4px 12px;display:inline-block;margin-bottom:8px}
+.ss-exercises{border-left:2px solid var(--accent);padding-left:0;margin-left:0}
+.ss-connector{display:flex;align-items:center;gap:8px;margin:4px 0 4px 14px}
+.ss-connector-line{flex:1;height:1px;background:rgba(201,99,88,0.3)}
+.ss-connector-text{font-size:0.7rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase}
+
+/* EXERCISE CARD */
+.ex-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 16px;margin-left:14px;margin-bottom:0;transition:border-color .2s}
+.ex-card:hover{border-color:rgba(201,99,88,0.4)}
+.ex-card.standalone{margin-left:0}
+.ex-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px}
+.ex-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--cream);line-height:1.2}
+.badges{display:flex;flex-wrap:wrap;gap:5px;flex-shrink:0}
+.badge{font-size:0.66rem;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:10px;font-weight:600;white-space:nowrap}
+.badge-new{background:rgba(74,158,110,0.2);border:1px solid rgba(74,158,110,0.5);color:#7ecba1}
+.badge-tempo{background:rgba(201,149,122,0.15);border:1px solid rgba(201,149,122,0.4);color:var(--gold)}
+.badge-rir{background:rgba(201,99,88,0.15);border:1px solid rgba(201,99,88,0.4);color:var(--nude)}
+.ex-sets{font-size:0.88rem;color:var(--nude);margin-bottom:8px;font-weight:500}
+.ex-tip{font-size:0.82rem;color:var(--brown);font-style:italic;line-height:1.55;padding-top:6px;border-top:1px solid var(--border)}
+
+/* SS REST BTN */
+.ss-rest{display:flex;align-items:center;justify-content:space-between;margin:10px 14px 4px;padding:10px 14px;background:rgba(201,99,88,0.08);border:1px solid rgba(201,99,88,0.2);border-radius:8px}
+.ss-rest-label{font-size:0.78rem;color:var(--brown)}
+.timer-btns{display:flex;gap:6px}
+.t-btn{font-size:0.73rem;padding:5px 10px;border-radius:6px;border:1px solid rgba(201,99,88,0.35);background:transparent;color:var(--nude);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.t-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* STANDALONE REST */
+.ex-rest{font-size:0.82rem;color:var(--brown);margin:6px 0 18px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ex-rest .rest-duration{color:var(--nude);font-weight:600}
+
+
+/* WARMUP */
+.warmup-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.warmup-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center}
+.warmup-name{font-size:0.88rem;color:var(--cream);margin-bottom:4px}
+.warmup-detail{font-size:0.75rem;color:var(--brown)}
+
+/* PROGRESS BAR */
+.progress-wrap{margin-bottom:32px}
+.progress-label{display:flex;justify-content:space-between;font-size:0.78rem;color:var(--brown);margin-bottom:6px}
+.progress-bar{height:6px;background:rgba(255,255,255,0.06);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--accent));border-radius:10px;transition:width .4s}
+
+
+/* IOS BANNER */
+#ios-banner{background:rgba(201,149,122,0.12);border-bottom:1px solid rgba(201,149,122,0.25);padding:12px 16px}
+.ios-banner-inner{display:flex;align-items:flex-start;gap:12px;max-width:760px;margin:0 auto}
+.ios-banner-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.ios-banner-text{flex:1;font-size:0.8rem;color:var(--brown);line-height:1.6;display:flex;flex-direction:column;gap:3px}
+.ios-banner-text strong{color:var(--nude);font-size:0.85rem}
+.ios-banner-text em{font-style:normal;color:var(--nude);font-weight:600}
+.ios-share{font-size:1rem;display:inline-block;vertical-align:middle}
+.ios-banner-close{background:none;border:none;color:var(--brown);font-size:1.1rem;cursor:pointer;padding:4px;flex-shrink:0;margin-top:-2px}
+
+/* LEGEND BOX */
+.legend-box{background:rgba(201,149,122,0.07);border:1px solid rgba(201,149,122,0.25);border-radius:14px;padding:20px 18px;margin-bottom:24px;display:flex;flex-direction:column;gap:16px}
+.legend-item{display:flex;align-items:flex-start;gap:14px}
+.legend-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.legend-title{font-size:0.88rem;font-weight:600;color:var(--nude);margin-bottom:5px}
+.legend-text{font-size:0.8rem;color:var(--brown);line-height:1.65}
+.legend-text strong{color:var(--nude)}
+.legend-divider{height:1px;background:rgba(201,149,122,0.2)}
+
+/* GLOSSARY */
+.glossary-list{display:flex;flex-direction:column;gap:8px}
+details{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}
+details[open]{border-color:rgba(201,99,88,0.4)}
+summary{padding:16px 18px;cursor:pointer;font-weight:500;font-size:0.92rem;color:var(--cream);list-style:none;display:flex;align-items:center;justify-content:space-between;gap:8px;user-select:none}
+summary::after{content:'＋';font-size:1rem;color:var(--accent);flex-shrink:0;transition:transform .2s}
+details[open] summary::after{content:'－'}
+summary::-webkit-details-marker{display:none}
+.gloss-body{padding:0 18px 16px;font-size:0.85rem;color:var(--brown);line-height:1.7}
+.gloss-body strong{color:var(--nude)}
+
+/* FLOATING TIMER */
+#timer-widget{position:fixed;bottom:max(20px,env(safe-area-inset-bottom));right:16px;z-index:200;background:#1e1212;border:1px solid var(--border);border-radius:16px;padding:16px 18px;width:180px;box-shadow:0 8px 32px rgba(0,0,0,0.5);display:none}
+#timer-widget.visible{display:block}
+.timer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.timer-title{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)}
+#timer-close{background:none;border:none;color:var(--brown);cursor:pointer;font-size:1rem;padding:0}
+#timer-display{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;text-align:center;color:#fff;line-height:1;margin-bottom:12px}
+.timer-presets{display:flex;gap:5px;margin-bottom:10px}
+.preset-btn{flex:1;font-size:0.72rem;padding:6px 2px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--brown);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;text-align:center}
+.preset-btn:hover,.preset-btn.active-preset{background:var(--accent);border-color:var(--accent);color:#fff}
+.timer-controls{display:flex;gap:6px}
+.ctrl-btn{flex:1;padding:8px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;cursor:pointer;transition:all .2s}
+#btn-start{background:var(--accent);color:#fff}
+#btn-start:hover{opacity:.85}
+#btn-reset{background:rgba(255,255,255,0.07);color:var(--brown)}
+#btn-reset:hover{background:rgba(255,255,255,0.12)}
+#timer-open-btn{position:fixed;bottom:max(20px,env(safe-area-inset-bottom));right:16px;z-index:199;background:var(--accent);border:none;border-radius:50%;width:52px;height:52px;font-size:1.4rem;cursor:pointer;box-shadow:0 4px 20px rgba(201,99,88,0.45);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+#timer-open-btn:hover{transform:scale(1.08)}
+#timer-open-btn.hidden{display:none}
+
+/* RESPONSIVE */
+@media(max-width:520px){
+  nav{padding:10px 14px;padding-top:max(10px,env(safe-area-inset-top))}
+  .nav-links{display:none}
+  .ex-header{flex-direction:column;gap:6px}
+  .badges{justify-content:flex-start}
+  .t-btn{padding:8px 12px;font-size:0.8rem;min-height:36px}
+  .week-btn{padding:10px 14px;min-height:40px}
+  .seance-btn{min-height:48px}
+  section{padding:28px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-title">Émeline · V2 Hypertrophie</span>
+  <div class="nav-links">
+    <a href="#warmup">Échauffement</a>
+    <a href="#programme">Programme</a>
+    <a href="#glossaire">Glossaire</a>
+  </div>
+</nav>
+
+<!-- BANNIÈRE RACCOURCI IPHONE -->
+<div id="ios-banner" style="display:none">
+  <div class="ios-banner-inner">
+    <div class="ios-banner-icon">📲</div>
+    <div class="ios-banner-text">
+      <strong>Ajoute ce programme sur ton écran d'accueil</strong>
+      <span>Appuie sur <span class="ios-share">⎋</span> puis <em>"Sur l'écran d'accueil"</em> — il s'ouvrira comme une appli, sans navigateur.</span>
+    </div>
+    <button class="ios-banner-close" onclick="closeBanner()">✕</button>
+  </div>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Programme personnalisé · V2 · 2026</div>
+  <h1>Programme<br><em>Émeline</em></h1>
+  <p class="cover-sub">Version 2 — Hypertrophie ciblée. Supersets, tempos contrôlés, progression semaine par semaine.</p>
+  <div class="cover-pills">
+    <span class="pill">4 semaines</span>
+    <span class="pill">2 séances / semaine</span>
+    <span class="pill">Tempo + RIR</span>
+    <span class="pill">Supersets</span>
+    <span class="pill">Timer intégré</span>
+  </div>
+</div>
+
+<!-- ÉCHAUFFEMENT -->
+<section id="warmup">
+  <div class="section-title">Échauffement</div>
+  <p class="section-sub">Toujours 8–10 min avant de commencer. Prépare les articulations et active les muscles cibles.</p>
+  <div class="warmup-grid">
+    <div class="warmup-item"><div class="warmup-name">Vélo</div><div class="warmup-detail">5–10 min · intensité légère</div></div>
+    <div class="warmup-item"><div class="warmup-name">Rameur</div><div class="warmup-detail">5–10 min · intensité légère</div></div>
+    <div class="warmup-item"><div class="warmup-name">Escalier</div><div class="warmup-detail">5–10 min · intensité légère</div></div>
+  </div>
+</section>
+
+<!-- PROGRAMME -->
+<section id="programme">
+  <div class="section-title">Programme</div>
+  <p class="section-sub">Sélectionne ta semaine puis ta séance. Les charges évoluent automatiquement chaque semaine.</p>
+
+  <!-- WEEK TABS -->
+  <div class="week-tabs">
+    <button class="week-btn active" onclick="setWeek(1,this)">S1 — Découverte</button>
+    <button class="week-btn" onclick="setWeek(2,this)">S2 — Progression</button>
+    <button class="week-btn" onclick="setWeek(3,this)">S3 — Intensité</button>
+    <button class="week-btn" onclick="setWeek(4,this)">S4 — Consolidation</button>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <div class="progress-label"><span id="prog-label">Semaine 1 / 4</span><span id="prog-pct">25%</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:25%"></div></div>
+  </div>
+
+  <!-- EXPLICATIONS TEMPO + RIR -->
+  <div class="legend-box">
+    <div class="legend-item">
+      <div class="legend-icon">⏱</div>
+      <div>
+        <div class="legend-title">Tempo — ex : <strong>2-1-2</strong></div>
+        <div class="legend-text">3 chiffres = 3 phases du mouvement.<br>
+          <strong>2</strong> = descente lente (2 secondes) · <strong>1</strong> = pause en bas (1 seconde) · <strong>2</strong> = remontée contrôlée (2 secondes).<br>
+          Plus c'est lent, plus le muscle travaille. Ne triche pas sur le tempo.
+        </div>
+      </div>
+    </div>
+    <div class="legend-divider"></div>
+    <div class="legend-item">
+      <div class="legend-icon">💪</div>
+      <div>
+        <div class="legend-title">RIR 2 — Reps In Reserve</div>
+        <div class="legend-text">À la fin de ta série, tu dois sentir que tu pourrais encore faire <strong>2 répétitions de plus</strong> — pas plus, pas moins.<br>
+          Si c'est trop facile (RIR 4+) → augmente la charge. Si tu n'en as plus aucune en réserve (RIR 0) → c'est trop lourd.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEANCE TABS -->
+  <div class="seance-tabs">
+    <button class="seance-btn active" onclick="setSeance('A',this)">🍑 Séance A — Bas du corps</button>
+    <button class="seance-btn" onclick="setSeance('B',this)">💪 Séance B — Haut du corps</button>
+  </div>
+
+  <!-- ========== SÉANCE A ========== -->
+  <div id="seance-A">
+
+    <!-- SS1 -->
+    <div class="ss-block">
+      <span class="ss-label">⚡ Superset 1</span>
+      <div class="ss-exercises">
+
+        <div class="ex-card" id="card-A-hipthrustSS">
+          <div class="ex-header">
+            <div class="ex-name">Hip Thrust barre</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-1-2</span>
+              <span class="badge badge-rir" id="rir-A-hipthrust">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-A-hipthrust">4 × 10 reps — <span id="w-A-hipthrust-ref">45 kg</span></div>
+
+          <p class="ex-tip">Pense à écraser le sol avec tes pieds. Contracte les fessiers à plat comme si tu voulais tenir une pièce entre les deux. Descente lente = plus de gains.</p>
+        </div>
+
+        <div class="ss-connector"><div class="ss-connector-line"></div><span class="ss-connector-text">enchaîner directement</span><div class="ss-connector-line"></div></div>
+
+        <div class="ex-card" id="card-A-abducteursSS">
+          <div class="ex-header">
+            <div class="ex-name">Abducteurs machine</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-0-1</span>
+              <span class="badge badge-rir" id="rir-A-abducteurs">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-A-abducteurs">4 × 15 reps — <span id="w-A-abducteurs-ref">60 kg</span></div>
+
+          <p class="ex-tip">Ouvre lentement, reviens avec contrôle. Visualise que tu pousses avec le milieu de tes fessiers, pas les hanches. Dos bien ancré dans le siège.</p>
+        </div>
+
+      </div>
+      <div class="ss-rest">
+        <span class="ss-rest-label">⏱ Repos : <strong style="color:var(--nude)">1 min 30 – 2 min</strong></span>
+        <div class="timer-btns">
+          <button class="t-btn" onclick="timerLaunch(90)">90s</button>
+          <button class="t-btn" onclick="timerLaunch(120)">120s</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRESSE STANDALONE -->
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Presse à cuisses</div>
+        <div class="badges">
+          <span class="badge badge-tempo">Tempo 3-0-2</span>
+          <span class="badge badge-rir" id="rir-A-presse">RIR 2</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-A-presse">4 × 12 reps — <span id="w-A-presse-ref">40 kg</span></div>
+
+      <p class="ex-tip">Pieds hauts et écartés = fessiers. Descends jusqu'à ce que les genoux passent 90°. Expulse l'air à la montée, inspire à la descente lente.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">1 min 30</span> <button class="t-btn" onclick="timerLaunch(90)">Lancer</button></div>
+
+    <!-- FENTES STANDALONE -->
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Fentes bulgares</div>
+        <div class="badges">
+          <span class="badge badge-tempo">Tempo 2-1-1</span>
+          <span class="badge badge-rir" id="rir-A-fentes">RIR 2</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-A-fentes">3 × 10 reps / jambe — <span id="w-A-fentes-ref">Haltères</span></div>
+
+      <p class="ex-tip">Pied arrière sur le banc, genou avant ne dépasse pas le pied. Descends droit, reviens avec le talon avant. Concentre-toi sur la jambe de travail.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">1 min 30</span> <button class="t-btn" onclick="timerLaunch(90)">Lancer</button></div>
+
+    <!-- SS2 -->
+    <div class="ss-block">
+      <span class="ss-label">⚡ Superset 2</span>
+      <div class="ss-exercises">
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Goblet Squat</div>
+            <div class="badges">
+              <span class="badge badge-new">Nouveau</span>
+              <span class="badge badge-tempo">Tempo 3-1-1</span>
+              <span class="badge badge-rir" id="rir-A-goblet">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-A-goblet">3 × 12 reps — <span id="w-A-goblet-ref">12 kg</span></div>
+
+          <p class="ex-tip">Haltère tenu verticalement contre la poitrine. Pieds à largeur d'épaules, pointes légèrement ouvertes. Genoux dans l'axe des orteils. Descends profond, temps de pause en bas pour activer les fessiers.</p>
+        </div>
+
+        <div class="ss-connector"><div class="ss-connector-line"></div><span class="ss-connector-text">enchaîner directement</span><div class="ss-connector-line"></div></div>
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Hyperextensions fessiers</div>
+            <div class="badges">
+              <span class="badge badge-new">Nouveau</span>
+              <span class="badge badge-tempo">Tempo 2-1-2</span>
+              <span class="badge badge-rir" id="rir-A-hyper">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-A-hyper">3 × 15 reps — <span id="w-A-hyper-ref">Poids corps</span></div>
+
+          <p class="ex-tip">Plie légèrement le dos (pas tendu à bloc). Pousse les hanches vers l'avant en haut. Contracte les fessiers au maximum en extension. Descends lentement sans déverrouiller les genoux.</p>
+        </div>
+
+      </div>
+      <div class="ss-rest">
+        <span class="ss-rest-label">⏱ Repos : <strong style="color:var(--nude)">1 min 30 – 2 min</strong></span>
+        <div class="timer-btns">
+          <button class="t-btn" onclick="timerLaunch(90)">90s</button>
+          <button class="t-btn" onclick="timerLaunch(120)">120s</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========== SÉANCE B ========== -->
+  <div id="seance-B" style="display:none">
+
+    <!-- SS1 HAUT -->
+    <div class="ss-block">
+      <span class="ss-label">⚡ Superset 1</span>
+      <div class="ss-exercises">
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Tirage horizontal</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-1-2</span>
+              <span class="badge badge-rir" id="rir-B-tirageh">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-B-tirageh">4 × 10 reps — <span id="w-B-tirageh-ref">12 kg</span></div>
+
+          <p class="ex-tip">Tire les coudes vers l'arrière en gardant les omoplates basses. Pense à "pincer un crayon entre les omoplates" à chaque répétition. Buste droit, pas de balancier.</p>
+        </div>
+
+        <div class="ss-connector"><div class="ss-connector-line"></div><span class="ss-connector-text">enchaîner directement</span><div class="ss-connector-line"></div></div>
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Facepull</div>
+            <div class="badges">
+              <span class="badge badge-new">Nouveau</span>
+              <span class="badge badge-tempo">Tempo 2-0-2</span>
+              <span class="badge badge-rir" id="rir-B-facepull">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-B-facepull">4 × 15 reps — <span id="w-B-facepull-ref">10 kg</span></div>
+
+          <p class="ex-tip">Corde à hauteur de visage. Tire vers le front en ouvrant les coudes comme des ailes. Excellent pour la santé des épaules et la posture. Mouvement lent et contrôlé, jamais de triche.</p>
+        </div>
+
+      </div>
+      <div class="ss-rest">
+        <span class="ss-rest-label">⏱ Repos : <strong style="color:var(--nude)">1 min – 1 min 30</strong></span>
+        <div class="timer-btns">
+          <button class="t-btn" onclick="timerLaunch(60)">60s</button>
+          <button class="t-btn" onclick="timerLaunch(90)">90s</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIRAGE VERTICAL STANDALONE -->
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Tirage vertical poulie</div>
+        <div class="badges">
+          <span class="badge badge-tempo">Tempo 2-1-2</span>
+          <span class="badge badge-rir" id="rir-B-tiragev">RIR 2</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-B-tiragev">4 × 10 reps — <span id="w-B-tiragev-ref">30 kg</span></div>
+
+      <p class="ex-tip">Prise légèrement plus large que les épaules. Tire vers la poitrine (pas la nuque). Imagine que tes coudes tirent vers le sol. Descends la barre jusqu'au sternum.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">1 min 30</span> <button class="t-btn" onclick="timerLaunch(90)">Lancer</button></div>
+
+    <!-- ROWING STANDALONE -->
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Rowing poitrine appuyée</div>
+        <div class="badges">
+          <span class="badge badge-new">Nouveau</span>
+          <span class="badge badge-tempo">Tempo 2-1-2</span>
+          <span class="badge badge-rir" id="rir-B-rowing">RIR 2</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-B-rowing">4 × 10 reps — <span id="w-B-rowing-ref">10 kg</span></div>
+
+      <p class="ex-tip">Banc incliné à 30–45°. Poitrine collée au banc pour isoler le dos (pas de triche avec le corps). Tire les haltères vers les hanches, coudes à 45°.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">1 min 30</span> <button class="t-btn" onclick="timerLaunch(90)">Lancer</button></div>
+
+    <!-- SS2 ÉPAULES -->
+    <div class="ss-block">
+      <span class="ss-label">⚡ Superset 2</span>
+      <div class="ss-exercises">
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Développé militaire haltères</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-1-2</span>
+              <span class="badge badge-rir" id="rir-B-devmil">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-B-devmil">4 × 10 reps — <span id="w-B-devmil-ref">8 kg</span></div>
+
+          <p class="ex-tip">Assis ou debout. Haltères à hauteur d'épaules, pouces vers l'avant. Pousse vers le haut sans verrouiller les coudes. Core contracté pour protéger le bas du dos.</p>
+        </div>
+
+        <div class="ss-connector"><div class="ss-connector-line"></div><span class="ss-connector-text">enchaîner directement</span><div class="ss-connector-line"></div></div>
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Élévations latérales</div>
+            <div class="badges">
+              <span class="badge badge-new">Nouveau</span>
+              <span class="badge badge-tempo">Tempo 2-0-2</span>
+              <span class="badge badge-rir" id="rir-B-elev">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-B-elev">4 × 15 reps — <span id="w-B-elev-ref">4 kg</span></div>
+
+          <p class="ex-tip">Légère flexion du coude, pouce légèrement vers le bas (comme vider un verre). Monte jusqu'à l'horizontale max. Descends très lentement — c'est la descente qui sculpte.</p>
+        </div>
+
+      </div>
+      <div class="ss-rest">
+        <span class="ss-rest-label">⏱ Repos : <strong style="color:var(--nude)">1 min – 1 min 30</strong></span>
+        <div class="timer-btns">
+          <button class="t-btn" onclick="timerLaunch(60)">60s</button>
+          <button class="t-btn" onclick="timerLaunch(90)">90s</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CURL MARTEAU STANDALONE -->
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Curl prise marteau</div>
+        <div class="badges">
+          <span class="badge badge-new">Nouveau</span>
+          <span class="badge badge-tempo">Tempo 2-1-2</span>
+          <span class="badge badge-rir" id="rir-B-pullover">RIR 2</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-B-pullover">3 × 12 reps — <span id="w-B-pullover-ref">6 kg</span></div>
+      <p class="ex-tip">Haltères le long du corps, pouces vers le haut (prise neutre). Monte sans tourner le poignet, coude fixe contre le corps. Travaille le biceps long et le brachial — plus complet que le curl classique.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">1 min</span> <button class="t-btn" onclick="timerLaunch(60)">Lancer</button></div>
+
+  </div>
+
+</section>
+
+<!-- GLOSSAIRE -->
+<section id="glossaire">
+  <div class="section-title">Glossaire</div>
+  <p class="section-sub">Les termes techniques expliqués simplement. Ouvre chaque définition pour en savoir plus.</p>
+  <div class="glossary-list">
+    <details>
+      <summary>Hypertrophie</summary>
+      <div class="gloss-body">L'<strong>hypertrophie</strong> est l'augmentation du volume musculaire obtenue par l'entraînement en résistance. Elle survient quand les muscles se réparent après avoir été sollicités au-delà de leurs habitudes — ils reconstruisent plus épais et plus forts.</div>
+    </details>
+    <details>
+      <summary>RIR — Reps In Reserve</summary>
+      <div class="gloss-body"><strong>RIR = répétitions en réserve</strong>. Si tu fais une série et qu'il te reste 2 reps avant l'échec, tu es à RIR 2. C'est un outil pour calibrer l'intensité sans aller à l'échec complet systématiquement. RIR 2 = proche du max, RIR 0 = échec total.</div>
+    </details>
+    <details>
+      <summary>Tempo (ex : 2-1-2)</summary>
+      <div class="gloss-body">Le <strong>tempo</strong> décrit la vitesse de chaque phase du mouvement. Format : <strong>descente – pause – montée</strong>. Exemple : 2-1-2 = 2 secondes pour descendre, 1 seconde de pause, 2 secondes pour remonter. Un tempo lent = plus de temps sous tension = plus de stimulus musculaire.</div>
+    </details>
+    <details>
+      <summary>Temps sous tension</summary>
+      <div class="gloss-body">Le <strong>temps sous tension (TUT)</strong> est la durée totale pendant laquelle le muscle travaille lors d'une série. Plus il est élevé (via un tempo lent), plus la stimulation musculaire est importante. C'est l'une des clés de l'hypertrophie.</div>
+    </details>
+    <details>
+      <summary>Connexion musculaire</summary>
+      <div class="gloss-body">La <strong>connexion neuromusculaire</strong> est la capacité à "sentir" et contracter volontairement le muscle que tu veux travailler. Ex : lors d'un hip thrust, penser activement à contracter les fessiers (pas les cuisses) améliore l'efficacité du mouvement.</div>
+    </details>
+    <details>
+      <summary>Surcharge progressive</summary>
+      <div class="gloss-body">Principe fondamental : pour progresser, il faut augmenter régulièrement la <strong>demande</strong> imposée aux muscles (plus de charge, plus de reps, tempo plus lent, moins de repos). Sans surcharge progressive, le corps s'adapte et stagne.</div>
+    </details>
+    <details>
+      <summary>Superset</summary>
+      <div class="gloss-body">Un <strong>superset</strong> consiste à enchaîner deux exercices sans repos entre les deux. Ici, ils ciblent souvent des muscles différents (antagonistes) ou complémentaires, pour maximiser le temps d'entraînement et créer de la congestion.</div>
+    </details>
+    <details>
+      <summary>Congestion musculaire</summary>
+      <div class="gloss-body">La <strong>congestion</strong> (ou "pump") est la sensation de gonflement et de chaud dans un muscle après une série intense. Elle est causée par l'afflux sanguin. C'est un bon indicateur que le muscle travaille — et un facteur favorisant l'hypertrophie.</div>
+    </details>
+    <details>
+      <summary>Amplitude</summary>
+      <div class="gloss-body">L'<strong>amplitude</strong> est l'étendue du mouvement d'un exercice. Une amplitude complète (full range of motion) sollicite le muscle sur toute sa longueur et produit plus d'hypertrophie. Ne jamais sacrifier l'amplitude pour ajouter de la charge.</div>
+    </details>
+    <details>
+      <summary>Échec musculaire</summary>
+      <div class="gloss-body">L'<strong>échec musculaire</strong> (RIR 0) est le point où tu ne peux plus effectuer une répétition de plus avec une forme correcte. Ce programme ne te demande pas d'aller à l'échec systématiquement — rester à RIR 1–2 est souvent plus efficace et plus sûr.</div>
+    </details>
+  </div>
+</section>
+
+<!-- TIMER WIDGET -->
+<button id="timer-open-btn" onclick="openTimer()" title="Ouvrir le timer">⏱</button>
+<div id="timer-widget">
+  <div class="timer-top">
+    <span class="timer-title">Chrono repos</span>
+    <button id="timer-close" onclick="closeTimer()">✕</button>
+  </div>
+  <div id="timer-display">01:30</div>
+  <div class="timer-presets">
+    <button class="preset-btn" onclick="setPreset(60)">60s</button>
+    <button class="preset-btn active-preset" onclick="setPreset(90)">90s</button>
+    <button class="preset-btn" onclick="setPreset(120)">120s</button>
+  </div>
+  <div class="timer-controls">
+    <button class="ctrl-btn" id="btn-start" onclick="toggleTimer()">▶ Start</button>
+    <button class="ctrl-btn" id="btn-reset" onclick="resetTimer()">↺ Reset</button>
+  </div>
+</div>
+
+<script>
+/* ===== WEEK / SEANCE DATA ===== */
+const DATA = {
+  1: {
+    label:'Semaine 1 / 4', pct:'25%',
+    A:{
+      hipthrust:{sets:'4 × 10 reps',ref:'45 kg',rir:'RIR 2'},
+      abducteurs:{sets:'4 × 15 reps',ref:'60 kg',rir:'RIR 2'},
+      presse:{sets:'4 × 12 reps',ref:'40 kg',rir:'RIR 2'},
+      fentes:{sets:'3 × 10 reps / jambe',ref:'Haltères',rir:'RIR 2'},
+      goblet:{sets:'3 × 12 reps',ref:'12 kg',rir:'RIR 2'},
+      hyper:{sets:'3 × 15 reps',ref:'Poids corps',rir:'RIR 2'},
+    },
+    B:{
+      tirageh:{sets:'4 × 10 reps',ref:'12 kg',rir:'RIR 2'},
+      facepull:{sets:'4 × 15 reps',ref:'10 kg',rir:'RIR 2'},
+      tiragev:{sets:'4 × 10 reps',ref:'30 kg',rir:'RIR 2'},
+      rowing:{sets:'4 × 10 reps',ref:'10 kg',rir:'RIR 2'},
+      devmil:{sets:'4 × 10 reps',ref:'8 kg',rir:'RIR 2'},
+      elev:{sets:'4 × 15 reps',ref:'4 kg',rir:'RIR 2'},
+      pullover:{sets:'3 × 12 reps',ref:'6 kg',rir:'RIR 2'},
+    }
+  },
+  2: {
+    label:'Semaine 2 / 4', pct:'50%',
+    A:{
+      hipthrust:{sets:'4 × 10 reps',ref:'47.5 kg',rir:'RIR 1-2'},
+      abducteurs:{sets:'4 × 15 reps',ref:'62.5 kg',rir:'RIR 1-2'},
+      presse:{sets:'4 × 12 reps',ref:'42.5 kg',rir:'RIR 1-2'},
+      fentes:{sets:'3 × 10 reps / jambe',ref:'Haltères +',rir:'RIR 1-2'},
+      goblet:{sets:'3 × 12 reps',ref:'14 kg',rir:'RIR 1-2'},
+      hyper:{sets:'3 × 15 reps',ref:'Poids corps',rir:'RIR 1-2'},
+    },
+    B:{
+      tirageh:{sets:'4 × 10 reps',ref:'14 kg',rir:'RIR 1-2'},
+      facepull:{sets:'4 × 15 reps',ref:'12 kg',rir:'RIR 1-2'},
+      tiragev:{sets:'4 × 10 reps',ref:'32.5 kg',rir:'RIR 1-2'},
+      rowing:{sets:'4 × 10 reps',ref:'12 kg',rir:'RIR 1-2'},
+      devmil:{sets:'4 × 10 reps',ref:'9 kg',rir:'RIR 1-2'},
+      elev:{sets:'4 × 15 reps',ref:'5 kg',rir:'RIR 1-2'},
+      pullover:{sets:'3 × 12 reps',ref:'7 kg',rir:'RIR 1-2'},
+    }
+  },
+  3: {
+    label:'Semaine 3 / 4', pct:'75%',
+    A:{
+      hipthrust:{sets:'4 × 8 reps',ref:'50 kg',rir:'RIR 1'},
+      abducteurs:{sets:'4 × 12 reps',ref:'65 kg',rir:'RIR 1'},
+      presse:{sets:'4 × 10 reps',ref:'45 kg',rir:'RIR 1'},
+      fentes:{sets:'3 × 8 reps / jambe',ref:'Haltères ++',rir:'RIR 1'},
+      goblet:{sets:'3 × 10 reps',ref:'16 kg',rir:'RIR 1'},
+      hyper:{sets:'3 × 12 reps',ref:'+5 kg',rir:'RIR 1'},
+    },
+    B:{
+      tirageh:{sets:'4 × 8 reps',ref:'16 kg',rir:'RIR 1'},
+      facepull:{sets:'4 × 12 reps',ref:'14 kg',rir:'RIR 1'},
+      tiragev:{sets:'4 × 8 reps',ref:'35 kg',rir:'RIR 1'},
+      rowing:{sets:'4 × 8 reps',ref:'14 kg',rir:'RIR 1'},
+      devmil:{sets:'4 × 8 reps',ref:'10 kg',rir:'RIR 1'},
+      elev:{sets:'4 × 12 reps',ref:'6 kg',rir:'RIR 1'},
+      pullover:{sets:'3 × 10 reps',ref:'8 kg',rir:'RIR 1'},
+    }
+  },
+  4: {
+    label:'Semaine 4 / 4', pct:'100%',
+    A:{
+      hipthrust:{sets:'4 × 10 reps',ref:'50 kg ✓',rir:'RIR 1-2'},
+      abducteurs:{sets:'4 × 15 reps',ref:'65 kg ✓',rir:'RIR 1-2'},
+      presse:{sets:'4 × 12 reps',ref:'45 kg ✓',rir:'RIR 1-2'},
+      fentes:{sets:'3 × 10 reps / jambe',ref:'Consolide',rir:'RIR 1-2'},
+      goblet:{sets:'3 × 12 reps',ref:'16 kg ✓',rir:'RIR 1-2'},
+      hyper:{sets:'3 × 15 reps',ref:'+5 kg ✓',rir:'RIR 1-2'},
+    },
+    B:{
+      tirageh:{sets:'4 × 10 reps',ref:'16 kg ✓',rir:'RIR 1-2'},
+      facepull:{sets:'4 × 15 reps',ref:'14 kg ✓',rir:'RIR 1-2'},
+      tiragev:{sets:'4 × 10 reps',ref:'35 kg ✓',rir:'RIR 1-2'},
+      rowing:{sets:'4 × 10 reps',ref:'14 kg ✓',rir:'RIR 1-2'},
+      devmil:{sets:'4 × 10 reps',ref:'10 kg ✓',rir:'RIR 1-2'},
+      elev:{sets:'4 × 15 reps',ref:'6 kg ✓',rir:'RIR 1-2'},
+      pullover:{sets:'3 × 12 reps',ref:'8 kg ✓',rir:'RIR 1-2'},
+    }
+  }
+};
+
+let currentWeek = 1;
+let currentSeance = 'A';
+
+function setWeek(w, btn) {
+  currentWeek = w;
+  document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('prog-label').textContent = DATA[w].label;
+  document.getElementById('prog-pct').textContent = DATA[w].pct;
+  document.getElementById('prog-fill').style.width = DATA[w].pct;
+  renderSeance(currentSeance);
+}
+
+function setSeance(s, btn) {
+  currentSeance = s;
+  document.querySelectorAll('.seance-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('seance-A').style.display = s === 'A' ? 'block' : 'none';
+  document.getElementById('seance-B').style.display = s === 'B' ? 'block' : 'none';
+  renderSeance(s);
+}
+
+function renderSeance(s) {
+  const wData = DATA[currentWeek][s];
+  for (const [key, val] of Object.entries(wData)) {
+    const setsEl = document.getElementById('sets-' + s + '-' + key);
+    const rirEl = document.getElementById('rir-' + s + '-' + key);
+    if (setsEl) setsEl.innerHTML = val.sets + ' — <span>' + val.ref + '</span>';
+    if (rirEl) rirEl.textContent = val.rir;
+  }
+}
+
+/* ===== TIMER ===== */
+let timerTotal = 90, timerLeft = 90, timerRunning = false, timerInterval = null;
+
+function fmt(s) {
+  const m = Math.floor(s / 60), sec = s % 60;
+  return (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+
+function updateDisplay() {
+  document.getElementById('timer-display').textContent = fmt(timerLeft);
+}
+
+function setPreset(s) {
+  clearInterval(timerInterval); timerRunning = false;
+  timerTotal = s; timerLeft = s;
+  document.getElementById('btn-start').textContent = '▶ Start';
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active-preset'));
+  updateDisplay();
+}
+
+function toggleTimer() {
+  if (timerRunning) {
+    clearInterval(timerInterval); timerRunning = false;
+    document.getElementById('btn-start').textContent = '▶ Resume';
+  } else {
+    if (timerLeft <= 0) { timerLeft = timerTotal; }
+    timerRunning = true;
+    document.getElementById('btn-start').textContent = '⏸ Pause';
+    timerInterval = setInterval(() => {
+      timerLeft--;
+      updateDisplay();
+      if (timerLeft <= 0) {
+        clearInterval(timerInterval); timerRunning = false;
+        document.getElementById('btn-start').textContent = '▶ Start';
+        if (Notification && Notification.permission === 'granted') {
+          new Notification('⏱ Repos terminé !', { body: 'C\'est reparti, Émeline !' });
+        }
+      }
+    }, 1000);
+  }
+}
+
+function resetTimer() {
+  clearInterval(timerInterval); timerRunning = false;
+  timerLeft = timerTotal;
+  document.getElementById('btn-start').textContent = '▶ Start';
+  updateDisplay();
+}
+
+function openTimer() {
+  document.getElementById('timer-widget').classList.add('visible');
+  document.getElementById('timer-open-btn').classList.add('hidden');
+}
+
+function closeTimer() {
+  document.getElementById('timer-widget').classList.remove('visible');
+  document.getElementById('timer-open-btn').classList.remove('hidden');
+}
+
+function timerLaunch(s) {
+  setPreset(s);
+  openTimer();
+  timerLeft = s; timerTotal = s;
+  updateDisplay();
+  if (timerRunning) { clearInterval(timerInterval); timerRunning = false; }
+  setTimeout(() => toggleTimer(), 100);
+}
+
+/* Init */
+updateDisplay();
+renderSeance('A');
+document.getElementById('seance-B').style.display = 'none';
+
+/* Bannière iOS — affiche uniquement sur Safari iPhone si pas encore fermée */
+const isIOS = /iphone|ipad/i.test(navigator.userAgent) && !window.MSStream;
+const isStandalone = window.navigator.standalone === true;
+if (isIOS && !isStandalone && !localStorage.getItem('ios-banner-closed')) {
+  document.getElementById('ios-banner').style.display = 'block';
+}
+function closeBanner() {
+  document.getElementById('ios-banner').style.display = 'none';
+  localStorage.setItem('ios-banner-closed', '1');
+}
+</script>
+</body>
+</html>
