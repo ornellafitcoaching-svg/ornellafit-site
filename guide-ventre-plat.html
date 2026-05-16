@@ -15,7 +15,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Ventre Plat">
 <link rel="apple-touch-icon" href="images/logo.png">
-<meta name="theme-color" content="#1E1616">
+<meta name="theme-color" content="#FAF7F4">
 <meta name="facebook-domain-verification" content="q0lravv1bfmhpq3dob5d559cyidqq1" />
 <link rel="canonical" href="https://www.ornellafitcoaching.com/guide-ventre-plat.html">
 <title>Programme Ventre Plat — Méthode Expert | Ornella Fit Coaching</title>
@@ -30,6 +30,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --gold:    #B07D5A;
   --nude:    #A0624A;
   --cream:   #F7F3F0;
+  --cover-bg1: #F5EDE8;
+  --cover-bg2: #EDE1DA;
   --white:   #ffffff;
   --text:    #2E2218;
   --muted:   #7A6458;
@@ -52,18 +54,18 @@ body {
 /* ── PAGE ── */
 .page { max-width: 700px; margin: 0 auto; padding: 56px 28px; }
 .bottom-bar { height: 1px; background: var(--border); margin-top: 48px; }
-.page-label { text-align: center; font-size: 10px; font-weight: 300; color: rgba(255,255,255,.28); letter-spacing: 1px; padding: 12px 0 8px; text-transform: uppercase; }
+.page-label { text-align: center; font-size: 10px; font-weight: 300; color: rgba(46,34,24,.32); letter-spacing: 1px; padding: 12px 0 8px; text-transform: uppercase; }
 
 /* ── COUVERTURE ── */
 .cover-wrap {
   min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
-  background: linear-gradient(160deg, #1E1616 0%, #2C1A14 60%, #1A1010 100%);
+  background: linear-gradient(160deg, #F5EDE8 0%, #EDE1DA 55%, #E8D9D0 100%);
   padding: 64px 28px 48px; position: relative; overflow: hidden;
 }
 .cover-wrap::before {
   content: ''; position: absolute; top: -80px; right: -60px;
   width: 420px; height: 420px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,99,88,.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(201,99,88,.10) 0%, transparent 70%);
   pointer-events: none;
 }
 .cover-inner { max-width: 660px; margin: 0 auto; position: relative; z-index: 1; }
@@ -78,28 +80,28 @@ body {
 .cover-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.4rem, 6vw, 4.2rem);
-  font-weight: 300; line-height: 1.1; color: white; margin-bottom: 20px;
+  font-weight: 300; line-height: 1.1; color: #18100D; margin-bottom: 20px;
 }
-.cover-title em { font-style: italic; color: var(--nude); }
-.cover-sub { font-size: 1rem; color: var(--muted); line-height: 1.75; max-width: 520px; margin-bottom: 36px; }
+.cover-title em { font-style: italic; color: var(--accent); }
+.cover-sub { font-size: 1rem; color: #5A3E36; line-height: 1.75; max-width: 520px; margin-bottom: 36px; }
 .cover-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
 .cover-pill {
-  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.6); border: 1px solid rgba(201,99,88,.18);
   border-radius: 50px; padding: 8px 18px;
-  font-size: 0.8rem; color: rgba(255,255,255,.72);
+  font-size: 0.8rem; color: #4A3528;
   display: flex; align-items: center; gap: 6px;
 }
 .cover-strip {
-  display: flex; border: 1px solid rgba(201,99,88,.2); border-radius: 14px;
-  overflow: hidden; margin-bottom: 36px;
+  display: flex; border: 1px solid rgba(201,99,88,.25); border-radius: 14px;
+  overflow: hidden; margin-bottom: 36px; background: rgba(255,255,255,.5);
 }
 .cover-strip-item {
   flex: 1; padding: 18px 12px; text-align: center;
-  border-right: 1px solid rgba(201,99,88,.15);
+  border-right: 1px solid rgba(201,99,88,.18);
 }
 .cover-strip-item:last-child { border-right: none; }
-.cover-strip-num { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: var(--nude); line-height: 1; margin-bottom: 4px; }
-.cover-strip-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+.cover-strip-num { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 4px; }
+.cover-strip-label { font-size: 0.7rem; color: #7A6458; text-transform: uppercase; letter-spacing: 1px; }
 .cover-cta {
   display: inline-block;
   background: linear-gradient(135deg, var(--accent) 0%, #a84e44 100%);
@@ -110,10 +112,6 @@ body {
 }
 .cover-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,99,88,.55); }
 
-/* Force light text on dark-background sections */
-.cover-wrap { --muted: rgba(255,255,255,.6); --nude: #E8B4A0; --gold: #C9957A; }
-.cta-section { --muted: rgba(255,255,255,.6); --nude: #E8B4A0; }
-
 /* ── SECTION HEADERS ── */
 .eyebrow {
   display: inline-block; font-size: 0.7rem; font-weight: 700;
@@ -123,14 +121,14 @@ body {
 .sec-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.2rem, 6vw, 3.6rem);
-  font-weight: 300; color: white; line-height: 1.15; margin-bottom: 16px;
+  font-weight: 300; color: #18100D; line-height: 1.15; margin-bottom: 16px;
 }
-.sec-title em { font-style: italic; color: var(--nude); }
+.sec-title em { font-style: italic; color: var(--accent); }
 .sec-title::after {
   content: '';
   display: block;
   width: 48px; height: 2.5px;
-  background: linear-gradient(90deg, rgba(255,255,255,.5), rgba(255,255,255,.1));
+  background: linear-gradient(90deg, var(--accent), rgba(201,99,88,.2));
   border-radius: 2px;
   margin-top: 14px;
 }
@@ -138,21 +136,23 @@ body {
 
 /* ── CARDS INFO ── */
 .info-card {
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  background: #FFFFFF; border: 1px solid rgba(46,34,24,.09);
   border-radius: 14px; padding: 24px;
   border-left: 3px solid var(--accent); margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
 }
 .info-card:nth-child(even) { border-left-color: var(--gold); }
-.info-title { font-size: 0.9rem; font-weight: 700; color: white; margin-bottom: 8px; }
-.info-text { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
-.info-text strong { color: rgba(255,255,255,.72); }
+.info-title { font-size: 0.9rem; font-weight: 700; color: #18100D; margin-bottom: 8px; }
+.info-text { font-size: 0.88rem; color: #5A3E36; line-height: 1.7; }
+.info-text strong { color: #18100D; }
 
 /* ── ERREURS ── */
 .erreur-card {
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  background: #FFFFFF; border: 1px solid rgba(46,34,24,.09);
   border-radius: 16px; padding: 26px 24px 24px;
   display: flex; gap: 20px; align-items: flex-start;
   border-left: 3px solid var(--accent); margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
 }
 .erreur-card:nth-child(even) { border-left-color: var(--gold); }
 .erreur-num {
@@ -161,43 +161,46 @@ body {
   line-height: 1; flex-shrink: 0; min-width: 36px;
 }
 .erreur-card:nth-child(even) .erreur-num { color: var(--gold); }
-.erreur-title { font-size: 0.95rem; font-weight: 700; color: white; margin-bottom: 8px; line-height: 1.3; }
-.erreur-text { font-size: 0.87rem; color: var(--muted); line-height: 1.7; }
-.erreur-text strong { color: rgba(255,255,255,.72); }
+.erreur-title { font-size: 0.95rem; font-weight: 700; color: #18100D; margin-bottom: 8px; line-height: 1.3; }
+.erreur-text { font-size: 0.87rem; color: #5A3E36; line-height: 1.7; }
+.erreur-text strong { color: #18100D; }
 .erreur-fix {
   margin-top: 10px; padding: 9px 13px;
-  background: rgba(201,99,88,.08); border: 1px solid rgba(201,99,88,.2);
-  border-radius: 8px; font-size: 0.82rem; color: rgba(255,255,255,.68); line-height: 1.6;
+  background: rgba(201,99,88,.07); border: 1px solid rgba(201,99,88,.2);
+  border-radius: 8px; font-size: 0.82rem; color: #3A2820; line-height: 1.6;
 }
-.erreur-fix::before { content: '→ '; color: var(--nude); font-weight: 700; }
+.erreur-fix::before { content: '→ '; color: var(--accent); font-weight: 700; }
 
 /* ── EXERCICES GUIDE ── */
 .exo-guide {
-  background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.07);
+  background: #FFFFFF; border: 1px solid rgba(46,34,24,.08);
   border-radius: 12px; padding: 18px 20px; margin-bottom: 12px;
   display: flex; gap: 14px; align-items: flex-start;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
 }
 .exo-icon { font-size: 1.4rem; flex-shrink: 0; line-height: 1; margin-top: 2px; }
-.exo-name { font-size: 0.95rem; font-weight: 700; color: white; margin-bottom: 5px; }
-.exo-why { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
-.exo-why strong { color: rgba(255,255,255,.65); }
+.exo-name { font-size: 0.95rem; font-weight: 700; color: #18100D; margin-bottom: 5px; }
+.exo-why { font-size: 0.85rem; color: #5A3E36; line-height: 1.65; }
+.exo-why strong { color: #18100D; }
 
 /* ── NUTRITION ── */
 .nutri-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
 .nutri-card {
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  background: #FFFFFF; border: 1px solid rgba(46,34,24,.09);
   border-radius: 14px; padding: 20px 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
 }
 .nutri-icon { font-size: 1.5rem; margin-bottom: 8px; }
-.nutri-title { font-size: 0.88rem; font-weight: 700; color: white; margin-bottom: 6px; }
-.nutri-text { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
-.nutri-text strong { color: rgba(255,255,255,.68); }
+.nutri-title { font-size: 0.88rem; font-weight: 700; color: #18100D; margin-bottom: 6px; }
+.nutri-text { font-size: 0.82rem; color: #5A3E36; line-height: 1.65; }
+.nutri-text strong { color: #18100D; }
 
 /* ── ACTION STEPS ── */
 .step-card {
   display: flex; gap: 16px; align-items: flex-start;
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
+  background: #FFFFFF; border: 1px solid rgba(46,34,24,.08);
   border-radius: 12px; padding: 20px; margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
 }
 .step-num {
   background: var(--accent); color: white;
@@ -205,9 +208,9 @@ body {
   display: flex; align-items: center; justify-content: center;
   font-weight: 700; font-size: 0.85rem; flex-shrink: 0;
 }
-.step-title { font-weight: 700; color: white; margin-bottom: 5px; font-size: 0.92rem; }
-.step-text { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
-.step-text strong { color: rgba(255,255,255,.68); }
+.step-title { font-weight: 700; color: #18100D; margin-bottom: 5px; font-size: 0.92rem; }
+.step-text { font-size: 0.85rem; color: #5A3E36; line-height: 1.65; }
+.step-text strong { color: #18100D; }
 
 /* ── CHAPITRES EN FOND CLAIR (article.page) ── */
 article.page {
@@ -355,37 +358,38 @@ article.page summary[style*="color:white"] { color: #2C1F1A !important; }
 
 /* ── CTA FINAL ── */
 .cta-section {
-  background: linear-gradient(160deg, #2C1A14 0%, #1E1616 100%);
-  border: 1px solid rgba(201,99,88,.2); border-radius: 20px;
+  background: linear-gradient(160deg, #F0E8E2 0%, #FAF7F4 100%);
+  border: 1px solid rgba(201,99,88,.25); border-radius: 20px;
   padding: 48px 32px; text-align: center; margin: 40px 0;
   position: relative; overflow: hidden;
 }
 .cta-section::before {
   content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
   width: 400px; height: 400px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,99,88,.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(201,99,88,.08) 0%, transparent 70%);
   pointer-events: none;
 }
 .cta-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
-  font-weight: 300; color: white; line-height: 1.2; margin-bottom: 14px; position: relative; z-index: 1;
+  font-weight: 300; color: #18100D; line-height: 1.2; margin-bottom: 14px; position: relative; z-index: 1;
 }
-.cta-title em { font-style: italic; color: var(--nude); }
-.cta-sub { font-size: 0.92rem; color: var(--muted); line-height: 1.7; max-width: 480px; margin: 0 auto 32px; position: relative; z-index: 1; }
+.cta-title em { font-style: italic; color: var(--accent); }
+.cta-sub { font-size: 0.92rem; color: #5A3E36; line-height: 1.7; max-width: 480px; margin: 0 auto 32px; position: relative; z-index: 1; }
 .offres-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 560px; margin: 0 auto 28px; position: relative; z-index: 1; }
 .offre-card {
-  background: rgba(255,255,255,.05); border: 1px solid rgba(201,99,88,.15);
+  background: #FFFFFF; border: 1px solid rgba(201,99,88,.18);
   border-radius: 14px; padding: 24px 18px;
   display: flex; flex-direction: column; align-items: center; text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
 }
-.offre-card.featured { background: rgba(201,99,88,.1); border-color: rgba(201,99,88,.4); }
-.offre-badge { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--nude); margin-bottom: 10px; }
-.offre-card.featured .offre-badge { color: var(--gold); }
-.offre-price { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; color: white; line-height: 1; margin-bottom: 6px; }
-.offre-label { font-size: 0.73rem; color: var(--muted); margin-bottom: 16px; line-height: 1.4; }
+.offre-card.featured { background: #FFF0EE; border-color: rgba(201,99,88,.4); }
+.offre-badge { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.offre-card.featured .offre-badge { color: var(--accent); }
+.offre-price { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; color: #18100D; line-height: 1; margin-bottom: 6px; }
+.offre-label { font-size: 0.73rem; color: #7A6458; margin-bottom: 16px; line-height: 1.4; }
 .offre-perks { list-style: none; text-align: left; width: 100%; margin-bottom: 18px; }
-.offre-perks li { font-size: 0.8rem; color: rgba(255,255,255,.7); padding: 4px 0 4px 20px; position: relative; line-height: 1.5; }
+.offre-perks li { font-size: 0.8rem; color: #3A2820; padding: 4px 0 4px 20px; position: relative; line-height: 1.5; }
 .offre-perks li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
 .offre-btn {
   display: block; width: 100%;
@@ -398,15 +402,15 @@ article.page summary[style*="color:white"] { color: #2C1F1A !important; }
 .offre-btn:hover { transform: translateY(-2px); }
 .wa-btn {
   display: inline-flex; align-items: center; gap: 10px;
-  background: rgba(37,211,102,.1); border: 1.5px solid rgba(37,211,102,.3);
-  border-radius: 50px; padding: 14px 30px; text-decoration: none; color: white;
+  background: rgba(37,211,102,.12); border: 1.5px solid rgba(37,211,102,.4);
+  border-radius: 50px; padding: 14px 30px; text-decoration: none; color: #1a6e3a;
   font-size: 0.85rem; font-weight: 600; transition: border-color .2s;
   position: relative; z-index: 1;
 }
-.wa-btn:hover { border-color: rgba(37,211,102,.6); }
+.wa-btn:hover { border-color: rgba(37,211,102,.7); background: rgba(37,211,102,.18); }
 .rarity {
   font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--gold); background: rgba(201,149,122,.1); border: 1px solid rgba(201,149,122,.25);
+  color: var(--accent); background: rgba(201,99,88,.08); border: 1px solid rgba(201,99,88,.22);
   border-radius: 50px; padding: 6px 18px; display: inline-block;
   margin-top: 16px; position: relative; z-index: 1;
 }
@@ -426,13 +430,13 @@ article.page summary[style*="color:white"] { color: #2C1F1A !important; }
 .fab-menu {
   display: none; flex-direction: column;
   position: absolute; bottom: 64px; right: 0;
-  background: #2C1F1A; border: 1px solid rgba(201,99,88,.2);
+  background: #FFFFFF; border: 1px solid rgba(201,99,88,.2);
   border-radius: 16px; padding: 10px 0; min-width: 200px;
-  box-shadow: 0 8px 40px rgba(0,0,0,.5);
+  box-shadow: 0 8px 40px rgba(0,0,0,.15);
 }
 #fab-check:checked ~ .fab-menu { display: flex; }
-.fab-menu a { display: block; padding: 10px 20px; font-size: 0.85rem; color: rgba(255,255,255,.8); text-decoration: none; transition: background .15s; }
-.fab-menu a:hover { background: rgba(201,99,88,.1); color: white; }
+.fab-menu a { display: block; padding: 10px 20px; font-size: 0.85rem; color: #3A2820; text-decoration: none; transition: background .15s; }
+.fab-menu a:hover { background: rgba(201,99,88,.08); color: var(--accent); }
 .menu-sep { height: 1px; background: rgba(201,99,88,.12); margin: 6px 0; }
 
 /* ── SOCIAL FOOTER ── */
@@ -549,6 +553,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#action" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:#C96358;text-decoration:none;padding:6px 12px;background:#FAF0EE;border-radius:20px">🎯 Action</a>
     <a href="#bonus-1" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:white;text-decoration:none;padding:6px 12px;background:#C96358;border-radius:20px">💪 Programme 2 sem.</a>
     <a href="#complements" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:white;text-decoration:none;padding:6px 12px;background:#6AAF3D;border-radius:20px">💊 Compléments</a>
+    <a href="#qui-suis-je" style="display:inline-block;margin-right:12px;font-size:12px;font-weight:600;color:white;text-decoration:none;padding:6px 12px;background:#C96358;border-radius:20px">🏆 Ta coach</a>
   </div>
 </nav>
 <script>
@@ -581,6 +586,7 @@ window.addEventListener('scroll', function() {
     { id: 'page-5',      href: '#action' },
     { id: 'bonus-1',     href: '#bonus-1' },
     { id: 'complements', href: '#complements' },
+    { id: 'qui-suis-je',  href: '#qui-suis-je' },
   ];
   function setActive(href) {
     document.querySelectorAll('#nav-pills-wrap a').forEach(function(p) {
@@ -660,31 +666,7 @@ window.addEventListener('scroll', function() {
   <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20acc%C3%A8s%20au%20programme%20ventre%20plat%20et%20je%20veux%20aller%20encore%20plus%20loin.%20On%20en%20parle%20%3F" target="_blank" rel="noopener" class="stripe-cta">📲 Aller plus loin avec Ornella →</a>
 </div>
 
-<!-- ══ CARTE INSTALL iPhone ══ -->
-<div style="background:linear-gradient(135deg,#1A1A2E,#2C1F1A);border-top:1px solid rgba(201,99,88,.2);border-bottom:1px solid rgba(201,99,88,.2);padding:20px 24px;">
-  <div style="max-width:620px;margin:0 auto;display:flex;gap:16px;align-items:flex-start;">
-    <div style="font-size:2rem;flex-shrink:0;line-height:1;margin-top:2px;">📲</div>
-    <div>
-      <p style="font-size:0.8rem;font-weight:700;color:var(--nude);margin-bottom:6px;letter-spacing:0.04em;">ASTUCE — Installe ce programme comme une appli sur ton iPhone</p>
-      <p style="font-size:0.82rem;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:10px;">Pour retrouver ton programme en 1 tap depuis l'écran d'accueil, sans chercher le lien à chaque fois :</p>
-      <div style="display:flex;flex-direction:column;gap:6px;">
-        <div style="font-size:0.82rem;color:rgba(255,255,255,.75);display:flex;gap:10px;align-items:center;">
-          <span style="background:rgba(201,99,88,.2);border:1px solid rgba(201,99,88,.3);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:800;flex-shrink:0;color:var(--nude);">1</span>
-          Ouvre cette page dans <strong style="color:white;">Safari</strong> (pas Chrome ni Instagram)
-        </div>
-        <div style="font-size:0.82rem;color:rgba(255,255,255,.75);display:flex;gap:10px;align-items:center;">
-          <span style="background:rgba(201,99,88,.2);border:1px solid rgba(201,99,88,.3);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:800;flex-shrink:0;color:var(--nude);">2</span>
-          Appuie sur <strong style="color:white;">⬆ Partager</strong> en bas de l'écran
-        </div>
-        <div style="font-size:0.82rem;color:rgba(255,255,255,.75);display:flex;gap:10px;align-items:center;">
-          <span style="background:rgba(201,99,88,.2);border:1px solid rgba(201,99,88,.3);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:800;flex-shrink:0;color:var(--nude);">3</span>
-          Défiler et choisir <strong style="color:white;">"Sur l'écran d'accueil"</strong> → Ajouter
-        </div>
-      </div>
-      <p style="font-size:0.75rem;color:rgba(255,255,255,.3);margin-top:10px;margin-bottom:0;">✓ Plein écran · Sans pub · Accessible hors connexion partielle · Comme une vraie app</p>
-    </div>
-  </div>
-</div>
+<!-- ══ CARTE INSTALL iPhone ══ supprimée ici, déplacée dans page Qui suis-je -->
 
 <!-- ══ PAGE 1 — POURQUOI ══ -->
 <article class="page" id="page-1">
@@ -710,9 +692,9 @@ window.addEventListener('scroll', function() {
     <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C9957A;margin-bottom:12px;">✨ Mon résultat — après grossesse</p>
     <img src="ornella-avant-apres-ventre.jpg" alt="Avant après ventre plat Ornella — après grossesse"
       style="max-width:100%;width:340px;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.25);display:block;margin:0 auto;">
-    <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);margin-top:10px;line-height:1.6;">
+    <p style="font-size:0.82rem;color:#7A6458;margin-top:10px;line-height:1.6;">
       Avec exactement les exercices et la méthode de ce guide.<br>
-      <em style="color:#C9957A;">Ornella — Coach Ornella Fit Coaching</em>
+      <em style="color:#C96358;">Ornella — Coach Ornella Fit Coaching</em>
     </p>
   </div>
 
@@ -1205,6 +1187,74 @@ window.addEventListener('scroll', function() {
   <div class="page-label">Ornella Fit Coaching · Programme Ventre Plat</div>
 </article>
 
+<!-- ══ PAGE QUI SUIS-JE ══ -->
+<article class="page" id="qui-suis-je">
+  <span class="eyebrow">Ta coach</span>
+  <h2 class="sec-title serif">Qui suis-je<br><em>pour te guider ?</em></h2>
+  <p class="sec-intro">Avant d'aller plus loin, je veux que tu saches exactement à qui tu fais confiance.</p>
+
+  <!-- BIO ORNELLA -->
+  <div style="background:#FFFFFF;border:1px solid rgba(201,99,88,.18);border-radius:16px;padding:28px 24px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.05);">
+    <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:18px;">
+      <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#C96358,#C9957A);display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;">🏆</div>
+      <div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#18100D;line-height:1.2;margin-bottom:4px;">Ornella</p>
+        <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C96358;">Coach fitness féminin · Ex-compétitrice</p>
+      </div>
+    </div>
+    <p style="font-size:0.9rem;color:#5A3E36;line-height:1.8;margin-bottom:14px;">J'ai été compétitrice en fitness et en musculation. J'ai vécu de l'intérieur ce que c'est que de transformer son corps — avec les sacrifices, les erreurs, les vrais résultats. Après ma grossesse, j'ai dû tout reconstruire. Ce guide contient ce que j'ai réellement appliqué sur moi-même.</p>
+    <p style="font-size:0.9rem;color:#5A3E36;line-height:1.8;margin-bottom:18px;">Aujourd'hui j'accompagne des femmes à distance et à domicile dans l'Essonne — avec des méthodes basées sur ce qui marche vraiment, pas sur ce qui se vend bien.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div style="background:#FAF8F5;border:1px solid rgba(201,99,88,.15);border-radius:10px;padding:14px;text-align:center;">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#C96358;font-weight:300;line-height:1;">100+</p>
+        <p style="font-size:0.72rem;color:#7A6458;text-transform:uppercase;letter-spacing:0.08em;margin-top:3px;">Femmes accompagnées</p>
+      </div>
+      <div style="background:#FAF8F5;border:1px solid rgba(201,99,88,.15);border-radius:10px;padding:14px;text-align:center;">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#C96358;font-weight:300;line-height:1;">5★</p>
+        <p style="font-size:0.72rem;color:#7A6458;text-transform:uppercase;letter-spacing:0.08em;margin-top:3px;">Avis Google</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MESSAGE PERSONNEL -->
+  <div style="background:rgba(201,99,88,.07);border-left:3px solid #C96358;border-radius:0 12px 12px 0;padding:20px 22px;margin-bottom:28px;">
+    <p style="font-size:0.9rem;color:#3A2820;line-height:1.8;font-style:italic;">"Ce guide, c'est ce que j'aurais voulu avoir quand j'ai commencé. Mais un guide ne remplace pas un accompagnement sur mesure. Si tu veux vraiment avancer vite — sans te tromper de méthode, sans perdre du temps — c'est là que je peux vraiment t'aider."</p>
+    <p style="font-size:0.8rem;color:#C96358;font-weight:700;margin-top:10px;">— Ornella</p>
+  </div>
+
+  <!-- RACCOURCI iPHONE -->
+  <div style="background:#F0EBE6;border:1.5px solid rgba(201,99,88,.25);border-radius:14px;padding:22px 22px;margin-bottom:28px;">
+    <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C96358;margin-bottom:10px;">📲 Astuce — Garde ce guide toujours à portée</p>
+    <p style="font-size:0.85rem;color:#5A3E36;line-height:1.65;margin-bottom:14px;">Installe ce programme comme une vraie appli sur ton iPhone pour le retrouver en 1 tap — sans chercher le lien :</p>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;gap:12px;align-items:center;font-size:0.85rem;color:#3A2820;">
+        <span style="background:#C96358;color:white;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:800;flex-shrink:0;">1</span>
+        Ouvre cette page dans <strong>Safari</strong> (pas Chrome ni Instagram)
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;font-size:0.85rem;color:#3A2820;">
+        <span style="background:#C96358;color:white;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:800;flex-shrink:0;">2</span>
+        Appuie sur <strong>⬆ Partager</strong> en bas de Safari
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;font-size:0.85rem;color:#3A2820;">
+        <span style="background:#C96358;color:white;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:800;flex-shrink:0;">3</span>
+        Défiler → <strong>"Sur l'écran d'accueil"</strong> → Ajouter
+      </div>
+    </div>
+    <p style="font-size:0.75rem;color:#9A8080;margin-top:12px;">✓ Plein écran · Sans pub · Accessible hors connexion · Comme une vraie app</p>
+  </div>
+
+  <!-- CTA COACHING -->
+  <div style="background:linear-gradient(135deg,#FFF0EE,#FAF7F4);border:2px solid rgba(201,99,88,.3);border-radius:16px;padding:28px 24px;text-align:center;">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:#18100D;line-height:1.3;margin-bottom:10px;">Tu veux aller plus loin<br><em style="color:#C96358;">avec un vrai suivi ?</em></p>
+    <p style="font-size:0.88rem;color:#5A3E36;line-height:1.7;margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto;">Programme sur mesure, suivi hebdomadaire, nutrition adaptée — je m'occupe de tout. Tu n'as plus qu'à exécuter.</p>
+    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20lu%20ton%20guide%20ventre%20plat.%20Je%20veux%20d%C3%A9marrer%20un%20coaching.%20On%20en%20parle%20%3F" target="_blank" rel="noopener" style="display:inline-block;background:linear-gradient(135deg,#C96358,#a84e44);color:white;text-decoration:none;padding:16px 32px;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:700;box-shadow:0 6px 24px rgba(201,99,88,.35);transition:transform .15s;margin-bottom:14px;">💬 Je démarre mon coaching avec Ornella →</a>
+    <p style="font-size:0.78rem;color:#9A8080;line-height:1.6;">Sans engagement · Je te réponds personnellement · Bilan offert avant de commencer</p>
+  </div>
+
+  <div class="bottom-bar"></div>
+  <div class="page-label">Ornella Fit Coaching · Programme Ventre Plat</div>
+</article>
+
 <!-- ══ PAGE 6 — CTA FINAL ══ -->
 <article class="page" id="page-6">
   <div class="cta-section">
@@ -1270,12 +1320,12 @@ window.addEventListener('scroll', function() {
       ornellafitcoaching.com
     </a>
   </div>
-  <div style="font-size:10px;font-weight:300;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:1px;">Ornella Fit Coaching · Ton plus bel investissement, c'est toi.</div>
+  <div style="font-size:10px;font-weight:300;color:rgba(46,34,24,.32);text-transform:uppercase;letter-spacing:1px;">Ornella Fit Coaching · Ton plus bel investissement, c'est toi.</div>
 </div>
 
 <!-- ══ BONUS 1 — PROGRAMME 2 SEMAINES ══ -->
 <style>
-.bonus-dark { background: #2D1F1A; }
+.bonus-dark { background: #F7F2EE; }
 .bonus-light { background: #FFFFFF; color: #1E1616; border-top: 1px solid #F0E8E0; border-bottom: 1px solid #F0E8E0; }
 .bonus-badge {
   display: inline-block;
@@ -1287,7 +1337,7 @@ window.addEventListener('scroll', function() {
 .bonus-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.2rem, 6vw, 3.6rem);
-  font-weight: 300; color: #D4A853; line-height: 1.15; margin-bottom: 12px;
+  font-weight: 300; color: #C96358; line-height: 1.15; margin-bottom: 12px;
 }
 .bonus-title::after {
   content: '';
@@ -1297,13 +1347,13 @@ window.addEventListener('scroll', function() {
   border-radius: 2px;
   margin-top: 14px;
 }
-.bonus-sub { font-size: 0.95rem; color: rgba(255,255,255,.6); line-height: 1.7; margin-bottom: 28px; }
+.bonus-sub { font-size: 0.95rem; color: #5A3E36; line-height: 1.7; margin-bottom: 28px; }
 .planning-note {
-  background: rgba(212,168,83,.08); border: 1px solid rgba(212,168,83,.25);
+  background: rgba(201,99,88,.07); border: 1px solid rgba(201,99,88,.22);
   border-radius: 14px; padding: 20px 22px; margin-bottom: 36px;
-  font-size: 0.88rem; color: rgba(255,255,255,.75); line-height: 1.8;
+  font-size: 0.88rem; color: #3A2820; line-height: 1.8;
 }
-.planning-note strong { color: #D4A853; }
+.planning-note strong { color: #C96358; }
 .semaine-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.7rem, 4vw, 2.2rem); color: #D4A853; font-weight: 300;
@@ -1312,8 +1362,9 @@ window.addEventListener('scroll', function() {
   letter-spacing: 0.04em;
 }
 .seance-block {
-  background: rgba(255,255,255,.04); border: 1px solid rgba(212,168,83,.2);
+  background: #FFFFFF; border: 1px solid rgba(201,99,88,.2);
   border-radius: 16px; margin-bottom: 16px; overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
 }
 .seance-header {
   padding: 18px 22px; cursor: pointer;
@@ -1335,16 +1386,16 @@ window.addEventListener('scroll', function() {
 .seance-body.open { display: block; }
 .seance-arrow.open { transform: rotate(90deg); }
 .exo-premium {
-  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
+  background: #FAF8F5; border: 1px solid rgba(0,0,0,.08);
   border-radius: 12px; padding: 18px 20px; margin-bottom: 12px;
 }
 .exo-premium-head {
   display: inline-block;
-  background: rgba(255,255,255,.08);
-  border: 1.5px solid rgba(255,255,255,.18);
+  background: rgba(201,99,88,.1);
+  border: 1.5px solid rgba(201,99,88,.25);
   border-radius: 50px;
   padding: 6px 18px;
-  font-weight: 700; color: white; font-size: 0.9rem; margin-bottom: 12px;
+  font-weight: 700; color: #18100D; font-size: 0.9rem; margin-bottom: 12px;
 }
 .exo-detail { margin-bottom: 10px; }
 .exo-detail-label {
@@ -1352,10 +1403,10 @@ window.addEventListener('scroll', function() {
   margin-bottom: 5px; padding: 3px 10px; border-radius: 50px;
   display: inline-block;
 }
-.label-how { background: rgba(126,203,161,.15); color: #7ecba1; }
-.label-err { background: rgba(201,99,88,.15); color: #e07b71; }
-.label-tip { background: rgba(212,168,83,.15); color: #D4A853; }
-.exo-detail-text { font-size: 0.85rem; color: rgba(255,255,255,.65); line-height: 1.7; }
+.label-how { background: rgba(126,203,161,.15); color: #2e8b5a; }
+.label-err { background: rgba(201,99,88,.12); color: #C96358; }
+.label-tip { background: rgba(212,168,83,.12); color: #8a6a20; }
+.exo-detail-text { font-size: 0.85rem; color: #5A3E36; line-height: 1.7; }
 .exo-detail-text p { margin-bottom: 4px; }
 
 /* MEAL PLAN */
@@ -1364,12 +1415,12 @@ window.addEventListener('scroll', function() {
   margin-bottom: 16px; overflow: hidden;
 }
 .mp-day-header {
-  background: #2C1F1A; color: #E8B4A0; padding: 16px 22px;
+  background: #F0E8E2; color: #2C1F1A; padding: 16px 22px;
   font-weight: 700; font-size: 0.95rem;
   display: flex; justify-content: space-between; align-items: center;
   cursor: pointer; user-select: none;
 }
-.mp-day-header .mp-arrow { transition: transform .2s; font-size: 1rem; color: #C9957A; }
+.mp-day-header .mp-arrow { transition: transform .2s; font-size: 1rem; color: #C96358; }
 .mp-day-header.open .mp-arrow { transform: rotate(90deg); }
 .mp-day-body { display: none; padding: 20px 22px; }
 .mp-day-body.open { display: block; }
@@ -2518,8 +2569,8 @@ window.addEventListener('scroll', function() {
     .comp-text p { margin-bottom:4px; }
 
     .comp-table { width:100%; border-collapse:collapse; font-size:0.85rem; margin-top:24px; }
-    .comp-table thead tr { background:#2C1F1A; color:#E8B4A0; }
-    .comp-table th { padding:12px 14px; text-align:left; }
+    .comp-table thead tr { background:#F0E8E2; color:#18100D; }
+    .comp-table th { padding:12px 14px; text-align:left; font-weight:700; }
     .comp-table td { padding:12px 14px; border-bottom:1px solid #F0E8E0; color:#3A2820; }
     .comp-table tr:nth-child(even) td { background:#FAF8F5; }
     .comp-final { background:#FFF3F0; border:1.5px solid #ECD8D0; border-radius:12px; padding:18px 20px; margin-top:20px; font-size:0.87rem; color:#3A2820; line-height:1.7; }
@@ -2615,6 +2666,60 @@ window.addEventListener('scroll', function() {
       <span class="comp-label comp-budget-label">💰 Budget : 8-15€/mois</span>
     </details>
 
+    <!-- 6. Whey Protéine -->
+    <details class="comp-card">
+      <summary style="cursor:pointer;font-weight:700;font-size:1rem;color:#2C1F1A;display:flex;justify-content:space-between;align-items:center;list-style:none">6. 💪 Whey Protéine<span style="color:#C96358;font-size:0.85rem">▼</span></summary>
+      <div class="comp-section">
+        <span class="comp-label comp-why-label">🧬 Pourquoi</span>
+        <div class="comp-text">La whey permet d'atteindre ses besoins en protéines facilement — indispensable pour <strong>préserver et construire le muscle tout en perdant de la graisse</strong>. Plus de muscle = métabolisme plus actif = plus de calories brûlées au repos. Idéale après une séance.</div>
+      </div>
+      <div class="comp-section">
+        <span class="comp-label comp-how-label">✅ Comment utiliser</span>
+        <div class="comp-text">1 shaker (25-30g de protéines) dans les 30 minutes après ta séance. Peut aussi être pris le matin si tu as du mal à atteindre tes apports protéiques. Préfère une whey isolate si tu es sensible au lactose.</div>
+      </div>
+      <div class="comp-section">
+        <span class="comp-label comp-nat-label">💡 Astuce Ornella</span>
+        <div class="comp-text">"Je mélange ma whey avec de l'eau de coco après la séance — ça hydrate, ça apporte des électrolytes, et le goût est bien meilleur qu'avec l'eau."</div>
+      </div>
+      <span class="comp-label comp-budget-label">💰 Budget : 25-40€/mois</span>
+    </details>
+
+    <!-- 7. Créatine -->
+    <details class="comp-card">
+      <summary style="cursor:pointer;font-weight:700;font-size:1rem;color:#2C1F1A;display:flex;justify-content:space-between;align-items:center;list-style:none">7. ⚡ Créatine<span style="color:#C96358;font-size:0.85rem">▼</span></summary>
+      <div class="comp-section">
+        <span class="comp-label comp-why-label">🧬 Pourquoi</span>
+        <div class="comp-text">La créatine est le complément le plus étudié et le plus sûr. Elle <strong>améliore la force, la récupération musculaire et la composition corporelle</strong>. Elle aide à faire plus de reps, donc à progresser plus vite. Contrairement aux idées reçues, elle ne gonfle pas les femmes — elle sculpte.</div>
+      </div>
+      <div class="comp-section">
+        <span class="comp-label comp-how-label">✅ Comment utiliser</span>
+        <div class="comp-text">3 à 5g par jour, tous les jours, même les jours sans sport. Dans de l'eau, un shaker ou du jus de fruit. La régularité est clé — inutile de faire une phase de charge.</div>
+      </div>
+      <div class="comp-section">
+        <span class="comp-label comp-nat-label">💡 Sources naturelles</span>
+        <div class="comp-text">Viande rouge · Poulet · Poisson · Mais les quantités sont faibles — la supplémentation est souvent nécessaire pour voir un effet.</div>
+      </div>
+      <span class="comp-label comp-budget-label">💰 Budget : 10-20€/mois</span>
+    </details>
+
+    <!-- 8. Eau de coco -->
+    <details class="comp-card">
+      <summary style="cursor:pointer;font-weight:700;font-size:1rem;color:#2C1F1A;display:flex;justify-content:space-between;align-items:center;list-style:none">8. 🥥 Eau de coco<span style="color:#C96358;font-size:0.85rem">▼</span></summary>
+      <div class="comp-section">
+        <span class="comp-label comp-why-label">🧬 Pourquoi</span>
+        <div class="comp-text">L'eau de coco est naturellement riche en potassium, magnésium et électrolytes. Elle <strong>combat la rétention d'eau et les ballonnements</strong> liés à un manque de minéraux. Le potassium équilibre le sodium — moins de ventre gonflé, meilleure récupération après l'effort.</div>
+      </div>
+      <div class="comp-section">
+        <span class="comp-label comp-how-label">✅ Comment utiliser</span>
+        <div class="comp-text">1 verre (250ml) le matin à jeun ou après une séance. Choisir une eau de coco 100% pure, sans sucre ajouté. Elle peut remplacer les boissons de récupération industrielles.</div>
+      </div>
+      <div class="comp-section">
+        <span class="comp-label comp-nat-label">💡 Astuce</span>
+        <div class="comp-text">Combine avec du thé vert : un verre d'eau de coco le matin, 2-3 tasses de thé vert dans la journée. Ces deux boissons ensemble drainent, hydratent et activent le métabolisme.</div>
+      </div>
+      <span class="comp-label comp-budget-label">💰 Budget : 10-20€/mois</span>
+    </details>
+
     <!-- Tableau récap -->
     <div style="overflow-x:auto;">
       <table class="comp-table">
@@ -2630,14 +2735,17 @@ window.addEventListener('scroll', function() {
           <tr><td>🦠 Probiotiques</td><td>Anti-ballonnement</td><td>15-30€</td><td>⭐⭐⭐</td></tr>
           <tr><td>🌿 Oméga-3</td><td>Anti-inflammation</td><td>15-25€</td><td>⭐⭐⭐</td></tr>
           <tr><td>💊 Magnésium</td><td>Anti-cortisol</td><td>10-20€</td><td>⭐⭐⭐</td></tr>
+          <tr><td>💪 Whey protéine</td><td>Masse musculaire</td><td>25-40€</td><td>⭐⭐⭐</td></tr>
+          <tr><td>⚡ Créatine</td><td>Force + composition</td><td>10-20€</td><td>⭐⭐⭐</td></tr>
           <tr><td>🍵 Thé vert</td><td>Thermogenèse</td><td>5-15€</td><td>⭐⭐</td></tr>
+          <tr><td>🥥 Eau de coco</td><td>Rétention + récup</td><td>10-20€</td><td>⭐⭐</td></tr>
           <tr><td>🌾 Psyllium</td><td>Transit</td><td>8-15€</td><td>⭐⭐</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="comp-final">
-      💡 <strong>Si tu ne devais en prendre que 2 :</strong> Probiotiques + Magnésium. Ce sont les deux qui ont l'impact le plus rapide sur le ventre.
+      💡 <strong>Si tu ne devais en prendre que 3 :</strong> Magnésium + Whey protéine + Créatine. Ces trois-là changent la composition corporelle en profondeur.
     </div>
   </div>
 </div>
