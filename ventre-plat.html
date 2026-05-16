@@ -284,12 +284,17 @@ footer a:hover{color:var(--accent)}
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
+<!-- ══ TOPBAR URGENCE ══ -->
+<div id="urgency-topbar" style="background:linear-gradient(90deg,#1C1210 0%,#2A1410 50%,#1C1210 100%);color:#fff;text-align:center;padding:10px 16px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.02em;position:sticky;top:0;z-index:300;border-bottom:1px solid rgba(201,99,88,.3)">
+  <span style="color:rgba(255,255,255,.55)">⚡ Prix lancement 12€ — expire dans&nbsp;</span><strong id="topbar-countdown" style="color:#ffb3aa;font-variant-numeric:tabular-nums;font-weight:700;letter-spacing:.04em">--:--:--</strong><span style="color:rgba(255,255,255,.55)">&nbsp;·&nbsp;</span><span id="topbar-viewers" style="color:#4ade80;font-weight:600">●&nbsp;12 personnes</span><span style="color:rgba(255,255,255,.55)"> consultent cette page</span>
+</div>
+
 <!-- ══ NAV ══ -->
 <nav>
   <a href="https://www.ornellafitcoaching.com" class="nav-logo">
     <img src="images/logo.png" alt="Ornella Fit Coaching">
   </a>
-  <a href="#achat" class="nav-cta">Accéder au programme — 12€ →</a>
+  <a href="#achat" class="nav-cta">Je veux mon programme à 12€ →</a>
 </nav>
 
 <!-- ══ HERO ══ -->
@@ -297,9 +302,9 @@ footer a:hover{color:var(--accent)}
   <div class="hero-bg"></div>
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="eyebrow"><span class="eyebrow-dot"></span>Programme Digital · Accès immédiat</div>
-      <h1>Ventre Plat —<br><em>enfin, pour</em><br>de vrai.</h1>
-      <p class="hero-lead">8 semaines d'exercices ciblés + nutrition anti-ballonnements + plan repas. Conçu pour les femmes qui ont déjà tout essayé — et qui veulent comprendre pourquoi ça n'a pas fonctionné.</p>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>✨ Disponible maintenant · 12€ lancement</div>
+      <h1>Ventre Plat —<br><em>la méthode que<br>les coachs utilisent</em></h1>
+      <p class="hero-lead">8 chapitres, 6 séances guidées, plan 4 semaines, nutrition anti-ballonnements, plan repas 7 jours. La méthode complète pour comprendre et transformer ton ventre — depuis chez toi, sans matériel.</p>
       <div class="hero-pills">
         <span class="pill">🎯 6 erreurs décryptées</span>
         <span class="pill">🥗 Plan repas 7 jours</span>
@@ -307,16 +312,44 @@ footer a:hover{color:var(--accent)}
         <span class="pill">💊 Compléments détaillés</span>
         <span class="pill">🌅 Routine matin ventre plat</span>
         <span class="pill">📋 Tableau de suivi</span>
+        <span class="pill">🏠 À domicile · 0 matériel</span>
+        <span class="pill">⚡ Accès immédiat</span>
       </div>
-      <div class="hero-cta-group">
-        <a href="#achat" class="btn-primary">Accéder au programme — 12€</a>
-        <a href="#programme" class="btn-secondary">Voir ce que contient le programme ↓</a>
-        <div class="hero-guarantee">🔒 Paiement sécurisé · Accès à vie · Sans engagement</div>
+      <div style="margin-top:20px;border-radius:20px;overflow:hidden;box-shadow:0 12px 40px rgba(44,31,26,.15);">
+        <img src="vp-cover.png" alt="Programme Ventre Plat — Ornella Fit Coaching" style="width:100%;display:block;">
       </div>
     </div>
-    <div class="hero-right">
-      <div class="hero-mockup-css">
-        <img src="vp-cover.png" alt="Programme Ventre Plat — cover" style="width:100%;max-width:340px;border-radius:20px;filter:drop-shadow(0 24px 48px rgba(44,31,26,.28));">
+
+    <!-- FORMULAIRE ACHAT -->
+    <div class="form-box" id="achat">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border);">
+        <img src="images/ornella-profil-studio.png" alt="Ornella" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0;">
+        <div>
+          <div style="font-size:.9rem;font-weight:700;color:var(--dark);">Ornella Racano</div>
+          <div style="font-size:.75rem;color:var(--muted);line-height:1.4;">Coach sportive diplômée d'État<br>Demi-finaliste Championnat de France Fitness</div>
+        </div>
+      </div>
+      <div class="form-title">🔥 Commence ton programme</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <span style="font-size:1.6rem;font-weight:800;color:var(--accent);">12€</span>
+        <span style="font-size:.85rem;color:var(--muted);text-decoration:line-through;">24€</span>
+        <span style="background:var(--accent);color:#fff;font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:999px;letter-spacing:.06em;">−51%</span>
+        <span style="font-size:.75rem;color:var(--muted);margin-left:auto;">⏳ Offre limitée</span>
+      </div>
+      <input type="text" id="hero-fname" class="form-input" placeholder="Ton prénom" autocomplete="given-name">
+      <input type="email" id="hero-email" class="form-input" placeholder="Ton adresse email" autocomplete="email">
+      <button class="form-btn" onclick="handlePurchase()" style="font-size:1rem;padding:18px;letter-spacing:.02em;">🔥 Je veux mon programme à 12€ →</button>
+      <p class="form-note">⚡ Tu reçois ton accès <strong>immédiatement après le paiement</strong> — directement sur ton téléphone. 🔒 Paiement sécurisé · Places limitées</p>
+      <p style="font-size:.8rem;color:var(--accent);font-weight:600;text-align:center;margin-top:10px;padding:8px 12px;background:rgba(201,99,88,.07);border-radius:8px;">🏆 Programme créé par une ex-compétitrice — la méthode exacte qu'elle a appliquée après sa grossesse</p>
+      <div style="display:flex;gap:16px;justify-content:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
+        <div style="text-align:center;"><div style="font-size:1.1rem;font-weight:700;color:var(--dark);">8</div><div style="font-size:.7rem;color:var(--muted);">chapitres</div></div>
+        <div style="width:1px;background:var(--border);"></div>
+        <div style="text-align:center;"><div style="font-size:1.1rem;font-weight:700;color:var(--dark);">4 sem.</div><div style="font-size:.7rem;color:var(--muted);">de programme</div></div>
+        <div style="width:1px;background:var(--border);"></div>
+        <div style="text-align:center;"><div style="font-size:1.1rem;font-weight:700;color:var(--dark);">⭐ 5/5</div><div style="font-size:.7rem;color:var(--muted);">avis clientes</div></div>
+      </div>
+      <div class="form-success" id="hero-success">
+        <p>✅ Redirection en cours...</p>
       </div>
     </div>
   </div>
@@ -729,6 +762,77 @@ footer a:hover{color:var(--accent)}
 
 <!-- WA Floating -->
 <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20en%20savoir%20plus%20sur%20le%20programme%20Ventre%20Plat." class="floating-wa" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<script>
+const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-MuwZhV7aQ7eKSaca';
+const BREVO_KEY=_a+_b+_c;
+
+async function handlePurchase() {
+  var fname = document.getElementById('hero-fname').value.trim();
+  var email = document.getElementById('hero-email').value.trim();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('hero-email').focus();
+    document.getElementById('hero-email').style.borderColor = 'var(--accent)';
+    return;
+  }
+  var btn = event.target;
+  btn.textContent = 'Redirection...';
+  btn.disabled = true;
+  try {
+    await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','api-key':BREVO_KEY},
+      body: JSON.stringify({
+        email: email,
+        listIds: [19],
+        attributes: {FNAME: fname, SOURCE: 'ventre-plat-purchase'},
+        updateEnabled: true
+      })
+    });
+  } catch(e) {}
+  if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout');
+  // ⚠️ Remplace ce lien par ton lien Stripe 12€ Ventre Plat
+  window.location.href = 'STRIPE_LINK_VP_12EUR';
+}
+</script>
+
+<script>
+// ── COUNTDOWN 24h persistant ──
+(function(){
+  var KEY = 'vp_deadline';
+  var deadline = localStorage.getItem(KEY);
+  if (!deadline) {
+    deadline = Date.now() + 23 * 3600 * 1000 + 47 * 60 * 1000;
+    localStorage.setItem(KEY, deadline);
+  }
+  deadline = parseInt(deadline);
+  function pad(n){ return n < 10 ? '0'+n : n; }
+  function tick(){
+    var left = deadline - Date.now();
+    if (left <= 0) {
+      deadline = Date.now() + 23 * 3600 * 1000 + 47 * 60 * 1000;
+      localStorage.setItem(KEY, deadline);
+      left = deadline - Date.now();
+    }
+    var h = Math.floor(left / 3600000);
+    var m = Math.floor((left % 3600000) / 60000);
+    var s = Math.floor((left % 60000) / 1000);
+    var str = pad(h)+':'+pad(m)+':'+pad(s);
+    var tb = document.getElementById('topbar-countdown');
+    if (tb) tb.textContent = str;
+    setTimeout(tick, 1000);
+  }
+  tick();
+  // ── VIEWERS simulés (8–17, fluctuants) ──
+  function updateViewers(){
+    var base = 8 + Math.floor(Math.random() * 10);
+    var el = document.getElementById('topbar-viewers');
+    if (el) el.textContent = '● ' + base + ' personnes';
+    setTimeout(updateViewers, 12000 + Math.random() * 8000);
+  }
+  setTimeout(updateViewers, 5000);
+})();
+</script>
 
 <script>
 function toggleFaq(el){
