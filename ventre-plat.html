@@ -55,7 +55,9 @@ nav{background:rgba(254,251,248,.95);backdrop-filter:blur(12px);border-bottom:1p
 .nav-cta:hover{background:#b54c41}
 
 /* ── HERO ── */
-.hero{padding:60px 20px 0;background:linear-gradient(160deg,#FBF0EC 0%,#F5E5DC 55%,#EDD5C8 100%);overflow:hidden}
+.hero{padding:60px 20px 0;background:linear-gradient(160deg,#FBF0EC 0%,#F5E5DC 55%,#EDD5C8 100%);overflow:hidden;position:relative}
+.hero-bg{position:absolute;inset:0;background-image:url('vp-banniere.png');background-size:cover;background-position:center top;opacity:.12;pointer-events:none;z-index:0}
+.hero-inner{position:relative;z-index:1}
 .hero-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:flex-end}
 .hero-left{padding-bottom:60px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(201,99,88,.1);border:1px solid rgba(201,99,88,.22);color:var(--accent);border-radius:999px;padding:7px 16px;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px}
@@ -292,6 +294,7 @@ footer a:hover{color:var(--accent)}
 
 <!-- ══ HERO ══ -->
 <section class="hero">
+  <div class="hero-bg"></div>
   <div class="hero-inner">
     <div class="hero-left">
       <div class="eyebrow"><span class="eyebrow-dot"></span>Programme Digital · Accès immédiat</div>
@@ -311,22 +314,7 @@ footer a:hover{color:var(--accent)}
     </div>
     <div class="hero-right">
       <div class="hero-mockup-css">
-        <div class="mockup-phone">
-          <div class="mockup-notch"></div>
-          <div class="mockup-screen">
-            <div class="mockup-screen-inner">
-              <span class="ms-badge">Programme Ventre Plat</span>
-              <div class="ms-title">Ventre Plat —<br><em>8 semaines</em></div>
-              <div class="ms-img-placeholder">🔥</div>
-              <div class="ms-chapters">
-                <div class="ms-chap"><span class="ms-chap-dot"></span>Les vraies causes</div>
-                <div class="ms-chap"><span class="ms-chap-dot"></span>Les 6 erreurs</div>
-                <div class="ms-chap"><span class="ms-chap-dot"></span>Le plan 8 semaines</div>
-                <div class="ms-chap"><span class="ms-chap-dot"></span>Nutrition anti-ballonnements</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <img src="vp-cover.png" alt="Programme Ventre Plat — cover" style="width:100%;max-width:340px;border-radius:20px;filter:drop-shadow(0 24px 48px rgba(44,31,26,.28));">
       </div>
     </div>
   </div>
@@ -567,19 +555,8 @@ footer a:hover{color:var(--accent)}
     <h2 class="sec-title text-center">Sur tous<br><em>tes appareils</em></h2>
     <div class="divider divider-center"></div>
     <p class="sec-sub text-center">Smartphone, tablette, ordinateur. Le programme s'affiche parfaitement sur chaque écran — où que tu sois, quand tu veux.</p>
-    <div class="device-scene" style="position:relative;padding-bottom:48px;">
-      <!-- Tablette -->
-      <div class="device-tablet" style="transform:translateY(20px);">
-        <div class="device-tablet-screen">
-          <div class="device-img-placeholder">📱</div>
-        </div>
-      </div>
-      <!-- Phone gauche -->
-      <div class="device-phone" style="transform:translateX(20px) translateY(0);z-index:3;">
-        <div class="device-phone-screen">
-          <div class="device-img-placeholder" style="height:100%;font-size:1.5rem">🔥</div>
-        </div>
-      </div>
+    <div style="margin-top:16px;">
+      <img src="vp-mockup.png" alt="Programme Ventre Plat sur tous les appareils" style="width:100%;max-width:860px;margin:0 auto;display:block;border-radius:16px;filter:drop-shadow(0 16px 40px rgba(44,31,26,.15));">
     </div>
     <p style="font-size:.8rem;color:var(--muted);margin-top:12px;">Compatible iPhone · Android · iPad · Ordinateur</p>
   </div>
