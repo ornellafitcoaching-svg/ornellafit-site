@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Programme Linda">
+<title>Programme Linda — Full Body</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#C96358;--cream:#F7F3F0;--dark:#1A0F0F;--gold:#C9957A;
+  --nude:#E8B4A0;--brown:#9A8080;--card:rgba(255,255,255,0.04);
+  --border:rgba(232,180,160,0.18);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);min-height:100vh;line-height:1.6}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(26,15,15,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:12px 20px;padding-top:max(12px,env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between}
+.nav-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--nude)}
+.nav-links{display:flex;gap:8px}
+.nav-links a{font-size:0.75rem;color:var(--brown);text-decoration:none;padding:4px 10px;border:1px solid var(--border);border-radius:20px}
+
+.cover{text-align:center;padding:56px 20px 36px;border-bottom:1px solid var(--border)}
+.cover-badge{display:inline-block;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,149,122,0.4);border-radius:20px;padding:5px 14px;margin-bottom:16px}
+.cover h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,8vw,4rem);font-weight:600;line-height:1.1;margin-bottom:10px}
+.cover h1 em{font-style:italic;color:var(--gold)}
+.cover-sub{font-size:0.92rem;color:var(--brown);max-width:400px;margin:0 auto 24px;line-height:1.7}
+.pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.pill{font-size:0.78rem;background:rgba(201,99,88,0.12);border:1px solid rgba(201,99,88,0.3);border-radius:20px;padding:5px 13px;color:var(--nude)}
+
+section{padding:36px 20px;max-width:680px;margin:0 auto}
+section+section{border-top:1px solid var(--border)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--nude);margin-bottom:4px}
+.section-sub{font-size:0.83rem;color:var(--brown);margin-bottom:22px;line-height:1.6}
+
+/* SEANCE TABS */
+.seance-tabs{display:flex;gap:8px;margin-bottom:28px}
+.seance-btn{flex:1;padding:13px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--brown);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.88rem;transition:all .2s;text-align:center;min-height:48px}
+.seance-btn.active{background:rgba(201,99,88,0.15);border-color:var(--accent);color:var(--cream);font-weight:600}
+
+/* EXERCISE */
+.ex-list{display:flex;flex-direction:column;gap:16px}
+.ex-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.ex-top{padding:16px 16px 0}
+.ex-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--cream);margin-bottom:6px}
+.ex-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tag{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:10px}
+.tag-reps{background:rgba(201,99,88,0.15);border:1px solid rgba(201,99,88,0.35);color:var(--nude)}
+.tag-repos{background:rgba(201,149,122,0.12);border:1px solid rgba(201,149,122,0.3);color:var(--gold)}
+
+.ex-body{padding:0 16px 16px;display:flex;flex-direction:column;gap:10px}
+
+.ex-block{border-radius:8px;padding:12px 14px}
+.ex-block.tech{background:rgba(255,255,255,0.03);border:1px solid var(--border)}
+.ex-block.breath{background:rgba(74,158,110,0.08);border:1px solid rgba(74,158,110,0.25)}
+.ex-block-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;margin-bottom:5px}
+.ex-block.tech .ex-block-label{color:var(--gold)}
+.ex-block.breath .ex-block-label{color:#7ecba1}
+.ex-block-text{font-size:0.82rem;line-height:1.65;color:var(--brown)}
+.ex-block-text strong{color:var(--cream)}
+
+/* REST */
+.ex-rest{font-size:0.8rem;color:var(--brown);padding:10px 16px;border-top:1px solid var(--border);display:flex;align-items:center;gap:6px}
+.ex-rest strong{color:var(--nude)}
+
+/* CONSEIL */
+.conseil-box{background:rgba(201,99,88,0.08);border:1px solid rgba(201,99,88,0.2);border-radius:12px;padding:16px 18px;margin-top:8px}
+.conseil-title{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:8px}
+.conseil-text{font-size:0.83rem;color:var(--brown);line-height:1.7}
+.conseil-text strong{color:var(--nude)}
+
+@media(max-width:520px){
+  nav .nav-links{display:none}
+  section{padding:28px 16px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-title">Linda · Programme Full Body</span>
+  <div class="nav-links">
+    <a href="#seances">Séances</a>
+    <a href="#conseils">Conseils</a>
+  </div>
+</nav>
+
+<div class="cover">
+  <div class="cover-badge">Programme personnalisé · Sans matériel</div>
+  <h1>Programme<br><em>Linda</em></h1>
+  <p class="cover-sub">2 séances full body à faire seule, à ton rythme. Tout est expliqué — tu n'as besoin de rien d'autre.</p>
+  <div class="pills">
+    <span class="pill">Sans matériel</span>
+    <span class="pill">Full body</span>
+    <span class="pill">Perte de poids</span>
+    <span class="pill">Technique incluse</span>
+  </div>
+</div>
+
+<section id="seances">
+  <div class="section-title">Tes séances</div>
+  <p class="section-sub">Alterne les 2 séances. Repose-toi au moins 1 jour entre chaque. Commence toujours par l'échauffement.</p>
+
+  <div class="seance-tabs">
+    <button class="seance-btn active" onclick="setSeance('A',this)">💪 Séance 1</button>
+    <button class="seance-btn" onclick="setSeance('B',this)">🔥 Séance 2</button>
+  </div>
+
+  <!-- ===== SÉANCE 1 ===== -->
+  <div id="seance-A">
+
+    <!-- ÉCHAUFFEMENT -->
+    <div style="background:rgba(201,149,122,0.08);border:1px solid rgba(201,149,122,0.2);border-radius:12px;padding:14px 16px;margin-bottom:20px;font-size:0.83rem;color:var(--brown);line-height:1.7">
+      <strong style="color:var(--gold);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:6px">⚡ Échauffement — 5 min</strong>
+      Marche rapide sur place · Rotations des hanches (10 de chaque côté) · Petits squats sans descendre (10 reps) · Bras en cercle (10 de chaque sens)
+    </div>
+
+    <div class="ex-list">
+
+      <!-- SQUAT -->
+      <div class="ex-card">
+        <div class="ex-top">
+          <div class="ex-name">Squat</div>
+          <div class="ex-meta">
+            <span class="tag tag-reps">4 séries · 15 reps</span>
+            <span class="tag tag-repos">Repos 45s</span>
+          </div>
+        </div>
+        <div class="ex-body">
+          <div class="ex-block tech">
+            <div class="ex-block-label">Technique</div>
+            <div class="ex-block-text">Pieds à largeur d'épaules, pointes légèrement ouvertes. <strong>Descends comme si tu allais t'asseoir sur une chaise</strong> — dos droit, genoux dans l'axe des orteils. Descends jusqu'à ce que les cuisses soient parallèles au sol. Remonte en poussant sur les talons.</div>
+          </div>
+          <div class="ex-block breath">
+            <div class="ex-block-label">🌬 Respiration</div>
+            <div class="ex-block-text"><strong>Inspire</strong> en descendant · <strong>Expire</strong> en remontant (souffle fort comme si tu soufflais une bougie).</div>
+          </div>
+        </div>
+        <div class="ex-rest">⏱ <strong>45 secondes de repos</strong> entre chaque série</div>
+      </div>
+
+      <!-- HIP THRUST -->
+      <div class="ex-card">
+        <div class="ex-top">
+          <div class="ex-name">Hip Thrust au sol</div>
+          <div class="ex-meta">
+            <span class="tag tag-reps">4 séries · 20 reps</span>
+            <span class="tag tag-repos">Repos 45s</span>
+          </div>
+        </div>
+        <div class="ex-body">
+          <div class="ex-block tech">
+            <div class="ex-block-label">Technique</div>
+            <div class="ex-block-text">Allongée sur le dos, pieds à plat sur le sol, genoux fléchis. <strong>Pousse sur tes talons pour soulever le bassin</strong> le plus haut possible. En haut : serre les fessiers fort pendant 1 seconde comme si tu voulais coincer quelque chose entre les deux. Redescends lentement sans poser les fessiers entre les reps.</div>
+          </div>
+          <div class="ex-block breath">
+            <div class="ex-block-label">🌬 Respiration</div>
+            <div class="ex-block-text"><strong>Inspire</strong> en bas · <strong>Expire fort</strong> en montant, en serrant les abdos en même temps.</div>
+          </div>
+        </div>
+        <div class="ex-rest">⏱ <strong>45 secondes de repos</strong> entre chaque série</div>
+      </div>
+
+      <!-- FENTES -->
+      <div class="ex-card">
+        <div class="ex-top">
+          <div class="ex-name">Fentes alternées</div>
+          <div class="ex-meta">
+            <span class="tag tag-reps">3 séries · 12 reps / jambe</span>
+            <span class="tag tag-repos">Repos 60s</span>
+          </div>
+        </div>
+        <div class="ex-body">
+          <div class="ex-block tech">
+            <div class="ex-block-label">Technique</div>
+            <div class="ex-block-text">Debout, fais un grand pas en avant. <strong>Descends le genou arrière vers le sol</strong> sans le poser — genou avant ne dépasse pas le pied. Dos bien droit, regard devant. Pousse sur le talon avant pour revenir. Alterne les jambes.</div>
+          </div>
+          <div class="ex-block breath">
+            <div class="ex-block-label">🌬 Respiration</div>
+            <div class="ex-block-text"><strong>Inspire</strong> en descendant · <strong>Expire</strong> en poussant pour remonter.</div>
+          </div>
+        </div>
+        <div class="ex-rest">⏱ <strong>60 secondes de repos</strong> entre chaque série</div>
+      </div>
+
+      <!-- POMPES GENOUX -->
+      <div class="ex-card">
+        <div class="ex-top">
+          <div class="ex-name">Pompes sur les genoux</div>
+          <div class="ex-meta">
+            <span class="tag tag-reps">3 séries · 12 reps</span>
+            <span class="tag tag-repos">Repos 60s</span>
+          </div>
+        </div>
+        <div class="ex-body">
+          <div class="ex-block tech">
+            <div class="ex-block-label">Technique</div>
+            <div class="ex-block-text">Genoux au sol, mains à largeur d'épaules légèrement devant les épaules. <strong>Corps en ligne droite des genoux aux épaules</strong> — ne laisse pas le dos se creuser ni les fesses remonter. Descends la poitrine vers le sol, coudes à 45° du corps. Remonte sans verrouiller les coudes.</div>
+          </div>
+          <div class="ex-block breath">
+            <div class="ex-block-label">🌬 Respiration</div>
+            <div class="ex-block-text"><strong>Inspire</strong> en descendant · <strong>Expire</strong> en poussant vers le haut.</div>
+          </div>
+        </div>
+        <div class="ex-rest">⏱ <strong>60 secondes de repos</strong> entre chaque série</div>
+      </div>
+
+      <!-- GAINAGE -->
+      <div class="ex-card">
+        <div class="ex-top">
+          <div class="ex-name">Gainage sur les genoux</div>
+          <div class="ex-meta">
+            <span class="tag tag-reps">3 séries · 30 secondes</span>
+            <span class="tag tag-repos">Repos 45s</span>
+          </div>
+        </div>
+        <div class="ex-body">
+          <div class="ex-block tech">
+            <div class="ex-block-label">Technique</div>
+            <div class="ex-block-text">Genoux au sol, avant-bras au sol. <strong>Corps en ligne droite des genoux à la nuque</strong> — serre le ventre comme si tu attendais un coup de poing. Ne laisse pas le dos se creuser. Regarde le sol, pas devant.</div>
+          </div>
+          <div class="ex-block breath">
+            <div class="ex-block-label">🌬 Respiration</div>
+            <div class="ex-block-text"><strong>Respire normalement</strong>, lentement et régulièrement. Ne bloque jamais ta respiration — si tu n'arrives plus à respirer, c'est que tu es trop crispée, relâche légèrement.</div>
+          </div>
+        </div>
+        <div class="ex-rest">⏱ <strong>45 secondes de repos</strong> entre chaque série</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== SÉANCE 2 ===== -->
+  <div id="seance-B" style="display:none">
+
+    <!-- ÉCHAUFFEMENT -->
+    <div style="background:rgba(201,149,122,0.08);border:1px solid rgba(201,149,122,0.2);border-radius:12px;padding:14px 16px;margin-bottom:20px;font-size:0.83rem;color:var(--brown);line-height:1.7">
+      <strong style="color:var(--gold);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:6px">⚡ Échauffement — 5 min</strong>
+      Jumping jacks légers (30s) · Rotations des épaules · Cercles de bassin · Squat poids corps lent × 10
+    </div>
+
+    <div class="ex-list">
+
+      <!-- SQUAT SUMO -->
+      <div class="ex-card">
+        <div class="ex-top">
+          <div class="ex-name">Squat Sumo</div>
+          <div class="ex-meta">
+            <span class="tag tag-reps">4 séries · 15 reps</span>
+            <span class="tag tag-repos">Repos 45s</span>
+          </div>
+        </div>
+        <div class="ex-body">
+          <div class="ex-block tech">
+            <div class="ex-block-label">Technique</div>
+            <div class="ex-block-text">Pieds plus écartés que les épaules, pointes bien ouvertes vers l'extérieur (45°). <strong>Descends en poussant les genoux vers l'extérieur</strong>, dos droit. Ce squat cible plus l'intérieur des cuisses et les fessiers. Remonte en serrant les fessiers en haut.</div>
+          </div>
+          <div class="ex-block breath">
+            <div class="ex-block-label">🌬 Respiration</div>
+            <div class="ex-block-text"><strong>Inspire</strong> en descendant · <strong>Expire</strong> en remontant.</div>
+          </div>
+        </div>
+        <div class="ex-rest">⏱ <strong>45 secondes de repos</strong> entre chaque série</div>
+      </div>
+
+      <!-- PONT FESSIER UNILATÉRAL -->
+      <div class="ex-card">
+        <div class="ex-top">
+          <div class="ex-name">Pont fessier une jambe</div>
+          <div class="ex-meta">
+            <span class="tag tag-reps">3 séries · 12 reps / jambe</span>
+            <span class="tag tag-repos">Repos 45s</span>
+          </div>
+        </div>
+        <div class="ex-body">
+          <div class="ex-block tech">
+            <div class="ex-block-label">Technique</div>
+            <div class="ex-block-text">Allongée sur le dos comme pour le hip thrust. <strong>Étends une jambe, et pousse uniquement avec l'autre.</strong> Le bassin doit rester horizontal — ne le laisse pas pencher d'un côté. Serre bien le fessier de la jambe qui travaille en haut.</div>
+          </div>
+          <div class="ex-block breath">
+            <div class="ex-block-label">🌬 Respiration</div>
+            <div class="ex-block-text"><strong>Inspire</strong> en bas · <strong>Expire</strong> en montant.</div>
+          </div>
+        </div>
+        <div class="ex-rest">⏱ <strong>45 secondes de repos</strong> entre chaque série</div>
+      </div>
+
+      <!-- DIPS CHAISE -->
+      <div class="ex-card">
+        <div class="ex-top">
+          <div class="ex-name">Dips sur chaise</div>
+          <div class="ex-meta">
+            <span class="tag tag-reps">3 séries · 12 reps</span>
+            <span class="tag tag-repos">Repos 60s</span>
+          </div>
+        </div>
+        <div class="ex-body">
+          <div class="ex-block tech">
+            <div class="ex-block-label">Technique</div>
+            <div class="ex-block-text">Assise au bord d'une chaise stable, mains de chaque côté des hanches. Avance les fesses hors de la chaise. <strong>Descends en fléchissant les coudes</strong> jusqu'à ce que tes bras soient à 90°, dos proche de la chaise. Remonte en poussant sur les paumes. Travaille les triceps (arrière des bras).</div>
+          </div>
+          <div class="ex-block breath">
+            <div class="ex-block-label">🌬 Respiration</div>
+            <div class="ex-block-text"><strong>Inspire</strong> en descendant · <strong>Expire</strong> en poussant.</div>
+          </div>
+        </div>
+        <div class="ex-rest">⏱ <strong>60 secondes de repos</strong> entre chaque série</div>
+      </div>
+
+      <!-- SUPERMAN -->
+      <div class="ex-card">
+        <div class="ex-top">
+          <div class="ex-name">Superman (dos + fessiers)</div>
+          <div class="ex-meta">
+            <span class="tag tag-reps">3 séries · 15 reps</span>
+            <span class="tag tag-repos">Repos 45s</span>
+          </div>
+        </div>
+        <div class="ex-body">
+          <div class="ex-block tech">
+            <div class="ex-block-label">Technique</div>
+            <div class="ex-block-text">Allongée sur le ventre, bras tendus devant toi. <strong>Soulève en même temps les bras, la poitrine et les jambes</strong> du sol — comme Superman qui vole. Tiens 2 secondes en haut, redescends lentement. Mouvement lent et contrôlé, pas brusque.</div>
+          </div>
+          <div class="ex-block breath">
+            <div class="ex-block-label">🌬 Respiration</div>
+            <div class="ex-block-text"><strong>Expire</strong> en montant · <strong>Inspire</strong> en redescendant.</div>
+          </div>
+        </div>
+        <div class="ex-rest">⏱ <strong>45 secondes de repos</strong> entre chaque série</div>
+      </div>
+
+      <!-- GAINAGE -->
+      <div class="ex-card">
+        <div class="ex-top">
+          <div class="ex-name">Gainage sur les genoux</div>
+          <div class="ex-meta">
+            <span class="tag tag-reps">3 séries · 40 secondes</span>
+            <span class="tag tag-repos">Repos 45s</span>
+          </div>
+        </div>
+        <div class="ex-body">
+          <div class="ex-block tech">
+            <div class="ex-block-label">Technique</div>
+            <div class="ex-block-text">Genoux au sol, avant-bras posés. <strong>Serre le ventre, serre les fesses</strong>, corps en ligne droite. Ne laisse pas le dos se creuser ni les hanches remonter. Si tu trembles — c'est normal, c'est que ça travaille !</div>
+          </div>
+          <div class="ex-block breath">
+            <div class="ex-block-label">🌬 Respiration</div>
+            <div class="ex-block-text"><strong>Respire lentement</strong> et régulièrement. Essaie d'expirer plus longtemps que tu n'inspires (inspire 2 temps, expire 3 temps).</div>
+          </div>
+        </div>
+        <div class="ex-rest">⏱ <strong>45 secondes de repos</strong> entre chaque série</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="conseils">
+  <div class="section-title">Conseils importants</div>
+  <p class="section-sub">Lis ça avant de commencer — c'est aussi important que les exercices.</p>
+
+  <div style="display:flex;flex-direction:column;gap:12px">
+
+    <div class="conseil-box">
+      <div class="conseil-title">🔥 Pour perdre du poids</div>
+      <div class="conseil-text">Ces séances sont faites pour <strong>brûler des calories et tonifier</strong> en même temps. Respecte les temps de repos courts — c'est ça qui fait travailler ton cœur et active la dépense d'énergie. Ne t'arrête pas trop longtemps entre les exercices.</div>
+    </div>
+
+    <div class="conseil-box">
+      <div class="conseil-title">💧 Hydratation</div>
+      <div class="conseil-text">Bois de l'eau <strong>avant, pendant et après</strong> la séance. Minimum un grand verre avant de commencer. Si tu as la tête qui tourne, assieds-toi et bois.</div>
+    </div>
+
+    <div class="conseil-box">
+      <div class="conseil-title">📅 Organisation</div>
+      <div class="conseil-text">Fais <strong>Séance 1 et Séance 2 dans la semaine</strong>, avec au moins 1 jour de repos entre les deux. Par exemple : lundi Séance 1 · jeudi Séance 2. Si tu peux faire 2 fois dans la semaine chacune — encore mieux !</div>
+    </div>
+
+    <div class="conseil-box">
+      <div class="conseil-title">😌 Si c'est trop difficile</div>
+      <div class="conseil-text">Réduis le nombre de reps — <strong>mieux vaut 10 bonnes reps que 15 bâclées</strong>. Ne sacrifie jamais la technique pour finir une série. Tu progresseras beaucoup plus vite en faisant bien.</div>
+    </div>
+
+    <div class="conseil-box">
+      <div class="conseil-title">📲 Une question ?</div>
+      <div class="conseil-text">N'hésite pas à m'envoyer une vidéo ou un message si tu n'es pas sûre d'un mouvement. Je suis là même à distance. 🤍</div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+function setSeance(s, btn) {
+  document.querySelectorAll('.seance-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('seance-A').style.display = s === 'A' ? 'block' : 'none';
+  document.getElementById('seance-B').style.display = s === 'B' ? 'block' : 'none';
+}
+
+const isIOS = /iphone|ipad/i.test(navigator.userAgent);
+const isStandalone = window.navigator.standalone === true;
+</script>
+
+</body>
+</html>
