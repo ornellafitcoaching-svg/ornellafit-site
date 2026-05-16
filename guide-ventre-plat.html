@@ -507,6 +507,19 @@ details > summary::-webkit-details-marker { display: none; }
   #nav-mobile-bar { display: none !important; }
   #nav-toggle-btn { display: none; }
 }
+
+/* ── SAFE AREA iOS (encoche / Dynamic Island) ── */
+nav#guide-nav {
+  padding-top: max(10px, env(safe-area-inset-top)) !important;
+}
+@media (max-width: 640px) {
+  nav#guide-nav {
+    padding: max(6px, env(safe-area-inset-top)) 8px 0 !important;
+  }
+}
+
+/* ── SCROLL OFFSET ancres (sections cachées derrière la nav sticky) ── */
+[id] { scroll-margin-top: 68px; }
 </style>
 </head>
 <body>
