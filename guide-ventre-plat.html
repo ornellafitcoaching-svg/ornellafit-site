@@ -23,17 +23,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:      #1E1616;
-  --bg2:     #2C1F1A;
-  --bg3:     #3A2820;
+  --bg:      #FAF7F4;
+  --bg2:     #F0EAE4;
+  --bg3:     #E8DDD6;
   --accent:  #C96358;
-  --gold:    #C9957A;
-  --nude:    #E8B4A0;
+  --gold:    #B07D5A;
+  --nude:    #A0624A;
   --cream:   #F7F3F0;
   --white:   #ffffff;
-  --text:    rgba(255,255,255,.88);
-  --muted:   rgba(255,255,255,.55);
-  --border:  rgba(255,255,255,.1);
+  --text:    #2E2218;
+  --muted:   #7A6458;
+  --border:  rgba(46,34,24,.12);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -109,6 +109,10 @@ body {
   transition: transform .15s, box-shadow .15s;
 }
 .cover-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,99,88,.55); }
+
+/* Force light text on dark-background sections */
+.cover-wrap { --muted: rgba(255,255,255,.6); --nude: #E8B4A0; --gold: #C9957A; }
+.cta-section { --muted: rgba(255,255,255,.6); --nude: #E8B4A0; }
 
 /* ── SECTION HEADERS ── */
 .eyebrow {
