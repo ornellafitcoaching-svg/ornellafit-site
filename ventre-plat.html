@@ -867,6 +867,8 @@ async function handlePurchaseDesktop() {
       })
     });
   } catch(e) {}
+  localStorage.setItem('vp_buyer_email', email);
+  localStorage.setItem('vp_buyer_fname', fname);
   if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout');
   window.location.href = 'https://buy.stripe.com/9B69AT7fXbWb9Epfyt8Vi09';
 }
@@ -894,8 +896,9 @@ async function handlePurchase() {
       })
     });
   } catch(e) {}
+  localStorage.setItem('vp_buyer_email', email);
+  localStorage.setItem('vp_buyer_fname', fname);
   if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout');
-  // ⚠️ Remplace ce lien par ton lien Stripe 12€ Ventre Plat
   window.location.href = 'https://buy.stripe.com/9B69AT7fXbWb9Epfyt8Vi09';
 }
 </script>

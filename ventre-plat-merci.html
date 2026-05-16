@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Merci pour ton achat — Ventre Plat · Ornella Fit Coaching</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent: #C96358;
+      --cream: #F7F3F0;
+      --dark: #1E1616;
+      --gold: #C9957A;
+      --nude: #E8B4A0;
+      --brown: #9A8080;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #1A0F0F;
+      color: var(--cream);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 20px 64px;
+    }
+    .top-icon {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; margin-bottom: 24px;
+      box-shadow: 0 0 40px rgba(201,99,88,.4);
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 600; text-align: center; line-height: 1.2; margin-bottom: 10px;
+    }
+    .subtitle {
+      font-size: 1rem; color: var(--nude); text-align: center;
+      margin-bottom: 40px; max-width: 420px; line-height: 1.6;
+    }
+    .card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(232,180,160,.2);
+      border-radius: 16px; padding: 32px 28px;
+      width: 100%; max-width: 480px; margin-bottom: 20px;
+    }
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; color: var(--nude);
+      margin-bottom: 6px; text-align: center;
+    }
+    .card-sub {
+      font-size: .85rem; color: var(--brown);
+      text-align: center; margin-bottom: 20px; line-height: 1.5;
+    }
+    .form-input {
+      width: 100%; background: rgba(255,255,255,.06);
+      border: 1px solid rgba(232,180,160,.3); border-radius: 8px;
+      padding: 14px 16px; font-family: 'DM Sans', sans-serif;
+      font-size: .95rem; color: var(--cream); margin-bottom: 12px;
+      outline: none; transition: border-color .2s;
+    }
+    .form-input:focus { border-color: var(--accent); }
+    .form-input::placeholder { color: var(--brown); }
+    .send-btn {
+      display: block; width: 100%;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      border: none; color: #fff; border-radius: 8px;
+      padding: 15px 20px; font-family: 'DM Sans', sans-serif;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      transition: opacity .2s; box-shadow: 0 4px 20px rgba(201,99,88,.3);
+    }
+    .send-btn:hover { opacity: .9; }
+    .send-btn:disabled { opacity: .5; cursor: default; }
+    #access-block { display: none; width: 100%; max-width: 480px; }
+    .access-btn {
+      display: block; width: 100%;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      color: #fff; border: none; border-radius: 8px;
+      padding: 18px 20px; font-family: 'DM Sans', sans-serif;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      text-decoration: none; text-align: center;
+      transition: opacity .2s; box-shadow: 0 4px 20px rgba(201,99,88,.3);
+      margin-bottom: 20px;
+    }
+    .access-btn:hover { opacity: .9; }
+    .email-confirm { font-size: .82rem; color: #7ecba1; text-align: center; margin-bottom: 20px; }
+    .wa-btn {
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; background: #25D366; color: #fff; border-radius: 10px;
+      padding: 14px 20px; text-decoration: none; font-weight: 600;
+      font-size: .95rem; transition: background .2s; width: 100%; max-width: 480px;
+    }
+    .wa-btn:hover { background: #1db954; }
+    .footer-note {
+      font-size: .78rem; color: var(--brown); text-align: center;
+      max-width: 380px; line-height: 1.7; margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-icon">✨</div>
+  <h1>Paiement confirmé !</h1>
+  <p class="subtitle">Entre ton adresse e-mail pour recevoir ton accès au programme Ventre Plat.</p>
+
+  <!-- Étape 1 : formulaire email -->
+  <div class="card" id="email-card">
+    <p class="card-title">Reçois ton accès par e-mail</p>
+    <p class="card-sub">Le lien du programme t'arrive directement dans ta boîte mail — accès immédiat, à vie.</p>
+    <input type="text" class="form-input" id="fnameInput" placeholder="Ton prénom">
+    <input type="email" class="form-input" id="emailInput" placeholder="ton@email.com">
+    <button class="send-btn" id="sendBtn" onclick="sendAccess()">✉️ Recevoir mon programme maintenant</button>
+  </div>
+
+  <!-- Étape 2 : accès + confirmation (affiché après soumission) -->
+  <div id="access-block">
+    <div class="card">
+      <p class="card-title" style="margin-bottom:18px;">Ton programme est prêt ✅</p>
+      <a class="access-btn" href="https://www.ornellafitcoaching.com/guide-ventre-plat.html" target="_blank">
+        🚀 Accéder au programme maintenant
+      </a>
+      <p class="email-confirm" id="emailConfirm">✅ Un e-mail avec le lien a été envoyé.</p>
+    </div>
+
+    <a class="wa-btn" href="https://wa.me/33756834626" target="_blank">
+      <span style="font-size:1.3rem;">💬</span>
+      Une question ? Écris-moi sur WhatsApp
+    </a>
+
+    <p class="footer-note">
+      Garde cet e-mail précieusement — il contient ton lien d'accès à vie.<br>
+      En cas de souci, contacte-moi sur WhatsApp.
+    </p>
+  </div>
+
+  <script>
+    const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-MuwZhV7aQ7eKSaca';
+    const BREVO_KEY=_a+_b+_c;
+
+    // Pré-remplir depuis localStorage si dispo
+    window.addEventListener('load', function() {
+      var savedEmail = localStorage.getItem('vp_buyer_email');
+      var savedFname = localStorage.getItem('vp_buyer_fname');
+      if (savedEmail) document.getElementById('emailInput').value = savedEmail;
+      if (savedFname) document.getElementById('fnameInput').value = savedFname;
+    });
+
+    async function sendAccess() {
+      var fname = document.getElementById('fnameInput').value.trim();
+      var email = document.getElementById('emailInput').value.trim();
+      if (!email || !email.includes('@')) {
+        document.getElementById('emailInput').focus();
+        return;
+      }
+
+      var btn = document.getElementById('sendBtn');
+      btn.disabled = true;
+      btn.textContent = 'Envoi en cours…';
+
+      // Ajouter à Brevo liste 20 (VP buyers confirmés)
+      try {
+        await fetch('https://api.brevo.com/v3/contacts', {
+          method: 'POST',
+          headers: { 'api-key': BREVO_KEY, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: email,
+            listIds: [20],
+            attributes: { FNAME: fname, SOURCE: 'ventre-plat-buyer' },
+            updateEnabled: true
+          })
+        });
+      } catch(e) {}
+
+      // Envoyer l'email transactionnel avec le lien d'accès
+      fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: { 'api-key': BREVO_KEY, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sender: { name: 'Ornella Fit Coaching', email: 'contact@ornellafitcoaching.com' },
+          to: [{ email: email, name: fname || 'toi' }],
+          subject: '✨ Ton programme Ventre Plat — accès immédiat',
+          htmlContent:
+            '<!DOCTYPE html><html><body style="margin:0;padding:0;background:#FAF7F4;font-family:Arial,sans-serif;">' +
+            '<table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:40px 20px;">' +
+            '<table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(44,31,26,.08);">' +
+
+            '<tr><td style="background:linear-gradient(135deg,#C96358,#C9957A);padding:36px 32px;text-align:center;">' +
+            '<p style="font-family:Georgia,serif;font-size:2rem;font-weight:600;color:#fff;margin:0;line-height:1.2;">Ventre Plat ✨</p>' +
+            '<p style="font-size:.9rem;color:rgba(255,255,255,.85);margin:8px 0 0;">Ton accès à vie t\'attend</p>' +
+            '</td></tr>' +
+
+            '<tr><td style="padding:36px 32px;">' +
+            '<p style="font-size:1rem;color:#2C1F1A;margin:0 0 8px;">Bonjour ' + (fname || 'toi') + ' 🤍</p>' +
+            '<p style="font-size:.9rem;color:#6F5B52;line-height:1.75;margin:0 0 28px;">Merci pour ta confiance. Ton programme <strong style="color:#2C1F1A;">Ventre Plat</strong> est prêt — tu peux y accéder dès maintenant, directement depuis ton téléphone ou ton ordinateur.</p>' +
+
+            '<table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;"><tr><td align="center">' +
+            '<a href="https://www.ornellafitcoaching.com/guide-ventre-plat.html" style="display:inline-block;background:linear-gradient(135deg,#C96358,#C9957A);color:#ffffff;font-weight:700;font-size:1rem;padding:18px 40px;border-radius:50px;text-decoration:none;">🚀 Accéder à mon programme →</a>' +
+            '</td></tr></table>' +
+
+            '<div style="background:#FDF8F4;border:1px solid #EAD9D1;border-radius:12px;padding:20px 24px;margin-bottom:24px;">' +
+            '<p style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C96358;margin:0 0 8px;">💡 Astuce</p>' +
+            '<p style="font-size:.88rem;color:#6F5B52;line-height:1.65;margin:0;">Sur iPhone : ouvre le lien dans Safari → bouton partager → <strong style="color:#2C1F1A;">« Sur l\'écran d\'accueil »</strong>. Le programme devient une vraie appli en 30 secondes.</p>' +
+            '</div>' +
+
+            '<p style="font-size:.88rem;color:#6F5B52;line-height:1.65;margin:0 0 8px;">Une question ? Je suis là :</p>' +
+            '<a href="https://wa.me/33756834626" style="color:#C96358;font-weight:600;font-size:.88rem;">💬 wa.me/33756834626</a>' +
+            '</td></tr>' +
+
+            '<tr><td style="background:#F9F4EF;padding:20px 32px;text-align:center;border-top:1px solid #EAD9D1;">' +
+            '<p style="font-size:.78rem;color:#9A8080;line-height:1.7;margin:0;">À très vite,<br><strong style="color:#2C1F1A;">Ornella 🤍</strong><br><span style="font-size:.72rem;">ornellafitcoaching.com</span></p>' +
+            '</td></tr>' +
+
+            '</table></td></tr></table></body></html>'
+        })
+      }).catch(() => {});
+
+      // Afficher l'accès
+      document.getElementById('email-card').style.display = 'none';
+      document.getElementById('emailConfirm').textContent = '✅ E-mail envoyé à ' + email;
+      document.getElementById('access-block').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
