@@ -60,25 +60,32 @@ h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,6vw,4.4rem);fon
 h1 em{font-style:italic;font-weight:300;color:var(--accent)}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 
-/* Mobile-first : une info à la fois */
-.hero-text{padding:48px 28px 0;text-align:center}
-.eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(201,99,88,.08);border:1px solid rgba(201,99,88,.2);color:var(--accent);border-radius:999px;padding:6px 16px;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px}
+/* Mobile-first */
+.hero-text{padding:40px 24px 0;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(201,99,88,.08);border:1px solid rgba(201,99,88,.2);color:var(--accent);border-radius:999px;padding:6px 16px;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
 .eyebrow-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:blink 1.5s ease infinite;flex-shrink:0}
-.hero-h1{margin-bottom:0}
+.hero-problem{font-size:.98rem;color:var(--muted);line-height:1.6;margin-bottom:16px;font-style:italic}
+.hero-h1{margin-bottom:12px}
+.hero-sub{font-size:.9rem;color:var(--muted);line-height:1.75;max-width:440px;margin:0 auto 20px}
+.hero-benefits{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0 auto 0;max-width:380px;text-align:left}
+.hero-benefits li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--text);line-height:1.45}
+.hero-benefits li::before{content:"✔";color:var(--sage);font-weight:800;flex-shrink:0;font-size:.85rem;margin-top:1px}
 
-/* Cover — full bleed, moment éditorial */
-.hero-cover{margin:36px 0 0;padding:0 20px}
-.hero-cover img{width:100%;max-width:480px;margin:0 auto;display:block;border-radius:24px;box-shadow:0 24px 64px rgba(44,31,26,.18)}
+/* Cover */
+.hero-cover{margin:32px 0 0;padding:0 20px}
+.hero-cover img{width:100%;max-width:440px;margin:0 auto;display:block;border-radius:24px;box-shadow:0 24px 64px rgba(44,31,26,.18)}
 
-/* Form zone — propre, aérée */
-.hero-form-zone{padding:40px 20px 56px;background:#FAF7F4}
+/* Form zone */
+.hero-form-zone{padding:36px 20px 56px;background:#FAF7F4}
 
-/* Stats mini sous eyebrow mobile */
-.hero-stats{display:flex;justify-content:center;gap:28px;margin:20px 0 32px}
-.hero-stat-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--dark);line-height:1}
-.hero-stat-label{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:2px}
+/* Stats bar mobile */
+.hero-stats-bar{display:flex;margin:28px 20px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:white;}
+.hero-stat-item{flex:1;padding:14px 8px;text-align:center;border-right:1px solid var(--border);}
+.hero-stat-item:last-child{border-right:none}
+.hero-stat-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--accent);line-height:1}
+.hero-stat-label{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:3px}
 
-/* Pills masquées sur mobile */
+/* Pills — desktop only */
 .hero-pills{display:none}
 .pill{background:white;border:1px solid var(--border);border-radius:999px;padding:8px 14px;font-size:.82rem;color:var(--text);font-weight:500}
 
@@ -88,14 +95,17 @@ h1 em{font-style:italic;font-weight:300;color:var(--accent)}
 
 /* Desktop : 2 colonnes */
 @media(min-width:769px){
-  .hero-inner-grid{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:64px 40px}
+  .hero-inner-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:52px;align-items:start;padding:64px 40px}
   .hero-text{padding:0;text-align:left}
-  .hero-stats{justify-content:flex-start;margin:20px 0 28px}
-  .hero-cover{margin:28px 0 0;padding:0}
+  .hero-problem{margin-bottom:14px}
+  .hero-sub{margin:0 0 20px;max-width:100%}
+  .hero-benefits{margin:0 0 24px;max-width:100%}
+  .hero-stats-bar{display:none}
+  .hero-cover{margin:24px 0 0;padding:0}
   .hero-cover img{max-width:100%;border-radius:20px}
-  .hero-form-zone{display:none}/* form already in grid */
+  .hero-form-zone{display:none}
   .hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-  .hero-h1{font-size:clamp(2.4rem,3.5vw,3.8rem)}
+  .hero-h1{font-size:clamp(2.2rem,3.2vw,3.4rem)}
   #hero-desktop{display:grid!important}
   #hero-mobile{display:none}
 }
@@ -329,26 +339,22 @@ footer a:hover{color:var(--accent)}
     <div>
       <div class="hero-text" style="padding:0;">
         <div class="eyebrow"><span class="eyebrow-dot"></span>✨ Prix lancement · Accès immédiat</div>
-        <h1 class="hero-h1">Le ventre que<br>tu veux —<br><em>enfin, pour de vrai</em></h1>
-        <div class="hero-stats">
-          <div style="text-align:left"><div class="hero-stat-num">8</div><div class="hero-stat-label">chapitres</div></div>
-          <div style="text-align:left"><div class="hero-stat-num">6</div><div class="hero-stat-label">séances</div></div>
-          <div style="text-align:left"><div class="hero-stat-num">4 sem.</div><div class="hero-stat-label">programme</div></div>
-        </div>
-        <div class="hero-cover" style="padding:0;margin-top:0;">
+        <p class="hero-problem">Tu fais attention à ce que tu manges, tu fais du sport… mais ton ventre reste gonflé et difficile à affiner ?</p>
+        <h1 class="hero-h1">La méthode pour un ventre plus plat —<br><em>même si tu as déjà tout essayé</em></h1>
+        <p class="hero-sub">Anti-ballonnements · Exercices ciblés · Routine réaliste · Résultats visibles dès la semaine 1. Ce programme t'explique exactement ce qui bloque — et te donne les outils pour le débloquer.</p>
+        <ul class="hero-benefits">
+          <li>Programme maison 14 jours · 6 séances guidées</li>
+          <li>Nutrition anti-ballonnements + plan repas 7 jours</li>
+          <li>Exercices ciblés transverse & ventre plat</li>
+          <li>Bonus : sommeil, cortisol, cycle hormonal</li>
+          <li>Accessible sur mobile comme une vraie appli</li>
+        </ul>
+        <div class="hero-cover" style="padding:0;margin-top:24px;">
           <img src="vp-cover.png" alt="Programme Ventre Plat">
-        </div>
-        <div class="hero-pills" style="margin-top:20px;">
-          <span class="pill">🎯 6 erreurs décryptées</span>
-          <span class="pill">🥗 Plan repas 7 jours</span>
-          <span class="pill">📅 Plan 4 semaines</span>
-          <span class="pill">💊 Compléments</span>
-          <span class="pill">🏠 0 matériel</span>
-          <span class="pill">📋 Tracker inclus</span>
         </div>
       </div>
     </div>
-    <div class="hero-form-desktop">
+    <div class="hero-form-desktop" style="position:sticky;top:80px;">
       <div class="form-box">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border);">
           <img src="images/ornella-profil-studio.png" alt="Ornella" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0;">
@@ -357,46 +363,60 @@ footer a:hover{color:var(--accent)}
             <div style="font-size:.75rem;color:var(--muted);line-height:1.4;">Coach diplômée d'État · Demi-finaliste Champ. France Fitness</div>
           </div>
         </div>
-        <div class="form-title">🔥 Commence ton programme</div>
+        <div class="form-title">🚀 Commence ta transformation</div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
           <span style="font-size:1.6rem;font-weight:800;color:var(--accent);">12€</span>
           <span style="font-size:.85rem;color:var(--muted);text-decoration:line-through;">24€</span>
           <span style="background:var(--accent);color:#fff;font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:999px;letter-spacing:.06em;">−51%</span>
           <span style="font-size:.75rem;color:var(--muted);margin-left:auto;">⏳ Offre limitée</span>
         </div>
+        <div style="background:rgba(61,122,106,.07);border:1px solid rgba(61,122,106,.2);border-radius:10px;padding:10px 14px;margin-bottom:16px;">
+          <p style="font-size:.78rem;color:var(--sage);font-weight:600;margin:0 0 4px;">Résultat moyen constaté :</p>
+          <p style="font-size:.82rem;color:#3D5E58;margin:0;line-height:1.5;">−3 cm de tour de taille · Moins de ballonnements dès J7 · Confiance retrouvée</p>
+        </div>
         <input type="text" id="hero-fname-d" class="form-input" placeholder="Ton prénom" autocomplete="given-name">
         <input type="email" id="hero-email-d" class="form-input" placeholder="Ton adresse email" autocomplete="email">
-        <button class="form-btn" onclick="handlePurchaseDesktop()" style="font-size:1rem;padding:18px;">🔥 Je veux mon programme à 12€ →</button>
-        <p class="form-note">⚡ Accès <strong>immédiat</strong> après paiement · 🔒 Sécurisé · Places limitées</p>
+        <button class="form-btn" onclick="handlePurchaseDesktop()" style="font-size:1rem;padding:18px;">🚀 Commencer ma transformation →</button>
+        <p class="form-note">⚡ Accès <strong>immédiat</strong> après paiement · 🔒 Sécurisé · À vie sur tous tes appareils</p>
       </div>
     </div>
   </div>
 
   <!-- MOBILE : linéaire, aéré, premium -->
   <div id="hero-mobile">
-    <!-- 1. Eyebrow + Titre -->
+    <!-- 1. Eyebrow + Accroche + Titre -->
     <div class="hero-text">
       <div class="eyebrow"><span class="eyebrow-dot"></span>✨ Prix lancement · Places limitées</div>
-      <h1 class="hero-h1">Le ventre que<br>tu veux —<br><em>enfin, pour de vrai</em></h1>
+      <p class="hero-problem">Tu fais attention à ce que tu manges, tu fais du sport… mais ton ventre reste gonflé et difficile à affiner ?</p>
+      <h1 class="hero-h1">La méthode pour un ventre plus plat —<br><em>même si tu as déjà tout essayé</em></h1>
+      <p class="hero-sub">Anti-ballonnements · Exercices ciblés · Routine réaliste · Résultats visibles dès la semaine 1.</p>
+      <!-- Bénéfices visibles immédiatement -->
+      <ul class="hero-benefits" style="margin:0 auto 0;max-width:340px;">
+        <li>Programme maison 14 jours · 6 séances guidées</li>
+        <li>Nutrition anti-ballonnements + plan repas 7 jours</li>
+        <li>Exercices ciblés transverse & ventre plat</li>
+        <li>Bonus : sommeil, cortisol, cycle hormonal</li>
+        <li>Accessible sur mobile comme une vraie appli</li>
+      </ul>
     </div>
 
-    <!-- 2. Cover — moment héro, full impact -->
+    <!-- 2. Cover -->
     <div class="hero-cover">
       <img src="vp-cover.png" alt="Programme Ventre Plat — Ornella Fit Coaching">
     </div>
 
-    <!-- 3. Stats 3 colonnes -->
-    <div style="display:flex;justify-content:center;gap:0;margin:32px 20px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:white;">
-      <div style="flex:1;padding:16px 8px;text-align:center;border-right:1px solid var(--border);">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--dark);line-height:1;">8</div>
-        <div style="font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:3px;">chapitres</div>
+    <!-- 3. Stats bar transformation -->
+    <div class="hero-stats-bar">
+      <div class="hero-stat-item">
+        <div class="hero-stat-num">14j</div>
+        <div class="hero-stat-label">programme</div>
       </div>
-      <div style="flex:1;padding:16px 8px;text-align:center;border-right:1px solid var(--border);">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--dark);line-height:1;">4 sem.</div>
-        <div style="font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:3px;">programme</div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-num">−3cm</div>
+        <div class="hero-stat-label">résultat moyen</div>
       </div>
-      <div style="flex:1;padding:16px 8px;text-align:center;">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--dark);line-height:1;">5★</div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-num">5★</div>
         <div style="font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:3px;">avis Google</div>
       </div>
     </div>
@@ -404,15 +424,19 @@ footer a:hover{color:var(--accent)}
     <!-- 4. Formulaire achat -->
     <div class="hero-form-zone">
       <div class="form-box" style="max-width:480px;margin:0 auto;">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border);">
           <img src="images/ornella-profil-studio.png" alt="Ornella" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0;">
           <div>
             <div style="font-size:.88rem;font-weight:700;color:var(--dark);">Ornella Racano</div>
             <div style="font-size:.72rem;color:var(--muted);line-height:1.4;">Coach diplômée d'État · Demi-finaliste Champ. France Fitness</div>
           </div>
         </div>
-        <div class="form-title" style="margin-bottom:14px;">🔥 Commence ton programme</div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;padding:14px 16px;background:rgba(201,99,88,.05);border-radius:12px;border:1px solid rgba(201,99,88,.12);">
+        <div class="form-title" style="margin-bottom:14px;">🚀 Commence ta transformation</div>
+        <div style="background:rgba(61,122,106,.07);border:1px solid rgba(61,122,106,.2);border-radius:10px;padding:10px 14px;margin-bottom:16px;">
+          <p style="font-size:.76rem;color:var(--sage);font-weight:600;margin:0 0 3px;">Résultat moyen constaté :</p>
+          <p style="font-size:.8rem;color:#3D5E58;margin:0;line-height:1.5;">−3 cm de tour de taille · Moins de ballonnements dès J7</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;padding:12px 14px;background:rgba(201,99,88,.05);border-radius:12px;border:1px solid rgba(201,99,88,.12);">
           <span style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--accent);line-height:1;">12€</span>
           <span style="font-size:.85rem;color:var(--muted);text-decoration:line-through;">24€</span>
           <span style="background:var(--accent);color:#fff;font-size:.65rem;font-weight:700;padding:4px 10px;border-radius:999px;letter-spacing:.06em;">−51%</span>
@@ -420,8 +444,8 @@ footer a:hover{color:var(--accent)}
         </div>
         <input type="text" id="hero-fname" class="form-input" placeholder="Ton prénom" autocomplete="given-name">
         <input type="email" id="hero-email" class="form-input" placeholder="Ton adresse email" autocomplete="email">
-        <button class="form-btn" onclick="handlePurchase()" style="font-size:1rem;padding:18px;letter-spacing:.01em;">🔥 Je veux mon programme à 12€ →</button>
-        <p class="form-note">⚡ Accès <strong>immédiat</strong> après paiement · 🔒 Paiement sécurisé</p>
+        <button class="form-btn" onclick="handlePurchase()" style="font-size:1rem;padding:18px;letter-spacing:.01em;">🚀 Commencer ma transformation →</button>
+        <p class="form-note">⚡ Accès <strong>immédiat</strong> après paiement · 🔒 Sécurisé · À vie sur tous tes appareils</p>
         <div class="form-success" id="hero-success"><p>✅ Redirection en cours...</p></div>
       </div>
     </div>
@@ -445,8 +469,8 @@ footer a:hover{color:var(--accent)}
       <div class="proof-label">séances guidées</div>
     </div>
     <div class="proof-item">
-      <div class="proof-num">4 sem.</div>
-      <div class="proof-label">programme inclus</div>
+      <div class="proof-num">14j</div>
+      <div class="proof-label">programme maison</div>
     </div>
     <div class="proof-item">
       <div class="proof-num">5★</div>
