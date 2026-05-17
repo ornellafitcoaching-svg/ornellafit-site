@@ -10,23 +10,21 @@
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","26675222578828123");fbq("track","PageView");</script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=26675222578828123&ev=PageView&noscript=1"/></noscript>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
-/* ── FOND ANIMÉ ── */
+/* ── FOND ── */
 body {
   font-family:'DM Sans',system-ui,sans-serif;
   min-height:100vh;
-  background: #FDF0E8;
+  background:#FDF0E8;
   display:flex;flex-direction:column;align-items:center;
   padding:0 22px 80px;
   color:#2C1F1A;
   overflow-x:hidden;
   position:relative;
 }
-
-/* Gradient mesh qui respire */
 body::before {
   content:'';
   position:fixed;inset:0;z-index:0;
@@ -35,157 +33,110 @@ body::before {
     radial-gradient(ellipse 50% 60% at 10% 80%, rgba(201,99,88,0.25) 0%, transparent 55%),
     radial-gradient(ellipse 40% 40% at 50% 50%, rgba(240,200,170,0.3) 0%, transparent 60%),
     #FDF0E8;
-  animation: meshShift 14s ease-in-out infinite alternate;
+  animation:meshShift 14s ease-in-out infinite alternate;
 }
 @keyframes meshShift {
-  0%   { background-position: 80% 10%, 10% 80%, 50% 50%; }
-  50%  { background-position: 70% 20%, 20% 70%, 55% 45%; }
-  100% { background-position: 85% 15%, 5%  85%, 45% 55%; }
+  0%   {background-position:80% 10%,10% 80%,50% 50%;}
+  50%  {background-position:70% 20%,20% 70%,55% 45%;}
+  100% {background-position:85% 15%,5% 85%,45% 55%;}
 }
 
-/* ── PÉTALES DE ROSE ── */
-.petals { position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden; }
-.petal {
-  position:absolute;
-  top:-40px;
-  width:14px;height:18px;
-  border-radius:50% 50% 50% 0;
-  background:linear-gradient(135deg,rgba(212,149,122,0.7),rgba(201,99,88,0.5));
-  animation: fall linear infinite;
-  transform-origin:center;
-}
-.petal:nth-child(1)  {left:5%;  width:10px;height:14px;animation-duration:9s; animation-delay:0s;   opacity:.55;}
-.petal:nth-child(2)  {left:15%; width:14px;height:18px;animation-duration:12s;animation-delay:2s;   opacity:.45;}
-.petal:nth-child(3)  {left:28%; width:8px; height:12px;animation-duration:8s; animation-delay:4s;   opacity:.6;}
-.petal:nth-child(4)  {left:42%; width:13px;height:17px;animation-duration:14s;animation-delay:1s;   opacity:.4;}
-.petal:nth-child(5)  {left:58%; width:10px;height:14px;animation-duration:10s;animation-delay:3s;   opacity:.5;}
-.petal:nth-child(6)  {left:70%; width:15px;height:19px;animation-duration:11s;animation-delay:0.5s; opacity:.45;}
-.petal:nth-child(7)  {left:82%; width:9px; height:13px;animation-duration:9s; animation-delay:5s;   opacity:.55;}
-.petal:nth-child(8)  {left:92%; width:12px;height:16px;animation-duration:13s;animation-delay:2.5s; opacity:.4;}
-.petal:nth-child(9)  {left:35%; width:8px; height:11px;animation-duration:7s; animation-delay:6s;   opacity:.5;}
-.petal:nth-child(10) {left:62%; width:11px;height:15px;animation-duration:15s;animation-delay:1.5s; opacity:.45;}
+/* ── PÉTALES ── */
+.petals{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
+.petal{position:absolute;top:-40px;width:14px;height:18px;border-radius:50% 50% 50% 0;background:linear-gradient(135deg,rgba(212,149,122,0.7),rgba(201,99,88,0.5));animation:fall linear infinite;transform-origin:center;}
+.petal:nth-child(1){left:5%;width:10px;height:14px;animation-duration:9s;animation-delay:0s;opacity:.55;}
+.petal:nth-child(2){left:15%;width:14px;height:18px;animation-duration:12s;animation-delay:2s;opacity:.45;}
+.petal:nth-child(3){left:28%;width:8px;height:12px;animation-duration:8s;animation-delay:4s;opacity:.6;}
+.petal:nth-child(4){left:42%;width:13px;height:17px;animation-duration:14s;animation-delay:1s;opacity:.4;}
+.petal:nth-child(5){left:58%;width:10px;height:14px;animation-duration:10s;animation-delay:3s;opacity:.5;}
+.petal:nth-child(6){left:70%;width:15px;height:19px;animation-duration:11s;animation-delay:0.5s;opacity:.45;}
+.petal:nth-child(7){left:82%;width:9px;height:13px;animation-duration:9s;animation-delay:5s;opacity:.55;}
+.petal:nth-child(8){left:92%;width:12px;height:16px;animation-duration:13s;animation-delay:2.5s;opacity:.4;}
+.petal:nth-child(9){left:35%;width:8px;height:11px;animation-duration:7s;animation-delay:6s;opacity:.5;}
+.petal:nth-child(10){left:62%;width:11px;height:15px;animation-duration:15s;animation-delay:1.5s;opacity:.45;}
+@keyframes fall{0%{transform:translateY(0) rotate(0deg) translateX(0);opacity:0;}10%{opacity:1;}80%{opacity:0.8;}100%{transform:translateY(110vh) rotate(720deg) translateX(40px);opacity:0;}}
 
-@keyframes fall {
-  0%   { transform:translateY(0)      rotate(0deg)   translateX(0); opacity:0; }
-  10%  { opacity:1; }
-  80%  { opacity:0.8; }
-  100% { transform:translateY(110vh)  rotate(720deg) translateX(40px); opacity:0; }
-}
+/* ── ÉTOILES ── */
+.stars{position:fixed;inset:0;z-index:1;pointer-events:none;}
+.star{position:absolute;width:6px;height:6px;animation:sparkle var(--d,4s) ease-in-out infinite var(--dl,0s);}
+.star::before,.star::after{content:'';position:absolute;background:#C96358;border-radius:1px;}
+.star::before{width:6px;height:2px;top:2px;left:0;}
+.star::after{width:2px;height:6px;top:0;left:2px;}
+@keyframes sparkle{0%,100%{opacity:0;transform:scale(0.3) rotate(0deg);}50%{opacity:0.8;transform:scale(1) rotate(45deg);}}
 
-/* ── ÉTOILES SCINTILLANTES ── */
-.stars { position:fixed;inset:0;z-index:1;pointer-events:none; }
-.star {
-  position:absolute;
-  width:6px;height:6px;
-  animation:sparkle var(--d,4s) ease-in-out infinite var(--dl,0s);
-}
-.star::before,.star::after {
-  content:'';position:absolute;
-  background:#C96358;border-radius:1px;
-}
-.star::before { width:6px;height:2px;top:2px;left:0; }
-.star::after  { width:2px;height:6px;top:0;left:2px; }
-@keyframes sparkle {
-  0%,100%{opacity:0;transform:scale(0.3) rotate(0deg);}
-  50%    {opacity:0.8;transform:scale(1) rotate(45deg);}
-}
-
-/* ── GRANDES FLEURS DÉCORATIVES ── */
-.flowers { position:fixed;inset:0;z-index:1;pointer-events:none; }
-.flower-wrap {
-  position:absolute;
-  animation:floatFlower var(--ff,10s) ease-in-out infinite var(--ffd,0s);
-}
-@keyframes floatFlower {
-  0%,100%{transform:translateY(0) rotate(0deg);}
-  50%    {transform:translateY(-18px) rotate(12deg);}
-}
+/* ── FLEURS ── */
+.flowers{position:fixed;inset:0;z-index:1;pointer-events:none;}
+.flower-wrap{position:absolute;animation:floatFlower var(--ff,10s) ease-in-out infinite var(--ffd,0s);}
+@keyframes floatFlower{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-18px) rotate(12deg);}}
 
 /* ── PAGE ── */
-.page {
-  position:relative;z-index:2;
-  width:100%;max-width:400px;
-  display:flex;flex-direction:column;align-items:center;
-}
+.page{position:relative;z-index:2;width:100%;max-width:400px;display:flex;flex-direction:column;align-items:center;}
 
-/* ── PHOTO avec bordure tournante ── */
-.photo-wrap {
-  margin-top:56px;margin-bottom:20px;
-  position:relative;
-  animation:dropIn 0.9s cubic-bezier(.22,.68,0,1.2) both;
-}
-@keyframes dropIn {
-  from{opacity:0;transform:translateY(-30px) scale(0.85);}
-  to  {opacity:1;transform:translateY(0) scale(1);}
-}
-
-/* Bordure arc-en-ciel douce qui tourne */
-.photo-border {
-  position:absolute;inset:-4px;border-radius:50%;
-  background:conic-gradient(#C96358,#E8A080,#F0C8A0,#D4957A,#C96358);
-  animation:spinBorder 5s linear infinite;
-  z-index:0;
-}
+/* ── PHOTO ── */
+.photo-wrap{margin-top:56px;margin-bottom:20px;position:relative;animation:dropIn 0.9s cubic-bezier(.22,.68,0,1.2) both;}
+@keyframes dropIn{from{opacity:0;transform:translateY(-30px) scale(0.85);}to{opacity:1;transform:translateY(0) scale(1);}}
+.photo-border{position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(#C96358,#E8A080,#F0C8A0,#D4957A,#C96358);animation:spinBorder 5s linear infinite;z-index:0;}
 @keyframes spinBorder{to{transform:rotate(360deg);}}
-
-/* Halo pulsant */
-.photo-halo {
-  position:absolute;inset:-18px;border-radius:50%;
-  background:radial-gradient(circle,rgba(201,99,88,0.25),transparent 70%);
-  animation:halo 3s ease-in-out infinite;z-index:0;
-}
+.photo-halo{position:absolute;inset:-18px;border-radius:50%;background:radial-gradient(circle,rgba(201,99,88,0.25),transparent 70%);animation:halo 3s ease-in-out infinite;z-index:0;}
 @keyframes halo{0%,100%{transform:scale(1);opacity:.6;}50%{transform:scale(1.2);opacity:.25;}}
+.profile-img{width:110px;height:110px;border-radius:50%;object-fit:cover;object-position:top center;border:3px solid #fff;box-shadow:0 8px 32px rgba(180,90,60,0.25);display:block;position:relative;z-index:1;}
 
-.profile-img {
-  width:110px;height:110px;border-radius:50%;
-  object-fit:cover;object-position:top center;
-  border:3px solid #fff;
-  box-shadow:0 8px 32px rgba(180,90,60,0.25);
-  display:block;position:relative;z-index:1;
-}
-
-/* ── NOM avec shimmer ── */
-.profile-name {
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.6rem;font-weight:600;
-  color:#2C1F1A;text-align:center;letter-spacing:0.03em;
-  margin-bottom:8px;position:relative;overflow:hidden;
-  animation:fadeUp .7s .15s both;
-}
-.profile-name::after {
-  content:'';position:absolute;
-  top:0;left:-100%;width:60%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.6),transparent);
-  animation:shimmerName 4s 1.5s ease-in-out infinite;
-}
+/* ── TEXTE PROFIL ── */
+.profile-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:#2C1F1A;text-align:center;letter-spacing:.03em;margin-bottom:8px;position:relative;overflow:hidden;animation:fadeUp .7s .15s both;}
+.profile-name::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.6),transparent);animation:shimmerName 4s 1.5s ease-in-out infinite;}
 @keyframes shimmerName{0%{left:-100%;}60%,100%{left:150%;}}
-
-.profile-badge {
-  display:inline-flex;align-items:center;gap:5px;
-  background:#fff;border:1px solid #E8C4B0;
-  border-radius:20px;padding:4px 14px;
-  font-size:11px;font-weight:500;color:#C96358;
-  letter-spacing:.03em;margin-bottom:10px;
-  box-shadow:0 2px 10px rgba(201,99,88,0.12);
-  animation:fadeUp .7s .3s both;
-}
-
-.profile-tag {
-  font-size:12px;font-weight:300;color:#A08070;
-  letter-spacing:.06em;text-align:center;line-height:1.7;margin-bottom:24px;
-  animation:fadeUp .7s .42s both;
-}
-
+.profile-badge{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid #E8C4B0;border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;color:#C96358;letter-spacing:.03em;margin-bottom:10px;box-shadow:0 2px 10px rgba(201,99,88,.12);animation:fadeUp .7s .3s both;}
+.profile-tag{font-size:12px;font-weight:300;color:#A08070;letter-spacing:.06em;text-align:center;line-height:1.7;margin-bottom:24px;animation:fadeUp .7s .42s both;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-
-/* Séparateur */
-.sep{display:flex;align-items:center;gap:10px;margin-bottom:28px;width:100%;justify-content:center;animation:fadeUp .7s .5s both;}
+.sep{display:flex;align-items:center;gap:10px;margin-bottom:24px;width:100%;justify-content:center;animation:fadeUp .7s .5s both;}
 .sep-line{width:48px;height:1px;background:#D4A090;opacity:.5;}
 .sep-dot{width:4px;height:4px;border-radius:50%;background:#C96358;opacity:.6;}
 
-/* ── BOUTONS ── */
+/* ── LIENS ── */
 .links{width:100%;display:flex;flex-direction:column;gap:10px;margin-bottom:38px;}
 
+/* Carte VP hero — premium et prioritaire */
+.vp-hero-card {
+  width:100%;
+  background:linear-gradient(150deg,#1C1210 0%,#2C1410 50%,#3A1A10 100%);
+  border-radius:20px;
+  padding:22px 20px;
+  text-decoration:none;
+  display:block;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 10px 36px rgba(44,18,10,.28);
+  opacity:0;
+  animation:slideIn .6s cubic-bezier(.22,.68,0,1.2) .45s forwards;
+  transition:transform .22s cubic-bezier(.22,.68,0,1.2),box-shadow .22s;
+  cursor:pointer;
+}
+.vp-hero-card::before {
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(201,99,88,.18),transparent 60%);
+  pointer-events:none;
+}
+.vp-hero-card::after {
+  content:'';position:absolute;top:0;left:-80%;width:50%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);
+  transition:left .5s ease;pointer-events:none;
+}
+.vp-hero-card:hover::after{left:130%;}
+.vp-hero-card:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 16px 48px rgba(44,18,10,.38);}
+.vp-hero-card:active{transform:scale(0.97);}
+.vp-badge{display:inline-block;background:rgba(201,99,88,.25);border:1px solid rgba(201,99,88,.4);color:#E8A090;border-radius:999px;padding:3px 12px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
+.vp-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:6px;}
+.vp-sub{font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.55;margin-bottom:14px;}
+.vp-stats{display:flex;gap:12px;margin-bottom:16px;}
+.vp-stat{text-align:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:6px 12px;}
+.vp-stat-num{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:#fff;line-height:1;}
+.vp-stat-label{font-size:.58rem;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;margin-top:1px;}
+.vp-cta{display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#C96358,#D4856A);border-radius:50px;padding:11px 18px;}
+.vp-cta-text{font-size:.85rem;font-weight:700;color:#fff;}
+.vp-cta-arrow{font-size:1rem;color:rgba(255,255,255,.7);}
+.vp-price-tag{position:absolute;top:18px;right:18px;background:rgba(201,99,88,.9);color:#fff;border-radius:999px;padding:3px 10px;font-size:.72rem;font-weight:700;letter-spacing:.04em;}
+
+/* Boutons standard */
 .link-btn {
   display:flex;align-items:center;width:100%;
   padding:17px 22px;border-radius:16px;
@@ -197,87 +148,55 @@ body::before {
   opacity:0;
   animation:slideIn .6s cubic-bezier(.22,.68,0,1.2) forwards;
   position:relative;overflow:hidden;
-  transition:transform .22s cubic-bezier(.22,.68,0,1.2),
-             box-shadow .22s ease, border-color .2s;
+  transition:transform .22s cubic-bezier(.22,.68,0,1.2),box-shadow .22s,border-color .2s;
 }
-/* Shine sweep sur chaque bouton */
-.link-btn::after {
-  content:'';position:absolute;
-  top:0;left:-80%;width:50%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.35),transparent);
-  transition:left .5s ease;pointer-events:none;
-}
+.link-btn::after{content:'';position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transition:left .5s ease;pointer-events:none;}
 .link-btn:hover::after{left:130%;}
-.link-btn:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 8px 24px rgba(201,99,88,0.18);border-color:#C96358;}
+.link-btn:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 8px 24px rgba(201,99,88,.18);border-color:#C96358;}
 .link-btn:active{transform:scale(0.97);}
 
-/* Décalage d'entrée */
-.links .link-btn:nth-child(1){animation-delay:.55s;}
-.links .link-btn:nth-child(2){animation-delay:.68s;}
-.links .link-btn:nth-child(3){animation-delay:.81s;}
-.links .link-btn:nth-child(4){animation-delay:.94s;}
-.links .link-btn:nth-child(5){animation-delay:1.07s;}
-.links .link-btn:nth-child(6){animation-delay:1.2s;}
+.links .link-btn:nth-child(2){animation-delay:.62s;}
+.links .link-btn:nth-child(3){animation-delay:.76s;}
+.links .link-btn:nth-child(4){animation-delay:.90s;}
+.links .link-btn:nth-child(5){animation-delay:1.04s;}
+.links .link-btn:nth-child(6){animation-delay:1.18s;}
+.links .link-btn:nth-child(7){animation-delay:1.32s;}
 
 @keyframes slideIn{from{opacity:0;transform:translateX(-24px);}to{opacity:1;transform:translateX(0);}}
 
-.link-btn.featured{
-  background:linear-gradient(135deg,#C96358 0%,#D4856A 100%);
-  border-color:transparent;color:#fff;
-  box-shadow:0 6px 22px rgba(201,99,88,0.32);
-}
-.link-btn.featured:hover{box-shadow:0 10px 30px rgba(201,99,88,0.45);}
-.link-btn.featured::after{background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);}
+/* Booty Sculpt — featured */
+.link-btn.featured{background:linear-gradient(135deg,#C96358 0%,#D4856A 100%);border-color:transparent;color:#fff;box-shadow:0 6px 22px rgba(201,99,88,.32);}
+.link-btn.featured:hover{box-shadow:0 10px 30px rgba(201,99,88,.45);}
+.link-btn.featured::after{background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);}
 .link-btn.featured .link-arrow{color:rgba(255,255,255,.55);}
-.link-btn.featured .link-sub  {color:rgba(255,255,255,.72);}
+.link-btn.featured .link-sub{color:rgba(255,255,255,.72);}
 
 .link-btn.wa{border-color:rgba(37,211,102,.35);color:#1A6E44;}
 .link-btn.wa .link-arrow{color:#25D366;opacity:.7;}
 .link-btn.cal{border-color:rgba(0,106,255,.25);color:#0047CC;}
 .link-btn.cal .link-arrow{color:#006AFF;opacity:.7;}
+.link-btn.subtle{border-color:rgba(212,160,144,.2);background:rgba(255,255,255,.6);}
 
 .link-emoji{font-size:1.1rem;flex-shrink:0;}
-.link-text {flex:1;line-height:1.35;}
-.link-sub  {display:block;font-size:11px;font-weight:300;color:#A08070;margin-top:2px;}
+.link-text{flex:1;line-height:1.35;}
+.link-sub{display:block;font-size:11px;font-weight:300;color:#A08070;margin-top:2px;}
+.link-btn.featured .link-sub{color:rgba(255,255,255,.7);}
 .link-arrow{font-size:16px;color:#D4A090;flex-shrink:0;transition:transform .2s;}
 .link-btn:hover .link-arrow{transform:translateX(4px);}
 
 /* ── FOOTER ── */
-.footer{display:flex;flex-direction:column;align-items:center;gap:14px;animation:fadeUp .7s 1.3s both;}
+.footer{display:flex;flex-direction:column;align-items:center;gap:14px;animation:fadeUp .7s 1.4s both;}
 .footer-icons{display:flex;gap:10px;}
-.footer-icon{
-  display:flex;align-items:center;gap:5px;
-  text-decoration:none;font-size:12px;font-weight:400;color:#B09080;
-  background:#fff;border:1px solid rgba(212,160,144,.35);
-  border-radius:20px;padding:7px 13px;
-  box-shadow:0 1px 6px rgba(180,90,60,.05);
-  transition:color .2s,border-color .2s,transform .2s;
-}
+.footer-icon{display:flex;align-items:center;gap:5px;text-decoration:none;font-size:12px;font-weight:400;color:#B09080;background:#fff;border:1px solid rgba(212,160,144,.35);border-radius:20px;padding:7px 13px;box-shadow:0 1px 6px rgba(180,90,60,.05);transition:color .2s,border-color .2s,transform .2s;}
 .footer-icon:hover{color:#C96358;border-color:#C96358;transform:translateY(-2px);}
 .copyright{font-size:10px;color:#C8B0A8;letter-spacing:.06em;}
 
 /* ── MODAL ── */
-.modal-overlay{
-  display:none;position:fixed;inset:0;
-  background:rgba(44,31,26,.45);z-index:999;
-  align-items:flex-end;justify-content:center;
-  backdrop-filter:blur(10px);
-}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(44,31,26,.45);z-index:999;align-items:flex-end;justify-content:center;backdrop-filter:blur(10px);}
 .modal-overlay.open{display:flex;}
-.modal-box{
-  background:#FDF7F3;border-radius:28px 28px 0 0;
-  padding:32px 24px 52px;width:100%;max-width:480px;
-  position:relative;border-top:3px solid #E8C4B0;
-  animation:up .35s cubic-bezier(.22,.68,0,1.2);
-}
+.modal-box{background:#FDF7F3;border-radius:28px 28px 0 0;padding:32px 24px 52px;width:100%;max-width:480px;position:relative;border-top:3px solid #E8C4B0;animation:up .35s cubic-bezier(.22,.68,0,1.2);}
 @keyframes up{from{transform:translateY(80px);opacity:0;}to{transform:translateY(0);opacity:1;}}
-.modal-close{
-  position:absolute;top:16px;right:18px;
-  background:#F0E0D8;border:none;width:30px;height:30px;
-  border-radius:50%;font-size:1rem;cursor:pointer;color:#8B6F5E;
-  display:flex;align-items:center;justify-content:center;
-  transition:background .2s;
-}
+.modal-close{position:absolute;top:16px;right:18px;background:#F0E0D8;border:none;width:30px;height:30px;border-radius:50%;font-size:1rem;cursor:pointer;color:#8B6F5E;display:flex;align-items:center;justify-content:center;transition:background .2s;}
 .modal-close:hover{background:#E8C8BC;}
 .modal-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#2C1F1A;margin-bottom:6px;padding-right:32px;line-height:1.3;}
 .modal-sub{font-size:13px;font-weight:300;color:#A08070;margin-bottom:22px;line-height:1.65;}
@@ -316,7 +235,7 @@ body::before {
   <div class="star" style="top:58%;left:9%;--d:3.2s;--dl:2.5s"></div>
 </div>
 
-<!-- GRANDES FLEURS -->
+<!-- FLEURS -->
 <div class="flowers">
   <div class="flower-wrap" style="top:8%;right:4%;--ff:9s;--ffd:0s">
     <svg width="60" height="60" viewBox="0 0 60 60" fill="none" style="opacity:.22">
@@ -339,10 +258,10 @@ body::before {
   </div>
   <div class="flower-wrap" style="top:40%;right:3%;--ff:7s;--ffd:2s">
     <svg width="34" height="34" viewBox="0 0 34 34" fill="none" style="opacity:.16">
-      <circle cx="17" cy="5"  r="5" fill="#D4957A"/>
+      <circle cx="17" cy="5" r="5" fill="#D4957A"/>
       <circle cx="29" cy="17" r="5" fill="#D4957A"/>
       <circle cx="17" cy="29" r="5" fill="#D4957A"/>
-      <circle cx="5"  cy="17" r="5" fill="#D4957A"/>
+      <circle cx="5" cy="17" r="5" fill="#D4957A"/>
       <circle cx="17" cy="17" r="7" fill="#C96358" opacity=".7"/>
     </svg>
   </div>
@@ -379,7 +298,7 @@ body::before {
 
   <div class="profile-name">Ornella Fit Coaching</div>
   <div class="profile-badge">🏆 Demi-finaliste France de Fitness</div>
-  <div class="profile-tag">Coach sportive certifiée · Essonne (91)</div>
+  <div class="profile-tag">Coach sportive certifiée · Transformations féminines<br>Essonne (91) · 100+ femmes accompagnées</div>
 
   <div class="sep">
     <div class="sep-line"></div>
@@ -388,54 +307,72 @@ body::before {
   </div>
 
   <div class="links">
+
+    <!-- 1. VENTRE PLAT — priorité visuelle -->
+    <a href="https://www.ornellafitcoaching.com/ventre-plat.html" class="vp-hero-card" onclick="px('Ventre Plat 12€')">
+      <div class="vp-price-tag">12€</div>
+      <div class="vp-badge">✨ Programme digital · Priorité</div>
+      <div class="vp-title">Reset Ventre Plat</div>
+      <div class="vp-sub">La méthode pour un ventre plus plat — même si tu as déjà tout essayé. Anti-ballonnements, exercices ciblés, plan repas.</div>
+      <div class="vp-stats">
+        <div class="vp-stat"><div class="vp-stat-num">14j</div><div class="vp-stat-label">programme</div></div>
+        <div class="vp-stat"><div class="vp-stat-num">8</div><div class="vp-stat-label">chapitres</div></div>
+        <div class="vp-stat"><div class="vp-stat-num">−3cm</div><div class="vp-stat-label">résultat moyen</div></div>
+      </div>
+      <div class="vp-cta">
+        <span class="vp-cta-text">Commencer ma transformation →</span>
+        <span class="vp-cta-arrow">›</span>
+      </div>
+    </a>
+
+    <!-- 2. BOOTY SCULPT -->
     <a href="https://www.ornellafitcoaching.com/booty-sculpt.html" class="link-btn featured" onclick="px('Booty Sculpt 19€')">
-      <span class="link-emoji">🔥</span>
-      <span class="link-text">Booty Sculpt — Programme fessiers<span class="link-sub">19€ · Accès immédiat · 🎁 Guide gratuit offert avec l'achat</span></span>
+      <span class="link-emoji">🍑</span>
+      <span class="link-text">Sculpte tes fessiers en 8 semaines<span class="link-sub">Booty Sculpt · 19€ · 12 séances guidées + vidéos</span></span>
       <span class="link-arrow">›</span>
     </a>
-    <a href="https://www.ornellafitcoaching.com/quiz.html" class="link-btn featured" onclick="px('Quiz gratuit')">
-      <span class="link-emoji">🎯</span>
-      <span class="link-text">Quel coaching est fait pour toi ?<span class="link-sub">Quiz gratuit · 2 minutes</span></span>
-      <span class="link-arrow">›</span>
-    </a>
+
+    <!-- 3. TRANSFORMATIONS -->
     <a href="https://www.ornellafitcoaching.com/transformations.html" class="link-btn" onclick="px('Transformations')">
-      <span class="link-emoji">💪</span>
-      <span class="link-text">Voir les vraies transformations</span>
+      <span class="link-emoji">✨</span>
+      <span class="link-text">Découvre les transformations<span class="link-sub">Vraies clientes · Vrais résultats · Avant / après</span></span>
       <span class="link-arrow">›</span>
     </a>
-    <a href="https://www.ornellafitcoaching.com/offres.html" class="link-btn" onclick="px('Offres et tarifs')">
-      <span class="link-emoji">📋</span>
-      <span class="link-text">Toutes mes offres et tarifs</span>
+
+    <!-- 4. COACHING SUR MESURE -->
+    <a href="https://www.ornellafitcoaching.com/offres.html" class="link-btn" onclick="px('Offres coaching')">
+      <span class="link-emoji">🎯</span>
+      <span class="link-text">Trouve le coaching fait pour toi<span class="link-sub">Programme sur mesure · Suivi personnalisé · Résultats garantis</span></span>
       <span class="link-arrow">›</span>
     </a>
-    <button class="link-btn" onclick="openGuide()">
-      <span class="link-emoji">🎁</span>
-      <span class="link-text">Guide gratuit — Les 9 erreurs qui t'empêchent d'évoluer<span class="link-sub">PDF · Reçois-le par email</span></span>
-      <span class="link-arrow">›</span>
-    </button>
+
+    <!-- 5. APPEL DÉCOUVERTE -->
     <a href="https://calendly.com/ornellafit-coaching" class="link-btn cal" target="_blank" onclick="px('Calendly')">
       <span class="link-emoji">📅</span>
-      <span class="link-text">Réserver un appel découverte<span class="link-sub">Appel téléphonique · Gratuit · Sans engagement</span></span>
+      <span class="link-text">Réserver mon appel découverte gratuit<span class="link-sub">15 min · Gratuit · Sans engagement</span></span>
       <span class="link-arrow">›</span>
     </a>
+
+    <!-- 6. WHATSAPP -->
     <a href="https://wa.me/33756834626" class="link-btn wa" target="_blank" onclick="px('WhatsApp')">
       <span class="link-emoji">💬</span>
-      <span class="link-text">M'écrire sur WhatsApp</span>
+      <span class="link-text">Écrire à Ornella sur WhatsApp<span class="link-sub">Réponse rapide · Pose toutes tes questions</span></span>
       <span class="link-arrow">›</span>
     </a>
-    <a href="https://www.ornellafitcoaching.com/index.html"
-       class="link-btn"
-       onclick="px('Site')">
+
+    <!-- 7. SITE OFFICIEL -->
+    <a href="https://www.ornellafitcoaching.com/index.html" class="link-btn subtle" onclick="px('Site')">
       <span class="link-emoji">🌐</span>
-      <span class="link-text">Mon site officiel</span>
+      <span class="link-text">Visiter mon site officiel complet<span class="link-sub">ornellafitcoaching.com</span></span>
       <span class="link-arrow">›</span>
     </a>
+
   </div>
 
   <div class="footer">
     <div class="footer-icons">
       <a href="https://www.instagram.com/ornellafit.coaching" target="_blank" class="footer-icon">📷 Instagram</a>
-      <a href="mailto:ornellafit.coaching@gmail.com" class="footer-icon">✉️ Email</a>
+      <a href="mailto:contact@ornellafitcoaching.com" class="footer-icon">✉️ Email</a>
       <a href="https://www.ornellafitcoaching.com" class="footer-icon">🌐 Site</a>
     </div>
     <p class="copyright">© 2026 Ornella Fit Coaching</p>
@@ -443,7 +380,7 @@ body::before {
 
 </div>
 
-<!-- MODAL -->
+<!-- MODAL GUIDE (conservé pour les autres pages) -->
 <div class="modal-overlay" id="guideOverlay" onclick="overlayClick(event)">
   <div class="modal-box">
     <button class="modal-close" onclick="closeGuide()">×</button>
@@ -467,11 +404,7 @@ body::before {
 <script>
 var BK='xkeysib-b3f029f593ab90bd2bb'+'2290988c5a455f29ddad8ec51e4ca585'+'dcf702b601838-MuwZhV7aQ7eKSaca';
 function px(n){if(typeof fbq!=='undefined')fbq('track','ViewContent',{content_name:n});}
-function openGuide(){
-  px('Guide 9 Erreurs');
-  document.getElementById('guideOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
-}
+function openGuide(){px('Guide 9 Erreurs');document.getElementById('guideOverlay').classList.add('open');document.body.style.overflow='hidden';}
 function closeGuide(){document.getElementById('guideOverlay').classList.remove('open');document.body.style.overflow='';}
 function overlayClick(e){if(e.target===document.getElementById('guideOverlay'))closeGuide();}
 async function submitGuide(e){
@@ -483,13 +416,9 @@ async function submitGuide(e){
   if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errEl.textContent='Entre un email valide.';errEl.style.display='block';return;}
   errEl.style.display='none';btn.textContent='Envoi…';btn.disabled=true;
   try{
-    // 1. Ajoute à Brevo liste 15
     await fetch('https://api.brevo.com/v3/contacts',{method:'POST',headers:{'api-key':BK,'Content-Type':'application/json'},body:JSON.stringify({email,listIds:[15],updateEnabled:true,attributes:{PRENOM:prenom,SOURCE:'links-page'}})});
-    // 2. Envoie le guide par email (template 10)
     await fetch('https://api.brevo.com/v3/smtp/email',{method:'POST',headers:{'api-key':BK,'Content-Type':'application/json'},body:JSON.stringify({to:[{email:email,name:prenom}],templateId:10,sender:{name:'Ornella Fit Coaching',email:'contact@ornellafitcoaching.com'}})});
     if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Guide 9 Erreurs'});
-    localStorage.setItem('ornella_lead_email',email);
-    // 3. Redirige vers le guide
     document.getElementById('guide-form-wrap').style.display='none';
     document.getElementById('guide-success').style.display='block';
     setTimeout(function(){window.location.href='https://www.ornellafitcoaching.com/guide-offert.html';},1800);
