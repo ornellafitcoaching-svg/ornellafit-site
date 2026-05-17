@@ -60,9 +60,21 @@ nav{background:var(--cream);border-bottom:1px solid var(--border);padding:14px 2
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5vw,4rem);font-weight:600;line-height:1.06;margin-bottom:16px;color:var(--dark)}
 h1 em{font-style:italic;font-weight:400;color:var(--accent)}
-.hero-lead{font-size:1rem;color:var(--muted);line-height:1.75;margin-bottom:22px}
+.hero-problem{font-size:.98rem;color:var(--muted);line-height:1.6;margin-bottom:16px;font-style:italic}
+.hero-lead{font-size:.92rem;color:var(--muted);line-height:1.75;margin-bottom:18px}
+.hero-benefits{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0 0 24px}
+.hero-benefits li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--text);line-height:1.45}
+.hero-benefits li::before{content:"✔";color:#3D7A6A;font-weight:800;flex-shrink:0;font-size:.85rem;margin-top:1px}
 .pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
 .pill{background:white;border:1px solid var(--border);border-radius:999px;padding:8px 14px;font-size:.82rem;color:var(--text);font-weight:500}
+/* FAQ */
+.faq{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:4px}
+.faq-item{background:white;border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.faq-q{padding:18px 22px;font-size:.93rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;list-style:none}
+.faq-q::after{content:"+";font-size:1.3rem;color:var(--accent);flex-shrink:0;transition:transform .2s;line-height:1}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{padding:0 22px 18px;font-size:.88rem;color:var(--muted);line-height:1.72;display:none}
+.faq-item.open .faq-a{display:block}
 
 /* FORM */
 .form-box{background:white;border-radius:24px;padding:28px;box-shadow:0 16px 48px rgba(44,31,26,.12);border:1px solid var(--border)}
@@ -174,33 +186,35 @@ footer a:hover{color:var(--accent)}
   <div class="hero-inner wrap">
     <div>
       <div class="hero-eyebrow"><span></span>✨ Disponible maintenant · 19€ lancement</div>
-      <h1>Sculpte tes fessiers 🍑</h1>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;color:var(--accent);letter-spacing:.04em;text-transform:uppercase;margin-bottom:12px">La méthode Booty Sculpt™</p>
-      <p class="hero-lead">8 semaines pour construire des fessiers plus ronds, galbés et visibles. 12 séances guidées, des démonstrations vidéo, conseils nutrition inclus — zéro matériel. Tu commences aujourd'hui, tu vois les résultats dès la semaine 3.</p>
-      <div class="pills">
-        <div class="pill">🍑 Résultats dès 3 semaines</div>
-        <div class="pill">💪 12 séances complètes</div>
-        <div class="pill">🎬 Démonstrations incluses</div>
-        <div class="pill">🥦 Conseils nutrition inclus</div>
-        <div class="pill">🏠 À domicile · 0 matériel</div>
-        <div class="pill">📱 Optimisé mobile</div>
-        <div class="pill">⚡ Accès immédiat après paiement</div>
-        <div class="pill">✅ Accès à vie</div>
-      </div>
+      <p class="hero-problem">Tu fais du sport régulièrement… mais tes fessiers restent plats, sans galbe, et rien ne semble changer ?</p>
+      <h1>La méthode pour des fessiers <em>plus ronds et galbés</em> — même si tu n'as jamais vu de résultats avant</h1>
+      <p class="hero-lead">8 semaines de programme progressif, 12 séances guidées avec démonstrations vidéo, conseils nutrition ciblés — zéro matériel, depuis chez toi. Résultats visibles dès la semaine 3.</p>
+      <ul class="hero-benefits">
+        <li>8 semaines de programme progressif · 12 séances guidées</li>
+        <li>Démonstrations vidéo pour chaque exercice</li>
+        <li>Conseils nutrition pour soutenir la croissance musculaire</li>
+        <li>Bonus : guide "Les 9 erreurs qui t'empêchent d'évoluer"</li>
+        <li>📲 Mini-appli gratuite — installe le programme sur ton iPhone en 30 sec</li>
+        <li>Zéro matériel · À domicile · Accès à vie</li>
+      </ul>
       <div style="margin-top:24px;border-radius:20px;overflow:hidden;box-shadow:0 12px 40px rgba(44,31,26,.15)">
         <img src="images/couverture-booty-sculpt.png" alt="Booty Sculpt 2026 — Programme Ornella Fit Coaching" style="width:100%;display:block">
       </div>
     </div>
 
-    <div class="form-box">
+    <div class="form-box" style="position:sticky;top:80px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border);">
         <img src="images/ornella-profil-studio.png" alt="Ornella" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0;">
         <div>
           <div style="font-size:0.9rem;font-weight:700;color:var(--dark);">Ornella Racano</div>
-          <div style="font-size:0.75rem;color:var(--muted);line-height:1.4;">Coach sportive diplômée d'État<br>Demi-finaliste Championnat de France Fitness</div>
+          <div style="font-size:0.75rem;color:var(--muted);line-height:1.4;">Coach diplômée d'État · Demi-finaliste Champ. France Fitness</div>
         </div>
       </div>
-      <div class="form-title">🍑 Commence ton programme</div>
+      <div class="form-title">🚀 Commence ta transformation</div>
+      <div style="background:rgba(61,122,106,.07);border:1px solid rgba(61,122,106,.2);border-radius:10px;padding:10px 14px;margin-bottom:14px;">
+        <p style="font-size:.76rem;color:#3D7A6A;font-weight:600;margin:0 0 3px;">Résultats constatés :</p>
+        <p style="font-size:.8rem;color:#3D5E58;margin:0;line-height:1.5;">Fessiers plus ronds et galbés · Résultats visibles dès la semaine 3</p>
+      </div>
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
         <span style="font-size:1.6rem;font-weight:800;color:var(--accent)">19€</span>
         <span style="font-size:.85rem;color:var(--muted);text-decoration:line-through">39€</span>
@@ -209,9 +223,9 @@ footer a:hover{color:var(--accent)}
       </div>
       <input type="text" id="hero-fname" class="form-input" placeholder="Ton prénom" autocomplete="given-name">
       <input type="email" id="hero-email" class="form-input" placeholder="Ton adresse email" autocomplete="email">
-      <button class="form-btn" onclick="handlePurchase()" style="font-size:1rem;padding:18px;letter-spacing:.02em">🍑 Je veux mon programme à 19€ →</button>
-      <p class="form-note">⚡ Tu reçois ton accès <strong>immédiatement après le paiement</strong> — directement sur ton téléphone. 🔒 Paiement sécurisé · Remboursement 7 jours</p>
-      <p style="font-size:.8rem;color:var(--accent);font-weight:600;text-align:center;margin-top:10px;padding:8px 12px;background:rgba(201,99,88,.07);border-radius:8px;">🎁 Bonus inclus : le guide "Les 9 erreurs qui t'empêchent d'évoluer" offert avec ton achat</p>
+      <button class="form-btn" onclick="handlePurchase()" style="font-size:1rem;padding:18px;letter-spacing:.02em">🍑 Commencer ma transformation →</button>
+      <p class="form-note">⚡ Accès <strong>immédiat</strong> après paiement · 🔒 Sécurisé · À vie sur tous tes appareils</p>
+      <p style="font-size:.8rem;color:var(--accent);font-weight:600;text-align:center;margin-top:10px;padding:8px 12px;background:rgba(201,99,88,.07);border-radius:8px;">🎁 Bonus inclus : guide "Les 9 erreurs qui t'empêchent d'évoluer"</p>
       <div style="display:flex;gap:16px;justify-content:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
         <div style="text-align:center"><div style="font-size:1.1rem;font-weight:700;color:var(--dark)">12</div><div style="font-size:.7rem;color:var(--muted)">séances guidées</div></div>
         <div style="width:1px;background:var(--border)"></div>
@@ -350,6 +364,41 @@ footer a:hover{color:var(--accent)}
       </div>
       <a href="#achat" style="display:inline-block;background:linear-gradient(135deg,#C9957A,#C96358);color:#fff;font-weight:700;font-size:.95rem;padding:17px 36px;border-radius:999px;text-decoration:none;box-shadow:0 8px 24px rgba(201,99,88,.35);">📲 Je veux ma mini-appli — 19€ →</a>
       <p style="font-size:.75rem;color:rgba(255,255,255,.35);margin-top:12px;">Accès immédiat · À vie · Sans abonnement</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <span class="sec-label" style="display:block;text-align:center">Tu te poses des questions ?</span>
+    <h2 class="sec-title" style="text-align:center;margin-bottom:8px">Tout ce que tu veux <em>savoir</em></h2>
+    <p style="text-align:center;font-size:.9rem;color:var(--muted);margin-bottom:32px;">Les réponses honnêtes, sans bullshit.</p>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-q">Est-ce que je vais vraiment voir des résultats si j'ai déjà essayé sans succès ?</div>
+        <div class="faq-a">Oui — parce que la plupart des programmes ratent le ciblage. Booty Sculpt est conçu pour activer précisément les muscles fessiers (grand, moyen et petit gluteus) souvent inexploités dans les entraînements classiques. Si tu as déjà fait des squats sans résultat, c'est probablement une question de technique et de progressivité — exactement ce que ce programme corrige, avec les démonstrations vidéo pour chaque mouvement.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Combien de temps par séance ? Est-ce compatible avec un emploi du temps chargé ?</div>
+        <div class="faq-a">Chaque séance dure entre 30 et 45 minutes. Le programme est conçu pour 3 séances par semaine — soit 1h30 hebdomadaire. Pas besoin de salle, pas de matériel : juste toi, ton tapis, et ton téléphone. Tu peux même l'installer comme une appli sur ton iPhone et y accéder hors connexion.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Il faut du matériel ? Une salle de sport ?</div>
+        <div class="faq-a">Zéro matériel, zéro salle. Tout se fait à domicile, au poids du corps. Certains exercices peuvent se bonifier avec une bande élastique si tu en as une, mais elle n'est pas obligatoire. L'objectif : que tu puisses démarrer ce soir, là où tu es.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Quelle est la différence avec un coaching personnalisé Ornella ?</div>
+        <div class="faq-a">Booty Sculpt est un programme digital complet — conçu par Ornella, structuré semaine par semaine, avec les démonstrations vidéo et les conseils nutrition. Le coaching sur mesure, c'est un programme créé spécifiquement pour toi selon tes mensurations, ton lieu d'entraînement, tes disponibilités et tes objectifs précis. Si tu veux du 100% personnalisé, <a href="offres.html" style="color:var(--accent);font-weight:600;">découvre les offres coaching →</a></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Combien de temps j'ai accès au programme ?</div>
+        <div class="faq-a">À vie. Une fois acheté, le programme t'appartient pour toujours — tu y accèdes quand tu veux, autant de fois que tu veux, sur tous tes appareils. Tu peux aussi l'installer comme une mini-appli sur ton téléphone pour un accès encore plus rapide.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Et si je ne suis pas satisfaite ?</div>
+        <div class="faq-a">Le programme est remboursé sous 7 jours sans justification. Mais honnêtement : si tu suis les séances comme indiqué, tu sentiras la différence dans la semaine 3. Ce programme ne promet pas de miracle — il promet une méthode qui fonctionne si tu l'appliques.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -601,7 +650,16 @@ async function submitWaitlist(inputId, successId) {
           '<p style="font-size:13px;color:#8A7060;line-height:1.7;margin:0;">&#192; tr&#232;s vite,<br><strong style="color:#1E1616;">Ornella &#128293;</strong><br><span style="font-size:11px;">ornellafitcoaching.com</span></p>' +
           '</td></tr>' +
 
-          '</table></td></tr></table></body></html>'
+          '</table></td></tr></table>
+<script>
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    item.classList.toggle('open');
+  });
+});
+</script>
+</body></html>'
       })
     });
   } catch(e) {}
