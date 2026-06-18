@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Programme Mois 1 — Malika</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #C9748F;
+    --rose-light: #E8A0B0;
+    --rose-pale: #F5DDE4;
+    --rose-ultra: #FDF0F3;
+    --rose-deep: #A85570;
+    --text-dark: #2C1A20;
+    --text-mid: #6B3D4D;
+    --text-light: #9E7080;
+    --cream: #FFF9F9;
+    --white: #FFFFFF;
+    --border: #EDD0D8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text-dark); font-size: 14px; line-height: 1.6; }
+
+  /* COVER */
+  .cover {
+    background: linear-gradient(145deg, #A85570 0%, #C9748F 45%, #E8A0B0 100%);
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 60px 30px; position: relative; overflow: hidden;
+  }
+  .cover::before { content:''; position:absolute; top:-80px; right:-80px; width:320px; height:320px; border-radius:50%; background:rgba(255,255,255,0.07); }
+  .cover::after { content:''; position:absolute; bottom:-60px; left:-60px; width:260px; height:260px; border-radius:50%; background:rgba(255,255,255,0.05); }
+  .cover-ornament { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:13px; letter-spacing:4px; color:rgba(255,255,255,0.7); text-transform:uppercase; margin-bottom:32px; }
+  .cover h1 { font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:300; color:#fff; line-height:1.15; margin-bottom:8px; letter-spacing:1px; }
+  .cover h1 span { font-style:italic; font-weight:300; }
+  .cover-name { font-family:'Jost',sans-serif; font-size:20px; font-weight:500; color:rgba(255,255,255,0.95); letter-spacing:3px; text-transform:uppercase; margin:24px 0 12px; padding:10px 30px; border:1px solid rgba(255,255,255,0.4); display:inline-block; border-radius:2px; }
+  .cover-tagline { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17px; color:rgba(255,255,255,0.8); margin-bottom:50px; }
+  .cover-pills { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:50px; }
+  .cover-pill { background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35); color:#fff; font-size:12px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; padding:7px 18px; border-radius:50px; }
+  .cover-line { width:80px; height:1px; background:rgba(255,255,255,0.5); margin:0 auto 16px; }
+  .cover-coach { font-size:12px; color:rgba(255,255,255,0.7); letter-spacing:2px; text-transform:uppercase; }
+
+  /* LAYOUT */
+  .page { max-width: 860px; margin: 0 auto; padding: 40px 30px; }
+  @media (max-width: 600px) { .page { padding: 24px 16px; } }
+
+  /* SECTION HEADERS */
+  .section-title { display:flex; align-items:center; gap:14px; margin-bottom:22px; margin-top:36px; }
+  .section-title .icon { width:38px; height:38px; background:var(--rose); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+  .section-title h2 { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; color:var(--text-dark); letter-spacing:0.5px; }
+  .section-title h2 span { color:var(--rose); font-style:italic; }
+
+  /* PROFILE CARDS */
+  .profile-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
+  @media (max-width:600px) { .profile-grid { grid-template-columns:1fr; } }
+  .profile-card { background:var(--white); border:1px solid var(--border); border-radius:12px; padding:16px 18px; }
+  .profile-card.full { grid-column:1/-1; }
+  .profile-card .label { font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--rose); margin-bottom:6px; }
+  .profile-card .value { font-size:14px; color:var(--text-dark); }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box { background:linear-gradient(135deg,var(--rose-pale) 0%,#fce8ed 100%); border-left:4px solid var(--rose); border-radius:0 12px 12px 0; padding:16px 20px; margin:14px 0; }
+  .highlight-box .hl-label { font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--rose-deep); margin-bottom:6px; }
+  .highlight-box .hl-text { font-size:14px; color:var(--text-dark); }
+
+  /* IMPORTANT NOTE */
+  .important-note { background:#FFF3E0; border:1px solid #FFB74D; border-radius:10px; padding:14px 18px; margin:16px 0; font-size:13px; color:#6D4C00; }
+  .important-note strong { color:#E65100; }
+  .postpartum-note { background:#F0F4FF; border:1px solid #90A4E8; border-radius:10px; padding:14px 18px; margin:16px 0; font-size:13px; color:#1A2E6B; }
+  .postpartum-note strong { color:#1A2E6B; }
+
+  /* MENSURATIONS TABLE */
+  .mensuration-table { width:100%; border-collapse:separate; border-spacing:0; border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(169,85,112,0.08); margin-bottom:24px; font-size:13px; }
+  .mensuration-table thead tr { background:var(--rose); }
+  .mensuration-table thead th { padding:12px 10px; color:white; font-weight:600; font-size:11px; letter-spacing:1px; text-transform:uppercase; text-align:center; }
+  .mensuration-table thead th:first-child { text-align:left; padding-left:16px; }
+  .mensuration-table tbody tr:nth-child(even) { background:var(--rose-ultra); }
+  .mensuration-table tbody tr:nth-child(odd) { background:var(--white); }
+  .mensuration-table tbody td { padding:11px 10px; text-align:center; border-bottom:1px solid var(--border); color:var(--text-dark); }
+  .mensuration-table tbody td:first-child { text-align:left; padding-left:16px; font-weight:500; color:var(--text-mid); }
+  .mensuration-table .initial-val { font-weight:700; color:var(--rose-deep); }
+  .mensuration-table .empty-cell { color:var(--text-light); font-size:16px; }
+
+  /* NUTRITION */
+  .nutrition-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:18px; }
+  @media (max-width:600px) { .nutrition-grid { grid-template-columns:1fr; } }
+  .nutri-card { background:var(--white); border-radius:12px; border:1px solid var(--border); overflow:hidden; }
+  .nutri-card.full { grid-column:1/-1; }
+  .nutri-card-header { background:var(--rose-pale); padding:10px 16px; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--rose-deep); display:flex; align-items:center; gap:8px; }
+  .nutri-card-body { padding:14px 16px; font-size:13px; color:var(--text-dark); line-height:1.7; }
+  .nutri-card-body strong { color:var(--rose-deep); }
+
+  .macro-bar { display:flex; height:10px; border-radius:50px; overflow:hidden; margin:10px 0; }
+  .macro-bar-p { background:#C9748F; }
+  .macro-bar-g { background:#E8A0B0; }
+  .macro-bar-l { background:#F5DDE4; border:1px solid var(--border); }
+  .macro-legend { display:flex; gap:16px; font-size:11px; color:var(--text-mid); flex-wrap:wrap; }
+  .macro-legend span { display:flex; align-items:center; gap:5px; }
+  .macro-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+
+  .macro-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0; }
+  .macro-box { background:var(--rose-ultra); border:1px solid var(--border); border-radius:10px; padding:12px; text-align:center; }
+  .macro-box .macro-num { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; color:var(--rose-deep); line-height:1; }
+  .macro-box .macro-label { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-light); margin-top:3px; }
+  .macro-box .macro-kcal { font-size:11px; color:var(--text-mid); margin-top:2px; }
+
+  .repas-block { border:1px solid var(--border); border-radius:10px; overflow:hidden; margin-bottom:12px; }
+  .repas-header { background:var(--rose-pale); padding:9px 14px; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--rose-deep); display:flex; justify-content:space-between; align-items:center; }
+  .repas-body { padding:12px 14px; font-size:13px; color:var(--text-dark); line-height:1.8; }
+  .repas-body ul { list-style:none; padding:0; }
+  .repas-body ul li::before { content:'→ '; color:var(--rose); font-weight:600; }
+  .repas-macros { font-size:11px; color:var(--text-light); margin-top:6px; font-style:italic; }
+
+  .aliment-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin:14px 0; }
+  @media (max-width:600px) { .aliment-grid { grid-template-columns:1fr 1fr; } }
+  .aliment-card { background:var(--white); border:1px solid var(--border); border-radius:8px; padding:10px 12px; }
+  .aliment-card .aliment-cat { font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--rose); margin-bottom:4px; }
+  .aliment-card ul { list-style:none; font-size:12px; color:var(--text-dark); }
+  .aliment-card ul li::before { content:'· '; color:var(--rose); }
+
+  /* SEANCE */
+  .seance-header { background:linear-gradient(120deg,var(--rose-deep) 0%,var(--rose) 100%); border-radius:14px 14px 0 0; padding:20px 24px 16px; color:white; margin-top:30px; }
+  .seance-header .day-badge { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; background:rgba(255,255,255,0.2); display:inline-block; padding:4px 14px; border-radius:50px; margin-bottom:10px; }
+  .seance-header h3 { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; line-height:1.3; }
+  .seance-header .seance-meta { display:flex; gap:16px; margin-top:10px; flex-wrap:wrap; }
+  .seance-header .meta-item { font-size:11px; color:rgba(255,255,255,0.85); display:flex; align-items:center; gap:5px; }
+  .seance-header .seance-objective { margin-top:10px; font-size:12px; font-style:italic; color:rgba(255,255,255,0.8); line-height:1.5; }
+
+  /* EXERCISE TABLE */
+  .exercise-table-wrapper { background:var(--white); border-radius:0 0 14px 14px; border:1px solid var(--border); border-top:none; overflow:hidden; margin-bottom:8px; }
+  .exercise-table { width:100%; border-collapse:collapse; font-size:12.5px; }
+  .exercise-table thead tr { background:var(--rose-pale); }
+  .exercise-table thead th { padding:10px 8px; font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--rose-deep); text-align:center; border-bottom:2px solid var(--border); }
+  .exercise-table thead th:first-child { text-align:left; padding-left:16px; width:28%; }
+  .exercise-table thead th:last-child { text-align:left; width:28%; }
+  .exercise-table tbody tr:nth-child(even) { background:var(--rose-ultra); }
+  .exercise-table tbody tr:nth-child(odd) { background:var(--white); }
+  .exercise-table tbody tr.warmup-row { background:#FFF8E7; }
+  .exercise-table tbody td { padding:12px 8px; border-bottom:1px solid var(--border); vertical-align:top; text-align:center; color:var(--text-dark); }
+  .exercise-table tbody td:first-child { text-align:left; padding-left:16px; font-weight:500; }
+  .exercise-table tbody td:last-child { text-align:left; font-size:12px; color:var(--text-mid); }
+  .exercise-num { display:inline-flex; width:20px; height:20px; background:var(--rose); color:white; border-radius:50%; align-items:center; justify-content:center; font-size:10px; font-weight:700; margin-right:6px; vertical-align:middle; flex-shrink:0; }
+  .warmup-num { display:inline-flex; width:20px; height:20px; background:#F9A825; color:white; border-radius:50%; align-items:center; justify-content:center; font-size:10px; font-weight:700; margin-right:6px; vertical-align:middle; }
+  .video-link { display:inline-block; margin-top:4px; font-size:11px; color:var(--rose); font-weight:600; text-decoration:none; letter-spacing:0.5px; white-space:nowrap; }
+  .video-link:hover { color:var(--rose-deep); }
+  .seance-tips { background:var(--rose-ultra); border:1px solid var(--border); border-top:none; border-radius:0 0 12px 12px; padding:14px 18px; display:grid; grid-template-columns:1fr 1fr; gap:8px 20px; margin-bottom:30px; }
+  @media (max-width:500px) { .seance-tips { grid-template-columns:1fr; } }
+  .seance-tip { font-size:12px; color:var(--text-mid); display:flex; align-items:flex-start; gap:6px; }
+  .seance-tip::before { content:'✦'; color:var(--rose); font-size:8px; margin-top:4px; flex-shrink:0; }
+
+  /* PLANNING */
+  .planning-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:24px; }
+  @media (max-width:600px) { .planning-grid { grid-template-columns:1fr 1fr; } }
+  .planning-card { border-radius:10px; overflow:hidden; border:1px solid var(--border); }
+  .planning-card-header { background:linear-gradient(135deg,var(--rose-deep),var(--rose)); padding:10px; text-align:center; color:white; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; }
+  .planning-card-body { background:var(--white); padding:12px; text-align:center; }
+  .planning-card-body .p-letter { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:600; color:var(--rose); line-height:1; }
+  .planning-card-body .p-name { font-size:11px; color:var(--text-mid); margin-top:3px; }
+
+  .week-banner { background:linear-gradient(90deg,var(--rose-pale) 0%,#fce8ed 100%); border:1px solid var(--border); border-radius:10px; padding:14px 22px; margin:30px 0 16px; display:flex; align-items:center; gap:16px; }
+  .week-num { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:600; color:var(--rose-deep); line-height:1; white-space:nowrap; }
+  .week-theme { font-size:13px; color:var(--text-mid); }
+
+  .ressenti-table { width:100%; border-collapse:separate; border-spacing:0; border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(169,85,112,0.08); margin-bottom:24px; font-size:13px; }
+  .ressenti-table thead tr { background:var(--rose-light); }
+  .ressenti-table thead th { padding:12px 10px; color:var(--text-dark); font-weight:600; font-size:11px; letter-spacing:1px; text-transform:uppercase; text-align:center; }
+  .ressenti-table thead th:first-child { text-align:left; padding-left:16px; }
+  .ressenti-table tbody tr:nth-child(even) { background:var(--rose-ultra); }
+  .ressenti-table tbody tr:nth-child(odd) { background:var(--white); }
+  .ressenti-table tbody td { padding:10px; text-align:center; border-bottom:1px solid var(--border); color:var(--text-dark); }
+  .ressenti-table tbody td:first-child { text-align:left; padding-left:16px; font-weight:500; color:var(--text-mid); }
+
+  .divider { height:1px; background:linear-gradient(90deg,var(--border),transparent); margin:28px 0; }
+
+  .bmr-calc { background:linear-gradient(135deg,#A85570,#C9748F); border-radius:14px; padding:22px 24px; color:white; margin:18px 0; }
+  .bmr-calc .bmr-title { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; margin-bottom:14px; }
+  .bmr-row { display:flex; justify-content:space-between; align-items:center; font-size:13px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.15); }
+  .bmr-row:last-child { border:none; }
+  .bmr-row .bmr-label { color:rgba(255,255,255,0.8); }
+  .bmr-row .bmr-val { font-weight:600; color:white; }
+  .bmr-row.total .bmr-label { font-weight:600; color:white; }
+  .bmr-row.total .bmr-val { font-size:18px; font-family:'Cormorant Garamond',serif; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-ornament">Ornella Fit Coaching · Programme Personnalisé</div>
+  <h1>Mois 1 —<br><span>Ta Transformation</span></h1>
+  <div class="cover-name">Malika</div>
+  <div class="cover-tagline">Remise en route progressive · Fessiers & Ventre · Nutrition sur mesure</div>
+  <div class="cover-pills">
+    <span class="cover-pill">4 séances / semaine</span>
+    <span class="cover-pill">À domicile</span>
+    <span class="cover-pill">Haltères · Step · Élastique</span>
+    <span class="cover-pill">Post-partum adapté</span>
+    <span class="cover-pill">Nutrition incluse</span>
+  </div>
+  <div class="cover-line"></div>
+  <div class="cover-coach">Par Ornella · ornellafitcoaching.com</div>
+</div>
+
+<!-- PAGE -->
+<div class="page">
+
+  <!-- PROFIL -->
+  <div class="section-title"><div class="icon">👤</div><h2>Ton <span>profil</span></h2></div>
+
+  <div class="profile-grid">
+    <div class="profile-card"><div class="label">Âge</div><div class="value">28 ans</div></div>
+    <div class="profile-card"><div class="label">Poids · Taille</div><div class="value">80 kg · 168 cm</div></div>
+    <div class="profile-card"><div class="label">Objectif principal</div><div class="value">Perte de poids + Tonifier fessiers & ventre</div></div>
+    <div class="profile-card"><div class="label">Niveau</div><div class="value">Reprise après pause — ancienne pratique (musculation, RPM, course)</div></div>
+    <div class="profile-card"><div class="label">Rythme de vie</div><div class="value">Travail de nuit · Enfants la journée · Planning variable</div></div>
+    <div class="profile-card"><div class="label">Séances / semaine</div><div class="value">4 séances · À domicile</div></div>
+    <div class="profile-card full"><div class="label">Matériel disponible</div><div class="value">Haltères · Step · Élastique de résistance · Achat possible si besoin</div></div>
+    <div class="profile-card full"><div class="label">Ce que tu attends</div><div class="value">"Une source de motivation et de la rigueur." — Te régulariser, te sentir mieux dans ton corps, avoir confiance en toi.</div></div>
+    <div class="profile-card full" style="background:linear-gradient(135deg,var(--rose-pale),#fce8ed);border-color:var(--rose);"><div class="label" style="color:var(--rose-deep);">🎯 Objectif à 3 mois</div><div class="value"><strong>~74 kg</strong> (−6 kg · 2 kg/mois) · Tour de taille visé : ~91 cm · Fessiers plus galbés, ventre plus plat, énergie retrouvée</div></div>
+  </div>
+
+  <div class="postpartum-note">
+    <strong>🩺 Adaptation post-partum (2 grossesses — rééducation périnéale effectuée) :</strong><br>
+    Le travail abdominal est entièrement adapté. <strong>Zéro crunch direct</strong>, zéro relevé de buste classique. On travaille le transverse et le gainage profond (Dead Bug, Bird Dog, gainage latéral) — des exercices qui renforcent sans fragiliser le plancher pelvien. Le core se reconstruit de l'intérieur vers l'extérieur. C'est plus efficace et plus durable.
+  </div>
+
+  <!-- MENSURATIONS INITIALES -->
+  <div class="section-title"><div class="icon">📏</div><h2>Mensurations <span>initiales</span></h2></div>
+
+  <table class="mensuration-table">
+    <thead><tr>
+      <th>Mesure</th>
+      <th>Départ (juin 2026)</th>
+      <th>Mois 1</th>
+      <th>Mois 2</th>
+      <th>Mois 3</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>Poids</td><td class="initial-val">80 kg</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td></tr>
+      <tr><td>Tour de taille</td><td class="initial-val">99 cm</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td></tr>
+      <tr><td>Tour de hanches</td><td class="initial-val">118 cm</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td></tr>
+      <tr><td>Tour de fesses</td><td class="initial-val">114 cm</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td></tr>
+      <tr><td>Tour de cuisse</td><td class="initial-val">53 cm</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td></tr>
+      <tr><td>Tour de poitrine</td><td class="initial-val">97,5 cm</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td></tr>
+      <tr><td>Tour de dos</td><td class="initial-val">85 cm</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td></tr>
+      <tr><td>Tour de bras</td><td class="initial-val">30,4 cm</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box">
+    <div class="hl-label">📸 Protocole photos — à suivre à la lettre</div>
+    <div class="hl-text">
+      <strong>Quand :</strong> J1 (aujourd'hui), J30, J60, J90 — toujours au réveil, avant de manger.<br>
+      <strong>Tenue :</strong> toujours la même — brassière sport + shorty ou sous-vêtements.<br>
+      <strong>Lumière :</strong> même endroit, même source lumineuse (fenêtre ou même lampe).<br>
+      <strong>Poses :</strong> face · profil droit · dos — 3 photos à chaque fois.<br>
+      <strong>Envoie-les moi</strong> à chaque fin de mois. La balance ment parfois (eau, cycle) — les photos, jamais.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PLANNING -->
+  <div class="section-title"><div class="icon">📅</div><h2>Ton <span>planning</span></h2></div>
+
+  <p style="font-size:13px;color:var(--text-mid);margin-bottom:18px;">Ton planning est variable — pas de problème. Ces 4 séances s'organisent librement dans la semaine. La seule règle : <strong style="color:var(--text-dark);">ne jamais faire A et C dos à dos</strong> (toutes deux fessiers). Idéalement : A · B · C · D avec un ou deux jours de repos entre.</p>
+
+  <div class="planning-grid">
+    <div class="planning-card">
+      <div class="planning-card-header">Séance A</div>
+      <div class="planning-card-body">
+        <div class="p-letter">A</div>
+        <div class="p-name">Fessiers & Cuisses<br>Force · 45 min</div>
+      </div>
+    </div>
+    <div class="planning-card">
+      <div class="planning-card-header">Séance B</div>
+      <div class="planning-card-body">
+        <div class="p-letter">B</div>
+        <div class="p-name">Full Body<br>Cardio Step · 40 min</div>
+      </div>
+    </div>
+    <div class="planning-card">
+      <div class="planning-card-header">Séance C</div>
+      <div class="planning-card-body">
+        <div class="p-letter">C</div>
+        <div class="p-name">Fessiers & Jambes<br>Volume · 45 min</div>
+      </div>
+    </div>
+    <div class="planning-card">
+      <div class="planning-card-header">Séance D</div>
+      <div class="planning-card-body">
+        <div class="p-letter">D</div>
+        <div class="p-name">Haut du corps<br>Core Post-partum · 40 min</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="important-note">
+    ⚠️ <strong>Récupération prioritaire :</strong> Tu travailles de nuit et gères tes enfants la journée. Si tu n'as pas dormi ou que tu es épuisée, <strong>repousse la séance d'un jour sans culpabiliser</strong>. La régularité sur 3 mois vaut mieux qu'une semaine parfaite suivie d'une semaine nulle. L'objectif c'est de tenir.
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ══ SÉANCE A ══ -->
+  <div class="section-title"><div class="icon">🍑</div><h2>Séance A — <span>Fessiers & Cuisses</span></h2></div>
+
+  <div class="seance-header">
+    <div class="day-badge">Séance A · Force</div>
+    <h3>Fessiers & Cuisses — Construction</h3>
+    <div class="seance-meta">
+      <div class="meta-item">⏱ 45 min</div>
+      <div class="meta-item">🔥 Intensité modérée</div>
+      <div class="meta-item">🏠 À domicile</div>
+      <div class="meta-item">🎯 Fessiers · Quadriceps · Ischio-jambiers</div>
+    </div>
+    <div class="seance-objective">Focus : activation profonde des fessiers et renforcement des cuisses. Charges progressives semaine après semaine.</div>
+  </div>
+
+  <div class="exercise-table-wrapper">
+    <table class="exercise-table">
+      <thead><tr>
+        <th>Exercice</th><th>Séries</th><th>Reps</th><th>Repos</th><th>Conseils & Vidéo</th>
+      </tr></thead>
+      <tbody>
+        <tr class="warmup-row"><td><span class="warmup-num">☀</span>Marche sur place + cercles de hanches</td><td>—</td><td>3 min</td><td>—</td><td>Genoux hauts, hanches souples. Active le bas du corps avant l'effort.</td></tr>
+        <tr class="warmup-row"><td><span class="warmup-num">☀</span>Squats légers (sans charge)</td><td>1</td><td>15 reps</td><td>—</td><td>Descente lente, contrôlée. C'est l'échauffement, pas la séance.</td></tr>
+        <tr><td><span class="exercise-num">1</span>Squat haltères</td><td>4</td><td>15 reps</td><td>60s</td><td>Pieds largeur épaules, pointes légèrement ouvertes. Descends jusqu'aux cuisses parallèles. Remonte en poussant sur les talons.<br><a href="https://www.youtube.com/watch?v=SJSDIrX8i2o" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">2</span>Hip Thrust au sol avec haltère</td><td>4</td><td>15 reps</td><td>60s</td><td>Allongée sur le dos, haltère sur le bassin, pieds à plat. Pousse fort sur les talons, serre les fessiers en haut 1 seconde. Descends lentement.<br><a href="https://www.youtube.com/watch?v=YqnDaY5po-8" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">3</span>Fentes arrière alternées</td><td>3</td><td>12 reps/jambe</td><td>60s</td><td>Grand pas en arrière, genou arrière vers le sol. Dos droit, genou avant dans l'axe du pied. Pousse sur le talon avant pour revenir.<br><a href="https://www.youtube.com/watch?v=9i4YcNHiKbU" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">4</span>Squat Sumo haltère</td><td>3</td><td>15 reps</td><td>60s</td><td>Pieds très écartés, pointes ouvertes. Haltère tenu à deux mains entre les jambes. Descends en poussant les genoux vers l'extérieur.<br><a href="https://youtu.be/bC2HgnirQwE?si=OzB_x3YCFxCXMTZ9" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">5</span>Abduction élastique debout</td><td>3</td><td>20 reps/côté</td><td>45s</td><td>Élastique autour des chevilles ou des genoux. Debout, jambe d'appui légèrement fléchie. Lève la jambe sur le côté lentement, repousse la résistance.<br><a href="https://www.youtube.com/shorts/IbKMfjHZIlE" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">6</span>Gainage transverse — Respiration abdominale</td><td>3</td><td>30 secondes</td><td>30s</td><td>À 4 pattes ou allongée sur le dos. Inspire, et à l'expire, rentre le nombril vers la colonne. Tiens la contraction en respirant doucement. Post-partum prioritaire.<br><a href="https://www.youtube.com/watch?v=Ng2Byq2AEpM" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="seance-tips">
+    <div class="seance-tip">Charge : commence léger (haltères 4-6 kg). Si tu peux faire 15 reps sans effort, augmente de 1-2 kg la semaine suivante.</div>
+    <div class="seance-tip">Sensation recherchée : brûlure dans les fessiers sur le hip thrust, jamais dans le bas du dos.</div>
+    <div class="seance-tip">Si tu ressens une gêne périnéale : stoppe l'exercice, respire, réduis la charge.</div>
+    <div class="seance-tip">Étirement après : pigeon au sol 30s/côté, fente basse 30s/côté.</div>
+  </div>
+
+  <!-- ══ SÉANCE B ══ -->
+  <div class="section-title"><div class="icon">⚡</div><h2>Séance B — <span>Full Body Cardio Step</span></h2></div>
+
+  <div class="seance-header">
+    <div class="day-badge">Séance B · Cardio</div>
+    <h3>Full Body — Cardio Step</h3>
+    <div class="seance-meta">
+      <div class="meta-item">⏱ 40 min</div>
+      <div class="meta-item">🔥 Intensité modérée-haute</div>
+      <div class="meta-item">🏠 À domicile</div>
+      <div class="meta-item">🎯 Full body · Cardio · Fessiers</div>
+    </div>
+    <div class="seance-objective">Focus : dépense calorique, travail cardiovasculaire et maintien musculaire. Le step devient ton meilleur allié pour activer sans impact articulaire excessif.</div>
+  </div>
+
+  <div class="exercise-table-wrapper">
+    <table class="exercise-table">
+      <thead><tr>
+        <th>Exercice</th><th>Séries</th><th>Reps</th><th>Repos</th><th>Conseils & Vidéo</th>
+      </tr></thead>
+      <tbody>
+        <tr class="warmup-row"><td><span class="warmup-num">☀</span>Step up lent alternés</td><td>—</td><td>2 min</td><td>—</td><td>Monte le pied droit, puis le gauche. Descends doucement. Rythme lent pour chauffer.<br><a href="https://www.youtube.com/watch?v=wfhXnLILqdk" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr class="warmup-row"><td><span class="warmup-num">☀</span>Jumping jacks sans sauter</td><td>—</td><td>1 min</td><td>—</td><td>Même mouvement que le jumping jack mais en marchant — un pied à la fois.<br><a href="https://www.youtube.com/watch?v=doj3IIyhwvs" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">1</span>Step Up avec haltères</td><td>3</td><td>15 reps/jambe</td><td>60s</td><td>Monte sur le step avec le pied droit, pousse sur le talon pour monter. Descends lentement. Bras le long du corps avec haltères légers (3-4 kg). Alterne les jambes.<br><a href="https://www.youtube.com/watch?v=9ZknEYboBOQ" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">2</span>Squat haltère tempo lent</td><td>3</td><td>15 reps</td><td>60s</td><td>Descend en 3 secondes, remonte en 1 seconde. Ce tempo slow brûle plus sans augmenter la charge.<br><a href="https://www.youtube.com/watch?v=SJSDIrX8i2o" target="_blank" class="video-link">▶ Voir la vidéo</a> (même vidéo squat haltères)</td></tr>
+        <tr><td><span class="exercise-num">3</span>Kickback fessier élastique</td><td>3</td><td>20 reps/jambe</td><td>45s</td><td>Debout, mains sur le mur pour l'équilibre. Élastique autour des chevilles. Pousse la jambe vers l'arrière sans cambrer. Serre le fessier en haut.<br><a href="https://youtube.com/shorts/lGnB-mLZrZ4?si=YloUqUgHW48UfQlc" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">4</span>Pompes genoux au sol</td><td>3</td><td>10 reps</td><td>60s</td><td>Mains largeur épaules, corps droit des genoux à la nuque. Serre le ventre. Descends la poitrine vers le sol, coudes à 45°.<br><a href="https://www.youtube.com/watch?v=qHQbyDAruKg" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">5</span>Rowing haltère unilatéral</td><td>3</td><td>12 reps/côté</td><td>60s</td><td>Fais le mouvement comme dans la vidéo mais avec une seule haltère à la fois (unilatéral). Si tu ne ressens rien, passe à 2 haltères simultanément — idéalement 2 kg pour commencer. Dos plat, tire le coude vers le haut en serrant l'omoplate.<br><a href="https://youtu.be/EhblQZefBVU?si=inDQ9-MYOACTSNv8" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">6</span>Mountain climber lent</td><td>3</td><td>20 reps (10/jambe)</td><td>45s</td><td>En position de gainage, ramène un genou vers la poitrine lentement, replace, puis l'autre. Serre le ventre pendant tout l'exercice. Version lente = moins d'impact, plus de travail core.<br><a href="https://youtu.be/7LmA4zSitc4?si=9h3GFRFSHzk5eh8w" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="seance-tips">
+    <div class="seance-tip">Si tu es très fatiguée ce jour-là : passe en mode "mouvement doux" — 30 min de marche rapide suffit. Mieux vaut bouger que ne rien faire.</div>
+    <div class="seance-tip">Le step : si tu n'en as pas, utilise une marche d'escalier ou un livre épais et stable.</div>
+    <div class="seance-tip">Hydratation : 1,5L d'eau minimum pendant la séance.</div>
+    <div class="seance-tip">Étirement après : mollets, quadriceps, épaules — 2 min suffit.</div>
+  </div>
+
+  <!-- ══ SÉANCE C ══ -->
+  <div class="section-title"><div class="icon">🍑</div><h2>Séance C — <span>Fessiers & Jambes Volume</span></h2></div>
+
+  <div class="seance-header">
+    <div class="day-badge">Séance C · Volume</div>
+    <h3>Fessiers & Jambes — Galbe & Volume</h3>
+    <div class="seance-meta">
+      <div class="meta-item">⏱ 45 min</div>
+      <div class="meta-item">🔥 Intensité modérée</div>
+      <div class="meta-item">🏠 À domicile</div>
+      <div class="meta-item">🎯 Fessiers · Ischio-jambiers · Adducteurs</div>
+    </div>
+    <div class="seance-objective">Focus : volume musculaire et galbe des fessiers. Complémentaire à la séance A — on attaque les fibres musculaires sous un angle différent pour un résultat plus complet.</div>
+  </div>
+
+  <div class="exercise-table-wrapper">
+    <table class="exercise-table">
+      <thead><tr>
+        <th>Exercice</th><th>Séries</th><th>Reps</th><th>Repos</th><th>Conseils & Vidéo</th>
+      </tr></thead>
+      <tbody>
+        <tr class="warmup-row"><td><span class="warmup-num">☀</span>Pont fessier léger au sol</td><td>1</td><td>20 reps</td><td>—</td><td>Sans charge. Active les fessiers avant de commencer. Respire bien.</td></tr>
+        <tr class="warmup-row"><td><span class="warmup-num">☀</span>Fentes statiques légères</td><td>1</td><td>10/jambe</td><td>—</td><td>Sans charge, lentes, pour mobiliser les hanches.</td></tr>
+        <tr><td><span class="exercise-num">1</span>Pont Fessier avec haltère</td><td>4</td><td>20 reps</td><td>45s</td><td>Haltère posé sur les hanches. Pousse fort, serre les fessiers 1 seconde en haut. Redescends sans poser complètement entre les reps.<br><a href="https://www.youtube.com/watch?v=OUgsJ8-Vi0E" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">2</span>Deadlift Roumain haltères</td><td>3</td><td>12 reps</td><td>60s</td><td>Debout, haltères devant les cuisses. Incline le buste vers l'avant en reculant les hanches, jambes quasi-tendues. Descends jusqu'à sentir les ischio-jambiers s'étirer. Remonte en serrant les fessiers.<br><a href="https://youtu.be/5WxMW-Fu5KU?si=Iiu3u2rl3P6m_V0o" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">3</span>Fentes latérales</td><td>3</td><td>12 reps/jambe</td><td>60s</td><td>Debout, fais un grand pas sur le côté, plie le genou, pousse les fesses vers l'arrière. L'autre jambe reste tendue. Remonte en poussant sur le talon. Travaille les adducteurs et les fessiers.<br><a href="https://youtu.be/YqxR1Xv_o4I?si=R7R6Kg8gRT7Fk8N0" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">4</span>Abduction élastique couchée</td><td>3</td><td>20 reps/côté</td><td>45s</td><td>Allongée sur le côté, élastique autour des genoux. Lève la jambe du dessus en gardant le pied flex. Pas de balancement — mouvement contrôlé.<br><a href="https://youtu.be/zTf3uAv1MTI?si=i4XbGV6tavaYEsv9" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">5</span>Squat pulsé</td><td>3</td><td>20 reps</td><td>60s</td><td>Descends en position squat, reste en bas et fais 3 petits rebonds (pulses) avant de remonter. Un = descente + 3 pulses + remontée. Brûlure garantie.<br><a href="https://youtu.be/xC2ZPH8gMM8?si=JokFuoUEKutBHCCW" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">6</span>Gainage latéral post-partum</td><td>3</td><td>30s/côté</td><td>30s</td><td>Sur genoux ou pieds selon confort. Corps en ligne droite. Rentre le ventre doucement, respire. Ne retiens pas ta respiration.<br><a href="https://youtu.be/rqYhgcjPUes?si=Wb_gfuzfWcgux_Yw" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="seance-tips">
+    <div class="seance-tip">Séance C ≠ Séance A : même si ça cible les fessiers, les exercices sont différents. Les deux sont complémentaires — fais-les.</div>
+    <div class="seance-tip">Si les jambes sont très courbaturées après A, attends 48h avant de faire C.</div>
+    <div class="seance-tip">Pulsé = ami de la brûlure. Si trop intense, réduis à 2 séries les premières semaines.</div>
+    <div class="seance-tip">Pense à filmer tes exercices pour me les envoyer — je corrige la technique à distance.</div>
+  </div>
+
+  <!-- ══ SÉANCE D ══ -->
+  <div class="section-title"><div class="icon">💪</div><h2>Séance D — <span>Haut du corps & Core</span></h2></div>
+
+  <div class="seance-header">
+    <div class="day-badge">Séance D · Haut du corps</div>
+    <h3>Haut du Corps + Core Post-partum</h3>
+    <div class="seance-meta">
+      <div class="meta-item">⏱ 40 min</div>
+      <div class="meta-item">🔥 Intensité modérée</div>
+      <div class="meta-item">🏠 À domicile</div>
+      <div class="meta-item">🎯 Dos · Épaules · Bras · Transverse</div>
+    </div>
+    <div class="seance-objective">Focus : haut du corps tonique + reconstruction du core en profondeur. Ces exercices abdominaux sont 100% adaptés post-partum — ils ne sollicitent pas le droit de l'abdomen mais renforcent la sangle profonde.</div>
+  </div>
+
+  <div class="exercise-table-wrapper">
+    <table class="exercise-table">
+      <thead><tr>
+        <th>Exercice</th><th>Séries</th><th>Reps</th><th>Repos</th><th>Conseils & Vidéo</th>
+      </tr></thead>
+      <tbody>
+        <tr class="warmup-row"><td><span class="warmup-num">☀</span>Rotations d'épaules + cercles de bras</td><td>—</td><td>1 min</td><td>—</td><td>En avant, en arrière. Mobilise les articulations avant l'effort.</td></tr>
+        <tr><td><span class="exercise-num">1</span>Rowing Bilatéral haltères (dos)</td><td>3</td><td>12 reps</td><td>60s</td><td>Penche le buste à 45°, dos plat. Tire les haltères vers le ventre en serrant les omoplates. Coudes proches du corps.<br><a href="https://youtu.be/ZPFkeki3poA?si=4_zjz2IGBd2Mt3j7" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">2</span>Développé épaules haltères</td><td>3</td><td>12 reps</td><td>60s</td><td>Assise ou debout. Haltères aux épaules, pousse vers le haut sans verrouiller les coudes. Redescends lentement. <em style="color:var(--text-light);font-size:12px;">😄 T'inquiète pas, t'auras pas les épaules de la fille sur la vidéo — ça c'est des années de salle, toi tu vas juste tonifier !</em><br><a href="https://www.youtube.com/watch?v=B-aVuyhvLHU" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">3</span>Curl Biceps haltères</td><td>3</td><td>15 reps</td><td>60s</td><td>Debout ou assise. Coudes fixes le long du corps. Monte les haltères en tournant les poignets. Descends lentement sans lancer.<br><a href="https://youtu.be/PT8kqk9K3f8?si=fq0NAwPPNr1tDoZt" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">4</span>Triceps Kickback</td><td>3</td><td>15 reps/côté</td><td>60s</td><td>Penche le buste, coude fixé au niveau de la hanche. Tends le bras vers l'arrière, serre le triceps en haut. Reviens lentement.<br><a href="https://youtu.be/m_UlDFNX4mk?si=UUFptRo2CoTtPGGp" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">5</span>Dead Bug — Gainage profond</td><td>3</td><td>10 reps (5/côté)</td><td>45s</td><td>Allongée sur le dos, bras tendus vers le plafond, genoux à 90°. Abaisse bras droit + jambe gauche simultanément sans décoller le dos du sol. Reviens, autre côté. Expire à chaque descente.<br><a href="https://www.youtube.com/watch?v=jbWmbhElf3Q" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">6</span>Bird Dog — Équilibre & Core</td><td>3</td><td>10 reps (5/côté)</td><td>45s</td><td>À 4 pattes, dos plat. Tends le bras droit + jambe gauche en ligne droite. Maintiens 2 secondes sans rotation du bassin. Reviens, autre côté.<br><a href="https://www.youtube.com/watch?v=BKRlCzV9yto" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">7</span>Superman — Renforcement du dos</td><td>3</td><td>12 reps</td><td>45s</td><td>Allongée sur le ventre, bras tendus devant. Lève simultanément les bras et les jambes en serrant les fessiers. Maintiens 2s, redescends.<br><a href="https://www.youtube.com/watch?v=dmaDOON5JBU" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="seance-tips">
+    <div class="seance-tip">Dead Bug & Bird Dog : ces exercices paraissent simples mais sont redoutablement efficaces. Si tu les fais bien, tu vas ressentir le travail profond du ventre.</div>
+    <div class="seance-tip">Jamais de crunch, jamais de relevé de buste classique — le transverse se reconstruit en douceur.</div>
+    <div class="seance-tip">Si tu ressens une pression vers le bas (périnée) sur un exercice : arrête, respire, adapte.</div>
+    <div class="seance-tip">Haltères recommandés : 4-6 kg pour le dos, 3-4 kg pour les épaules et bras en début de mois.</div>
+    <div class="seance-tip">🧘 Étirements après (2-3 min) : Étirement pectoraux — mains croisées dans le dos, ouvre la poitrine 30s · Étirement triceps — bras plié derrière la tête, tire le coude 30s/côté · Chat-vache à 4 pattes 30s — relâche le bas du dos et le core · Enfant (Child's pose) 45s — étire dos, épaules et abdominaux profonds.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ══ NUTRITION ══ -->
+  <div class="section-title"><div class="icon">🥗</div><h2>Ton plan <span>nutrition</span></h2></div>
+
+  <!-- CALCUL BMR -->
+  <div class="bmr-calc">
+    <div class="bmr-title">Ton métabolisme — Calcul personnalisé</div>
+    <div class="bmr-row"><span class="bmr-label">Formule utilisée</span><span class="bmr-val">Mifflin-St Jeor (femme)</span></div>
+    <div class="bmr-row"><span class="bmr-label">Métabolisme de base (BMR)</span><span class="bmr-val">(10×80) + (6,25×168) − (5×28) − 161 = <strong>1 549 kcal</strong></span></div>
+    <div class="bmr-row"><span class="bmr-label">Coefficient d'activité (4 séances/sem)</span><span class="bmr-val">× 1,55</span></div>
+    <div class="bmr-row"><span class="bmr-label">TDEE — Dépense totale estimée</span><span class="bmr-val">~2 400 kcal/jour</span></div>
+    <div class="bmr-row"><span class="bmr-label">Déficit appliqué — efficace et soutenable</span><span class="bmr-val">~ 450-500 kcal/jour (moyenne semaine)</span></div>
+    <div class="bmr-row total"><span class="bmr-label">🎯 Objectif calorique</span><span class="bmr-val">2 000 kcal (entraînement) · 1 800 kcal (repos)</span></div>
+  </div>
+
+  <div class="important-note">
+    ⚠️ <strong>Déficit calibré pour toi :</strong> ~450-500 kcal/jour en moyenne = <strong>~2 kg/mois</strong>, résultats visibles dès 4-6 semaines. Assez important pour voir des résultats, assez modéré pour préserver le muscle, l'énergie et éviter la fringale avec le travail de nuit. C'est le sweet spot post-partum.
+  </div>
+
+  <div class="highlight-box" style="margin-bottom:6px;">
+    <div class="hl-label">⚖️ Peser cuit ou cru ?</div>
+    <div class="hl-text"><strong>Pèse toujours cuit</strong> — viande, poisson, riz, pâtes, légumes. Toutes les quantités de ce programme sont en poids cuit. Exemple : 150g de poulet cuit ≠ 150g cru (le cru perd ~30% à la cuisson). <strong>Seule exception : les flocons d'avoine</strong> — pèse-les secs avant d'ajouter l'eau (50g secs = ta portion).</div>
+  </div>
+
+  <!-- MACROS -->
+  <div class="section-title" style="margin-top:24px;"><div class="icon">⚖️</div><h2>Tes <span>macronutriments</span></h2></div>
+
+  <div class="macro-grid">
+    <div class="macro-box">
+      <div class="macro-num">140g</div>
+      <div class="macro-label">Protéines</div>
+      <div class="macro-kcal">560 kcal · 30%</div>
+    </div>
+    <div class="macro-box">
+      <div class="macro-num">175g</div>
+      <div class="macro-label">Glucides</div>
+      <div class="macro-kcal">700 kcal · 37%</div>
+    </div>
+    <div class="macro-box">
+      <div class="macro-num">72g</div>
+      <div class="macro-label">Lipides</div>
+      <div class="macro-kcal">648 kcal · 33%</div>
+    </div>
+  </div>
+
+  <div class="macro-bar">
+    <div class="macro-bar-p" style="width:30%"></div>
+    <div class="macro-bar-g" style="width:37%"></div>
+    <div class="macro-bar-l" style="width:33%"></div>
+  </div>
+  <div class="macro-legend" style="margin-bottom:4px;">
+    <span><span class="macro-dot" style="background:#C9748F;"></span>Protéines 30%</span>
+    <span><span class="macro-dot" style="background:#E8A0B0;"></span>Glucides 37%</span>
+    <span><span class="macro-dot" style="background:#F5DDE4;border:1px solid #EDD0D8;"></span>Lipides 33%</span>
+  </div>
+  <p style="font-size:11px;color:var(--text-light);margin-bottom:20px;">Moyenne sur la semaine · 560+700+648 = 1 908 kcal ≈ 1 900 kcal</p>
+
+  <div class="nutrition-grid">
+    <div class="nutri-card">
+      <div class="nutri-card-header">📅 Jours d'entraînement</div>
+      <div class="nutri-card-body">
+        <strong>2 000 kcal</strong><br>
+        140g P · <strong>195g G</strong> · 72g L<br>
+        <span style="font-size:12px;color:var(--text-light);">Plus de glucides les jours de séance pour alimenter l'effort et optimiser la récupération musculaire. 560+780+648 = 1 988 kcal ✓</span>
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">😴 Jours de repos</div>
+      <div class="nutri-card-body">
+        <strong>1 800 kcal</strong><br>
+        140g P · <strong>150g G</strong> · 72g L<br>
+        <span style="font-size:12px;color:var(--text-light);">Moins de glucides les jours sans séance — le corps en a moins besoin. 560+600+648 = 1 808 kcal ✓</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- JOURNÉE TYPE 1 : travail de nuit -->
+  <div class="section-title" style="margin-top:24px;"><div class="icon">🌙</div><h2>Journées types — <span>Adaptées à tes horaires</span></h2></div>
+
+  <div class="highlight-box" style="margin-bottom:18px;">
+    <div class="hl-label">⚠️ Important — Travail de nuit</div>
+    <div class="hl-text">Ton cycle est inversé. Tes "repas" sont décalés. Ces plans sont construits pour ton rythme réel — pas pour un planning standard 7h-22h. L'heure indiquée est approximative : adapte selon ton vrai réveil.</div>
+  </div>
+
+  <p style="font-size:13px;color:var(--text-mid);margin-bottom:16px;font-weight:600;">Option 1 — Jour d'entraînement (séance avant la nuit) · 2 000 kcal</p>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🌅 Réveil (vers 14h) — Premier repas · Choisis une option</span><span>~430 kcal</span></div>
+    <div class="repas-body">
+
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose-deep);margin-bottom:6px;">🥣 Option A — Porridge protéiné (préféré)</p>
+      <ul>
+        <li>50g de flocons d'avoine + eau chaude ou lait végétal → porridge</li>
+        <li>1 scoop de whey protéine vanille ou neutre (25g) mélangé dans le porridge chaud</li>
+        <li>1 c.s. de beurre d'amande</li>
+        <li>Une poignée de fruits rouges (framboises, myrtilles, fraises)</li>
+        <li>Café noir</li>
+      </ul>
+      <div class="repas-macros">~33g P · 52g G · 12g L · ~445 kcal — Rassasiant, anti-fringales, parfait avant une longue journée</div>
+
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose-deep);margin:14px 0 6px;">🥞 Option B — Pancakes farine de patate douce</p>
+      <ul>
+        <li>100g de patate douce cuite mixée (ou farine de patate douce 50g)</li>
+        <li>2 œufs entiers</li>
+        <li>1 scoop de whey vanille (optionnel mais recommandé)</li>
+        <li>½ c.c. de cannelle · pincée de sel</li>
+        <li>Cuisson à la poêle antiadhésive sans matière grasse</li>
+        <li>Garniture : fruits rouges + 1 c.c. de beurre d'amande ou sirop d'érable (1 c.c. max)</li>
+      </ul>
+      <div class="repas-macros">~30g P · 48g G · 14g L · ~430 kcal — Gourmand, sans gluten, index glycémique modéré</div>
+
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose-deep);margin:14px 0 6px;">🍳 Option C — Classique rapide</p>
+      <ul>
+        <li>2 œufs brouillés ou au plat</li>
+        <li>2 tranches de pain complet</li>
+        <li>100g de fromage blanc 0% + 1 c.c. de miel</li>
+        <li>1 fruit entier · Café</li>
+      </ul>
+      <div class="repas-macros">~28g P · 55g G · 14g L · ~460 kcal</div>
+
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🍽️ Milieu d'après-midi (vers 17h30) — Repas principal</span><span>~520 kcal</span></div>
+    <div class="repas-body">
+      <ul>
+        <li>150g de poulet grillé ou 200g de cabillaud ou 200g de bœuf haché 5%</li>
+        <li>200g de riz basmati cuit (ou 150g de patate douce rôtie ou 150g de quinoa)</li>
+        <li><strong style="color:var(--rose-deep);">🥦 Légumes verts en quantité libre</strong> — au moins 200g : brocolis vapeur, haricots verts, épinards sautés, courgettes, poireaux, bettes. Les légumes verts ne se comptent pas en calories, ils se mangent sans limite.</li>
+        <li>1 c.s. d'huile d'olive pour la cuisson · herbes fraîches · citron</li>
+      </ul>
+      <div class="repas-macros">~42g P · 65g G · 13g L</div>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>⚡ Pré-entraînement (vers 20h30 — 1h avant la séance)</span><span>~220 kcal</span></div>
+    <div class="repas-body">
+      <ul>
+        <li>1 banane mûre</li>
+        <li>30g de flocons d'avoine (nature ou avec eau chaude)</li>
+        <li>OU : 1 tranche de pain complet + 1 c.c. de beurre de cacahuète</li>
+      </ul>
+      <div class="repas-macros">~5g P · 42g G · 5g L · Énergie rapide + soutenue</div>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>💪 Post-entraînement / Avant départ travail (vers 23h)</span><span>~420 kcal</span></div>
+    <div class="repas-body">
+      <ul>
+        <li>200g de saumon (ou 2 œufs + 100g de thon)</li>
+        <li>200g de patate douce rôtie (ou 150g de quinoa cuit)</li>
+        <li>Légumes verts (brocolis, haricots verts, épinards)</li>
+        <li>Filet de citron + herbes fraîches</li>
+      </ul>
+      <div class="repas-macros">~40g P · 52g G · 16g L · Récupération musculaire nocturne</div>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🌃 Pendant la nuit de travail (vers 3h) — Si faim</span><span>~180 kcal</span></div>
+    <div class="repas-body">
+      <ul>
+        <li>1 yaourt grec nature (150g) + 10 amandes</li>
+        <li>OU : 30g de fromage + 2 cracottes intégrales</li>
+        <li>OU : 200g de fromage blanc + 1 c.c. de graines de chia</li>
+      </ul>
+      <div class="repas-macros">~15g P · 12g G · 10g L · Pas de sucre rapide la nuit — ça perturbe le sommeil du matin</div>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🌄 Retour maison (vers 7h) — Avant sommeil</span><span>~230 kcal</span></div>
+    <div class="repas-body">
+      <ul>
+        <li>2 tranches de dinde ou jambon blanc</li>
+        <li>1 tranche de pain complet</li>
+        <li>1 verre de lait ou 1 yaourt nature</li>
+        <li>OU si pas faim : un simple verre de lait chaud avec 1 c.c. de miel</li>
+      </ul>
+      <div class="repas-macros">~20g P · 22g G · 5g L · Repas léger : ton corps va dormir</div>
+    </div>
+  </div>
+
+  <p style="font-size:13px;color:var(--text-mid);margin:20px 0 6px;font-weight:600;">Option 2 — Jour de repos (pas de travail de nuit) · 1 800 kcal</p>
+  <p style="font-size:12px;color:var(--text-light);margin-bottom:16px;">Tu es à la maison, tu as les enfants. 3 repas + 2 collations pour ne jamais avoir faim et éviter le grignotage émotionnel.</p>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🌅 Petit-déjeuner (vers 8h-9h) · Choisis une option</span><span>~400 kcal</span></div>
+    <div class="repas-body">
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose-deep);margin-bottom:6px;">🥣 Option A — Porridge whey</p>
+      <ul>
+        <li>50g flocons d'avoine + eau chaude → porridge</li>
+        <li>1 scoop whey vanille mélangé dedans</li>
+        <li>1 c.s. beurre d'amande</li>
+        <li>Fruits rouges (framboises, myrtilles)</li>
+      </ul>
+      <div class="repas-macros">~32g P · 50g G · 11g L · ~435 kcal</div>
+
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose-deep);margin:12px 0 6px;">🥞 Option B — Pancakes patate douce</p>
+      <ul>
+        <li>100g patate douce cuite mixée + 2 œufs + 1 scoop whey + cannelle</li>
+        <li>Cuisson poêle sans matière grasse · 4-5 petits pancakes</li>
+        <li>Garniture : fruits rouges + 1 c.c. beurre d'amande</li>
+      </ul>
+      <div class="repas-macros">~35g P · 42g G · 14g L · ~430 kcal</div>
+
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose-deep);margin:12px 0 6px;">🍳 Option C — Œufs & avocat</p>
+      <ul>
+        <li>3 œufs brouillés aux épinards frais</li>
+        <li>½ avocat tranché</li>
+        <li>1 tranche de pain complet toasté</li>
+        <li>Café</li>
+      </ul>
+      <div class="repas-macros">~25g P · 30g G · 22g L · ~415 kcal</div>
+
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose-deep);margin:12px 0 6px;">🫙 Option D — Bowl yaourt gourmand</p>
+      <ul>
+        <li>200g skyr nature ou yaourt grec</li>
+        <li>30g granola sans sucre ajouté</li>
+        <li>1 c.s. beurre d'amande</li>
+        <li>Fruits rouges + 1 c.c. de miel</li>
+      </ul>
+      <div class="repas-macros">~28g P · 48g G · 12g L · ~415 kcal</div>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🍎 Collation matin (vers 11h)</span><span>~150 kcal</span></div>
+    <div class="repas-body">
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose-deep);margin-bottom:6px;">Choisis une option</p>
+      <ul>
+        <li><strong>A —</strong> 1 pomme + 15g d'amandes</li>
+        <li><strong>B —</strong> 100g fromage blanc 0% + 1 c.c. miel + quelques noix</li>
+        <li><strong>C —</strong> Shaker whey + eau (1 scoop) + 1 fruit</li>
+        <li><strong>D —</strong> 2 galettes de riz + 1 c.s. beurre d'amande</li>
+        <li><strong>E —</strong> 1 œuf dur + 1 fruit</li>
+      </ul>
+      <div class="repas-macros">~10-15g P · 18-22g G · 6-10g L · Casse-faim sans sucre rapide</div>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🍽️ Déjeuner (vers 13h) · Repas principal</span><span>~490 kcal</span></div>
+    <div class="repas-body">
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose-deep);margin-bottom:6px;">Choisis une option</p>
+      <ul>
+        <li><strong>A —</strong> 150g poulet grillé + 150g riz basmati + brocolis vapeur + huile d'olive</li>
+        <li><strong>B —</strong> 200g saumon au four + 150g patate douce + haricots verts</li>
+        <li><strong>C —</strong> Bol de lentilles (150g cuites) + 2 œufs durs + salade verte + tomates</li>
+        <li><strong>D —</strong> 200g bœuf haché 5% + 150g quinoa + poêlée de légumes verts</li>
+        <li><strong>E —</strong> 200g cabillaud vapeur + 150g riz complet + épinards sautés ail</li>
+      </ul>
+      <div class="repas-macros">~38-42g P · 45-55g G · 12-15g L · <strong style="color:var(--rose-deep);">🥦 Toujours 200g+ de légumes verts dans l'assiette</strong></div>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🍫 Collation après-midi (vers 16h)</span><span>~170 kcal</span></div>
+    <div class="repas-body">
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose-deep);margin-bottom:6px;">Choisis une option — surtout si tu t'entraînes en soirée</p>
+      <ul>
+        <li><strong>A —</strong> 1 banane + 1 c.s. beurre d'amande → idéal pré-séance</li>
+        <li><strong>B —</strong> 30g flocons d'avoine + eau chaude + 1 c.c. miel</li>
+        <li><strong>C —</strong> 150g skyr + fruits rouges</li>
+        <li><strong>D —</strong> 2 galettes de riz + 30g fromage blanc + quelques noix</li>
+        <li><strong>E —</strong> Shaker whey + eau + 1 fruit (si séance dans 1h)</li>
+      </ul>
+      <div class="repas-macros">~12-20g P · 25-35g G · 5-8g L · Ne saute jamais cette collation si tu t'entraînes le soir</div>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🌙 Dîner (vers 19h-20h)</span><span>~440 kcal</span></div>
+    <div class="repas-body">
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose-deep);margin-bottom:6px;">Choisis une option — plus léger en glucides le soir</p>
+      <ul>
+        <li><strong>A —</strong> Salade complète : thon + œuf dur + avocat ½ + tomates + concombre + vinaigrette légère</li>
+        <li><strong>B —</strong> Omelette 3 œufs + épinards + champignons + 1 tranche pain complet</li>
+        <li><strong>C —</strong> Soupe de légumes maison (courgette, poireau, brocolis) + 150g poulet effiloché</li>
+        <li><strong>D —</strong> 200g saumon ou cabillaud vapeur + légumes verts rôtis au four (courgette, poivron, brocolis)</li>
+        <li><strong>E —</strong> Wok de légumes verts (brocolis, haricots, pousses) + 150g crevettes + sauce soja légère</li>
+      </ul>
+      <div class="repas-macros">~35-40g P · 20-30g G · 18-22g L · Dessert : 1 yaourt grec + fruits rouges ou 2 carrés chocolat noir 85%</div>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🌙 Collation soir si faim (après 21h)</span><span>~120 kcal</span></div>
+    <div class="repas-body">
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose-deep);margin-bottom:6px;">Seulement si vraiment faim — pas par habitude</p>
+      <ul>
+        <li><strong>A —</strong> 150g fromage blanc 0% + 1 c.c. miel</li>
+        <li><strong>B —</strong> 1 verre de lait chaud + 2 carrés chocolat noir</li>
+        <li><strong>C —</strong> 15g amandes + 1 tisane camomille</li>
+        <li><strong>D —</strong> 1 œuf dur + quelques crudités</li>
+      </ul>
+      <div class="repas-macros">~10-15g P · 8-15g G · 5-10g L · Favorise le sommeil et la récupération musculaire nocturne</div>
+    </div>
+  </div>
+
+  <p style="font-size:13px;color:var(--text-mid);margin:20px 0 16px;font-weight:600;">Option 3 — Rapide & pratique (pour les jours chargés)</p>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>Version express — 1 900 kcal en 4 repas simples</span><span></span></div>
+    <div class="repas-body">
+      <ul>
+        <li><strong>Réveil :</strong> shaker : 200ml lait + 30g protéine de whey + 1 banane mixée = 380 kcal | 35g P</li>
+        <li><strong>Repas 1 :</strong> bol de riz + poulet rôti (restes) + légumes surgelés vapeur = 500 kcal | 40g P</li>
+        <li><strong>Repas 2 :</strong> omelette 3 œufs + fromage + toast complet = 450 kcal | 32g P</li>
+        <li><strong>Collation nuit + matin :</strong> skyr + amandes + fruit = 350 kcal | 25g P</li>
+      </ul>
+      <div class="repas-macros">Total : ~1 680 kcal | 132g P · 160g G · 50g L — Correct pour un jour chargé</div>
+    </div>
+  </div>
+
+  <!-- ALIMENTS RECOMMANDÉS -->
+  <div class="section-title" style="margin-top:28px;"><div class="icon">🛒</div><h2>Aliments <span>recommandés</span></h2></div>
+
+  <div class="aliment-grid">
+    <div class="aliment-card">
+      <div class="aliment-cat">🥩 Protéines</div>
+      <ul>
+        <li>Poulet / Dinde</li>
+        <li>Œufs entiers</li>
+        <li>Thon en boîte (eau)</li>
+        <li>Saumon</li>
+        <li>Cabillaud</li>
+        <li>Bœuf haché 5%</li>
+        <li>Fromage blanc 0%</li>
+        <li>Yaourt grec nature</li>
+        <li>Skyr</li>
+      </ul>
+    </div>
+    <div class="aliment-card">
+      <div class="aliment-cat">🌾 Glucides</div>
+      <ul>
+        <li>Riz basmati / complet</li>
+        <li>Patate douce</li>
+        <li>Flocons d'avoine</li>
+        <li>Pain complet (2 tr. max)</li>
+        <li>Quinoa</li>
+        <li>Pâtes complètes</li>
+        <li>Lentilles</li>
+        <li>Banane (pré-séance)</li>
+        <li>Fruits entiers</li>
+      </ul>
+    </div>
+    <div class="aliment-card">
+      <div class="aliment-cat">🥑 Lipides</div>
+      <ul>
+        <li>Huile d'olive (1 c.s./repas)</li>
+        <li>Avocat ½</li>
+        <li>Amandes / noix (15-20g)</li>
+        <li>Beurre de cacahuète naturel</li>
+        <li>Saumon (lipides bons)</li>
+        <li>Œufs entiers</li>
+      </ul>
+    </div>
+    <div class="aliment-card">
+      <div class="aliment-cat">🥦 Légumes verts — ILLIMITÉS</div>
+      <ul>
+        <li>Brocolis · Épinards</li>
+        <li>Haricots verts · Bettes</li>
+        <li>Courgette · Poireau</li>
+        <li>Salade · Roquette</li>
+        <li>Concombre · Céleri</li>
+        <li>Asperges · Fenouil</li>
+        <li>Poivron vert · Chou</li>
+        <li style="color:var(--rose-deep);font-weight:600;">→ Objectif : 300-400g/jour</li>
+      </ul>
+    </div>
+    <div class="aliment-card">
+      <div class="aliment-cat">❌ À limiter</div>
+      <ul>
+        <li>Viennoiseries / pain blanc</li>
+        <li>Sucre ajouté</li>
+        <li>Sodas et jus industriels</li>
+        <li>Plats transformés</li>
+        <li>Alcool</li>
+        <li>Charcuterie grasse</li>
+      </ul>
+    </div>
+    <div class="aliment-card">
+      <div class="aliment-cat">🍫 Envies sucrées</div>
+      <ul>
+        <li>2 carrés chocolat noir 85%</li>
+        <li>Yaourt grec + miel + fruits</li>
+        <li>Fromage blanc + confiture (1 c.c.)</li>
+        <li>Fruits rouges + 10 amandes</li>
+        <li>Dattes (2 max)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- GESTION ENVIES SUCRÉES -->
+  <div class="highlight-box" style="margin-top:10px;">
+    <div class="hl-label">🍬 Tu manges tes émotions — stratégie adaptée</div>
+    <div class="hl-text">Tu as mentionné manger tes émotions et toujours finir par un sucré. <strong>On ne supprime pas, on remplace.</strong> Quand l'envie de sucre arrive : bois d'abord un grand verre d'eau, attends 5 min. Si l'envie persiste — mange 2 carrés de chocolat noir 85% ou un yaourt grec avec un peu de miel. La règle c'est : <em>satisfaire, pas priver.</em> La privation totale mène au craquage. L'objectif = 80/20 (80% plan, 20% plaisir).</div>
+  </div>
+
+  <div class="important-note" style="margin-top:14px;">
+    ⚠️ <strong>Dessert du soir :</strong> remplace progressivement le dessert sucré par un yaourt grec + fruits rouges ou 2 carrés de chocolat noir. Pas d'interdiction — juste un remplacement plus intelligent qui apporte des protéines en plus du plaisir sucré.
+  </div>
+
+  <!-- MEAL PREP -->
+  <div class="divider"></div>
+  <div class="section-title"><div class="icon">🥡</div><h2>Meal Prep — <span>Prendre de l'avance</span></h2></div>
+
+  <div class="highlight-box" style="margin-bottom:16px;">
+    <div class="hl-label">💡 Le principe</div>
+    <div class="hl-text">Avec le travail de nuit et deux enfants, <strong>cuisiner à la dernière minute = abandon garanti.</strong> L'objectif : préparer 1h le dimanche soir pour ne plus avoir à réfléchir toute la semaine. Ce que tu prépares à l'avance reste dans tes calories sans effort mental.</div>
+  </div>
+
+  <div class="nutrition-grid" style="margin-bottom:14px;">
+    <div class="nutri-card">
+      <div class="nutri-card-header">🌙 Dimanche soir — Batch cooking</div>
+      <div class="nutri-card-body" style="font-size:13px;">
+        <strong>Protéines :</strong> Cuis 600-800g de blanc de poulet (four 180°C / 25min) → conserve 4 jours au frigo<br><br>
+        <strong>Glucides :</strong> Cuis 300g de riz complet ou quinoa → 4 portions prêtes<br><br>
+        <strong>Légumes :</strong> Lave et coupe 500g de légumes verts (courgettes, haricots, brocoli) → à la vapeur 10min<br><br>
+        <strong>Patates douces :</strong> Cuis 4-5 patates douces au four entières → utilisées toute la semaine (pancakes, à côté des repas)<br><br>
+        <strong>Œufs durs :</strong> Cuis 6-8 œufs durs → collations express prêtes à l'emploi
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">🥣 Le porridge préparé la veille — Overnight Oats</div>
+      <div class="nutri-card-body" style="font-size:13px;">
+        <strong>Recette (1 personne) :</strong><br>
+        Dans un bocal ou tupperware : 50g flocons d'avoine + 200ml lait végétal + 1 scoop whey + 1 c.s. beurre d'amande + poignée fruits rouges<br><br>
+        → Mélange, ferme, mets au frigo. Au réveil : c'est prêt. Pas de cuisson, pas de temps perdu.<br><br>
+        <strong>Option chaude express :</strong> 2 min au micro-ondes le matin.<br><br>
+        <span style="font-size:12px;color:var(--rose-deep);font-weight:600;">⏱️ Prépare 3 bocaux d'un coup le dimanche = petit-déj assuré lundi/mardi/mercredi</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="nutrition-grid" style="margin-bottom:14px;">
+    <div class="nutri-card">
+      <div class="nutri-card-header">📦 Astuces organisation</div>
+      <div class="nutri-card-body" style="font-size:13px;">
+        <strong>Congèle en portions :</strong> Prépare 8-10 portions de poulet + riz et congèle. Décongèle la veille au frigo.<br><br>
+        <strong>Shakers prêts :</strong> Mesure tes scoops de whey à l'avance dans des sachets zip — un par jour de la semaine.<br><br>
+        <strong>Légumes verts always on hand :</strong> Achète un grand sac de légumes surgelés (haricots verts, brocoli, épinards) — toujours disponible, zéro préparation.<br><br>
+        <strong>Règle des 5 min :</strong> Si un repas prend plus de 5 min à assembler le jour J, quelque chose n'a pas été préparé à l'avance.
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">🎯 Planning Meal Prep semaine type</div>
+      <div class="nutri-card-body" style="font-size:13px;">
+        <strong>Dimanche (1h) :</strong> Poulet four + riz + légumes vapeur + œufs durs + 3 bocaux overnight oats<br><br>
+        <strong>Mercredi (30 min) :</strong> Recharge à mi-semaine si besoin — recuire 400g de poisson ou viande hachée + légumes frais<br><br>
+        <strong>Chaque soir avant le travail :</strong> Prépare ton sac : shaker + collation (fruit + œuf ou fromage blanc) + repas du soir au travail dans une lunchbox<br><br>
+        <span style="font-size:12px;color:var(--text-light);">La préparation mentale vaut autant que la préparation physique.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HYDRATATION & COMPLÉMENTS -->
+  <div class="divider"></div>
+  <div class="section-title"><div class="icon">💊</div><h2>Compléments <span>recommandés</span></h2></div>
+
+  <div class="highlight-box" style="margin-bottom:16px;">
+    <div class="hl-label">⚠️ Ordre de priorité</div>
+    <div class="hl-text">La nutrition de base <strong>PRIME toujours</strong> sur les compléments. Mais avec ton profil (travail de nuit, post-partum, reprise sportive), certains compléments ne sont pas du luxe — ils comblent des déficits réels difficiles à couvrir uniquement par l'alimentation.</div>
+  </div>
+
+  <div class="nutrition-grid" style="margin-bottom:14px;">
+    <div class="nutri-card" style="border:2px solid var(--rose);">
+      <div class="nutri-card-header" style="background:linear-gradient(135deg,#A85570,#C9748F);color:#fff;">💪 Créatine Monohydrate — PRIORITÉ N°1</div>
+      <div class="nutri-card-body" style="font-size:13px;">
+        <strong>Pourquoi c'est le complément le plus important :</strong><br>
+        La créatine est le complément <em>le plus étudié et le plus efficace</em> pour les femmes qui font de la musculation. Elle n'est pas réservée aux bodybuilders.<br><br>
+        ✅ <strong>Force musculaire :</strong> +10-15% de force en 4 semaines → tu soulèves plus lourd = plus de galbe<br>
+        ✅ <strong>Récupération :</strong> recharge en ATP → moins de courbatures, récupère plus vite entre les séances<br>
+        ✅ <strong>Énergie cognitive :</strong> la créatine améliore la mémoire et réduit la fatigue mentale — parfait avec le travail de nuit<br>
+        ✅ <strong>Post-partum :</strong> aide à préserver la masse musculaire pendant la phase de recomposition<br><br>
+        <strong>Dosage :</strong> <span style="color:var(--rose-deep);font-weight:700;">3-5g par jour, tous les jours</span> (même les jours sans séance)<br>
+        <strong>Quand :</strong> Le matin avec de l'eau, au réveil. Peu importe l'heure tant que c'est régulier.<br>
+        <strong>Forme :</strong> Créatine <em>monohydrate</em> uniquement — les autres formes (HCl, éthyl ester) ne sont pas mieux et coûtent plus cher.<br><br>
+        <span style="font-size:12px;color:var(--text-light);">Effets visibles à partir de 3-4 semaines de prise régulière. Pas besoin de phase de charge.</span>
+      </div>
+    </div>
+    <div class="nutri-card" style="border:2px solid var(--rose-light);">
+      <div class="nutri-card-header" style="background:linear-gradient(135deg,#C9748F,#E8A0B0);color:#fff;">🥛 Whey Protéine — PRIORITÉ N°2</div>
+      <div class="nutri-card-body" style="font-size:13px;">
+        <strong>Pourquoi :</strong> Atteindre 140g de protéines/jour uniquement avec la nourriture est difficile. La whey comble facilement le manque.<br><br>
+        <strong>Quand la prendre :</strong><br>
+        • Après la séance (dans les 30-45 min) = récupération optimale<br>
+        • Au réveil dans le porridge = démarrer la journée protéinée<br>
+        • Comme collation express (shaker + eau) si pas le temps<br><br>
+        <strong>Quelle whey choisir :</strong><br>
+        🏆 <strong>Whey Isolat</strong> — meilleure absorption, faible en lactose, idéale si digestion sensible. Un peu plus chère.<br>
+        👍 <strong>Whey Concentrée</strong> — bonne qualité, moins chère. Parfaite pour commencer.<br><br>
+        <strong>Marques recommandées (rapport qualité/prix) :</strong><br>
+        • <strong>MyProtein Impact Whey</strong> — goût vanille/chocolat, très bonne valeur<br>
+        • <strong>Optimum Nutrition Gold Standard</strong> — référence qualité, très soluble<br>
+        • <strong>Foodspring Whey</strong> — French brand, clean label, ingrédients lisibles<br>
+        • <strong>Prozis Whey Premium</strong> — bon rapport prix/qualité<br><br>
+        <strong>Dosage :</strong> 1-2 scoops/jour selon besoins (~25g de protéines par scoop)<br><br>
+        <span style="font-size:12px;color:var(--text-light);">Saveur vanille ou neutre = le plus polyvalent pour les recettes (porridge, pancakes, yaourt).</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="nutrition-grid" style="margin-bottom:20px;">
+    <div class="nutri-card">
+      <div class="nutri-card-header">🧠 Magnésium Bisglycinate</div>
+      <div class="nutri-card-body" style="font-size:13px;">
+        <strong>Priorité :</strong> N°3 — très utile avec le travail de nuit<br><br>
+        Fatigue mentale, irritabilité, qualité du sommeil, crampes musculaires → le magnésium agit sur tout ça.<br><br>
+        <strong>Dosage :</strong> 300mg/soir avant de dormir (forme bisglycinate = mieux absorbée que l'oxyde)<br>
+        <strong>Marques :</strong> Solaray, NOW Foods, Nutrimuscle<br><br>
+        <span style="font-size:12px;color:var(--text-light);">Particulièrement important si tu ressens des crampes la nuit ou une fatigue disproportionnée.</span>
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">☀️ Vitamine D3 + K2</div>
+      <div class="nutri-card-body" style="font-size:13px;">
+        <strong>Priorité :</strong> N°3 — quasi-obligatoire travail de nuit<br><br>
+        Travail de nuit = 0 exposition solaire. Quasiment toutes les travailleuses de nuit sont carencées en Vit D.<br><br>
+        <strong>Effets :</strong> immunité, humeur, énergie, santé osseuse, récupération musculaire<br>
+        <strong>Dosage :</strong> 2 000 UI/jour le matin avec un repas contenant des lipides<br>
+        <strong>Prends D3 + K2 ensemble</strong> pour que la D3 aille bien au bon endroit (os et non artères)<br><br>
+        <span style="font-size:12px;color:var(--text-light);">À prendre au long cours — toute l'année si travail de nuit.</span>
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">🐟 Oméga-3</div>
+      <div class="nutri-card-body" style="font-size:13px;">
+        <strong>Priorité :</strong> N°4<br><br>
+        Inflammation, récupération musculaire, humeur, santé cardiovasculaire. Très utile si tu ne manges pas de poisson gras 3x/semaine.<br><br>
+        <strong>Dosage :</strong> 1-2g d'EPA+DHA/jour avec les repas<br>
+        <strong>Marques :</strong> Nutrimuscle, NOW Foods Omega-3, Thorne<br><br>
+        <span style="font-size:12px;color:var(--text-light);">Prends-les avec un repas contenant des lipides pour une meilleure absorption.</span>
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">💧 Hydratation</div>
+      <div class="nutri-card-body" style="font-size:13px;">
+        Minimum <strong>2-2,5L d'eau</strong> par jour. Travail de nuit = déshydratation silencieuse + sensation de faim masquée par la soif.<br><br>
+        ✅ Bois un grand verre d'eau à chaque réveil<br>
+        ✅ Ajoute une pincée de sel de mer dans l'eau les jours de séance (électrolytes)<br>
+        ✅ Tes 2 cafés : OK. Mais stoppe <strong>après minuit</strong><br>
+        ✅ Tisane nuit : camomille ou verveine (sommeil diurne)<br><br>
+        <span style="font-size:12px;color:var(--text-light);">La créatine augmente légèrement les besoins en eau — bois 250ml de plus.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LISTE DE COURSES -->
+  <div class="divider"></div>
+  <div class="section-title"><div class="icon">🛒</div><h2>Liste de <span>courses</span></h2></div>
+
+  <div class="highlight-box" style="margin-bottom:16px;">
+    <div class="hl-label">💡 Conseil</div>
+    <div class="hl-text">Achète en grande quantité les items marqués ⭐ — ils reviennent chaque semaine et se conservent bien. Les légumes frais, achète 2x/semaine pour éviter le gaspillage.</div>
+  </div>
+
+  <div class="nutrition-grid" style="margin-bottom:14px;">
+    <div class="nutri-card">
+      <div class="nutri-card-header">🍗 Protéines</div>
+      <div class="nutri-card-body" style="font-size:13px;">
+        ⭐ Blanc de poulet (1-1,5 kg/semaine)<br>
+        ⭐ Œufs (12 par semaine minimum)<br>
+        ⭐ Fromage blanc 0% ou skyr (2 grands pots)<br>
+        ⭐ Yaourt grec nature (4-6 pots)<br>
+        Thon en boîte au naturel (4 boîtes)<br>
+        Saumon (2 portions · 150g chacune)<br>
+        Crevettes décortiquées (200g)<br>
+        Viande hachée 5% MG (400g)<br>
+        Tofu ferme (1 bloc si option végétale)<br>
+        ⭐ Whey protéine (1 pot 1kg = ~3-4 semaines)
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">🌾 Glucides complexes</div>
+      <div class="nutri-card-body" style="font-size:13px;">
+        ⭐ Flocons d'avoine (500g)<br>
+        ⭐ Patates douces (1kg)<br>
+        ⭐ Riz complet ou basmati (1kg)<br>
+        Quinoa (500g)<br>
+        Pâtes complètes (500g)<br>
+        Pain complet ou aux graines (1 tranche/jour max)<br>
+        Farine de patate douce (optionnel pour pancakes)<br>
+        Lentilles corail (500g · repas sans viande)<br>
+        Bananes (4-5)<br>
+        Fruits rouges surgelés ⭐ (500g — toujours en stock)
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">🥦 Légumes (objectif 300-400g/jour)</div>
+      <div class="nutri-card-body" style="font-size:13px;">
+        ⭐ Sac légumes verts surgelés 1kg (haricots verts, brocoli, épinards)<br>
+        Courgettes (2-3)<br>
+        Concombre (1-2)<br>
+        Tomates (4-5)<br>
+        Salade verte (1 sachet)<br>
+        Poivrons (2 · rouge + jaune)<br>
+        Champignons (1 barquette)<br>
+        Radis / roquette (pour varier)<br>
+        Brocoli frais (1 tête)<br>
+        Carottes (3-4)<br>
+        <span style="font-size:11px;color:var(--rose-deep);font-weight:600;">Les légumes surgelés sont aussi nutritifs que frais — et 0 gaspillage.</span>
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">🥑 Lipides sains</div>
+      <div class="nutri-card-body" style="font-size:13px;">
+        ⭐ Beurre d'amande ou beurre de cacahuète (1 pot)<br>
+        ⭐ Huile d'olive extra vierge (1 bouteille)<br>
+        Avocat (2-3 par semaine)<br>
+        Amandes / noix (petite poignée/jour · 30g max)<br>
+        Graines de chia (250g · pour overnight oats)<br>
+        Noix de cajou (30g · collation)<br>
+        Chocolat noir 85% (1 tablette · 2 carrés/soir)
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">🧂 Épices & Condiments</div>
+      <div class="nutri-card-body" style="font-size:13px;">
+        ⭐ Cannelle (porridge + pancakes)<br>
+        ⭐ Herbes de Provence, cumin, paprika<br>
+        Sauce soja allégée (marinades poulet)<br>
+        Moutarde (vinaigrette + marinades)<br>
+        Vinaigre balsamique<br>
+        Ail en poudre<br>
+        Levure de bière (protéines + B12)<br>
+        Sirop d'érable (1 c.c. max sur pancakes)<br>
+        Sel de mer non raffiné (électrolytes)
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">💊 Compléments à acheter</div>
+      <div class="nutri-card-body" style="font-size:13px;">
+        🔴 <strong>Créatine monohydrate</strong> — 500g ≈ 3 mois de cure (MyProtein ou Nutrimuscle)<br>
+        🔴 <strong>Whey protéine</strong> — 1kg saveur vanille (MyProtein / ON Gold Standard)<br>
+        🟡 <strong>Magnésium bisglycinate</strong> — 1 boîte 60 gélules<br>
+        🟡 <strong>Vitamine D3+K2</strong> — 1 flacon gouttes ou gélules<br>
+        🟢 <strong>Oméga-3</strong> — 1 flacon 60 gélules (optionnel mais utile)<br><br>
+        <span style="font-size:11px;color:var(--rose-deep);font-weight:600;">Budget estimé premier mois (compléments) : 60-90€ · ensuite 30-40€/mois</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CONSEILS GÉNÉRAUX -->
+  <div class="section-title"><div class="icon">💬</div><h2>Mes <span>conseils pour toi</span></h2></div>
+
+  <div class="nutrition-grid">
+    <div class="nutri-card">
+      <div class="nutri-card-header">🌙 Travail de nuit — à retenir</div>
+      <div class="nutri-card-body">
+        Évite les gros repas entre 2h et 4h du matin — la digestion est au ralenti. Privilégie des collations légères et protéinées. Ne reste pas sans manger plus de 5-6h même la nuit.
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">😴 Sommeil diurne</div>
+      <div class="nutri-card-body">
+        Ton sommeil de la journée est aussi important que celui de la nuit. Dors dans le noir complet, masque de sommeil si nécessaire. Ne sacrifie pas le sommeil pour t'entraîner.
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">📈 Progression semaine par semaine</div>
+      <div class="nutri-card-body">
+        <strong>S1 :</strong> Apprends les mouvements, charge légère, n'aie pas peur de te reposer.<br>
+        <strong>S2 :</strong> Augmente les charges de 1-2 kg si ça te semble facile.<br>
+        <strong>S3 :</strong> Cherche la sensation de brûlure et de difficulté.<br>
+        <strong>S4 :</strong> Bilan + photos + nouvelles mensurations.
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">📱 Me tenir informée</div>
+      <div class="nutri-card-body">
+        Envoie-moi tes retours chaque semaine : comment tu te sens, si les séances sont trop faciles/dures, si tu as eu du mal à manger le plan. C'est comme ça qu'on ajuste. Je suis là pour ça.
+      </div>
+    </div>
+  </div>
+
+  <!-- SUIVI HEBDOMADAIRE -->
+  <div class="section-title"><div class="icon">📊</div><h2>Suivi <span>semaine par semaine</span></h2></div>
+
+  <table class="ressenti-table">
+    <thead><tr>
+      <th>Semaine</th><th>Séances réalisées</th><th>Énergie (1-10)</th><th>Motivation (1-10)</th><th>Notes / Ressenti</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>Semaine 1</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Semaine 2</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Semaine 3</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Semaine 4</td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box">
+    <div class="hl-label">🤍 Un mot pour toi, Malika</div>
+    <div class="hl-text">Tu gères du travail de nuit, deux enfants, et tu reprends le sport. C'est énorme. La régularité que tu cherches, elle se construit une séance à la fois. Tu ne te sentiras pas différente après 2 semaines. Mais dans 3 mois, si tu tiens, tu te regarderas différemment. C'est ça, l'objectif. Je suis là à chaque étape. 🤍</div>
+  </div>
+
+  <div style="text-align:center;padding:30px 0 10px;font-size:12px;color:var(--text-light);letter-spacing:1px;">
+    Programme Mois 1 — Malika · Ornella Fit Coaching · ornellafitcoaching.com
+  </div>
+
+</div>
+</body>
+</html>
