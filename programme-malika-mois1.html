@@ -182,6 +182,13 @@
   .bmr-row.total .bmr-label { font-weight:600; color:white; }
   .bmr-row.total .bmr-val { font-size:18px; font-family:'Cormorant Garamond',serif; }
 
+  /* ══ NAV RACCOURCIS ══ */
+  .nav-shortcuts { position: sticky; top: 0; z-index: 100; background: rgba(255,249,249,0.96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 8px 16px; display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .nav-shortcuts::-webkit-scrollbar { display: none; }
+  .nav-btn { flex-shrink: 0; background: var(--white); border: 1px solid var(--border); border-radius: 50px; padding: 6px 14px; font-size: 11px; font-weight: 600; color: var(--text-mid); letter-spacing: 0.5px; text-decoration: none; white-space: nowrap; transition: all 0.2s; }
+  .nav-btn:hover, .nav-btn:active { background: var(--rose); border-color: var(--rose); color: white; }
+  .nav-btn.accent { background: var(--rose); border-color: var(--rose); color: white; }
+
   /* ══ RESPONSIVE MOBILE ══ */
   @media (max-width: 600px) {
     /* Cover */
@@ -272,11 +279,25 @@
   <div class="cover-coach">Par Ornella · ornellafitcoaching.com</div>
 </div>
 
+<!-- NAV RACCOURCIS -->
+<nav class="nav-shortcuts">
+  <a href="#profil" class="nav-btn">👤 Profil</a>
+  <a href="#planning" class="nav-btn">📅 Planning</a>
+  <a href="#seance-a" class="nav-btn accent">Séance A</a>
+  <a href="#seance-b" class="nav-btn accent">Séance B</a>
+  <a href="#seance-c" class="nav-btn accent">Séance C</a>
+  <a href="#seance-d" class="nav-btn accent">Séance D</a>
+  <a href="#nutrition" class="nav-btn">🥗 Nutrition</a>
+  <a href="#complements" class="nav-btn">💊 Compléments</a>
+  <a href="#courses" class="nav-btn">🛒 Courses</a>
+  <a href="#suivi" class="nav-btn">📊 Suivi</a>
+</nav>
+
 <!-- PAGE -->
 <div class="page">
 
   <!-- PROFIL -->
-  <div class="section-title"><div class="icon">👤</div><h2>Ton <span>profil</span></h2></div>
+  <div id="profil" class="section-title"><div class="icon">👤</div><h2>Ton <span>profil</span></h2></div>
 
   <div class="profile-grid">
     <div class="profile-card"><div class="label">Âge</div><div class="value">28 ans</div></div>
@@ -332,7 +353,7 @@
   <div class="divider"></div>
 
   <!-- PLANNING -->
-  <div class="section-title"><div class="icon">📅</div><h2>Ton <span>planning</span></h2></div>
+  <div id="planning" class="section-title"><div class="icon">📅</div><h2>Ton <span>planning</span></h2></div>
 
   <p style="font-size:13px;color:var(--text-mid);margin-bottom:18px;">Ton planning est variable — pas de problème. Ces 4 séances s'organisent librement dans la semaine. La seule règle : <strong style="color:var(--text-dark);">ne jamais faire A et C dos à dos</strong> (toutes deux fessiers). Idéalement : A · B · C · D avec un ou deux jours de repos entre.</p>
 
@@ -374,7 +395,7 @@
   <div class="divider"></div>
 
   <!-- ══ SÉANCE A ══ -->
-  <div class="section-title"><div class="icon">🍑</div><h2>Séance A — <span>Fessiers & Cuisses</span></h2></div>
+  <div id="seance-a" class="section-title"><div class="icon">🍑</div><h2>Séance A — <span>Fessiers & Cuisses</span></h2></div>
 
   <div class="seance-header">
     <div class="day-badge">Séance A · Force</div>
@@ -413,7 +434,7 @@
   </div>
 
   <!-- ══ SÉANCE B ══ -->
-  <div class="section-title"><div class="icon">⚡</div><h2>Séance B — <span>Full Body Cardio Step</span></h2></div>
+  <div id="seance-b" class="section-title"><div class="icon">⚡</div><h2>Séance B — <span>Full Body Cardio Step</span></h2></div>
 
   <div class="seance-header">
     <div class="day-badge">Séance B · Cardio</div>
@@ -452,7 +473,7 @@
   </div>
 
   <!-- ══ SÉANCE C ══ -->
-  <div class="section-title"><div class="icon">🍑</div><h2>Séance C — <span>Fessiers & Jambes Volume</span></h2></div>
+  <div id="seance-c" class="section-title"><div class="icon">🍑</div><h2>Séance C — <span>Fessiers & Jambes Volume</span></h2></div>
 
   <div class="seance-header">
     <div class="day-badge">Séance C · Volume</div>
@@ -491,7 +512,7 @@
   </div>
 
   <!-- ══ SÉANCE D ══ -->
-  <div class="section-title"><div class="icon">💪</div><h2>Séance D — <span>Haut du corps & Core</span></h2></div>
+  <div id="seance-d" class="section-title"><div class="icon">💪</div><h2>Séance D — <span>Haut du corps & Core</span></h2></div>
 
   <div class="seance-header">
     <div class="day-badge">Séance D · Haut du corps</div>
@@ -533,7 +554,7 @@
   <div class="divider"></div>
 
   <!-- ══ NUTRITION ══ -->
-  <div class="section-title"><div class="icon">🥗</div><h2>Ton plan <span>nutrition</span></h2></div>
+  <div id="nutrition" class="section-title"><div class="icon">🥗</div><h2>Ton plan <span>nutrition</span></h2></div>
 
   <!-- CALCUL BMR -->
   <div class="bmr-calc">
@@ -993,7 +1014,7 @@
 
   <!-- HYDRATATION & COMPLÉMENTS -->
   <div class="divider"></div>
-  <div class="section-title"><div class="icon">💊</div><h2>Compléments <span>recommandés</span></h2></div>
+  <div id="complements" class="section-title"><div class="icon">💊</div><h2>Compléments <span>recommandés</span></h2></div>
 
   <div class="highlight-box" style="margin-bottom:16px;">
     <div class="hl-label">⚠️ Ordre de priorité</div>
@@ -1085,7 +1106,7 @@
 
   <!-- LISTE DE COURSES -->
   <div class="divider"></div>
-  <div class="section-title"><div class="icon">🛒</div><h2>Liste de <span>courses</span></h2></div>
+  <div id="courses" class="section-title"><div class="icon">🛒</div><h2>Liste de <span>courses</span></h2></div>
 
   <div class="highlight-box" style="margin-bottom:16px;">
     <div class="hl-label">💡 Conseil</div>
@@ -1214,7 +1235,7 @@
   </div>
 
   <!-- SUIVI HEBDOMADAIRE -->
-  <div class="section-title"><div class="icon">📊</div><h2>Suivi <span>semaine par semaine</span></h2></div>
+  <div id="suivi" class="section-title"><div class="icon">📊</div><h2>Suivi <span>semaine par semaine</span></h2></div>
 
   <table class="ressenti-table">
     <thead><tr>
