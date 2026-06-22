@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Programme Ghislaine">
+<title>Programme Ghislaine</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--accent:#7B9E8F;--cream:#F5F2EE;--dark:#141414;--gold:#C9A96E;--nude:#D4B896;--brown:#9A8C84;--border:rgba(212,184,150,0.18)}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);min-height:100vh;line-height:1.7;font-size:1.02rem}
+
+.cover{text-align:center;padding:56px 20px 36px;border-bottom:1px solid var(--border)}
+.cover-badge{display:inline-block;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,169,110,0.4);border-radius:20px;padding:5px 14px;margin-bottom:16px}
+.cover h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,8vw,4rem);font-weight:600;line-height:1.1;margin-bottom:10px}
+.cover h1 em{font-style:italic;color:var(--gold)}
+.cover-sub{font-size:0.92rem;color:var(--brown);max-width:400px;margin:0 auto;line-height:1.8}
+
+section{padding:32px 20px;max-width:640px;margin:0 auto}
+section+section{border-top:1px solid var(--border)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--nude);margin-bottom:16px}
+
+.seance-label{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);background:rgba(201,169,110,0.1);border:1px solid rgba(201,169,110,0.3);border-radius:20px;padding:4px 12px;display:inline-block;margin-bottom:10px}
+.seance-note{font-size:0.85rem;color:var(--brown);margin-bottom:20px;line-height:1.7;padding:12px 16px;background:rgba(123,158,143,0.07);border:1px solid rgba(123,158,143,0.2);border-radius:10px}
+.seance-note strong{color:var(--nude)}
+
+.ex-list{display:flex;flex-direction:column;gap:14px;margin-bottom:16px}
+.ex-card{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:14px;padding:20px 18px}
+.ex-num{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:5px}
+.ex-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--cream);margin-bottom:8px}
+.ex-reps{font-size:0.92rem;color:var(--nude);font-weight:600;margin-bottom:10px}
+.ex-steps{list-style:none;margin-bottom:10px;counter-reset:step}
+.ex-steps li{font-size:0.85rem;color:var(--brown);padding:5px 0;border-bottom:1px solid var(--border);line-height:1.65;display:flex;gap:10px;counter-increment:step}
+.ex-steps li::before{content:counter(step)".";color:var(--accent);font-weight:700;min-width:18px;flex-shrink:0}
+.ex-tip{font-size:0.83rem;color:var(--brown);font-style:italic;line-height:1.65;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+
+.coach-note{background:rgba(123,158,143,0.07);border:1px solid rgba(123,158,143,0.22);border-radius:10px;padding:13px 15px;margin-top:10px;font-size:0.83rem;color:var(--brown);line-height:1.7}
+.coach-note strong{color:var(--nude)}
+
+.rest-block{background:rgba(123,158,143,0.08);border:1px solid rgba(123,158,143,0.2);border-radius:8px;padding:10px 14px;font-size:0.85rem;color:var(--brown);margin-top:8px}
+.rest-block strong{color:var(--nude)}
+
+.tip-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;font-size:0.85rem;color:var(--brown);line-height:1.75}
+.tip-card strong{color:var(--nude)}
+.tip-title{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px}
+
+@media(max-width:520px){
+  section{padding:24px 16px}
+  .ex-card{padding:16px 14px}
+  .ex-name{font-size:1.15rem}
+  .cover h1{font-size:2.6rem}
+  .seance-note{font-size:0.83rem}
+}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-badge">Programme personnalisé · Ornella Fit Coaching · 2026</div>
+  <h1>Pour<br><em>Ghislaine</em> 🤍</h1>
+  <p class="cover-sub">2 séances par semaine, douce et progressive. Chaque exercice est expliqué pas à pas — prends ton temps, tu es exactement là où tu dois être.</p>
+</div>
+
+<!-- SÉANCE A -->
+<section>
+  <div class="section-title">Séance A — Jambes & Fessiers</div>
+  <div class="seance-label">🦵 2 fois par semaine · ex: Lundi + Jeudi</div>
+  <div class="seance-note"><strong>Avant de commencer :</strong> 5 minutes de marche sur place, bras qui se balancent. Tiens une chaise ou un mur si tu en as besoin — c'est une aide, pas une faiblesse.</div>
+
+  <div class="ex-list">
+
+    <div class="ex-card">
+      <div class="ex-num">Exercice 1</div>
+      <div class="ex-name">Squat sur chaise 🪑</div>
+      <div class="ex-reps">3 séries · 8 répétitions · Repos 1 min 30</div>
+      <ol class="ex-steps">
+        <li>Place une chaise solide derrière toi. Pieds à largeur d'épaules, pointes légèrement ouvertes.</li>
+        <li>Regarde droit devant toi — pas vers le bas. Garde la poitrine ouverte.</li>
+        <li>Descends très lentement (3 secondes) comme si tu allais t'asseoir. Effleure la chaise, puis remonte.</li>
+        <li>Pousse dans tes talons pour remonter. Expire en remontant.</li>
+      </ol>
+      <div class="coach-note"><strong>Conseil :</strong> Si c'est difficile, assieds-toi et relève-toi normalement d'abord — c'est le même mouvement. Les talons restent au sol. Les genoux suivent les orteils sans rentrer vers l'intérieur. Prends ton temps.</div>
+      <div class="rest-block">⏱ <strong>Repos 1 min 30</strong> entre chaque série</div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-num">Exercice 2</div>
+      <div class="ex-name">Pont fessier 🛋</div>
+      <div class="ex-reps">3 séries · 12 répétitions · Repos 1 min</div>
+      <ol class="ex-steps">
+        <li>Allonge-toi sur le dos, genoux pliés, pieds à plat. Bras le long du corps.</li>
+        <li>Inspire. En expirant, pousse dans tes talons et soulève les hanches vers le plafond.</li>
+        <li>Serre les fessiers en haut. Tiens 2 secondes.</li>
+        <li>Redescends lentement, vertèbre par vertèbre.</li>
+      </ol>
+      <div class="coach-note"><strong>Ce que tu dois sentir :</strong> tes fessiers qui se contractent — pas ton dos. Si tu sens ton dos travailler, rapproche les pieds de tes fessiers. Respire régulièrement.</div>
+      <div class="rest-block">⏱ <strong>Repos 1 min</strong> entre chaque série</div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-num">Exercice 3</div>
+      <div class="ex-name">Chaise au mur 🧱</div>
+      <div class="ex-reps">3 séries · 20 secondes · Repos 1 min 30</div>
+      <ol class="ex-steps">
+        <li>Dos appuyé contre un mur, fais glisser jusqu'à ce que tes cuisses soient à peu près parallèles au sol.</li>
+        <li>Pieds à plat, jambes à 90° (ou un peu plus hautes si 90° est trop dur).</li>
+        <li>Tiens la position en respirant calmement. Compte dans ta tête.</li>
+      </ol>
+      <div class="coach-note"><strong>Ne retiens pas ta respiration.</strong> Si tes jambes tremblent — c'est normal, c'est le signe que ça travaille. Si la douleur est vive, remonte un peu la position. 20 secondes c'est court, tu peux y arriver.</div>
+      <div class="rest-block">⏱ <strong>Repos 1 min 30</strong> entre chaque série</div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-num">Exercice 4</div>
+      <div class="ex-name">Bird Dog — Gainage doux 🐦</div>
+      <div class="ex-reps">3 séries · 5 répétitions par côté · Repos 1 min</div>
+      <ol class="ex-steps">
+        <li>À quatre pattes : mains sous les épaules, genoux sous les hanches. Dos bien plat.</li>
+        <li>Tends lentement le bras droit devant toi ET la jambe gauche derrière — en même temps.</li>
+        <li>Tiens 3 secondes. Garde le dos stable — résiste à la tentation de tourner les hanches.</li>
+        <li>Reviens lentement. Change de côté.</li>
+      </ol>
+      <div class="coach-note"><strong>L'image :</strong> imagine un verre d'eau posé sur ton dos — tu ne dois pas le renverser. Si c'est trop difficile, tends juste le bras sans bouger la jambe pour commencer.</div>
+      <div class="rest-block">⏱ <strong>Repos 1 min</strong> entre chaque série</div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-num">Exercice 5</div>
+      <div class="ex-name">Équilibre sur une jambe ⚖️</div>
+      <div class="ex-reps">3 séries · 15 secondes par jambe · Repos 45 sec</div>
+      <ol class="ex-steps">
+        <li>Debout à côté d'une chaise. Pose une main dessus légèrement.</li>
+        <li>Soulève lentement un pied. Genou d'appui légèrement fléchi — pas tendu.</li>
+        <li>Regarde un point fixe devant toi — ça aide l'équilibre.</li>
+        <li>Tiens en respirant. Repose. Change de jambe.</li>
+      </ol>
+      <div class="coach-note"><strong>Un léger balancement est totalement normal.</strong> L'équilibre s'apprend avec la régularité. Dans 4 semaines tu sentiras une vraie différence.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SÉANCE B -->
+<section>
+  <div class="section-title">Séance B — Haut du corps & Centre</div>
+  <div class="seance-label">💪 2 fois par semaine · ex: Mardi + Vendredi</div>
+  <div class="seance-note"><strong>Avant de commencer :</strong> 5 minutes de marche sur place + rotations douces des épaules (10 cercles vers l'avant, 10 vers l'arrière).</div>
+
+  <div class="ex-list">
+
+    <div class="ex-card">
+      <div class="ex-num">Exercice 1</div>
+      <div class="ex-name">Pompes au mur 🧱</div>
+      <div class="ex-reps">3 séries · 10 répétitions · Repos 1 min</div>
+      <ol class="ex-steps">
+        <li>Debout face au mur, à environ un bras de distance. Place les mains à hauteur des épaules, légèrement plus larges.</li>
+        <li>Penche le corps vers le mur en pliant les coudes — comme une pompe couchée, mais debout.</li>
+        <li>Descends jusqu'à ce que ton nez s'approche du mur. Garde le corps droit des talons à la tête.</li>
+        <li>Pousse sur les paumes pour revenir. Expire en poussant.</li>
+      </ol>
+      <div class="coach-note"><strong>C'est une vraie pompe</strong> — juste inclinée, donc plus accessible. Elle renforce la poitrine, les épaules et les bras sans aucun matériel. <strong>Garde le ventre légèrement contracté</strong> pendant tout le mouvement — dos droit.</div>
+      <div class="rest-block">⏱ <strong>Repos 1 min</strong> entre chaque série</div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-num">Exercice 2</div>
+      <div class="ex-name">Squeeze d'omoplates 🤲</div>
+      <div class="ex-reps">3 séries · 12 répétitions · Repos 1 min</div>
+      <ol class="ex-steps">
+        <li>Assis sur une chaise, dos droit, bras le long du corps.</li>
+        <li>Plie les coudes à 90°, paumes vers le haut.</li>
+        <li>Tire les coudes vers l'arrière en serrant les omoplates l'une vers l'autre — comme si tu voulais tenir un crayon entre elles.</li>
+        <li>Tiens 2 secondes. Relâche lentement. Répète.</li>
+      </ol>
+      <div class="coach-note"><strong>Ce que tu dois sentir :</strong> une contraction dans le milieu du dos — pas dans le cou. Les épaules restent basses. Cet exercice améliore ta posture et soulage les tensions du haut du dos. Parfait sans aucun matériel.</div>
+      <div class="rest-block">⏱ <strong>Repos 1 min</strong> entre chaque série</div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-num">Exercice 3</div>
+      <div class="ex-name">Montée de genoux lente 🚶</div>
+      <div class="ex-reps">3 séries · 8 répétitions par jambe · Repos 1 min</div>
+      <ol class="ex-steps">
+        <li>Debout à côté d'une chaise si besoin. Dos bien droit.</li>
+        <li>Lève un genou lentement jusqu'à la hauteur de la hanche — ou aussi haut que tu peux.</li>
+        <li>Tiens 2 secondes en haut. Repose le pied doucement. Alterne.</li>
+      </ol>
+      <div class="coach-note"><strong>Garde le dos droit</strong> — ne te penche pas vers l'avant pour monter le genou. C'est un exercice d'équilibre et de coordination. Lent et contrôlé, c'est mieux que rapide et bancal.</div>
+      <div class="rest-block">⏱ <strong>Repos 1 min</strong> entre chaque série</div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-num">Exercice 4</div>
+      <div class="ex-name">Dead Bug — Ventre profond 🛋</div>
+      <div class="ex-reps">3 séries · 4 répétitions par côté · Repos 1 min</div>
+      <ol class="ex-steps">
+        <li>Allonge-toi sur le dos. Bras vers le plafond. Jambes levées, genoux pliés à 90°.</li>
+        <li>Appuie ton dos contre le sol — il ne doit pas se creuser. C'est ta position de départ.</li>
+        <li>Tends lentement le bras droit vers l'arrière ET la jambe gauche vers le sol — sans les poser.</li>
+        <li>Reviens lentement. Change de côté.</li>
+      </ol>
+      <div class="coach-note"><strong>Règle absolue :</strong> ton dos reste collé au sol pendant tout l'exercice. Si tu sens ton dos se creuser, ne descends pas autant la jambe. L'amplitude vient avec le temps.</div>
+      <div class="rest-block">⏱ <strong>Repos 1 min</strong> entre chaque série</div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-num">Exercice 5</div>
+      <div class="ex-name">Step Touch — Coordination douce 🚶</div>
+      <div class="ex-reps">3 séries · 16 pas (8 de chaque côté) · Repos 45 sec</div>
+      <ol class="ex-steps">
+        <li>Debout, pieds joints. Chaise à portée si besoin.</li>
+        <li>Grand pas sur le côté droit, puis ramène le pied gauche.</li>
+        <li>Grand pas sur le côté gauche, puis ramène le droit.</li>
+        <li>Accompagne avec les bras — ils s'élèvent doucement sur le côté.</li>
+      </ol>
+      <div class="coach-note">Lent et contrôlé. Respire librement. C'est un exercice de <strong>coordination globale</strong> — il améliore ton aisance dans les mouvements du quotidien. Tu peux même le faire en regardant la télé !</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONSEILS -->
+<section>
+  <div class="section-title">Conseils de coaching 🌿</div>
+
+  <div class="tip-card">
+    <div class="tip-title">Rythme de la semaine</div>
+    Fais la <strong>Séance A et la Séance B</strong> dans la semaine, avec au moins un jour de repos entre les deux. Ex : A le lundi, B le jeudi. Ou A le mardi, B le vendredi. C'est toi qui choisis selon ta semaine.
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-title">Qualité avant quantité</div>
+    <strong>Un mouvement bien fait vaut 10 mal faits.</strong> Si tu ne peux pas faire toutes les répétitions — c'est normal. Réduis, prends une pause, reprends. Il n'y a aucune urgence.
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-title">Respiration</div>
+    Règle simple : <strong>expire à l'effort</strong> (quand tu pousses, montes ou contractes), <strong>inspire au retour</strong>. Ne bloque jamais ta respiration. Si tu oublies — respire normalement, c'est déjà très bien.
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-title">Après chaque séance</div>
+    Prends 5 minutes pour t'étirer doucement. Assis sur le bord du canapé, penche-toi légèrement vers l'avant, bras le long des jambes — sens ton dos se déposer. Puis respire profondément 5 fois. Tu as bien travaillé. 🤍
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-title">Message d'Ornella</div>
+    Tu n'as pas à être parfaite. Tu as juste à commencer, et à continuer. <strong>Chaque séance compte, même imparfaite.</strong> Dans 4 semaines tu seras surprise de ce que ton corps est capable de faire. Je suis fière de toi. 🌿
+  </div>
+
+</section>
+
+</body>
+</html>

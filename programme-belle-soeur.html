@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Programme Clémentine">
+<title>Programme Clémentine — Glute Focus &amp; Recomposition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#C96358;--cream:#F7F3F0;--dark:#1A0F0F;--gold:#C9957A;
+  --nude:#E8B4A0;--brown:#9A8080;--green:#4a9e6e;--card:rgba(255,255,255,0.04);
+  --border:rgba(232,180,160,0.18);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);min-height:100vh;line-height:1.6}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(26,15,15,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:12px 20px;padding-top:max(12px,env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--nude);white-space:nowrap}
+.nav-links{display:flex;gap:8px;flex-wrap:wrap}
+.nav-links a{font-size:0.75rem;color:var(--brown);text-decoration:none;padding:4px 10px;border:1px solid var(--border);border-radius:20px;transition:all .2s;white-space:nowrap}
+.nav-links a:hover{border-color:var(--accent);color:var(--cream)}
+
+/* COVER */
+.cover{text-align:center;padding:60px 20px 40px;border-bottom:1px solid var(--border)}
+.cover-badge{display:inline-block;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,149,122,0.4);border-radius:20px;padding:5px 14px;margin-bottom:18px}
+.cover h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,7vw,3.6rem);font-weight:600;line-height:1.15;margin-bottom:10px}
+.cover h1 em{font-style:italic;color:var(--gold)}
+.cover-sub{font-size:0.95rem;color:var(--brown);max-width:480px;margin:0 auto 28px;line-height:1.7}
+.cover-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.pill{font-size:0.78rem;background:rgba(201,99,88,0.12);border:1px solid rgba(201,99,88,0.3);border-radius:20px;padding:5px 13px;color:var(--nude)}
+
+/* PROFIL CARD */
+.profil-card{background:rgba(201,149,122,0.07);border:1px solid rgba(201,149,122,0.25);border-radius:16px;padding:22px 20px;max-width:760px;margin:0 auto 32px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.profil-item{display:flex;flex-direction:column;gap:2px}
+.profil-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold)}
+.profil-value{font-size:0.88rem;color:var(--cream);font-weight:500}
+.profil-note{grid-column:1/-1;background:rgba(201,99,88,0.08);border:1px solid rgba(201,99,88,0.2);border-radius:10px;padding:12px 14px;font-size:0.8rem;color:var(--nude);line-height:1.6}
+
+/* SECTION */
+section{padding:40px 20px;max-width:760px;margin:0 auto}
+section+section{border-top:1px solid var(--border)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:var(--nude);margin-bottom:6px}
+.section-sub{font-size:0.85rem;color:var(--brown);margin-bottom:24px;line-height:1.6}
+
+/* SEMAINE TABS */
+.week-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.week-btn{font-size:0.8rem;padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--brown);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.week-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+/* SEANCE TOGGLE */
+.seance-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.seance-btn{flex:1;min-width:120px;padding:12px 8px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--brown);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.82rem;transition:all .2s;text-align:center;line-height:1.3}
+.seance-btn.active{background:rgba(201,99,88,0.15);border-color:var(--accent);color:var(--cream);font-weight:600}
+
+/* SUPERSET */
+.ss-block{margin-bottom:28px;position:relative}
+.ss-label{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);background:rgba(201,149,122,0.12);border:1px solid rgba(201,149,122,0.3);border-radius:20px;padding:4px 12px;display:inline-block;margin-bottom:8px}
+.ss-exercises{border-left:2px solid var(--accent);padding-left:0;margin-left:0}
+.ss-connector{display:flex;align-items:center;gap:8px;margin:4px 0 4px 14px}
+.ss-connector-line{flex:1;height:1px;background:rgba(201,99,88,0.3)}
+.ss-connector-text{font-size:0.7rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase}
+
+/* EXERCISE CARD */
+.ex-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 16px;margin-left:14px;margin-bottom:0;transition:border-color .2s}
+.ex-card:hover{border-color:rgba(201,99,88,0.4)}
+.ex-card.standalone{margin-left:0}
+.ex-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px}
+.ex-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--cream);line-height:1.2}
+.badges{display:flex;flex-wrap:wrap;gap:5px;flex-shrink:0}
+.badge{font-size:0.66rem;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:10px;font-weight:600;white-space:nowrap}
+.badge-new{background:rgba(74,158,110,0.2);border:1px solid rgba(74,158,110,0.5);color:#7ecba1}
+.badge-tempo{background:rgba(201,149,122,0.15);border:1px solid rgba(201,149,122,0.4);color:var(--gold)}
+.badge-rir{background:rgba(201,99,88,0.15);border:1px solid rgba(201,99,88,0.4);color:var(--nude)}
+.badge-diastasis{background:rgba(74,158,110,0.15);border:1px solid rgba(74,158,110,0.4);color:#7ecba1}
+.ex-sets{font-size:0.88rem;color:var(--nude);margin-bottom:8px;font-weight:500}
+.ex-tip{font-size:0.82rem;color:var(--brown);font-style:italic;line-height:1.55;padding-top:6px;border-top:1px solid var(--border)}
+.ex-sensation{font-size:0.8rem;color:var(--gold);margin-top:6px;line-height:1.5}
+
+/* SS REST BTN */
+.ss-rest{display:flex;align-items:center;justify-content:space-between;margin:10px 14px 4px;padding:10px 14px;background:rgba(201,99,88,0.08);border:1px solid rgba(201,99,88,0.2);border-radius:8px;flex-wrap:wrap;gap:8px}
+.ss-rest-label{font-size:0.78rem;color:var(--brown)}
+.timer-btns{display:flex;gap:6px}
+.t-btn{font-size:0.73rem;padding:5px 10px;border-radius:6px;border:1px solid rgba(201,99,88,0.35);background:transparent;color:var(--nude);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.t-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* STANDALONE REST */
+.ex-rest{font-size:0.82rem;color:var(--brown);margin:6px 0 18px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ex-rest .rest-duration{color:var(--nude);font-weight:600}
+
+/* FINISHER CARD */
+.finisher-card{background:linear-gradient(135deg,rgba(201,99,88,0.1),rgba(201,149,122,0.07));border:1px solid rgba(201,99,88,0.3);border-radius:14px;padding:18px 16px;margin-bottom:20px}
+.finisher-title{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-weight:700}
+
+/* WARMUP */
+.warmup-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.warmup-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center}
+.warmup-name{font-size:0.88rem;color:var(--cream);margin-bottom:4px}
+.warmup-detail{font-size:0.75rem;color:var(--brown)}
+
+/* PROGRESS BAR */
+.progress-wrap{margin-bottom:32px}
+.progress-label{display:flex;justify-content:space-between;font-size:0.78rem;color:var(--brown);margin-bottom:6px}
+.progress-bar{height:6px;background:rgba(255,255,255,0.06);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--accent));border-radius:10px;transition:width .4s}
+
+/* IOS BANNER */
+#ios-banner{background:rgba(201,149,122,0.12);border-bottom:1px solid rgba(201,149,122,0.25);padding:12px 16px}
+.ios-banner-inner{display:flex;align-items:flex-start;gap:12px;max-width:760px;margin:0 auto}
+.ios-banner-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.ios-banner-text{flex:1;font-size:0.8rem;color:var(--brown);line-height:1.6;display:flex;flex-direction:column;gap:3px}
+.ios-banner-text strong{color:var(--nude);font-size:0.85rem}
+.ios-banner-text em{font-style:normal;color:var(--nude);font-weight:600}
+.ios-share{font-size:1rem;display:inline-block;vertical-align:middle}
+.ios-banner-close{background:none;border:none;color:var(--brown);font-size:1.1rem;cursor:pointer;padding:4px;flex-shrink:0;margin-top:-2px}
+
+/* LEGEND BOX */
+.legend-box{background:rgba(201,149,122,0.07);border:1px solid rgba(201,149,122,0.25);border-radius:14px;padding:20px 18px;margin-bottom:24px;display:flex;flex-direction:column;gap:16px}
+.legend-item{display:flex;align-items:flex-start;gap:14px}
+.legend-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.legend-title{font-size:0.88rem;font-weight:600;color:var(--nude);margin-bottom:5px}
+.legend-text{font-size:0.8rem;color:var(--brown);line-height:1.65}
+.legend-text strong{color:var(--nude)}
+.legend-divider{height:1px;background:rgba(201,149,122,0.2)}
+
+/* GLOSSARY */
+.glossary-list{display:flex;flex-direction:column;gap:8px}
+details{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}
+details[open]{border-color:rgba(201,99,88,0.4)}
+summary{padding:16px 18px;cursor:pointer;font-weight:500;font-size:0.92rem;color:var(--cream);list-style:none;display:flex;align-items:center;justify-content:space-between;gap:8px;user-select:none}
+summary::after{content:'＋';font-size:1rem;color:var(--accent);flex-shrink:0;transition:transform .2s}
+details[open] summary::after{content:'－'}
+summary::-webkit-details-marker{display:none}
+.gloss-body{padding:0 18px 16px;font-size:0.85rem;color:var(--brown);line-height:1.7}
+.gloss-body strong{color:var(--nude)}
+
+/* FLOATING TIMER */
+#timer-widget{position:fixed;bottom:max(20px,env(safe-area-inset-bottom));right:16px;z-index:200;background:#1e1212;border:1px solid var(--border);border-radius:16px;padding:16px 18px;width:180px;box-shadow:0 8px 32px rgba(0,0,0,0.5);display:none}
+#timer-widget.visible{display:block}
+.timer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.timer-title{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)}
+#timer-close{background:none;border:none;color:var(--brown);cursor:pointer;font-size:1rem;padding:0}
+#timer-display{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;text-align:center;color:#fff;line-height:1;margin-bottom:12px}
+.timer-presets{display:flex;gap:5px;margin-bottom:10px}
+.preset-btn{flex:1;font-size:0.72rem;padding:6px 2px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--brown);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;text-align:center}
+.preset-btn:hover,.preset-btn.active-preset{background:var(--accent);border-color:var(--accent);color:#fff}
+.timer-controls{display:flex;gap:6px}
+.ctrl-btn{flex:1;padding:8px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;cursor:pointer;transition:all .2s}
+#btn-start{background:var(--accent);color:#fff}
+#btn-start:hover{opacity:.85}
+#btn-reset{background:rgba(255,255,255,0.07);color:var(--brown)}
+#btn-reset:hover{background:rgba(255,255,255,0.12)}
+#timer-open-btn{position:fixed;bottom:max(20px,env(safe-area-inset-bottom));right:16px;z-index:199;background:var(--accent);border:none;border-radius:50%;width:52px;height:52px;font-size:1.4rem;cursor:pointer;box-shadow:0 4px 20px rgba(201,99,88,0.45);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+#timer-open-btn:hover{transform:scale(1.08)}
+#timer-open-btn.hidden{display:none}
+
+/* RESPONSIVE */
+@media(max-width:520px){
+  nav{padding:10px 14px;padding-top:max(10px,env(safe-area-inset-top))}
+  .nav-links{display:none}
+  .ex-header{flex-direction:column;gap:6px}
+  .badges{justify-content:flex-start}
+  .t-btn{padding:8px 12px;font-size:0.8rem;min-height:36px}
+  .week-btn{padding:10px 14px;min-height:40px}
+  .seance-btn{min-height:48px;flex:none;width:100%}
+  section{padding:28px 16px}
+  .profil-card{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-title">Programme Clémentine · 2026</span>
+  <div class="nav-links">
+    <a href="#warmup">Échauffement</a>
+    <a href="#programme">Programme</a>
+    <a href="#glossaire">Glossaire</a>
+  </div>
+</nav>
+
+<!-- BANNIÈRE RACCOURCI IPHONE -->
+<div id="ios-banner" style="display:none">
+  <div class="ios-banner-inner">
+    <div class="ios-banner-icon">📲</div>
+    <div class="ios-banner-text">
+      <strong>Ajoute ce programme sur ton écran d'accueil</strong>
+      <span>Appuie sur <span class="ios-share">⎋</span> puis <em>"Sur l'écran d'accueil"</em> — il s'ouvrira comme une appli, sans navigateur.</span>
+    </div>
+    <button class="ios-banner-close" onclick="closeBanner()">✕</button>
+  </div>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Programme personnalisé · Ornella Fit Coaching · 2026</div>
+  <h1>Programme<br><em>Glute Focus</em></h1>
+  <p class="cover-sub">Recomposition corporelle · Fessiers galbe bias · Silhouette athlétique. 3 séances salle — 4 semaines progressives.</p>
+  <div class="cover-pills">
+    <span class="pill">8 semaines</span>
+    <span class="pill">3 séances / semaine</span>
+    <span class="pill">Glute bias</span>
+    <span class="pill">Tempo + RIR</span>
+    <span class="pill">Timer intégré</span>
+    <span class="pill">Diastasis safe</span>
+  </div>
+</div>
+
+<!-- PROFIL -->
+<section id="profil" style="padding-top:32px;padding-bottom:0;border:none">
+  <div class="profil-card">
+    <div class="profil-item"><span class="profil-label">Âge</span><span class="profil-value">28 ans</span></div>
+    <div class="profil-item"><span class="profil-label">Morphologie</span><span class="profil-value">1m63 · 72 kg</span></div>
+    <div class="profil-item"><span class="profil-label">Niveau</span><span class="profil-value">Intermédiaire</span></div>
+    <div class="profil-item"><span class="profil-label">Fréquence</span><span class="profil-value">3 séances / semaine</span></div>
+    <div class="profil-item"><span class="profil-label">Lieu</span><span class="profil-value">Salle uniquement</span></div>
+    <div class="profil-item"><span class="profil-label">Cardio</span><span class="profil-value">Running · Hyrox prep</span></div>
+    <div class="profil-note">🎯 <strong>Objectif principal :</strong> développer les fessiers, ventre plus plat, silhouette athlétique. Éviter de surdévelopper les quadriceps — le programme est orienté <strong>glute bias</strong> à chaque séance. Exercices de gainage adaptés au léger diastasis.</div>
+  </div>
+</section>
+
+<!-- ÉCHAUFFEMENT -->
+<section id="warmup">
+  <div class="section-title">Échauffement</div>
+  <p class="section-sub">Toujours 8–10 min avant chaque séance. Active les fessiers et prépare les hanches avant de charger.</p>
+  <div class="legend-box">
+    <div class="legend-item">
+      <div class="legend-icon">1️⃣</div>
+      <div>
+        <div class="legend-title">Cardio machine — 5 à 8 min</div>
+        <div class="legend-text">Vélo, elliptique ou escalier — au choix selon ce qui est dispo. <strong>Résistance basse, rythme lent.</strong> Tu dois pouvoir parler sans être essoufflée. L'objectif : chauffer les articulations, pas faire du cardio. Si tu arrives fatiguée à tes séries, tu perds des gains.</div>
+      </div>
+    </div>
+    <div class="legend-divider"></div>
+    <div class="legend-item">
+      <div class="legend-icon">2️⃣</div>
+      <div>
+        <div class="legend-title">Abduction élastique — 2 × 20 reps</div>
+        <div class="legend-text">Élastique aux genoux, assise ou debout. Ouvre les genoux vers l'extérieur lentement. Réveille le moyen fessier — le muscle qui donne le galbe latéral de la hanche. Indispensable avant chaque séance lower.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMME -->
+<section id="programme">
+  <div class="section-title">Programme</div>
+  <p class="section-sub">Sélectionne ta semaine puis ta séance. Les charges et le RIR évoluent chaque semaine.</p>
+
+  <!-- WEEK TABS -->
+  <div class="week-tabs">
+    <button class="week-btn active" onclick="setWeek(1,this)">S1</button>
+    <button class="week-btn" onclick="setWeek(2,this)">S2</button>
+    <button class="week-btn" onclick="setWeek(3,this)">S3</button>
+    <button class="week-btn" onclick="setWeek(4,this)">S4</button>
+    <button class="week-btn" onclick="setWeek(5,this)">S5</button>
+    <button class="week-btn" onclick="setWeek(6,this)">S6</button>
+    <button class="week-btn" onclick="setWeek(7,this)">S7</button>
+    <button class="week-btn" onclick="setWeek(8,this)">S8</button>
+  </div>
+  <div id="week-phase-label" style="font-size:0.78rem;color:var(--gold);margin:-20px 0 20px;font-weight:600;">📍 Phase 1 — Découverte &amp; Technique</div>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <div class="progress-label"><span id="prog-label">Semaine 1 / 8</span><span id="prog-pct">12.5%</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:12.5%"></div></div>
+  </div>
+
+  <!-- LÉGENDE -->
+  <div class="legend-box">
+    <div class="legend-item">
+      <div class="legend-icon">⏱</div>
+      <div>
+        <div class="legend-title">Tempo — ex : <strong>2-1-2</strong></div>
+        <div class="legend-text">3 chiffres = 3 phases. <strong>2</strong> = descente lente (2 sec) · <strong>1</strong> = pause isométrique · <strong>2</strong> = remontée contrôlée. Plus c'est lent, plus les fessiers travaillent. Ne triche jamais sur le tempo.</div>
+      </div>
+    </div>
+    <div class="legend-divider"></div>
+    <div class="legend-item">
+      <div class="legend-icon">💪</div>
+      <div>
+        <div class="legend-title">RIR — Reps In Reserve</div>
+        <div class="legend-text">À la fin de ta série, combien de reps tu pourrais encore faire ? <strong>RIR 2</strong> = 2 reps en réserve. Trop facile (RIR 4+) → augmente la charge. Plus aucune réserve (RIR 0) → trop lourd.</div>
+      </div>
+    </div>
+    <div class="legend-divider"></div>
+    <div class="legend-item">
+      <div class="legend-icon">🌿</div>
+      <div>
+        <div class="legend-title">Diastasis — gainage adapté</div>
+        <div class="legend-text">Les exercices de gainage sont choisis pour <strong>activer le transverse</strong> sans pression intra-abdominale. Pas de crunch, pas de planche classique. Expire sur l'effort, inspire en relâchant.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEANCE TABS -->
+  <div class="seance-tabs">
+    <button class="seance-btn active" onclick="setSeance('A',this)">🍑 S1 — Glute Strength</button>
+    <button class="seance-btn" onclick="setSeance('B',this)">💪 S2 — Upper Body</button>
+    <button class="seance-btn" onclick="setSeance('C',this)">🔥 S3 — Glute Hypertrophy</button>
+  </div>
+
+  <!-- ══════════════════════════════════ -->
+  <!-- SÉANCE A — GLUTE STRENGTH -->
+  <!-- ══════════════════════════════════ -->
+  <div id="seance-A">
+
+    <p style="font-size:0.82rem;color:var(--gold);margin-bottom:20px;line-height:1.6;">🎯 <strong style="color:var(--nude)">Objectif séance :</strong> tension mécanique maximale sur les fessiers. Charges lourdes, tempo lent. C'est cette séance qui construit la base du galbe.</p>
+
+    <!-- SS1 : Hip Thrust + Abduction -->
+    <div class="ss-block">
+      <span class="ss-label">⚡ Superset 1</span>
+      <div class="ss-exercises">
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Hip Thrust machine</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-1-2</span>
+              <span class="badge badge-rir" id="rir-A-hipthrust">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-A-hipthrust">4 × 6 reps lourdes + 1 × 10 reps — <span id="w-A-hipthrust">35 kg / 30 kg back-off</span></div>
+          <p class="ex-tip">Pousse avec les talons, pas la pointe des pieds. En haut : contracte les fessiers au maximum et tiens 1 seconde. Le bas du dos ne doit pas s'arquer. Pense "écraser vers le haut" plutôt que "pousser".</p>
+          <p class="ex-sensation">✨ Tu dois sentir : brûlure profonde dans les fessiers, PAS dans les lombaires.</p>
+        </div>
+
+        <div class="ss-connector"><div class="ss-connector-line"></div><span class="ss-connector-text">enchaîner directement</span><div class="ss-connector-line"></div></div>
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Abduction machine</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-0-1</span>
+              <span class="badge badge-rir" id="rir-A-abduction">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-A-abduction">4 × 15 reps — <span id="w-A-abduction">50 kg</span></div>
+          <p class="ex-tip">Ouvre lentement avec contrôle. Visualise que c'est le milieu du fessier (moyen fessier) qui tire vers l'extérieur. Ne claque pas les plateaux. Dos bien ancré dans le siège.</p>
+          <p class="ex-sensation">✨ Tu dois sentir : tension sur le côté de la hanche et le moyen fessier.</p>
+        </div>
+
+      </div>
+      <div class="ss-rest">
+        <span class="ss-rest-label">⏱ Repos : <strong style="color:var(--nude)">2 – 2 min 30</strong> (série lourde)</span>
+        <div class="timer-btns">
+          <button class="t-btn" onclick="timerLaunch(120)">120s</button>
+          <button class="t-btn" onclick="timerLaunch(150)">150s</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRESSE GLUTE BIAS -->
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Presse glute bias</div>
+        <div class="badges">
+          <span class="badge badge-tempo">Tempo 3-1-2</span>
+          <span class="badge badge-rir" id="rir-A-presse">RIR 2</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-A-presse">4 × 10 reps — <span id="w-A-presse">100 kg</span></div>
+      <p class="ex-tip">Pieds hauts et larges sur la plateforme — c'est la clé du glute bias. Plus les pieds sont hauts, moins les quadriceps travaillent. Descends lentement jusqu'à 90° minimum. Pousse avec les talons.</p>
+      <p class="ex-sensation">✨ Tu dois sentir : stretch dans les fessiers en bas, poussée des fessiers en remontant.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">1 min 45</span> <button class="t-btn" onclick="timerLaunch(105)">Lancer</button></div>
+
+    <!-- LEG CURL -->
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Leg Curl couché</div>
+        <div class="badges">
+          <span class="badge badge-tempo">Tempo 2-1-2</span>
+          <span class="badge badge-rir" id="rir-A-legcurl">RIR 2</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-A-legcurl">3 × 12 reps — <span id="w-A-legcurl">20 kg</span></div>
+      <p class="ex-tip">Les ischio-jambiers stabilisent les genoux et renforcent la posture pelvienne — essentiel pour des fessiers qui se développent bien. Fléchis lentement, tiens 1 seconde en haut, contrôle la descente. Hanche plaquée au banc.</p>
+      <p class="ex-sensation">✨ Tu dois sentir : contraction derrière la cuisse, pas de crampes dans le mollet.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">1 min 30</span> <button class="t-btn" onclick="timerLaunch(90)">Lancer</button></div>
+
+    <!-- HYPEREXTENSIONS -->
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Hyperextensions fessiers</div>
+        <div class="badges">
+          <span class="badge badge-tempo">Tempo 2-1-2</span>
+          <span class="badge badge-rir" id="rir-A-hyper">RIR 2</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-A-hyper">3 × 15 reps — <span id="w-A-hyper">Poids corps / +5 kg</span></div>
+      <p class="ex-tip">Dos légèrement arrondi (pas tendu à bloc) pour cibler les fessiers plutôt que les lombaires. En haut : pousse les hanches vers l'avant et contracte les fessiers fort. Descends lentement sans déverrouiller.</p>
+      <p class="ex-sensation">✨ Tu dois sentir : grand fessier en pleine contraction en haut du mouvement.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">1 min 30</span> <button class="t-btn" onclick="timerLaunch(90)">Lancer</button></div>
+
+    <!-- GAINAGE TRANSVERSE -->
+    <div class="finisher-card">
+      <div class="finisher-title">🌿 Gainage transverse — Diastasis safe</div>
+      <div class="ex-card" style="margin-left:0;background:transparent;border:none;padding:0">
+        <div class="ex-header">
+          <div class="ex-name">Dead Bug + Vacuum</div>
+          <div class="badges"><span class="badge badge-diastasis">Diastasis ✓</span></div>
+        </div>
+        <div class="ex-sets">Dead bug : 3 × 8 / côté — Vacuum : 3 × 10 sec hold</div>
+        <p class="ex-tip">Dead bug : allongée sur le dos, expire et rentre le ventre avant de bouger. Pied et bras opposés s'allongent lentement. Lombaires collées au sol à tout moment. Vacuum : expire tout l'air, rentre le nombril vers la colonne, tiens 10 sec. Jamais d'apnée.</p>
+        <p class="ex-sensation">✨ Tu dois sentir : activation profonde sous le nombril, comme une ceinture intérieure qui se serre.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════ -->
+  <!-- SÉANCE B — UPPER BODY SHAPE -->
+  <!-- ══════════════════════════════════ -->
+  <div id="seance-B" style="display:none">
+
+    <p style="font-size:0.82rem;color:var(--gold);margin-bottom:20px;line-height:1.6;">🎯 <strong style="color:var(--nude)">Objectif séance :</strong> sculpter la silhouette du haut — dos, épaules, bras. Crée une taille visuellement plus fine et une posture plus droite. Tempo lent, connexion musculaire maximale.</p>
+
+    <!-- TIRAGE VERTICAL STANDALONE -->
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Tirage vertical poulie</div>
+        <div class="badges">
+          <span class="badge badge-tempo">Tempo 2-1-2</span>
+          <span class="badge badge-rir" id="rir-B-tiragev">RIR 2</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-B-tiragev">4 × 10 reps — <span id="w-B-tiragev">27,5 kg</span></div>
+      <p class="ex-tip">Prise légèrement plus large que les épaules. Tire vers la clavicule (pas la nuque). Imagine que tes coudes tirent vers le sol et vers l'arrière. Omoplate qui descend avant que le coude parte. Buste légèrement incliné en arrière.</p>
+      <p class="ex-sensation">✨ Tu dois sentir : grand dorsal en contraction, épaule stable — pas de tension dans le cou.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">1 min 30</span> <button class="t-btn" onclick="timerLaunch(90)">Lancer</button></div>
+
+    <!-- SS1 : ROWING + FACEPULL -->
+    <div class="ss-block">
+      <span class="ss-label">⚡ Superset 1</span>
+      <div class="ss-exercises">
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Rowing machine</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-1-2</span>
+              <span class="badge badge-rir" id="rir-B-rowing">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-B-rowing">4 × 10 reps — <span id="w-B-rowing">10 kg</span></div>
+          <p class="ex-tip">Poitrine contre l'appui, buste stable. Tire les coudes vers l'arrière en pinçant les omoplates. Contrôle la descente 2 secondes. Isole le dos — le corps ne bouge pas.</p>
+          <p class="ex-sensation">✨ Tu dois sentir : milieu du dos, rhomboïdes. Pas les biceps.</p>
+        </div>
+
+        <div class="ss-connector"><div class="ss-connector-line"></div><span class="ss-connector-text">enchaîner directement</span><div class="ss-connector-line"></div></div>
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Facepull</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-0-2</span>
+              <span class="badge badge-rir" id="rir-B-facepull">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-B-facepull">4 × 15 reps — <span id="w-B-facepull">10 kg</span></div>
+          <p class="ex-tip">Corde poulie haute à hauteur de front. Tire en ouvrant les coudes comme des ailes (coudes au-dessus des épaules). Excellent pour l'équilibre épaule et la posture. Lent et contrôlé — jamais de rebond.</p>
+          <p class="ex-sensation">✨ Tu dois sentir : arrière de l'épaule (deltoïde postérieur) et trapèzes moyens.</p>
+        </div>
+
+      </div>
+      <div class="ss-rest">
+        <span class="ss-rest-label">⏱ Repos : <strong style="color:var(--nude)">1 min – 1 min 30</strong></span>
+        <div class="timer-btns">
+          <button class="t-btn" onclick="timerLaunch(60)">60s</button>
+          <button class="t-btn" onclick="timerLaunch(90)">90s</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SS2 : DEV MILITAIRE + ELEV LAT -->
+    <div class="ss-block">
+      <span class="ss-label">⚡ Superset 2</span>
+      <div class="ss-exercises">
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Développé militaire machine</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-1-2</span>
+              <span class="badge badge-rir" id="rir-B-devmil">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-B-devmil">3 × 10 reps — <span id="w-B-devmil">10 kg</span></div>
+          <p class="ex-tip">Dos contre l'appui, core contracté. Pousse vers le haut sans verrouiller les coudes. La machine guide la trajectoire — concentre-toi sur la poussée de l'épaule, pas les bras. Idéal pour élargir les épaules et affiner visuellement la taille.</p>
+          <p class="ex-sensation">✨ Tu dois sentir : deltoïde antérieur et médian au sommet du mouvement.</p>
+        </div>
+
+        <div class="ss-connector"><div class="ss-connector-line"></div><span class="ss-connector-text">enchaîner directement</span><div class="ss-connector-line"></div></div>
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Élévations latérales haltères</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-0-3</span>
+              <span class="badge badge-rir" id="rir-B-elev">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-B-elev">3 × 15 reps — <span id="w-B-elev">4 kg</span></div>
+          <p class="ex-tip">Légère flexion du coude, pouce légèrement vers le bas (comme vider un verre). Monte jusqu'à l'horizontale. La descente est lente — 3 secondes — c'est elle qui sculpte. Ne monte pas au-dessus des épaules.</p>
+          <p class="ex-sensation">✨ Tu dois sentir : brûlure dans la partie médiane de l'épaule — c'est la « largeur » qui se construit.</p>
+        </div>
+
+      </div>
+      <div class="ss-rest">
+        <span class="ss-rest-label">⏱ Repos : <strong style="color:var(--nude)">1 min – 1 min 30</strong></span>
+        <div class="timer-btns">
+          <button class="t-btn" onclick="timerLaunch(60)">60s</button>
+          <button class="t-btn" onclick="timerLaunch(90)">90s</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CURL BICEPS -->
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Curl biceps</div>
+        <div class="badges">
+          <span class="badge badge-tempo">Tempo 2-1-2</span>
+          <span class="badge badge-rir" id="rir-B-curl">RIR 2</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-B-curl">3 × 12 reps — <span id="w-B-curl">10 kg</span></div>
+      <p class="ex-tip">Coudes fixes contre le corps. Monte en supinant (tourne la paume vers le plafond). Pause en haut 1 seconde, descend lentement. Ne balance pas le corps. Bras fléchis = tonus bras visible sous le t-shirt.</p>
+      <p class="ex-sensation">✨ Tu dois sentir : contraction pleine du biceps — du coude jusqu'à l'épaule.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">1 min</span> <button class="t-btn" onclick="timerLaunch(60)">Lancer</button></div>
+
+    <!-- EXTENSION TRICEPS -->
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Extension triceps poulie haute</div>
+        <div class="badges">
+          <span class="badge badge-tempo">Tempo 2-1-2</span>
+          <span class="badge badge-rir" id="rir-B-triceps">RIR 2</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-B-triceps">3 × 12 reps — <span id="w-B-triceps">7,5 kg</span></div>
+      <p class="ex-tip">Corde ou barre en V. Coudes fixés près du corps, seulement l'avant-bras bouge. Étire lentement en haut, pousse fort vers le bas. Triceps = 2/3 du volume du bras. Bras galbés et fermes.</p>
+      <p class="ex-sensation">✨ Tu dois sentir : contraction du triceps en fin d'extension, pas de tension dans le coude.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">1 min</span> <button class="t-btn" onclick="timerLaunch(60)">Lancer</button></div>
+
+    <!-- GAINAGE PROFOND -->
+    <div class="finisher-card">
+      <div class="finisher-title">🌿 Gainage profond — Diastasis safe</div>
+      <div class="ex-card" style="margin-left:0;background:transparent;border:none;padding:0">
+        <div class="ex-header">
+          <div class="ex-name">Bird Dog + Respiration 360°</div>
+          <div class="badges"><span class="badge badge-diastasis">Diastasis ✓</span></div>
+        </div>
+        <div class="ex-sets">Bird dog : 3 × 10 / côté — Respiration 360° : 3 × 5 respirations profondes</div>
+        <p class="ex-tip">Bird dog : 4 pattes, dos plat. Expire, bras et jambe opposés s'allongent lentement. Reviens sans toucher le sol. Respiration 360° : inspire en gonflant les côtés et le dos (pas le ventre), expire en rentrant le transverse. Réduit la pression abdominale et améliore le gainage global.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════ -->
+  <!-- SÉANCE C — GLUTE HYPERTROPHY -->
+  <!-- ══════════════════════════════════ -->
+  <div id="seance-C" style="display:none">
+
+    <p style="font-size:0.82rem;color:var(--gold);margin-bottom:20px;line-height:1.6;">🎯 <strong style="color:var(--nude)">Objectif séance :</strong> congestion maximale des fessiers — volume, galbe, brûlure. Charges plus légères, séries plus longues, connexion musculaire à fond. La séance où tu "sens" vraiment tes fessiers.</p>
+
+    <!-- FENTES MARCHÉES -->
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Fentes marchées haltères</div>
+        <div class="badges">
+          <span class="badge badge-tempo">Tempo 2-1-1</span>
+          <span class="badge badge-rir" id="rir-C-fentes">RIR 2</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-C-fentes">3 × 12 reps / jambe — <span id="w-C-fentes">20 kg (2 × 10)</span></div>
+      <p class="ex-tip">Grande enjambée pour cibler les fessiers (pas les quads). Genou avant ne dépasse pas le pied. Pousse avec le talon de la jambe avant. Buste droit, regard devant. Descends lentement — l'étirement en bas est précieux.</p>
+      <p class="ex-sensation">✨ Tu dois sentir : stretch profond dans le fessier de la jambe arrière, poussée du fessier avant.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">1 min 30</span> <button class="t-btn" onclick="timerLaunch(90)">Lancer</button></div>
+
+    <!-- SS1 : GOBLET SQUAT + HYPEREXTENSIONS -->
+    <div class="ss-block">
+      <span class="ss-label">⚡ Superset 1</span>
+      <div class="ss-exercises">
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Goblet squat glute bias</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 3-2-1</span>
+              <span class="badge badge-rir" id="rir-C-goblet">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-C-goblet">3 × 12 reps — <span id="w-C-goblet">16 kg kettlebell</span></div>
+          <p class="ex-tip">Pieds écartés, pointes ouvertes à 30-45°. Haltère ou kettlebell contre la poitrine. Descends profond — les fessiers touchent presque les mollets. Pause 2 secondes en bas pour activer les fessiers. Pousse avec les talons en montant, pas la pointe des pieds (évite les quads).</p>
+          <p class="ex-sensation">✨ Tu dois sentir : étirement profond dans les fessiers et l'intérieur des cuisses.</p>
+        </div>
+
+        <div class="ss-connector"><div class="ss-connector-line"></div><span class="ss-connector-text">enchaîner directement</span><div class="ss-connector-line"></div></div>
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Hyperextensions fessiers</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-1-2</span>
+              <span class="badge badge-rir" id="rir-C-hyper">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-C-hyper">3 × 15 reps — <span id="w-C-hyper">Poids corps / +5 kg</span></div>
+          <p class="ex-tip">Idem séance 1 — mais ici en superset pour créer de la congestion. Même technique : dos légèrement fléchi, contraction forte des fessiers en haut. La fatigue du goblet squat augmente le stimulus.</p>
+        </div>
+
+      </div>
+      <div class="ss-rest">
+        <span class="ss-rest-label">⏱ Repos : <strong style="color:var(--nude)">1 min 30 – 2 min</strong></span>
+        <div class="timer-btns">
+          <button class="t-btn" onclick="timerLaunch(90)">90s</button>
+          <button class="t-btn" onclick="timerLaunch(120)">120s</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SS2 : HIP THRUST VOLUME + ABDUCTION -->
+    <div class="ss-block">
+      <span class="ss-label">⚡ Superset 2</span>
+      <div class="ss-exercises">
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Hip Thrust machine — volume</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-0-1</span>
+              <span class="badge badge-rir" id="rir-C-hipthrust">RIR 2</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-C-hipthrust">3 × 12 reps — <span id="w-C-hipthrust">25 kg (léger · focus brûlure)</span></div>
+          <p class="ex-tip">Charge plus légère qu'en séance 1 — l'objectif est la congestion, pas la force. Reps continues sans relâcher les fessiers entre chaque. Reste dans la tension tout le long de la série. Tu dois brûler.</p>
+          <p class="ex-sensation">✨ Tu dois sentir : brûlure progressive — c'est bon signe. Ne relâche pas entre les reps.</p>
+        </div>
+
+        <div class="ss-connector"><div class="ss-connector-line"></div><span class="ss-connector-text">enchaîner directement</span><div class="ss-connector-line"></div></div>
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Abduction lourde machine</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-1-1</span>
+              <span class="badge badge-rir" id="rir-C-abduction">RIR 1</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-C-abduction">3 × 12 reps — <span id="w-C-abduction">55 kg</span></div>
+          <p class="ex-tip">Ici tu peux monter un peu la charge par rapport à la séance 1. Ouvre maximum, tiens 1 seconde en ouvert avant de contrôler le retour. Le moyen fessier est ce qui donne le galbe latéral de la hanche.</p>
+        </div>
+
+      </div>
+      <div class="ss-rest">
+        <span class="ss-rest-label">⏱ Repos : <strong style="color:var(--nude)">1 min 30 – 2 min</strong></span>
+        <div class="timer-btns">
+          <button class="t-btn" onclick="timerLaunch(90)">90s</button>
+          <button class="t-btn" onclick="timerLaunch(120)">120s</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- KICKBACK CABLE -->
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Kickback câble</div>
+        <div class="badges">
+          <span class="badge badge-tempo">Tempo 1-1-2</span>
+          <span class="badge badge-rir" id="rir-C-kickback">RIR 2</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-C-kickback">3 × 15 reps / jambe — <span id="w-C-kickback">10-15 kg poulie basse</span></div>
+      <p class="ex-tip">Chevilles à la poulie basse. Penche légèrement le buste en avant. Pousse la jambe vers l'arrière et vers le haut — pied fléchi. Contracte fort en haut. Le genou reste presque droit. Évite de trop ouvrir la hanche (sinon c'est le bas du dos qui travaille).</p>
+      <p class="ex-sensation">✨ Tu dois sentir : grand fessier uniquement — pas les lombaires, pas les ischio.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">1 min</span> <button class="t-btn" onclick="timerLaunch(60)">Lancer</button></div>
+
+    <!-- FINISHER : FROG PUMPS -->
+    <div class="finisher-card">
+      <div class="finisher-title">🔥 Finisher — Frog Pumps</div>
+      <div class="ex-card" style="margin-left:0;background:transparent;border:none;padding:0">
+        <div class="ex-header">
+          <div class="ex-name">Frog Pumps</div>
+          <div class="badges"><span class="badge badge-diastasis">Diastasis ✓</span></div>
+        </div>
+        <div class="ex-sets">3 × 20 reps · poids corps · sans repos entre les séries</div>
+        <p class="ex-tip">Allongée sur le dos, plantes des pieds l'une contre l'autre, genoux ouverts (position grenouille). Pousse les hanches vers le haut en contractant fort les fessiers. Descends sans toucher le sol. Reps lentes et continues. Tu dois être en feu à la série 3.</p>
+        <p class="ex-sensation">✨ C'est le finisher — ton fessier doit brûler. C'est normal, c'est voulu.</p>
+      </div>
+    </div>
+
+    <!-- VACUUM TRANSVERSE -->
+    <div class="finisher-card" style="margin-top:16px">
+      <div class="finisher-title">🌿 Vacuum / Transverse — Diastasis safe</div>
+      <div class="ex-card" style="margin-left:0;background:transparent;border:none;padding:0">
+        <div class="ex-header">
+          <div class="ex-name">Vacuum debout</div>
+          <div class="badges"><span class="badge badge-diastasis">Diastasis ✓</span></div>
+        </div>
+        <div class="ex-sets">3 × 5 cycles : expire tout → rentre → tiens 10 sec → inspire doucement</div>
+        <p class="ex-tip">Expire complètement, rentre le nombril vers la colonne vertébrale (pas juste serrer les abdos). Tiens 10 secondes sans bloquer la respiration. À faire debout ou à 4 pattes. Renforce le transverse — le muscle qui maintient le ventre plat.</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- GLOSSAIRE -->
+<section id="glossaire">
+  <div class="section-title">Glossaire</div>
+  <p class="section-sub">Les termes techniques du programme expliqués simplement. Ouvre chaque définition.</p>
+  <div class="glossary-list">
+
+    <details>
+      <summary>Hypertrophie</summary>
+      <div class="gloss-body">L'<strong>hypertrophie</strong> est l'augmentation du volume musculaire obtenue par l'entraînement. Les muscles se reconstruisent plus épais après avoir été sollicités. C'est le principe de base du programme : créer un signal de stress musculaire, récupérer, recommencer plus fort.</div>
+    </details>
+
+    <details>
+      <summary>RIR — Reps In Reserve</summary>
+      <div class="gloss-body"><strong>RIR = répétitions en réserve.</strong> À la fin de ta série, combien de reps tu pourrais encore faire proprement ? RIR 2 = tu pourrais en faire 2 de plus. Trop facile (RIR 4+) → augmente la charge. RIR 0 → tu es à l'échec complet. Ce programme travaille surtout à RIR 1-2 pour progresser sans se blesser.</div>
+    </details>
+
+    <details>
+      <summary>Tempo (ex : 2-1-2)</summary>
+      <div class="gloss-body">Le <strong>tempo</strong> dicte la vitesse de chaque phase du mouvement : <strong>descente – pause – montée</strong>. Exemple 2-1-2 : 2 sec pour descendre, 1 sec de pause, 2 sec pour remonter. Un tempo lent = plus de temps sous tension = plus de stimulus pour les fessiers. Ne triche jamais sur le tempo pour soulever plus lourd.</div>
+    </details>
+
+    <details>
+      <summary>Surcharge progressive</summary>
+      <div class="gloss-body">Principe fondamental : pour que le corps change, il faut lui demander <strong>un peu plus</strong> chaque semaine. Plus de charge, plus de reps, tempo plus lent ou moins de repos. Ce programme propose une progression semaine après semaine. Sans surcharge progressive → stagnation.</div>
+    </details>
+
+    <details>
+      <summary>Connexion musculaire</summary>
+      <div class="gloss-body">La capacité à <strong>sentir et contracter</strong> volontairement le muscle cible. Lors d'un hip thrust, penser activement à "contracter les fessiers" (et non les cuisses) améliore le recrutement musculaire. C'est une compétence qui se développe avec la pratique.</div>
+    </details>
+
+    <details>
+      <summary>Tension mécanique</summary>
+      <div class="gloss-body">La <strong>tension mécanique</strong> est la force exercée sur le muscle lors d'un mouvement résisté. C'est l'un des principaux mécanismes de l'hypertrophie. Elle est maximale quand le muscle est étiré ET sous charge (ex : bas du hip thrust, bas de la presse). D'où l'importance d'une amplitude complète.</div>
+    </details>
+
+    <details>
+      <summary>Superset</summary>
+      <div class="gloss-body">Un <strong>superset</strong> = enchaîner deux exercices sans repos. Ici, les supersets sont intelligents : ils ciblent des muscles complémentaires (ex : hip thrust + abduction) pour maximiser le volume de travail tout en gardant la séance dans le temps imparti.</div>
+    </details>
+
+    <details>
+      <summary>Transverse</summary>
+      <div class="gloss-body">Le <strong>muscle transverse</strong> est la couche profonde des abdominaux — la "ceinture naturelle" du corps. Il maintient le ventre plat, stabilise le bassin et protège le dos. Les exercices de ce programme (vacuum, dead bug, bird dog) le ciblent spécifiquement et sont adaptés au diastasis.</div>
+    </details>
+
+    <details>
+      <summary>Temps sous tension (TUT)</summary>
+      <div class="gloss-body">Le <strong>temps sous tension</strong> est la durée totale pendant laquelle le muscle travaille lors d'une série. Un tempo lent (2-1-2 sur 10 reps = 50 secondes de TUT) crée plus de stimulus que des reps rapides avec la même charge. C'est pourquoi la qualité prime toujours sur la charge.</div>
+    </details>
+
+    <details>
+      <summary>Glute bias</summary>
+      <div class="gloss-body">Un exercice est dit <strong>glute bias</strong> quand il est exécuté de façon à maximiser l'activation des fessiers et minimiser celle des quadriceps. Exemples : pieds hauts et larges à la presse, grande enjambée aux fentes, pause en bas du goblet squat. Idéal quand on veut développer les fessiers sans épaissir les cuisses.</div>
+    </details>
+
+    <details>
+      <summary>Diastasis — gainage adapté</summary>
+      <div class="gloss-body">Le <strong>diastasis</strong> est un écartement de la ligne blanche abdominale, fréquent après l'accouchement. Certains exercices sont contre-indiqués (crunchs, planches classiques, relevés de jambes). Ce programme utilise uniquement des exercices <strong>diastasis safe</strong> : vacuum, dead bug, bird dog, respiration 360° — qui activent le transverse sans créer de pression intra-abdominale.</div>
+    </details>
+
+  </div>
+</section>
+
+<!-- TIMER WIDGET -->
+<button id="timer-open-btn" onclick="openTimer()" title="Ouvrir le timer">⏱</button>
+<div id="timer-widget">
+  <div class="timer-top">
+    <span class="timer-title">Chrono repos</span>
+    <button id="timer-close" onclick="closeTimer()">✕</button>
+  </div>
+  <div id="timer-display">01:30</div>
+  <div class="timer-presets">
+    <button class="preset-btn" onclick="setPreset(60)">60s</button>
+    <button class="preset-btn active-preset" onclick="setPreset(90)">90s</button>
+    <button class="preset-btn" onclick="setPreset(120)">120s</button>
+    <button class="preset-btn" onclick="setPreset(150)">150s</button>
+  </div>
+  <div class="timer-controls">
+    <button class="ctrl-btn" id="btn-start" onclick="toggleTimer()">▶ Start</button>
+    <button class="ctrl-btn" id="btn-reset" onclick="resetTimer()">↺ Reset</button>
+  </div>
+</div>
+
+<script>
+/* ===== DATA PROGRESSION 8 SEMAINES ===== */
+const PHASES = {
+  1:'📍 Phase 1 — Découverte &amp; Technique',
+  2:'📍 Phase 1 — Découverte &amp; Technique',
+  3:'🔥 Phase 2 — Progression des charges',
+  4:'🔥 Phase 2 — Progression des charges',
+  5:'⚡ Phase 3 — Intensification',
+  6:'⚡ Phase 3 — Intensification',
+  7:'🏆 Phase 4 — Peak &amp; Performance',
+  8:'🏆 Phase 4 — Peak &amp; Performance',
+};
+const DATA = {
+  1: {
+    label:'Semaine 1 / 8', pct:'12.5%',
+    A:{
+      hipthrust:{sets:'4 × 6 reps lourdes + 1 × 10 reps',ref:'35 kg / 30 kg back-off',rir:'RIR 2'},
+      abduction:{sets:'4 × 15 reps',ref:'50 kg',rir:'RIR 2'},
+      presse:{sets:'4 × 10 reps',ref:'100 kg',rir:'RIR 2'},
+      legcurl:{sets:'3 × 12 reps',ref:'20 kg',rir:'RIR 2'},
+      hyper:{sets:'3 × 15 reps',ref:'Poids corps',rir:'RIR 2'},
+    },
+    B:{
+      tiragev:{sets:'4 × 10 reps',ref:'27,5 kg',rir:'RIR 2'},
+      rowing:{sets:'4 × 10 reps',ref:'10 kg',rir:'RIR 2'},
+      facepull:{sets:'4 × 15 reps',ref:'10 kg',rir:'RIR 2'},
+      devmil:{sets:'3 × 10 reps',ref:'10 kg',rir:'RIR 2'},
+      elev:{sets:'3 × 15 reps',ref:'4 kg',rir:'RIR 2'},
+      curl:{sets:'3 × 12 reps',ref:'10 kg',rir:'RIR 2'},
+      triceps:{sets:'3 × 12 reps',ref:'7,5 kg',rir:'RIR 2'},
+    },
+    C:{
+      fentes:{sets:'3 × 12 reps / jambe',ref:'20 kg (2 × 10)',rir:'RIR 2'},
+      goblet:{sets:'3 × 12 reps',ref:'16 kg kettlebell',rir:'RIR 2'},
+      hyper:{sets:'3 × 15 reps',ref:'Poids corps',rir:'RIR 2'},
+      hipthrust:{sets:'3 × 12 reps',ref:'25 kg (léger · focus brûlure)',rir:'RIR 2'},
+      abduction:{sets:'3 × 12 reps',ref:'55 kg',rir:'RIR 1'},
+      kickback:{sets:'3 × 15 reps / jambe',ref:'10 kg poulie basse',rir:'RIR 2'},
+    }
+  },
+  2: {
+    label:'Semaine 2 / 8', pct:'25%',
+    A:{
+      hipthrust:{sets:'4 × 6 reps + 1 × 10 reps',ref:'35 kg / 30 kg back-off',rir:'RIR 2'},
+      abduction:{sets:'4 × 15 reps',ref:'52,5 kg',rir:'RIR 2'},
+      presse:{sets:'4 × 10 reps',ref:'102,5 kg',rir:'RIR 2'},
+      legcurl:{sets:'3 × 12 reps',ref:'20 kg',rir:'RIR 2'},
+      hyper:{sets:'3 × 15 reps',ref:'Poids corps',rir:'RIR 2'},
+    },
+    B:{
+      tiragev:{sets:'4 × 10 reps',ref:'27,5 kg',rir:'RIR 2'},
+      rowing:{sets:'4 × 10 reps',ref:'10 kg',rir:'RIR 2'},
+      facepull:{sets:'4 × 15 reps',ref:'10 kg',rir:'RIR 2'},
+      devmil:{sets:'3 × 10 reps',ref:'10 kg',rir:'RIR 2'},
+      elev:{sets:'3 × 15 reps',ref:'4 kg',rir:'RIR 2'},
+      curl:{sets:'3 × 12 reps',ref:'10 kg',rir:'RIR 2'},
+      triceps:{sets:'3 × 12 reps',ref:'7,5 kg',rir:'RIR 2'},
+    },
+    C:{
+      fentes:{sets:'3 × 12 reps / jambe',ref:'20 kg (2 × 10)',rir:'RIR 2'},
+      goblet:{sets:'3 × 12 reps',ref:'16 kg',rir:'RIR 2'},
+      hyper:{sets:'3 × 15 reps',ref:'Poids corps',rir:'RIR 2'},
+      hipthrust:{sets:'3 × 12 reps',ref:'25 kg',rir:'RIR 2'},
+      abduction:{sets:'3 × 12 reps',ref:'55 kg',rir:'RIR 2'},
+      kickback:{sets:'3 × 15 reps / jambe',ref:'10 kg',rir:'RIR 2'},
+    }
+  },
+  3: {
+    label:'Semaine 3 / 8', pct:'37.5%',
+    A:{
+      hipthrust:{sets:'4 × 6 reps + 1 × 10 reps',ref:'37,5 kg / 32 kg back-off',rir:'RIR 1-2'},
+      abduction:{sets:'4 × 15 reps',ref:'55 kg',rir:'RIR 1-2'},
+      presse:{sets:'4 × 10 reps',ref:'105 kg',rir:'RIR 1-2'},
+      legcurl:{sets:'3 × 12 reps',ref:'22,5 kg',rir:'RIR 1-2'},
+      hyper:{sets:'3 × 15 reps',ref:'+5 kg',rir:'RIR 1-2'},
+    },
+    B:{
+      tiragev:{sets:'4 × 10 reps',ref:'30 kg',rir:'RIR 1-2'},
+      rowing:{sets:'4 × 10 reps',ref:'12,5 kg',rir:'RIR 1-2'},
+      facepull:{sets:'4 × 15 reps',ref:'12 kg',rir:'RIR 1-2'},
+      devmil:{sets:'3 × 10 reps',ref:'12 kg',rir:'RIR 1-2'},
+      elev:{sets:'3 × 15 reps',ref:'5 kg',rir:'RIR 1-2'},
+      curl:{sets:'3 × 12 reps',ref:'10 kg',rir:'RIR 1-2'},
+      triceps:{sets:'3 × 12 reps',ref:'10 kg',rir:'RIR 1-2'},
+    },
+    C:{
+      fentes:{sets:'3 × 12 reps / jambe',ref:'22 kg (2 × 11)',rir:'RIR 1-2'},
+      goblet:{sets:'3 × 12 reps',ref:'18 kg',rir:'RIR 1-2'},
+      hyper:{sets:'3 × 15 reps',ref:'+5 kg',rir:'RIR 1-2'},
+      hipthrust:{sets:'3 × 12 reps',ref:'27,5 kg',rir:'RIR 1-2'},
+      abduction:{sets:'3 × 12 reps',ref:'57,5 kg',rir:'RIR 1-2'},
+      kickback:{sets:'3 × 15 reps / jambe',ref:'12 kg',rir:'RIR 1-2'},
+    }
+  },
+  4: {
+    label:'Semaine 4 / 8', pct:'50%',
+    A:{
+      hipthrust:{sets:'4 × 6 reps + 1 × 10 reps',ref:'37,5 kg / 32 kg back-off',rir:'RIR 1-2'},
+      abduction:{sets:'4 × 15 reps',ref:'57,5 kg',rir:'RIR 1-2'},
+      presse:{sets:'4 × 10 reps',ref:'107,5 kg',rir:'RIR 1-2'},
+      legcurl:{sets:'3 × 12 reps',ref:'22,5 kg',rir:'RIR 1-2'},
+      hyper:{sets:'3 × 15 reps',ref:'+5 kg',rir:'RIR 1-2'},
+    },
+    B:{
+      tiragev:{sets:'4 × 10 reps',ref:'30 kg',rir:'RIR 1-2'},
+      rowing:{sets:'4 × 10 reps',ref:'12,5 kg',rir:'RIR 1-2'},
+      facepull:{sets:'4 × 15 reps',ref:'12 kg',rir:'RIR 1-2'},
+      devmil:{sets:'3 × 10 reps',ref:'12 kg',rir:'RIR 1-2'},
+      elev:{sets:'3 × 15 reps',ref:'5 kg',rir:'RIR 1-2'},
+      curl:{sets:'3 × 12 reps',ref:'12 kg',rir:'RIR 1-2'},
+      triceps:{sets:'3 × 12 reps',ref:'10 kg',rir:'RIR 1-2'},
+    },
+    C:{
+      fentes:{sets:'3 × 12 reps / jambe',ref:'22 kg',rir:'RIR 1-2'},
+      goblet:{sets:'3 × 12 reps',ref:'18 kg',rir:'RIR 1-2'},
+      hyper:{sets:'3 × 15 reps',ref:'+5 kg',rir:'RIR 1-2'},
+      hipthrust:{sets:'3 × 12 reps',ref:'27,5 kg (consolide)',rir:'RIR 1-2'},
+      abduction:{sets:'3 × 15 reps',ref:'57,5 kg',rir:'RIR 1-2'},
+      kickback:{sets:'3 × 15 reps / jambe',ref:'12 kg',rir:'RIR 1-2'},
+    }
+  },
+  5: {
+    label:'Semaine 5 / 8', pct:'62.5%',
+    A:{
+      hipthrust:{sets:'4 × 6 reps + 1 × 8 reps',ref:'40 kg / 35 kg back-off',rir:'RIR 1'},
+      abduction:{sets:'4 × 12 reps',ref:'60 kg',rir:'RIR 1'},
+      presse:{sets:'4 × 8 reps',ref:'110 kg',rir:'RIR 1'},
+      legcurl:{sets:'3 × 10 reps',ref:'25 kg',rir:'RIR 1'},
+      hyper:{sets:'3 × 12 reps',ref:'+7,5 kg',rir:'RIR 1'},
+    },
+    B:{
+      tiragev:{sets:'4 × 8 reps',ref:'32,5 kg',rir:'RIR 1'},
+      rowing:{sets:'4 × 8 reps',ref:'15 kg',rir:'RIR 1'},
+      facepull:{sets:'4 × 12 reps',ref:'14 kg',rir:'RIR 1'},
+      devmil:{sets:'3 × 8 reps',ref:'12 kg',rir:'RIR 1'},
+      elev:{sets:'3 × 12 reps',ref:'6 kg',rir:'RIR 1'},
+      curl:{sets:'3 × 10 reps',ref:'12 kg',rir:'RIR 1'},
+      triceps:{sets:'3 × 10 reps',ref:'10 kg',rir:'RIR 1'},
+    },
+    C:{
+      fentes:{sets:'3 × 10 reps / jambe',ref:'24 kg (2 × 12)',rir:'RIR 1'},
+      goblet:{sets:'3 × 10 reps',ref:'20 kg',rir:'RIR 1'},
+      hyper:{sets:'3 × 12 reps',ref:'+7,5 kg',rir:'RIR 1'},
+      hipthrust:{sets:'3 × 15 reps',ref:'30 kg',rir:'RIR 1'},
+      abduction:{sets:'3 × 12 reps',ref:'62,5 kg',rir:'RIR 1'},
+      kickback:{sets:'3 × 12 reps / jambe',ref:'15 kg',rir:'RIR 1'},
+    }
+  },
+  6: {
+    label:'Semaine 6 / 8', pct:'75%',
+    A:{
+      hipthrust:{sets:'4 × 6 reps + 1 × 8 reps',ref:'42,5 kg / 37 kg back-off',rir:'RIR 1'},
+      abduction:{sets:'4 × 12 reps',ref:'62,5 kg',rir:'RIR 1'},
+      presse:{sets:'4 × 8 reps',ref:'112,5 kg',rir:'RIR 1'},
+      legcurl:{sets:'3 × 10 reps',ref:'27,5 kg',rir:'RIR 1'},
+      hyper:{sets:'3 × 12 reps',ref:'+10 kg',rir:'RIR 1'},
+    },
+    B:{
+      tiragev:{sets:'4 × 8 reps',ref:'35 kg',rir:'RIR 1'},
+      rowing:{sets:'4 × 8 reps',ref:'15 kg',rir:'RIR 1'},
+      facepull:{sets:'4 × 12 reps',ref:'14 kg',rir:'RIR 1'},
+      devmil:{sets:'3 × 8 reps',ref:'14 kg',rir:'RIR 1'},
+      elev:{sets:'3 × 12 reps',ref:'6 kg',rir:'RIR 1'},
+      curl:{sets:'3 × 10 reps',ref:'12 kg',rir:'RIR 1'},
+      triceps:{sets:'3 × 10 reps',ref:'12 kg',rir:'RIR 1'},
+    },
+    C:{
+      fentes:{sets:'3 × 10 reps / jambe',ref:'24 kg',rir:'RIR 1'},
+      goblet:{sets:'3 × 10 reps',ref:'20 kg',rir:'RIR 1'},
+      hyper:{sets:'3 × 12 reps',ref:'+10 kg',rir:'RIR 1'},
+      hipthrust:{sets:'3 × 15 reps',ref:'30 kg (consolide)',rir:'RIR 1-2'},
+      abduction:{sets:'3 × 15 reps',ref:'62,5 kg',rir:'RIR 1'},
+      kickback:{sets:'3 × 12 reps / jambe',ref:'15 kg',rir:'RIR 1'},
+    }
+  },
+  7: {
+    label:'Semaine 7 / 8', pct:'87.5%',
+    A:{
+      hipthrust:{sets:'4 × 5 reps + 1 × 8 reps',ref:'45 kg / 38 kg back-off',rir:'RIR 1'},
+      abduction:{sets:'4 × 12 reps',ref:'65 kg',rir:'RIR 1'},
+      presse:{sets:'4 × 6 reps',ref:'115 kg',rir:'RIR 1'},
+      legcurl:{sets:'3 × 8 reps',ref:'30 kg',rir:'RIR 1'},
+      hyper:{sets:'3 × 10 reps',ref:'+12 kg',rir:'RIR 1'},
+    },
+    B:{
+      tiragev:{sets:'4 × 8 reps',ref:'37,5 kg',rir:'RIR 1'},
+      rowing:{sets:'4 × 8 reps',ref:'17,5 kg',rir:'RIR 1'},
+      facepull:{sets:'4 × 12 reps',ref:'16 kg',rir:'RIR 1'},
+      devmil:{sets:'3 × 8 reps',ref:'14 kg',rir:'RIR 1'},
+      elev:{sets:'3 × 12 reps',ref:'7 kg',rir:'RIR 1'},
+      curl:{sets:'3 × 8 reps',ref:'14 kg',rir:'RIR 1'},
+      triceps:{sets:'3 × 8 reps',ref:'12 kg',rir:'RIR 1'},
+    },
+    C:{
+      fentes:{sets:'3 × 8 reps / jambe',ref:'26 kg (2 × 13)',rir:'RIR 1'},
+      goblet:{sets:'3 × 8 reps',ref:'22 kg',rir:'RIR 1'},
+      hyper:{sets:'3 × 10 reps',ref:'+12 kg',rir:'RIR 1'},
+      hipthrust:{sets:'3 × 12 reps',ref:'35 kg',rir:'RIR 1'},
+      abduction:{sets:'3 × 12 reps',ref:'65 kg',rir:'RIR 1'},
+      kickback:{sets:'3 × 10 reps / jambe',ref:'17,5 kg',rir:'RIR 1'},
+    }
+  },
+  8: {
+    label:'Semaine 8 / 8', pct:'100%',
+    A:{
+      hipthrust:{sets:'4 × 8 reps + 1 × 10 reps',ref:'45 kg ✓ / 38 kg back-off',rir:'RIR 1-2'},
+      abduction:{sets:'4 × 15 reps',ref:'65 kg ✓',rir:'RIR 1-2'},
+      presse:{sets:'4 × 10 reps',ref:'115 kg ✓',rir:'RIR 1-2'},
+      legcurl:{sets:'3 × 12 reps',ref:'30 kg ✓',rir:'RIR 1-2'},
+      hyper:{sets:'3 × 15 reps',ref:'+12 kg ✓',rir:'RIR 1-2'},
+    },
+    B:{
+      tiragev:{sets:'4 × 10 reps',ref:'37,5 kg ✓',rir:'RIR 1-2'},
+      rowing:{sets:'4 × 10 reps',ref:'17,5 kg ✓',rir:'RIR 1-2'},
+      facepull:{sets:'4 × 15 reps',ref:'16 kg ✓',rir:'RIR 1-2'},
+      devmil:{sets:'3 × 10 reps',ref:'14 kg ✓',rir:'RIR 1-2'},
+      elev:{sets:'3 × 15 reps',ref:'7 kg ✓',rir:'RIR 1-2'},
+      curl:{sets:'3 × 12 reps',ref:'14 kg ✓',rir:'RIR 1-2'},
+      triceps:{sets:'3 × 12 reps',ref:'12 kg ✓',rir:'RIR 1-2'},
+    },
+    C:{
+      fentes:{sets:'3 × 12 reps / jambe',ref:'26 kg ✓',rir:'RIR 1-2'},
+      goblet:{sets:'3 × 12 reps',ref:'22 kg ✓',rir:'RIR 1-2'},
+      hyper:{sets:'3 × 15 reps',ref:'+12 kg ✓',rir:'RIR 1-2'},
+      hipthrust:{sets:'3 × 15 reps',ref:'35 kg ✓ (consolide)',rir:'RIR 1-2'},
+      abduction:{sets:'3 × 15 reps',ref:'65 kg ✓',rir:'RIR 1-2'},
+      kickback:{sets:'3 × 15 reps / jambe',ref:'17,5 kg ✓',rir:'RIR 1-2'},
+    }
+  }
+};
+
+let currentWeek = 1;
+let currentSeance = 'A';
+
+function setWeek(w, btn) {
+  currentWeek = w;
+  document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('prog-label').textContent = DATA[w].label;
+  document.getElementById('prog-pct').textContent = DATA[w].pct;
+  document.getElementById('prog-fill').style.width = DATA[w].pct;
+  document.getElementById('week-phase-label').innerHTML = PHASES[w];
+  renderSeance(currentSeance);
+}
+
+function setSeance(s, btn) {
+  currentSeance = s;
+  document.querySelectorAll('.seance-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  ['A','B','C'].forEach(x => {
+    document.getElementById('seance-' + x).style.display = (x === s) ? 'block' : 'none';
+  });
+  renderSeance(s);
+}
+
+function renderSeance(s) {
+  const d = DATA[currentWeek][s];
+  if (!d) return;
+  Object.keys(d).forEach(key => {
+    const setsEl = document.getElementById('sets-' + s + '-' + key);
+    const wEl = document.getElementById('w-' + s + '-' + key);
+    const rirEl = document.getElementById('rir-' + s + '-' + key);
+    if (setsEl) setsEl.innerHTML = d[key].sets + (wEl ? '' : ' — ' + d[key].ref);
+    if (wEl) wEl.textContent = d[key].ref;
+    if (rirEl) rirEl.textContent = d[key].rir;
+  });
+}
+
+/* ===== TIMER ===== */
+let timerInterval = null;
+let timerSeconds = 90;
+let timerRunning = false;
+
+function fmt(s) {
+  const m = Math.floor(s / 60);
+  return (m > 0 ? m + ':' : '') + (m > 0 ? String(s % 60).padStart(2, '0') : s % 60 + 's');
+}
+
+function updateDisplay() {
+  const m = Math.floor(timerSeconds / 60);
+  const s = timerSeconds % 60;
+  document.getElementById('timer-display').textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+}
+
+function setPreset(s) {
+  timerSeconds = s;
+  if (timerRunning) { clearInterval(timerInterval); timerRunning = false; document.getElementById('btn-start').textContent = '▶ Start'; }
+  updateDisplay();
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active-preset'));
+  event.target.classList.add('active-preset');
+}
+
+function timerLaunch(s) {
+  timerSeconds = s;
+  if (timerRunning) { clearInterval(timerInterval); timerRunning = false; }
+  openTimer();
+  updateDisplay();
+  clearInterval(timerInterval);
+  timerRunning = true;
+  document.getElementById('btn-start').textContent = '⏸ Pause';
+  timerInterval = setInterval(() => {
+    if (timerSeconds > 0) { timerSeconds--; updateDisplay(); }
+    else {
+      clearInterval(timerInterval); timerRunning = false;
+      document.getElementById('btn-start').textContent = '▶ Start';
+      document.getElementById('timer-display').textContent = '✓ GO';
+    }
+  }, 1000);
+}
+
+function toggleTimer() {
+  if (timerRunning) {
+    clearInterval(timerInterval); timerRunning = false;
+    document.getElementById('btn-start').textContent = '▶ Start';
+  } else {
+    timerRunning = true;
+    document.getElementById('btn-start').textContent = '⏸ Pause';
+    timerInterval = setInterval(() => {
+      if (timerSeconds > 0) { timerSeconds--; updateDisplay(); }
+      else {
+        clearInterval(timerInterval); timerRunning = false;
+        document.getElementById('btn-start').textContent = '▶ Start';
+        document.getElementById('timer-display').textContent = '✓ GO';
+      }
+    }, 1000);
+  }
+}
+
+function resetTimer() {
+  clearInterval(timerInterval); timerRunning = false;
+  timerSeconds = 90; updateDisplay();
+  document.getElementById('btn-start').textContent = '▶ Start';
+}
+
+function openTimer() {
+  document.getElementById('timer-widget').classList.add('visible');
+  document.getElementById('timer-open-btn').classList.add('hidden');
+  updateDisplay();
+}
+
+function closeTimer() {
+  document.getElementById('timer-widget').classList.remove('visible');
+  document.getElementById('timer-open-btn').classList.remove('hidden');
+}
+
+/* ===== IOS BANNER ===== */
+function closeBanner() { document.getElementById('ios-banner').style.display = 'none'; }
+if (/iphone|ipad/i.test(navigator.userAgent) && !navigator.standalone) {
+  document.getElementById('ios-banner').style.display = 'block';
+}
+
+/* Init */
+renderSeance('A');
+</script>
+</body>
+</html>
