@@ -7,147 +7,205 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<!-- Meta Pixel -->
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','26675222578828123');fbq('track','PageView');</script>
-<!-- GTM -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M7C2RGHG');</script>
 <style>
 :root{
-  --cream:#F7F3F0;
-  --accent:#C96358;
-  --dark:#1E1616;
-  --brown:#9A8080;
-  --sand:#DEC8C0;
-  --rose-deep:#D8A7A0;
-  --text:#1E1616;
-  --text-mid:#5A4A4A;
-  --muted:#9A8080;
-  --border:#E8E0DB;
-  --white:#FFFFFF;
-  --bg:#F9F7F5;
+  --cream:#F7F3F0;--accent:#C96358;--dark:#1E1616;--brown:#9A8080;
+  --sand:#DEC8C0;--rose-deep:#D8A7A0;--text:#1E1616;--text-mid:#5A4A4A;
+  --muted:#9A8080;--border:#E8E0DB;--white:#fff;--bg:#F9F7F5;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,22,22,.92);backdrop-filter:blur(12px);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,22,22,.93);backdrop-filter:blur(12px);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
 .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;text-decoration:none;letter-spacing:.08em}
-.nav-links{display:flex;gap:24px;list-style:none}
-.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.82rem;font-weight:500;letter-spacing:.06em;transition:color .2s}
-.nav-links a:hover{color:#fff}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.65);text-decoration:none;font-size:.82rem;font-weight:500;letter-spacing:.06em;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
 .nav-cta{background:var(--accent);color:#fff!important;padding:7px 16px;border-radius:20px}
 
 /* COVER */
-.cover{min-height:100svh;background:linear-gradient(160deg,#1E1616 0%,#2D1F1F 50%,#3A2020 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;position:relative;overflow:hidden}
-.cover::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 60%,rgba(201,99,88,.18) 0%,transparent 70%)}
-.cover-badge{display:inline-block;border:1px solid rgba(201,99,88,.5);color:rgba(201,99,88,.9);font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:6px 18px;border-radius:20px;margin-bottom:40px}
-.cover-title{font-family:'Cormorant Garamond',serif;font-size:clamp(5rem,18vw,11rem);font-weight:300;color:#fff;line-height:.88;letter-spacing:.04em}
-.cover-title span{display:block;font-style:italic;color:var(--rose-deep);font-size:clamp(3rem,10vw,6.5rem);letter-spacing:.06em;margin-top:8px}
-.cover-sub{margin-top:36px;font-size:.9rem;color:rgba(255,255,255,.55);letter-spacing:.08em;text-transform:uppercase;font-weight:500}
-.cover-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:28px}
-.cover-pill{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.65);font-size:.72rem;padding:6px 16px;border-radius:20px;font-weight:500;letter-spacing:.06em}
+.cover{min-height:100svh;background:#1A1010;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:80px 60px 60px;position:relative;overflow:hidden;gap:32px}
+.cover::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,16,16,.85) 40%,rgba(26,16,16,.2) 100%);pointer-events:none}
+.cover-photo{position:absolute;right:0;top:0;bottom:0;width:55%;object-fit:cover;object-position:top center}
+.cover-content{position:relative;z-index:2}
+.cover-badge{display:inline-block;border:1px solid rgba(201,99,88,.5);color:rgba(201,99,88,.9);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:6px 18px;border-radius:20px;margin-bottom:32px}
+.cover-eyebrow{font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:16px}
+.cover-title{font-family:'Cormorant Garamond',serif;font-size:clamp(5rem,12vw,9rem);font-weight:300;color:#fff;line-height:.85;letter-spacing:.04em}
+.cover-title em{display:block;font-style:italic;color:var(--rose-deep);font-size:clamp(3rem,7vw,5.5rem);letter-spacing:.08em;margin-top:12px}
+.cover-sub{margin-top:28px;font-size:.82rem;color:rgba(255,255,255,.45);letter-spacing:.08em;font-weight:500;line-height:1.7}
+.cover-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.cover-pill{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);color:rgba(255,255,255,.6);font-size:.68rem;padding:5px 14px;border-radius:20px;font-weight:500;letter-spacing:.04em}
 .cover-pill.hot{background:rgba(201,99,88,.15);border-color:rgba(201,99,88,.3);color:rgba(201,99,88,.9)}
-.cover-arrow{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.3);font-size:1.4rem;animation:bounce 2s infinite}
-@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+.cover-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.3);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
+.cover-scroll::after{content:'';width:1px;height:40px;background:rgba(255,255,255,.2);animation:scrolldown 1.8s infinite}
+@keyframes scrolldown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
-/* SECTIONS */
-.section{padding:64px 24px;max-width:820px;margin:0 auto}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:400;color:var(--dark);margin-bottom:8px}
-.section-subtitle{font-size:.85rem;color:var(--muted);margin-bottom:36px;font-weight:500;letter-spacing:.05em}
-hr.sep{border:none;border-top:1px solid var(--border);margin:48px 0}
+/* WELCOME */
+.welcome{display:grid;grid-template-columns:1fr 1.4fr;min-height:500px;background:var(--dark)}
+.welcome-photo{position:relative;overflow:hidden}
+.welcome-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.welcome-photo::after{content:'';position:absolute;right:0;top:0;bottom:0;width:60px;background:linear-gradient(90deg,transparent,var(--dark))}
+.welcome-text{padding:64px 48px 64px 32px;display:flex;flex-direction:column;justify-content:center}
+.welcome-tag{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.welcome-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:300;color:#fff;line-height:1.1;margin-bottom:24px}
+.welcome-title em{font-style:italic;color:var(--rose-deep)}
+.welcome-body{color:rgba(255,255,255,.6);font-size:.88rem;line-height:1.85}
+.welcome-body p+p{margin-top:14px}
+.welcome-sig{margin-top:28px;font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic;color:var(--rose-deep)}
+
+/* ABOUT */
+.about{background:var(--cream);padding:72px 24px}
+.about-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:center}
+.about-circle{width:200px;height:200px;border-radius:50%;overflow:hidden;border:4px solid var(--sand);flex-shrink:0}
+.about-circle img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.about-tag{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.about-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:400;color:var(--dark);margin-bottom:16px}
+.about-body{font-size:.86rem;color:var(--text-mid);line-height:1.8}
+.about-body p+p{margin-top:12px}
+.about-cred{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.cred-tag{background:var(--dark);color:rgba(255,255,255,.8);font-size:.68rem;font-weight:600;padding:5px 14px;border-radius:20px;letter-spacing:.05em}
 
 /* SOMMAIRE */
-.sommaire{background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:32px;margin-bottom:0}
-.sommaire h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--dark);margin-bottom:20px}
+.section{padding:64px 24px;max-width:840px;margin:0 auto}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,4vw,2.4rem);font-weight:400;color:var(--dark);margin-bottom:6px}
+.section-sub{font-size:.82rem;color:var(--muted);margin-bottom:32px;font-weight:500;letter-spacing:.04em}
+.sommaire{background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:32px}
+.sommaire h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--dark);margin-bottom:20px}
 .som-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .som-link{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;text-decoration:none;color:var(--text);font-size:.82rem;font-weight:500;transition:background .2s;border:1px solid transparent}
 .som-link:hover{background:var(--cream);border-color:var(--border)}
-.som-link .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
-.som-link .phase-tag{font-size:.68rem;color:var(--accent);font-weight:700;letter-spacing:.06em;margin-left:auto}
+.som-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.som-phase{font-size:.65rem;color:var(--accent);font-weight:700;letter-spacing:.06em;margin-left:auto;white-space:nowrap}
 
 /* HOW-TO */
-.howto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:32px}
-.howto-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:20px;display:flex;gap:14px}
-.howto-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
-.howto-card h4{font-size:.82rem;font-weight:700;color:var(--dark);margin-bottom:4px;letter-spacing:.04em}
-.howto-card p{font-size:.76rem;color:var(--text-mid);line-height:1.55}
-.tempo-box{background:var(--cream);border:1.5px solid var(--border);border-radius:14px;padding:24px}
-.tempo-box h4{font-size:.82rem;font-weight:700;color:var(--dark);margin-bottom:16px;letter-spacing:.04em;text-transform:uppercase}
+.howto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:28px}
+.howto-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:20px 18px;display:flex;gap:14px}
+.howto-icon{font-size:1.3rem;flex-shrink:0;margin-top:3px}
+.howto-card h4{font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:4px;letter-spacing:.04em}
+.howto-card p{font-size:.76rem;color:var(--text-mid);line-height:1.6}
+.tempo-box{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:24px 28px}
+.tempo-box h4{font-size:.75rem;font-weight:700;color:var(--dark);margin-bottom:16px;letter-spacing:.1em;text-transform:uppercase}
 .tempo-row{display:flex;align-items:flex-start;gap:14px;margin-bottom:12px}
-.tempo-tag{background:var(--dark);color:#fff;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:8px;white-space:nowrap;flex-shrink:0;margin-top:2px}
-.tempo-row p{font-size:.78rem;color:var(--text-mid);line-height:1.5}
+.tempo-tag{background:var(--dark);color:#fff;font-size:.68rem;font-weight:700;padding:4px 12px;border-radius:8px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.tempo-row p{font-size:.78rem;color:var(--text-mid);line-height:1.55}
 
-/* PHASE */
-.phase-block{margin-bottom:56px}
-.phase-header{background:var(--dark);border-radius:18px 18px 0 0;padding:28px 28px 24px;margin-bottom:0}
-.phase-num{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px}
-.phase-name{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:300;color:#fff;line-height:1.1}
-.phase-name em{font-style:italic;color:var(--rose-deep)}
-.phase-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-.phase-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);font-size:.7rem;padding:5px 14px;border-radius:20px;font-weight:500;letter-spacing:.04em}
-.phase-pill.pct{background:rgba(201,99,88,.15);border-color:rgba(201,99,88,.3);color:rgba(201,99,88,.85)}
-.phase-body{background:#fff;border:1.5px solid var(--border);border-top:none;border-radius:0 0 18px 18px;padding:24px}
+/* PHASE COVER */
+.phase-cover{position:relative;height:340px;background:var(--dark);overflow:hidden;display:flex;align-items:flex-end;padding:40px 48px}
+.phase-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:.35}
+.phase-cover-content{position:relative;z-index:1}
+.phase-cover-num{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px}
+.phase-cover-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:300;color:#fff;line-height:1}
+.phase-cover-title em{font-style:italic;color:var(--rose-deep)}
+.phase-cover-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.phase-cover-pill{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.65);font-size:.68rem;padding:5px 14px;border-radius:20px;font-weight:500}
+.phase-cover-pill.pct{background:rgba(201,99,88,.18);border-color:rgba(201,99,88,.35);color:rgba(201,99,88,.9)}
 
-/* SESSION TABS */
+/* PHASE BODY */
+.phase-section{padding:0 24px 64px;max-width:940px;margin:0 auto}
+.phase-body{background:#fff;border:1.5px solid var(--border);border-radius:0 0 18px 18px;border-top:none;padding:28px 24px}
 .session-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
-.stab{border:1.5px solid var(--border);background:none;padding:7px 18px;border-radius:20px;font-size:.78rem;font-weight:600;color:var(--text-mid);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;letter-spacing:.04em}
-.stab.active{background:var(--dark);border-color:var(--dark);color:#fff}
+.stab{border:1.5px solid var(--border);background:none;padding:8px 18px;border-radius:20px;font-size:.76rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;letter-spacing:.04em}
+.stab.active,.stab:hover{background:var(--dark);border-color:var(--dark);color:#fff}
 .session-panel{display:none}
 .session-panel.active{display:block}
-.session-label{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.session-label{font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
 
 /* EXERCISE TABLE */
-.exo-wrap{border:1.5px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:16px}
-.exo-thead{display:grid;grid-template-columns:2fr 1fr 90px 2fr;background:var(--dark)}
-.exo-thead div{padding:10px 14px;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45)}
-.exo-row{display:grid;grid-template-columns:2fr 1fr 90px 2fr;border-bottom:1px solid var(--border)}
+.exo-wrap{border:1.5px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:0}
+.exo-thead{display:grid;grid-template-columns:90px 88px 1fr 80px 1.8fr;background:var(--dark)}
+.exo-thead div{padding:10px 14px;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.exo-thead div:first-child{grid-column:1/3;padding-left:18px}
+.exo-row{display:grid;grid-template-columns:90px 88px 1fr 80px 1.8fr;border-bottom:1px solid var(--border);min-height:90px}
 .exo-row:last-child{border-bottom:none}
-.exo-row:nth-child(even){background:#FAF7F5}
-.exo-cell{padding:13px 14px;font-size:.83rem;display:flex;align-items:center}
-.exo-cell.name{font-weight:700;color:var(--dark);font-size:.82rem;text-transform:uppercase;line-height:1.35}
-.exo-cell.reps{font-weight:700;color:var(--accent);font-size:.88rem}
-.exo-cell.rest{font-size:.76rem;color:var(--muted);font-weight:600}
-.exo-cell.tech{font-size:.74rem;color:var(--text-mid);font-style:italic;line-height:1.55}
-@media(max-width:660px){
-  .exo-thead{grid-template-columns:1fr 80px}
-  .exo-thead div:nth-child(3),.exo-thead div:nth-child(4){display:none}
-  .exo-row{grid-template-columns:1fr 80px}
-  .exo-cell.rest,.exo-cell.tech{display:none}
-}
+.exo-row:nth-child(even){background:#FAFAF8}
+.exo-vname{writing-mode:vertical-rl;transform:rotate(180deg);font-weight:700;font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;color:var(--dark);display:flex;align-items:center;justify-content:center;padding:12px 8px;background:var(--cream);border-right:1px solid var(--border);line-height:1.2}
+.exo-photo-cell{width:88px;background:#1A1010;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border);overflow:hidden;flex-shrink:0}
+.exo-photo-cell img{width:100%;height:100%;object-fit:cover}
+.photo-ph{display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.35}
+.photo-ph svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:1.5}
+.photo-ph span{font-size:.55rem;color:#fff;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.exo-cell{padding:14px;font-size:.83rem;display:flex;align-items:center}
+.exo-cell.reps{font-weight:700;color:var(--accent);font-size:.9rem;border-right:1px solid var(--border)}
+.exo-cell.rest{font-size:.76rem;color:var(--muted);font-weight:600;border-right:1px solid var(--border)}
+.exo-cell.tech{font-size:.75rem;color:var(--text-mid);font-style:italic;line-height:1.6}
+
+/* BONUS BLOCK */
+.bonus-block{margin-top:16px;border-radius:12px;overflow:hidden;border:1.5px solid var(--border)}
+.bonus-header{display:flex;gap:0}
+.bonus-tag{background:var(--accent);color:#fff;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:10px 18px;white-space:nowrap}
+.bonus-tag.green{background:#4A7C59}
+.bonus-body{background:var(--cream);flex:1;padding:10px 18px;font-size:.8rem;color:var(--text-mid);line-height:1.6;display:flex;align-items:center}
 
 /* NUTRITION */
-.nutri-intro{font-size:.88rem;color:var(--text-mid);line-height:1.7;margin-bottom:28px}
-.nutri-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:32px}
+.nutri-lead{font-size:.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:32px;max-width:680px}
+.nutri-block{margin-bottom:32px}
+.nutri-block-title{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.nutri-block-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.nutri-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
 .nutri-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:22px}
-.nutri-card h4{font-size:.8rem;font-weight:700;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+.nutri-card h4{font-size:.78rem;font-weight:700;color:var(--dark);margin-bottom:12px;letter-spacing:.05em;text-transform:uppercase}
 .nutri-card ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-.nutri-card li{font-size:.8rem;color:var(--text-mid);padding-left:14px;position:relative;line-height:1.5}
+.nutri-card li{font-size:.79rem;color:var(--text-mid);padding-left:16px;position:relative;line-height:1.5}
 .nutri-card li::before{content:'—';position:absolute;left:0;color:var(--accent);font-weight:700}
-.nutri-warn{background:var(--cream);border:1.5px solid var(--border);border-radius:14px;padding:22px}
-.nutri-warn p{font-size:.8rem;color:var(--text-mid);line-height:1.6}
+.nutri-highlight{background:var(--dark);border-radius:14px;padding:28px 32px;margin-bottom:28px}
+.nutri-highlight h4{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#fff;margin-bottom:16px;font-weight:400}
+.nutri-highlight p{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.75}
+.nutri-highlight p+p{margin-top:10px}
+.nutri-macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+.nutri-macro{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:20px;text-align:center}
+.nutri-macro .macro-val{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--accent);line-height:1}
+.nutri-macro .macro-label{font-size:.7rem;font-weight:700;color:var(--dark);letter-spacing:.08em;text-transform:uppercase;margin-top:6px}
+.nutri-macro .macro-sub{font-size:.72rem;color:var(--muted);margin-top:4px;line-height:1.4}
+.nutri-day{background:#fff;border:1.5px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:28px}
+.nutri-day-header{background:var(--dark);padding:14px 22px;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.nutri-day-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--border);min-height:54px}
+.nutri-day-row:last-child{border-bottom:none}
+.nutri-day-time{padding:14px 18px;font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;border-right:1px solid var(--border);background:var(--cream)}
+.nutri-day-food{padding:14px 18px;font-size:.8rem;color:var(--text-mid);line-height:1.6;display:flex;align-items:center}
+.nutri-warn{background:var(--cream);border:1.5px solid var(--border);border-radius:14px;padding:22px 26px}
+.nutri-warn p{font-size:.8rem;color:var(--text-mid);line-height:1.65}
 .nutri-warn strong{color:var(--dark)}
 
 /* CTA BOTTOM */
-.cta-bottom{background:var(--dark);border-radius:20px;padding:48px 32px;text-align:center;margin:0 0 64px}
-.cta-bottom h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:300;color:#fff;margin-bottom:12px}
-.cta-bottom p{font-size:.88rem;color:rgba(255,255,255,.55);margin-bottom:28px}
-.btn-cta{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:14px 36px;border-radius:30px;font-weight:700;font-size:.9rem;letter-spacing:.06em;transition:opacity .2s}
-.btn-cta:hover{opacity:.88}
+.cta-bottom{background:var(--dark);border-radius:20px;padding:56px 40px;text-align:center;margin:0 0 64px}
+.cta-bottom h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;color:#fff;margin-bottom:10px}
+.cta-bottom p{font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:28px}
+.btn-cta{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:14px 40px;border-radius:30px;font-weight:700;font-size:.88rem;letter-spacing:.07em;transition:opacity .2s}
+.btn-cta:hover{opacity:.85}
+footer{background:var(--dark);color:rgba(255,255,255,.4);text-align:center;padding:28px;font-size:.75rem}
+footer a{color:rgba(255,255,255,.35);text-decoration:none}
+hr.sep{border:none;border-top:1px solid var(--border);margin:0}
 
-/* FOOTER */
-footer{background:var(--dark);color:rgba(255,255,255,.45);text-align:center;padding:28px;font-size:.75rem}
-footer a{color:rgba(255,255,255,.4);text-decoration:none}
-
-@media(max-width:480px){
+@media(max-width:800px){
+  .cover{grid-template-columns:1fr;padding:100px 28px 56px}
+  .cover-photo{opacity:.2;width:100%}
+  .welcome{grid-template-columns:1fr}
+  .welcome-photo{height:340px}
+  .welcome-photo::after{display:none}
+  .welcome-text{padding:40px 28px}
+  .about-inner{grid-template-columns:1fr;text-align:center}
+  .about-circle{margin:0 auto}
+  .about-cred{justify-content:center}
+}
+@media(max-width:660px){
   nav{padding:0 16px}
-  .nav-links{gap:14px}
   .nav-links li:not(:last-child){display:none}
-  .section{padding:48px 16px}
+  .phase-cover{height:260px;padding:28px 24px}
+  .exo-thead{grid-template-columns:90px 1fr}
+  .exo-thead div:first-child{grid-column:1/2}
+  .exo-thead div:nth-child(2),.exo-thead div:nth-child(4),.exo-thead div:nth-child(5){display:none}
+  .exo-row{grid-template-columns:90px 1fr}
+  .exo-photo-cell,.exo-cell.rest,.exo-cell.tech{display:none}
+  .exo-cell.reps{border-right:none}
+  .nutri-macro-grid{grid-template-columns:1fr}
+  .nutri-day-row{grid-template-columns:90px 1fr}
   .som-grid{grid-template-columns:1fr}
-  .phase-body{padding:16px}
-  .session-tabs{gap:4px}
-  .stab{padding:6px 12px;font-size:.72rem}
+  .phase-body{padding:20px 14px}
+  .phase-section{padding:0 12px 56px}
 }
 </style>
 </head>
@@ -166,106 +224,117 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none}
 
 <!-- COVER -->
 <section class="cover">
-  <div class="cover-badge">Programme Salle · 8 Semaines · 3 Phases</div>
-  <h1 class="cover-title">IRON<span>Girl</span></h1>
-  <p class="cover-sub">Par Ornella · Coach certifiée · Ancienne compétitrice fitness</p>
-  <div class="cover-pills">
-    <span class="cover-pill">5 séances / semaine</span>
-    <span class="cover-pill">Full body split</span>
-    <span class="cover-pill hot">Hypertrophie & force</span>
-    <span class="cover-pill">Progressive overload</span>
-    <span class="cover-pill">Prise de masse sèche</span>
+  <img class="cover-photo" src="images/ornella-profil-studio.png" alt="Ornella coach fitness">
+  <div class="cover-content">
+    <div class="cover-badge">Programme Salle · 8 Semaines · 3 Phases</div>
+    <div class="cover-eyebrow">By Ornella Fit Coaching</div>
+    <h1 class="cover-title">IRON<em>Girl</em></h1>
+    <p class="cover-sub">Ancienne compétitrice fitness · Coach certifiée<br>Hypertrophie · Force · Prise de masse sèche</p>
+    <div class="cover-pills">
+      <span class="cover-pill">5 séances / semaine</span>
+      <span class="cover-pill">Split A B C D E</span>
+      <span class="cover-pill hot">Progressive overload</span>
+      <span class="cover-pill">Full body split</span>
+    </div>
   </div>
-  <div class="cover-arrow">↓</div>
+  <div class="cover-scroll">Scroll</div>
+</section>
+
+<!-- WELCOME -->
+<section class="welcome">
+  <div class="welcome-photo">
+    <img src="images/ornella-profil-studio.png" alt="Ornella">
+  </div>
+  <div class="welcome-text">
+    <div class="welcome-tag">Mot de la coach</div>
+    <h2 class="welcome-title">Bienvenue,<br><em>Iron Girl.</em></h2>
+    <div class="welcome-body">
+      <p>Tu as choisi le bon programme. Pas un programme générique, pas un truc copié-collé d'Instagram. IRON GIRL, c'est le programme que j'aurais voulu avoir quand j'ai commencé à vouloir vraiment sculpter mon corps en salle.</p>
+      <p>En 8 semaines, tu vas traverser 3 phases progressives. Chaque phase est plus intense que la précédente. C'est fait exprès. La progression, c'est la seule règle du jeu.</p>
+      <p>J'ai conçu ce programme avec une approche de compétitrice : chaque mouvement a un but, chaque série a un sens. Tu ne viens pas faire du sport. Tu viens <strong style="color:#fff">transformer ton corps.</strong></p>
+    </div>
+    <div class="welcome-sig">Ornella ✦</div>
+  </div>
+</section>
+
+<!-- À PROPOS -->
+<section class="about">
+  <div class="about-inner">
+    <div class="about-circle">
+      <img src="images/ornella-competition-fitness.jpg" alt="Ornella compétition fitness">
+    </div>
+    <div>
+      <div class="about-tag">À propos de la coach</div>
+      <h2 class="about-title">Ancienne compétitrice fitness,<br>coach certifiée en Essonne</h2>
+      <div class="about-body">
+        <p>Je ne suis pas une coach qui répète des théories lues dans des livres. J'ai été sur scène, en maillot de compétition, avec une préparation de 16 semaines derrière moi. Je sais ce que ça coûte physiquement et mentalement d'aller chercher son meilleur physique.</p>
+        <p>J'accompagne des femmes depuis plusieurs années à travers le coaching distanciel, présentiel et mes programmes digitaux. Chaque programme que je crée, je l'ai testé, vécu et affiné.</p>
+      </div>
+      <div class="about-cred">
+        <span class="cred-tag">Compétitrice fitness</span>
+        <span class="cred-tag">Coach certifiée</span>
+        <span class="cred-tag">Spécialiste femme</span>
+        <span class="cred-tag">Post-partum</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- SOMMAIRE -->
 <div class="section" id="sommaire">
+  <p class="section-title">Sommaire</p>
   <div class="sommaire">
-    <h3>Sommaire</h3>
+    <h3>Dans ce programme</h3>
     <div class="som-grid">
-      <a href="#howto" class="som-link"><span class="dot"></span>Comment utiliser ce programme</a>
-      <a href="#phase1" class="som-link"><span class="dot"></span>Phase 1 — Be Strong, BE IRON <span class="phase-tag">SEM 1-2</span></a>
-      <a href="#phase2" class="som-link"><span class="dot"></span>Phase 2 — Work Hard, GAINZ MAX <span class="phase-tag">SEM 3-5</span></a>
-      <a href="#phase3" class="som-link"><span class="dot"></span>Phase 3 — I'm Iron AND I KNOW IT <span class="phase-tag">SEM 6-8</span></a>
-      <a href="#nutrition" class="som-link"><span class="dot"></span>Conseils nutrition</a>
+      <a href="#howto" class="som-link"><span class="som-dot"></span>Comment lire ce programme</a>
+      <a href="#phase1" class="som-link"><span class="som-dot"></span>Phase 1 — Be Strong, BE IRON<span class="som-phase">Sem 1–2</span></a>
+      <a href="#phase2" class="som-link"><span class="som-dot"></span>Phase 2 — Work Hard, GAINZ MAX<span class="som-phase">Sem 3–5</span></a>
+      <a href="#phase3" class="som-link"><span class="som-dot"></span>Phase 3 — I'm Iron AND I KNOW IT<span class="som-phase">Sem 6–8</span></a>
+      <a href="#nutrition" class="som-link"><span class="som-dot"></span>Nutrition — La base</a>
     </div>
   </div>
 </div>
 
-<hr class="sep" style="max-width:820px;margin:0 auto 0">
+<hr class="sep" style="max-width:840px;margin:0 auto">
 
 <!-- HOW TO -->
 <div class="section" id="howto">
-  <p class="section-title">Comment utiliser ce programme</p>
-  <p class="section-subtitle">Lis ça avant de soulever le moindre haltère.</p>
+  <p class="section-title">Lis ça avant de commencer</p>
+  <p class="section-sub">Organisation, vocabulaire, règles du jeu.</p>
   <div class="howto-grid">
-    <div class="howto-card">
-      <div class="howto-icon">📅</div>
-      <div>
-        <h4>5 séances par semaine</h4>
-        <p>Sessions A, B, C, D, E dans l'ordre. 1 jour de repos entre les sessions les plus intenses si besoin. Reste flexible.</p>
-      </div>
-    </div>
-    <div class="howto-card">
-      <div class="howto-icon">📈</div>
-      <div>
-        <h4>Progressive overload</h4>
-        <p>Chaque semaine tu augmentes la charge ou les reps. Si c'est trop facile, tu as mal choisi ton poids de départ.</p>
-      </div>
-    </div>
-    <div class="howto-card">
-      <div class="howto-icon">⚡</div>
-      <div>
-        <h4>RM = répétition max</h4>
-        <p>70% RM = 70% du poids max que tu soulèves sur 1 rep. Commence léger, trouve ton RM en 2-3 semaines.</p>
-      </div>
-    </div>
-    <div class="howto-card">
-      <div class="howto-icon">🔥</div>
-      <div>
-        <h4>Repos = 0 ≠ 0 seconde</h4>
-        <p>Quand repos = 0, tu enchaînes immédiatement l'exercice suivant ou tu changes de jambe. Sinon c'est indiqué.</p>
-      </div>
-    </div>
-    <div class="howto-card">
-      <div class="howto-icon">💪</div>
-      <div>
-        <h4>Dégressive</h4>
-        <p>Tu descends la charge à chaque série pour maintenir le même nombre de reps. Ex : 4×10,12,15 = charge baisse à chaque série.</p>
-      </div>
-    </div>
-    <div class="howto-card">
-      <div class="howto-icon">🎯</div>
-      <div>
-        <h4>Superset</h4>
-        <p>Deux exercices enchaînés sans repos entre eux. Tu prends le repos uniquement après les deux exercices.</p>
-      </div>
-    </div>
+    <div class="howto-card"><div class="howto-icon">📅</div><div><h4>5 séances / semaine</h4><p>Sessions A B C D E dans l'ordre. 1 jour de repos entre les séances les plus dures si besoin. Tu adaptes à ton agenda.</p></div></div>
+    <div class="howto-card"><div class="howto-icon">📈</div><div><h4>Progressive overload</h4><p>Tu augmentes la charge ou les reps chaque semaine. Si c'est trop facile, tu as mal choisi ton poids de départ. Pousse-toi.</p></div></div>
+    <div class="howto-card"><div class="howto-icon">⚡</div><div><h4>% RM</h4><p>Pourcentage de ta répétition maximale. 75% RM = 75% du poids que tu soulèves sur 1 seule rep. Prends le temps de trouver ton RM.</p></div></div>
+    <div class="howto-card"><div class="howto-icon">🔥</div><div><h4>Repos = 0</h4><p>Quand le repos est 0, tu enchaînes immédiatement l'exercice suivant ou tu changes de jambe. Zéro seconde de récupération.</p></div></div>
+    <div class="howto-card"><div class="howto-icon">↘️</div><div><h4>Dégressive</h4><p>Tu baisses la charge à chaque série pour maintenir les reps. Ex : 3×10,12,15 = la charge descend à chaque série.</p></div></div>
+    <div class="howto-card"><div class="howto-icon">🔗</div><div><h4>Superset</h4><p>Deux exercices enchaînés sans repos entre eux. Tu prends le repos uniquement après les deux mouvements.</p></div></div>
   </div>
   <div class="tempo-box">
     <h4>Lire un tempo</h4>
-    <div class="tempo-row"><span class="tempo-tag">3-1</span><p>3 secondes en phase excentrique (descente) · 1 seconde en phase concentrique (montée ou contraction)</p></div>
-    <div class="tempo-row"><span class="tempo-tag">5-5</span><p>5 secondes descente · 5 secondes montée. Très lent = très intense. Ne triche pas.</p></div>
-    <div class="tempo-row"><span class="tempo-tag">10-10</span><p>Phase 3 uniquement. 10 secondes excentrique · 10 secondes concentrique. Brutal, c'est fait exprès.</p></div>
-    <div class="tempo-row"><span class="tempo-tag">Rest-pause</span><p>Tu fais tes reps jusqu'à l'échec, tu te reposes 5 secondes max, tu reprends. Pas plus de 5 secondes.</p></div>
+    <div class="tempo-row"><span class="tempo-tag">3-1</span><p>3 sec en excentrique (descente / étirement) · 1 sec en concentrique (montée / contraction)</p></div>
+    <div class="tempo-row"><span class="tempo-tag">5-5</span><p>5 sec descente · 5 sec montée. Très lent = très intense = plus de résultats. Ne triche pas.</p></div>
+    <div class="tempo-row"><span class="tempo-tag">10-10</span><p>Phase 3 uniquement. 10 secondes excentrique, 10 secondes concentrique. C'est brutal. C'est fait exprès.</p></div>
+    <div class="tempo-row"><span class="tempo-tag">Rest-pause</span><p>Tu fais des reps jusqu'à l'échec musculaire, tu te reposes 5 secondes max, tu reprends. Répète pendant le temps indiqué.</p></div>
   </div>
 </div>
 
-<hr class="sep" style="max-width:820px;margin:0 auto 0">
+<hr class="sep">
 
-<!-- ===== PHASE 1 ===== -->
-<div class="section" id="phase1">
-  <div class="phase-block">
-    <div class="phase-header">
-      <div class="phase-num">Phase 1 · Semaines 1 et 2</div>
-      <div class="phase-name">Be Strong, <em>BE IRON</em></div>
-      <div class="phase-meta">
-        <span class="phase-pill pct">60–70% RM</span>
-        <span class="phase-pill">Apprentissage des mouvements</span>
-        <span class="phase-pill">Volume modéré</span>
+<!-- ═══════════════════════════════ PHASE 1 ═══════════════════════════════ -->
+<div id="phase1">
+  <div class="phase-cover">
+    <img src="images/ornella-profil-studio.png" alt="">
+    <div class="phase-cover-content">
+      <div class="phase-cover-num">Phase 1 · Semaines 1 et 2</div>
+      <div class="phase-cover-title">Be Strong, <em>BE IRON</em></div>
+      <div class="phase-cover-pills">
+        <span class="phase-cover-pill pct">60 – 70 % RM</span>
+        <span class="phase-cover-pill">Apprentissage des mouvements</span>
+        <span class="phase-cover-pill">Volume modéré</span>
       </div>
     </div>
+  </div>
+  <div class="phase-section">
     <div class="phase-body">
       <div class="session-tabs">
         <button class="stab active" onclick="showSession('p1','a',this)">A · Ischios-Fessiers</button>
@@ -275,88 +344,241 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none}
         <button class="stab" onclick="showSession('p1','e',this)">E · Fessiers</button>
       </div>
 
-      <!-- P1A -->
       <div class="session-panel active" id="p1-a">
         <div class="session-label">Session A — Ischios · Fessiers</div>
         <div class="exo-wrap">
-          <div class="exo-thead"><div>Exercice</div><div>Séries / Reps</div><div>Repos</div><div>Technique</div></div>
-          <div class="exo-row"><div class="exo-cell name">FENTES BULGARES</div><div class="exo-cell reps">4 × 15 / jambe</div><div class="exo-cell rest">0</div><div class="exo-cell tech">Enchaîne les deux jambes sans repos. Prends le repos à la fin de chaque série. Tempo 5-5.</div></div>
-          <div class="exo-row"><div class="exo-cell name">SDT SUMO</div><div class="exo-cell reps">4 × 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Tempo 5-1. Barre proche du corps, fessiers en arrière à la descente.</div></div>
-          <div class="exo-row"><div class="exo-cell name">JUMP SQUAT</div><div class="exo-cell reps">3 × 15</div><div class="exo-cell rest">30 sec</div><div class="exo-cell tech">Très explosif, fesses en arrière à la descente. Réception souple.</div></div>
-          <div class="exo-row"><div class="exo-cell name">LEG CURL MACHINE</div><div class="exo-cell reps">4 × 15</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Tempo 3-3. Ressens bien l'ischio. Ne lâche pas l'excentrique.</div></div>
-          <div class="exo-row"><div class="exo-cell name">CABLE KICKBACK</div><div class="exo-cell reps">5 × 12</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Tempo 3-3. Jambe droite puis gauche. Pic de contraction en haut.</div></div>
+          <div class="exo-thead"><div>Exercice</div><div>Série / Reps</div><div>Repos</div><div>Technique</div></div>
+          <div class="exo-row">
+            <div class="exo-vname">FENTES BULGARES</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">4 × 15 / jambe</div>
+            <div class="exo-cell rest">0</div>
+            <div class="exo-cell tech">Enchaîne les deux jambes sans repos. Repos à la fin de chaque série. Tempo 5-5.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">SDT SUMO</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">4 × 10</div>
+            <div class="exo-cell rest">1 min</div>
+            <div class="exo-cell tech">Tempo 5-1. Barre proche du corps. Fessiers en arrière à la descente.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">JUMP SQUAT</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">3 × 15</div>
+            <div class="exo-cell rest">30 sec</div>
+            <div class="exo-cell tech">Très explosif, fesses en arrière à la descente. Réception souple.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">LEG CURL MACHINE</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">4 × 15</div>
+            <div class="exo-cell rest">40 sec</div>
+            <div class="exo-cell tech">Tempo 3-3. Ressens bien l'ischio. Ne lâche pas l'excentrique.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">CABLE KICKBACK</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">5 × 12</div>
+            <div class="exo-cell rest">1 min</div>
+            <div class="exo-cell tech">Tempo 3-3. Jambe droite puis gauche. Pic de contraction en haut.</div>
+          </div>
         </div>
+        <div class="bonus-block"><div class="bonus-header"><span class="bonus-tag">BONUS</span><span class="bonus-tag green">CARDIO</span><span class="bonus-body">15 min marche inclinée (pente 10–12%) ou vélo modéré. Cardio d'endurance, pas sprint.</span></div></div>
       </div>
 
-      <!-- P1B -->
       <div class="session-panel" id="p1-b">
         <div class="session-label">Session B — Push · Pectoraux · Épaules · Triceps</div>
         <div class="exo-wrap">
-          <div class="exo-thead"><div>Exercice</div><div>Séries / Reps</div><div>Repos</div><div>Technique</div></div>
-          <div class="exo-row"><div class="exo-cell name">BENCH PRESS</div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">1ère série légère d'échauffement puis 70% RM. Explosif sur la montée, contrôle à la descente.</div></div>
-          <div class="exo-row"><div class="exo-cell name">BUTTERFLY / PEC DECK</div><div class="exo-cell reps">4 × 15</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">40% RM. Concentration totale sur les pectoraux. Pas les épaules.</div></div>
-          <div class="exo-row"><div class="exo-cell name">DÉVELOPPÉ MILITAIRE BARRE</div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">50% RM. Retiens l'excentrique. Gainage du core pendant toute la série.</div></div>
-          <div class="exo-row"><div class="exo-cell name">DIPS</div><div class="exo-cell reps">5 × 10</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">Machine assistée si besoin. Corps légèrement penché en avant pour les pecs.</div></div>
-          <div class="exo-row"><div class="exo-cell name">ÉLÉVATIONS LATÉRALES</div><div class="exo-cell reps">3 × 10,12,15,20</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Dégressive. Baisse la charge à chaque série. Coudes légèrement fléchis.</div></div>
+          <div class="exo-thead"><div>Exercice</div><div>Série / Reps</div><div>Repos</div><div>Technique</div></div>
+          <div class="exo-row">
+            <div class="exo-vname">BENCH PRESS</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">4 × 12</div>
+            <div class="exo-cell rest">1 min 30</div>
+            <div class="exo-cell tech">1ère série légère (échauffement) puis 70% RM. Explosif sur la montée.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">BUTTERFLY / PEC DECK</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">4 × 15</div>
+            <div class="exo-cell rest">40 sec</div>
+            <div class="exo-cell tech">40% RM. Concentration totale sur les pectoraux, pas les épaules.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">DÉVELOPPÉ MILITAIRE BARRE</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">4 × 12</div>
+            <div class="exo-cell rest">1 min</div>
+            <div class="exo-cell tech">50% RM. Retiens l'excentrique. Core gaîné pendant toute la série.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">DIPS</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">5 × 10</div>
+            <div class="exo-cell rest">1 min 30</div>
+            <div class="exo-cell tech">Machine assistée possible. Corps légèrement penché en avant pour les pecs.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">ÉLÉVATIONS LATÉRALES</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">3 × 10,12,15,20</div>
+            <div class="exo-cell rest">1 min</div>
+            <div class="exo-cell tech">Dégressive. Baisse la charge à chaque série. Coudes légèrement fléchis.</div>
+          </div>
         </div>
+        <div class="bonus-block"><div class="bonus-header"><span class="bonus-tag">BONUS</span><span class="bonus-tag green">ABDOS</span><span class="bonus-body">Circuit × 3 : 1 min planche · 15 relevés de jambes · 20 crunches. Repos 45 sec entre chaque circuit.</span></div></div>
       </div>
 
-      <!-- P1C -->
       <div class="session-panel" id="p1-c">
         <div class="session-label">Session C — Quadriceps · Mollets</div>
         <div class="exo-wrap">
-          <div class="exo-thead"><div>Exercice</div><div>Séries / Reps</div><div>Repos</div><div>Technique</div></div>
-          <div class="exo-row"><div class="exo-cell name">SQUAT BARRE</div><div class="exo-cell reps">2 × 10,12,15,20</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Dégressive. Tempo 3-3. 2 séries lourdes puis baisse progressivement.</div></div>
-          <div class="exo-row"><div class="exo-cell name">PRESSE À CUISSES</div><div class="exo-cell reps">5 × 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">75% RM. Tension continue, ne bloque pas les genoux en haut.</div></div>
-          <div class="exo-row"><div class="exo-cell name">GOBLET SQUAT</div><div class="exo-cell reps">2 × 20</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">40% RM. Tempo 3-3. Profond, talons au sol, genoux dans l'axe des orteils.</div></div>
-          <div class="exo-row"><div class="exo-cell name">LEG EXTENSION</div><div class="exo-cell reps">3 × 3 min</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Rest-pause : reps jusqu'à l'échec, 5 sec de repos max, reprends. Répète pendant 3 minutes.</div></div>
-          <div class="exo-row"><div class="exo-cell name">EXTENSIONS MOLLETS</div><div class="exo-cell reps">4 × 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">70% RM. Tempo 3-3. Étirement complet en bas, contraction maximale en haut.</div></div>
+          <div class="exo-thead"><div>Exercice</div><div>Série / Reps</div><div>Repos</div><div>Technique</div></div>
+          <div class="exo-row">
+            <div class="exo-vname">SQUAT BARRE</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">2 × 10,12,15,20</div>
+            <div class="exo-cell rest">1 min</div>
+            <div class="exo-cell tech">Dégressive. Tempo 3-3. Machine guidée possible si besoin.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">PRESSE À CUISSES</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">5 × 10</div>
+            <div class="exo-cell rest">1 min</div>
+            <div class="exo-cell tech">75% RM. Tension continue, ne bloque pas les genoux en haut.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">GOBLET SQUAT</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">2 × 20</div>
+            <div class="exo-cell rest">40 sec</div>
+            <div class="exo-cell tech">40% RM. Tempo 3-3. Profond, talons au sol.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">LEG EXTENSION</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">3 × 3 min</div>
+            <div class="exo-cell rest">40 sec</div>
+            <div class="exo-cell tech">Rest-pause : reps jusqu'à l'échec, 5 sec de repos max, reprends. Répète 3 minutes.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">EXTENSIONS MOLLETS</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">4 × 10</div>
+            <div class="exo-cell rest">1 min</div>
+            <div class="exo-cell tech">70% RM. Tempo 3-3. Étirement complet en bas, contraction maximale en haut.</div>
+          </div>
         </div>
+        <div class="bonus-block"><div class="bonus-header"><span class="bonus-tag">BONUS</span><span class="bonus-tag green">CARDIO</span><span class="bonus-body">20 min au choix : vélo elliptique, rameur ou marche rapide. Intensité modérée (tu peux parler mais c'est difficile).</span></div></div>
       </div>
 
-      <!-- P1D -->
       <div class="session-panel" id="p1-d">
-        <div class="session-label">Session D — Pull · Dos · Biceps · Épaules arrière</div>
+        <div class="session-label">Session D — Pull · Dos · Épaules arrière</div>
         <div class="exo-wrap">
-          <div class="exo-thead"><div>Exercice</div><div>Séries / Reps</div><div>Repos</div><div>Technique</div></div>
-          <div class="exo-row"><div class="exo-cell name">PULL-OVER POULIE</div><div class="exo-cell reps">3 × 10,12,15,20</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Dégressive. Grands dorsaux uniquement. Bras légèrement fléchis.</div></div>
-          <div class="exo-row"><div class="exo-cell name">TIRAGE HORIZONTAL</div><div class="exo-cell reps">3 × 10,12,15,20</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Dégressive. Coudes près du corps, omoplates qui se rapprochent en fin de mouvement.</div></div>
-          <div class="exo-row"><div class="exo-cell name">TIRAGE VERTICAL LARGE</div><div class="exo-cell reps">5 × 10</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">70% RM. Retiens 2 sec en fin de concentrique. Contrôle la descente.</div></div>
-          <div class="exo-row"><div class="exo-cell name">TIRAGE MENTON</div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Tempo 2-2. Ressens l'arrière de l'épaule. Prise large, coudes qui montent.</div></div>
-          <div class="exo-row"><div class="exo-cell name">DELT FLY MACHINE</div><div class="exo-cell reps">5 × 12</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">60% RM. Tempo 5-5. Épaules arrière et milieu. Pas de balancement.</div></div>
+          <div class="exo-thead"><div>Exercice</div><div>Série / Reps</div><div>Repos</div><div>Technique</div></div>
+          <div class="exo-row">
+            <div class="exo-vname">PULL-OVER POULIE</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">3 × 10,12,15,20</div>
+            <div class="exo-cell rest">40 sec</div>
+            <div class="exo-cell tech">Dégressive. Grands dorsaux uniquement. Bras légèrement fléchis.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">TIRAGE HORIZONTAL</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">3 × 10,12,15,20</div>
+            <div class="exo-cell rest">40 sec</div>
+            <div class="exo-cell tech">Dégressive. Coudes près du corps. Omoplates qui se rapprochent en fin.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">TIRAGE VERTICAL LARGE</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">5 × 10</div>
+            <div class="exo-cell rest">1 min 30</div>
+            <div class="exo-cell tech">70% RM. Retiens 2 sec en fin de concentrique. Contrôle la descente.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">TIRAGE MENTON</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">4 × 12</div>
+            <div class="exo-cell rest">1 min</div>
+            <div class="exo-cell tech">Tempo 2-2. Prise large, coudes qui montent. Épaule arrière + trapèze moyen.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">DELT FLY MACHINE</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">5 × 12</div>
+            <div class="exo-cell rest">1 min</div>
+            <div class="exo-cell tech">60% RM. Tempo 5-5. Pas de balancement. Épaules arrière.</div>
+          </div>
         </div>
+        <div class="bonus-block"><div class="bonus-header"><span class="bonus-tag">BONUS</span><span class="bonus-tag green">ABDOS</span><span class="bonus-body">Circuit × 4 : 1 min gainage latéral gauche · 1 min gainage latéral droit · 15 russian twist. Repos 30 sec.</span></div></div>
       </div>
 
-      <!-- P1E -->
       <div class="session-panel" id="p1-e">
         <div class="session-label">Session E — Fessiers</div>
         <div class="exo-wrap">
-          <div class="exo-thead"><div>Exercice</div><div>Séries / Reps</div><div>Repos</div><div>Technique</div></div>
-          <div class="exo-row"><div class="exo-cell name">HIP THRUST BARRE</div><div class="exo-cell reps">4 × 15 + 4 × 30</div><div class="exo-cell rest">0</div><div class="exo-cell tech">15 reps avec barre enchaînées avec 30 reps sans poids. Change de jambe sans repos entre les deux. Fessier serré en haut.</div></div>
-          <div class="exo-row"><div class="exo-cell name">FENTES BULGARES</div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">0</div><div class="exo-cell tech">15 reps chaque jambe sans repos entre les deux. Tempo 2-2. Grand pas en avant.</div></div>
-          <div class="exo-row"><div class="exo-cell name">ABDUCTION MACHINE</div><div class="exo-cell reps">5 × 20,15,10,8</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">Pyramidal ascendant — augmente la charge à chaque série.</div></div>
-          <div class="exo-row"><div class="exo-cell name">HIP THRUST UNILATÉRAL HALTÈRES</div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">0</div><div class="exo-cell tech">70% RM. Tempo 2-2. Enchaîne les deux jambes sans repos entre elles.</div></div>
-          <div class="exo-row"><div class="exo-cell name">CABLE KICKBACK</div><div class="exo-cell reps">5 × 12</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Pic de contraction maximal en haut. Maintiens 1 sec. Pas de balancement du bassin.</div></div>
+          <div class="exo-thead"><div>Exercice</div><div>Série / Reps</div><div>Repos</div><div>Technique</div></div>
+          <div class="exo-row">
+            <div class="exo-vname">HIP THRUST BARRE</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">4×15 + 4×30</div>
+            <div class="exo-cell rest">0</div>
+            <div class="exo-cell tech">15 reps avec barre → 30 reps à vide. Enchaîne sans repos. Fessier contracté en haut.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">FENTES BULGARES</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">4 × 12</div>
+            <div class="exo-cell rest">0</div>
+            <div class="exo-cell tech">15 reps chaque jambe sans repos entre les deux. Tempo 2-2. Grand pas.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">ABDUCTION MACHINE</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">5 × 20,15,10,8</div>
+            <div class="exo-cell rest">1 min 30</div>
+            <div class="exo-cell tech">Pyramidal ascendant. Augmente la charge à chaque série.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">HIP THRUST UNILATÉRAL</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">4 × 12</div>
+            <div class="exo-cell rest">0</div>
+            <div class="exo-cell tech">70% RM. Tempo 2-2. Enchaîne les deux jambes sans repos.</div>
+          </div>
+          <div class="exo-row">
+            <div class="exo-vname">CABLE KICKBACK</div>
+            <div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div>
+            <div class="exo-cell reps">5 × 12</div>
+            <div class="exo-cell rest">40 sec</div>
+            <div class="exo-cell tech">Pic de contraction en haut. Maintiens 1 sec. Pas de balancement du bassin.</div>
+          </div>
         </div>
-      </div>
-    </div><!-- /phase-body -->
-  </div><!-- /phase-block -->
-</div>
-
-<hr class="sep" style="max-width:820px;margin:0 auto 0">
-
-<!-- ===== PHASE 2 ===== -->
-<div class="section" id="phase2">
-  <div class="phase-block">
-    <div class="phase-header">
-      <div class="phase-num">Phase 2 · Semaines 3, 4 et 5</div>
-      <div class="phase-name">Work Hard, <em>GAINZ MAX</em></div>
-      <div class="phase-meta">
-        <span class="phase-pill pct">70–80% RM</span>
-        <span class="phase-pill">Volume augmente</span>
-        <span class="phase-pill">Charges plus lourdes</span>
+        <div class="bonus-block"><div class="bonus-header"><span class="bonus-tag">BONUS</span><span class="bonus-tag green">CARDIO</span><span class="bonus-body">10 min marche inclinée + 5 min étirements fessiers (pigeon, hip flexor). Récupération active.</span></div></div>
       </div>
     </div>
+  </div>
+</div>
+
+<hr class="sep">
+
+<!-- ═══════════════════════════════ PHASE 2 ═══════════════════════════════ -->
+<div id="phase2">
+  <div class="phase-cover">
+    <img src="images/ornella-competition-fitness.jpg" alt="">
+    <div class="phase-cover-content">
+      <div class="phase-cover-num">Phase 2 · Semaines 3, 4 et 5</div>
+      <div class="phase-cover-title">Work Hard, <em>GAINZ MAX</em></div>
+      <div class="phase-cover-pills">
+        <span class="phase-cover-pill pct">70 – 80 % RM</span>
+        <span class="phase-cover-pill">Volume augmente</span>
+        <span class="phase-cover-pill">Charges plus lourdes</span>
+      </div>
+    </div>
+  </div>
+  <div class="phase-section">
     <div class="phase-body">
       <div class="session-tabs">
         <button class="stab active" onclick="showSession('p2','a',this)">A · Ischios-Fessiers</button>
@@ -366,87 +588,90 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none}
         <button class="stab" onclick="showSession('p2','e',this)">E · Fessiers</button>
       </div>
 
-      <!-- P2A -->
       <div class="session-panel active" id="p2-a">
         <div class="session-label">Session A — Ischios · Fessiers</div>
         <div class="exo-wrap">
-          <div class="exo-thead"><div>Exercice</div><div>Séries / Reps</div><div>Repos</div><div>Technique</div></div>
-          <div class="exo-row"><div class="exo-cell name">SDT BARRE</div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Barre proche du corps. Dos plat. Fessiers et ischios sollicités, pas le bas du dos.</div></div>
-          <div class="exo-row"><div class="exo-cell name">SDT TENDU BARRE</div><div class="exo-cell reps">4 × 15</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Genoux légèrement fléchis. Descente jusqu'à l'étirement maximal des ischios. Dos plat.</div></div>
-          <div class="exo-row"><div class="exo-cell name">FENTES MARCHÉES</div><div class="exo-cell reps">3 × 40 pas</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Grand pas. Genou arrière proche du sol. Garde le buste droit.</div></div>
-          <div class="exo-row"><div class="exo-cell name">LEG CURL</div><div class="exo-cell reps">4 × 10,12,15</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Dégressive. Baisse la charge à chaque série. Contrôle l'excentrique.</div></div>
-          <div class="exo-row"><div class="exo-cell name">CABLE KICKBACK</div><div class="exo-cell reps">5 × 10</div><div class="exo-cell rest">0</div><div class="exo-cell tech">75% RM. Tempo 2-2. Enchaîne les deux jambes sans repos. Pic de contraction.</div></div>
+          <div class="exo-thead"><div>Exercice</div><div>Série / Reps</div><div>Repos</div><div>Technique</div></div>
+          <div class="exo-row"><div class="exo-vname">SDT BARRE</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Barre proche du corps. Dos plat. Fessiers et ischios, pas le bas du dos.</div></div>
+          <div class="exo-row"><div class="exo-vname">SDT TENDU BARRE</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 15</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Genoux légèrement fléchis. Descente jusqu'à l'étirement max des ischios. Dos plat.</div></div>
+          <div class="exo-row"><div class="exo-vname">FENTES MARCHÉES</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">3 × 40 pas</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Grand pas. Genou arrière proche du sol. Buste droit.</div></div>
+          <div class="exo-row"><div class="exo-vname">LEG CURL</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 10,12,15</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Dégressive. Contrôle l'excentrique à chaque série.</div></div>
+          <div class="exo-row"><div class="exo-vname">CABLE KICKBACK</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">5 × 10</div><div class="exo-cell rest">0</div><div class="exo-cell tech">75% RM. Tempo 2-2. Enchaîne les deux jambes sans repos.</div></div>
         </div>
+        <div class="bonus-block"><div class="bonus-header"><span class="bonus-tag">BONUS</span><span class="bonus-tag green">CARDIO</span><span class="bonus-body">15 min HIIT : 30 sec sprint / 30 sec marche × 15. Sur tapis ou vélo.</span></div></div>
       </div>
 
-      <!-- P2B -->
       <div class="session-panel" id="p2-b">
         <div class="session-label">Session B — Push · Pectoraux · Épaules · Triceps</div>
         <div class="exo-wrap">
-          <div class="exo-thead"><div>Exercice</div><div>Séries / Reps</div><div>Repos</div><div>Technique</div></div>
-          <div class="exo-row"><div class="exo-cell name">STRICT PRESS</div><div class="exo-cell reps">4 × 8</div><div class="exo-cell rest">2 min</div><div class="exo-cell tech">LOURD. Pas de triche avec les jambes. Corps gaîné, barre monte droit au-dessus de la tête.</div></div>
-          <div class="exo-row"><div class="exo-cell name">BENCH PRESS</div><div class="exo-cell reps">4 × 10</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">Tempo 5-1. Descente très contrôlée, explosif sur la montée.</div></div>
-          <div class="exo-row"><div class="exo-cell name">CHEST FLY</div><div class="exo-cell reps">3 × 15</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Tempo 3-3. Étirement profond, coudes légèrement fléchis. Concentration sur les pectoraux.</div></div>
-          <div class="exo-row"><div class="exo-cell name">EXTENSION TRICEPS POULIE</div><div class="exo-cell reps">3 × 8,10,12,15</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">Dégressive. Coudes fixes le long des oreilles. Contraction totale en bas.</div></div>
-          <div class="exo-row"><div class="exo-cell name">ÉLÉVATIONS FRONTALES</div><div class="exo-cell reps">3 × 8,10,12,15</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">Dégressive. Lève jusqu'à l'horizontale, pas plus. Pas de balancement.</div></div>
+          <div class="exo-thead"><div>Exercice</div><div>Série / Reps</div><div>Repos</div><div>Technique</div></div>
+          <div class="exo-row"><div class="exo-vname">STRICT PRESS</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 8</div><div class="exo-cell rest">2 min</div><div class="exo-cell tech">LOURD. Pas de triche avec les jambes. Corps gaîné, barre monte droit.</div></div>
+          <div class="exo-row"><div class="exo-vname">BENCH PRESS</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 10</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">Tempo 5-1. Descente très contrôlée, explosif sur la montée.</div></div>
+          <div class="exo-row"><div class="exo-vname">CHEST FLY</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">3 × 15</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Tempo 3-3. Étirement profond. Concentration sur les pectoraux uniquement.</div></div>
+          <div class="exo-row"><div class="exo-vname">EXTENSION TRICEPS POULIE</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">3 × 8,10,12,15</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">Dégressive. Coudes fixes. Contraction totale en bas.</div></div>
+          <div class="exo-row"><div class="exo-vname">ÉLÉVATIONS FRONTALES</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">3 × 8,10,12,15</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">Dégressive. Jusqu'à l'horizontale. Pas de balancement du buste.</div></div>
         </div>
+        <div class="bonus-block"><div class="bonus-header"><span class="bonus-tag">BONUS</span><span class="bonus-tag green">ABDOS</span><span class="bonus-body">Circuit × 3 : 20 crunchs obliques · 15 relevés de bassin · 1 min planche. Repos 30 sec.</span></div></div>
       </div>
 
-      <!-- P2C -->
       <div class="session-panel" id="p2-c">
         <div class="session-label">Session C — Quadriceps · Mollets</div>
         <div class="exo-wrap">
-          <div class="exo-thead"><div>Exercice</div><div>Séries / Reps</div><div>Repos</div><div>Technique</div></div>
-          <div class="exo-row"><div class="exo-cell name">GOBLET SQUAT</div><div class="exo-cell reps">3 × 8,10,12,15</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Dégressive. Profond, talons au sol. Buste droit, coudes pointés vers le bas.</div></div>
-          <div class="exo-row"><div class="exo-cell name">PRESSE À CUISSES</div><div class="exo-cell reps">3 × 15,12,10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Dégressive inversée — charge monte à chaque série. Tension continue, genoux dans l'axe.</div></div>
-          <div class="exo-row"><div class="exo-cell name">LEG EXTENSION</div><div class="exo-cell reps">5 × 12</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Retiens 10 sec en concentrique sur la dernière rep de chaque série. Brûle.</div></div>
-          <div class="exo-row"><div class="exo-cell name">MOLLETS × JUMP SQUAT</div><div class="exo-cell reps">4 × 10 + 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Superset. 10 extensions mollets tempo 5-5, enchaîne avec 10 jump squats explosifs.</div></div>
+          <div class="exo-thead"><div>Exercice</div><div>Série / Reps</div><div>Repos</div><div>Technique</div></div>
+          <div class="exo-row"><div class="exo-vname">GOBLET SQUAT</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">3 × 8,10,12,15</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Dégressive. Profond, talons au sol. Buste droit.</div></div>
+          <div class="exo-row"><div class="exo-vname">PRESSE À CUISSES</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">3 × 15,12,10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Pyramidale inversée — charge monte à chaque série. Tension continue.</div></div>
+          <div class="exo-row"><div class="exo-vname">LEG EXTENSION</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">5 × 12</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Retiens 10 sec en concentrique sur la dernière rep de chaque série.</div></div>
+          <div class="exo-row"><div class="exo-vname">MOLLETS × JUMP SQUAT</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 10 + 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Superset. 10 extensions mollets tempo 5-5 enchaînées avec 10 jump squats explosifs.</div></div>
         </div>
+        <div class="bonus-block"><div class="bonus-header"><span class="bonus-tag">BONUS</span><span class="bonus-tag green">CARDIO</span><span class="bonus-body">45 min à intensité modérée. Au choix : marche, vélo, elliptique. Parfait pour la récupération active.</span></div></div>
       </div>
 
-      <!-- P2D -->
       <div class="session-panel" id="p2-d">
         <div class="session-label">Session D — Pull · Dos · Biceps</div>
         <div class="exo-wrap">
-          <div class="exo-thead"><div>Exercice</div><div>Séries / Reps</div><div>Repos</div><div>Technique</div></div>
-          <div class="exo-row"><div class="exo-cell name">ROWING BARRE</div><div class="exo-cell reps">4 × 12 + 4 × 15</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">4 séries lourdes puis 4 séries légères avec plus de reps. Coudes le long du corps.</div></div>
-          <div class="exo-row"><div class="exo-cell name">ROWING BÛCHERON</div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">Un bras à la fois. Genou et main appuyés sur le banc. Dos plat. Coude vers le plafond.</div></div>
-          <div class="exo-row"><div class="exo-cell name">TIRAGE VERTICAL SERRÉ</div><div class="exo-cell reps">4 × 8,10,12</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">Dégressive. Retiens 2 sec en fin de concentrique. Coudes qui descendent vers les hanches.</div></div>
-          <div class="exo-row"><div class="exo-cell name">PULL-OVER HALTÈRES</div><div class="exo-cell reps">3 × 15</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Tempo 5-2. Étirement maximal en haut, dorsaux qui travaillent à la descente.</div></div>
-          <div class="exo-row"><div class="exo-cell name">CURL BICEPS BARRE</div><div class="exo-cell reps">4 × 10</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">LOURD. Tempo 2-2. Coudes fixes le long du corps. Pas de balancement du buste.</div></div>
+          <div class="exo-thead"><div>Exercice</div><div>Série / Reps</div><div>Repos</div><div>Technique</div></div>
+          <div class="exo-row"><div class="exo-vname">ROWING BARRE</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4×12 + 4×15</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">4 séries lourdes puis 4 séries légères + reps. Coudes le long du corps.</div></div>
+          <div class="exo-row"><div class="exo-vname">ROWING BÛCHERON</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">Un bras à la fois. Dos plat. Coude vers le plafond.</div></div>
+          <div class="exo-row"><div class="exo-vname">TIRAGE VERTICAL SERRÉ</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 8,10,12</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">Dégressive. Retiens 2 sec en fin de concentrique.</div></div>
+          <div class="exo-row"><div class="exo-vname">PULL-OVER HALTÈRES</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">3 × 15</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Tempo 5-2. Étirement max en haut, dorsaux à la descente.</div></div>
+          <div class="exo-row"><div class="exo-vname">CURL BICEPS BARRE</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 10</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">LOURD. Tempo 2-2. Coudes fixes. Pas de balancement du buste.</div></div>
         </div>
+        <div class="bonus-block"><div class="bonus-header"><span class="bonus-tag">BONUS</span><span class="bonus-tag green">CARDIO / ABDOS</span><span class="bonus-body">15 min HIIT (2 min forte intensité / 1 min faible) + Circuit abdos : 4 × 2 min planche.</span></div></div>
       </div>
 
-      <!-- P2E -->
       <div class="session-panel" id="p2-e">
         <div class="session-label">Session E — Fessiers</div>
         <div class="exo-wrap">
-          <div class="exo-thead"><div>Exercice</div><div>Séries / Reps</div><div>Repos</div><div>Technique</div></div>
-          <div class="exo-row"><div class="exo-cell name">STEP UP BOX</div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">5 à 10 kg. Pousse sur le talon pour monter. Fessier qui travaille, pas les quadris.</div></div>
-          <div class="exo-row"><div class="exo-cell name">SDT UNILATÉRAL HALTÈRES</div><div class="exo-cell reps">3 × 40</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Tempo 10-10. Une jambe à la fois. Lent, très lent. Équilibre et ressenti.</div></div>
-          <div class="exo-row"><div class="exo-cell name">HIP THRUST</div><div class="exo-cell reps">4 × 15</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Tempo 10-10. Contraction fessier maximale en haut. Maintiens 2 sec.</div></div>
-          <div class="exo-row"><div class="exo-cell name">SDT SUMO</div><div class="exo-cell reps">3 × 20</div><div class="exo-cell rest">20 sec</div><div class="exo-cell tech">EXPLOSIF. Pousse le sol. Très peu de repos. Gardez l'intensité.</div></div>
-          <div class="exo-row"><div class="exo-cell name">JUMP SQUAT</div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Étirement fessier maximal à la descente. Explosif à la montée. Réception souple.</div></div>
+          <div class="exo-thead"><div>Exercice</div><div>Série / Reps</div><div>Repos</div><div>Technique</div></div>
+          <div class="exo-row"><div class="exo-vname">STEP UP BOX</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">5 à 10 kg. Pousse sur le talon à la montée. Fessier, pas les quadris.</div></div>
+          <div class="exo-row"><div class="exo-vname">SDT UNILATÉRAL HALTÈRES</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">3 × 40</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Tempo 10-10. Une jambe à la fois. Très lent. Équilibre et ressenti.</div></div>
+          <div class="exo-row"><div class="exo-vname">HIP THRUST</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 15</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Tempo 10-10. Contraction fessier maximale. Maintiens 2 sec en haut.</div></div>
+          <div class="exo-row"><div class="exo-vname">SDT SUMO</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">3 × 20</div><div class="exo-cell rest">20 sec</div><div class="exo-cell tech">EXPLOSIF. Peu de repos. Garde l'intensité tout au long.</div></div>
+          <div class="exo-row"><div class="exo-vname">JUMP SQUAT</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Étirement fessier maximal à la descente. Explosif à la montée. Réception souple.</div></div>
         </div>
+        <div class="bonus-block"><div class="bonus-header"><span class="bonus-tag">BONUS</span><span class="bonus-tag green">CARDIO</span><span class="bonus-body">10 min marche inclinée + étirements fessiers 10 min. Pigeon bilatéral, hip flexor, 4 de chiffre.</span></div></div>
       </div>
-    </div><!-- /phase-body -->
+    </div>
   </div>
 </div>
 
-<hr class="sep" style="max-width:820px;margin:0 auto 0">
+<hr class="sep">
 
-<!-- ===== PHASE 3 ===== -->
-<div class="section" id="phase3">
-  <div class="phase-block">
-    <div class="phase-header">
-      <div class="phase-num">Phase 3 · Semaines 6, 7 et 8</div>
-      <div class="phase-name">I'm Iron <em>AND I KNOW IT</em></div>
-      <div class="phase-meta">
-        <span class="phase-pill pct">80–90% RM</span>
-        <span class="phase-pill">Intensité maximale</span>
-        <span class="phase-pill">Supersets & intensification</span>
+<!-- ═══════════════════════════════ PHASE 3 ═══════════════════════════════ -->
+<div id="phase3">
+  <div class="phase-cover">
+    <img src="images/ornella-transformation.jpg" alt="" onerror="this.src='images/ornella-profil-studio.png'">
+    <div class="phase-cover-content">
+      <div class="phase-cover-num">Phase 3 · Semaines 6, 7 et 8</div>
+      <div class="phase-cover-title">I'm Iron <em>AND I KNOW IT</em></div>
+      <div class="phase-cover-pills">
+        <span class="phase-cover-pill pct">80 – 90 % RM</span>
+        <span class="phase-cover-pill">Intensité maximale</span>
+        <span class="phase-cover-pill">Supersets · Intensification</span>
       </div>
     </div>
+  </div>
+  <div class="phase-section">
     <div class="phase-body">
       <div class="session-tabs">
         <button class="stab active" onclick="showSession('p3','a',this)">A · Ischios-Fessiers</button>
@@ -456,123 +681,182 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none}
         <button class="stab" onclick="showSession('p3','e',this)">E · Fessiers</button>
       </div>
 
-      <!-- P3A -->
       <div class="session-panel active" id="p3-a">
         <div class="session-label">Session A — Ischios · Fessiers</div>
         <div class="exo-wrap">
-          <div class="exo-thead"><div>Exercice</div><div>Séries / Reps</div><div>Repos</div><div>Technique</div></div>
-          <div class="exo-row"><div class="exo-cell name">CABLE KICKBACK</div><div class="exo-cell reps">4 × 12 + 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Tempo 4-4. 12 reps puis enchaîne avec 10 reps plus légères sans repos. Jambe droite puis gauche.</div></div>
-          <div class="exo-row"><div class="exo-cell name">FENTES BULGARES</div><div class="exo-cell reps">4 × 10 + 1 × 30</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">70% RM pour les 4 séries, puis une série finale de 30 reps à vide avec booty bands. Brûlure garantie.</div></div>
-          <div class="exo-row"><div class="exo-cell name">SDT SUMO × JUMP SQUAT</div><div class="exo-cell reps">5 × 12 + 10</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">Superset. SDT sumo tempo 3-3, puis jump squat explosif immédiatement après. Pas de repos entre les deux.</div></div>
-          <div class="exo-row"><div class="exo-cell name">LEG CURL</div><div class="exo-cell reps">3 × 20</div><div class="exo-cell rest">0</div><div class="exo-cell tech">55% RM. Une jambe puis l'autre sans repos entre les deux. Enchaîne direct.</div></div>
-          <div class="exo-row"><div class="exo-cell name">HIP THRUST</div><div class="exo-cell reps">5 × 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">LOURD. Tempo 10-10. Dix secondes descente, dix secondes montée. Mental d'acier requis.</div></div>
+          <div class="exo-thead"><div>Exercice</div><div>Série / Reps</div><div>Repos</div><div>Technique</div></div>
+          <div class="exo-row"><div class="exo-vname">CABLE KICKBACK</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 12 + 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Tempo 4-4. 12 reps puis enchaîne 10 reps plus légères sans repos. Gauche puis droite.</div></div>
+          <div class="exo-row"><div class="exo-vname">FENTES BULGARES</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4×10 + 1×30</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">70% RM × 4 séries, puis 1 série finale de 30 reps à vide avec booty bands. Brûlure garantie.</div></div>
+          <div class="exo-row"><div class="exo-vname">SDT SUMO × JUMP SQUAT</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">5 × 12 + 10</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">Superset. SDT sumo tempo 3-3, enchaîne jump squat explosif. Pas de repos entre les deux.</div></div>
+          <div class="exo-row"><div class="exo-vname">LEG CURL</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">3 × 20</div><div class="exo-cell rest">0</div><div class="exo-cell tech">55% RM. Une jambe puis l'autre sans repos entre les deux.</div></div>
+          <div class="exo-row"><div class="exo-vname">HIP THRUST</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">5 × 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">LOURD. Tempo 10-10. Dix secondes descente, dix secondes montée. Mental d'acier requis.</div></div>
         </div>
+        <div class="bonus-block"><div class="bonus-header"><span class="bonus-tag">BONUS</span><span class="bonus-tag green">CARDIO</span><span class="bonus-body">20 min HIIT intensif : 40 sec travail / 20 sec repos. Burpees, jump squat, mountain climbers.</span></div></div>
       </div>
 
-      <!-- P3B -->
       <div class="session-panel" id="p3-b">
         <div class="session-label">Session B — Push · Pectoraux · Épaules · Triceps</div>
         <div class="exo-wrap">
-          <div class="exo-thead"><div>Exercice</div><div>Séries / Reps</div><div>Repos</div><div>Technique</div></div>
-          <div class="exo-row"><div class="exo-cell name">BENCH PRESS</div><div class="exo-cell reps">4 × 10</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">80% RM. Tempo 2-2. Lourd et contrôlé. Pas de rebond sur la poitrine.</div></div>
-          <div class="exo-row"><div class="exo-cell name">CHEST FLY</div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Tempo 3-3. Étirement profond, contraction forte. Pectoraux uniquement.</div></div>
-          <div class="exo-row"><div class="exo-cell name">DÉVELOPPÉ MILITAIRE</div><div class="exo-cell reps">4 × 12 + 4 × 15</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">4 séries lourdes, enchaîne avec 4 séries plus légères et plus de reps sans repos long entre les blocs.</div></div>
-          <div class="exo-row"><div class="exo-cell name">DIPS × EXTENSION TRICEPS</div><div class="exo-cell reps">4 × 10 + 15</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Superset. 10 dips enchaînés avec 15 extensions triceps poulie. Triceps en feu.</div></div>
-          <div class="exo-row"><div class="exo-cell name">LATÉRALES × FRONTALES</div><div class="exo-cell reps">3 × 12 + 12</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Superset. 12 élévations latérales enchaînées avec 12 élévations frontales. Pas de repos entre les deux.</div></div>
+          <div class="exo-thead"><div>Exercice</div><div>Série / Reps</div><div>Repos</div><div>Technique</div></div>
+          <div class="exo-row"><div class="exo-vname">BENCH PRESS</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 10</div><div class="exo-cell rest">1 min 30</div><div class="exo-cell tech">80% RM. Tempo 2-2. Lourd et contrôlé. Pas de rebond sur la poitrine.</div></div>
+          <div class="exo-row"><div class="exo-vname">CHEST FLY</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Tempo 3-3. Étirement profond, contraction forte. Pectoraux uniquement.</div></div>
+          <div class="exo-row"><div class="exo-vname">DÉVELOPPÉ MILITAIRE</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4×12 + 4×15</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">4 séries lourdes, baisse le poids, enchaîne 4 séries avec plus de reps.</div></div>
+          <div class="exo-row"><div class="exo-vname">DIPS × EXTENSION TRICEPS</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 10 + 15</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Superset. 10 dips enchaînés avec 15 extensions triceps poulie. Triceps en feu.</div></div>
+          <div class="exo-row"><div class="exo-vname">LATÉRALES × FRONTALES</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">3 × 12 + 12</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Superset. 12 élévations latérales enchaînées avec 12 élévations frontales.</div></div>
         </div>
+        <div class="bonus-block"><div class="bonus-header"><span class="bonus-tag">BONUS</span><span class="bonus-tag green">ABDOS</span><span class="bonus-body">Circuit × 4 : 20 crunchs / 15 relevés de jambes / 1 min planche avec touchers d'épaules. Repos 30 sec.</span></div></div>
       </div>
 
-      <!-- P3C -->
       <div class="session-panel" id="p3-c">
         <div class="session-label">Session C — Quadriceps · Mollets</div>
         <div class="exo-wrap">
-          <div class="exo-thead"><div>Exercice</div><div>Séries / Reps</div><div>Repos</div><div>Technique</div></div>
-          <div class="exo-row"><div class="exo-cell name">LEG EXTENSION</div><div class="exo-cell reps">5 × 12</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">LOURD. Tempo 10-10. Dix secondes montée, dix secondes descente. Quadriceps en feu.</div></div>
-          <div class="exo-row"><div class="exo-cell name">PRESSE × JUMP SQUAT</div><div class="exo-cell reps">4 × 10 + 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Superset. 70% RM sur la presse, enchaîne direct avec 10 jump squats explosifs.</div></div>
-          <div class="exo-row"><div class="exo-cell name">GOBLET SQUAT</div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Tempo 5-5. Profond. Talons au sol. Très contrôlé.</div></div>
-          <div class="exo-row"><div class="exo-cell name">ADDUCTEUR MACHINE</div><div class="exo-cell reps">3 × 2 min</div><div class="exo-cell rest">20 sec</div><div class="exo-cell tech">Tempo 2-2. Tiens 2 minutes sans relâcher. Intérieur cuisse en contraction continue.</div></div>
-          <div class="exo-row"><div class="exo-cell name">EXTENSIONS MOLLETS</div><div class="exo-cell reps">5 × 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">LOURD. Tempo 3-3. Étirement complet en bas. Contraction maximale en haut. Ne précipite pas.</div></div>
+          <div class="exo-thead"><div>Exercice</div><div>Série / Reps</div><div>Repos</div><div>Technique</div></div>
+          <div class="exo-row"><div class="exo-vname">LEG EXTENSION</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">5 × 12</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">LOURD. Tempo 10-10. Dix secondes montée, dix secondes descente. Quadriceps en feu.</div></div>
+          <div class="exo-row"><div class="exo-vname">PRESSE × JUMP SQUAT</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 10 + 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Superset. 70% RM sur la presse, enchaîne 10 jump squats explosifs immédiatement.</div></div>
+          <div class="exo-row"><div class="exo-vname">GOBLET SQUAT</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">40 sec</div><div class="exo-cell tech">Tempo 5-5. Profond. Talons au sol. Contrôle absolu.</div></div>
+          <div class="exo-row"><div class="exo-vname">ADDUCTEUR MACHINE</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">3 × 2 min</div><div class="exo-cell rest">20 sec</div><div class="exo-cell tech">Tempo 2-2. Intérieur cuisse en contraction continue pendant 2 minutes.</div></div>
+          <div class="exo-row"><div class="exo-vname">EXTENSIONS MOLLETS</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">5 × 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">LOURD. Tempo 3-3. Étirement complet en bas. Contraction maximale en haut.</div></div>
         </div>
+        <div class="bonus-block"><div class="bonus-header"><span class="bonus-tag">BONUS</span><span class="bonus-tag green">CARDIO</span><span class="bonus-body">25 min tapis ou vélo à intensité soutenue (tu peux parler mais difficilement). Constante.</span></div></div>
       </div>
 
-      <!-- P3D -->
       <div class="session-panel" id="p3-d">
         <div class="session-label">Session D — Pull · Dos · Épaules arrière · Biceps</div>
         <div class="exo-wrap">
-          <div class="exo-thead"><div>Exercice</div><div>Séries / Reps</div><div>Repos</div><div>Technique</div></div>
-          <div class="exo-row"><div class="exo-cell name">TIRAGE VERTICAL LARGE × SERRÉ</div><div class="exo-cell reps">4 × 10 + 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Enchaîne prise large et prise serrée sans repos. 70% RM. Tempo 3-3. Deux angles de travail dos.</div></div>
-          <div class="exo-row"><div class="exo-cell name">PULL-OVER POULIE</div><div class="exo-cell reps">3 × 15,12,10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Pyramidal inversé — charge augmente à chaque série. Dorsaux uniquement.</div></div>
-          <div class="exo-row"><div class="exo-cell name">TIRAGE MENTON</div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Tempo 3-3. Coudes qui montent. Prise large. Épaules arrière et trapèzes moyens.</div></div>
-          <div class="exo-row"><div class="exo-cell name">DELT FLY HALTÈRES</div><div class="exo-cell reps">4 × 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Tempo 3-3. Penche le buste en avant. Coudes légèrement fléchis. Épaules arrière.</div></div>
-          <div class="exo-row"><div class="exo-cell name">CURL PUPITRE</div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Tempo 3-3. Bras posé sur le pupitre. Isolation totale du biceps. Contrôle l'excentrique.</div></div>
+          <div class="exo-thead"><div>Exercice</div><div>Série / Reps</div><div>Repos</div><div>Technique</div></div>
+          <div class="exo-row"><div class="exo-vname">TIRAGE VERTICAL LARGE × SERRÉ</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 10 + 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Enchaîne prise large et prise serrée. 70% RM. Tempo 3-3.</div></div>
+          <div class="exo-row"><div class="exo-vname">PULL-OVER POULIE</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">3 × 15,12,10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Pyramidal inversé — charge augmente à chaque série. Dorsaux uniquement.</div></div>
+          <div class="exo-row"><div class="exo-vname">TIRAGE MENTON</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Tempo 3-3. Prise large. Coudes qui montent. Épaules arrière.</div></div>
+          <div class="exo-row"><div class="exo-vname">DELT FLY HALTÈRES</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 10</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Tempo 3-3. Penche le buste en avant. Coudes légèrement fléchis.</div></div>
+          <div class="exo-row"><div class="exo-vname">CURL PUPITRE</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Tempo 3-3. Bras posé sur le pupitre. Isolation totale du biceps.</div></div>
         </div>
+        <div class="bonus-block"><div class="bonus-header"><span class="bonus-tag">BONUS</span><span class="bonus-tag green">ABDOS</span><span class="bonus-body">Circuit × 4 : 1 min gainage latéral / 20 russian twist lestés / 15 relevés de bassin surélevés. Repos 20 sec.</span></div></div>
       </div>
 
-      <!-- P3E -->
       <div class="session-panel" id="p3-e">
         <div class="session-label">Session E — Fessiers</div>
         <div class="exo-wrap">
-          <div class="exo-thead"><div>Exercice</div><div>Séries / Reps</div><div>Repos</div><div>Technique</div></div>
-          <div class="exo-row"><div class="exo-cell name">ABDUCTEUR MACHINE</div><div class="exo-cell reps">2 × 100</div><div class="exo-cell rest">30 sec</div><div class="exo-cell tech">Cherche la brûlure. 100 reps sans s'arrêter. Poids léger. Concentration sur le grand fessier.</div></div>
-          <div class="exo-row"><div class="exo-cell name">HIP THRUST</div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">2 min</div><div class="exo-cell tech">70% RM. Tempo 3-3. Lourd. Contraction maximale et maintien 2 sec en haut.</div></div>
-          <div class="exo-row"><div class="exo-cell name">EXTENSIONS LOMBAIRES</div><div class="exo-cell reps">4 × 20</div><div class="exo-cell rest">30 sec</div><div class="exo-cell tech">Reste 3 sec en fin de concentrique. Fessiers et lombaires. Pas de coup de reins.</div></div>
-          <div class="exo-row"><div class="exo-cell name">STEP UP BOX</div><div class="exo-cell reps">4 × 30</div><div class="exo-cell rest">20 sec</div><div class="exo-cell tech">Alterne les jambes. Rapide mais contrôlé. Pousse sur le talon à chaque montée.</div></div>
-          <div class="exo-row"><div class="exo-cell name">FENTES MARCHÉES</div><div class="exo-cell reps">4 × 30 pas</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Grands pas. Genou arrière proche du sol. On termine le programme comme une Iron Girl.</div></div>
+          <div class="exo-thead"><div>Exercice</div><div>Série / Reps</div><div>Repos</div><div>Technique</div></div>
+          <div class="exo-row"><div class="exo-vname">ABDUCTEUR MACHINE</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">2 × 100</div><div class="exo-cell rest">30 sec</div><div class="exo-cell tech">100 reps sans s'arrêter. Cherche la brûlure. Poids léger, concentration maximale.</div></div>
+          <div class="exo-row"><div class="exo-vname">HIP THRUST</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 12</div><div class="exo-cell rest">2 min</div><div class="exo-cell tech">70% RM. Tempo 3-3. LOURD. Maintiens 2 sec en haut.</div></div>
+          <div class="exo-row"><div class="exo-vname">EXTENSIONS LOMBAIRES</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 20</div><div class="exo-cell rest">30 sec</div><div class="exo-cell tech">Reste 3 sec en fin de concentrique. Fessiers et lombaires. Pas de coup de reins.</div></div>
+          <div class="exo-row"><div class="exo-vname">STEP UP BOX</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 30</div><div class="exo-cell rest">20 sec</div><div class="exo-cell tech">Alterne les jambes. Rapide mais contrôlé. Pousse sur le talon.</div></div>
+          <div class="exo-row"><div class="exo-vname">FENTES MARCHÉES</div><div class="exo-photo-cell"><div class="photo-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Photo</span></div></div><div class="exo-cell reps">4 × 30 pas</div><div class="exo-cell rest">1 min</div><div class="exo-cell tech">Grands pas. On termine le programme comme une véritable Iron Girl.</div></div>
         </div>
+        <div class="bonus-block"><div class="bonus-header"><span class="bonus-tag">BONUS</span><span class="bonus-tag green">CARDIO</span><span class="bonus-body">10 min marche inclinée + 15 min étirements complets. Tu as fini les 8 semaines. Sois fière de toi.</span></div></div>
       </div>
-    </div><!-- /phase-body -->
+    </div>
   </div>
 </div>
 
-<hr class="sep" style="max-width:820px;margin:0 auto 0">
+<hr class="sep">
 
-<!-- NUTRITION -->
+<!-- ═══════════════════════════════ NUTRITION ═══════════════════════════════ -->
 <div class="section" id="nutrition">
-  <p class="section-title">Conseils nutrition</p>
-  <p class="section-subtitle">Pas de régime. De la vraie alimentation qui soutient tes efforts.</p>
-  <p class="nutri-intro">Un programme de salle sans nutrition adaptée, ça donne des séances intenses avec une récupération nulle. Ce n'est pas un plan alimentaire personnalisé — c'est la base que toute femme qui s'entraîne sérieusement devrait connaître. Pour un suivi sur-mesure, c'est avec moi que ça se passe.</p>
-  <div class="nutri-grid">
-    <div class="nutri-card">
-      <h4>Protéines · La priorité</h4>
-      <ul>
-        <li>1,6 à 2g par kg de poids de corps</li>
-        <li>Répartis sur 3 à 4 repas dans la journée</li>
-        <li>Sources : poulet, œufs, poisson, tofu, légumineuses</li>
-        <li>Shaker protéiné si tu n'atteins pas ton quota</li>
-        <li>Dans les 2h après l'entraînement si possible</li>
-      </ul>
+  <p class="section-title">Nutrition — La base</p>
+  <p class="section-sub">Pas de régime. De la vraie alimentation qui soutient tes résultats.</p>
+
+  <div class="nutri-highlight">
+    <h4>Ce que tu dois comprendre avant tout</h4>
+    <p>Un programme de salle sans nutrition adaptée, c'est construire une maison sans fondations. Tu vas t'entraîner dur, dépenser de l'énergie, stresser tes muscles — et si tu ne manges pas correctement derrière, tu ne récupères pas, tu ne progresses pas, tu stagnes.</p>
+    <p>Ce n'est pas un plan alimentaire personnalisé. C'est la base que toute femme qui s'entraîne sérieusement doit connaître. Pour un suivi nutritionnel sur-mesure, c'est avec moi que ça se passe.</p>
+  </div>
+
+  <div class="nutri-block">
+    <div class="nutri-block-title">Tes macros — Les 3 piliers</div>
+    <div class="nutri-macro-grid">
+      <div class="nutri-macro">
+        <div class="macro-val">1,6–2g</div>
+        <div class="macro-label">Protéines</div>
+        <div class="macro-sub">Par kg de poids de corps par jour. Priorité absolue. Sans ça, pas de prise de muscle.</div>
+      </div>
+      <div class="nutri-macro">
+        <div class="macro-val">0,8–1g</div>
+        <div class="macro-label">Lipides</div>
+        <div class="macro-sub">Par kg de poids de corps. Hormones, articulations, récupération. Ne les supprime jamais.</div>
+      </div>
+      <div class="nutri-macro">
+        <div class="macro-val">Adapte</div>
+        <div class="macro-label">Glucides</div>
+        <div class="macro-sub">Plus en jours d'entraînement, moins en jours de repos. Ton carburant principal.</div>
+      </div>
     </div>
-    <div class="nutri-card">
-      <h4>Glucides · Ton carburant</h4>
-      <ul>
-        <li>Ne les supprime pas — tes muscles en ont besoin</li>
-        <li>Avant la séance : riz, patate douce, flocons d'avoine</li>
-        <li>Après la séance : fruits, riz, pain complet</li>
-        <li>Moins de glucides les jours sans entraînement</li>
-        <li>Adapte la quantité à ton niveau d'énergie</li>
-      </ul>
+  </div>
+
+  <div class="nutri-block">
+    <div class="nutri-block-title">Exemple de journée type — Jour d'entraînement</div>
+    <div class="nutri-day">
+      <div class="nutri-day-header">Journée type · Entraînement l'après-midi</div>
+      <div class="nutri-day-row"><div class="nutri-day-time">Matin</div><div class="nutri-day-food">Flocons d'avoine + lait + fruits rouges + 2 œufs ou du fromage blanc. Glucides lents + protéines pour bien démarrer.</div></div>
+      <div class="nutri-day-row"><div class="nutri-day-time">Pré-séance</div><div class="nutri-day-food">1h–1h30 avant : riz, patate douce ou pain complet + source de protéines légère (poulet, thon). Tes muscles ont besoin de carburant.</div></div>
+      <div class="nutri-day-row"><div class="nutri-day-time">Post-séance</div><div class="nutri-day-food">Dans les 2h : protéines + glucides rapides. Shaker whey + banane, ou repas complet riz + poulet/œufs + légumes. La fenêtre anabolique est réelle.</div></div>
+      <div class="nutri-day-row"><div class="nutri-day-time">Soir</div><div class="nutri-day-food">Protéines + légumes + lipides. Poisson / viande + légumes vapeur + avocat ou huile d'olive. Réduis les glucides si tu ne t'entraînes plus.</div></div>
+      <div class="nutri-day-row"><div class="nutri-day-time">Collation</div><div class="nutri-day-food">Fromage blanc + oléagineux (amandes, noix), ou yaourt grec + fruit. Évite le sucre raffiné entre les repas.</div></div>
     </div>
-    <div class="nutri-card">
-      <h4>Hydratation · Fondamental</h4>
-      <ul>
-        <li>Minimum 2L d'eau par jour, plus si tu transpires</li>
-        <li>Commence à boire avant d'avoir soif</li>
-        <li>Une bouteille d'eau à côté de toi pendant la séance</li>
-        <li>Électrolytes si séances longues ou intense transpiration</li>
-      </ul>
+  </div>
+
+  <div class="nutri-block">
+    <div class="nutri-block-title">Aliments clés à privilégier</div>
+    <div class="nutri-grid">
+      <div class="nutri-card">
+        <h4>Protéines</h4>
+        <ul>
+          <li>Poulet, dinde, bœuf maigre</li>
+          <li>Œufs (entiers + blancs)</li>
+          <li>Poissons (thon, saumon, cabillaud)</li>
+          <li>Fromage blanc 0%, yaourt grec</li>
+          <li>Légumineuses (lentilles, pois chiches)</li>
+          <li>Whey protéine si besoin</li>
+        </ul>
+      </div>
+      <div class="nutri-card">
+        <h4>Glucides complexes</h4>
+        <ul>
+          <li>Riz blanc ou complet, quinoa</li>
+          <li>Patate douce, pomme de terre</li>
+          <li>Pain complet, flocons d'avoine</li>
+          <li>Légumes verts (sans limite)</li>
+          <li>Fruits (priorité le matin ou post-séance)</li>
+        </ul>
+      </div>
+      <div class="nutri-card">
+        <h4>Bonnes graisses</h4>
+        <ul>
+          <li>Avocat (1/2 par repas max)</li>
+          <li>Huile d'olive vierge extra</li>
+          <li>Amandes, noix, noisettes</li>
+          <li>Saumon, maquereau, sardines</li>
+          <li>Beurre de cacahuète (sans sucre)</li>
+        </ul>
+      </div>
+      <div class="nutri-card">
+        <h4>Suppléments utiles</h4>
+        <ul>
+          <li>Whey protéine si tu n'atteignes pas ton quota</li>
+          <li>Créatine monohydrate : 3–5g / jour</li>
+          <li>Magnésium bisglycinate le soir</li>
+          <li>Vitamine D3 en hiver</li>
+          <li>Oméga-3 si peu de poisson gras</li>
+        </ul>
+      </div>
     </div>
-    <div class="nutri-card">
-      <h4>Récupération · Aussi important que l'entraînement</h4>
+  </div>
+
+  <div class="nutri-block">
+    <div class="nutri-block-title">Hydratation · Non négociable</div>
+    <div class="nutri-card" style="border-radius:14px">
       <ul>
-        <li>7 à 9h de sommeil — c'est là que tu progresses vraiment</li>
-        <li>Ne saute pas les jours de repos prévus</li>
-        <li>Gras de qualité : avocat, huile d'olive, oléagineux</li>
-        <li>Légumes à chaque repas pour les micronutriments</li>
+        <li>Minimum 2 à 2,5L d'eau par jour, plus si tu transpires beaucoup</li>
+        <li>Commence à boire avant d'avoir soif — la soif = déjà déshydratée</li>
+        <li>Une bouteille d'eau à côté de toi pendant CHAQUE séance</li>
+        <li>Si tu transpires beaucoup : ajoute une pincée de sel et du citron à ton eau (électrolytes naturels)</li>
+        <li>Café possible avant la séance — mais hydrate-toi encore plus</li>
       </ul>
     </div>
   </div>
+
   <div class="nutri-warn">
-    <p><strong>Ce programme est conçu pour des femmes en bonne santé, sans contre-indication médicale.</strong> Si tu reviens d'une grossesse, d'une opération ou d'une longue pause, adapte les charges et consulte un médecin si tu as le moindre doute. Je propose un suivi sur-mesure post-partum si tu en as besoin — contacte-moi directement.</p>
+    <p><strong>Ce programme est conçu pour des femmes en bonne santé, sans contre-indication médicale.</strong> Si tu reviens d'une grossesse, d'une opération ou d'une longue pause sportive, adapte les charges progressivement. En cas de doute, consulte ton médecin. Je propose un suivi sur-mesure post-partum — contacte-moi directement si c'est ton cas.</p>
   </div>
 </div>
 
@@ -580,7 +864,7 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none}
 <div class="section" style="padding-top:0">
   <div class="cta-bottom">
     <h2>Tu veux aller plus loin ?</h2>
-    <p>Coaching distanciel ou présentiel — je construis ton programme sur-mesure avec toi.</p>
+    <p>Coaching distanciel ou présentiel — je construis ton programme sur-mesure, avec toi, de A à Z.</p>
     <a href="offres.html" class="btn-cta">Voir les coachings</a>
   </div>
 </div>
@@ -591,9 +875,9 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none}
 
 <script>
 function showSession(phase, session, btn) {
-  const phaseEl = btn.closest('.phase-body');
-  phaseEl.querySelectorAll('.session-panel').forEach(p => p.classList.remove('active'));
-  phaseEl.querySelectorAll('.stab').forEach(b => b.classList.remove('active'));
+  const body = btn.closest('.phase-body');
+  body.querySelectorAll('.session-panel').forEach(p => p.classList.remove('active'));
+  body.querySelectorAll('.stab').forEach(b => b.classList.remove('active'));
   const panel = document.getElementById(phase + '-' + session);
   if (panel) panel.classList.add('active');
   btn.classList.add('active');
