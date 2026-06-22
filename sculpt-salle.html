@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Sculpt Salle — Programme 8 Semaines · Ornella Fit Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F7F3F0;--accent:#C96358;--dark:#1E1616;--brown:#9A8080;
+  --rose-deep:#D8A7A0;--sand:#DEC8C0;--white:#fff;
+  --green:#4A6741;--text-mid:#4A3E3E;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);min-height:100vh}
+
+/* COVER */
+.cover{min-height:100vh;background:linear-gradient(160deg,#0d0a0a 0%,#1E1616 50%,#2C1F1A 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;position:relative;overflow:hidden}
+.cover::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(201,99,88,.15) 0%,transparent 65%)}
+.cover-label{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.cover-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,10vw,6rem);font-weight:600;line-height:1;color:#fff;margin-bottom:8px}
+.cover-title em{font-style:italic;color:var(--rose-deep)}
+.cover-sub{font-size:1rem;color:rgba(255,255,255,.6);margin-bottom:32px;letter-spacing:.04em}
+.cover-badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
+.cover-badge{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);font-size:.75rem;font-weight:600;padding:6px 16px;border-radius:50px}
+.cover-author{display:flex;align-items:center;gap:12px;margin-top:8px}
+.cover-author-img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)}
+.cover-author-text{text-align:left}
+.cover-author-name{font-size:.9rem;font-weight:700;color:#fff}
+.cover-author-cred{font-size:.72rem;color:rgba(255,255,255,.5)}
+.cover-btn{display:inline-block;background:linear-gradient(135deg,var(--accent),#E8805A);color:#fff;font-weight:700;font-size:1rem;padding:16px 40px;border-radius:50px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 8px 32px rgba(201,99,88,.4);transition:transform .2s,box-shadow .2s;margin-bottom:16px}
+.cover-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,99,88,.5)}
+
+/* HOW TO USE */
+.how-section{background:#111;padding:60px 20px;text-align:center}
+.how-inner{max-width:800px;margin:0 auto}
+.how-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.2rem);color:#fff;margin-bottom:8px}
+.how-title em{font-style:italic;color:var(--rose-deep)}
+.how-sub{font-size:.9rem;color:rgba(255,255,255,.55);margin-bottom:40px;line-height:1.7}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.how-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px 16px;text-align:center}
+.how-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;color:var(--accent);line-height:1;margin-bottom:8px}
+.how-card-title{font-size:.82rem;font-weight:700;color:#fff;margin-bottom:6px}
+.how-card-desc{font-size:.75rem;color:rgba(255,255,255,.45);line-height:1.6}
+
+/* STICKY NAV */
+#prog-nav{position:sticky;top:0;z-index:100;background:#0d0a0a;border-bottom:1px solid rgba(255,255,255,.08);padding:0}
+.phase-bar{display:flex;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:10px 16px;max-width:900px;margin:0 auto}
+.phase-bar::-webkit-scrollbar{display:none}
+.phase-pill{white-space:nowrap;padding:7px 16px;border-radius:50px;font-size:.75rem;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,.12);background:transparent;color:rgba(255,255,255,.45);transition:all .2s}
+.phase-pill.active{background:var(--accent);color:#fff;border-color:transparent}
+.session-bar{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:8px 16px 10px;max-width:900px;margin:0 auto}
+.session-bar::-webkit-scrollbar{display:none}
+.session-pill{white-space:nowrap;padding:6px 14px;border-radius:50px;font-size:.73rem;font-weight:700;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:transparent;color:rgba(255,255,255,.4);transition:all .2s}
+.session-pill.active{background:rgba(201,99,88,.18);color:var(--accent);border-color:rgba(201,99,88,.35)}
+
+/* PHASE HEADER */
+.phase-header{background:linear-gradient(135deg,#2C1F1A,#1E1616);padding:40px 20px 32px;text-align:center;border-bottom:1px solid rgba(255,255,255,.06)}
+.phase-tag{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.phase-name{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;color:#fff;margin-bottom:6px}
+.phase-name em{font-style:italic;color:var(--rose-deep)}
+.phase-desc{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.6;max-width:500px;margin:0 auto}
+.phase-intensity{display:inline-flex;gap:8px;margin-top:14px;flex-wrap:wrap;justify-content:center}
+.intensity-tag{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.65);font-size:.72rem;font-weight:600;padding:4px 12px;border-radius:50px}
+
+/* SESSION */
+.session-block{display:none;padding:24px 20px 60px;max-width:860px;margin:0 auto}
+.session-block.active{display:block}
+.session-header{margin-bottom:24px}
+.session-tag{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px}
+.session-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#fff}
+.session-title em{font-style:italic;color:var(--rose-deep)}
+.session-meta{font-size:.8rem;color:rgba(255,255,255,.4);margin-top:4px}
+
+/* EXERCISE CARD */
+.exo-list{display:flex;flex-direction:column;gap:14px}
+.exo-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;display:grid;grid-template-columns:100px 1fr;transition:border-color .2s}
+.exo-card:hover{border-color:rgba(201,99,88,.3)}
+.exo-photo{background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;min-height:100px;position:relative}
+.exo-photo img{width:100%;height:100%;object-fit:cover}
+.exo-photo-placeholder{font-size:1.6rem;opacity:.3}
+.exo-info{padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.exo-name{font-size:1rem;font-weight:700;color:#fff;line-height:1.2}
+.exo-stats{display:flex;gap:10px;flex-wrap:wrap}
+.exo-stat{background:rgba(201,99,88,.12);border:1px solid rgba(201,99,88,.2);color:var(--accent);font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:50px}
+.exo-stat.rest{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.5)}
+.exo-tech{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6;font-style:italic}
+
+/* BONUS */
+.bonus-block{margin-top:28px;background:linear-gradient(135deg,rgba(74,103,65,.15),rgba(74,103,65,.08));border:1px solid rgba(74,103,65,.25);border-radius:18px;padding:24px 22px}
+.bonus-label{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.bonus-title{font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px}
+.bonus-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.6}
+
+/* SECTION HIDDEN */
+.prog-section{display:none}
+.prog-section.active{display:block}
+
+/* MOBILE */
+@media(max-width:560px){
+  .how-grid{grid-template-columns:1fr 1fr}
+  .exo-card{grid-template-columns:80px 1fr}
+  .exo-photo{min-height:80px}
+  .cover-title{font-size:3.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover" id="cover">
+  <div style="position:relative;z-index:1;">
+    <p class="cover-label">Ornella Fit Coaching · Programme Salle</p>
+    <h1 class="cover-title">SCULPT<br><em>SALLE</em></h1>
+    <p class="cover-sub">8 semaines · Fessiers · Force · Galbe</p>
+    <div class="cover-badges">
+      <span class="cover-badge">🏋️ Programme salle</span>
+      <span class="cover-badge">⏱️ 4 séances / semaine</span>
+      <span class="cover-badge">📈 8 semaines progressives</span>
+      <span class="cover-badge">🏆 Créé par une compétitrice</span>
+    </div>
+    <button class="cover-btn" onclick="startProgram()">Commencer le programme →</button>
+    <br>
+    <div class="cover-author" style="justify-content:center">
+      <img src="images/ornella-competition.jpg" alt="Ornella" class="cover-author-img">
+      <div class="cover-author-text">
+        <div class="cover-author-name">Ornella Racano</div>
+        <div class="cover-author-cred">Ancienne compétitrice fitness · Coach certifiée</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW TO USE -->
+<div class="how-section" id="how-section" style="display:none">
+  <div class="how-inner">
+    <h2 class="how-title">Comment utiliser<br><em>ce programme</em></h2>
+    <p class="how-sub">Lis ça avant de commencer — 2 minutes qui changent tout.</p>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">4</div>
+        <div class="how-card-title">Séances / semaine</div>
+        <div class="how-card-desc">A · B · C · D · Respecte au moins 1 jour de repos entre les séances</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">2</div>
+        <div class="how-card-title">Semaines par phase</div>
+        <div class="how-card-desc">4 phases · 8 semaines · Répète chaque phase 2 fois avant de passer</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">%RM</div>
+        <div class="how-card-title">Charge de travail</div>
+        <div class="how-card-desc">RM = ton max sur 1 répétition. 70%RM = 70% de ce max</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">↑</div>
+        <div class="how-card-title">Surcharge progressive</div>
+        <div class="how-card-desc">Augmente les poids dès que les dernières reps deviennent trop faciles</div>
+      </div>
+    </div>
+    <div style="margin-top:28px;background:rgba(201,99,88,.1);border:1px solid rgba(201,99,88,.2);border-radius:14px;padding:20px;text-align:left;max-width:600px;margin-left:auto;margin-right:auto">
+      <p style="font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.75">
+        <strong style="color:var(--accent)">Tempo :</strong> ex. 3-1 = 3 secondes descente · 1 seconde montée<br>
+        <strong style="color:var(--accent)">Repos :</strong> respecte les temps de repos — c'est une partie de l'entraînement<br>
+        <strong style="color:var(--accent)">Échauffement :</strong> 10 min cardio léger + mobilité avant chaque séance<br>
+        <strong style="color:var(--accent)">Douleur ≠ courbatures :</strong> stoppe si douleur articulaire — contacte-moi
+      </p>
+    </div>
+    <button class="cover-btn" onclick="showProgram()" style="margin-top:32px">Accéder à mon programme →</button>
+  </div>
+</div>
+
+<!-- PROGRAMME PRINCIPAL -->
+<div id="main-program" style="display:none">
+
+  <!-- STICKY NAV -->
+  <div id="prog-nav">
+    <div class="phase-bar">
+      <button class="phase-pill active" onclick="setPhase(1)">Phase 1 · Sem 1-2</button>
+      <button class="phase-pill" onclick="setPhase(2)">Phase 2 · Sem 3-4</button>
+      <button class="phase-pill" onclick="setPhase(3)">Phase 3 · Sem 5-6</button>
+      <button class="phase-pill" onclick="setPhase(4)">Phase 4 · Sem 7-8</button>
+    </div>
+    <div class="session-bar">
+      <button class="session-pill active" onclick="setSession('A')">💪 A — Fessiers &amp; Ischios</button>
+      <button class="session-pill" onclick="setSession('B')">🔺 B — Push</button>
+      <button class="session-pill" onclick="setSession('C')">🦵 C — Quadriceps</button>
+      <button class="session-pill" onclick="setSession('D')">🔙 D — Pull &amp; Dos</button>
+    </div>
+  </div>
+
+  <!-- ========== PHASE 1 ========== -->
+  <div class="prog-section active" id="phase-1">
+
+    <div class="phase-header">
+      <p class="phase-tag">Phase 1 · Semaines 1–2</p>
+      <h2 class="phase-name"><em>Fondations</em> — Activation &amp; Technique</h2>
+      <p class="phase-desc">On pose les bases. Technique parfaite, activation musculaire, connexion corps-esprit. Les charges sont modérées — c'est voulu.</p>
+      <div class="phase-intensity">
+        <span class="intensity-tag">Charge : 60–70% RM</span>
+        <span class="intensity-tag">Tempo : 3-1</span>
+        <span class="intensity-tag">Objectif : technique</span>
+      </div>
+    </div>
+
+    <!-- SESSION A -->
+    <div class="session-block active" id="p1-A">
+      <div class="session-header">
+        <p class="session-tag">Séance A · Fessiers &amp; Ischios</p>
+        <h3 class="session-title">Postérieur<br><em>de compétitrice</em></h3>
+        <p class="session-meta">5 exercices · ~55 min · Priorité : connexion fessier</p>
+      </div>
+      <div class="exo-list">
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🍑</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Hip Thrust Barre</div>
+            <div class="exo-stats">
+              <span class="exo-stat">4 × 12</span>
+              <span class="exo-stat rest">Repos 1min30</span>
+              <span class="exo-stat">60% RM</span>
+            </div>
+            <p class="exo-tech">Pousse via les talons · Contract les fessiers en haut 1 sec · Tempo 3-1 · Dos droit sur le banc</p>
+          </div>
+        </div>
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🏋️</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Soulevé de Terre Roumain (RDL)</div>
+            <div class="exo-stats">
+              <span class="exo-stat">4 × 10</span>
+              <span class="exo-stat rest">Repos 1min30</span>
+              <span class="exo-stat">60% RM</span>
+            </div>
+            <p class="exo-tech">Barre près du corps · Descente lente 4 secondes · Pousse les hanches vers l'arrière · Pas de rotation du dos</p>
+          </div>
+        </div>
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🦵</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Leg Curl Machine Couché</div>
+            <div class="exo-stats">
+              <span class="exo-stat">4 × 12</span>
+              <span class="exo-stat rest">Repos 1min</span>
+              <span class="exo-stat">Tempo 3-2</span>
+            </div>
+            <p class="exo-tech">Retenir 2 sec en bas · Contrôle total · Ne pas soulever les hanches</p>
+          </div>
+        </div>
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🔗</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Cable Kickback Poulie Basse</div>
+            <div class="exo-stats">
+              <span class="exo-stat">4 × 15 / jambe</span>
+              <span class="exo-stat rest">Repos 45sec</span>
+              <span class="exo-stat">Tempo 3-1</span>
+            </div>
+            <p class="exo-tech">Enchaine les jambes sans repos · Prends le repos à la fin du tour · Stabilise le buste</p>
+          </div>
+        </div>
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">↔️</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Abduction Machine Assise</div>
+            <div class="exo-stats">
+              <span class="exo-stat">3 × 20</span>
+              <span class="exo-stat rest">Repos 45sec</span>
+              <span class="exo-stat">Tempo 2-2</span>
+            </div>
+            <p class="exo-tech">Reste en tension continue · Ne ferme pas complètement les jambes · Pointe les pieds légèrement vers l'intérieur</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="bonus-block">
+        <p class="bonus-label">✦ Bonus fin de séance</p>
+        <p class="bonus-title">HIIT 15 min ou marche inclinée 30 min</p>
+        <p class="bonus-desc">Option HIIT : 30 sec effort max / 30 sec repos · 15 tours<br>Option cardio doux : tapis incliné 8–10% · rythme confortable</p>
+      </div>
+    </div>
+
+    <!-- SESSION B -->
+    <div class="session-block" id="p1-B">
+      <div class="session-header">
+        <p class="session-tag">Séance B · Push — Pecs / Épaules / Triceps</p>
+        <h3 class="session-title">Haut du corps<br><em>sculptée</em></h3>
+        <p class="session-meta">5 exercices · ~50 min · Priorité : galbe épaules</p>
+      </div>
+      <div class="exo-list">
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🏋️</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Développé Couché Barre</div>
+            <div class="exo-stats">
+              <span class="exo-stat">4 × 10</span>
+              <span class="exo-stat rest">Repos 1min30</span>
+              <span class="exo-stat">65% RM</span>
+            </div>
+            <p class="exo-tech">1ère série légère (échauffement) · Descente 3 sec · Explosif sur la montée · Coudes à 45°</p>
+          </div>
+        </div>
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">💪</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Développé Militaire Haltères</div>
+            <div class="exo-stats">
+              <span class="exo-stat">4 × 10</span>
+              <span class="exo-stat rest">Repos 1min30</span>
+              <span class="exo-stat">60% RM</span>
+            </div>
+            <p class="exo-tech">Ne descends pas en dessous de la parallèle · Gaine le ventre · Tempo 3-1</p>
+          </div>
+        </div>
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">✋</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Élévations Latérales</div>
+            <div class="exo-stats">
+              <span class="exo-stat">3 × 15</span>
+              <span class="exo-stat rest">Repos 1min</span>
+              <span class="exo-stat">Tempo 2-2</span>
+            </div>
+            <p class="exo-tech">Légèrement fléchi aux coudes · Pouces légèrement vers le bas · Mouvement contrôlé, pas d'élan</p>
+          </div>
+        </div>
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🔽</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Dips (ou Triceps Poulie)</div>
+            <div class="exo-stats">
+              <span class="exo-stat">4 × 12</span>
+              <span class="exo-stat rest">Repos 1min</span>
+              <span class="exo-stat">Tempo 3-1</span>
+            </div>
+            <p class="exo-tech">Possibilité d'utiliser la machine assistée · Corps droit · Coudes proches du corps</p>
+          </div>
+        </div>
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🦋</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Butterfly / Pec Deck Machine</div>
+            <div class="exo-stats">
+              <span class="exo-stat">3 × 15</span>
+              <span class="exo-stat rest">Repos 1min</span>
+              <span class="exo-stat">40% RM</span>
+            </div>
+            <p class="exo-tech">Chercher le bel étirement · Seulement les pecs travaillent — pas le dos · Poids léger, amplitude max</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="bonus-block">
+        <p class="bonus-label">✦ Bonus fin de séance</p>
+        <p class="bonus-title">Circuit Abdos × 3</p>
+        <p class="bonus-desc">1 min planche · 1 min relevés de genoux · 1 min crunches<br>30 sec de repos entre chaque tour</p>
+      </div>
+    </div>
+
+    <!-- SESSION C -->
+    <div class="session-block" id="p1-C">
+      <div class="session-header">
+        <p class="session-tag">Séance C · Quadriceps &amp; Mollets</p>
+        <h3 class="session-title">Jambes<br><em>de feu</em></h3>
+        <p class="session-meta">5 exercices · ~60 min · Priorité : quadriceps + galbe mollets</p>
+      </div>
+      <div class="exo-list">
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🏋️</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Squat Barre</div>
+            <div class="exo-stats">
+              <span class="exo-stat">4 × 10</span>
+              <span class="exo-stat rest">Repos 2min</span>
+              <span class="exo-stat">65% RM</span>
+            </div>
+            <p class="exo-tech">Possibilité de faire au guidé · Descente lente 3 sec · Fesses en arrière · Genoux dans l'axe des pieds</p>
+          </div>
+        </div>
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🦵</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Presse à Cuisses</div>
+            <div class="exo-stats">
+              <span class="exo-stat">4 × 12</span>
+              <span class="exo-stat rest">Repos 1min30</span>
+              <span class="exo-stat">70% RM</span>
+            </div>
+            <p class="exo-tech">Pieds position neutre (largeur épaules) · Rester en tension continue · Ne verrouille pas les genoux en haut</p>
+          </div>
+        </div>
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🚶</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Fentes Bulgares</div>
+            <div class="exo-stats">
+              <span class="exo-stat">3 × 12 / jambe</span>
+              <span class="exo-stat rest">Repos 1min</span>
+              <span class="exo-stat">Tempo 5-1</span>
+            </div>
+            <p class="exo-tech">Enchaine les jambes sans repos · Descente très lente (5 sec) · Genou avant ne dépasse pas les orteils</p>
+          </div>
+        </div>
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🦿</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Leg Extension Machine</div>
+            <div class="exo-stats">
+              <span class="exo-stat">3 × 15</span>
+              <span class="exo-stat rest">Repos 45sec</span>
+              <span class="exo-stat">Tempo 2-2</span>
+            </div>
+            <p class="exo-tech">Contract les quadriceps fort en haut 1 sec · Descente contrôlée · Poids modéré, qualité d'exécution</p>
+          </div>
+        </div>
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">👟</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Extensions Mollets Debout</div>
+            <div class="exo-stats">
+              <span class="exo-stat">4 × 15</span>
+              <span class="exo-stat rest">Repos 1min</span>
+              <span class="exo-stat">70% RM · Tempo 3-3</span>
+            </div>
+            <p class="exo-tech">Amplitude maximale · Monte haut, descends bas · Retenir 1 sec en haut · Pieds parallèles</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="bonus-block">
+        <p class="bonus-label">✦ Bonus fin de séance</p>
+        <p class="bonus-title">Cardio 30 min — Intensité modérée</p>
+        <p class="bonus-desc">Vélo elliptique · stepper · rameur · tapis · Au choix<br>Fréquence cardiaque : 60–70% FCmax · Tu peux parler en faisant du cardio</p>
+      </div>
+    </div>
+
+    <!-- SESSION D -->
+    <div class="session-block" id="p1-D">
+      <div class="session-header">
+        <p class="session-tag">Séance D · Pull — Dos &amp; Biceps</p>
+        <h3 class="session-title">Dos<br><em>de championne</em></h3>
+        <p class="session-meta">5 exercices · ~50 min · Priorité : tirage + épaisseur dos</p>
+      </div>
+      <div class="exo-list">
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">⬇️</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Tirage Vertical Prise Large</div>
+            <div class="exo-stats">
+              <span class="exo-stat">4 × 10</span>
+              <span class="exo-stat rest">Repos 1min30</span>
+              <span class="exo-stat">70% RM</span>
+            </div>
+            <p class="exo-tech">Retenir 2 sec en fin de concentrique · Barre au niveau du menton · Ouvre les coudes sur les côtés</p>
+          </div>
+        </div>
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">↩️</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Rowing Horizontal Barre / Haltère</div>
+            <div class="exo-stats">
+              <span class="exo-stat">4 × 10</span>
+              <span class="exo-stat rest">Repos 1min30</span>
+              <span class="exo-stat">70% RM</span>
+            </div>
+            <p class="exo-tech">Retenir l'excentrique · Explosif sur la concentrique · Coudes le long du corps · Dos plat, neutre</p>
+          </div>
+        </div>
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🔗</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Pull-Over Poulie Haute</div>
+            <div class="exo-stats">
+              <span class="exo-stat">3 × 12</span>
+              <span class="exo-stat rest">Repos 1min</span>
+              <span class="exo-stat">Tempo 3-1</span>
+            </div>
+            <p class="exo-tech">Bras légèrement fléchis · Mouvement arc de cercle · Sens le grand dorsal s'étirer · Ne pas monter les épaules</p>
+          </div>
+        </div>
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">💪</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Curl Biceps Barre</div>
+            <div class="exo-stats">
+              <span class="exo-stat">4 × 10</span>
+              <span class="exo-stat rest">Repos 1min</span>
+              <span class="exo-stat">65% RM</span>
+            </div>
+            <p class="exo-tech">Coudes fixes le long du corps · Descente contrôlée 3 sec · Pas d'élan avec le dos</p>
+          </div>
+        </div>
+
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🎯</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Face Pull Poulie</div>
+            <div class="exo-stats">
+              <span class="exo-stat">3 × 15</span>
+              <span class="exo-stat rest">Repos 45sec</span>
+              <span class="exo-stat">Tempo 2-2</span>
+            </div>
+            <p class="exo-tech">Corde jusqu'au visage · Ouvre les coudes vers l'extérieur · Excellent pour les coiffes de l'épaule</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="bonus-block">
+        <p class="bonus-label">✦ Bonus fin de séance</p>
+        <p class="bonus-title">Gainage 3 × 1 min</p>
+        <p class="bonus-desc">Planche frontale 1 min · Planche latérale droite 45 sec · Planche latérale gauche 45 sec<br>30 sec de repos entre chaque</p>
+      </div>
+    </div>
+
+  </div><!-- /phase-1 -->
+
+  <!-- ========== PHASE 2 ========== -->
+  <div class="prog-section" id="phase-2">
+    <div class="phase-header">
+      <p class="phase-tag">Phase 2 · Semaines 3–4</p>
+      <h2 class="phase-name"><em>Intensité</em> — On charge</h2>
+      <p class="phase-desc">Les bases sont posées. On augmente les charges et on réduit légèrement les reps. Tu dois sentir les dernières répétitions difficiles.</p>
+      <div class="phase-intensity">
+        <span class="intensity-tag">Charge : 70–75% RM</span>
+        <span class="intensity-tag">Tempo : 3-1</span>
+        <span class="intensity-tag">Objectif : surcharge</span>
+      </div>
+    </div>
+
+    <div class="session-block active" id="p2-A">
+      <div class="session-header">
+        <p class="session-tag">Séance A · Fessiers &amp; Ischios</p>
+        <h3 class="session-title">Postérieur<br><em>de compétitrice</em></h3>
+        <p class="session-meta">5 exercices · ~60 min · Charges plus lourdes qu'en Phase 1</p>
+      </div>
+      <div class="exo-list">
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🍑</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Hip Thrust Barre</div>
+            <div class="exo-stats"><span class="exo-stat">5 × 10</span><span class="exo-stat rest">Repos 1min30</span><span class="exo-stat">70% RM</span></div>
+            <p class="exo-tech">+1 série vs Phase 1 · Même technique · Augmente la charge si les 10 reps sont trop faciles</p>
+          </div>
+        </div>
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🏋️</div></div>
+          <div class="exo-info">
+            <div class="exo-name">RDL + Leg Curl Superset</div>
+            <div class="exo-stats"><span class="exo-stat">4 × 8 + 12</span><span class="exo-stat rest">Repos 2min</span><span class="exo-stat">75% / 65%</span></div>
+            <p class="exo-tech">Enchaîne sans repos RDL puis Leg Curl · Prends le repos après les deux · Ischios en feu garanti</p>
+          </div>
+        </div>
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🔗</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Cable Kickback Poulie Basse</div>
+            <div class="exo-stats"><span class="exo-stat">4 × 15 / jambe</span><span class="exo-stat rest">Repos 45sec</span><span class="exo-stat">Tempo 4-1</span></div>
+            <p class="exo-tech">Descente encore plus lente · Contraction 2 sec en haut · Charge légèrement augmentée</p>
+          </div>
+        </div>
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">↔️</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Abduction Machine — Dropset</div>
+            <div class="exo-stats"><span class="exo-stat">3 × 20 + dropset</span><span class="exo-stat rest">Repos 1min</span><span class="exo-stat">Dégressive</span></div>
+            <p class="exo-tech">Après les 20 reps : descends le poids de 30% · Continue jusqu'à l'échec · Ne fais pas de pause</p>
+          </div>
+        </div>
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🦵</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Good Morning Barre</div>
+            <div class="exo-stats"><span class="exo-stat">3 × 12</span><span class="exo-stat rest">Repos 1min30</span><span class="exo-stat">Poids léger</span></div>
+            <p class="exo-tech">Barre sur les trapèzes · Penche le buste en avant · Dos plat · Sent les ischios s'étirer</p>
+          </div>
+        </div>
+      </div>
+      <div class="bonus-block">
+        <p class="bonus-label">✦ Bonus fin de séance</p>
+        <p class="bonus-title">HIIT 20 min</p>
+        <p class="bonus-desc">40 sec effort max / 20 sec repos · 20 tours · Jump squat, box jump, corde à sauter au choix</p>
+      </div>
+    </div>
+
+    <div class="session-block" id="p2-B">
+      <div class="session-header">
+        <p class="session-tag">Séance B · Push</p>
+        <h3 class="session-title">Haut du corps<br><em>sculptée</em></h3>
+        <p class="session-meta">Mêmes exercices · charges augmentées · 1 série en plus</p>
+      </div>
+      <div class="exo-list">
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🏋️</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Développé Couché Barre</div>
+            <div class="exo-stats"><span class="exo-stat">4 × 8</span><span class="exo-stat rest">Repos 2min</span><span class="exo-stat">72% RM</span></div>
+            <p class="exo-tech">Réduis les reps, augmente la charge · Même qualité d'exécution · Partenaire recommandé pour les dernières séries</p>
+          </div>
+        </div>
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">💪</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Développé Militaire Haltères</div>
+            <div class="exo-stats"><span class="exo-stat">4 × 8</span><span class="exo-stat rest">Repos 1min30</span><span class="exo-stat">70% RM</span></div>
+            <p class="exo-tech">+5 à 10% de charge vs Phase 1 · Même forme · Gaine toujours</p>
+          </div>
+        </div>
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">✋</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Élévations Latérales — Superset avec devant</div>
+            <div class="exo-stats"><span class="exo-stat">3 × 12 + 12</span><span class="exo-stat rest">Repos 1min30</span></div>
+            <p class="exo-tech">12 élévations latérales · Enchaîne immédiatement 12 élévations frontales · Pause 1min30 après</p>
+          </div>
+        </div>
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🔽</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Dips lestés ou Triceps Poulie</div>
+            <div class="exo-stats"><span class="exo-stat">4 × 10</span><span class="exo-stat rest">Repos 1min</span><span class="exo-stat">70% RM</span></div>
+            <p class="exo-tech">Si dips : ajoute du poids · Si poulie : prise en V ou corde · Coudes près du corps</p>
+          </div>
+        </div>
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🦋</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Butterfly Machine — Dropset final</div>
+            <div class="exo-stats"><span class="exo-stat">3 × 12 + dropset</span><span class="exo-stat rest">Repos 1min30</span></div>
+            <p class="exo-tech">Après les 12 reps normales : descends le poids de 40% et continue jusqu'à l'échec · Finisher pecs</p>
+          </div>
+        </div>
+      </div>
+      <div class="bonus-block">
+        <p class="bonus-label">✦ Bonus fin de séance</p>
+        <p class="bonus-title">Circuit Abdos × 4</p>
+        <p class="bonus-desc">1 min planche · 1 min mountain climbers · 1 min crunches bicycle · 30 sec repos entre tours</p>
+      </div>
+    </div>
+
+    <div class="session-block" id="p2-C">
+      <div class="session-header">
+        <p class="session-tag">Séance C · Quadriceps &amp; Mollets</p>
+        <h3 class="session-title">Jambes<br><em>de feu</em></h3>
+        <p class="session-meta">Surcharge progressive · Volume augmenté</p>
+      </div>
+      <div class="exo-list">
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🏋️</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Squat Barre</div>
+            <div class="exo-stats"><span class="exo-stat">5 × 8</span><span class="exo-stat rest">Repos 2min</span><span class="exo-stat">72% RM</span></div>
+            <p class="exo-tech">+1 série · Réduis les reps · Augmente la charge · Toujours dos droit</p>
+          </div>
+        </div>
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🦵</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Presse à Cuisses — Pieds hauts</div>
+            <div class="exo-stats"><span class="exo-stat">4 × 10</span><span class="exo-stat rest">Repos 1min30</span><span class="exo-stat">75% RM</span></div>
+            <p class="exo-tech">Pieds hauts sur la plateforme = plus de fessiers · Même poids que phase 1 sur pieds normaux</p>
+          </div>
+        </div>
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🚶</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Fentes Bulgares avec Haltères</div>
+            <div class="exo-stats"><span class="exo-stat">4 × 10 / jambe</span><span class="exo-stat rest">Repos 1min</span><span class="exo-stat">Tempo 5-1</span></div>
+            <p class="exo-tech">Ajoute des haltères si tu maîtrises · Même descente lente · +2 reps vs Phase 1</p>
+          </div>
+        </div>
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🦿</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Leg Extension — Dégressive</div>
+            <div class="exo-stats"><span class="exo-stat">3 × 12 + dégressive</span><span class="exo-stat rest">Repos 1min</span></div>
+            <p class="exo-tech">12 reps · Descends le poids 30% · Continue · Descends encore 30% · Continue jusqu'à l'échec</p>
+          </div>
+        </div>
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">👟</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Extensions Mollets Debout lestées</div>
+            <div class="exo-stats"><span class="exo-stat">4 × 15</span><span class="exo-stat rest">Repos 1min</span><span class="exo-stat">75% RM</span></div>
+            <p class="exo-tech">+5 à 10kg vs Phase 1 · Même amplitude · Retenir 2 sec en haut</p>
+          </div>
+        </div>
+      </div>
+      <div class="bonus-block">
+        <p class="bonus-label">✦ Bonus fin de séance</p>
+        <p class="bonus-title">Cardio HIIT 20 min</p>
+        <p class="bonus-desc">30 sec sprint / 30 sec marche · 20 tours · Ou vélo spinning à fond 30sec / récup 30sec</p>
+      </div>
+    </div>
+
+    <div class="session-block" id="p2-D">
+      <div class="session-header">
+        <p class="session-tag">Séance D · Pull — Dos &amp; Biceps</p>
+        <h3 class="session-title">Dos<br><em>de championne</em></h3>
+        <p class="session-meta">Volume + intensité augmentés · Superset en fin de séance</p>
+      </div>
+      <div class="exo-list">
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">⬇️</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Tirage Vertical + Tirage Menton Superset</div>
+            <div class="exo-stats"><span class="exo-stat">4 × 8 + 10</span><span class="exo-stat rest">Repos 2min</span><span class="exo-stat">75% / 65%</span></div>
+            <p class="exo-tech">Tirage vertical 8 reps · Enchaîne immédiatement tirage menton 10 reps · Pause 2 min · Dos entier brûle</p>
+          </div>
+        </div>
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">↩️</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Rowing Horizontal Barre</div>
+            <div class="exo-stats"><span class="exo-stat">4 × 8</span><span class="exo-stat rest">Repos 1min30</span><span class="exo-stat">75% RM</span></div>
+            <p class="exo-tech">+5 à 10kg vs Phase 1 · Même qualité · Retenir l'excentrique 3 sec</p>
+          </div>
+        </div>
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🔗</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Pull-Over Poulie — Dégressive</div>
+            <div class="exo-stats"><span class="exo-stat">3 × 10 + dégressive</span><span class="exo-stat rest">Repos 1min30</span></div>
+            <p class="exo-tech">10 reps · Descends de 30% · Continue jusqu'à l'échec · Finisher grand dorsal</p>
+          </div>
+        </div>
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">💪</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Curl Biceps Haltères Alterné</div>
+            <div class="exo-stats"><span class="exo-stat">4 × 10 / bras</span><span class="exo-stat rest">Repos 1min</span><span class="exo-stat">70% RM</span></div>
+            <p class="exo-tech">Alterner les bras · Rotation du poignet en montant · Descente 3 sec</p>
+          </div>
+        </div>
+        <div class="exo-card">
+          <div class="exo-photo"><div class="exo-photo-placeholder">🎯</div></div>
+          <div class="exo-info">
+            <div class="exo-name">Face Pull + Élévations Arrière Superset</div>
+            <div class="exo-stats"><span class="exo-stat">3 × 12 + 12</span><span class="exo-stat rest">Repos 1min</span></div>
+            <p class="exo-tech">12 face pulls · Enchaîne 12 élévations arrière haltères (oiseau) · Coiffes de l'épaule au max</p>
+          </div>
+        </div>
+      </div>
+      <div class="bonus-block">
+        <p class="bonus-label">✦ Bonus fin de séance</p>
+        <p class="bonus-title">Gainage avancé × 3</p>
+        <p class="bonus-desc">1 min planche avec toucher épaule · 45 sec planche latérale + rotation · 1 min dead bug<br>30 sec de repos entre chaque</p>
+      </div>
+    </div>
+  </div><!-- /phase-2 -->
+
+  <!-- ========== PHASE 3 ========== -->
+  <div class="prog-section" id="phase-3">
+    <div class="phase-header">
+      <p class="phase-tag">Phase 3 · Semaines 5–6</p>
+      <h2 class="phase-name"><em>Surcharge</em> — Force maximale</h2>
+      <p class="phase-desc">On pousse les charges au maximum. Reps basses, poids lourds. Les résultats visuels commencent vraiment à apparaître ici.</p>
+      <div class="phase-intensity">
+        <span class="intensity-tag">Charge : 78–82% RM</span>
+        <span class="intensity-tag">Tempo : 4-1</span>
+        <span class="intensity-tag">Objectif : force + galbe</span>
+      </div>
+    </div>
+    <div class="session-block active" id="p3-A">
+      <div class="session-header"><p class="session-tag">Séance A · Fessiers &amp; Ischios</p><h3 class="session-title">Postérieur <em>de compétitrice</em></h3><p class="session-meta">Charges maximales · Technique irréprochable</p></div>
+      <div class="exo-list">
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🍑</div></div><div class="exo-info"><div class="exo-name">Hip Thrust Barre — Pause Rep</div><div class="exo-stats"><span class="exo-stat">5 × 8</span><span class="exo-stat rest">Repos 2min</span><span class="exo-stat">80% RM</span></div><p class="exo-tech">Pause 2 sec en haut de chaque rep · Contract fort · Charge maximale sur 8 reps · C'est ici que ça se joue</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🏋️</div></div><div class="exo-info"><div class="exo-name">Soulevé de Terre Conventionnel</div><div class="exo-stats"><span class="exo-stat">5 × 6</span><span class="exo-stat rest">Repos 2min30</span><span class="exo-stat">80% RM</span></div><p class="exo-tech">On passe au conventionnel · Barre proche des tibias · Pousser le sol avec les pieds · Explosif vers le haut</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🦵</div></div><div class="exo-info"><div class="exo-name">Leg Curl + Hip Thrust Machine Superset</div><div class="exo-stats"><span class="exo-stat">4 × 10 + 15</span><span class="exo-stat rest">Repos 2min</span></div><p class="exo-tech">10 leg curl lourds · Enchaîne 15 hip thrust machine · Fessiers et ischios épuisés en un superset</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🔗</div></div><div class="exo-info"><div class="exo-name">Cable Kickback + Abduction Superset</div><div class="exo-stats"><span class="exo-stat">4 × 12 + 20</span><span class="exo-stat rest">Repos 1min</span></div><p class="exo-tech">12 kickback par jambe · Immédiatement 20 abductions machine · Brûle garanti · Finisher fessiers</p></div></div>
+      </div>
+      <div class="bonus-block"><p class="bonus-label">✦ Bonus fin de séance</p><p class="bonus-title">HIIT 20 min — Protocole Tabata</p><p class="bonus-desc">20 sec effort max / 10 sec repos · 8 rounds = 4 min · 5 exercices différents · Total 20 min</p></div>
+    </div>
+    <div class="session-block" id="p3-B">
+      <div class="session-header"><p class="session-tag">Séance B · Push</p><h3 class="session-title">Haut du corps <em>sculptée</em></h3><p class="session-meta">Force maximale · Reps basses · Charges maximales</p></div>
+      <div class="exo-list">
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🏋️</div></div><div class="exo-info"><div class="exo-name">Développé Couché — Cluster Set</div><div class="exo-stats"><span class="exo-stat">4 × (3+3+3)</span><span class="exo-stat rest">15sec intra / 2min inter</span><span class="exo-stat">82% RM</span></div><p class="exo-tech">3 reps · pause 15 sec · 3 reps · pause 15 sec · 3 reps = 1 série · 9 reps totales à charge très élevée</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">💪</div></div><div class="exo-info"><div class="exo-name">Développé Militaire Barre</div><div class="exo-stats"><span class="exo-stat">5 × 6</span><span class="exo-stat rest">Repos 2min</span><span class="exo-stat">80% RM</span></div><p class="exo-tech">On passe à la barre · Plus de stabilité = plus lourd · Explosif sur la montée</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">✋</div></div><div class="exo-info"><div class="exo-name">Élévations Latérales Cheat reps</div><div class="exo-stats"><span class="exo-stat">4 × 10 + 5 cheat</span><span class="exo-stat rest">Repos 1min30</span></div><p class="exo-tech">10 reps strictes · Puis 5 reps avec légèrement d'élan · Contrôle toujours la descente · Méthode compétitrice</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🔽</div></div><div class="exo-info"><div class="exo-name">Dips lestés</div><div class="exo-stats"><span class="exo-stat">5 × 8</span><span class="exo-stat rest">Repos 1min30</span><span class="exo-stat">Max charge</span></div><p class="exo-tech">Utilise une ceinture de lest · Descente 4 sec · Explosif sur la montée</p></div></div>
+      </div>
+      <div class="bonus-block"><p class="bonus-label">✦ Bonus fin de séance</p><p class="bonus-title">Circuit Abs &amp; Gainage × 4</p><p class="bonus-desc">45 sec dragon flag ou crunch décliné · 45 sec Russian twists lestés · 1 min planche dynamique · 20 sec repos</p></div>
+    </div>
+    <div class="session-block" id="p3-C">
+      <div class="session-header"><p class="session-tag">Séance C · Quadriceps</p><h3 class="session-title">Jambes <em>de feu</em></h3><p class="session-meta">Squat lourd · Volume maximal · Phase de force</p></div>
+      <div class="exo-list">
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🏋️</div></div><div class="exo-info"><div class="exo-name">Back Squat lourd</div><div class="exo-stats"><span class="exo-stat">5 × 5</span><span class="exo-stat rest">Repos 3min</span><span class="exo-stat">82% RM</span></div><p class="exo-tech">5×5 classique compétitrice · Maximale sur 5 reps · Spotter recommandé · Concentration totale</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🦵</div></div><div class="exo-info"><div class="exo-name">Presse à Cuisses — 1.5 reps</div><div class="exo-stats"><span class="exo-stat">4 × 8</span><span class="exo-stat rest">Repos 2min</span><span class="exo-stat">75% RM</span></div><p class="exo-tech">Descends full · Remonte à mi-chemin · Redescends full · Remonte complètement = 1 rep · Double tension sur les quads</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🚶</div></div><div class="exo-info"><div class="exo-name">Fentes Bulgares lestées</div><div class="exo-stats"><span class="exo-stat">4 × 8 / jambe</span><span class="exo-stat rest">Repos 1min30</span><span class="exo-stat">Haltères lourds</span></div><p class="exo-tech">Haltères dans chaque main · Même descente lente · Les jambes crient — c'est normal</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🦿</div></div><div class="exo-info"><div class="exo-name">Leg Extension + Squat Jump Superset</div><div class="exo-stats"><span class="exo-stat">3 × 12 + 10</span><span class="exo-stat rest">Repos 2min</span></div><p class="exo-tech">12 leg extension lourdes · Lâche les poids · 10 squat jump explosifs · Méthode complexe de compétitrice</p></div></div>
+      </div>
+      <div class="bonus-block"><p class="bonus-label">✦ Bonus fin de séance</p><p class="bonus-title">45 min cardio modéré</p><p class="bonus-desc">Après une séance aussi intense : cardio doux obligatoire · Récupération active · Tapis incliné ou vélo</p></div>
+    </div>
+    <div class="session-block" id="p3-D">
+      <div class="session-header"><p class="session-tag">Séance D · Pull &amp; Dos</p><h3 class="session-title">Dos <em>de championne</em></h3><p class="session-meta">Force dos + épaisseur · Techniques avancées</p></div>
+      <div class="exo-list">
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">⬇️</div></div><div class="exo-info"><div class="exo-name">Tirage Vertical Prise Large — 5×5</div><div class="exo-stats"><span class="exo-stat">5 × 5</span><span class="exo-stat rest">Repos 2min30</span><span class="exo-stat">80% RM</span></div><p class="exo-tech">Force pure sur le tirage · Charge maximale · Contrôle parfait · Retenir 3 sec en bas</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">↩️</div></div><div class="exo-info"><div class="exo-name">Rowing Pendlay Barre</div><div class="exo-stats"><span class="exo-stat">5 × 6</span><span class="exo-stat rest">Repos 2min</span><span class="exo-stat">78% RM</span></div><p class="exo-tech">Barre part du sol à chaque rep · Explosif vers le haut · Retour contrôlé · Dos plat — toujours</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🔗</div></div><div class="exo-info"><div class="exo-name">Traction (ou tirage vertical assisté)</div><div class="exo-stats"><span class="exo-stat">4 × max</span><span class="exo-stat rest">Repos 2min</span></div><p class="exo-tech">Max de reps à chaque série · Utilise la machine assistée si besoin · Objectif : progresser chaque semaine</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">💪</div></div><div class="exo-info"><div class="exo-name">Curl Biceps Barre — 21s</div><div class="exo-stats"><span class="exo-stat">3 × 21</span><span class="exo-stat rest">Repos 1min30</span><span class="exo-stat">50% RM</span></div><p class="exo-tech">7 reps bas (0° à 90°) · 7 reps haut (90° à 180°) · 7 reps full · Technique de compétitrice pour les biceps</p></div></div>
+      </div>
+      <div class="bonus-block"><p class="bonus-label">✦ Bonus fin de séance</p><p class="bonus-title">Gainage compétitrice × 4</p><p class="bonus-desc">1 min planche avec haltère dans une main · 45 sec side plank avec abduction · 1 min hollow body · 20 sec repos</p></div>
+    </div>
+  </div><!-- /phase-3 -->
+
+  <!-- ========== PHASE 4 ========== -->
+  <div class="prog-section" id="phase-4">
+    <div class="phase-header">
+      <p class="phase-tag">Phase 4 · Semaines 7–8</p>
+      <h2 class="phase-name"><em>Peak</em> — La semaine de compétitrice</h2>
+      <p class="phase-desc">On pousse au maximum. Techniques de pointe, charges maximales. En 8 semaines tu as construit ce corps. Ces 2 dernières semaines le révèlent.</p>
+      <div class="phase-intensity">
+        <span class="intensity-tag">Charge : 83–87% RM</span>
+        <span class="intensity-tag">Techniques avancées</span>
+        <span class="intensity-tag">Objectif : PEAK</span>
+      </div>
+    </div>
+    <div class="session-block active" id="p4-A">
+      <div class="session-header"><p class="session-tag">Séance A · Fessiers &amp; Ischios</p><h3 class="session-title">Postérieur <em>de compétitrice</em></h3><p class="session-meta">Séance ultime · Charges maximales · Techniques avancées</p></div>
+      <div class="exo-list">
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🍑</div></div><div class="exo-info"><div class="exo-name">Hip Thrust Barre — Rest-Pause</div><div class="exo-stats"><span class="exo-stat">4 × 8 + rest-pause</span><span class="exo-stat rest">Repos 2min</span><span class="exo-stat">85% RM</span></div><p class="exo-tech">8 reps à 85%RM · Repos 20 sec · Max de reps supplémentaires · Repos 20 sec · Encore des reps · Technique pro</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🏋️</div></div><div class="exo-info"><div class="exo-name">Soulevé de Terre — Max Test</div><div class="exo-stats"><span class="exo-stat">Échauffement + 1RM</span><span class="exo-stat rest">Repos 3min</span></div><p class="exo-tech">Série 1: 50% · Série 2: 70% · Série 3: 85% · Série 4: 95% · Tente le max 1 rep — teste ta force en 8 semaines</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🦵</div></div><div class="exo-info"><div class="exo-name">Giant Set Fessiers (4 exos enchaînés)</div><div class="exo-stats"><span class="exo-stat">3 tours · 12 reps chaque</span><span class="exo-stat rest">Repos 2min entre tours</span></div><p class="exo-tech">Leg Curl → Kickback câble → Abduction machine → Hip thrust machine · Sans repos entre les exos · 2 min après chaque tour</p></div></div>
+      </div>
+      <div class="bonus-block"><p class="bonus-label">✦ Bonus fin de séance</p><p class="bonus-title">HIIT Final 25 min</p><p class="bonus-desc">Le meilleur HIIT de tes 8 semaines · 30/30 · 25 tours · Tu sais maintenant comment ton corps répond</p></div>
+    </div>
+    <div class="session-block" id="p4-B">
+      <div class="session-header"><p class="session-tag">Séance B · Push</p><h3 class="session-title">Haut du corps <em>sculptée</em></h3><p class="session-meta">Peak push · Techniques maximales</p></div>
+      <div class="exo-list">
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🏋️</div></div><div class="exo-info"><div class="exo-name">Développé Couché — Max Test</div><div class="exo-stats"><span class="exo-stat">Échauffement + 1RM</span><span class="exo-stat rest">Repos 3min</span></div><p class="exo-tech">Teste ton max sur 1 rep · Compare avec ta semaine 1 · La progression en 8 semaines va te surprendre</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">💪</div></div><div class="exo-info"><div class="exo-name">Giant Set Push (3 exos)</div><div class="exo-stats"><span class="exo-stat">4 tours · 10 reps chaque</span><span class="exo-stat rest">Repos 2min entre tours</span></div><p class="exo-tech">Développé militaire → Élévations latérales → Dips · Sans repos entre les exos · Haut du corps en feu</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🦋</div></div><div class="exo-info"><div class="exo-name">Finisher Pecs — Dropset intégral</div><div class="exo-stats"><span class="exo-stat">1 × jusqu'à l'échec</span><span class="exo-stat rest">Pas de repos</span></div><p class="exo-tech">Butterfly machine · Commence au max · Descends de 20% · Continue · Descends encore · Continue · 5 paliers sans repos</p></div></div>
+      </div>
+      <div class="bonus-block"><p class="bonus-label">✦ Bonus fin de séance</p><p class="bonus-title">Circuit Abs Final × 5</p><p class="bonus-desc">Le circuit le plus difficile de tes 8 semaines · Dragon flag ou crunch décliné lesté · Russian twist · Planche dynamique</p></div>
+    </div>
+    <div class="session-block" id="p4-C">
+      <div class="session-header"><p class="session-tag">Séance C · Quadriceps</p><h3 class="session-title">Jambes <em>de feu</em></h3><p class="session-meta">Test de force · Peak legs</p></div>
+      <div class="exo-list">
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🏋️</div></div><div class="exo-info"><div class="exo-name">Back Squat — Max Test</div><div class="exo-stats"><span class="exo-stat">Échauffement + 1RM</span><span class="exo-stat rest">Repos 3min</span></div><p class="exo-tech">Le moment de vérité · Teste ta force sur 8 semaines · Échauffement soigné · Spotter obligatoire</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">🦵</div></div><div class="exo-info"><div class="exo-name">Giant Set Jambes (4 exos)</div><div class="exo-stats"><span class="exo-stat">3 tours · 10-15 reps chaque</span><span class="exo-stat rest">Repos 2min30 entre tours</span></div><p class="exo-tech">Presse cuisses → Fentes bulgares → Leg extension → Jump squat · 4 exos enchaînés · Jambes de compétitrice</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">👟</div></div><div class="exo-info"><div class="exo-name">Mollets — Finisher 100 reps</div><div class="exo-stats"><span class="exo-stat">100 reps total</span><span class="exo-stat rest">Mini-pauses si besoin</span></div><p class="exo-tech">100 extensions mollets · Poids modéré · Mini-pauses de 5 sec autorisées · Finisher iconique</p></div></div>
+      </div>
+      <div class="bonus-block"><p class="bonus-label">✦ Bonus fin de séance</p><p class="bonus-title">Cardio 45 min — Récupération active</p><p class="bonus-desc">Après une séance aussi intense : rythme modéré obligatoire · Fais le bilan de tes 8 semaines dans ta tête</p></div>
+    </div>
+    <div class="session-block" id="p4-D">
+      <div class="session-header"><p class="session-tag">Séance D · Pull &amp; Dos</p><h3 class="session-title">Dos <em>de championne</em></h3><p class="session-meta">Dernière séance · Tout donner</p></div>
+      <div class="exo-list">
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">⬇️</div></div><div class="exo-info"><div class="exo-name">Tirage Vertical — Max Test</div><div class="exo-stats"><span class="exo-stat">Échauffement + 1RM</span><span class="exo-stat rest">Repos 3min</span></div><p class="exo-tech">Test final du dos · Compare avec la semaine 1 · Mesure ta progression sur 8 semaines</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">↩️</div></div><div class="exo-info"><div class="exo-name">Giant Set Pull (3 exos)</div><div class="exo-stats"><span class="exo-stat">4 tours · 8-12 reps chaque</span><span class="exo-stat rest">Repos 2min entre tours</span></div><p class="exo-tech">Rowing barre → Pull-over poulie → Face pull · Sans repos entre · Le dos entier brûle · Dernière séance</p></div></div>
+        <div class="exo-card"><div class="exo-photo"><div class="exo-photo-placeholder">💪</div></div><div class="exo-info"><div class="exo-name">Curl Biceps — Finisher 21s × 4</div><div class="exo-stats"><span class="exo-stat">4 × 21</span><span class="exo-stat rest">Repos 1min</span></div><p class="exo-tech">La technique des 21s · 4 séries · Dernière séance du programme · Tout donner</p></div></div>
+      </div>
+      <div class="bonus-block" style="background:linear-gradient(135deg,rgba(201,99,88,.15),rgba(201,99,88,.08));border-color:rgba(201,99,88,.3)">
+        <p class="bonus-label" style="color:var(--accent)">🏆 Tu as terminé le programme</p>
+        <p class="bonus-title">Bravo — 8 semaines de travail réel.</p>
+        <p class="bonus-desc">Prends des photos. Mesure-toi. Compare avec la semaine 1. Le résultat est là parce que tu te es montrée à chaque séance.<br><br>
+        <strong style="color:rgba(255,255,255,.8)">La suite ?</strong> Contacte-moi sur WhatsApp — on parle de ce qu'on fait maintenant.</p>
+        <a href="https://wa.me/33756834626" style="display:inline-block;margin-top:14px;background:var(--accent);color:#fff;font-weight:700;font-size:.9rem;padding:12px 24px;border-radius:50px;text-decoration:none">💬 M'écrire sur WhatsApp →</a>
+      </div>
+    </div>
+  </div><!-- /phase-4 -->
+
+</div><!-- /main-program -->
+
+<script>
+function startProgram(){
+  document.getElementById('cover').style.display='none';
+  document.getElementById('how-section').style.display='block';
+  window.scrollTo(0,0);
+}
+function showProgram(){
+  document.getElementById('how-section').style.display='none';
+  document.getElementById('main-program').style.display='block';
+  window.scrollTo(0,0);
+}
+
+var currentPhase=1, currentSession='A';
+
+function setPhase(p){
+  currentPhase=p;
+  document.querySelectorAll('.phase-pill').forEach(function(el,i){el.classList.toggle('active',i===p-1)});
+  document.querySelectorAll('.prog-section').forEach(function(el,i){el.classList.toggle('active',i===p-1)});
+  setSession(currentSession);
+  window.scrollTo(0,0);
+}
+
+function setSession(s){
+  currentSession=s;
+  document.querySelectorAll('.session-pill').forEach(function(el,i){
+    el.classList.toggle('active',['A','B','C','D'][i]===s);
+  });
+  document.querySelectorAll('#phase-'+currentPhase+' .session-block').forEach(function(el){
+    el.classList.toggle('active', el.id==='p'+currentPhase+'-'+s);
+  });
+  document.getElementById('prog-nav').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>
