@@ -3,108 +3,149 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="dark">
 <title>Sculpt Salle — Programme 8 Semaines · Ornella Fit Coaching</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --cream:#F7F3F0;--accent:#C96358;--dark:#1E1616;--brown:#9A8080;
-  --rose-deep:#D8A7A0;--sand:#DEC8C0;--white:#fff;--text-mid:#4A3E3E;
-  --green:#4A6741;
-}
+:root{--accent:#C96358;--dark:#1A1212;--mid:#3A2E2E;--muted:#7A6868;--bg:#F9F7F5;--card:#FFFFFF;--border:#EAE0DC;--sand:#DEC8C0;--green:#4A6741}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);min-height:100vh}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh}
 
 /* COVER */
-.cover{min-height:100vh;background:linear-gradient(160deg,#2C1F1A 0%,#3d2b24 60%,#C96358 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;position:relative;overflow:hidden}
-.cover::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(216,167,160,.18) 0%,transparent 60%)}
-.cover-label{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:16px}
-.cover-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,11vw,7rem);font-weight:600;line-height:.95;color:#fff;margin-bottom:10px}
+.cover{min-height:100vh;background:linear-gradient(160deg,#2C1F1A 0%,#3d2b24 55%,#C96358 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 20px;position:relative;overflow:hidden}
+.cover::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 65% 35%,rgba(216,167,160,.12) 0%,transparent 60%);pointer-events:none}
+.cover-label{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:18px}
+.cover-title{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,13vw,8rem);font-weight:600;line-height:.9;color:#fff;margin-bottom:8px}
 .cover-title em{font-style:italic;color:#E8B4A0;display:block}
-.cover-sub{font-size:.95rem;color:rgba(255,255,255,.65);margin-bottom:32px;letter-spacing:.06em;text-transform:uppercase;font-size:.78rem}
+.cover-sub{font-size:.73rem;color:rgba(255,255,255,.5);margin-bottom:32px;letter-spacing:.14em;text-transform:uppercase}
 .cover-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
-.cover-badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.85);font-size:.73rem;font-weight:600;padding:6px 14px;border-radius:50px}
+.cover-badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.82);font-size:.72rem;font-weight:600;padding:6px 14px;border-radius:50px}
 .cover-author{display:flex;align-items:center;gap:12px;justify-content:center;margin-top:8px}
-.cover-author-img{width:50px;height:50px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.4)}
-.cover-author-text{text-align:left}
-.cover-author-name{font-size:.88rem;font-weight:700;color:#fff}
-.cover-author-cred{font-size:.7rem;color:rgba(255,255,255,.5)}
-.cover-btn{display:inline-block;background:#fff;color:var(--dark);font-weight:700;font-size:.95rem;padding:15px 36px;border-radius:50px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 8px 32px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s;margin-bottom:16px}
-.cover-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.28)}
+.cover-author-img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.35)}
+.cover-author-name{font-size:.85rem;font-weight:700;color:#fff;text-align:left}
+.cover-author-cred{font-size:.68rem;color:rgba(255,255,255,.5);text-align:left}
+.cover-btn{display:inline-block;background:#fff;color:var(--dark);font-weight:700;font-size:.9rem;padding:15px 40px;border-radius:50px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 8px 32px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s;margin-bottom:16px}
+.cover-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+
+/* SOMMAIRE */
+.sommaire{background:var(--card);padding:52px 20px;border-bottom:1px solid var(--border)}
+.sommaire-inner{max-width:700px;margin:0 auto}
+.som-label{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.som-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--dark);margin-bottom:28px}
+.som-title em{font-style:italic;color:var(--accent)}
+.som-list{display:flex;flex-direction:column;gap:0}
+.som-item{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);text-decoration:none;cursor:pointer;transition:background .15s}
+.som-item:last-child{border-bottom:none}
+.som-num{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--accent);width:32px;flex-shrink:0;line-height:1}
+.som-text{flex:1}
+.som-name{font-size:.9rem;font-weight:700;color:var(--dark)}
+.som-desc{font-size:.75rem;color:var(--muted);margin-top:2px}
+.som-arrow{font-size:.9rem;color:var(--accent);flex-shrink:0}
 
 /* HOW TO USE */
-.how-section{background:var(--white);padding:60px 20px;text-align:center}
+.how-section{background:var(--bg);padding:52px 20px;text-align:center}
 .how-inner{max-width:800px;margin:0 auto}
-.how-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.2rem);color:var(--dark);margin-bottom:8px}
+.how-label{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.how-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--dark);margin-bottom:8px}
 .how-title em{font-style:italic;color:var(--accent)}
-.how-sub{font-size:.9rem;color:var(--brown);margin-bottom:40px;line-height:1.7}
-.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.how-card{background:var(--cream);border:1px solid var(--sand);border-radius:16px;padding:24px 14px;text-align:center}
+.how-sub{font-size:.87rem;color:var(--muted);margin-bottom:36px;line-height:1.7}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
+.how-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:22px 14px;text-align:center}
 .how-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;color:var(--accent);line-height:1;margin-bottom:8px}
-.how-card-title{font-size:.82rem;font-weight:700;color:var(--dark);margin-bottom:6px}
-.how-card-desc{font-size:.74rem;color:var(--brown);line-height:1.6}
+.how-card-title{font-size:.78rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.how-card-desc{font-size:.72rem;color:var(--muted);line-height:1.6}
+.how-tips{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:22px 24px;text-align:left;max-width:620px;margin:0 auto}
+.how-tip{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:.83rem;line-height:1.65}
+.how-tip:last-child{border-bottom:none;padding-bottom:0}
+.how-tip strong{color:var(--accent);font-weight:700;flex-shrink:0}
+.how-tip span{color:var(--mid)}
 
 /* STICKY NAV */
-#prog-nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--sand);padding:0}
-.phase-bar{display:flex;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:10px 16px;max-width:900px;margin:0 auto}
+#prog-nav{position:sticky;top:0;z-index:100;background:var(--card);border-bottom:1px solid var(--border);padding:0;box-shadow:0 2px 16px rgba(0,0,0,.06)}
+.phase-bar{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:10px 16px;max-width:960px;margin:0 auto}
 .phase-bar::-webkit-scrollbar{display:none}
-.phase-pill{white-space:nowrap;padding:7px 16px;border-radius:50px;font-size:.75rem;font-weight:600;cursor:pointer;border:1px solid var(--sand);background:var(--white);color:var(--brown);transition:all .2s}
+.phase-pill{white-space:nowrap;padding:7px 16px;border-radius:50px;font-size:.73rem;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:transparent;color:var(--muted);transition:all .2s}
 .phase-pill.active{background:linear-gradient(135deg,#2C1F1A,var(--accent));color:#fff;border-color:transparent}
-.session-bar{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:6px 16px 10px;max-width:900px;margin:0 auto}
+.session-bar{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:6px 16px 10px;max-width:960px;margin:0 auto}
 .session-bar::-webkit-scrollbar{display:none}
-.session-pill{white-space:nowrap;padding:6px 14px;border-radius:50px;font-size:.73rem;font-weight:600;cursor:pointer;border:1px solid var(--sand);background:transparent;color:var(--brown);transition:all .2s}
+.session-pill{white-space:nowrap;padding:6px 14px;border-radius:50px;font-size:.7rem;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:transparent;color:var(--muted);transition:all .2s}
 .session-pill.active{background:rgba(201,99,88,.1);color:var(--accent);border-color:rgba(201,99,88,.3);font-weight:700}
 
 /* PHASE HEADER */
 .phase-header{background:linear-gradient(160deg,#2C1F1A,#3d2b24);padding:36px 20px 28px;text-align:center}
-.phase-tag{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:8px}
-.phase-name{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;color:#fff;margin-bottom:6px}
+.phase-tag{font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:8px}
+.phase-name{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;color:#fff;margin-bottom:8px}
 .phase-name em{font-style:italic;color:#E8B4A0}
-.phase-desc{font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.65;max-width:500px;margin:0 auto}
+.phase-desc{font-size:.84rem;color:rgba(255,255,255,.55);line-height:1.7;max-width:480px;margin:0 auto}
 .phase-intensity{display:inline-flex;gap:8px;margin-top:14px;flex-wrap:wrap;justify-content:center}
-.intensity-tag{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75);font-size:.72rem;font-weight:600;padding:4px 12px;border-radius:50px}
+.intensity-tag{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-size:.7rem;font-weight:600;padding:4px 12px;border-radius:50px}
 
 /* SESSION */
-.session-block{display:none;padding:28px 20px 60px;max-width:860px;margin:0 auto}
+.session-block{display:none;padding:28px 20px 56px;max-width:860px;margin:0 auto}
 .session-block.active{display:block}
-.session-header{margin-bottom:24px;padding-bottom:20px;border-bottom:1.5px solid var(--sand)}
-.session-tag{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brown);margin-bottom:6px}
-.session-title{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;color:var(--dark)}
+.session-header{margin-bottom:24px;padding-bottom:18px;border-bottom:1.5px solid var(--border)}
+.session-tag{font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.session-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--dark)}
 .session-title em{font-style:italic;color:var(--accent)}
-.session-meta{font-size:.78rem;color:var(--brown);margin-top:5px}
+.session-meta{font-size:.76rem;color:var(--muted);margin-top:5px}
 
 /* EXERCISE CARD */
-.exo-list{display:flex;flex-direction:column;gap:12px}
-.exo-card{background:var(--white);border:1.5px solid var(--sand);border-radius:18px;overflow:hidden;display:grid;grid-template-columns:90px 1fr;transition:box-shadow .2s,border-color .2s}
-.exo-card:hover{box-shadow:0 6px 24px rgba(201,99,88,.1);border-color:var(--rose-deep)}
-.exo-photo{background:var(--cream);display:flex;align-items:center;justify-content:center;min-height:90px}
+.exo-list{display:flex;flex-direction:column;gap:10px}
+.exo-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:100px 1fr;transition:box-shadow .2s,border-color .2s}
+.exo-card:hover{box-shadow:0 4px 20px rgba(201,99,88,.1);border-color:#D8A7A0}
+.exo-photo{background:#F4EFEB;display:flex;align-items:center;justify-content:center;min-height:100px}
 .exo-photo img{width:100%;height:100%;object-fit:cover}
-.exo-photo-placeholder{font-size:1.8rem;opacity:.4}
+.exo-photo-placeholder{font-size:2rem;opacity:.3}
 .exo-info{padding:14px 16px;display:flex;flex-direction:column;gap:7px}
-.exo-name{font-size:.95rem;font-weight:700;color:var(--dark);line-height:1.25}
-.exo-stats{display:flex;gap:7px;flex-wrap:wrap}
-.exo-stat{background:rgba(201,99,88,.1);border:1px solid rgba(201,99,88,.2);color:var(--accent);font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:50px}
-.exo-stat.rest{background:var(--cream);border-color:var(--sand);color:var(--brown)}
-.exo-tech{font-size:.76rem;color:var(--brown);line-height:1.6;font-style:italic}
+.exo-name{font-size:.9rem;font-weight:700;color:var(--dark);line-height:1.25}
+.exo-stats{display:flex;gap:6px;flex-wrap:wrap}
+.exo-stat{background:var(--accent);color:#fff;font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:50px}
+.exo-stat.rest{background:#F4EFEB;border:1px solid var(--border);color:var(--muted)}
+.exo-tech{font-size:.75rem;color:var(--muted);line-height:1.65;font-style:italic;border-top:1px solid var(--border);padding-top:7px;margin-top:1px}
 
 /* BONUS */
-.bonus-block{margin-top:24px;background:linear-gradient(135deg,rgba(74,103,65,.08),rgba(74,103,65,.04));border:1px solid rgba(74,103,65,.2);border-radius:16px;padding:20px 20px}
-.bonus-label{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:6px}
-.bonus-title{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:5px}
-.bonus-desc{font-size:.8rem;color:var(--text-mid);line-height:1.65}
+.bonus-block{margin-top:20px;background:rgba(74,103,65,.06);border:1.5px solid rgba(74,103,65,.18);border-radius:14px;padding:18px 20px}
+.bonus-label{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:5px}
+.bonus-title{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.bonus-desc{font-size:.78rem;color:var(--muted);line-height:1.7}
 
-/* SECTION HIDDEN */
-.prog-section{display:none}
-.prog-section.active{display:block;background:var(--cream)}
+/* NUTRITION SECTION */
+.nutri-section{background:var(--card);padding:52px 20px}
+.nutri-inner{max-width:860px;margin:0 auto}
+.nutri-label{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+.nutri-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--dark);margin-bottom:8px}
+.nutri-title em{font-style:italic;color:var(--accent)}
+.nutri-sub{font-size:.87rem;color:var(--muted);margin-bottom:36px;line-height:1.7;max-width:580px}
+.nutri-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+.nutri-card{background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:22px 18px}
+.nutri-icon{font-size:1.6rem;margin-bottom:10px}
+.nutri-card-title{font-size:.85rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.nutri-list{list-style:none;display:flex;flex-direction:column;gap:5px}
+.nutri-list li{font-size:.78rem;color:var(--mid);line-height:1.5;padding-left:14px;position:relative}
+.nutri-list li::before{content:'·';position:absolute;left:0;color:var(--accent);font-weight:700}
+.nutri-timing{background:linear-gradient(135deg,#2C1F1A,#3d2b24);border-radius:14px;padding:24px;margin-bottom:24px}
+.nutri-timing-title{font-size:.88rem;font-weight:700;color:#fff;margin-bottom:16px}
+.nutri-timing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.timing-item{background:rgba(255,255,255,.06);border-radius:10px;padding:14px;text-align:center}
+.timing-when{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.45);margin-bottom:6px}
+.timing-what{font-size:.78rem;color:rgba(255,255,255,.85);line-height:1.5}
+.nutri-note{background:rgba(201,99,88,.06);border:1px solid rgba(201,99,88,.18);border-radius:10px;padding:14px 18px;font-size:.78rem;color:var(--mid);line-height:1.6;font-style:italic}
+
+/* SECTION */
+.prog-section{display:none;background:var(--bg)}
+.prog-section.active{display:block}
 
 /* MOBILE */
-@media(max-width:560px){
+@media(max-width:660px){
   .how-grid{grid-template-columns:1fr 1fr}
-  .exo-card{grid-template-columns:72px 1fr}
-  .exo-photo{min-height:72px}
-  .cover-title{font-size:3rem}
+  .nutri-grid{grid-template-columns:1fr}
+  .nutri-timing-grid{grid-template-columns:1fr}
+  .exo-card{grid-template-columns:76px 1fr}
+  .exo-photo{min-height:76px}
+  .cover-title{font-size:3.4rem}
+  .som-num{font-size:1.3rem;width:24px}
 }
 </style>
 </head>
@@ -134,11 +175,72 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);
   </div>
 </div>
 
+<!-- SOMMAIRE -->
+<div class="sommaire" id="how-section" style="display:none">
+  <div class="sommaire-inner">
+    <p class="som-label">Sommaire</p>
+    <h2 class="som-title">Tout ce que contient<br><em>ce programme</em></h2>
+    <div class="som-list">
+      <div class="som-item" onclick="showSection('how')">
+        <div class="som-num">01</div>
+        <div class="som-text">
+          <div class="som-name">Comment utiliser ce programme</div>
+          <div class="som-desc">Charges, tempo, repos, échauffement — lis avant de commencer</div>
+        </div>
+        <div class="som-arrow">→</div>
+      </div>
+      <div class="som-item" onclick="showSection('p1')">
+        <div class="som-num">02</div>
+        <div class="som-text">
+          <div class="som-name">Phase 1 — Fondations (Sem 1–2)</div>
+          <div class="som-desc">4 séances · Technique · Activation · 60–70% RM</div>
+        </div>
+        <div class="som-arrow">→</div>
+      </div>
+      <div class="som-item" onclick="showSection('p2')">
+        <div class="som-num">03</div>
+        <div class="som-text">
+          <div class="som-name">Phase 2 — Intensité (Sem 3–4)</div>
+          <div class="som-desc">4 séances · Charges augmentées · Supersets · 70–75% RM</div>
+        </div>
+        <div class="som-arrow">→</div>
+      </div>
+      <div class="som-item" onclick="showSection('p3')">
+        <div class="som-num">04</div>
+        <div class="som-text">
+          <div class="som-name">Phase 3 — Surcharge (Sem 5–6)</div>
+          <div class="som-desc">4 séances · Force maximale · Techniques avancées · 78–82% RM</div>
+        </div>
+        <div class="som-arrow">→</div>
+      </div>
+      <div class="som-item" onclick="showSection('p4')">
+        <div class="som-num">05</div>
+        <div class="som-text">
+          <div class="som-name">Phase 4 — Peak (Sem 7–8)</div>
+          <div class="som-desc">4 séances · Tests de force · Giant sets · 83–87% RM</div>
+        </div>
+        <div class="som-arrow">→</div>
+      </div>
+      <div class="som-item" onclick="showSection('nutri')">
+        <div class="som-num">06</div>
+        <div class="som-text">
+          <div class="som-name">Conseils Nutrition</div>
+          <div class="som-desc">Macros, timing, hydratation — les bases pour maximiser tes résultats</div>
+        </div>
+        <div class="som-arrow">→</div>
+      </div>
+    </div>
+    <button class="cover-btn" onclick="showSection('how')" style="margin-top:32px;display:inline-block">Commencer par le début →</button>
+  </div>
+</div>
+
 <!-- HOW TO USE -->
-<div class="how-section" id="how-section" style="display:none">
+<div id="how-detail" style="display:none">
+  <div class="how-section">
   <div class="how-inner">
+    <p class="how-label">Lis avant de commencer</p>
     <h2 class="how-title">Comment utiliser<br><em>ce programme</em></h2>
-    <p class="how-sub">Lis ça avant de commencer — 2 minutes qui changent tout.</p>
+    <p class="how-sub">2 minutes qui font toute la différence.</p>
     <div class="how-grid">
       <div class="how-card">
         <div class="how-num">4</div>
@@ -161,15 +263,15 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);
         <div class="how-card-desc">Augmente les poids dès que les dernières reps deviennent trop faciles</div>
       </div>
     </div>
-    <div style="margin-top:28px;background:var(--cream);border:1.5px solid var(--sand);border-radius:14px;padding:22px 24px;text-align:left;max-width:600px;margin-left:auto;margin-right:auto">
-      <p style="font-size:.84rem;color:var(--text-mid);line-height:1.85">
-        <strong style="color:var(--accent)">Le tempo :</strong> 3-1 = tu descends en 3 secondes, tu remontes en 1. C'est là que ton muscle se construit vraiment.<br>
-        <strong style="color:var(--accent)">Le repos :</strong> ne le saute pas. Ce n'est pas de la flemme — c'est une partie de la séance. Ton muscle récupère pour mieux repartir.<br>
-        <strong style="color:var(--accent)">L'échauffement :</strong> 10 min de cardio léger + mobilité articulaire avant chaque séance. Toujours. Ton corps te remerciera.<br>
-        <strong style="color:var(--accent)">Douleur ≠ courbatures :</strong> les courbatures sont normales et bonnes signe. Une douleur articulaire ou aiguë — tu arrêtes et tu m'écris directement.
-      </p>
+    <div class="how-tips">
+      <div class="how-tip"><strong>Tempo :</strong><span>3-1 = tu descends en 3 secondes, tu remontes en 1. C'est là que ton muscle se construit vraiment.</span></div>
+      <div class="how-tip"><strong>Repos :</strong><span>Ne le saute pas. Ce n'est pas de la flemme — c'est une partie de la séance. Ton muscle récupère pour mieux repartir.</span></div>
+      <div class="how-tip"><strong>Échauffement :</strong><span>10 min de cardio léger + mobilité articulaire avant chaque séance. Toujours. Ton corps te remerciera.</span></div>
+      <div class="how-tip"><strong>Douleur ≠ courbatures :</strong><span>Les courbatures sont un bon signe. Une douleur articulaire ou aiguë — tu arrêtes et tu m'écris directement.</span></div>
+      <div class="how-tip"><strong>Progression :</strong><span>Augmente les charges dès que les dernières reps deviennent trop faciles. C'est comme ça qu'on progresse.</span></div>
     </div>
-    <button class="cover-btn" onclick="showProgram()" style="margin-top:32px">Accéder à mon programme →</button>
+    <button class="cover-btn" onclick="showProgram()" style="margin-top:32px;display:inline-block">Accéder à mon programme →</button>
+  </div>
   </div>
 </div>
 
@@ -882,26 +984,136 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);
 
 </div><!-- /main-program -->
 
+<!-- NUTRITION -->
+<div id="nutri-section" style="display:none">
+<div class="nutri-section">
+  <div class="nutri-inner">
+    <p class="nutri-label">Conseils Nutrition</p>
+    <h2 class="nutri-title">Mange pour<br><em>tes résultats</em></h2>
+    <p class="nutri-sub">L'entraînement construit le corps. La nutrition le révèle. Voici les bases que j'applique et que je recommande à mes clientes.</p>
+
+    <div class="nutri-timing">
+      <p class="nutri-timing-title">⏱️ Timing autour de ta séance</p>
+      <div class="nutri-timing-grid">
+        <div class="timing-item">
+          <div class="timing-when">1h30–2h avant</div>
+          <div class="timing-what">Repas complet · glucides complexes + protéines + légumes<br><em style="color:rgba(255,255,255,.4);font-size:.7rem">Ex : riz + poulet + brocolis</em></div>
+        </div>
+        <div class="timing-item">
+          <div class="timing-when">Pendant la séance</div>
+          <div class="timing-what">Eau · 500 ml minimum · Pas de soda, pas de jus<br><em style="color:rgba(255,255,255,.4);font-size:.7rem">Option : BCAA si séance longue</em></div>
+        </div>
+        <div class="timing-item">
+          <div class="timing-when">Dans les 30–45 min après</div>
+          <div class="timing-what">Protéines + glucides rapides · Fenêtre anabolique<br><em style="color:rgba(255,255,255,.4);font-size:.7rem">Ex : shaker whey + banane</em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nutri-grid">
+      <div class="nutri-card">
+        <div class="nutri-icon">🥩</div>
+        <div class="nutri-card-title">Protéines — La priorité</div>
+        <ul class="nutri-list">
+          <li>1,6 à 2g de protéines / kg de poids de corps</li>
+          <li>Poulet, dinde, œufs, thon, saumon</li>
+          <li>Fromage blanc 0%, skyr</li>
+          <li>Légumineuses : lentilles, pois chiches</li>
+          <li>Whey protéine si besoin de compléter</li>
+        </ul>
+      </div>
+      <div class="nutri-card">
+        <div class="nutri-icon">🍚</div>
+        <div class="nutri-card-title">Glucides — Ton carburant</div>
+        <ul class="nutri-list">
+          <li>Riz, patate douce, flocons d'avoine</li>
+          <li>Pain complet, pâtes complètes</li>
+          <li>Fruits (surtout avant/après séance)</li>
+          <li>Légumes à volonté — toujours</li>
+          <li>Évite les sucres raffinés en semaine</li>
+        </ul>
+      </div>
+      <div class="nutri-card">
+        <div class="nutri-icon">🥑</div>
+        <div class="nutri-card-title">Lipides — Indispensables</div>
+        <ul class="nutri-list">
+          <li>Avocats, noix, amandes, cajous</li>
+          <li>Huile d'olive, huile de coco</li>
+          <li>Poissons gras 2–3x par semaine</li>
+          <li>Ne supprime jamais les graisses !</li>
+          <li>Elles régulent les hormones clés</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:20px">
+      <p style="font-size:.82rem;font-weight:700;color:var(--dark);margin-bottom:14px">💧 Hydratation — Simple et non négociable</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+        <div style="text-align:center;padding:14px;background:var(--card);border-radius:10px;border:1px solid var(--border)">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--accent)">2L</div>
+          <div style="font-size:.72rem;color:var(--muted);margin-top:4px">minimum par jour<br>hors sport</div>
+        </div>
+        <div style="text-align:center;padding:14px;background:var(--card);border-radius:10px;border:1px solid var(--border)">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--accent)">+0,5L</div>
+          <div style="font-size:.72rem;color:var(--muted);margin-top:4px">par heure<br>d'entraînement</div>
+        </div>
+        <div style="text-align:center;padding:14px;background:var(--card);border-radius:10px;border:1px solid var(--border)">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--accent)">🚫</div>
+          <div style="font-size:.72rem;color:var(--muted);margin-top:4px">sodas, jus industriels<br>pendant le programme</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nutri-note">
+      ⚠️ Ces conseils sont des bases générales — je ne suis pas diététicienne. Si tu as des besoins spécifiques (pathologie, post-partum, grossesse), consulte un professionnel de santé. Pour un plan nutritionnel 100% sur-mesure, <a href="https://wa.me/33756834626" style="color:var(--accent);font-weight:700">écris-moi sur WhatsApp →</a>
+    </div>
+
+    <div style="text-align:center;margin-top:36px">
+      <button class="cover-btn" onclick="showProgram();setPhase(1)">← Retour au programme</button>
+    </div>
+  </div>
+</div>
+</div>
+
 <script>
+var currentPhase=1, currentSession='A';
+
+function hideAll(){
+  ['cover','how-section','how-detail','main-program','nutri-section'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.style.display='none';
+  });
+}
+
 function startProgram(){
-  document.getElementById('cover').style.display='none';
+  hideAll();
   document.getElementById('how-section').style.display='block';
   window.scrollTo(0,0);
 }
-function showProgram(){
-  document.getElementById('how-section').style.display='none';
-  document.getElementById('main-program').style.display='block';
+
+function showSection(s){
+  hideAll();
+  if(s==='how'){document.getElementById('how-detail').style.display='block';}
+  else if(s==='nutri'){document.getElementById('nutri-section').style.display='block';}
+  else{
+    document.getElementById('main-program').style.display='block';
+    var p=parseInt(s.replace('p',''));
+    setPhase(p);
+  }
   window.scrollTo(0,0);
 }
 
-var currentPhase=1, currentSession='A';
+function showProgram(){
+  hideAll();
+  document.getElementById('main-program').style.display='block';
+  window.scrollTo(0,0);
+}
 
 function setPhase(p){
   currentPhase=p;
   document.querySelectorAll('.phase-pill').forEach(function(el,i){el.classList.toggle('active',i===p-1)});
   document.querySelectorAll('.prog-section').forEach(function(el,i){el.classList.toggle('active',i===p-1)});
   setSession(currentSession);
-  window.scrollTo(0,0);
 }
 
 function setSession(s){
@@ -910,9 +1122,10 @@ function setSession(s){
     el.classList.toggle('active',['A','B','C','D'][i]===s);
   });
   document.querySelectorAll('#phase-'+currentPhase+' .session-block').forEach(function(el){
-    el.classList.toggle('active', el.id==='p'+currentPhase+'-'+s);
+    el.classList.toggle('active',el.id==='p'+currentPhase+'-'+s);
   });
-  document.getElementById('prog-nav').scrollIntoView({behavior:'smooth',block:'start'});
+  var nav=document.getElementById('prog-nav');
+  if(nav) nav.scrollIntoView({behavior:'smooth',block:'start'});
 }
 </script>
 </body>
