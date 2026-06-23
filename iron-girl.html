@@ -141,12 +141,45 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,22,22,.93
 .exo-cell.rest{font-size:.76rem;color:var(--muted);font-weight:600;border-right:1px solid var(--border)}
 .exo-cell.tech{font-size:.75rem;color:var(--text-mid);font-style:italic;line-height:1.6}
 
+/* POUR QUI */
+.pourqui{background:var(--dark);padding:64px 24px}
+.pourqui-inner{max-width:840px;margin:0 auto}
+.pourqui-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:300;color:#fff;margin-bottom:8px}
+.pourqui-title em{font-style:italic;color:var(--rose-deep)}
+.pourqui-sub{font-size:.8rem;color:rgba(255,255,255,.4);margin-bottom:32px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.pourqui-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pourqui-item{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px 20px}
+.pourqui-check{width:24px;height:24px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:.75rem;color:#fff;font-weight:700}
+.pourqui-item p{font-size:.83rem;color:rgba(255,255,255,.7);line-height:1.6}
+.pourqui-item strong{color:#fff;font-weight:600}
+.pourqui-neg{margin-top:12px;display:flex;align-items:flex-start;gap:12px;padding:16px 20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px}
+.pourqui-neg span{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.6;font-style:italic}
+
+/* MATÉRIEL */
+.materiel{background:var(--cream);padding:56px 24px}
+.materiel-inner{max-width:840px;margin:0 auto}
+.materiel-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:400;color:var(--dark);margin-bottom:6px}
+.materiel-sub{font-size:.8rem;color:var(--muted);margin-bottom:28px;font-weight:500;letter-spacing:.04em}
+.materiel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.mat-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:14px}
+.mat-icon{font-size:1.4rem;flex-shrink:0}
+.mat-card p{font-size:.8rem;font-weight:600;color:var(--dark);line-height:1.4}
+.mat-card span{font-size:.72rem;color:var(--muted);display:block;margin-top:2px;font-weight:400}
+
+/* VIDEO TITLE */
+.video-label{background:#0E0808;padding:28px 24px 0;text-align:center}
+.video-label p{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+
 /* BONUS BLOCK */
 .bonus-block{margin-top:16px;border-radius:12px;overflow:hidden;border:1.5px solid var(--border)}
 .bonus-header{display:flex;gap:0}
 .bonus-tag{background:var(--accent);color:#fff;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:10px 18px;white-space:nowrap}
 .bonus-tag.green{background:#4A7C59}
 .bonus-body{background:var(--cream);flex:1;padding:10px 18px;font-size:.8rem;color:var(--text-mid);line-height:1.6;display:flex;align-items:center}
+
+/* STAB MOBILE */
+.stab .stab-short{display:none}
+.stab .stab-long{display:inline}
 
 /* NUTRITION */
 .nutri-lead{font-size:.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:32px;max-width:680px}
@@ -199,18 +232,23 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
 @media(max-width:660px){
   nav{padding:0 16px}
   .nav-links li:not(:last-child){display:none}
-  .phase-cover{height:260px;padding:28px 24px}
-  .exo-thead{grid-template-columns:90px 1fr}
+  .phase-cover{padding:28px 20px}
+  .exo-thead{grid-template-columns:72px 1fr}
   .exo-thead div:first-child{grid-column:1/2}
   .exo-thead div:nth-child(3),.exo-thead div:nth-child(4){display:none}
-  .exo-row{grid-template-columns:90px 1fr}
+  .exo-row{grid-template-columns:72px 1fr}
+  .exo-vname{font-size:.55rem;padding:8px 4px}
   .exo-cell.rest,.exo-cell.tech{display:none}
-  .exo-cell.reps{border-right:none}
+  .exo-cell.reps{border-right:none;font-size:.82rem}
   .nutri-macro-grid{grid-template-columns:1fr}
-  .nutri-day-row{grid-template-columns:90px 1fr}
+  .nutri-day-row{grid-template-columns:80px 1fr}
   .som-grid{grid-template-columns:1fr}
   .phase-body{padding:20px 14px}
   .phase-section{padding:0 12px 56px}
+  .pourqui-grid{grid-template-columns:1fr}
+  .stab .stab-long{display:none}
+  .stab .stab-short{display:inline}
+  .cta-bottom{padding:40px 24px}
 }
 </style>
 </head>
@@ -285,7 +323,41 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
   </div>
 </section>
 
+<!-- POUR QUI -->
+<section class="pourqui">
+  <div class="pourqui-inner">
+    <p class="pourqui-title">Ce programme est fait pour toi <em>si...</em></p>
+    <p class="pourqui-sub">Vérifie avant de commencer</p>
+    <div class="pourqui-grid">
+      <div class="pourqui-item"><div class="pourqui-check">✓</div><p>Tu vas <strong>en salle au moins 4-5 fois par semaine</strong> et tu veux un programme structuré qui fait vraiment progresser</p></div>
+      <div class="pourqui-item"><div class="pourqui-check">✓</div><p>Tu maîtrises les <strong>bases des mouvements</strong> (squat, soulevé de terre, développé) — ce n'est pas un programme débutante absolue</p></div>
+      <div class="pourqui-item"><div class="pourqui-check">✓</div><p>Tu veux <strong>sculpter ton corps, gagner en force et en volume</strong> — pas juste "tonifier" ou perdre du poids</p></div>
+      <div class="pourqui-item"><div class="pourqui-check">✓</div><p>Tu es prête à <strong>travailler lourd et à progresser</strong> sur les charges semaine après semaine</p></div>
+      <div class="pourqui-item"><div class="pourqui-check">✓</div><p>Tu veux un programme <strong>conçu par une ancienne compétitrice</strong> qui sait ce que c'est que de vouloir un physique de scène</p></div>
+      <div class="pourqui-item"><div class="pourqui-check">✓</div><p>Tu en as marre des programmes génériques — tu veux <strong>quelque chose de sérieux</strong> avec du contenu réel</p></div>
+    </div>
+    <div class="pourqui-neg"><span>⚠️ Ce programme n'est pas adapté si tu reprends le sport après une grossesse récente, une opération ou une longue absence. Dans ce cas, contacte-moi pour un suivi personnalisé.</span></div>
+  </div>
+</section>
+
+<!-- MATÉRIEL -->
+<section class="materiel">
+  <div class="materiel-inner">
+    <p class="materiel-title">Matériel nécessaire</p>
+    <p class="materiel-sub">Ce programme se fait en salle équipée</p>
+    <div class="materiel-grid">
+      <div class="mat-card"><div class="mat-icon">🏋️</div><div><p>Barre + disques</p><span>SDT, Squat, Bench Press, Hip Thrust</span></div></div>
+      <div class="mat-card"><div class="mat-icon">💪</div><div><p>Haltères</p><span>Toutes les séries unilatérales et isolation</span></div></div>
+      <div class="mat-card"><div class="mat-icon">🔧</div><div><p>Machine à câble</p><span>Kickback, tirage, pull-over, curl</span></div></div>
+      <div class="mat-card"><div class="mat-icon">🦵</div><div><p>Presse à cuisses</p><span>Sessions quadriceps et fessiers</span></div></div>
+      <div class="mat-card"><div class="mat-icon">⚙️</div><div><p>Leg curl & leg extension</p><span>Ischios et quadriceps isolés</span></div></div>
+      <div class="mat-card"><div class="mat-icon">🔴</div><div><p>Booty bands</p><span>Phase 3 — optionnel mais recommandé</span></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- VIDEO SECTION -->
+<div class="video-label"><p>Ornella en action</p></div>
 <div class="video-section">
   <video autoplay muted loop playsinline>
     <source src="videos/ornella-outdoor.mp4" type="video/mp4">
@@ -349,11 +421,11 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
   <div class="phase-section">
     <div class="phase-body">
       <div class="session-tabs">
-        <button class="stab active" onclick="showSession('p1','a',this)">A · Ischios-Fessiers</button>
-        <button class="stab" onclick="showSession('p1','b',this)">B · Push</button>
-        <button class="stab" onclick="showSession('p1','c',this)">C · Quadriceps</button>
-        <button class="stab" onclick="showSession('p1','d',this)">D · Pull</button>
-        <button class="stab" onclick="showSession('p1','e',this)">E · Fessiers</button>
+        <button class="stab active" onclick="showSession('p1','a',this)"><span class="stab-short">A</span><span class="stab-long">A · Ischios-Fessiers</span></button>
+        <button class="stab" onclick="showSession('p1','b',this)"><span class="stab-short">B</span><span class="stab-long">B · Push</span></button>
+        <button class="stab" onclick="showSession('p1','c',this)"><span class="stab-short">C</span><span class="stab-long">C · Quadriceps</span></button>
+        <button class="stab" onclick="showSession('p1','d',this)"><span class="stab-short">D</span><span class="stab-long">D · Pull</span></button>
+        <button class="stab" onclick="showSession('p1','e',this)"><span class="stab-short">E</span><span class="stab-long">E · Fessiers</span></button>
       </div>
 
       <div class="session-panel active" id="p1-a">
@@ -568,11 +640,11 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
   <div class="phase-section">
     <div class="phase-body">
       <div class="session-tabs">
-        <button class="stab active" onclick="showSession('p2','a',this)">A · Ischios-Fessiers</button>
-        <button class="stab" onclick="showSession('p2','b',this)">B · Push</button>
-        <button class="stab" onclick="showSession('p2','c',this)">C · Quadriceps</button>
-        <button class="stab" onclick="showSession('p2','d',this)">D · Pull</button>
-        <button class="stab" onclick="showSession('p2','e',this)">E · Fessiers</button>
+        <button class="stab active" onclick="showSession('p2','a',this)"><span class="stab-short">A</span><span class="stab-long">A · Ischios-Fessiers</span></button>
+        <button class="stab" onclick="showSession('p2','b',this)"><span class="stab-short">B</span><span class="stab-long">B · Push</span></button>
+        <button class="stab" onclick="showSession('p2','c',this)"><span class="stab-short">C</span><span class="stab-long">C · Quadriceps</span></button>
+        <button class="stab" onclick="showSession('p2','d',this)"><span class="stab-short">D</span><span class="stab-long">D · Pull</span></button>
+        <button class="stab" onclick="showSession('p2','e',this)"><span class="stab-short">E</span><span class="stab-long">E · Fessiers</span></button>
       </div>
 
       <div class="session-panel active" id="p2-a">
@@ -661,11 +733,11 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
   <div class="phase-section">
     <div class="phase-body">
       <div class="session-tabs">
-        <button class="stab active" onclick="showSession('p3','a',this)">A · Ischios-Fessiers</button>
-        <button class="stab" onclick="showSession('p3','b',this)">B · Push</button>
-        <button class="stab" onclick="showSession('p3','c',this)">C · Quadriceps</button>
-        <button class="stab" onclick="showSession('p3','d',this)">D · Pull</button>
-        <button class="stab" onclick="showSession('p3','e',this)">E · Fessiers</button>
+        <button class="stab active" onclick="showSession('p3','a',this)"><span class="stab-short">A</span><span class="stab-long">A · Ischios-Fessiers</span></button>
+        <button class="stab" onclick="showSession('p3','b',this)"><span class="stab-short">B</span><span class="stab-long">B · Push</span></button>
+        <button class="stab" onclick="showSession('p3','c',this)"><span class="stab-short">C</span><span class="stab-long">C · Quadriceps</span></button>
+        <button class="stab" onclick="showSession('p3','d',this)"><span class="stab-short">D</span><span class="stab-long">D · Pull</span></button>
+        <button class="stab" onclick="showSession('p3','e',this)"><span class="stab-short">E</span><span class="stab-long">E · Fessiers</span></button>
       </div>
 
       <div class="session-panel active" id="p3-a">
