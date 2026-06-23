@@ -334,7 +334,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,22,22,.93
 .chrono-btn.reset{background:rgba(255,255,255,.1);color:rgba(255,255,255,.65);font-size:.95rem}
 .chrono-btn:hover{opacity:.8}
 .chrono-widget.minimized .chrono-body{display:none}
-@media(max-width:660px){.chrono-widget{bottom:16px;right:16px;min-width:160px;font-size:.9rem}}
+/* NAV MOBILE BAS */
+.mobile-nav{display:none}
+@media(max-width:660px){
+  .chrono-widget{bottom:72px;right:12px;min-width:160px;font-size:.9rem}
+  .mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:400;background:var(--dark);border-top:1px solid rgba(255,255,255,.1);height:58px;align-items:stretch;justify-content:space-around;padding:0 4px;padding-bottom:env(safe-area-inset-bottom)}
+  .mnav-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;flex:1;background:none;border:none;color:rgba(255,255,255,.45);font-family:'DM Sans',sans-serif;cursor:pointer;padding:6px 2px;text-decoration:none;transition:color .15s;-webkit-tap-highlight-color:transparent}
+  .mnav-btn:active,.mnav-btn.active{color:var(--accent)}
+  .mnav-icon{font-size:1.1rem;line-height:1}
+  .mnav-label{font-size:.5rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;line-height:1}
+  body{padding-bottom:58px}
+}
 
 /* CTA BOTTOM */
 .cta-bottom{background:var(--dark);border-radius:20px;padding:56px 40px;text-align:center;margin:0 0 64px}
@@ -386,6 +396,16 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
 </style>
 </head>
 <body>
+<!-- NAV MOBILE BAS -->
+<nav class="mobile-nav">
+  <a href="#sommaire" class="mnav-btn"><span class="mnav-icon">☰</span><span class="mnav-label">Sommaire</span></a>
+  <a href="#phase1" class="mnav-btn"><span class="mnav-icon">1️⃣</span><span class="mnav-label">Phase 1</span></a>
+  <a href="#phase2" class="mnav-btn"><span class="mnav-icon">2️⃣</span><span class="mnav-label">Phase 2</span></a>
+  <a href="#phase3" class="mnav-btn"><span class="mnav-icon">3️⃣</span><span class="mnav-label">Phase 3</span></a>
+  <a href="#tracker" class="mnav-btn"><span class="mnav-icon">📊</span><span class="mnav-label">Tracker</span></a>
+  <a href="#nutrition" class="mnav-btn"><span class="mnav-icon">🥗</span><span class="mnav-label">Nutrition</span></a>
+</nav>
+
 <!-- CHRONO FLOTTANT -->
 <div id="chrono" class="chrono-widget">
   <div class="chrono-header" onclick="toggleChrono()">
