@@ -28,10 +28,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,22,22,.93
 .nav-cta{background:var(--accent);color:#fff!important;padding:7px 16px;border-radius:20px}
 
 /* COVER */
-.cover{min-height:100svh;background:#1A1010;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:80px 60px 60px;position:relative;overflow:hidden;gap:32px}
-.cover::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,16,16,.85) 40%,rgba(26,16,16,.2) 100%);pointer-events:none}
-.cover-photo{position:absolute;right:0;top:0;bottom:0;width:55%;object-fit:cover;object-position:top center}
-.cover-content{position:relative;z-index:2}
+.cover{min-height:100svh;background:#1A1010;display:flex;align-items:flex-end;padding:80px 60px 72px;position:relative;overflow:hidden}
+.cover::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(20,10,10,.92) 0%,rgba(20,10,10,.55) 50%,rgba(20,10,10,.2) 100%);pointer-events:none}
+.cover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center}
+.cover-content{position:relative;z-index:2;max-width:680px}
 .cover-badge{display:inline-block;border:1px solid rgba(201,99,88,.5);color:rgba(201,99,88,.9);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:6px 18px;border-radius:20px;margin-bottom:32px}
 .cover-eyebrow{font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:16px}
 .cover-title{font-family:'Cormorant Garamond',serif;font-size:clamp(5rem,12vw,9rem);font-weight:300;color:#fff;line-height:.85;letter-spacing:.04em}
@@ -45,10 +45,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,22,22,.93
 @keyframes scrolldown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* WELCOME */
-.welcome{display:grid;grid-template-columns:1fr 1.4fr;min-height:500px;background:var(--dark)}
-.welcome-photo{position:relative;overflow:hidden}
-.welcome-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.welcome-photo::after{content:'';position:absolute;right:0;top:0;bottom:0;width:60px;background:linear-gradient(90deg,transparent,var(--dark))}
+.welcome{display:grid;grid-template-columns:1fr 1.4fr;background:var(--dark);align-items:center}
+.welcome-photo{overflow:hidden}
+.welcome-photo img{width:100%;height:auto;display:block}
+.welcome-photo::after{content:'';display:none}
 .welcome-text{padding:64px 48px 64px 32px;display:flex;flex-direction:column;justify-content:center}
 .welcome-tag{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
 .welcome-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:300;color:#fff;line-height:1.1;margin-bottom:24px}
@@ -94,9 +94,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,22,22,.93
 .tempo-row p{font-size:.78rem;color:var(--text-mid);line-height:1.55}
 
 /* PHASE COVER */
-.phase-cover{position:relative;height:340px;background:var(--dark);overflow:hidden;display:flex;align-items:flex-end;padding:40px 48px}
-.phase-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:.35}
-.phase-cover-content{position:relative;z-index:1}
+.phase-cover{position:relative;background:var(--dark);overflow:hidden}
+.phase-cover img{width:100%;height:auto;display:block;opacity:.45}
+.phase-cover-content{position:absolute;bottom:0;left:0;right:0;padding:36px 48px;background:linear-gradient(to top,rgba(20,10,10,.92) 0%,rgba(20,10,10,.3) 70%,transparent 100%)}
 .phase-cover-num{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px}
 .phase-cover-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:300;color:#fff;line-height:1}
 .phase-cover-title em{font-style:italic;color:var(--rose-deep)}
@@ -181,11 +181,8 @@ footer a{color:rgba(255,255,255,.35);text-decoration:none}
 hr.sep{border:none;border-top:1px solid var(--border);margin:0}
 
 @media(max-width:800px){
-  .cover{grid-template-columns:1fr;padding:100px 28px 56px}
-  .cover-photo{opacity:.2;width:100%}
+  .cover{padding:100px 28px 56px}
   .welcome{grid-template-columns:1fr}
-  .welcome-photo{height:340px}
-  .welcome-photo::after{display:none}
   .welcome-text{padding:40px 28px}
   .about-inner{grid-template-columns:1fr;text-align:center}
   .about-circle{margin:0 auto}
@@ -224,7 +221,9 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
 
 <!-- COVER -->
 <section class="cover">
-  <img class="cover-photo" src="images/ornella-profil-studio.png" alt="Ornella coach fitness">
+  <video class="cover-video" autoplay muted loop playsinline poster="images/ornella-fente.png">
+    <source src="videos/ornella-outdoor.mp4" type="video/mp4">
+  </video>
   <div class="cover-content">
     <div class="cover-badge">Programme Salle · 8 Semaines · 3 Phases</div>
     <div class="cover-eyebrow">By Ornella Fit Coaching</div>
@@ -243,7 +242,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
 <!-- WELCOME -->
 <section class="welcome">
   <div class="welcome-photo">
-    <img src="images/ornella-profil-studio.png" alt="Ornella">
+    <img src="images/ornella-portrait-full.jpg" alt="Ornella coach fitness">
   </div>
   <div class="welcome-text">
     <div class="welcome-tag">Mot de la coach</div>
@@ -261,7 +260,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
 <section class="about">
   <div class="about-inner">
     <div class="about-circle">
-      <img src="images/ornella-competition-fitness.jpg" alt="Ornella compétition fitness">
+      <img src="images/ornella-portrait-arms.jpg" alt="Ornella coach fitness">
     </div>
     <div>
       <div class="about-tag">À propos de la coach</div>
@@ -323,7 +322,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
 <!-- ═══════════════════════════════ PHASE 1 ═══════════════════════════════ -->
 <div id="phase1">
   <div class="phase-cover">
-    <img src="images/ornella-profil-studio.png" alt="">
+    <img src="images/ornella-squat-back.jpg" alt="">
     <div class="phase-cover-content">
       <div class="phase-cover-num">Phase 1 · Semaines 1 et 2</div>
       <div class="phase-cover-title">Be Strong, <em>BE IRON</em></div>
@@ -567,7 +566,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
 <!-- ═══════════════════════════════ PHASE 2 ═══════════════════════════════ -->
 <div id="phase2">
   <div class="phase-cover">
-    <img src="images/ornella-competition-fitness.jpg" alt="">
+    <img src="images/ornella-fente.png" alt="">
     <div class="phase-cover-content">
       <div class="phase-cover-num">Phase 2 · Semaines 3, 4 et 5</div>
       <div class="phase-cover-title">Work Hard, <em>GAINZ MAX</em></div>
@@ -660,7 +659,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
 <!-- ═══════════════════════════════ PHASE 3 ═══════════════════════════════ -->
 <div id="phase3">
   <div class="phase-cover">
-    <img src="images/ornella-transformation.jpg" alt="" onerror="this.src='images/ornella-profil-studio.png'">
+    <img src="images/ornella-outdoor-side2.jpg" alt="">
     <div class="phase-cover-content">
       <div class="phase-cover-num">Phase 3 · Semaines 6, 7 et 8</div>
       <div class="phase-cover-title">I'm Iron <em>AND I KNOW IT</em></div>
