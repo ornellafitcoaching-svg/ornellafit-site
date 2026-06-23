@@ -141,6 +141,68 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,22,22,.93
 .exo-cell.rest{font-size:.76rem;color:var(--muted);font-weight:600;border-right:1px solid var(--border)}
 .exo-cell.tech{font-size:.75rem;color:var(--text-mid);font-style:italic;line-height:1.6}
 
+/* RÉSULTATS */
+.resultats{padding:64px 24px;background:var(--bg)}
+.resultats-inner{max-width:840px;margin:0 auto}
+.resultats-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:400;color:var(--dark);margin-bottom:6px}
+.resultats-sub{font-size:.8rem;color:var(--muted);margin-bottom:36px;font-weight:500;letter-spacing:.04em}
+.resultats-timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+.res-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:24px 20px;position:relative;overflow:hidden}
+.res-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+.res-week{font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.res-card h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--dark);margin-bottom:10px}
+.res-card ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.res-card li{font-size:.78rem;color:var(--text-mid);padding-left:14px;position:relative;line-height:1.5}
+.res-card li::before{content:'→';position:absolute;left:0;color:var(--accent);font-weight:700;font-size:.7rem}
+.res-disclaimer{background:var(--cream);border-radius:12px;padding:16px 20px;font-size:.76rem;color:var(--muted);font-style:italic;line-height:1.6}
+
+/* PLANNING */
+.planning-wrap{background:#fff;border:1.5px solid var(--border);border-radius:14px;overflow:hidden;margin-top:28px;margin-bottom:16px}
+.planning-header{background:var(--dark);padding:14px 20px;font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.planning-row{display:grid;grid-template-columns:110px 1fr;border-bottom:1px solid var(--border);min-height:48px}
+.planning-row:last-child{border-bottom:none}
+.planning-day{padding:12px 16px;font-size:.72rem;font-weight:700;color:var(--dark);display:flex;align-items:center;border-right:1px solid var(--border);background:var(--cream);letter-spacing:.04em}
+.planning-session{padding:12px 16px;font-size:.8rem;color:var(--text-mid);display:flex;align-items:center;line-height:1.5}
+.planning-session strong{color:var(--dark);margin-right:6px}
+.planning-session.repos{color:var(--muted);font-style:italic}
+
+/* PROGRESSION */
+.progression-box{background:var(--dark);border-radius:14px;padding:24px 28px;margin-top:16px}
+.progression-box h4{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.prog-row{display:flex;align-items:flex-start;gap:14px;margin-bottom:12px}
+.prog-tag{background:rgba(201,99,88,.2);border:1px solid rgba(201,99,88,.3);color:var(--accent);font-size:.68rem;font-weight:700;padding:4px 12px;border-radius:8px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.prog-row p{font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.55}
+
+/* FAQ */
+.faq-wrap{margin-top:0}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{width:100%;background:none;border:none;padding:18px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;font-family:'DM Sans',sans-serif;text-align:left}
+.faq-q span{font-size:.85rem;font-weight:600;color:var(--dark);line-height:1.5}
+.faq-icon{width:22px;height:22px;border-radius:50%;background:var(--cream);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--accent);flex-shrink:0;transition:transform .25s}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-a p{font-size:.82rem;color:var(--text-mid);line-height:1.75;padding-bottom:18px}
+
+/* TRACKER */
+.tracker-section{padding:64px 24px;max-width:840px;margin:0 auto}
+.tracker-intro{font-size:.85rem;color:var(--text-mid);line-height:1.7;margin-bottom:28px}
+.tracker-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.ttab{border:1.5px solid var(--border);background:none;padding:7px 16px;border-radius:20px;font-size:.76rem;font-weight:600;color:var(--muted);cursor:pointer;font-family:'DM Sans',sans-serif}
+.ttab.active{background:var(--dark);border-color:var(--dark);color:#fff}
+.tracker-panel{display:none}
+.tracker-panel.active{display:block}
+.tracker-table{width:100%;border-collapse:collapse;border:1.5px solid var(--border);border-radius:14px;overflow:hidden}
+.tracker-table th{background:var(--dark);color:rgba(255,255,255,.5);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 14px;text-align:left}
+.tracker-table td{padding:10px 14px;border-bottom:1px solid var(--border);font-size:.78rem;color:var(--dark);vertical-align:middle}
+.tracker-table tr:last-child td{border-bottom:none}
+.tracker-table tr:nth-child(even) td{background:#FAFAF8}
+.tracker-table td:first-child{font-weight:700;text-transform:uppercase;font-size:.72rem;color:var(--dark);width:36%}
+.tracker-input{width:100%;border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:.78rem;font-family:'DM Sans',sans-serif;color:var(--dark);background:#fff;text-align:center}
+.tracker-input:focus{outline:none;border-color:var(--accent)}
+.tracker-save{margin-top:14px;background:var(--accent);color:#fff;border:none;padding:10px 24px;border-radius:20px;font-size:.78rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:.06em}
+.tracker-save:hover{opacity:.85}
+
 /* POUR QUI */
 .pourqui{background:var(--dark);padding:64px 24px}
 .pourqui-inner{max-width:840px;margin:0 auto}
@@ -249,6 +311,10 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
   .stab .stab-long{display:none}
   .stab .stab-short{display:inline}
   .cta-bottom{padding:40px 24px}
+  .resultats-timeline{grid-template-columns:1fr}
+  .planning-row{grid-template-columns:80px 1fr}
+  .tracker-section .tracker-panel{overflow-x:auto}
+  .tracker-table{min-width:460px}
 }
 </style>
 </head>
@@ -320,6 +386,47 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
         <span class="cred-tag">Post-partum</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- RÉSULTATS ATTENDUS -->
+<section class="resultats" id="resultats">
+  <div class="resultats-inner">
+    <p class="resultats-title">Ce que tu vas <em style="font-style:italic;color:var(--accent)">vivre</em> en 8 semaines</p>
+    <p class="resultats-sub">Résultats réalistes · basés sur l'entraînement sérieux</p>
+    <div class="resultats-timeline">
+      <div class="res-card">
+        <div class="res-week">Semaines 1 – 2</div>
+        <h4>Activation</h4>
+        <ul>
+          <li>Prise en main des mouvements</li>
+          <li>Muscles dormants qui se réveillent</li>
+          <li>Courbatures normales, c'est bon signe</li>
+          <li>Énergie et sommeil améliorés</li>
+        </ul>
+      </div>
+      <div class="res-card">
+        <div class="res-week">Semaines 3 – 5</div>
+        <h4>Transformation</h4>
+        <ul>
+          <li>Charges en progression visible</li>
+          <li>Silhouette qui se dessine</li>
+          <li>Force qui augmente nettement</li>
+          <li>Confiance en soi en hausse</li>
+        </ul>
+      </div>
+      <div class="res-card">
+        <div class="res-week">Semaines 6 – 8</div>
+        <h4>Iron Girl</h4>
+        <ul>
+          <li>Corps sculpté, fessiers et cuisses définis</li>
+          <li>Performances en salle transformées</li>
+          <li>Posture et maintien améliorés</li>
+          <li>Tu repars avec une nouvelle baseline</li>
+        </ul>
+      </div>
+    </div>
+    <div class="res-disclaimer">Ces résultats sont atteignables si tu respectes le programme, la nutrition et la récupération. Les transformations varient selon chaque corps — l'objectif est le progrès, pas la perfection.</div>
   </div>
 </section>
 
@@ -399,6 +506,25 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
     <div class="tempo-row"><span class="tempo-tag">5-5</span><p>5 sec descente · 5 sec montée. Très lent = très intense = plus de résultats. Ne triche pas.</p></div>
     <div class="tempo-row"><span class="tempo-tag">10-10</span><p>Phase 3 uniquement. 10 secondes excentrique, 10 secondes concentrique. C'est brutal. C'est fait exprès.</p></div>
     <div class="tempo-row"><span class="tempo-tag">Rest-pause</span><p>Tu fais des reps jusqu'à l'échec musculaire, tu te reposes 5 secondes max, tu reprends. Répète pendant le temps indiqué.</p></div>
+  </div>
+
+  <div class="planning-wrap">
+    <div class="planning-header">Planning hebdomadaire type</div>
+    <div class="planning-row"><div class="planning-day">Lundi</div><div class="planning-session"><strong>Session A</strong> Ischios · Fessiers · Cardio</div></div>
+    <div class="planning-row"><div class="planning-day">Mardi</div><div class="planning-session"><strong>Session B</strong> Push · Pectoraux · Épaules · Triceps</div></div>
+    <div class="planning-row"><div class="planning-day">Mercredi</div><div class="planning-session repos">Repos actif — marche, étirements, mobilité</div></div>
+    <div class="planning-row"><div class="planning-day">Jeudi</div><div class="planning-session"><strong>Session C</strong> Quadriceps · Mollets</div></div>
+    <div class="planning-row"><div class="planning-day">Vendredi</div><div class="planning-session"><strong>Session D</strong> Pull · Dos · Biceps</div></div>
+    <div class="planning-row"><div class="planning-day">Samedi</div><div class="planning-session"><strong>Session E</strong> Fessiers</div></div>
+    <div class="planning-row"><div class="planning-day">Dimanche</div><div class="planning-session repos">Repos complet — récupération, sommeil, nutrition</div></div>
+  </div>
+
+  <div class="progression-box">
+    <h4>Règle de progression — Comment augmenter les charges</h4>
+    <div class="prog-row"><span class="prog-tag">RÈGLE 1</span><p>Si tu fais TOUTES les reps prescrites sans aucune difficulté, augmente la charge de <strong style="color:#fff">2,5 à 5 kg</strong> à la prochaine séance.</p></div>
+    <div class="prog-row"><span class="prog-tag">RÈGLE 2</span><p>Si tu n'arrives pas à finir les reps, garde la même charge. Ne baisse jamais sauf blessure. La progression, c'est sacrée.</p></div>
+    <div class="prog-row"><span class="prog-tag">RÈGLE 3</span><p>En Phase 3, l'augmentation peut être de <strong style="color:#fff">1 à 2,5 kg</strong> seulement. Les derniers kilos sont les plus durs à aller chercher.</p></div>
+    <div class="prog-row"><span class="prog-tag">RÈGLE 4</span><p>Note TES charges dans le tracker ci-dessous. Ce que tu ne mesures pas, tu ne peux pas le progresser.</p></div>
   </div>
 </div>
 
@@ -810,6 +936,69 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
 
 <hr class="sep">
 
+<!-- TRACKER DE CHARGES -->
+<div class="tracker-section" id="tracker">
+  <p class="section-title">Tracker de charges</p>
+  <p class="section-sub">Note tes performances · Progression semaine après semaine</p>
+  <p class="tracker-intro">Entre tes charges après chaque séance. Elles sont sauvegardées localement sur ton appareil.</p>
+  <div class="tracker-tabs">
+    <button class="ttab active" onclick="showTracker('ta',this)">Session A</button>
+    <button class="ttab" onclick="showTracker('tb',this)">Session B</button>
+    <button class="ttab" onclick="showTracker('tc',this)">Session C</button>
+    <button class="ttab" onclick="showTracker('td',this)">Session D</button>
+    <button class="ttab" onclick="showTracker('te',this)">Session E</button>
+  </div>
+  <div class="tracker-panel active" id="ta">
+    <table class="tracker-table"><thead><tr><th>Exercice</th><th>Sem 1</th><th>Sem 2</th><th>Sem 3–4</th><th>Sem 5–6</th><th>Sem 7–8</th></tr></thead>
+    <tbody>
+      <tr><td>Fentes bulgares</td><td><input class="tracker-input" data-key="ta-fentes-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="ta-fentes-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="ta-fentes-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="ta-fentes-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="ta-fentes-s78" placeholder="kg"></td></tr>
+      <tr><td>SDT Sumo</td><td><input class="tracker-input" data-key="ta-sdt-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="ta-sdt-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="ta-sdt-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="ta-sdt-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="ta-sdt-s78" placeholder="kg"></td></tr>
+      <tr><td>Leg Curl Machine</td><td><input class="tracker-input" data-key="ta-legcurl-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="ta-legcurl-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="ta-legcurl-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="ta-legcurl-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="ta-legcurl-s78" placeholder="kg"></td></tr>
+      <tr><td>Cable Kickback</td><td><input class="tracker-input" data-key="ta-kickback-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="ta-kickback-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="ta-kickback-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="ta-kickback-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="ta-kickback-s78" placeholder="kg"></td></tr>
+    </tbody></table>
+    <button class="tracker-save" onclick="saveTracker(this)">Sauvegarder</button>
+  </div>
+  <div class="tracker-panel" id="tb">
+    <table class="tracker-table"><thead><tr><th>Exercice</th><th>Sem 1</th><th>Sem 2</th><th>Sem 3–4</th><th>Sem 5–6</th><th>Sem 7–8</th></tr></thead>
+    <tbody>
+      <tr><td>Bench Press</td><td><input class="tracker-input" data-key="tb-bench-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="tb-bench-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="tb-bench-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="tb-bench-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="tb-bench-s78" placeholder="kg"></td></tr>
+      <tr><td>Dév. Militaire</td><td><input class="tracker-input" data-key="tb-devmil-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="tb-devmil-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="tb-devmil-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="tb-devmil-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="tb-devmil-s78" placeholder="kg"></td></tr>
+      <tr><td>Dips</td><td><input class="tracker-input" data-key="tb-dips-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="tb-dips-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="tb-dips-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="tb-dips-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="tb-dips-s78" placeholder="kg"></td></tr>
+      <tr><td>Élévations lat.</td><td><input class="tracker-input" data-key="tb-elev-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="tb-elev-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="tb-elev-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="tb-elev-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="tb-elev-s78" placeholder="kg"></td></tr>
+    </tbody></table>
+    <button class="tracker-save" onclick="saveTracker(this)">Sauvegarder</button>
+  </div>
+  <div class="tracker-panel" id="tc">
+    <table class="tracker-table"><thead><tr><th>Exercice</th><th>Sem 1</th><th>Sem 2</th><th>Sem 3–4</th><th>Sem 5–6</th><th>Sem 7–8</th></tr></thead>
+    <tbody>
+      <tr><td>Squat Barre</td><td><input class="tracker-input" data-key="tc-squat-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="tc-squat-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="tc-squat-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="tc-squat-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="tc-squat-s78" placeholder="kg"></td></tr>
+      <tr><td>Presse à cuisses</td><td><input class="tracker-input" data-key="tc-presse-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="tc-presse-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="tc-presse-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="tc-presse-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="tc-presse-s78" placeholder="kg"></td></tr>
+      <tr><td>Leg Extension</td><td><input class="tracker-input" data-key="tc-legext-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="tc-legext-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="tc-legext-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="tc-legext-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="tc-legext-s78" placeholder="kg"></td></tr>
+    </tbody></table>
+    <button class="tracker-save" onclick="saveTracker(this)">Sauvegarder</button>
+  </div>
+  <div class="tracker-panel" id="td">
+    <table class="tracker-table"><thead><tr><th>Exercice</th><th>Sem 1</th><th>Sem 2</th><th>Sem 3–4</th><th>Sem 5–6</th><th>Sem 7–8</th></tr></thead>
+    <tbody>
+      <tr><td>Tractions / Lat. Machine</td><td><input class="tracker-input" data-key="td-trac-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="td-trac-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="td-trac-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="td-trac-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="td-trac-s78" placeholder="kg"></td></tr>
+      <tr><td>Tirage horizontal</td><td><input class="tracker-input" data-key="td-tirage-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="td-tirage-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="td-tirage-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="td-tirage-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="td-tirage-s78" placeholder="kg"></td></tr>
+      <tr><td>Curl Haltères</td><td><input class="tracker-input" data-key="td-curl-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="td-curl-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="td-curl-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="td-curl-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="td-curl-s78" placeholder="kg"></td></tr>
+    </tbody></table>
+    <button class="tracker-save" onclick="saveTracker(this)">Sauvegarder</button>
+  </div>
+  <div class="tracker-panel" id="te">
+    <table class="tracker-table"><thead><tr><th>Exercice</th><th>Sem 1</th><th>Sem 2</th><th>Sem 3–4</th><th>Sem 5–6</th><th>Sem 7–8</th></tr></thead>
+    <tbody>
+      <tr><td>Hip Thrust</td><td><input class="tracker-input" data-key="te-hipthrust-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="te-hipthrust-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="te-hipthrust-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="te-hipthrust-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="te-hipthrust-s78" placeholder="kg"></td></tr>
+      <tr><td>Abducteur Machine</td><td><input class="tracker-input" data-key="te-abduct-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="te-abduct-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="te-abduct-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="te-abduct-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="te-abduct-s78" placeholder="kg"></td></tr>
+      <tr><td>Extensions lombaires</td><td><input class="tracker-input" data-key="te-ext-s1" placeholder="kg"></td><td><input class="tracker-input" data-key="te-ext-s2" placeholder="kg"></td><td><input class="tracker-input" data-key="te-ext-s34" placeholder="kg"></td><td><input class="tracker-input" data-key="te-ext-s56" placeholder="kg"></td><td><input class="tracker-input" data-key="te-ext-s78" placeholder="kg"></td></tr>
+    </tbody></table>
+    <button class="tracker-save" onclick="saveTracker(this)">Sauvegarder</button>
+  </div>
+</div>
+
+<hr class="sep">
+
 <!-- ═══════════════════════════════ NUTRITION ═══════════════════════════════ -->
 <div class="section" id="nutrition">
   <p class="section-title">Nutrition — La base</p>
@@ -919,6 +1108,38 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
   </div>
 </div>
 
+<!-- FAQ -->
+<div class="section" id="faq" style="padding-bottom:0">
+  <p class="section-title">Questions fréquentes</p>
+  <p class="section-sub">Ce que toutes les Iron Girls demandent avant de commencer</p>
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)"><span>Je suis post-partum, est-ce que je peux faire ce programme ?</span><div class="faq-icon">+</div></button>
+      <div class="faq-a"><p>IRON GIRL est conçu pour des femmes qui s'entraînent déjà régulièrement. Si tu reviens d'un accouchement récent, je te déconseille fortement de commencer directement ce programme. Le périnée et les abdominaux profonds doivent être rééduqués en priorité. Je propose un suivi post-partum personnalisé — contacte-moi directement, c'est mon domaine de spécialité.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)"><span>Je suis débutante, puis-je quand même faire ce programme ?</span><div class="faq-icon">+</div></button>
+      <div class="faq-a"><p>IRON GIRL n'est pas un programme débutante absolue. Tu dois maîtriser les bases : squat, soulevé de terre, développé couché. Si tu pratiques la salle depuis au moins 3-6 mois et que tu connais ces mouvements, tu peux te lancer. Sinon, commence par un programme découverte — je peux t'accompagner.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)"><span>Que se passe-t-il si je rate une séance ?</span><div class="faq-icon">+</div></button>
+      <div class="faq-a"><p>La vie, c'est la vie. Si tu rates une séance, tu la fais le lendemain ou tu passes à la suivante. Ne te mets pas à la faire à 23h juste pour "ne pas rater". La récupération fait partie du programme. En revanche, si tu rates plus de 2 séances par semaine régulièrement, le programme ne pourra pas produire ses effets.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)"><span>Combien de temps dure une séance ?</span><div class="faq-icon">+</div></button>
+      <div class="faq-a"><p>Entre 55 minutes et 1h15 selon les sessions, échauffement compris. Les sessions B et D (push/pull) sont souvent les plus longues. Prévoie 1h30 si tu fais le bonus cardio ou abdos. Si tu dépasses 1h30, tu te reposes trop longtemps entre les séries — reste concentrée.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)"><span>Est-ce que je dois obligatoirement suivre la nutrition ?</span><div class="faq-icon">+</div></button>
+      <div class="faq-a"><p>La nutrition fournie est une base éducative, pas un plan alimentaire personnalisé. Tu n'es pas obligée de la suivre à la lettre, mais tu dois comprendre les principes : assez de protéines, glucides autour de la séance, bonnes graisses. Sans nutrition sérieuse, les résultats seront là mais à moitié. C'est mathématique.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)"><span>Que faire après les 8 semaines ?</span><div class="faq-icon">+</div></button>
+      <div class="faq-a"><p>Deux options : tu recommences depuis la Phase 1 avec des charges plus lourdes (la progression est infinie), ou tu passes à un coaching sur-mesure avec moi pour aller encore plus loin. Tu as maintenant une base solide. C'est là que les vraies transformations continuent.</p></div>
+    </div>
+  </div>
+</div>
+
 <!-- CTA -->
 <div class="section" style="padding-top:0">
   <div class="cta-bottom">
@@ -941,6 +1162,47 @@ function showSession(phase, session, btn) {
   if (panel) panel.classList.add('active');
   btn.classList.add('active');
 }
+
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const ans = item.querySelector('.faq-a');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-a').style.maxHeight = '0';
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    ans.style.maxHeight = ans.scrollHeight + 'px';
+  }
+}
+
+function showTracker(id, btn) {
+  document.querySelectorAll('.tracker-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.ttab').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  loadTracker();
+}
+
+function saveTracker(btn) {
+  document.querySelectorAll('.tracker-input').forEach(inp => {
+    if (inp.dataset.key && inp.value) localStorage.setItem(inp.dataset.key, inp.value);
+  });
+  btn.textContent = 'Sauvegardé ✓';
+  setTimeout(() => btn.textContent = 'Sauvegarder', 1800);
+}
+
+function loadTracker() {
+  document.querySelectorAll('.tracker-input').forEach(inp => {
+    if (inp.dataset.key) {
+      const val = localStorage.getItem(inp.dataset.key);
+      if (val) inp.value = val;
+    }
+  });
+}
+
+loadTracker();
 </script>
 </body>
 </html>
