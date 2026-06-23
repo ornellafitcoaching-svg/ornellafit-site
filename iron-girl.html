@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IRON GIRL — Programme Salle 8 Semaines · Ornella Fit Coaching</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Iron Girl">
+<meta name="theme-color" content="#1E1616">
+<link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -345,6 +350,46 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,22,22,.93
   body{padding-bottom:54px}
 }
 
+/* INSTALL APP */
+.install-section{background:var(--dark);padding:48px 24px}
+.install-inner{max-width:840px;margin:0 auto}
+.install-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:400;color:#fff;margin-bottom:6px}
+.install-title em{font-style:italic;color:var(--rose-deep)}
+.install-sub{font-size:.78rem;color:rgba(255,255,255,.4);margin-bottom:28px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.install-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.install-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:22px 20px}
+.install-card-title{font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.install-steps{list-style:none;display:flex;flex-direction:column;gap:10px}
+.install-steps li{display:flex;align-items:flex-start;gap:12px;font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.5}
+.install-step-num{background:var(--accent);color:#fff;font-size:.6rem;font-weight:700;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.install-result{margin-top:16px;background:rgba(201,99,88,.1);border:1px solid rgba(201,99,88,.2);border-radius:10px;padding:12px 14px;font-size:.76rem;color:rgba(255,255,255,.55);line-height:1.5}
+.install-result strong{color:var(--accent)}
+
+/* CYCLE FEMININ */
+.cycle-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.cycle-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:18px 16px;position:relative;overflow:hidden}
+.cycle-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+.cycle-phase{font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.cycle-card h4{font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.cycle-card ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.cycle-card li{font-size:.74rem;color:var(--text-mid);padding-left:14px;position:relative;line-height:1.4}
+.cycle-card li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:.65rem;font-weight:700}
+
+/* COMPLÉMENTS */
+.compl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.compl-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:18px 18px;position:relative;overflow:hidden}
+.compl-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+.compl-name{font-size:.75rem;font-weight:700;color:var(--dark);margin-bottom:3px}
+.compl-dose{font-size:.68rem;font-weight:700;color:var(--accent);margin-bottom:6px;letter-spacing:.04em}
+.compl-desc{font-size:.74rem;color:var(--text-mid);line-height:1.5}
+.compl-warn{background:var(--cream);border:1.5px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:16px 20px;font-size:.78rem;color:var(--text-mid);line-height:1.65}
+
+@media(max-width:660px){
+  .install-grid{grid-template-columns:1fr}
+  .cycle-grid{grid-template-columns:1fr}
+  .compl-grid{grid-template-columns:1fr}
+}
+
 /* CTA BOTTOM */
 .cta-bottom{background:var(--dark);border-radius:20px;padding:56px 40px;text-align:center;margin:0 0 64px}
 .cta-bottom h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;color:#fff;margin-bottom:10px}
@@ -597,6 +642,36 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
     </div>
   </div>
 </div>
+
+<!-- INSTALLER COMME UNE APPLI -->
+<section class="install-section">
+  <div class="install-inner">
+    <p class="install-title">Installe Iron Girl <em>comme une appli</em></p>
+    <p class="install-sub">Accès direct depuis ton écran d'accueil · Plein écran · Zéro navigateur</p>
+    <div class="install-grid">
+      <div class="install-card">
+        <div class="install-card-title">🍎 iPhone · Safari</div>
+        <ol class="install-steps">
+          <li><div class="install-step-num">1</div><span>Ouvre cette page dans <strong style="color:#fff">Safari</strong> (pas Chrome)</span></li>
+          <li><div class="install-step-num">2</div><span>Tape l'icône <strong style="color:#fff">Partager</strong> en bas (le carré avec la flèche)</span></li>
+          <li><div class="install-step-num">3</div><span>Fais défiler et appuie sur <strong style="color:#fff">« Sur l'écran d'accueil »</strong></span></li>
+          <li><div class="install-step-num">4</div><span>Confirme avec <strong style="color:#fff">« Ajouter »</strong> en haut à droite</span></li>
+        </ol>
+        <div class="install-result"><strong>Résultat :</strong> l'icône Iron Girl apparaît sur ton écran. Lance-la — elle s'ouvre en plein écran, comme une vraie app.</div>
+      </div>
+      <div class="install-card">
+        <div class="install-card-title">🤖 Android · Chrome</div>
+        <ol class="install-steps">
+          <li><div class="install-step-num">1</div><span>Ouvre cette page dans <strong style="color:#fff">Chrome</strong></span></li>
+          <li><div class="install-step-num">2</div><span>Tape les <strong style="color:#fff">3 points</strong> en haut à droite</span></li>
+          <li><div class="install-step-num">3</div><span>Appuie sur <strong style="color:#fff">« Ajouter à l'écran d'accueil »</strong></span></li>
+          <li><div class="install-step-num">4</div><span>Confirme avec <strong style="color:#fff">« Ajouter »</strong></span></li>
+        </ol>
+        <div class="install-result"><strong>Résultat :</strong> même résultat qu'iPhone — accès direct, plein écran, sans barre de navigateur. Ton programme toujours à portée de main.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <hr class="sep" style="max-width:840px;margin:0 auto">
 
@@ -1457,6 +1532,128 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
 
   <div class="nutri-warn">
     <p><strong>Ce programme est conçu pour des femmes en bonne santé, sans contre-indication médicale.</strong> Si tu reviens d'une grossesse, d'une opération ou d'une longue pause sportive, adapte les charges progressivement. Je propose un suivi sur-mesure post-partum — contacte-moi directement si c'est ton cas.</p>
+  </div>
+
+  <div class="nutri-block">
+    <div class="nutri-block-title">Nutrition & Cycle féminin</div>
+    <p style="font-size:.84rem;color:var(--text-mid);line-height:1.75;margin-bottom:20px">Ton corps change au fil du mois. Adapter ta nutrition à ton cycle, c'est récupérer plus vite, performer mieux et moins subir les cravings.</p>
+    <div class="cycle-grid">
+      <div class="cycle-card">
+        <div class="cycle-phase">Phase folliculaire · Jours 1–13</div>
+        <h4>Énergie en hausse</h4>
+        <ul>
+          <li>Glucides modérés à élevés — ton corps les utilise bien</li>
+          <li>Charge en <strong>fer</strong> : viande rouge, lentilles, épinards</li>
+          <li>Idéal pour les séances les plus lourdes</li>
+          <li>Récupération rapide — profites-en</li>
+        </ul>
+      </div>
+      <div class="cycle-card">
+        <div class="cycle-phase">Ovulation · Jours 14–16</div>
+        <h4>Pic de performance</h4>
+        <ul>
+          <li>Énergie maximale — les 3 jours les plus forts du mois</li>
+          <li>Programme tes séances les plus intenses ici</li>
+          <li>Protéines élevées pour soutenir la récupération</li>
+          <li>Hydratation ++ (légère hausse de température corporelle)</li>
+        </ul>
+      </div>
+      <div class="cycle-card">
+        <div class="cycle-phase">Phase lutéale · Jours 17–28</div>
+        <h4>Cravings normaux</h4>
+        <ul>
+          <li>Besoin calorique légèrement supérieur (+100–200 kcal) — c'est normal</li>
+          <li><strong>Magnésium</strong> ++ pour réduire les crampes et l'irritabilité</li>
+          <li>Réduis le sel pour limiter la rétention d'eau</li>
+          <li>Favorise les glucides complexes plutôt que sucrés</li>
+        </ul>
+      </div>
+      <div class="cycle-card">
+        <div class="cycle-phase">Menstruation · Jours 1–5</div>
+        <h4>Récupération prioritaire</h4>
+        <ul>
+          <li><strong>Fer</strong> en priorité : pertes sanguines = carence possible</li>
+          <li>Anti-inflammatoires naturels : curcuma, oméga-3, gingembre</li>
+          <li>Réduis la caféine si crampes importantes</li>
+          <li>Repos si besoin — l'écoute de ton corps est de la performance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="nutri-block">
+    <div class="nutri-block-title">Compléments alimentaires — Guide femme</div>
+    <p style="font-size:.84rem;color:var(--text-mid);line-height:1.75;margin-bottom:20px">Les compléments ne remplacent pas une alimentation solide. Ils comblent les lacunes et optimisent tes résultats. Voici les plus utiles pour une femme qui s'entraîne sérieusement.</p>
+    <p style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">Essentiels — à envisager en priorité</p>
+    <div class="compl-grid">
+      <div class="compl-card">
+        <div class="compl-name">Fer</div>
+        <div class="compl-dose">14–18 mg / jour · à prendre à jeun avec vitamine C</div>
+        <div class="compl-desc">La carence en fer est très fréquente chez la femme active. Symptômes : fatigue chronique, essoufflement, mauvaises performances. Prends-le avec du jus de citron — la vitamine C multiplie l'absorption.</div>
+      </div>
+      <div class="compl-card">
+        <div class="compl-name">Magnésium bisglycinate</div>
+        <div class="compl-dose">300–400 mg / soir avant de dormir</div>
+        <div class="compl-desc">Le plus important pour la récupération, la qualité du sommeil et la gestion du stress. Le bisglycinate est la forme la mieux absorbée et n'irrite pas les intestins. Non négociable si tu t'entraînes intensément.</div>
+      </div>
+      <div class="compl-card">
+        <div class="compl-name">Vitamine D3 + K2</div>
+        <div class="compl-dose">2 000–4 000 UI D3 + 100 µg K2 / jour</div>
+        <div class="compl-desc">80% des Français sont carencés. D3 = os solides, système immunitaire, hormones, humeur. K2 dirige le calcium vers les os (pas les artères). Prendre avec un repas gras pour une meilleure absorption.</div>
+      </div>
+      <div class="compl-card">
+        <div class="compl-name">Oméga-3 (EPA + DHA)</div>
+        <div class="compl-dose">2–3 g EPA+DHA / jour · avec le repas</div>
+        <div class="compl-desc">Anti-inflammatoire puissant, améliore la récupération musculaire, la santé cardiovasculaire et l'humeur. Indispensable si tu manges peu de poisson gras. Vérifie le taux EPA+DHA sur l'étiquette, pas le total huile de poisson.</div>
+      </div>
+    </div>
+    <p style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;margin-top:8px">Performance — pour aller plus loin</p>
+    <div class="compl-grid">
+      <div class="compl-card">
+        <div class="compl-name">Créatine monohydrate</div>
+        <div class="compl-dose">3–5 g / jour · à n'importe quel moment</div>
+        <div class="compl-desc">Le complément le plus étudié et le plus efficace en musculation — et très sous-utilisé par les femmes. Augmente la force, la masse musculaire et les performances. Aucune prise de gras. Aucun cycle nécessaire. Prends-la tous les jours.</div>
+      </div>
+      <div class="compl-card">
+        <div class="compl-name">Whey protéine</div>
+        <div class="compl-dose">20–30 g par shaker · post-séance ou entre repas</div>
+        <div class="compl-desc">Uniquement si tu n'atteins pas ton quota protéines (1,6–2g/kg) avec l'alimentation seule. La whey isolate est mieux tolérée si tu es sensible au lactose. Pas obligatoire, mais pratique.</div>
+      </div>
+      <div class="compl-card">
+        <div class="compl-name">Caféine</div>
+        <div class="compl-dose">3–6 mg/kg · 30–45 min avant séance</div>
+        <div class="compl-desc">Le pré-workout naturel le plus efficace. Améliore la force, l'endurance et la concentration. Évite après 14h pour ne pas perturber le sommeil. Café, thé ou caféine en gélule — peu importe la source.</div>
+      </div>
+      <div class="compl-card">
+        <div class="compl-name">Collagène + Vitamine C</div>
+        <div class="compl-dose">10–15 g collagène + 200 mg vit C · le matin à jeun</div>
+        <div class="compl-desc">Pour la santé des tendons, ligaments, articulations et la peau. Particulièrement utile si tu t'entraînes lourd. Prendre 30–60 min avant la séance pour maximiser la synthèse du collagène dans les tissus conjonctifs.</div>
+      </div>
+    </div>
+    <p style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;margin-top:8px">Selon ton profil</p>
+    <div class="compl-grid">
+      <div class="compl-card">
+        <div class="compl-name">Zinc bisglycinate</div>
+        <div class="compl-dose">15–25 mg / soir (pas en même temps que le fer)</div>
+        <div class="compl-desc">Essentiel pour les hormones féminines, l'immunité et la récupération. Souvent bas chez les femmes qui s'entraînent. Le bisglycinate est bien toléré et évite les nausées de la forme sulfate.</div>
+      </div>
+      <div class="compl-card">
+        <div class="compl-name">Vitamine B12</div>
+        <div class="compl-dose">250–1000 µg / jour · sous la langue ou sublinguale</div>
+        <div class="compl-desc">Indispensable si tu es végétarienne ou végane. La B12 ne se trouve que dans les produits animaux. Carence = fatigue sévère, troubles nerveux, anémie. Forme méthylcobalamine préférée.</div>
+      </div>
+      <div class="compl-card">
+        <div class="compl-name">Ashwagandha</div>
+        <div class="compl-dose">300–600 mg / soir · extrait KSM-66 ou Sensoril</div>
+        <div class="compl-desc">Adaptogène puissant pour réduire le cortisol (hormone du stress), améliorer la récupération et la qualité du sommeil. Utile si tu cumules entraînement intense + stress quotidien élevé. Effets visibles après 4–6 semaines.</div>
+      </div>
+      <div class="compl-card">
+        <div class="compl-name">Probiotiques</div>
+        <div class="compl-dose">10–50 milliards UFC / jour · matin à jeun</div>
+        <div class="compl-desc">Pour la santé intestinale, l'immunité et l'absorption des nutriments. Particulièrement utile si tu prends des antibiotiques ou si tu as un microbiote perturbé. Cherche des souches Lactobacillus et Bifidobacterium.</div>
+      </div>
+    </div>
+    <div class="compl-warn"><strong>Important :</strong> Ces informations sont éducatives, pas des prescriptions médicales. En cas de carence suspectée (fatigue, bilan sanguin), consulte ton médecin avant de te supplémenter. Les compléments ne remplacent pas une alimentation équilibrée — ils la complètent.</div>
   </div>
 
   <div class="nutri-cta-block">
