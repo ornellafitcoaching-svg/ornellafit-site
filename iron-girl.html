@@ -315,6 +315,27 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,22,22,.93
 .var-badge{background:var(--dark);color:#fff;font-size:.55rem;font-weight:700;letter-spacing:.08em;padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px}
 .tech-var span:last-child,.tech-var > :not(.var-badge){font-size:.72rem;color:var(--muted);line-height:1.5}
 
+/* CHRONO FLOTTANT */
+.chrono-widget{position:fixed;bottom:24px;right:24px;z-index:500;background:var(--dark);border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,.45);min-width:190px;overflow:hidden;transition:all .2s}
+.chrono-header{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid rgba(255,255,255,.08);cursor:pointer}
+.chrono-title{font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.chrono-toggle{background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:1.1rem;line-height:1;padding:0;font-family:'DM Sans',sans-serif}
+.chrono-body{padding:16px 16px 18px}
+.chrono-display{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:600;color:#fff;text-align:center;line-height:1;margin-bottom:14px;letter-spacing:.02em;transition:color .2s}
+.chrono-display.done{color:var(--accent);animation:chronoblink .5s ease-in-out infinite}
+@keyframes chronoblink{0%,100%{opacity:1}50%{opacity:.25}}
+.chrono-presets{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;margin-bottom:14px}
+.chrono-presets button{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.55);font-size:.63rem;font-weight:700;padding:5px 10px;border-radius:20px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:.04em;transition:all .15s}
+.chrono-presets button:hover{background:rgba(255,255,255,.14);color:#fff}
+.chrono-presets button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.chrono-controls{display:flex;gap:10px;justify-content:center}
+.chrono-btn{border:none;border-radius:50%;cursor:pointer;width:46px;height:46px;display:flex;align-items:center;justify-content:center;transition:opacity .15s;font-size:1.1rem}
+.chrono-btn.play{background:var(--accent);color:#fff}
+.chrono-btn.reset{background:rgba(255,255,255,.1);color:rgba(255,255,255,.65);font-size:.95rem}
+.chrono-btn:hover{opacity:.8}
+.chrono-widget.minimized .chrono-body{display:none}
+@media(max-width:660px){.chrono-widget{bottom:16px;right:16px;min-width:170px}}
+
 /* CTA BOTTOM */
 .cta-bottom{background:var(--dark);border-radius:20px;padding:56px 40px;text-align:center;margin:0 0 64px}
 .cta-bottom h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;color:#fff;margin-bottom:10px}
@@ -365,6 +386,28 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
 </style>
 </head>
 <body>
+<!-- CHRONO FLOTTANT -->
+<div id="chrono" class="chrono-widget">
+  <div class="chrono-header" onclick="toggleChrono()">
+    <span class="chrono-title">Chrono repos</span>
+    <button class="chrono-toggle" id="chrono-toggle-btn">−</button>
+  </div>
+  <div class="chrono-body" id="chrono-body">
+    <div class="chrono-display" id="chrono-display">1:00</div>
+    <div class="chrono-presets">
+      <button onclick="setTimer(30,this)">30s</button>
+      <button onclick="setTimer(40,this)">40s</button>
+      <button class="active" onclick="setTimer(60,this)">1min</button>
+      <button onclick="setTimer(90,this)">1:30</button>
+      <button onclick="setTimer(120,this)">2min</button>
+    </div>
+    <div class="chrono-controls">
+      <button class="chrono-btn play" id="chrono-play" onclick="toggleTimer()">▶</button>
+      <button class="chrono-btn reset" onclick="resetTimer()">↺</button>
+    </div>
+  </div>
+</div>
+
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- NAV -->
@@ -1498,6 +1541,82 @@ function loadTracker() {
 }
 
 loadTracker();
+
+/* ── CHRONO ── */
+let chronoSecs = 60, chronoTotal = 60, chronoRunning = false, chronoInterval = null;
+
+function setTimer(secs, btn) {
+  clearInterval(chronoInterval);
+  chronoRunning = false;
+  chronoSecs = secs;
+  chronoTotal = secs;
+  updateDisplay();
+  document.getElementById('chrono-play').textContent = '▶';
+  document.getElementById('chrono-display').classList.remove('done');
+  document.querySelectorAll('.chrono-presets button').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+}
+
+function toggleTimer() {
+  if (chronoRunning) {
+    clearInterval(chronoInterval);
+    chronoRunning = false;
+    document.getElementById('chrono-play').textContent = '▶';
+  } else {
+    if (chronoSecs <= 0) { chronoSecs = chronoTotal; updateDisplay(); }
+    document.getElementById('chrono-display').classList.remove('done');
+    chronoRunning = true;
+    document.getElementById('chrono-play').textContent = '⏸';
+    chronoInterval = setInterval(() => {
+      chronoSecs--;
+      updateDisplay();
+      if (chronoSecs <= 0) {
+        clearInterval(chronoInterval);
+        chronoRunning = false;
+        document.getElementById('chrono-play').textContent = '▶';
+        document.getElementById('chrono-display').classList.add('done');
+        playBeep();
+      }
+    }, 1000);
+  }
+}
+
+function resetTimer() {
+  clearInterval(chronoInterval);
+  chronoRunning = false;
+  chronoSecs = chronoTotal;
+  updateDisplay();
+  document.getElementById('chrono-play').textContent = '▶';
+  document.getElementById('chrono-display').classList.remove('done');
+}
+
+function updateDisplay() {
+  const m = Math.floor(chronoSecs / 60);
+  const s = chronoSecs % 60;
+  document.getElementById('chrono-display').textContent = m + ':' + (s < 10 ? '0' : '') + s;
+}
+
+function toggleChrono() {
+  const w = document.getElementById('chrono');
+  w.classList.toggle('minimized');
+  document.getElementById('chrono-toggle-btn').textContent = w.classList.contains('minimized') ? '+' : '−';
+}
+
+function playBeep() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    [0, 0.25, 0.5].forEach(t => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.frequency.value = 880; osc.type = 'sine';
+      gain.gain.setValueAtTime(0.35, ctx.currentTime + t);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + t + 0.2);
+      osc.start(ctx.currentTime + t);
+      osc.stop(ctx.currentTime + t + 0.2);
+    });
+  } catch(e) {}
+}
 </script>
 </body>
 </html>
