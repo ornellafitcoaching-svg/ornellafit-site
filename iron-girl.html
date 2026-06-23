@@ -28,10 +28,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,22,22,.93
 .nav-cta{background:var(--accent);color:#fff!important;padding:7px 16px;border-radius:20px}
 
 /* COVER */
-.cover{min-height:100svh;background:#1A1010;display:flex;align-items:flex-end;padding:80px 60px 72px;position:relative;overflow:hidden}
-.cover::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(20,10,10,.95) 0%,rgba(20,10,10,.6) 45%,rgba(20,10,10,.15) 100%);pointer-events:none}
-.cover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center}
-.cover-video-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center}
+.cover{min-height:100svh;background:#0E0808;display:flex;align-items:flex-end;padding:80px 32px 72px;position:relative;overflow:hidden}
+.cover::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(14,8,8,.97) 0%,rgba(14,8,8,.65) 40%,rgba(14,8,8,.15) 100%);pointer-events:none;z-index:1}
+.cover-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center center;animation:kenburnsgym 7s ease-in-out infinite alternate}
+@keyframes kenburnsgym{
+  0%{transform:scale(1);transform-origin:center center}
+  100%{transform:scale(1.07);transform-origin:55% 40%}
+}
+.cover-content{position:relative;z-index:2;max-width:680px;width:100%}
 .cover-content{position:relative;z-index:2;max-width:680px}
 .cover-badge{display:inline-block;border:1px solid rgba(201,99,88,.5);color:rgba(201,99,88,.9);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:6px 18px;border-radius:20px;margin-bottom:32px}
 .cover-eyebrow{font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:16px}
@@ -69,6 +73,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,22,22,.93
 .about-body p+p{margin-top:12px}
 .about-cred{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .cred-tag{background:var(--dark);color:rgba(255,255,255,.8);font-size:.68rem;font-weight:600;padding:5px 14px;border-radius:20px;letter-spacing:.05em}
+
+/* VIDEO SECTION */
+.video-section{background:#0E0808;display:flex;justify-content:center;padding:0}
+.video-section video{width:100%;max-width:480px;height:auto;display:block}
 
 /* SOMMAIRE */
 .section{padding:64px 24px;max-width:840px;margin:0 auto}
@@ -222,10 +230,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
 
 <!-- COVER -->
 <section class="cover">
-  <video class="cover-video" autoplay muted loop playsinline poster="images/ornella-squat-back.jpg">
-    <source src="videos/ornella-outdoor.mp4" type="video/mp4">
-    <img class="cover-video-fallback" src="images/ornella-squat-back.jpg" alt="">
-  </video>
+  <img class="cover-bg" src="images/ornella-gym-cover.jpg" alt="Ornella en salle de sport">
   <div class="cover-content">
     <div class="cover-badge">Programme Salle · 8 Semaines · 3 Phases</div>
     <div class="cover-eyebrow">By Ornella Fit Coaching</div>
@@ -280,6 +285,13 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
     </div>
   </div>
 </section>
+
+<!-- VIDEO SECTION -->
+<div class="video-section">
+  <video autoplay muted loop playsinline>
+    <source src="videos/ornella-outdoor.mp4" type="video/mp4">
+  </video>
+</div>
 
 <!-- SOMMAIRE -->
 <div class="section" id="sommaire">
