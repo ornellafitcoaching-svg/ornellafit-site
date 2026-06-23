@@ -350,6 +350,27 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,22,22,.93
   body{padding-bottom:54px}
 }
 
+/* PLAN 8 SEMAINES */
+.plan8{background:var(--dark);padding:40px 24px}
+.plan8-inner{max-width:840px;margin:0 auto}
+.plan8-title{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px;text-align:center}
+.plan8-track{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;margin-bottom:12px}
+.plan8-week{border-radius:8px;padding:10px 4px;text-align:center;cursor:pointer;text-decoration:none;display:block;transition:opacity .15s}
+.plan8-week:hover{opacity:.8}
+.plan8-week-num{font-size:.58rem;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.06em;margin-bottom:4px}
+.plan8-week-label{font-size:.55rem;font-weight:700;color:#fff;letter-spacing:.04em;text-transform:uppercase;line-height:1.2}
+.plan8-p1{background:rgba(201,99,88,.35);border:1px solid rgba(201,99,88,.4)}
+.plan8-p2{background:rgba(201,99,88,.55);border:1px solid rgba(201,99,88,.6)}
+.plan8-p3{background:rgba(201,99,88,.8);border:1px solid var(--accent)}
+.plan8-legend{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.plan8-leg{display:flex;align-items:center;gap:6px;font-size:.66rem;color:rgba(255,255,255,.5);font-weight:600}
+.plan8-leg-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+
+/* PHASE STICKY BANNER */
+.phase-banner{background:var(--accent);padding:10px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:60px;z-index:50}
+.phase-banner-left{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.phase-banner-right{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:#fff;font-style:italic}
+
 /* INSTALL APP */
 .install-section{background:var(--dark);padding:48px 24px}
 .install-inner{max-width:840px;margin:0 auto}
@@ -718,6 +739,28 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
 
 <hr class="sep">
 
+<!-- PLAN 8 SEMAINES -->
+<div class="plan8">
+  <div class="plan8-inner">
+    <div class="plan8-title">Ton programme en un coup d'œil — 8 semaines</div>
+    <div class="plan8-track">
+      <a href="#phase1" class="plan8-week plan8-p1"><div class="plan8-week-num">SEM 1</div><div class="plan8-week-label">Phase 1</div></a>
+      <a href="#phase1" class="plan8-week plan8-p1"><div class="plan8-week-num">SEM 2</div><div class="plan8-week-label">Phase 1</div></a>
+      <a href="#phase2" class="plan8-week plan8-p2"><div class="plan8-week-num">SEM 3</div><div class="plan8-week-label">Phase 2</div></a>
+      <a href="#phase2" class="plan8-week plan8-p2"><div class="plan8-week-num">SEM 4</div><div class="plan8-week-label">Phase 2</div></a>
+      <a href="#phase2" class="plan8-week plan8-p2"><div class="plan8-week-num">SEM 5</div><div class="plan8-week-label">Phase 2</div></a>
+      <a href="#phase3" class="plan8-week plan8-p3"><div class="plan8-week-num">SEM 6</div><div class="plan8-week-label">Phase 3</div></a>
+      <a href="#phase3" class="plan8-week plan8-p3"><div class="plan8-week-num">SEM 7</div><div class="plan8-week-label">Phase 3</div></a>
+      <a href="#phase3" class="plan8-week plan8-p3"><div class="plan8-week-num">SEM 8</div><div class="plan8-week-label">Phase 3</div></a>
+    </div>
+    <div class="plan8-legend">
+      <span class="plan8-leg"><span class="plan8-leg-dot plan8-p1"></span>Phase 1 · Sem 1–2 · 60–70% RM</span>
+      <span class="plan8-leg"><span class="plan8-leg-dot plan8-p2"></span>Phase 2 · Sem 3–5 · 70–80% RM</span>
+      <span class="plan8-leg"><span class="plan8-leg-dot plan8-p3"></span>Phase 3 · Sem 6–8 · 80–90% RM</span>
+    </div>
+  </div>
+</div>
+
 <!-- ═══════════════════════════════ PHASE 1 ═══════════════════════════════ -->
 <div id="phase1">
   <div class="phase-cover">
@@ -732,14 +775,15 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
       </div>
     </div>
   </div>
+  <div class="phase-banner"><span class="phase-banner-left">Phase 1 · Semaines 1 & 2 · Choisis ta session du jour</span><span class="phase-banner-right">Be Iron</span></div>
   <div class="phase-section">
     <div class="phase-body">
       <div class="session-tabs">
-        <button class="stab active" onclick="showSession('p1','a',this)"><span class="stab-short">A</span><span class="stab-long">A · Ischios-Fessiers</span></button>
-        <button class="stab" onclick="showSession('p1','b',this)"><span class="stab-short">B</span><span class="stab-long">B · Push</span></button>
-        <button class="stab" onclick="showSession('p1','c',this)"><span class="stab-short">C</span><span class="stab-long">C · Quadriceps</span></button>
-        <button class="stab" onclick="showSession('p1','d',this)"><span class="stab-short">D</span><span class="stab-long">D · Pull</span></button>
-        <button class="stab" onclick="showSession('p1','e',this)"><span class="stab-short">E</span><span class="stab-long">E · Fessiers</span></button>
+        <button class="stab active" onclick="showSession('p1','a',this)"><span class="stab-short">A · Ischios</span><span class="stab-long">A · Ischios-Fessiers</span></button>
+        <button class="stab" onclick="showSession('p1','b',this)"><span class="stab-short">B · Push</span><span class="stab-long">B · Push</span></button>
+        <button class="stab" onclick="showSession('p1','c',this)"><span class="stab-short">C · Quads</span><span class="stab-long">C · Quadriceps</span></button>
+        <button class="stab" onclick="showSession('p1','d',this)"><span class="stab-short">D · Pull</span><span class="stab-long">D · Pull</span></button>
+        <button class="stab" onclick="showSession('p1','e',this)"><span class="stab-short">E · Fessiers</span><span class="stab-long">E · Fessiers</span></button>
       </div>
 
       <div class="session-panel active" id="p1-a">
@@ -1019,6 +1063,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
     <div class="phase-cover-content">
       <div class="phase-cover-num">Phase 2 · Semaines 3, 4 et 5</div>
       <div class="phase-cover-title">Work Hard, <em>GAINZ MAX</em></div>
+
       <div class="phase-cover-pills">
         <span class="phase-cover-pill pct">70 – 80 % RM</span>
         <span class="phase-cover-pill">Volume augmente</span>
@@ -1026,14 +1071,15 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
       </div>
     </div>
   </div>
+  <div class="phase-banner"><span class="phase-banner-left">Phase 2 · Semaines 3, 4 & 5 · Choisis ta session du jour</span><span class="phase-banner-right">Gainz Max</span></div>
   <div class="phase-section">
     <div class="phase-body">
       <div class="session-tabs">
-        <button class="stab active" onclick="showSession('p2','a',this)"><span class="stab-short">A</span><span class="stab-long">A · Ischios-Fessiers</span></button>
-        <button class="stab" onclick="showSession('p2','b',this)"><span class="stab-short">B</span><span class="stab-long">B · Push</span></button>
-        <button class="stab" onclick="showSession('p2','c',this)"><span class="stab-short">C</span><span class="stab-long">C · Quadriceps</span></button>
-        <button class="stab" onclick="showSession('p2','d',this)"><span class="stab-short">D</span><span class="stab-long">D · Pull</span></button>
-        <button class="stab" onclick="showSession('p2','e',this)"><span class="stab-short">E</span><span class="stab-long">E · Fessiers</span></button>
+        <button class="stab active" onclick="showSession('p2','a',this)"><span class="stab-short">A · Ischios</span><span class="stab-long">A · Ischios-Fessiers</span></button>
+        <button class="stab" onclick="showSession('p2','b',this)"><span class="stab-short">B · Push</span><span class="stab-long">B · Push</span></button>
+        <button class="stab" onclick="showSession('p2','c',this)"><span class="stab-short">C · Quads</span><span class="stab-long">C · Quadriceps</span></button>
+        <button class="stab" onclick="showSession('p2','d',this)"><span class="stab-short">D · Pull</span><span class="stab-long">D · Pull</span></button>
+        <button class="stab" onclick="showSession('p2','e',this)"><span class="stab-short">E · Fessiers</span><span class="stab-long">E · Fessiers</span></button>
       </div>
 
       <div class="session-panel active" id="p2-a">
@@ -1191,14 +1237,15 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
       </div>
     </div>
   </div>
+  <div class="phase-banner"><span class="phase-banner-left">Phase 3 · Semaines 6, 7 & 8 · Choisis ta session du jour</span><span class="phase-banner-right">I Know It</span></div>
   <div class="phase-section">
     <div class="phase-body">
       <div class="session-tabs">
-        <button class="stab active" onclick="showSession('p3','a',this)"><span class="stab-short">A</span><span class="stab-long">A · Ischios-Fessiers</span></button>
-        <button class="stab" onclick="showSession('p3','b',this)"><span class="stab-short">B</span><span class="stab-long">B · Push</span></button>
-        <button class="stab" onclick="showSession('p3','c',this)"><span class="stab-short">C</span><span class="stab-long">C · Quadriceps</span></button>
-        <button class="stab" onclick="showSession('p3','d',this)"><span class="stab-short">D</span><span class="stab-long">D · Pull</span></button>
-        <button class="stab" onclick="showSession('p3','e',this)"><span class="stab-short">E</span><span class="stab-long">E · Fessiers</span></button>
+        <button class="stab active" onclick="showSession('p3','a',this)"><span class="stab-short">A · Ischios</span><span class="stab-long">A · Ischios-Fessiers</span></button>
+        <button class="stab" onclick="showSession('p3','b',this)"><span class="stab-short">B · Push</span><span class="stab-long">B · Push</span></button>
+        <button class="stab" onclick="showSession('p3','c',this)"><span class="stab-short">C · Quads</span><span class="stab-long">C · Quadriceps</span></button>
+        <button class="stab" onclick="showSession('p3','d',this)"><span class="stab-short">D · Pull</span><span class="stab-long">D · Pull</span></button>
+        <button class="stab" onclick="showSession('p3','e',this)"><span class="stab-short">E · Fessiers</span><span class="stab-long">E · Fessiers</span></button>
       </div>
 
       <div class="session-panel active" id="p3-a">
