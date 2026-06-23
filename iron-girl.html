@@ -273,6 +273,42 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,22,22,.93
 .nutri-warn p{font-size:.8rem;color:var(--text-mid);line-height:1.65}
 .nutri-warn strong{color:var(--dark)}
 
+/* NUTRITION V2 */
+.nutri-intro{background:var(--cream);border-left:3px solid var(--accent);border-radius:12px;padding:24px 28px;margin-bottom:32px}
+.nutri-intro p{font-size:.88rem;color:var(--text-mid);line-height:1.85}
+.nutri-intro p+p{margin-top:10px}
+.nutri-macro2{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:26px 22px;position:relative;overflow:hidden;text-align:center}
+.nutri-macro2::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+.macro2-val{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;color:var(--accent);line-height:1;margin-bottom:8px}
+.macro2-name{font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dark);margin-bottom:8px}
+.macro2-desc{font-size:.76rem;color:var(--muted);line-height:1.5}
+.nutri-meal-img{width:100%;height:auto;display:block;border-radius:16px;margin-bottom:32px;object-fit:cover;max-height:380px}
+.nutri-timeline{display:flex;flex-direction:column;margin-bottom:4px}
+.nutri-tl-row{display:grid;grid-template-columns:110px 24px 1fr;align-items:start}
+.nutri-tl-time{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);padding:20px 12px 0 0;text-align:right;line-height:1.3}
+.nutri-tl-line{display:flex;flex-direction:column;align-items:center;padding-top:20px}
+.nutri-tl-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:4px}
+.nutri-tl-stem{flex:1;width:2px;background:var(--border);min-height:20px;margin:4px 0}
+.nutri-tl-row:last-child .nutri-tl-stem{display:none}
+.nutri-tl-card{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px 18px;margin:10px 0 10px 14px}
+.nutri-tl-card strong{display:block;font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.nutri-tl-card p{font-size:.76rem;color:var(--text-mid);line-height:1.6}
+.nutri-aliment-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px}
+.nutri-aliment-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:22px 20px;position:relative;overflow:hidden}
+.nutri-aliment-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+.nutri-aliment-card h4{font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.nutri-aliment-card ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.nutri-aliment-card li{font-size:.78rem;color:var(--text-mid);padding-left:16px;position:relative;line-height:1.5}
+.nutri-aliment-card li::before{content:'→';position:absolute;left:0;color:var(--accent);font-weight:700;font-size:.7rem}
+.nutri-hydra-block{background:var(--bg);border:1.5px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:22px 26px;margin-bottom:28px}
+.nutri-hydra-block h4{font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dark);margin-bottom:14px}
+.nutri-hydra-block ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.nutri-hydra-block li{font-size:.8rem;color:var(--text-mid);padding-left:16px;position:relative;line-height:1.55}
+.nutri-hydra-block li::before{content:'→';position:absolute;left:0;color:var(--accent);font-weight:700;font-size:.7rem}
+.nutri-cta-block{background:var(--cream);border:1.5px solid var(--border);border-radius:16px;padding:36px 28px;text-align:center;margin-top:28px}
+.nutri-cta-block h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:400;color:var(--dark);margin-bottom:8px;line-height:1.2}
+.nutri-cta-block p{font-size:.82rem;color:var(--muted);margin-bottom:22px;line-height:1.65}
+
 /* CTA BOTTOM */
 .cta-bottom{background:var(--dark);border-radius:20px;padding:56px 40px;text-align:center;margin:0 0 64px}
 .cta-bottom h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;color:#fff;margin-bottom:10px}
@@ -313,6 +349,8 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
   .cta-bottom{padding:40px 24px}
   .resultats-timeline{grid-template-columns:1fr}
   .planning-row{grid-template-columns:80px 1fr}
+  .nutri-aliment-grid{grid-template-columns:1fr}
+  .nutri-tl-row{grid-template-columns:76px 20px 1fr}
   .tracker-section .tracker-panel{overflow-x:auto}
   .tracker-table{min-width:460px}
 }
@@ -1004,49 +1042,69 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
   <p class="section-title">Nutrition — La base</p>
   <p class="section-sub">Pas de régime. De la vraie alimentation qui soutient tes résultats.</p>
 
-  <div class="nutri-highlight">
-    <h4>Ce que tu dois comprendre avant tout</h4>
+  <div class="nutri-intro">
     <p>Un programme de salle sans nutrition adaptée, c'est construire une maison sans fondations. Tu vas t'entraîner dur, dépenser de l'énergie, stresser tes muscles — et si tu ne manges pas correctement derrière, tu ne récupères pas, tu ne progresses pas, tu stagnes.</p>
-    <p>Ce n'est pas un plan alimentaire personnalisé. C'est la base que toute femme qui s'entraîne sérieusement doit connaître. Pour un suivi nutritionnel sur-mesure, c'est avec moi que ça se passe.</p>
+    <p><strong>Ce n'est pas un plan alimentaire personnalisé.</strong> C'est la base que toute femme qui s'entraîne sérieusement doit connaître. Pour un suivi nutritionnel sur-mesure, c'est avec moi que ça se passe.</p>
   </div>
 
   <div class="nutri-block">
     <div class="nutri-block-title">Tes macros — Les 3 piliers</div>
     <div class="nutri-macro-grid">
-      <div class="nutri-macro">
-        <div class="macro-val">1,6–2g</div>
-        <div class="macro-label">Protéines</div>
-        <div class="macro-sub">Par kg de poids de corps par jour. Priorité absolue. Sans ça, pas de prise de muscle.</div>
+      <div class="nutri-macro2">
+        <div class="macro2-val">1,6–2g</div>
+        <div class="macro2-name">Protéines</div>
+        <div class="macro2-desc">Par kg de poids de corps par jour. Priorité absolue. Sans ça, pas de prise de muscle.</div>
       </div>
-      <div class="nutri-macro">
-        <div class="macro-val">0,8–1g</div>
-        <div class="macro-label">Lipides</div>
-        <div class="macro-sub">Par kg de poids de corps. Hormones, articulations, récupération. Ne les supprime jamais.</div>
+      <div class="nutri-macro2">
+        <div class="macro2-val">0,8–1g</div>
+        <div class="macro2-name">Lipides</div>
+        <div class="macro2-desc">Par kg de poids de corps. Hormones, articulations, récupération. Ne les supprime jamais.</div>
       </div>
-      <div class="nutri-macro">
-        <div class="macro-val">Adapte</div>
-        <div class="macro-label">Glucides</div>
-        <div class="macro-sub">Plus en jours d'entraînement, moins en jours de repos. Ton carburant principal.</div>
+      <div class="nutri-macro2">
+        <div class="macro2-val">Adapte</div>
+        <div class="macro2-name">Glucides</div>
+        <div class="macro2-desc">Plus en jours d'entraînement, moins en jours de repos. Ton carburant principal.</div>
       </div>
     </div>
   </div>
 
+  <img class="nutri-meal-img" src="images/meal-prep.jpg" alt="Meal prep fitness — préparation repas sains">
+
   <div class="nutri-block">
-    <div class="nutri-block-title">Exemple de journée type — Jour d'entraînement</div>
-    <div class="nutri-day">
-      <div class="nutri-day-header">Journée type · Entraînement l'après-midi</div>
-      <div class="nutri-day-row"><div class="nutri-day-time">Matin</div><div class="nutri-day-food">Flocons d'avoine + lait + fruits rouges + 2 œufs ou du fromage blanc. Glucides lents + protéines pour bien démarrer.</div></div>
-      <div class="nutri-day-row"><div class="nutri-day-time">Pré-séance</div><div class="nutri-day-food">1h–1h30 avant : riz, patate douce ou pain complet + source de protéines légère (poulet, thon). Tes muscles ont besoin de carburant.</div></div>
-      <div class="nutri-day-row"><div class="nutri-day-time">Post-séance</div><div class="nutri-day-food">Dans les 2h : protéines + glucides rapides. Shaker whey + banane, ou repas complet riz + poulet/œufs + légumes. La fenêtre anabolique est réelle.</div></div>
-      <div class="nutri-day-row"><div class="nutri-day-time">Soir</div><div class="nutri-day-food">Protéines + légumes + lipides. Poisson / viande + légumes vapeur + avocat ou huile d'olive. Réduis les glucides si tu ne t'entraînes plus.</div></div>
-      <div class="nutri-day-row"><div class="nutri-day-time">Collation</div><div class="nutri-day-food">Fromage blanc + oléagineux (amandes, noix), ou yaourt grec + fruit. Évite le sucre raffiné entre les repas.</div></div>
+    <div class="nutri-block-title">Journée type — Jour d'entraînement</div>
+    <div class="nutri-timeline">
+      <div class="nutri-tl-row">
+        <div class="nutri-tl-time">Matin</div>
+        <div class="nutri-tl-line"><div class="nutri-tl-dot"></div><div class="nutri-tl-stem"></div></div>
+        <div class="nutri-tl-card"><strong>Énergie & construction</strong><p>Flocons d'avoine + lait + fruits rouges + 2 œufs ou fromage blanc. Glucides lents + protéines pour bien démarrer.</p></div>
+      </div>
+      <div class="nutri-tl-row">
+        <div class="nutri-tl-time">Pré-séance</div>
+        <div class="nutri-tl-line"><div class="nutri-tl-dot"></div><div class="nutri-tl-stem"></div></div>
+        <div class="nutri-tl-card"><strong>Carburant · 1h–1h30 avant</strong><p>Riz, patate douce ou pain complet + source de protéines légère (poulet, thon). Tes muscles ont besoin de carburant.</p></div>
+      </div>
+      <div class="nutri-tl-row">
+        <div class="nutri-tl-time">Post-séance</div>
+        <div class="nutri-tl-line"><div class="nutri-tl-dot"></div><div class="nutri-tl-stem"></div></div>
+        <div class="nutri-tl-card"><strong>Récupération · dans les 2h</strong><p>Protéines + glucides rapides. Shaker whey + banane, ou repas complet riz + poulet/œufs + légumes. La fenêtre anabolique est réelle.</p></div>
+      </div>
+      <div class="nutri-tl-row">
+        <div class="nutri-tl-time">Soir</div>
+        <div class="nutri-tl-line"><div class="nutri-tl-dot"></div><div class="nutri-tl-stem"></div></div>
+        <div class="nutri-tl-card"><strong>Reconstruction musculaire</strong><p>Protéines + légumes + lipides. Poisson / viande + légumes vapeur + avocat ou huile d'olive. Réduis les glucides si tu ne t'entraînes plus.</p></div>
+      </div>
+      <div class="nutri-tl-row">
+        <div class="nutri-tl-time">Collation</div>
+        <div class="nutri-tl-line"><div class="nutri-tl-dot"></div></div>
+        <div class="nutri-tl-card"><strong>Option maline</strong><p>Fromage blanc + oléagineux (amandes, noix), ou yaourt grec + fruit. Évite le sucre raffiné entre les repas.</p></div>
+      </div>
     </div>
   </div>
 
   <div class="nutri-block">
     <div class="nutri-block-title">Aliments clés à privilégier</div>
-    <div class="nutri-grid">
-      <div class="nutri-card">
+    <div class="nutri-aliment-grid">
+      <div class="nutri-aliment-card">
         <h4>Protéines</h4>
         <ul>
           <li>Poulet, dinde, bœuf maigre</li>
@@ -1057,17 +1115,17 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
           <li>Whey protéine si besoin</li>
         </ul>
       </div>
-      <div class="nutri-card">
+      <div class="nutri-aliment-card">
         <h4>Glucides complexes</h4>
         <ul>
           <li>Riz blanc ou complet, quinoa</li>
           <li>Patate douce, pomme de terre</li>
           <li>Pain complet, flocons d'avoine</li>
           <li>Légumes verts (sans limite)</li>
-          <li>Fruits (priorité le matin ou post-séance)</li>
+          <li>Fruits (priorité matin ou post-séance)</li>
         </ul>
       </div>
-      <div class="nutri-card">
+      <div class="nutri-aliment-card">
         <h4>Bonnes graisses</h4>
         <ul>
           <li>Avocat (1/2 par repas max)</li>
@@ -1077,10 +1135,10 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
           <li>Beurre de cacahuète (sans sucre)</li>
         </ul>
       </div>
-      <div class="nutri-card">
+      <div class="nutri-aliment-card">
         <h4>Suppléments utiles</h4>
         <ul>
-          <li>Whey protéine si tu n'atteignes pas ton quota</li>
+          <li>Whey protéine si quota non atteint</li>
           <li>Créatine monohydrate : 3–5g / jour</li>
           <li>Magnésium bisglycinate le soir</li>
           <li>Vitamine D3 en hiver</li>
@@ -1090,21 +1148,25 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
     </div>
   </div>
 
-  <div class="nutri-block">
-    <div class="nutri-block-title">Hydratation · Non négociable</div>
-    <div class="nutri-card" style="border-radius:14px">
-      <ul>
-        <li>Minimum 2 à 2,5L d'eau par jour, plus si tu transpires beaucoup</li>
-        <li>Commence à boire avant d'avoir soif — la soif = déjà déshydratée</li>
-        <li>Une bouteille d'eau à côté de toi pendant CHAQUE séance</li>
-        <li>Si tu transpires beaucoup : ajoute une pincée de sel et du citron à ton eau (électrolytes naturels)</li>
-        <li>Café possible avant la séance — mais hydrate-toi encore plus</li>
-      </ul>
-    </div>
+  <div class="nutri-hydra-block">
+    <h4>Hydratation · Non négociable</h4>
+    <ul>
+      <li>Minimum 2 à 2,5L d'eau par jour, plus si tu transpires beaucoup</li>
+      <li>Commence à boire avant d'avoir soif — la soif = déjà déshydratée</li>
+      <li>Une bouteille d'eau à côté de toi pendant CHAQUE séance</li>
+      <li>Si tu transpires beaucoup : ajoute une pincée de sel et du citron (électrolytes naturels)</li>
+      <li>Café possible avant la séance — mais hydrate-toi encore plus</li>
+    </ul>
   </div>
 
   <div class="nutri-warn">
-    <p><strong>Ce programme est conçu pour des femmes en bonne santé, sans contre-indication médicale.</strong> Si tu reviens d'une grossesse, d'une opération ou d'une longue pause sportive, adapte les charges progressivement. En cas de doute, consulte ton médecin. Je propose un suivi sur-mesure post-partum — contacte-moi directement si c'est ton cas.</p>
+    <p><strong>Ce programme est conçu pour des femmes en bonne santé, sans contre-indication médicale.</strong> Si tu reviens d'une grossesse, d'une opération ou d'une longue pause sportive, adapte les charges progressivement. Je propose un suivi sur-mesure post-partum — contacte-moi directement si c'est ton cas.</p>
+  </div>
+
+  <div class="nutri-cta-block">
+    <h3>Tu veux un plan nutritionnel<br><em style="font-style:italic;color:var(--accent)">fait pour toi ?</em></h3>
+    <p>Macros calculées, plan repas personnalisé, suivi semaine après semaine.<br>C'est exactement ce que je propose en coaching distanciel.</p>
+    <a href="offres.html" class="btn-cta">Voir les coachings</a>
   </div>
 </div>
 
