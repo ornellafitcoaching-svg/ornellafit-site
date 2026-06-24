@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!-- Meta Pixel -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","26675222578828123");fbq("track","PageView");</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=26675222578828123&ev=PageView&noscript=1"></noscript>
+<!-- GTM -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M7C2RGHG');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Summer Body Challenge — Programme interactif · Ornella Fit Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #FFFDF7;
+    color: #1A2E1A;
+    min-height: 100vh;
+    padding-bottom: 80px; /* espace nav mobile */
+  }
+
+  /* ===== VARIABLES ===== */
+  :root {
+    --sable: #F5E6C8;
+    --coral: #FF6B4A;
+    --coral-dark: #e05538;
+    --blanc: #FFFDF7;
+    --vert: #2D6A4F;
+    --dark: #1A2E1A;
+    --radius: 14px;
+    --shadow: 0 4px 20px rgba(26,46,26,.08);
+  }
+
+  /* ===== TYPO ===== */
+  h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+  h1 { font-size: clamp(2rem, 6vw, 2.8rem); color: #fff; }
+  h2 { font-size: clamp(1.5rem, 4vw, 2rem); color: var(--dark); margin-bottom: .5rem; }
+  h3 { font-size: 1.25rem; color: var(--dark); }
+  h4 { font-size: 1rem; color: var(--dark); }
+  p { line-height: 1.7; color: #3a4a3a; }
+  em { font-style: italic; color: var(--coral); }
+  a { color: inherit; text-decoration: none; }
+
+  /* ===== LAYOUT ===== */
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+  .section { padding: 52px 0; }
+  .section-sable { background: var(--sable); }
+  .section-dark { background: var(--dark); color: #fff; }
+  .section-dark h2, .section-dark h3, .section-dark p { color: #fff; }
+  .section-dark p { color: rgba(255,255,255,.85); }
+  .section-tag {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--coral);
+    margin-bottom: .5rem;
+  }
+  .section-title { margin-bottom: 1rem; }
+  .section-sub { font-size: .95rem; margin-bottom: 1.5rem; color: #5a6a5a; }
+
+  /* ===== NAV DESKTOP ===== */
+  .nav-desktop {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,253,247,.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(245,230,200,.6);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    height: 58px;
+  }
+  .nav-desktop .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark);
+  }
+  .nav-desktop .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+  .nav-desktop .nav-links a {
+    font-size: .9rem;
+    font-weight: 500;
+    color: #3a4a3a;
+    transition: color .2s;
+  }
+  .nav-desktop .nav-links a:hover { color: var(--coral); }
+
+  /* ===== COVER ===== */
+  .cover {
+    position: relative;
+    margin-top: 58px;
+    width: 100%;
+    max-height: 480px;
+    overflow: hidden;
+  }
+  .cover img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+  .cover-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 32px 24px 24px;
+    background: linear-gradient(to top, rgba(26,46,26,.88) 0%, rgba(26,46,26,.5) 60%, transparent 100%);
+  }
+  .cover-badge {
+    display: inline-block;
+    background: var(--coral);
+    color: #fff;
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .cover h1 {
+    text-shadow: 0 2px 8px rgba(0,0,0,.3);
+    margin-bottom: 6px;
+  }
+  .cover-sub {
+    color: rgba(255,255,255,.9);
+    font-size: .95rem;
+    font-weight: 400;
+  }
+
+  /* ===== NAV MOBILE BAS ===== */
+  .nav-mobile {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,253,247,.97);
+    border-top: 1px solid rgba(245,230,200,.7);
+    padding: 10px 16px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-mobile::-webkit-scrollbar { display: none; }
+  .nav-mobile a {
+    flex-shrink: 0;
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: .82rem;
+    font-weight: 600;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .nav-mobile a.pill-coral {
+    background: var(--coral);
+    color: #fff;
+  }
+  .nav-mobile a.pill-sable {
+    background: var(--sable);
+    color: var(--dark);
+  }
+  .nav-mobile a:hover { opacity: .85; }
+
+  /* ===== SOMMAIRE ===== */
+  .sommaire-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 1rem;
+  }
+  .sommaire-list li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--blanc);
+    border-radius: var(--radius);
+    font-weight: 500;
+    font-size: .95rem;
+    color: var(--dark);
+    border: 1px solid rgba(245,230,200,.8);
+    transition: all .2s;
+    box-shadow: var(--shadow);
+  }
+  .sommaire-list li a:hover {
+    background: var(--coral);
+    color: #fff;
+    border-color: var(--coral);
+    transform: translateX(4px);
+  }
+  .sommaire-list li a .som-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  /* ===== COMMENT UTILISER ===== */
+  .utiliser-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 1.5rem;
+  }
+  @media (max-width: 480px) {
+    .utiliser-grid { grid-template-columns: 1fr; }
+  }
+  .utiliser-card {
+    background: var(--blanc);
+    border-radius: var(--radius);
+    padding: 18px 16px;
+    border: 1px solid rgba(245,230,200,.8);
+    box-shadow: var(--shadow);
+  }
+  .utiliser-card .util-icon {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .utiliser-card h4 { font-family: 'Inter', sans-serif; font-weight: 700; font-size: .95rem; margin-bottom: 4px; }
+  .utiliser-card p { font-size: .88rem; color: #5a6a5a; }
+
+  /* ===== PLANNING ===== */
+  .planning-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: .9rem;
+  }
+  .planning-table th {
+    background: var(--coral);
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+  }
+  .planning-table th:first-child { border-radius: 10px 0 0 0; }
+  .planning-table th:last-child { border-radius: 0 10px 0 0; }
+  .planning-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(245,230,200,.7);
+    vertical-align: top;
+  }
+  .planning-table tr:last-child td { border-bottom: none; }
+  .planning-table tr:nth-child(even) td { background: rgba(245,230,200,.3); }
+  .planning-table .jour { font-weight: 600; color: var(--dark); white-space: nowrap; }
+  .planning-table .session-badge {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 12px;
+    font-size: .78rem;
+    font-weight: 700;
+    margin-right: 4px;
+  }
+  .badge-a { background: rgba(255,107,74,.15); color: #c0400f; }
+  .badge-b { background: rgba(45,106,79,.15); color: #1d5235; }
+  .badge-c { background: rgba(245,230,200,.9); color: #7a5a1a; }
+  .badge-d { background: rgba(26,46,26,.1); color: var(--dark); }
+  .badge-repos { background: #f0f0f0; color: #888; }
+
+  /* ===== SESSIONS ===== */
+  .sessions-intro {
+    font-size: .92rem;
+    color: #5a6a5a;
+    margin-bottom: 1.5rem;
+    padding: 12px 16px;
+    background: rgba(255,107,74,.06);
+    border-left: 3px solid var(--coral);
+    border-radius: 0 8px 8px 0;
+  }
+  .accordion {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+    border: 1px solid rgba(245,230,200,.7);
+  }
+  .accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    background: var(--blanc);
+    cursor: pointer;
+    user-select: none;
+    transition: background .2s;
+    gap: 12px;
+  }
+  .accordion-header:hover { background: rgba(245,230,200,.4); }
+  .accordion-header.open { background: var(--coral); }
+  .accordion-header.open .acc-title,
+  .accordion-header.open .acc-meta,
+  .accordion-header.open .acc-arrow { color: #fff; }
+  .acc-left { display: flex; align-items: center; gap: 12px; flex: 1; }
+  .acc-letter {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .accordion-header.open .acc-letter {
+    background: rgba(255,255,255,.25);
+  }
+  .acc-info { flex: 1; }
+  .acc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    display: block;
+  }
+  .acc-meta {
+    font-size: .8rem;
+    color: #7a8a7a;
+    display: block;
+    margin-top: 2px;
+  }
+  .acc-arrow {
+    font-size: 1.2rem;
+    color: var(--coral);
+    transition: transform .3s;
+    flex-shrink: 0;
+  }
+  .accordion-header.open .acc-arrow { transform: rotate(180deg); }
+  .accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease;
+    background: var(--blanc);
+  }
+  .accordion-body.open { max-height: 2000px; }
+  .accordion-inner { padding: 20px; }
+  .series-badge {
+    display: inline-block;
+    background: var(--sable);
+    color: #7a5a1a;
+    font-size: .78rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 12px;
+    margin-bottom: 14px;
+  }
+  .exercise-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .exercise-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    background: rgba(245,230,200,.25);
+    border-radius: 10px;
+    border: 1px solid rgba(245,230,200,.7);
+  }
+  .exercise-num {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: #fff;
+    font-size: .78rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .exercise-content { flex: 1; }
+  .exercise-name {
+    font-weight: 700;
+    font-size: .95rem;
+    color: var(--dark);
+    display: block;
+  }
+  .exercise-reps {
+    font-size: .82rem;
+    color: var(--coral);
+    font-weight: 600;
+    display: inline-block;
+    margin: 2px 0;
+  }
+  .exercise-desc {
+    font-size: .83rem;
+    color: #6a7a6a;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.5;
+  }
+  .circuit-note {
+    background: rgba(255,107,74,.08);
+    border-left: 3px solid var(--coral);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    font-size: .88rem;
+    color: #3a4a3a;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .session-note {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: rgba(45,106,79,.06);
+    border-left: 3px solid var(--vert);
+    border-radius: 0 8px 8px 0;
+    font-size: .85rem;
+    color: #3a5a3a;
+  }
+
+  /* ===== NUTRITION ===== */
+  .nutrition-rules { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 1.2rem; }
+  .nutrition-rule {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--blanc);
+    border-radius: var(--radius);
+    border: 1px solid rgba(245,230,200,.8);
+    box-shadow: var(--shadow);
+  }
+  .nutrition-rule .rule-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+  .nutrition-rule .rule-text { font-size: .93rem; color: #3a4a3a; line-height: 1.6; }
+  .nutrition-rule .rule-text strong { color: var(--dark); }
+
+  .journee-type {
+    margin-top: 2rem;
+    background: var(--blanc);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(245,230,200,.7);
+  }
+  .journee-type h3 {
+    padding: 14px 20px;
+    background: var(--vert);
+    color: #fff;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+  }
+  .journee-repas {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .repas-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(245,230,200,.6);
+  }
+  .repas-item:last-child { border-bottom: none; }
+  .repas-label {
+    font-weight: 700;
+    font-size: .82rem;
+    color: var(--coral);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    min-width: 52px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .repas-detail { font-size: .9rem; color: #3a4a3a; line-height: 1.6; }
+
+  /* ===== CONSEILS ===== */
+  .conseils-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 1.5rem;
+  }
+  @media (max-width: 480px) {
+    .conseils-grid { grid-template-columns: 1fr; }
+  }
+  .conseil-card {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: var(--radius);
+    padding: 20px 16px;
+    transition: transform .2s, background .2s;
+  }
+  .conseil-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,.11);
+  }
+  .conseil-icon { font-size: 1.8rem; display: block; margin-bottom: 10px; }
+  .conseil-card h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: .92rem;
+    color: var(--coral);
+    margin-bottom: 6px;
+  }
+  .conseil-card p { font-size: .85rem; color: rgba(255,255,255,.8); line-height: 1.6; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,.7);
+    text-align: center;
+    padding: 36px 20px 40px;
+    font-size: .88rem;
+  }
+  footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 8px;
+    display: block;
+  }
+  footer p { color: rgba(255,255,255,.55); margin-bottom: 16px; }
+  footer .footer-cta {
+    display: inline-block;
+    background: var(--coral);
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 24px;
+    font-weight: 600;
+    font-size: .9rem;
+    transition: opacity .2s;
+    margin-top: 8px;
+  }
+  footer .footer-cta:hover { opacity: .85; }
+
+  /* ===== CHRONO FLOTTANT ===== */
+  #chrono-widget {
+    position: fixed;
+    bottom: 88px;
+    right: 16px;
+    z-index: 200;
+    background: var(--blanc);
+    border: 1.5px solid rgba(245,230,200,.9);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(26,46,26,.14);
+    padding: 12px 16px;
+    min-width: 120px;
+    text-align: center;
+    transition: opacity .3s;
+  }
+  #chrono-widget.hidden { opacity: 0; pointer-events: none; }
+  #chrono-label {
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--coral);
+    margin-bottom: 4px;
+    display: block;
+  }
+  #chrono-display {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--dark);
+    display: block;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .chrono-btns { display: flex; gap: 4px; justify-content: center; flex-wrap: wrap; }
+  .chrono-btn {
+    padding: 4px 8px;
+    font-size: .72rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: var(--sable);
+    color: var(--dark);
+    transition: background .2s;
+  }
+  .chrono-btn:hover { background: var(--coral); color: #fff; }
+  .chrono-btn.start-btn {
+    background: var(--coral);
+    color: #fff;
+    padding: 5px 10px;
+  }
+  .chrono-btn.stop-btn { background: var(--vert); color: #fff; }
+  #chrono-toggle {
+    position: fixed;
+    bottom: 88px;
+    right: 16px;
+    z-index: 199;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: #fff;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(255,107,74,.4);
+    display: none;
+  }
+
+  /* ===== MEDIA QUERIES ===== */
+  @media (min-width: 768px) {
+    body { padding-bottom: 0; }
+    .nav-mobile { display: none; }
+    #chrono-widget { bottom: 28px; }
+    #chrono-toggle { display: none; }
+  }
+  @media (max-width: 767px) {
+    .nav-desktop .nav-links { display: none; }
+    .cover { margin-top: 58px; }
+  }
+  @media (max-width: 480px) {
+    .planning-table { font-size: .82rem; }
+    .planning-table td, .planning-table th { padding: 8px 8px; }
+  }
+</style>
+</head>
+<body>
+<!-- GTM noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- ===== NAV DESKTOP ===== -->
+<nav class="nav-desktop">
+  <a href="index.html" class="logo">Ornella Fit</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="#nutrition">Nutrition</a></li>
+    <li><a href="#conseils">Conseils</a></li>
+  </ul>
+</nav>
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <img src="SUMMER-BODY-CHALLENGE-1080.png" alt="Summer Body Challenge">
+  <div class="cover-overlay">
+    <span class="cover-badge">Programme 4 semaines · Sans matériel</span>
+    <h1>SUMMER BODY Challenge</h1>
+    <p class="cover-sub">Full Body · 3-4 séances/semaine · 20-35 min</p>
+  </div>
+</div>
+
+<!-- ===== NAV MOBILE BAS ===== -->
+<nav class="nav-mobile">
+  <a href="#sommaire" class="pill-coral">Menu</a>
+  <a href="#sessions" class="pill-sable">Semaines</a>
+  <a href="#nutrition" class="pill-sable">Nutrition</a>
+  <a href="#conseils" class="pill-sable">Conseils</a>
+</nav>
+
+<!-- ===== SOMMAIRE ===== -->
+<section id="sommaire" class="section section-sable">
+  <div class="wrap">
+    <p class="section-tag">Navigation</p>
+    <h2 class="section-title">Dans ce programme</h2>
+    <ul class="sommaire-list">
+      <li><a href="#utiliser"><span class="som-icon">📖</span> Comment utiliser le programme</a></li>
+      <li><a href="#planning"><span class="som-icon">📅</span> Planning 4 semaines</a></li>
+      <li><a href="#session-a"><span class="som-icon">🍑</span> Session A — Fessiers &amp; Jambes</a></li>
+      <li><a href="#session-b"><span class="som-icon">💪</span> Session B — Haut du corps &amp; Core</a></li>
+      <li><a href="#session-c"><span class="som-icon">🔥</span> Session C — Full Body Circuit</a></li>
+      <li><a href="#session-d"><span class="som-icon">🏃‍♀️</span> Session D — Cardio &amp; Abdos (optionnelle)</a></li>
+      <li><a href="#nutrition"><span class="som-icon">🥗</span> Nutrition légère — tips vacances</a></li>
+      <li><a href="#conseils"><span class="som-icon">🌊</span> Conseils pour un bel été</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== COMMENT UTILISER ===== -->
+<section id="utiliser" class="section">
+  <div class="wrap">
+    <p class="section-tag">Guide</p>
+    <h2 class="section-title">Comment utiliser ce programme</h2>
+    <p class="section-sub">Lis ça avant de commencer — ça prend 30 secondes et ça change tout.</p>
+    <div class="utiliser-grid">
+      <div class="utiliser-card">
+        <span class="util-icon">📅</span>
+        <h4>3 à 4 séances par semaine</h4>
+        <p>Enchaîne A, B, C dans l'ordre. La session D est optionnelle, pour les semaines 3-4.</p>
+      </div>
+      <div class="utiliser-card">
+        <span class="util-icon">⏱️</span>
+        <h4>20 à 35 min par séance</h4>
+        <p>Courts mais efficaces. Respect des temps de repos = résultats garantis.</p>
+      </div>
+      <div class="utiliser-card">
+        <span class="util-icon">🔁</span>
+        <h4>Progressive sur 4 semaines</h4>
+        <p>Les semaines 3-4 sont plus intenses : plus de séries et de reps. C'est voulu.</p>
+      </div>
+      <div class="utiliser-card">
+        <span class="util-icon">📍</span>
+        <h4>Partout, sans matériel</h4>
+        <p>Plage, hôtel, jardin, salon — le programme s'adapte à toi, pas l'inverse.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PLANNING ===== -->
+<section id="planning" class="section section-sable">
+  <div class="wrap">
+    <p class="section-tag">Organisation</p>
+    <h2 class="section-title">Planning 4 semaines</h2>
+    <p class="section-sub">Respecte les jours de repos — la récupération fait partie de l'entraînement.</p>
+    <table class="planning-table">
+      <thead>
+        <tr>
+          <th>Semaine</th>
+          <th>Jour</th>
+          <th>Session</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="7" style="font-weight:700;color:var(--coral);vertical-align:middle;text-align:center;">Sem 1-2</td>
+          <td class="jour">Lundi</td>
+          <td><span class="session-badge badge-a">A</span> Fessiers &amp; Jambes</td>
+        </tr>
+        <tr>
+          <td class="jour">Mardi</td>
+          <td><span class="session-badge badge-repos">Repos</span></td>
+        </tr>
+        <tr>
+          <td class="jour">Mercredi</td>
+          <td><span class="session-badge badge-b">B</span> Haut du corps &amp; Core</td>
+        </tr>
+        <tr>
+          <td class="jour">Jeudi</td>
+          <td><span class="session-badge badge-repos">Repos</span></td>
+        </tr>
+        <tr>
+          <td class="jour">Vendredi</td>
+          <td><span class="session-badge badge-c">C</span> Full Body Circuit</td>
+        </tr>
+        <tr>
+          <td class="jour">Samedi</td>
+          <td><span class="session-badge badge-repos">Repos</span></td>
+        </tr>
+        <tr>
+          <td class="jour">Dimanche</td>
+          <td><span class="session-badge badge-repos">Repos</span></td>
+        </tr>
+        <tr>
+          <td rowspan="7" style="font-weight:700;color:var(--coral);vertical-align:middle;text-align:center;">Sem 3-4</td>
+          <td class="jour">Lundi</td>
+          <td><span class="session-badge badge-a">A</span> Fessiers &amp; Jambes</td>
+        </tr>
+        <tr>
+          <td class="jour">Mardi</td>
+          <td><span class="session-badge badge-b">B</span> Haut du corps &amp; Core</td>
+        </tr>
+        <tr>
+          <td class="jour">Mercredi</td>
+          <td><span class="session-badge badge-repos">Repos</span></td>
+        </tr>
+        <tr>
+          <td class="jour">Jeudi</td>
+          <td><span class="session-badge badge-c">C</span> Full Body Circuit</td>
+        </tr>
+        <tr>
+          <td class="jour">Vendredi</td>
+          <td><span class="session-badge badge-repos">Repos</span></td>
+        </tr>
+        <tr>
+          <td class="jour">Samedi</td>
+          <td><span class="session-badge badge-d">D</span> Cardio &amp; Abdos <em style="font-size:.78rem;color:#888;">optionnel</em></td>
+        </tr>
+        <tr>
+          <td class="jour">Dimanche</td>
+          <td><span class="session-badge badge-repos">Repos</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== SESSIONS ===== -->
+<section id="sessions" class="section">
+  <div class="wrap">
+    <p class="section-tag">Entraînements</p>
+    <h2 class="section-title">Les 4 Sessions</h2>
+    <div class="sessions-intro">
+      💡 Clique sur une session pour la dérouler. Utilise le chrono repos en bas à droite pendant tes pauses.
+    </div>
+
+    <!-- SESSION A -->
+    <div class="accordion" id="session-a">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-left">
+          <div class="acc-letter">A</div>
+          <div class="acc-info">
+            <span class="acc-title">Fessiers &amp; Jambes</span>
+            <span class="acc-meta">5 exercices · Sem 1-2 : 3 séries · Sem 3-4 : 4 séries · Repos 60 sec</span>
+          </div>
+        </div>
+        <span class="acc-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <span class="series-badge">Sem 1-2 : 3 séries — Sem 3-4 : 4 séries — Repos : 60 sec entre séries</span>
+          <ul class="exercise-list">
+            <li class="exercise-item">
+              <div class="exercise-num">1</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Squat sumo</span>
+                <span class="exercise-reps">12 reps</span>
+                <span class="exercise-desc">Pieds larges, pointes vers l'extérieur. Descente lente 3 sec en contrôlant, remontée explosive. Fessiers bien contractés en haut.</span>
+              </div>
+            </li>
+            <li class="exercise-item">
+              <div class="exercise-num">2</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Fente avant alternée</span>
+                <span class="exercise-reps">10 reps / côté</span>
+                <span class="exercise-desc">Pas large devant, genou avant à 90° sans dépasser la pointe du pied. Pousse sur le talon pour revenir. Alterne les jambes.</span>
+              </div>
+            </li>
+            <li class="exercise-item">
+              <div class="exercise-num">3</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Pont fessier</span>
+                <span class="exercise-reps">15 reps</span>
+                <span class="exercise-desc">Allongée sur le dos, pieds à plat, pousse les hanches vers le plafond. Contraction maximale 2 sec en haut. Descend lentement.</span>
+              </div>
+            </li>
+            <li class="exercise-item">
+              <div class="exercise-num">4</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Squat sauté</span>
+                <span class="exercise-reps">10 reps (Sem 1-2) · 15 reps (Sem 3-4)</span>
+                <span class="exercise-desc">Squat classique puis saute en explosant vers le haut. Réception silencieuse, genoux légèrement fléchis. Intensité cardio garantie.</span>
+              </div>
+            </li>
+            <li class="exercise-item">
+              <div class="exercise-num">5</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Coup de pied arrière à 4 pattes</span>
+                <span class="exercise-reps">15 reps / côté</span>
+                <span class="exercise-desc">À genoux et mains au sol, dos plat. Pousse le talon vers le plafond, genou à 90°. Contraction du fessier en haut. Alterne les côtés.</span>
+              </div>
+            </li>
+          </ul>
+          <div class="session-note">✅ Fais les 3 (ou 4) séries de chaque exercice avant de passer au suivant. Repos 60 sec entre chaque série.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSION B -->
+    <div class="accordion" id="session-b">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-left">
+          <div class="acc-letter">B</div>
+          <div class="acc-info">
+            <span class="acc-title">Haut du corps &amp; Core</span>
+            <span class="acc-meta">6 exercices · Sem 1-2 : 3 séries · Sem 3-4 : 4 séries · Repos 45-60 sec</span>
+          </div>
+        </div>
+        <span class="acc-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <span class="series-badge">Sem 1-2 : 3 séries — Sem 3-4 : 4 séries — Repos : 45-60 sec</span>
+          <ul class="exercise-list">
+            <li class="exercise-item">
+              <div class="exercise-num">1</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Pompes</span>
+                <span class="exercise-reps">10 reps · Variante genoux si besoin</span>
+                <span class="exercise-desc">Corps droit, mains légèrement plus larges que les épaules. Descends jusqu'à ce que ta poitrine effleure le sol. Variante sur les genoux tout aussi efficace.</span>
+              </div>
+            </li>
+            <li class="exercise-item">
+              <div class="exercise-num">2</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Dips sur chaise</span>
+                <span class="exercise-reps">12 reps</span>
+                <span class="exercise-desc">Mains sur le bord d'une chaise derrière toi, jambes tendues devant. Plie les coudes à 90° pour descendre, puis pousse pour remonter. Triceps au feu.</span>
+              </div>
+            </li>
+            <li class="exercise-item">
+              <div class="exercise-num">3</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Superman</span>
+                <span class="exercise-reps">12 reps</span>
+                <span class="exercise-desc">Allongée ventre au sol, bras tendus devant. Soulève simultanément bras, torse et jambes. Tiens 1 sec en haut. Renforce le bas du dos et les fessiers.</span>
+              </div>
+            </li>
+            <li class="exercise-item">
+              <div class="exercise-num">4</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Gainage planche</span>
+                <span class="exercise-reps">30 sec (Sem 1-2) · 45 sec (Sem 3-4)</span>
+                <span class="exercise-desc">Sur les avant-bras et pointes de pieds, corps parfaitement droit. Rentre le nombril, serre les fessiers. Respire régulièrement sans te bloquer.</span>
+              </div>
+            </li>
+            <li class="exercise-item">
+              <div class="exercise-num">5</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Crunchs</span>
+                <span class="exercise-reps">20 reps</span>
+                <span class="exercise-desc">Sur le dos, genoux fléchis. Mains derrière la tête sans tirer le cou. Contracte les abdos pour décoller les épaules du sol. Expire en montant.</span>
+              </div>
+            </li>
+            <li class="exercise-item">
+              <div class="exercise-num">6</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Planche latérale</span>
+                <span class="exercise-reps">20 sec / côté</span>
+                <span class="exercise-desc">Sur l'avant-bras, corps en ligne droite de la tête aux pieds. Hanches hautes, ne les laisse pas tomber. Fais les deux côtés.</span>
+              </div>
+            </li>
+          </ul>
+          <div class="session-note">✅ Enchaîne tous les exercices en 1 série, puis recommence. Repos 45-60 sec entre chaque passage.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSION C -->
+    <div class="accordion" id="session-c">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-left">
+          <div class="acc-letter">C</div>
+          <div class="acc-info">
+            <span class="acc-title">Full Body Circuit</span>
+            <span class="acc-meta">5 exercices en circuit · 3 tours · Repos 45 sec entre tours</span>
+          </div>
+        </div>
+        <span class="acc-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <div class="circuit-note">🔄 Enchaîne les 5 exercices sans pause, puis repose-toi 45 sec. Répète le circuit 3 fois au total.</div>
+          <ul class="exercise-list">
+            <li class="exercise-item">
+              <div class="exercise-num">1</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Burpee</span>
+                <span class="exercise-reps">8 reps (Sem 1-2) · 12 reps (Sem 3-4)</span>
+                <span class="exercise-desc">Debout, descends au sol, étends les jambes en pompe, saute les pieds vers les mains, et explose en saut vertical les bras en l'air. La reine des exercices cardio.</span>
+              </div>
+            </li>
+            <li class="exercise-item">
+              <div class="exercise-num">2</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Squat jump</span>
+                <span class="exercise-reps">10 reps</span>
+                <span class="exercise-desc">Descends en squat profond, explose en saut, bras qui montent. Réception douce, enchaîne immédiatement. Cuisses en feu, cardio en prime.</span>
+              </div>
+            </li>
+            <li class="exercise-item">
+              <div class="exercise-num">3</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Montée de genoux debout</span>
+                <span class="exercise-reps">20 reps (10/côté)</span>
+                <span class="exercise-desc">Debout, monte les genoux alternativement le plus haut possible en cadençant les bras. Maintiens un rythme régulier. Travail cardio et fléchisseurs.</span>
+              </div>
+            </li>
+            <li class="exercise-item">
+              <div class="exercise-num">4</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Pompes</span>
+                <span class="exercise-reps">10 reps</span>
+                <span class="exercise-desc">Corps gainé, descente contrôlée, remontée explosive. Variante sur les genoux si tu arrives en bout de course. Ne sacrifie jamais la forme à la quantité.</span>
+              </div>
+            </li>
+            <li class="exercise-item">
+              <div class="exercise-num">5</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Fessier kick sur 4 pattes</span>
+                <span class="exercise-reps">12 reps / côté</span>
+                <span class="exercise-desc">À genoux et mains, pousse le talon vers le plafond. Genou à 90°, dos plat. Contraction en haut, descente lente. Alterne les côtés au sein d'une même série.</span>
+              </div>
+            </li>
+          </ul>
+          <div class="session-note">🔁 Tour 1 → Repos 45 sec → Tour 2 → Repos 45 sec → Tour 3. Bravo, c'est fini !</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSION D -->
+    <div class="accordion" id="session-d">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-left">
+          <div class="acc-letter">D</div>
+          <div class="acc-info">
+            <span class="acc-title">Cardio &amp; Abdos — Optionnelle</span>
+            <span class="acc-meta">Semaines 3-4 uniquement · 20-25 min · Repos 30 sec</span>
+          </div>
+        </div>
+        <span class="acc-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-inner">
+          <div class="circuit-note">⚡ Option 1 : 20 min de marche rapide ou natation. Option 2 : le circuit ci-dessous, 3 fois.</div>
+          <ul class="exercise-list">
+            <li class="exercise-item">
+              <div class="exercise-num">1</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Mountain climbers</span>
+                <span class="exercise-reps">30 sec</span>
+                <span class="exercise-desc">En position de pompe, ramène alternativement les genoux vers la poitrine le plus vite possible. Abdos contractés, hanches basses. C'est cardio et gainage à la fois.</span>
+              </div>
+            </li>
+            <li class="exercise-item">
+              <div class="exercise-num">2</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Jumping jacks</span>
+                <span class="exercise-reps">30 sec</span>
+                <span class="exercise-desc">Sauts avec écartement des jambes et levée des bras simultanément. Cadence régulière, genoux légèrement fléchis à la réception. Active tout le corps.</span>
+              </div>
+            </li>
+            <li class="exercise-item">
+              <div class="exercise-num">3</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Crunchs bicycle</span>
+                <span class="exercise-reps">20 reps</span>
+                <span class="exercise-desc">Sur le dos, jambes en l'air à 90°. Amène coude droit vers genou gauche en tordant le torse, puis alterne. Abdos obliques particulièrement sollicités.</span>
+              </div>
+            </li>
+            <li class="exercise-item">
+              <div class="exercise-num">4</div>
+              <div class="exercise-content">
+                <span class="exercise-name">Gainage planche</span>
+                <span class="exercise-reps">40 sec</span>
+                <span class="exercise-desc">Avant-bras au sol, corps droit. Contracte tout : abdos, fessiers, cuisses. Respire lentement. Termine fort !</span>
+              </div>
+            </li>
+          </ul>
+          <div class="session-note">🔁 Répète ce circuit 3 fois avec 30 sec de repos entre chaque passage. Total : ~20 min.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== NUTRITION ===== -->
+<section id="nutrition" class="section section-sable">
+  <div class="wrap">
+    <p class="section-tag">Alimentation</p>
+    <h2 class="section-title">Nutrition légère<br><em>tips vacances</em></h2>
+    <p class="section-sub">Manger bien en vacances, c'est possible sans se priver. Voici les 5 règles simples.</p>
+
+    <ul class="nutrition-rules">
+      <li class="nutrition-rule">
+        <span class="rule-icon">🥗</span>
+        <span class="rule-text"><strong>Priorité protéines à chaque repas.</strong> Œuf, poulet, poisson, légumineuses — les protéines rassasient, préservent le muscle et réduisent les fringales.</span>
+      </li>
+      <li class="nutrition-rule">
+        <span class="rule-icon">💧</span>
+        <span class="rule-text"><strong>2 litres d'eau minimum par jour</strong> — davantage par forte chaleur. La déshydratation est souvent confondue avec la faim. Bois avant d'avoir soif.</span>
+      </li>
+      <li class="nutrition-rule">
+        <span class="rule-icon">🍹</span>
+        <span class="rule-text"><strong>Alcool : 1 verre maximum, jamais le ventre vide.</strong> Mange quelque chose avant. Les calories alcoolisées s'accumulent vite en vacances.</span>
+      </li>
+      <li class="nutrition-rule">
+        <span class="rule-icon">🍦</span>
+        <span class="rule-text"><strong>Les plaisirs sont autorisés</strong> — une glace, un dessert, un verre. Juste pas à chaque repas de la journée. L'équilibre, pas la privation.</span>
+      </li>
+      <li class="nutrition-rule">
+        <span class="rule-icon">🌙</span>
+        <span class="rule-text"><strong>Dîner léger si grosse journée.</strong> Soupe, grande salade ou protéine + légumes — suffisant pour récupérer sans alourdir la digestion avant de dormir.</span>
+      </li>
+    </ul>
+
+    <div class="journee-type">
+      <h3>💡 Idée de journée type vacances</h3>
+      <div class="journee-repas">
+        <div class="repas-item">
+          <span class="repas-label">Matin</span>
+          <span class="repas-detail">Œufs brouillés ou à la coque + fruit frais + café ou thé sans sucre</span>
+        </div>
+        <div class="repas-item">
+          <span class="repas-label">Midi</span>
+          <span class="repas-detail">Grande salade composée avec protéine — thon, poulet grillé ou œuf dur — + vinaigrette légère</span>
+        </div>
+        <div class="repas-item">
+          <span class="repas-label">Snack</span>
+          <span class="repas-detail">Si tu as faim : un fruit + une poignée d'amandes ou de noix de cajou</span>
+        </div>
+        <div class="repas-item">
+          <span class="repas-label">Soir</span>
+          <span class="repas-detail">Poisson ou poulet + légumes grillés ou en salade — léger, nourrissant, parfait pour récupérer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONSEILS ÉTÉ ===== -->
+<section id="conseils" class="section section-dark">
+  <div class="wrap">
+    <p class="section-tag" style="color:var(--coral)">Lifestyle</p>
+    <h2 class="section-title" style="color:#fff;">Conseils pour<br><em>un bel été</em></h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.7);">Le programme c'est bien. Mais c'est le style de vie global qui fait la différence.</p>
+
+    <div class="conseils-grid">
+      <div class="conseil-card">
+        <span class="conseil-icon">🌊</span>
+        <h4>Bouge sous toutes les formes</h4>
+        <p>Nage, marche, fais du vélo, danse sur la plage. Tout compte. L'activité physique va bien au-delà des séances.</p>
+      </div>
+      <div class="conseil-card">
+        <span class="conseil-icon">😴</span>
+        <h4>8h de sommeil minimum</h4>
+        <p>La récupération se passe la nuit — c'est là que les muscles se reconstruisent et que le corps brûle les graisses.</p>
+      </div>
+      <div class="conseil-card">
+        <span class="conseil-icon">☀️</span>
+        <h4>Crème solaire quotidienne</h4>
+        <p>Pour ta peau et ta santé. Le soleil accélère le vieillissement cutané. SPF 50 sur le visage, toute l'année.</p>
+      </div>
+      <div class="conseil-card">
+        <span class="conseil-icon">🍋</span>
+        <h4>Eau citronnée le matin</h4>
+        <p>Commence chaque journée avec un grand verre d'eau chaude et le jus d'un demi-citron. Detox, digestion, énergie.</p>
+      </div>
+      <div class="conseil-card">
+        <span class="conseil-icon">📵</span>
+        <h4>1h sans écran avant de dormir</h4>
+        <p>La lumière bleue perturbe la mélatonine. Lis, médite, étire-toi. Tu dormiras mieux, tu récupéreras mieux.</p>
+      </div>
+      <div class="conseil-card">
+        <span class="conseil-icon">🏃‍♀️</span>
+        <h4>Zéro culpabilité</h4>
+        <p>Si tu rates une séance, reprends simplement la suivante. La régularité sur 4 semaines > la perfection d'une journée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <span class="footer-brand">Ornella Fit Coaching</span>
+  <p>© 2025 Ornella Fit Coaching</p>
+  <a href="iron-girl-sales.html" class="footer-cta">Envie d'aller plus loin ? Découvre Iron Girl →</a>
+</footer>
+
+<!-- ===== CHRONO REPOS ===== -->
+<div id="chrono-widget">
+  <span id="chrono-label">⏱ Repos</span>
+  <span id="chrono-display">00:00</span>
+  <div class="chrono-btns">
+    <button class="chrono-btn" onclick="setTimer(30)">30s</button>
+    <button class="chrono-btn" onclick="setTimer(45)">45s</button>
+    <button class="chrono-btn" onclick="setTimer(60)">60s</button>
+  </div>
+  <div class="chrono-btns" style="margin-top:6px;">
+    <button class="chrono-btn start-btn" id="chrono-start" onclick="startTimer()">▶ Start</button>
+    <button class="chrono-btn stop-btn" onclick="resetTimer()">■ Reset</button>
+  </div>
+</div>
+
+<script>
+  // ===== ACCORDÉON =====
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    const isOpen = header.classList.contains('open');
+    // Ferme tous les autres
+    document.querySelectorAll('.accordion-header.open').forEach(function(h) {
+      h.classList.remove('open');
+      h.nextElementSibling.classList.remove('open');
+    });
+    // Ouvre celui-ci si pas déjà ouvert
+    if (!isOpen) {
+      header.classList.add('open');
+      body.classList.add('open');
+      // Scroll doux vers l'accordéon
+      setTimeout(function() {
+        header.closest('.accordion').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  }
+
+  // ===== CHRONO =====
+  var chronoInterval = null;
+  var chronoSeconds = 0;
+  var chronoTarget = 30;
+  var chronoRunning = false;
+
+  function setTimer(sec) {
+    resetTimer();
+    chronoTarget = sec;
+    chronoSeconds = sec;
+    document.getElementById('chrono-display').textContent = formatTime(sec);
+    document.getElementById('chrono-label').textContent = '⏱ Repos — ' + sec + 's';
+  }
+
+  function formatTime(sec) {
+    var m = Math.floor(sec / 60);
+    var s = sec % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function startTimer() {
+    if (chronoRunning) return;
+    if (chronoSeconds <= 0) chronoSeconds = chronoTarget;
+    chronoRunning = true;
+    document.getElementById('chrono-start').textContent = '⏸ En cours';
+    chronoInterval = setInterval(function() {
+      chronoSeconds--;
+      document.getElementById('chrono-display').textContent = formatTime(chronoSeconds);
+      if (chronoSeconds <= 0) {
+        clearInterval(chronoInterval);
+        chronoRunning = false;
+        document.getElementById('chrono-display').textContent = 'GO !';
+        document.getElementById('chrono-start').textContent = '▶ Start';
+        // Vibration si disponible
+        if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+      }
+    }, 1000);
+  }
+
+  function resetTimer() {
+    if (chronoInterval) clearInterval(chronoInterval);
+    chronoRunning = false;
+    chronoSeconds = chronoTarget;
+    document.getElementById('chrono-display').textContent = formatTime(chronoTarget);
+    document.getElementById('chrono-start').textContent = '▶ Start';
+    document.getElementById('chrono-label').textContent = '⏱ Repos';
+  }
+
+  // Init chrono à 45s par défaut
+  setTimer(45);
+
+  // ===== SMOOTH SCROLL pour liens internes =====
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        var offset = 70; // hauteur nav desktop
+        var top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
