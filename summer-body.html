@@ -346,12 +346,10 @@
   }
   .accordion-header.open .acc-arrow { transform: rotate(180deg); }
   .accordion-body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height .4s ease;
+    display: none;
     background: var(--blanc);
   }
-  .accordion-body.open { max-height: 2000px; }
+  .accordion-body.open { display: block; }
   .accordion-inner { padding: 20px; }
   .series-badge {
     display: inline-block;
@@ -664,7 +662,7 @@
     .wrap { padding: 0 16px; }
     .utiliser-grid { grid-template-columns: 1fr; }
     .conseils-grid { grid-template-columns: 1fr; }
-    .accordion-body.open { max-height: 4000px; }
+
     h1, h2 { word-break: break-word; }
   }
   @media (max-width: 480px) {
@@ -1311,6 +1309,15 @@
       body.classList.add('open');
     }
   }
+
+  // Fallback : event listeners sur tous les headers
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.accordion-header').forEach(function(header) {
+      header.addEventListener('click', function() {
+        toggleAcc(this);
+      });
+    });
+  });
 
   // ===== CHRONO =====
   var chronoInterval = null;
