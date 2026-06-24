@@ -586,6 +586,33 @@
     transition: opacity .3s;
   }
   #chrono-widget.hidden { opacity: 0; pointer-events: none; }
+  #chrono-widget.minimized {
+    min-width: unset;
+    padding: 8px 10px;
+    border-radius: 50px;
+  }
+  #chrono-widget.minimized #chrono-label,
+  #chrono-widget.minimized .chrono-btns { display: none; }
+  #chrono-widget.minimized #chrono-display { margin-bottom: 0; font-size: 1.1rem; }
+  #chrono-widget.minimized #chrono-mini-row { display: flex !important; }
+  #chrono-mini-row {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
+  }
+  #chrono-reduce {
+    background: none;
+    border: none;
+    font-size: .85rem;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 0 2px;
+    line-height: 1;
+    position: absolute;
+    top: 6px;
+    right: 8px;
+  }
   #chrono-label {
     font-size: .68rem;
     font-weight: 700;
@@ -1272,7 +1299,8 @@
 </footer>
 
 <!-- ===== CHRONO REPOS ===== -->
-<div id="chrono-widget">
+<div id="chrono-widget" style="position:relative;">
+  <button id="chrono-reduce" onclick="minimizeChrono()" title="Réduire">−</button>
   <span id="chrono-label">⏱ Repos</span>
   <span id="chrono-display">00:00</span>
   <div class="chrono-btns">
@@ -1283,6 +1311,9 @@
   <div class="chrono-btns" style="margin-top:6px;">
     <button class="chrono-btn start-btn" id="chrono-start" onclick="startTimer()">▶ Start</button>
     <button class="chrono-btn stop-btn" onclick="resetTimer()">■ Reset</button>
+  </div>
+  <div id="chrono-mini-row">
+    <button onclick="expandChrono()" style="background:none;border:none;font-size:.75rem;color:var(--coral);cursor:pointer;font-weight:700;">+</button>
   </div>
 </div>
 
@@ -1353,6 +1384,13 @@
     document.getElementById('chrono-display').textContent = formatTime(chronoTarget);
     document.getElementById('chrono-start').textContent = '▶ Start';
     document.getElementById('chrono-label').textContent = '⏱ Repos';
+  }
+
+  function minimizeChrono() {
+    document.getElementById('chrono-widget').classList.add('minimized');
+  }
+  function expandChrono() {
+    document.getElementById('chrono-widget').classList.remove('minimized');
   }
 
   // Init chrono à 45s par défaut
