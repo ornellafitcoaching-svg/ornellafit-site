@@ -291,8 +291,6 @@
     margin-bottom: 16px;
     border: 1px solid rgba(245,230,200,.7);
   }
-  .accordion summary { list-style: none; }
-  .accordion summary::-webkit-details-marker { display: none; }
   .accordion-header {
     display: flex;
     align-items: center;
@@ -305,10 +303,10 @@
     gap: 12px;
   }
   .accordion-header:hover { background: rgba(245,230,200,.4); }
-  details[open] .accordion-header { background: var(--coral); }
-  details[open] .accordion-header .acc-title,
-  details[open] .accordion-header .acc-meta,
-  details[open] .accordion-header .acc-arrow { color: #fff; }
+  .accordion.open .accordion-header { background: var(--coral); }
+  .accordion.open .accordion-header .acc-title,
+  .accordion.open .accordion-header .acc-meta,
+  .accordion.open .accordion-header .acc-arrow { color: #fff; }
   .acc-left { display: flex; align-items: center; gap: 12px; flex: 1; }
   .acc-letter {
     width: 40px; height: 40px;
@@ -323,7 +321,7 @@
     font-weight: 700;
     flex-shrink: 0;
   }
-  details[open] .accordion-header .acc-letter {
+  .accordion.open .accordion-header .acc-letter {
     background: rgba(255,255,255,.25);
   }
   .acc-info { flex: 1; }
@@ -346,8 +344,9 @@
     transition: transform .3s;
     flex-shrink: 0;
   }
-  details[open] .accordion-header .acc-arrow { transform: rotate(180deg); }
-  .accordion-body { background: var(--blanc); }
+  .accordion.open .accordion-header .acc-arrow { transform: rotate(180deg); }
+  .accordion-body { display:none; background: var(--blanc); }
+  .accordion.open .accordion-body { display:block; }
   .accordion-inner { padding: 20px; }
   .series-badge {
     display: inline-block;
@@ -867,8 +866,8 @@
     </div>
 
     <!-- SESSION A -->
-    <details class="accordion" id="session-a">
-      <summary class="accordion-header">
+    <div class="accordion" id="session-a">
+      <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
         <div class="acc-left">
           <div class="acc-letter">A</div>
           <div class="acc-info">
@@ -877,7 +876,7 @@
           </div>
         </div>
         <span class="acc-arrow">▾</span>
-      </summary>
+      </div>
       <div class="accordion-body">
         <div class="accordion-inner">
           <span class="series-badge">Sem 1-2 : 3 séries — Sem 3-4 : 4 séries — Repos : 60 sec entre séries</span>
@@ -926,7 +925,7 @@
           <div class="session-note">✅ Fais les 3 (ou 4) séries de chaque exercice avant de passer au suivant. Repos 60 sec entre chaque série.</div>
         </div>
       </div>
-    </details>
+    </div>
 
     <!-- VIDEO POMPES -->
     <div style="width:100%;margin:16px 0;border-radius:16px;overflow:hidden;line-height:0;">
@@ -936,8 +935,8 @@
     </div>
 
     <!-- SESSION B -->
-    <details class="accordion" id="session-b">
-      <summary class="accordion-header">
+    <div class="accordion" id="session-b">
+      <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
         <div class="acc-left">
           <div class="acc-letter">B</div>
           <div class="acc-info">
@@ -946,7 +945,7 @@
           </div>
         </div>
         <span class="acc-arrow">▾</span>
-      </summary>
+      </div>
       <div class="accordion-body">
         <div class="accordion-inner">
           <span class="series-badge">Sem 1-2 : 3 séries — Sem 3-4 : 4 séries — Repos : 45-60 sec</span>
@@ -1003,11 +1002,11 @@
           <div class="session-note">✅ Enchaîne tous les exercices en 1 série, puis recommence. Repos 45-60 sec entre chaque passage.</div>
         </div>
       </div>
-    </details>
+    </div>
 
     <!-- SESSION C -->
-    <details class="accordion" id="session-c">
-      <summary class="accordion-header">
+    <div class="accordion" id="session-c">
+      <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
         <div class="acc-left">
           <div class="acc-letter">C</div>
           <div class="acc-info">
@@ -1016,7 +1015,7 @@
           </div>
         </div>
         <span class="acc-arrow">▾</span>
-      </summary>
+      </div>
       <div class="accordion-body">
         <div class="accordion-inner">
           <div class="circuit-note">🔄 Enchaîne les 5 exercices sans pause, puis repose-toi 45 sec. Répète le circuit 3 fois au total.</div>
@@ -1065,11 +1064,11 @@
           <div class="session-note">🔁 Tour 1 → Repos 45 sec → Tour 2 → Repos 45 sec → Tour 3. Bravo, c'est fini !</div>
         </div>
       </div>
-    </details>
+    </div>
 
     <!-- SESSION D -->
-    <details class="accordion" id="session-d">
-      <summary class="accordion-header">
+    <div class="accordion" id="session-d">
+      <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
         <div class="acc-left">
           <div class="acc-letter">D</div>
           <div class="acc-info">
@@ -1078,7 +1077,7 @@
           </div>
         </div>
         <span class="acc-arrow">▾</span>
-      </summary>
+      </div>
       <div class="accordion-body">
         <div class="accordion-inner">
           <div class="circuit-note">⚡ Option 1 : 20 min de marche rapide ou natation. Option 2 : le circuit ci-dessous, 3 fois.</div>
@@ -1119,7 +1118,7 @@
           <div class="session-note">🔁 Répète ce circuit 3 fois avec 30 sec de repos entre chaque passage. Total : ~20 min.</div>
         </div>
       </div>
-    </details>
+    </div>
 
   </div>
 </section>
