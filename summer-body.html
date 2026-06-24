@@ -353,15 +353,41 @@
   }
   .accordion-body.open { max-height: 2000px; }
   .accordion-inner { padding: 20px; }
-  .series-badge {
-    display: inline-block;
+  .series-badge { display: none; }
+
+  .series-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .series-box {
     background: var(--sable);
-    color: #7a5a1a;
-    font-size: .78rem;
+    border-radius: 10px;
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .series-box-label {
+    display: block;
+    font-size: .68rem;
     font-weight: 700;
-    padding: 4px 12px;
-    border-radius: 12px;
-    margin-bottom: 14px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .series-box-val {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--coral);
+    line-height: 1.1;
+  }
+  .series-box.rest { background: #EAF4EE; }
+  .series-box.rest .series-box-val { color: var(--vert); }
+  @media (max-width: 380px) {
+    .series-grid { grid-template-columns: 1fr 1fr; }
+    .series-box.rest { grid-column: 1 / -1; }
   }
   .exercise-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
   .exercise-item {
@@ -844,7 +870,20 @@
       </div>
       <div class="accordion-body">
         <div class="accordion-inner">
-          <span class="series-badge">Sem 1-2 : 3 séries — Sem 3-4 : 4 séries — Repos : 60 sec entre séries</span>
+          <div class="series-grid">
+            <div class="series-box">
+              <span class="series-box-label">Semaines 1-2</span>
+              <span class="series-box-val">3 séries</span>
+            </div>
+            <div class="series-box">
+              <span class="series-box-label">Semaines 3-4</span>
+              <span class="series-box-val">4 séries</span>
+            </div>
+            <div class="series-box rest">
+              <span class="series-box-label">⏱️ Repos</span>
+              <span class="series-box-val">60 sec</span>
+            </div>
+          </div>
           <ul class="exercise-list">
             <li class="exercise-item">
               <div class="exercise-num">1</div>
@@ -906,7 +945,20 @@
       </div>
       <div class="accordion-body">
         <div class="accordion-inner">
-          <span class="series-badge">Sem 1-2 : 3 séries — Sem 3-4 : 4 séries — Repos : 45-60 sec</span>
+          <div class="series-grid">
+            <div class="series-box">
+              <span class="series-box-label">Semaines 1-2</span>
+              <span class="series-box-val">3 séries</span>
+            </div>
+            <div class="series-box">
+              <span class="series-box-label">Semaines 3-4</span>
+              <span class="series-box-val">4 séries</span>
+            </div>
+            <div class="series-box rest">
+              <span class="series-box-label">⏱️ Repos</span>
+              <span class="series-box-val">45-60 sec</span>
+            </div>
+          </div>
           <ul class="exercise-list">
             <li class="exercise-item">
               <div class="exercise-num">1</div>
