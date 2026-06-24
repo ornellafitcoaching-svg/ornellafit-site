@@ -557,9 +557,45 @@
     padding: 12px 16px;
     min-width: 120px;
     text-align: center;
-    transition: opacity .3s;
+    transition: opacity .3s, transform .3s;
   }
   #chrono-widget.hidden { opacity: 0; pointer-events: none; }
+  #chrono-widget.minimized {
+    min-width: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+  }
+  #chrono-widget.minimized #chrono-inner { display: none; }
+  #chrono-widget.minimized #chrono-mini { display: flex; }
+  #chrono-mini {
+    display: none;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    font-size: .7rem;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(255,107,74,.4);
+    gap: 1px;
+  }
+  #chrono-mini-time { font-size: .85rem; font-weight: 700; font-family: 'Playfair Display', serif; line-height:1; }
+  #chrono-reduce {
+    position: absolute;
+    top: 6px; right: 8px;
+    background: none;
+    border: none;
+    font-size: .9rem;
+    cursor: pointer;
+    color: var(--muted, #7A6E60);
+    line-height: 1;
+    padding: 2px 4px;
+  }
   #chrono-label {
     font-size: .68rem;
     font-weight: 700;
@@ -1201,16 +1237,25 @@
 
 <!-- ===== CHRONO REPOS ===== -->
 <div id="chrono-widget">
-  <span id="chrono-label">⏱ Repos</span>
-  <span id="chrono-display">00:00</span>
-  <div class="chrono-btns">
-    <button class="chrono-btn" onclick="setTimer(30)">30s</button>
-    <button class="chrono-btn" onclick="setTimer(45)">45s</button>
-    <button class="chrono-btn" onclick="setTimer(60)">60s</button>
+  <!-- Mini bulle (quand réduit) -->
+  <div id="chrono-mini" onclick="expandChrono()">
+    <span>⏱</span>
+    <span id="chrono-mini-time">00:00</span>
   </div>
-  <div class="chrono-btns" style="margin-top:6px;">
-    <button class="chrono-btn start-btn" id="chrono-start" onclick="startTimer()">▶ Start</button>
-    <button class="chrono-btn stop-btn" onclick="resetTimer()">■ Reset</button>
+  <!-- Contenu complet -->
+  <div id="chrono-inner" style="position:relative;">
+    <button id="chrono-reduce" onclick="minimizeChrono()" title="Réduire">−</button>
+    <span id="chrono-label">⏱ Repos</span>
+    <span id="chrono-display">00:00</span>
+    <div class="chrono-btns">
+      <button class="chrono-btn" onclick="setTimer(30)">30s</button>
+      <button class="chrono-btn" onclick="setTimer(45)">45s</button>
+      <button class="chrono-btn" onclick="setTimer(60)">60s</button>
+    </div>
+    <div class="chrono-btns" style="margin-top:6px;">
+      <button class="chrono-btn start-btn" id="chrono-start" onclick="startTimer()">▶ Start</button>
+      <button class="chrono-btn stop-btn" onclick="resetTimer()">■ Reset</button>
+    </div>
   </div>
 </div>
 
@@ -1241,11 +1286,19 @@
   var chronoTarget = 30;
   var chronoRunning = false;
 
+  function minimizeChrono() {
+    document.getElementById('chrono-widget').classList.add('minimized');
+  }
+  function expandChrono() {
+    document.getElementById('chrono-widget').classList.remove('minimized');
+  }
+
   function setTimer(sec) {
     resetTimer();
     chronoTarget = sec;
     chronoSeconds = sec;
     document.getElementById('chrono-display').textContent = formatTime(sec);
+    document.getElementById('chrono-mini-time').textContent = formatTime(sec);
     document.getElementById('chrono-label').textContent = '⏱ Repos — ' + sec + 's';
   }
 
@@ -1262,7 +1315,9 @@
     document.getElementById('chrono-start').textContent = '⏸ En cours';
     chronoInterval = setInterval(function() {
       chronoSeconds--;
-      document.getElementById('chrono-display').textContent = formatTime(chronoSeconds);
+      var t = formatTime(chronoSeconds);
+      document.getElementById('chrono-display').textContent = t;
+      document.getElementById('chrono-mini-time').textContent = t;
       if (chronoSeconds <= 0) {
         clearInterval(chronoInterval);
         chronoRunning = false;
