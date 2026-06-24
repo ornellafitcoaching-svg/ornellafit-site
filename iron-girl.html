@@ -222,6 +222,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,22,22,.93
 .pourqui-neg{margin-top:12px;display:flex;align-items:flex-start;gap:12px;padding:16px 20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px}
 .pourqui-neg span{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.6;font-style:italic}
 
+/* MODE D'EMPLOI DRAWER */
+.mde-btn{position:fixed;bottom:80px;left:16px;z-index:499;width:44px;height:44px;border-radius:50%;background:var(--dark);border:1.5px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);font-size:1.1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.4);font-family:'DM Sans',sans-serif;transition:background .2s}
+.mde-btn:active{background:#2e2020}
+.mde-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:600;backdrop-filter:blur(2px)}
+.mde-overlay.open{display:block}
+.mde-drawer{position:fixed;bottom:0;left:0;right:0;z-index:601;background:#fff;border-radius:20px 20px 0 0;padding:0 0 env(safe-area-inset-bottom);max-height:85vh;overflow-y:auto;transform:translateY(100%);transition:transform .3s cubic-bezier(.32,.72,0,1)}
+.mde-drawer.open{transform:translateY(0)}
+.mde-handle{width:36px;height:4px;background:#E8E0DB;border-radius:2px;margin:12px auto 0}
+.mde-head{padding:16px 20px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.mde-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--dark)}
+.mde-close{background:none;border:none;font-size:1.3rem;color:var(--muted);cursor:pointer;padding:4px;line-height:1}
+.mde-body{padding:16px 20px 24px;display:flex;flex-direction:column;gap:16px}
+.mde-block{background:var(--cream);border-radius:12px;padding:14px 16px}
+.mde-block-title{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.mde-row{display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border)}
+.mde-row:last-child{border-bottom:none;padding-bottom:0}
+.mde-tag{background:var(--dark);color:#fff;font-size:.63rem;font-weight:700;padding:3px 9px;border-radius:6px;white-space:nowrap;flex-shrink:0;margin-top:1px;letter-spacing:.04em}
+.mde-row p{font-size:.8rem;color:var(--text-mid);line-height:1.55;margin:0}
+.mde-row p strong{color:var(--dark)}
+
 /* MATÉRIEL */
 .materiel{background:var(--cream);padding:56px 24px}
 .materiel-inner{max-width:840px;margin:0 auto}
@@ -506,7 +526,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
   <a href="#phase3" class="mnav-btn">Phase 3</a>
   <a href="#tracker" class="mnav-btn">Tracker</a>
   <a href="#nutrition" class="mnav-btn">Nutrition</a>
-  <a href="#faq" class="mnav-btn">FAQ</a>
+  <button class="mnav-btn" onclick="openMde()" style="background:none;border:none;cursor:pointer;font-family:inherit">? Guide</button>
 </nav>
 
 <!-- CHRONO FLOTTANT -->
@@ -527,6 +547,49 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:0}
     <div class="chrono-controls">
       <button class="chrono-btn play" id="chrono-play" onclick="toggleTimer()">▶</button>
       <button class="chrono-btn reset" onclick="resetTimer()">↺</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODE D'EMPLOI -->
+<button class="mde-btn" onclick="openMde()" title="Mode d'emploi">?</button>
+<div class="mde-overlay" id="mde-overlay" onclick="closeMde()"></div>
+<div class="mde-drawer" id="mde-drawer">
+  <div class="mde-handle"></div>
+  <div class="mde-head">
+    <span class="mde-title">Mode d'emploi</span>
+    <button class="mde-close" onclick="closeMde()">✕</button>
+  </div>
+  <div class="mde-body">
+    <div class="mde-block">
+      <p class="mde-block-title">Lire le tempo</p>
+      <div class="mde-row"><span class="mde-tag">3-1</span><p><strong>3 sec descente</strong> (phase lente) · <strong>1 sec montée</strong>. Contrôle chaque mouvement.</p></div>
+      <div class="mde-row"><span class="mde-tag">5-5</span><p><strong>5 sec descente · 5 sec montée.</strong> Très lent = très intense. Ne triche pas.</p></div>
+      <div class="mde-row"><span class="mde-tag">10-10</span><p>Phase 3 uniquement. <strong>10 sec descente · 10 sec montée.</strong> C'est brutal. C'est fait exprès.</p></div>
+      <div class="mde-row"><span class="mde-tag">Rest-pause</span><p>Reps jusqu'à l'échec → <strong>repos 5 sec max</strong> → tu reprends. Pendant le temps indiqué.</p></div>
+    </div>
+    <div class="mde-block">
+      <p class="mde-block-title">Vocabulaire</p>
+      <div class="mde-row"><span class="mde-tag">Superset</span><p>2 exercices <strong>enchaînés sans repos</strong>. Tu te reposes uniquement après les deux.</p></div>
+      <div class="mde-row"><span class="mde-tag">Dégressive</span><p>Tu <strong>baisses la charge</strong> à chaque série pour maintenir les reps. Ex : 10, 12, 15 reps.</p></div>
+      <div class="mde-row"><span class="mde-tag">% RM</span><p>Pourcentage de ta <strong>répétition maximale</strong>. 75% RM = 75% du poids que tu fais sur 1 seule rep.</p></div>
+      <div class="mde-row"><span class="mde-tag">Repos = 0</span><p>Tu <strong>enchaînes immédiatement</strong> — zéro seconde entre les deux.</p></div>
+    </div>
+    <div class="mde-block">
+      <p class="mde-block-title">Règles de progression</p>
+      <div class="mde-row"><span class="mde-tag">↑ Charge</span><p>Toutes les reps réussies sans difficulté → <strong>+2,5 à 5 kg</strong> à la prochaine séance.</p></div>
+      <div class="mde-row"><span class="mde-tag">= Charge</span><p>Tu n'as pas fini les reps → <strong>tu gardes la même charge.</strong> Jamais de régression.</p></div>
+      <div class="mde-row"><span class="mde-tag">Phase 3</span><p>Augmentation possible de <strong>1 à 2,5 kg seulement</strong>. Les derniers kilos sont les plus durs.</p></div>
+    </div>
+    <div class="mde-block">
+      <p class="mde-block-title">Planning type</p>
+      <div class="mde-row"><span class="mde-tag">Lundi</span><p><strong>Session A</strong> — Ischios · Fessiers</p></div>
+      <div class="mde-row"><span class="mde-tag">Mardi</span><p><strong>Session B</strong> — Push · Pecs · Épaules · Triceps</p></div>
+      <div class="mde-row"><span class="mde-tag">Mercredi</span><p>Repos actif — marche, étirements</p></div>
+      <div class="mde-row"><span class="mde-tag">Jeudi</span><p><strong>Session C</strong> — Quadriceps · Mollets</p></div>
+      <div class="mde-row"><span class="mde-tag">Vendredi</span><p><strong>Session D</strong> — Pull · Dos · Biceps</p></div>
+      <div class="mde-row"><span class="mde-tag">Samedi</span><p><strong>Session E</strong> — Fessiers</p></div>
+      <div class="mde-row"><span class="mde-tag">Dimanche</span><p>Repos complet</p></div>
     </div>
   </div>
 </div>
@@ -1911,6 +1974,10 @@ function loadTracker() {
 }
 
 loadTracker();
+
+/* ── MODE D'EMPLOI ── */
+function openMde(){document.getElementById('mde-overlay').classList.add('open');document.getElementById('mde-drawer').classList.add('open');document.body.style.overflow='hidden'}
+function closeMde(){document.getElementById('mde-overlay').classList.remove('open');document.getElementById('mde-drawer').classList.remove('open');document.body.style.overflow=''}
 
 /* ── CHRONO ── */
 let chronoSecs = 60, chronoTotal = 60, chronoRunning = false, chronoInterval = null;
