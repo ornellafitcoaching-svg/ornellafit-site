@@ -933,7 +933,7 @@
     </div>
 
     <!-- VIDEO POMPES -->
-    <div style="width:100%;margin:16px 0;border-radius:16px;overflow:hidden;line-height:0;background:#000;">
+    <div style="width:100%;margin:16px 0;border-radius:16px;overflow:hidden;line-height:0;">
       <video autoplay loop muted playsinline style="width:100%;height:auto;display:block;">
         <source src="assets/ornella-pushup-video.mov" type="video/mp4">
       </video>
@@ -1129,8 +1129,8 @@
 </section>
 
 <!-- VIDEO SQUAT -->
-<div style="width:100%;text-align:center;background:#000;line-height:0;">
-  <video autoplay loop muted playsinline style="width:100%;max-width:480px;height:auto;display:block;margin:0 auto;">
+<div style="width:100%;line-height:0;overflow:hidden;">
+  <video autoplay loop muted playsinline style="width:100%;height:auto;display:block;">
     <source src="assets/ornella-squat-video.mov" type="video/mp4">
   </video>
 </div>
@@ -1300,21 +1300,15 @@
 <script>
   // ===== ACCORDÉON =====
   function toggleAcc(header) {
-    const body = header.nextElementSibling;
-    const isOpen = header.classList.contains('open');
-    // Ferme tous les autres
+    var body = header.nextElementSibling;
+    var isOpen = header.classList.contains('open');
     document.querySelectorAll('.accordion-header.open').forEach(function(h) {
       h.classList.remove('open');
-      h.nextElementSibling.classList.remove('open');
+      if (h.nextElementSibling) h.nextElementSibling.classList.remove('open');
     });
-    // Ouvre celui-ci si pas déjà ouvert
     if (!isOpen) {
       header.classList.add('open');
       body.classList.add('open');
-      // Scroll doux vers l'accordéon
-      setTimeout(function() {
-        header.closest('.accordion').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
     }
   }
 
