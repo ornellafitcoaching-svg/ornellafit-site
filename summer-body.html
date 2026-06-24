@@ -303,10 +303,10 @@
     gap: 12px;
   }
   .accordion-header:hover { background: rgba(245,230,200,.4); }
-  .accordion.open .accordion-header { background: var(--coral); }
-  .accordion.open .accordion-header .acc-title,
-  .accordion.open .accordion-header .acc-meta,
-  .accordion.open .accordion-header .acc-arrow { color: #fff; }
+  .accordion-header.open { background: var(--coral); }
+  .accordion-header.open .acc-title,
+  .accordion-header.open .acc-meta,
+  .accordion-header.open .acc-arrow { color: #fff; }
   .acc-left { display: flex; align-items: center; gap: 12px; flex: 1; }
   .acc-letter {
     width: 40px; height: 40px;
@@ -321,7 +321,7 @@
     font-weight: 700;
     flex-shrink: 0;
   }
-  .accordion.open .accordion-header .acc-letter {
+  .accordion-header.open .acc-letter {
     background: rgba(255,255,255,.25);
   }
   .acc-info { flex: 1; }
@@ -344,9 +344,14 @@
     transition: transform .3s;
     flex-shrink: 0;
   }
-  .accordion.open .accordion-header .acc-arrow { transform: rotate(180deg); }
-  .accordion-body { display:none; background: var(--blanc); }
-  .accordion.open .accordion-body { display:block; }
+  .accordion-header.open .acc-arrow { transform: rotate(180deg); }
+  .accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease;
+    background: var(--blanc);
+  }
+  .accordion-body.open { max-height: 2000px; }
   .accordion-inner { padding: 20px; }
   .series-badge {
     display: inline-block;
@@ -552,45 +557,9 @@
     padding: 12px 16px;
     min-width: 120px;
     text-align: center;
-    transition: opacity .3s, transform .3s;
+    transition: opacity .3s;
   }
   #chrono-widget.hidden { opacity: 0; pointer-events: none; }
-  #chrono-widget.minimized {
-    min-width: 0;
-    padding: 0;
-    border: none;
-    background: transparent;
-    box-shadow: none;
-  }
-  #chrono-widget.minimized #chrono-inner { display: none; }
-  #chrono-widget.minimized #chrono-mini { display: flex; }
-  #chrono-mini {
-    display: none;
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: var(--coral);
-    color: #fff;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    cursor: pointer;
-    font-size: .7rem;
-    font-weight: 700;
-    box-shadow: 0 4px 14px rgba(255,107,74,.4);
-    gap: 1px;
-  }
-  #chrono-mini-time { font-size: .85rem; font-weight: 700; font-family: 'Playfair Display', serif; line-height:1; }
-  #chrono-reduce {
-    position: absolute;
-    top: 6px; right: 8px;
-    background: none;
-    border: none;
-    font-size: .9rem;
-    cursor: pointer;
-    color: var(--muted, #7A6E60);
-    line-height: 1;
-    padding: 2px 4px;
-  }
   #chrono-label {
     font-size: .68rem;
     font-weight: 700;
@@ -654,20 +623,10 @@
   @media (max-width: 767px) {
     .nav-desktop .nav-links { display: none; }
     .cover { margin-top: 58px; }
-    body { padding-bottom: 72px; }
-    .section { padding: 40px 0; }
-    .wrap { padding: 0 16px; }
-    .utiliser-grid { grid-template-columns: 1fr; }
-    .conseils-grid { grid-template-columns: 1fr; }
-
-    h1, h2 { word-break: break-word; }
   }
   @media (max-width: 480px) {
-    .planning-table { font-size: .8rem; }
-    .planning-table td, .planning-table th { padding: 8px 10px; }
-    .exercise-item { flex-direction: row; }
-    .cover h1 { font-size: 1.6rem; }
-    .section-title { font-size: 1.5rem; }
+    .planning-table { font-size: .82rem; }
+    .planning-table td, .planning-table th { padding: 8px 8px; }
   }
 </style>
 </head>
@@ -758,7 +717,6 @@
     <p class="section-tag">Organisation</p>
     <h2 class="section-title">Planning 4 semaines</h2>
     <p class="section-sub">Respecte les jours de repos — la récupération fait partie de l'entraînement.</p>
-    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px;">
     <table class="planning-table">
       <thead>
         <tr>
@@ -828,7 +786,6 @@
         </tr>
       </tbody>
     </table>
-    </div>
   </div>
 </section>
 
@@ -837,37 +794,13 @@
   <div class="wrap">
     <p class="section-tag">Entraînements</p>
     <h2 class="section-title">Les 4 Sessions</h2>
-
-    <!-- BADGES DURÉE -->
-    <div style="margin-bottom:18px;">
-      <p style="font-size:.82rem;color:#6a7a6a;margin-bottom:10px;font-weight:600;">⏳ Tu pars combien de temps ?</p>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;">
-        <div style="background:#fff;border:1.5px solid rgba(245,230,200,.9);border-radius:12px;padding:10px 14px;font-size:.82rem;line-height:1.5;flex:1;min-width:140px;">
-          <span style="font-weight:700;color:var(--coral);">1 semaine</span><br>
-          <span style="color:#6a7a6a;">Fais A → B → C<br>3 séances, repos entre.</span>
-        </div>
-        <div style="background:#fff;border:1.5px solid rgba(245,230,200,.9);border-radius:12px;padding:10px 14px;font-size:.82rem;line-height:1.5;flex:1;min-width:140px;">
-          <span style="font-weight:700;color:var(--coral);">2 semaines</span><br>
-          <span style="color:#6a7a6a;">Sem 1 + Sem 2<br>A B C D A B</span>
-        </div>
-        <div style="background:#fff;border:1.5px solid rgba(245,230,200,.9);border-radius:12px;padding:10px 14px;font-size:.82rem;line-height:1.5;flex:1;min-width:140px;">
-          <span style="font-weight:700;color:var(--coral);">3 semaines</span><br>
-          <span style="color:#6a7a6a;">Sem 1 à 3<br>Programme complet −1 sem.</span>
-        </div>
-        <div style="background:rgba(255,107,74,.08);border:1.5px solid var(--coral);border-radius:12px;padding:10px 14px;font-size:.82rem;line-height:1.5;flex:1;min-width:140px;">
-          <span style="font-weight:700;color:var(--coral);">4 semaines ✓</span><br>
-          <span style="color:#6a7a6a;">Programme complet.<br>Résultats optimaux !</span>
-        </div>
-      </div>
-    </div>
-
     <div class="sessions-intro">
       💡 Clique sur une session pour la dérouler. Utilise le chrono repos en bas à droite pendant tes pauses.
     </div>
 
     <!-- SESSION A -->
     <div class="accordion" id="session-a">
-      <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-left">
           <div class="acc-letter">A</div>
           <div class="acc-info">
@@ -927,16 +860,9 @@
       </div>
     </div>
 
-    <!-- VIDEO POMPES -->
-    <div style="width:100%;margin:16px 0;border-radius:16px;overflow:hidden;line-height:0;">
-      <video autoplay loop muted playsinline style="width:100%;height:auto;display:block;">
-        <source src="assets/ornella-pushup-video.mov" type="video/mp4">
-      </video>
-    </div>
-
     <!-- SESSION B -->
     <div class="accordion" id="session-b">
-      <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-left">
           <div class="acc-letter">B</div>
           <div class="acc-info">
@@ -1006,7 +932,7 @@
 
     <!-- SESSION C -->
     <div class="accordion" id="session-c">
-      <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-left">
           <div class="acc-letter">C</div>
           <div class="acc-info">
@@ -1068,7 +994,7 @@
 
     <!-- SESSION D -->
     <div class="accordion" id="session-d">
-      <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-left">
           <div class="acc-letter">D</div>
           <div class="acc-info">
@@ -1122,13 +1048,6 @@
 
   </div>
 </section>
-
-<!-- VIDEO SQUAT -->
-<div style="width:100%;line-height:0;overflow:hidden;">
-  <video autoplay loop muted playsinline style="width:100%;height:auto;display:block;">
-    <source src="assets/ornella-squat-video.mov" type="video/mp4">
-  </video>
-</div>
 
 <!-- ===== NUTRITION ===== -->
 <section id="nutrition" class="section section-sable">
@@ -1270,43 +1189,39 @@
 
 <!-- ===== CHRONO REPOS ===== -->
 <div id="chrono-widget">
-  <!-- Mini bulle (quand réduit) -->
-  <div id="chrono-mini" onclick="expandChrono()">
-    <span>⏱</span>
-    <span id="chrono-mini-time">00:00</span>
+  <span id="chrono-label">⏱ Repos</span>
+  <span id="chrono-display">00:00</span>
+  <div class="chrono-btns">
+    <button class="chrono-btn" onclick="setTimer(30)">30s</button>
+    <button class="chrono-btn" onclick="setTimer(45)">45s</button>
+    <button class="chrono-btn" onclick="setTimer(60)">60s</button>
   </div>
-  <!-- Contenu complet -->
-  <div id="chrono-inner" style="position:relative;">
-    <button id="chrono-reduce" onclick="minimizeChrono()" title="Réduire">−</button>
-    <span id="chrono-label">⏱ Repos</span>
-    <span id="chrono-display">00:00</span>
-    <div class="chrono-btns">
-      <button class="chrono-btn" onclick="setTimer(30)">30s</button>
-      <button class="chrono-btn" onclick="setTimer(45)">45s</button>
-      <button class="chrono-btn" onclick="setTimer(60)">60s</button>
-    </div>
-    <div class="chrono-btns" style="margin-top:6px;">
-      <button class="chrono-btn start-btn" id="chrono-start" onclick="startTimer()">▶ Start</button>
-      <button class="chrono-btn stop-btn" onclick="resetTimer()">■ Reset</button>
-    </div>
+  <div class="chrono-btns" style="margin-top:6px;">
+    <button class="chrono-btn start-btn" id="chrono-start" onclick="startTimer()">▶ Start</button>
+    <button class="chrono-btn stop-btn" onclick="resetTimer()">■ Reset</button>
   </div>
 </div>
 
 <script>
   // ===== ACCORDÉON =====
   function toggleAcc(header) {
-    var body = header.nextElementSibling;
-    var isOpen = header.classList.contains('open');
+    const body = header.nextElementSibling;
+    const isOpen = header.classList.contains('open');
+    // Ferme tous les autres
     document.querySelectorAll('.accordion-header.open').forEach(function(h) {
       h.classList.remove('open');
-      if (h.nextElementSibling) h.nextElementSibling.classList.remove('open');
+      h.nextElementSibling.classList.remove('open');
     });
+    // Ouvre celui-ci si pas déjà ouvert
     if (!isOpen) {
       header.classList.add('open');
       body.classList.add('open');
+      // Scroll doux vers l'accordéon
+      setTimeout(function() {
+        header.closest('.accordion').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
     }
   }
-
 
   // ===== CHRONO =====
   var chronoInterval = null;
@@ -1314,19 +1229,11 @@
   var chronoTarget = 30;
   var chronoRunning = false;
 
-  function minimizeChrono() {
-    document.getElementById('chrono-widget').classList.add('minimized');
-  }
-  function expandChrono() {
-    document.getElementById('chrono-widget').classList.remove('minimized');
-  }
-
   function setTimer(sec) {
     resetTimer();
     chronoTarget = sec;
     chronoSeconds = sec;
     document.getElementById('chrono-display').textContent = formatTime(sec);
-    document.getElementById('chrono-mini-time').textContent = formatTime(sec);
     document.getElementById('chrono-label').textContent = '⏱ Repos — ' + sec + 's';
   }
 
@@ -1343,9 +1250,7 @@
     document.getElementById('chrono-start').textContent = '⏸ En cours';
     chronoInterval = setInterval(function() {
       chronoSeconds--;
-      var t = formatTime(chronoSeconds);
-      document.getElementById('chrono-display').textContent = t;
-      document.getElementById('chrono-mini-time').textContent = t;
+      document.getElementById('chrono-display').textContent = formatTime(chronoSeconds);
       if (chronoSeconds <= 0) {
         clearInterval(chronoInterval);
         chronoRunning = false;
