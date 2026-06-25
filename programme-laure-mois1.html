@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Programme Mois 1 — Laure</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --violet: #6B4E8A;
+    --violet-light: #9B7EB8;
+    --violet-pale: #EDE0F5;
+    --violet-ultra: #F8F4FC;
+    --violet-deep: #4A2E6A;
+    --text-dark: #1E1428;
+    --text-mid: #5C4472;
+    --text-light: #9B80B4;
+    --cream: #FBF8FF;
+    --white: #FFFFFF;
+    --border: #DDD0EC;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text-dark); font-size: 14px; line-height: 1.6; }
+
+  /* COVER */
+  .cover {
+    background: linear-gradient(145deg, #4A2E6A 0%, #6B4E8A 45%, #9B7EB8 100%);
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 60px 30px; position: relative; overflow: hidden;
+  }
+  .cover::before { content:''; position:absolute; top:-80px; right:-80px; width:320px; height:320px; border-radius:50%; background:rgba(255,255,255,0.07); }
+  .cover::after { content:''; position:absolute; bottom:-60px; left:-60px; width:260px; height:260px; border-radius:50%; background:rgba(255,255,255,0.05); }
+  .cover-ornament { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:13px; letter-spacing:4px; color:rgba(255,255,255,0.7); text-transform:uppercase; margin-bottom:32px; }
+  .cover h1 { font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:300; color:#fff; line-height:1.15; margin-bottom:8px; letter-spacing:1px; }
+  .cover h1 span { font-style:italic; font-weight:300; }
+  .cover-name { font-family:'Jost',sans-serif; font-size:20px; font-weight:500; color:rgba(255,255,255,0.95); letter-spacing:3px; text-transform:uppercase; margin:24px 0 12px; padding:10px 30px; border:1px solid rgba(255,255,255,0.4); display:inline-block; border-radius:2px; }
+  .cover-tagline { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17px; color:rgba(255,255,255,0.8); margin-bottom:50px; }
+  .cover-pills { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:50px; }
+  .cover-pill { background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35); color:#fff; font-size:12px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; padding:7px 18px; border-radius:50px; }
+  .cover-line { width:80px; height:1px; background:rgba(255,255,255,0.5); margin:0 auto 16px; }
+  .cover-coach { font-size:12px; color:rgba(255,255,255,0.7); letter-spacing:2px; text-transform:uppercase; }
+
+  /* LAYOUT */
+  .page { max-width: 860px; margin: 0 auto; padding: 40px 30px; }
+  @media (max-width: 600px) { .page { padding: 24px 16px; } }
+
+  /* SECTION HEADERS */
+  .section-title { display:flex; align-items:center; gap:14px; margin-bottom:22px; margin-top:36px; }
+  .section-title .icon { width:38px; height:38px; background:var(--violet); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+  .section-title h2 { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; color:var(--text-dark); letter-spacing:0.5px; }
+  .section-title h2 span { color:var(--violet); font-style:italic; }
+
+  /* PROFILE CARDS */
+  .profile-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
+  @media (max-width:600px) { .profile-grid { grid-template-columns:1fr; } }
+  .profile-card { background:var(--white); border:1px solid var(--border); border-radius:12px; padding:16px 18px; }
+  .profile-card.full { grid-column:1/-1; }
+  .profile-card .label { font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--violet); margin-bottom:6px; }
+  .profile-card .value { font-size:14px; color:var(--text-dark); }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box { background:linear-gradient(135deg,var(--violet-pale) 0%,#ede8f8 100%); border-left:4px solid var(--violet); border-radius:0 12px 12px 0; padding:16px 20px; margin:14px 0; }
+  .highlight-box .hl-label { font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--violet-deep); margin-bottom:6px; }
+  .highlight-box .hl-text { font-size:14px; color:var(--text-dark); }
+
+  /* NOTES */
+  .important-note { background:#FFF3E0; border:1px solid #FFB74D; border-radius:10px; padding:14px 18px; margin:16px 0; font-size:13px; color:#6D4C00; }
+  .important-note strong { color:#E65100; }
+  .premenopause-note { background:#F0EAF8; border:1px solid var(--violet-light); border-radius:10px; padding:14px 18px; margin:16px 0; font-size:13px; color:var(--violet-deep); }
+  .premenopause-note strong { color:var(--violet-deep); }
+
+  /* MENSURATIONS TABLE */
+  .mensuration-table { width:100%; border-collapse:separate; border-spacing:0; border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(107,78,138,0.08); margin-bottom:24px; font-size:13px; }
+  .mensuration-table thead tr { background:var(--violet); }
+  .mensuration-table thead th { padding:12px 10px; color:white; font-weight:600; font-size:11px; letter-spacing:1px; text-transform:uppercase; text-align:center; }
+  .mensuration-table thead th:first-child { text-align:left; padding-left:16px; }
+  .mensuration-table tbody tr:nth-child(even) { background:var(--violet-ultra); }
+  .mensuration-table tbody tr:nth-child(odd) { background:var(--white); }
+  .mensuration-table tbody td { padding:11px 10px; text-align:center; border-bottom:1px solid var(--border); color:var(--text-dark); }
+  .mensuration-table tbody td:first-child { text-align:left; padding-left:16px; font-weight:500; color:var(--text-mid); }
+  .mensuration-table .initial-val { font-weight:700; color:var(--violet-deep); }
+  .mensuration-table .empty-cell { color:var(--text-light); font-size:16px; }
+
+  /* NUTRITION */
+  .nutrition-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:18px; }
+  @media (max-width:600px) { .nutrition-grid { grid-template-columns:1fr; } }
+  .nutri-card { background:var(--white); border-radius:12px; border:1px solid var(--border); overflow:hidden; }
+  .nutri-card.full { grid-column:1/-1; }
+  .nutri-card-header { background:var(--violet-pale); padding:10px 16px; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--violet-deep); display:flex; align-items:center; gap:8px; }
+  .nutri-card-body { padding:14px 16px; font-size:13px; color:var(--text-dark); line-height:1.7; }
+  .nutri-card-body strong { color:var(--violet-deep); }
+
+  .macro-bar { display:flex; height:10px; border-radius:50px; overflow:hidden; margin:10px 0; }
+  .macro-bar-p { background:var(--violet); }
+  .macro-bar-g { background:var(--violet-light); }
+  .macro-bar-l { background:var(--violet-pale); border:1px solid var(--border); }
+  .macro-legend { display:flex; gap:16px; font-size:11px; color:var(--text-mid); flex-wrap:wrap; }
+  .macro-legend span { display:flex; align-items:center; gap:5px; }
+  .macro-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+
+  .macro-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0; }
+  .macro-box { background:var(--violet-ultra); border:1px solid var(--border); border-radius:10px; padding:12px; text-align:center; }
+  .macro-box .macro-num { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; color:var(--violet-deep); line-height:1; }
+  .macro-box .macro-label { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-light); margin-top:3px; }
+  .macro-box .macro-kcal { font-size:11px; color:var(--text-mid); margin-top:2px; }
+
+  .repas-block { border:1px solid var(--border); border-radius:10px; overflow:hidden; margin-bottom:12px; }
+  .repas-header { background:var(--violet-pale); padding:9px 14px; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--violet-deep); display:flex; justify-content:space-between; align-items:center; }
+  .repas-body { padding:12px 14px; font-size:13px; color:var(--text-dark); line-height:1.8; }
+  .repas-body ul { list-style:none; padding:0; }
+  .repas-body ul li::before { content:'→ '; color:var(--violet); font-weight:600; }
+  .repas-macros { font-size:11px; color:var(--text-light); margin-top:6px; font-style:italic; }
+
+  .aliment-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin:14px 0; }
+  @media (max-width:600px) { .aliment-grid { grid-template-columns:1fr 1fr; } }
+  .aliment-card { background:var(--white); border:1px solid var(--border); border-radius:8px; padding:10px 12px; }
+  .aliment-card .aliment-cat { font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--violet); margin-bottom:4px; }
+  .aliment-card ul { list-style:none; font-size:12px; color:var(--text-dark); }
+  .aliment-card ul li::before { content:'· '; color:var(--violet); }
+
+  /* SEANCE */
+  .seance-header { background:linear-gradient(120deg,var(--violet-deep) 0%,var(--violet) 100%); border-radius:14px 14px 0 0; padding:20px 24px 16px; color:white; margin-top:30px; }
+  .seance-header .day-badge { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; background:rgba(255,255,255,0.2); display:inline-block; padding:4px 14px; border-radius:50px; margin-bottom:10px; }
+  .seance-header h3 { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; line-height:1.3; }
+  .seance-header .seance-meta { display:flex; gap:16px; margin-top:10px; flex-wrap:wrap; }
+  .seance-header .meta-item { font-size:11px; color:rgba(255,255,255,0.85); display:flex; align-items:center; gap:5px; }
+  .seance-header .seance-objective { margin-top:10px; font-size:12px; font-style:italic; color:rgba(255,255,255,0.8); line-height:1.5; }
+
+  /* EXERCISE TABLE */
+  .exercise-table-wrapper { background:var(--white); border-radius:0 0 14px 14px; border:1px solid var(--border); border-top:none; overflow:hidden; margin-bottom:8px; }
+  .exercise-table { width:100%; border-collapse:collapse; font-size:12.5px; }
+  .exercise-table thead tr { background:var(--violet-pale); }
+  .exercise-table thead th { padding:10px 8px; font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--violet-deep); text-align:center; border-bottom:2px solid var(--border); }
+  .exercise-table thead th:first-child { text-align:left; padding-left:16px; width:28%; }
+  .exercise-table thead th:last-child { text-align:left; width:28%; }
+  .exercise-table tbody tr:nth-child(even) { background:var(--violet-ultra); }
+  .exercise-table tbody tr:nth-child(odd) { background:var(--white); }
+  .exercise-table tbody tr.warmup-row { background:#FFF8E7; }
+  .exercise-table tbody td { padding:12px 8px; border-bottom:1px solid var(--border); vertical-align:top; text-align:center; color:var(--text-dark); }
+  .exercise-table tbody td:first-child { text-align:left; padding-left:16px; font-weight:500; }
+  .exercise-table tbody td:last-child { text-align:left; font-size:12px; color:var(--text-mid); }
+  .exercise-num { display:inline-flex; width:20px; height:20px; background:var(--violet); color:white; border-radius:50%; align-items:center; justify-content:center; font-size:10px; font-weight:700; margin-right:6px; vertical-align:middle; flex-shrink:0; }
+  .warmup-num { display:inline-flex; width:20px; height:20px; background:#F9A825; color:white; border-radius:50%; align-items:center; justify-content:center; font-size:10px; font-weight:700; margin-right:6px; vertical-align:middle; }
+  .video-link { display:inline-block; margin-top:4px; font-size:11px; color:var(--violet); font-weight:600; text-decoration:none; letter-spacing:0.5px; white-space:nowrap; }
+  .video-link:hover { color:var(--violet-deep); }
+  .seance-tips { background:var(--violet-ultra); border:1px solid var(--border); border-top:none; border-radius:0 0 12px 12px; padding:14px 18px; display:grid; grid-template-columns:1fr 1fr; gap:8px 20px; margin-bottom:30px; }
+  @media (max-width:500px) { .seance-tips { grid-template-columns:1fr; } }
+  .seance-tip { font-size:12px; color:var(--text-mid); display:flex; align-items:flex-start; gap:6px; }
+  .seance-tip::before { content:'✦'; color:var(--violet); font-size:8px; margin-top:4px; flex-shrink:0; }
+
+  /* PLANNING */
+  .planning-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:24px; }
+  @media (max-width:700px) { .planning-grid { grid-template-columns:repeat(3,1fr); } }
+  @media (max-width:450px) { .planning-grid { grid-template-columns:1fr 1fr; } }
+  .planning-card { border-radius:10px; overflow:hidden; border:1px solid var(--border); }
+  .planning-card-header { background:linear-gradient(135deg,var(--violet-deep),var(--violet)); padding:10px; text-align:center; color:white; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; }
+  .planning-card-body { background:var(--white); padding:12px; text-align:center; }
+  .planning-card-body .p-letter { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:600; color:var(--violet); line-height:1; }
+  .planning-card-body .p-name { font-size:11px; color:var(--text-mid); margin-top:3px; }
+
+  .week-banner { background:linear-gradient(90deg,var(--violet-pale) 0%,#ede8f8 100%); border:1px solid var(--border); border-radius:10px; padding:14px 22px; margin:30px 0 16px; display:flex; align-items:center; gap:16px; }
+  .week-num { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:600; color:var(--violet-deep); line-height:1; white-space:nowrap; }
+  .week-theme { font-size:13px; color:var(--text-mid); }
+
+  .ressenti-table { width:100%; border-collapse:separate; border-spacing:0; border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(107,78,138,0.08); margin-bottom:24px; font-size:13px; }
+  .ressenti-table thead tr { background:var(--violet-light); }
+  .ressenti-table thead th { padding:12px 10px; color:var(--text-dark); font-weight:600; font-size:11px; letter-spacing:1px; text-transform:uppercase; text-align:center; }
+  .ressenti-table thead th:first-child { text-align:left; padding-left:16px; }
+  .ressenti-table tbody tr:nth-child(even) { background:var(--violet-ultra); }
+  .ressenti-table tbody tr:nth-child(odd) { background:var(--white); }
+  .ressenti-table tbody td { padding:10px; text-align:center; border-bottom:1px solid var(--border); color:var(--text-dark); }
+  .ressenti-table tbody td:first-child { text-align:left; padding-left:16px; font-weight:500; color:var(--text-mid); }
+
+  .divider { height:1px; background:linear-gradient(90deg,var(--border),transparent); margin:28px 0; }
+
+  .bmr-calc { background:linear-gradient(135deg,#4A2E6A,#6B4E8A); border-radius:14px; padding:22px 24px; color:white; margin:18px 0; }
+  .bmr-calc .bmr-title { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; margin-bottom:14px; }
+  .bmr-row { display:flex; justify-content:space-between; align-items:flex-start; font-size:13px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.15); gap:8px; }
+  .bmr-row:last-child { border:none; }
+  .bmr-row .bmr-label { color:rgba(255,255,255,0.8); flex-shrink:0; max-width:55%; }
+  .bmr-row .bmr-val { font-weight:600; color:white; text-align:right; }
+  .bmr-row.total .bmr-label { font-weight:600; color:white; }
+  .bmr-row.total .bmr-val { font-size:18px; font-family:'Cormorant Garamond',serif; }
+
+  /* NAV */
+  .nav-shortcuts { position:sticky; top:0; z-index:100; background:rgba(251,248,255,0.96); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border-bottom:1px solid var(--border); padding:8px 16px; display:flex; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .nav-shortcuts::-webkit-scrollbar { display:none; }
+  .nav-btn { flex-shrink:0; background:var(--white); border:1px solid var(--border); border-radius:50px; padding:6px 14px; font-size:11px; font-weight:600; color:var(--text-mid); letter-spacing:0.5px; text-decoration:none; white-space:nowrap; transition:all 0.2s; }
+  .nav-btn:hover, .nav-btn:active { background:var(--violet); border-color:var(--violet); color:white; }
+  .nav-btn.accent { background:var(--violet); border-color:var(--violet); color:white; }
+
+  /* RESPONSIVE */
+  @media (max-width:600px) {
+    .cover { padding:50px 20px; min-height:100svh; }
+    .cover h1 { font-size:34px; }
+    .cover-name { font-size:16px; letter-spacing:2px; padding:8px 20px; }
+    .cover-tagline { font-size:14px; margin-bottom:32px; }
+    .cover-pills { gap:8px; margin-bottom:32px; }
+    .cover-pill { font-size:11px; padding:6px 12px; }
+    .section-title h2 { font-size:21px; }
+    .exercise-table-wrapper { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    .exercise-table { min-width:560px; }
+    .mensuration-table, .ressenti-table { display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; white-space:nowrap; }
+    .mensuration-table tbody td, .ressenti-table tbody td { white-space:normal; min-width:70px; }
+    .mensuration-table tbody td:first-child, .ressenti-table tbody td:first-child { min-width:110px; white-space:nowrap; }
+    .bmr-calc { padding:16px; }
+    .bmr-row { flex-direction:column; gap:2px; }
+    .bmr-row .bmr-label { max-width:100%; font-size:11px; opacity:0.85; }
+    .bmr-row .bmr-val { text-align:left; font-size:13px; }
+    .bmr-row.total .bmr-val { font-size:16px; }
+    .repas-header { flex-direction:column; align-items:flex-start; gap:2px; }
+    .macro-grid { grid-template-columns:repeat(3,1fr); gap:6px; }
+    .macro-box .macro-num { font-size:22px; }
+    .macro-box { padding:10px 6px; }
+    .seance-header { padding:16px; border-radius:12px 12px 0 0; }
+    .seance-header h3 { font-size:18px; }
+    .week-banner { flex-direction:column; gap:6px; padding:12px 16px; }
+    .week-num { font-size:22px; }
+    body { font-size:13px; }
+    .highlight-box { padding:14px 16px; }
+    .highlight-box .hl-text { font-size:13px; }
+    .premenopause-note, .important-note { font-size:12px; }
+    .repas-body { padding:10px 12px; font-size:12px; }
+    .nutri-card-body { font-size:12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-ornament">Ornella Fit Coaching · Programme Personnalisé</div>
+  <h1>Mois 1 —<br><span>Ta Transformation</span></h1>
+  <div class="cover-name">Laure</div>
+  <div class="cover-tagline">Force · Galbe · Confiance · Nutrition sur mesure</div>
+  <div class="cover-pills">
+    <span class="cover-pill">5 séances / semaine</span>
+    <span class="cover-pill">En salle</span>
+    <span class="cover-pill">Poids libres · Machines</span>
+    <span class="cover-pill">Pré-ménopause adapté</span>
+    <span class="cover-pill">Nutrition incluse</span>
+  </div>
+  <div class="cover-line"></div>
+  <div class="cover-coach">Par Ornella · ornellafitcoaching.com</div>
+</div>
+
+<!-- NAV -->
+<nav class="nav-shortcuts">
+  <a href="#profil" class="nav-btn">👤 Profil</a>
+  <a href="#planning" class="nav-btn">📅 Planning</a>
+  <a href="#seance-a" class="nav-btn accent">Séance A</a>
+  <a href="#seance-b" class="nav-btn accent">Séance B</a>
+  <a href="#seance-c" class="nav-btn accent">Séance C</a>
+  <a href="#seance-d" class="nav-btn accent">Séance D</a>
+  <a href="#seance-e" class="nav-btn accent">Séance E</a>
+  <a href="#nutrition" class="nav-btn">🥗 Nutrition</a>
+  <a href="#complements" class="nav-btn">💊 Compléments</a>
+  <a href="#courses" class="nav-btn">🛒 Courses</a>
+  <a href="#suivi" class="nav-btn">📊 Suivi</a>
+</nav>
+
+<div class="page">
+
+  <!-- PROFIL -->
+  <div id="profil" class="section-title"><div class="icon">👤</div><h2>Ton <span>profil</span></h2></div>
+
+  <div class="profile-grid">
+    <div class="profile-card"><div class="label">Âge</div><div class="value">46 ans</div></div>
+    <div class="profile-card"><div class="label">Poids · Taille</div><div class="value">À compléter dès réception</div></div>
+    <div class="profile-card"><div class="label">Objectif principal</div><div class="value">Tonifier · Affiner la taille · Perdre du ventre · Confiance en soi</div></div>
+    <div class="profile-card"><div class="label">Niveau</div><div class="value">Intermédiaire / Confirmée — 10 à 15 ans de salle</div></div>
+    <div class="profile-card"><div class="label">Rythme de vie</div><div class="value">Travail sédentaire · Journées variables · Fatigue mi-journée</div></div>
+    <div class="profile-card"><div class="label">Séances / semaine</div><div class="value">5 séances · En salle · Lun / Mar / Jeu / Sam / Dim</div></div>
+    <div class="profile-card full"><div class="label">Ce que tu attends</div><div class="value">"Structure, résultats, motivation, bienveillance." — Un programme clairement défini pour progresser en salle et mieux manger sans frustration.</div></div>
+    <div class="profile-card full" style="background:linear-gradient(135deg,var(--violet-pale),#ede8f8);border-color:var(--violet);"><div class="label" style="color:var(--violet-deep);">🎯 Objectif à 3 mois</div><div class="value">Taille affinée · Ventre plus plat · Corps tonique et galbe visible · Plus d'énergie au quotidien · Se sentir bien dans ses vêtements et dans sa tête</div></div>
+  </div>
+
+  <div class="premenopause-note">
+    <strong>🌸 Programme adapté à la périménopause (46 ans) :</strong><br>
+    Tu approches de la cinquantaine — c'est le meilleur moment pour investir dans ta musculature. L'entraînement en force 5x/semaine que tu vas suivre est exactement ce dont ton corps a besoin : il préserve la masse maigre (qui diminue naturellement après 40 ans), soutient l'équilibre hormonal, protège la densité osseuse et améliore la composition corporelle. <strong>Pas de cardio à outrance — de la force, du galbe, et des résultats durables.</strong>
+  </div>
+
+  <!-- MENSURATIONS -->
+  <div class="section-title"><div class="icon">📏</div><h2>Mensurations <span>initiales</span></h2></div>
+
+  <table class="mensuration-table">
+    <thead><tr>
+      <th>Mesure</th>
+      <th>Départ (juin 2026)</th>
+      <th>Mois 1</th>
+      <th>Mois 2</th>
+      <th>Mois 3</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>Poids</td><td class="initial-val">À compléter</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td></tr>
+      <tr><td>Tour de taille</td><td class="initial-val">70 cm</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td></tr>
+      <tr><td>Tour de hanches</td><td class="initial-val">97 cm</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td></tr>
+      <tr><td>Tour de fesses</td><td class="initial-val">101 cm</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td></tr>
+      <tr><td>Tour de cuisse</td><td class="initial-val">57 cm</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td></tr>
+      <tr><td>Tour de poitrine</td><td class="initial-val">97 cm</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td></tr>
+      <tr><td>Tour de dos</td><td class="initial-val">84 cm</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td></tr>
+      <tr><td>Tour de bras</td><td class="initial-val">31 cm</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box">
+    <div class="hl-label">📸 Protocole photos — à suivre à la lettre</div>
+    <div class="hl-text">
+      <strong>Quand :</strong> J1 (aujourd'hui), J30, J60, J90 — toujours au réveil, avant de manger.<br>
+      <strong>Tenue :</strong> toujours la même — brassière sport + shorty ou sous-vêtements.<br>
+      <strong>Lumière :</strong> même endroit, même source lumineuse (fenêtre ou même lampe).<br>
+      <strong>Poses :</strong> face · profil droit · dos — 3 photos à chaque fois.<br>
+      <strong>Envoie-les moi</strong> à chaque fin de mois. La balance peut fluctuer (eau, cycle, périménopause) — les photos et les centimètres, jamais.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PLANNING -->
+  <div id="planning" class="section-title"><div class="icon">📅</div><h2>Ton <span>planning</span></h2></div>
+
+  <p style="font-size:13px;color:var(--text-mid);margin-bottom:18px;">5 séances réparties sur la semaine, toujours après 17h en semaine (direction salle en sortant du boulot 💪). La règle d'or : <strong style="color:var(--text-dark);">ne jamais faire A et D dos à dos</strong> — toutes deux ciblent les fessiers et ischio. Respecte au moins 48h entre ces deux séances.</p>
+
+  <div class="planning-grid">
+    <div class="planning-card">
+      <div class="planning-card-header">Lundi</div>
+      <div class="planning-card-body">
+        <div class="p-letter">A</div>
+        <div class="p-name">Fessiers & Cuisses<br>Force · 55 min</div>
+      </div>
+    </div>
+    <div class="planning-card">
+      <div class="planning-card-header">Mardi</div>
+      <div class="planning-card-body">
+        <div class="p-letter">B</div>
+        <div class="p-name">Dos & Biceps<br>Pull · 50 min</div>
+      </div>
+    </div>
+    <div class="planning-card">
+      <div class="planning-card-header">Jeudi</div>
+      <div class="planning-card-body">
+        <div class="p-letter">C</div>
+        <div class="p-name">Épaules & Triceps<br>Push + Core · 50 min</div>
+      </div>
+    </div>
+    <div class="planning-card">
+      <div class="planning-card-header">Samedi</div>
+      <div class="planning-card-body">
+        <div class="p-letter">D</div>
+        <div class="p-name">Fessiers & Ischio<br>Volume · 55 min</div>
+      </div>
+    </div>
+    <div class="planning-card">
+      <div class="planning-card-header">Dimanche</div>
+      <div class="planning-card-body">
+        <div class="p-letter">E</div>
+        <div class="p-name">Poitrine + Cardio<br>Full léger · 50 min</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="important-note">
+    ⚠️ <strong>Récupération :</strong> Tu travailles en position assise toute la journée et tu ressens des coups de mou en milieu de journée. Si tu arrives à la salle épuisée un soir, ne fais pas la séance à moitié — <strong>rentre, mange bien et récupère</strong>. Une séance ratée ne se rattrape pas, une séance manquée si. La régularité sur 3 mois vaut mille fois plus qu'une semaine parfaite.
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PROGRESSION PAR SEMAINE -->
+  <div class="section-title"><div class="icon">📈</div><h2>Progression <span>mois 1</span></h2></div>
+
+  <div class="week-banner">
+    <div class="week-num">S1–S2</div>
+    <div class="week-theme"><strong>Prise de repères</strong> — Apprends les exercices, note tes charges de départ sur chaque machine/barre. L'objectif n'est pas l'intensité maximale mais la technique parfaite.</div>
+  </div>
+  <div class="week-banner">
+    <div class="week-num">S3–S4</div>
+    <div class="week-theme"><strong>Progression des charges</strong> — Augmente de 2,5 à 5 kg sur chaque exercice où tu peux finir les reps proprement. Le corps s'est adapté — c'est le moment de pousser.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SÉANCE A -->
+  <div id="seance-a" class="section-title"><div class="icon">🍑</div><h2>Séance A — <span>Fessiers & Cuisses · Force</span></h2></div>
+
+  <div class="seance-header">
+    <div class="day-badge">Séance A · Lundi · Force</div>
+    <h3>Fessiers & Cuisses — Construction</h3>
+    <div class="seance-meta">
+      <div class="meta-item">⏱ 55 min</div>
+      <div class="meta-item">🔥 Intensité modérée-haute</div>
+      <div class="meta-item">🏋️ En salle</div>
+      <div class="meta-item">🎯 Fessiers · Quadriceps · Ischio</div>
+    </div>
+    <div class="seance-objective">Focus : mouvements composés lourds pour construire la force. Note ta charge à chaque séance — la progression est ton meilleur indicateur.</div>
+  </div>
+
+  <div class="exercise-table-wrapper">
+    <table class="exercise-table">
+      <thead><tr><th>Exercice</th><th>Séries</th><th>Reps</th><th>Repos</th><th>Conseils & Vidéo</th></tr></thead>
+      <tbody>
+        <tr class="warmup-row"><td><span class="warmup-num">☀</span>Vélo stationnaire</td><td>—</td><td>5 min</td><td>—</td><td>Rythme modéré, résistance légère. Active la circulation et chauffe les articulations du bas du corps.</td></tr>
+        <tr class="warmup-row"><td><span class="warmup-num">☀</span>Leg Swing + Squats légers</td><td>—</td><td>10/jambe + 15 reps</td><td>—</td><td>Leg swing avant/arrière pour mobiliser les hanches. Squats sans charge, descente lente.</td></tr>
+        <tr><td><span class="exercise-num">1</span>Hack Squat machine</td><td>4</td><td>10–12 reps</td><td>90s</td><td>Pieds milieu de la plateforme, écartement épaules. Descends jusqu'à 90° (ou plus si mobilité ok). Pousse sur les talons pour remonter. <strong>Note ta charge à chaque séance.</strong><br><a href="https://www.youtube.com/watch?v=EdtKRqHoaLw" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">2</span>Hip Thrust barre (banc)</td><td>4</td><td>12–15 reps</td><td>90s</td><td>Haut du dos sur le banc, barre sur le bassin (coussin de protection). Pousse fort sur les talons, serre les fessiers 2 secondes en haut. Descends lentement sans poser la barre entre les reps. Senti dans les fessiers, jamais dans le bas du dos.<br><a href="https://www.youtube.com/watch?v=SEdqd9_-m8k" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">3</span>Leg Press (pieds hauts)</td><td>3</td><td>15 reps</td><td>75s</td><td>Place les pieds en haut de la plaque, écartés. Cette position cible plus les fessiers et ischio. Descends à 90° sans décoller le bas du dos. Pousse lentement en contrôlant.<br><a href="https://www.youtube.com/watch?v=IZxyjW7MPJQ" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">4</span>Fentes marchées haltères</td><td>3</td><td>12 reps/jambe</td><td>60s</td><td>Grand pas vers l'avant, genou arrière vers le sol sans le toucher. Genou avant dans l'axe du pied, jamais en dedans. Pousse sur le talon avant pour avancer. Dos droit, regard devant.<br><a href="https://www.youtube.com/watch?v=L8fvypPrzzs" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">5</span>Abduction machine assise</td><td>3</td><td>20–25 reps</td><td>45s</td><td>Assis·e bien au fond. Écarte les genoux lentement contre la résistance, reviens avec contrôle. Pas de balancement. Poids modéré, sensation dans le grand fessier latéral.<br><a href="https://www.youtube.com/watch?v=kgvMO7FZJDI" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">6</span>Gainage planche avant</td><td>3</td><td>40–45 s</td><td>30s</td><td>Sur coudes ou mains, corps droit de la tête aux talons. Ventre rentré, fessiers contractés. Respire normalement. Si 45s est facile, passe à 60s la semaine suivante.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="seance-tips">
+    <div class="seance-tip">Hip thrust : c'est l'exercice roi pour les fessiers. Prends le temps de bien le caler — la position fait tout.</div>
+    <div class="seance-tip">Hack squat : commence avec une charge que tu maîtrises parfaitement en S1-S2, puis augmente.</div>
+    <div class="seance-tip">Carnet de charges : note tout. C'est ta boussole de progression.</div>
+    <div class="seance-tip">Étirements après : pigeon au sol 45s/côté, fente basse 30s/côté, étirement ischio debout.</div>
+  </div>
+
+  <!-- SÉANCE B -->
+  <div id="seance-b" class="section-title"><div class="icon">🔙</div><h2>Séance B — <span>Dos & Biceps</span></h2></div>
+
+  <div class="seance-header">
+    <div class="day-badge">Séance B · Mardi · Pull</div>
+    <h3>Dos & Biceps — Force & Galbe</h3>
+    <div class="seance-meta">
+      <div class="meta-item">⏱ 50 min</div>
+      <div class="meta-item">🔥 Intensité modérée</div>
+      <div class="meta-item">🏋️ En salle</div>
+      <div class="meta-item">🎯 Grand dorsal · Rhomboïdes · Biceps</div>
+    </div>
+    <div class="seance-objective">Focus : renforcement du dos (posture, galbe, taille affinée visuellement) et biceps. Un dos fort = une silhouette plus droite et plus fine.</div>
+  </div>
+
+  <div class="exercise-table-wrapper">
+    <table class="exercise-table">
+      <thead><tr><th>Exercice</th><th>Séries</th><th>Reps</th><th>Repos</th><th>Conseils & Vidéo</th></tr></thead>
+      <tbody>
+        <tr class="warmup-row"><td><span class="warmup-num">☀</span>Rameur 5 min</td><td>—</td><td>5 min</td><td>—</td><td>Rythme léger, résistance faible. Active le dos et les bras avant l'effort.</td></tr>
+        <tr class="warmup-row"><td><span class="warmup-num">☀</span>Rotation d'épaules + cercles bras</td><td>—</td><td>1 min</td><td>—</td><td>En avant et en arrière. Mobilise les articulations des épaules.</td></tr>
+        <tr><td><span class="exercise-num">1</span>Tirage horizontal câble (Seated Row)</td><td>4</td><td>12 reps</td><td>75s</td><td>Prise neutre ou pronation. Tire vers le nombril en serrant les omoplates ensemble. Reviens lentement, bras presque tendus. Dos droit, ne te balance pas.<br><a href="https://www.youtube.com/watch?v=UCXxvVItLoM" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">2</span>Tirage vertical (Lat Pulldown)</td><td>4</td><td>12 reps</td><td>75s</td><td>Prise pronation, largeur légèrement supérieure aux épaules. Tire la barre vers le sternum en ouvrant les coudes vers le bas. Penche légèrement le buste en arrière. Remonte lentement en contrôlant.<br><a href="https://www.youtube.com/watch?v=CAwf7n6Luuc" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">3</span>Rowing haltère unilatéral</td><td>3</td><td>12 reps/côté</td><td>60s</td><td>Genou et main sur le banc, dos plat. Tire l'haltère vers la hanche (pas l'épaule). Serre l'omoplate en haut, redescends lentement. Coude proche du corps.<br><a href="https://www.youtube.com/watch?v=roCP6wCXPqo" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">4</span>Face Pull câble (corde)</td><td>3</td><td>15 reps</td><td>60s</td><td>Câble en hauteur, prise corde. Tire vers le visage en écartant les mains et en ouvrant les coudes. Excellent pour les trapèzes moyens et la posture. Va en légère rotation externe en haut.<br><a href="https://www.youtube.com/watch?v=rep-qVOkqgk" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">5</span>Curl biceps barre EZ</td><td>3</td><td>12–15 reps</td><td>60s</td><td>Debout, coudes fixes le long du corps. Monte la barre en contractant les biceps. Descends lentement (2 secondes). Pas de balancement du buste.<br><a href="https://www.youtube.com/watch?v=kwG2ipFRgfo" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">6</span>Curl marteau haltères</td><td>3</td><td>12 reps/côté</td><td>60s</td><td>Poignets neutres (pouces vers le haut). Alterne les bras ou fais les deux ensemble. Travaille le brachial et la longue portion du biceps — donne du volume au bras.<br><a href="https://www.youtube.com/watch?v=zC3nLlEvin4" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="seance-tips">
+    <div class="seance-tip">Seated row + lat pulldown : priorité absolue. Ces deux exercices affinent visuellement la taille en créant le V.</div>
+    <div class="seance-tip">Face pull : pas glamour mais essentiel pour la posture et les épaules. Ne le zappe pas.</div>
+    <div class="seance-tip">Curl : poids raisonnables, technique parfaite. Mieux vaut 8 kg propre que 14 kg en balançant.</div>
+    <div class="seance-tip">Étirements après : étirement grand dorsal (bras tendu accroché à une colonne), pectoraux ouverts, biceps.</div>
+  </div>
+
+  <!-- SÉANCE C -->
+  <div id="seance-c" class="section-title"><div class="icon">💪</div><h2>Séance C — <span>Épaules & Triceps + Core</span></h2></div>
+
+  <div class="seance-header">
+    <div class="day-badge">Séance C · Jeudi · Push + Core</div>
+    <h3>Épaules & Triceps — Galbe & Tonus</h3>
+    <div class="seance-meta">
+      <div class="meta-item">⏱ 50 min</div>
+      <div class="meta-item">🔥 Intensité modérée</div>
+      <div class="meta-item">🏋️ En salle</div>
+      <div class="meta-item">🎯 Épaules · Triceps · Core</div>
+    </div>
+    <div class="seance-objective">Focus : des épaules rondes qui affinent visuellement la taille, des bras toniques, et un core solide. Le résultat : une silhouette plus structurée et plus confiante.</div>
+  </div>
+
+  <div class="exercise-table-wrapper">
+    <table class="exercise-table">
+      <thead><tr><th>Exercice</th><th>Séries</th><th>Reps</th><th>Repos</th><th>Conseils & Vidéo</th></tr></thead>
+      <tbody>
+        <tr class="warmup-row"><td><span class="warmup-num">☀</span>Elliptique léger</td><td>—</td><td>5 min</td><td>—</td><td>Rythme doux. Active tout le haut du corps avant de commencer.</td></tr>
+        <tr class="warmup-row"><td><span class="warmup-num">☀</span>Élévations légères (0,5–1 kg)</td><td>1</td><td>15 reps</td><td>—</td><td>Élévations latérales très légères pour activer les deltoïdes avant l'effort.</td></tr>
+        <tr><td><span class="exercise-num">1</span>Développé militaire haltères (assis)</td><td>4</td><td>12 reps</td><td>75s</td><td>Assis·e sur un banc incliné à 90°. Haltères aux oreilles, coudes à 90°. Pousse vers le haut sans verrouiller les coudes. Redescends lentement. Pas de cambrure du bas du dos.<br><a href="https://www.youtube.com/watch?v=qEwKCR5JCog" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">2</span>Élévations latérales câble ou haltères</td><td>3</td><td>15 reps</td><td>60s</td><td>Bras légèrement fléchis, lève jusqu'à l'horizontale. Pause 1 seconde en haut. Redescends lentement (3 secondes). C'est le tempo lent qui fait le travail, pas la charge.<br><a href="https://www.youtube.com/watch?v=3VcKaXpzqRo" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">3</span>Oiseau (Rear Delt Fly) haltères</td><td>3</td><td>15 reps</td><td>60s</td><td>Penche le buste à 45°, bras légèrement fléchis. Ouvre les bras vers l'extérieur en contractant l'arrière des épaules. Travaille le deltoïde postérieur — essentiel pour la posture et les épaules rondes de face.<br><a href="https://www.youtube.com/watch?v=ttvfGg9d76c" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">4</span>Triceps poulie haute (corde)</td><td>3</td><td>15 reps</td><td>60s</td><td>Câble en hauteur, prise corde. Coudes fixes, tends les bras vers le bas en écartant légèrement la corde en bas. Reviens lentement. Contracte le triceps en bas.<br><a href="https://www.youtube.com/watch?v=2-LAMcpzODU" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">5</span>Triceps overhead haltère (Skull crusher)</td><td>3</td><td>12 reps</td><td>60s</td><td>Allongé·e sur banc, haltère tenu à deux mains au-dessus de la tête. Plie les coudes en abaissant vers le front, tends les bras. Coudes fixes, pas d'écartement.<br><a href="https://www.youtube.com/watch?v=d_KZxkY_0cM" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">6</span>Dead Bug au sol</td><td>3</td><td>10 reps (5/côté)</td><td>45s</td><td>Allongée sur le dos, bras tendus vers le plafond, genoux à 90°. Abaisse bras droit + jambe gauche simultanément sans décoller le bas du dos. Expire à chaque descente. Lent et contrôlé.<br><a href="https://www.youtube.com/watch?v=jbWmbhElf3Q" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">7</span>Gainage latéral</td><td>3</td><td>35s/côté</td><td>30s</td><td>Sur pieds ou genoux. Corps en ligne droite, hanche levée. Rentre le ventre. Respire normalement — ne retiens pas ta respiration.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="seance-tips">
+    <div class="seance-tip">Développé militaire : ne pas trop charger. Les épaules sont une articulation fragile — mieux vaut léger et propre.</div>
+    <div class="seance-tip">Oiseau : exercice souvent négligé mais il donne les épaules rondes de face. Charge très légère.</div>
+    <div class="seance-tip">Dead Bug : paraît simple, est redoutablement efficace. Garde le bas du dos collé au sol à tout moment.</div>
+    <div class="seance-tip">Étirements : étirement triceps (bras plié derrière la tête), épaules croisées devant le buste, enfant (child's pose).</div>
+  </div>
+
+  <!-- SÉANCE D -->
+  <div id="seance-d" class="section-title"><div class="icon">🍑</div><h2>Séance D — <span>Fessiers & Ischio · Volume</span></h2></div>
+
+  <div class="seance-header">
+    <div class="day-badge">Séance D · Samedi · Volume</div>
+    <h3>Fessiers & Ischio-jambiers — Galbe & Profondeur</h3>
+    <div class="seance-meta">
+      <div class="meta-item">⏱ 55 min</div>
+      <div class="meta-item">🔥 Intensité modérée-haute</div>
+      <div class="meta-item">🏋️ En salle</div>
+      <div class="meta-item">🎯 Fessiers · Ischio-jambiers · Adducteurs</div>
+    </div>
+    <div class="seance-objective">Focus : volume et galbe — complémentaire à la séance A. On attaque la chaîne postérieure sous un angle différent pour un résultat plus complet. C'est cette séance qui fait la différence sur la forme des fessiers.</div>
+  </div>
+
+  <div class="exercise-table-wrapper">
+    <table class="exercise-table">
+      <thead><tr><th>Exercice</th><th>Séries</th><th>Reps</th><th>Repos</th><th>Conseils & Vidéo</th></tr></thead>
+      <tbody>
+        <tr class="warmup-row"><td><span class="warmup-num">☀</span>Tapis roulant léger</td><td>—</td><td>5 min</td><td>—</td><td>Marche rapide (5,5–6 km/h), légère inclinaison. Active la chaîne postérieure sans fatiguer.</td></tr>
+        <tr class="warmup-row"><td><span class="warmup-num">☀</span>Pont fessier au sol sans charge</td><td>1</td><td>20 reps</td><td>—</td><td>Activation des fessiers avant l'effort. Contraction en haut 2 secondes.</td></tr>
+        <tr><td><span class="exercise-num">1</span>Romanian Deadlift (RDL) barre</td><td>4</td><td>10–12 reps</td><td>90s</td><td>Debout, barre devant les cuisses (prise pronation). Recule les hanches en abaissant la barre le long des jambes (quasi-tendues). Descends jusqu'à sentir les ischio s'étirer. Remonte en serrant les fessiers. Dos droit à tout moment.<br><a href="https://www.youtube.com/watch?v=jEy_czb3RKA" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">2</span>Leg Curl couché machine</td><td>4</td><td>12–15 reps</td><td>75s</td><td>Allongé·e sur le ventre, coussin sur les talons. Plie les jambes vers les fessiers, reviens lentement (3 secondes). Contracte les ischio en haut. Rentre le ventre pour protéger le bas du dos.<br><a href="https://www.youtube.com/watch?v=1Tq3QdYUuHs" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">3</span>Hip Thrust barre (charge progressive)</td><td>4</td><td>10–12 reps</td><td>90s</td><td>Même exercice que séance A mais avec une intention de charge plus lourde. Cherche à battre ton record de la séance A progressivement semaine après semaine. Toujours : serre les fessiers 2s en haut.<br><a href="https://www.youtube.com/watch?v=SEdqd9_-m8k" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">4</span>Fentes arrière câble (basse poulie)</td><td>3</td><td>12 reps/jambe</td><td>60s</td><td>Accroche la cheville à la poulie basse. Pas en arrière, genou vers le sol. La résistance du câble accentue le travail du fessier à la descente. Garde le buste droit.<br><a href="https://www.youtube.com/watch?v=5PEGMEJEgMo" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">5</span>Adduction machine assise</td><td>3</td><td>20 reps</td><td>45s</td><td>Poids modéré, contrôle total. Ferme les genoux lentement contre la résistance, reviens sans laisser la machine tirer. Travaille l'adducteur et le bas du fessier.</td></tr>
+        <tr><td><span class="exercise-num">6</span>Hyperextension banc 45° (focus fessiers)</td><td>3</td><td>15 reps</td><td>60s</td><td>Pieds tournés légèrement vers l'extérieur. Penche-toi vers le bas, remonte en serrant les fessiers (pas en cambrant le dos). Poids léger sur la poitrine si trop facile.<br><a href="https://www.youtube.com/watch?v=ph3pddpKzzw" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="seance-tips">
+    <div class="seance-tip">RDL : l'exercice qui transforme les ischio et la ligne arrière des jambes. Technique avant charge.</div>
+    <div class="seance-tip">Hip thrust samedi : cherche à progresser vs lundi. Le weekend, tu es plus reposée — profites-en.</div>
+    <div class="seance-tip">Si les jambes sont très courbaturées après lundi : repousse le samedi au lendemain — ton corps le demande.</div>
+    <div class="seance-tip">Étirements : pigeon 45s/côté, étirement ischio debout, chat-vache à 4 pattes 30s.</div>
+  </div>
+
+  <!-- SÉANCE E -->
+  <div id="seance-e" class="section-title"><div class="icon">🤍</div><h2>Séance E — <span>Poitrine + Cardio léger</span></h2></div>
+
+  <div class="seance-header">
+    <div class="day-badge">Séance E · Dimanche · Full léger</div>
+    <h3>Poitrine + Finisher Cardio</h3>
+    <div class="seance-meta">
+      <div class="meta-item">⏱ 50 min</div>
+      <div class="meta-item">🔥 Intensité modérée</div>
+      <div class="meta-item">🏋️ En salle</div>
+      <div class="meta-item">🎯 Pectoraux · Core · Cardio doux</div>
+    </div>
+    <div class="seance-objective">Focus : haut du corps complet + récupération active. Cette séance conclut la semaine — elle ne doit pas être épuisante mais stimulante. Le cardio final optimise la dépense calorique de la semaine.</div>
+  </div>
+
+  <div class="exercise-table-wrapper">
+    <table class="exercise-table">
+      <thead><tr><th>Exercice</th><th>Séries</th><th>Reps</th><th>Repos</th><th>Conseils & Vidéo</th></tr></thead>
+      <tbody>
+        <tr class="warmup-row"><td><span class="warmup-num">☀</span>Elliptique léger</td><td>—</td><td>5 min</td><td>—</td><td>Rythme doux pour activer progressivement.</td></tr>
+        <tr><td><span class="exercise-num">1</span>Développé couché machine (ou haltères)</td><td>3</td><td>12–15 reps</td><td>75s</td><td>Machine de préférence pour la stabilité. Coudes à 90°, descends jusqu'à sentir l'étirement des pectoraux. Remonte sans verrouiller. N'arque pas le dos.<br><a href="https://www.youtube.com/watch?v=xUm0BiZCX-8" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">2</span>Pec Fly machine (Butterfly)</td><td>3</td><td>15 reps</td><td>60s</td><td>Coudes légèrement fléchis, ferme les bras devant la poitrine. Reviens lentement en sentant l'étirement des pectoraux. Poids léger — l'amplitude prime sur la charge.<br><a href="https://www.youtube.com/watch?v=Z57CtFmRMxA" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">3</span>Tirage basse poulie debout</td><td>3</td><td>15 reps</td><td>60s</td><td>Debout face à la poulie basse, prise neutre. Tire les mains vers les hanches en serrant les omoplates. Travaille le bas du grand dorsal et aide visuellement à affiner la taille.<br><a href="https://www.youtube.com/watch?v=PKB2GNPQ0GI" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">4</span>Squat Goblet haltère léger</td><td>3</td><td>15 reps</td><td>60s</td><td>Haltère tenu à deux mains contre la poitrine. Descends profond, coudes entre les genoux. C'est une séance légère — poids modéré, travail de la technique et du ressenti.<br><a href="https://www.youtube.com/watch?v=MxsFDhcyFyE" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">5</span>Bicycle Crunch lent</td><td>3</td><td>20 reps (10/côté)</td><td>45s</td><td>Allongée, mains derrière la nuque (sans tirer). Coude droit vers genou gauche, échange lentement. C'est la lenteur qui active les obliques. Respire à chaque rotation.<br><a href="https://www.youtube.com/watch?v=9FGilxCbdz8" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">6</span>Cardio finisher — Vélo ou Elliptique</td><td>—</td><td>20 min</td><td>—</td><td>Intensité modérée (zone 2 : tu peux parler mais c'est légèrement essoufflant). C'est le meilleur cardio pour la lipolyse sans catabolisme musculaire. Résistance 5–6/10.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="seance-tips">
+    <div class="seance-tip">Cette séance conclut ta semaine — ne l'annule pas, même si tu es fatiguée. C'est celle qui optimise la dépense hebdomadaire.</div>
+    <div class="seance-tip">Cardio zone 2 : 20 min réguliers font plus que 10 min à fond. Installe-toi confortablement et tiens la durée.</div>
+    <div class="seance-tip">Bicycle crunch LENT : vitesse = compensation. Lenteur = travail réel des obliques et de la taille.</div>
+    <div class="seance-tip">Étirements finaux dimanche : prends 5 min. C'est ta récupération pour toute la semaine suivante.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- NUTRITION -->
+  <div id="nutrition" class="section-title"><div class="icon">🥗</div><h2>Ton plan <span>nutrition</span></h2></div>
+
+  <!-- BMR -->
+  <div class="bmr-calc">
+    <div class="bmr-title">Ton métabolisme — Calcul en attente</div>
+    <div class="bmr-row"><span class="bmr-label">Formule utilisée</span><span class="bmr-val">Mifflin-St Jeor (femme)</span></div>
+    <div class="bmr-row"><span class="bmr-label">Données manquantes</span><span class="bmr-val">Poids + Taille à recevoir</span></div>
+    <div class="bmr-row"><span class="bmr-label">Coefficient d'activité (5 séances/sem)</span><span class="bmr-val">× 1,55 à 1,65</span></div>
+    <div class="bmr-row"><span class="bmr-label">Ajustement pré-ménopause</span><span class="bmr-val">−100 à −150 kcal/j vs femme plus jeune</span></div>
+    <div class="bmr-row total"><span class="bmr-label">🎯 Objectif calorique estimé</span><span class="bmr-val">~1 700–1 900 kcal · finalisé dès réception</span></div>
+  </div>
+
+  <div class="important-note">
+    ⚠️ <strong>Pré-ménopause et nutrition :</strong> Les fluctuations hormonales peuvent influencer la rétention d'eau, l'appétit et l'énergie. <strong>Ne juge pas tes résultats semaine par semaine</strong> — regarde sur 4 semaines. Les centimètres et le ressenti comptent plus que la balance.
+  </div>
+
+  <!-- ANALYSE ACTUELLE -->
+  <div class="section-title" style="margin-top:24px;"><div class="icon">🔍</div><h2>Analyse de ton <span>alimentation actuelle</span></h2></div>
+
+  <div class="nutri-card full">
+    <div class="nutri-card-header">✅ Ce qui fonctionne déjà bien</div>
+    <div class="nutri-card-body">
+      <strong>Tu as de bonnes bases :</strong> tu manges des protéines régulièrement (whey, poulet, petits suisses), tu consommes des légumes à chaque repas, tu prends de bons lipides (noix, amandes, beurre de cacahuète), et tu as déjà intégré whey + oméga 3 + magnésium. C'est au-dessus de la moyenne. L'objectif n'est pas de tout changer — c'est d'optimiser les points qui freinent tes résultats.
+    </div>
+  </div>
+
+  <div class="nutrition-grid">
+    <div class="nutri-card">
+      <div class="nutri-card-header">⚠️ Le problème du matin</div>
+      <div class="nutri-card-body">
+        Pancakes, bowlcake sucré ou banana bread = <strong>pic glycémique dès 5h30</strong>. C'est probablement la cause principale de tes coups de mou à 10h et dans l'après-midi. Ton énergie monte vite… puis chute. On corrige ça en priorité.
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">⚡ Pre-workout à optimiser</div>
+      <div class="nutri-card-body">
+        Tu t'entraînes vers 17h. À 16h tu prends chocolat noir + noix — <strong>bons lipides mais pauvre en glucides rapides</strong>. Tu arrives potentiellement à vide à la salle. On ajoute une source de glucides simples pour l'énergie.
+      </div>
+    </div>
+  </div>
+
+  <!-- MACROS -->
+  <div class="section-title" style="margin-top:24px;"><div class="icon">⚖️</div><h2>Tes <span>objectifs macros</span></h2></div>
+
+  <div class="macro-grid">
+    <div class="macro-box">
+      <div class="macro-num">130–140g</div>
+      <div class="macro-label">Protéines</div>
+      <div class="macro-kcal">~560 kcal · ~32%</div>
+    </div>
+    <div class="macro-box">
+      <div class="macro-num">170–190g</div>
+      <div class="macro-label">Glucides</div>
+      <div class="macro-kcal">~720 kcal · ~41%</div>
+    </div>
+    <div class="macro-box">
+      <div class="macro-num">55–65g</div>
+      <div class="macro-label">Lipides</div>
+      <div class="macro-kcal">~540 kcal · ~31%</div>
+    </div>
+  </div>
+
+  <div class="macro-bar">
+    <div class="macro-bar-p" style="width:32%"></div>
+    <div class="macro-bar-g" style="width:41%"></div>
+    <div class="macro-bar-l" style="width:27%"></div>
+  </div>
+  <div class="macro-legend" style="margin-bottom:16px;">
+    <span><span class="macro-dot" style="background:var(--violet);"></span>Protéines 32%</span>
+    <span><span class="macro-dot" style="background:var(--violet-light);"></span>Glucides 41%</span>
+    <span><span class="macro-dot" style="background:var(--violet-pale);border:1px solid var(--border);"></span>Lipides 27%</span>
+  </div>
+
+  <div class="highlight-box">
+    <div class="hl-label">⚖️ Peser cuit ou cru ?</div>
+    <div class="hl-text"><strong>Pèse toujours cuit</strong> — viande, poisson, légumes, féculents. Toutes les quantités de ce programme sont en poids cuit. <strong>Seule exception : flocons d'avoine</strong> — pèse secs (50g secs = ta portion). La whey se pèse en poudre.</div>
+  </div>
+
+  <!-- PLAN ALIMENTAIRE -->
+  <div class="section-title" style="margin-top:28px;"><div class="icon">🍽️</div><h2>Ton plan <span>alimentaire</span></h2></div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>☀️ Petit-déjeuner — 5h30</span><span>OPTIMISÉ</span></div>
+    <div class="repas-body">
+      <ul>
+        <li><strong>Option A</strong> : 50g de flocons d'avoine (secs) + 1 scoop de whey mélangé dans le bol + 15g de beurre de cacahuète + 1 banane ou 100g de fruits rouges</li>
+        <li><strong>Option B</strong> : 2–3 œufs brouillés + 1 tranche de pain complet + 1 fruit (pomme ou kiwi)</li>
+        <li><strong>Option C</strong> : 150g de fromage blanc 0% + 40g de flocons d'avoine + fruits rouges + 1 c.à.c de miel</li>
+      </ul>
+      <p class="repas-macros">Objectif : ~30g protéines · ~45g glucides complexes · stable sur 3–4h · énergie durable sans pic</p>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🍵 Collation matin — 10h</span><span>Inchangée ✅</span></div>
+    <div class="repas-body">
+      <ul>
+        <li>1 shaker de whey isolat <strong>OU</strong> 2 petits suisses + 1 fruit (kiwi, pomme)</li>
+        <li>Thé vert → parfait (antioxydants, léger effet thermogène)</li>
+      </ul>
+      <p class="repas-macros">~20–25g protéines · Maintient la glycémie stable après le petit-déjeuner</p>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🍗 Déjeuner — 12h</span><span>Inchangé ✅</span></div>
+    <div class="repas-body">
+      <ul>
+        <li>120g de poulet (ou poisson, œufs) — <strong>pesé cuit</strong></li>
+        <li>130g de féculents — riz complet, patate douce, quinoa de préférence</li>
+        <li>100g de légumes (au moins) — libre choix</li>
+        <li>1 morceau de fromage de chèvre ou gruyère</li>
+        <li>2 kiwis ou 1 fruit</li>
+      </ul>
+      <p class="repas-macros">Excellent repas équilibré — ne pas changer. ~35g protéines · ~40g glucides · ~12g lipides</p>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>⚡ Pre-workout — 16h (NOUVEAU)</span><span>CLEF pour l'énergie à la salle</span></div>
+    <div class="repas-body">
+      <ul>
+        <li>1 carré de chocolat noir + 1 poignée de noix (garde ce que tu fais déjà) <strong>+</strong></li>
+        <li>1 banane <strong>OU</strong> 1 galette de riz + un peu de beurre de cacahuète</li>
+      </ul>
+      <p class="repas-macros">Ajouter des glucides simples 1h avant l'entraînement = énergie disponible à la salle. Tu ne t'entraîneras plus à vide.</p>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🥤 Post-workout — 18h30-19h</span><span>Inchangé ✅</span></div>
+    <div class="repas-body">
+      <ul>
+        <li>1 shaker de whey isolat — dans les 30 min après la séance</li>
+        <li>Si possible : ajouter 1 fruit ou 1 galette de riz pour les glucides de récupération</li>
+      </ul>
+      <p class="repas-macros">~25g protéines · Relance la synthèse protéique musculaire post-effort</p>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🌙 Dîner — 19h30</span><span>Légèrement allégé</span></div>
+    <div class="repas-body">
+      <ul>
+        <li>120g de protéines (poulet, poisson blanc, dinde, œufs)</li>
+        <li>Légumes à volonté (100–200g) — cuits ou crus</li>
+        <li>Féculents réduits à <strong>80–100g</strong> le soir (tu t'entraînes moins tard, moins besoin d'énergie)</li>
+        <li>1 petite portion de lipides (huile d'olive, avocat, fromage)</li>
+      </ul>
+      <p class="repas-macros">Le soir : protéines + légumes = base. Glucides réduits car activité diminuée après 20h.</p>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top:16px;">
+    <div class="hl-label">💤 Sommeil & énergie — point non négociable</div>
+    <div class="hl-text">Tu dors 6h — c'est insuffisant pour récupérer de 5 séances de salle par semaine. Le manque de sommeil augmente le cortisol, favorise le stockage des graisses abdominales et réduit la synthèse protéique. <strong>Objectif : 7h minimum.</strong> Si c'est impossible en semaine, compense le weekend. C'est aussi important que l'alimentation.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- COMPLÉMENTS -->
+  <div id="complements" class="section-title"><div class="icon">💊</div><h2>Tes <span>compléments</span></h2></div>
+
+  <div class="nutrition-grid">
+    <div class="nutri-card">
+      <div class="nutri-card-header">✅ Whey Isolat (tu l'as déjà)</div>
+      <div class="nutri-card-body"><strong>Quand :</strong> 1 shaker à 10h + 1 shaker post-workout.<br><strong>Dose :</strong> 1 scoop (25–30g de protéines).<br>La whey isolat est bien tolérée et assimilée rapidement. Continue.</div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">✅ Oméga 3 (tu l'as déjà)</div>
+      <div class="nutri-card-body"><strong>Quand :</strong> avec le petit-déjeuner.<br><strong>Pourquoi c'est clef pré-ménopause :</strong> anti-inflammatoire, soutient la santé cardiovasculaire, aide la gestion hormonale. Continue.</div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">✅ Magnésium (tu l'as déjà)</div>
+      <div class="nutri-card-body"><strong>Quand :</strong> le soir avant de dormir (bisglycinate de préférence).<br>Aide la récupération musculaire, réduit le stress et améliore la qualité du sommeil. Crucial pour toi.</div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">💡 À envisager — Vitamine D3</div>
+      <div class="nutri-card-body">Si pas déjà fait : bilan vitamine D chez ton médecin. La carence est très fréquente après 40 ans et impacte la masse musculaire, les os et l'énergie. 1000–2000 UI/j en cas de carence confirmée.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- LISTE DE COURSES -->
+  <div id="courses" class="section-title"><div class="icon">🛒</div><h2>Liste de <span>courses</span></h2></div>
+
+  <div class="aliment-grid">
+    <div class="aliment-card">
+      <div class="aliment-cat">🥩 Protéines</div>
+      <ul>
+        <li>Blancs de poulet</li>
+        <li>Dinde (escalopes)</li>
+        <li>Poisson blanc (cabillaud, tilapia)</li>
+        <li>Œufs (x12)</li>
+        <li>Fromage blanc 0%</li>
+        <li>Petits suisses 0%</li>
+        <li>Fromage de chèvre frais</li>
+      </ul>
+    </div>
+    <div class="aliment-card">
+      <div class="aliment-cat">🌾 Glucides</div>
+      <ul>
+        <li>Flocons d'avoine</li>
+        <li>Riz complet</li>
+        <li>Patate douce</li>
+        <li>Quinoa</li>
+        <li>Pain complet (intégral)</li>
+        <li>Galettes de riz</li>
+        <li>Bananes + kiwis</li>
+      </ul>
+    </div>
+    <div class="aliment-card">
+      <div class="aliment-cat">🥑 Lipides</div>
+      <ul>
+        <li>Beurre de cacahuète (100%)</li>
+        <li>Noix de cajou / amandes</li>
+        <li>Huile d'olive vierge extra</li>
+        <li>Avocat</li>
+        <li>Chocolat noir 70%+</li>
+        <li>Graines de lin (phyto-estrogènes)</li>
+      </ul>
+    </div>
+    <div class="aliment-card">
+      <div class="aliment-cat">🥦 Légumes</div>
+      <ul>
+        <li>Épinards / roquette</li>
+        <li>Brocoli / courgette</li>
+        <li>Haricots verts</li>
+        <li>Poivrons</li>
+        <li>Concombre / tomates</li>
+        <li>Champignons</li>
+      </ul>
+    </div>
+    <div class="aliment-card">
+      <div class="aliment-cat">🍓 Fruits</div>
+      <ul>
+        <li>Kiwis</li>
+        <li>Bananes</li>
+        <li>Fruits rouges (surgelés ok)</li>
+        <li>Pommes</li>
+      </ul>
+    </div>
+    <div class="aliment-card">
+      <div class="aliment-cat">🌿 Pré-ménopause</div>
+      <ul>
+        <li>Graines de lin moulues</li>
+        <li>Soja (lait, tofu, edamame)</li>
+        <li>Thé vert (tu l'as déjà ✅)</li>
+        <li>Curcuma + poivre noir</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SUIVI -->
+  <div id="suivi" class="section-title"><div class="icon">📊</div><h2>Ton <span>suivi</span></h2></div>
+
+  <div class="highlight-box">
+    <div class="hl-label">📋 Comment utiliser ce tableau</div>
+    <div class="hl-text">Chaque semaine, note tes séances réalisées, ta note d'énergie, ton ressenti général et ton niveau de faim. Ces données m'aident à ajuster le programme au fil du mois.</div>
+  </div>
+
+  <table class="ressenti-table">
+    <thead><tr>
+      <th>Semaine</th>
+      <th>Séances ✓</th>
+      <th>Énergie /10</th>
+      <th>Sommeil /10</th>
+      <th>Ressenti</th>
+      <th>Notes</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>Semaine 1</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Semaine 2</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Semaine 3</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Semaine 4</td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box">
+    <div class="hl-label">🎯 Mes règles d'or pour ce mois</div>
+    <div class="hl-text">
+      <strong>1.</strong> Note tes charges à chaque séance — la progression est ta boussole.<br>
+      <strong>2.</strong> Change ton petit-déjeuner dès demain — c'est le changement le plus impactant.<br>
+      <strong>3.</strong> Envoie-moi une photo des 3 poses à la fin du mois 1.<br>
+      <strong>4.</strong> Hydrate-toi : 1,5 à 2L d'eau par jour minimum (le thé vert compte mais compense avec de l'eau).<br>
+      <strong>5.</strong> Dors. 7h si possible. Le corps se transforme la nuit, pas à la salle.
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,var(--violet-deep),var(--violet));border-radius:16px;padding:28px 24px;text-align:center;margin-top:32px;">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#fff;margin-bottom:10px;font-style:italic;">"Tu t'entraînes depuis 10–15 ans. Tu as les bases. Ce mois, on structure — et les résultats suivront."</p>
+    <p style="font-size:12px;color:rgba(255,255,255,0.6);letter-spacing:2px;text-transform:uppercase;">Ornella · Ornella Fit Coaching</p>
+    <p style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:8px;">Une question ? WhatsApp · <a href="https://wa.me/33756834626" style="color:rgba(255,255,255,0.7);">wa.me/33756834626</a></p>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>
