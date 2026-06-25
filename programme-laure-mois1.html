@@ -224,6 +224,50 @@
     .repas-body { padding:10px 12px; font-size:12px; }
     .nutri-card-body { font-size:12px; }
   }
+
+  /* ===== CHRONO ===== */
+  #chrono-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 16px;
+    z-index: 200;
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(74,46,106,.18);
+    padding: 12px 16px;
+    min-width: 120px;
+    text-align: center;
+    transition: opacity .3s;
+  }
+  #chrono-widget.minimized { min-width:unset; padding:8px 10px; border-radius:50px; }
+  #chrono-widget.minimized #chrono-label,
+  #chrono-widget.minimized .chrono-btns { display:none; }
+  #chrono-widget.minimized #chrono-display { margin-bottom:0; font-size:1.1rem; }
+  #chrono-widget.minimized #chrono-mini-row { display:flex !important; }
+  #chrono-mini-row { display:none; align-items:center; gap:6px; justify-content:center; }
+  #chrono-reduce {
+    background:none; border:none; font-size:.85rem; color:var(--text-light);
+    cursor:pointer; padding:0 2px; line-height:1;
+    position:absolute; top:6px; right:8px;
+  }
+  #chrono-label {
+    font-size:.68rem; font-weight:700; text-transform:uppercase;
+    letter-spacing:.1em; color:var(--violet); margin-bottom:4px; display:block;
+  }
+  #chrono-display {
+    font-family:'Cormorant Garamond',serif; font-size:1.7rem; font-weight:700;
+    color:var(--text-dark); display:block; line-height:1; margin-bottom:8px;
+  }
+  .chrono-btns { display:flex; gap:4px; justify-content:center; flex-wrap:wrap; }
+  .chrono-btn {
+    padding:4px 8px; font-size:.72rem; font-weight:700; border:none;
+    border-radius:10px; cursor:pointer; background:var(--violet-pale); color:var(--violet-deep);
+    transition:background .2s;
+  }
+  .chrono-btn:hover { background:var(--violet); color:#fff; }
+  .chrono-btn.start-btn { background:var(--violet); color:#fff; padding:5px 10px; }
+  .chrono-btn.stop-btn { background:var(--violet-deep); color:#fff; }
 </style>
 </head>
 <body>
@@ -867,5 +911,77 @@
   </div>
 
 </div><!-- /page -->
+
+<div id="chrono-widget">
+  <button id="chrono-reduce" onclick="minimizeChrono()" title="Réduire">−</button>
+  <span id="chrono-label">⏱ Repos</span>
+  <span id="chrono-display">00:00</span>
+  <div class="chrono-btns">
+    <button class="chrono-btn" onclick="setTimer(45)">45s</button>
+    <button class="chrono-btn" onclick="setTimer(60)">60s</button>
+    <button class="chrono-btn" onclick="setTimer(75)">75s</button>
+    <button class="chrono-btn" onclick="setTimer(90)">90s</button>
+  </div>
+  <div class="chrono-btns" style="margin-top:6px;">
+    <button class="chrono-btn start-btn" id="chrono-start" onclick="startTimer()">▶ Start</button>
+    <button class="chrono-btn stop-btn" onclick="resetTimer()">■ Reset</button>
+  </div>
+  <div id="chrono-mini-row">
+    <button onclick="expandChrono()" style="background:none;border:none;font-size:.75rem;color:var(--violet);cursor:pointer;font-weight:700;">+</button>
+  </div>
+</div>
+
+<script>
+  var chronoInterval = null;
+  var chronoSeconds = 0;
+  var chronoTarget = 60;
+  var chronoRunning = false;
+
+  function setTimer(sec) {
+    resetTimer();
+    chronoTarget = sec;
+    chronoSeconds = sec;
+    document.getElementById('chrono-display').textContent = formatTime(sec);
+    document.getElementById('chrono-label').textContent = '⏱ Repos — ' + sec + 's';
+  }
+  function formatTime(sec) {
+    var m = Math.floor(sec / 60);
+    var s = sec % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+  }
+  function startTimer() {
+    if (chronoRunning) return;
+    if (chronoSeconds <= 0) chronoSeconds = chronoTarget;
+    chronoRunning = true;
+    document.getElementById('chrono-start').textContent = '⏸ En cours';
+    chronoInterval = setInterval(function() {
+      chronoSeconds--;
+      document.getElementById('chrono-display').textContent = formatTime(chronoSeconds);
+      if (chronoSeconds <= 0) {
+        clearInterval(chronoInterval);
+        chronoRunning = false;
+        document.getElementById('chrono-display').textContent = 'GO !';
+        document.getElementById('chrono-start').textContent = '▶ Start';
+        if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+      }
+    }, 1000);
+  }
+  function resetTimer() {
+    if (chronoInterval) clearInterval(chronoInterval);
+    chronoRunning = false;
+    chronoSeconds = chronoTarget;
+    document.getElementById('chrono-display').textContent = formatTime(chronoTarget);
+    document.getElementById('chrono-start').textContent = '▶ Start';
+    document.getElementById('chrono-label').textContent = '⏱ Repos';
+  }
+  function minimizeChrono() {
+    document.getElementById('chrono-widget').classList.add('minimized');
+  }
+  function expandChrono() {
+    document.getElementById('chrono-widget').classList.remove('minimized');
+  }
+  setTimer(60);
+</script>
+
 </body>
 </html>
