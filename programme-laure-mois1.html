@@ -227,6 +227,9 @@
 
   /* ===== GRILLE 3 MOIS ===== */
   @media (max-width:600px) { .mois-grid { grid-template-columns:1fr !important; } }
+  .bilan-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  @media (max-width:400px) { .bilan-grid-2 { grid-template-columns:1fr; } }
+  .test-table-wrapper { overflow-x:auto; -webkit-overflow-scrolling:touch; }
 
   /* ===== SUIVI INPUTS ===== */
   .suivi-input {
@@ -453,7 +456,7 @@
     </div>
 
     <div style="font-size:12px;font-weight:700;color:var(--violet);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Exercices à tester</div>
-    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+    <div class="test-table-wrapper"><table style="width:100%;border-collapse:collapse;font-size:13px;min-width:420px;">
       <thead>
         <tr style="background:var(--violet);color:#fff;">
           <th style="padding:8px 12px;text-align:left;border-radius:8px 0 0 0;">Exercice</th>
@@ -500,7 +503,7 @@
           <td style="padding:9px 12px;text-align:center;font-weight:600;color:var(--violet-deep);" id="rm80-5">—</td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
 
     <div style="margin-top:14px;padding:12px 14px;background:rgba(107,78,138,.1);border-radius:10px;font-size:12px;color:var(--violet-deep);line-height:1.7;">
       ⚠️ <strong>Important :</strong> on ne teste pas les exercices d'isolation (curl, élévations, leg curl, abduction) — les charges sur ces mouvements se règlent au ressenti dès la première séance. On teste uniquement les exercices polyarticulaires où la charge conditionne les résultats.
@@ -687,8 +690,8 @@
         <tr class="warmup-row"><td><span class="warmup-num">☀</span>Elliptique léger</td><td>—</td><td>5 min</td><td>—</td><td>Rythme doux pour activer progressivement.</td></tr>
         <tr><td><span class="exercise-num">1</span>Crunch machine abdos</td><td>3</td><td>15–20 reps</td><td>45s</td><td>Assis·e sur la machine, mains sur les poignées. Contracte les abdos pour amener les coudes vers les genoux. Reviens lentement, sans relâcher complètement la tension. Expire à la contraction.<br><span style="font-size:.78rem;color:var(--violet);">💬 Une question sur cet exercice ? Demande-moi !</span></td></tr>
         <tr><td><span class="exercise-num">2</span>Relevé de jambes suspendu (ou à plat)</td><td>3</td><td>12–15 reps</td><td>60s</td><td>Suspendu·e aux barres ou allongée au sol. Jambes tendues (ou fléchies si débutant), monte les pieds jusqu'à 90°. Descends lentement sans creuser le dos. Travaille le bas du ventre — la zone la plus difficile à muscler.<br><span style="font-size:.78rem;color:var(--violet);">💬 Une question sur cet exercice ? Demande-moi !</span></td></tr>
-        <tr><td><span class="exercise-num">3</span>Tirage basse poulie debout</td><td>3</td><td>15 reps</td><td>60s</td><td>Debout face à la poulie basse, prise neutre. Tire les mains vers les hanches en serrant les omoplates. Travaille le bas du grand dorsal et aide visuellement à affiner la taille.<br><a href="https://youtube.com/shorts/_34U7MNcCo8?si=9dywjCkOSsr87ZQ7" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
-        <tr><td><span class="exercise-num">4</span>Squat Goblet haltère léger</td><td>3</td><td>15 reps</td><td>60s</td><td>Haltère tenu à deux mains contre la poitrine. Descends profond, coudes entre les genoux. C'est une séance légère — poids modéré, travail de la technique et du ressenti.<br><a href="https://www.youtube.com/watch?v=MxsFDhcyFyE" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">3</span>Gainage planche dynamique (tap épaules)</td><td>3</td><td>20 reps (10/côté)</td><td>45s</td><td>En position de planche sur les mains. Touche l'épaule opposée alternativement. Hanches stables, sans rotation du bassin. Travaille le core profond et les obliques en stabilisation.</td></tr>
+        <tr><td><span class="exercise-num">4</span>Russian Twist lent (poids léger)</td><td>3</td><td>20 reps (10/côté)</td><td>45s</td><td>Assis·e, pieds décollés ou au sol. Tiens un haltère léger (2–4 kg). Tourne le buste à droite puis à gauche lentement. Expire à chaque rotation. Excellent pour affiner la taille et travailler les obliques.</td></tr>
         <tr><td><span class="exercise-num">5</span>Bicycle Crunch lent</td><td>3</td><td>20 reps (10/côté)</td><td>45s</td><td>Allongée, mains derrière la nuque (sans tirer). Coude droit vers genou gauche, échange lentement. C'est la lenteur qui active les obliques. Respire à chaque rotation.<br><a href="https://www.youtube.com/watch?v=9FGilxCbdz8" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
         <tr><td><span class="exercise-num">6</span>Cardio finisher — Vélo ou Elliptique</td><td>—</td><td>20 min</td><td>—</td><td>Intensité modérée (zone 2 : tu peux parler mais c'est légèrement essoufflant). C'est le meilleur cardio pour la lipolyse sans catabolisme musculaire. Résistance 5–6/10.</td></tr>
       </tbody>
@@ -1124,19 +1127,21 @@
     <div style="display:flex;flex-direction:column;gap:10px;">
       <div>
         <label style="font-size:11px;font-weight:700;color:var(--violet-deep);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:4px;">📏 Nouvelles mensurations</label>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+        <div class="bilan-grid-2">
           <input class="suivi-input" id="bilan-taille" type="text" placeholder="Tour de taille (cm)" oninput="saveBilan()">
           <input class="suivi-input" id="bilan-hanches" type="text" placeholder="Hanches (cm)" oninput="saveBilan()">
           <input class="suivi-input" id="bilan-fesses" type="text" placeholder="Fesses (cm)" oninput="saveBilan()">
           <input class="suivi-input" id="bilan-cuisses" type="text" placeholder="Cuisses (cm)" oninput="saveBilan()">
-          <input class="suivi-input" id="bilan-poids" type="text" placeholder="Poids (kg)" oninput="saveBilan()">
+          <input class="suivi-input" id="bilan-poitrine" type="text" placeholder="Poitrine (cm)" oninput="saveBilan()">
+          <input class="suivi-input" id="bilan-dos" type="text" placeholder="Dos (cm)" oninput="saveBilan()">
           <input class="suivi-input" id="bilan-bras" type="text" placeholder="Bras (cm)" oninput="saveBilan()">
+          <input class="suivi-input" id="bilan-poids" type="text" placeholder="Poids (kg)" oninput="saveBilan()">
         </div>
       </div>
 
       <div>
         <label style="font-size:11px;font-weight:700;color:var(--violet-deep);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:4px;">🏋️ Charges atteintes (fin de mois)</label>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+        <div class="bilan-grid-2">
           <input class="suivi-input" id="bilan-hacksquat" type="text" placeholder="Hack Squat (kg)" oninput="saveBilan()">
           <input class="suivi-input" id="bilan-hipthrust" type="text" placeholder="Hip Thrust (kg)" oninput="saveBilan()">
           <input class="suivi-input" id="bilan-legpress" type="text" placeholder="Leg Press (kg)" oninput="saveBilan()">
@@ -1314,7 +1319,7 @@
   loadSuivi();
 
   // ===== BILAN MOIS 1 =====
-  var bilanIds = ['bilan-taille','bilan-hanches','bilan-fesses','bilan-cuisses','bilan-poids','bilan-bras','bilan-hacksquat','bilan-hipthrust','bilan-legpress','bilan-rdl','bilan-ressenti','bilan-nutrition'];
+  var bilanIds = ['bilan-taille','bilan-hanches','bilan-fesses','bilan-cuisses','bilan-poitrine','bilan-dos','bilan-bras','bilan-poids','bilan-hacksquat','bilan-hipthrust','bilan-legpress','bilan-rdl','bilan-ressenti','bilan-nutrition'];
 
   function saveBilan() {
     bilanIds.forEach(function(id) {
@@ -1337,6 +1342,8 @@
     var fesses = document.getElementById('bilan-fesses').value;
     var cuisses = document.getElementById('bilan-cuisses').value;
     var poids = document.getElementById('bilan-poids').value;
+    var poitrine = document.getElementById('bilan-poitrine').value;
+    var dos = document.getElementById('bilan-dos').value;
     var bras = document.getElementById('bilan-bras').value;
     var hackSq = document.getElementById('bilan-hacksquat').value;
     var hipTh = document.getElementById('bilan-hipthrust').value;
@@ -1351,8 +1358,10 @@
     if (hanches) msg += '• Hanches : ' + hanches + ' cm\n';
     if (fesses) msg += '• Fesses : ' + fesses + ' cm\n';
     if (cuisses) msg += '• Cuisses : ' + cuisses + ' cm\n';
-    if (poids) msg += '• Poids : ' + poids + ' kg\n';
+    if (poitrine) msg += '• Poitrine : ' + poitrine + ' cm\n';
+    if (dos) msg += '• Dos : ' + dos + ' cm\n';
     if (bras) msg += '• Bras : ' + bras + ' cm\n';
+    if (poids) msg += '• Poids : ' + poids + ' kg\n';
     msg += '\n🏋️ CHARGES ATTEINTES :\n';
     if (hackSq) msg += '• Hack Squat : ' + hackSq + ' kg\n';
     if (hipTh) msg += '• Hip Thrust : ' + hipTh + ' kg\n';
