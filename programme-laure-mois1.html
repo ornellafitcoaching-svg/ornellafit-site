@@ -225,6 +225,9 @@
     .nutri-card-body { font-size:12px; }
   }
 
+  /* ===== GRILLE 3 MOIS ===== */
+  @media (max-width:600px) { .mois-grid { grid-template-columns:1fr !important; } }
+
   /* ===== SUIVI INPUTS ===== */
   .suivi-input {
     width:100%; border:1.5px solid var(--border); border-radius:8px;
@@ -1108,7 +1111,85 @@
     </div>
   </div>
 
-  <div style="background:linear-gradient(135deg,var(--violet-deep),var(--violet));border-radius:16px;padding:28px 24px;text-align:center;margin-top:32px;">
+  <!-- LA SUITE -->
+  <div class="divider"></div>
+  <div class="section-title"><div class="icon">🗓️</div><h2>Ton <span>engagement 3 mois</span></h2></div>
+
+  <!-- BILAN MOIS 1 -->
+  <div style="background:var(--white);border:1.5px solid var(--violet);border-radius:16px;padding:22px 20px;margin-bottom:24px;">
+    <div style="font-size:12px;font-weight:700;color:var(--violet);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;">📬 Bilan Mois 1 — Ce que tu m'envoies le 30e jour</div>
+
+    <div style="font-size:12px;color:var(--text-mid);margin-bottom:14px;line-height:1.6;">Remplis ce formulaire à la fin du mois et envoie-le moi directement. Je prépare ton programme Mois 2 dans la foulée.</div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div>
+        <label style="font-size:11px;font-weight:700;color:var(--violet-deep);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:4px;">📏 Nouvelles mensurations</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+          <input class="suivi-input" id="bilan-taille" type="text" placeholder="Tour de taille (cm)" oninput="saveBilan()">
+          <input class="suivi-input" id="bilan-hanches" type="text" placeholder="Hanches (cm)" oninput="saveBilan()">
+          <input class="suivi-input" id="bilan-fesses" type="text" placeholder="Fesses (cm)" oninput="saveBilan()">
+          <input class="suivi-input" id="bilan-cuisses" type="text" placeholder="Cuisses (cm)" oninput="saveBilan()">
+          <input class="suivi-input" id="bilan-poids" type="text" placeholder="Poids (kg)" oninput="saveBilan()">
+          <input class="suivi-input" id="bilan-bras" type="text" placeholder="Bras (cm)" oninput="saveBilan()">
+        </div>
+      </div>
+
+      <div>
+        <label style="font-size:11px;font-weight:700;color:var(--violet-deep);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:4px;">🏋️ Charges atteintes (fin de mois)</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+          <input class="suivi-input" id="bilan-hacksquat" type="text" placeholder="Hack Squat (kg)" oninput="saveBilan()">
+          <input class="suivi-input" id="bilan-hipthrust" type="text" placeholder="Hip Thrust (kg)" oninput="saveBilan()">
+          <input class="suivi-input" id="bilan-legpress" type="text" placeholder="Leg Press (kg)" oninput="saveBilan()">
+          <input class="suivi-input" id="bilan-rdl" type="text" placeholder="RDL (kg)" oninput="saveBilan()">
+        </div>
+      </div>
+
+      <div>
+        <label style="font-size:11px;font-weight:700;color:var(--violet-deep);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:4px;">💬 Ressenti global du mois</label>
+        <textarea class="suivi-input" id="bilan-ressenti" rows="3" placeholder="Comment tu as vécu ce mois ? Ce qui a été difficile, ce qui t'a surprise, ce que tu veux améliorer…" oninput="saveBilan()" style="resize:none;width:100%;"></textarea>
+      </div>
+
+      <div>
+        <label style="font-size:11px;font-weight:700;color:var(--violet-deep);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:4px;">🍽️ Nutrition — difficultés rencontrées</label>
+        <textarea class="suivi-input" id="bilan-nutrition" rows="2" placeholder="Ex : j'ai eu du mal avec le petit-déjeuner, j'ai sauté des repas…" oninput="saveBilan()" style="resize:none;width:100%;"></textarea>
+      </div>
+    </div>
+
+    <button onclick="envoyerBilan()" style="margin-top:14px;width:100%;padding:13px;background:linear-gradient(135deg,#25D366,#1DA851);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Jost',sans-serif;">
+      📲 Envoyer mon bilan Mois 1 à Ornella
+    </button>
+    <p style="font-size:11px;color:var(--text-light);text-align:center;margin-top:8px;">N'oublie pas de joindre tes 3 photos (face · profil · dos) dans le message WhatsApp</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;" class="mois-grid">
+    <div style="background:linear-gradient(135deg,var(--violet-deep),var(--violet));border-radius:14px;padding:18px 14px;text-align:center;position:relative;">
+      <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#FFD700;color:#1E1428;font-size:10px;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:1px;">TU ES ICI</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#fff;margin:8px 0 4px;">Mois 1</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.8);line-height:1.6;">Prise de repères<br>Calibration des charges<br>Correction alimentation<br>Mise en place des habitudes</div>
+    </div>
+    <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:18px 14px;text-align:center;opacity:.85;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--violet-deep);margin:4px 0;">Mois 2</div>
+      <div style="font-size:11px;color:var(--text-mid);line-height:1.6;">Progression des charges<br>Intensité augmentée<br>Ajustements nutrition<br>Premiers résultats visibles</div>
+      <div style="margin-top:10px;font-size:10px;font-weight:700;color:var(--violet);text-transform:uppercase;letter-spacing:1px;">Programme personnalisé</div>
+    </div>
+    <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:18px 14px;text-align:center;opacity:.7;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--violet-deep);margin:4px 0;">Mois 3</div>
+      <div style="font-size:11px;color:var(--text-mid);line-height:1.6;">Phase de transformation<br>Charges maximisées<br>Nutrition affinée<br>Résultats concrets & durables</div>
+      <div style="margin-top:10px;font-size:10px;font-weight:700;color:var(--violet);text-transform:uppercase;letter-spacing:1px;">Programme personnalisé</div>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,rgba(107,78,138,.1),rgba(107,78,138,.05));border-radius:14px;padding:18px 20px;border:1px solid var(--border);margin-bottom:20px;">
+    <div style="font-size:12px;font-weight:700;color:var(--violet);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;">📋 Ce qui t'attend en fin de Mois 1</div>
+    <div style="font-size:13px;color:var(--text-dark);line-height:1.9;">
+      ✔ Tu m'envoies tes <strong>nouvelles mensurations</strong> (tableau de suivi)<br>
+      ✔ Tu m'envoies <strong>3 photos</strong> (face, profil, dos) dans les mêmes conditions qu'au départ<br>
+      ✔ Tu m'envoies ton <strong>bilan suivi</strong> (énergie, séances, ressenti sur 4 semaines)<br>
+      ✔ On fait un <strong>point WhatsApp ou appel</strong> — on ajuste et je prépare le Mois 2
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,var(--violet-deep),var(--violet));border-radius:16px;padding:28px 24px;text-align:center;margin-top:8px;">
     <p style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#fff;margin-bottom:10px;font-style:italic;">"Tu t'entraînes depuis 10–15 ans. Tu as les bases. Ce mois, on structure — et les résultats suivront."</p>
     <p style="font-size:12px;color:rgba(255,255,255,0.6);letter-spacing:2px;text-transform:uppercase;">Ornella · Ornella Fit Coaching</p>
     <p style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:8px;">Une question ? WhatsApp · <a href="https://wa.me/33756834626" style="color:rgba(255,255,255,0.7);">wa.me/33756834626</a></p>
@@ -1231,6 +1312,60 @@
   }
 
   loadSuivi();
+
+  // ===== BILAN MOIS 1 =====
+  var bilanIds = ['bilan-taille','bilan-hanches','bilan-fesses','bilan-cuisses','bilan-poids','bilan-bras','bilan-hacksquat','bilan-hipthrust','bilan-legpress','bilan-rdl','bilan-ressenti','bilan-nutrition'];
+
+  function saveBilan() {
+    bilanIds.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) localStorage.setItem('laure_' + id, el.value);
+    });
+  }
+
+  function loadBilan() {
+    bilanIds.forEach(function(id) {
+      var el = document.getElementById(id);
+      var val = localStorage.getItem('laure_' + id);
+      if (el && val) el.value = val;
+    });
+  }
+
+  function envoyerBilan() {
+    var taille = document.getElementById('bilan-taille').value;
+    var hanches = document.getElementById('bilan-hanches').value;
+    var fesses = document.getElementById('bilan-fesses').value;
+    var cuisses = document.getElementById('bilan-cuisses').value;
+    var poids = document.getElementById('bilan-poids').value;
+    var bras = document.getElementById('bilan-bras').value;
+    var hackSq = document.getElementById('bilan-hacksquat').value;
+    var hipTh = document.getElementById('bilan-hipthrust').value;
+    var legPr = document.getElementById('bilan-legpress').value;
+    var rdl = document.getElementById('bilan-rdl').value;
+    var ressenti = document.getElementById('bilan-ressenti').value;
+    var nutrition = document.getElementById('bilan-nutrition').value;
+
+    var msg = '📬 BILAN MOIS 1 — Laure\n\n';
+    msg += '📏 MENSURATIONS :\n';
+    if (taille) msg += '• Taille : ' + taille + ' cm\n';
+    if (hanches) msg += '• Hanches : ' + hanches + ' cm\n';
+    if (fesses) msg += '• Fesses : ' + fesses + ' cm\n';
+    if (cuisses) msg += '• Cuisses : ' + cuisses + ' cm\n';
+    if (poids) msg += '• Poids : ' + poids + ' kg\n';
+    if (bras) msg += '• Bras : ' + bras + ' cm\n';
+    msg += '\n🏋️ CHARGES ATTEINTES :\n';
+    if (hackSq) msg += '• Hack Squat : ' + hackSq + ' kg\n';
+    if (hipTh) msg += '• Hip Thrust : ' + hipTh + ' kg\n';
+    if (legPr) msg += '• Leg Press : ' + legPr + ' kg\n';
+    if (rdl) msg += '• RDL : ' + rdl + ' kg\n';
+    if (ressenti) msg += '\n💬 RESSENTI : ' + ressenti;
+    if (nutrition) msg += '\n\n🍽️ NUTRITION : ' + nutrition;
+    msg += '\n\n(Photos jointes dans le message suivant)';
+
+    window.open('https://wa.me/33756834626?text=' + encodeURIComponent(msg), '_blank');
+  }
+
+  loadBilan();
 
   // ===== TEST DE CHARGE =====
   var exoNames = ['Hack Squat machine','Hip Thrust barre','Leg Press pieds hauts','RDL haltères','Seated Row','Développé militaire'];
