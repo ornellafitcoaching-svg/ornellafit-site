@@ -153,6 +153,41 @@ a{color:inherit;text-decoration:none;}
 .bilan-section h3{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:#fff;margin-bottom:10px;}
 .bilan-section p{color:rgba(255,255,255,.8);font-size:.9rem;margin-bottom:20px;}
 
+/* FAQ */
+.faq-item{background:#fff;border:1.5px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:10px;}
+.faq-q{padding:16px 20px;cursor:pointer;font-weight:600;font-size:.9rem;color:var(--text-dark);display:flex;justify-content:space-between;align-items:center;user-select:none;}
+.faq-q:hover{background:var(--violet-ultra);}
+.faq-q::after{content:'›';font-size:1.2rem;color:var(--violet-light);transition:transform .3s;flex-shrink:0;}
+.faq-item.open .faq-q::after{transform:rotate(90deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s;}
+.faq-item.open .faq-a{max-height:500px;padding:0 20px 18px;}
+.faq-a p{font-size:.85rem;color:#3a4a3a;line-height:1.8;}
+.faq-a strong{color:var(--violet-deep);}
+
+/* MACROS TABLE */
+.macro-table{width:100%;border-collapse:collapse;border-radius:14px;overflow:hidden;margin:16px 0;}
+.macro-table th{background:var(--violet-deep);color:#fff;padding:10px 14px;font-size:.78rem;font-weight:700;text-align:left;letter-spacing:.04em;}
+.macro-table td{padding:10px 14px;font-size:.82rem;border-bottom:1px solid var(--violet-pale);color:#2a3a2a;}
+.macro-table tr:last-child td{border-bottom:none;}
+.macro-table tr:nth-child(even) td{background:var(--violet-ultra);}
+
+/* REPAS SEMAINE */
+.repas-day{background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:10px;}
+.repas-day-title{font-weight:700;font-size:.82rem;color:var(--violet-deep);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;}
+.repas-day p{font-size:.82rem;color:#3a4a3a;line-height:1.6;}
+.repas-day p strong{color:var(--text-dark);}
+
+/* ALERTE CARD */
+.alerte-card{background:linear-gradient(135deg,#FFF0F0,#FFEBE8);border:1.5px solid rgba(201,99,88,.25);border-radius:16px;padding:18px 20px;margin:16px 0;}
+.alerte-card h4{color:#C96358;font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-bottom:8px;}
+.alerte-card ul{padding-left:16px;margin-top:4px;}
+.alerte-card li{font-size:.83rem;color:#4a2020;line-height:1.7;}
+
+/* EXPERT BOX */
+.expert-box{background:linear-gradient(135deg,var(--violet-ultra),#EDF8EF);border:1.5px solid var(--border);border-radius:14px;padding:16px 18px;margin:14px 0;}
+.expert-box h4{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--violet-deep);margin-bottom:6px;}
+.expert-box p{font-size:.83rem;color:#2a3a2a;line-height:1.7;}
+
 /* MOBILE */
 @media(max-width:600px){
   .hero{padding:40px 16px 44px;}
@@ -192,9 +227,50 @@ a{color:inherit;text-decoration:none;}
 <div class="section section-white">
   <div class="wrap">
     <div class="intro-card">
-      <p>J'ai vécu le post-partum moi aussi. Ce ventre qui ne ressemble plus au tien, cette fatigue, cette impression de ne plus habiter ton corps. Et cette pression de "reprendre le sport" alors que personne ne t'explique <strong>comment</strong> — sans te blesser, sans aggraver la diastase, sans t'épuiser.</p>
-      <p style="margin-top:12px;">Ce programme, je l'ai construit pour toutes les mamans qui méritent une reprise <strong>progressive, intelligente et efficace</strong>. Pas de crunchs agressifs. Pas de sport à tout prix. Un vrai travail de fond — périnée, gainage hypopressif, renforcement progressif — pour que tu retrouves un ventre plat ET fonctionnel.</p>
-      <div class="intro-sign">Ornella 💜</div>
+      <p>Avant ma grossesse, j'étais athlète de compétition fitness. Le sport, c'était ma vie — ma façon de me sentir forte, dans mon corps, dans ma tête.</p>
+      <p style="margin-top:10px;">Et puis tout s'est arrêté d'un coup. Dès le début, les <strong>vomissements incessants</strong> m'ont clouée au lit. Puis les contractions sont arrivées, tôt. Beaucoup trop tôt. J'ai été <strong>hospitalisée pour menace d'accouchement prématuré</strong> — alitée, immobile, le ventre serré d'angoisse à chaque contraction. Plus de sport. Plus de mouvement. Juste attendre, préserver, tenir.</p>
+      <p style="margin-top:10px;">Quand mon bébé est né et que j'ai regardé mon ventre… je ne me reconnaissais plus. Ce corps que j'avais travaillé pendant des années — effacé. Et la douleur de savoir que <strong>reprendre comme avant n'était pas possible</strong>. Pas tout de suite. Peut-être jamais de la même façon.</p>
+      <p style="margin-top:10px;"><strong>J'ai récupéré.</strong> Pas en me précipitant. Pas en forçant. En recommençant depuis zéro, avec les bons outils, au bon rythme. Et c'est exactement ce que ce programme t'apporte — parce que je l'ai vécu de l'intérieur.</p>
+      <p style="margin-top:10px;">Si toi aussi tu as vécu une grossesse difficile, un alitement, une césarienne, un corps que tu ne reconnais plus — <strong>ce programme est fait pour toi.</strong></p>
+      <div class="intro-sign">Ornella 🌿</div>
+    </div>
+  </div>
+</div>
+
+<!-- AVANT DE COMMENCER — ÉCHAUFFEMENT -->
+<div class="section section-white">
+  <div class="wrap">
+    <span class="tag">Avant chaque séance</span>
+    <h2 class="section-title">Échauffement obligatoire — 5 min</h2>
+    <p class="section-sub">Ne saute jamais l'échauffement post-partum. Ton corps sort d'une période hormonale intense — les articulations sont encore souples (relaxine), la fatigue est réelle. Ces 5 min protègent ton dos, ton périnée et tes genoux.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" class="nutri-grid">
+      <div class="expert-box">
+        <h4>🔄 Mobilité articulaire (2 min)</h4>
+        <p>• Cercles de cheville : 10× chaque pied<br>• Rotations de hanches : 10× chaque sens<br>• Rotations d'épaules : 10× avant + arrière<br>• Rotations de nuque douces : 5× chaque sens</p>
+      </div>
+      <div class="expert-box">
+        <h4>🌬 Activation périnée (1 min)</h4>
+        <p>3 contractions longues (10 sec maintien) avant chaque séance. C'est ton signal corps–périnée. Ne commence pas sans ça.</p>
+      </div>
+      <div class="expert-box">
+        <h4>🚶 Cardio doux (2 min)</h4>
+        <p>Marche sur place, genoux qui montent doucement. Ou 2 min de marche rapide en intérieur. Monte la température corporelle progressivement.</p>
+      </div>
+      <div class="expert-box">
+        <h4>🧘 Retour au calme (5 min après)</h4>
+        <p>• Étirement ischio allongée : 30 sec × 2<br>• Fente basse genou au sol : 30 sec × 2<br>• Respiration diaphragmatique : 10 respirations profondes</p>
+      </div>
+    </div>
+    <div class="alerte-card">
+      <h4>🛑 Stop immédiatement si tu ressens :</h4>
+      <ul>
+        <li>Une douleur dans le bas-ventre ou le périnée pendant l'effort</li>
+        <li>Une pression "vers le bas" comme si quelque chose allait tomber</li>
+        <li>Des fuites urinaires à l'effort (sauts, éternuements, course)</li>
+        <li>Un "pointage" du ventre vers le haut pendant le gainage</li>
+        <li>Des douleurs lombaires ou au coccyx non habituelles</li>
+      </ul>
+      <p style="margin-top:8px;font-size:.8rem;color:#6a2020;">→ Si tu coches une de ces cases : consulte une <strong>kinésithérapeute spécialisée périnée</strong> avant de continuer.</p>
     </div>
   </div>
 </div>
@@ -812,63 +888,239 @@ a{color:inherit;text-decoration:none;}
     <h2 class="section-title">Manger pour récupérer et affiner</h2>
     <p class="section-sub">Pas de régime strict. Pas de restriction. Un rééquilibrage intelligent qui respecte ton corps — et l'allaitement si c'est ton cas.</p>
 
-    <div class="diastasis-card" style="background:linear-gradient(135deg,#F0EDFA,#EDE0F5);border-color:rgba(107,78,138,.2);">
-      <h4 style="color:var(--violet-deep);">🤱 Tu allaites ? Lis ça en premier.</h4>
-      <p>L'allaitement brûle 300 à 500 kcal par jour. <strong>Ne te mets pas en déficit calorique agressif</strong> — ton corps a besoin de carburant pour produire le lait. Vise un léger déficit de 200-300 kcal maximum. La priorité : qualité des aliments, pas quantité.</p>
+    <div class="diastasis-card" style="background:linear-gradient(135deg,#EBF5EC,#D8EED9);border-color:rgba(74,114,82,.2);">
+      <h4 style="color:#2E4A34;">🤱 Tu allaites ? Lis ça en premier.</h4>
+      <p>L'allaitement brûle <strong>300 à 500 kcal par jour</strong> — c'est l'équivalent d'une heure de sport. <strong>Ne te mets jamais en déficit calorique agressif</strong> pendant l'allaitement : ton corps privilégiera la production de lait au détriment de ta récupération. Vise un léger déficit de <strong>200-300 kcal maximum</strong>. La priorité absolue : la qualité nutritionnelle, pas les calories.</p>
     </div>
+
+    <!-- MACROS OBJECTIFS -->
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--text-dark);margin:24px 0 10px;">Tes objectifs nutritionnels par jour</h3>
+    <table class="macro-table">
+      <thead><tr><th>Nutriment</th><th>Sans allaitement</th><th>Avec allaitement</th><th>Pourquoi</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Protéines</strong></td><td>1,6–1,8 g/kg</td><td>1,8–2 g/kg</td><td>Répare les tissus, diastase, muscle</td></tr>
+        <tr><td><strong>Glucides</strong></td><td>150–200 g</td><td>200–250 g</td><td>Énergie, production de lait, humeur</td></tr>
+        <tr><td><strong>Lipides</strong></td><td>50–65 g</td><td>65–80 g</td><td>Hormones, absorption vitamines, cerveau bébé</td></tr>
+        <tr><td><strong>Fibres</strong></td><td>25–30 g</td><td>30–35 g</td><td>Transit, ballonnements, satiété</td></tr>
+        <tr><td><strong>Eau</strong></td><td>2,0–2,5 L</td><td>2,8–3,2 L</td><td>Production lait, circulation, ventre plat</td></tr>
+      </tbody>
+    </table>
 
     <div class="nutri-grid">
       <div class="nutri-card">
         <h4>✅ Les alliés du ventre plat</h4>
         <ul>
-          <li>Légumes verts à chaque repas (fibres douces)</li>
-          <li>Protéines à chaque repas (œufs, poulet, poisson)</li>
-          <li>Eau : 2L minimum (3L si allaitement)</li>
-          <li>Flocons d'avoine le matin (énergie stable)</li>
-          <li>Yaourt nature (probiotiques → moins de ballonnements)</li>
+          <li>Légumes verts à chaque repas (fibres solubles)</li>
+          <li>Protéines à chaque repas — 30 g minimum</li>
+          <li>Eau : 2L+ (3L si allaitement) — dès le réveil</li>
+          <li>Flocons d'avoine le matin (index glycémique bas)</li>
+          <li>Yaourt nature avec probiotiques vivants</li>
           <li>Beurre d'amande bio sans sucre ajouté</li>
+          <li>Gingembre frais (anti-inflammatoire + digestion)</li>
+          <li>Curcuma + poivre noir (puissant anti-inflam)</li>
         </ul>
       </div>
       <div class="nutri-card">
         <h4>❌ À limiter pour le ventre</h4>
         <ul>
           <li>Sodas et jus de fruits (sucres rapides + gaz)</li>
-          <li>Gluten en excès (ballonnements)</li>
-          <li>Produits ultra-transformés</li>
-          <li>Sel en excès (rétention d'eau)</li>
-          <li>Alcool (vide calorique + anti-récupération)</li>
-          <li>Choux, légumineuses crues si ventre sensible</li>
+          <li>Gluten raffiné en excès (ballonnements)</li>
+          <li>Produits ultra-transformés (additifs inflam.)</li>
+          <li>Sel en excès (rétention d'eau visible)</li>
+          <li>Alcool — à éviter totalement si allaitement</li>
+          <li>Choux crus, légumineuses mal cuites si ventre sensible</li>
+          <li>Édulcorants artificiels (perturbent la flore)</li>
+          <li>Sucres cachés : sauces tomates, céréales du commerce</li>
         </ul>
       </div>
       <div class="nutri-card">
-        <h4>🐟 Oméga-3 — priorité absolue</h4>
+        <h4>🐟 Oméga-3 — priorité absolue post-partum</h4>
         <ul>
-          <li>Sardines en boîte (2-3× / semaine)</li>
-          <li>Maquereau (excellente source, peu cher)</li>
-          <li>Saumon sauvage (1-2× / semaine)</li>
-          <li>Graines de lin moulues (dans le yaourt)</li>
-          <li>Huile de lin (1 c. à soupe / jour, froide)</li>
-          <li>Noix de Grenoble (poignée quotidienne)</li>
+          <li>Sardines en boîte à l'huile d'olive (3× / sem)</li>
+          <li>Maquereau fumé ou en boîte (2× / sem)</li>
+          <li>Saumon sauvage (pas élevage si possible)</li>
+          <li>Graines de lin moulues — 1 c. à soupe/jour dans le yaourt</li>
+          <li>Huile de lin : 1 c. à soupe/jour, toujours froide</li>
+          <li>Noix de Grenoble : poignée quotidienne</li>
+          <li>Graines de chia : 2 c. à soupe dans le smoothie</li>
         </ul>
       </div>
       <div class="nutri-card">
-        <h4>💊 Compléments utiles post-partum</h4>
+        <h4>💊 Compléments recommandés post-partum</h4>
         <ul>
-          <li>Collagène marin (aide la diastase)</li>
-          <li>Magnésium bisglycinate (fatigue + sommeil)</li>
-          <li>Vitamine D3 (immunité + moral)</li>
-          <li>Fer si anémie post-accouchement</li>
-          <li>Probiotiques (flore intestinale)</li>
+          <li><strong>Collagène marin hydrolysé</strong> — aide à refermer la diastase (10 g/jour)</li>
+          <li><strong>Magnésium bisglycinate</strong> — fatigue, crampes, sommeil (300 mg/soir)</li>
+          <li><strong>Vitamine D3 + K2</strong> — immunité, os, moral (2000 UI/jour)</li>
+          <li><strong>Fer bisglycinate</strong> si anémie post-accouchement (check avec ton médecin)</li>
+          <li><strong>Probiotiques</strong> — Lactobacillus rhamnosus, flore intestinale + perte de poids</li>
+          <li><strong>Vitamine C</strong> — synthèse de collagène (500 mg/jour)</li>
         </ul>
       </div>
     </div>
 
-    <div class="nutri-allaitement">
-      <h4>🍽 Exemple de journée idéale</h4>
-      <p><strong>Matin :</strong> Flocons d'avoine + yaourt nature + fruits rouges + beurre d'amande bio · Café ou thé<br>
-      <strong>Déjeuner :</strong> Salade de quinoa + sardines + légumes rôtis + huile d'olive<br>
-      <strong>Collation :</strong> Poignée de noix + carrés de chocolat noir 70%<br>
-      <strong>Dîner :</strong> Saumon ou poulet + légumes vapeur + riz complet ou patate douce</p>
+    <!-- PLAN REPAS 7 JOURS -->
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--text-dark);margin:28px 0 14px;">Plan repas type — 7 jours</h3>
+    <p style="font-size:.83rem;color:#4a5e4a;margin-bottom:16px;">Adapte les quantités à ton poids et à l'allaitement. Ces exemples visent ~1700-1900 kcal/jour (sans allaitement) ou 2000-2200 kcal (avec allaitement).</p>
+
+    <div class="repas-day">
+      <div class="repas-day-title">Lundi · Jour de séance</div>
+      <p><strong>Matin (avant séance) :</strong> 1 banane + 1 c. à soupe beurre d'amande bio<br>
+      <strong>Post-séance :</strong> Yaourt grec nature (200 g) + 1 poignée de flocons d'avoine + fruits rouges + graines de lin<br>
+      <strong>Déjeuner :</strong> 150 g poulet grillé + quinoa (80 g cru) + épinards sautés à l'huile d'olive + citron<br>
+      <strong>Collation :</strong> 2 œufs durs + 1 pomme<br>
+      <strong>Dîner :</strong> 150 g saumon vapeur + patate douce (150 g) + haricots verts + huile de colza</p>
+    </div>
+    <div class="repas-day">
+      <div class="repas-day-title">Mardi · Repos actif</div>
+      <p><strong>Matin :</strong> 2 œufs brouillés + 2 tranches pain complet + avocat ½ + café<br>
+      <strong>Déjeuner :</strong> Salade de sardines (140 g en boîte) + lentilles vertes (200 g cuites) + tomates + concombre + huile d'olive<br>
+      <strong>Collation :</strong> Yaourt nature + noix + 2 carrés chocolat noir 70%<br>
+      <strong>Dîner :</strong> 130 g dinde hachée + riz complet + courgettes à la poêle + curcuma</p>
+    </div>
+    <div class="repas-day">
+      <div class="repas-day-title">Mercredi · Jour de séance</div>
+      <p><strong>Matin :</strong> Smoothie : lait d'amande + banane + épinards + graines de chia + beurre d'amande bio<br>
+      <strong>Post-séance :</strong> 30 g protéine whey ou 3 blancs d'œufs + fruit<br>
+      <strong>Déjeuner :</strong> 150 g maquereau + quinoa + légumes rôtis (poivron, aubergine, courgette)<br>
+      <strong>Collation :</strong> Poignée de noix de cajou + 1 orange<br>
+      <strong>Dîner :</strong> Soupe de légumes maison + 2 œufs pochés + pain de seigle</p>
+    </div>
+    <div class="repas-day">
+      <div class="repas-day-title">Jeudi · Repos actif (marche 30 min)</div>
+      <p><strong>Matin :</strong> Porridge avoine + lait d'amande + myrtilles + graines de lin + cannelle<br>
+      <strong>Déjeuner :</strong> 150 g cabillaud vapeur + riz basmati + brocoli cuit vapeur + citron<br>
+      <strong>Collation :</strong> Yaourt grec + 1 c. à café miel brut + noix<br>
+      <strong>Dîner :</strong> 130 g poulet + patate douce rôtie + salade verte + vinaigrette maison huile de lin</p>
+    </div>
+    <div class="repas-day">
+      <div class="repas-day-title">Vendredi · Jour de séance</div>
+      <p><strong>Matin :</strong> 2 œufs sur le plat + pain complet + 1 poignée noix<br>
+      <strong>Post-séance :</strong> Smoothie protéiné : yaourt grec + fruits rouges + graines de chia<br>
+      <strong>Déjeuner :</strong> Salade niçoise (thon, œuf, tomate, haricots verts, olive) + pain de seigle<br>
+      <strong>Collation :</strong> 1 pomme + 2 c. à soupe beurre d'amande bio<br>
+      <strong>Dîner :</strong> 150 g saumon grillé + boulgour + épinards à l'ail</p>
+    </div>
+    <div class="repas-day">
+      <div class="repas-day-title">Samedi · Repas plaisir contrôlé</div>
+      <p><strong>Matin :</strong> Pancakes avoine-banane (2 œufs + 1 banane + 60 g avoine) + yaourt nature + fruits<br>
+      <strong>Déjeuner (plaisir) :</strong> Repas au restaurant ou fait-maison avec famille — choisis une protéine + légumes, évite les frits<br>
+      <strong>Collation :</strong> 2 carrés chocolat noir + thé ou café<br>
+      <strong>Dîner léger :</strong> Velouté de légumes maison + œufs durs</p>
+    </div>
+    <div class="repas-day">
+      <div class="repas-day-title">Dimanche · Meal prep (1h30 pour la semaine)</div>
+      <p><strong>À préparer pour 5 jours :</strong><br>
+      • Cuire 500 g de quinoa ou riz complet → conserve 5 jours au frigo<br>
+      • Rôtir légumes en vrac (courgette, aubergine, patate douce, poivron) 40 min four 180°<br>
+      • Cuire 1 kg de poulet/dinde à l'avance — 4-5 portions<br>
+      • Préparer 10 œufs durs — collation prête toute la semaine<br>
+      • Faire 1 grande salade de lentilles vertes + vinaigrette<br>
+      <strong>Dimanche matin :</strong> Brunch œufs brouillés + saumon fumé + avocat + pain complet</p>
+    </div>
+
+    <!-- ANTI-BALLONNEMENTS -->
+    <div class="nutri-allaitement" style="margin-top:20px;">
+      <h4>💨 Protocole anti-ballonnements post-partum</h4>
+      <p>Le ventre gonflé après bébé n'est pas que de la graisse — c'est souvent de la <strong>rétention d'eau</strong>, des <strong>gaz intestinaux</strong> ou une <strong>flore déséquilibrée</strong>. 5 règles concrètes :<br><br>
+      <strong>1. Mange lentement :</strong> 20 min minimum par repas — mâche bien, ne mange pas debout<br>
+      <strong>2. Eau tiède citronnée le matin :</strong> active le foie et le transit dès 7h<br>
+      <strong>3. Évite les pailles :</strong> tu avales de l'air qui gonfle l'intestin<br>
+      <strong>4. Fenouil après les repas :</strong> 1 tisane de fenouil/anis = dégorge en 20 min<br>
+      <strong>5. Cure probiotiques 4 semaines :</strong> Lactobacillus rhamnosus + Bifidobacterium — rééquilibre la flore post-antibio (péri/épi/C)</p>
+    </div>
+  </div>
+</div>
+
+<!-- HORMONES & RÉCUPÉRATION -->
+<div class="section section-white">
+  <div class="wrap">
+    <span class="tag">Ce que personne ne t'explique</span>
+    <h2 class="section-title">Tes hormones post-partum — comprendre pour mieux agir</h2>
+    <p class="section-sub">Le ventre post-partum n'est pas qu'une question de muscle. C'est une question hormonale. Voilà ce qui se passe dans ton corps — et comment le sport et la nutrition peuvent t'aider.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;" class="nutri-grid">
+      <div class="expert-box">
+        <h4>📉 Chute d'œstrogènes</h4>
+        <p>Après l'accouchement, les œstrogènes s'effondrent brutalement. Résultat : <strong>rétention de graisse abdominale</strong>, fatigue extrême, sautes d'humeur, peau sèche. Le sport de résistance (comme ce programme) aide à rééquilibrer en stimulant naturellement la production d'hormones anaboliques.</p>
+      </div>
+      <div class="expert-box">
+        <h4>😴 Cortisol élevé = ventre dur</h4>
+        <p>Le manque de sommeil fait exploser le cortisol. Le cortisol chronique = <strong>stockage de graisse viscérale</strong>, inflammation, fringales sucrées. C'est pourquoi ce programme ne dépasse pas 35 min — pas de séance épuisante qui augmente encore ton stress.</p>
+      </div>
+      <div class="expert-box">
+        <h4>💉 Relaxine — attention aux articulations</h4>
+        <p>La relaxine (hormone d'assouplissement des ligaments) reste présente <strong>jusqu'à 6 mois post-partum si tu allaites</strong>. Tes genoux, hanches et chevilles sont hypermobiles. C'est pour ça qu'on commence doucement et qu'on évite les sauts et charges lourdes en phase 1 et 2.</p>
+      </div>
+      <div class="expert-box">
+        <h4>🤱 Prolactine & perte de poids</h4>
+        <p>Si tu allaites, la prolactine (hormone du lait) maintient un léger stockage de graisse sur les hanches et les cuisses — mécanisme de survie pour le bébé. <strong>Ce n'est pas un échec</strong>. Ces graisses partiront naturellement au sevrage. Focus sur le ventre et le renfo, pas sur la balance.</p>
+      </div>
+    </div>
+
+    <div class="encadre" style="margin-top:20px;">
+      <p><strong>La balance ment après bébé.</strong> Tu peux perdre 8 cm de tour de taille tout en ne voyant aucun changement sur la balance (prise de muscle + perte de graisse). <strong>Mesure-toi au centimètre, pas au kilo.</strong> Prends tes mensurations (ventre à mi-hauteur, taille, hanches) et une photo de profil le Jour 1 — c'est tes vrais indicateurs de progression.</p>
+    </div>
+
+    <div style="margin-top:20px;">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--text-dark);margin-bottom:14px;">Sommeil & récupération — le vrai levier</h3>
+      <div class="nutri-grid">
+        <div class="nutri-card">
+          <h4>😴 Optimise tes nuits même fragmentées</h4>
+          <ul>
+            <li>Dors quand bébé dort — sans culpabilité</li>
+            <li>Chambre à 18°C (favorise le sommeil profond)</li>
+            <li>Pas d'écran 30 min avant de dormir</li>
+            <li>Magnésium bisglycinate le soir (300 mg)</li>
+            <li>Tisane valériane ou mélisse avant le coucher</li>
+            <li>Demande de l'aide — le repos est un outil de récupération</li>
+          </ul>
+        </div>
+        <div class="nutri-card">
+          <h4>🏃 Jours sans séance — la récupération active</h4>
+          <ul>
+            <li>Marche 20-30 min douce (pas de course avant 3 mois)</li>
+            <li>Étirements 10 min matin ou soir</li>
+            <li>Bain chaud (pas bouillant) avec sel de mer</li>
+            <li>Massage abdominal doux avec huile de jojoba</li>
+            <li>Respiration diaphragmatique 5 min = stimule le core</li>
+            <li>Évite de rester assise plus de 2h d'affilée</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ EXPERT -->
+<div class="section section-violet">
+  <div class="wrap">
+    <span class="tag">Questions fréquentes</span>
+    <h2 class="section-title">Les questions que toutes les mamans posent</h2>
+    <p class="section-sub">Je réponds à tout ce que j'entends en consultation — sans jargon.</p>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">À partir de quand peut-on reprendre le sport après l'accouchement ?</div>
+      <div class="faq-a"><p>Officiellement, après le <strong>feu vert de la rééducation périnéale</strong> (en général entre 6 et 8 semaines post-partum pour un accouchement vaginal, 8-12 semaines pour une césarienne). Mais "reprendre le sport" ne signifie pas courir ou faire des burpees. Ce programme commence par des exercices de reconnexion qui peuvent débuter dès que tu n'as plus de douleurs — même 4 semaines après, en douceur. La règle : <strong>zéro douleur, zéro pression périnéale, zéro fuite urinaire</strong>. Dès que tu coches un de ces critères, tu recules d'un cran.</p></div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Je n'ai pas de diastase — je peux aller plus vite ?</div>
+      <div class="faq-a"><p>Même sans diastase visible, les muscles du core restent distendus et les fascias abdominals sollicités pendant 9 mois. <strong>La reconnexion musculaire profonde prend du temps</strong>, quelle que soit ta situation. Brûler les étapes = risque de lombalgies, de troubles de la statique et de rechutes. Respecte les 4 phases. Tu peux intensifier légèrement à l'intérieur de chaque phase si tu te sens bien, mais pas sauter une phase entière.</p></div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Combien de temps avant de voir des résultats ?</div>
+      <div class="faq-a"><p>Les premières différences se sentent avant de se voir : <strong>moins de ballonnements dès la semaine 2-3</strong> (nutrition + reconnexion). Une <strong>posture plus droite dès la semaine 3-4</strong>. Les résultats visuels (ventre plus plat, hanches plus nettes) apparaissent en général entre <strong>la semaine 5 et 8</strong> selon ta régularité, ton niveau de stress et ton sommeil. La balance peut ne pas bouger — c'est normal. Mesure-toi au centimètre.</p></div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Est-ce que ce programme convient après une césarienne ?</div>
+      <div class="faq-a"><p>Oui, mais avec quelques ajustements. Après une césarienne, attends le <strong>feu vert de ton médecin</strong> (minimum 8 semaines). Les phases 1 et 2 sont entièrement compatibles car elles n'impliquent aucune pression sur la cicatrice. Évite les exercices qui créent une traction abdominale (relevés de buste, crunchs) jusqu'à 3 mois minimum. La douleur ou la tension sur la cicatrice = stop. Si tu as des doutes, envoie-moi un message avant de commencer — je m'adapte à ta situation.</p></div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Je n'ai que 20 minutes par jour — est-ce que ça sert à quelque chose ?</div>
+      <div class="faq-a"><p><strong>Oui, absolument.</strong> 20 minutes ciblées et régulières > 1h de sport au hasard 2 fois par mois. Ce programme est conçu pour la réalité des mamans. Si tu n'as que 20 minutes : fais l'échauffement (5 min) + les 3 premiers exercices de la séance + le retour au calme (5 min). C'est suffisant pour progresser. La <strong>régularité prime toujours sur la durée</strong>.</p></div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Dois-je voir une kiné périnéale avant de commencer ?</div>
+      <div class="faq-a"><p><strong>C'est fortement recommandé.</strong> En France, tu as droit à <strong>10 séances de rééducation périnéale remboursées</strong> par la Sécu après l'accouchement. Une kiné spécialisée peut évaluer ton périnée, confirmer ou infirmer une diastase, et t'indiquer exactement où tu en es avant de démarrer. Ce programme est conçu pour être compatible avec une rééducation en cours. Idéalement : commencer la rééducation + les phases 1-2 en parallèle.</p></div>
     </div>
   </div>
 </div>
@@ -878,9 +1130,12 @@ a{color:inherit;text-decoration:none;}
   <div class="wrap" style="text-align:center;">
     <span class="tag">Tu n'es pas seule</span>
     <h2 class="section-title">Une question ? Je suis là.</h2>
-    <p class="section-sub">Un exercice qui fait mal, un doute sur ta diastase, une semaine difficile — envoie-moi un message. C'est inclus dans ton programme.</p>
-    <a class="cta-wa" href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J'ai%20une%20question%20sur%20le%20programme%20Ventre%20Plat%20Après%20Bébé." target="_blank">Envoyer un message WhatsApp</a>
-    <p style="font-size:.78rem;color:#9a8aaa;margin-top:12px;">Ornella répond généralement sous 24h</p>
+    <p class="section-sub">Un exercice qui fait mal, un doute sur ta diastase, une semaine difficile, une question nutrition — envoie-moi un message. Je réponds personnellement.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:16px;">
+      <a class="cta-wa" href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J'ai%20une%20question%20sur%20le%20programme%20Ventre%20Plat%20Après%20Bébé." target="_blank">Une question sur le programme</a>
+      <a class="cta-wa" href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20voudrais%20en%20savoir%20plus%20sur%20un%20coaching%20personnalisé%20post-partum." target="_blank" style="background:#4A7252;">Coaching personnalisé →</a>
+    </div>
+    <p style="font-size:.78rem;color:#6a8a6a;margin-top:4px;">Ornella répond généralement sous 24h · Tu mérites un vrai suivi 🌿</p>
   </div>
 </div>
 
