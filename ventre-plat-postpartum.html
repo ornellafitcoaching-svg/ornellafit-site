@@ -218,12 +218,94 @@ a{color:inherit;text-decoration:none;}
 #chrono-widget.minimized .chrono-full{display:none;}
 
 /* MOBILE */
-@media(max-width:600px){
-  .hero{padding:40px 16px 44px;}
-  .hero-price{flex-direction:column;gap:8px;text-align:center;}
-  .semaine-header{padding:14px 16px;}
-  .semaine-body{padding:0 16px 18px;}
-  .wrap{padding:0 16px;}
+@media(max-width:640px){
+  /* Base */
+  body{padding-bottom:80px;}
+  .wrap{padding:0 14px;}
+  .section{padding:36px 0;}
+
+  /* Hero */
+  .hero{padding:36px 14px 40px;}
+  .hero h1{font-size:2rem;}
+  .hero-sub{font-size:.9rem;}
+  .hero-pills{gap:6px;}
+  .hero-pill{font-size:.72rem;padding:4px 10px;}
+  .hero-price{flex-direction:column;gap:6px;text-align:center;padding:14px 18px;}
+  .hero-price-num{font-size:2.2rem;}
+
+  /* Nav raccourcis */
+  .nav-semaines{padding:6px 10px;gap:5px;}
+  .nav-sem-btn{font-size:.68rem;padding:4px 9px;}
+  .nav-sem-label{display:none;}
+
+  /* Semaines accordéon */
+  .semaine-header{padding:12px 14px;gap:10px;}
+  .semaine-num{width:38px;height:38px;font-size:1.1rem;flex-shrink:0;}
+  .semaine-titre{font-size:1rem;}
+  .semaine-sub{font-size:.72rem;}
+  .semaine-body{padding:0 14px 16px;}
+
+  /* Exercices */
+  .exo-item{padding:12px 12px;}
+  .exo-name{font-size:.9rem;}
+  .exo-desc{font-size:.8rem;padding:7px 10px;}
+  .exo-erreur{font-size:.75rem;}
+
+  /* Grilles → 1 colonne */
+  .nutri-grid{grid-template-columns:1fr !important;}
+  .nutri-card{padding:14px 14px;}
+
+  /* Tableau macros → scroll horizontal */
+  .macro-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px;}
+  .macro-table th,.macro-table td{padding:8px 10px;font-size:.74rem;white-space:nowrap;}
+
+  /* Repas */
+  .repas-day{padding:12px 12px;}
+  .repas-day p{font-size:.78rem;}
+
+  /* Expert box */
+  .expert-box{padding:12px 14px;}
+  .expert-box p{font-size:.8rem;}
+
+  /* Encadré */
+  .encadre{padding:12px 14px;}
+  .encadre p{font-size:.82rem;}
+
+  /* Alerte */
+  .alerte-card{padding:14px 14px;}
+  .alerte-card li{font-size:.8rem;}
+
+  /* Diastasis */
+  .diastasis-card{padding:14px 14px;}
+
+  /* Titres */
+  .section-title{font-size:1.5rem;}
+  h3[style*="1.4rem"]{font-size:1.2rem !important;}
+  h3[style*="1.3rem"]{font-size:1.1rem !important;}
+
+  /* FAQ */
+  .faq-q{font-size:.85rem;padding:14px 14px;}
+  .faq-item.open .faq-a{padding:0 14px 14px;}
+  .faq-a p{font-size:.82rem;}
+
+  /* Bilan */
+  .bilan-section{padding:24px 16px;}
+  .bilan-section h3{font-size:1.4rem;}
+
+  /* CTA WhatsApp */
+  .cta-wa{font-size:.82rem;padding:11px 18px;}
+  div[style*="display:flex"]:has(.cta-wa){flex-direction:column;align-items:center;}
+
+  /* Nutrition allaitement */
+  .nutri-allaitement{padding:14px 14px;}
+  .nutri-allaitement p{font-size:.8rem;}
+
+  /* Chrono */
+  #chrono-widget{bottom:14px;right:10px;padding:10px 12px;min-width:110px;}
+  #chrono-display{font-size:1.7rem;}
+  .chrono-btns button{font-size:.65rem;padding:3px 6px;}
+  .chrono-main-btn button{font-size:.74rem;padding:5px 8px;}
+  #chrono-widget.minimized{padding:7px 9px;}
 }
 </style>
 </head>
@@ -1055,7 +1137,7 @@ a{color:inherit;text-decoration:none;}
 
     <!-- MACROS OBJECTIFS -->
     <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--text-dark);margin:24px 0 10px;">Tes objectifs nutritionnels par jour</h3>
-    <table class="macro-table">
+    <div class="macro-table-wrap"><table class="macro-table">
       <thead><tr><th>Nutriment</th><th>Sans allaitement</th><th>Avec allaitement</th><th>Pourquoi</th></tr></thead>
       <tbody>
         <tr><td><strong>Protéines</strong></td><td>1,6–1,8 g/kg</td><td>1,8–2 g/kg</td><td>Répare les tissus, diastase, muscle</td></tr>
@@ -1064,7 +1146,7 @@ a{color:inherit;text-decoration:none;}
         <tr><td><strong>Fibres</strong></td><td>25–30 g</td><td>30–35 g</td><td>Transit, ballonnements, satiété</td></tr>
         <tr><td><strong>Eau</strong></td><td>2,0–2,5 L</td><td>2,8–3,2 L</td><td>Production lait, circulation, ventre plat</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <div class="nutri-grid">
       <div class="nutri-card">
@@ -1225,27 +1307,33 @@ a{color:inherit;text-decoration:none;}
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--text-dark);margin-bottom:14px;">Sommeil & récupération — le vrai levier</h3>
       <div class="nutri-grid">
         <div class="nutri-card">
-          <h4>😴 Optimise tes nuits même fragmentées</h4>
+          <h4>😴 Sommeil avec bébé — ce qui marche vraiment</h4>
           <ul>
-            <li>Dors quand bébé dort — sans culpabilité</li>
-            <li>Chambre à 18°C (favorise le sommeil profond)</li>
-            <li>Pas d'écran 30 min avant de dormir</li>
-            <li>Magnésium bisglycinate le soir (300 mg)</li>
-            <li>Tisane valériane ou mélisse avant le coucher</li>
-            <li>Demande de l'aide — le repos est un outil de récupération</li>
+            <li><strong>Dors quand bébé dort</strong> — sans culpabilité, même en plein après-midi</li>
+            <li><strong>Le sommeil fractionné fatigue plus</strong> que le manque total : essaie de faire des "blocs" de 2h minimum plutôt que des siestes de 20 min</li>
+            <li><strong>Partage les nuits</strong> : une nuit sur deux avec le papa/la famille si tu allaites au biberon — négocie ça</li>
+            <li><strong>La chambre à 18°C</strong> favorise le sommeil profond (toi ET bébé)</li>
+            <li><strong>Magnésium bisglycinate</strong> 300 mg le soir : réduit le stress et améliore la qualité des cycles même courts</li>
+            <li><strong>Pas d'écran 30 min avant</strong> de te coucher — la lumière bleue retarde l'endormissement</li>
+            <li><strong>Tisane camomille ou mélisse</strong> le soir pour calmer le système nerveux</li>
+            <li><strong>Sieste stratégique</strong> : 20 min max en journée (pas plus sinon tu seras groggy)</li>
           </ul>
         </div>
         <div class="nutri-card">
-          <h4>🏃 Jours sans séance — la récupération active</h4>
+          <h4>🏃 Jours sans séance — récupération active</h4>
           <ul>
-            <li>Marche 20-30 min douce (pas de course avant 3 mois)</li>
-            <li>Étirements 10 min matin ou soir</li>
-            <li>Bain chaud (pas bouillant) avec sel de mer</li>
-            <li>Massage abdominal doux avec huile de jojoba</li>
-            <li>Respiration diaphragmatique 5 min = stimule le core</li>
-            <li>Évite de rester assise plus de 2h d'affilée</li>
+            <li>Marche 20-30 min douce (pas de course avant 3 mois post-partum)</li>
+            <li>Étirements 10 min matin ou soir — hanche fléchisseur, lombaires, pectoraux</li>
+            <li>Bain chaud (pas bouillant) avec sel de mer ou bicarbonate</li>
+            <li>Massage abdominal doux circulaire avec huile de jojoba ou d'amande douce</li>
+            <li>Respiration diaphragmatique 5 min = stimule le core profond sans effort</li>
+            <li>Évite de rester assise plus de 2h d'affilée — le plancher pelvien souffre</li>
           </ul>
         </div>
+      </div>
+
+      <div class="encadre" style="margin-top:4px;">
+        <p><strong>La vérité sur le sommeil post-partum :</strong> 6 heures de sommeil fragmenté en 10 éveils n'est PAS équivalent à 6 heures continues. Ton cerveau ne complète pas les cycles de récupération. C'est pourquoi la fatigue post-partum est réelle et documentée. <strong>La solution n'est pas de dormir plus, c'est de protéger des blocs continus.</strong> Même 3h d'affilée font une vraie différence sur le cortisol et la récupération musculaire.</p>
       </div>
     </div>
   </div>
