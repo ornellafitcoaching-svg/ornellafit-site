@@ -293,6 +293,7 @@
 <nav class="nav-shortcuts">
   <a href="#profil" class="nav-btn">👤 Profil</a>
   <a href="#planning" class="nav-btn">📅 Planning</a>
+  <a href="#test-charge" class="nav-btn" style="background:var(--violet-deep);color:#fff;">📏 Test</a>
   <a href="#seance-a" class="nav-btn accent">Séance A</a>
   <a href="#seance-b" class="nav-btn accent">Séance B</a>
   <a href="#seance-c" class="nav-btn accent">Séance C</a>
@@ -420,6 +421,83 @@
   <div class="week-banner">
     <div class="week-num">S3–S4</div>
     <div class="week-theme"><strong>Progression des charges</strong> — Augmente de 2,5 à 5 kg sur chaque exercice où tu peux finir les reps proprement. Le corps s'est adapté — c'est le moment de pousser.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- TEST DE CHARGE -->
+  <div id="test-charge" class="section-title"><div class="icon">📏</div><h2>Avant de commencer — <span>Test de charge</span></h2></div>
+
+  <div style="background:linear-gradient(135deg,var(--violet-pale),var(--violet-ultra));border-radius:16px;padding:22px 24px;margin-bottom:24px;border:1.5px solid var(--border);">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--violet-deep);margin-bottom:14px;font-weight:600;">On fait ce test ensemble avant de démarrer le programme.</p>
+    <p style="font-size:13px;color:var(--text-mid);margin-bottom:16px;line-height:1.7;">L'objectif : trouver ta charge de travail de départ sur chaque exercice clef. Avec 10–15 ans de salle tu as tes repères — mais on repart de zéro pour calibrer précisément et éviter de sous-charger ou de se blesser.</p>
+
+    <div style="font-size:12px;font-weight:700;color:var(--violet);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Protocole — 10RM</div>
+    <div style="background:#fff;border-radius:12px;padding:14px 16px;margin-bottom:14px;font-size:13px;color:var(--text-dark);line-height:1.8;">
+      Pour chaque exercice listé ci-dessous :<br>
+      <strong>1.</strong> Échauffement — 1 série légère × 15 reps (50% de ta charge habituelle estimée)<br>
+      <strong>2.</strong> Série test — charge avec laquelle tu peux faire <strong>10 reps propres, mais pas 11</strong><br>
+      <strong>3.</strong> On note ce poids. C'est ton <strong>10RM</strong><br>
+      <strong>4.</strong> Tes charges de programme = <strong>70% du 10RM</strong> (semaines 1–2) → <strong>75–80%</strong> (semaines 3–4)
+    </div>
+
+    <div style="font-size:12px;font-weight:700;color:var(--violet);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Exercices à tester</div>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead>
+        <tr style="background:var(--violet);color:#fff;">
+          <th style="padding:8px 12px;text-align:left;border-radius:8px 0 0 0;">Exercice</th>
+          <th style="padding:8px 12px;text-align:center;">10RM trouvé</th>
+          <th style="padding:8px 12px;text-align:center;">Sem 1–2 (×70%)</th>
+          <th style="padding:8px 12px;text-align:center;border-radius:0 8px 0 0;">Sem 3–4 (×80%)</th>
+        </tr>
+      </thead>
+      <tbody id="test-tbody">
+        <tr style="background:#fff;border-bottom:1px solid var(--border);">
+          <td style="padding:9px 12px;font-weight:600;">Hack Squat machine</td>
+          <td style="padding:6px 8px;text-align:center;"><input type="number" class="rm-input" data-row="0" placeholder="kg" oninput="calcRM(this)" style="width:64px;text-align:center;border:1.5px solid var(--border);border-radius:8px;padding:5px 4px;font-size:13px;font-family:'Jost',sans-serif;"></td>
+          <td style="padding:9px 12px;text-align:center;font-weight:600;color:var(--violet);" id="rm70-0">—</td>
+          <td style="padding:9px 12px;text-align:center;font-weight:600;color:var(--violet-deep);" id="rm80-0">—</td>
+        </tr>
+        <tr style="background:var(--violet-ultra);border-bottom:1px solid var(--border);">
+          <td style="padding:9px 12px;font-weight:600;">Hip Thrust barre</td>
+          <td style="padding:6px 8px;text-align:center;"><input type="number" class="rm-input" data-row="1" placeholder="kg" oninput="calcRM(this)" style="width:64px;text-align:center;border:1.5px solid var(--border);border-radius:8px;padding:5px 4px;font-size:13px;font-family:'Jost',sans-serif;"></td>
+          <td style="padding:9px 12px;text-align:center;font-weight:600;color:var(--violet);" id="rm70-1">—</td>
+          <td style="padding:9px 12px;text-align:center;font-weight:600;color:var(--violet-deep);" id="rm80-1">—</td>
+        </tr>
+        <tr style="background:#fff;border-bottom:1px solid var(--border);">
+          <td style="padding:9px 12px;font-weight:600;">Leg Press (pieds hauts)</td>
+          <td style="padding:6px 8px;text-align:center;"><input type="number" class="rm-input" data-row="2" placeholder="kg" oninput="calcRM(this)" style="width:64px;text-align:center;border:1.5px solid var(--border);border-radius:8px;padding:5px 4px;font-size:13px;font-family:'Jost',sans-serif;"></td>
+          <td style="padding:9px 12px;text-align:center;font-weight:600;color:var(--violet);" id="rm70-2">—</td>
+          <td style="padding:9px 12px;text-align:center;font-weight:600;color:var(--violet-deep);" id="rm80-2">—</td>
+        </tr>
+        <tr style="background:var(--violet-ultra);border-bottom:1px solid var(--border);">
+          <td style="padding:9px 12px;font-weight:600;">RDL haltères</td>
+          <td style="padding:6px 8px;text-align:center;"><input type="number" class="rm-input" data-row="3" placeholder="kg" oninput="calcRM(this)" style="width:64px;text-align:center;border:1.5px solid var(--border);border-radius:8px;padding:5px 4px;font-size:13px;font-family:'Jost',sans-serif;"></td>
+          <td style="padding:9px 12px;text-align:center;font-weight:600;color:var(--violet);" id="rm70-3">—</td>
+          <td style="padding:9px 12px;text-align:center;font-weight:600;color:var(--violet-deep);" id="rm80-3">—</td>
+        </tr>
+        <tr style="background:#fff;border-bottom:1px solid var(--border);">
+          <td style="padding:9px 12px;font-weight:600;">Seated Row (dos)</td>
+          <td style="padding:6px 8px;text-align:center;"><input type="number" class="rm-input" data-row="4" placeholder="kg" oninput="calcRM(this)" style="width:64px;text-align:center;border:1.5px solid var(--border);border-radius:8px;padding:5px 4px;font-size:13px;font-family:'Jost',sans-serif;"></td>
+          <td style="padding:9px 12px;text-align:center;font-weight:600;color:var(--violet);" id="rm70-4">—</td>
+          <td style="padding:9px 12px;text-align:center;font-weight:600;color:var(--violet-deep);" id="rm80-4">—</td>
+        </tr>
+        <tr style="background:var(--violet-ultra);">
+          <td style="padding:9px 12px;font-weight:600;">Développé militaire haltères</td>
+          <td style="padding:6px 8px;text-align:center;"><input type="number" class="rm-input" data-row="5" placeholder="kg" oninput="calcRM(this)" style="width:64px;text-align:center;border:1.5px solid var(--border);border-radius:8px;padding:5px 4px;font-size:13px;font-family:'Jost',sans-serif;"></td>
+          <td style="padding:9px 12px;text-align:center;font-weight:600;color:var(--violet);" id="rm70-5">—</td>
+          <td style="padding:9px 12px;text-align:center;font-weight:600;color:var(--violet-deep);" id="rm80-5">—</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:14px;padding:12px 14px;background:rgba(107,78,138,.1);border-radius:10px;font-size:12px;color:var(--violet-deep);line-height:1.7;">
+      ⚠️ <strong>Important :</strong> on ne teste pas les exercices d'isolation (curl, élévations, leg curl, abduction) — les charges sur ces mouvements se règlent au ressenti dès la première séance. On teste uniquement les exercices polyarticulaires où la charge conditionne les résultats.
+    </div>
+
+    <button onclick="envoyerResultats()" style="margin-top:16px;width:100%;padding:13px;background:linear-gradient(135deg,#25D366,#1DA851);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Jost',sans-serif;letter-spacing:.5px;">
+      📲 Envoyer mes résultats à Ornella (WhatsApp)
+    </button>
   </div>
 
   <div class="divider"></div>
@@ -1000,6 +1078,42 @@
     document.getElementById('chrono-widget').classList.remove('minimized');
   }
   setTimer(60);
+
+  // ===== TEST DE CHARGE =====
+  var exoNames = ['Hack Squat machine','Hip Thrust barre','Leg Press pieds hauts','RDL haltères','Seated Row','Développé militaire'];
+
+  function calcRM(input) {
+    var row = input.getAttribute('data-row');
+    var val = parseFloat(input.value);
+    if (!isNaN(val) && val > 0) {
+      document.getElementById('rm70-' + row).textContent = Math.round(val * 0.70) + ' kg';
+      document.getElementById('rm80-' + row).textContent = Math.round(val * 0.80) + ' kg';
+    } else {
+      document.getElementById('rm70-' + row).textContent = '—';
+      document.getElementById('rm80-' + row).textContent = '—';
+    }
+  }
+
+  function envoyerResultats() {
+    var inputs = document.querySelectorAll('.rm-input');
+    var lignes = [];
+    var complet = true;
+    inputs.forEach(function(inp, i) {
+      var val = parseFloat(inp.value);
+      if (!isNaN(val) && val > 0) {
+        lignes.push(exoNames[i] + ' : 10RM = ' + val + 'kg → sem1-2 : ' + Math.round(val*0.70) + 'kg · sem3-4 : ' + Math.round(val*0.80) + 'kg');
+      } else {
+        complet = false;
+      }
+    });
+    if (lignes.length === 0) {
+      alert('Entre au moins une charge avant d\'envoyer.');
+      return;
+    }
+    var msg = '📏 Test de charge — Laure\n\n' + lignes.join('\n') + (complet ? '' : '\n\n(certains exercices non encore testés)');
+    var url = 'https://wa.me/33756834626?text=' + encodeURIComponent(msg);
+    window.open(url, '_blank');
+  }
 </script>
 
 </body>
