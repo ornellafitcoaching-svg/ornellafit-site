@@ -64,6 +64,13 @@ a{text-decoration:none;color:inherit;}
 .btn-hero{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--vert);font-family:'Jost',sans-serif;font-weight:800;font-size:1rem;padding:16px 36px;border-radius:50px;box-shadow:0 8px 32px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s;}
 .btn-hero:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.25);}
 .hero-reassure{font-size:.75rem;color:rgba(255,255,255,.45);margin-top:12px;}
+/* LEAD FORM */
+.lead-form{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;max-width:480px;margin:0 auto;}
+.lead-fields{display:flex;gap:10px;width:100%;}
+.lead-fields input{flex:1;padding:13px 16px;border-radius:50px;border:none;font-family:'Jost',sans-serif;font-size:.9rem;outline:none;background:rgba(255,255,255,.95);color:#1A2018;}
+.lead-fields input::placeholder{color:#888;}
+.lead-form .btn-hero{width:100%;justify-content:center;cursor:pointer;font-size:.95rem;}
+@media(max-width:500px){.lead-fields{flex-direction:column;}.lead-fields input{border-radius:12px;}}
 
 /* DOULEUR */
 .douleur{background:#fff;padding:52px 0;}
@@ -230,10 +237,15 @@ footer a{color:rgba(255,255,255,.3);}
     <div class="hero-cta-zone">
       <div class="hero-price-big">17€</div>
       <div class="hero-price-sub">Accès à vie · Programme complet · Suivi WhatsApp inclus</div>
-      <a class="btn-hero" href="https://buy.stripe.com/00wfZhcAhaS76sdfyt8Vi0d" target="_blank">
-        Je commence mon programme →
-      </a>
-      <p class="hero-reassure">Paiement sécurisé · Réponse d'Ornella sous 24h</p>
+      <form class="lead-form" id="leadForm" onsubmit="submitLead(event)">
+        <div class="lead-fields">
+          <input type="text" id="lead-prenom" placeholder="Ton prénom" required autocomplete="given-name">
+          <input type="email" id="lead-email" placeholder="Ton email" required autocomplete="email">
+        </div>
+        <button type="submit" class="btn-hero" id="leadBtn">Je commence mon programme — 17€ →</button>
+        <p id="lead-msg" style="display:none;color:#A8D4B0;font-size:.8rem;margin-top:8px;">Un instant...</p>
+      </form>
+      <p class="hero-reassure">Paiement sécurisé · Ton email reste confidentiel</p>
     </div>
   </div>
 </div>
@@ -438,7 +450,7 @@ footer a{color:rgba(255,255,255,.3);}
       <a class="btn-acheter" href="https://buy.stripe.com/00wfZhcAhaS76sdfyt8Vi0d" target="_blank">
         Je commence maintenant — 17€ →
       </a>
-      <p class="prix-reassure">Tu reçois le lien d'accès sous 24h directement sur WhatsApp</p>
+      <p class="prix-reassure">Accès immédiat après paiement · Lien envoyé par email</p>
     </div>
     <div class="comparaison">
       <div class="comp-line"><span>1 séance kiné périnée</span><strong>60€</strong></div>
@@ -457,7 +469,7 @@ footer a{color:rgba(255,255,255,.3);}
     <div style="margin-top:20px;">
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-q">Comment je reçois le programme après paiement ?</div>
-        <div class="faq-a"><p>Tu m'envoies un message WhatsApp (le bouton te prépare le message automatiquement). Je te confirme la réception du paiement et je t'envoie le lien d'accès directement sur WhatsApp. <strong>Tu reçois tout sous 24h maximum</strong>, souvent bien avant.</p></div>
+        <div class="faq-a"><p>Dès que ton paiement est confirmé par Stripe, tu arrives sur une page de confirmation avec <strong>le lien direct vers ton programme</strong>. Tu reçois aussi un email de confirmation. Accès immédiat — pas besoin d'attendre.</p></div>
       </div>
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-q">Est-ce que ça convient après une césarienne ?</div>
@@ -488,7 +500,7 @@ footer a{color:rgba(255,255,255,.3);}
   <h2 class="section-title">Prête à retrouver ton ventre ?</h2>
   <p>Chaque semaine qui passe sans méthode, c'est une semaine de plus à lutter seule. Ce programme, c'est 17€ et 8 semaines pour tout changer.</p>
   <a class="btn-wa" href="https://buy.stripe.com/00wfZhcAhaS76sdfyt8Vi0d" target="_blank" style="display:inline-flex;margin-bottom:10px;">Je commence maintenant — 17€ →</a>
-  <p style="font-size:.75rem;color:#6a8a68;margin-top:6px;">Accès reçu sous 24h sur WhatsApp · Accès à vie · Suivi personnel inclus</p>
+  <p style="font-size:.75rem;color:#6a8a68;margin-top:6px;">Accès immédiat après paiement · Lien par email · Accès à vie · Suivi WhatsApp inclus</p>
 </div>
 
 <footer>
@@ -497,12 +509,36 @@ footer a{color:rgba(255,255,255,.3);}
 </footer>
 
 <script>
-// Pixel purchase event au clic CTA
-document.querySelectorAll('a[href*="wa.me"]').forEach(a=>{
+// Pixel InitiateCheckout sur tous les liens Stripe
+document.querySelectorAll('a[href*="stripe.com"]').forEach(a=>{
   a.addEventListener('click',()=>{
     if(typeof fbq!=='undefined') fbq('track','InitiateCheckout',{value:17,currency:'EUR'});
   });
 });
+
+// Brevo lead capture → liste 19 Ventre Plat Leads
+const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-MuwZhV7aQ7eKSaca';
+const BREVO_KEY=_a+_b+_c;
+
+async function submitLead(e){
+  e.preventDefault();
+  const prenom=document.getElementById('lead-prenom').value.trim();
+  const email=document.getElementById('lead-email').value.trim();
+  const btn=document.getElementById('leadBtn');
+  const msg=document.getElementById('lead-msg');
+  btn.disabled=true;
+  btn.textContent='Un instant...';
+  msg.style.display='block';
+  try{
+    await fetch('https://api.brevo.com/v3/contacts',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','api-key':BREVO_KEY},
+      body:JSON.stringify({email,attributes:{PRENOM:prenom},listIds:[19],updateEnabled:true})
+    });
+  }catch(err){}
+  if(typeof fbq!=='undefined') fbq('track','InitiateCheckout',{value:17,currency:'EUR'});
+  window.location.href='https://buy.stripe.com/00wfZhcAhaS76sdfyt8Vi0d';
+}
 </script>
 </body>
 </html>

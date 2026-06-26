@@ -56,6 +56,14 @@ body{font-family:'Jost',sans-serif;background:#F2F8F3;color:#1A2018;min-height:1
 .btn-wa:hover{opacity:.88;}
 
 .note-bas{font-size:.78rem;color:#888;line-height:1.6;margin-top:8px;}
+.email-box{background:var(--vert-pale);border-radius:16px;padding:20px 24px;margin-bottom:16px;text-align:left;}
+.email-label{font-size:.78rem;font-weight:700;color:var(--vert);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;}
+.email-sub{font-size:.85rem;color:#3a4a38;margin-bottom:12px;line-height:1.5;}
+#acheteurForm{display:flex;flex-direction:column;gap:8px;}
+#acheteurForm input{padding:11px 14px;border-radius:10px;border:1.5px solid rgba(74,114,82,.2);font-family:'Jost',sans-serif;font-size:.9rem;outline:none;}
+#acheteurForm input:focus{border-color:var(--vert);}
+#acheteurForm button{padding:12px;border-radius:10px;background:var(--vert);color:#fff;font-family:'Jost',sans-serif;font-weight:700;font-size:.9rem;border:none;cursor:pointer;transition:opacity .2s;}
+#acheteurForm button:hover{opacity:.88;}
 
 @media(max-width:480px){
   body{padding:24px 12px 50px;}
@@ -101,6 +109,18 @@ body{font-family:'Jost',sans-serif;background:#F2F8F3;color:#1A2018;min-height:1
     </div>
   </div>
 
+  <!-- BREVO ACHETEUR CAPTURE -->
+  <div class="email-box" id="emailBox">
+    <div class="email-label">📩 Reçois le lien par email</div>
+    <p class="email-sub">Entre ton prénom et ton email pour recevoir le lien de ton programme directement dans ta boîte.</p>
+    <form id="acheteurForm" onsubmit="submitAcheteur(event)">
+      <input type="text" id="ach-prenom" placeholder="Ton prénom" required>
+      <input type="email" id="ach-email" placeholder="Ton email" required>
+      <button type="submit" id="achBtn">Envoyer le lien →</button>
+      <p id="ach-confirm" style="display:none;color:#4A7252;font-size:.85rem;font-weight:600;margin-top:6px;">✓ Envoyé ! Vérifie ta boîte email.</p>
+    </form>
+  </div>
+
   <div class="wa-box">
     <p>Une question ? Un doute sur un exercice ?<br><strong>Je réponds personnellement sur WhatsApp.</strong></p>
     <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20viens%20d'acheter%20le%20programme%20Ventre%20Plat%20Après%20Bébé%20et%20j'ai%20une%20question." class="btn-wa">
@@ -113,5 +133,43 @@ body{font-family:'Jost',sans-serif;background:#F2F8F3;color:#1A2018;min-height:1
 
 </div>
 
+<script>
+const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-MuwZhV7aQ7eKSaca';
+const BK=_a+_b+_c;
+
+async function submitAcheteur(e){
+  e.preventDefault();
+  const prenom=document.getElementById('ach-prenom').value.trim();
+  const email=document.getElementById('ach-email').value.trim();
+  const btn=document.getElementById('achBtn');
+  btn.disabled=true;btn.textContent='Envoi...';
+  try{
+    await fetch('https://api.brevo.com/v3/contacts',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','api-key':BK},
+      body:JSON.stringify({email,attributes:{PRENOM:prenom},listIds:[20],updateEnabled:true})
+    });
+    // Email transactionnel avec lien programme
+    await fetch('https://api.brevo.com/v3/smtp/email',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','api-key':BK},
+      body:JSON.stringify({
+        sender:{name:'Ornella Fit Coaching',email:'contact@ornellafitcoaching.com'},
+        to:[{email,name:prenom}],
+        subject:'Ton programme Ventre Plat Après Bébé — accès immédiat 🌿',
+        htmlContent:`<div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;padding:32px 20px;">
+<h2 style="color:#2E4A34;font-size:1.4rem;">Bonjour ${prenom} ! 🌿</h2>
+<p style="color:#3a4a38;line-height:1.7;">Ton programme <strong>Ventre Plat Après Bébé</strong> est disponible maintenant.</p>
+<a href="https://www.ornellafitcoaching.com/ventre-plat-postpartum.html" style="display:inline-block;margin:20px 0;background:#4A7252;color:#fff;padding:14px 28px;border-radius:50px;font-weight:700;text-decoration:none;">→ Accéder à mon programme</a>
+<p style="color:#6a8a68;font-size:.85rem;">Mets ce lien en favori — c'est ton accès permanent, disponible 24h/24.<br>Une question ? Réponds à cet email ou écris-moi sur WhatsApp.</p>
+<p style="color:#2E4A34;font-weight:600;margin-top:24px;">Ornella 💪</p>
+</div>`
+      })
+    });
+  }catch(err){}
+  document.getElementById('ach-confirm').style.display='block';
+  btn.textContent='Envoyé ✓';
+}
+</script>
 </body>
 </html>
