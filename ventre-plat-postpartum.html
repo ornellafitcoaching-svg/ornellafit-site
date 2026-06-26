@@ -103,6 +103,10 @@ a{color:inherit;text-decoration:none;}
 .exo-video-btn:hover{background:#4A7252;}
 .exo-video-btn::before{content:'▶';}
 .exo-no-video{font-size:.75rem;color:#9a8aaa;font-style:italic;margin-top:6px;}
+.exo-desc{font-size:.82rem;color:#2a3a2a;line-height:1.7;background:#fff;border-radius:8px;padding:8px 12px;margin-top:8px;border-left:3px solid var(--violet-light);}
+.exo-desc strong{color:var(--violet-deep);}
+.exo-muscles{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:600;color:#4A7252;background:rgba(74,114,82,.1);border-radius:50px;padding:2px 10px;margin-top:6px;}
+.exo-erreur{font-size:.78rem;color:#C96358;background:rgba(201,99,88,.06);border-radius:8px;padding:5px 10px;margin-top:5px;display:block;}
 
 /* REPOS */
 .repos-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(201,149,122,.1);border:1px solid rgba(201,149,122,.3);color:var(--gold);font-size:.8rem;font-weight:600;padding:6px 14px;border-radius:50px;margin-top:12px;}
@@ -188,6 +192,30 @@ a{color:inherit;text-decoration:none;}
 .expert-box h4{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--violet-deep);margin-bottom:6px;}
 .expert-box p{font-size:.83rem;color:#2a3a2a;line-height:1.7;}
 
+/* NAV RACCOURCIS */
+.nav-semaines{position:sticky;top:0;z-index:50;background:rgba(248,250,247,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;overflow-x:auto;white-space:nowrap;display:flex;gap:6px;align-items:center;}
+.nav-sem-btn{display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1.5px solid var(--border);color:var(--text-dark);font-size:.72rem;font-weight:600;padding:5px 12px;border-radius:50px;cursor:pointer;text-decoration:none;flex-shrink:0;transition:all .2s;}
+.nav-sem-btn:hover,.nav-sem-btn.active{background:var(--violet);color:#fff;border-color:var(--violet);}
+.nav-sem-label{font-size:.68rem;font-weight:700;text-transform:uppercase;color:var(--violet-light);letter-spacing:.08em;flex-shrink:0;padding-right:4px;}
+
+/* CHRONO */
+#chrono-widget{position:fixed;bottom:24px;right:16px;z-index:200;background:#fff;border:1.5px solid var(--border);border-radius:16px;box-shadow:0 6px 24px rgba(74,114,82,.18);padding:12px 16px;min-width:130px;text-align:center;}
+#chrono-widget.minimized{min-width:unset;padding:8px 10px;border-radius:50px;}
+#chrono-display{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--text-dark);line-height:1;}
+#chrono-widget.minimized #chrono-display{font-size:1rem;}
+.chrono-btns{display:flex;gap:4px;justify-content:center;margin-top:8px;flex-wrap:wrap;}
+.chrono-btns button{background:var(--violet-pale);border:none;border-radius:50px;font-size:.68rem;font-weight:700;color:var(--violet-deep);padding:3px 8px;cursor:pointer;}
+.chrono-btns button:hover{background:var(--violet);color:#fff;}
+.chrono-main-btn{display:flex;gap:6px;margin-top:8px;justify-content:center;}
+.chrono-main-btn button{flex:1;border:none;border-radius:50px;font-size:.78rem;font-weight:700;padding:6px 10px;cursor:pointer;}
+#btn-start-stop{background:var(--violet);color:#fff;}
+#btn-reset{background:var(--violet-pale);color:var(--violet-deep);}
+#btn-minimize{background:none;border:none;font-size:.75rem;color:var(--violet-light);cursor:pointer;margin-top:4px;width:100%;}
+.chrono-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--violet-light);margin-bottom:4px;}
+#widget-open-btn{display:none;font-size:1.2rem;}
+#chrono-widget.minimized #widget-open-btn{display:inline;}
+#chrono-widget.minimized .chrono-full{display:none;}
+
 /* MOBILE */
 @media(max-width:600px){
   .hero{padding:40px 16px 44px;}
@@ -215,9 +243,9 @@ a{color:inherit;text-decoration:none;}
     <div class="hero-price">
       <div class="hero-price-num">17€</div>
       <div class="hero-price-label">
-        <strong>Accès à vie · Vidéos incluses</strong>
-        <span>Programme complet 8 semaines</span>
-        <span>Suivi nutrition + conseils allaitement</span>
+        <strong>Accès à vie · Programme complet</strong>
+        <span>8 semaines · Exercices détaillés · Nutrition</span>
+        <span>Suivi WhatsApp inclus · Conseils allaitement</span>
       </div>
     </div>
   </div>
@@ -237,7 +265,44 @@ a{color:inherit;text-decoration:none;}
   </div>
 </div>
 
+<!-- NAV RACCOURCIS -->
+<div class="nav-semaines">
+  <span class="nav-sem-label">Aller à :</span>
+  <a class="nav-sem-btn" href="#avant">⚡ Avant de commencer</a>
+  <a class="nav-sem-btn" href="#sem1">Sem 1</a>
+  <a class="nav-sem-btn" href="#sem2">Sem 2</a>
+  <a class="nav-sem-btn" href="#sem3">Sem 3</a>
+  <a class="nav-sem-btn" href="#sem4">Sem 4</a>
+  <a class="nav-sem-btn" href="#sem5">Sem 5</a>
+  <a class="nav-sem-btn" href="#sem6">Sem 6</a>
+  <a class="nav-sem-btn" href="#sem7">Sem 7</a>
+  <a class="nav-sem-btn" href="#sem8">Sem 8</a>
+  <a class="nav-sem-btn" href="#nutrition">🥦 Nutrition</a>
+  <a class="nav-sem-btn" href="#faq">FAQ</a>
+</div>
+
+<!-- CHRONO RÉTRACTABLE -->
+<div id="chrono-widget">
+  <div class="chrono-full">
+    <div class="chrono-label">⏱ Chrono repos</div>
+    <div id="chrono-display">01:00</div>
+    <div class="chrono-btns">
+      <button onclick="setTimer(30)">30s</button>
+      <button onclick="setTimer(45)">45s</button>
+      <button onclick="setTimer(60)">60s</button>
+      <button onclick="setTimer(90)">90s</button>
+    </div>
+    <div class="chrono-main-btn">
+      <button id="btn-start-stop" onclick="toggleChrono()">▶ Démarrer</button>
+      <button id="btn-reset" onclick="resetChrono()">↺</button>
+    </div>
+    <button id="btn-minimize" onclick="minimizeChrono()">Réduire ↘</button>
+  </div>
+  <span id="widget-open-btn" onclick="expandChrono()" style="cursor:pointer;" title="Ouvrir le chrono">⏱</span>
+</div>
+
 <!-- AVANT DE COMMENCER — ÉCHAUFFEMENT -->
+<div id="avant">
 <div class="section section-white">
   <div class="wrap">
     <span class="tag">Avant chaque séance</span>
@@ -342,7 +407,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Respiration diaphragmatique</div>
                 <div class="exo-detail">5 min · Allongée sur le dos, genoux fléchis</div>
-                <div class="exo-tip">💡 C'est l'exercice le plus important du programme — ne le saute jamais</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Allonge-toi sur le dos, genoux pliés, pieds à plat. Pose une main sur le ventre, une sur la poitrine. Inspire lentement par le nez pendant 4 secondes — ton ventre doit gonfler (pas ta poitrine). Expire par la bouche pendant 6 secondes en rentrant doucement le nombril vers la colonne. Répète sans forcer.<br><strong>Muscles :</strong> Diaphragme, transverse abdominal (muscle profond le plus important du core).</div>
+                <span class="exo-muscles">🎯 Transverse · Diaphragme · Périnée</span>
+                <span class="exo-erreur">❌ Erreur fréquente : gonfler la poitrine au lieu du ventre — ça signifie que tu ne respires pas en profondeur.</span>
+                <div class="exo-tip">💡 C'est l'exercice le plus important du programme — il réapprend à ton corps à activer le core profond automatiquement.</div>
                 <div class="exo-no-video">💬 Une question ? Envoie-moi un message directement !</div>
               </div>
             </div>
@@ -353,7 +421,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Activation périnée (Kegel)</div>
                 <div class="exo-detail">3 séries × 10 contractions · 5 sec maintien + 5 sec relâché</div>
-                <div class="exo-tip">💡 Imagine que tu retiens un jet d'urine — contracte sans bloquer le souffle</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Assise ou allongée. Contracte les muscles du périnée comme si tu retenais un jet d'urine ET des gaz en même temps — du bas vers le haut. Maintiens 5 secondes en continuant à respirer normalement (surtout ne retiens pas ta respiration !). Relâche complètement 5 secondes. Le relâché est aussi important que la contraction.<br><strong>Muscles :</strong> Plancher pelvien (releveur de l'anus, muscles pubo-coccygiens).</div>
+                <span class="exo-muscles">🎯 Plancher pelvien · Sphincter · Muscles pubo-coccygiens</span>
+                <span class="exo-erreur">❌ Erreur fréquente : contracter les fessiers ou les cuisses à la place du périnée — vérifie que tes jambes restent totalement relâchées.</span>
+                <div class="exo-tip">💡 Si tu n'es pas sûre de sentir la bonne zone, essaie de stopper le jet d'urine quand tu vas aux toilettes — 1 seule fois pour identifier, pas en routine.</div>
                 <div class="exo-no-video">💬 Une question ? Envoie-moi un message directement !</div>
               </div>
             </div>
@@ -364,7 +435,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Pont fessier doux</div>
                 <div class="exo-detail">3 séries × 12 reps · Pause 45 sec</div>
-                <div class="exo-tip">💡 Expire en montant, inspire en descendant. Serre les fessiers en haut.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Allonge-toi sur le dos, genoux fléchis à 90°, pieds à plat écartés largeur des hanches. Les bras le long du corps, paumes vers le bas. Inspire. En expirant, contracte le périnée ET les fessiers, puis pousse les hanches vers le plafond jusqu'à former une ligne droite épaule–hanche–genou. Maintiens 1 seconde en haut. Inspire en redescendant vertèbre par vertèbre.<br><strong>Muscles :</strong> Grand fessier, ischio-jambiers, transverse abdominal, érecteurs du rachis.</div>
+                <span class="exo-muscles">🎯 Fessiers · Ischio-jambiers · Transverse · Lombaires</span>
+                <span class="exo-erreur">❌ Erreur fréquente : creuser le bas du dos en haut. Si tu sens tes lombaires tirer, baisse légèrement les hanches et contracte plus les abdos.</span>
+                <div class="exo-tip">💡 Expire en montant, inspire en descendant. Serre les fessiers à fond en haut — c'est là que le travail se passe.</div>
                 <p class="exo-no-video">💬 Une question ? Envoie-moi un message directement !</p>
               </div>
             </div>
@@ -375,7 +449,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Gainage sur genoux (planche modifiée)</div>
                 <div class="exo-detail">3 séries × 20 sec · Repos 40 sec</div>
-                <div class="exo-tip">💡 Ligne droite épaules-hanches-genoux. Ventre rentré. Respire.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> À 4 pattes, descends sur les avant-bras (coudes sous les épaules). Garde les genoux au sol. Rentre le nombril vers la colonne, contracte les fessiers et aligne le dos — pas de cambrure, pas de dos rond. Maintiens la position en respirant calmement. Regarde le sol, nuque dans l'axe de la colonne.<br><strong>Muscles :</strong> Transverse, obliques, grand droit (version douce), lombaires, épaules.</div>
+                <span class="exo-muscles">🎯 Transverse · Obliques · Épaules · Lombaires</span>
+                <span class="exo-erreur">❌ Erreur fréquente : laisser les hanches monter ou le ventre s'affaisser. Si tu n'arrives pas à tenir sans cambrer — réduis le temps.</span>
+                <div class="exo-tip">💡 Ligne droite épaules–hanches–genoux. Ventre actif, pas bloqué. Continue à respirer — ne retiens pas ton souffle.</div>
                 <p class="exo-no-video">💬 Une question ? Envoie-moi un message directement !</p>
               </div>
             </div>
@@ -423,7 +500,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Bird Dog</div>
                 <div class="exo-detail">3 séries × 8 reps chaque côté · Pause 45 sec</div>
-                <div class="exo-tip">💡 À 4 pattes : tends le bras droit + jambe gauche simultanément. Dos plat. Expire en tendant.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> À 4 pattes, poignets sous les épaules, genoux sous les hanches, dos plat comme une table. Rentre le nombril. En expirant, tends simultanément le bras droit vers l'avant et la jambe gauche vers l'arrière — parallèles au sol, pas plus haut. Maintiens 2 secondes. Reviens en contrôlant. Alterne les côtés.<br><strong>Muscles :</strong> Transverse, érecteurs du rachis, grand fessier, deltoïdes, coordination neuro-musculaire.</div>
+                <span class="exo-muscles">🎯 Transverse · Lombaires · Fessiers · Stabilisateurs</span>
+                <span class="exo-erreur">❌ Erreur fréquente : rotation du bassin quand tu lèves la jambe (une hanche qui monte). Garde les hanches parfaitement horizontales — utilise un miroir si besoin.</span>
+                <div class="exo-tip">💡 Expire en tendant. Si tu te balances, ralentis encore plus. La qualité prime sur la vitesse.</div>
                 <p class="exo-no-video">💬 Une question ? Envoie-moi un message directement !</p>
               </div>
             </div>
@@ -434,7 +514,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Dead Bug modifié</div>
                 <div class="exo-detail">3 séries × 8 reps chaque côté · Pause 45 sec</div>
-                <div class="exo-tip">💡 Allongée, bras vers le plafond : descends un bras + la jambe opposée sans creuser le dos.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Allonge-toi sur le dos, genoux fléchis à 90° en l'air (table top), bras tendus vers le plafond. Colle bien le bas du dos au sol — c'est ta priorité absolue pendant tout l'exercice. En expirant, descends lentement le bras droit vers l'arrière-tête ET la jambe gauche vers le sol (sans la poser). Reviens en inspirant. Alterne. Version modifiée : garde un pied au sol si c'est trop difficile.<br><strong>Muscles :</strong> Transverse abdominal (activation intense), psoas, diaphragme, coordination croisée.</div>
+                <span class="exo-muscles">🎯 Transverse · Psoas · Grand droit · Coordination</span>
+                <span class="exo-erreur">❌ Erreur fréquente : laisser le bas du dos se décoller du sol quand tu descends la jambe. Si c'est le cas, ne descends pas aussi bas — amplitude réduite.</span>
+                <div class="exo-tip">💡 Imagine que tu as un verre d'eau sur le ventre — ne le renverse pas. Mouvement lent, contrôlé, en 4 secondes.</div>
                 <p class="exo-no-video">💬 Une question ? Envoie-moi un message directement !</p>
               </div>
             </div>
@@ -443,9 +526,12 @@ a{color:inherit;text-decoration:none;}
             <div class="exo-top">
               <div class="exo-num">4</div>
               <div class="exo-content">
-                <div class="exo-name">Pont fessier unilatéral (modifié)</div>
+                <div class="exo-name">Pont fessier unilatéral</div>
                 <div class="exo-detail">3 séries × 10 reps chaque jambe · Pause 45 sec</div>
-                <div class="exo-tip">💡 Pont classique mais tu lèves une jambe à la fois — challenges les obliques</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Position pont classique (dos au sol, genoux fléchis). Monte les hanches. En haut, tend une jambe vers le plafond — garde les hanches à niveau, ne laisse pas un côté s'affaisser. Maintiens 1 seconde. Redescends. Fais toutes les reps d'un côté puis l'autre.<br><strong>Muscles :</strong> Grand fessier unilatéral (travail asymétrique), obliques pour stabiliser, ischio-jambiers.</div>
+                <span class="exo-muscles">🎯 Fessiers · Obliques · Ischio-jambiers</span>
+                <span class="exo-erreur">❌ Erreur fréquente : la hanche du côté de la jambe tendue qui tombe — contracte les obliques du côté opposé pour stabiliser.</span>
+                <div class="exo-tip">💡 Ce mouvement unilatéral est plus dur qu'il n'y paraît. C'est normal de trembler au début — c'est le core qui travaille.</div>
                 <p class="exo-no-video">💬 Une question ? Envoie-moi un message directement !</p>
               </div>
             </div>
@@ -486,9 +572,12 @@ a{color:inherit;text-decoration:none;}
             <div class="exo-top">
               <div class="exo-num">1</div>
               <div class="exo-content">
-                <div class="exo-name">Bird Dog — série longue</div>
+                <div class="exo-name">Bird Dog — maintien 3 secondes</div>
                 <div class="exo-detail">4 séries × 10 reps · Maintien 3 sec en haut</div>
-                <div class="exo-tip">💡 Tiens 3 secondes en position haute avant de redescendre — brûle !</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Même position que la semaine 2 mais avec un maintien de 3 secondes en extension complète. Compte mentalement : tend → 1, 2, 3 → reviens. Ce maintien multiplie l'intensité du travail de stabilisation. Garde le regard vers le bas, nuque neutre.<br><strong>Muscles :</strong> Transverse, érecteurs, fessiers, deltoïdes — en isométrie prolongée.</div>
+                <span class="exo-muscles">🎯 Transverse · Lombaires · Fessiers · Épaules</span>
+                <span class="exo-erreur">❌ Erreur : compenser le maintien en bloquant la respiration. Continue à respirer doucement pendant les 3 secondes.</span>
+                <div class="exo-tip">💡 Tiens 3 secondes en position haute — c'est ce maintien qui fait toute la différence sur le renfo profond.</div>
               </div>
             </div>
           </div>
@@ -498,7 +587,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Squat au poids du corps</div>
                 <div class="exo-detail">3 séries × 15 reps · Pause 45 sec</div>
-                <div class="exo-tip">💡 Pieds écartés largeur épaules, orteils légèrement ouverts. Fessiers en arrière.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Pieds écartés largeur des hanches, orteils légèrement ouverts (10h-14h). Bras tendus devant toi pour l'équilibre. Inspire, descends en poussant les fesses en arrière et vers le bas — comme pour s'asseoir sur une chaise imaginaire. Cuisse parallèle au sol si possible. Genoux dans l'axe des orteils (ne tombent pas vers l'intérieur). Expire en remontant, pousse dans les talons.<br><strong>Muscles :</strong> Quadriceps, grand fessier, ischio-jambiers, abdos (stabilisation).</div>
+                <span class="exo-muscles">🎯 Quadriceps · Fessiers · Ischio-jambiers · Core</span>
+                <span class="exo-erreur">❌ Erreur fréquente : genoux qui rentrent vers l'intérieur (valgus). Si tes genoux tombent vers l'intérieur, écarte-les activement avec les genoux alignés sur les orteils.</span>
+                <div class="exo-tip">💡 Poids dans les talons — tu dois pouvoir décoller les orteils du sol en bas du mouvement.</div>
                 <p class="exo-no-video">💬 Une question ? Envoie-moi un message directement !</p>
               </div>
             </div>
@@ -509,7 +601,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Dead Bug complet</div>
                 <div class="exo-detail">3 séries × 10 reps · Mouvement lent et contrôlé</div>
-                <div class="exo-tip">💡 Version complète : bras ET jambe opposés descendent ensemble. Dos collé au sol.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Version complète (plus la jambe modifiée) : les deux jambes en table top, bras tendus vers le plafond. Descends simultanément le bras droit + la jambe gauche (tendue cette fois, pas fléchie) vers le sol. Bas du dos absolument collé au sol pendant tout le mouvement. Expire en descendant, inspire en remontant. 4 secondes pour descendre.<br><strong>Muscles :</strong> Transverse (activation maximale), psoas, coordination croisée membres.</div>
+                <span class="exo-muscles">🎯 Transverse · Psoas · Grand droit · Obliques</span>
+                <span class="exo-erreur">❌ Erreur critique : le bas du dos qui se décolle. Si c'est le cas → reviens à la version modifiée jambe fléchie une semaine de plus.</span>
+                <div class="exo-tip">💡 Imagine que tu as un verre d'eau sur le ventre — ne le renverse pas. Lent, précis, efficace.</div>
               </div>
             </div>
           </div>
@@ -519,7 +614,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Gainage latéral sur genoux</div>
                 <div class="exo-detail">3 séries × 20 sec chaque côté · Repos 30 sec</div>
-                <div class="exo-tip">💡 Sur le côté, appui genou + avant-bras. Hanches décollées. Tiens !</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Allonge-toi sur le côté droit, appui sur l'avant-bras droit (coude sous l'épaule) et sur le genou droit. La jambe gauche posée sur la droite. Coude et avant-bras stables, soulève les hanches pour créer une ligne droite de la tête au genou. Rentre le nombril. Maintiens. Respire normalement.<br><strong>Muscles :</strong> Obliques latéraux (côté cible), carré des lombes, tenseur du fascia lata.</div>
+                <span class="exo-muscles">🎯 Obliques · Carré des lombes · Fessier moyen</span>
+                <span class="exo-erreur">❌ Erreur fréquente : laisser la hanche s'affaisser vers le sol ou la pousser trop haut. Cherche la ligne droite parfaite.</span>
+                <div class="exo-tip">💡 Regarde droit devant toi, pas vers le bas. Les obliques sont tes alliés pour le "cambre" latéral de la taille.</div>
               </div>
             </div>
           </div>
@@ -556,7 +654,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Fente statique au sol</div>
                 <div class="exo-detail">3 séries × 10 reps chaque jambe · Pause 45 sec</div>
-                <div class="exo-tip">💡 Genou arrière proche du sol sans le toucher. Tronc droit.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Debout, fais un grand pas en avant avec le pied droit. Les deux pieds pointent vers l'avant. Descends en pliant les deux genoux à 90° : genou avant au-dessus de la cheville (pas en avant), genou arrière qui frôle le sol sans le toucher. Remonte en poussant dans le talon avant. Tronc droit, regard devant, abdos engagés.<br><strong>Muscles :</strong> Quadriceps (avant), grand fessier (arrière), ischio-jambiers, mollets, stabilisateurs du genou.</div>
+                <span class="exo-muscles">🎯 Quadriceps · Fessiers · Ischio-jambiers · Stabilité genou</span>
+                <span class="exo-erreur">❌ Erreur fréquente : le genou avant qui dépasse la pointe du pied (trop peu de fente) ou le tronc qui penche en avant.</span>
+                <div class="exo-tip">💡 Pour plus de stabilité, pose les mains sur les hanches et fixe un point devant toi. Genou arrière proche du sol = amplitude maximale.</div>
                 <p class="exo-no-video">💬 Une question ? Envoie-moi un message directement !</p>
               </div>
             </div>
@@ -567,7 +668,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Crunch oblique doux</div>
                 <div class="exo-detail">3 séries × 12 reps chaque côté · Mouvement minimal</div>
-                <div class="exo-tip">💡 Pas de torsion brusque. Soulève doucement l'épaule vers le genou opposé — 5 cm max.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Allonge-toi sur le dos, genoux fléchis. Main droite derrière la tête (pas de traction !), coude ouvert. Expire en soulevant doucement l'épaule droite vers le genou gauche — amplitude très réduite (5 cm max), jamais de torsion brusque du cou. L'épaule monte, pas le coude. Inspire en redescendant sans toucher le sol.<br><strong>Muscles :</strong> Obliques externes et internes (rotation du tronc), grand droit (faible activation intentionnelle).</div>
+                <span class="exo-muscles">🎯 Obliques externes · Obliques internes · Taille</span>
+                <span class="exo-erreur">❌ Erreur fréquente : tirer sur la nuque avec la main ou faire une torsion brusque. Ce mouvement doit être fluide et contrôlé — si tu sens une douleur cervicale, arrête.</span>
+                <div class="exo-tip">💡 Ce n'est pas un crunch classique. L'amplitude est petite mais le travail des obliques est maximal si tu expires bien.</div>
               </div>
             </div>
           </div>
@@ -595,9 +699,12 @@ a{color:inherit;text-decoration:none;}
             <div class="exo-top">
               <div class="exo-num">5</div>
               <div class="exo-content">
-                <div class="exo-name">Relevé de jambes allongée (modifié)</div>
+                <div class="exo-name">Relevé de jambes allongée — une jambe</div>
                 <div class="exo-detail">3 séries × 10 reps · Une jambe à la fois</div>
-                <div class="exo-tip">💡 Dos collé au sol. Si tu sens une pression dans le bas-ventre, stop — tu n'es pas encore prête.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Allonge-toi sur le dos, une jambe tendue au sol, l'autre en l'air à 90°. Les mains à plat sous les fesses (ou le long du corps). Expire en rentrant le nombril, puis monte la jambe tendue du sol jusqu'à rejoindre l'autre (ou aussi haut que possible sans cambrer). Inspire en redescendant doucement.<br><strong>Muscles :</strong> Psoas, grand droit (bas), transverse, quadriceps.</div>
+                <span class="exo-muscles">🎯 Psoas · Bas du ventre · Transverse</span>
+                <span class="exo-erreur">❌ Stop immédiat si : pression dans le bas-ventre, ventre qui "pointe" vers le haut, douleur lombaire ou périnéale. Ces signes indiquent que ton core n'est pas encore prêt — reste à la version modifiée jambe fléchie.</span>
+                <div class="exo-tip">💡 Bas du dos collé au sol en permanence. Si tu cambre — remonte ta jambe plus haut ou réduis l'amplitude.</div>
               </div>
             </div>
           </div>
@@ -628,7 +735,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Gainage planche complète</div>
                 <div class="exo-detail">3 séries × 30 sec · Repos 30 sec</div>
-                <div class="exo-tip">💡 Si tu sens une pression ou que ton ventre "pointe" → reviens sur les genoux. Pas de rush.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Appui sur les avant-bras (coudes sous les épaules) et les orteils. Corps en ligne droite de la tête aux talons. Rentre le nombril, contracte les fessiers, pousse les talons vers l'arrière. Nuque dans l'axe de la colonne — regarde le sol. Respire doucement et régulièrement pendant tout le maintien.<br><strong>Muscles :</strong> Transverse, grand droit, obliques, fessiers, érecteurs, épaules, quadriceps (isométrie totale).</div>
+                <span class="exo-muscles">🎯 Core complet · Fessiers · Épaules · Érecteurs</span>
+                <span class="exo-erreur">❌ 3 signes que tu dois revenir sur les genoux : ventre qui s'affaisse, dos qui cambre, ventre qui "pointe" en dôme vers le haut. Ces 3 signes = retour à la planche sur genoux sans honte.</span>
+                <div class="exo-tip">💡 Si tu sens une pression ou que ton ventre "pointe" → reviens sur les genoux. La progression n'est pas une course.</div>
               </div>
             </div>
           </div>
@@ -636,9 +746,12 @@ a{color:inherit;text-decoration:none;}
             <div class="exo-top">
               <div class="exo-num">2</div>
               <div class="exo-content">
-                <div class="exo-name">Hip Thrust au poids du corps (dos sur canapé)</div>
+                <div class="exo-name">Hip Thrust au poids du corps</div>
                 <div class="exo-detail">4 séries × 15 reps · Pause 45 sec</div>
-                <div class="exo-tip">💡 Dos sur le canapé ou le lit, pieds au sol. Pousse les hanches vers le plafond.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Assis(e) dos contre le canapé ou un lit (hauteur genou), les omoplates appuyées dessus. Pieds à plat écartés largeur des hanches, genoux à 90°. Laisse les hanches descendre vers le sol. En expirant, pousse les hanches vers le plafond en contractant les fessiers fort, jusqu'à former une ligne droite épaule-hanche-genou. Maintiens 1-2 secondes en haut. Descends lentement.<br><strong>Muscles :</strong> Grand fessier (activation maximale — meilleur exercice pour les fessiers), ischio-jambiers, abdos stabilisateurs.</div>
+                <span class="exo-muscles">🎯 Grand fessier (++++) · Ischio-jambiers · Abdos</span>
+                <span class="exo-erreur">❌ Erreur fréquente : cambrer le bas du dos en haut au lieu de contracter les fessiers. Si tu sens les lombaires, pense à rentrer les côtes et à faire une rétroversion du bassin.</span>
+                <div class="exo-tip">💡 Squeeze les fessiers à fond en haut — si tu ne les sens pas brûler après 15 reps, tu ne contractes pas assez fort.</div>
               </div>
             </div>
           </div>
@@ -648,7 +761,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Mountain Climbers lents</div>
                 <div class="exo-detail">3 séries × 16 reps (8 chaque jambe) · Pause 45 sec</div>
-                <div class="exo-tip">💡 Position planche, ramène un genou vers la poitrine lentement. Pas de vitesse ici.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Position planche haute (bras tendus, mains sous les épaules). En gardant le dos plat et les hanches basses, ramène le genou droit vers la poitrine lentement — en 2 secondes. Reviens. Alterne. Ici, PAS de vitesse : l'objectif est le contrôle abdominal, pas le cardio. Si les hanches montent, ralentis encore.<br><strong>Muscles :</strong> Transverse, psoas, obliques, épaules (stabilisation), quadriceps.</div>
+                <span class="exo-muscles">🎯 Transverse · Psoas · Obliques · Épaules</span>
+                <span class="exo-erreur">❌ Erreur fréquente : les hanches qui montent en l'air quand tu ramènes le genou (position "tente"). Garde les hanches à hauteur du corps — aussi basses que possible.</span>
+                <div class="exo-tip">💡 Lent = efficace ici. Si tu vas vite → tu perds le bénéfice de l'exercice et tu crées une pression dans le bas-ventre.</div>
               </div>
             </div>
           </div>
@@ -658,7 +774,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Fentes marchées au poids du corps</div>
                 <div class="exo-detail">3 séries × 12 reps · Pause 45 sec</div>
-                <div class="exo-tip">💡 On avance dans la pièce. Tronc droit, regard devant.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Debout. Fais un grand pas en avant avec le pied droit, descends en fente (genou arrière proche du sol). Sans reprendre la position debout, fais directement un grand pas avec le pied gauche et descends à nouveau. Tu avances dans la pièce en continu. Tronc droit, épaules en arrière, abdos engagés.<br><strong>Muscles :</strong> Quadriceps, grand fessier, ischio-jambiers, mollets, coordination et équilibre.</div>
+                <span class="exo-muscles">🎯 Quadriceps · Fessiers · Ischio · Coordination</span>
+                <span class="exo-erreur">❌ Erreur : pencher le tronc en avant à chaque pas. Si tu te penches, racourcis le pas et ralentis.</span>
+                <div class="exo-tip">💡 Les fentes marchées brûlent plus que les fentes statiques car le centre de gravité change à chaque pas — plus de travail stabilisateur.</div>
               </div>
             </div>
           </div>
@@ -701,9 +820,12 @@ a{color:inherit;text-decoration:none;}
             <div class="exo-top">
               <div class="exo-num">2</div>
               <div class="exo-content">
-                <div class="exo-name">Russian Twist léger (sans poids)</div>
+                <div class="exo-name">Russian Twist (sans poids)</div>
                 <div class="exo-detail">3 séries × 20 reps · Mouvement contrôlé</div>
-                <div class="exo-tip">💡 Assis, légèrement penché en arrière. Torsion lente des épaules droite-gauche. Pieds au sol si besoin.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Assis(e) sur le sol, genoux fléchis, pieds à plat (ou légèrement décollés si tu te sens stable). Penche-toi légèrement en arrière (45°) pour activer les abdos. Joins les mains devant toi. Tourne les épaules lentement vers la droite, puis vers la gauche — en contrôlant. Ce n'est pas la vitesse qui compte, c'est l'amplitude et le contrôle de la rotation.<br><strong>Muscles :</strong> Obliques (rotation), grand droit, psoas (maintien du tronc), transverse.</div>
+                <span class="exo-muscles">🎯 Obliques · Grand droit · Psoas · Taille</span>
+                <span class="exo-erreur">❌ Erreur fréquente : tourner les bras sans tourner les épaules (aucun bénéfice). C'est les épaules et le tronc qui doivent tourner, pas juste les mains.</span>
+                <div class="exo-tip">💡 Si tes pieds décollent, garde-les au sol — l'important c'est le travail des obliques, pas l'équilibre.</div>
               </div>
             </div>
           </div>
@@ -713,7 +835,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Bicycle Crunch doux</div>
                 <div class="exo-detail">3 séries × 14 reps · Ultra lent</div>
-                <div class="exo-tip">💡 Pas de vitesse, pas de traction sur la nuque. Coude vers genou opposé — amplitude réduite mais contrôlée.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Allongée sur le dos, mains derrière la tête (sans tirer). Soulève légèrement les épaules du sol. Amène le coude droit vers le genou gauche en tendant la jambe droite — mais amplitude réduite (pas de torsion brusque). Puis de l'autre côté. Mouvement de pédalage lent, 2 secondes par côté. Bas du dos collé au sol.<br><strong>Muscles :</strong> Obliques (rotation), grand droit (fixation), psoas, coordination.</div>
+                <span class="exo-muscles">🎯 Obliques · Grand droit · Coordination croisée</span>
+                <span class="exo-erreur">❌ Erreur fréquente : aller vite comme à la salle. En post-partum, la vitesse = pression sur le périnée et le bas du dos. Lent est la règle absolue ici.</span>
+                <div class="exo-tip">💡 Si tu sens une pression ou un "claquement" interne → stop et reviens au Russian Twist. Ton corps te dit qu'il n'est pas prêt.</div>
               </div>
             </div>
           </div>
@@ -772,9 +897,12 @@ a{color:inherit;text-decoration:none;}
             <div class="exo-top">
               <div class="exo-num">2</div>
               <div class="exo-content">
-                <div class="exo-name">Squat Goblet (haltère léger — 3 à 6 kg)</div>
+                <div class="exo-name">Squat Goblet (haltère léger 3-6 kg)</div>
                 <div class="exo-detail">4 séries × 15 reps · Pause 45 sec</div>
-                <div class="exo-tip">💡 Haltère tenu à deux mains devant la poitrine. Profondeur max. Pousse les genoux vers l'extérieur.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Tiens un haltère à deux mains, contre la poitrine, coudes pointés vers le sol. Pieds un peu plus écartés que les épaules, orteils ouverts. Descends profondément en poussant les genoux vers l'extérieur (dans l'axe des orteils). Le poids contre la poitrine aide à garder le tronc droit et favorise une meilleure profondeur. Remonte en poussant dans les talons.<br><strong>Muscles :</strong> Quadriceps, grand fessier, ischio-jambiers, adducteurs, abdos (gainage), dos.</div>
+                <span class="exo-muscles">🎯 Quadriceps · Fessiers · Adducteurs · Core</span>
+                <span class="exo-erreur">❌ Erreur fréquente : le tronc qui s'incline trop en avant. Le poids devant la poitrine doit t'aider à rester droite — si tu t'inclines, prends un poids plus léger.</span>
+                <div class="exo-tip">💡 Le Goblet Squat est le meilleur squat pour apprendre à descendre profond avec le tronc droit. Profite de cette progression.</div>
               </div>
             </div>
           </div>
@@ -784,7 +912,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Hip Thrust avec haltère</div>
                 <div class="exo-detail">4 séries × 15 reps · Haltère sur les hanches</div>
-                <div class="exo-tip">💡 Progression de la semaine 5 — les fessiers vont brûler !</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Même position que semaine 5 (dos sur canapé). Place un haltère de 5-10 kg sur les hanches, tiens-le avec les deux mains. Descends les hanches, puis pousse fort vers le plafond en contractant les fessiers. L'haltère doit rester stable — si il glisse, mets un tapis plié dessous. En haut : ligne droite parfaite, fessiers serrés au maximum 2 secondes.<br><strong>Muscles :</strong> Grand fessier (activation maximale documentée dans les études EMG), ischio-jambiers, abdos.</div>
+                <span class="exo-muscles">🎯 Grand fessier (activation max) · Ischio-jambiers</span>
+                <span class="exo-erreur">❌ Erreur fréquente : monter trop haut et cambrer le dos. En haut du mouvement, les côtes doivent rester baissées — pas d'extension lombaire.</span>
+                <div class="exo-tip">💡 C'est LA progression — les fessiers vont brûler fort. Si le poids est trop léger, tu ne le sentiras pas assez : choisis un poids où les 2 dernières reps sont difficiles.</div>
               </div>
             </div>
           </div>
@@ -860,7 +991,10 @@ a{color:inherit;text-decoration:none;}
               <div class="exo-content">
                 <div class="exo-name">Gainage planche dynamique</div>
                 <div class="exo-detail">3 séries × 10 reps · Descend un bras puis l'autre</div>
-                <div class="exo-tip">💡 Planche haute → descends sur les avant-bras → remonte. Contrôle à 100%.</div>
+                <div class="exo-desc"><strong>Comment faire :</strong> Commence en planche haute (bras tendus). Descends le bras droit sur l'avant-bras, puis le bras gauche → tu es en planche basse. Remonte le bras droit, puis le gauche → tu es en planche haute. Alterne le côté qui descend en premier. Garde les hanches le plus stables possible — elles ne doivent pas pivoter.<br><strong>Muscles :</strong> Transverse, grand droit, obliques, triceps, épaules, grand dentelé (stabilisateur des omoplates).</div>
+                <span class="exo-muscles">🎯 Core complet · Triceps · Épaules · Grand dentelé</span>
+                <span class="exo-erreur">❌ Erreur fréquente : les hanches qui pivotent à chaque transition. Place les pieds plus écartés (largeur des épaules) pour plus de stabilité.</span>
+                <div class="exo-tip">💡 C'est l'exercice final du programme — il combine force, stabilité et coordination. Fais-le lentement, ça vaut plus que vite.</div>
               </div>
             </div>
           </div>
@@ -882,7 +1016,7 @@ a{color:inherit;text-decoration:none;}
 </div>
 
 <!-- NUTRITION -->
-<div class="section section-violet">
+<div id="nutrition" class="section section-violet">
   <div class="wrap">
     <span class="tag">Nutrition post-partum</span>
     <h2 class="section-title">Manger pour récupérer et affiner</h2>
@@ -1092,7 +1226,7 @@ a{color:inherit;text-decoration:none;}
 </div>
 
 <!-- FAQ EXPERT -->
-<div class="section section-violet">
+<div id="faq" class="section section-violet">
   <div class="wrap">
     <span class="tag">Questions fréquentes</span>
     <h2 class="section-title">Les questions que toutes les mamans posent</h2>
@@ -1157,12 +1291,58 @@ a{color:inherit;text-decoration:none;}
 </div>
 
 <script>
+// SEMAINES ACCORDÉON
 function toggleSem(id){
   const bloc=document.getElementById(id);
   bloc.classList.toggle('open');
 }
-// Ouvre la semaine 1 au chargement
 document.getElementById('sem1').classList.add('open');
+
+// CHRONO
+let chronoSec=60,chronoRunning=false,chronoInterval=null;
+function updateDisplay(){
+  const m=Math.floor(chronoSec/60).toString().padStart(2,'0');
+  const s=(chronoSec%60).toString().padStart(2,'0');
+  document.getElementById('chrono-display').textContent=m+':'+s;
+}
+function setTimer(sec){chronoSec=sec;resetChrono();}
+function toggleChrono(){
+  if(chronoRunning){
+    clearInterval(chronoInterval);chronoRunning=false;
+    document.getElementById('btn-start-stop').textContent='▶ Reprendre';
+  } else {
+    chronoRunning=true;
+    document.getElementById('btn-start-stop').textContent='⏸ Pause';
+    chronoInterval=setInterval(()=>{
+      if(chronoSec>0){chronoSec--;updateDisplay();}
+      else{clearInterval(chronoInterval);chronoRunning=false;
+        document.getElementById('btn-start-stop').textContent='▶ Démarrer';
+        document.getElementById('chrono-display').textContent='✓ OK !';
+      }
+    },1000);
+  }
+}
+function resetChrono(){
+  clearInterval(chronoInterval);chronoRunning=false;
+  document.getElementById('btn-start-stop').textContent='▶ Démarrer';
+  updateDisplay();
+}
+function minimizeChrono(){document.getElementById('chrono-widget').classList.add('minimized');}
+function expandChrono(){document.getElementById('chrono-widget').classList.remove('minimized');}
+updateDisplay();
+
+// NAV ACTIVE
+const navBtns=document.querySelectorAll('.nav-sem-btn[href^="#sem"]');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navBtns.forEach(b=>b.classList.remove('active'));
+      const btn=document.querySelector('.nav-sem-btn[href="#'+e.target.id+'"]');
+      if(btn)btn.classList.add('active');
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll('.semaine-bloc').forEach(s=>observer.observe(s));
 </script>
 </body>
 </html>
