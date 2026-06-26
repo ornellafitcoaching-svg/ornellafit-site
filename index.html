@@ -1224,27 +1224,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- PHOTO -->
     <div class="hero-photo-col">
-      <div class="hero-photo-frame" style="display:flex;gap:16px;width:100%;">
-        <img src="images/ornella-profil-ext.jpg"
-             alt="Ornella — Coach sportive à domicile Essonne 91"
-             style="width:50%;object-fit:cover;object-position:top center;border-radius:16px;display:block;">
-        <img src="images/ornella-profil-studio.png"
-             alt="Ornella — Coach sportive certifiée"
-             style="width:50%;object-fit:cover;object-position:top center;border-radius:16px;display:block;">
-      </div>
       <style>
-      @media (max-width:768px) {
-        .hero-photo-frame {
-          flex-direction: column !important;
-          gap: 12px !important;
-        }
-        .hero-photo-frame img {
-          width: 100% !important;
-          height: auto !important;
-          object-fit: unset !important;
-        }
+      .hero-mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:12px;width:100%;}
+      .hero-mosaic .photo-main{grid-row:1/3;border-radius:18px;overflow:hidden;}
+      .hero-mosaic .photo-main img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;border-radius:18px;}
+      .hero-mosaic .photo-small{border-radius:14px;overflow:hidden;}
+      .hero-mosaic .photo-small img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;border-radius:14px;}
+      @media(max-width:640px){
+        .hero-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:auto auto;}
+        .hero-mosaic .photo-main{grid-row:1/1;grid-column:1/3;}
+        .hero-mosaic .photo-main img{height:260px;}
+        .hero-mosaic .photo-small img{height:160px;}
       }
       </style>
+      <div class="hero-mosaic">
+        <div class="photo-main">
+          <img src="images/ornella-ext-arbre.jpg" alt="Ornella — Coach sportive à domicile Essonne 91">
+        </div>
+        <div class="photo-small">
+          <img src="images/ornella-diplome.jpg" alt="Ornella — Diplôme BPJEPS coach certifiée">
+        </div>
+        <div class="photo-small">
+          <img src="images/ornella-profil-ete.jpg" alt="Ornella — Coach fitness Essonne">
+        </div>
+      </div>
     </div>
 
   </div>
