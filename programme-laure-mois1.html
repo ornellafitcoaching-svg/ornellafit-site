@@ -225,6 +225,14 @@
     .nutri-card-body { font-size:12px; }
   }
 
+  /* ===== SUIVI INPUTS ===== */
+  .suivi-input {
+    width:100%; border:1.5px solid var(--border); border-radius:8px;
+    padding:5px 6px; font-size:12px; font-family:'Jost',sans-serif;
+    color:var(--text-dark); background:#fff; box-sizing:border-box;
+  }
+  .suivi-input:focus { outline:none; border-color:var(--violet); }
+
   /* ===== CHRONO ===== */
   #chrono-widget {
     position: fixed;
@@ -965,12 +973,76 @@
 
   <div class="divider"></div>
 
+  <!-- MEAL PREP -->
+  <div id="mealprep" class="section-title"><div class="icon">🥡</div><h2>Meal Prep — <span>s'organiser pour la semaine</span></h2></div>
+
+  <div class="highlight-box" style="margin-bottom:16px;">
+    <div class="hl-label">⏱ 1h30 le dimanche = toute la semaine en pilote automatique</div>
+    <div class="hl-text">Tu travailles tôt (5h30), tu as une vie de famille — si tu ne prépares pas à l'avance, tu improvises, et l'improvisation sabote les résultats. L'objectif : cuisiner une fois, manger juste toute la semaine.</div>
+  </div>
+
+  <div class="nutrition-grid" style="margin-bottom:16px;">
+    <div class="nutri-card">
+      <div class="nutri-card-header">🍗 Protéines — cuire en batch</div>
+      <div class="nutri-card-body">
+        <strong>Poulet/dinde :</strong> 600–700g au four (180° · 25 min) avec herbes + huile d'olive → se conserve 4 jours au frigo<br><br>
+        <strong>Œufs durs :</strong> cuire 6–8 d'un coup → collation ou ajout salade rapide<br><br>
+        <strong>Sardines/maquereau :</strong> en boîte → aucune préparation, toujours prêt ✅
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">🌾 Féculents — cuire en grande quantité</div>
+      <div class="nutri-card-body">
+        <strong>Riz complet :</strong> 300g secs → 600g cuit → 4–5 portions (3 jours max au frigo)<br><br>
+        <strong>Patates douces :</strong> 4–5 entières au four (200° · 40 min) → se conservent 3 jours · rapide à réchauffer<br><br>
+        <strong>Quinoa :</strong> 200g secs → repas post-workout ou salade froide
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">🥦 Légumes — précoupe = gain de temps</div>
+      <div class="nutri-card-body">
+        Laver et couper broccoli, courgette, poivrons en début de semaine → conserve 5 jours dans une boîte hermétique au frigo<br><br>
+        <strong>Légumes rôtis au four :</strong> courgette + poivron + champignons + huile d'olive · 200° · 20 min → à réchauffer en 2 min micro-ondes
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">🥣 Petits-déjeuners — préparer à l'avance</div>
+      <div class="nutri-card-body">
+        <strong>Overnight oats (prêt le matin) :</strong> la veille au soir → 50g flocons + 1 scoop whey + lait végétal · laisser une nuit au frigo · ajouter fruits le matin. Prend 3 min<br><br>
+        <strong>Batch de porridge :</strong> prépare 2–3 portions à la fois et réchauffe au micro-ondes
+      </div>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,var(--violet-pale),var(--violet-ultra));border-radius:14px;padding:18px 20px;margin-bottom:16px;border:1px solid var(--border);">
+    <div style="font-size:12px;font-weight:700;color:var(--violet);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;">📅 Planning meal prep dimanche — 1h30</div>
+    <div style="font-size:13px;color:var(--text-dark);line-height:2;">
+      <strong>0h00</strong> — Mettre poulet au four + patates douces<br>
+      <strong>0h10</strong> — Lancer riz complet + faire cuire œufs durs<br>
+      <strong>0h20</strong> — Préparer légumes à rôtir, les enfourner<br>
+      <strong>0h30</strong> — Couper et ranger les légumes crus en boîtes<br>
+      <strong>0h50</strong> — Sortir poulet, légumes rôtis → peser + portionner en boîtes<br>
+      <strong>1h10</strong> — Préparer l'overnight oats du lundi soir<br>
+      <strong>1h30</strong> — Frigo organisé pour toute la semaine ✅
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="hl-label">📦 Matériel indispensable</div>
+    <div class="hl-text">
+      6–8 boîtes hermétiques (Tupperware ou verre) · Balance alimentaire · Grand plat de four · Poche à zip pour congéler les portions du jeudi/vendredi si besoin.<br>
+      <strong>Congèle ce qui dépasse 3 jours</strong> — poulet, riz, patate douce tiennent 3 mois au congélateur.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
   <!-- SUIVI -->
   <div id="suivi" class="section-title"><div class="icon">📊</div><h2>Ton <span>suivi</span></h2></div>
 
   <div class="highlight-box">
     <div class="hl-label">📋 Comment utiliser ce tableau</div>
-    <div class="hl-text">Chaque semaine, note tes séances réalisées, ta note d'énergie, ton ressenti général et ton niveau de faim. Ces données m'aident à ajuster le programme au fil du mois.</div>
+    <div class="hl-text">Remplis chaque semaine — tes données sont <strong>sauvegardées automatiquement</strong> sur ton téléphone. En fin de mois, clique sur "Envoyer à Ornella" pour lui transmettre ton bilan.</div>
   </div>
 
   <table class="ressenti-table">
@@ -983,20 +1055,52 @@
       <th>Notes</th>
     </tr></thead>
     <tbody>
-      <tr><td>Semaine 1</td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>Semaine 2</td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>Semaine 3</td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>Semaine 4</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr>
+        <td style="font-weight:600;white-space:nowrap;">Semaine 1</td>
+        <td><input class="suivi-input" id="s1-seances" type="text" placeholder="ex: 4/5" oninput="saveSuivi()"></td>
+        <td><input class="suivi-input" id="s1-energie" type="number" min="1" max="10" placeholder="/10" oninput="saveSuivi()"></td>
+        <td><input class="suivi-input" id="s1-sommeil" type="number" min="1" max="10" placeholder="/10" oninput="saveSuivi()"></td>
+        <td><input class="suivi-input" id="s1-ressenti" type="text" placeholder="bien, fatiguée…" oninput="saveSuivi()"></td>
+        <td><input class="suivi-input" id="s1-notes" type="text" placeholder="remarques…" oninput="saveSuivi()"></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;white-space:nowrap;">Semaine 2</td>
+        <td><input class="suivi-input" id="s2-seances" type="text" placeholder="ex: 5/5" oninput="saveSuivi()"></td>
+        <td><input class="suivi-input" id="s2-energie" type="number" min="1" max="10" placeholder="/10" oninput="saveSuivi()"></td>
+        <td><input class="suivi-input" id="s2-sommeil" type="number" min="1" max="10" placeholder="/10" oninput="saveSuivi()"></td>
+        <td><input class="suivi-input" id="s2-ressenti" type="text" placeholder="bien, fatiguée…" oninput="saveSuivi()"></td>
+        <td><input class="suivi-input" id="s2-notes" type="text" placeholder="remarques…" oninput="saveSuivi()"></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;white-space:nowrap;">Semaine 3</td>
+        <td><input class="suivi-input" id="s3-seances" type="text" placeholder="ex: 5/5" oninput="saveSuivi()"></td>
+        <td><input class="suivi-input" id="s3-energie" type="number" min="1" max="10" placeholder="/10" oninput="saveSuivi()"></td>
+        <td><input class="suivi-input" id="s3-sommeil" type="number" min="1" max="10" placeholder="/10" oninput="saveSuivi()"></td>
+        <td><input class="suivi-input" id="s3-ressenti" type="text" placeholder="bien, fatiguée…" oninput="saveSuivi()"></td>
+        <td><input class="suivi-input" id="s3-notes" type="text" placeholder="remarques…" oninput="saveSuivi()"></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;white-space:nowrap;">Semaine 4</td>
+        <td><input class="suivi-input" id="s4-seances" type="text" placeholder="ex: 5/5" oninput="saveSuivi()"></td>
+        <td><input class="suivi-input" id="s4-energie" type="number" min="1" max="10" placeholder="/10" oninput="saveSuivi()"></td>
+        <td><input class="suivi-input" id="s4-sommeil" type="number" min="1" max="10" placeholder="/10" oninput="saveSuivi()"></td>
+        <td><input class="suivi-input" id="s4-ressenti" type="text" placeholder="bien, fatiguée…" oninput="saveSuivi()"></td>
+        <td><input class="suivi-input" id="s4-notes" type="text" placeholder="remarques…" oninput="saveSuivi()"></td>
+      </tr>
     </tbody>
   </table>
 
-  <div class="highlight-box">
+  <button onclick="envoyerSuivi()" style="margin-top:12px;width:100%;padding:13px;background:linear-gradient(135deg,#25D366,#1DA851);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Jost',sans-serif;">
+    📲 Envoyer mon bilan mensuel à Ornella
+  </button>
+
+  <div class="highlight-box" style="margin-top:20px;">
     <div class="hl-label">🎯 Mes règles d'or pour ce mois</div>
     <div class="hl-text">
       <strong>1.</strong> Note tes charges à chaque séance — la progression est ta boussole.<br>
       <strong>2.</strong> Change ton petit-déjeuner dès demain — c'est le changement le plus impactant.<br>
       <strong>3.</strong> Envoie-moi une photo des 3 poses à la fin du mois 1.<br>
-      <strong>4.</strong> Hydrate-toi : 1,5 à 2L d'eau par jour minimum (le thé vert compte mais compense avec de l'eau).<br>
+      <strong>4.</strong> Hydrate-toi : 1,5 à 2L d'eau par jour minimum.<br>
       <strong>5.</strong> Dors. 7h si possible. Le corps se transforme la nuit, pas à la salle.
     </div>
   </div>
@@ -1078,6 +1182,52 @@
     document.getElementById('chrono-widget').classList.remove('minimized');
   }
   setTimer(60);
+
+  // ===== SUIVI localStorage =====
+  var suiviIds = ['s1-seances','s1-energie','s1-sommeil','s1-ressenti','s1-notes',
+                  's2-seances','s2-energie','s2-sommeil','s2-ressenti','s2-notes',
+                  's3-seances','s3-energie','s3-sommeil','s3-ressenti','s3-notes',
+                  's4-seances','s4-energie','s4-sommeil','s4-ressenti','s4-notes'];
+
+  function saveSuivi() {
+    suiviIds.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) localStorage.setItem('laure_' + id, el.value);
+    });
+  }
+
+  function loadSuivi() {
+    suiviIds.forEach(function(id) {
+      var el = document.getElementById(id);
+      var val = localStorage.getItem('laure_' + id);
+      if (el && val) el.value = val;
+    });
+  }
+
+  function envoyerSuivi() {
+    var semaines = ['Semaine 1','Semaine 2','Semaine 3','Semaine 4'];
+    var prefixes = ['s1','s2','s3','s4'];
+    var lignes = ['📊 Bilan mensuel — Laure\n'];
+    prefixes.forEach(function(p, i) {
+      var seances = document.getElementById(p+'-seances').value;
+      var energie = document.getElementById(p+'-energie').value;
+      var sommeil = document.getElementById(p+'-sommeil').value;
+      var ressenti = document.getElementById(p+'-ressenti').value;
+      var notes = document.getElementById(p+'-notes').value;
+      if (seances || energie || ressenti) {
+        lignes.push(semaines[i] + ' :');
+        if (seances) lignes.push('  Séances : ' + seances);
+        if (energie) lignes.push('  Énergie : ' + energie + '/10');
+        if (sommeil) lignes.push('  Sommeil : ' + sommeil + '/10');
+        if (ressenti) lignes.push('  Ressenti : ' + ressenti);
+        if (notes) lignes.push('  Notes : ' + notes);
+      }
+    });
+    if (lignes.length <= 1) { alert('Remplis au moins une semaine avant d\'envoyer.'); return; }
+    window.open('https://wa.me/33756834626?text=' + encodeURIComponent(lignes.join('\n')), '_blank');
+  }
+
+  loadSuivi();
 
   // ===== TEST DE CHARGE =====
   var exoNames = ['Hack Squat machine','Hip Thrust barre','Leg Press pieds hauts','RDL haltères','Seated Row','Développé militaire'];
