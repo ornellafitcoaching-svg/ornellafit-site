@@ -533,7 +533,7 @@ async function submitLead(e){
     await fetch('https://api.brevo.com/v3/contacts',{
       method:'POST',
       headers:{'Content-Type':'application/json','api-key':BREVO_KEY},
-      body:JSON.stringify({email,attributes:{PRENOM:prenom},listIds:[19],updateEnabled:true})
+      body:JSON.stringify({email,attributes:{PRENOM:prenom},listIds:[25],updateEnabled:true})
     });
   }catch(err){}
   if(typeof fbq!=='undefined') fbq('track','InitiateCheckout',{value:17,currency:'EUR'});
