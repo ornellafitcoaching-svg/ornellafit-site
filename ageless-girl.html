@@ -1682,6 +1682,24 @@ try {
   if(saved) switchTab(saved);
 } catch(e){}
 
+// ── Skincare sous-onglets ──
+document.querySelectorAll('.sk-tab').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const skId = this.dataset.sk;
+    document.querySelectorAll('.sk-tab').forEach(b => {
+      b.style.background = 'var(--cream)';
+      b.style.color = 'var(--text)';
+      b.style.border = '1.5px solid var(--border)';
+    });
+    this.style.background = 'var(--gold)';
+    this.style.color = '#fff';
+    this.style.border = 'none';
+    document.querySelectorAll('.sk-content').forEach(c => { c.style.display = 'none'; });
+    const target = document.getElementById('sk-' + skId);
+    if(target) target.style.display = 'block';
+  });
+});
+
 // ── Accordion compléments ──
 document.querySelectorAll('.comp-header').forEach(btn => {
   btn.addEventListener('click', function() {
