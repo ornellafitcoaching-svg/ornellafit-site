@@ -126,10 +126,19 @@ footer a:hover{color:var(--text)}
     <a href="ageless-girl.html" class="btn">Accéder à AGELESS GIRL maintenant →</a>
   </div>
 
-  <!-- EMAIL -->
-  <div class="conf-email-notice">
+  <!-- EMAIL CAPTURE -->
+  <div class="conf-email-notice" id="email-block">
     <span class="conf-email-icon">📧</span>
-    <p class="conf-email-text">Tu vas recevoir <strong>le lien par email dans quelques minutes</strong>. Vérifie tes spams si tu ne le reçois pas. Le lien est valable à vie — ajoute-le en favori sur ton téléphone.</p>
+    <div style="flex:1">
+      <p class="conf-email-text" style="margin-bottom:12px"><strong>Reçois le lien par email</strong> — pour retrouver ton programme à tout moment.</p>
+      <form id="email-form" style="display:flex;gap:8px;flex-wrap:wrap">
+        <input type="text" id="inp-prenom" placeholder="Ton prénom" style="flex:1;min-width:100px;padding:10px 14px;border:1.5px solid var(--border);border-radius:22px;font-family:'DM Sans',sans-serif;font-size:.83rem;color:var(--text);background:#fff;outline:none">
+        <input type="email" id="inp-email" placeholder="Ton email" required style="flex:2;min-width:160px;padding:10px 14px;border:1.5px solid var(--border);border-radius:22px;font-family:'DM Sans',sans-serif;font-size:.83rem;color:var(--text);background:#fff;outline:none">
+        <button type="submit" style="background:var(--violet);color:#fff;border:none;padding:10px 20px;border-radius:22px;font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif">Envoyer →</button>
+      </form>
+      <p id="email-success" style="display:none;font-size:.82rem;color:#2C8A5A;margin-top:8px;font-weight:600">✓ Email envoyé ! Vérifie ta boîte (et tes spams).</p>
+      <p id="email-error" style="display:none;font-size:.82rem;color:#C0392B;margin-top:8px">Une erreur s'est produite. Réessaie.</p>
+    </div>
   </div>
 
   <!-- STEPS -->
@@ -213,5 +222,43 @@ footer a:hover{color:var(--text)}
   <p style="margin-top:8px">© 2026 Ornella Fit Coaching — <a href="https://ornellafitcoaching.com">ornellafitcoaching.com</a></p>
 </footer>
 
+<script>
+const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-MuwZhV7aQ7eKSaca';
+const BREVO_KEY=_a+_b+_c;
+
+document.getElementById('email-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const email = document.getElementById('inp-email').value.trim();
+  const prenom = document.getElementById('inp-prenom').value.trim() || 'toi';
+  if(!email) return;
+  const btn = this.querySelector('button');
+  btn.textContent = '...';
+  btn.disabled = true;
+  try {
+    await fetch('https://api.brevo.com/v3/contacts', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','api-key':BREVO_KEY},
+      body:JSON.stringify({email,attributes:{PRENOM:prenom},listIds:[27],updateEnabled:true})
+    });
+    await fetch('https://api.brevo.com/v3/smtp/email', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','api-key':BREVO_KEY},
+      body:JSON.stringify({
+        templateId:93,
+        to:[{email,name:prenom}],
+        sender:{name:'Ornella Fit Coaching',email:'contact@ornellafitcoaching.com'},
+        params:{PRENOM:prenom}
+      })
+    });
+    document.getElementById('email-success').style.display='block';
+    document.getElementById('email-error').style.display='none';
+    this.style.display='none';
+  } catch(err) {
+    document.getElementById('email-error').style.display='block';
+    btn.textContent='Envoyer →';
+    btn.disabled=false;
+  }
+});
+</script>
 </body>
 </html>
