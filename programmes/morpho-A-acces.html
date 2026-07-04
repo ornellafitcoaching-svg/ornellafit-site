@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Morpho Summer — Programme Morpho A · Ornella Fit Coaching</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;color:#1B3A2D;background:#fff;font-size:14px;line-height:1.6}
+.page{max-width:800px;margin:0 auto;padding:40px 48px}
+
+/* HEADER */
+.doc-header{background:#1B3A2D;color:#fff;padding:36px 48px;margin:-40px -48px 40px;display:flex;justify-content:space-between;align-items:flex-end}
+.doc-logo{font-family:'Playfair Display',serif;font-size:.85rem;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.12em;text-transform:uppercase}
+.doc-title-wrap{}
+.doc-morpho-badge{display:inline-block;background:#E8634A;color:#fff;font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:4px 14px;border-radius:50px;margin-bottom:10px}
+.doc-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#fff;line-height:1.15}
+.doc-subtitle{font-size:.88rem;color:rgba(255,255,255,.65);margin-top:6px}
+
+/* SECTIONS */
+h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#1B3A2D;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #E8634A}
+h3{font-size:.88rem;font-weight:700;color:#E8634A;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;margin-top:20px}
+
+.section{margin-bottom:36px}
+
+/* DIAGNOSTIC */
+.diag-box{background:#F5EFE6;border-left:4px solid #E8634A;border-radius:0 12px 12px 0;padding:20px 24px;margin-bottom:16px}
+.diag-box p{font-size:.9rem;line-height:1.75;color:#1B3A2D}
+
+.tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{background:#fff;border:1.5px solid #E8634A;color:#E8634A;font-size:.72rem;font-weight:700;padding:4px 12px;border-radius:50px}
+.tag.avoid{border-color:#ccc;color:#888}
+
+/* PROGRAMME */
+.week-label{background:#1B3A2D;color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 16px;border-radius:50px;display:inline-block;margin-bottom:16px}
+
+.sessions{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+@media print{.sessions{grid-template-columns:1fr 1fr}}
+
+.session-card{border:1.5px solid #DDD5C8;border-radius:12px;padding:16px}
+.session-title{font-weight:700;font-size:.88rem;color:#1B3A2D;margin-bottom:4px}
+.session-focus{font-size:.75rem;color:#E8634A;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+table th{background:#F5EFE6;color:#1B3A2D;font-weight:700;padding:6px 10px;text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}
+table td{padding:7px 10px;border-bottom:1px solid #F0E8E0;color:#2D4A3E;vertical-align:top}
+table tr:last-child td{border:none}
+.exo-name{font-weight:600;color:#1B3A2D}
+.exo-detail{font-size:.75rem;color:#888;margin-top:1px}
+
+.version-tabs{display:flex;gap:8px;margin-bottom:12px}
+.vtab{font-size:.72rem;font-weight:700;padding:5px 14px;border-radius:50px;border:1.5px solid #DDD5C8;cursor:default}
+.vtab.salle{background:#1B3A2D;color:#fff;border-color:#1B3A2D}
+.vtab.home{background:#E8634A;color:#fff;border-color:#E8634A}
+
+/* NUTRITION */
+.jours-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.jour-card{border:1px solid #DDD5C8;border-radius:10px;padding:12px 14px}
+.jour-label{font-size:.7rem;font-weight:700;color:#E8634A;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.repas{display:flex;flex-direction:column;gap:5px}
+.repas-row{font-size:.78rem;color:#2D4A3E;display:flex;gap:6px}
+.repas-icon{flex-shrink:0;width:14px;text-align:center}
+
+/* ALIMENTS */
+.aliments-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.alim-col{border-radius:12px;padding:16px}
+.alim-col.green{background:rgba(27,58,45,.05);border:1.5px solid rgba(27,58,45,.2)}
+.alim-col.red{background:rgba(232,99,74,.05);border:1.5px solid rgba(232,99,74,.2)}
+.alim-col-title{font-size:.78rem;font-weight:700;margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em}
+.alim-col.green .alim-col-title{color:#1B3A2D}
+.alim-col.red .alim-col-title{color:#E8634A}
+.alim-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.alim-list li{font-size:.82rem;color:#2D4A3E;display:flex;gap:6px;align-items:flex-start}
+
+/* AVOID */
+.avoid-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.avoid-card{background:#FFF5F3;border:1px solid rgba(232,99,74,.2);border-radius:10px;padding:12px 14px}
+.avoid-exo{font-weight:700;font-size:.85rem;color:#1B3A2D;margin-bottom:4px}
+.avoid-why{font-size:.78rem;color:#888;line-height:1.5}
+
+/* FOOTER */
+.doc-footer{margin-top:40px;padding-top:20px;border-top:1px solid #DDD5C8;display:flex;justify-content:space-between;align-items:center}
+.doc-footer p{font-size:.72rem;color:#aaa}
+.doc-footer .brand{font-family:'Playfair Display',serif;color:#1B3A2D;font-weight:700;font-size:.82rem}
+
+/* PRINT */
+@media print{
+  body{font-size:12px}
+  .page{padding:20px 28px}
+  .doc-header{padding:24px 28px;margin:-20px -28px 28px}
+  .no-print{display:none}
+  h2{page-break-after:avoid}
+  .section{page-break-inside:avoid}
+}
+
+.print-btn{position:fixed;top:20px;right:20px;background:#E8634A;color:#fff;border:none;padding:10px 22px;border-radius:50px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;box-shadow:0 4px 16px rgba(232,99,74,.3)}
+</style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">📄 Enregistrer en PDF</button>
+
+<div class="page">
+
+<!-- HEADER -->
+<div class="doc-header">
+  <div class="doc-logo">Ornella Fit Coaching<br>Morpho Summer 2026</div>
+  <div class="doc-title-wrap" style="text-align:right">
+    <div class="doc-morpho-badge">Morpho A — La Poire</div>
+    <div class="doc-title">Ton programme<br>sur mesure</div>
+    <div class="doc-subtitle">Programme 4 semaines · Sport + Nutrition · Sans matériel ou Salle</div>
+  </div>
+</div>
+
+<!-- DIAGNOSTIC -->
+<div class="section">
+  <h2>1. Ton diagnostic morphologique</h2>
+  <div class="diag-box">
+    <p><strong>Tu es Morpho A — La Poire.</strong> Tu stockes en priorité sur les hanches, les cuisses et les fessiers. Ton haut du corps est naturellement plus fin que ton bas. Ce déséquilibre entre le haut et le bas est génétique et hormonal — ce n'est pas ta faute, et ce n'est pas une fatalité.</p>
+    <p style="margin-top:10px">Les programmes génériques (squat lourd, step, vélo intensif) <strong>aggravent ce déséquilibre</strong> en développant encore plus tes cuisses. La bonne approche : développer le haut pour créer de l'équilibre, et travailler le bas avec des exercices ciblés qui sculptent sans élargir.</p>
+  </div>
+  <div class="tag-list">
+    <span class="tag">✓ Hanches larges</span>
+    <span class="tag">✓ Haut du corps plus fin</span>
+    <span class="tag">✓ Stockage prioritaire : bas du corps</span>
+    <span class="tag">✓ Perte de poids : commence par le haut</span>
+  </div>
+</div>
+
+<!-- PROGRAMME SEMAINES 1-2 -->
+<div class="section">
+  <h2>2. Programme musculation — Semaines 1 & 2</h2>
+  <div class="week-label">Semaines 1–2 · Fondations · 3 séries × 15 reps · Repos 60s</div>
+
+  <!-- SESSION A -->
+  <h3>Session A — Haut du corps (épaules + dos + bras)</h3>
+
+  <div style="margin-bottom:8px">
+    <div class="version-tabs"><span class="vtab salle">🏋️ Salle</span></div>
+    <table>
+      <tr><th>Exercice</th><th>Séries × Reps</th><th>Conseil</th></tr>
+      <tr><td><span class="exo-name">Développé épaules haltères</span><div class="exo-detail">Assis·e, paumes face avant</div></td><td>3 × 15</td><td>Contrôle la descente</td></tr>
+      <tr><td><span class="exo-name">Tirage vertical (poulie haute)</span><div class="exo-detail">Prise large, coudes vers le bas</div></td><td>3 × 15</td><td>Squeeze les omoplates</td></tr>
+      <tr><td><span class="exo-name">Rowing haltère unilatéral</span><div class="exo-detail">Genou et main appuyés sur banc</div></td><td>3 × 15</td><td>Coude près du corps</td></tr>
+      <tr><td><span class="exo-name">Élévations latérales</span><div class="exo-detail">Debout, légèrement courbé·e</div></td><td>3 × 15</td><td>Épaules basses, légère flexion coude</td></tr>
+      <tr><td><span class="exo-name">Curl biceps haltères</span><div class="exo-detail">Alterné ou simultané</div></td><td>3 × 15</td><td>Pas d'élan</td></tr>
+      <tr><td><span class="exo-name">Extension triceps poulie</span><div class="exo-detail">Coudes fixes, corps droit</div></td><td>3 × 15</td><td>Étire complètement</td></tr>
+    </table>
+  </div>
+
+  <div style="margin-bottom:20px">
+    <div class="version-tabs"><span class="vtab home">🏠 Sans matériel</span></div>
+    <table>
+      <tr><th>Exercice</th><th>Séries × Reps</th><th>Conseil</th></tr>
+      <tr><td><span class="exo-name">Pompes classiques</span><div class="exo-detail">Mains largeur épaules</div></td><td>3 × 12</td><td>Corps gainé, descends jusqu'en bas</td></tr>
+      <tr><td><span class="exo-name">Pompes serrées (triceps)</span><div class="exo-detail">Mains rapprochées</div></td><td>3 × 12</td><td>Coudes contre le corps</td></tr>
+      <tr><td><span class="exo-name">Superman</span><div class="exo-detail">Ventre au sol, bras tendus</div></td><td>3 × 15</td><td>Tiens 2 secondes en haut</td></tr>
+      <tr><td><span class="exo-name">Dips sur chaise</span><div class="exo-detail">Mains sur chaise, pieds au sol</div></td><td>3 × 12</td><td>Dos près de la chaise</td></tr>
+      <tr><td><span class="exo-name">Gainage frontal</span><div class="exo-detail">Avant-bras au sol</div></td><td>3 × 40s</td><td>Bassin neutre, respire</td></tr>
+      <tr><td><span class="exo-name">W inversé au sol</span><div class="exo-detail">Ventre au sol, bras en W</div></td><td>3 × 15</td><td>Serre les omoplates</td></tr>
+    </table>
+  </div>
+
+  <!-- SESSION B -->
+  <h3>Session B — Fessiers ciblés (sans élargir les cuisses)</h3>
+
+  <div style="margin-bottom:8px">
+    <div class="version-tabs"><span class="vtab salle">🏋️ Salle</span></div>
+    <table>
+      <tr><th>Exercice</th><th>Séries × Reps</th><th>Conseil</th></tr>
+      <tr><td><span class="exo-name">Hip thrust (barre ou Smith)</span><div class="exo-detail">Épaules sur banc, barre sur hanches</div></td><td>3 × 15</td><td>Squeeze fort en haut, genoux vers l'ext.</td></tr>
+      <tr><td><span class="exo-name">Leg curl couché</span><div class="exo-detail">Machine ischio-jambiers</div></td><td>3 × 15</td><td>Contrôle la montée et la descente</td></tr>
+      <tr><td><span class="exo-name">Abduction couchée (câble ou machine)</span><div class="exo-detail">Décartement de jambe</div></td><td>3 × 20</td><td>Mouvement lent et contrôlé</td></tr>
+      <tr><td><span class="exo-name">Fente arrière haltères</span><div class="exo-detail">Pas en avant, genou arrière effleure le sol</div></td><td>3 × 12 / jambe</td><td>Poids sur le talon avant</td></tr>
+      <tr><td><span class="exo-name">Good morning barre légère</span><div class="exo-detail">Inclinaison du buste en avant</div></td><td>3 × 15</td><td>Dos droit, genoux légèrement fléchis</td></tr>
+    </table>
+  </div>
+
+  <div style="margin-bottom:20px">
+    <div class="version-tabs"><span class="vtab home">🏠 Sans matériel</span></div>
+    <table>
+      <tr><th>Exercice</th><th>Séries × Reps</th><th>Conseil</th></tr>
+      <tr><td><span class="exo-name">Hip thrust au sol (poids du corps)</span><div class="exo-detail">Épaules sur canapé/lit</div></td><td>3 × 20</td><td>Serre les fessiers en haut, tiens 2s</td></tr>
+      <tr><td><span class="exo-name">Hip thrust unilatéral</span><div class="exo-detail">Une jambe tendue</div></td><td>3 × 15 / jambe</td><td>Hanches parallèles au sol</td></tr>
+      <tr><td><span class="exo-name">Abduction couchée</span><div class="exo-detail">Sur le côté, jambe du haut levée</div></td><td>3 × 25 / côté</td><td>Orteils vers le bas légèrement</td></tr>
+      <tr><td><span class="exo-name">Donkey kicks</span><div class="exo-detail">À 4 pattes, jambe en extension</div></td><td>3 × 20 / jambe</td><td>Dos plat, ne pas pivoter le bassin</td></tr>
+      <tr><td><span class="exo-name">Fente arrière</span><div class="exo-detail">Poids du corps</div></td><td>3 × 15 / jambe</td><td>Genou arrière proche du sol</td></tr>
+    </table>
+  </div>
+
+  <!-- SESSION C -->
+  <h3>Session C — Full body léger + cardio LISS</h3>
+  <p style="font-size:.82rem;color:#888;margin-bottom:12px">LISS = Low Intensity Steady State — marche rapide, vélo calme, natation. Préférable au HIIT pour la Morpho A.</p>
+
+  <div style="margin-bottom:8px">
+    <div class="version-tabs"><span class="vtab salle">🏋️ Salle</span></div>
+    <table>
+      <tr><th>Exercice</th><th>Séries × Reps</th><th>Conseil</th></tr>
+      <tr><td><span class="exo-name">Presse à cuisses (prise haute et large)</span><div class="exo-detail">Pieds hauts pour activer les fessiers</div></td><td>3 × 15</td><td>Ne pas fermer les genoux</td></tr>
+      <tr><td><span class="exo-name">Tirage horizontal (rowing machine)</span></td><td>3 × 15</td><td>Dos droit, coudes arrière</td></tr>
+      <tr><td><span class="exo-name">Crunch bicycle</span><div class="exo-detail">Rotation coude / genou opposé</div></td><td>3 × 20</td><td>Lent, contrôlé, sans tirer la nuque</td></tr>
+      <tr><td><span class="exo-name">20 min marche rapide (tapis 6km/h · inclinaison 5)</span></td><td>1 × 20min</td><td>Pas de course — marche inclinée brûle plus de graisses</td></tr>
+    </table>
+  </div>
+
+  <div style="margin-bottom:20px">
+    <div class="version-tabs"><span class="vtab home">🏠 Sans matériel</span></div>
+    <table>
+      <tr><th>Exercice</th><th>Séries × Reps</th><th>Conseil</th></tr>
+      <tr><td><span class="exo-name">Squat sumo lent</span><div class="exo-detail">Pieds très écartés, orteils vers l'ext.</div></td><td>3 × 15</td><td>Descend lentement (3 secondes)</td></tr>
+      <tr><td><span class="exo-name">Pompes</span></td><td>3 × 12</td><td>Complet, poitrine près du sol</td></tr>
+      <tr><td><span class="exo-name">Crunch bicycle</span></td><td>3 × 20</td><td>Lent, contrôlé</td></tr>
+      <tr><td><span class="exo-name">30 min marche rapide</span></td><td>1 × 30min</td><td>Extérieur ou sur place en levant les genoux</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PROGRAMME SEMAINES 3-4 -->
+<div class="section">
+  <h2>3. Programme musculation — Semaines 3 & 4</h2>
+  <div class="week-label">Semaines 3–4 · Progression · 4 séries × 12 reps · Repos 45s</div>
+  <p style="font-size:.85rem;color:#555;margin-bottom:16px">Même structure (Session A, B, C) — tu ajoutes une série et tu augmentes légèrement les charges (salle) ou la difficulté (maison). Voilà les ajustements :</p>
+
+  <div class="sessions">
+    <div class="session-card">
+      <div class="session-title">Session A — Haut du corps</div>
+      <div class="session-focus">Progression</div>
+      <ul style="font-size:.82rem;color:#444;padding-left:16px;display:flex;flex-direction:column;gap:6px">
+        <li>4 séries au lieu de 3</li>
+        <li>Salle : +20% de charge</li>
+        <li>Maison : pompes pieds surélevés</li>
+        <li>Ajoute : face pulls (câble) ou tirage élastique</li>
+      </ul>
+    </div>
+    <div class="session-card">
+      <div class="session-title">Session B — Fessiers</div>
+      <div class="session-focus">Progression</div>
+      <ul style="font-size:.82rem;color:#444;padding-left:16px;display:flex;flex-direction:column;gap:6px">
+        <li>4 séries au lieu de 3</li>
+        <li>Salle : hip thrust barre plus lourde</li>
+        <li>Maison : hip thrust avec sac à dos lesté</li>
+        <li>Ajoute : abduction debout (câble ou élastique)</li>
+      </ul>
+    </div>
+    <div class="session-card" style="grid-column:1/-1">
+      <div class="session-title">Session C — Full body + cardio</div>
+      <div class="session-focus">Progression</div>
+      <ul style="font-size:.82rem;color:#444;padding-left:16px;display:flex;flex-direction:column;gap:6px">
+        <li>Cardio : passe à 30 min (tapis incliné 7-8) ou 40 min de marche</li>
+        <li>Ajoute : gainage latéral 3 × 45s chaque côté</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- EXERCICES À ÉVITER -->
+<div class="section">
+  <h2>4. Les exercices à éviter — et pourquoi</h2>
+  <div class="avoid-grid">
+    <div class="avoid-card">
+      <div class="avoid-exo">❌ Squat classique barre</div>
+      <div class="avoid-why">Charge directement les quadriceps et élargit visuellement les cuisses. Pour la Morpho A, il accentue le déséquilibre haut/bas.</div>
+    </div>
+    <div class="avoid-card">
+      <div class="avoid-exo">❌ Step machine / escaliers</div>
+      <div class="avoid-why">Hypertrophie les cuisses et les mollets. Très mauvais pour la Morpho A qui stocke déjà en bas.</div>
+    </div>
+    <div class="avoid-card">
+      <div class="avoid-exo">❌ Vélo en résistance élevée</div>
+      <div class="avoid-why">Développe le volume des cuisses. Préfère le vélo en résistance faible ou la marche.</div>
+    </div>
+    <div class="avoid-card">
+      <div class="avoid-exo">❌ Leg press pieds bas et serrés</div>
+      <div class="avoid-why">Active trop les quadriceps. Préfère pieds hauts et largement écartés pour activer les fessiers.</div>
+    </div>
+    <div class="avoid-card">
+      <div class="avoid-exo">❌ HIIT avec sauts</div>
+      <div class="avoid-why">Les impacts répétés et l'effort intense sur le bas du corps créent de l'inflammation et du volume non voulu.</div>
+    </div>
+    <div class="avoid-card">
+      <div class="avoid-exo">❌ Fentes avant lourdes</div>
+      <div class="avoid-why">La fente avant charge les quadriceps. Préfère toujours la fente arrière qui active davantage les fessiers.</div>
+    </div>
+  </div>
+</div>
+
+<!-- NUTRITION 7 JOURS -->
+<div class="section">
+  <h2>5. Plan nutrition 7 jours — Morpho A</h2>
+  <div class="diag-box" style="margin-bottom:20px">
+    <p><strong>Principe Morpho A :</strong> Réduire les glucides le soir (le stockage nocturne se fait en priorité sur les hanches). Augmenter les protéines à chaque repas. Favoriser les graisses saines le matin. Anti-inflammatoire en priorité.</p>
+  </div>
+
+  <div class="jours-grid">
+    <div class="jour-card">
+      <div class="jour-label">Lundi</div>
+      <div class="repas">
+        <div class="repas-row"><span class="repas-icon">🌅</span><span><strong>Matin :</strong> Œufs brouillés + avocat + pain de seigle</span></div>
+        <div class="repas-row"><span class="repas-icon">☀️</span><span><strong>Midi :</strong> Poulet grillé + riz complet + légumes vapeur</span></div>
+        <div class="repas-row"><span class="repas-icon">🍎</span><span><strong>Collation :</strong> Fromage blanc 0% + fruits rouges</span></div>
+        <div class="repas-row"><span class="repas-icon">🌙</span><span><strong>Soir :</strong> Saumon + courgettes + salade verte (pas de féculents)</span></div>
+      </div>
+    </div>
+    <div class="jour-card">
+      <div class="jour-label">Mardi</div>
+      <div class="repas">
+        <div class="repas-row"><span class="repas-icon">🌅</span><span><strong>Matin :</strong> Flocons d'avoine + lait végétal + amandes + banane</span></div>
+        <div class="repas-row"><span class="repas-icon">☀️</span><span><strong>Midi :</strong> Thon en boîte + pâtes complètes + tomates cerises</span></div>
+        <div class="repas-row"><span class="repas-icon">🍎</span><span><strong>Collation :</strong> Carré de chocolat noir 70% + noix</span></div>
+        <div class="repas-row"><span class="repas-icon">🌙</span><span><strong>Soir :</strong> Dinde + ratatouille maison (sans pâtes ni pain)</span></div>
+      </div>
+    </div>
+    <div class="jour-card">
+      <div class="jour-label">Mercredi</div>
+      <div class="repas">
+        <div class="repas-row"><span class="repas-icon">🌅</span><span><strong>Matin :</strong> Smoothie protéiné (banane + lait végétal + whey)</span></div>
+        <div class="repas-row"><span class="repas-icon">☀️</span><span><strong>Midi :</strong> Salade niçoise complète (thon, œuf, olives, légumes)</span></div>
+        <div class="repas-row"><span class="repas-icon">🍎</span><span><strong>Collation :</strong> Skyr nature + miel</span></div>
+        <div class="repas-row"><span class="repas-icon">🌙</span><span><strong>Soir :</strong> Cabillaud + épinards sautés à l'ail + quinoa (petite portion)</span></div>
+      </div>
+    </div>
+    <div class="jour-card">
+      <div class="jour-label">Jeudi</div>
+      <div class="repas">
+        <div class="repas-row"><span class="repas-icon">🌅</span><span><strong>Matin :</strong> Omelette 3 œufs + légumes + café sans sucre</span></div>
+        <div class="repas-row"><span class="repas-icon">☀️</span><span><strong>Midi :</strong> Bœuf haché 5% + lentilles + poivrons</span></div>
+        <div class="repas-row"><span class="repas-icon">🍎</span><span><strong>Collation :</strong> Pomme + beurre d'amande</span></div>
+        <div class="repas-row"><span class="repas-icon">🌙</span><span><strong>Soir :</strong> Crevettes + salade composée + huile d'olive (sans pain)</span></div>
+      </div>
+    </div>
+    <div class="jour-card">
+      <div class="jour-label">Vendredi</div>
+      <div class="repas">
+        <div class="repas-row"><span class="repas-icon">🌅</span><span><strong>Matin :</strong> Pain de seigle + ricotta + fruits rouges</span></div>
+        <div class="repas-row"><span class="repas-icon">☀️</span><span><strong>Midi :</strong> Poulet + patate douce + brocolis</span></div>
+        <div class="repas-row"><span class="repas-icon">🍎</span><span><strong>Collation :</strong> Fromage blanc + graines de chia</span></div>
+        <div class="repas-row"><span class="repas-icon">🌙</span><span><strong>Soir :</strong> Œufs cocotte + légumes rôtis (courgette, poivron)</span></div>
+      </div>
+    </div>
+    <div class="jour-card">
+      <div class="jour-label">Samedi</div>
+      <div class="repas">
+        <div class="repas-row"><span class="repas-icon">🌅</span><span><strong>Matin :</strong> Pancakes protéinés (flocons avoine + œuf + banane)</span></div>
+        <div class="repas-row"><span class="repas-icon">☀️</span><span><strong>Midi :</strong> Repas plaisir équilibré — pas d'excès sur les féculents</span></div>
+        <div class="repas-row"><span class="repas-icon">🍎</span><span><strong>Collation :</strong> Fruit + poignée d'amandes</span></div>
+        <div class="repas-row"><span class="repas-icon">🌙</span><span><strong>Soir :</strong> Poisson blanc + légumes vapeur</span></div>
+      </div>
+    </div>
+    <div class="jour-card">
+      <div class="jour-label">Dimanche</div>
+      <div class="repas">
+        <div class="repas-row"><span class="repas-icon">🌅</span><span><strong>Matin :</strong> Brunch : œufs, avocat, saumon fumé, légumes</span></div>
+        <div class="repas-row"><span class="repas-icon">☀️</span><span><strong>Midi :</strong> Soupe maison (légumes + légumineuses)</span></div>
+        <div class="repas-row"><span class="repas-icon">🍎</span><span><strong>Collation :</strong> Chocolat noir + café</span></div>
+        <div class="repas-row"><span class="repas-icon">🌙</span><span><strong>Soir :</strong> Léger : yaourt grec + fruits + noix</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ALIMENTS -->
+<div class="section">
+  <h2>6. Aliments sculptants vs aliments pièges</h2>
+  <div class="aliments-grid">
+    <div class="alim-col green">
+      <div class="alim-col-title">✅ Aliments sculptants — Morpho A</div>
+      <ul class="alim-list">
+        <li><span>🐟</span><span><strong>Oméga-3</strong> (saumon, maquereau, sardines) — anti-inflammatoire, réduit la rétention d'eau</span></li>
+        <li><span>🥚</span><span><strong>Protéines maigres</strong> (œufs, poulet, dinde, thon) — préserve le muscle, satiété durable</span></li>
+        <li><span>🫐</span><span><strong>Fruits rouges</strong> (myrtilles, framboises) — antioxydants, drainent les hanches</span></li>
+        <li><span>🥦</span><span><strong>Légumes verts</strong> (brocoli, épinards, courgette) — fibres, drainage naturel</span></li>
+        <li><span>🫚</span><span><strong>Huile d'olive</strong> — graisses saines, anti-inflammatoire</span></li>
+        <li><span>🍵</span><span><strong>Thé vert, tisane drainante</strong> — aide à éliminer la rétention d'eau</span></li>
+        <li><span>🥑</span><span><strong>Avocat</strong> — bons lipides, coupe la faim durablement</span></li>
+      </ul>
+    </div>
+    <div class="alim-col red">
+      <div class="alim-col-title">❌ Aliments pièges — Morpho A</div>
+      <ul class="alim-list">
+        <li><span>🍞</span><span><strong>Féculents le soir</strong> (pain, pâtes, riz) — stockage direct sur les hanches la nuit</span></li>
+        <li><span>🧂</span><span><strong>Sel en excès</strong> — rétention d'eau sur le bas du corps</span></li>
+        <li><span>🧃</span><span><strong>Sucres rapides</strong> (jus de fruits, sodas, bonbons) — pic insuline → stockage immédiat</span></li>
+        <li><span>🍺</span><span><strong>Alcool</strong> — stoppe la combustion des graisses, favorise l'inflammation</span></li>
+        <li><span>🥐</span><span><strong>Viennoiseries et ultra-transformés</strong> — graisses cachées + sucres → inflammation</span></li>
+        <li><span>🥛</span><span><strong>Produits laitiers entiers en excès</strong> — peuvent favoriser la rétention d'eau</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div class="brand">Ornella Fit Coaching</div>
+  <p>ornellafitcoaching.com · Morpho Summer 2026 · Morpho A</p>
+  <p>Programme personnel — ne pas redistribuer</p>
+</div>
+
+</div><!-- end page -->
+</body>
+</html>
