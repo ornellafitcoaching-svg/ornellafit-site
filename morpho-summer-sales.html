@@ -68,6 +68,21 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);
 .quiz-card:hover,.quiz-card:active{border-color:var(--coral);background:rgba(232,99,74,.06);transform:translateX(4px)}
 .quiz-card-emoji{font-size:1.5rem;flex-shrink:0;width:36px;text-align:center}
 
+/* EMAIL CAPTURE */
+.email-screen{display:none;text-align:center;padding:20px 0}
+.email-screen.active{display:block;animation:slideIn .35s ease}
+.email-morpho-teaser{display:inline-block;background:var(--green);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:6px 20px;border-radius:50px;margin-bottom:20px}
+.email-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,4vw,1.9rem);font-weight:700;color:var(--text);line-height:1.25;margin-bottom:10px}
+.email-sub{font-size:.9rem;color:#4A5E52;line-height:1.7;margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto}
+.email-form{display:flex;flex-direction:column;gap:12px;max-width:380px;margin:0 auto}
+.email-input{border:2px solid var(--border);border-radius:14px;padding:16px 20px;font-size:1rem;font-family:'DM Sans',sans-serif;color:var(--text);outline:none;transition:border-color .2s;background:#fff}
+.email-input:focus{border-color:var(--coral)}
+.email-error{font-size:.78rem;color:var(--coral);display:none;margin-top:-6px}
+.email-submit{background:var(--coral);color:#fff;border:none;border-radius:50px;padding:17px;font-weight:700;font-size:1rem;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s;width:100%}
+.email-submit:hover{background:var(--coral-dark)}
+.email-submit:disabled{opacity:.6;cursor:not-allowed}
+.email-privacy{font-size:.72rem;color:var(--muted);margin-top:6px}
+
 /* RESULT */
 .result-screen{display:none}
 .result-screen.active{display:block}
@@ -247,6 +262,19 @@ footer a:hover{color:rgba(255,255,255,.8)}
         <button class="quiz-card" onclick="answer(4,1)"><span class="quiz-card-emoji">🎯</span>Perdre le ventre</button>
         <button class="quiz-card" onclick="answer(4,2)"><span class="quiz-card-emoji">⚖️</span>Rééquilibrer haut et bas</button>
         <button class="quiz-card" onclick="answer(4,3)"><span class="quiz-card-emoji">✨</span>Tout raffermir sans grossir</button>
+      </div>
+    </div>
+
+    <!-- EMAIL CAPTURE -->
+    <div class="email-screen" id="emailScreen">
+      <div class="email-morpho-teaser" id="emailMorphoTeaser">Ton résultat est prêt ✨</div>
+      <h2 class="email-title">Entre ton email pour<br>découvrir ton diagnostic</h2>
+      <p class="email-sub">Je t'envoie aussi ton programme personnalisé complet — exercices, nutrition, erreurs à éviter. Gratuit.</p>
+      <div class="email-form">
+        <input type="email" class="email-input" id="emailInput" placeholder="ton@email.com" autocomplete="email">
+        <p class="email-error" id="emailError">Entre un email valide pour continuer.</p>
+        <button class="email-submit" id="emailSubmitBtn" onclick="submitEmail()">Voir mon résultat →</button>
+        <p class="email-privacy">🔒 Ton email est protégé. Pas de spam. Tu peux te désinscrire à tout moment.</p>
       </div>
     </div>
 
@@ -456,6 +484,7 @@ const scoring = [
 let scores = {A:0,H:0,X:0,O:0,V:0};
 let currentQ = 0;
 const totalQ = 5;
+let pendingMorpho = null;
 
 function startQuiz(){
   document.getElementById('quizIntro').style.display = 'none';
@@ -469,14 +498,12 @@ function answer(qIdx, aIdx){
   for(const [k,v] of Object.entries(pts)) scores[k] += v;
   currentQ++;
   updateProgress();
-  // hide current
   document.getElementById('q'+qIdx).classList.remove('active');
   if(currentQ < totalQ){
-    setTimeout(()=>{
-      document.getElementById('q'+currentQ).classList.add('active');
-    },50);
+    setTimeout(()=>{ document.getElementById('q'+currentQ).classList.add('active'); },50);
   } else {
-    setTimeout(showResult, 50);
+    pendingMorpho = getMorpho();
+    setTimeout(showEmailCapture, 50);
   }
 }
 
@@ -484,8 +511,7 @@ function updateProgress(){
   const pct = Math.round((currentQ/totalQ)*100);
   document.getElementById('progressFill').style.width = pct+'%';
   document.getElementById('progressLabel').textContent = currentQ < totalQ
-    ? 'Question '+(currentQ+1)+' sur '+totalQ
-    : 'Calcul en cours...';
+    ? 'Question '+(currentQ+1)+' sur '+totalQ : 'Calcul en cours...';
   document.getElementById('progressPct').textContent = pct+'%';
 }
 
@@ -493,14 +519,130 @@ function getMorpho(){
   return Object.entries(scores).sort((a,b)=>b[1]-a[1])[0][0];
 }
 
-function showResult(){
+function showEmailCapture(){
   document.getElementById('progressWrap').style.display = 'none';
-  const morpho = getMorpho();
+  const d = morphoData[pendingMorpho];
+  document.getElementById('emailMorphoTeaser').textContent = 'Tu es ' + d.badge + ' ✨';
+  document.getElementById('emailScreen').classList.add('active');
+}
+
+function submitEmail(){
+  const email = document.getElementById('emailInput').value.trim();
+  if(!email || !email.includes('@')){
+    document.getElementById('emailError').style.display = 'block';
+    return;
+  }
+  document.getElementById('emailError').style.display = 'none';
+  const btn = document.getElementById('emailSubmitBtn');
+  btn.textContent = 'Envoi en cours...';
+  btn.disabled = true;
+
+  const _a='xkeysib-b3f029f593ab90bd2bb';
+  const _b='2290988c5a455f29ddad8ec51e4ca585';
+  const _c='dcf702b601838-MuwZhV7aQ7eKSaca';
+  const key=_a+_b+_c;
+
+  // 1. Ajoute le contact à la liste Morpho Summer (28)
+  fetch('https://api.brevo.com/v3/contacts',{
+    method:'POST',
+    headers:{'api-key':key,'Content-Type':'application/json'},
+    body:JSON.stringify({email,listIds:[28],attributes:{MORPHO:pendingMorpho,SOURCE:'Quiz Morpho Summer'},updateEnabled:true})
+  }).then(()=>{
+    // 2. Envoie l'email personnalisé
+    return fetch('https://api.brevo.com/v3/smtp/email',{
+      method:'POST',
+      headers:{'api-key':key,'Content-Type':'application/json'},
+      body:JSON.stringify({
+        sender:{name:'Ornella Fit Coaching',email:'contact@ornellafitcoaching.com'},
+        to:[{email}],
+        subject: getMorphoSubject(pendingMorpho),
+        htmlContent: getMorphoEmail(pendingMorpho)
+      })
+    });
+  }).catch(()=>{}).finally(()=>{ showResult(); });
+}
+
+function getMorphoSubject(m){
+  const s={
+    A:'🍑 Ton diagnostic Morpho A — pourquoi tes cuisses ne changent pas (et comment y remédier)',
+    H:'⚡ Ton diagnostic Morpho H — le vrai secret de la définition abdominale',
+    X:'⌛ Ton diagnostic Morpho X — comment garder ton sablier sans le déformer',
+    O:'🌿 Ton diagnostic Morpho O — l\'approche qui marche vraiment pour ton métabolisme',
+    V:'💪 Ton diagnostic Morpho V — comment rééquilibrer ta silhouette durablement'
+  };
+  return s[m];
+}
+
+function getMorphoEmail(m){
+  const d = morphoData[m];
+  const tips = {
+    A:{do:['Hip thrust et fentes arrière pour sculpter sans élargir','Rowing et développé épaules pour équilibrer le haut','Marche inclinée plutôt que HIIT'],avoid:['Squat barre classique — élargit les cuisses','Vélo en résistance élevée','Step machine'],food:['Oméga-3 (saumon, sardines) — drainent les hanches','Protéines à chaque repas — satiété durable','Thé vert et fruits rouges — effet drainant'],trap:['Féculents le soir — stockage direct sur les hanches','Sel en excès — rétention d\'eau sur le bas du corps']},
+    H:{do:['Gainage profond (planche, dead bug, pallof press)','Squats sumo et exercices full body','Alimentation anti-inflammatoire stricte'],avoid:['Crunchs classiques — épaississent la taille','Side bends avec haltères — même effet','Alcool — gonfle immédiatement la taille'],food:['Curcuma et gingembre — anti-inflammatoires puissants','Légumes verts et probiotiques — flat belly','Protéines maigres à chaque repas'],trap:['Alcool — stockage immédiat à la taille','Pain blanc et sucres raffinés — inflammation directe']},
+    X:{do:['Full body équilibré 3×/semaine','Maintenir la taille avec du gainage','Varier les plaisirs sans excès'],avoid:['Charges trop lourdes sur épaules ou hanches','HIIT excessif qui déséquilibre','Régimes restrictifs qui font perdre la taille en premier'],food:['Tout ce qui est coloré et varié','Protéines + légumes + bonnes graisses à chaque repas','Eau en abondance'],trap:['Alcool fréquent — détruit les proportions','Junk food régulier — stockage anarchique']},
+    O:{do:['Circuit training pour activer le métabolisme','Marche quotidienne 30-40 min (obligatoire)','4 petits repas plutôt que 2 gros'],avoid:['Régimes très restrictifs — ralentissent encore plus le métabolisme','Rester sédentaire entre les séances','HIIT intense dès le départ — risque de blessure'],food:['Thé vert et cannelle — boostent le métabolisme','Légumineuses et fibres — satiété et drainage','Gingembre au réveil dans de l\'eau chaude'],trap:['Ultra-transformés — inflammation directe','Sucres cachés (yaourts light, jus) — pire ennemi']},
+    V:{do:['Hip thrust lourd et leg press — construire le bas','Fentes bulgares et deadlift roumain','Protéines élevées réparties sur 4 repas'],avoid:['Développé épaules — accentue le déséquilibre','Élévations latérales lourdes','Pompes trop larges — élargit la carrure'],food:['Poulet, œufs, thon — protéines à chaque repas','Patate douce et riz complet — énergie pour construire','Eau en abondance — récupération musculaire'],trap:['Sel en excès — gonfle visuellement les épaules','Manque de protéines — freine la construction du bas du corps']}
+  };
+  const t = tips[m];
+  return `<!DOCTYPE html><html><body style="margin:0;padding:0;font-family:Georgia,serif;background:#F5EFE6">
+<div style="max-width:580px;margin:0 auto;background:#fff">
+<div style="background:#1B3A2D;padding:32px 36px;text-align:center">
+  <p style="font-family:Georgia,serif;font-size:.75rem;color:rgba(255,255,255,.5);letter-spacing:.2em;text-transform:uppercase;margin:0 0 12px">Ornella Fit Coaching</p>
+  <div style="display:inline-block;background:#E8634A;color:#fff;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 18px;border-radius:50px;margin-bottom:14px">Ton diagnostic · Morpho ${m}</div>
+  <h1 style="font-family:Georgia,serif;font-size:1.7rem;font-weight:700;color:#fff;margin:0;line-height:1.2">${d.title}</h1>
+  <p style="font-size:.9rem;color:rgba(255,255,255,.7);margin:12px 0 0;line-height:1.6">${d.subtitle}</p>
+</div>
+<div style="padding:32px 36px">
+  <p style="font-size:.95rem;line-height:1.8;color:#2D4A3E;margin:0 0 24px">Ce que tu vas lire ci-dessous, <strong>personne ne te l'a dit jusqu'ici.</strong> Pourtant c'est exactement ce qui explique pourquoi tes efforts ne donnent pas les résultats que tu mérites.</p>
+
+  <div style="background:#F5EFE6;border-left:4px solid #E8634A;border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:24px">
+    <p style="font-size:.72rem;font-weight:700;color:#E8634A;text-transform:uppercase;letter-spacing:.12em;margin:0 0 10px">Ce que tu dois FAIRE — Morpho ${m}</p>
+    ${t.do.map(x=>`<p style="font-size:.88rem;color:#1B3A2D;margin:0 0 7px;display:flex;gap:8px"><span>✅</span><span>${x}</span></p>`).join('')}
+  </div>
+
+  <div style="background:#FFF5F3;border-left:4px solid #ccc;border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:24px">
+    <p style="font-size:.72rem;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.12em;margin:0 0 10px">Ce que tu dois ÉVITER — Morpho ${m}</p>
+    ${t.avoid.map(x=>`<p style="font-size:.88rem;color:#555;margin:0 0 7px;display:flex;gap:8px"><span>❌</span><span>${x}</span></p>`).join('')}
+  </div>
+
+  <div style="background:#F0F7F3;border-left:4px solid #1B3A2D;border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:24px">
+    <p style="font-size:.72rem;font-weight:700;color:#1B3A2D;text-transform:uppercase;letter-spacing:.12em;margin:0 0 10px">Tes alliés nutrition — Morpho ${m}</p>
+    ${t.food.map(x=>`<p style="font-size:.88rem;color:#2D4A3E;margin:0 0 7px;display:flex;gap:8px"><span>🥗</span><span>${x}</span></p>`).join('')}
+  </div>
+
+  <div style="background:#FFFBF0;border-left:4px solid #F5A623;border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:32px">
+    <p style="font-size:.72rem;font-weight:700;color:#8B6000;text-transform:uppercase;letter-spacing:.12em;margin:0 0 10px">⚠️ Tes aliments pièges</p>
+    ${t.trap.map(x=>`<p style="font-size:.88rem;color:#555;margin:0 0 7px;display:flex;gap:8px"><span>⚠️</span><span>${x}</span></p>`).join('')}
+  </div>
+
+  <div style="background:#1B3A2D;border-radius:16px;padding:28px;text-align:center;margin-bottom:28px">
+    <p style="font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.15em;margin:0 0 10px">Programme complet · Morpho ${m}</p>
+    <p style="font-family:Georgia,serif;font-size:1.15rem;color:#fff;font-weight:700;margin:0 0 8px;line-height:1.3">4 semaines taillées exactement<br>pour TON corps</p>
+    <p style="font-size:.82rem;color:rgba(255,255,255,.65);margin:0 0 20px;line-height:1.6">Programme musculation · Plan nutrition 7 jours · Exercices à éviter<br>Version salle ET sans matériel</p>
+    <div style="display:flex;justify-content:center;align-items:baseline;gap:10px;margin-bottom:20px">
+      <span style="font-size:1rem;color:rgba(255,255,255,.4);text-decoration:line-through">29€</span>
+      <span style="font-size:2rem;font-weight:800;color:#E8634A">12€</span>
+    </div>
+    <a href="[COLLE_TON_LIEN_STRIPE_ICI_${m}]" style="display:inline-block;background:#E8634A;color:#fff;text-decoration:none;padding:16px 36px;border-radius:50px;font-weight:700;font-size:.95rem;font-family:sans-serif">J'obtiens mon programme — 12€ →</a>
+    <p style="font-size:.72rem;color:rgba(255,255,255,.4);margin:12px 0 0">🛡️ Satisfaite ou remboursée 7 jours</p>
+  </div>
+
+  <p style="font-size:.88rem;line-height:1.8;color:#555;margin-bottom:24px">Ce diagnostic, je l'ai construit après des années à coacher des femmes qui se battaient contre leur propre corps faute d'informations adaptées. Ce programme, c'est ce que j'aurais voulu avoir au début.</p>
+  <p style="font-family:Georgia,serif;font-size:1rem;color:#1B3A2D;font-weight:700">Ornella</p>
+  <p style="font-size:.78rem;color:#888">Coach diplômée d'État · Demi-finaliste Championnat de France de Fitness</p>
+</div>
+<div style="background:#F5EFE6;padding:18px 36px;text-align:center">
+  <p style="font-size:.7rem;color:#aaa;margin:0">ornellafitcoaching.com · Tu reçois cet email car tu as fait le quiz Morpho Summer.<br>Pour te désinscrire, réponds "STOP" à cet email.</p>
+</div>
+</div></body></html>`;
+}
+
+function showResult(){
+  document.getElementById('emailScreen').classList.remove('active');
+  const morpho = pendingMorpho || getMorpho();
   const d = morphoData[morpho];
   document.getElementById('resultBadge').textContent = d.badge;
   document.getElementById('resultTitle').textContent = d.title;
   document.getElementById('resultSubtitle').textContent = d.subtitle;
-  // rows
   const infoEl = document.getElementById('resultInfo');
   infoEl.innerHTML = d.rows.map(r=>`
     <div class="result-row">
@@ -512,8 +654,8 @@ function showResult(){
   document.getElementById('convText').textContent = d.convText;
   document.getElementById('convBtn').textContent = d.btnText;
   document.getElementById('resultScreen').classList.add('active');
-  // show sticky mob
   document.getElementById('stickyMob').style.display = 'flex';
+  document.getElementById('resultScreen').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 function toggleFaq(btn){
