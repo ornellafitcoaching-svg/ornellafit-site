@@ -186,7 +186,7 @@ footer a:hover{color:rgba(255,255,255,.8)}
 
 <!-- BANNIÈRE STICKY -->
 <div class="top-banner">
-  ✨ Découvre ta morphologie en <strong>2 minutes</strong> — Quiz gratuit · Programme sur mesure
+  ✨ Quiz morphologie <strong>100% gratuit</strong> — 2 minutes · Résultat + programme sur mesure immédiat
 </div>
 
 <!-- HERO -->
@@ -196,7 +196,10 @@ footer a:hover{color:rgba(255,255,255,.8)}
     <h1>Pourquoi tu n'as pas<br>encore les résultats<br><em>que tu mérites ?</em></h1>
     <p class="hero-sub">Parce que tu fais les exercices faits pour une autre morphologie que la tienne. 5 questions pour tout changer.</p>
     <a href="#quiz" class="btn-coral" onclick="startQuiz()">Je découvre ma morphologie →</a>
-    <p class="hero-note">✅ Gratuit · 2 minutes · Résultat + programme personnalisé immédiat</p>
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(232,99,74,.1);border:1.5px solid rgba(232,99,74,.3);border-radius:50px;padding:8px 20px;margin-bottom:16px">
+      <span style="font-size:.75rem;font-weight:800;color:var(--coral);letter-spacing:.1em;text-transform:uppercase">🎁 Quiz 100% gratuit</span>
+    </div>
+    <p class="hero-note">2 minutes · Résultat immédiat · Aucune carte bancaire requise</p>
     <div style="margin-top:36px;max-width:380px;margin-left:auto;margin-right:auto">
       <img src="images/morpho-cover.png" alt="Ornella Fit Coaching — Programmes Morpho Summer" style="width:100%;border-radius:20px;box-shadow:0 12px 48px rgba(27,58,45,.15)">
     </div>
@@ -220,64 +223,65 @@ footer a:hover{color:rgba(255,255,255,.8)}
 
     <!-- INTRO -->
     <div id="quizIntro" style="text-align:center">
-      <p style="font-family:'Playfair Display',serif;font-size:clamp(1.4rem,4vw,2rem);font-weight:700;color:var(--text);margin-bottom:16px">Prête à tout comprendre sur ton corps ?</p>
-      <p style="font-size:.95rem;color:#4A5E52;line-height:1.75;margin-bottom:12px;max-width:440px;margin-left:auto;margin-right:auto">5 questions. Résultat immédiat. Programme taillé exactement pour ta morphologie.</p>
-      <p style="font-size:.82rem;color:var(--muted);margin-bottom:28px">Pas de vente avant ton résultat. Juste la vérité sur ton corps.</p>
-      <button class="btn-coral" onclick="startQuiz()">Commencer le quiz →</button>
+      <div style="display:inline-block;background:var(--coral);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 18px;border-radius:50px;margin-bottom:16px">🎁 Gratuit — 2 minutes</div>
+      <p style="font-family:'Playfair Display',serif;font-size:clamp(1.4rem,4vw,2rem);font-weight:700;color:var(--text);margin-bottom:16px">Prête à enfin comprendre ton corps ?</p>
+      <p style="font-size:.95rem;color:#4A5E52;line-height:1.75;margin-bottom:12px;max-width:440px;margin-left:auto;margin-right:auto">5 questions. Résultat immédiat. Je te dis exactement <strong>pourquoi tu n'as pas encore tes résultats</strong> — et ce qui change avec le bon programme.</p>
+      <p style="font-size:.82rem;color:var(--muted);margin-bottom:28px">Aucune vente avant ton résultat. Juste la vérité sur ton corps.</p>
+      <button class="btn-coral" onclick="startQuiz()">Je découvre ma morphologie — gratuit →</button>
     </div>
 
     <!-- Q1 -->
     <div class="quiz-screen" id="q0">
-      <p class="quiz-q-text">Où stockes-tu en priorité ?</p>
+      <p class="quiz-q-text">Quand tu prends du poids, tu le vois d'abord où ?</p>
       <div class="quiz-answers">
-        <button class="quiz-card" onclick="answer(0,0)"><span class="quiz-card-emoji">🍑</span>Hanches et cuisses</button>
-        <button class="quiz-card" onclick="answer(0,1)"><span class="quiz-card-emoji">🫃</span>Ventre et taille</button>
-        <button class="quiz-card" onclick="answer(0,2)"><span class="quiz-card-emoji">📏</span>Partout pareil</button>
-        <button class="quiz-card" onclick="answer(0,3)"><span class="quiz-card-emoji">💪</span>Buste et épaules</button>
+        <button class="quiz-card" onclick="answer(0,0)"><span class="quiz-card-emoji">🍑</span>Sur les hanches et les cuisses — toujours</button>
+        <button class="quiz-card" onclick="answer(0,1)"><span class="quiz-card-emoji">🫃</span>Sur le ventre et la taille</button>
+        <button class="quiz-card" onclick="answer(0,2)"><span class="quiz-card-emoji">📏</span>Partout en même temps, uniformément</button>
+        <button class="quiz-card" onclick="answer(0,3)"><span class="quiz-card-emoji">💪</span>Sur le buste, les bras ou les épaules</button>
       </div>
     </div>
 
     <!-- Q2 -->
     <div class="quiz-screen" id="q1">
-      <p class="quiz-q-text">Tes épaules vs tes hanches ?</p>
+      <p class="quiz-q-text">Debout face au miroir, tes épaules sont...</p>
       <div class="quiz-answers">
-        <button class="quiz-card" onclick="answer(1,0)"><span class="quiz-card-emoji">🔺</span>Épaules plus larges que les hanches</button>
-        <button class="quiz-card" onclick="answer(1,1)"><span class="quiz-card-emoji">🔻</span>Hanches plus larges que les épaules</button>
-        <button class="quiz-card" onclick="answer(1,2)"><span class="quiz-card-emoji">⬛</span>À peu près pareilles</button>
+        <button class="quiz-card" onclick="answer(1,0)"><span class="quiz-card-emoji">🔺</span>Plus larges que mes hanches — épaules dominantes</button>
+        <button class="quiz-card" onclick="answer(1,1)"><span class="quiz-card-emoji">🔻</span>Plus étroites que mes hanches — hanches dominantes</button>
+        <button class="quiz-card" onclick="answer(1,2)"><span class="quiz-card-emoji">⬛</span>À peu près à la même largeur que mes hanches</button>
       </div>
     </div>
 
     <!-- Q3 -->
     <div class="quiz-screen" id="q2">
-      <p class="quiz-q-text">Quand tu perds du poids, c'est d'abord ?</p>
+      <p class="quiz-q-text">Quand tu maigris (même un peu), tu le remarques en premier...</p>
       <div class="quiz-answers">
-        <button class="quiz-card" onclick="answer(2,0)"><span class="quiz-card-emoji">👆</span>Du haut (visage, buste, bras)</button>
-        <button class="quiz-card" onclick="answer(2,1)"><span class="quiz-card-emoji">👇</span>Du bas (jambes, mollets)</button>
-        <button class="quiz-card" onclick="answer(2,2)"><span class="quiz-card-emoji">↕️</span>Uniformément</button>
-        <button class="quiz-card" onclick="answer(2,3)"><span class="quiz-card-emoji">😓</span>Je perds très difficilement</button>
+        <button class="quiz-card" onclick="answer(2,0)"><span class="quiz-card-emoji">👆</span>Au visage, aux bras, à la poitrine — jamais en bas</button>
+        <button class="quiz-card" onclick="answer(2,1)"><span class="quiz-card-emoji">👇</span>Aux jambes et aux mollets</button>
+        <button class="quiz-card" onclick="answer(2,2)"><span class="quiz-card-emoji">↕️</span>Un peu partout en même temps</button>
+        <button class="quiz-card" onclick="answer(2,3)"><span class="quiz-card-emoji">😓</span>Je ne maigris quasiment jamais, même en me privant</button>
       </div>
     </div>
 
     <!-- Q4 -->
     <div class="quiz-screen" id="q3">
-      <p class="quiz-q-text">Ta silhouette naturelle ressemble à ?</p>
+      <p class="quiz-q-text">Vue de face, ta silhouette ressemble plutôt à...</p>
       <div class="quiz-answers">
-        <button class="quiz-card" onclick="answer(3,0)"><span class="quiz-card-emoji">🔻</span>Triangle pointe en bas (hanches larges)</button>
-        <button class="quiz-card" onclick="answer(3,1)"><span class="quiz-card-emoji">🔺</span>Triangle pointe en haut (épaules larges)</button>
-        <button class="quiz-card" onclick="answer(3,2)"><span class="quiz-card-emoji">⌛</span>Sablier (taille marquée)</button>
-        <button class="quiz-card" onclick="answer(3,3)"><span class="quiz-card-emoji">▭</span>Rectangle (peu de courbes)</button>
-        <button class="quiz-card" onclick="answer(3,4)"><span class="quiz-card-emoji">🫀</span>Ovale (ventre dominant)</button>
+        <button class="quiz-card" onclick="answer(3,0)"><span class="quiz-card-emoji">🔻</span>Un triangle pointe en bas — hanches et cuisses plus larges que le haut</button>
+        <button class="quiz-card" onclick="answer(3,1)"><span class="quiz-card-emoji">🔺</span>Un triangle pointe en haut — épaules plus larges, hanches étroites</button>
+        <button class="quiz-card" onclick="answer(3,2)"><span class="quiz-card-emoji">⌛</span>Un sablier — taille bien marquée entre épaules et hanches</button>
+        <button class="quiz-card" onclick="answer(3,3)"><span class="quiz-card-emoji">▭</span>Un rectangle — peu de différence entre taille, hanches et épaules</button>
+        <button class="quiz-card" onclick="answer(3,4)"><span class="quiz-card-emoji">🫀</span>Un ovale — le ventre est la zone la plus ronde</button>
       </div>
     </div>
 
     <!-- Q5 -->
     <div class="quiz-screen" id="q4">
-      <p class="quiz-q-text">Ton défi principal ?</p>
+      <p class="quiz-q-text">Ton objectif n°1 cet été ?</p>
       <div class="quiz-answers">
-        <button class="quiz-card" onclick="answer(4,0)"><span class="quiz-card-emoji">🍑</span>Affiner les cuisses et fessiers</button>
-        <button class="quiz-card" onclick="answer(4,1)"><span class="quiz-card-emoji">🎯</span>Perdre le ventre</button>
-        <button class="quiz-card" onclick="answer(4,2)"><span class="quiz-card-emoji">⚖️</span>Rééquilibrer haut et bas</button>
-        <button class="quiz-card" onclick="answer(4,3)"><span class="quiz-card-emoji">✨</span>Tout raffermir sans grossir</button>
+        <button class="quiz-card" onclick="answer(4,0)"><span class="quiz-card-emoji">🍑</span>Affiner mes cuisses et gainer mes fessiers</button>
+        <button class="quiz-card" onclick="answer(4,1)"><span class="quiz-card-emoji">🎯</span>Perdre mon ventre et retrouver une taille</button>
+        <button class="quiz-card" onclick="answer(4,2)"><span class="quiz-card-emoji">⚖️</span>Rééquilibrer ma silhouette haut / bas</button>
+        <button class="quiz-card" onclick="answer(4,3)"><span class="quiz-card-emoji">✨</span>Tout raffermir et me sentir bien dans mon corps</button>
       </div>
     </div>
 
