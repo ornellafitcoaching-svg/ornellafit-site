@@ -96,11 +96,23 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);
 .result-row strong{color:var(--text);display:block;margin-bottom:2px}
 .result-row span{color:#4A5E52}
 
+/* PAIN BLOC */
+.pain-bloc{background:#FFF5F3;border:1.5px solid #F5C4B8;border-radius:16px;padding:22px 24px;margin-bottom:28px}
+.pain-label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:10px}
+.pain-text{font-size:.93rem;color:#3D2A24;line-height:1.8}
+.pain-text strong{color:var(--coral)}
+
 /* CONVERSION BLOC */
 .conv-bloc{background:linear-gradient(135deg,var(--green) 0%,#2D5940 100%);border-radius:24px;padding:36px 28px;text-align:center;margin-top:32px}
 .conv-bloc-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:14px}
-.conv-bloc-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,4vw,2rem);font-weight:700;color:#fff;line-height:1.25;margin-bottom:12px}
-.conv-bloc-text{font-size:.9rem;color:rgba(255,255,255,.75);line-height:1.75;margin-bottom:24px;max-width:420px;margin-left:auto;margin-right:auto}
+.conv-bloc-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,4vw,2rem);font-weight:700;color:#fff;line-height:1.25;margin-bottom:20px}
+.conv-includes{text-align:left;display:flex;flex-direction:column;gap:10px;margin-bottom:24px;background:rgba(255,255,255,.07);border-radius:14px;padding:18px 20px}
+.conv-inc-item{font-size:.88rem;color:rgba(255,255,255,.9);line-height:1.5}
+.conv-temo{background:rgba(255,255,255,.09);border-radius:14px;padding:18px 20px;margin-bottom:24px;text-align:left}
+.conv-temo-stars{color:var(--coral);font-size:.85rem;margin-bottom:8px}
+.conv-temo-text{font-size:.85rem;color:rgba(255,255,255,.85);line-height:1.7;font-style:italic;margin-bottom:10px}
+.conv-temo-name{font-size:.78rem;font-weight:700;color:#fff}
+.conv-temo-morpho{font-size:.72rem;color:rgba(255,255,255,.45)}
 .conv-price{display:flex;align-items:baseline;justify-content:center;gap:14px;margin-bottom:24px}
 .conv-price-old{font-size:1.2rem;color:rgba(255,255,255,.4);text-decoration:line-through}
 .conv-price-new{font-size:2.8rem;font-weight:800;color:var(--coral);font-family:'Playfair Display',serif}
@@ -108,6 +120,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);
 .btn-coral-large{display:inline-block;background:var(--coral);color:#fff;text-decoration:none;padding:20px 48px;border-radius:50px;font-weight:700;font-size:1.05rem;letter-spacing:.03em;transition:background .2s,transform .15s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;width:100%;max-width:400px;text-align:center}
 .btn-coral-large:hover{background:var(--coral-dark);transform:translateY(-2px)}
 .conv-sub{margin-top:14px;font-size:.8rem;color:rgba(255,255,255,.55)}
+.conv-urgency{margin-top:10px;font-size:.78rem;color:rgba(255,220,180,.8);font-weight:600}
 
 /* SOCIAL PROOF */
 .social-sec{background:var(--green);padding:80px 24px}
@@ -280,10 +293,16 @@ footer a:hover{color:rgba(255,255,255,.8)}
 
     <!-- RÉSULTAT -->
     <div class="result-screen" id="resultScreen">
-      <div style="text-align:center;margin-bottom:28px">
+      <div style="text-align:center;margin-bottom:24px">
         <div class="result-morpho-badge" id="resultBadge">Morpho A — La Poire</div>
         <h2 class="result-title" id="resultTitle">Tu stockes sur les hanches<br>et les cuisses.</h2>
         <p class="result-subtitle" id="resultSubtitle">Les programmes génériques aggravent tes déséquilibres sans le savoir.</p>
+      </div>
+
+      <!-- POURQUOI ÇA N'A PAS MARCHÉ -->
+      <div class="pain-bloc">
+        <p class="pain-label">⚡ Pourquoi tes efforts n'ont pas marché jusqu'ici</p>
+        <p class="pain-text" id="painText"></p>
       </div>
 
       <div class="result-info" id="resultInfo"></div>
@@ -291,15 +310,32 @@ footer a:hover{color:rgba(255,255,255,.8)}
       <!-- CONVERSION -->
       <div class="conv-bloc">
         <p class="conv-bloc-eyebrow">Ton programme est prêt</p>
-        <h3 class="conv-bloc-title" id="convTitle">Ton programme Morpho Summer est prêt</h3>
-        <p class="conv-bloc-text" id="convText">Ce programme a été conçu spécifiquement pour ta morphologie. Les exercices génériques ne fonctionnent pas pour toi — voilà pourquoi tu n'as pas encore les résultats que tu mérites.</p>
+        <h3 class="conv-bloc-title" id="convTitle">Ton programme Morpho A — taillé pour ton corps</h3>
+
+        <div class="conv-includes">
+          <div class="conv-inc-item">✅ Programme musculation <strong>4 semaines</strong> — taillé pour ta morpho</div>
+          <div class="conv-inc-item">✅ <strong>2 versions</strong> : salle ET sans matériel</div>
+          <div class="conv-inc-item">✅ Les exercices à <strong>ÉVITER</strong> absolument (personne ne te dit ça)</div>
+          <div class="conv-inc-item">✅ Plan nutrition <strong>7 jours</strong> adapté à ton corps</div>
+          <div class="conv-inc-item">✅ Aliments qui te gonflent vs aliments qui te sculptent</div>
+          <div class="conv-inc-item">✅ Accès immédiat — en ligne dans les 5 min après paiement</div>
+        </div>
+
+        <div class="conv-temo" id="convTemo">
+          <div class="conv-temo-stars">★★★★★</div>
+          <p class="conv-temo-text" id="convTemoText">"..."</p>
+          <div class="conv-temo-name" id="convTemoName">—</div>
+          <div class="conv-temo-morpho" id="convTemoMorpho"></div>
+        </div>
+
         <div class="conv-price">
           <span class="conv-price-old">29€</span>
           <span class="conv-price-new">12€</span>
           <span class="conv-price-label">prix de<br>lancement</span>
         </div>
-        <a href="[COLLE_TON_LIEN_STRIPE_ICI]" target="_blank" class="btn-coral-large" id="convBtn" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:12,currency:'EUR'})">J'obtiens mon programme Morpho — 12€</a>
-        <p class="conv-sub">🛡️ Satisfaite ou remboursée 7 jours • PDF livré par email immédiatement</p>
+        <button class="btn-coral-large" id="convBtn" onclick="buyMorpho()">J'obtiens mon programme — 12€</button>
+        <p class="conv-sub">🛡️ Satisfaite ou remboursée 7 jours · Accès immédiat</p>
+        <p class="conv-urgency">⏰ Prix de lancement — sera à 29€ bientôt</p>
       </div>
     </div>
 
@@ -342,7 +378,7 @@ footer a:hover{color:rgba(255,255,255,.8)}
       <div class="check-item"><div class="check-icon"></div><span>Les <strong>aliments qui sculptent TON corps</strong> spécifiquement</span></div>
       <div class="check-item"><div class="check-icon"></div><span><strong>Accès immédiat par email</strong> dans les 5 minutes après paiement</span></div>
     </div>
-    <a href="#quiz" id="includedCta" class="btn-coral" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:12,currency:'EUR'})">Je veux mon programme — 12€ →</a>
+    <button id="includedCta" class="btn-coral" onclick="buyMorpho()">Je veux mon programme — 12€ →</button>
     <p style="margin-top:12px;font-size:.78rem;color:var(--muted)">🛡️ Satisfaite ou remboursée 7 jours · PDF par email · Sans abonnement</p>
   </div>
 </section>
@@ -389,7 +425,7 @@ footer a:hover{color:rgba(255,255,255,.8)}
     <div class="sticky-mob-label">Morpho Summer</div>
     <div class="sticky-mob-price">12€ · PDF immédiat</div>
   </div>
-  <a href="[COLLE_TON_LIEN_STRIPE_ICI]" target="_blank" class="sticky-mob-btn" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:12,currency:'EUR'})">Je commence → 12€</a>
+  <button class="sticky-mob-btn" onclick="buyMorpho()">Je commence → 12€</button>
 </div>
 
 <script>
@@ -400,75 +436,90 @@ const morphoData = {
     badge: 'Morpho A — La Poire',
     title: 'Tu stockes sur les hanches et les cuisses.',
     subtitle: 'Les programmes génériques aggravent tes déséquilibres sans le savoir.',
+    painText: 'Tu fais des squats, du cardio, des machines cuisses... et tes hanches s\'élargissent au lieu de s\'affiner. <strong>Ce n\'est pas ta faute.</strong> Ces exercices sont conçus pour une Morpho V — pas pour toi. Chaque squat barre que tu fais développe exactement la zone que tu essaies d\'affiner. Avec le bon programme, tu peux enfin travailler AVEC ton corps plutôt que contre lui.',
     rows: [
-      {icon:'✅', label:'Ce qu\'il faut FAIRE', text:'Hip thrust, fentes, rowing pour équilibrer'},
-      {icon:'❌', label:'Ce qu\'il faut ÉVITER', text:'Squats classiques qui élargissent, cardio excessif'},
+      {icon:'✅', label:'Ce qu\'il faut FAIRE', text:'Hip thrust, fentes arrière, rowing pour équilibrer haut/bas'},
+      {icon:'❌', label:'Ce qu\'il faut ÉVITER', text:'Squats classiques qui élargissent les hanches, cardio excessif'},
       {icon:'🥗', label:'Nutrition', text:'Réduire glucides le soir, privilégier protéines maigres'},
       {icon:'⚠️', label:'Aliment piège', text:'Sucres rapides → stockage direct sur les hanches'}
     ],
-    convTitle: 'Ton programme Morpho A est prêt',
-    convText: 'Ce programme a été conçu spécifiquement pour les femmes Morpho A. Les exercices génériques ne fonctionnent pas pour toi — voilà pourquoi tu n\'as pas encore les résultats que tu mérites.',
-    btnText: 'J\'obtiens mon programme Morpho A — 12€'
+    convTitle: 'Ton programme Morpho A — taillé pour ton corps',
+    btnText: 'J\'obtiens mon programme Morpho A — 12€',
+    temoText: '"J\'ai enfin compris pourquoi mes cuisses ne changeaient pas malgré 3 séances par semaine. En 3 semaines, j\'ai vu ce que 2 ans de sport n\'avaient pas réussi à faire."',
+    temoName: 'Sarah M.',
+    temoMorpho: 'Morpho A · cliente Ornella Fit'
   },
   H: {
     stripeLink: 'https://buy.stripe.com/bJe14nfMt4tJ4k5dql8Vi0g',
     badge: 'Morpho H — L\'Athlète',
     title: 'Tu stockes à la taille.',
     subtitle: 'Ton corps résiste naturellement à la définition abdominale.',
+    painText: 'Tu fais des abdos chaque matin, tu suis ton alimentation... mais la taille ne bouge pas. <strong>Ce n\'est pas un problème de motivation.</strong> La Morpho H stocke à la taille pour des raisons hormonales. Les crunchs épaississent sans affiner, et les régimes classiques aggravent l\'inflammation. Il faut une approche totalement différente — gainage profond + alimentation anti-inflammatoire ciblée.',
     rows: [
-      {icon:'✅', label:'Ce qu\'il faut FAIRE', text:'Gainage profond, obliques, squats sumo'},
-      {icon:'❌', label:'Ce qu\'il faut ÉVITER', text:'Crunchs classiques qui épaississent la taille'},
-      {icon:'🥗', label:'Nutrition', text:'Anti-inflammatoire, limiter sel et gluten'},
+      {icon:'✅', label:'Ce qu\'il faut FAIRE', text:'Gainage profond (planche, dead bug), squats sumo, full body'},
+      {icon:'❌', label:'Ce qu\'il faut ÉVITER', text:'Crunchs classiques et side bends qui épaississent la taille'},
+      {icon:'🥗', label:'Nutrition', text:'Anti-inflammatoire strict, limiter sel, gluten et alcool'},
       {icon:'⚠️', label:'Aliment piège', text:'Alcool et sucres raffinés → gonflent immédiatement la taille'}
     ],
-    convTitle: 'Ton programme Morpho H est prêt',
-    convText: 'Ce programme a été conçu spécifiquement pour les femmes Morpho H. Les exercices génériques ne fonctionnent pas pour toi — voilà pourquoi tu n\'as pas encore les résultats que tu mérites.',
-    btnText: 'J\'obtiens mon programme Morpho H — 12€'
+    convTitle: 'Ton programme Morpho H — taillé pour ton corps',
+    btnText: 'J\'obtiens mon programme Morpho H — 12€',
+    temoText: '"Le plan nutrition pour ma morphologie a tout changé. J\'avais jamais fait le lien entre ce que je mangeais et mon stockage à la taille. -4cm en un mois."',
+    temoName: 'Camille R.',
+    temoMorpho: 'Morpho H · cliente Ornella Fit'
   },
   X: {
     stripeLink: 'https://buy.stripe.com/4gMdR92ZH9O3dUFbid8Vi0h',
     badge: 'Morpho X — Le Sablier',
     title: 'Tu as des proportions naturelles.',
-    subtitle: 'Ton risque : perdre ta taille en faisant les mauvais exercices.',
+    subtitle: 'Ton risque : les perdre en faisant les mauvais exercices.',
+    painText: 'Tu as la chance d\'avoir des proportions naturelles — mais sans programme adapté, tu risques de <strong>déformer ce que tu as déjà</strong>. Trop de charges en haut te masculinise. Trop de volume en bas efface ta taille. La Morpho X a besoin d\'un équilibre précis que les programmes génériques ne respectent jamais.',
     rows: [
-      {icon:'✅', label:'Ce qu\'il faut FAIRE', text:'Full body équilibré, maintenir la taille'},
-      {icon:'❌', label:'Ce qu\'il faut ÉVITER', text:'Trop de charges sur les épaules et hanches'},
+      {icon:'✅', label:'Ce qu\'il faut FAIRE', text:'Full body équilibré, gainage pour maintenir la taille'},
+      {icon:'❌', label:'Ce qu\'il faut ÉVITER', text:'Charges lourdes sur épaules OU hanches — risque de déséquilibre'},
       {icon:'🥗', label:'Nutrition', text:'Équilibré, surveiller les excès de glucides simples'},
-      {icon:'⚠️', label:'Aliment piège', text:'Junk food et alcool fréquent → casse les proportions'}
+      {icon:'⚠️', label:'Aliment piège', text:'Junk food régulier et alcool → stockage anarchique qui casse les proportions'}
     ],
-    convTitle: 'Ton programme Morpho X est prêt',
-    convText: 'Ce programme a été conçu spécifiquement pour les femmes Morpho X. Les exercices génériques ne fonctionnent pas pour toi — voilà pourquoi tu n\'as pas encore les résultats que tu mérites.',
-    btnText: 'J\'obtiens mon programme Morpho X — 12€'
+    convTitle: 'Ton programme Morpho X — taillé pour ton corps',
+    btnText: 'J\'obtiens mon programme Morpho X — 12€',
+    temoText: '"J\'avais peur de "me déformer" en reprenant la salle. Le programme Morpho X m\'a donné exactement les bons exercices pour entretenir ma silhouette sans excès. Parfait."',
+    temoName: 'Julie T.',
+    temoMorpho: 'Morpho X · cliente Ornella Fit'
   },
   O: {
     stripeLink: 'https://buy.stripe.com/aFaaEX7fXe4j6sd9a58Vi0i',
     badge: 'Morpho O — La Ronde',
-    title: 'Ton métabolisme est plus lent.',
-    subtitle: 'Les régimes classiques ne fonctionnent pas — tu as besoin d\'une approche spécifique.',
+    title: 'Ton métabolisme est plus résistant.',
+    subtitle: 'Les régimes classiques le ralentissent encore plus — c\'est un cercle vicieux.',
+    painText: 'Tu as essayé des régimes, tu t\'es privée, et le poids est revenu — parfois en plus. <strong>Ce n\'est pas de la gourmandise.</strong> La Morpho O a un métabolisme adaptatif : il ralentit à la moindre restriction. Les régimes classiques empirent la situation. Ce qu\'il te faut, c\'est activer ton métabolisme de l\'intérieur — avec les bons exercices et une nutrition anti-inflammatoire ciblée.',
     rows: [
-      {icon:'✅', label:'Ce qu\'il faut FAIRE', text:'Activer le métabolisme, circuit training, marche active'},
-      {icon:'❌', label:'Ce qu\'il faut ÉVITER', text:'Régimes trop restrictifs qui ralentissent encore plus'},
-      {icon:'🥗', label:'Nutrition', text:'Anti-inflammatoire, fibres, supprimer sucres cachés'},
-      {icon:'⚠️', label:'Aliment piège', text:'Ultra-transformés et sucres cachés → inflammation directe'}
+      {icon:'✅', label:'Ce qu\'il faut FAIRE', text:'Circuit training pour activer le métabolisme, marche 30-40 min/jour'},
+      {icon:'❌', label:'Ce qu\'il faut ÉVITER', text:'Régimes très restrictifs qui ralentissent encore plus ton métabolisme'},
+      {icon:'🥗', label:'Nutrition', text:'Anti-inflammatoire, fibres, 4 petits repas plutôt que 2 gros'},
+      {icon:'⚠️', label:'Aliment piège', text:'Ultra-transformés et sucres cachés → inflammation directe et résistance à la perte de poids'}
     ],
-    convTitle: 'Ton programme Morpho O est prêt',
-    convText: 'Ce programme a été conçu spécifiquement pour les femmes Morpho O. Les exercices génériques ne fonctionnent pas pour toi — voilà pourquoi tu n\'as pas encore les résultats que tu mérites.',
-    btnText: 'J\'obtiens mon programme Morpho O — 12€'
+    convTitle: 'Ton programme Morpho O — taillé pour ton corps',
+    btnText: 'J\'obtiens mon programme Morpho O — 12€',
+    temoText: '"J\'avais arrêté d\'espérer perdre du poids. Le programme Morpho O est le premier qui explique POURQUOI mon corps résiste. En 4 semaines, -3kg et je me sens légère."',
+    temoName: 'Marine B.',
+    temoMorpho: 'Morpho O · cliente Ornella Fit'
   },
   V: {
     stripeLink: 'https://buy.stripe.com/bJe14n57P6BRaItbid8Vi0j',
     badge: 'Morpho V — L\'Inversée',
-    title: 'Tes épaules dominent, tes fessiers sont plats.',
-    subtitle: 'Les programmes standards ne construisent pas ce dont tu as besoin.',
+    title: 'Épaules larges, fessiers plats.',
+    subtitle: 'Les programmes standards te font travailler exactement les mauvaises zones.',
+    painText: 'Tu fais des squats, du vélo, des cours collectifs... et tes épaules grossissent pendant que tes fessiers restent plats. <strong>Le problème, c\'est le programme — pas toi.</strong> La Morpho V a besoin de construire massivement le bas du corps et d\'éviter tout ce qui charge le haut. L\'inverse de ce que font 90% des femmes à la salle.',
     rows: [
-      {icon:'✅', label:'Ce qu\'il faut FAIRE', text:'Hip thrust lourd, leg press, fentes bulgares'},
-      {icon:'❌', label:'Ce qu\'il faut ÉVITER', text:'Développé épaules, tout ce qui élargit le haut'},
-      {icon:'🥗', label:'Nutrition', text:'Protéines élevées pour construire le bas du corps'},
-      {icon:'⚠️', label:'Aliment piège', text:'Sel en excès → gonfle visuellement les épaules'}
+      {icon:'✅', label:'Ce qu\'il faut FAIRE', text:'Hip thrust lourd, leg press, fentes bulgares — construire le bas'},
+      {icon:'❌', label:'Ce qu\'il faut ÉVITER', text:'Développé épaules, élévations latérales, pompes larges'},
+      {icon:'🥗', label:'Nutrition', text:'Protéines élevées réparties sur 4 repas pour construire le bas'},
+      {icon:'⚠️', label:'Aliment piège', text:'Sel en excès → gonfle visuellement les épaules déjà larges'}
     ],
-    convTitle: 'Ton programme Morpho V est prêt',
-    convText: 'Ce programme a été conçu spécifiquement pour les femmes Morpho V. Les exercices génériques ne fonctionnent pas pour toi — voilà pourquoi tu n\'as pas encore les résultats que tu mérites.',
-    btnText: 'J\'obtiens mon programme Morpho V — 12€'
+    convTitle: 'Ton programme Morpho V — taillé pour ton corps',
+    btnText: 'J\'obtiens mon programme Morpho V — 12€',
+    temoText: '"Je pensais que mes épaules larges c\'était juste "comme ça". Le programme Morpho V m\'a appris à rééquilibrer. En 1 mois, mes fessiers ont plus changé qu\'en 2 ans de salle."',
+    temoName: 'Léa D.',
+    temoMorpho: 'Morpho V · cliente Ornella Fit'
   }
 };
 
@@ -490,6 +541,14 @@ let scores = {A:0,H:0,X:0,O:0,V:0};
 let currentQ = 0;
 const totalQ = 5;
 let pendingMorpho = null;
+
+function buyMorpho(){
+  const morpho = pendingMorpho || getMorpho();
+  const link = morphoData[morpho] && morphoData[morpho].stripeLink;
+  if(!link || link.startsWith('[')) return;
+  if(typeof fbq!=='undefined') fbq('track','InitiateCheckout',{value:12,currency:'EUR'});
+  window.open(link,'_blank');
+}
 
 function startQuiz(){
   document.getElementById('quizIntro').style.display = 'none';
@@ -655,14 +714,12 @@ function showResult(){
       <div><strong>${r.label}</strong><span>${r.text}</span></div>
     </div>
   `).join('');
+  document.getElementById('painText').innerHTML = d.painText;
   document.getElementById('convTitle').textContent = d.convTitle;
-  document.getElementById('convText').textContent = d.convText;
-  const convBtn = document.getElementById('convBtn');
-  convBtn.textContent = d.btnText;
-  convBtn.href = d.stripeLink;
-  document.querySelector('.sticky-mob-btn').href = d.stripeLink;
-  document.getElementById('includedCta').href = d.stripeLink;
-  document.getElementById('includedCta').target = '_blank';
+  document.getElementById('convBtn').textContent = d.btnText;
+  document.getElementById('convTemoText').textContent = d.temoText;
+  document.getElementById('convTemoName').textContent = d.temoName;
+  document.getElementById('convTemoMorpho').textContent = d.temoMorpho;
   document.getElementById('resultScreen').classList.add('active');
   document.getElementById('stickyMob').style.display = 'flex';
   document.getElementById('resultScreen').scrollIntoView({behavior:'smooth',block:'start'});
