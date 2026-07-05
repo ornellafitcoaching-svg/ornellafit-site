@@ -342,7 +342,7 @@ footer a:hover{color:rgba(255,255,255,.8)}
       <div class="check-item"><div class="check-icon"></div><span>Les <strong>aliments qui sculptent TON corps</strong> spécifiquement</span></div>
       <div class="check-item"><div class="check-icon"></div><span><strong>Accès immédiat par email</strong> dans les 5 minutes après paiement</span></div>
     </div>
-    <a href="[COLLE_TON_LIEN_STRIPE_ICI]" target="_blank" class="btn-coral" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:12,currency:'EUR'})">Je veux mon programme — 12€ →</a>
+    <a href="#quiz" id="includedCta" class="btn-coral" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:12,currency:'EUR'})">Je veux mon programme — 12€ →</a>
     <p style="margin-top:12px;font-size:.78rem;color:var(--muted)">🛡️ Satisfaite ou remboursée 7 jours · PDF par email · Sans abonnement</p>
   </div>
 </section>
@@ -396,6 +396,7 @@ footer a:hover{color:rgba(255,255,255,.8)}
 // QUIZ DATA
 const morphoData = {
   A: {
+    stripeLink: 'https://buy.stripe.com/4gMdR9fMt0dt5o92LH8Vi0f',
     badge: 'Morpho A — La Poire',
     title: 'Tu stockes sur les hanches et les cuisses.',
     subtitle: 'Les programmes génériques aggravent tes déséquilibres sans le savoir.',
@@ -410,6 +411,7 @@ const morphoData = {
     btnText: 'J\'obtiens mon programme Morpho A — 12€'
   },
   H: {
+    stripeLink: 'https://buy.stripe.com/bJe14nfMt4tJ4k5dql8Vi0g',
     badge: 'Morpho H — L\'Athlète',
     title: 'Tu stockes à la taille.',
     subtitle: 'Ton corps résiste naturellement à la définition abdominale.',
@@ -424,6 +426,7 @@ const morphoData = {
     btnText: 'J\'obtiens mon programme Morpho H — 12€'
   },
   X: {
+    stripeLink: 'https://buy.stripe.com/4gMdR92ZH9O3dUFbid8Vi0h',
     badge: 'Morpho X — Le Sablier',
     title: 'Tu as des proportions naturelles.',
     subtitle: 'Ton risque : perdre ta taille en faisant les mauvais exercices.',
@@ -438,6 +441,7 @@ const morphoData = {
     btnText: 'J\'obtiens mon programme Morpho X — 12€'
   },
   O: {
+    stripeLink: 'https://buy.stripe.com/aFaaEX7fXe4j6sd9a58Vi0i',
     badge: 'Morpho O — La Ronde',
     title: 'Ton métabolisme est plus lent.',
     subtitle: 'Les régimes classiques ne fonctionnent pas — tu as besoin d\'une approche spécifique.',
@@ -452,6 +456,7 @@ const morphoData = {
     btnText: 'J\'obtiens mon programme Morpho O — 12€'
   },
   V: {
+    stripeLink: 'https://buy.stripe.com/bJe14n57P6BRaItbid8Vi0j',
     badge: 'Morpho V — L\'Inversée',
     title: 'Tes épaules dominent, tes fessiers sont plats.',
     subtitle: 'Les programmes standards ne construisent pas ce dont tu as besoin.',
@@ -622,7 +627,7 @@ function getMorphoEmail(m){
       <span style="font-size:1rem;color:rgba(255,255,255,.4);text-decoration:line-through">29€</span>
       <span style="font-size:2rem;font-weight:800;color:#E8634A">12€</span>
     </div>
-    <a href="[COLLE_TON_LIEN_STRIPE_ICI_${m}]" style="display:inline-block;background:#E8634A;color:#fff;text-decoration:none;padding:16px 36px;border-radius:50px;font-weight:700;font-size:.95rem;font-family:sans-serif">J'obtiens mon programme — 12€ →</a>
+    <a href="${morphoData[m].stripeLink}" style="display:inline-block;background:#E8634A;color:#fff;text-decoration:none;padding:16px 36px;border-radius:50px;font-weight:700;font-size:.95rem;font-family:sans-serif">J'obtiens mon programme — 12€ →</a>
     <p style="font-size:.72rem;color:rgba(255,255,255,.4);margin:12px 0 0">🛡️ Satisfaite ou remboursée 7 jours</p>
   </div>
 
@@ -652,7 +657,12 @@ function showResult(){
   `).join('');
   document.getElementById('convTitle').textContent = d.convTitle;
   document.getElementById('convText').textContent = d.convText;
-  document.getElementById('convBtn').textContent = d.btnText;
+  const convBtn = document.getElementById('convBtn');
+  convBtn.textContent = d.btnText;
+  convBtn.href = d.stripeLink;
+  document.querySelector('.sticky-mob-btn').href = d.stripeLink;
+  document.getElementById('includedCta').href = d.stripeLink;
+  document.getElementById('includedCta').target = '_blank';
   document.getElementById('resultScreen').classList.add('active');
   document.getElementById('stickyMob').style.display = 'flex';
   document.getElementById('resultScreen').scrollIntoView({behavior:'smooth',block:'start'});
