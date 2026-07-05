@@ -168,6 +168,16 @@ footer a:hover{color:rgba(255,255,255,.8)}
 .sticky-mob-btn{background:var(--coral);color:#fff;text-decoration:none;padding:11px 24px;border-radius:50px;font-weight:700;font-size:.82rem;white-space:nowrap;flex-shrink:0;cursor:pointer;border:none;font-family:'DM Sans',sans-serif}
 @media(max-width:640px){.sticky-mob{display:flex}body{padding-bottom:72px}}
 
+/* URGENCY STRIP */
+.urgency-strip{background:var(--green);padding:14px 20px;text-align:center;color:#fff}
+.urgency-strip-inner{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.urgency-fire{font-size:1.1rem}
+.urgency-text{font-size:.85rem;font-weight:600;color:rgba(255,255,255,.9)}
+.urgency-countdown{display:inline-flex;gap:6px;align-items:center}
+.countdown-unit{background:var(--coral);color:#fff;border-radius:6px;padding:4px 8px;font-size:.9rem;font-weight:800;min-width:34px;text-align:center;line-height:1}
+.countdown-sep{color:var(--coral);font-weight:800;font-size:.9rem}
+.urgency-label{font-size:.72rem;color:rgba(255,255,255,.6);margin-top:4px}
+
 /* ANIMATIONS */
 .fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .fade-in.visible{opacity:1;transform:translateY(0)}
@@ -189,13 +199,34 @@ footer a:hover{color:rgba(255,255,255,.8)}
   ✨ Quiz morphologie <strong>100% gratuit</strong> — 2 minutes · Résultat + programme sur mesure immédiat
 </div>
 
+<!-- URGENCE STRIP -->
+<div class="urgency-strip">
+  <div class="urgency-strip-inner">
+    <span class="urgency-fire">🔥</span>
+    <span class="urgency-text">Prix de lancement 12€ — remonte à 29€ le 31 juillet</span>
+    <div>
+      <div class="urgency-countdown">
+        <div class="countdown-unit" id="cdDays">--</div>
+        <span class="countdown-sep">j</span>
+        <div class="countdown-unit" id="cdHours">--</div>
+        <span class="countdown-sep">h</span>
+        <div class="countdown-unit" id="cdMins">--</div>
+        <span class="countdown-sep">min</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- HERO -->
 <section class="hero" id="hero">
   <div style="position:relative;z-index:2">
     <p class="hero-eyebrow">Par Ornella · Coach diplômée d'État</p>
+    <div style="display:inline-block;background:rgba(27,58,45,.08);border:1.5px solid rgba(27,58,45,.15);border-radius:50px;padding:8px 20px;margin-bottom:20px;font-size:.82rem;color:var(--text);font-weight:600">
+      🧬 9 femmes sur 10 font les exercices <em>d'une autre morphologie</em> que la leur
+    </div>
     <h1>Pourquoi tu n'as pas<br>encore les résultats<br><em>que tu mérites ?</em></h1>
-    <p class="hero-sub">Parce que tu fais les exercices faits pour une autre morphologie que la tienne. 5 questions pour tout changer.</p>
-    <a href="#quiz" class="btn-coral" onclick="startQuiz()">Je découvre ma morphologie →</a>
+    <p class="hero-sub">La réponse tient en 5 questions. Et elle va probablement te surprendre.</p>
+    <a href="#quiz" class="btn-coral" onclick="startQuiz()">Je veux savoir → Quiz gratuit</a>
     <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(232,99,74,.1);border:1.5px solid rgba(232,99,74,.3);border-radius:50px;padding:8px 20px;margin-bottom:16px">
       <span style="font-size:.75rem;font-weight:800;color:var(--coral);letter-spacing:.1em;text-transform:uppercase">🎁 Quiz 100% gratuit</span>
     </div>
@@ -224,10 +255,15 @@ footer a:hover{color:rgba(255,255,255,.8)}
     <!-- INTRO -->
     <div id="quizIntro" style="text-align:center">
       <div style="display:inline-block;background:var(--coral);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 18px;border-radius:50px;margin-bottom:16px">🎁 Gratuit — 2 minutes</div>
-      <p style="font-family:'Playfair Display',serif;font-size:clamp(1.4rem,4vw,2rem);font-weight:700;color:var(--text);margin-bottom:16px">Prête à enfin comprendre ton corps ?</p>
-      <p style="font-size:.95rem;color:#4A5E52;line-height:1.75;margin-bottom:12px;max-width:440px;margin-left:auto;margin-right:auto">5 questions. Résultat immédiat. Je te dis exactement <strong>pourquoi tu n'as pas encore tes résultats</strong> — et ce qui change avec le bon programme.</p>
-      <p style="font-size:.82rem;color:var(--muted);margin-bottom:28px">Aucune vente avant ton résultat. Juste la vérité sur ton corps.</p>
-      <button class="btn-coral" onclick="startQuiz()">Je découvre ma morphologie — gratuit →</button>
+      <p style="font-family:'Playfair Display',serif;font-size:clamp(1.4rem,4vw,2rem);font-weight:700;color:var(--text);margin-bottom:16px">Tu t'entraînes pour une autre morphologie que la tienne.</p>
+      <p style="font-size:.95rem;color:#4A5E52;line-height:1.75;margin-bottom:16px;max-width:440px;margin-left:auto;margin-right:auto">Ce quiz te révèle <strong>exactement pourquoi tes efforts ne donnent pas les résultats attendus</strong> — et quel programme est fait pour TON corps.</p>
+      <div style="background:var(--cream);border-radius:14px;padding:14px 18px;max-width:400px;margin:0 auto 20px;display:flex;align-items:center;gap:12px;text-align:left">
+        <span style="font-size:1.4rem">👁️</span>
+        <p style="font-size:.82rem;color:#4A5E52;line-height:1.6;margin:0"><strong style="color:var(--text)">La plupart des femmes sont surprises du résultat.</strong> Parce qu'on croit souvent connaître notre morphologie — et on se trompe.</p>
+      </div>
+      <p style="font-size:.78rem;color:var(--muted);margin-bottom:24px">Aucune vente avant ton résultat. Juste la vérité sur ton corps.</p>
+      <button class="btn-coral" onclick="startQuiz()">Je veux savoir quelle est ma morphologie →</button>
+      <p style="margin-top:10px;font-size:.75rem;color:var(--muted)">🔥 Prix programme passe à 29€ le 31 juillet</p>
     </div>
 
     <!-- Q1 -->
@@ -748,6 +784,27 @@ document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
 
 // Hide sticky mob until result shown
 document.getElementById('stickyMob').style.display = 'none';
+
+// COUNTDOWN 31 juillet 2026
+(function(){
+  const end = new Date('2026-07-31T23:59:59');
+  function update(){
+    const now = new Date();
+    const diff = end - now;
+    if(diff <= 0){
+      document.querySelector('.urgency-strip') && (document.querySelector('.urgency-strip').style.display='none');
+      return;
+    }
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor((diff%86400000)/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    document.getElementById('cdDays').textContent = String(d).padStart(2,'0');
+    document.getElementById('cdHours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cdMins').textContent = String(m).padStart(2,'0');
+  }
+  update();
+  setInterval(update, 30000);
+})();
 </script>
 </body>
 </html>
