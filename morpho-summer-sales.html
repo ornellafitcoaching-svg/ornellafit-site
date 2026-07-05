@@ -422,8 +422,8 @@ footer a:hover{color:rgba(255,255,255,.8)}
       <div class="check-item"><div class="check-icon"></div><span>Les <strong>aliments qui sculptent TON corps</strong> spécifiquement</span></div>
       <div class="check-item"><div class="check-icon"></div><span><strong>Accès immédiat par email</strong> dans les 5 minutes après paiement</span></div>
     </div>
-    <button id="includedCta" class="btn-coral" onclick="buyMorpho()">Je veux mon programme — 12€ →</button>
-    <p style="margin-top:12px;font-size:.78rem;color:var(--muted)">🛡️ Satisfaite ou remboursée 7 jours · PDF par email · Sans abonnement</p>
+    <button id="includedCta" class="btn-coral" onclick="buyMorpho()">Je fais le quiz pour découvrir mon programme →</button>
+    <p style="margin-top:12px;font-size:.78rem;color:var(--muted)">🎁 Quiz gratuit · Résultat immédiat · Programme 12€ ensuite si tu le souhaites</p>
   </div>
 </section>
 
@@ -587,8 +587,11 @@ const totalQ = 5;
 let pendingMorpho = null;
 
 function buyMorpho(){
-  const morpho = pendingMorpho || getMorpho();
-  const link = morphoData[morpho] && morphoData[morpho].stripeLink;
+  if(!pendingMorpho){
+    document.querySelector('#quiz').scrollIntoView({behavior:'smooth',block:'start'});
+    return;
+  }
+  const link = morphoData[pendingMorpho] && morphoData[pendingMorpho].stripeLink;
   if(!link || link.startsWith('[')) return;
   if(typeof fbq!=='undefined') fbq('track','InitiateCheckout',{value:12,currency:'EUR'});
   window.open(link,'_blank');
