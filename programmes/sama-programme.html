@@ -121,8 +121,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);
 /* TIMER WIDGET */
 .timer-wrap{position:fixed;bottom:20px;right:16px;z-index:500}
 .timer-toggle{width:52px;height:52px;border-radius:50%;background:var(--green);color:#fff;border:none;font-size:1.3rem;cursor:pointer;box-shadow:0 4px 20px rgba(27,58,45,.35);display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent}
-.timer-panel{display:none;background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:18px 16px;margin-bottom:10px;box-shadow:0 8px 32px rgba(27,58,45,.15);min-width:200px;text-align:center}
-.timer-panel.open{display:block}
+.timer-panel{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:18px 16px;margin-bottom:10px;box-shadow:0 8px 32px rgba(27,58,45,.15);min-width:200px;text-align:center;max-height:0;overflow:hidden;opacity:0;padding-top:0;padding-bottom:0;transition:max-height .3s ease,opacity .25s ease,padding .25s ease}
+.timer-panel.open{max-height:260px;opacity:1;padding:18px 16px}
 .timer-display{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:var(--green);line-height:1;margin-bottom:12px;min-height:44px}
 .timer-presets{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
 .timer-preset{background:var(--cream);border:1.5px solid var(--border);border-radius:50px;padding:6px 12px;font-size:.75rem;font-weight:700;color:var(--text);cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -195,11 +195,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);
     <div class="timer-label">Chrono repos</div>
     <div class="timer-display" id="timerDisplay">—</div>
     <div class="timer-presets">
-      <button class="timer-preset" onclick="startTimer(30)">30s</button>
-      <button class="timer-preset" onclick="startTimer(45)">45s</button>
-      <button class="timer-preset" onclick="startTimer(60)">1 min</button>
-      <button class="timer-preset" onclick="startTimer(90)">90s</button>
-      <button class="timer-preset" onclick="startTimer(120)">2 min</button>
+      <button class="timer-preset" onclick="startTimer(30,this)">30s</button>
+      <button class="timer-preset" onclick="startTimer(45,this)">45s</button>
+      <button class="timer-preset" onclick="startTimer(60,this)">1 min</button>
+      <button class="timer-preset" onclick="startTimer(90,this)">90s</button>
+      <button class="timer-preset" onclick="startTimer(120,this)">2 min</button>
     </div>
     <button class="timer-stop" onclick="stopTimer()">⏹ Arrêter</button>
   </div>
@@ -940,11 +940,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);
     document.getElementById('timerToggleBtn').textContent = panelOpen ? '✕' : '⏱';
   };
 
-  window.startTimer = function(seconds){
+  window.startTimer = function(seconds, btn){
     clearInterval(interval);
     remaining = seconds;
     document.querySelectorAll('.timer-preset').forEach(function(b){b.classList.remove('active')});
-    event && event.target && event.target.classList.add('active');
+    if(btn) btn.classList.add('active');
     tick();
     interval = setInterval(tick, 1000);
   };
