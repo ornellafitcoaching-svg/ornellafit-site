@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Programme Personnalisé — Sama · Ornella Fit Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#1B3A2D;
+  --coral:#E8634A;
+  --cream:#F5EFE6;
+  --gold:#C9A96E;
+  --white:#FFFFFF;
+  --muted:#7A8C7B;
+  --border:#DDD5C8;
+  --text:#1B3A2D;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);-webkit-font-smoothing:antialiased;font-size:15px}
+.page{max-width:760px;margin:0 auto;padding:32px 24px 60px}
+
+/* HEADER */
+.doc-header{background:var(--green);padding:36px 32px;border-radius:20px;margin-bottom:32px;display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.doc-header-left{}
+.doc-badge{display:inline-block;background:var(--coral);color:#fff;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:12px}
+.doc-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:6px}
+.doc-sub{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.6}
+.doc-meta{text-align:right;font-size:.75rem;color:rgba(255,255,255,.45);line-height:1.8}
+.doc-meta strong{color:rgba(255,255,255,.7);display:block;font-size:.82rem}
+
+/* ALERT */
+.alert{background:#FFF8E7;border:1.5px solid #F5A623;border-radius:14px;padding:18px 20px;margin-bottom:28px;display:flex;gap:14px;align-items:flex-start}
+.alert-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}
+.alert p{font-size:.85rem;color:#5C3D00;line-height:1.75}
+.alert strong{color:#3D2800}
+
+/* PROFIL */
+.profil-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px}
+.profil-item{background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.profil-label{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.profil-val{font-size:.9rem;font-weight:600;color:var(--text);line-height:1.4}
+
+/* SECTION TITLE */
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.section-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--coral);margin-bottom:8px}
+.section-divider{height:2px;background:linear-gradient(90deg,var(--coral),transparent);border:none;margin:8px 0 24px}
+
+/* OBJECTIFS */
+.obj-list{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.obj-item{display:flex;gap:12px;align-items:flex-start;background:#fff;border-radius:12px;padding:14px 16px;border:1px solid var(--border)}
+.obj-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px}
+.obj-text{font-size:.88rem;line-height:1.65}
+.obj-text strong{color:var(--text);display:block;margin-bottom:2px;font-size:.9rem}
+.obj-text span{color:#4A6741}
+
+/* INTERDITS */
+.interdits{background:#FFF5F3;border:1.5px solid #F5C4B8;border-radius:14px;padding:20px 22px;margin-bottom:32px}
+.interdit-title{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:12px}
+.interdit-list{display:flex;flex-direction:column;gap:8px}
+.interdit-item{font-size:.85rem;color:#3D2A24;line-height:1.6;display:flex;gap:10px}
+
+/* MATERIEL */
+.mat-list{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.mat-tag{background:#fff;border:1.5px solid var(--border);border-radius:50px;padding:8px 18px;font-size:.82rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:7px}
+
+/* SEMAINES */
+.semaine-header{background:var(--green);color:#fff;border-radius:16px 16px 0 0;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
+.semaine-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#fff}
+.semaine-badge{background:var(--coral);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:50px}
+.semaine-body{background:#fff;border:1px solid var(--border);border-top:none;border-radius:0 0 16px 16px;padding:24px;margin-bottom:24px}
+.seance-block{margin-bottom:24px}
+.seance-block:last-child{margin-bottom:0}
+.seance-title{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.seance-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--coral)}
+.seance-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--text)}
+.seance-duree{font-size:.72rem;color:var(--muted);margin-left:auto}
+.seance-note{background:rgba(232,99,74,.07);border-left:3px solid var(--coral);border-radius:0 10px 10px 0;padding:10px 14px;margin-bottom:14px;font-size:.8rem;color:#4A2A1A;line-height:1.6}
+.exo-table{width:100%;border-collapse:collapse}
+.exo-table th{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:8px 10px;text-align:left;border-bottom:2px solid var(--border)}
+.exo-table td{font-size:.85rem;padding:10px 10px;border-bottom:1px solid #F0E8DE;vertical-align:top;line-height:1.5}
+.exo-table tr:last-child td{border-bottom:none}
+.exo-table td:first-child{font-weight:600;color:var(--text)}
+.exo-ico{display:inline-block;font-size:.72rem;padding:2px 8px;border-radius:50px;font-weight:700;margin-right:4px}
+.ico-kb{background:#E8F4E8;color:#2D6A2D}
+.ico-el{background:#FFF3E0;color:#B85C00}
+.ico-bl{background:#E3F2FD;color:#1565C0}
+.ico-pc{background:#F3E5F5;color:#7B1FA2}
+.ico-gf{background:#F5F5F5;color:#555}
+.repos-bar{background:var(--cream);border:1px dashed var(--border);border-radius:10px;padding:12px 16px;font-size:.82rem;color:var(--muted);text-align:center;margin-top:8px}
+
+/* NUTRITION */
+.nutri-section{background:var(--green);border-radius:16px;padding:28px 24px;margin-bottom:32px}
+.nutri-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:6px}
+.nutri-sub{font-size:.82rem;color:rgba(255,255,255,.6);margin-bottom:20px;line-height:1.6}
+.nutri-list{display:flex;flex-direction:column;gap:12px}
+.nutri-item{background:rgba(255,255,255,.08);border-radius:12px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+.nutri-ico{font-size:1.1rem;flex-shrink:0}
+.nutri-text{font-size:.85rem;color:rgba(255,255,255,.85);line-height:1.65}
+.nutri-text strong{color:#fff;display:block;margin-bottom:2px}
+
+/* SUIVI */
+.suivi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:32px}
+.suivi-item{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.suivi-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--coral)}
+.suivi-label{font-size:.72rem;color:var(--muted);line-height:1.4;margin-top:4px}
+
+/* FOOTER */
+.doc-footer{background:var(--green);border-radius:16px;padding:24px;text-align:center}
+.doc-footer p{font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.8}
+.doc-footer strong{color:rgba(255,255,255,.8)}
+
+/* QUICK NAV */
+.quicknav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--border);padding:10px 16px;display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.quicknav::-webkit-scrollbar{display:none}
+.qnav-btn{flex-shrink:0;background:var(--cream);border:1px solid var(--border);border-radius:50px;padding:6px 14px;font-size:.72rem;font-weight:700;color:var(--text);text-decoration:none;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.qnav-btn:hover,.qnav-btn:active{background:var(--coral);color:#fff;border-color:var(--coral)}
+
+/* TIMER WIDGET */
+.timer-wrap{position:fixed;bottom:20px;right:16px;z-index:500}
+.timer-toggle{width:52px;height:52px;border-radius:50%;background:var(--green);color:#fff;border:none;font-size:1.3rem;cursor:pointer;box-shadow:0 4px 20px rgba(27,58,45,.35);display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent}
+.timer-panel{display:none;background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:18px 16px;margin-bottom:10px;box-shadow:0 8px 32px rgba(27,58,45,.15);min-width:200px;text-align:center}
+.timer-panel.open{display:block}
+.timer-display{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:var(--green);line-height:1;margin-bottom:12px;min-height:44px}
+.timer-presets{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+.timer-preset{background:var(--cream);border:1.5px solid var(--border);border-radius:50px;padding:6px 12px;font-size:.75rem;font-weight:700;color:var(--text);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.timer-preset:hover,.timer-preset.active{background:var(--coral);color:#fff;border-color:var(--coral)}
+.timer-stop{background:none;border:1px solid var(--border);border-radius:50px;padding:5px 14px;font-size:.72rem;color:var(--muted);cursor:pointer;font-family:'DM Sans',sans-serif}
+.timer-label{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+
+/* WHATSAPP FLOAT */
+.wa-float{position:fixed;bottom:20px;left:16px;z-index:500;background:#25D366;color:#fff;border-radius:50px;padding:12px 18px;text-decoration:none;font-size:.78rem;font-weight:700;display:flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(37,211,102,.35);-webkit-tap-highlight-color:transparent}
+.wa-float svg{flex-shrink:0}
+
+/* PRINT */
+@media print{
+  body{background:#fff}
+  .page{padding:20px}
+  .btn-print,.quicknav,.timer-wrap,.wa-float{display:none!important}
+}
+
+/* MOBILE */
+@media(max-width:640px){
+  body{padding-bottom:80px}
+  .page{padding:12px 12px 60px}
+  .doc-header{flex-direction:column;gap:12px;padding:20px 18px;border-radius:14px}
+  .doc-meta{text-align:left}
+  .profil-grid{grid-template-columns:1fr}
+  .suivi-grid{grid-template-columns:1fr 1fr}
+  .semaine-header{flex-direction:column;align-items:flex-start;gap:8px;border-radius:12px 12px 0 0}
+  .semaine-body{padding:16px 12px}
+  .seance-block{margin-bottom:20px}
+  .section-title{font-size:1.4rem}
+  /* Tables → cards mobile */
+  .exo-table{width:100%;border-collapse:collapse}
+  .exo-table thead{display:none}
+  .exo-table tbody tr{display:block;background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+  .exo-table td{display:block;padding:2px 0;border:none;font-size:.83rem;line-height:1.5}
+  .exo-table td:first-child{font-weight:700;font-size:.92rem;color:var(--text);margin-bottom:4px;border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:6px}
+  .exo-table td:nth-child(2){color:var(--coral);font-weight:700}
+  .exo-table td:nth-child(3){color:var(--muted);font-size:.72rem}
+  .exo-table td:nth-child(4){color:#4A5E52;padding-top:4px;font-style:italic}
+  .repos-bar{font-size:.78rem;padding:10px 12px}
+  .nutri-section{border-radius:14px;padding:20px 16px}
+  .obj-item{padding:12px}
+  .mat-tag{font-size:.78rem;padding:6px 12px}
+}
+
+.btn-print{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;border:none;border-radius:50px;padding:12px 28px;font-size:.85rem;font-weight:700;cursor:pointer;margin-bottom:16px;font-family:'DM Sans',sans-serif}
+</style>
+</head>
+<body>
+
+<!-- QUICKNAV -->
+<nav class="quicknav">
+  <a class="qnav-btn" href="#seance-a">💪 Séance A</a>
+  <a class="qnav-btn" href="#seance-b">🏋️ Séance B</a>
+  <a class="qnav-btn" href="#seance-c">🔥 Séance C</a>
+  <a class="qnav-btn" href="#bonus">🌿 Bonus</a>
+  <a class="qnav-btn" href="#nutrition">🥗 Nutrition</a>
+  <a class="qnav-btn" href="#la-suite">🚀 La Suite</a>
+</nav>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/33756834626" target="_blank" rel="noopener">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  Ornella
+</a>
+
+<!-- TIMER WIDGET -->
+<div class="timer-wrap">
+  <div class="timer-panel" id="timerPanel">
+    <div class="timer-label">Chrono repos</div>
+    <div class="timer-display" id="timerDisplay">—</div>
+    <div class="timer-presets">
+      <button class="timer-preset" onclick="startTimer(30)">30s</button>
+      <button class="timer-preset" onclick="startTimer(45)">45s</button>
+      <button class="timer-preset" onclick="startTimer(60)">1 min</button>
+      <button class="timer-preset" onclick="startTimer(90)">90s</button>
+      <button class="timer-preset" onclick="startTimer(120)">2 min</button>
+    </div>
+    <button class="timer-stop" onclick="stopTimer()">⏹ Arrêter</button>
+  </div>
+  <button class="timer-toggle" id="timerToggleBtn" onclick="toggleTimerPanel()" title="Chrono de repos">⏱</button>
+</div>
+
+<div class="page">
+
+<button class="btn-print" onclick="window.print()">🖨️ Enregistrer en PDF</button>
+
+<!-- HEADER -->
+<div class="doc-header">
+  <div class="doc-header-left">
+    <div class="doc-badge">Programme personnalisé · Domicile</div>
+    <div class="doc-title">Programme de Sama</div>
+    <div class="doc-sub">Post-partum · Reprise progressive · 4 semaines<br>Conçu par Ornella · Coach diplômée d'État</div>
+  </div>
+  <div class="doc-meta">
+    <strong>Ornella Fit Coaching</strong>
+    ornellafitcoaching.com<br>
+    Juillet 2026<br>
+    Engagement 1 mois
+  </div>
+</div>
+
+<!-- ALERTE POST-PARTUM -->
+<div class="alert">
+  <div class="alert-icon">⚠️</div>
+  <p><strong>Programme adapté post-césarienne & allaitement.</strong> La rééducation périnéale est terminée depuis juin 2026 — c'est une excellente base. Ce programme respecte la cicatrice, évite toute pression abdominale directe et reste compatible avec l'allaitement. Les progressions sont volontairement graduelles. Écoute ton corps à chaque séance.</p>
+</div>
+
+<!-- PROFIL -->
+<p class="section-eyebrow">Ton profil</p>
+<h2 class="section-title">Ce que j'ai retenu de toi</h2>
+<hr class="section-divider">
+<div class="profil-grid">
+  <div class="profil-item"><div class="profil-label">Âge</div><div class="profil-val">37 ans</div></div>
+  <div class="profil-item"><div class="profil-label">Taille</div><div class="profil-val">168 cm</div></div>
+  <div class="profil-item"><div class="profil-label">Situation</div><div class="profil-val">Post-partum · 2 césariennes · Allaitement</div></div>
+  <div class="profil-item"><div class="profil-label">Rééducation périnéale</div><div class="profil-val">Terminée juin 2026 ✅</div></div>
+  <div class="profil-item"><div class="profil-label">Inactivité</div><div class="profil-val">1 an sans sport</div></div>
+  <div class="profil-item"><div class="profil-label">Historique sportif</div><div class="profil-val">Danse · Running · Yoga prénatal</div></div>
+  <div class="profil-item"><div class="profil-label">Fatigue</div><div class="profil-val">Mentale en fin de journée · Sommeil réparateur</div></div>
+  <div class="profil-item"><div class="profil-label">Fréquence</div><div class="profil-val">3 séances / semaine à domicile</div></div>
+</div>
+
+<!-- OBJECTIFS -->
+<p class="section-eyebrow">Tes objectifs</p>
+<h2 class="section-title">Ce qu'on construit ensemble</h2>
+<hr class="section-divider">
+<div class="obj-list">
+  <div class="obj-item">
+    <div class="obj-icon">🔋</div>
+    <div class="obj-text"><strong>Retrouver l'énergie et le tonus — priorité n°1</strong><span>Reprendre en douceur, sentir son corps répondre à nouveau. C'est ça la vraie première victoire.</span></div>
+  </div>
+  <div class="obj-item">
+    <div class="obj-icon">🏃‍♀️</div>
+    <div class="obj-text"><strong>Perdre 10 kg en 1 an · perte de ventre post-grossesse</strong><span>Objectif réaliste et sain à raison de ~800g/mois. On ne force rien, on installe des bases durables.</span></div>
+  </div>
+  <div class="obj-item">
+    <div class="obj-icon">💪</div>
+    <div class="obj-text"><strong>Renforcer le dos · meilleures postures pour le portage bébé</strong><span>Priorité dès la semaine 1 — essentiel pour le confort quotidien et prévenir les douleurs.</span></div>
+  </div>
+  <div class="obj-item">
+    <div class="obj-icon">🍑</div>
+    <div class="obj-text"><strong>Bas du corps : cuisses et fessiers — phase 2</strong><span>Viendra naturellement en progression à partir de la semaine 3.</span></div>
+  </div>
+  <div class="obj-item">
+    <div class="obj-icon">🧠</div>
+    <div class="obj-text"><strong>Bien-être mental · se reconnaître à nouveau</strong><span>L'entraînement régulier est un outil puissant pour retrouver confiance et énergie mentale.</span></div>
+  </div>
+</div>
+
+<!-- INTERDITS -->
+<div class="interdits">
+  <p class="interdit-title">🚫 Exercices à éviter — post-césarienne & allaitement</p>
+  <div class="interdit-list">
+    <div class="interdit-item"><span>❌</span><span><strong>Crunchs, sit-ups, relevés de buste</strong> — pression directe sur la cicatrice et les abdos superficiels, à bannir totalement pour l'instant</span></div>
+    <div class="interdit-item"><span>❌</span><span><strong>Planche classique longue tenue</strong> — remplacée par des variantes genoux ou dead bug</span></div>
+    <div class="interdit-item"><span>❌</span><span><strong>Sauts et impacts (corde à sauter)</strong> — à réintroduire progressivement à partir du mois 2-3 selon ressenti périnéal</span></div>
+    <div class="interdit-item"><span>❌</span><span><strong>Exercices qui tirent sur le ventre</strong> — cobra, étirements abdominaux forcés</span></div>
+    <div class="interdit-item"><span>❌</span><span><strong>Charges lourdes au-dessus de la tête</strong> — pression intra-abdominale excessive</span></div>
+    <div class="interdit-item"><span>⚠️</span><span><strong>Si tu ressens des fuites, pesanteur ou douleur</strong> → arrête immédiatement et contacte-moi</span></div>
+  </div>
+</div>
+
+<!-- MATÉRIEL -->
+<p class="section-eyebrow">Matériel disponible</p>
+<h2 class="section-title">Ton équipement</h2>
+<hr class="section-divider">
+<div class="mat-list">
+  <div class="mat-tag">🟡 Kettlebell <span style="color:var(--muted);font-weight:400">(poids léger recommandé S1-S2)</span></div>
+  <div class="mat-tag">🟠 Élastique de résistance</div>
+  <div class="mat-tag">🔵 Ballon de gym</div>
+  <div class="mat-tag">⬛ Corde à sauter <span style="color:var(--muted);font-weight:400">(mois 2-3 uniquement)</span></div>
+  <div class="mat-tag">✅ Tapis de sol</div>
+</div>
+
+<!-- SUIVI CHIFFRES -->
+<div class="suivi-grid">
+  <div class="suivi-item"><div class="suivi-num">4</div><div class="suivi-label">semaines de programme</div></div>
+  <div class="suivi-item"><div class="suivi-num">3×</div><div class="suivi-label">séances par semaine</div></div>
+  <div class="suivi-item"><div class="suivi-num">30-40</div><div class="suivi-label">minutes par séance</div></div>
+</div>
+
+<!-- ===== SEMAINES 1-2 ===== -->
+<p class="section-eyebrow">Phase 1</p>
+<h2 class="section-title">Semaines 1 & 2 — Réactivation</h2>
+<hr class="section-divider">
+
+<div>
+  <div class="semaine-header">
+    <div class="semaine-title">Semaines 1 & 2</div>
+    <div class="semaine-badge">Réactivation musculaire</div>
+  </div>
+  <div class="semaine-body">
+
+    <!-- SÉANCE A -->
+    <div class="seance-block" id="seance-a">
+      <div class="seance-title">
+        <div>
+          <div class="seance-label">Séance A</div>
+          <div class="seance-name">Bas du corps + Centre profond</div>
+        </div>
+        <div class="seance-duree">⏱ 30-35 min</div>
+      </div>
+      <div class="seance-note">🌬️ <strong>Commence par 3 minutes de respiration diaphragmatique</strong> : inspire par le nez, ventre qui se soulève, expire lentement par la bouche en rentrant le nombril. C'est ton gainage profond.</div>
+      <table class="exo-table">
+        <thead>
+          <tr>
+            <th>Exercice</th>
+            <th>Séries × Rép.</th>
+            <th>Matériel</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Marche sur place + rotation hanches</td>
+            <td>Échauffement 3 min</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+            <td>Mobilité, réveiller les articulations</td>
+          </tr>
+          <tr>
+            <td>Squat poids de corps</td>
+            <td>3 × 12</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+            <td>Déjà vu ensemble — descend à 90°, dos droit, talons au sol, pousse dans les talons</td>
+          </tr>
+          <tr>
+            <td>Hip Thrust poids de corps</td>
+            <td>3 × 15</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+            <td>Déjà vu ensemble — épaules sur le canapé, pousse les hanches vers le plafond, contracte fort les fessiers en haut</td>
+          </tr>
+          <tr>
+            <td>Fente avant alternée</td>
+            <td>3 × 8/jambe</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+            <td>Grand pas en avant, genou arrière à 2 cm du sol, buste droit</td>
+          </tr>
+          <tr>
+            <td>Abduction latérale debout élastique</td>
+            <td>3 × 15/jambe</td>
+            <td><span class="exo-ico ico-el">élastique</span></td>
+            <td>Élastique autour des chevilles, jambe qui part sur le côté — fessier médian</td>
+          </tr>
+          <tr>
+            <td>Dead bug</td>
+            <td>3 × 6/côté</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+            <td>Dos plaqué au sol, bras et jambe opposés s'étendent LENTEMENT — gainage profond safe post-césarienne</td>
+          </tr>
+          <tr>
+            <td>Respiration hypopressive (fin)</td>
+            <td>5 respirations</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+            <td>Expire tout l'air, rentre le nombril au maximum, tiens 3 sec</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="repos-bar">🔄 Récupération : 45 secondes entre les séries · 90 secondes entre les exercices</div>
+    </div>
+
+    <!-- SÉANCE B -->
+    <div class="seance-block" id="seance-b">
+      <div class="seance-title">
+        <div>
+          <div class="seance-label">Séance B</div>
+          <div class="seance-name">Haut du corps + Dos + Épaules</div>
+        </div>
+        <div class="seance-duree">⏱ 30-35 min</div>
+      </div>
+      <div class="seance-note">🎯 Renforcer le dos pour porter bébé sans douleur + les exercices déjà vus ensemble. Concentre-toi sur la sensation de contraction, pas sur la quantité.</div>
+      <table class="exo-table">
+        <thead>
+          <tr>
+            <th>Exercice</th>
+            <th>Séries × Rép.</th>
+            <th>Matériel</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cercles d'épaules + ouverture poitrine</td>
+            <td>Échauffement 3 min</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+            <td>Mobilité épaules et dos</td>
+          </tr>
+          <tr>
+            <td>Rowing haltères / kettlebell 1 bras</td>
+            <td>3 × 12/bras</td>
+            <td><span class="exo-ico ico-kb">haltère / kettlebell</span></td>
+            <td>Déjà vu ensemble — appui sur un meuble, coude tire vers le plafond, dos plat. Dos milieu et lats</td>
+          </tr>
+          <tr>
+            <td>Superman (extension dos)</td>
+            <td>3 × 12</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+            <td>À plat ventre, lève bras et jambes doucement, tiens 2 sec. Dos bas et érecteurs</td>
+          </tr>
+          <tr>
+            <td>Développé militaire haltères / kettlebell</td>
+            <td>3 × 12</td>
+            <td><span class="exo-ico ico-kb">haltère / kettlebell</span></td>
+            <td>Déjà vu ensemble — assis ou debout, poids à hauteur d'épaules, pousse vers le haut. Épaules et trapèzes</td>
+          </tr>
+          <tr>
+            <td>Tirage vertical élastique</td>
+            <td>3 × 12</td>
+            <td><span class="exo-ico ico-el">élastique</span></td>
+            <td>Élastique fixé en haut (porte), tire vers la poitrine en gardant les coudes bas — lats</td>
+          </tr>
+          <tr>
+            <td>Curl biceps haltères / kettlebell</td>
+            <td>3 × 12</td>
+            <td><span class="exo-ico ico-kb">haltère / kettlebell</span></td>
+            <td>Coudes collés au corps, montée contrôlée. Muscles du portage bébé</td>
+          </tr>
+          <tr>
+            <td>Étirements dos + épaules</td>
+            <td>5 min</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+            <td>Chat-vache, enfant étendu, croix au sol</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="repos-bar">🔄 Récupération : 45 secondes entre les séries · 90 secondes entre les exercices</div>
+    </div>
+
+    <!-- SÉANCE C -->
+    <div class="seance-block" id="seance-c">
+      <div class="seance-title">
+        <div>
+          <div class="seance-label">Séance C</div>
+          <div class="seance-name">Full Body — tous les exercices connus</div>
+        </div>
+        <div class="seance-duree">⏱ 35 min</div>
+      </div>
+      <div class="seance-note">✨ On combine tout ce que tu connais déjà en une séance complète. Charge légère sur le kettlebell — tu dois pouvoir finir les séries en gardant la forme.</div>
+      <table class="exo-table">
+        <thead>
+          <tr>
+            <th>Exercice</th>
+            <th>Séries × Rép.</th>
+            <th>Matériel</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Marche + montée genoux</td>
+            <td>Échauffement 3 min</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+            <td>Réveiller l'ensemble du corps</td>
+          </tr>
+          <tr>
+            <td>Squat gobelet kettlebell</td>
+            <td>3 × 12</td>
+            <td><span class="exo-ico ico-kb">kettlebell</span></td>
+            <td>Kettlebell tenu à 2 mains devant la poitrine — version chargée du squat déjà vu</td>
+          </tr>
+          <tr>
+            <td>Hip Thrust avec kettlebell sur les hanches</td>
+            <td>3 × 12</td>
+            <td><span class="exo-ico ico-kb">kettlebell</span></td>
+            <td>Ajoute le kettlebell posé sur les hanches pour augmenter la résistance</td>
+          </tr>
+          <tr>
+            <td>Rowing 1 bras kettlebell</td>
+            <td>3 × 12/bras</td>
+            <td><span class="exo-ico ico-kb">kettlebell</span></td>
+            <td>Dos plat, coude vers le plafond — même mouvement que séance B</td>
+          </tr>
+          <tr>
+            <td>Développé militaire kettlebell</td>
+            <td>3 × 10</td>
+            <td><span class="exo-ico ico-kb">kettlebell</span></td>
+            <td>Gainage du ventre pendant le mouvement, ne creuse pas le dos</td>
+          </tr>
+          <tr>
+            <td>Gainage latéral genoux</td>
+            <td>3 × 20 sec/côté</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+            <td>Corps droit des genoux aux épaules — gainage safe post-césarienne</td>
+          </tr>
+          <tr>
+            <td>Ballon entre genoux — Hip Thrust</td>
+            <td>3 × 12</td>
+            <td><span class="exo-ico ico-bl">ballon</span></td>
+            <td>Serre le ballon en montant — active adducteurs + fessiers en même temps</td>
+          </tr>
+          <tr>
+            <td>Étirements complets</td>
+            <td>8 min</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+            <td>Cuisse, fessier, dos, épaules — prends le temps</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="repos-bar">🔄 Récupération : 45 secondes entre les séries · 90 secondes entre les exercices</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== SEMAINES 3-4 ===== -->
+<p class="section-eyebrow">Phase 2</p>
+<h2 class="section-title">Semaines 3 & 4 — Progression</h2>
+<hr class="section-divider">
+
+<div>
+  <div class="semaine-header">
+    <div class="semaine-title">Semaines 3 & 4</div>
+    <div class="semaine-badge">Montée en intensité</div>
+  </div>
+  <div class="semaine-body">
+
+    <div class="seance-note" style="margin-bottom:20px">📈 <strong>Évolutions par rapport aux semaines 1-2 :</strong> on ajoute 1 série sur chaque exercice, on augmente légèrement les répétitions, et on introduit des supersets (2 exercices enchaînés sans repos) sur les séances A et B.</div>
+
+    <!-- SÉANCE A S3-S4 -->
+    <div class="seance-block">
+      <div class="seance-title">
+        <div>
+          <div class="seance-label">Séance A — S3/S4</div>
+          <div class="seance-name">Bas du corps + Centre profond renforcé</div>
+        </div>
+        <div class="seance-duree">⏱ 35-40 min</div>
+      </div>
+      <table class="exo-table">
+        <thead>
+          <tr>
+            <th>Exercice</th>
+            <th>Séries × Rép.</th>
+            <th>Matériel</th>
+            <th>Évolution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Squat gobelet kettlebell</td>
+            <td>4 × 12</td>
+            <td><span class="exo-ico ico-kb">kettlebell</span></td>
+            <td>↑ Charge légèrement augmentée si possible</td>
+          </tr>
+          <tr>
+            <td>Hip Thrust kettlebell sur hanches</td>
+            <td>4 × 15</td>
+            <td><span class="exo-ico ico-kb">kettlebell</span></td>
+            <td>↑ Charge sur les hanches, tiens 1 sec en haut, fessiers bien contractés</td>
+          </tr>
+          <tr>
+            <td>Fente avant avec élastique (résistance)</td>
+            <td>4 × 10/jambe</td>
+            <td><span class="exo-ico ico-el">élastique</span></td>
+            <td>↑ Élastique autour des cuisses pour activer les fessiers</td>
+          </tr>
+          <tr>
+            <td>Abduction latérale élastique</td>
+            <td>4 × 20/jambe</td>
+            <td><span class="exo-ico ico-el">élastique</span></td>
+            <td>↑ Plus de reps</td>
+          </tr>
+          <tr>
+            <td>Dead bug</td>
+            <td>4 × 8/côté</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+            <td>↑ Lenteur maximale, 3 sec par mouvement</td>
+          </tr>
+          <tr>
+            <td>Gainage ventral genoux → progresser vers orteils</td>
+            <td>4 × 25 sec</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+            <td>↑ Introduction si tu te sens prête — teste 5 sec orteils, écoute ton corps</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="repos-bar">🔄 Récupération réduite : 30 sec entre séries · 60 sec entre exercices</div>
+    </div>
+
+    <!-- SÉANCE B S3-S4 -->
+    <div class="seance-block">
+      <div class="seance-title">
+        <div>
+          <div class="seance-label">Séance B — S3/S4</div>
+          <div class="seance-name">Haut du corps + Dos intensifié</div>
+        </div>
+        <div class="seance-duree">⏱ 35-40 min</div>
+      </div>
+      <table class="exo-table">
+        <thead>
+          <tr>
+            <th>Exercice</th>
+            <th>Séries × Rép.</th>
+            <th>Matériel</th>
+            <th>Évolution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rowing haltères 1 bras</td>
+            <td>4 × 15/bras</td>
+            <td><span class="exo-ico ico-kb">haltère / kettlebell</span></td>
+            <td>↑ Plus de reps, charge légèrement augmentée</td>
+          </tr>
+          <tr>
+            <td>Superman + hold 2 sec</td>
+            <td>4 × 15</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+            <td>↑ Maintien en haut 2 secondes à chaque rep</td>
+          </tr>
+          <tr>
+            <td>Tirage vertical élastique</td>
+            <td>4 × 15</td>
+            <td><span class="exo-ico ico-el">élastique</span></td>
+            <td>↑ Plus de reps</td>
+          </tr>
+          <tr>
+            <td>Pompes genoux → essai orteils</td>
+            <td>4 × 10</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+            <td>↑ Essaie 2-3 pompes sur orteils si tu te sens prête</td>
+          </tr>
+          <tr>
+            <td>Développé militaire haltères</td>
+            <td>4 × 12</td>
+            <td><span class="exo-ico ico-kb">haltère / kettlebell</span></td>
+            <td>↑ Charge légèrement augmentée — gainage ventral actif pendant tout le mouvement</td>
+          </tr>
+          <tr>
+            <td>Oiseau élastique (deltoïde postérieur)</td>
+            <td>4 × 12/bras</td>
+            <td><span class="exo-ico ico-el">élastique</span></td>
+            <td>Nouveau · Bras tendu qui part en arrière — posture et dos haut</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="repos-bar">🔄 Récupération réduite : 30 sec entre séries · 60 sec entre exercices</div>
+    </div>
+
+    <!-- SÉANCE C S3-S4 -->
+    <div class="seance-block">
+      <div class="seance-title">
+        <div>
+          <div class="seance-label">Séance C — S3/S4</div>
+          <div class="seance-name">Full Body · Circuit 3 rounds</div>
+        </div>
+        <div class="seance-duree">⏱ 40 min</div>
+      </div>
+      <div class="seance-note">🔥 Séance C devient un circuit : les 6 exercices s'enchaînent avec 30 sec de repos entre chaque, puis 2 min de repos entre les rounds. 3 rounds total.</div>
+      <table class="exo-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Exercice</th>
+            <th>Durée / Rép.</th>
+            <th>Matériel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Squat sumo kettlebell</td>
+            <td>15 reps</td>
+            <td><span class="exo-ico ico-kb">kettlebell</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Rowing 1 bras kettlebell</td>
+            <td>12/bras</td>
+            <td><span class="exo-ico ico-kb">kettlebell</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Fente arrière alternée</td>
+            <td>10/jambe</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Superman</td>
+            <td>15 reps</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Ballon entre genoux — pont fessier</td>
+            <td>15 reps</td>
+            <td><span class="exo-ico ico-bl">ballon</span></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Gainage latéral genoux</td>
+            <td>25 sec/côté</td>
+            <td><span class="exo-ico ico-gf">poids de corps</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="repos-bar">🔄 30 sec entre chaque exercice · 2 min entre les 3 rounds · Étirements 8 min en fin de séance</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SÉANCE BONUS -->
+<p class="section-eyebrow" id="bonus" style="margin-top:32px">Bonus</p>
+<h2 class="section-title">Séance Bonus — Mobilité & Récupération active</h2>
+<hr class="section-divider">
+
+<div>
+  <div class="semaine-header" style="background:#4A6741">
+    <div class="semaine-title">Séance Bonus (optionnelle)</div>
+    <div class="semaine-badge" style="background:#C9A96E">20-25 min · 1x/semaine si tu te sens bien</div>
+  </div>
+  <div class="semaine-body">
+    <div class="seance-note">🌿 <strong>Cette séance n'est pas obligatoire.</strong> Elle est là pour les jours où tu veux bouger sans te fatiguer — parfaite le matin avec bébé, ou le soir pour décompresser. Elle améliore la souplesse, réduit les douleurs de dos et accélère la récupération.</div>
+
+    <div class="seance-block">
+      <div class="seance-title">
+        <div>
+          <div class="seance-label">Bonus</div>
+          <div class="seance-name">Mobilité · Étirements · Gainage doux</div>
+        </div>
+        <div class="seance-duree">⏱ 20-25 min</div>
+      </div>
+      <table class="exo-table">
+        <thead><tr><th>Exercice</th><th>Durée</th><th>Comment faire</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Chat-vache (cat-cow)</td>
+            <td>2 min</td>
+            <td>À 4 pattes. Inspire : creuse le dos, lève la tête. Expire : arrondi le dos, rentre le menton. Très lentement. Libère toute la colonne.</td>
+          </tr>
+          <tr>
+            <td>Enfant étendu (child's pose)</td>
+            <td>1 min × 2</td>
+            <td>À genoux, fesses vers les talons, bras tendus devant. Laisse le dos s'étirer. Respire profondément. Dos + épaules.</td>
+          </tr>
+          <tr>
+            <td>Rotation thoracique au sol</td>
+            <td>45 sec/côté</td>
+            <td>Allongée sur le côté, genoux pliés, bras tendus devant. Le bras du dessus part vers l'arrière lentement. Regarde ta main. Mobilité du dos milieu.</td>
+          </tr>
+          <tr>
+            <td>Fente basse au sol (hip flexor stretch)</td>
+            <td>1 min/jambe</td>
+            <td>Un genou au sol, l'autre pied en avant. Pousse doucement les hanches vers l'avant. Étirement profond de l'aine — parfait après la grossesse.</td>
+          </tr>
+          <tr>
+            <td>Respiration hypopressive</td>
+            <td>8 respirations</td>
+            <td>Debout ou assise. Expire tout l'air, rentre le nombril vers la colonne, tiens 3-4 sec. Relâche. Gainage profond, plancher pelvien.</td>
+          </tr>
+          <tr>
+            <td>Dead bug lent × 5/côté</td>
+            <td>2 séries</td>
+            <td>Sur le dos, jambes à 90°. Étends bras gauche + jambe droite très lentement jusqu'au sol sans le toucher. Dos plaqué au sol en permanence. Recentre. Gainage doux safe.</td>
+          </tr>
+          <tr>
+            <td>Étirement fessier (pigeon modifié)</td>
+            <td>1 min/jambe</td>
+            <td>Allongée sur le dos. Cheville droite sur genou gauche. Ramène les deux jambes vers toi. Fessier droit étiré. Indispensable pour le portage bébé.</td>
+          </tr>
+          <tr>
+            <td>Savasana (récupération)</td>
+            <td>3 min</td>
+            <td>Allongée sur le dos, bras le long du corps, paumes vers le ciel. Ferme les yeux. Respire. Ce n'est pas du repos — c'est une partie du travail.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ORGANISATION DE LA SEMAINE -->
+<p class="section-eyebrow" style="margin-top:32px">Organisation</p>
+<h2 class="section-title">Comment répartir tes séances</h2>
+<hr class="section-divider">
+<div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-bottom:32px">
+  <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;text-align:center;margin-bottom:16px">
+    <div style="background:var(--coral);color:#fff;border-radius:10px;padding:10px 4px;font-size:.75rem;font-weight:700">LUN<br><span style="font-size:.9rem">A</span></div>
+    <div style="background:var(--cream);border-radius:10px;padding:10px 4px;font-size:.75rem;color:var(--muted)">MAR<br><span style="font-size:.9rem">😴</span></div>
+    <div style="background:var(--coral);color:#fff;border-radius:10px;padding:10px 4px;font-size:.75rem;font-weight:700">MER<br><span style="font-size:.9rem">B</span></div>
+    <div style="background:var(--cream);border-radius:10px;padding:10px 4px;font-size:.75rem;color:var(--muted)">JEU<br><span style="font-size:.9rem">😴</span></div>
+    <div style="background:var(--coral);color:#fff;border-radius:10px;padding:10px 4px;font-size:.75rem;font-weight:700">VEN<br><span style="font-size:.9rem">C</span></div>
+    <div style="background:var(--cream);border-radius:10px;padding:10px 4px;font-size:.75rem;color:var(--muted)">SAM<br><span style="font-size:.9rem">😴</span></div>
+    <div style="background:var(--cream);border-radius:10px;padding:10px 4px;font-size:.75rem;color:var(--muted)">DIM<br><span style="font-size:.9rem">😴</span></div>
+  </div>
+  <p style="font-size:.82rem;color:var(--muted);line-height:1.7">💡 <strong>Idéal :</strong> 1 jour de repos entre chaque séance. Adapte selon ton organisation (matin pendant les congés, soir quand tu reprends le travail). L'important : <strong>la régularité, pas la perfection.</strong></p>
+</div>
+
+<!-- NUTRITION -->
+<p class="section-eyebrow" id="nutrition">Alimentation</p>
+<h2 class="section-title">Nutrition — c'est 70% du résultat</h2>
+<hr class="section-divider">
+
+<div class="alert" style="margin-bottom:20px">
+  <div class="alert-icon">🌸</div>
+  <p><strong>Tu allaites — aucune restriction calorique.</strong> Ton corps produit du lait, récupère d'une césarienne, reprend le sport. Ce n'est pas le moment de se priver. L'objectif ici : manger mieux, pas moins. La perte de poids viendra naturellement avec la régularité sportive et les bons choix alimentaires.</p>
+</div>
+
+<div class="nutri-section">
+  <div class="nutri-title">🥗 Tes repères nutrition — mois 1</div>
+  <div class="nutri-sub">Ces conseils sont adaptés à ta situation réelle : allaitement, fatigue mentale, envies de sucre, grandes portions. Pas de régime. Des habitudes durables.</div>
+  <div class="nutri-list">
+
+    <div class="nutri-item">
+      <div class="nutri-ico">🌅</div>
+      <div class="nutri-text">
+        <strong>Priorité n°1 : commence à manger le matin</strong>
+        Tu sautes le petit-déjeuner — c'est probablement la première cause de tes envies de sucre en fin d'après-midi. Pas besoin d'un repas élaboré. Commence par quelque chose de petit et protéiné : 2 œufs brouillés, ou un yaourt grec + une poignée d'amandes + un fruit. Ce seul changement peut transformer ton niveau d'énergie sur la journée.
+      </div>
+    </div>
+
+    <div class="nutri-item">
+      <div class="nutri-ico">💧</div>
+      <div class="nutri-text">
+        <strong>2 à 2,5 litres d'eau par jour — non négociable</strong>
+        L'allaitement consomme énormément d'eau. La déshydratation est l'une des premières causes de fatigue mentale et d'envies de sucre. Garde une bouteille d'un litre à portée de main. Objectif : 2 bouteilles vidées avant le soir.
+      </div>
+    </div>
+
+    <div class="nutri-item">
+      <div class="nutri-ico">🍽️</div>
+      <div class="nutri-text">
+        <strong>La règle de l'assiette équilibrée</strong>
+        Tu as déjà de bons réflexes le midi — continue. Pour chaque repas : <strong>½ assiette de légumes</strong>, <strong>¼ de protéine</strong> (poulet, œuf, poisson, légumineuses), <strong>¼ de féculent</strong> (riz, pâtes, patate douce). C'est tout. Le soir quand tu es fatiguée : œufs brouillés + légumes cuits = 10 minutes, nutritif, rassasiant. Mieux que le sandwich.
+      </div>
+    </div>
+
+    <div class="nutri-item">
+      <div class="nutri-ico">🍬</div>
+      <div class="nutri-text">
+        <strong>Les envies de sucre quand tu es fatiguée — comment les gérer</strong>
+        C'est ton cortisol (hormone du stress) qui parle, pas ta faim. Quand l'envie arrive : bois un grand verre d'eau d'abord, attends 5 minutes. Ensuite : une poignée d'amandes + un carré de chocolat noir à 70% minimum. Ça calme sans faire monter la glycémie. Les viennoiseries et goûters maison : garde-les pour le week-end ou 2 fois par semaine max en semaine.
+      </div>
+    </div>
+
+    <div class="nutri-item">
+      <div class="nutri-ico">⚡</div>
+      <div class="nutri-text">
+        <strong>Avant et après la séance</strong>
+        <em>Avant (30-60 min) :</em> une banane, ou un fruit + quelques amandes, ou un yaourt. Quelque chose de léger et digeste.<br>
+        <em>Après (dans l'heure) :</em> une source de protéine — yaourt grec, œufs, thon, poulet. C'est là que tes muscles se reconstruisent. Ne saute pas ce repas.
+      </div>
+    </div>
+
+    <div class="nutri-item">
+      <div class="nutri-ico">📏</div>
+      <div class="nutri-text">
+        <strong>Les grosses portions — apprendre à s'écouter</strong>
+        Tu manges de grosses portions. Ce n'est pas une mauvaise habitude — c'est souvent un mécanisme de compensation du saut du petit-déjeuner. Quand tu commenceras à manger le matin, les portions du soir diminueront naturellement. Pas besoin de te forcer. Laisse le corps se réguler.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- NUTRITION CTA DISCRET -->
+<div style="background:#fff;border:2px solid var(--border);border-radius:16px;padding:22px 24px;margin-bottom:32px;position:relative;overflow:hidden">
+  <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--coral),var(--green))"></div>
+  <p class="section-eyebrow">Pour aller plus loin</p>
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:10px">La nutrition, c'est 70% de tes résultats.</h3>
+  <p style="font-size:.88rem;color:#4A5E52;line-height:1.75;margin-bottom:14px">Ces repères sont un bon départ. Mais pour une vraie transformation — perdre les 10 kg en un an, éliminer le ventre de grossesse, retrouver l'énergie durablement — la nutrition doit être personnalisée à <em>ton</em> corps, <em>ton</em> allaitement, <em>ta</em> vie de maman.</p>
+  <p style="font-size:.88rem;color:#4A5E52;line-height:1.75;margin-bottom:0">Je propose des <strong>programmes nutrition sur mesure</strong> en complément du coaching. Si tu veux qu'on en parle lors de ton prochain bilan, dis-le moi — on voit ensemble ce qui te correspond le mieux. 🤍</p>
+</div>
+
+<!-- MESSAGE ORNELLA -->
+<div style="background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:24px;margin-bottom:32px">
+  <p class="section-eyebrow">Un mot d'Ornella</p>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--text);line-height:1.8;margin-bottom:14px">"Sama, ton point de départ n'est pas un handicap — c'est une base. Tu as fini ta rééducation, tu as envie de te retrouver, tu es prête. Ce programme est conçu pour te redonner confiance en ton corps progressivement. Il n'y a pas de performance à faire ici, juste de la régularité et de la bienveillance envers toi-même."</p>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--text)">Ornella</p>
+  <p style="font-size:.78rem;color:var(--muted)">Coach diplômée d'État · Demi-finaliste Championnat de France Fitness</p>
+</div>
+
+<!-- LA SUITE -->
+<div id="la-suite" style="background:linear-gradient(135deg,var(--green) 0%,#2D5940 100%);border-radius:20px;padding:32px 28px;margin-bottom:32px">
+  <p style="font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px">Ce qui t'attend ensuite</p>
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:#fff;line-height:1.25;margin-bottom:16px">Après ce premier mois, tu seras prête pour la suite.</h3>
+  <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px">
+    <div style="display:flex;gap:12px;align-items:flex-start">
+      <span style="color:var(--coral);font-size:1rem;flex-shrink:0;margin-top:2px">✓</span>
+      <p style="font-size:.88rem;color:rgba(255,255,255,.8);line-height:1.65"><strong style="color:#fff">Mois 2 :</strong> on augmente les charges, on affine le bas du corps, on commence à sculpter — fessiers, cuisses, galbe. Les bases sont posées, on attaque les détails.</p>
+    </div>
+    <div style="display:flex;gap:12px;align-items:flex-start">
+      <span style="color:var(--coral);font-size:1rem;flex-shrink:0;margin-top:2px">✓</span>
+      <p style="font-size:.88rem;color:rgba(255,255,255,.8);line-height:1.65"><strong style="color:#fff">Mois 3 :</strong> premier bilan photos + mensurations. À ce stade, le corps a changé — même si tu ne le vois pas encore au quotidien. C'est là que tout devient visible.</p>
+    </div>
+    <div style="display:flex;gap:12px;align-items:flex-start">
+      <span style="color:var(--coral);font-size:1rem;flex-shrink:0;margin-top:2px">✓</span>
+      <p style="font-size:.88rem;color:rgba(255,255,255,.8);line-height:1.65"><strong style="color:#fff">Sur 1 an :</strong> tes 10 kg, ton ventre, ton dos — tout ça se construit dans la durée avec une méthode. Pas en 30 jours. Mais avec régularité, chaque mois compte.</p>
+    </div>
+  </div>
+  <p style="font-size:.82rem;color:rgba(255,255,255,.55);line-height:1.7;border-top:1px solid rgba(255,255,255,.1);padding-top:16px">💬 On fait le point ensemble à la fin des 4 semaines. Tu me dis comment tu te sens, ce qui a marché, ce qui était difficile — et on construit le mois suivant sur cette base. <strong style="color:rgba(255,255,255,.8)">Tu n'es pas seule dans ce processus.</strong></p>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(255,255,255,.7);margin-bottom:10px">Ornella Fit Coaching</p>
+  <p>ornellafitcoaching.com · <strong>Juillet 2026</strong><br>
+  Programme confidentiel établi pour Sama · Non reproductible<br>
+  Questions ? WhatsApp ou <a href="mailto:ornellafitcoaching@gmail.com" style="color:rgba(255,255,255,.5)">ornellafitcoaching@gmail.com</a></p>
+</div>
+
+</div>
+
+<script>
+(function(){
+  var interval = null;
+  var remaining = 0;
+  var panelOpen = false;
+
+  window.toggleTimerPanel = function(){
+    panelOpen = !panelOpen;
+    var panel = document.getElementById('timerPanel');
+    panel.classList.toggle('open', panelOpen);
+    document.getElementById('timerToggleBtn').textContent = panelOpen ? '✕' : '⏱';
+  };
+
+  window.startTimer = function(seconds){
+    clearInterval(interval);
+    remaining = seconds;
+    document.querySelectorAll('.timer-preset').forEach(function(b){b.classList.remove('active')});
+    event && event.target && event.target.classList.add('active');
+    tick();
+    interval = setInterval(tick, 1000);
+  };
+
+  window.stopTimer = function(){
+    clearInterval(interval);
+    interval = null;
+    remaining = 0;
+    document.getElementById('timerDisplay').textContent = '—';
+    document.querySelectorAll('.timer-preset').forEach(function(b){b.classList.remove('active')});
+  };
+
+  function tick(){
+    if(remaining <= 0){
+      clearInterval(interval);
+      interval = null;
+      document.getElementById('timerDisplay').textContent = '✅ Go !';
+      document.querySelectorAll('.timer-preset').forEach(function(b){b.classList.remove('active')});
+      if(navigator.vibrate) navigator.vibrate([200,100,200]);
+      return;
+    }
+    var m = Math.floor(remaining / 60);
+    var s = remaining % 60;
+    document.getElementById('timerDisplay').textContent = (m > 0 ? m + ':' + (s < 10 ? '0' : '') : '') + (m > 0 ? s : remaining + 's');
+    remaining--;
+  }
+})();
+</script>
+</body>
+</html>
