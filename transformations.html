@@ -67,6 +67,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   background: radial-gradient(circle, rgba(201,169,110,0.1) 0%, transparent 70%);
   pointer-events: none;
 }
+/* TICKER */
+.transfo-ticker-wrap{width:100%;overflow:hidden;background:#1A110E;padding:20px 0;position:relative}
+.transfo-ticker-wrap::before,.transfo-ticker-wrap::after{content:'';position:absolute;top:0;width:80px;height:100%;z-index:2;pointer-events:none}
+.transfo-ticker-wrap::before{left:0;background:linear-gradient(to right,#1A110E,transparent)}
+.transfo-ticker-wrap::after{right:0;background:linear-gradient(to left,#1A110E,transparent)}
+.transfo-ticker{display:flex;width:100%}
+.transfo-ticker-track{display:flex;gap:12px;animation:ticker 30s linear infinite;will-change:transform}
+.transfo-ticker-track:hover{animation-play-state:paused}
+.transfo-ticker-track img{height:200px;width:auto;border-radius:12px;object-fit:cover;flex-shrink:0;display:block}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@media(max-width:640px){
+  .transfo-ticker-track img{height:140px}
+  .transfo-ticker-wrap{padding:14px 0}
+}
+
 .tph-label {
   display: inline-block;
   background: rgba(201,149,122,0.15);
@@ -622,6 +637,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="tph-proof-num">19 ★</span>
         <span class="tph-proof-label">Avis 5 étoiles Google</span>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- DÉFILÉ TRANSFORMATIONS -->
+<div class="transfo-ticker-wrap">
+  <div class="transfo-ticker">
+    <div class="transfo-ticker-track">
+      <img src="images/transformation-ghislaine.png" alt="Transformation cliente 54 ans">
+      <img src="images/transformation-emeline.png" alt="Transformation Emeline">
+      <img src="images/louise-face.jpg" alt="Transformation Louise">
+      <img src="images/louise-dos.jpg" alt="Transformation Louise dos">
+      <img src="images/avant-apres-emeline.jpg" alt="Transformation Emeline 1 mois">
+      <img src="images/avant-apres-anonyme.jpg" alt="Transformation cliente">
+      <img src="images/avant-apres-profil-anonyme.jpg" alt="Transformation cliente profil">
+      <!-- doublon pour boucle infinie -->
+      <img src="images/transformation-ghislaine.png" alt="Transformation cliente 54 ans">
+      <img src="images/transformation-emeline.png" alt="Transformation Emeline">
+      <img src="images/louise-face.jpg" alt="Transformation Louise">
+      <img src="images/louise-dos.jpg" alt="Transformation Louise dos">
+      <img src="images/avant-apres-emeline.jpg" alt="Transformation Emeline 1 mois">
+      <img src="images/avant-apres-anonyme.jpg" alt="Transformation cliente">
+      <img src="images/avant-apres-profil-anonyme.jpg" alt="Transformation cliente profil">
     </div>
   </div>
 </div>
