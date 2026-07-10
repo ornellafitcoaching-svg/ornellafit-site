@@ -1683,12 +1683,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       .transfo-card-img-duo { flex-direction: column; gap: 8px; }
       .transfo-card-img-duo img { width: 100%; }
     }
+  .idx-ticker-wrap{width:100%;overflow:hidden;background:rgba(201,169,110,0.08);padding:14px 0;margin:32px 0 8px;position:relative}
+  .idx-ticker-wrap::before,.idx-ticker-wrap::after{content:'';position:absolute;top:0;width:60px;height:100%;z-index:2;pointer-events:none}
+  .idx-ticker-wrap::before{left:0;background:linear-gradient(to right,#F7F0E8,transparent)}
+  .idx-ticker-wrap::after{right:0;background:linear-gradient(to left,#F7F0E8,transparent)}
+  .idx-ticker-track{display:flex;gap:10px;animation:idx-ticker 28s linear infinite;will-change:transform;width:max-content}
+  .idx-ticker-track img{height:160px;width:auto;border-radius:10px;object-fit:cover;transition:opacity .2s,transform .2s}
+  .idx-ticker-track a:hover img{opacity:.85;transform:scale(1.03)}
+  @keyframes idx-ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  @media(max-width:640px){.idx-ticker-track img{height:110px}}
   </style>
 
   <div class="inner">
     <span class="section-label">Résultats réels · Photos non retouchées</span>
     <h2 class="section-title">Elles ont transformé leur corps.<br><em>Vraiment.</em></h2>
     <p class="section-subtitle">Pas des filtres. Pas des montages. Des vraies femmes, du vrai travail, de vrais résultats.</p>
+
+    <!-- TICKER PHOTOS TRANSFORMATIONS -->
+    <div class="idx-ticker-wrap">
+      <div class="idx-ticker-track">
+        <a href="transformations.html#transfo-louise"><img src="images/louise-face.jpg" alt="Transformation Louise"></a>
+        <a href="transformations.html#transfo-louise"><img src="images/louise-dos-avant-apres.jpg" alt="Transformation Louise dos"></a>
+        <a href="transformations.html#transfo-emeline"><img src="images/transformation-emeline.png" alt="Transformation Emeline"></a>
+        <a href="transformations.html#transfo-ghislaine"><img src="images/transformation-ghislaine.png" alt="Transformation Ghislaine"></a>
+        <a href="transformations.html#transfo-ornella"><img src="images/ornella-avant-apres-postpartum.jpg" alt="Ornella post-partum"></a>
+        <!-- duplicate for infinite loop -->
+        <a href="transformations.html#transfo-louise"><img src="images/louise-face.jpg" alt="Transformation Louise"></a>
+        <a href="transformations.html#transfo-louise"><img src="images/louise-dos-avant-apres.jpg" alt="Transformation Louise dos"></a>
+        <a href="transformations.html#transfo-emeline"><img src="images/transformation-emeline.png" alt="Transformation Emeline"></a>
+        <a href="transformations.html#transfo-ghislaine"><img src="images/transformation-ghislaine.png" alt="Transformation Ghislaine"></a>
+        <a href="transformations.html#transfo-ornella"><img src="images/ornella-avant-apres-postpartum.jpg" alt="Ornella post-partum"></a>
+      </div>
+    </div>
 
     <div class="transfo-duo fade-in">
 
