@@ -591,6 +591,7 @@ let scores = {A:0,H:0,X:0,O:0,V:0};
 let currentQ = 0;
 const totalQ = 5;
 let pendingMorpho = null;
+let lastEmail = '';
 
 function buyMorpho(){
   if(!pendingMorpho){
@@ -600,6 +601,10 @@ function buyMorpho(){
   const link = morphoData[pendingMorpho] && morphoData[pendingMorpho].stripeLink;
   if(!link || link.startsWith('[')) return;
   if(typeof fbq!=='undefined') fbq('track','InitiateCheckout',{value:12,currency:'EUR'});
+  try{
+    if(lastEmail){ localStorage.setItem('ofc_last_email', lastEmail); }
+    localStorage.setItem('ofc_last_morpho', pendingMorpho);
+  }catch(e){}
   window.open(link,'_blank');
 }
 
@@ -653,6 +658,9 @@ function submitEmail(){
   const btn = document.getElementById('emailSubmitBtn');
   btn.textContent = 'Envoi en cours...';
   btn.disabled = true;
+
+  lastEmail = email;
+  if(typeof fbq!=='undefined') fbq('init','26675222578828123',{em:email});
 
   const _a='xkeysib-b3f029f593ab90bd2bb';
   const _b='2290988c5a455f29ddad8ec51e4ca585';
