@@ -242,11 +242,9 @@ document.getElementById('email-form').addEventListener('submit', async function(
   btn.textContent = '...';
   btn.disabled = true;
   try {
-    await fetch('https://api.brevo.com/v3/contacts', {
-      method:'POST',
-      headers:{'Content-Type':'application/json','api-key':BREVO_KEY},
-      body:JSON.stringify({email,attributes:{PRENOM:prenom},listIds:[27],updateEnabled:true})
-    });
+    // Ajout Brevo liste 27 — formulaire natif, plus de clé exposée pour cette étape
+    document.getElementById('ag27Email').value = email;
+    document.getElementById('ag27Form').submit();
     await fetch('https://api.brevo.com/v3/smtp/email', {
       method:'POST',
       headers:{'Content-Type':'application/json','api-key':BREVO_KEY},
@@ -267,5 +265,13 @@ document.getElementById('email-form').addEventListener('submit', async function(
   }
 });
 </script>
+
+<!-- Formulaire natif Brevo (liste #27 Ageless Girl Acheteurs) — soumis en arrière-plan via iframe cachée -->
+<iframe name="ag27Frame" style="display:none"></iframe>
+<form id="ag27Form" method="POST" target="ag27Frame" action="https://e605324b.sibforms.com/serve/MUIFAKwjqjYiz0Q_amymMg2kjmL_w35wYGN1HqN28SOui1skg5YKVgjjddeUiO1-NHOX6hmjBIk-QfbCThUvyMVV9t4Boy_7xP5B_2KeFxkKtOdgQXLzrFRGh-zHSMWOKKf-TZIhtduyFaS0MEzjjyCfqBwocaALN84_sHsfme6Iizeh9WKJZh0L4_cCFiOSntC_L-dcig7icxJ89Q==" style="display:none">
+  <input type="text" name="EMAIL" id="ag27Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
 </body>
 </html>

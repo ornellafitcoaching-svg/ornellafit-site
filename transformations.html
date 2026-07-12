@@ -1180,11 +1180,9 @@ async function submitTPopup(){
   var _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
   var KEY=_a+_b+_c;
   try{
-    await fetch('https://api.brevo.com/v3/contacts',{
-      method:'POST',
-      headers:{'api-key':KEY,'Content-Type':'application/json'},
-      body:JSON.stringify({email:email,listIds:[29],updateEnabled:true,attributes:{SOURCE:'popup-transformations'}})
-    });
+    // Ajout Brevo liste 29 — formulaire natif, plus de clé exposée pour cette étape
+    document.getElementById('tf29Email').value = email;
+    document.getElementById('tf29Form').submit();
     await fetch('https://api.brevo.com/v3/smtp/email',{
       method:'POST',
       headers:{'api-key':KEY,'Content-Type':'application/json'},
@@ -1248,5 +1246,13 @@ async function submitTPopup(){
   setTimeout(closeTPopup, 3500);
 }
 </script>
+
+<!-- Formulaire natif Brevo (liste #29 Leads Transformations) — soumis en arrière-plan via iframe cachée -->
+<iframe name="tf29Frame" style="display:none"></iframe>
+<form id="tf29Form" method="POST" target="tf29Frame" action="https://e605324b.sibforms.com/serve/MUIFACtr0V-pP06c1FmRKxw4YfXMQrPdPMRk5iorNYJXc5ExeK5DKNmyaDFFHGXLVuaFetTcOZhhaQSIQMuBQ5hs5aRpjLeWzchS4d-DWmhOJTmhw2jNx8Nii4VvyeLI3Q-eZDZXt7LLoZthZhwQBeEB8jeIhkkcAmx3jKtWC67_3WdfbmiFKFi-_MqaXD_tS1cFbldZopW-1cuLvQ==" style="display:none">
+  <input type="text" name="EMAIL" id="tf29Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
 </body>
 </html>

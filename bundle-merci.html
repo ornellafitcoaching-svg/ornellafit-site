@@ -170,18 +170,10 @@ fbq("track","PageView");
     btn.disabled = true;
     btn.textContent = 'Envoi en cours…';
 
-    // Ajouter au contact Brevo — listes 18 (BS buyers) + 20 (VP buyers)
+    // Ajouter au contact Brevo — listes 18 (BS buyers) + 20 (VP buyers), formulaire natif, plus de clé exposée
     try {
-      await fetch('https://api.brevo.com/v3/contacts', {
-        method: 'POST',
-        headers: { 'api-key': BREVO_KEY, 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: email,
-          listIds: [18, 20],
-          attributes: { FNAME: fname, SOURCE: 'bundle-buyer' },
-          updateEnabled: true
-        })
-      });
+      document.getElementById('bd1820Email').value = email;
+      document.getElementById('bd1820Form').submit();
     } catch(e) {}
 
     // Envoyer l'email d'accès avec les 2 programmes
@@ -250,5 +242,13 @@ fbq("track","PageView");
     document.getElementById('access-block').style.display = 'block';
   }
 </script>
+
+<!-- Formulaire natif Brevo (listes #18 Booty Sculpt + #20 Ventre Plat Acheteurs) — soumis en arrière-plan via iframe cachée -->
+<iframe name="bd1820Frame" style="display:none"></iframe>
+<form id="bd1820Form" method="POST" target="bd1820Frame" action="https://e605324b.sibforms.com/serve/MUIFAPsRw0Has2NdaCtmnw2CoOTxz2UA6OxSr-s39aIt538Hyez2v7bttRwD-QraNgTyT1x5I5U27Z4hsmynzpagMV3Mx91WcZZqs2aESBrXVqXdfzj0D30jEaVj5XHKgizJJZABZ96zPcRs2NSkPsDNKxXHoGLmis3Gyi9bLPKiNXs5cQRlTC2F4KmA0sVZH5_rcZj9b1ZRYr2u6A==" style="display:none">
+  <input type="text" name="EMAIL" id="bd1820Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
 </body>
 </html>

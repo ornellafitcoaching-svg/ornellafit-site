@@ -351,11 +351,9 @@ async function sendConfEmail() {
   const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
   const key = _a+_b+_c;
   try {
-    await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json','api-key':key},
-      body: JSON.stringify({email, attributes:{PRENOM:prenom, SOURCE:'summer-body-achat'}, listIds:[24], updateEnabled:true})
-    });
+    // Ajout Brevo liste 24 — formulaire natif, plus de clé exposée pour cette étape
+    document.getElementById('sb24Email').value = email;
+    document.getElementById('sb24Form').submit();
     await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {'Content-Type':'application/json','api-key':key},
@@ -371,5 +369,13 @@ async function sendConfEmail() {
   document.getElementById('email-ok').style.display = 'block';
 }
 </script>
+
+<!-- Formulaire natif Brevo (liste #24 Summer Body Acheteurs) — soumis en arrière-plan via iframe cachée -->
+<iframe name="sb24Frame" style="display:none"></iframe>
+<form id="sb24Form" method="POST" target="sb24Frame" action="https://e605324b.sibforms.com/serve/MUIFAOofD10H8LXe40Qhe3B31ZChphYzcd9tueP0leZT2nELI5TnEOWTzAMXWABIgeLPktbMLb7KlFhXNpUeg7aiTmKzP0I1yjupcqXZ7AEczLnnuynHZK6XZpwNwihwreWm9wc-cC3g5zZ6bljZb6X2y7PnYHEyFFnAv0WdhY5nHmhoHjVHRwwcz1hz3B4YeyTiudmFwOfKA25zkw==" style="display:none">
+  <input type="text" name="EMAIL" id="sb24Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
 </body>
 </html>
