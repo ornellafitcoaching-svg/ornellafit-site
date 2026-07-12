@@ -624,6 +624,13 @@ footer a:hover{color:var(--accent)}
 const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
 const BREVO_KEY=_a+_b+_c;
 
+function submitToBrevoList16(email) {
+  try {
+    document.getElementById('bs16Email').value = email;
+    document.getElementById('bs16Form').submit();
+  } catch(e) {}
+}
+
 async function submitWaitlist(inputId, successId) {
   const email = document.getElementById(inputId).value.trim();
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -635,19 +642,8 @@ async function submitWaitlist(inputId, successId) {
   btn.textContent = 'Inscription...';
   btn.disabled = true;
 
-  try {
-    // Ajoute à la liste Booty Sculpt waitlist [3]
-    await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json','api-key':BREVO_KEY},
-      body: JSON.stringify({
-        email: email,
-        listIds: [16],
-        attributes: {FNAME: document.getElementById('urgency-fname').value.trim(), SOURCE: 'booty-sculpt-waitlist'},
-        updateEnabled: true
-      })
-    });
-  } catch(e) {}
+  // Ajoute à la liste Booty Sculpt waitlist — formulaire natif, plus de clé exposée
+  submitToBrevoList16(email);
 
   try {
     // Email de confirmation transactionnel Booty Sculpt
@@ -711,18 +707,7 @@ async function handlePurchase() {
   var btn = event.target;
   btn.textContent = 'Redirection...';
   btn.disabled = true;
-  try {
-    await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json','api-key':BREVO_KEY},
-      body: JSON.stringify({
-        email: email,
-        listIds: [16],
-        attributes: {FNAME: fname, SOURCE: 'booty-sculpt-purchase'},
-        updateEnabled: true
-      })
-    });
-  } catch(e) {}
+  submitToBrevoList16(email);
   localStorage.setItem('bs_buyer_email', email);
   localStorage.setItem('bs_buyer_fname', fname);
   if (typeof fbq !== 'undefined') { fbq('init', '26675222578828123', {em: email}); fbq('track', 'InitiateCheckout'); }
@@ -741,24 +726,21 @@ async function handleUrgPurchase() {
   var btn = event.target;
   btn.textContent = 'Redirection...';
   btn.disabled = true;
-  try {
-    await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json','api-key':BREVO_KEY},
-      body: JSON.stringify({
-        email: email,
-        listIds: [16],
-        attributes: {FNAME: fname, SOURCE: 'booty-sculpt-purchase'},
-        updateEnabled: true
-      })
-    });
-  } catch(e) {}
+  submitToBrevoList16(email);
   localStorage.setItem('bs_buyer_email', email);
   localStorage.setItem('bs_buyer_fname', fname);
   if (typeof fbq !== 'undefined') { fbq('init', '26675222578828123', {em: email}); fbq('track', 'InitiateCheckout'); }
   window.location.href = 'https://buy.stripe.com/00w00j6bTbWb8Al0Dz8Vi06';
 }
 </script>
+
+<!-- Formulaire natif Brevo (liste #16 Booty Sculpt Waitlist) — soumis en arrière-plan via iframe cachée -->
+<iframe name="bs16Frame" style="display:none"></iframe>
+<form id="bs16Form" method="POST" target="bs16Frame" action="https://e605324b.sibforms.com/serve/MUIFAAZtVNaP_8dww0UqWmI-d490Z7NfoDVgXPuqU6M9RNMinG_t_6O-BabqP2x6kHJ4frYySn690ZSn6JlVd_I3iCutgSKeYKpxBbty67gR68anE206bNjO-vyY-iL_3kloXC6ODDNLNdfIgInX5ZZZCsLj_h0OId3Ixf1eDHtC5G1JCRAb6adkPTOoBhMs0coHyu-Asunb-LWxIQ==" style="display:none">
+  <input type="text" name="EMAIL" id="bs16Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
 
 <script>
 // ── COUNTDOWN 24h persistant ──
