@@ -299,6 +299,17 @@ const BREVO_LISTS = {
   autonomie:  11
 };
 
+function submitToQuizBrevoForm(email, resultKey) {
+  const formIds = { domicile: 'q8Form', hybride: 'q9Form', distanciel: 'q10Form', autonomie: 'q11Form' };
+  const emailIds = { domicile: 'q8Email', hybride: 'q9Email', distanciel: 'q10Email', autonomie: 'q11Email' };
+  const formId = formIds[resultKey] || formIds.domicile;
+  const emailId = emailIds[resultKey] || emailIds.domicile;
+  try {
+    document.getElementById(emailId).value = email;
+    document.getElementById(formId).submit();
+  } catch(e) {}
+}
+
 /* ===================================================
    DONNÉES DU QUIZ
    =================================================== */
@@ -797,27 +808,8 @@ async function sendToBrevo(email, resultKey, prenom = '') {
   const OBJECTIF_LABELS = ['poids', 'silhouette', 'remise_forme', 'muscle'];
   const objectif = selections[5] !== undefined ? OBJECTIF_LABELS[selections[5]] : '';
 
-  /* 1 — Ajouter le contact à la liste */
-  const contactPayload = {
-    email,
-    updateEnabled: true,
-    attributes: { QUIZ_RESULT: resultKey, OBJECTIF: objectif, PRENOM: prenom || '' }
-  };
-  if (listId && listId > 0) contactPayload.listIds = [listId];
-
-  try {
-    const res = await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'api-key': BREVO_API_KEY },
-      body: JSON.stringify(contactPayload)
-    });
-    if (!res.ok && res.status !== 204) {
-      const err = await res.json().catch(() => ({}));
-      console.warn('[Brevo] Erreur contact:', res.status, err);
-    }
-  } catch (e) {
-    console.warn('[Brevo] Erreur réseau contact:', e);
-  }
+  /* 1 — Ajouter le contact à la liste — formulaire natif, plus de clé exposée pour cette étape */
+  submitToQuizBrevoForm(email, resultKey);
 
   /* 2 — Email transactionnel via template Brevo selon résultat */
   const TEMPLATE_IDS = { domicile: 12, hybride: 13, distanciel: 14, autonomie: 15 };
@@ -874,18 +866,7 @@ function buildResultStep(key, email) {
     }
     error.style.display = 'none';
 
-    const listMap = { domicile: 8, hybride: 9, distanciel: 10, autonomie: 11 };
-    fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'api-key': BREVO_API_KEY },
-      body: JSON.stringify({
-        email: emailVal,
-        listIds: [listMap[key] || 8],
-        updateEnabled: true,
-        attributes: { QUIZ_RESULTAT: key, PRENOM: document.getElementById('quiz-prenom').value.trim() }
-      })
-    }).catch(() => {});
-
+    // Redondant avec le fetch direct retiré : sendToBrevo() gère déjà l'ajout à la liste (formulaire natif) + l'email template
     sendToBrevo(emailVal, key, document.getElementById('quiz-prenom').value.trim()).catch(() => {});
 
     renderResult(key, emailVal);
@@ -1117,6 +1098,32 @@ p{font-size:0.9rem;color:#4A3E3E;line-height:1.7;margin:0 0 16px;}
      =====================================================
 ... [même structure, contenu autonomie] ...
 -->
+
+<!-- Formulaires natifs Brevo (listes #8/9/10/11 Quiz) — soumis en arrière-plan via iframes cachées -->
+<iframe name="q8Frame" style="display:none"></iframe>
+<form id="q8Form" method="POST" target="q8Frame" action="https://e605324b.sibforms.com/serve/MUIFAENuBh3VHjL1hUJhSKkHnM9aJK8MZVKy6T8KyccU1jNa4LU4y_ST_Z88mtK4umgeIi62nPNnmoIqa7WDGihn5X0BVoDuHhiGwR9G88cBPqXswxMSVL-IoV6qI90mURP0TxOA0FDzuKXnTnAX8QphFMw9ym_0XMcI2lb0fCfIpJuGBjEdycRsTv2gUy9zOjA6plUO4xupgy7Seg==" style="display:none">
+  <input type="text" name="EMAIL" id="q8Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
+<iframe name="q9Frame" style="display:none"></iframe>
+<form id="q9Form" method="POST" target="q9Frame" action="https://e605324b.sibforms.com/serve/MUIFAGhw6tJ5z-ljGR7bTEYyR10X21hS5VYpHzXZWMlMs3BuL7wTjSLnli9Y6Ikrbyd59Mitp1lKQvV0R8HPteD9C0_vMyKH7OJw1VO1Ub8scjE8zlJwwCEmOBKZBI2BjZp9271j4fHU3CGpUTp2aJejmgmdJCg2y4Jo4HFuY4DdRuqJPOIA3B8hCq9XIltiXAMC6EOYm-_9zO8eEw==" style="display:none">
+  <input type="text" name="EMAIL" id="q9Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
+<iframe name="q10Frame" style="display:none"></iframe>
+<form id="q10Form" method="POST" target="q10Frame" action="https://e605324b.sibforms.com/serve/MUIFAMWEKX72ShIbnvyA8WnHyJ2KgSxJig_owNTExVid41GTS8szkG4FhDmlQkhLat1srdUWqy1tMmaTPvAFguCNISWq2g4pAJQbICZZNyORnU3cv1KJ5dcxI5s9T4LgBbB1ibGRFML8fOCnWfFakOTzqiTgeRvekC3tK2At8y54OqPYp36nGxgKVYgXx4YrzItMTtK16YBVdJEdBw==" style="display:none">
+  <input type="text" name="EMAIL" id="q10Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
+<iframe name="q11Frame" style="display:none"></iframe>
+<form id="q11Form" method="POST" target="q11Frame" action="https://e605324b.sibforms.com/serve/MUIFAOUOana23cZbV-48NcWJaFIXF18fZ-cQzrxJv9P-gggyxwfprwBb-jYZQoULrOUvUbK63c0-4WIj184mM4EvZbccL2fyNSd7Zv0EgyeZswX5DKtrEvzNlSp9UsFdzbankg_TU9vmdAS_rjoVUqYHWgxnSOa9XW6uy07_7C9rioI_VKcwcfSqlGf37qoBjQuksjJ2TRTnYafU9g==" style="display:none">
+  <input type="text" name="EMAIL" id="q11Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
 
 </body>
 </html>

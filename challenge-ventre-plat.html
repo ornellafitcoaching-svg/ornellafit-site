@@ -283,17 +283,9 @@ async function joinChallenge(){
   btn.disabled = true;
 
   try {
-    // Add contact to Brevo list 21 + send J1 email
-    const res = await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {'api-key': _a+_b+_c, 'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        email,
-        attributes: {FIRSTNAME: prenom},
-        listIds: [21],
-        updateEnabled: true
-      })
-    });
+    // Add contact to Brevo list 21 — formulaire natif, plus de clé exposée pour cette étape
+    document.getElementById('cvp21Email').value = email;
+    document.getElementById('cvp21Form').submit();
 
     // Send J1 email immediately
     await fetch('https://api.brevo.com/v3/smtp/email', {
@@ -320,5 +312,13 @@ async function joinChallenge(){
   }
 }
 </script>
+
+<!-- Formulaire natif Brevo (liste #21 Challenge Ventre Plat 5J) — soumis en arrière-plan via iframe cachée -->
+<iframe name="cvp21Frame" style="display:none"></iframe>
+<form id="cvp21Form" method="POST" target="cvp21Frame" action="https://e605324b.sibforms.com/serve/MUIFAI1-7BnSL5croBKl-l8IWdGfmATWfmCHcEYjUGIbPZAN9XF30eIJck9hhjzaFPOklpGcW8YCoeJVzkrM2Fr2oNirhnY_G_56WzvFcmdTWrJLzKfRJAVEsTbqZsBn9jyXEhpqmrfCyrPZPiBrPV6kQoS0cquvfLu-1b-hgyxIowLflfBhjS8H3QD9DwswhDX1Kpy6p7KIO-LUfQ==" style="display:none">
+  <input type="text" name="EMAIL" id="cvp21Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
 </body>
 </html>

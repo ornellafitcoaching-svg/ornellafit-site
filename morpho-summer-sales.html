@@ -635,12 +635,10 @@ function submitEmail(){
   const _c='dcf702b601838-1wVKxDw8s4P48lV3';
   const key=_a+_b+_c;
 
-  // 1. Ajoute le contact à la liste Morpho Summer (28)
-  fetch('https://api.brevo.com/v3/contacts',{
-    method:'POST',
-    headers:{'api-key':key,'Content-Type':'application/json'},
-    body:JSON.stringify({email,listIds:[28],attributes:{MORPHO:pendingMorpho,SOURCE:'Quiz Morpho Summer'},updateEnabled:true})
-  }).then(()=>{
+  // 1. Ajoute le contact à la liste Morpho Summer (28) — formulaire natif, plus de clé exposée pour cette étape
+  document.getElementById('ms28Email').value = email;
+  document.getElementById('ms28Form').submit();
+  Promise.resolve().then(()=>{
     // 2. Envoie l'email personnalisé
     return fetch('https://api.brevo.com/v3/smtp/email',{
       method:'POST',
@@ -788,5 +786,13 @@ document.getElementById('stickyMob').style.display = 'none';
   setInterval(update, 30000);
 })();
 </script>
+
+<!-- Formulaire natif Brevo (liste #28 Morpho Summer Leads) — soumis en arrière-plan via iframe cachée -->
+<iframe name="ms28Frame" style="display:none"></iframe>
+<form id="ms28Form" method="POST" target="ms28Frame" action="https://e605324b.sibforms.com/serve/MUIFAMXh1J5FbqGn-UVdgPt0nXBLyEz8Yv5mlc5S7a_s7VFZsprpHvIPaL-e-a_1INRerPDQ7ulal-Oq7-1UyV-_CvJJt_VccdUvRT3aQt83gv2cMEELjH7iAcbRtWqNssP2gatHYsfTzBalRxQ3mx-CewuM6_S4smBjDlImKLGdYKhwW0SQLp0ISiKSQKjQCOpZZ4KBou1Dbdy5XQ==" style="display:none">
+  <input type="text" name="EMAIL" id="ms28Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
 </body>
 </html>

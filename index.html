@@ -2550,25 +2550,10 @@ async function submitLead(e) {
     return;
   }
 
-  var payload = { email: email, listIds: [15], updateEnabled: true, emailBlacklisted: false };
-  payload.attributes = { PRENOM: prenom || '', SOURCE: 'guide-popup' };
-
   try {
-    var res = await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    if (!res.ok && res.status !== 204) {
-      var err = await res.json().catch(function() { return {}; });
-      if (err.code !== 'duplicate_parameter') throw new Error(err.message || 'Erreur API');
-    }
-  } catch(err) {
-    btn.disabled = false;
-    btn.textContent = 'Réessayer →';
-    console.warn('[Brevo lead]', err.message);
-    return;
-  }
+    document.getElementById('list15Email').value = email;
+    document.getElementById('list15Form').submit();
+  } catch(err) {}
 
   if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'Guide 9 Erreurs'});
   document.getElementById('lead-form').style.display = 'none';
@@ -2587,18 +2572,9 @@ async function submitLeadInline(e, source) {
     btn.textContent = '✅ Reçu !'; return;
   }
   try {
-    var res = await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, listIds: [15], updateEnabled: true, emailBlacklisted: false, attributes: { SOURCE: 'guide-bar', PRENOM: document.getElementById('hero-bar-prenom').value.trim() } })
-    });
-    if (!res.ok && res.status !== 204) {
-      var err = await res.json().catch(function() { return {}; });
-      if (err.code !== 'duplicate_parameter') throw new Error(err.message || 'API error');
-    }
-  } catch(err) {
-    btn.disabled = false; btn.textContent = 'Réessayer →'; return;
-  }
+    document.getElementById('list15Email').value = email;
+    document.getElementById('list15Form').submit();
+  } catch(err) {}
 
   if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'Guide 9 Erreurs'});
   form.style.display = 'none';
@@ -2615,11 +2591,8 @@ async function submitGuideSection(e) {
   var btn = document.getElementById('guide-section-btn');
   btn.disabled = true; btn.textContent = 'Envoi en cours…';
   try {
-    await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, listIds: [15], updateEnabled: true, emailBlacklisted: false, attributes: { PRENOM: prenom, SOURCE: 'guide-section' } })
-    });
+    document.getElementById('list15Email').value = email;
+    document.getElementById('list15Form').submit();
   } catch(err) { btn.disabled = false; btn.textContent = '📖 Recevoir le guide gratuitement →'; return; }
   fetch('https://api.brevo.com/v3/smtp/email', {
     method: 'POST',
@@ -2767,11 +2740,8 @@ function showObjReply(btn, type) {
     var attrs = { SOURCE: 'smart-capture' };
     if (prenom) attrs.PRENOM = prenom;
     try {
-      await fetch('https://api.brevo.com/v3/contacts', {
-        method: 'POST',
-        headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, listIds: [2], updateEnabled: true, emailBlacklisted: false, attributes: attrs })
-      });
+      document.getElementById('list2Email').value = email;
+      document.getElementById('list2Form').submit();
     } catch(err) { console.warn('[SC Brevo]', err); }
     try {
       await fetch('https://api.brevo.com/v3/smtp/email', {
@@ -2958,5 +2928,19 @@ if(!sessionStorage.getItem('bs_popup_closed')){
   });
 }
 </script>
+
+<!-- Formulaires natifs Brevo — soumis en arrière-plan via iframes cachées -->
+<iframe name="list15Frame" style="display:none"></iframe>
+<form id="list15Form" method="POST" target="list15Frame" action="https://e605324b.sibforms.com/serve/MUIFALoL1fcMVo0ja25kWMtYWzSqwAywgjRBpUj5ZvwYNzLwrB9rHaDmrlfePrdBh56VbztE-9CF2otkSiflgd8BfQyfpe1oRInSR756--DIIrCBh2QwHnMs_EA61TA_qZvdV_43IDbmR2FXAtovfd2QIObZZhwYeoYA8R4_lGR-Kv-d6snW-06f0R3-niv-huUnbbPPZcmpqp1x_w==" style="display:none">
+  <input type="text" name="EMAIL" id="list15Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
+<iframe name="list2Frame" style="display:none"></iframe>
+<form id="list2Form" method="POST" target="list2Frame" action="https://e605324b.sibforms.com/serve/MUIFAHOEdRv2DgTw9P1NiduCCh7hR8SC_Vr2ukviBgfKXjyrM5LOWLzkfK49M5482LClihKJ7ACb9L9Btz5uYjly5touBPx-NMs0DeIeiPc8TrYzU8Zfci7Uv1bT__nMdatfFRiJ-62YHjHWcnfT29DmROWdBN0Hhf3nSei0cDs4GhzS5G_CFTWJ8-TexsprnUd5oFsfuG3IKql7rA==" style="display:none">
+  <input type="text" name="EMAIL" id="list2Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
 </body>
 </html>
