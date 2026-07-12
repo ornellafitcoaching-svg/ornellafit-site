@@ -1077,8 +1077,12 @@ footer a:hover{color:var(--accent)}
 <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20en%20savoir%20plus%20sur%20le%20programme%20Ventre%20Plat." class="floating-wa" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 
 <script>
-const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
-const BREVO_KEY=_a+_b+_c;
+function submitToBrevoList19(email) {
+  try {
+    document.getElementById('vp19Email').value = email;
+    document.getElementById('vp19Form').submit();
+  } catch(e) {}
+}
 
 async function handlePurchaseDesktop() {
   var fname = document.getElementById('hero-fname-d').value.trim();
@@ -1091,18 +1095,7 @@ async function handlePurchaseDesktop() {
   var btn = event.target;
   btn.textContent = 'Redirection...';
   btn.disabled = true;
-  try {
-    await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json','api-key':BREVO_KEY},
-      body: JSON.stringify({
-        email: email,
-        listIds: [19],
-        attributes: {FNAME: fname, SOURCE: 'ventre-plat-purchase'},
-        updateEnabled: true
-      })
-    });
-  } catch(e) {}
+  submitToBrevoList19(email);
   localStorage.setItem('vp_buyer_email', email);
   localStorage.setItem('vp_buyer_fname', fname);
   if (typeof fbq !== 'undefined') { fbq('init', '26675222578828123', {em: email}); fbq('track', 'InitiateCheckout'); }
@@ -1120,24 +1113,21 @@ async function handlePurchase() {
   var btn = event.target;
   btn.textContent = 'Redirection...';
   btn.disabled = true;
-  try {
-    await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json','api-key':BREVO_KEY},
-      body: JSON.stringify({
-        email: email,
-        listIds: [19],
-        attributes: {FNAME: fname, SOURCE: 'ventre-plat-purchase'},
-        updateEnabled: true
-      })
-    });
-  } catch(e) {}
+  submitToBrevoList19(email);
   localStorage.setItem('vp_buyer_email', email);
   localStorage.setItem('vp_buyer_fname', fname);
   if (typeof fbq !== 'undefined') { fbq('init', '26675222578828123', {em: email}); fbq('track', 'InitiateCheckout'); }
   window.location.href = 'https://buy.stripe.com/9B69AT7fXbWb9Epfyt8Vi09';
 }
 </script>
+
+<!-- Formulaire natif Brevo (liste #19 Ventre Plat Leads) — soumis en arrière-plan via iframe cachée -->
+<iframe name="vp19Frame" style="display:none"></iframe>
+<form id="vp19Form" method="POST" target="vp19Frame" action="https://e605324b.sibforms.com/serve/MUIFAEhm5-UyfdX3IKltch6vzNu7c_FGjoPOC6aP-TvGzTpNZv-7hQ-A95SX9KnnoMGhw8P7-mv4OBj28ssuBkqeKNlwejG3oq8orwC2H4eP37Rcb3JXcb_4YbqqILrXpUdb7sQQiVK-qufHywnjQ-mQxtRKQamS2uoqH33YZaOleioam-H3n0VVW5DLGs3AVz7af0wyq93Ip2RWMQ==" style="display:none">
+  <input type="text" name="EMAIL" id="vp19Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
 
 <script>
 // ── COUNTDOWN 24h persistant ──

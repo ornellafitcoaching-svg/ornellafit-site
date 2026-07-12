@@ -155,6 +155,14 @@
     </p>
   </div>
 
+  <!-- Formulaire natif Brevo (liste #20 Ventre Plat Acheteurs) — soumis en arrière-plan via iframe cachée -->
+  <iframe name="vp20Frame" style="display:none"></iframe>
+  <form id="vp20Form" method="POST" target="vp20Frame" action="https://e605324b.sibforms.com/serve/MUIFAFqRw3yN_C0F1oFs_NZB_gfcpjQtlB9rtmpN9CIouOMM-3dnvxVyCTh8IJ_L3rl6UH8XQaz92tKhKPS7gnjcPXysN3zuo87iKUUEnLpVPh236qX-Tcfa-j_0aAV3-ytlaAUs2RF6bOpbyVhwey-6ULheb0Bi5V9Tt73zZ4-QUbrG5LJWa9_F3AG3tOmDUy9jxSR6Rxshe7meHA==" style="display:none">
+    <input type="text" name="EMAIL" id="vp20Email">
+    <input type="text" name="email_address_check" value="" class="input--hidden">
+    <input type="hidden" name="locale" value="fr">
+  </form>
+
   <script>
     const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
     const BREVO_KEY=_a+_b+_c;
@@ -179,18 +187,10 @@
       btn.disabled = true;
       btn.textContent = 'Envoi en cours…';
 
-      // Ajouter à Brevo liste 20 (VP buyers confirmés)
+      // Ajouter à Brevo liste 20 (VP buyers confirmés) — formulaire natif, pas de clé exposée
       try {
-        await fetch('https://api.brevo.com/v3/contacts', {
-          method: 'POST',
-          headers: { 'api-key': BREVO_KEY, 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: email,
-            listIds: [20],
-            attributes: { FNAME: fname, SOURCE: 'ventre-plat-buyer' },
-            updateEnabled: true
-          })
-        });
+        document.getElementById('vp20Email').value = email;
+        document.getElementById('vp20Form').submit();
       } catch(e) {}
 
       // Envoyer l'email transactionnel avec le lien d'accès
