@@ -336,6 +336,15 @@ fbq("track","PageView");
 
   <p class="contact-line">Une question ? <a href="https://wa.me/33756834626">Contacte-moi sur WhatsApp</a></p>
 </div>
+
+<!-- Formulaire natif Brevo (liste #23 Iron Girl Acheteurs) — soumis en arrière-plan via iframe cachée -->
+<iframe name="ig23Frame" style="display:none"></iframe>
+<form id="ig23Form" method="POST" target="ig23Frame" action="https://e605324b.sibforms.com/serve/MUIFAAR0S-MSCg-MzdM0ug-fL0TN8Np34FdOnKHytEvRY9MqLxDiT5im15vrYzcXLbmTFhrnLhFs4Z6-IZyQ6YCvhTcXbYhylpYess4rxhj5LdNhWQcW-uog0S1IbydFOE3MLXFgwv2HGZVxgd1OScR67F5Ubh8c8-JIy2EN4IxzwIWruH7PxfxfT8IDS2hpQOBeBCz8Q06eAa-k3w==" style="display:none">
+  <input type="text" name="EMAIL" id="ig23Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
+
 <script>
 async function sendMerciEmail() {
   const email = document.getElementById('merci-email').value.trim();
@@ -346,11 +355,9 @@ async function sendMerciEmail() {
   const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
   const key = _a+_b+_c;
   try {
-    await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json','api-key':key},
-      body: JSON.stringify({email, attributes:{SOURCE:'Iron Girl Acheteur'}, listIds:[23], updateEnabled:true})
-    });
+    // Ajout contact Brevo — formulaire natif, plus de clé exposée pour cette étape
+    document.getElementById('ig23Email').value = email;
+    document.getElementById('ig23Form').submit();
     await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {'Content-Type':'application/json','api-key':key},

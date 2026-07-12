@@ -144,6 +144,14 @@ body{font-family:'Jost',sans-serif;background:#F2F8F3;color:#1A2018;min-height:1
 
 </div>
 
+<!-- Formulaire natif Brevo (liste #26 Post-Partum Acheteurs) — soumis en arrière-plan via iframe cachée -->
+<iframe name="pp26Frame" style="display:none"></iframe>
+<form id="pp26Form" method="POST" target="pp26Frame" action="https://e605324b.sibforms.com/serve/MUIFAHWK6brISVNTsEQS5C3T-cVPHBAifepm7n_p1AuEkmRuNRR-RYkjR4J6ESxlCjPmwCdNW39IrnR87qjnw0SIVOrEoVGMPWVVnv1KbfqO254oko5VEzqRrS5QWcbNz47Q8WRdGgpRnqD2r-kjjZhyzYiRd0fSXck0_ERCOWEUWkZRgVKrcAo2tSF62XodJXeL4c1GPuJKTl9Y3w==" style="display:none">
+  <input type="text" name="EMAIL" id="pp26Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
+
 <script>
 const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
 const BK=_a+_b+_c;
@@ -155,11 +163,9 @@ async function submitAcheteur(e){
   const btn=document.getElementById('achBtn');
   btn.disabled=true;btn.textContent='Envoi...';
   try{
-    await fetch('https://api.brevo.com/v3/contacts',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','api-key':BK},
-      body:JSON.stringify({email,attributes:{PRENOM:prenom},listIds:[26],updateEnabled:true})
-    });
+    // Ajout contact Brevo — formulaire natif, plus de clé exposée pour cette étape
+    document.getElementById('pp26Email').value = email;
+    document.getElementById('pp26Form').submit();
     // Email transactionnel avec lien programme
     await fetch('https://api.brevo.com/v3/smtp/email',{
       method:'POST',

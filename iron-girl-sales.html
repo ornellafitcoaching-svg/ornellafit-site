@@ -703,17 +703,9 @@ async function submitLead() {
   try {
     const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
     const key = _a+_b+_c;
-    // Ajout contact Brevo
-    await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json','api-key':key},
-      body: JSON.stringify({
-        email: email,
-        attributes: {PRENOM: prenom, SOURCE: 'Iron Girl Sales Lead'},
-        listIds: [22],
-        updateEnabled: true
-      })
-    });
+    // Ajout contact Brevo — formulaire natif, plus de clé exposée pour cette étape
+    document.getElementById('ig22Email').value = email;
+    document.getElementById('ig22Form').submit();
     // Envoi email extrait Session A
     await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
@@ -739,5 +731,13 @@ document.addEventListener('click', function(e){
   try{ localStorage.setItem('ig_purchase_pending','1'); }catch(err){}
 });
 </script>
+
+<!-- Formulaire natif Brevo (liste #22 Iron Girl Leads) — soumis en arrière-plan via iframe cachée -->
+<iframe name="ig22Frame" style="display:none"></iframe>
+<form id="ig22Form" method="POST" target="ig22Frame" action="https://e605324b.sibforms.com/serve/MUIFAPLORnd0gvpCrTZ-L2KUQhom6KtpMEAFOyOEnHNaQm8uITAMHA6VB_dgx2m5IopJRp-rUWu8tQnEbCniMv6ClCH609UhxbsfO8u5_bWPRxNF-GFg7F0n2Eu-CxmXpJO6cJRuGOd1-4Y1bItSOBH7KCl58H3UHv1jGeKhib3qgnyXlKeEKhKgErYh1mwMyJ8jiokI7IurB7pfqw==" style="display:none">
+  <input type="text" name="EMAIL" id="ig22Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
 </body>
 </html>
