@@ -446,5 +446,12 @@ document.querySelectorAll('.faq-q').forEach(btn => {
   });
 });
 </script>
+<script>
+document.addEventListener('click', function(e){
+  var a = e.target.closest && e.target.closest('a[href*="buy.stripe.com"]');
+  if(!a) return;
+  try{ localStorage.setItem('fg_purchase_pending','1'); }catch(err){}
+});
+</script>
 </body>
 </html>

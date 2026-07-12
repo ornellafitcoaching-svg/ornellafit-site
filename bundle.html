@@ -421,5 +421,12 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 </script>
+<script>
+document.addEventListener('click', function(e){
+  var a = e.target.closest && e.target.closest('a[href*="buy.stripe.com"]');
+  if(!a) return;
+  try{ localStorage.setItem('bd_purchase_pending','1'); }catch(err){}
+});
+</script>
 </body>
 </html>

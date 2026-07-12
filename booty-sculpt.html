@@ -725,7 +725,7 @@ async function handlePurchase() {
   } catch(e) {}
   localStorage.setItem('bs_buyer_email', email);
   localStorage.setItem('bs_buyer_fname', fname);
-  if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout');
+  if (typeof fbq !== 'undefined') { fbq('init', '26675222578828123', {em: email}); fbq('track', 'InitiateCheckout'); }
   window.location.href = 'https://buy.stripe.com/00w00j6bTbWb8Al0Dz8Vi06';
 }
 
@@ -755,7 +755,7 @@ async function handleUrgPurchase() {
   } catch(e) {}
   localStorage.setItem('bs_buyer_email', email);
   localStorage.setItem('bs_buyer_fname', fname);
-  if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout');
+  if (typeof fbq !== 'undefined') { fbq('init', '26675222578828123', {em: email}); fbq('track', 'InitiateCheckout'); }
   window.location.href = 'https://buy.stripe.com/00w00j6bTbWb8Al0Dz8Vi06';
 }
 </script>

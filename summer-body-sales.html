@@ -435,5 +435,12 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 </script>
+<script>
+document.addEventListener('click', function(e){
+  var a = e.target.closest && e.target.closest('a[href*="buy.stripe.com"]');
+  if(!a) return;
+  try{ localStorage.setItem('sb_purchase_pending','1'); }catch(err){}
+});
+</script>
 </body>
 </html>

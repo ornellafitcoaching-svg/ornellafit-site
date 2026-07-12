@@ -732,5 +732,12 @@ async function submitLead() {
   if (typeof dataLayer !== 'undefined') dataLayer.push({event:'lead_iron_girl'});
 }
 </script>
+<script>
+document.addEventListener('click', function(e){
+  var a = e.target.closest && e.target.closest('a[href*="buy.stripe.com"]');
+  if(!a) return;
+  try{ localStorage.setItem('ig_purchase_pending','1'); }catch(err){}
+});
+</script>
 </body>
 </html>

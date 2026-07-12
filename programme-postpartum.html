@@ -550,7 +550,8 @@ async function submitLead(e){
       body:JSON.stringify({email,attributes:{PRENOM:prenom},listIds:[25],updateEnabled:true})
     });
   }catch(err){}
-  if(typeof fbq!=='undefined') fbq('track','InitiateCheckout',{value:17,currency:'EUR'});
+  try{ localStorage.setItem('pp_buyer_email', email); }catch(e){}
+  if(typeof fbq!=='undefined'){ fbq('init','26675222578828123',{em:email}); fbq('track','InitiateCheckout',{value:17,currency:'EUR'}); }
   window.location.href='https://buy.stripe.com/00wfZhcAhaS76sdfyt8Vi0d';
 }
 </script>
