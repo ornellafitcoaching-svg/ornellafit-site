@@ -644,7 +644,10 @@ function submitEmail(){
   btn.disabled = true;
 
   lastEmail = email;
-  if(typeof fbq!=='undefined') fbq('init','26675222578828123',{em:email});
+  if(typeof fbq!=='undefined'){
+    fbq('init','26675222578828123',{em:email});
+    fbq('track','Lead',{content_name:'Morpho Summer Quiz',value:12,currency:'EUR'});
+  }
 
   const _a='xkeysib-b3f029f593ab90bd2bb';
   const _b='2290988c5a455f29ddad8ec51e4ca585';
