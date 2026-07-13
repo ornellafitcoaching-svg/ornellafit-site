@@ -157,8 +157,9 @@ fbq("track","PageView");
 
     <div style="max-width:480px;margin:20px auto 0;background:rgba(232,180,160,.08);border:1px solid rgba(232,180,160,.25);border-radius:16px;padding:20px 22px;text-align:center;">
       <p style="font-size:.85rem;font-weight:700;margin:0 0 6px;">💌 Parraine une amie</p>
-      <p style="font-size:.8rem;color:#7A6E60;line-height:1.6;margin:0 0 10px;">Écris-moi sur WhatsApp pour recevoir ton code personnel — elle a une réduction, et je te remercie.</p>
-      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20code%20de%20parrainage." style="display:inline-block;background:#25D366;color:#fff;text-decoration:none;padding:10px 20px;border-radius:50px;font-weight:700;font-size:.82rem;">💬 Demander mon code</a>
+      <p style="font-size:.8rem;color:#7A6E60;line-height:1.6;margin:0 0 10px;">Envoie ce message à une amie. Si elle achète et te mentionne, tu reçois -20% sur ton prochain programme.</p>
+      <button onclick="copyReferralMsg(this)" style="display:inline-block;background:#25D366;color:#fff;border:none;text-decoration:none;padding:10px 20px;border-radius:50px;font-weight:700;font-size:.82rem;cursor:pointer;">📋 Copier le message à envoyer</button>
+      <p style="font-size:.72rem;color:#9A8A80;margin-top:10px;">Une fois qu'elle a acheté, <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Mon%20amie%20vient%20d%27acheter%2C%20je%20veux%20ma%20r%C3%A9compense%20de%20parrainage." style="color:#C96358;">écris-moi sur WhatsApp</a> pour ta récompense.</p>
     </div>
 
     <p class="footer-note">
@@ -246,7 +247,18 @@ fbq("track","PageView");
           '<tr><td style="background:#FDF0F3;padding:24px 32px;text-align:center;border-top:1px solid #EDD0D8;margin-top:32px;">' +
           '<p style="font-size:13px;color:#9E7080;line-height:1.8;margin:0;">Je suis fière de toi d\'avoir fait ce pas. 🤍<br><strong style="color:#2C1A20;">Ornella</strong><br><span style="font-size:12px;">ornellafitcoaching.com</span></p>' +
           '</td></tr>' +
-          '</table></td></tr></table></body></html>'
+          '</table></td></tr></table>
+<script>
+function copyReferralMsg(btn){
+  var msg = "Salut ! Je viens de découvrir Ornella Fit Coaching et je suis hyper contente de mon programme \uD83D\uDE4C Si ça t'intéresse : https://www.ornellafitcoaching.com/programmes.html — dis-lui que c'est moi qui t'envoie !";
+  navigator.clipboard.writeText(msg).then(function(){
+    var original = btn.textContent;
+    btn.textContent = '✅ Copié ! Colle-le dans WhatsApp';
+    setTimeout(function(){ btn.textContent = original; }, 2500);
+  });
+}
+</script>
+</body></html>'
       })
     }).catch(() => {});
 

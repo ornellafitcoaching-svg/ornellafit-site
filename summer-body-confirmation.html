@@ -342,8 +342,9 @@ fbq("track","PageView");
 
   <div style="max-width:480px;margin:20px auto 0;background:rgba(232,180,160,.08);border:1px solid rgba(232,180,160,.25);border-radius:16px;padding:20px 22px;text-align:center;">
     <p style="font-size:.85rem;font-weight:700;margin:0 0 6px;">💌 Parraine une amie</p>
-    <p style="font-size:.8rem;color:#7A6E60;line-height:1.6;margin:0 0 10px;">Écris-moi sur WhatsApp pour recevoir ton code personnel — elle a une réduction, et je te remercie.</p>
-    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20code%20de%20parrainage." style="display:inline-block;background:#25D366;color:#fff;text-decoration:none;padding:10px 20px;border-radius:50px;font-weight:700;font-size:.82rem;">💬 Demander mon code</a>
+    <p style="font-size:.8rem;color:#7A6E60;line-height:1.6;margin:0 0 10px;">Envoie ce message à une amie. Si elle achète et te mentionne, tu reçois -20% sur ton prochain programme.</p>
+    <button onclick="copyReferralMsg(this)" style="display:inline-block;background:#25D366;color:#fff;border:none;text-decoration:none;padding:10px 20px;border-radius:50px;font-weight:700;font-size:.82rem;cursor:pointer;">📋 Copier le message à envoyer</button>
+    <p style="font-size:.72rem;color:#9A8A80;margin-top:10px;">Une fois qu'elle a acheté, <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Mon%20amie%20vient%20d%27acheter%2C%20je%20veux%20ma%20r%C3%A9compense%20de%20parrainage." style="color:#C96358;">écris-moi sur WhatsApp</a> pour ta récompense.</p>
   </div>
 </div>
 
@@ -368,7 +369,18 @@ async function sendConfEmail() {
         sender: {name:'Ornella — Ornella Fit Coaching', email:'contact@ornellafitcoaching.com'},
         to: [{email, name: prenom || 'toi'}],
         subject: '🌞 Ton Summer Body Challenge — accès à vie',
-        htmlContent: `<!DOCTYPE html><html><body style="font-family:sans-serif;background:#FFF8ED;margin:0;padding:0"><div style="max-width:560px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden"><div style="background:#2D6A4F;padding:28px;text-align:center"><p style="color:rgba(255,255,255,.6);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px">Ornella Fit Coaching</p><h1 style="color:#fff;font-size:24px;margin:0;font-weight:700">Summer Body Challenge 🌞</h1></div><div style="padding:28px"><p style="color:#2C2C2C;font-size:15px;line-height:1.6;margin:0 0 20px">Bonjour${prenom ? ' '+prenom : ''},<br><br>Merci pour ton achat ! Voici ton accès permanent au programme.</p><div style="text-align:center;margin:0 0 24px"><a href="https://www.ornellafitcoaching.com/summer-body.html" style="background:#FF6B4A;color:#fff;text-decoration:none;padding:14px 28px;border-radius:10px;font-weight:700;font-size:14px;display:inline-block">🏋️ Accéder à mon programme →</a></div><div style="background:#FFF8ED;border-radius:10px;padding:16px;margin-bottom:20px"><p style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#FF6B4A;margin:0 0 10px">Ce que tu as :</p><p style="font-size:13px;color:#7A6E60;line-height:1.8;margin:0">✓ 4 semaines de workouts progressifs<br>✓ Planning hebdomadaire PDF<br>✓ Guide nutrition légère vacances<br>✓ Accès à vie</p></div><p style="color:#7A6E60;font-size:13px">Une question ? <a href="https://wa.me/33756834626" style="color:#FF6B4A">WhatsApp</a></p></div><div style="background:#1A2E1A;padding:16px;text-align:center"><p style="color:rgba(255,255,255,.35);font-size:11px;margin:0">Ornella Fit Coaching · ornellafitcoaching.com</p></div></div></body></html>`
+        htmlContent: `<!DOCTYPE html><html><body style="font-family:sans-serif;background:#FFF8ED;margin:0;padding:0"><div style="max-width:560px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden"><div style="background:#2D6A4F;padding:28px;text-align:center"><p style="color:rgba(255,255,255,.6);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px">Ornella Fit Coaching</p><h1 style="color:#fff;font-size:24px;margin:0;font-weight:700">Summer Body Challenge 🌞</h1></div><div style="padding:28px"><p style="color:#2C2C2C;font-size:15px;line-height:1.6;margin:0 0 20px">Bonjour${prenom ? ' '+prenom : ''},<br><br>Merci pour ton achat ! Voici ton accès permanent au programme.</p><div style="text-align:center;margin:0 0 24px"><a href="https://www.ornellafitcoaching.com/summer-body.html" style="background:#FF6B4A;color:#fff;text-decoration:none;padding:14px 28px;border-radius:10px;font-weight:700;font-size:14px;display:inline-block">🏋️ Accéder à mon programme →</a></div><div style="background:#FFF8ED;border-radius:10px;padding:16px;margin-bottom:20px"><p style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#FF6B4A;margin:0 0 10px">Ce que tu as :</p><p style="font-size:13px;color:#7A6E60;line-height:1.8;margin:0">✓ 4 semaines de workouts progressifs<br>✓ Planning hebdomadaire PDF<br>✓ Guide nutrition légère vacances<br>✓ Accès à vie</p></div><p style="color:#7A6E60;font-size:13px">Une question ? <a href="https://wa.me/33756834626" style="color:#FF6B4A">WhatsApp</a></p></div><div style="background:#1A2E1A;padding:16px;text-align:center"><p style="color:rgba(255,255,255,.35);font-size:11px;margin:0">Ornella Fit Coaching · ornellafitcoaching.com</p></div></div>
+<script>
+function copyReferralMsg(btn){
+  var msg = "Salut ! Je viens de découvrir Ornella Fit Coaching et je suis hyper contente de mon programme \uD83D\uDE4C Si ça t'intéresse : https://www.ornellafitcoaching.com/programmes.html — dis-lui que c'est moi qui t'envoie !";
+  navigator.clipboard.writeText(msg).then(function(){
+    var original = btn.textContent;
+    btn.textContent = '✅ Copié ! Colle-le dans WhatsApp';
+    setTimeout(function(){ btn.textContent = original; }, 2500);
+  });
+}
+</script>
+</body></html>`
       })
     });
   } catch(e) {}
