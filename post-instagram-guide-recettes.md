@@ -1,4 +1,4 @@
-# Post Instagram — Guide Recettes Sculptantes (order bump 7€)
+# Post Instagram — Guide Recettes Sculptantes (upsell post-achat 7€)
 
 ## Option A — Post carousel (5 slides)
 
@@ -21,8 +21,8 @@ Et improviser des recettes 'healthy' tous les jours = charge mentale + temps per
 En ajout sur ton programme Morpho Summer 🔥"
 
 **Slide 5 (CTA)**
-"Disponible directement au moment de ta commande.
-Lien en bio → choisis ta morphologie → ajoute le guide en 1 clic."
+"Disponible juste après ta commande, sur ta page d'accès au programme.
+Lien en bio → choisis ta morphologie → débloque le guide en 1 clic."
 
 ---
 
@@ -41,7 +41,7 @@ C'est exactement pour ça que j'ai créé le **Guide Recettes Sculptantes**.
 
 Prix de lancement à 7€, en option directement sur ton programme Morpho Summer.
 
-📲 Lien en bio pour choisir ta morphologie et l'ajouter à ta commande.
+📲 Lien en bio pour choisir ta morphologie et débloquer le guide juste après ton achat.
 
 #morphosummer #coachsportive #nutritionsimple #pertedepoids #ventreplat #fessiers #coachingfitness #recettessaines #ornellafitcoaching
 
@@ -57,7 +57,7 @@ Sticker sondage : "Tu galères à savoir quoi cuisiner healthy ? 🙋‍♀️ O
 
 **Story 3**
 Sticker lien "Voir le programme Morpho" → renvoie vers le Payment Link concerné.
-Texte : "Dispo direct au moment du paiement, en 1 clic ⏳ (offre pas éternelle)"
+Texte : "Dispo juste après ton achat, sur ta page programme ⏳ (offre pas éternelle)"
 
 ---
 
