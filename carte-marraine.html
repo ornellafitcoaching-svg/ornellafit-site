@@ -87,11 +87,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="parr-intro">Beaucoup de mes clientes actuelles sont arrivées grâce à une copine qui leur a parlé de moi. Pour les remercier de cette confiance — et pour que ça profite aussi à la personne qu'elles recommandent — j'ai mis en place ce programme de parrainage.</p>
 </div>
 
-<div class="parr-avantages">
-  <div class="parr-card">
-    <div class="label">Pour ta copine</div>
-    <div class="big">50€</div>
-    <div class="desc">sa première séance découverte, remboursée si elle s'engage sur 3 mois derrière.</div>
+<div class="parr-avantages" style="grid-template-columns:1fr">
+  <div class="parr-card" style="text-align:left">
+    <div class="label" style="text-align:center;margin-bottom:4px">Pour ta copine — 3 avantages cumulés</div>
+    <ul style="list-style:none;padding:0;margin:16px 0 0;display:flex;flex-direction:column;gap:14px">
+      <li style="display:flex;gap:12px;align-items:flex-start"><span style="font-size:1.3rem">1️⃣</span><span><strong>Séance découverte à 50€</strong>, déduite si elle s'engage sur 3 mois derrière — exactement comme pour toute nouvelle cliente.</span></li>
+      <li style="display:flex;gap:12px;align-items:flex-start"><span style="font-size:1.3rem">2️⃣</span><span><strong>10€ de réduction en plus</strong> sur son forfait si elle continue — ça s'ajoute à la déduction des 50€, ça ne la remplace pas.</span></li>
+      <li style="display:flex;gap:12px;align-items:flex-start"><span style="font-size:1.3rem">3️⃣</span><span>Le <strong>Guide Recettes Sculptantes offert</strong> (21 recettes + liste de courses, valeur 7€), dès sa première séance.</span></li>
+    </ul>
   </div>
   <div class="parr-card">
     <div class="label">Pour toi, la marraine</div>
@@ -136,14 +139,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <div class="parr-cond-item">
     <div class="parr-cond-num">3</div>
-    <p>Les 50€ de la séance découverte sont remboursés uniquement si elle <strong>s'engage sur 3 mois</strong> derrière.</p>
+    <p>Les 50€ de la séance découverte sont déduits, et les <strong>10€ de réduction supplémentaires s'appliquent en plus</strong>, uniquement si elle <strong>s'engage sur 3 mois</strong> derrière.</p>
   </div>
   <div class="parr-cond-item">
     <div class="parr-cond-num">4</div>
-    <p>Ta séance offerte est créditée dès que le <strong>forfait de ta copine est confirmé et payé</strong>.</p>
+    <p>Le Guide Recettes Sculptantes lui est offert dès sa <strong>première séance</strong>, engagement ou non.</p>
   </div>
   <div class="parr-cond-item">
     <div class="parr-cond-num">5</div>
+    <p>Ta séance offerte (marraine) est créditée dès que le <strong>forfait de ta copine est confirmé et payé</strong>.</p>
+  </div>
+  <div class="parr-cond-item">
+    <div class="parr-cond-num">6</div>
     <p>Offre non cumulable avec une autre promotion en cours.</p>
   </div>
 </div>
@@ -151,8 +158,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="parr-cta-block">
   <h2>Prête à partager ?</h2>
   <p>Envoie ce lien à autant de copines que tu veux — chacune peut réserver sa séance découverte.</p>
-  <a class="parr-cta-btn" href="https://wa.me/33756834626?text=Salut%20Ornella%20!%20On%20m'a%20recommand%C3%A9%20ton%20coaching%2C%20je%20veux%20r%C3%A9server%20ma%20premi%C3%A8re%20s%C3%A9ance%20%C3%A0%2050%E2%82%AC%20%F0%9F%98%8A">Réserver ma séance découverte →</a>
+  <button class="parr-cta-btn" style="border:none;font-family:inherit;font-size:1rem;cursor:pointer;margin-bottom:14px" onclick="partagerParrainage()">📤 Partager ce lien</button>
+  <br>
+  <a class="parr-cta-btn" style="background:transparent;border:1.5px solid rgba(255,255,255,.4);color:#fff" href="https://wa.me/33756834626?text=Salut%20Ornella%20!%20On%20m'a%20recommand%C3%A9%20ton%20coaching%2C%20je%20veux%20r%C3%A9server%20ma%20premi%C3%A8re%20s%C3%A9ance%20%C3%A0%2050%E2%82%AC%20%F0%9F%98%8A">Réserver ma séance découverte →</a>
 </div>
+
+<script>
+function partagerParrainage(){
+  var url='https://www.ornellafitcoaching.com/carte-marraine.html';
+  var text='Ta première séance coaching à 50€, offerte par une copine (moi 😊) — regarde :';
+  if(navigator.share){
+    navigator.share({title:'Programme de Parrainage — Ornella Fit Coaching', text:text, url:url}).catch(function(){});
+  } else {
+    navigator.clipboard.writeText(text+' '+url).then(function(){
+      alert('Lien copié ! Tu peux le coller où tu veux (WhatsApp, Instagram, SMS...).');
+    });
+  }
+}
+</script>
 
 <!-- FOOTER -->
 <footer>
