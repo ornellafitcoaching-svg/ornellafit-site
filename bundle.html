@@ -173,7 +173,7 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none}
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="achat">
   <div class="wrap">
     <div class="hero-badge">🔥 Offre groupée · Prix exclusif</div>
     <h1>Les 2 programmes réunis —<br><em>ton corps transformé de haut en bas.</em></h1>
@@ -184,7 +184,12 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none}
       <span class="hero-saving">Tu économises 6€</span>
     </div>
     <br><br>
-    <a href="https://buy.stripe.com/7sY14n57P2lB5o98618Vi0a" class="btn-main" id="btn-bundle-hero" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:25,currency:'EUR'})">J'obtiens les 2 programmes — 25€ →</a>
+    <div style="max-width:380px;margin:0 auto;background:rgba(255,255,255,.97);border-radius:20px;padding:22px 20px;text-align:left;box-shadow:0 16px 48px rgba(0,0,0,.18)">
+      <input type="text" id="bd-fname" placeholder="Ton prénom" autocomplete="given-name" style="width:100%;background:#FBF4EE;border:1.5px solid #EAD9D1;border-radius:12px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:.92rem;color:#2C1F1A;margin-bottom:10px;outline:none;box-sizing:border-box">
+      <input type="email" id="bd-email" placeholder="Ton adresse email" autocomplete="email" style="width:100%;background:#FBF4EE;border:1.5px solid #EAD9D1;border-radius:12px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:.92rem;color:#2C1F1A;margin-bottom:12px;outline:none;box-sizing:border-box">
+      <button onclick="handleBundlePurchase()" class="btn-main" style="width:100%;border:none;cursor:pointer;">J'obtiens les 2 programmes — 25€ →</button>
+      <p id="bd-error" style="display:none;color:#A85570;font-size:.75rem;margin-top:8px;text-align:center;">Merci d'indiquer une adresse email valide.</p>
+    </div>
     <p class="hero-secure">🔒 Paiement sécurisé · Accès immédiat · À vie sur tous tes appareils</p>
   </div>
 </section>
@@ -399,7 +404,7 @@ footer a{color:rgba(255,255,255,0.5);text-decoration:none}
       <span style="font-size:20px;text-decoration:line-through;color:rgba(255,255,255,0.5);margin-right:12px;">31€</span>
       <span style="font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:600;color:#fff;">25€</span>
     </div>
-    <a href="https://buy.stripe.com/7sY14n57P2lB5o98618Vi0a" class="btn-white" id="btn-bundle-cta" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:25,currency:'EUR'})">J'obtiens les 2 programmes — 25€ →</a>
+    <a href="#achat" class="btn-white" id="btn-bundle-cta">J'obtiens les 2 programmes — 25€ →</a>
     <p class="cta-details">🔒 Paiement sécurisé Stripe · Accès immédiat · À vie sur tous tes appareils</p>
   </div>
 </section>
@@ -427,6 +432,43 @@ document.addEventListener('click', function(e){
   if(!a) return;
   try{ localStorage.setItem('bd_purchase_pending','1'); }catch(err){}
 });
+</script>
+
+<!-- Formulaire natif Brevo (liste "Bundle Leads") — soumis en arrière-plan via iframe cachée
+     ⚠️ ACTION À REMPLACER : crée une liste + un formulaire "Bundle Leads" dans Brevo,
+     puis colle l'URL "action" de ce formulaire ci-dessous (remplace le PLACEHOLDER). -->
+<iframe name="bdLeadsFrame" style="display:none"></iframe>
+<form id="bdLeadsForm" method="POST" target="bdLeadsFrame" action="PLACEHOLDER_BREVO_BUNDLE_FORM_ACTION_URL" style="display:none">
+  <input type="text" name="EMAIL" id="bdLeadsEmail">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
+
+<script>
+function handleBundlePurchase(){
+  var fname = document.getElementById('bd-fname').value.trim();
+  var email = document.getElementById('bd-email').value.trim();
+  var errEl = document.getElementById('bd-error');
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errEl.style.display = 'block';
+    document.getElementById('bd-email').style.borderColor = '#A85570';
+    return;
+  }
+  errEl.style.display = 'none';
+  try {
+    localStorage.setItem('bd_buyer_email', email);
+    localStorage.setItem('bd_buyer_fname', fname);
+  } catch(e) {}
+  try {
+    var formAction = document.getElementById('bdLeadsForm').action;
+    if (formAction && formAction.indexOf('PLACEHOLDER') === -1) {
+      document.getElementById('bdLeadsEmail').value = email;
+      document.getElementById('bdLeadsForm').submit();
+    }
+  } catch(e) {}
+  if (typeof fbq !== 'undefined') { fbq('init','26675222578828123',{em:email}); fbq('track','InitiateCheckout',{value:25,currency:'EUR'}); }
+  window.location.href = 'https://buy.stripe.com/7sY14n57P2lB5o98618Vi0a';
+}
 </script>
 </body>
 </html>
