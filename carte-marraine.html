@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carte Marraine — Ornella Fit Coaching</title>
+<style>
+  :root{
+    --terracotta:#A8432B;
+    --terracotta-dark:#82301E;
+    --corail:#E8634A;
+    --cream:#FAF4EF;
+    --dark:#2B201C;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:'Segoe UI', Roboto, Arial, sans-serif;
+    background:var(--cream); color:var(--dark);
+    display:flex; justify-content:center; padding:24px 12px;
+  }
+  .card{
+    max-width:520px; width:100%; background:#fff; border-radius:24px;
+    overflow:hidden; box-shadow:0 10px 40px rgba(168,67,43,.15);
+  }
+  .header{
+    background:linear-gradient(160deg, var(--terracotta), var(--terracotta-dark));
+    padding:32px 28px 36px; text-align:center; color:#fff;
+  }
+  .logo-pill{
+    background:#fff; border-radius:16px; display:inline-block; padding:10px 20px; margin-bottom:18px;
+  }
+  .logo-pill img{ max-width:260px; display:block; }
+  .badge{
+    display:inline-block; background:var(--corail); color:#fff; font-weight:700;
+    letter-spacing:2px; font-size:13px; padding:10px 22px; border-radius:20px; margin-bottom:16px;
+  }
+  h1{ font-family: Georgia, 'Times New Roman', serif; font-size:28px; margin:0 0 10px; line-height:1.25; }
+  .sub{ font-size:15px; opacity:.9; margin:0; font-style:italic; }
+  .offers{
+    display:flex; gap:14px; padding:26px 24px 6px;
+  }
+  .offer{
+    flex:1; border:1.5px solid #EEDCD3; border-radius:16px; padding:18px 16px;
+  }
+  .offer .label{ color:var(--corail); font-weight:700; font-size:12px; letter-spacing:1px; }
+  .offer .big{ color:var(--terracotta); font-weight:900; font-size:26px; margin:8px 0 4px; }
+  .offer .sub-text{ font-size:14px; line-height:1.35; }
+  form{ padding:20px 24px 8px; }
+  label{
+    display:block; font-weight:700; color:var(--corail); font-size:12px;
+    letter-spacing:1px; margin:14px 0 6px;
+  }
+  input{
+    width:100%; padding:12px 14px; border:1.5px solid #EEDCD3; border-radius:10px;
+    font-size:16px; font-family:inherit; background:var(--cream);
+  }
+  input:focus{ outline:none; border-color:var(--corail); }
+  button{
+    width:100%; margin-top:22px; padding:16px; border:none; border-radius:12px;
+    background:var(--corail); color:#fff; font-weight:700; font-size:16px; cursor:pointer;
+  }
+  button:hover{ background:var(--terracotta); }
+  .footer{
+    background:var(--terracotta); color:#fff; text-align:center; padding:22px 24px 26px; margin-top:22px;
+  }
+  .footer p{ margin:4px 0; font-size:14px; }
+  .footer .contact{ opacity:.9; font-size:14px; margin-top:10px; }
+  .confirm{
+    display:none; padding:18px 24px 26px; text-align:center; color:var(--terracotta); font-weight:700;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="logo-pill"><img src="images/logo.png" alt="Ornella Fit Coaching"></div>
+      <div class="badge">CARTE MARRAINE</div>
+      <h1>Offre une séance,<br>gagne une séance</h1>
+      <p class="sub">Valable pour les clientes en suivi présentiel (domicile / duo / trio / forfaits).</p>
+    </div>
+
+    <div class="offers">
+      <div class="offer">
+        <div class="label">POUR TA COPINE</div>
+        <div class="big">50€</div>
+        <div class="sub-text">remboursés si elle s'engage sur 3 mois, comme toute nouvelle cliente.</div>
+      </div>
+      <div class="offer">
+        <div class="label">POUR TOI</div>
+        <div class="big">1 séance offerte</div>
+        <div class="sub-text">si elle prend un forfait derrière (valeur 70€).</div>
+      </div>
+    </div>
+
+    <form id="parrainage-form">
+      <label for="marraine">Ton prénom (marraine)</label>
+      <input type="text" id="marraine" required placeholder="Ton prénom">
+
+      <label for="filleule">Prénom de ta copine (filleule)</label>
+      <input type="text" id="filleule" required placeholder="Le prénom de ta copine">
+
+      <label for="tel">Ton numéro (pour te recontacter)</label>
+      <input type="tel" id="tel" placeholder="06 12 34 56 78">
+
+      <button type="submit">Envoyer ma carte marraine</button>
+    </form>
+
+    <div class="confirm" id="confirm-msg">
+      Carte envoyée ! Ornella va contacter ta copine pour sa séance découverte à 50€.
+    </div>
+
+    <div class="footer">
+      <p><strong>Comment ça marche ?</strong></p>
+      <p>Ta copine réserve sa séance découverte grâce à cette carte.</p>
+      <p class="contact">@ornellafit.coaching &nbsp;•&nbsp; ornellafitcoaching.com</p>
+    </div>
+  </div>
+
+<script>
+document.getElementById('parrainage-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  var marraine = document.getElementById('marraine').value.trim();
+  var filleule = document.getElementById('filleule').value.trim();
+  var tel = document.getElementById('tel').value.trim();
+
+  var subject = encodeURIComponent('Nouveau parrainage — ' + marraine);
+  var body = encodeURIComponent(
+    'Marraine : ' + marraine + '\n' +
+    'Filleule : ' + filleule + '\n' +
+    'Téléphone marraine : ' + (tel || 'non renseigné') + '\n\n' +
+    'Offre : séance découverte de la filleule à 50€, remboursés si elle ' +
+    's\'engage sur 3 mois (comme toute nouvelle cliente). ' +
+    'Si elle prend un forfait, la marraine reçoit 1 séance offerte.'
+  );
+
+  window.location.href = 'mailto:contact@ornellafitcoaching.com?subject=' + subject + '&body=' + body;
+
+  document.getElementById('parrainage-form').style.display = 'none';
+  document.getElementById('confirm-msg').style.display = 'block';
+});
+</script>
+</body>
+</html>
