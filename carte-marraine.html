@@ -83,8 +83,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <div class="parr-hero">
-  <img class="parr-photo" src="images/ornella-gym-cover.jpg" alt="Ornella Fit Coaching">
+  <img class="parr-photo" src="images/poster-hero.jpg" alt="Ornella Fit Coaching" style="object-position:top">
   <p class="parr-intro">Beaucoup de mes clientes actuelles sont arrivées grâce à une copine qui leur a parlé de moi. Pour les remercier de cette confiance — et pour que ça profite aussi à la personne qu'elles recommandent — j'ai mis en place ce programme de parrainage.</p>
+</div>
+
+<div style="max-width:720px;margin:0 auto 40px;padding:0 20px;text-align:center">
+  <div style="display:inline-block;background:#FDF5F0;border:1.5px solid rgba(201,99,88,.3);border-radius:14px;padding:14px 26px;font-size:.92rem;color:#1E1616">
+    💰 <strong>Jusqu'à 17€ d'avantages</strong>, en plus de sa séance découverte remboursée sur engagement.
+  </div>
 </div>
 
 <div class="parr-avantages" style="grid-template-columns:1fr">
@@ -160,7 +166,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p>Envoie ce lien à autant de copines que tu veux — chacune peut réserver sa séance découverte.</p>
   <button class="parr-cta-btn" style="border:none;font-family:inherit;font-size:1rem;cursor:pointer;margin-bottom:14px" onclick="partagerParrainage()">📤 Partager ce lien</button>
   <br>
-  <a class="parr-cta-btn" style="background:transparent;border:1.5px solid rgba(255,255,255,.4);color:#fff" href="https://wa.me/33756834626?text=Salut%20Ornella%20!%20On%20m'a%20recommand%C3%A9%20ton%20coaching%2C%20je%20veux%20r%C3%A9server%20ma%20premi%C3%A8re%20s%C3%A9ance%20%C3%A0%2050%E2%82%AC%20%F0%9F%98%8A">Réserver ma séance découverte →</a>
+
+  <div style="max-width:320px;margin:18px auto 10px;text-align:left">
+    <label for="marraine-prenom" style="display:block;color:rgba(255,255,255,.75);font-size:.78rem;margin-bottom:6px">Ton prénom (pour que je sache qui te remercier 🎁)</label>
+    <input type="text" id="marraine-prenom" placeholder="Ton prénom" style="width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;font-family:inherit;font-size:.95rem">
+  </div>
+  <button class="parr-cta-btn" style="border:none;font-family:inherit;font-size:1rem;cursor:pointer;background:transparent;border:1.5px solid rgba(255,255,255,.4);color:#fff" onclick="reserverAvecMarraine()">Réserver ma séance découverte →</button>
 </div>
 
 <script>
@@ -174,6 +185,15 @@ function partagerParrainage(){
       alert('Lien copié ! Tu peux le coller où tu veux (WhatsApp, Instagram, SMS...).');
     });
   }
+}
+
+function reserverAvecMarraine(){
+  var prenom = document.getElementById('marraine-prenom').value.trim();
+  var base = "Salut Ornella ! On m'a recommandé ton coaching";
+  var suffix = prenom ? (" (c'est " + prenom + " qui m'envoie !)") : "";
+  var message = base + suffix + ", je veux réserver ma première séance à 50€ 😊";
+  var waUrl = 'https://wa.me/33756834626?text=' + encodeURIComponent(message);
+  window.open(waUrl, '_blank');
 }
 </script>
 
