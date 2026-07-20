@@ -28,7 +28,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="style.css">
 <style>
 .parr-hero{max-width:720px;margin:0 auto;padding:0 20px}
-.parr-photo{width:100%;max-height:340px;object-fit:cover;border-radius:20px;margin:24px 0 8px;display:block}
+.parr-photo{width:100%;height:340px;object-fit:cover;border-radius:20px;margin:24px 0 8px;display:block}
 .parr-intro{font-size:.95rem;line-height:1.8;color:#4A3F3A;max-width:640px;margin:0 auto 40px}
 .parr-avantages{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:720px;margin:0 auto 40px;padding:0 20px}
 .parr-card{background:#fff;border:1.5px solid rgba(201,99,88,.22);border-radius:18px;padding:26px 22px;text-align:center}
@@ -83,7 +83,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <div class="parr-hero">
-  <img class="parr-photo" src="images/poster-hero.jpg" alt="Ornella Fit Coaching" style="object-position:top">
+  <img class="parr-photo" src="images/poster-hero.jpg" alt="Ornella Fit Coaching" style="object-position:center 20%">
   <p class="parr-intro">Beaucoup de mes clientes actuelles sont arrivées grâce à une copine qui leur a parlé de moi. Pour les remercier de cette confiance — et pour que ça profite aussi à la personne qu'elles recommandent — j'ai mis en place ce programme de parrainage.</p>
 </div>
 
@@ -168,21 +168,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <div style="background:#fff;border:1.5px solid rgba(201,99,88,.22);border-radius:20px;padding:20px;text-align:center">
     <img src="images/avant-apres-louise.jpg" alt="Transformation Louise" style="width:100%;max-width:480px;border-radius:14px;display:block;margin:0 auto 14px">
-    <p style="font-size:.9rem;color:#4A3F3A;margin:0"><strong>Louise</strong>, cliente depuis avril 2026.</p>
+    <p style="font-size:.9rem;color:#4A3F3A;margin:0"><strong>Louise</strong>, cliente depuis novembre 2025.</p>
   </div>
 </div>
 
 <div class="parr-cta-block">
-  <h2>Prête à partager ?</h2>
-  <p>Envoie ce lien à autant de copines que tu veux — chacune peut réserver sa séance découverte.</p>
-  <button class="parr-cta-btn" style="border:none;font-family:inherit;font-size:1rem;cursor:pointer;margin-bottom:14px" onclick="partagerParrainage()">📤 Partager ce lien</button>
-  <br>
 
-  <div style="max-width:320px;margin:18px auto 10px;text-align:left">
-    <label for="marraine-prenom" style="display:block;color:rgba(255,255,255,.75);font-size:.78rem;margin-bottom:6px">Ton prénom (pour que je sache qui te remercier 🎁)</label>
-    <input type="text" id="marraine-prenom" placeholder="Ton prénom" style="width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;font-family:inherit;font-size:.95rem">
+  <div style="border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:32px;margin-bottom:32px">
+    <div style="display:inline-block;background:rgba(255,255,255,.12);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:14px">👉 Tu es la marraine</div>
+    <h2 style="font-size:1.4rem">Partage ce lien</h2>
+    <p>Envoie-le à autant de copines que tu veux — chacune peut réserver sa séance découverte.</p>
+    <button class="parr-cta-btn" style="border:none;font-family:inherit;font-size:1rem;cursor:pointer" onclick="partagerParrainage()">📤 Partager ce lien</button>
   </div>
-  <button class="parr-cta-btn" style="border:none;font-family:inherit;font-size:1rem;cursor:pointer;background:transparent;border:1.5px solid rgba(255,255,255,.4);color:#fff" onclick="reserverAvecMarraine()">Réserver ma séance découverte →</button>
+
+  <div>
+    <div style="display:inline-block;background:rgba(255,255,255,.12);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:14px">👉 Tu es la copine invitée</div>
+    <h2 style="font-size:1.4rem">Réserve ta séance découverte</h2>
+    <p>Dis-moi qui te recommande, pour qu'elle reçoive bien sa séance offerte :</p>
+    <div style="max-width:320px;margin:0 auto 16px;text-align:left">
+      <label for="marraine-prenom" style="display:block;color:rgba(255,255,255,.75);font-size:.78rem;margin-bottom:6px">Prénom de ta copine (la marraine)</label>
+      <input type="text" id="marraine-prenom" placeholder="Son prénom" style="width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;font-family:inherit;font-size:.95rem">
+    </div>
+    <button class="parr-cta-btn" style="border:none;font-family:inherit;font-size:1rem;cursor:pointer;background:transparent;border:1.5px solid rgba(255,255,255,.4);color:#fff" onclick="reserverAvecMarraine()">Réserver ma séance découverte →</button>
+  </div>
+
 </div>
 
 <script>
