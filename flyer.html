@@ -374,6 +374,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <input type="text" name="EMAIL" id="flyerLeadEmail">
 </form>
 <script>
+const BREVO_API_KEY = 'xkeysib-b3f029f593ab90bd2bb'+'2290988c5a455f29ddad8ec51e4ca585'+'dcf702b601838-1wVKxDw8s4P48lV3';
+
+function flyerGuideEmailHtml() {
+  return '<html><body style="margin:0;padding:0;background-color:#FDF8F4;font-family:Arial,Helvetica,sans-serif;">' +
+    '<table width="100%" cellpadding="0" cellspacing="0" bgcolor="#FDF8F4"><tr><td align="center" style="padding:32px 16px;">' +
+    '<table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">' +
+
+    '<tr><td bgcolor="#2C1F1A" style="padding:32px 36px;text-align:center;border-radius:14px 14px 0 0;">' +
+    '<div style="font-size:32px;line-height:1;">&#127873;</div>' +
+    '<div style="font-family:Georgia,serif;font-size:20px;font-weight:bold;color:#ffffff;margin-top:8px;">Guide Recettes Sculptantes</div>' +
+    '<div style="font-size:11px;color:#aaaaaa;letter-spacing:2px;margin-top:4px;text-transform:uppercase;">Offert · Offre flyer Ornella Fit Coaching</div>' +
+    '</td></tr>' +
+
+    '<tr><td bgcolor="#ffffff" style="padding:32px 36px;">' +
+    '<h2 style="font-family:Georgia,serif;font-size:22px;color:#1E1616;margin:0 0 16px;line-height:1.35;">Salut &#128075;</h2>' +
+    '<p style="font-size:14px;color:#5C4A40;line-height:1.75;margin:0 0 24px;">Merci d\'avoir r&#233;pondu &#224; mon flyer ! Ton <strong>Guide Recettes Sculptantes</strong> (21 recettes + liste de courses) est pr&#234;t &#8212; clique juste en dessous pour y acc&#233;der.</p>' +
+
+    '<table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:8px;"><tr><td align="center">' +
+    '<a href="https://www.ornellafitcoaching.com/guide-recettes-sculptantes.html" style="display:inline-block;background-color:#C96358;color:#ffffff;font-weight:bold;font-size:14px;padding:16px 36px;border-radius:50px;text-decoration:none;">Lire mon guide maintenant &#8594;</a>' +
+    '</td></tr></table>' +
+    '<p style="font-size:12px;color:#aaaaaa;text-align:center;margin:12px 0 28px;">Si le bouton ne fonctionne pas : https://www.ornellafitcoaching.com/guide-recettes-sculptantes.html</p>' +
+
+    '<table width="100%" cellpadding="0" cellspacing="0"><tr><td bgcolor="#FDF8F4" style="padding:20px 22px;border-radius:12px;">' +
+    '<p style="font-size:12px;color:#8A7060;text-transform:uppercase;letter-spacing:1px;font-weight:bold;margin:0 0 14px;">Pour aller plus loin</p>' +
+    '<table width="100%" cellpadding="0" cellspacing="0">' +
+    '<tr><td style="padding:6px 0;font-size:13px;"><a href="https://www.ornellafitcoaching.com/transformations.html" style="color:#C96358;text-decoration:none;font-weight:bold;">&#128248; Voir mes transformations &#8594;</a></td></tr>' +
+    '<tr><td style="padding:6px 0;font-size:13px;"><a href="https://www.ornellafitcoaching.com/offres.html" style="color:#C96358;text-decoration:none;font-weight:bold;">&#128170; Voir mon coaching &#224; domicile &#8594;</a></td></tr>' +
+    '<tr><td style="padding:6px 0;font-size:13px;"><a href="https://www.ornellafitcoaching.com/flyer.html" style="color:#C96358;text-decoration:none;font-weight:bold;">&#127873; Revoir l\'offre flyer (50&#8364; + guide offert) &#8594;</a></td></tr>' +
+    '</table>' +
+    '</td></tr></table>' +
+
+    '<table width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px;"><tr><td align="center">' +
+    '<a href="https://wa.me/33756834626?text=Salut%20Ornella%20%21%20J%27ai%20vu%20ton%20flyer%2C%20je%20veux%20r%C3%A9server%20ma%20s%C3%A9ance%20d%C3%A9couverte%20%C3%A0%2050%E2%82%AC%20et%20r%C3%A9cup%C3%A9rer%20le%20Guide%20Recettes%20offert%20%F0%9F%98%8A" style="display:inline-block;background-color:#25D366;color:#ffffff;font-weight:bold;font-size:13px;padding:12px 28px;border-radius:50px;text-decoration:none;">&#128172; Me r&#233;pondre sur WhatsApp &#8594;</a>' +
+    '</td></tr></table>' +
+    '</td></tr>' +
+
+    '<tr><td bgcolor="#F5EDE4" style="padding:20px 36px;text-align:center;border-radius:0 0 14px 14px;border-top:1px solid #e8ddd4;">' +
+    '<p style="font-size:13px;color:#8A7060;line-height:1.7;margin:0;">&#192; tr&#232;s vite,<br><strong style="color:#1E1616;">Ornella &#128293;</strong><br><span style="font-size:11px;">ornellafitcoaching.com</span></p>' +
+    '</td></tr>' +
+
+    '</table></td></tr></table>' +
+    '</body></html>';
+}
+
 function submitFlyerLead(e) {
   e.preventDefault();
   var email = document.getElementById('fly-lead-email').value.trim();
@@ -382,6 +426,16 @@ function submitFlyerLead(e) {
   btn.disabled = true; btn.textContent = 'Envoi…';
   document.getElementById('flyerLeadEmail').value = email;
   document.getElementById('flyerLeadForm').submit();
+  fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      to: [{ email: email }],
+      htmlContent: flyerGuideEmailHtml(),
+      subject: '🎁 Ton Guide Recettes Sculptantes est prêt',
+      sender: { name: 'Ornella Fit Coaching', email: 'contact@ornellafitcoaching.com' }
+    })
+  }).catch(function(err) { console.warn('[flyer guide email]', err); });
   if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'Flyer'});
   document.getElementById('fly-lead-form').style.display = 'none';
   document.getElementById('fly-lead-success').style.display = 'block';
