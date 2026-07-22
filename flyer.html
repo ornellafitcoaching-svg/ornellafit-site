@@ -87,6 +87,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 .fly-note { max-width: 600px; margin: 20px auto 0; padding: 0 20px; text-align: center; }
 .fly-note p { font-size: .8rem; color: #9A8080; font-style: italic; }
+
+/* LEAD CAPTURE */
+#fly-lead { max-width: 480px; margin: 28px auto 0; padding: 0 20px; text-align: center; }
+.fly-lead-text { font-size: 0.86rem; color: var(--text-mid); margin-bottom: 12px; }
+#fly-lead-form { display: flex; gap: 8px; }
+#fly-lead-email { flex: 1; padding: 14px 16px; border: 1.5px solid rgba(201,185,154,0.4); border-radius: 12px; font-size: 0.92rem; font-family: 'DM Sans', sans-serif; outline: none; }
+#fly-lead-email:focus { border-color: var(--accent); }
+#fly-lead-submit { padding: 14px 22px; background: var(--accent); color: #fff; border: none; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+#fly-lead-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+#fly-lead-success { display: none; font-size: 0.88rem; color: var(--dark); font-weight: 600; background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.2); border-radius: 12px; padding: 14px; }
+@media (max-width: 480px) { #fly-lead-form { flex-direction: column; } }
 </style>
 </head>
 <body>
@@ -202,11 +213,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>Réponds-moi directement sur WhatsApp pour réserver ton créneau.</p>
     <a class="fly-cta-btn" href="https://wa.me/33756834626?text=Salut%20Ornella%20%21%20J%27ai%20vu%20ton%20flyer%2C%20je%20veux%20r%C3%A9server%20ma%20s%C3%A9ance%20d%C3%A9couverte%20%C3%A0%2050%E2%82%AC%20et%20r%C3%A9cup%C3%A9rer%20le%20Guide%20Recettes%20offert%20%F0%9F%98%8A" target="_blank">Réserver ma séance découverte →</a>
   </div>
+
+  <div id="fly-lead">
+    <p class="fly-lead-text">Pas encore prête à écrire sur WhatsApp ? Laisse ton email, je t'envoie le Guide Recettes Sculptantes et l'offre flyer.</p>
+    <form id="fly-lead-form" onsubmit="submitFlyerLead(event)">
+      <input type="email" id="fly-lead-email" placeholder="Ton email" required>
+      <button type="submit" id="fly-lead-submit">Recevoir le guide →</button>
+    </form>
+    <div id="fly-lead-success">✅ C'est noté ! Tu vas recevoir le guide par email.</div>
+  </div>
 </div>
 
 <div class="fly-note">
   <p>Offre valable uniquement présentée via ce flyer.</p>
 </div>
+
+<iframe name="flyerLeadFrame" style="display:none"></iframe>
+<form id="flyerLeadForm" method="POST" target="flyerLeadFrame" action="https://e605324b.sibforms.com/serve/MUIFABYWY33sJ-ySu7ZJ5zTURe52gWZqy73Z1Zcfyr-85ZEgxsE5W_ywSZ240eOXTo91YQrpsOzdDw2xRES96jUS3oXr0Aj2IPwOwLtLcZrwGOak3PhhblR9IHXrh-13S0nHVOqhO4m4JMdQNuhrzup1RLAQcInHHD7Kn0o4agrrj-6cSUEK6Vract-7iItEZ-5PKR7jjSxoK1BbhQ==" style="display:none">
+  <input type="text" name="EMAIL" id="flyerLeadEmail">
+</form>
+<script>
+function submitFlyerLead(e) {
+  e.preventDefault();
+  var email = document.getElementById('fly-lead-email').value.trim();
+  if (!email) return;
+  var btn = document.getElementById('fly-lead-submit');
+  btn.disabled = true; btn.textContent = 'Envoi…';
+  document.getElementById('flyerLeadEmail').value = email;
+  document.getElementById('flyerLeadForm').submit();
+  if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'Flyer'});
+  document.getElementById('fly-lead-form').style.display = 'none';
+  document.getElementById('fly-lead-success').style.display = 'block';
+}
+</script>
 
 <!-- FOOTER -->
 <footer>
