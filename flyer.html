@@ -402,6 +402,21 @@ function submitFlyerLead(e) {
     else wa.classList.remove('wa-visible');
   }, { passive: true });
 })();
+
+/* Positionne la nav juste sous le top-bar quelle que soit sa hauteur réelle */
+function syncNavPosition() {
+  var tb = document.getElementById('top-bar');
+  var nav = document.querySelector('nav');
+  var navMenu = document.getElementById('navMenu');
+  if (!tb || !nav) return;
+  var tbH = tb.offsetHeight;
+  nav.style.top = tbH + 'px';
+  if (navMenu) navMenu.style.top = (tbH + 64) + 'px';
+  var hero = document.getElementById('fly-hero');
+  if (hero) hero.style.paddingTop = (tbH + 88) + 'px';
+}
+document.addEventListener('DOMContentLoaded', syncNavPosition);
+window.addEventListener('resize', syncNavPosition);
 </script>
 
 <!-- FOOTER -->
