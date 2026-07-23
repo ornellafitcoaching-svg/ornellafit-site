@@ -58,17 +58,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .fly-b-text { font-size: 0.86rem; color: var(--text-mid); line-height: 1.6; }
 @media (max-width: 640px) { .fly-benefits-grid { grid-template-columns: 1fr; } }
 
-/* PREUVE */
-#fly-proof { padding: 56px 20px; background: white; }
-.fly-proof-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--dark); text-align: center; margin-bottom: 36px; }
-.fly-proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 900px; margin: 0 auto; }
-.fly-proof-card { text-align: center; }
-.fly-proof-img-wrap { border-radius: 20px; overflow: hidden; box-shadow: 0 14px 44px rgba(44,31,26,0.16); margin-bottom: 18px; background: var(--cream); }
-.fly-proof-img-wrap img { width: 100%; height: auto; display: block; }
-.fly-proof-tag { display: inline-block; background: #2C1F1A; color: #C9A96E; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 50px; margin-bottom: 10px; }
-.fly-proof-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--dark); line-height: 1.55; margin: 0 auto 8px; }
-.fly-proof-name { font-size: 0.78rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.06em; }
-@media (max-width: 700px) { .fly-proof-grid { grid-template-columns: 1fr; gap: 36px; } }
+/* PREUVE — SWIPE */
+#fly-proof { padding: 56px 0; background: white; }
+.fly-proof-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--dark); text-align: center; margin-bottom: 6px; padding: 0 20px; }
+.fly-proof-hint { text-align: center; font-size: 0.78rem; color: var(--text-light); margin-bottom: 28px; }
+.fly-swipe-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 4px 20px 20px; scrollbar-width: none; }
+.fly-swipe-track::-webkit-scrollbar { display: none; }
+.fly-proof-card { flex: 0 0 auto; width: 78vw; max-width: 300px; text-align: center; scroll-snap-align: center; }
+.fly-proof-img-wrap { border-radius: 20px; overflow: hidden; box-shadow: 0 14px 44px rgba(44,31,26,0.16); margin-bottom: 16px; background: var(--cream); }
+.fly-proof-img-wrap img { width: 100%; height: 340px; object-fit: cover; display: block; }
+.fly-proof-tag { display: inline-block; background: #2C1F1A; color: #C9A96E; font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 50px; margin-bottom: 10px; }
+.fly-proof-quote { font-family: 'Cormorant Garamond', serif; font-size: 0.98rem; font-style: italic; color: var(--dark); line-height: 1.5; margin: 0 auto 8px; }
+.fly-proof-name { font-size: 0.76rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.06em; }
+@media (min-width: 860px) { .fly-swipe-track { justify-content: center; flex-wrap: nowrap; } .fly-proof-card { width: 260px; } }
 
 /* OFFRE */
 #fly-offer-section { background: linear-gradient(150deg, var(--cream) 0%, #F2E8DF 100%); padding: 56px 20px; }
@@ -318,7 +320,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- PREUVE -->
 <div id="fly-proof">
   <h2 class="fly-proof-title">Des résultats réels, à tout âge</h2>
-  <div class="fly-proof-grid">
+  <p class="fly-proof-hint">👉 Fais glisser pour voir plus de résultats</p>
+  <div class="fly-swipe-track">
+    <div class="fly-proof-card">
+      <div class="fly-proof-img-wrap">
+        <img src="images/louise-face.jpg" alt="Transformation de Louise, cliente coachée par Ornella" loading="lazy">
+      </div>
+      <div class="fly-proof-tag">🔥 Perte de gras</div>
+      <p class="fly-proof-quote">« Une vraie envie de reprendre le contrôle de mon corps, sans me priver. » −9 cm de tour de taille, −5 kg en 4 mois.</p>
+      <p class="fly-proof-name">— Louise, maman de 2 enfants</p>
+    </div>
     <div class="fly-proof-card">
       <div class="fly-proof-img-wrap">
         <img src="images/avant-apres-emeline.jpg" alt="Transformation d'Emeline, cliente coachée par Ornella" loading="lazy">
@@ -334,6 +345,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="fly-proof-tag">💪 Perte de poids</div>
       <p class="fly-proof-quote">« Je m'étais abonnée en salle, je n'y allais plus. Sans programme fait pour moi, je tournais en rond. On a tout repris de zéro. » −4 kg en 1 mois.</p>
       <p class="fly-proof-name">— Cliente, 54 ans</p>
+    </div>
+    <div class="fly-proof-card">
+      <div class="fly-proof-img-wrap">
+        <img src="images/avant-apres-anonyme.jpg" alt="Transformation d'une cliente coachée par Ornella à domicile" loading="lazy">
+      </div>
+      <div class="fly-proof-tag">✨ Silhouette</div>
+      <p class="fly-proof-quote">« Transformation visible sur toute la silhouette — sans régime, sans m'épuiser. » −4 cm cuisses, −5 cm poitrine en 1 mois.</p>
+      <p class="fly-proof-name">— Cliente, coaching à domicile</p>
+    </div>
+    <div class="fly-proof-card">
+      <div class="fly-proof-img-wrap">
+        <img src="images/avant-apres-1.png" alt="Transformation d'une cliente coachée par Ornella à distance" loading="lazy">
+      </div>
+      <div class="fly-proof-tag">🎯 Coaching à distance</div>
+      <p class="fly-proof-quote">« Après des années en salle sans résultats, j'ai enfin compris pourquoi je stagnais. Le programme sur-mesure a tout changé. »</p>
+      <p class="fly-proof-name">— Cliente, coaching distanciel</p>
     </div>
   </div>
   <div class="fly-inline-link-wrap">
