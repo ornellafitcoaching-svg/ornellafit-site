@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Programme Émeline Vacances">
+<title>Programme Émeline — Vacances Full Body</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#C96358;--cream:#F7F3F0;--dark:#1A0F0F;--gold:#C9957A;
+  --nude:#E8B4A0;--brown:#9A8080;--green:#4a9e6e;--card:rgba(255,255,255,0.04);
+  --border:rgba(232,180,160,0.18);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);min-height:100vh;line-height:1.6}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(26,15,15,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:12px 20px;padding-top:max(12px, env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--nude);white-space:nowrap}
+.nav-links{display:flex;gap:8px;flex-wrap:wrap}
+.nav-links a{font-size:0.75rem;color:var(--brown);text-decoration:none;padding:4px 10px;border:1px solid var(--border);border-radius:20px;transition:all .2s;white-space:nowrap}
+.nav-links a:hover{border-color:var(--accent);color:var(--cream)}
+
+.cover{text-align:center;padding:60px 20px 40px;border-bottom:1px solid var(--border)}
+.cover-badge{display:inline-block;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,149,122,0.4);border-radius:20px;padding:5px 14px;margin-bottom:18px}
+.cover h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,7vw,3.6rem);font-weight:600;line-height:1.15;margin-bottom:10px}
+.cover h1 em{font-style:italic;color:var(--gold)}
+.cover-sub{font-size:0.95rem;color:var(--brown);max-width:480px;margin:0 auto 28px;line-height:1.7}
+.cover-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.pill{font-size:0.78rem;background:rgba(201,99,88,0.12);border:1px solid rgba(201,99,88,0.3);border-radius:20px;padding:5px 13px;color:var(--nude)}
+
+section{padding:40px 20px;max-width:760px;margin:0 auto}
+section+section{border-top:1px solid var(--border)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:var(--nude);margin-bottom:6px}
+.section-sub{font-size:0.85rem;color:var(--brown);margin-bottom:24px;line-height:1.6}
+
+.week-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.week-btn{font-size:0.8rem;padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--brown);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.week-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+.seance-tabs{display:flex;gap:8px;margin-bottom:24px}
+.seance-btn{flex:1;padding:12px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--brown);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.88rem;transition:all .2s;text-align:center}
+.seance-btn.active{background:rgba(201,99,88,0.15);border-color:var(--accent);color:var(--cream);font-weight:600}
+
+.ss-block{margin-bottom:28px;position:relative}
+.ss-label{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);background:rgba(201,149,122,0.12);border:1px solid rgba(201,149,122,0.3);border-radius:20px;padding:4px 12px;display:inline-block;margin-bottom:8px}
+.ss-exercises{border-left:2px solid var(--accent);padding-left:0;margin-left:0}
+.ss-connector{display:flex;align-items:center;gap:8px;margin:4px 0 4px 14px}
+.ss-connector-line{flex:1;height:1px;background:rgba(201,99,88,0.3)}
+.ss-connector-text{font-size:0.7rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase}
+
+.ex-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 16px;margin-left:14px;margin-bottom:0;transition:border-color .2s}
+.ex-card:hover{border-color:rgba(201,99,88,0.4)}
+.ex-card.standalone{margin-left:0}
+.ex-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px}
+.ex-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--cream);line-height:1.2}
+.badges{display:flex;flex-wrap:wrap;gap:5px;flex-shrink:0}
+.badge{font-size:0.66rem;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:10px;font-weight:600;white-space:nowrap}
+.badge-new{background:rgba(74,158,110,0.2);border:1px solid rgba(74,158,110,0.5);color:#7ecba1}
+.badge-tempo{background:rgba(201,149,122,0.15);border:1px solid rgba(201,149,122,0.4);color:var(--gold)}
+.badge-rir{background:rgba(201,99,88,0.15);border:1px solid rgba(201,99,88,0.4);color:var(--nude)}
+.badge-home{background:rgba(74,158,110,0.15);border:1px solid rgba(74,158,110,0.4);color:#7ecba1}
+.badge-gym{background:rgba(201,99,88,0.15);border:1px solid rgba(201,99,88,0.4);color:var(--nude)}
+.ex-sets{font-size:0.88rem;color:var(--nude);margin-bottom:8px;font-weight:500}
+.ex-ref-dual{font-size:0.84rem;color:var(--cream);margin-bottom:2px}
+.ex-tip{font-size:0.82rem;color:var(--brown);font-style:italic;line-height:1.55;padding-top:6px;border-top:1px solid var(--border)}
+
+.ss-rest{display:flex;align-items:center;justify-content:space-between;margin:10px 14px 4px;padding:10px 14px;background:rgba(201,99,88,0.08);border:1px solid rgba(201,99,88,0.2);border-radius:8px}
+.ss-rest-label{font-size:0.78rem;color:var(--brown)}
+.timer-btns{display:flex;gap:6px}
+.t-btn{font-size:0.73rem;padding:5px 10px;border-radius:6px;border:1px solid rgba(201,99,88,0.35);background:transparent;color:var(--nude);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.t-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.ex-rest{font-size:0.82rem;color:var(--brown);margin:6px 0 18px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ex-rest .rest-duration{color:var(--nude);font-weight:600}
+
+.warmup-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.warmup-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center}
+.warmup-name{font-size:0.88rem;color:var(--cream);margin-bottom:4px}
+.warmup-detail{font-size:0.75rem;color:var(--brown)}
+
+.progress-wrap{margin-bottom:32px}
+.progress-label{display:flex;justify-content:space-between;font-size:0.78rem;color:var(--brown);margin-bottom:6px}
+.progress-bar{height:6px;background:rgba(255,255,255,0.06);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--accent));border-radius:10px;transition:width .4s}
+
+#ios-banner{background:rgba(201,149,122,0.12);border-bottom:1px solid rgba(201,149,122,0.25);padding:12px 16px}
+.ios-banner-inner{display:flex;align-items:flex-start;gap:12px;max-width:760px;margin:0 auto}
+.ios-banner-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.ios-banner-text{flex:1;font-size:0.8rem;color:var(--brown);line-height:1.6;display:flex;flex-direction:column;gap:3px}
+.ios-banner-text strong{color:var(--nude);font-size:0.85rem}
+.ios-banner-text em{font-style:normal;color:var(--nude);font-weight:600}
+.ios-share{font-size:1rem;display:inline-block;vertical-align:middle}
+.ios-banner-close{background:none;border:none;color:var(--brown);font-size:1.1rem;cursor:pointer;padding:4px;flex-shrink:0;margin-top:-2px}
+
+.legend-box{background:rgba(201,149,122,0.07);border:1px solid rgba(201,149,122,0.25);border-radius:14px;padding:20px 18px;margin-bottom:24px;display:flex;flex-direction:column;gap:16px}
+.legend-item{display:flex;align-items:flex-start;gap:14px}
+.legend-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.legend-title{font-size:0.88rem;font-weight:600;color:var(--nude);margin-bottom:5px}
+.legend-text{font-size:0.8rem;color:var(--brown);line-height:1.65}
+.legend-text strong{color:var(--nude)}
+.legend-divider{height:1px;background:rgba(201,149,122,0.2)}
+
+.glossary-list{display:flex;flex-direction:column;gap:8px}
+details{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}
+details[open]{border-color:rgba(201,99,88,0.4)}
+summary{padding:16px 18px;cursor:pointer;font-weight:500;font-size:0.92rem;color:var(--cream);list-style:none;display:flex;align-items:center;justify-content:space-between;gap:8px;user-select:none}
+summary::after{content:'＋';font-size:1rem;color:var(--accent);flex-shrink:0;transition:transform .2s}
+details[open] summary::after{content:'－'}
+summary::-webkit-details-marker{display:none}
+.gloss-body{padding:0 18px 16px;font-size:0.85rem;color:var(--brown);line-height:1.7}
+.gloss-body strong{color:var(--nude)}
+
+#timer-widget{position:fixed;bottom:max(20px,env(safe-area-inset-bottom));right:16px;z-index:200;background:#1e1212;border:1px solid var(--border);border-radius:16px;padding:16px 18px;width:180px;box-shadow:0 8px 32px rgba(0,0,0,0.5);display:none}
+#timer-widget.visible{display:block}
+.timer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.timer-title{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)}
+#timer-close{background:none;border:none;color:var(--brown);cursor:pointer;font-size:1rem;padding:0}
+#timer-display{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;text-align:center;color:#fff;line-height:1;margin-bottom:12px}
+.timer-presets{display:flex;gap:5px;margin-bottom:10px}
+.preset-btn{flex:1;font-size:0.72rem;padding:6px 2px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--brown);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;text-align:center}
+.preset-btn:hover,.preset-btn.active-preset{background:var(--accent);border-color:var(--accent);color:#fff}
+.timer-controls{display:flex;gap:6px}
+.ctrl-btn{flex:1;padding:8px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;cursor:pointer;transition:all .2s}
+#btn-start{background:var(--accent);color:#fff}
+#btn-start:hover{opacity:.85}
+#btn-reset{background:rgba(255,255,255,0.07);color:var(--brown)}
+#btn-reset:hover{background:rgba(255,255,255,0.12)}
+#timer-open-btn{position:fixed;bottom:max(20px,env(safe-area-inset-bottom));right:16px;z-index:199;background:var(--accent);border:none;border-radius:50%;width:52px;height:52px;font-size:1.4rem;cursor:pointer;box-shadow:0 4px 20px rgba(201,99,88,0.45);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+#timer-open-btn:hover{transform:scale(1.08)}
+#timer-open-btn.hidden{display:none}
+
+@media(max-width:520px){
+  nav{padding:10px 14px;padding-top:max(10px,env(safe-area-inset-top))}
+  .nav-links{display:none}
+  .ex-header{flex-direction:column;gap:6px}
+  .badges{justify-content:flex-start}
+  .t-btn{padding:8px 12px;font-size:0.8rem;min-height:36px}
+  .week-btn{padding:10px 14px;min-height:40px}
+  .seance-btn{min-height:48px}
+  section{padding:28px 16px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-title">Émeline · Vacances Full Body</span>
+  <div class="nav-links">
+    <a href="#warmup">Échauffement</a>
+    <a href="#programme">Programme</a>
+    <a href="#glossaire">Glossaire</a>
+  </div>
+</nav>
+
+<div id="ios-banner" style="display:none">
+  <div class="ios-banner-inner">
+    <div class="ios-banner-icon">📲</div>
+    <div class="ios-banner-text">
+      <strong>Ajoute ce programme sur ton écran d'accueil</strong>
+      <span>Appuie sur <span class="ios-share">⎋</span> puis <em>"Sur l'écran d'accueil"</em> — il s'ouvrira comme une appli, sans navigateur.</span>
+    </div>
+    <button class="ios-banner-close" onclick="closeBanner()">✕</button>
+  </div>
+</div>
+
+<div class="cover">
+  <div class="cover-badge">Programme personnalisé · Vacances · 2026</div>
+  <h1>Full Body<br><em>Vacances</em></h1>
+  <p class="cover-sub">4 semaines pour garder le rythme partout où tu es. Priorité fessiers + taille, avec ton kit vacances (haltères 1-2-3kg, bandes fessiers 3 résistances, grande bande plate 3 résistances). Semaine 4 : les deux versions, pour ton retour.</p>
+  <div class="cover-pills">
+    <span class="pill">4 semaines</span>
+    <span class="pill">Full Body · 3x/semaine</span>
+    <span class="pill">Maison ou Salle</span>
+    <span class="pill">Fessiers + Taille</span>
+  </div>
+</div>
+
+<section id="warmup">
+  <div class="section-title">Échauffement</div>
+  <p class="section-sub">5–8 min avant chaque séance, où que tu sois. Prépare les hanches et le dos, active les fessiers avant de charger.</p>
+  <div class="warmup-grid">
+    <div class="warmup-item"><div class="warmup-name">Cat-cow</div><div class="warmup-detail">1 min · mobilité dos</div></div>
+    <div class="warmup-item"><div class="warmup-name">Montées de genoux</div><div class="warmup-detail">2 min · sur place</div></div>
+    <div class="warmup-item"><div class="warmup-name">Pont fessier léger</div><div class="warmup-detail">15 reps · activation</div></div>
+    <div class="warmup-item"><div class="warmup-name">Rotations hanches</div><div class="warmup-detail">10/sens · mobilité</div></div>
+  </div>
+</section>
+
+<section id="programme">
+  <div class="section-title">Programme</div>
+  <p class="section-sub">Semaines 1 à 3 : full body adaptable où que tu sois (maison ou salle selon ce que tu as sous la main). Semaine 4 : tu es rentrée — les deux versions (salle et maison) sont détaillées pour chaque exercice, choisis selon ton jour. Alterne Séance 1 et Séance 2, 3x par semaine.</p>
+
+  <div class="week-tabs">
+    <button class="week-btn active" onclick="setWeek(1,this)">S1 — Vacances</button>
+    <button class="week-btn" onclick="setWeek(2,this)">S2 — Vacances</button>
+    <button class="week-btn" onclick="setWeek(3,this)">S3 — Vacances</button>
+    <button class="week-btn" onclick="setWeek(4,this)">S4 — Retour (Salle + Maison)</button>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-label"><span id="prog-label">Semaine 1 / 4</span><span id="prog-pct">25%</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:25%"></div></div>
+  </div>
+
+  <div class="legend-box">
+    <div class="legend-item">
+      <div class="legend-icon">⏱</div>
+      <div>
+        <div class="legend-title">Tempo — ex : <strong>3-1-1</strong></div>
+        <div class="legend-text">Descente lente, pause en bas, remontée contrôlée. Plus c'est lent, plus le muscle travaille — utile même sans grosse charge en vacances.</div>
+      </div>
+    </div>
+    <div class="legend-divider"></div>
+    <div class="legend-item">
+      <div class="legend-icon">🏠🏋️</div>
+      <div>
+        <div class="legend-title">Semaine 4 — deux versions</div>
+        <div class="legend-text">Chaque exercice indique une option <strong>🏠 Maison</strong> et une option <strong>🏋️ Salle</strong> — fais celle qui correspond à ta journée, même mouvement, même objectif.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="seance-tabs">
+    <button class="seance-btn active" onclick="setSeance('A',this)">🍑 Séance 1</button>
+    <button class="seance-btn" onclick="setSeance('B',this)">🍑 Séance 2</button>
+  </div>
+
+  <!-- ========== SÉANCE 1 ========== -->
+  <div id="seance-A">
+
+    <div class="ss-block">
+      <span class="ss-label">⚡ Superset 1</span>
+      <div class="ss-exercises">
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Hip Thrust au sol</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-1-2</span>
+              <span class="badge badge-rir" id="rir-A-hipthrust">RIR 3</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-A-hipthrust">4 × 12 reps — <span id="w-A-hipthrust-ref">poids du corps</span></div>
+          <p class="ex-tip">Bande fessier placée juste au-dessus des genoux. Épaules au sol (ou sur un canapé/banc si tu peux surélever), pieds ancrés, genoux poussés vers l'extérieur contre la bande. Pousse les hanches vers le plafond, contracte les fessiers en haut. Diastasis : n'arrondis pas le bas du dos.</p>
+        </div>
+
+        <div class="ss-connector"><div class="ss-connector-line"></div><span class="ss-connector-text">enchaîner directement</span><div class="ss-connector-line"></div></div>
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Pont fessier unilatéral</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-1-2</span>
+              <span class="badge badge-rir" id="rir-A-pontuni">RIR 3</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-A-pontuni">3 × 12 reps / jambe — <span id="w-A-pontuni-ref">poids du corps</span></div>
+          <p class="ex-tip">Un pied au sol, l'autre jambe tendue en l'air. Monte le bassin sans le laisser tourner. Si c'est trop facile, ralentis le tempo plutôt que d'ajouter du poids.</p>
+        </div>
+
+      </div>
+      <div class="ss-rest">
+        <span class="ss-rest-label">⏱ Repos : <strong style="color:var(--nude)">60 – 90s</strong></span>
+        <div class="timer-btns">
+          <button class="t-btn" onclick="timerLaunch(60)">60s</button>
+          <button class="t-btn" onclick="timerLaunch(90)">90s</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Squat gobelet</div>
+        <div class="badges">
+          <span class="badge badge-tempo">Tempo 3-1-1</span>
+          <span class="badge badge-rir" id="rir-A-squat">RIR 3</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-A-squat">4 × 12 reps — <span id="w-A-squat-ref">charge dispo (sac à dos, bidons)</span></div>
+      <p class="ex-tip">Charge tenue contre la poitrine (sac à dos lesté, bidons d'eau, valise si besoin !). Descends profond, genoux dans l'axe des orteils. La lenteur remplace le poids qui manque.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">90s</span> <button class="t-btn" onclick="timerLaunch(90)">Lancer</button></div>
+
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Fentes marchées</div>
+        <div class="badges">
+          <span class="badge badge-rir" id="rir-A-fentes">RIR 3</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-A-fentes">3 × 10 reps / jambe — <span id="w-A-fentes-ref">poids du corps</span></div>
+      <p class="ex-tip">Grands pas, descends jusqu'à ce que le genou arrière frôle le sol. Pousse avec le talon avant pour bien solliciter le fessier.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">60s</span> <button class="t-btn" onclick="timerLaunch(60)">Lancer</button></div>
+
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Pompes (genoux si besoin)</div>
+        <div class="badges">
+          <span class="badge badge-rir" id="rir-A-pompes">RIR 2</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-A-pompes">3 × max reps — <span id="w-A-pompes-ref">poids du corps</span></div>
+      <p class="ex-tip">Corps gainé, coudes à 45°. Sur les genoux si besoin, l'important c'est la forme, pas le nombre.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">60s</span> <button class="t-btn" onclick="timerLaunch(60)">Lancer</button></div>
+
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Dead Bug (gainage doux)</div>
+        <div class="badges">
+          <span class="badge badge-new">Spécial post-partum</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-A-deadbug">3 × 10 reps / côté — <span id="w-A-deadbug-ref">poids du corps</span></div>
+      <p class="ex-tip">Allongée, dos plaqué au sol, respire profondément en engageant le ventre (pas de crunch, pas de torsion). Descends bras + jambe opposés lentement sans que le bas du dos décolle. Idéal pour la sangle abdominale avec ton diastasis.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">45s</span> <button class="t-btn" onclick="timerLaunch(45)">Lancer</button></div>
+
+  </div>
+
+  <!-- ========== SÉANCE 2 ========== -->
+  <div id="seance-B" style="display:none">
+
+    <div class="ss-block">
+      <span class="ss-label">⚡ Superset 1</span>
+      <div class="ss-exercises">
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Squat sumo</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-1-2</span>
+              <span class="badge badge-rir" id="rir-B-sumo">RIR 3</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-B-sumo">4 × 15 reps — <span id="w-B-sumo-ref">poids du corps ou charge</span></div>
+          <p class="ex-tip">Bande fessier au-dessus des genoux. Pieds largement écartés, pointes ouvertes à 45°. Descends en gardant le dos droit, pousse les genoux vers l'extérieur contre la bande — cible l'intérieur des fessiers différemment du squat classique.</p>
+        </div>
+
+        <div class="ss-connector"><div class="ss-connector-line"></div><span class="ss-connector-text">enchaîner directement</span><div class="ss-connector-line"></div></div>
+
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-name">Donkey kicks</div>
+            <div class="badges">
+              <span class="badge badge-tempo">Tempo 2-1-2</span>
+              <span class="badge badge-rir" id="rir-B-donkey">RIR 3</span>
+            </div>
+          </div>
+          <div class="ex-sets" id="sets-B-donkey">3 × 15 reps / jambe — <span id="w-B-donkey-ref">élastique si dispo</span></div>
+          <p class="ex-tip">Bande fessier autour des chevilles. À quatre pattes, genou plié à 90°, pousse le talon vers le plafond contre la résistance de la bande en contractant le fessier. Garde le dos neutre, pas de cambrure.</p>
+        </div>
+
+      </div>
+      <div class="ss-rest">
+        <span class="ss-rest-label">⏱ Repos : <strong style="color:var(--nude)">60 – 90s</strong></span>
+        <div class="timer-btns">
+          <button class="t-btn" onclick="timerLaunch(60)">60s</button>
+          <button class="t-btn" onclick="timerLaunch(90)">90s</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">RDL unijambiste</div>
+        <div class="badges">
+          <span class="badge badge-tempo">Tempo 3-1-1</span>
+          <span class="badge badge-rir" id="rir-B-rdl">RIR 3</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-B-rdl">3 × 10 reps / jambe — <span id="w-B-rdl-ref">léger (équilibre + fessier)</span></div>
+      <p class="ex-tip">Bascule le buste vers l'avant en levant une jambe tendue derrière toi, dos plat. Vise les fessiers et ischios. Commence sans poids, l'équilibre est déjà un travail.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">60s</span> <button class="t-btn" onclick="timerLaunch(60)">Lancer</button></div>
+
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Rowing élastique / lesté</div>
+        <div class="badges">
+          <span class="badge badge-rir" id="rir-B-rowing">RIR 2</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-B-rowing">4 × 12 reps — <span id="w-B-rowing-ref">élastique ou bouteilles</span></div>
+      <p class="ex-tip">Grande bande plate ancrée sous les pieds (debout dessus, pieds écartés largeur épaules). Buste penché, tire les poignées vers l'arrière en pinçant les omoplates. Dos droit, pas de balancier.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">60s</span> <button class="t-btn" onclick="timerLaunch(60)">Lancer</button></div>
+
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Hyperextensions fessiers au sol</div>
+        <div class="badges">
+          <span class="badge badge-rir" id="rir-B-hyper">RIR 3</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-B-hyper">3 × 15 reps — <span id="w-B-hyper-ref">poids du corps</span></div>
+      <p class="ex-tip">Allongée sur le ventre, lève légèrement buste et jambes en contractant les fessiers (pas le bas du dos). Mouvement petit et contrôlé.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">45s</span> <button class="t-btn" onclick="timerLaunch(45)">Lancer</button></div>
+
+    <div class="ex-card standalone">
+      <div class="ex-header">
+        <div class="ex-name">Bird Dog (gainage doux)</div>
+        <div class="badges">
+          <span class="badge badge-new">Spécial post-partum</span>
+        </div>
+      </div>
+      <div class="ex-sets" id="sets-B-birddog">3 × 10 reps / côté — <span id="w-B-birddog-ref">poids du corps</span></div>
+      <p class="ex-tip">À quatre pattes, tends bras et jambe opposés en gardant le dos plat et le ventre engagé (respiration profonde, pas de creusement excessif). Stabilité avant tout, va lentement.</p>
+    </div>
+    <div class="ex-rest">⏱ Repos : <span class="rest-duration">45s</span> <button class="t-btn" onclick="timerLaunch(45)">Lancer</button></div>
+
+  </div>
+
+</section>
+
+<section id="glossaire">
+  <div class="section-title">Glossaire</div>
+  <p class="section-sub">Les termes techniques expliqués simplement.</p>
+  <div class="glossary-list">
+    <details>
+      <summary>RIR — Reps In Reserve</summary>
+      <div class="gloss-body"><strong>RIR = répétitions en réserve</strong>. RIR 3 = il te reste 3 répétitions avant l'échec, c'est volontairement plus léger en vacances pour rester safe sans salle équipée. RIR 2 = plus proche du max, utilisé en semaine 4 avec plus de charge.</div>
+    </details>
+    <details>
+      <summary>Tempo (ex : 3-1-1)</summary>
+      <div class="gloss-body">Vitesse de chaque phase : <strong>descente – pause – montée</strong>. 3-1-1 = 3 secondes pour descendre, 1 seconde de pause, 1 seconde pour remonter. En vacances sans grosses charges, un tempo lent est ton meilleur outil pour continuer à progresser.</div>
+    </details>
+    <details>
+      <summary>Pourquoi ce gainage "spécial post-partum" ?</summary>
+      <div class="gloss-body">Avec un diastasis, on évite les mouvements qui créent une pression vers l'avant sur le ventre (crunchs classiques, relevés de buste, torsions appuyées). Dead Bug et Bird Dog travaillent la sangle profonde (transverse) sans cette pression — plus sûr et tout aussi efficace pour la stabilité du tronc.</div>
+    </details>
+    <details>
+      <summary>Et après ces 4 semaines ?</summary>
+      <div class="gloss-body">Mois 2 de ton coaching distanciel : on repasse en <strong>salle uniquement</strong>, avec des charges plus lourdes, un vrai travail de tempo/temps sous tension, et de nouveaux exercices pour continuer à progresser sur les fessiers sans stagner.</div>
+    </details>
+  </div>
+</section>
+
+<button id="timer-open-btn" onclick="openTimer()" title="Ouvrir le timer">⏱</button>
+<div id="timer-widget">
+  <div class="timer-top">
+    <span class="timer-title">Chrono repos</span>
+    <button id="timer-close" onclick="closeTimer()">✕</button>
+  </div>
+  <div id="timer-display">01:30</div>
+  <div class="timer-presets">
+    <button class="preset-btn" onclick="setPreset(60)">60s</button>
+    <button class="preset-btn active-preset" onclick="setPreset(90)">90s</button>
+    <button class="preset-btn" onclick="setPreset(120)">120s</button>
+  </div>
+  <div class="timer-controls">
+    <button class="ctrl-btn" id="btn-start" onclick="toggleTimer()">▶ Start</button>
+    <button class="ctrl-btn" id="btn-reset" onclick="resetTimer()">↺ Reset</button>
+  </div>
+</div>
+
+<script>
+const DATA = {
+  1: {
+    label:'Semaine 1 / 4 — Vacances', pct:'25%',
+    A:{
+      hipthrust:{sets:'4 × 12 reps',ref:'bande fessier résistance légère (au-dessus des genoux)',rir:'RIR 3'},
+      pontuni:{sets:'3 × 12 reps / jambe',ref:'poids du corps',rir:'RIR 3'},
+      squat:{sets:'4 × 12 reps',ref:'2 haltères 3kg tenus contre la poitrine',rir:'RIR 3'},
+      fentes:{sets:'3 × 10 reps / jambe',ref:'haltères 2kg dans chaque main',rir:'RIR 3'},
+      pompes:{sets:'3 × max reps',ref:'poids du corps',rir:'RIR 2'},
+      deadbug:{sets:'3 × 10 reps / côté',ref:'poids du corps',rir:''},
+    },
+    B:{
+      sumo:{sets:'4 × 15 reps',ref:'bande fessier résistance légère (au-dessus des genoux)',rir:'RIR 3'},
+      donkey:{sets:'3 × 15 reps / jambe',ref:'bande fessier résistance légère (chevilles)',rir:'RIR 3'},
+      rdl:{sets:'3 × 10 reps / jambe',ref:'haltères 1-2kg (équilibre + fessier)',rir:'RIR 3'},
+      rowing:{sets:'4 × 12 reps',ref:'grande bande plate, résistance 1/3',rir:'RIR 2'},
+      hyper:{sets:'3 × 15 reps',ref:'poids du corps',rir:'RIR 3'},
+      birddog:{sets:'3 × 10 reps / côté',ref:'poids du corps',rir:''},
+    }
+  },
+  2: {
+    label:'Semaine 2 / 4 — Vacances', pct:'50%',
+    A:{
+      hipthrust:{sets:'4 × 14 reps',ref:'bande fessier résistance moyenne + pause 2s en haut',rir:'RIR 2'},
+      pontuni:{sets:'3 × 14 reps / jambe',ref:'poids du corps',rir:'RIR 2'},
+      squat:{sets:'4 × 14 reps',ref:'2 haltères 3kg, tempo plus lent',rir:'RIR 2'},
+      fentes:{sets:'3 × 12 reps / jambe',ref:'haltères 3kg dans chaque main',rir:'RIR 2'},
+      pompes:{sets:'3 × max reps',ref:'poids du corps',rir:'RIR 2'},
+      deadbug:{sets:'3 × 12 reps / côté',ref:'poids du corps',rir:''},
+    },
+    B:{
+      sumo:{sets:'4 × 17 reps',ref:'bande fessier résistance moyenne',rir:'RIR 2'},
+      donkey:{sets:'3 × 17 reps / jambe',ref:'bande fessier résistance moyenne (chevilles)',rir:'RIR 2'},
+      rdl:{sets:'3 × 12 reps / jambe',ref:'haltères 2kg',rir:'RIR 2'},
+      rowing:{sets:'4 × 14 reps',ref:'grande bande plate, résistance 2/3',rir:'RIR 2'},
+      hyper:{sets:'3 × 17 reps',ref:'poids du corps',rir:'RIR 2'},
+      birddog:{sets:'3 × 12 reps / côté',ref:'poids du corps',rir:''},
+    }
+  },
+  3: {
+    label:'Semaine 3 / 4 — Vacances', pct:'75%',
+    A:{
+      hipthrust:{sets:'4 × 15 reps',ref:'bande fessier résistance forte, tempo 3-1-2',rir:'RIR 1-2'},
+      pontuni:{sets:'3 × 15 reps / jambe',ref:'tempo lent',rir:'RIR 1-2'},
+      squat:{sets:'4 × 15 reps',ref:'2 haltères 3kg, tempo 3-1-1',rir:'RIR 1-2'},
+      fentes:{sets:'3 × 12 reps / jambe',ref:'haltères 3kg, tempo lent',rir:'RIR 1-2'},
+      pompes:{sets:'3 × max reps',ref:'poids du corps',rir:'RIR 1-2'},
+      deadbug:{sets:'3 × 12 reps / côté',ref:'poids du corps, contrôle max',rir:''},
+    },
+    B:{
+      sumo:{sets:'4 × 18 reps',ref:'bande fessier résistance forte, tempo 3-1-1',rir:'RIR 1-2'},
+      donkey:{sets:'3 × 18 reps / jambe',ref:'bande fessier résistance forte (chevilles)',rir:'RIR 1-2'},
+      rdl:{sets:'3 × 12 reps / jambe',ref:'haltères 3kg, tempo lent',rir:'RIR 1-2'},
+      rowing:{sets:'4 × 15 reps',ref:'grande bande plate, résistance 3/3',rir:'RIR 1-2'},
+      hyper:{sets:'3 × 18 reps',ref:'poids du corps, pause en haut',rir:'RIR 1-2'},
+      birddog:{sets:'3 × 12 reps / côté',ref:'poids du corps, contrôle max',rir:''},
+    }
+  },
+  4: {
+    label:'Semaine 4 / 4 — Retour', pct:'100%',
+    A:{
+      hipthrust:{sets:'4 × 10 reps',ref:'🏠 Sac lesté sur les hanches / 🏋️ Barre 30-35kg',rir:'RIR 2'},
+      pontuni:{sets:'3 × 12 reps / jambe',ref:'🏠 Poids du corps / 🏋️ Haltère sur la hanche',rir:'RIR 2'},
+      squat:{sets:'4 × 12 reps',ref:'🏠 Sac à dos lesté / 🏋️ Goblet squat 14-16kg',rir:'RIR 2'},
+      fentes:{sets:'3 × 10 reps / jambe',ref:'🏠 Haltères légers / 🏋️ Haltères ou barre',rir:'RIR 2'},
+      pompes:{sets:'3 × max reps',ref:'🏠 Sol / 🏋️ Sol ou banc incliné',rir:'RIR 2'},
+      deadbug:{sets:'3 × 12 reps / côté',ref:'🏠 / 🏋️ identique — poids du corps',rir:''},
+    },
+    B:{
+      sumo:{sets:'4 × 15 reps',ref:'🏠 Sac lesté / 🏋️ Kettlebell ou barre',rir:'RIR 2'},
+      donkey:{sets:'3 × 15 reps / jambe',ref:'🏠 Élastique / 🏋️ Poulie basse',rir:'RIR 2'},
+      rdl:{sets:'3 × 10 reps / jambe',ref:'🏠 Haltère léger / 🏋️ Haltères ou barre',rir:'RIR 2'},
+      rowing:{sets:'4 × 12 reps',ref:'🏠 Élastique / 🏋️ Poulie ou haltères',rir:'RIR 2'},
+      hyper:{sets:'3 × 15 reps',ref:'🏠 Poids du corps / 🏋️ Banc à lombaires',rir:'RIR 2'},
+      birddog:{sets:'3 × 12 reps / côté',ref:'🏠 / 🏋️ identique — poids du corps',rir:''},
+    }
+  }
+};
+
+let currentWeek = 1;
+let currentSeance = 'A';
+
+function setWeek(w, btn) {
+  currentWeek = w;
+  document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('prog-label').textContent = DATA[w].label;
+  document.getElementById('prog-pct').textContent = DATA[w].pct;
+  document.getElementById('prog-fill').style.width = DATA[w].pct;
+  renderSeance(currentSeance);
+}
+
+function setSeance(s, btn) {
+  currentSeance = s;
+  document.querySelectorAll('.seance-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('seance-A').style.display = s === 'A' ? 'block' : 'none';
+  document.getElementById('seance-B').style.display = s === 'B' ? 'block' : 'none';
+  renderSeance(s);
+}
+
+function renderSeance(s) {
+  const wData = DATA[currentWeek][s];
+  for (const [key, val] of Object.entries(wData)) {
+    const setsEl = document.getElementById('sets-' + s + '-' + key);
+    const rirEl = document.getElementById('rir-' + s + '-' + key);
+    if (setsEl) setsEl.innerHTML = val.sets + ' — <span>' + val.ref + '</span>';
+    if (rirEl) rirEl.textContent = val.rir;
+  }
+}
+
+let timerTotal = 90, timerLeft = 90, timerRunning = false, timerInterval = null;
+
+function fmt(s) {
+  const m = Math.floor(s / 60), sec = s % 60;
+  return (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+
+function updateDisplay() {
+  document.getElementById('timer-display').textContent = fmt(timerLeft);
+}
+
+function setPreset(s) {
+  clearInterval(timerInterval); timerRunning = false;
+  timerTotal = s; timerLeft = s;
+  document.getElementById('btn-start').textContent = '▶ Start';
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active-preset'));
+  updateDisplay();
+}
+
+function toggleTimer() {
+  if (timerRunning) {
+    clearInterval(timerInterval); timerRunning = false;
+    document.getElementById('btn-start').textContent = '▶ Resume';
+  } else {
+    if (timerLeft <= 0) { timerLeft = timerTotal; }
+    timerRunning = true;
+    document.getElementById('btn-start').textContent = '⏸ Pause';
+    timerInterval = setInterval(() => {
+      timerLeft--;
+      updateDisplay();
+      if (timerLeft <= 0) {
+        clearInterval(timerInterval); timerRunning = false;
+        document.getElementById('btn-start').textContent = '▶ Start';
+        if (Notification && Notification.permission === 'granted') {
+          new Notification('⏱ Repos terminé !', { body: 'C\'est reparti, Émeline !' });
+        }
+      }
+    }, 1000);
+  }
+}
+
+function resetTimer() {
+  clearInterval(timerInterval); timerRunning = false;
+  timerLeft = timerTotal;
+  document.getElementById('btn-start').textContent = '▶ Start';
+  updateDisplay();
+}
+
+function openTimer() {
+  document.getElementById('timer-widget').classList.add('visible');
+  document.getElementById('timer-open-btn').classList.add('hidden');
+}
+
+function closeTimer() {
+  document.getElementById('timer-widget').classList.remove('visible');
+  document.getElementById('timer-open-btn').classList.remove('hidden');
+}
+
+function timerLaunch(s) {
+  setPreset(s);
+  openTimer();
+  timerLeft = s; timerTotal = s;
+  updateDisplay();
+  if (timerRunning) { clearInterval(timerInterval); timerRunning = false; }
+  setTimeout(() => toggleTimer(), 100);
+}
+
+updateDisplay();
+renderSeance('A');
+document.getElementById('seance-B').style.display = 'none';
+
+const isIOS = /iphone|ipad/i.test(navigator.userAgent) && !window.MSStream;
+const isStandalone = window.navigator.standalone === true;
+if (isIOS && !isStandalone && !localStorage.getItem('ios-banner-closed')) {
+  document.getElementById('ios-banner').style.display = 'block';
+}
+function closeBanner() {
+  document.getElementById('ios-banner').style.display = 'none';
+  localStorage.setItem('ios-banner-closed', '1');
+}
+</script>
+</body>
+</html>
