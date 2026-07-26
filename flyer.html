@@ -158,6 +158,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .top-bar-btn:hover { background: #b85348; transform: translateY(-1px); }
 @media (max-width: 768px) { #top-bar { gap: 10px; padding: 10px 16px; } .top-bar-divider { display: none; } .top-bar-urgency { font-size: 0.78rem; width: 100%; } .top-bar-btn { font-size: 0.78rem; } }
 
+/* BANDEAU VINTED */
+.fly-vinted-note { display: inline-flex; align-items: center; gap: 8px; background: white; border: 1px solid rgba(201,185,154,0.4); border-radius: 50px; padding: 7px 16px; font-size: 0.78rem; color: var(--text-mid); font-weight: 600; margin-bottom: 16px; }
+@media (max-width: 860px) { .fly-vinted-note { margin-left: auto; margin-right: auto; } }
+
+/* COMMENT ÇA SE PASSE */
+#fly-steps { background: white; padding: 56px 20px; }
+.fly-steps-inner { max-width: 900px; margin: 0 auto; }
+.fly-steps-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--dark); text-align: center; margin-bottom: 36px; }
+.fly-steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.fly-step-card { text-align: center; position: relative; padding: 0 6px; }
+.fly-step-num { width: 38px; height: 38px; border-radius: 50%; background: var(--accent); color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+.fly-step-icon { font-size: 1.5rem; margin-bottom: 8px; }
+.fly-step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.02rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+.fly-step-text { font-size: 0.82rem; color: var(--text-mid); line-height: 1.55; }
+@media (max-width: 780px) { .fly-steps-grid { grid-template-columns: 1fr 1fr; gap: 26px 18px; } }
+@media (max-width: 460px) { .fly-steps-grid { grid-template-columns: 1fr; } }
+
+/* FAQ */
+#fly-faq { background: var(--cream); padding: 56px 20px; }
+.fly-faq-inner { max-width: 680px; margin: 0 auto; }
+.fly-faq-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--dark); text-align: center; margin-bottom: 36px; }
+.fly-faq-item { background: white; border: 1px solid rgba(201,185,154,0.3); border-radius: 16px; padding: 20px 24px; margin-bottom: 14px; }
+.fly-faq-q { font-family: 'Cormorant Garamond', serif; font-size: 1.02rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; display: flex; gap: 8px; }
+.fly-faq-a { font-size: 0.88rem; color: var(--text-mid); line-height: 1.65; }
+.fly-faq-a a { color: var(--accent); font-weight: 600; text-decoration: none; }
+
 /* SCROLL CUE — vers les transformations */
 .fly-scroll-cue { text-align: center; margin-top: 30px; }
 .fly-scroll-cue a { display: inline-flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: var(--text-mid); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.03em; }
@@ -240,6 +266,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="fly-hero">
   <div class="fly-split">
     <div class="fly-content">
+      <div class="fly-vinted-note">👋 Tu viens de recevoir un colis de ma part sur Vinted — bienvenue !</div><br>
       <span class="fly-badge">🎁 Offre réservée aux flyers</span>
       <h1 class="fly-title">Le corps que tu veux <em>ne se rattrape pas</em> en un jour — mais il commence par une séance.</h1>
       <div class="fly-badges">
@@ -314,6 +341,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
+<!-- COMMENT ÇA SE PASSE -->
+<div id="fly-steps">
+  <div class="fly-steps-inner">
+    <h2 class="fly-steps-title">Comment ça se passe, concrètement</h2>
+    <div class="fly-steps-grid">
+      <div class="fly-step-card">
+        <div class="fly-step-num">1</div>
+        <div class="fly-step-icon">💬</div>
+        <div class="fly-step-title">Tu m'écris</div>
+        <div class="fly-step-text">Sur WhatsApp, en 2 minutes — pas de formulaire compliqué, juste un message.</div>
+      </div>
+      <div class="fly-step-card">
+        <div class="fly-step-num">2</div>
+        <div class="fly-step-icon">📅</div>
+        <div class="fly-step-title">On fixe un créneau</div>
+        <div class="fly-step-text">Chez toi si tu es en Essonne, en visio si tu es ailleurs en France.</div>
+      </div>
+      <div class="fly-step-card">
+        <div class="fly-step-num">3</div>
+        <div class="fly-step-icon">📋</div>
+        <div class="fly-step-title">Bilan découverte — 50€</div>
+        <div class="fly-step-text">On regarde ton objectif, ta posture, ton emploi du temps réel. Déductible si tu continues.</div>
+      </div>
+      <div class="fly-step-card">
+        <div class="fly-step-num">4</div>
+        <div class="fly-step-icon">🎯</div>
+        <div class="fly-step-title">Ton programme sur-mesure</div>
+        <div class="fly-step-text">Construit pour toi. Aucun engagement obligatoire après la séance.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- PREUVE (remontée juste après l'offre) -->
 <div id="fly-proof">
   <h2 class="fly-proof-title">Des résultats réels, à tout âge</h2>
@@ -325,7 +385,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="fly-proof-tag">🔥 Perte de gras</div>
       <p class="fly-proof-quote">« Une vraie envie de reprendre le contrôle de mon corps, sans me priver. » −9 cm de tour de taille, −5 kg en 4 mois.</p>
-      <p class="fly-proof-name">— Cliente, maman de 2 enfants</p>
+      <p class="fly-proof-name">— Louise, 35 ans</p>
     </div>
     <div class="fly-proof-card">
       <div class="fly-proof-img-wrap">
@@ -527,6 +587,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <div class="fly-inline-link-wrap">
     <a href="offres.html" class="fly-inline-link">💶 Voir tous mes tarifs et formules →</a>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div id="fly-faq">
+  <div class="fly-faq-inner">
+    <h2 class="fly-faq-title">Tes questions, avant de te lancer</h2>
+    <div class="fly-faq-item">
+      <div class="fly-faq-q">🙋 Je suis complètement débutante, c'est un problème ?</div>
+      <div class="fly-faq-a">Non — la majorité de mes clientes ont commencé à zéro. Le programme s'adapte à ton niveau, pas l'inverse.</div>
+    </div>
+    <div class="fly-faq-item">
+      <div class="fly-faq-q">🏋️ Je n'ai pas de matériel chez moi</div>
+      <div class="fly-faq-a">Aucun souci. En présentiel j'apporte tout le matériel. En distanciel, on démarre avec le minimum — voire sans rien du tout.</div>
+    </div>
+    <div class="fly-faq-item">
+      <div class="fly-faq-q">💶 Et après le bilan, ça coûte combien ?</div>
+      <div class="fly-faq-a">Le bilan à 50€ est déductible si tu t'engages sur 3 mois ensuite — mais rien n'est obligatoire. Tarifs détaillés <a href="offres.html">ici →</a></div>
+    </div>
+    <div class="fly-faq-item">
+      <div class="fly-faq-q">⏰ Je n'ai pas beaucoup de temps</div>
+      <div class="fly-faq-a">On construit le programme autour de ton emploi du temps réel, pas l'inverse. Beaucoup de mes clientes n'ont que 2-3 créneaux par semaine.</div>
+    </div>
   </div>
 </div>
 
