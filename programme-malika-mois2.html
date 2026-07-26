@@ -173,6 +173,11 @@
 
   .divider { height:1px; background:linear-gradient(90deg,var(--border),transparent); margin:28px 0; }
 
+  .bilan-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  @media (max-width:400px) { .bilan-grid-2 { grid-template-columns:1fr; } }
+  .suivi-input { width:100%; border:1.5px solid var(--border); border-radius:8px; padding:7px 8px; font-size:13px; font-family:'Jost',sans-serif; color:var(--text-dark); background:#fff; box-sizing:border-box; }
+  .suivi-input:focus { outline:none; border-color:var(--rose); }
+
   .bmr-calc { background:linear-gradient(135deg,#A85570,#C9748F); border-radius:14px; padding:22px 24px; color:white; margin:18px 0; }
   .bmr-calc .bmr-title { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; margin-bottom:14px; }
   .bmr-row { display:flex; justify-content:space-between; align-items:flex-start; font-size:13px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.15); gap:8px; }
@@ -654,8 +659,23 @@
     </tbody>
   </table>
 
-  <div class="important-note" style="margin-top:14px;">
-    📸 <strong>Bilan Mois 2 :</strong> vers le 23/08/2026 — mensurations complètes (n'oublie pas le poids, les hanches, le dos et les bras cette fois) + photos J60 selon le protocole page profil.
+  <div style="background:var(--white);border:1.5px solid var(--rose);border-radius:16px;padding:22px 20px;margin-top:16px;margin-bottom:24px;">
+    <div style="font-size:12px;font-weight:700;color:var(--rose-deep);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;">📬 Bilan Mois 2 — Date de fin : 23/08/2026</div>
+    <div style="font-size:12px;color:var(--text-mid);margin-bottom:14px;line-height:1.6;">Remplis tes mensurations à la fin du mois et envoie-les moi directement sur WhatsApp. Je prépare ton programme Mois 3 dans la foulée. N'oublie pas le poids, les hanches, le dos et les bras cette fois.</div>
+    <div class="bilan-grid-2">
+      <input class="suivi-input" id="bilan-poids" type="text" placeholder="Poids (kg)" oninput="saveBilan()">
+      <input class="suivi-input" id="bilan-taille" type="text" placeholder="Tour de taille (cm)" oninput="saveBilan()">
+      <input class="suivi-input" id="bilan-hanches" type="text" placeholder="Hanches (cm)" oninput="saveBilan()">
+      <input class="suivi-input" id="bilan-fesses" type="text" placeholder="Fesses (cm)" oninput="saveBilan()">
+      <input class="suivi-input" id="bilan-cuisses" type="text" placeholder="Cuisses (cm)" oninput="saveBilan()">
+      <input class="suivi-input" id="bilan-poitrine" type="text" placeholder="Poitrine (cm)" oninput="saveBilan()">
+      <input class="suivi-input" id="bilan-dos" type="text" placeholder="Dos (cm)" oninput="saveBilan()">
+      <input class="suivi-input" id="bilan-bras" type="text" placeholder="Bras (cm)" oninput="saveBilan()">
+    </div>
+    <button onclick="envoyerBilan()" style="margin-top:14px;width:100%;padding:13px;background:linear-gradient(135deg,#25D366,#1DA851);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Jost',sans-serif;">
+      📲 Envoyer mon bilan Mois 2 à Ornella
+    </button>
+    <p style="font-size:11px;color:var(--text-light);text-align:center;margin-top:8px;">N'oublie pas de joindre tes 3 photos (face · profil · dos) dans le message WhatsApp</p>
   </div>
 
   <div class="highlight-box">
@@ -668,5 +688,35 @@
   </div>
 
 </div>
+
+<script>
+  var BILAN_KEY = 'malika_mois2_bilan';
+  function saveBilan() {
+    var data = {};
+    document.querySelectorAll('.suivi-input').forEach(function (el) { data[el.id] = el.value; });
+    localStorage.setItem(BILAN_KEY, JSON.stringify(data));
+  }
+  function loadBilan() {
+    try {
+      var data = JSON.parse(localStorage.getItem(BILAN_KEY) || '{}');
+      Object.keys(data).forEach(function (k) {
+        var el = document.getElementById(k);
+        if (el) el.value = data[k];
+      });
+    } catch (e) {}
+  }
+  function envoyerBilan() {
+    var fields = ['bilan-poids', 'bilan-taille', 'bilan-hanches', 'bilan-fesses', 'bilan-cuisses', 'bilan-poitrine', 'bilan-dos', 'bilan-bras'];
+    var labels = { 'bilan-poids': 'Poids', 'bilan-taille': 'Tour de taille', 'bilan-hanches': 'Hanches', 'bilan-fesses': 'Fesses', 'bilan-cuisses': 'Cuisses', 'bilan-poitrine': 'Poitrine', 'bilan-dos': 'Dos', 'bilan-bras': 'Bras' };
+    var units = { 'bilan-poids': 'kg' };
+    var lines = ['📬 Bilan Mois 2 — Malika (fin le 23/08/2026)'];
+    fields.forEach(function (f) {
+      var v = document.getElementById(f).value;
+      if (v) lines.push(labels[f] + ' : ' + v + ' ' + (units[f] || 'cm'));
+    });
+    window.open('https://wa.me/33756834626?text=' + encodeURIComponent(lines.join('\n')));
+  }
+  loadBilan();
+</script>
 </body>
 </html>
