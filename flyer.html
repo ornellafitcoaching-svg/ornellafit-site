@@ -158,10 +158,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .top-bar-btn:hover { background: #b85348; transform: translateY(-1px); }
 @media (max-width: 768px) { #top-bar { gap: 10px; padding: 10px 16px; } .top-bar-divider { display: none; } .top-bar-urgency { font-size: 0.78rem; width: 100%; } .top-bar-btn { font-size: 0.78rem; } }
 
-/* BANDEAU VINTED */
-.fly-vinted-note { display: inline-flex; align-items: center; gap: 8px; background: white; border: 1px solid rgba(201,185,154,0.4); border-radius: 50px; padding: 7px 16px; font-size: 0.78rem; color: var(--text-mid); font-weight: 600; margin-bottom: 16px; }
-@media (max-width: 860px) { .fly-vinted-note { margin-left: auto; margin-right: auto; } }
-
 /* COMMENT ÇA SE PASSE */
 #fly-steps { background: white; padding: 56px 20px; }
 .fly-steps-inner { max-width: 900px; margin: 0 auto; }
@@ -179,9 +175,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 #fly-faq { background: var(--cream); padding: 56px 20px; }
 .fly-faq-inner { max-width: 680px; margin: 0 auto; }
 .fly-faq-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--dark); text-align: center; margin-bottom: 36px; }
-.fly-faq-item { background: white; border: 1px solid rgba(201,185,154,0.3); border-radius: 16px; padding: 20px 24px; margin-bottom: 14px; }
-.fly-faq-q { font-family: 'Cormorant Garamond', serif; font-size: 1.02rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; display: flex; gap: 8px; }
-.fly-faq-a { font-size: 0.88rem; color: var(--text-mid); line-height: 1.65; }
+.fly-faq-item { background: white; border: 1px solid rgba(201,185,154,0.3); border-radius: 16px; padding: 4px 24px; margin-bottom: 14px; }
+.fly-faq-item[open] { padding-bottom: 18px; }
+.fly-faq-q { font-family: 'Cormorant Garamond', serif; font-size: 1.02rem; font-weight: 700; color: var(--dark); padding: 16px 0; display: flex; align-items: center; gap: 10px; cursor: pointer; list-style: none; }
+.fly-faq-q::-webkit-details-marker { display: none; }
+.fly-faq-q::after { content: '+'; margin-left: auto; font-size: 1.3rem; font-weight: 400; color: var(--accent); flex-shrink: 0; transition: transform 0.2s; }
+.fly-faq-item[open] .fly-faq-q::after { content: '−'; }
+.fly-faq-a { font-size: 0.88rem; color: var(--text-mid); line-height: 1.65; padding-top: 4px; }
 .fly-faq-a a { color: var(--accent); font-weight: 600; text-decoration: none; }
 
 /* SCROLL CUE — vers les transformations */
@@ -258,6 +258,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="programmes.html" class="nav-link">Programmes digitaux</a>
     <a href="https://www.ornellafitcoaching.com/quiz.html" class="nav-link">Mon coaching →</a>
     <a href="apropos.html" class="nav-link">À propos</a>
+    <a href="#fly-faq" class="nav-link">FAQ</a>
     <a href="https://wa.me/33756834626" class="nav-cta" target="_blank">M'écrire →</a>
   </div>
 </nav>
@@ -266,7 +267,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="fly-hero">
   <div class="fly-split">
     <div class="fly-content">
-      <div class="fly-vinted-note">👋 Tu viens de recevoir un colis de ma part — bienvenue !</div><br>
       <span class="fly-badge">🎁 Offre réservée aux flyers</span>
       <h1 class="fly-title">Le corps que tu veux <em>ne se rattrape pas</em> en un jour — mais il commence par une séance.</h1>
       <div class="fly-badges">
@@ -594,22 +594,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="fly-faq">
   <div class="fly-faq-inner">
     <h2 class="fly-faq-title">Tes questions, avant de te lancer</h2>
-    <div class="fly-faq-item">
-      <div class="fly-faq-q">🙋 Je suis complètement débutante, c'est un problème ?</div>
+    <details class="fly-faq-item">
+      <summary class="fly-faq-q">🙋 Je suis complètement débutante, c'est un problème ?</summary>
       <div class="fly-faq-a">Non — la majorité de mes clientes ont commencé à zéro. Le programme s'adapte à ton niveau, pas l'inverse.</div>
-    </div>
-    <div class="fly-faq-item">
-      <div class="fly-faq-q">🏋️ Je n'ai pas de matériel chez moi</div>
+    </details>
+    <details class="fly-faq-item">
+      <summary class="fly-faq-q">🏋️ Je n'ai pas de matériel chez moi</summary>
       <div class="fly-faq-a">Aucun souci. En présentiel j'apporte tout le matériel. En distanciel, on démarre avec le minimum — voire sans rien du tout.</div>
-    </div>
-    <div class="fly-faq-item">
-      <div class="fly-faq-q">💶 Et après le bilan, ça coûte combien ?</div>
+    </details>
+    <details class="fly-faq-item">
+      <summary class="fly-faq-q">💶 Et après le bilan, ça coûte combien ?</summary>
       <div class="fly-faq-a">Le bilan à 50€ est déductible si tu t'engages sur 3 mois ensuite — mais rien n'est obligatoire. Tarifs détaillés <a href="offres.html">ici →</a></div>
-    </div>
-    <div class="fly-faq-item">
-      <div class="fly-faq-q">⏰ Je n'ai pas beaucoup de temps</div>
+    </details>
+    <details class="fly-faq-item">
+      <summary class="fly-faq-q">⏰ Je n'ai pas beaucoup de temps</summary>
       <div class="fly-faq-a">On construit le programme autour de ton emploi du temps réel, pas l'inverse. Beaucoup de mes clientes n'ont que 2-3 créneaux par semaine.</div>
-    </div>
+    </details>
   </div>
 </div>
 
