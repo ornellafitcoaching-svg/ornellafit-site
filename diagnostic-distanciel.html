@@ -34,19 +34,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <style>
 #dd-hero {
   background: linear-gradient(150deg,#2E4A34,#4A7252);
-  padding: 56px 20px 44px; text-align: center; color: #fff;
+  padding: 56px 20px 44px; text-align: center; color: #fff; position: relative;
+}
+#dd-hero::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 28px;
+  background: linear-gradient(180deg,#F7F3F0,rgba(247,243,240,0));
 }
 #dd-hero .dd-eyebrow {
   display: inline-block; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3);
   color: #A8D4B0; font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-  padding: 6px 16px; border-radius: 50px; margin-bottom: 18px;
+  padding: 6px 16px; border-radius: 50px; margin-bottom: 16px;
 }
+.dd-hero-photo {
+  width: 84px; height: 84px; border-radius: 50%; object-fit: cover; object-position: top center;
+  border: 3px solid rgba(255,255,255,.5); margin: 0 auto 14px; display: block; box-shadow: 0 8px 20px rgba(0,0,0,.2);
+}
+.dd-social-proof {
+  display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;
+  font-size: .78rem; font-weight: 700; color: #fff; margin-bottom: 18px;
+}
+.dd-social-proof .stars { color: #F4C860; letter-spacing: 1px; }
+.dd-social-proof .sep { opacity: .5; font-weight: 400; }
 #dd-hero h1 {
-  font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1.15;
-  font-size: clamp(2rem, 6vw, 2.8rem); margin: 0 0 12px;
+  font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1.12;
+  font-size: clamp(2.1rem, 7vw, 3.1rem); margin: 0 0 4px;
 }
 #dd-hero h1 em { font-style: italic; color: #A8D4B0; }
-#dd-hero p.dd-sub { font-size: .95rem; color: rgba(255,255,255,.82); max-width: 480px; margin: 0 auto 26px; line-height: 1.55; }
+.dd-h1-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: rgba(255,255,255,.65); margin: 0 0 16px; }
+#dd-hero p.dd-sub { font-size: .95rem; color: rgba(255,255,255,.82); max-width: 480px; margin: 0 auto 8px; line-height: 1.55; }
+.dd-authority { font-size: .78rem; color: rgba(255,255,255,.7); margin: 0 0 26px; }
 .dd-price-badge {
   display: inline-flex; align-items: baseline; gap: 6px; background: #fff; color: #1E1616;
   border-radius: 16px; padding: 14px 26px; margin-bottom: 22px;
@@ -58,9 +74,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   padding: 15px 34px; border-radius: 50px; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,.2);
 }
 .dd-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.dd-wa-link { color: rgba(255,255,255,.75); font-size: .78rem; text-decoration: underline; }
+.dd-wa-link { color: rgba(255,255,255,.75); font-size: .78rem; text-decoration: underline; padding: 8px; display: inline-block; }
 
 .dd-section { max-width: 640px; margin: 0 auto; padding: 46px 20px; }
+
+#dd-agitation { background: #fff; text-align: center; padding-bottom: 10px; }
+.dd-agitation-text { font-size: .95rem; color: #4A3E3E; line-height: 1.7; max-width: 480px; margin: 0 auto; }
+.dd-agitation-text strong { color: #C96358; }
 .dd-section-title {
   font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.6rem; color: #1E1616;
   text-align: center; margin-bottom: 8px;
@@ -82,11 +102,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 
 #dd-steps { background: #F7F3F0; }
-.dd-steps-list { display: flex; flex-direction: column; gap: 18px; }
-.dd-step { display: flex; gap: 16px; align-items: flex-start; }
+.dd-steps-list { display: flex; flex-direction: column; gap: 18px; position: relative; }
+.dd-steps-list::before {
+  content: ''; position: absolute; top: 17px; bottom: 17px; left: 17px; width: 2px;
+  background: rgba(201,99,88,.3); z-index: 0;
+}
+.dd-step { display: flex; gap: 16px; align-items: flex-start; position: relative; }
 .dd-step-num {
   flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: #C96358; color: #fff;
   display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .9rem;
+  position: relative; z-index: 1;
 }
 .dd-step-title { font-weight: 700; font-size: .92rem; color: #1E1616; margin-bottom: 2px; }
 .dd-step-text { font-size: .82rem; color: #7A6E6E; line-height: 1.5; }
@@ -107,7 +132,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .dd-faq-item[open] .dd-faq-q::after { content: '−'; }
 .dd-faq-a { font-size: .82rem; color: #7A6E6E; line-height: 1.6; margin-top: 10px; }
 
-#dd-final-cta { text-align: center; background: #fff; }
+#dd-final-cta { text-align: center; background: #fff; padding-bottom: 90px; }
+
+.dd-value-stack {
+  background: linear-gradient(135deg,rgba(201,169,110,0.12),rgba(201,169,110,0.06));
+  border: 1px solid rgba(201,169,110,0.35); border-radius: 16px; padding: 18px 22px; margin: 0 auto 26px; max-width: 480px;
+}
+.dd-value-row { display: flex; justify-content: space-between; font-size: .84rem; color: #4A3E3E; padding: 5px 0; }
+.dd-value-row.total { border-top: 1px dashed rgba(201,169,110,0.5); margin-top: 6px; padding-top: 10px; font-weight: 700; color: #1E1616; }
+.dd-value-row .free { color: #2D6A4F; font-weight: 700; }
+.dd-value-row .pay { color: #C96358; font-weight: 700; }
+
+.dd-sticky-cta {
+  display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+  background: #fff; border-top: 1px solid rgba(201,185,154,.35); padding: 10px 16px;
+  box-shadow: 0 -6px 20px rgba(0,0,0,.08);
+}
+.dd-sticky-cta a {
+  display: block; text-align: center; background: #C96358; color: #fff; font-weight: 700; font-size: .9rem;
+  padding: 13px; border-radius: 50px; text-decoration: none;
+}
+@media (max-width: 640px) {
+  .dd-sticky-cta { display: block; }
+  body { padding-bottom: 0; }
+}
 
 #dd-proof { background: #F7F3F0; text-align: center; }
 .dd-proof-photo { max-width: 320px; margin: 0 auto 18px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(139,111,94,.15); }
@@ -139,22 +187,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- HERO -->
 <section id="dd-hero">
+  <img class="dd-hero-photo" src="images/ornella-portrait-full.jpg" alt="Ornella, coach sportive">
   <span class="dd-eyebrow">🎯 Coaching à distance · Étape 1</span>
-  <h1>Ton <em>Diagnostic Distanciel</em><br>pour 10€</h1>
-  <p class="dd-sub">Avant de démarrer un accompagnement à distance, on part sur des bases solides — pas un programme générique envoyé au hasard.</p>
+  <div class="dd-social-proof"><span class="stars">★★★★★</span> 5,0 <span class="sep">·</span> 100+ femmes accompagnées <span class="sep">·</span> 24 avis</div>
+  <h1>Pourquoi rien n'a marché <em>jusqu'ici</em> ?</h1>
+  <p class="dd-h1-sub">(même en t'y mettant sérieusement)</p>
+  <p class="dd-sub">En 10 minutes de questionnaire, on identifie ce qui bloque VRAIMENT ton corps — pas un programme copié-collé de plus. Réponse écrite et personnalisée sous 48h.</p>
+  <p class="dd-authority">Ornella Racano — coach sportive diplômée d'État</p>
   <div class="dd-price-badge">
     <span class="dd-price">10€</span>
     <span class="dd-price-note">déductible si engagement<br>3 mois derrière</span>
   </div>
   <div class="dd-cta-wrap">
-    <a href="https://buy.stripe.com/bJefZh1VD5xNaIt9a58Vi0p" class="dd-cta" target="_blank" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:10,currency:'EUR'})">Je réserve mon Diagnostic — 10€ →</a>
+    <a href="https://buy.stripe.com/bJefZh1VD5xNaIt9a58Vi0p" class="dd-cta" target="_blank" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:10,currency:'EUR'})">Je découvre ce qui me bloque — 10€ →</a>
     <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20r%C3%A9server%20mon%20Diagnostic%20Distanciel%20%C3%A0%2010%E2%82%AC.%20On%20en%20parle%20%3F" class="dd-wa-link" target="_blank">💬 Une question avant de payer ?</a>
   </div>
 </section>
 
+<!-- AGITATION -->
+<section id="dd-agitation" class="dd-section">
+  <p class="dd-agitation-text">Programmes suivis à la lettre qui ne changent rien. Motivation qui tient deux semaines. Corps qui ne répond plus comme avant. <strong>Ce n'est pas un manque de volonté</strong> — c'est qu'on n'a jamais identifié ce qui bloque vraiment, chez toi, spécifiquement.</p>
+</section>
+
 <!-- CE QUE TU OBTIENS -->
 <section class="dd-section">
-  <h2 class="dd-section-title">Ce que tu <em>obtiens</em> pour 10€</h2>
+  <h2 class="dd-section-title">Ce que <em>10€</em> vont vraiment t'apporter</h2>
   <p class="dd-section-sub">Rien n'est laissé au hasard — chaque élément sert à construire un accompagnement qui te ressemble.</p>
   <div class="dd-benefits">
     <div class="dd-benefit">
@@ -191,8 +248,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- COMMENT ÇA MARCHE -->
 <section id="dd-steps" class="dd-section">
-  <h2 class="dd-section-title">Comment ça se <em>passe</em></h2>
-  <p class="dd-section-sub">3 étapes, aucun rendez-vous obligatoire.</p>
+  <h2 class="dd-section-title">3 étapes, <em>zéro</em> prise de tête</h2>
+  <p class="dd-section-sub">Aucun rendez-vous obligatoire.</p>
   <div class="dd-steps-list">
     <div class="dd-step">
       <div class="dd-step-num">1</div>
@@ -205,7 +262,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="dd-step-num">2</div>
       <div>
         <div class="dd-step-title">Tu remplis le bilan, direct après le paiement</div>
-        <div class="dd-step-text">Redirection automatique vers le questionnaire dès que ton paiement est validé — pas d'attente, pas de mail à aller chercher. Tu réponds à ton rythme, tu peux compléter certaines infos plus tard si besoin (mensurations par exemple).</div>
+        <div class="dd-step-text">Redirection automatique vers le questionnaire dès que ton paiement est validé — pas d'attente, pas de mail à aller chercher. Compte 10 à 15 minutes : certaines questions sont personnelles (grossesse, santé, cycle) — un vrai diagnostic ne peut pas faire l'impasse dessus. Tes réponses restent strictement confidentielles, jamais partagées. Tu réponds à ton rythme, tu peux compléter certaines infos plus tard si besoin (mensurations par exemple).</div>
       </div>
     </div>
     <div class="dd-step">
@@ -241,6 +298,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <summary class="dd-faq-q">Le mini-plan nutrition, c'est du sur-mesure ?</summary>
       <div class="dd-faq-a">Oui, construit à partir de tes réponses (appétit, rythme de repas, contraintes). Ce n'est pas un modèle générique envoyé à tout le monde.</div>
     </details>
+    <details class="dd-faq-item">
+      <summary class="dd-faq-q">Le questionnaire est long ?</summary>
+      <div class="dd-faq-a">Compte 10 à 15 minutes. Certaines questions sont personnelles (grossesse, santé, cycle) — un vrai diagnostic ne peut pas faire l'impasse dessus. Tu réponds à ton rythme, et tout reste confidentiel.</div>
+    </details>
+    <details class="dd-faq-item">
+      <summary class="dd-faq-q">Tu es qualifiée pour me conseiller en nutrition ?</summary>
+      <div class="dd-faq-a">Je suis coach sportive diplômée d'État, pas diététicienne. Le mini-plan donne des conseils pratiques de bon sens — pour un besoin médical, direction un professionnel de santé.</div>
+    </details>
+    <details class="dd-faq-item">
+      <summary class="dd-faq-q">Mes réponses sont confidentielles ?</summary>
+      <div class="dd-faq-a">Oui, strictement. Elles servent uniquement à construire ton diagnostic — jamais partagées, jamais revendues.</div>
+    </details>
   </div>
 </section>
 
@@ -258,9 +327,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section id="dd-final-cta" class="dd-section">
   <h2 class="dd-section-title">Prête à démarrer ?</h2>
   <p class="dd-section-sub">10€, questionnaire complet, mini-plan nutrition offert, réponse sous 48h.</p>
+  <div class="dd-value-stack">
+    <div class="dd-value-row"><span>Questionnaire complet + métabolisme de base</span><span class="free">inclus</span></div>
+    <div class="dd-value-row"><span>Mini-plan nutrition personnalisé</span><span class="free">offert · 40€</span></div>
+    <div class="dd-value-row total"><span>Tu payes aujourd'hui</span><span class="pay">10€</span></div>
+  </div>
   <div class="dd-cta-wrap">
-    <a href="https://buy.stripe.com/bJefZh1VD5xNaIt9a58Vi0p" class="dd-cta" target="_blank" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:10,currency:'EUR'})">Je réserve mon Diagnostic — 10€ →</a>
-    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20r%C3%A9server%20mon%20Diagnostic%20Distanciel%20%C3%A0%2010%E2%82%AC.%20On%20en%20parle%20%3F" style="color:#C96358;font-size:.82rem;text-decoration:underline;" target="_blank">💬 Une question avant de payer ?</a>
+    <a href="https://buy.stripe.com/bJefZh1VD5xNaIt9a58Vi0p" class="dd-cta" target="_blank" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:10,currency:'EUR'})">Je découvre ce qui me bloque — 10€ →</a>
+    <p style="font-size:.72rem;color:#9A8A80;margin:0">🔒 Paiement sécurisé par Stripe</p>
+    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20r%C3%A9server%20mon%20Diagnostic%20Distanciel%20%C3%A0%2010%E2%82%AC.%20On%20en%20parle%20%3F" style="color:#C96358;font-size:.82rem;text-decoration:underline;padding:6px;" target="_blank">💬 Une question avant de payer ?</a>
   </div>
 </section>
 
@@ -287,6 +362,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <a href="https://wa.me/33756834626" class="floating-wa" target="_blank" title="WhatsApp">💬</a>
+
+<div class="dd-sticky-cta">
+  <a href="https://buy.stripe.com/bJefZh1VD5xNaIt9a58Vi0p" target="_blank" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:10,currency:'EUR'})">Je découvre ce qui me bloque — 10€ →</a>
+</div>
 
 <script>
 function toggleMenu() { document.getElementById('navMenu').classList.toggle('open'); }
