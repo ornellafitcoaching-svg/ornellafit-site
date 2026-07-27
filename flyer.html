@@ -39,6 +39,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .fly-title em { font-style: italic; color: var(--accent); font-weight: 600; }
 .fly-sub { font-size: 1.02rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 22px; max-width: 480px; }
 .fly-signature { font-size: 0.85rem; color: var(--text-light); font-style: italic; }
+.fly-social-proof { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 0.86rem; font-weight: 700; color: var(--dark); margin-bottom: 16px; }
+.fly-social-proof .stars { color: #FBBC05; letter-spacing: 1px; }
+.fly-social-proof .sep { opacity: .45; font-weight: 400; }
+.fly-social-proof a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.fly-price-badge { display: inline-flex; align-items: baseline; gap: 6px; background: #fff; border: 1px solid rgba(201,99,88,.3); box-shadow: 0 4px 20px rgba(139,111,94,0.08); color: #1E1616; border-radius: 16px; padding: 12px 22px; margin-bottom: 20px; }
+.fly-price-badge .price { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+.fly-price-badge .price-note { font-size: 0.72rem; color: var(--text-light); }
+@media (max-width: 860px) { .fly-social-proof { justify-content: center; } }
 @media (max-width: 860px) {
   #fly-hero { padding: 78px 18px 40px; }
   .fly-split { flex-direction: column; gap: 26px; text-align: center; }
@@ -46,6 +54,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .fly-sub { margin: 0 auto 22px; }
   .fly-photo-col { width: 240px; }
 }
+
+/* AGITATION */
+#fly-agitation { background: white; padding: 44px 20px 12px; text-align: center; }
+.fly-agitation-text { font-size: 0.98rem; color: var(--text-mid); line-height: 1.75; max-width: 560px; margin: 0 auto; }
+.fly-agitation-text strong { color: var(--accent); }
+
+/* VALUE STACK */
+.fly-value-stack { background: linear-gradient(135deg, rgba(201,169,110,0.12), rgba(201,169,110,0.06)); border: 1px solid rgba(201,169,110,0.35); border-radius: 16px; padding: 18px 22px; margin: 18px auto 0; max-width: 420px; }
+.fly-value-row { display: flex; justify-content: space-between; gap: 12px; font-size: 0.86rem; color: var(--text-mid); padding: 5px 0; }
+.fly-value-row.total { border-top: 1px dashed rgba(201,169,110,0.5); margin-top: 6px; padding-top: 10px; font-weight: 700; color: var(--dark); }
+.fly-value-row .free { color: #2D6A4F; font-weight: 700; }
+.fly-value-row .pay { color: var(--accent); font-weight: 700; }
 
 /* BENEFICES */
 #fly-benefits { background: var(--cream); padding: 56px 20px; }
@@ -268,14 +288,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="fly-split">
     <div class="fly-content">
       <span class="fly-badge">🎁 Offre réservée aux flyers</span>
-      <h1 class="fly-title">Le corps que tu veux <em>ne se rattrape pas</em> en un jour — mais il commence par une séance.</h1>
+      <h1 class="fly-title">Pourquoi tu t'entraînes depuis des mois <em>sans voir de vrai changement</em> ?</h1>
+      <div class="fly-social-proof"><span class="stars">★★★★★</span> 5,0 <span class="sep">·</span> <a href="https://share.google/r1sZu5gvfNorZ0HTy" target="_blank">24 avis vérifiés sur Google →</a></div>
+      <div class="fly-price-badge"><span class="price">50€</span><span class="price-note">séance d'essai, déductible si<br>engagement 3 mois derrière</span></div>
       <div class="fly-badges">
         <div class="fly-badge-pill"><span>🏆</span><span>Participante aux Championnats de France de Fitness</span></div>
         <div class="fly-badge-pill"><span>🎓</span><span>Coach diplômée d'État</span></div>
       </div>
-      <p class="fly-sub">Je suis Ornella, coach sportive diplômée d'État, ancienne gardienne de la paix. J'accompagne des femmes de tous âges — 25, 40 ou 60 ans, débutantes ou sportives, jeunes actives ou en post-ménopause — dans leur transformation physique : perte de poids, prise de masse fessiers, correction de posture, silhouette, post-partum. Un programme pensé pour TON corps et ton emploi du temps réel, pas un cours collectif générique — <strong>à domicile en Essonne, en hybride, ou 100% à distance où que tu sois en France.</strong></p>
+      <p class="fly-sub">Je suis Ornella, coach sportive diplômée d'État. En une séance, on identifie ce qui bloque vraiment ton corps — pas un cours collectif générique — et tu repars avec un plan pensé pour TON objectif et ton emploi du temps réel. <strong>À domicile en Essonne, en hybride, ou 100% à distance où que tu sois en France.</strong></p>
       <div class="fly-hero-cta">
-        <a href="https://wa.me/33756834626?text=Salut%20Ornella%20%21%20J%27ai%20vu%20ton%20flyer%2C%20je%20veux%20r%C3%A9server%20ma%20s%C3%A9ance%20d'essai%20%C3%A0%2050%E2%82%AC%20et%20r%C3%A9cup%C3%A9rer%20le%20Guide%20Recettes%20offert%20%F0%9F%98%8A" class="fly-hero-wa-btn" target="_blank">💬 Réserver sur WhatsApp →</a>
+        <a href="https://wa.me/33756834626?text=Salut%20Ornella%20%21%20J%27ai%20vu%20ton%20flyer%2C%20je%20veux%20r%C3%A9server%20ma%20s%C3%A9ance%20d'essai%20%C3%A0%2050%E2%82%AC%20et%20r%C3%A9cup%C3%A9rer%20le%20Guide%20Recettes%20offert%20%F0%9F%98%8A" class="fly-hero-wa-btn" target="_blank">Je réserve ma séance — 50€ →</a>
       </div>
       <p class="fly-signature">— Ornella, coach diplômée d'État · Essonne (91)</p>
     </div>
@@ -307,15 +329,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
+<!-- AGITATION -->
+<div id="fly-agitation">
+  <p class="fly-agitation-text">Tu fais attention. Tu t'entraînes quand tu peux. Et pourtant le miroir ne change pas vraiment. <strong>Ce n'est pas un manque de volonté</strong> — c'est qu'un programme générique ne peut pas s'adapter à ton corps, ton objectif et ton emploi du temps réel. C'est exactement ce qu'on corrige dès la première séance.</p>
+</div>
+
 <!-- OFFRE (remontée juste après le hero) -->
 <div id="fly-offer-section">
-
-  <div class="fly-google-badge">
-    <svg width="26" height="26" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-    <span class="g-rating">5,0</span>
-    <span class="g-stars">★★★★★</span>
-    <span style="font-size:0.82rem;color:var(--text-light);"><a href="https://share.google/r1sZu5gvfNorZ0HTy" target="_blank">24 avis vérifiés sur Google →</a></span>
-  </div>
 
   <div class="fly-projection">
     <div class="fly-projection-title">Et toi, dans 3 mois ?</div>
@@ -330,14 +350,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="fly-offer">
     <div class="fly-offer-card">
       <div class="tag">🎁 Offre flyer</div>
-      <p>Tu es venue via le flyer ? Le <strong>Guide Recettes Sculptantes</strong> + mon <strong>Challenge Ventre Plat 5 Jours</strong> te sont offerts avec ta <strong>Séance d'essai</strong> à <strong>50€</strong> — déductible si tu t'engages sur 3 mois derrière (présentiel, Essonne 91).</p>
+      <p>Tu es venue via le flyer ? Voici ce que tu obtiens avec ta <strong>Séance d'essai</strong> à <strong>50€</strong> — déductible si tu t'engages sur 3 mois derrière (présentiel, Essonne 91).</p>
+      <div class="fly-value-stack">
+        <div class="fly-value-row"><span>1h de coaching individuel chez toi</span><span class="pay">50€</span></div>
+        <div class="fly-value-row"><span>Bilan complet (habitudes de vie, posture, objectifs, mensurations)</span><span class="free">offert</span></div>
+        <div class="fly-value-row"><span>Guide Recettes Sculptantes</span><span class="free">offert · valeur 7€</span></div>
+        <div class="fly-value-row"><span>Challenge Ventre Plat 5 Jours</span><span class="free">offert</span></div>
+        <div class="fly-value-row total"><span>Tu payes aujourd'hui</span><span class="pay">50€</span></div>
+      </div>
       <div class="fly-offer-list">
-        <span>✔️ 1h de coaching individuel chez toi en Essonne</span>
-        <span>✔️ Bilan complet offert (habitudes de vie, posture, objectifs, mensurations)</span>
-        <span>✔️ Guide Recettes Sculptantes + Challenge Ventre Plat 5 Jours offerts</span>
         <span>✔️ Aucun engagement obligatoire après la séance</span>
       </div>
-      <p style="font-size:0.85rem;color:var(--text-mid);margin-top:14px;text-align:center;">Tu es ailleurs en France ? Découvre le <a href="offres.html" style="color:var(--accent);font-weight:600;text-decoration:none;">Diagnostic Distanciel à 30€ →</a></p>
+      <p style="font-size:0.85rem;color:var(--text-mid);margin-top:14px;text-align:center;">Tu es ailleurs en France ? Découvre le <a href="offres.html" style="color:var(--accent);font-weight:600;text-decoration:none;">Diagnostic Distanciel à 10€ →</a></p>
     </div>
   </div>
 </div>
@@ -368,7 +392,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="fly-step-card">
         <div class="fly-step-num">4</div>
         <div class="fly-step-icon">🎯</div>
-        <div class="fly-step-title">Ton programme sur-mesure</div>
+        <div class="fly-step-title">Ton accompagnement sur-mesure</div>
         <div class="fly-step-text">Construit pour toi. Aucun engagement obligatoire après la séance.</div>
       </div>
     </div>
@@ -441,7 +465,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="fly-b-card">
         <div class="fly-b-icon">🎯</div>
-        <div class="fly-b-title">Un programme sur-mesure</div>
+        <div class="fly-b-title">Un accompagnement sur-mesure</div>
         <div class="fly-b-text">Pas de fiche générique trouvée sur internet. On part de ton corps, ton objectif, ton emploi du temps réel.</div>
       </div>
       <div class="fly-b-card">
@@ -580,7 +604,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="fly-compare-items">
         <div class="fly-compare-item"><span>✔️</span><span>Chez toi si tu es en Essonne, en visio partout ailleurs</span></div>
         <div class="fly-compare-item"><span>✔️</span><span>Un suivi humain — si tu décroches, je te recontacte</span></div>
-        <div class="fly-compare-item"><span>✔️</span><span>Programme construit pour ton corps et ton objectif</span></div>
+        <div class="fly-compare-item"><span>✔️</span><span>Accompagnement construit pour ton corps et ton objectif</span></div>
         <div class="fly-compare-item"><span>✔️</span><span>Zéro jugement, zéro comparaison avec les autres</span></div>
         <div class="fly-compare-item"><span>✔️</span><span>Aucun trajet, aucun temps perdu</span></div>
       </div>
@@ -630,7 +654,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="fly-cta-section">
   <div class="fly-cta-block">
     <p>Réponds-moi directement sur WhatsApp pour réserver ton créneau.</p>
-    <a class="fly-cta-btn" href="https://wa.me/33756834626?text=Salut%20Ornella%20%21%20J%27ai%20vu%20ton%20flyer%2C%20je%20veux%20r%C3%A9server%20ma%20s%C3%A9ance%20d'essai%20%C3%A0%2050%E2%82%AC%20et%20r%C3%A9cup%C3%A9rer%20le%20Guide%20Recettes%20offert%20%F0%9F%98%8A" target="_blank">Réserver ma séance d'essai →</a>
+    <a class="fly-cta-btn" href="https://wa.me/33756834626?text=Salut%20Ornella%20%21%20J%27ai%20vu%20ton%20flyer%2C%20je%20veux%20r%C3%A9server%20ma%20s%C3%A9ance%20d'essai%20%C3%A0%2050%E2%82%AC%20et%20r%C3%A9cup%C3%A9rer%20le%20Guide%20Recettes%20offert%20%F0%9F%98%8A" target="_blank">Je réserve ma séance — 50€ →</a>
   </div>
 </div>
 
