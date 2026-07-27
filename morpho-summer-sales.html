@@ -330,8 +330,9 @@ footer a:hover{color:rgba(255,255,255,.8)}
       <h2 class="email-title">Entre ton email pour<br>découvrir ton diagnostic</h2>
       <p class="email-sub">Je t'envoie aussi ton diagnostic complet par email — ce qu'il faut faire, éviter, et manger pour ta morphologie. Gratuit.</p>
       <div class="email-form">
+        <input type="text" class="email-input" id="prenomInput" placeholder="Ton prénom" autocomplete="given-name">
         <input type="email" class="email-input" id="emailInput" placeholder="ton@email.com" autocomplete="email">
-        <p class="email-error" id="emailError">Entre un email valide pour continuer.</p>
+        <p class="email-error" id="emailError">Entre ton prénom et un email valide pour continuer.</p>
         <button class="email-submit" id="emailSubmitBtn" onclick="submitEmail()">Voir mon résultat →</button>
         <p class="email-privacy">🔒 Ton email est protégé. Pas de spam. Tu peux te désinscrire à tout moment.</p>
       </div>
@@ -634,9 +635,16 @@ function showEmailCapture(){
   document.getElementById('emailScreen').classList.add('active');
 }
 
+function postWithRetry(url, key, payload, retries){
+  return fetch(url,{method:'POST',headers:{'api-key':key,'Content-Type':'application/json'},body:JSON.stringify(payload)})
+    .then(r=>{ if(!r.ok && retries>0){ return new Promise(res=>setTimeout(res,800)).then(()=>postWithRetry(url,key,payload,retries-1)); } return r; })
+    .catch(()=>{ if(retries>0){ return new Promise(res=>setTimeout(res,800)).then(()=>postWithRetry(url,key,payload,retries-1)); } });
+}
+
 function submitEmail(){
+  const prenom = document.getElementById('prenomInput').value.trim();
   const email = document.getElementById('emailInput').value.trim();
-  if(!email || !email.includes('@')){
+  if(!prenom || !email || !email.includes('@')){
     document.getElementById('emailError').style.display = 'block';
     return;
   }
@@ -646,8 +654,9 @@ function submitEmail(){
   btn.disabled = true;
 
   lastEmail = email;
+  const fn = prenom.toLowerCase().replace(/\s+/g,'');
   if(typeof fbq!=='undefined'){
-    fbq('init','26675222578828123',{em:email});
+    fbq('init','26675222578828123',{em:email, fn:fn});
     fbq('track','Lead',{content_name:'Morpho Summer Quiz',value:12,currency:'EUR'});
   }
 
@@ -656,9 +665,18 @@ function submitEmail(){
   const _c='dcf702b601838-1wVKxDw8s4P48lV3';
   const key=_a+_b+_c;
 
-  // 1. Ajoute le contact à la liste Morpho Summer (28) — formulaire natif, plus de clé exposée pour cette étape
+  // 1. FIX : ajoute/met à jour le contact directement via l'API Brevo (fiable, avec retry) — remplace le formulaire iframe comme source principale
+  postWithRetry('https://api.brevo.com/v3/contacts', key, {
+    email: email,
+    attributes:{MORPHO:pendingMorpho, PRENOM:prenom},
+    listIds:[28],
+    updateEnabled:true
+  }, 2);
+
+  // Filet de sécurité : ancien formulaire natif en parallèle (ne fait pas de mal, mais n'est plus la source principale)
   document.getElementById('ms28Email').value = email;
   document.getElementById('ms28Form').submit();
+
   Promise.resolve().then(()=>{
     // 2. Envoie l'email personnalisé
     return fetch('https://api.brevo.com/v3/smtp/email',{
@@ -668,7 +686,7 @@ function submitEmail(){
         sender:{name:'Ornella Fit Coaching',email:'contact@ornellafitcoaching.com'},
         to:[{email}],
         subject: getMorphoSubject(pendingMorpho),
-        htmlContent: getMorphoEmail(pendingMorpho)
+        htmlContent: getMorphoEmail(pendingMorpho, prenom)
       })
     });
   }).catch(()=>{}).finally(()=>{ showResult(); });
@@ -685,7 +703,7 @@ function getMorphoSubject(m){
   return s[m];
 }
 
-function getMorphoEmail(m){
+function getMorphoEmail(m, prenom){
   const d = morphoData[m];
   const tips = {
     A:{do:['Hip thrust et fentes arrière pour sculpter sans élargir','Rowing et développé épaules pour équilibrer le haut','Marche inclinée plutôt que HIIT'],avoid:['Squat barre classique — élargit les cuisses','Vélo en résistance élevée','Step machine'],food:['Oméga-3 (saumon, sardines) — drainent les hanches','Protéines à chaque repas — satiété durable','Thé vert et fruits rouges — effet drainant'],trap:['Féculents le soir — stockage direct sur les hanches','Sel en excès — rétention d\'eau sur le bas du corps']},
@@ -704,7 +722,7 @@ function getMorphoEmail(m){
   <p style="font-size:.9rem;color:rgba(255,255,255,.7);margin:12px 0 0;line-height:1.6">${d.subtitle}</p>
 </div>
 <div style="padding:32px 36px">
-  <p style="font-size:.95rem;line-height:1.8;color:#2D4A3E;margin:0 0 24px">Ce que tu vas lire ci-dessous, <strong>personne ne te l'a dit jusqu'ici.</strong> Pourtant c'est exactement ce qui explique pourquoi tes efforts ne donnent pas les résultats que tu mérites.</p>
+  <p style="font-size:.95rem;line-height:1.8;color:#2D4A3E;margin:0 0 24px">${prenom ? prenom+', c' : 'C'}e que tu vas lire ci-dessous, <strong>personne ne te l'a dit jusqu'ici.</strong> Pourtant c'est exactement ce qui explique pourquoi tes efforts ne donnent pas les résultats que tu mérites.</p>
 
   <div style="background:#F5EFE6;border-left:4px solid #E8634A;border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:24px">
     <p style="font-size:.72rem;font-weight:700;color:#E8634A;text-transform:uppercase;letter-spacing:.12em;margin:0 0 10px">Ce que tu dois FAIRE — Morpho ${m}</p>
