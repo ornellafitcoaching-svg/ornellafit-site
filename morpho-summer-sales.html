@@ -265,8 +265,28 @@ footer a:hover{color:rgba(255,255,255,.8)}
         <p style="font-size:.85rem;color:var(--text);line-height:1.9;margin:0">• Ta morphologie réelle (souvent différente de ce qu'on croit)<br>• Les erreurs qui bloquent tes résultats depuis le début<br>• Le type d'entraînement qui te fera enfin progresser</p>
       </div>
       <p style="font-size:.78rem;color:var(--muted);margin-bottom:24px">Aucune vente avant ton résultat. Juste la vérité sur ton corps.</p>
-      <button class="btn-coral" onclick="startQuiz()">Je découvre pourquoi je stagne →</button>
+      <button class="btn-coral" onclick="beginJourney()">Je découvre pourquoi je stagne →</button>
       <p style="margin-top:10px;font-size:.75rem;color:var(--muted)">🔥 Prix programme passe à 29€ le 10 août</p>
+    </div>
+
+    <!-- MICRO-QUESTIONS (engagement avant le quiz) -->
+    <div class="quiz-screen" id="yes1">
+      <p class="quiz-q-text">As-tu déjà essayé plusieurs programmes sans obtenir de résultats durables ?</p>
+      <div class="quiz-answers">
+        <button class="quiz-card" onclick="showYes(2)"><span class="quiz-card-emoji">🙋</span>Oui, plusieurs fois</button>
+      </div>
+    </div>
+    <div class="quiz-screen" id="yes2">
+      <p class="quiz-q-text">As-tu parfois l'impression de faire beaucoup d'efforts pour des résultats qui ne suivent pas ?</p>
+      <div class="quiz-answers">
+        <button class="quiz-card" onclick="showYes(3)"><span class="quiz-card-emoji">😮‍💨</span>Oui, exactement ça</button>
+      </div>
+    </div>
+    <div class="quiz-screen" id="yes3">
+      <p class="quiz-q-text">Aimerais-tu enfin comprendre pourquoi — et quoi faire différemment ?</p>
+      <div class="quiz-answers">
+        <button class="quiz-card" onclick="startQuiz()"><span class="quiz-card-emoji">🎯</span>Oui, montre-moi</button>
+      </div>
     </div>
 
     <!-- Q1 -->
@@ -368,7 +388,7 @@ footer a:hover{color:rgba(255,255,255,.8)}
           <div class="conv-inc-item">✅ Accès <strong>immédiat</strong> — tu commences dans les 5 minutes, pas demain</div>
         </div>
 
-        <p style="font-size:.85rem;color:rgba(255,255,255,.8);line-height:1.7;text-align:center;margin:0 0 20px;font-style:italic">Imagine dans 4 semaines : une silhouette qui répond enfin à tes efforts, au lieu de stagner malgré tout ce que tu fais.</p>
+        <p style="font-size:.85rem;color:rgba(255,255,255,.8);line-height:1.7;text-align:center;margin:0 0 20px;font-style:italic" id="futureVision">Imagine dans 4 semaines : une silhouette qui répond enfin à tes efforts, au lieu de stagner malgré tout ce que tu fais.</p>
 
         <div class="conv-price">
           <span class="conv-price-old">29€</span>
@@ -499,7 +519,8 @@ const morphoData = {
       {icon:'⚠️', label:'Aliment piège', text:'Sucres rapides → stockage direct sur les hanches'}
     ],
     convTitle: 'Ton programme Morpho A — taillé pour ton corps',
-    btnText: 'J\'obtiens mon programme Morpho A — 12€'
+    btnText: 'J\'obtiens mon programme Morpho A — 12€',
+    futureVision: 'des hanches qui s\'affinent enfin, un haut du corps mieux équilibré, et des fessiers galbés grâce au bon type d\'exercices'
   },
   H: {
     stripeLink: 'https://buy.stripe.com/bJe14nfMt4tJ4k5dql8Vi0g',
@@ -514,7 +535,8 @@ const morphoData = {
       {icon:'⚠️', label:'Aliment piège', text:'Alcool et sucres raffinés → gonflent immédiatement la taille'}
     ],
     convTitle: 'Ton programme Morpho H — taillé pour ton corps',
-    btnText: 'J\'obtiens mon programme Morpho H — 12€'
+    btnText: 'J\'obtiens mon programme Morpho H — 12€',
+    futureVision: 'une taille enfin marquée, un ventre plus plat grâce au gainage profond et à une alimentation anti-inflammatoire adaptée'
   },
   X: {
     stripeLink: 'https://buy.stripe.com/4gMdR92ZH9O3dUFbid8Vi0h',
@@ -529,7 +551,8 @@ const morphoData = {
       {icon:'⚠️', label:'Aliment piège', text:'Junk food régulier et alcool → stockage anarchique qui casse les proportions'}
     ],
     convTitle: 'Ton programme Morpho X — taillé pour ton corps',
-    btnText: 'J\'obtiens mon programme Morpho X — 12€'
+    btnText: 'J\'obtiens mon programme Morpho X — 12€',
+    futureVision: 'des proportions préservées et sublimées, sans jamais déformer ce que tu as déjà'
   },
   O: {
     stripeLink: 'https://buy.stripe.com/aFaaEX7fXe4j6sd9a58Vi0i',
@@ -544,7 +567,8 @@ const morphoData = {
       {icon:'⚠️', label:'Aliment piège', text:'Ultra-transformés et sucres cachés → inflammation directe et résistance à la perte de poids'}
     ],
     convTitle: 'Ton programme Morpho O — taillé pour ton corps',
-    btnText: 'J\'obtiens mon programme Morpho O — 12€'
+    btnText: 'J\'obtiens mon programme Morpho O — 12€',
+    futureVision: 'un métabolisme qui recommence à répondre, grâce à une méthode enfin adaptée à ton corps'
   },
   V: {
     stripeLink: 'https://buy.stripe.com/bJe14n57P6BRaItbid8Vi0j',
@@ -559,7 +583,8 @@ const morphoData = {
       {icon:'⚠️', label:'Aliment piège', text:'Sel en excès → gonfle visuellement les épaules déjà larges'}
     ],
     convTitle: 'Ton programme Morpho V — taillé pour ton corps',
-    btnText: 'J\'obtiens mon programme Morpho V — 12€'
+    btnText: 'J\'obtiens mon programme Morpho V — 12€',
+    futureVision: 'des fessiers enfin galbés et une silhouette rééquilibrée, sans accentuer tes épaules'
   }
 };
 
@@ -598,7 +623,20 @@ function buyMorpho(){
   window.open(link,'_blank');
 }
 
+function beginJourney(){
+  document.getElementById('quizIntro').style.display = 'none';
+  showYes(1);
+  document.querySelector('#quiz').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function showYes(n){
+  ['yes1','yes2','yes3'].forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.remove('active'); });
+  const el = document.getElementById('yes'+n);
+  if(el) el.classList.add('active');
+}
+
 function startQuiz(){
+  ['yes1','yes2','yes3'].forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.remove('active'); });
   document.getElementById('quizIntro').style.display = 'none';
   document.getElementById('progressWrap').style.display = 'block';
   document.getElementById('q0').classList.add('active');
@@ -792,6 +830,7 @@ function showResult(){
   document.getElementById('painText').innerHTML = d.painText;
   document.getElementById('convTitle').textContent = d.convTitle;
   document.getElementById('convBtn').textContent = d.btnText;
+  if(d.futureVision) document.getElementById('futureVision').textContent = 'Imagine dans 4 semaines : ' + d.futureVision + '.';
   document.getElementById('resultScreen').classList.add('active');
   document.getElementById('stickyMob').style.display = 'flex';
   document.getElementById('resultScreen').scrollIntoView({behavior:'smooth',block:'start'});
