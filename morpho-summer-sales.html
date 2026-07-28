@@ -602,14 +602,20 @@ function startQuiz(){
   document.querySelector('#quiz').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
+let quizTransitioning = false;
 function answer(qIdx, aIdx){
+  if(quizTransitioning) return;
+  const currentEl = document.getElementById('q'+qIdx);
+  if(!currentEl || !currentEl.classList.contains('active')) return;
+  quizTransitioning = true;
   const pts = scoring[qIdx][aIdx];
   for(const [k,v] of Object.entries(pts)) scores[k] += v;
   currentQ++;
   updateProgress();
-  document.getElementById('q'+qIdx).classList.remove('active');
-  if(currentQ < totalQ){
-    setTimeout(()=>{ document.getElementById('q'+currentQ).classList.add('active'); },50);
+  currentEl.classList.remove('active');
+  const nextQ = currentQ;
+  if(nextQ < totalQ){
+    setTimeout(()=>{ const el=document.getElementById('q'+nextQ); if(el) el.classList.add('active'); quizTransitioning=false; },50);
   } else {
     pendingMorpho = getMorpho();
     setTimeout(showEmailCapture, 50);
