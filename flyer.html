@@ -741,12 +741,24 @@ function flyerGuideEmailHtml() {
     '</body></html>';
 }
 
+function postWithRetry(url, key, payload, retries) {
+  return fetch(url, { method: 'POST', headers: { 'api-key': key, 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+    .then(function(r) { if (!r.ok && retries > 0) { return new Promise(function(res) { setTimeout(res, 800); }).then(function() { return postWithRetry(url, key, payload, retries - 1); }); } return r; })
+    .catch(function() { if (retries > 0) { return new Promise(function(res) { setTimeout(res, 800); }).then(function() { return postWithRetry(url, key, payload, retries - 1); }); } });
+}
+
 function submitFlyerLead(e) {
   e.preventDefault();
   var email = document.getElementById('fly-lead-email').value.trim();
   if (!email) return;
   var btn = document.getElementById('fly-lead-submit');
   btn.disabled = true; btn.textContent = 'Envoi…';
+  // FIX : ajoute/met à jour le contact directement via l'API Brevo (fiable, avec retry) — liste #37 Lead Flyer + #21 Challenge Ventre Plat 5J
+  postWithRetry('https://api.brevo.com/v3/contacts', BREVO_API_KEY, {
+    email: email,
+    listIds: [37, 21],
+    updateEnabled: true
+  }, 2);
   document.getElementById('flyerLeadEmail').value = email;
   document.getElementById('flyerLeadForm').submit();
   document.getElementById('cvp21FlyerEmail').value = email;
