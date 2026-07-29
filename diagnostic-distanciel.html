@@ -32,6 +32,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preload" as="image" href="images/logo.png">
 <link rel="stylesheet" href="style.css">
 <style>
+/* Nav simplifiée sans menu : neutralise la règle mobile .nav-cta{width:100%} prévue pour le menu déroulant supprimé */
+nav { justify-content: space-between; }
+nav .nav-cta { width: auto; margin: 0; padding: 10px 20px; }
+
 #dd-hero {
   background: linear-gradient(150deg,#2E4A34,#4A7252);
   padding: 56px 20px 44px; text-align: center; color: #fff; position: relative;
@@ -62,7 +66,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 #dd-hero h1 em { font-style: italic; color: #A8D4B0; }
 .dd-h1-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: rgba(255,255,255,.65); margin: 0 0 16px; }
 #dd-hero p.dd-sub { font-size: .95rem; color: rgba(255,255,255,.82); max-width: 480px; margin: 0 auto 8px; line-height: 1.55; }
-.dd-authority { font-size: .78rem; color: rgba(255,255,255,.7); margin: 0 0 26px; }
+.dd-authority { font-size: .78rem; color: rgba(255,255,255,.7); margin: 0 0 14px; }
+.dd-goal-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 460px; margin: 0 auto 22px; }
+.dd-goal-pill { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.28); color: #fff; font-size: .74rem; font-weight: 600; padding: 6px 14px; border-radius: 50px; }
+.dd-risk-reversal { font-size: .76rem; color: #C8E8D0; font-weight: 700; margin: 2px 0 0; }
 .dd-price-badge {
   display: inline-flex; align-items: baseline; gap: 6px; background: #fff; color: #1E1616;
   border-radius: 16px; padding: 14px 26px; margin-bottom: 22px;
@@ -99,6 +106,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .dd-benefit-value {
   display: inline-block; margin-top: 6px; background: #F0F7E6; color: #2D6A4F; font-size: .72rem; font-weight: 700;
   padding: 3px 10px; border-radius: 20px;
+}
+.dd-reinforce-bar {
+  margin-top: 24px; background: #3D2A24; color: #fff; text-align: center; font-weight: 700; font-size: .95rem;
+  padding: 16px 20px; border-radius: 14px;
 }
 
 #dd-steps { background: #F7F3F0; }
@@ -162,6 +173,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .dd-proof-photo img { width: 100%; display: block; }
 .dd-proof-text { font-size: .88rem; color: #4A3E3E; line-height: 1.6; max-width: 480px; margin: 0 auto 14px; }
 .dd-proof-link { font-size: .82rem; color: #C96358; font-weight: 700; text-decoration: underline; }
+
+/* CAPTURE LEAD — guide gratuit (filet de rattrapage pour celles qui hésitent) */
+.dd-guide-teaser { text-align: center; padding: 0 20px 46px; }
+.dd-guide-teaser p { font-size: .85rem; color: #6B5F58; margin-bottom: 10px; }
+.dd-guide-btn { background: none; border: 1.5px solid #C96358; color: #C96358; font-weight: 700; font-size: .85rem; padding: 13px 26px; border-radius: 50px; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+.dd-guide-btn:hover { background: rgba(201,99,88,.06); }
+
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(44,31,26,.45);z-index:999;align-items:flex-end;justify-content:center;backdrop-filter:blur(10px);}
+.modal-overlay.open{display:flex;}
+.modal-box{background:#FDF7F3;border-radius:28px 28px 0 0;padding:32px 24px 52px;width:100%;max-width:480px;position:relative;border-top:3px solid #E8C4B0;animation:dd-modal-up .35s cubic-bezier(.22,.68,0,1.2);}
+@keyframes dd-modal-up{from{transform:translateY(80px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+.modal-close{position:absolute;top:16px;right:18px;background:#F0E0D8;border:none;width:30px;height:30px;border-radius:50%;font-size:1rem;cursor:pointer;color:#8B6F5E;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.modal-close:hover{background:#E8C8BC;}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#2C1F1A;margin-bottom:6px;padding-right:32px;line-height:1.3;}
+.modal-sub{font-size:13px;font-weight:300;color:#A08070;margin-bottom:22px;line-height:1.65;}
+.modal-form{display:flex;flex-direction:column;gap:10px;}
+.modal-input{padding:14px 16px;border:1px solid #E0C8BC;border-radius:12px;font-size:14px;font-family:inherit;font-weight:300;outline:none;background:#fff;color:#2C1F1A;transition:border-color .2s;}
+.modal-input:focus{border-color:#C96358;}
+.modal-submit{background:linear-gradient(135deg,#C96358,#D4856A);color:#fff;border:none;border-radius:50px;padding:15px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(201,99,88,.28);transition:transform .2s,box-shadow .2s;}
+.modal-submit:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(201,99,88,.38);}
+.modal-error{color:#C96358;font-size:12px;display:none;}
+.modal-success{display:none;text-align:center;padding:20px 0 4px;}
+.modal-success-icon{font-size:2.2rem;margin-bottom:12px;}
+.modal-success-text{font-size:14px;font-weight:300;color:#2C1F1A;line-height:1.7;}
 </style>
 </head>
 <body>
@@ -170,43 +205,54 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<!-- NAV -->
+<!-- NAV — volontairement minimale : page à objectif unique, aucun lien de sortie vers le reste du site -->
 <nav>
-  <a href="index.html" class="nav-logo">
+  <span class="nav-logo">
     <img src="images/logo.png" alt="Ornella Fit Coaching" class="nav-logo-img">
-  </a>
-  <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
-  <div class="nav-menu" id="navMenu">
-    <a href="offres.html" class="nav-link">Coaching</a>
-    <a href="transformations.html" class="nav-link">Transformations</a>
-    <a href="programmes.html" class="nav-link">Programmes digitaux</a>
-    <a href="apropos.html" class="nav-link">À propos</a>
-    <a href="https://wa.me/33756834626" class="nav-cta" target="_blank">M'écrire →</a>
-  </div>
+  </span>
+  <a href="https://wa.me/33756834626" class="nav-cta" target="_blank">M'écrire →</a>
 </nav>
 
 <!-- HERO -->
 <section id="dd-hero">
   <img class="dd-hero-photo" src="images/ornella-portrait-full.jpg" alt="Ornella, coach sportive">
-  <span class="dd-eyebrow">🎯 Coaching à distance · Étape 1</span>
+  <span class="dd-eyebrow">🎯 Bienvenue · Étape 1 de ton accompagnement à distance</span>
   <div class="dd-social-proof"><span class="stars">★★★★★</span> 5,0 <span class="sep">·</span> 100+ femmes accompagnées <span class="sep">·</span> 24 avis</div>
   <h1>Pourquoi rien n'a marché <em>jusqu'ici</em> ?</h1>
-  <p class="dd-h1-sub">(même en t'y mettant sérieusement)</p>
+  <p class="dd-h1-sub">(même en essayant)</p>
   <p class="dd-sub">En 10 minutes de questionnaire, on identifie ce qui bloque VRAIMENT ton corps — pas un programme copié-collé de plus. Réponse écrite et personnalisée sous 48h.</p>
-  <p class="dd-authority">Ornella Racano — coach sportive diplômée d'État</p>
+  <p class="dd-authority">Ornella Racano — coach sportive diplômée d'État · compétitrice au Championnat de France de Fitness</p>
+  <div class="dd-goal-pills">
+    <span class="dd-goal-pill">Perte de poids</span>
+    <span class="dd-goal-pill">Tonification</span>
+    <span class="dd-goal-pill">Prise de masse</span>
+    <span class="dd-goal-pill">Remise en forme</span>
+    <span class="dd-goal-pill">Prise de confiance</span>
+  </div>
   <div class="dd-price-badge">
     <span class="dd-price">10€</span>
     <span class="dd-price-note">déductible si engagement<br>3 mois derrière</span>
   </div>
   <div class="dd-cta-wrap">
     <a href="https://buy.stripe.com/bJefZh1VD5xNaIt9a58Vi0p" class="dd-cta" target="_blank" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:10,currency:'EUR'})">Je découvre ce qui me bloque — 10€ →</a>
+    <p class="dd-risk-reversal">✅ Zéro risque — tu repars avec ton diagnostic quoi qu'il arrive</p>
     <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20r%C3%A9server%20mon%20Diagnostic%20Distanciel%20%C3%A0%2010%E2%82%AC.%20On%20en%20parle%20%3F" class="dd-wa-link" target="_blank">💬 Une question avant de payer ?</a>
+    <a href="javascript:void(0)" onclick="openGuide()" class="dd-wa-link">🎁 Pas encore prête ? Reçois d'abord mon guide gratuit</a>
   </div>
 </section>
 
 <!-- AGITATION -->
 <section id="dd-agitation" class="dd-section">
-  <p class="dd-agitation-text">Programmes suivis à la lettre qui ne changent rien. Motivation qui tient deux semaines. Corps qui ne répond plus comme avant. <strong>Ce n'est pas un manque de volonté</strong> — c'est qu'on n'a jamais identifié ce qui bloque vraiment, chez toi, spécifiquement.</p>
+  <p class="dd-agitation-text">Tu manges trop peu le jour et tu craques le soir. Tu enchaînes les régimes stricts. Tu veux tout changer d'un coup. Ou tu ne manges pas assez de protéines pour progresser. <strong>Ce n'est pas un manque de volonté</strong> — c'est qu'on n'a jamais identifié laquelle de ces erreurs s'applique VRAIMENT à toi, spécifiquement. C'est exactement ce que ce questionnaire va faire.</p>
+</section>
+
+<!-- PREUVE -->
+<section id="dd-proof" class="dd-section">
+  <h2 class="dd-section-title">J'ai vécu ce que tu <em>vis</em></h2>
+  <div class="dd-proof-photo">
+    <img src="images/ornella-avant-apres-postpartum.jpg" alt="Ornella — Transformation post-partum" loading="lazy">
+  </div>
+  <p class="dd-proof-text">Compétitrice bikini fitness, puis grossesse difficile — corps transformé, confiance en miettes. J'ai tout reconstruit depuis zéro. Ce vécu, c'est ce qui nourrit chaque diagnostic que j'écris.</p>
 </section>
 
 <!-- CE QUE TU OBTIENS -->
@@ -244,6 +290,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
   </div>
+  <div class="dd-reinforce-bar">→ Tu sais enfin QUOI faire et POURQUOI.</div>
 </section>
 
 <!-- COMMENT ÇA MARCHE -->
@@ -313,15 +360,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- PREUVE -->
-<section id="dd-proof" class="dd-section">
-  <h2 class="dd-section-title">J'ai vécu ce que tu <em>vis</em></h2>
-  <div class="dd-proof-photo">
-    <img src="images/ornella-avant-apres-postpartum.jpg" alt="Ornella — Transformation post-partum" loading="lazy">
-  </div>
-  <p class="dd-proof-text">Compétitrice bikini fitness, puis grossesse difficile — corps transformé, confiance en miettes. J'ai tout reconstruit depuis zéro. Ce vécu, c'est ce qui nourrit chaque diagnostic que j'écris.</p>
-  <a href="transformations.html" class="dd-proof-link">Voir toutes les transformations →</a>
-</section>
+<!-- CAPTURE LEAD — filet de rattrapage pour celles qui hésitent encore -->
+<div class="dd-guide-teaser">
+  <p>Pas encore prête à te lancer ?</p>
+  <button class="dd-guide-btn" onclick="openGuide()">🎁 Reçois d'abord mon guide gratuit</button>
+</div>
 
 <!-- CTA FINAL -->
 <section id="dd-final-cta" class="dd-section">
@@ -339,23 +382,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- Footer volontairement minimal : uniquement les mentions légales obligatoires, aucun lien vers le reste du site (page à objectif unique) -->
 <footer>
   <div class="footer-logo">
     <img src="images/logo.png" alt="Ornella Fit Coaching" class="footer-logo-img" loading="lazy">
   </div>
   <p class="footer-slogan">« Ton plus bel investissement, c'est toi. »</p>
-  <div class="footer-links">
-    <a href="index.html">Accueil</a>
-    <a href="offres.html">Coaching</a>
-    <a href="transformations.html">Transformations</a>
-    <a href="apropos.html">À propos</a>
-    <a href="https://wa.me/33756834626" target="_blank">WhatsApp</a>
-  </div>
-  <div class="footer-social">
-    <a href="https://www.instagram.com/ornellafit.coaching" target="_blank">📷 Instagram</a>
-    <a href="mailto:ornellafit.coaching@gmail.com">✉️ Email</a>
-    <a href="https://www.ornellafitcoaching.com/links.html">🔗 Mes liens</a>
-  </div>
   <p class="footer-info">Ornella Racano · Coach sportive Essonne (91) · Île-de-France · ornellafit.coaching@gmail.com</p>
   <p class="footer-copy">© 2026 Ornella Fit Coaching — Tous droits réservés</p>
   <p class="footer-legal"><a href="mentions-legales.html">Mentions légales</a> · <a href="cgv.html">CGV</a> · <a href="mentions-legales.html#rgpd">Politique de confidentialité</a></p>
@@ -367,13 +399,59 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="https://buy.stripe.com/bJefZh1VD5xNaIt9a58Vi0p" target="_blank" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:10,currency:'EUR'})">Je découvre ce qui me bloque — 10€ →</a>
 </div>
 
+<!-- MODAL GUIDE GRATUIT — capture lead pour celles qui hésitent -->
+<div class="modal-overlay" id="guideOverlay" onclick="overlayClick(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeGuide()">×</button>
+    <div id="guide-form-wrap">
+      <div class="modal-title">Ton guide gratuit 🎁</div>
+      <div class="modal-sub">Les 9 erreurs qui sabotent ta transformation — directement dans ta boîte mail.</div>
+      <form class="modal-form" onsubmit="submitGuide(event)">
+        <input type="text" id="guide-prenom" class="modal-input" placeholder="Ton prénom">
+        <input type="email" id="guide-email" class="modal-input" placeholder="Ton email *" required>
+        <div class="modal-error" id="guide-error"></div>
+        <button type="submit" class="modal-submit" id="guide-btn">Recevoir le guide →</button>
+      </form>
+    </div>
+    <div class="modal-success" id="guide-success">
+      <div class="modal-success-icon">🎉</div>
+      <div class="modal-success-text">Ton guide arrive dans ta boîte mail.<br>Vérifie tes spams si besoin.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Formulaire natif Brevo (liste #15 Guide offert) — soumis en arrière-plan via iframe cachée -->
+<iframe name="list15Frame" style="display:none"></iframe>
+<form id="list15Form" method="POST" target="list15Frame" action="https://e605324b.sibforms.com/serve/MUIFALoL1fcMVo0ja25kWMtYWzSqwAywgjRBpUj5ZvwYNzLwrB9rHaDmrlfePrdBh56VbztE-9CF2otkSiflgd8BfQyfpe1oRInSR756--DIIrCBh2QwHnMs_EA61TA_qZvdV_43IDbmR2FXAtovfd2QIObZZhwYeoYA8R4_lGR-Kv-d6snW-06f0R3-niv-huUnbbPPZcmpqp1x_w==" style="display:none">
+  <input type="text" name="EMAIL" id="list15Email">
+  <input type="text" name="email_address_check" value="" class="input--hidden">
+  <input type="hidden" name="locale" value="fr">
+</form>
+
 <script>
-function toggleMenu() { document.getElementById('navMenu').classList.toggle('open'); }
-document.addEventListener('click', function(e) {
-  const menu = document.getElementById('navMenu');
-  const toggle = document.querySelector('.nav-toggle');
-  if (!menu.contains(e.target) && !toggle.contains(e.target)) menu.classList.remove('open');
-});
+var DD_BK='xkeysib-b3f029f593ab90bd2bb'+'2290988c5a455f29ddad8ec51e4ca585'+'dcf702b601838-1wVKxDw8s4P48lV3';
+function openGuide(){if(typeof fbq!=='undefined')fbq('track','ViewContent',{content_name:'Guide 9 Erreurs'});document.getElementById('guideOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeGuide(){document.getElementById('guideOverlay').classList.remove('open');document.body.style.overflow='';}
+function overlayClick(e){if(e.target===document.getElementById('guideOverlay'))closeGuide();}
+async function submitGuide(e){
+  e.preventDefault();
+  var email=document.getElementById('guide-email').value.trim();
+  var prenom=document.getElementById('guide-prenom').value.trim();
+  var errEl=document.getElementById('guide-error');
+  var btn=document.getElementById('guide-btn');
+  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errEl.textContent='Entre un email valide.';errEl.style.display='block';return;}
+  errEl.style.display='none';btn.textContent='Envoi…';btn.disabled=true;
+  try{
+    document.getElementById('list15Email').value = email;
+    document.getElementById('list15Form').submit();
+    await fetch('https://api.brevo.com/v3/smtp/email',{method:'POST',headers:{'api-key':DD_BK,'Content-Type':'application/json'},body:JSON.stringify({to:[{email:email,name:prenom}],templateId:10,sender:{name:'Ornella Fit Coaching',email:'contact@ornellafitcoaching.com'}})});
+    if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Guide 9 Erreurs'});
+    document.getElementById('guide-form-wrap').style.display='none';
+    document.getElementById('guide-success').style.display='block';
+    setTimeout(function(){window.location.href='https://www.ornellafitcoaching.com/guide-offert.html';},1800);
+  }catch(e2){btn.textContent='Recevoir le guide →';btn.disabled=false;errEl.textContent='Erreur, réessaie.';errEl.style.display='block';}
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGuide();});
 </script>
 
 </body>
