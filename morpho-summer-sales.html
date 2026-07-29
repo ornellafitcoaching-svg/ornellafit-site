@@ -9,7 +9,7 @@
 <meta property="og:description" content="Programme sport + nutrition taillé pour TA morphologie. Quiz gratuit, résultat immédiat. 12€.">
 <meta property="og:url" content="https://www.ornellafitcoaching.com/morpho-summer-sales.html">
 <meta property="og:type" content="product">
-<meta property="og:image" content="https://www.ornellafitcoaching.com/images/morpho-cover.png">
+<meta property="og:image" content="https://www.ornellafitcoaching.com/images/morpho-cover-v2.jpg">
 <link rel="canonical" href="https://www.ornellafitcoaching.com/morpho-summer-sales.html">
 <!-- GTM -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M7C2RGHG');</script>
@@ -112,6 +112,21 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);
 .proof-mini-quote{font-size:.82rem;color:#3D2A24;line-height:1.5;font-style:italic;margin-bottom:4px}
 .proof-mini-name{font-size:.72rem;color:var(--coral);font-weight:700}
 @media (max-width:560px){.proof-mini-grid{grid-template-columns:1fr}}
+
+/* COMPARATIF GÉNÉRIQUE VS MORPHO SUMMER */
+.compare-wrap{margin-bottom:28px}
+.compare-label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);text-align:center;margin-bottom:14px}
+.compare-head{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 0 8px;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#9A8A78}
+.compare-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 0;border-bottom:1px solid var(--border)}
+.compare-row:last-child{border:none}
+.compare-col{font-size:.82rem;line-height:1.5}
+.compare-col.bad{color:#9A5A50}
+.compare-col.good{color:#1B3A2D;font-weight:600}
+@media(max-width:480px){.compare-row,.compare-head{grid-template-columns:1fr}.compare-head div:first-child{display:none}}
+
+/* TEASER (suspense avant révélation complète) */
+.result-teaser{text-align:center}
+.result-teaser-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:14px}
 
 /* CONVERSION BLOC */
 .conv-bloc{background:linear-gradient(135deg,var(--green) 0%,#2D5940 100%);border-radius:24px;padding:36px 28px;text-align:center;margin-top:32px}
@@ -243,7 +258,7 @@ footer a:hover{color:rgba(255,255,255,.8)}
     </div>
     <p class="hero-note">2 minutes · Résultat immédiat · Aucune carte bancaire requise</p>
     <div style="margin-top:36px;max-width:380px;margin-left:auto;margin-right:auto">
-      <img src="images/morpho-cover.png" alt="Ornella Fit Coaching — Programmes Morpho Summer" style="width:100%;border-radius:20px;box-shadow:0 12px 48px rgba(27,58,45,.15)">
+      <img src="images/morpho-cover-v2.jpg" alt="Ornella Fit Coaching — Découvre ta morphologie" style="width:100%;border-radius:20px;box-shadow:0 12px 48px rgba(27,58,45,.15)">
     </div>
   </div>
 </section>
@@ -370,6 +385,19 @@ footer a:hover{color:rgba(255,255,255,.8)}
 
     <!-- RÉSULTAT -->
     <div class="result-screen" id="resultScreen">
+
+      <!-- TEASER : suspense avant révélation complète -->
+      <div class="result-teaser" id="resultTeaser">
+        <p class="result-teaser-eyebrow">🔍 Ton diagnostic est prêt</p>
+        <p style="font-size:.9rem;color:#4A5E52;font-style:italic;margin:0 0 18px" id="teaserPersonal"></p>
+        <h2 class="result-title" style="margin-bottom:14px">Ce qui bloque ta progression n'est probablement pas un manque de motivation.</h2>
+        <p class="result-subtitle" id="teaserSubtitle" style="margin-bottom:28px"></p>
+        <button class="btn-coral-large" onclick="revealFullResult()" style="max-width:360px;margin:0 auto">Je découvre mon profil complet →</button>
+      </div>
+
+      <!-- RÉSULTAT COMPLET : masqué au départ -->
+      <div id="resultFull" style="display:none">
+
       <div style="text-align:center;margin-bottom:24px">
         <div class="result-morpho-badge" id="resultBadge">Morpho A — La Poire</div>
         <h2 class="result-title" id="resultTitle">Tu stockes sur les hanches<br>et les cuisses.</h2>
@@ -408,6 +436,28 @@ footer a:hover{color:rgba(255,255,255,.8)}
         </div>
       </div>
 
+      <!-- COMPARATIF -->
+      <div class="compare-wrap">
+        <p class="compare-label">Pourquoi pas un programme générique ?</p>
+        <div class="compare-head"><div>Générique</div><div>Morpho Summer</div></div>
+        <div class="compare-row">
+          <div class="compare-col bad">❌ Même entraînement pour tout le monde</div>
+          <div class="compare-col good">✅ Adapté à TA morphologie</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-col bad">❌ Aucun conseil nutrition spécifique</div>
+          <div class="compare-col good">✅ Nutrition ciblée pour ton profil</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-col bad">❌ Beaucoup d'essais-erreurs</div>
+          <div class="compare-col good">✅ Plan déjà construit pour toi</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-col bad">❌ Tu improvises chaque séance</div>
+          <div class="compare-col good">✅ Tu suis une méthode claire</div>
+        </div>
+      </div>
+
       <!-- CONVERSION -->
       <div class="conv-bloc">
         <p class="conv-bloc-eyebrow">Ton programme est prêt</p>
@@ -439,6 +489,8 @@ footer a:hover{color:rgba(255,255,255,.8)}
         </div>
         <p class="conv-sub">⚡ Accès <strong>immédiat</strong> après paiement · À vie sur tous tes appareils</p>
         <p class="conv-urgency">⏰ Prix de lancement — passe à 29€ le 10 août</p>
+      </div>
+
       </div>
     </div>
 
@@ -857,6 +909,8 @@ function showResult(){
   document.getElementById('resultTitle').textContent = d.title;
   document.getElementById('resultSubtitle').textContent = d.subtitle;
   document.getElementById('painPersonal').textContent = lastPrenom ? 'Ornella a analysé tes réponses, ' + lastPrenom + '.' : '';
+  document.getElementById('teaserPersonal').textContent = lastPrenom ? 'Ornella a analysé tes réponses, ' + lastPrenom + '.' : 'Ornella a analysé tes réponses.';
+  document.getElementById('teaserSubtitle').textContent = d.subtitle;
   const infoEl = document.getElementById('resultInfo');
   infoEl.innerHTML = d.rows.map(r=>`
     <div class="result-row">
@@ -868,9 +922,17 @@ function showResult(){
   document.getElementById('convTitle').textContent = d.convTitle;
   document.getElementById('convBtn').textContent = d.btnText;
   if(d.futureVision) document.getElementById('futureVision').textContent = 'Imagine dans 4 semaines : ' + d.futureVision + '.';
+  document.getElementById('resultTeaser').style.display = 'block';
+  document.getElementById('resultFull').style.display = 'none';
   document.getElementById('resultScreen').classList.add('active');
   document.getElementById('stickyMob').style.display = 'flex';
   document.getElementById('resultScreen').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function revealFullResult(){
+  document.getElementById('resultTeaser').style.display = 'none';
+  document.getElementById('resultFull').style.display = 'block';
+  document.getElementById('resultFull').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 function toggleFaq(btn){
