@@ -913,14 +913,14 @@ function getMorphoSubject(m){
 function getMorphoEmail(m, prenom){
   const d = morphoData[m];
   const tips = {
-    A:{do:['Hip thrust et fentes arrière pour sculpter sans élargir','Rowing et développé épaules pour équilibrer le haut','Marche inclinée plutôt que HIIT'],avoid:['Squat barre classique — élargit les cuisses','Vélo en résistance élevée','Step machine'],food:['Oméga-3 (saumon, sardines) — drainent les hanches','Protéines à chaque repas — satiété durable','Thé vert et fruits rouges — effet drainant'],trap:['Féculents le soir — stockage direct sur les hanches','Sel en excès — rétention d\'eau sur le bas du corps']},
-    H:{do:['Gainage profond (planche, dead bug, pallof press)','Squats sumo et exercices full body','Alimentation anti-inflammatoire stricte'],avoid:['Crunchs classiques — épaississent la taille','Side bends avec haltères — même effet','Alcool — gonfle immédiatement la taille'],food:['Curcuma et gingembre — anti-inflammatoires puissants','Légumes verts et probiotiques — flat belly','Protéines maigres à chaque repas'],trap:['Alcool — stockage immédiat à la taille','Pain blanc et sucres raffinés — inflammation directe']},
-    X:{do:['Full body équilibré 3×/semaine','Maintenir la taille avec du gainage','Varier les plaisirs sans excès'],avoid:['Charges trop lourdes sur épaules ou hanches','HIIT excessif qui déséquilibre','Régimes restrictifs qui font perdre la taille en premier'],food:['Tout ce qui est coloré et varié','Protéines + légumes + bonnes graisses à chaque repas','Eau en abondance'],trap:['Alcool fréquent — détruit les proportions','Junk food régulier — stockage anarchique']},
-    O:{do:['Circuit training pour activer le métabolisme','Marche quotidienne 30-40 min (obligatoire)','4 petits repas plutôt que 2 gros'],avoid:['Régimes très restrictifs — ralentissent encore plus le métabolisme','Rester sédentaire entre les séances','HIIT intense dès le départ — risque de blessure'],food:['Thé vert et cannelle — boostent le métabolisme','Légumineuses et fibres — satiété et drainage','Gingembre au réveil dans de l\'eau chaude'],trap:['Ultra-transformés — inflammation directe','Sucres cachés (yaourts light, jus) — pire ennemi']},
-    V:{do:['Hip thrust lourd et leg press — construire le bas','Fentes bulgares et deadlift roumain','Protéines élevées réparties sur 4 repas'],avoid:['Développé épaules — accentue le déséquilibre','Élévations latérales lourdes','Pompes trop larges — élargit la carrure'],food:['Poulet, œufs, thon — protéines à chaque repas','Patate douce et riz complet — énergie pour construire','Eau en abondance — récupération musculaire'],trap:['Sel en excès — gonfle visuellement les épaules','Manque de protéines — freine la construction du bas du corps']}
+    A:{do:['Hip thrust et fentes arrière pour sculpter sans élargir','Rowing et développé épaules pour équilibrer le haut'],avoid:['Squat barre classique — élargit les cuisses','Vélo en résistance élevée'],food:['Oméga-3 (saumon, sardines) — excellents dans une alimentation anti-inflammatoire'],trap:['Féculents en excès le soir — peuvent favoriser un stockage sur le bas du corps chez certaines personnes']},
+    H:{do:['Gainage profond (planche, dead bug, pallof press)','Squats sumo et exercices full body'],avoid:['Crunchs classiques — épaississent la taille','Side bends avec haltères — même effet'],food:['Curcuma et gingembre — anti-inflammatoires reconnus'],trap:['Alcool — peut favoriser le stockage abdominal et l\'inflammation']},
+    X:{do:['Full body équilibré 3×/semaine','Maintenir la taille avec du gainage'],avoid:['Charges trop lourdes sur épaules ou hanches','HIIT excessif qui déséquilibre'],food:['Protéines + légumes + bonnes graisses à chaque repas'],trap:['Alcool fréquent — peut nuire à l\'équilibre de ta silhouette']},
+    O:{do:['Circuit training pour activer le métabolisme','Marche quotidienne 30-40 min (obligatoire)'],avoid:['Régimes très restrictifs — ralentissent encore plus le métabolisme','Rester sédentaire entre les séances'],food:['Légumineuses et fibres — satiété et digestion'],trap:['Sucres cachés (yaourts light, jus) — à surveiller en priorité']},
+    V:{do:['Hip thrust lourd et leg press — construire le bas','Fentes bulgares et deadlift roumain'],avoid:['Développé épaules — accentue le déséquilibre','Élévations latérales lourdes'],food:['Protéines à chaque repas — essentielles pour construire le bas du corps'],trap:['Sel en excès — peut accentuer visuellement le haut du corps par rétention d\'eau']}
   };
   const t = tips[m];
-  return `<!DOCTYPE html><html><body style="margin:0;padding:0;font-family:Georgia,serif;background:#F5EFE6">
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body style="margin:0;padding:0;font-family:Georgia,serif;background:#F5EFE6">
 <div style="max-width:580px;margin:0 auto;background:#fff">
 <div style="background:#1B3A2D;padding:32px 36px;text-align:center">
   <p style="font-family:Georgia,serif;font-size:.75rem;color:rgba(255,255,255,.5);letter-spacing:.2em;text-transform:uppercase;margin:0 0 12px">Ornella Fit Coaching</p>
@@ -930,6 +930,10 @@ function getMorphoEmail(m, prenom){
 </div>
 <div style="padding:32px 36px">
   <p style="font-size:.95rem;line-height:1.8;color:#2D4A3E;margin:0 0 24px">${prenom ? prenom+', c' : 'C'}e que tu vas lire ci-dessous, <strong>personne ne te l'a dit jusqu'ici.</strong> Pourtant c'est exactement ce qui explique pourquoi tes efforts ne donnent pas les résultats que tu mérites.</p>
+
+  <div style="text-align:center;margin-bottom:28px">
+    <a href="${morphoData[m].stripeLink}" style="display:inline-block;background:#E8634A;color:#fff;text-decoration:none;padding:14px 32px;border-radius:50px;font-weight:700;font-size:.88rem;font-family:sans-serif">✨ Je découvre mon programme complet — 12€ →</a>
+  </div>
 
   <div style="background:#F5EFE6;border-left:4px solid #E8634A;border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:24px">
     <p style="font-size:.72rem;font-weight:700;color:#E8634A;text-transform:uppercase;letter-spacing:.12em;margin:0 0 10px">Ce que tu dois FAIRE — Morpho ${m}</p>
@@ -951,10 +955,32 @@ function getMorphoEmail(m, prenom){
     ${t.trap.map(x=>`<p style="font-size:.88rem;color:#555;margin:0 0 7px;display:flex;gap:8px"><span>⚠️</span><span>${x}</span></p>`).join('')}
   </div>
 
+  <div style="display:flex;gap:14px;margin-bottom:28px;flex-wrap:wrap">
+    <div style="flex:1;min-width:220px;background:#F5EFE6;border-radius:12px;padding:16px 18px">
+      <p style="font-size:.82rem;color:#2D4A3E;line-height:1.6;margin:0 0 8px;font-style:italic">« Une vraie envie de reprendre le contrôle de mon corps. » −9cm de tour de taille en 4 mois.</p>
+      <p style="font-size:.75rem;color:#E8634A;font-weight:700;margin:0">— Louise, 35 ans</p>
+    </div>
+    <div style="flex:1;min-width:220px;background:#F5EFE6;border-radius:12px;padding:16px 18px">
+      <p style="font-size:.82rem;color:#2D4A3E;line-height:1.6;margin:0 0 8px;font-style:italic">« Posture corrigée, fessiers redessinés, tour de taille affiné. » Maman de 2 enfants.</p>
+      <p style="font-size:.75rem;color:#E8634A;font-weight:700;margin:0">— Emeline</p>
+    </div>
+  </div>
+
+  <div style="background:#F0F7F3;border:1.5px solid rgba(27,58,45,.15);border-radius:16px;padding:22px 24px;margin-bottom:24px">
+    <p style="font-family:Georgia,serif;font-size:1.05rem;color:#1B3A2D;font-weight:700;margin:0 0 12px">🎯 Ce que tu viens de lire n'est qu'un aperçu.</p>
+    <p style="font-size:.85rem;color:#2D4A3E;margin:0 0 10px">Dans ton programme personnalisé, tu retrouves :</p>
+    <p style="font-size:.85rem;color:#2D4A3E;margin:0 0 6px">✅ Les exercices expliqués en détail, avec leur progression sur 4 semaines</p>
+    <p style="font-size:.85rem;color:#2D4A3E;margin:0 0 6px">✅ Le plan nutrition complet sur 7 jours</p>
+    <p style="font-size:.85rem;color:#2D4A3E;margin:0 0 6px">✅ Toutes les erreurs spécifiques à ta morphologie</p>
+    <p style="font-size:.85rem;color:#2D4A3E;margin:0 0 6px">✅ Les séances version salle ET sans matériel</p>
+    <p style="font-size:.85rem;color:#2D4A3E;margin:0">✅ Un plan prêt à suivre, sans avoir à deviner quoi faire</p>
+  </div>
+
   <div style="background:#1B3A2D;border-radius:16px;padding:28px;text-align:center;margin-bottom:28px">
     <p style="font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.15em;margin:0 0 10px">Programme complet · Morpho ${m}</p>
     <p style="font-family:Georgia,serif;font-size:1.15rem;color:#fff;font-weight:700;margin:0 0 8px;line-height:1.3">4 semaines taillées exactement<br>pour TON corps</p>
-    <p style="font-size:.82rem;color:rgba(255,255,255,.65);margin:0 0 20px;line-height:1.6">Programme musculation · Plan nutrition 7 jours · Exercices à éviter<br>Version salle ET sans matériel</p>
+    <p style="font-size:.82rem;color:rgba(255,255,255,.65);margin:0 0 16px;line-height:1.6">Programme musculation · Plan nutrition 7 jours · Exercices à éviter<br>Version salle ET sans matériel</p>
+    <p style="font-size:.75rem;color:#E8634A;background:rgba(232,99,74,.12);display:inline-block;padding:6px 16px;border-radius:50px;margin:0 0 18px">Ce tarif de lancement est réservé aux personnes qui viennent de terminer leur diagnostic — il remonte à 29€ le 10 août</p>
     <div style="display:flex;justify-content:center;align-items:baseline;gap:10px;margin-bottom:20px">
       <span style="font-size:1rem;color:rgba(255,255,255,.4);text-decoration:line-through">29€</span>
       <span style="font-size:2rem;font-weight:800;color:#E8634A">12€</span>
