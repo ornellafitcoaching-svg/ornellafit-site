@@ -133,6 +133,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);
 .doc-preview-header-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700}
 .doc-preview-body{background:#F5EFE6;padding:18px 22px;border-left:4px solid var(--coral)}
 .doc-preview-body p{font-size:.86rem;color:#3D2A24;line-height:1.7}
+.doc-preview-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.doc-preview-table td{padding:10px 0;border-bottom:1px solid rgba(139,111,94,0.15);vertical-align:top}
+.doc-preview-table tr:last-child td{border-bottom:none}
+.doc-preview-table .exo-name{font-weight:700;color:#1B3A2D;display:block}
+.doc-preview-table .exo-detail{font-size:.75rem;color:#8A7060;margin-top:2px;display:block}
+.doc-preview-table .exo-sets{white-space:nowrap;text-align:right;font-weight:700;color:var(--coral);padding-left:12px}
 .doc-preview-locked{background:#fff;padding:14px 22px;text-align:center;font-size:.78rem;color:#9A8060;border-top:1px dashed var(--border)}
 
 /* TEASER (suspense avant révélation complète) */
@@ -428,16 +434,16 @@ footer a:hover{color:rgba(255,255,255,.8)}
 
       <!-- APERÇU DU VRAI PROGRAMME -->
       <div class="doc-preview-wrap">
-        <p class="doc-preview-label">🔍 Aperçu de ton programme (page 1)</p>
+        <p class="doc-preview-label">🔍 Extrait réel de ton programme — Semaine 1</p>
         <div class="doc-preview-card">
           <div class="doc-preview-header">
             <div class="doc-preview-header-top">Ornella Fit Coaching · Morpho Summer 2026</div>
-            <div class="doc-preview-header-title">Ton programme sur mesure</div>
+            <div class="doc-preview-header-title" id="docPreviewSession"></div>
           </div>
           <div class="doc-preview-body">
-            <p id="docPreviewText"></p>
+            <table class="doc-preview-table" id="docPreviewTable"></table>
           </div>
-          <div class="doc-preview-locked">🔒 Les 4 semaines d'exercices (salle + sans matériel) et le plan nutrition complet sont débloqués après achat</div>
+          <div class="doc-preview-locked">🔒 Sessions B & C, semaines 2 à 4 et le plan nutrition complet sont débloqués après achat</div>
         </div>
       </div>
 
@@ -633,7 +639,14 @@ const morphoData = {
     convTitle: 'Ta transformation Morpho A commence maintenant',
     btnText: '✨ Oui, je veux mon plan personnalisé — 12€',
     futureVision: 'des hanches qui s\'affinent enfin, un haut du corps mieux équilibré, et des fessiers galbés grâce au bon type d\'exercices',
-    programPreview: 'Tu es Morpho A — La Poire. Tu stockes en priorité sur les hanches, les cuisses et les fessiers. Ton haut du corps est naturellement plus fin que ton bas. Ce déséquilibre entre le haut et le bas est génétique et hormonal — ce n\'est pas ta faute, et ce n\'est pas une fatalité.'
+    programPreview: {
+      session: 'Session A — Haut du corps (épaules + dos + bras)',
+      exercises: [
+        {name:'Développé épaules haltères', detail:'Assis·e, paumes face avant', sets:'3 × 15'},
+        {name:'Tirage vertical (poulie haute)', detail:'Prise large, coudes vers le bas', sets:'3 × 15'},
+        {name:'Rowing haltère unilatéral', detail:'Genou et main appuyés sur banc', sets:'3 × 15'}
+      ]
+    }
   },
   H: {
     stripeLink: 'https://buy.stripe.com/bJe14nfMt4tJ4k5dql8Vi0g',
@@ -650,7 +663,14 @@ const morphoData = {
     convTitle: 'Ta transformation Morpho H commence maintenant',
     btnText: '✨ Oui, je veux mon plan personnalisé — 12€',
     futureVision: 'une taille enfin marquée, un ventre plus plat grâce au gainage profond et à une alimentation anti-inflammatoire adaptée',
-    programPreview: 'Tu es Morpho H — L\'Athlète. Tu stockes principalement au niveau du ventre et de la taille. Tes épaules et tes hanches sont à peu près à la même largeur, ce qui crée une silhouette rectangulaire. Ce stockage central est souvent lié à l\'inflammation, au cortisol et aux hormones.'
+    programPreview: {
+      session: 'Session A — Gainage & abdos profonds (pas de crunchs classiques)',
+      exercises: [
+        {name:'Crunch à la poulie (genou-coude)', detail:'Rotation controlée, amplitude courte', sets:'3 × 15'},
+        {name:'Gainage antirotation (Pallof press)', detail:'Poulie au niveau de la poitrine', sets:'3 × 15 / côté'},
+        {name:'Planche latérale lestée', detail:'Haltère léger sur la hanche', sets:'3 × 40s / côté'}
+      ]
+    }
   },
   X: {
     stripeLink: 'https://buy.stripe.com/4gMdR92ZH9O3dUFbid8Vi0h',
@@ -667,7 +687,14 @@ const morphoData = {
     convTitle: 'Ta transformation Morpho X commence maintenant',
     btnText: '✨ Oui, je veux mon plan personnalisé — 12€',
     futureVision: 'des proportions préservées et sublimées, sans jamais déformer ce que tu as déjà',
-    programPreview: 'Tu es Morpho X — Le Sablier. Tu as des proportions naturellement harmonieuses avec une taille marquée et des épaules et hanches équilibrées. C\'est la morphologie la plus équilibrée. Tu as la chance d\'avoir une silhouette naturellement proportionnée.'
+    programPreview: {
+      session: 'Session A — Full body équilibré (ne pas surcharger un côté)',
+      exercises: [
+        {name:'Squat gobelet', detail:'Haltère tenu à deux mains à la poitrine', sets:'3 × 15'},
+        {name:'Rowing haltère', detail:'Unilatéral, appui sur banc', sets:'3 × 15 / côté'},
+        {name:'Développé épaules léger', detail:'Haltères légers, amplitude complète', sets:'3 × 15'}
+      ]
+    }
   },
   O: {
     stripeLink: 'https://buy.stripe.com/aFaaEX7fXe4j6sd9a58Vi0i',
@@ -684,7 +711,14 @@ const morphoData = {
     convTitle: 'Ta transformation Morpho O commence maintenant',
     btnText: '✨ Oui, je veux mon plan personnalisé — 12€',
     futureVision: 'un métabolisme qui recommence à répondre, grâce à une méthode enfin adaptée à ton corps',
-    programPreview: 'Tu es Morpho O — La Ronde. Tu stockes partout de façon homogène et ton métabolisme est naturellement plus lent. Ce n\'est pas une fatalité : c\'est une réalité physiologique qui nécessite une approche spécifique. Les régimes restrictifs classiques sont contre-productifs pour ta morphologie.'
+    programPreview: {
+      session: 'Session A — Circuit training (active le métabolisme sans sur-solliciter)',
+      exercises: [
+        {name:'Squat poids du corps', detail:'Circuit — exercice 1/5', sets:'45s · repos 15s'},
+        {name:'Rowing machine légère', detail:'Circuit — exercice 2/5', sets:'45s · repos 15s'},
+        {name:'Step bas', detail:'Circuit — exercice 3/5, marche montée-descente', sets:'45s · repos 15s'}
+      ]
+    }
   },
   V: {
     stripeLink: 'https://buy.stripe.com/bJe14n57P6BRaItbid8Vi0j',
@@ -701,7 +735,14 @@ const morphoData = {
     convTitle: 'Ta transformation Morpho V commence maintenant',
     btnText: '✨ Oui, je veux mon plan personnalisé — 12€',
     futureVision: 'des fessiers enfin galbés et une silhouette rééquilibrée, sans accentuer tes épaules',
-    programPreview: 'Tu es Morpho V — L\'Inversée. Tu as les épaules larges et le bas du corps peu développé — fessiers plats, hanches étroites et cuisses fines. Cette morphologie est génétique et très courante. Elle crée une silhouette en triangle inversé que l\'on peut équilibrer par le sport.'
+    programPreview: {
+      session: 'Session A — Fessiers prioritaires (charges progressives)',
+      exercises: [
+        {name:'Hip thrust barre lourd', detail:'Épaules sur banc, barre sur hanches, charges élevées', sets:'3 × 15'},
+        {name:'Leg press pieds hauts', detail:'Pieds dans le tiers supérieur de la plateforme', sets:'3 × 15'},
+        {name:'Fente bulgare', detail:'Pied arrière sur banc, haltères en main', sets:'3 × 12 / jambe'}
+      ]
+    }
   }
 };
 
@@ -950,7 +991,12 @@ function showResult(){
     </div>
   `).join('');
   document.getElementById('painText').innerHTML = d.painText;
-  document.getElementById('docPreviewText').textContent = d.programPreview || '';
+  if(d.programPreview){
+    document.getElementById('docPreviewSession').textContent = d.programPreview.session;
+    document.getElementById('docPreviewTable').innerHTML = d.programPreview.exercises.map(function(e){
+      return '<tr><td><span class="exo-name">'+e.name+'</span><span class="exo-detail">'+e.detail+'</span></td><td class="exo-sets">'+e.sets+'</td></tr>';
+    }).join('');
+  }
   document.getElementById('convTitle').textContent = d.convTitle;
   document.getElementById('convBtn').textContent = d.btnText;
   if(d.futureVision) document.getElementById('futureVision').textContent = 'Imagine dans 4 semaines : ' + d.futureVision + '.';
