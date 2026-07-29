@@ -155,14 +155,11 @@ body::before {
 .link-btn:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 8px 24px rgba(201,99,88,.18);border-color:#C96358;}
 .link-btn:active{transform:scale(0.97);}
 
-.links .link-btn:nth-child(2){animation-delay:.62s;}
-.links .link-btn:nth-child(3){animation-delay:.76s;}
-.links .link-btn:nth-child(4){animation-delay:.90s;}
-.links .link-btn:nth-child(5){animation-delay:1.04s;}
-.links .link-btn:nth-child(6){animation-delay:1.18s;}
-.links .link-btn:nth-child(7){animation-delay:1.32s;}
-
 @keyframes slideIn{from{opacity:0;transform:translateX(-24px);}to{opacity:1;transform:translateX(0);}}
+
+/* Titres de section */
+.link-section-label{width:100%;text-align:left;font-family:'DM Sans',sans-serif;font-size:.68rem;font-weight:700;color:#C96358;letter-spacing:.1em;text-transform:uppercase;margin:22px 2px 2px;}
+.link-section-label:first-of-type{margin-top:2px}
 
 /* Booty Sculpt — featured */
 .link-btn.featured{background:linear-gradient(135deg,#C96358 0%,#D4856A 100%);border-color:transparent;color:#fff;box-shadow:0 6px 22px rgba(201,99,88,.32);}
@@ -186,9 +183,6 @@ body::before {
 
 /* ── FOOTER ── */
 .footer{display:flex;flex-direction:column;align-items:center;gap:14px;animation:fadeUp .7s 1.4s both;}
-.footer-icons{display:flex;gap:10px;}
-.footer-icon{display:flex;align-items:center;gap:5px;text-decoration:none;font-size:12px;font-weight:400;color:#B09080;background:#fff;border:1px solid rgba(212,160,144,.35);border-radius:20px;padding:7px 13px;box-shadow:0 1px 6px rgba(180,90,60,.05);transition:color .2s,border-color .2s,transform .2s;}
-.footer-icon:hover{color:#C96358;border-color:#C96358;transform:translateY(-2px);}
 .copyright{font-size:10px;color:#C8B0A8;letter-spacing:.06em;}
 
 /* ── MODAL ── */
@@ -297,9 +291,9 @@ body::before {
   </div>
 
   <!-- INSTAGRAM BOUTON HAUT -->
-  <a href="https://www.instagram.com/ornellafit.coaching" target="_blank" onclick="px('Instagram')" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff;border-radius:50px;padding:7px 16px;font-size:.75rem;font-weight:600;text-decoration:none;margin-bottom:14px;box-shadow:0 3px 12px rgba(180,60,60,.25);animation:fadeUp .7s .2s both">
+  <a href="https://www.instagram.com/coach.ornella" target="_blank" onclick="px('Instagram')" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff;border-radius:50px;padding:7px 16px;font-size:.75rem;font-weight:600;text-decoration:none;margin-bottom:14px;box-shadow:0 3px 12px rgba(180,60,60,.25);animation:fadeUp .7s .2s both">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-    @ornellafit.coaching
+    @coach.ornella
   </a>
 
   <div class="profile-name">Ornella Fit Coaching</div>
@@ -341,92 +335,107 @@ body::before {
   <div class="links">
   <div style="text-align:center;font-size:.7rem;color:#C8A898;letter-spacing:.08em;margin-bottom:4px;animation:fadeUp .7s .7s both">↓ mes liens</div>
 
-    <!-- 0. CHALLENGE GRATUIT — lead magnet -->
-    <a href="https://www.ornellafitcoaching.com/challenge-ventre-plat.html" class="link-btn" style="background:linear-gradient(135deg,#2d4a26,#4A6741);border-color:transparent;color:#fff;" onclick="px('Challenge Ventre Plat')">
-      <span class="link-emoji">🌿</span>
-      <span class="link-text" style="color:#fff;">Challenge Ventre Plat 5 Jours — GRATUIT<span class="link-sub" style="color:rgba(255,255,255,.7);">1 exercice + 1 astuce par jour · Résultats visibles dès J1</span></span>
-      <span class="link-arrow" style="color:rgba(255,255,255,.6);">›</span>
+    <!-- SECTION 1 — COACHING À DISTANCE (mise en avant) -->
+    <a href="https://calendly.com/ornellafit-coaching" class="vp-hero-card" target="_blank" onclick="px('Calendly')">
+      <div class="vp-badge">🎯 Le plus recommandé</div>
+      <div class="vp-title">Coaching à distance personnalisé</div>
+      <div class="vp-sub">On fait le point ensemble sur tes objectifs et je t'oriente vers le programme fait pour toi.</div>
+      <div class="vp-stats">
+        <div class="vp-stat"><div class="vp-stat-num">15 min</div><div class="vp-stat-label">durée</div></div>
+        <div class="vp-stat"><div class="vp-stat-num">0€</div><div class="vp-stat-label">gratuit</div></div>
+        <div class="vp-stat"><div class="vp-stat-num">0</div><div class="vp-stat-label">engagement</div></div>
+      </div>
+      <div class="vp-cta"><span class="vp-cta-text">Réserver mon appel découverte</span><span class="vp-cta-arrow">→</span></div>
     </a>
 
-    <!-- WHATSAPP — position 2 -->
-    <a href="https://wa.me/33756834626" class="link-btn wa" target="_blank" onclick="px('WhatsApp')">
-      <span class="link-emoji">💬</span>
-      <span class="link-text">Écrire à Ornella sur WhatsApp<span class="link-sub">Réponse rapide · Pose toutes tes questions</span></span>
-      <span class="link-arrow">›</span>
-    </a>
+    <!-- SECTION 2 — PROGRAMMES DIGITAUX -->
+    <div class="link-section-label">Programmes digitaux</div>
 
-    <!-- MORPHO SUMMER -->
-    <a href="https://www.ornellafitcoaching.com/morpho-summer-sales.html" class="link-btn featured" onclick="px('Morpho Summer')" style="background:linear-gradient(135deg,#E8634A,#1B3A2D);">
-      <span class="link-emoji">🔬</span>
-      <span class="link-text">Quiz Morpho Summer — GRATUIT<span class="link-sub">Programme taillé pour TA morphologie · 12€ 🔥 <span id="lk-cd">expire le 31 juillet</span></span></span>
-      <span class="link-arrow">›</span>
-    </a>
-
-    <!-- 1. VENTRE PLAT -->
-    <a href="https://www.ornellafitcoaching.com/ventre-plat.html" class="link-btn featured" onclick="px('Ventre Plat 12€')" style="background:linear-gradient(135deg,#2d4a26,#4A6741);">
+    <a href="https://www.ornellafitcoaching.com/ventre-plat.html" class="link-btn featured" onclick="px('Ventre Plat 12€')" style="background:linear-gradient(135deg,#2d4a26,#4A6741);animation-delay:.58s">
       <span class="link-emoji">🌿</span>
       <span class="link-text">Reset Ventre Plat — 8 chapitres<span class="link-sub">Exercices ciblés · Anti-ballonnements · Plan repas · 12€</span></span>
       <span class="link-arrow">›</span>
     </a>
 
-    <!-- 2. VENTRE PLAT POST-PARTUM -->
-    <a href="https://www.ornellafitcoaching.com/programme-postpartum.html" class="link-btn featured" onclick="px('Ventre Plat Postpartum 17€')" style="background:linear-gradient(135deg,#2E4A34,#7A9E82);">
+    <a href="https://www.ornellafitcoaching.com/programme-postpartum.html" class="link-btn featured" onclick="px('Ventre Plat Postpartum 17€')" style="background:linear-gradient(135deg,#2E4A34,#7A9E82);animation-delay:.70s">
       <span class="link-emoji">🤱</span>
       <span class="link-text">Ventre Plat Après Bébé — 8 semaines<span class="link-sub">Post-partum · Anti-diastase · Allaitement OK · 17€</span></span>
       <span class="link-arrow">›</span>
     </a>
 
-    <!-- 3. SUMMER BODY -->
-    <a href="https://www.ornellafitcoaching.com/summer-body-sales.html" class="link-btn featured" onclick="px('Summer Body 19€')" style="background:linear-gradient(135deg,#FF6B4A,#FF9060);">
+    <a href="https://www.ornellafitcoaching.com/summer-body-sales.html" class="link-btn featured" onclick="px('Summer Body 19€')" style="background:linear-gradient(135deg,#FF6B4A,#FF9060);animation-delay:.82s">
       <span class="link-emoji">🌞</span>
       <span class="link-text">Summer Body Challenge — 4 semaines<span class="link-sub">Full body · Sans matériel · Débutantes bienvenues · 19€</span></span>
       <span class="link-arrow">›</span>
     </a>
 
-    <!-- 3. BOOTY SCULPT -->
-    <a href="https://www.ornellafitcoaching.com/booty-sculpt.html" class="link-btn featured" onclick="px('Booty Sculpt 19€')">
+    <a href="https://www.ornellafitcoaching.com/booty-sculpt.html" class="link-btn featured" onclick="px('Booty Sculpt 19€')" style="animation-delay:.94s">
       <span class="link-emoji">🍑</span>
       <span class="link-text">Sculpte tes fessiers en 8 semaines<span class="link-sub">Booty Sculpt · 19€ · 12 séances guidées + vidéos</span></span>
       <span class="link-arrow">›</span>
     </a>
 
-    <!-- IRON GIRL -->
-    <a href="https://www.ornellafitcoaching.com/iron-girl-sales.html" class="link-btn featured" onclick="px('Iron Girl 39€')" style="background:linear-gradient(135deg,#1E1616,#3A2A2A);">
+    <a href="https://www.ornellafitcoaching.com/iron-girl-sales.html" class="link-btn featured" onclick="px('Iron Girl 39€')" style="background:linear-gradient(135deg,#1E1616,#3A2A2A);animation-delay:1.06s">
       <span class="link-emoji">🏋️</span>
       <span class="link-text">Iron Girl — Programme Salle 8 semaines<span class="link-sub">Musculation féminine complète · 3 phases progressives · 39€</span></span>
       <span class="link-arrow">›</span>
     </a>
 
-    <!-- AGELESS GIRL -->
-    <a href="https://www.ornellafitcoaching.com/ageless-girl-sales.html" class="link-btn featured" onclick="px('Ageless Girl')" style="background:linear-gradient(135deg,#7A5E54,#A08070);">
+    <a href="https://www.ornellafitcoaching.com/ageless-girl-sales.html" class="link-btn featured" onclick="px('Ageless Girl')" style="background:linear-gradient(135deg,#7A5E54,#A08070);animation-delay:1.18s">
       <span class="link-emoji">🌸</span>
       <span class="link-text">Ageless Girl — Corps Ferme 30-50 ans<span class="link-sub">Anti-âge, ménopause & skincare · Guide interactif · 17€</span></span>
       <span class="link-arrow">›</span>
     </a>
 
-    <!-- 3. TRANSFORMATIONS -->
-    <a href="https://www.ornellafitcoaching.com/transformations.html" class="link-btn" onclick="px('Transformations')">
+    <a href="https://www.ornellafitcoaching.com/transformations.html" class="link-btn" onclick="px('Transformations')" style="animation-delay:1.30s">
       <span class="link-emoji">✨</span>
       <span class="link-text">Découvre les transformations<span class="link-sub">Vraies clientes · Vrais résultats · Avant / après</span></span>
       <span class="link-arrow">›</span>
     </a>
 
-    <!-- 4. COACHING SUR MESURE -->
-    <a href="https://www.ornellafitcoaching.com/offres.html" class="link-btn" onclick="px('Offres coaching')">
+    <a href="https://www.ornellafitcoaching.com/offres.html" class="link-btn" onclick="px('Offres coaching')" style="animation-delay:1.30s">
       <span class="link-emoji">🎯</span>
       <span class="link-text">Trouve le coaching fait pour toi<span class="link-sub">Programme sur mesure · Suivi personnalisé · Résultats garantis</span></span>
       <span class="link-arrow">›</span>
     </a>
 
-    <!-- 5. APPEL DÉCOUVERTE -->
-    <a href="https://calendly.com/ornellafit-coaching" class="link-btn cal" target="_blank" onclick="px('Calendly')">
-      <span class="link-emoji">📅</span>
-      <span class="link-text">Réserver mon appel découverte gratuit<span class="link-sub">15 min · Gratuit · Sans engagement</span></span>
+    <!-- SECTION 3 — GRATUIT -->
+    <div class="link-section-label">Gratuit</div>
+
+    <a href="https://www.ornellafitcoaching.com/challenge-ventre-plat.html" class="link-btn" style="background:linear-gradient(135deg,#2d4a26,#4A6741);border-color:transparent;color:#fff;animation-delay:1.30s" onclick="px('Challenge Ventre Plat')">
+      <span class="link-emoji">🌿</span>
+      <span class="link-text" style="color:#fff;">Challenge Ventre Plat 5 Jours — GRATUIT<span class="link-sub" style="color:rgba(255,255,255,.7);">1 exercice + 1 astuce par jour · Résultats visibles dès J1</span></span>
+      <span class="link-arrow" style="color:rgba(255,255,255,.6);">›</span>
+    </a>
+
+    <a href="https://www.ornellafitcoaching.com/morpho-summer-sales.html" class="link-btn featured" onclick="px('Morpho Summer')" style="background:linear-gradient(135deg,#E8634A,#1B3A2D);animation-delay:1.30s">
+      <span class="link-emoji">🔬</span>
+      <span class="link-text">Quiz Morpho Summer — GRATUIT<span class="link-sub">Programme taillé pour TA morphologie · 12€ 🔥 <span id="lk-cd">offre limitée</span></span></span>
       <span class="link-arrow">›</span>
     </a>
 
-    <!-- 7. SITE OFFICIEL -->
-    <a href="https://www.ornellafitcoaching.com/index.html" class="link-btn subtle" onclick="px('Site')">
+    <!-- SECTION 4 — CONTACT -->
+    <div class="link-section-label">Contact</div>
+
+    <a href="https://wa.me/33756834626" class="link-btn wa" target="_blank" onclick="px('WhatsApp')" style="animation-delay:1.30s">
+      <span class="link-emoji">💬</span>
+      <span class="link-text">Écrire à Ornella sur WhatsApp<span class="link-sub">Réponse rapide · Pose toutes tes questions</span></span>
+      <span class="link-arrow">›</span>
+    </a>
+
+    <a href="https://www.instagram.com/coach.ornella" class="link-btn subtle" target="_blank" onclick="px('Instagram Bio')" style="animation-delay:1.30s">
+      <span class="link-emoji">📷</span>
+      <span class="link-text">Suis-moi sur Instagram<span class="link-sub">@coach.ornella</span></span>
+      <span class="link-arrow">›</span>
+    </a>
+
+    <a href="mailto:contact@ornellafitcoaching.com" class="link-btn subtle" onclick="px('Email')" style="animation-delay:1.30s">
+      <span class="link-emoji">✉️</span>
+      <span class="link-text">Écrire un email<span class="link-sub">contact@ornellafitcoaching.com</span></span>
+      <span class="link-arrow">›</span>
+    </a>
+
+    <a href="https://www.ornellafitcoaching.com/index.html" class="link-btn subtle" onclick="px('Site')" style="animation-delay:1.30s">
       <span class="link-emoji">🌐</span>
       <span class="link-text">Visiter mon site officiel complet<span class="link-sub">ornellafitcoaching.com</span></span>
       <span class="link-arrow">›</span>
@@ -435,11 +444,6 @@ body::before {
   </div>
 
   <div class="footer">
-    <div class="footer-icons">
-      <a href="https://www.instagram.com/ornellafit.coaching" target="_blank" class="footer-icon">📷 Instagram</a>
-      <a href="mailto:contact@ornellafitcoaching.com" class="footer-icon">✉️ Email</a>
-      <a href="https://www.ornellafitcoaching.com" class="footer-icon">🌐 Site</a>
-    </div>
     <p class="copyright">© 2026 Ornella Fit Coaching</p>
   </div>
 
@@ -470,7 +474,7 @@ body::before {
 (function(){
   var el=document.getElementById('lk-cd');
   if(!el)return;
-  var end=new Date('2026-07-31T23:59:59');
+  var end=new Date('2026-08-10T23:59:59');
   function upd(){
     var diff=end-new Date();
     if(diff<=0){el.textContent='offre expirée';return;}
