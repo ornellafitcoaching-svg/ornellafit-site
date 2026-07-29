@@ -124,6 +124,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);
 .compare-col.good{color:#1B3A2D;font-weight:600}
 @media(max-width:480px){.compare-row,.compare-head{grid-template-columns:1fr}.compare-head div:first-child{display:none}}
 
+/* APERÇU DU VRAI PROGRAMME (mime le style du document réel) */
+.doc-preview-wrap{margin-bottom:28px}
+.doc-preview-label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);text-align:center;margin-bottom:14px}
+.doc-preview-card{border-radius:16px;overflow:hidden;border:1.5px solid var(--border);box-shadow:0 4px 20px rgba(139,111,94,0.08)}
+.doc-preview-header{background:var(--green);color:#fff;padding:18px 22px}
+.doc-preview-header-top{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:6px}
+.doc-preview-header-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700}
+.doc-preview-body{background:#F5EFE6;padding:18px 22px;border-left:4px solid var(--coral)}
+.doc-preview-body p{font-size:.86rem;color:#3D2A24;line-height:1.7}
+.doc-preview-locked{background:#fff;padding:14px 22px;text-align:center;font-size:.78rem;color:#9A8060;border-top:1px dashed var(--border)}
+
 /* TEASER (suspense avant révélation complète) */
 .result-teaser{text-align:center}
 .result-teaser-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:14px}
@@ -415,6 +426,21 @@ footer a:hover{color:rgba(255,255,255,.8)}
 
       <div class="result-info" id="resultInfo"></div>
 
+      <!-- APERÇU DU VRAI PROGRAMME -->
+      <div class="doc-preview-wrap">
+        <p class="doc-preview-label">🔍 Aperçu de ton programme (page 1)</p>
+        <div class="doc-preview-card">
+          <div class="doc-preview-header">
+            <div class="doc-preview-header-top">Ornella Fit Coaching · Morpho Summer 2026</div>
+            <div class="doc-preview-header-title">Ton programme sur mesure</div>
+          </div>
+          <div class="doc-preview-body">
+            <p id="docPreviewText"></p>
+          </div>
+          <div class="doc-preview-locked">🔒 Les 4 semaines d'exercices (salle + sans matériel) et le plan nutrition complet sont débloqués après achat</div>
+        </div>
+      </div>
+
       <!-- PREUVE SOCIALE -->
       <div class="proof-mini-wrap">
         <p class="proof-mini-label">Elles ont testé un programme sur-mesure</p>
@@ -606,7 +632,8 @@ const morphoData = {
     ],
     convTitle: 'Ta transformation Morpho A commence maintenant',
     btnText: '✨ Oui, je veux mon plan personnalisé — 12€',
-    futureVision: 'des hanches qui s\'affinent enfin, un haut du corps mieux équilibré, et des fessiers galbés grâce au bon type d\'exercices'
+    futureVision: 'des hanches qui s\'affinent enfin, un haut du corps mieux équilibré, et des fessiers galbés grâce au bon type d\'exercices',
+    programPreview: 'Tu es Morpho A — La Poire. Tu stockes en priorité sur les hanches, les cuisses et les fessiers. Ton haut du corps est naturellement plus fin que ton bas. Ce déséquilibre entre le haut et le bas est génétique et hormonal — ce n\'est pas ta faute, et ce n\'est pas une fatalité.'
   },
   H: {
     stripeLink: 'https://buy.stripe.com/bJe14nfMt4tJ4k5dql8Vi0g',
@@ -622,7 +649,8 @@ const morphoData = {
     ],
     convTitle: 'Ta transformation Morpho H commence maintenant',
     btnText: '✨ Oui, je veux mon plan personnalisé — 12€',
-    futureVision: 'une taille enfin marquée, un ventre plus plat grâce au gainage profond et à une alimentation anti-inflammatoire adaptée'
+    futureVision: 'une taille enfin marquée, un ventre plus plat grâce au gainage profond et à une alimentation anti-inflammatoire adaptée',
+    programPreview: 'Tu es Morpho H — L\'Athlète. Tu stockes principalement au niveau du ventre et de la taille. Tes épaules et tes hanches sont à peu près à la même largeur, ce qui crée une silhouette rectangulaire. Ce stockage central est souvent lié à l\'inflammation, au cortisol et aux hormones.'
   },
   X: {
     stripeLink: 'https://buy.stripe.com/4gMdR92ZH9O3dUFbid8Vi0h',
@@ -638,7 +666,8 @@ const morphoData = {
     ],
     convTitle: 'Ta transformation Morpho X commence maintenant',
     btnText: '✨ Oui, je veux mon plan personnalisé — 12€',
-    futureVision: 'des proportions préservées et sublimées, sans jamais déformer ce que tu as déjà'
+    futureVision: 'des proportions préservées et sublimées, sans jamais déformer ce que tu as déjà',
+    programPreview: 'Tu es Morpho X — Le Sablier. Tu as des proportions naturellement harmonieuses avec une taille marquée et des épaules et hanches équilibrées. C\'est la morphologie la plus équilibrée. Tu as la chance d\'avoir une silhouette naturellement proportionnée.'
   },
   O: {
     stripeLink: 'https://buy.stripe.com/aFaaEX7fXe4j6sd9a58Vi0i',
@@ -654,7 +683,8 @@ const morphoData = {
     ],
     convTitle: 'Ta transformation Morpho O commence maintenant',
     btnText: '✨ Oui, je veux mon plan personnalisé — 12€',
-    futureVision: 'un métabolisme qui recommence à répondre, grâce à une méthode enfin adaptée à ton corps'
+    futureVision: 'un métabolisme qui recommence à répondre, grâce à une méthode enfin adaptée à ton corps',
+    programPreview: 'Tu es Morpho O — La Ronde. Tu stockes partout de façon homogène et ton métabolisme est naturellement plus lent. Ce n\'est pas une fatalité : c\'est une réalité physiologique qui nécessite une approche spécifique. Les régimes restrictifs classiques sont contre-productifs pour ta morphologie.'
   },
   V: {
     stripeLink: 'https://buy.stripe.com/bJe14n57P6BRaItbid8Vi0j',
@@ -670,7 +700,8 @@ const morphoData = {
     ],
     convTitle: 'Ta transformation Morpho V commence maintenant',
     btnText: '✨ Oui, je veux mon plan personnalisé — 12€',
-    futureVision: 'des fessiers enfin galbés et une silhouette rééquilibrée, sans accentuer tes épaules'
+    futureVision: 'des fessiers enfin galbés et une silhouette rééquilibrée, sans accentuer tes épaules',
+    programPreview: 'Tu es Morpho V — L\'Inversée. Tu as les épaules larges et le bas du corps peu développé — fessiers plats, hanches étroites et cuisses fines. Cette morphologie est génétique et très courante. Elle crée une silhouette en triangle inversé que l\'on peut équilibrer par le sport.'
   }
 };
 
@@ -919,6 +950,7 @@ function showResult(){
     </div>
   `).join('');
   document.getElementById('painText').innerHTML = d.painText;
+  document.getElementById('docPreviewText').textContent = d.programPreview || '';
   document.getElementById('convTitle').textContent = d.convTitle;
   document.getElementById('convBtn').textContent = d.btnText;
   if(d.futureVision) document.getElementById('futureVision').textContent = 'Imagine dans 4 semaines : ' + d.futureVision + '.';
