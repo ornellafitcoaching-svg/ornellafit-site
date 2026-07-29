@@ -376,10 +376,13 @@ footer a:hover{color:rgba(255,255,255,.8)}
         <p class="result-subtitle" id="resultSubtitle">Les programmes génériques aggravent tes déséquilibres sans le savoir.</p>
       </div>
 
+      <p style="font-size:.82rem;color:#4A5E52;text-align:center;margin:0 0 20px;font-style:italic" id="painPersonal"></p>
+
       <!-- POURQUOI ÇA N'A PAS MARCHÉ -->
       <div class="pain-bloc">
         <p class="pain-label">⚡ Pourquoi tes efforts n'ont pas marché jusqu'ici</p>
         <p class="pain-text" id="painText"></p>
+        <p style="font-size:.82rem;color:var(--coral);font-weight:700;margin:14px 0 0">⏳ Chaque semaine avec un programme inadapté renforce ce déséquilibre.</p>
       </div>
 
       <div class="result-info" id="resultInfo"></div>
@@ -638,6 +641,7 @@ let currentQ = 0;
 const totalQ = 5;
 let pendingMorpho = null;
 let lastEmail = '';
+let lastPrenom = '';
 
 function buyMorpho(){
   if(!pendingMorpho){
@@ -732,6 +736,7 @@ function submitEmail(){
   btn.disabled = true;
 
   lastEmail = email;
+  lastPrenom = prenom;
   const fn = prenom.toLowerCase().replace(/\s+/g,'');
   if(typeof fbq!=='undefined'){
     fbq('init','26675222578828123',{em:email, fn:fn});
@@ -851,6 +856,7 @@ function showResult(){
   document.getElementById('resultBadge').textContent = d.badge;
   document.getElementById('resultTitle').textContent = d.title;
   document.getElementById('resultSubtitle').textContent = d.subtitle;
+  document.getElementById('painPersonal').textContent = lastPrenom ? 'Ornella a analysé tes réponses, ' + lastPrenom + '.' : '';
   const infoEl = document.getElementById('resultInfo');
   infoEl.innerHTML = d.rows.map(r=>`
     <div class="result-row">
