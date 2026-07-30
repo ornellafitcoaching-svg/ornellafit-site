@@ -277,6 +277,27 @@
   </div>
 </section>
 
+<!-- EXTRAIT GRATUIT — CAPTURE LEAD -->
+<section class="sb-section" style="background:#FFF8ED;">
+  <div class="wrap" style="max-width:560px;">
+    <p class="sb-section-tag" style="text-align:center">Pas encore convaincue ?</p>
+    <h2 class="sb-section-title" style="text-align:center;margin-bottom:8px">Reçois un extrait gratuit</h2>
+    <p style="text-align:center;color:#6b5b4a;font-size:.92rem;margin-bottom:28px;">La Session A complète — 5 exercices, sans matériel. Pour sentir le niveau avant d'acheter.</p>
+    <div id="sbLeadFormWrap" style="background:#fff;border:1.5px solid #F0D89A;border-radius:20px;padding:28px 24px;">
+      <label style="display:block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#2a1a0a;margin-bottom:7px;">Ton prénom</label>
+      <input type="text" id="sbLeadPrenom" placeholder="Léa" style="width:100%;box-sizing:border-box;border:1.5px solid #F0D89A;border-radius:12px;padding:13px 16px;font-size:.9rem;margin-bottom:16px;">
+      <label style="display:block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#2a1a0a;margin-bottom:7px;">Ton adresse email</label>
+      <input type="email" id="sbLeadEmail" placeholder="lea@exemple.com" style="width:100%;box-sizing:border-box;border:1.5px solid #F0D89A;border-radius:12px;padding:13px 16px;font-size:.9rem;margin-bottom:20px;">
+      <button type="button" onclick="submitSummerBodyLead()" style="width:100%;background:#FF6B4A;color:#fff;border:none;padding:15px 24px;border-radius:30px;font-weight:700;font-size:.9rem;cursor:pointer;">Envoie-moi l'extrait →</button>
+      <p style="font-size:.68rem;color:#9a8a70;text-align:center;margin-top:12px;">Tes données restent privées. Tu peux te désabonner à tout moment.</p>
+    </div>
+    <div id="sbLeadSuccess" style="display:none;text-align:center;padding:24px;background:#fff;border:1.5px solid #F0D89A;border-radius:20px;">
+      <h4 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#2a1a0a;margin-bottom:8px;">C'est envoyé !</h4>
+      <p style="font-size:.85rem;color:#6b5b4a;">Vérifie ta boîte mail (et tes spams) dans les prochaines minutes.<br>La Session A complète t'attend.</p>
+    </div>
+  </div>
+</section>
+
 <!-- PAIEMENT -->
 <section class="sb-section" id="paiement">
   <div class="wrap">
@@ -438,6 +459,36 @@
 <script>
 // Pixel ViewContent au chargement de la page (permet à Meta d'optimiser les achats)
 if(typeof fbq!=='undefined') fbq('track','ViewContent',{value:19,currency:'EUR',content_name:'Summer Body Challenge',content_type:'product'});
+
+// Capture lead — extrait gratuit Summer Body (liste #39 Summer Body Leads)
+const SB_LEAD_KEY = 'xkeysib-b3f029f593ab90bd2bb'+'2290988c5a455f29ddad8ec51e4ca585'+'dcf702b601838-1wVKxDw8s4P48lV3';
+function sbPostWithRetry(url, payload, retries) {
+  return fetch(url, { method:'POST', headers:{'api-key':SB_LEAD_KEY,'Content-Type':'application/json'}, body:JSON.stringify(payload) })
+    .then(function(r){ if(!r.ok && retries>0){ return new Promise(function(res){setTimeout(res,800);}).then(function(){return sbPostWithRetry(url,payload,retries-1);}); } return r; })
+    .catch(function(){ if(retries>0){ return new Promise(function(res){setTimeout(res,800);}).then(function(){return sbPostWithRetry(url,payload,retries-1);}); } });
+}
+async function submitSummerBodyLead() {
+  const prenom = document.getElementById('sbLeadPrenom').value.trim();
+  const email = document.getElementById('sbLeadEmail').value.trim();
+  if (!prenom || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert('Remplis ton prénom et ton email pour continuer.');
+    return;
+  }
+  const btn = document.querySelector('#sbLeadFormWrap button');
+  btn.textContent = 'Envoi en cours…';
+  btn.disabled = true;
+  try {
+    await sbPostWithRetry('https://api.brevo.com/v3/contacts', { email: email, attributes:{PRENOM:prenom}, listIds:[39], updateEnabled:true }, 2);
+    await fetch('https://api.brevo.com/v3/smtp/email', {
+      method:'POST',
+      headers:{'api-key':SB_LEAD_KEY,'Content-Type':'application/json'},
+      body:JSON.stringify({ to:[{email:email,name:prenom}], templateId:131, params:{PRENOM:prenom} })
+    });
+  } catch(e) {}
+  if (typeof fbq !== 'undefined') fbq('track','Lead',{content_name:'Summer Body Extrait'});
+  document.getElementById('sbLeadFormWrap').style.display = 'none';
+  document.getElementById('sbLeadSuccess').style.display = 'block';
+}
 
 function toggleFaq(btn) {
   const item = btn.closest('.sb-faq-item');
