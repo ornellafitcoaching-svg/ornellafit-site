@@ -159,15 +159,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .fly-note p { font-size: .8rem; color: #9A8080; font-style: italic; }
 
 /* LEAD CAPTURE */
-#fly-lead { max-width: 480px; margin: 28px auto 0; padding: 0 20px; text-align: center; }
-.fly-lead-text { font-size: 0.86rem; color: var(--text-mid); margin-bottom: 12px; }
-#fly-lead-form { display: flex; gap: 8px; }
-#fly-lead-email { flex: 1; padding: 14px 16px; border: 1.5px solid rgba(201,185,154,0.4); border-radius: 12px; font-size: 0.92rem; font-family: 'DM Sans', sans-serif; outline: none; }
-#fly-lead-email:focus { border-color: var(--accent); }
-#fly-lead-submit { padding: 14px 22px; background: var(--accent); color: #fff; border: none; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
-#fly-lead-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-#fly-lead-success { display: none; font-size: 0.88rem; color: var(--dark); font-weight: 600; background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.2); border-radius: 12px; padding: 14px; }
-@media (max-width: 480px) { #fly-lead-form { flex-direction: column; } }
+#fly-lead { max-width: 480px; margin: 28px auto 0; padding: 0 20px; }
+#fly-lead-2 { max-width: 480px; margin: 8px auto 48px; padding: 0 20px; }
+.fly-lead-card { background: linear-gradient(150deg, #FDF5F0, #ffffff); border: 1.5px solid rgba(201,99,88,.3); border-radius: 20px; padding: 26px 26px; text-align: center; box-shadow: 0 10px 32px rgba(139,111,94,0.1); }
+.fly-lead-badge { display: inline-block; background: var(--accent); color: #fff; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 14px; border-radius: 50px; margin-bottom: 12px; }
+.fly-lead-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; line-height: 1.3; }
+.fly-lead-text { font-size: 0.86rem; color: var(--text-mid); margin-bottom: 16px; line-height: 1.5; }
+.fly-lead-form-row { display: flex; gap: 8px; }
+.fly-lead-email-input { flex: 1; padding: 14px 16px; border: 1.5px solid rgba(201,185,154,0.4); border-radius: 12px; font-size: 0.92rem; font-family: 'DM Sans', sans-serif; outline: none; }
+.fly-lead-email-input:focus { border-color: var(--accent); }
+.fly-lead-submit-btn { padding: 14px 22px; background: var(--accent); color: #fff; border: none; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+.fly-lead-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.fly-lead-success { display: none; font-size: 0.88rem; color: var(--dark); font-weight: 600; background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.2); border-radius: 12px; padding: 14px; }
+.fly-lead-note { font-size: 0.72rem; color: var(--text-light); margin-top: 10px; }
+@media (max-width: 480px) { .fly-lead-form-row { flex-direction: column; } }
 
 /* TOP BAR */
 #top-bar { background: linear-gradient(90deg, #2C1F1A 0%, #3D2B24 50%, #2C1F1A 100%); padding: 10px 20px; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; text-align: center; position: sticky; top: 0; width: 100%; z-index: 500; }
@@ -316,15 +321,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div id="fly-lead">
-    <p class="fly-lead-text">Pas encore prête à écrire sur WhatsApp ? Laisse ton email, je t'envoie tout de suite le Guide Recettes Sculptantes <strong>+ mon Challenge Ventre Plat 5 Jours</strong> et l'offre flyer.</p>
-    <form id="fly-lead-form" onsubmit="submitFlyerLead(event)">
-      <input type="email" id="fly-lead-email" placeholder="Ton email" required>
-      <button type="submit" id="fly-lead-submit">Recevoir mes 2 cadeaux →</button>
-    </form>
-    <div id="fly-lead-success">
-      ✅ C'est noté !<br>
-      <a href="guide-recettes-sculptantes.html" target="_blank" style="display:inline-block;margin-top:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 24px;border-radius:50px;font-size:0.86rem;">📖 Guide Recettes Sculptantes →</a><br>
-      <span style="display:inline-block;margin-top:10px;font-size:0.82rem;color:var(--text-mid);">🎁 Ton Challenge Ventre Plat 5 Jours démarre demain matin — surveille tes emails !</span>
+    <div class="fly-lead-card">
+      <span class="fly-lead-badge">🎁 100% gratuit</span>
+      <p class="fly-lead-title">Reçois mes 2 cadeaux par email</p>
+      <p class="fly-lead-text">Guide Recettes Sculptantes (21 recettes) <strong>+</strong> Challenge Ventre Plat 5 Jours — direct dans ta boîte mail, sans engagement.</p>
+      <form id="fly-lead-form" class="fly-lead-form-row" onsubmit="submitFlyerLead(event)">
+        <input type="email" id="fly-lead-email" class="fly-lead-email-input" placeholder="Ton email" required>
+        <button type="submit" id="fly-lead-submit" class="fly-lead-submit-btn">Recevoir mes cadeaux →</button>
+      </form>
+      <div id="fly-lead-success" class="fly-lead-success">
+        ✅ C'est noté !<br>
+        <a href="guide-recettes-sculptantes.html" target="_blank" style="display:inline-block;margin-top:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 24px;border-radius:50px;font-size:0.86rem;">📖 Guide Recettes Sculptantes →</a><br>
+        <span style="display:inline-block;margin-top:10px;font-size:0.82rem;color:var(--text-mid);">🎁 Ton Challenge Ventre Plat 5 Jours démarre demain matin — surveille tes emails !</span>
+      </div>
+      <p class="fly-lead-note">Pas de spam. Tu peux te désinscrire à tout moment.</p>
     </div>
   </div>
 
@@ -457,6 +467,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <div class="fly-inline-link-wrap">
     <a href="transformations.html" class="fly-inline-link">📸 Voir plus de transformations →</a>
+  </div>
+</div>
+
+<!-- CAPTURE LEAD N°2 (pour celles qui scrollent sans écrire tout de suite) -->
+<div id="fly-lead-2">
+  <div class="fly-lead-card">
+    <span class="fly-lead-badge">🎁 100% gratuit</span>
+    <p class="fly-lead-title">Pas encore prête à m'écrire ?</p>
+    <p class="fly-lead-text">Laisse ton email, reçois mon Guide Recettes Sculptantes <strong>+</strong> le Challenge Ventre Plat 5 Jours tout de suite.</p>
+    <form id="fly-lead-form2" class="fly-lead-form-row" onsubmit="submitFlyerLead2(event)">
+      <input type="email" id="fly-lead-email2" class="fly-lead-email-input" placeholder="Ton email" required>
+      <button type="submit" id="fly-lead-submit2" class="fly-lead-submit-btn">Recevoir mes cadeaux →</button>
+    </form>
+    <div id="fly-lead-success2" class="fly-lead-success">
+      ✅ C'est noté !<br>
+      <a href="guide-recettes-sculptantes.html" target="_blank" style="display:inline-block;margin-top:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 24px;border-radius:50px;font-size:0.86rem;">📖 Guide Recettes Sculptantes →</a><br>
+      <span style="display:inline-block;margin-top:10px;font-size:0.82rem;color:var(--text-mid);">🎁 Ton Challenge Ventre Plat 5 Jours démarre demain matin — surveille tes emails !</span>
+    </div>
+    <p class="fly-lead-note">Pas de spam. Tu peux te désinscrire à tout moment.</p>
   </div>
 </div>
 
@@ -747,11 +776,10 @@ function postWithRetry(url, key, payload, retries) {
     .catch(function() { if (retries > 0) { return new Promise(function(res) { setTimeout(res, 800); }).then(function() { return postWithRetry(url, key, payload, retries - 1); }); } });
 }
 
-function submitFlyerLead(e) {
-  e.preventDefault();
-  var email = document.getElementById('fly-lead-email').value.trim();
+function submitFlyerLeadGeneric(suffix) {
+  var email = document.getElementById('fly-lead-email' + suffix).value.trim();
   if (!email) return;
-  var btn = document.getElementById('fly-lead-submit');
+  var btn = document.getElementById('fly-lead-submit' + suffix);
   btn.disabled = true; btn.textContent = 'Envoi…';
   // FIX : ajoute/met à jour le contact directement via l'API Brevo (fiable, avec retry) — liste #37 Lead Flyer + #21 Challenge Ventre Plat 5J
   postWithRetry('https://api.brevo.com/v3/contacts', BREVO_API_KEY, {
@@ -774,8 +802,16 @@ function submitFlyerLead(e) {
     })
   }).catch(function(err) { console.warn('[flyer guide email]', err); });
   if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'Flyer'});
-  document.getElementById('fly-lead-form').style.display = 'none';
-  document.getElementById('fly-lead-success').style.display = 'block';
+  document.getElementById('fly-lead-form' + suffix).style.display = 'none';
+  document.getElementById('fly-lead-success' + suffix).style.display = 'block';
+}
+function submitFlyerLead(e) {
+  e.preventDefault();
+  submitFlyerLeadGeneric('');
+}
+function submitFlyerLead2(e) {
+  e.preventDefault();
+  submitFlyerLeadGeneric('2');
 }
 </script>
 
