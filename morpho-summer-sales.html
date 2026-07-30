@@ -34,6 +34,11 @@
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);-webkit-font-smoothing:antialiased;font-size:16px;overflow-x:hidden}
 
+/* MICRO NAV (retour au site, discret) */
+.micro-nav{background:var(--cream);padding:9px 16px;text-align:left}
+.micro-nav-link{font-size:.72rem;color:var(--muted);text-decoration:none;font-weight:600;letter-spacing:.01em;display:inline-flex;align-items:center;gap:5px}
+.micro-nav-link:hover{color:var(--text)}
+
 /* STICKY BANNER */
 .top-banner{position:sticky;top:0;z-index:300;background:var(--coral);color:#fff;text-align:center;padding:11px 16px;font-size:.82rem;font-weight:600;letter-spacing:.02em;line-height:1.4}
 .top-banner strong{font-weight:800}
@@ -48,6 +53,29 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);
 .btn-coral{display:inline-block;background:var(--coral);color:#fff;text-decoration:none;padding:18px 44px;border-radius:50px;font-weight:700;font-size:1rem;letter-spacing:.03em;transition:background .2s,transform .15s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif}
 .btn-coral:hover{background:var(--coral-dark);transform:translateY(-2px)}
 .hero-note{margin-top:14px;font-size:.78rem;color:var(--muted)}
+
+/* AVANT / APRÈS RÉELS */
+.transfo-sec{background:var(--white);padding:64px 24px 56px}
+.transfo-wrap{max-width:760px;margin:0 auto}
+.transfo-featured{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.transfo-img-wrap{position:relative;border-radius:16px;overflow:hidden;background:#eee}
+.transfo-img-wrap img{width:100%;height:340px;object-fit:cover;display:block}
+.transfo-img-tag{position:absolute;top:12px;left:12px;background:rgba(27,58,45,.85);color:#fff;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:50px}
+.transfo-img-stat{position:absolute;bottom:12px;left:12px;background:var(--coral);color:#fff;font-size:.72rem;font-weight:700;padding:5px 14px;border-radius:50px}
+.transfo-caption{text-align:center;margin-bottom:44px}
+.transfo-quote{font-size:.95rem;color:#3D2A24;line-height:1.7;font-style:italic;max-width:520px;margin:0 auto 6px}
+.transfo-name{font-size:.8rem;color:var(--coral);font-weight:700}
+.transfo-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.transfo-card{text-align:center}
+.transfo-card .transfo-img-wrap img{height:260px}
+.transfo-quote-sm{font-size:.85rem;color:#3D2A24;line-height:1.6;font-style:italic;margin:12px 0 4px}
+.transfo-name-sm{font-size:.75rem;color:var(--coral);font-weight:700}
+.transfo-note{font-size:.75rem;color:var(--muted);text-align:center;margin-top:28px}
+@media(max-width:560px){
+  .transfo-featured,.transfo-grid{grid-template-columns:1fr}
+  .transfo-img-wrap img{height:300px}
+  .transfo-card .transfo-img-wrap img{height:300px}
+}
 
 /* QUIZ SECTION */
 .quiz-section{background:var(--white);padding:64px 24px;min-height:60vh;display:flex;align-items:center;justify-content:center}
@@ -237,6 +265,11 @@ footer a:hover{color:rgba(255,255,255,.8)}
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
+<!-- RETOUR AU SITE -->
+<div class="micro-nav">
+  <a href="index.html" class="micro-nav-link">← ornellafitcoaching.com</a>
+</div>
+
 <!-- BANNIÈRE STICKY -->
 <div class="top-banner">
   ✨ Quiz morphologie <strong>100% gratuit</strong> — 2 minutes · Résultat + programme sur mesure immédiat
@@ -276,6 +309,55 @@ footer a:hover{color:rgba(255,255,255,.8)}
     <p class="hero-note">2 minutes · Résultat immédiat · Programme salle ET sans matériel · Aucune carte bancaire requise</p>
     <div style="margin-top:36px;max-width:380px;margin-left:auto;margin-right:auto">
       <img src="images/morpho-cover-v2.jpg" alt="Ornella Fit Coaching — Découvre ta morphologie" style="width:100%;border-radius:20px;box-shadow:0 12px 48px rgba(27,58,45,.15)">
+    </div>
+  </div>
+</section>
+
+<!-- AVANT / APRÈS RÉELS -->
+<section class="transfo-sec fade-in">
+  <div class="transfo-wrap">
+    <p class="section-eyebrow" style="text-align:center">Résultats réels</p>
+    <h2 class="section-title" style="text-align:center">Voici ce que ça donne quand on s'entraîne enfin AVEC son corps.</h2>
+    <p style="text-align:center;font-size:.95rem;color:#4A5E52;max-width:520px;margin:0 auto 32px;line-height:1.7">Pas de mannequins, pas de retouches. Des clientes accompagnées par Ornella avec un programme pensé pour <strong>leur</strong> morphologie — pas un programme générique.</p>
+
+    <div class="transfo-featured">
+      <div class="transfo-img-wrap">
+        <img src="images/louise-face.jpg" alt="Transformation Louise, vue de face" loading="lazy">
+        <span class="transfo-img-tag">Avant → Après</span>
+      </div>
+      <div class="transfo-img-wrap">
+        <img src="images/louise-dos.jpg" alt="Transformation Louise, vue de dos" loading="lazy">
+        <span class="transfo-img-tag">Avant → Après</span>
+      </div>
+    </div>
+    <div class="transfo-caption">
+      <p class="transfo-quote">« Une vraie envie de reprendre le contrôle de mon corps. » −9cm de tour de taille en 4 mois, avec un programme construit pour son corps — pas un programme générique.</p>
+      <p class="transfo-name">— Louise · Coaching sur-mesure</p>
+    </div>
+
+    <div class="transfo-grid">
+      <div class="transfo-card">
+        <div class="transfo-img-wrap">
+          <img src="images/avant-apres-emeline.jpg" alt="Transformation Emeline en 1 mois" loading="lazy">
+          <span class="transfo-img-stat">−3cm tour de taille · 1 mois</span>
+        </div>
+        <p class="transfo-quote-sm">« Posture corrigée, fessiers redessinés, tour de taille affiné. »</p>
+        <p class="transfo-name-sm">— Emeline, maman de 2 enfants</p>
+      </div>
+      <div class="transfo-card">
+        <div class="transfo-img-wrap">
+          <img src="images/transformation-chantal.png" alt="Transformation Chantal en 3 mois" loading="lazy">
+          <span class="transfo-img-stat">−4kg · 3 mois</span>
+        </div>
+        <p class="transfo-quote-sm">« Sans programme fait pour elle, elle tournait en rond depuis des années. »</p>
+        <p class="transfo-name-sm">— Chantal</p>
+      </div>
+    </div>
+
+    <p class="transfo-note">🔒 Résultats réels de clientes accompagnées par Ornella, photos non retouchées. Les résultats dépendent de chaque personne et ne sont pas garantis.</p>
+
+    <div style="text-align:center;margin-top:32px">
+      <a href="#quiz" class="btn-coral" onclick="startQuiz()">Je découvre mon programme sur-mesure →</a>
     </div>
   </div>
 </section>
