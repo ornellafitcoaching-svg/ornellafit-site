@@ -496,7 +496,9 @@ function handleBundlePurchase(){
     }
   } catch(e) {}
   if (typeof fbq !== 'undefined') { fbq('init','26675222578828123',{em:email}); fbq('track','InitiateCheckout',{value:25,currency:'EUR'}); }
-  window.location.href = 'https://buy.stripe.com/7sY14n57P2lB5o98618Vi0a';
+  setTimeout(function(){
+    window.location.href = 'https://buy.stripe.com/7sY14n57P2lB5o98618Vi0a';
+  }, 400);
 }
 </script>
 </body>
