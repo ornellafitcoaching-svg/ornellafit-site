@@ -463,17 +463,14 @@ document.addEventListener('click', function(e){
 });
 </script>
 
-<!-- Formulaire natif Brevo (liste "Bundle Leads") — soumis en arrière-plan via iframe cachée
-     ⚠️ ACTION À REMPLACER : crée une liste + un formulaire "Bundle Leads" dans Brevo,
-     puis colle l'URL "action" de ce formulaire ci-dessous (remplace le PLACEHOLDER). -->
-<iframe name="bdLeadsFrame" style="display:none"></iframe>
-<form id="bdLeadsForm" method="POST" target="bdLeadsFrame" action="PLACEHOLDER_BREVO_BUNDLE_FORM_ACTION_URL" style="display:none">
-  <input type="text" name="EMAIL" id="bdLeadsEmail">
-  <input type="text" name="email_address_check" value="" class="input--hidden">
-  <input type="hidden" name="locale" value="fr">
-</form>
-
 <script>
+// Capture lead Bundle — liste #40 "Bundle Leads" — API directe (fiable, avec retry)
+const BD_KEY = 'xkeysib-b3f029f593ab90bd2bb'+'2290988c5a455f29ddad8ec51e4ca585'+'dcf702b601838-1wVKxDw8s4P48lV3';
+function bdPostWithRetry(url, payload, retries) {
+  return fetch(url, { method:'POST', headers:{'api-key':BD_KEY,'Content-Type':'application/json'}, body:JSON.stringify(payload) })
+    .then(function(r){ if(!r.ok && retries>0){ return new Promise(function(res){setTimeout(res,800);}).then(function(){return bdPostWithRetry(url,payload,retries-1);}); } return r; })
+    .catch(function(){ if(retries>0){ return new Promise(function(res){setTimeout(res,800);}).then(function(){return bdPostWithRetry(url,payload,retries-1);}); } });
+}
 function handleBundlePurchase(){
   var fname = document.getElementById('bd-fname').value.trim();
   var email = document.getElementById('bd-email').value.trim();
@@ -488,13 +485,7 @@ function handleBundlePurchase(){
     localStorage.setItem('bd_buyer_email', email);
     localStorage.setItem('bd_buyer_fname', fname);
   } catch(e) {}
-  try {
-    var formAction = document.getElementById('bdLeadsForm').action;
-    if (formAction && formAction.indexOf('PLACEHOLDER') === -1) {
-      document.getElementById('bdLeadsEmail').value = email;
-      document.getElementById('bdLeadsForm').submit();
-    }
-  } catch(e) {}
+  bdPostWithRetry('https://api.brevo.com/v3/contacts', { email: email, attributes:{PRENOM:fname}, listIds:[40], updateEnabled:true }, 2);
   if (typeof fbq !== 'undefined') { fbq('init','26675222578828123',{em:email}); fbq('track','InitiateCheckout',{value:25,currency:'EUR'}); }
   setTimeout(function(){
     window.location.href = 'https://buy.stripe.com/7sY14n57P2lB5o98618Vi0a';
