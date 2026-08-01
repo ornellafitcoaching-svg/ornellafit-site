@@ -499,6 +499,11 @@ function px(n){if(typeof fbq!=='undefined')fbq('track','ViewContent',{content_na
 function openGuide(){px('Guide 9 Erreurs');document.getElementById('guideOverlay').classList.add('open');document.body.style.overflow='hidden';}
 function closeGuide(){document.getElementById('guideOverlay').classList.remove('open');document.body.style.overflow='';}
 function overlayClick(e){if(e.target===document.getElementById('guideOverlay'))closeGuide();}
+function guidePostWithRetry(url, payload, retries){
+  return fetch(url,{method:'POST',headers:{'api-key':BK,'Content-Type':'application/json'},body:JSON.stringify(payload)})
+    .then(function(r){ if(!r.ok && retries>0){ return new Promise(function(res){setTimeout(res,800);}).then(function(){return guidePostWithRetry(url,payload,retries-1);}); } return r; })
+    .catch(function(){ if(retries>0){ return new Promise(function(res){setTimeout(res,800);}).then(function(){return guidePostWithRetry(url,payload,retries-1);}); } });
+}
 async function submitGuide(e){
   e.preventDefault();
   var email=document.getElementById('guide-email').value.trim();
@@ -508,9 +513,8 @@ async function submitGuide(e){
   if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errEl.textContent='Entre un email valide.';errEl.style.display='block';return;}
   errEl.style.display='none';btn.textContent='Envoi…';btn.disabled=true;
   try{
-    document.getElementById('list15Email').value = email;
-    document.getElementById('list15Form').submit();
-    await fetch('https://api.brevo.com/v3/smtp/email',{method:'POST',headers:{'api-key':BK,'Content-Type':'application/json'},body:JSON.stringify({to:[{email:email,name:prenom}],templateId:10,sender:{name:'Ornella Fit Coaching',email:'contact@ornellafitcoaching.com'}})});
+    await guidePostWithRetry('https://api.brevo.com/v3/contacts', { email: email, attributes:{PRENOM:prenom}, listIds:[15], updateEnabled:true }, 2);
+    await guidePostWithRetry('https://api.brevo.com/v3/smtp/email', {to:[{email:email,name:prenom}],templateId:10,sender:{name:'Ornella Fit Coaching',email:'contact@ornellafitcoaching.com'}}, 2);
     if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Guide 9 Erreurs'});
     document.getElementById('guide-form-wrap').style.display='none';
     document.getElementById('guide-success').style.display='block';
@@ -518,13 +522,5 @@ async function submitGuide(e){
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGuide();});
 </script>
-
-<!-- Formulaire natif Brevo (liste #15 Guide offert) — soumis en arrière-plan via iframe cachée -->
-<iframe name="list15Frame" style="display:none"></iframe>
-<form id="list15Form" method="POST" target="list15Frame" action="https://e605324b.sibforms.com/serve/MUIFALoL1fcMVo0ja25kWMtYWzSqwAywgjRBpUj5ZvwYNzLwrB9rHaDmrlfePrdBh56VbztE-9CF2otkSiflgd8BfQyfpe1oRInSR756--DIIrCBh2QwHnMs_EA61TA_qZvdV_43IDbmR2FXAtovfd2QIObZZhwYeoYA8R4_lGR-Kv-d6snW-06f0R3-niv-huUnbbPPZcmpqp1x_w==" style="display:none">
-  <input type="text" name="EMAIL" id="list15Email">
-  <input type="text" name="email_address_check" value="" class="input--hidden">
-  <input type="hidden" name="locale" value="fr">
-</form>
 </body>
 </html>
