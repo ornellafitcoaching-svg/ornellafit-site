@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Programme Louise Vacances">
+<title>Programme Louise — Vacances</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--accent:#C96358;--cream:#F7F3F0;--dark:#1A0F0F;--gold:#C9957A;--nude:#E8B4A0;--brown:#9A8080;--border:rgba(232,180,160,0.18)}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);min-height:100vh;line-height:1.6}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(26,15,15,0.95);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.nav-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--nude)}
+
+.cover{text-align:center;padding:56px 20px 36px;border-bottom:1px solid var(--border)}
+.cover-badge{display:inline-block;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,149,122,0.4);border-radius:20px;padding:5px 14px;margin-bottom:16px}
+.cover h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,8vw,4rem);font-weight:600;line-height:1.1;margin-bottom:10px}
+.cover h1 em{font-style:italic;color:var(--gold)}
+.cover-sub{font-size:0.9rem;color:var(--brown);max-width:440px;margin:0 auto;line-height:1.7}
+.pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:18px}
+.pill{font-size:0.78rem;background:rgba(201,99,88,0.12);border:1px solid rgba(201,99,88,0.3);border-radius:20px;padding:5px 13px;color:var(--nude)}
+
+section{padding:32px 20px;max-width:640px;margin:0 auto}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--nude);margin-bottom:16px}
+.section-sub{font-size:0.83rem;color:var(--brown);margin-bottom:22px;line-height:1.6}
+
+/* SEANCE TABS */
+.seance-tabs{display:flex;gap:8px;margin-bottom:8px;max-width:640px;margin-left:auto;margin-right:auto;padding:0 20px}
+.seance-btn{flex:1;padding:13px 6px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--brown);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.82rem;transition:all .2s;text-align:center;min-height:48px}
+.seance-btn.active{background:rgba(201,99,88,0.15);border-color:var(--accent);color:var(--cream);font-weight:600}
+
+.seance-block{border-top:1px solid var(--border)}
+.seance-block section+section{border-top:1px solid var(--border)}
+
+/* TABATA FORMAT BOX */
+.tabata-box{background:rgba(201,99,88,0.1);border:1px solid rgba(201,99,88,0.3);border-radius:14px;padding:18px 20px;margin-bottom:24px}
+.tabata-title{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px}
+.tabata-text{font-size:0.86rem;color:var(--brown);line-height:1.7}
+.tabata-text strong{color:var(--nude)}
+
+.bloc-label{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);background:rgba(201,149,122,0.12);border:1px solid rgba(201,149,122,0.3);border-radius:20px;padding:4px 12px;display:inline-block;margin-bottom:14px}
+
+.ex-list{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.ex-card{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:12px;padding:16px}
+.ex-num{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:4px}
+.ex-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--cream);margin-bottom:6px}
+.ex-reps{font-size:0.85rem;color:var(--nude);font-weight:600;margin-bottom:8px}
+.ex-tip{font-size:0.8rem;color:var(--brown);font-style:italic;line-height:1.6}
+.ex-tip strong{color:var(--nude);font-style:normal}
+
+.connector{text-align:center;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);padding:4px 0;display:flex;align-items:center;gap:8px}
+.connector-line{flex:1;height:1px;background:rgba(201,99,88,0.25)}
+
+.rest-block{background:rgba(201,99,88,0.08);border:1px solid rgba(201,99,88,0.2);border-radius:8px;padding:10px 14px;font-size:0.82rem;color:var(--brown);margin-top:4px;text-align:center}
+.rest-block strong{color:var(--nude)}
+
+.duo-badge{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);background:rgba(201,149,122,0.15);border:1px solid rgba(201,149,122,0.35);border-radius:8px;padding:3px 10px;margin-bottom:8px}
+
+/* CONSEILS */
+.tip-card{background:rgba(201,99,88,0.07);border:1px solid rgba(201,99,88,0.18);border-radius:10px;padding:14px 16px;margin-bottom:10px;font-size:0.83rem;color:var(--brown);line-height:1.7}
+.tip-card strong{color:var(--nude)}
+.tip-title{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px}
+
+@media(max-width:520px){
+  section{padding:24px 16px}
+  .seance-btn{font-size:0.74rem;padding:11px 4px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-title">Louise · Programme Vacances</span>
+</nav>
+
+<div class="cover">
+  <div class="cover-badge">Programme vacances · Bon niveau · Sans matériel</div>
+  <h1>Pour<br><em>Louise</em> 🤍</h1>
+  <p class="cover-sub">3 séances pour tes vacances, plus intenses que d'habitude — Tabata, musculation bon niveau, et une séance bonus à faire à deux avec ton mari. Tout sans matériel.</p>
+  <div class="pills">
+    <span class="pill">Sans matériel</span>
+    <span class="pill">Bon niveau</span>
+    <span class="pill">Sans saut ni burpee</span>
+    <span class="pill">Bonus duo</span>
+  </div>
+</div>
+
+<div class="seance-tabs">
+  <button class="seance-btn active" onclick="setSeance('A',this)">🔥 Tabata</button>
+  <button class="seance-btn" onclick="setSeance('B',this)">💪 Musculation</button>
+  <button class="seance-btn" onclick="setSeance('C',this)">💑 Bonus duo</button>
+</div>
+
+<!-- ===== SÉANCE A — TABATA ===== -->
+<div id="seance-A" class="seance-block">
+
+<section>
+  <div class="section-title">Séance 1 — Tabata</div>
+  <div class="tabata-box">
+    <div class="tabata-title">⏱ Format Tabata</div>
+    <div class="tabata-text"><strong>20 secondes d'effort maximal, 10 secondes de repos</strong>, en alternant les 2 exercices du bloc pendant 8 tours (= 4 minutes par bloc). <strong>Repos 1 minute complète</strong> entre chaque bloc. Chronomètre ton téléphone.</div>
+  </div>
+  <p class="section-sub">Échauffement obligatoire : 5 minutes de marche rapide ou trottinement léger, puis 10 Squats mains levées (bras tendus au-dessus de la tête pendant toute la descente — ça ouvre les épaules et engage le gainage en plus des jambes) et quelques fentes à vide. Aucun saut ni burpee dans cette séance — l'intensité vient du rythme, pas de l'impact.</p>
+</section>
+
+<section style="border-top:none;padding-top:0">
+  <div class="bloc-label">🍑 Bloc 1 — Bas du corps</div>
+  <div class="ex-list">
+    <div class="ex-card">
+      <div class="ex-num">A</div>
+      <div class="ex-name">Squat Sumo rapide</div>
+      <div class="ex-tip">Pieds très écartés, pointes ouvertes vers l'extérieur. Descends en poussant les genoux vers l'extérieur, dos droit, <strong>enchaîne au rythme le plus rapide possible</strong> sans sauter — c'est la vitesse d'exécution qui crée l'intensité, pas l'impact.</div>
+    </div>
+    <div class="connector"><div class="connector-line"></div>alterne toutes les 20 secondes<div class="connector-line"></div></div>
+    <div class="ex-card">
+      <div class="ex-num">B</div>
+      <div class="ex-name">Fentes arrière alternées rapides</div>
+      <div class="ex-tip">Grand pas en arrière, descends le genou vers le sol sans le poser, reviens rapidement, change de jambe à chaque répétition. Dos droit, buste engagé.</div>
+    </div>
+  </div>
+  <div class="rest-block">🔁 <strong>8 tours (A puis B)</strong> = 4 minutes · Puis <strong>repos 1 minute</strong></div>
+</section>
+
+<section>
+  <div class="bloc-label">💪 Bloc 2 — Haut du corps & Gainage</div>
+  <div class="ex-list">
+    <div class="ex-card">
+      <div class="ex-num">A</div>
+      <div class="ex-name">Pompes</div>
+      <div class="ex-tip">Mains à largeur d'épaules, corps en ligne droite des talons à la nuque. Descends la poitrine vers le sol, coudes à 45°, remonte sans bloquer les coudes. Sur les genoux si besoin pour tenir les 20 secondes en pleine forme.</div>
+    </div>
+    <div class="connector"><div class="connector-line"></div>alterne toutes les 20 secondes<div class="connector-line"></div></div>
+    <div class="ex-card">
+      <div class="ex-num">B</div>
+      <div class="ex-name">Planche + touche épaule</div>
+      <div class="ex-tip">Position de planche haute, mains sous les épaules. Touche ton épaule gauche avec la main droite, repose, puis l'inverse. Garde le bassin stable et bas, ne le laisse pas balancer.</div>
+    </div>
+  </div>
+  <div class="rest-block">🔁 <strong>8 tours (A puis B)</strong> = 4 minutes · Puis <strong>repos 1 minute</strong></div>
+</section>
+
+<section>
+  <div class="bloc-label">🔥 Bloc 3 — Cardio complet</div>
+  <div class="ex-list">
+    <div class="ex-card">
+      <div class="ex-num">A</div>
+      <div class="ex-name">Mountain Climbers</div>
+      <div class="ex-tip">Position de planche, mains sous les épaules. Ramène un genou vers la poitrine puis l'autre, en alternant rapidement comme si tu courais à l'horizontale. Garde le bassin bas et stable.</div>
+    </div>
+    <div class="connector"><div class="connector-line"></div>alterne toutes les 20 secondes<div class="connector-line"></div></div>
+    <div class="ex-card">
+      <div class="ex-num">B</div>
+      <div class="ex-name">Montée de genoux rapide</div>
+      <div class="ex-tip">Cours sur place en montant les genoux le plus haut possible, à hauteur des hanches. Va le plus vite que tu peux tout en gardant le buste droit et les abdos engagés.</div>
+    </div>
+  </div>
+  <div class="rest-block">🔁 <strong>8 tours (A puis B)</strong> = 4 minutes · Séance terminée 🎉</div>
+</section>
+
+</div>
+
+<!-- ===== SÉANCE B — MUSCULATION ===== -->
+<div id="seance-B" class="seance-block" style="display:none">
+
+<section>
+  <div class="section-title">Séance 2 — Musculation bon niveau</div>
+  <p class="section-sub">Format classique séries/répétitions, sans matériel mais exigeant. Une chaise ou un banc suffit pour la fente bulgare. Prends 1-2 minutes de repos entre chaque série.</p>
+</section>
+
+<section style="border-top:none;padding-top:0">
+  <div class="ex-list">
+    <div class="ex-card">
+      <div class="ex-num">Exercice 1</div>
+      <div class="ex-name">Fente bulgare</div>
+      <div class="ex-reps">4 séries · 10 répétitions / jambe · Repos 90s</div>
+      <div class="ex-tip">Place le dessus d'un pied sur une chaise ou un banc derrière toi, l'autre jambe devant. Descends en pliant le genou avant jusqu'à ce que la cuisse arrière frôle presque le sol, buste légèrement penché en avant. Remonte en poussant sur le talon avant. <strong>Exercice unijambiste exigeant</strong> — l'équilibre vient avec la pratique.</div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-num">Exercice 2</div>
+      <div class="ex-name">Hip Thrust au sol</div>
+      <div class="ex-reps">4 séries · 20 répétitions · Repos 75s</div>
+      <div class="ex-tip">Allongée sur le dos, pieds à plat, genoux fléchis. Pousse sur tes talons pour monter le bassin le plus haut possible, serre les fessiers 1 seconde en haut, redescends lentement sans poser entre les reps. <strong>Option :</strong> si tu as un élastique, place-le juste au-dessus des genoux et pousse contre sa résistance en montant — ça intensifie fortement le travail des fessiers.</div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-num">Exercice 3</div>
+      <div class="ex-name">Squat Pistol assisté</div>
+      <div class="ex-reps">3 séries · 6 répétitions / jambe · Repos 90s</div>
+      <div class="ex-tip">Debout face à une chaise ou un mur pour t'aider à l'équilibre. Tends une jambe devant toi, descends lentement en squat sur l'autre jambe le plus bas possible, en te tenant légèrement si besoin. Remonte en poussant sur le talon. Progresse en descendant un peu plus bas à chaque séance.</div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-num">Exercice 4</div>
+      <div class="ex-name">Pompes inclinées (mains sur banc/chaise)</div>
+      <div class="ex-reps">4 séries · 12 répétitions · Repos 75s</div>
+      <div class="ex-tip">Mains posées sur une chaise ou un banc stable, pieds au sol reculés. Corps en ligne droite des pieds à la tête, descends la poitrine vers l'appui, coudes à 45°. <strong>Les pompes sont ton point faible</strong> — cette version inclinée est plus accessible que la pompe au sol tout en travaillant les mêmes muscles. Progresse en abaissant l'appui (chaise plus basse) au fil des semaines, avant de viser la pompe classique.</div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-num">Exercice 5</div>
+      <div class="ex-name">Superman renforcé</div>
+      <div class="ex-reps">3 séries · 15 répétitions · Repos 60s</div>
+      <div class="ex-tip">Allongée sur le ventre, bras tendus devant toi. Soulève en même temps bras, poitrine et jambes. Tiens 2-3 secondes en haut avant de redescendre lentement — le temps sous tension augmente l'intensité.</div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-num">Exercice 6</div>
+      <div class="ex-name">Gainage avec levée de jambe alternée</div>
+      <div class="ex-reps">3 séries · 30 secondes · Repos 60s</div>
+      <div class="ex-tip">Position de planche classique, avant-bras au sol. Lève une jambe tendue de quelques centimètres sans bouger le bassin, tiens, repose, change de jambe, en continu pendant 30 secondes.</div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ===== SÉANCE C — BONUS DUO ===== -->
+<div id="seance-C" class="seance-block" style="display:none">
+
+<section>
+  <div class="section-title">Séance bonus — Tabata ludique à deux 💑</div>
+  <p class="section-sub">Même format Tabata que la Séance 1 (20s effort / 10s repos, 8 tours par bloc), mais en duo avec ton mari — plus fun, plus motivant. Bon niveau requis pour les deux.</p>
+</section>
+
+<section style="border-top:none;padding-top:0">
+  <div class="bloc-label">💑 Bloc Duo 1</div>
+  <div class="ex-list">
+    <div class="ex-card">
+      <div class="ex-num">A</div>
+      <div class="ex-name">Squat miroir mains jointes</div>
+      <div class="ex-tip">Face à face, mains jointes ou avant-bras contre avant-bras. Descendez en squat ensemble en vous contrebalançant légèrement en arrière — ça aide à descendre plus bas et plus stable qu'en solo. Remontez ensemble, au rythme.</div>
+    </div>
+    <div class="connector"><div class="connector-line"></div>alterne toutes les 20 secondes<div class="connector-line"></div></div>
+    <div class="ex-card">
+      <div class="ex-num">B</div>
+      <div class="ex-name">Pompes tape-main alternée</div>
+      <div class="ex-tip">Face à face en position de pompe, à environ un bras d'écart. Descendez ensemble, et à la remontée, tapez la main droite de l'autre, puis reposez, refaites une pompe, tapez la main gauche. Sur les genoux si besoin pour tenir le rythme.</div>
+    </div>
+  </div>
+  <div class="rest-block">🔁 <strong>8 tours (A puis B)</strong> = 4 minutes · Puis <strong>repos 1 minute</strong></div>
+</section>
+
+<section>
+  <div class="bloc-label">💑 Bloc Duo 2</div>
+  <div class="ex-list">
+    <div class="ex-card">
+      <div class="ex-num">A</div>
+      <div class="ex-name">Planche + tape-main (jeu)</div>
+      <div class="ex-tip">Tous les deux en planche haute, face à face à un bras d'écart. Tapez alternativement la main droite puis la main gauche de l'autre, sans perdre l'alignement du corps ni faire bouger le bassin. Le dernier stable gagne le tour !</div>
+    </div>
+    <div class="connector"><div class="connector-line"></div>alterne toutes les 20 secondes<div class="connector-line"></div></div>
+    <div class="ex-card">
+      <div class="ex-num">B</div>
+      <div class="ex-name">Chaise dos à dos</div>
+      <div class="ex-tip">Dos contre dos, descendez ensemble en position de chaise (comme si vous étiez assis sur une chaise invisible), en vous appuyant l'un sur l'autre pour vous soutenir mutuellement. Tenez en respirant calmement.</div>
+    </div>
+  </div>
+  <div class="rest-block">🔁 <strong>8 tours (A puis B)</strong> = 4 minutes · Puis <strong>repos 1 minute</strong></div>
+</section>
+
+<section>
+  <div class="bloc-label">🎉 Défi bonus — sans chrono</div>
+  <div class="ex-list">
+    <div class="ex-card">
+      <div class="ex-num">Défi</div>
+      <div class="ex-name">Brouette (wheelbarrow, version genoux)</div>
+      <div class="ex-reps">2-3 tours · 6-8 répétitions chacun</div>
+      <div class="ex-tip">Le mari tient les <strong>genoux</strong> de Louise (pas les chevilles) pendant qu'elle marche un peu sur les mains puis fait des pompes — <strong>version adaptée car les pompes sont son point faible</strong>, elle ne les fait aujourd'hui que sur les genoux. Tenir aux genoux raccourcit le levier et rend l'exercice largement plus accessible. Pas de chrono, on prend le temps. Arrêtez si l'un des deux ne se sent pas stable.</div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<section>
+  <div class="section-title">Conseils vacances 🌿</div>
+
+  <div class="tip-card">
+    <div class="tip-title">Rythme</div>
+    <strong>2 à 3 fois par semaine</strong> avec ces séances suffit largement — elles sont exigeantes. Laisse au moins un jour de repos entre deux. La séance bonus duo peut remplacer une séance solo, pas s'ajouter en plus le même jour.
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-title">Terrain</div>
+    En extérieur, privilégie l'herbe plutôt que le bitume pour les exercices au sol (planche, mountain climbers) — plus confortable pour les mains et les genoux.
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-title">Sécurité duo</div>
+    Pour la brouette et les pompes tape-main, <strong>arrêtez dès qu'un des deux perd sa stabilité</strong> — mieux vaut moins de répétitions bien exécutées que de forcer une position instable.
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-title">Hydratation</div>
+    Bois avant de commencer et évite les heures les plus chaudes en extérieur l'été.
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-title">Une question ?</div>
+    N'hésite pas à m'envoyer un message ou une vidéo, même en vacances. Je suis là. 💪
+  </div>
+
+</section>
+
+<script>
+function setSeance(s, btn) {
+  document.querySelectorAll('.seance-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('seance-A').style.display = s === 'A' ? 'block' : 'none';
+  document.getElementById('seance-B').style.display = s === 'B' ? 'block' : 'none';
+  document.getElementById('seance-C').style.display = s === 'C' ? 'block' : 'none';
+}
+</script>
+
+</body>
+</html>
