@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Programme Khadidja">
+<title>Programme Khadidja — Distanciel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--accent:#C96358;--cream:#2C1F1A;--dark:#FAF6F2;--gold:#B4703F;--nude:#A8654A;--brown:#8A7368;--green:#3d8a5c;--card:#FFFFFF;--border:rgba(44,31,26,0.12)}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);min-height:100vh;line-height:1.6;font-size:14px}
+
+/* COVER */
+.cover{text-align:center;padding:52px 20px 34px;border-bottom:1px solid var(--border)}
+.cover-badge{display:inline-block;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,149,122,0.4);border-radius:20px;padding:5px 14px;margin-bottom:16px}
+.cover h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,7vw,3.6rem);font-weight:600;line-height:1.1;margin-bottom:10px}
+.cover h1 em{font-style:italic;color:var(--gold)}
+.cover-sub{font-size:0.9rem;color:var(--brown);max-width:480px;margin:0 auto;line-height:1.75}
+.pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:18px}
+.pill{font-size:0.76rem;background:rgba(201,99,88,0.12);border:1px solid rgba(201,99,88,0.3);border-radius:20px;padding:5px 13px;color:var(--nude)}
+
+/* NAV SHORTCUTS */
+.nav-shortcuts{position:sticky;top:0;z-index:100;background:rgba(250,246,242,0.96);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.nav-shortcuts::-webkit-scrollbar{display:none}
+.nav-btn{flex-shrink:0;background:#fff;border:1px solid var(--border);border-radius:50px;padding:6px 14px;font-size:0.74rem;font-weight:600;color:var(--brown);text-decoration:none;white-space:nowrap}
+.nav-btn.accent{background:rgba(201,99,88,0.15);border-color:var(--accent);color:var(--cream)}
+
+.page{max-width:820px;margin:0 auto;padding:36px 20px}
+.section-title{display:flex;align-items:center;gap:12px;margin:34px 0 18px}
+.section-title .icon{width:34px;height:34px;background:rgba(201,99,88,0.18);border:1px solid rgba(201,99,88,0.35);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.section-title h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--nude)}
+.section-title h2 em{color:var(--gold);font-style:italic}
+.section-sub{font-size:0.83rem;color:var(--brown);margin-bottom:18px;line-height:1.65}
+.divider{height:1px;background:linear-gradient(90deg,var(--border),transparent);margin:30px 0}
+
+/* PROFIL */
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+@media(max-width:600px){.profile-grid{grid-template-columns:1fr}}
+.profile-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.profile-card.full{grid-column:1/-1}
+.profile-card .label{font-size:0.66rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.profile-card .value{font-size:0.85rem;color:var(--cream)}
+
+/* SAFETY / IMPORTANT NOTES */
+.safety-box{background:rgba(201,99,88,0.1);border:1px solid rgba(201,99,88,0.35);border-radius:14px;padding:18px 20px;margin-bottom:8px}
+.safety-title{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px}
+.safety-text{font-size:0.86rem;color:var(--brown);line-height:1.75}
+.safety-text strong{color:var(--nude)}
+.important-note{background:rgba(201,149,122,0.1);border:1px solid rgba(201,149,122,0.3);border-radius:10px;padding:14px 18px;margin:16px 0;font-size:0.83rem;color:var(--brown);line-height:1.7}
+.important-note strong{color:var(--nude)}
+
+/* MENSURATIONS TABLE */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:20px}
+.mensuration-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;font-size:0.8rem;min-width:520px}
+.mensuration-table thead tr{background:rgba(201,99,88,0.22)}
+.mensuration-table thead th{padding:10px 8px;color:var(--cream);font-weight:700;font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;text-align:center}
+.mensuration-table thead th:first-child{text-align:left;padding-left:14px}
+.mensuration-table tbody tr:nth-child(even){background:rgba(44,31,26,0.025)}
+.mensuration-table tbody td{padding:9px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--brown)}
+.mensuration-table tbody td:first-child{text-align:left;padding-left:14px;font-weight:600;color:var(--cream)}
+.mensuration-table .initial-val{font-weight:700;color:var(--nude)}
+.mensuration-table .empty-cell{color:var(--brown);opacity:0.4}
+.mensu-input{width:100%;max-width:80px;border:1.5px solid var(--border);border-radius:8px;padding:6px 4px;font-size:0.8rem;font-family:'DM Sans',sans-serif;color:var(--cream);background:#fff;text-align:center;box-sizing:border-box}
+.mensu-input:focus{outline:none;border-color:var(--accent)}
+
+/* PLANNING */
+.planning-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:18px}
+@media(max-width:700px){.planning-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:450px){.planning-grid{grid-template-columns:1fr 1fr}}
+.planning-card{border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.planning-card-header{background:rgba(201,99,88,0.2);padding:8px;text-align:center;color:var(--cream);font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase}
+.planning-card-body{background:var(--card);padding:12px 8px;text-align:center}
+.planning-card-body .p-letter{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;color:var(--gold);line-height:1}
+.planning-card-body .p-name{font-size:0.68rem;color:var(--brown);margin-top:4px;line-height:1.4}
+
+/* SEANCE HEADER + EXERCISE TABLE */
+.seance-header{background:linear-gradient(120deg,rgba(201,99,88,0.12),rgba(201,149,122,0.16));border-radius:14px 14px 0 0;padding:18px 22px 14px;margin-top:26px;border:1px solid var(--border);border-bottom:none}
+.seance-header .day-badge{font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;background:rgba(201,99,88,0.18);display:inline-block;padding:4px 12px;border-radius:50px;margin-bottom:8px;color:var(--nude)}
+.seance-header h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--cream)}
+.seance-header .seance-meta{display:flex;gap:14px;margin-top:8px;flex-wrap:wrap}
+.seance-header .meta-item{font-size:0.7rem;color:var(--brown)}
+.seance-header .seance-objective{margin-top:8px;font-size:0.78rem;font-style:italic;color:var(--brown);line-height:1.6}
+
+.exercise-table-wrapper{background:var(--card);border-radius:0 0 14px 14px;border:1px solid var(--border);border-top:none;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:8px}
+.exercise-table{width:100%;border-collapse:collapse;font-size:0.76rem;min-width:600px}
+.exercise-table thead tr{background:rgba(201,149,122,0.1)}
+.exercise-table thead th{padding:9px 8px;font-size:0.62rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);text-align:center;border-bottom:1px solid var(--border)}
+.exercise-table thead th:first-child{text-align:left;padding-left:14px;width:22%}
+.exercise-table thead th:last-child{text-align:left;width:34%}
+.exercise-table tbody tr:nth-child(even){background:rgba(44,31,26,0.02)}
+.exercise-table tbody tr.warmup-row{background:rgba(201,149,122,0.06)}
+.exercise-table tbody td{padding:10px 8px;border-bottom:1px solid var(--border);vertical-align:top;text-align:center;color:var(--brown)}
+.exercise-table tbody td:first-child{text-align:left;padding-left:14px;font-weight:600;color:var(--cream)}
+.exercise-table tbody td:last-child{text-align:left;font-size:0.75rem;color:var(--brown)}
+.exercise-num{display:inline-flex;width:18px;height:18px;background:var(--accent);color:#fff;border-radius:50%;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;margin-right:5px;vertical-align:middle}
+.warmup-num{display:inline-flex;width:18px;height:18px;background:var(--gold);color:#fff;border-radius:50%;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;margin-right:5px;vertical-align:middle}
+.video-link{display:inline-block;margin-top:4px;font-size:0.7rem;color:var(--gold);font-weight:600;text-decoration:none}
+.video-link:hover{color:var(--nude)}
+.seance-tips{background:rgba(44,31,26,0.02);border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;padding:14px 18px;display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;margin-bottom:26px}
+@media(max-width:500px){.seance-tips{grid-template-columns:1fr}}
+.seance-tip{font-size:0.75rem;color:var(--brown);display:flex;align-items:flex-start;gap:6px}
+.seance-tip::before{content:'✦';color:var(--accent);font-size:0.6rem;margin-top:4px;flex-shrink:0}
+
+.circuit-box{background:rgba(201,149,122,0.08);border:1px solid rgba(201,149,122,0.25);border-radius:12px;padding:14px 18px;margin:14px 0}
+.circuit-title{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+.circuit-text{font-size:0.8rem;color:var(--brown);line-height:1.7}
+.circuit-text strong{color:var(--nude)}
+
+/* BMR */
+.bmr-calc{background:linear-gradient(135deg,rgba(201,99,88,0.1),rgba(201,149,122,0.14));border-radius:14px;padding:20px 22px;color:var(--cream);margin:16px 0;border:1px solid var(--border)}
+.bmr-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;margin-bottom:12px;color:var(--nude)}
+.bmr-row{display:flex;justify-content:space-between;align-items:flex-start;font-size:0.8rem;padding:6px 0;border-bottom:1px solid rgba(44,31,26,0.08);gap:8px}
+.bmr-row:last-child{border:none}
+.bmr-row .bmr-label{color:var(--brown);max-width:60%}
+.bmr-row .bmr-val{font-weight:700;color:var(--cream);text-align:right}
+.bmr-row.total .bmr-val{font-size:1rem;font-family:'Cormorant Garamond',serif;color:var(--gold)}
+@media(max-width:500px){.bmr-row{flex-direction:column;gap:2px}.bmr-row .bmr-label{max-width:100%;font-size:0.72rem}}
+
+/* MACROS */
+.macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.macro-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center}
+.macro-box .macro-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--gold);line-height:1}
+.macro-box .macro-label{font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--brown);margin-top:3px}
+.macro-box .macro-kcal{font-size:0.68rem;color:var(--brown);margin-top:2px}
+.macro-bar{display:flex;height:9px;border-radius:50px;overflow:hidden;margin:10px 0}
+.macro-bar-p{background:var(--accent)}
+.macro-bar-g{background:var(--gold)}
+.macro-bar-l{background:rgba(44,31,26,0.15)}
+.macro-legend{display:flex;gap:14px;font-size:0.7rem;color:var(--brown);flex-wrap:wrap;margin-bottom:14px}
+.macro-legend span{display:flex;align-items:center;gap:5px}
+.macro-dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+
+/* NUTRI CARDS */
+.nutrition-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+@media(max-width:600px){.nutrition-grid{grid-template-columns:1fr}}
+.nutri-card{background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden}
+.nutri-card.full{grid-column:1/-1}
+.nutri-card-header{background:rgba(201,149,122,0.12);padding:9px 14px;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold)}
+.nutri-card-body{padding:13px 14px;font-size:0.8rem;color:var(--brown);line-height:1.7}
+.nutri-card-body strong{color:var(--nude)}
+
+.repas-block{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:12px}
+.repas-header{background:rgba(201,149,122,0.1);padding:9px 14px;font-size:0.68rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px}
+.repas-body{padding:12px 14px;font-size:0.8rem;color:var(--brown);line-height:1.7}
+.repas-body ul{list-style:none;padding:0}
+.repas-body ul li::before{content:'→ ';color:var(--accent);font-weight:700}
+.repas-macros{font-size:0.7rem;color:var(--brown);opacity:0.75;margin-top:6px;font-style:italic}
+
+.nut-disclaimer{font-size:0.74rem;color:var(--brown);font-style:italic;margin-bottom:16px}
+
+/* LISTE DE COURSES */
+.aliment-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:14px 0}
+@media(max-width:600px){.aliment-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:400px){.aliment-grid{grid-template-columns:1fr}}
+.aliment-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+.aliment-card .aliment-cat{font-size:0.66rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.aliment-card ul{list-style:none;font-size:0.78rem;color:var(--brown);line-height:1.9}
+.aliment-card ul li::before{content:'· ';color:var(--accent)}
+
+/* TIP CARDS */
+.tip-card{background:rgba(201,99,88,0.07);border:1px solid rgba(201,99,88,0.18);border-radius:10px;padding:14px 16px;margin-bottom:10px;font-size:0.83rem;color:var(--brown);line-height:1.7}
+.tip-card strong{color:var(--nude)}
+.tip-title{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px}
+
+@media(max-width:520px){
+  .page{padding:24px 16px}
+  .section-title h2{font-size:1.25rem}
+}
+
+/* CHRONO */
+#chrono-widget{position:fixed;bottom:max(20px,env(safe-area-inset-bottom));right:16px;z-index:200;background:#fff;border:1.5px solid var(--border);border-radius:16px;box-shadow:0 6px 24px rgba(44,31,26,0.18);padding:12px 16px;min-width:130px;text-align:center;transition:opacity .3s}
+#chrono-widget.minimized{min-width:unset;padding:8px 10px;border-radius:50px}
+#chrono-widget.minimized #chrono-label,
+#chrono-widget.minimized .chrono-btns{display:none}
+#chrono-widget.minimized #chrono-display{margin-bottom:0;font-size:1.1rem}
+#chrono-widget.minimized #chrono-mini-row{display:flex !important}
+#chrono-mini-row{display:none;align-items:center;gap:6px;justify-content:center}
+#chrono-reduce{background:none;border:none;font-size:.85rem;color:var(--brown);cursor:pointer;padding:0 2px;line-height:1;position:absolute;top:6px;right:8px}
+#chrono-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:4px;display:block}
+#chrono-display{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--cream);display:block;line-height:1;margin-bottom:8px}
+.chrono-btns{display:flex;gap:4px;justify-content:center;flex-wrap:wrap}
+.chrono-btn{padding:4px 8px;font-size:.72rem;font-weight:700;border:none;border-radius:10px;cursor:pointer;background:rgba(201,99,88,0.12);color:var(--nude);transition:background .2s}
+.chrono-btn:hover{background:var(--accent);color:#fff}
+.chrono-btn.start-btn{background:var(--accent);color:#fff;padding:5px 10px}
+.chrono-btn.stop-btn{background:rgba(44,31,26,0.08);color:var(--brown)}
+@media(max-width:520px){#chrono-widget{padding:10px 12px;min-width:110px}#chrono-display{font-size:1.4rem}}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-badge">Programme personnalisé · Distanciel · Ornella Fit Coaching</div>
+  <h1>Pour<br><em>Khadidja</em> 🤍</h1>
+  <p class="cover-sub">Tu ne cherches pas à effacer ta morphologie — juste à l'harmoniser : la dernière fois que tu as perdu du poids, c'est le haut qui a fondu en premier, en laissant le bas dominant. Ce programme construit volontairement du muscle sur le haut pendant que le bas travaille en mode métabolique, avec un vrai plan nutrition basé sur ton bilan.</p>
+  <div class="pills">
+    <span class="pill">Distanciel</span>
+    <span class="pill">Avec ton matériel</span>
+    <span class="pill">5 séances / semaine</span>
+    <span class="pill">Nutrition + BMR calculé</span>
+  </div>
+</div>
+
+<nav class="nav-shortcuts">
+  <a href="#profil" class="nav-btn">👤 Profil</a>
+  <a href="#planning" class="nav-btn">📅 Planning</a>
+  <a href="#seance-a" class="nav-btn accent">Séance 1</a>
+  <a href="#seance-b" class="nav-btn accent">Séance 2</a>
+  <a href="#seance-c" class="nav-btn accent">Séance 3</a>
+  <a href="#seance-d" class="nav-btn accent">Séance 4</a>
+  <a href="#nutrition" class="nav-btn">🥗 Nutrition</a>
+  <a href="#courses" class="nav-btn">🛒 Courses</a>
+  <a href="#conseils" class="nav-btn">🤍 Conseils</a>
+</nav>
+
+<div class="page">
+
+  <!-- PROFIL -->
+  <div id="profil" class="section-title"><div class="icon">👤</div><h2>Ton <em>bilan</em>, en résumé</h2></div>
+
+  <div class="profile-grid">
+    <div class="profile-card"><div class="label">Âge</div><div class="value">45 ans</div></div>
+    <div class="profile-card"><div class="label">Poids · Taille</div><div class="value">79 kg · 159 cm</div></div>
+    <div class="profile-card"><div class="label">Niveau</div><div class="value">Confirmée — environ 10 ans d'expérience (cardio puis musculation)</div></div>
+    <div class="profile-card"><div class="label">Antécédents</div><div class="value">Asthmatique (gérée) · 3 grossesses, pas de rééducation périnéale</div></div>
+    <div class="profile-card"><div class="label">Sommeil</div><div class="value">6 à 7h/nuit · café 2-3/j + thé quotidien</div></div>
+    <div class="profile-card"><div class="label">Séances / semaine</div><div class="value">5 séances + marche/yoga · à la maison · le matin au réveil</div></div>
+    <div class="profile-card full"><div class="label">Ton objectif, dans tes mots</div><div class="value">"Diminuer la culotte de cheval, la banane sous fessier, diminuer le volume cuisses/fessiers, regalber le haut, avoir un corps harmonieux."</div></div>
+    <div class="profile-card full" style="background:rgba(201,99,88,0.1);border-color:var(--accent)"><div class="label" style="color:var(--nude)">🎯 Pourquoi c'est important pour toi</div><div class="value">"Me sentir bien dans mon corps et dans ma tête." Ce qui t'a donné envie de commencer avec moi : la personnalisation, et la confiance.</div></div>
+  </div>
+
+  <div class="safety-box">
+    <div class="safety-title">⚠️ Test à faire avant ta première séance</div>
+    <div class="safety-text">Tu as eu 3 grossesses sans rééducation périnéale — c'est une information essentielle que je prends très au sérieux. Avant de commencer, fais ce test simple : <strong>allongée sur le dos, genoux pliés, pose 2 doigts juste au-dessus du nombril et contracte le ventre comme pour un petit relevé de buste.</strong> Si tu sens un espace large entre les muscles, ou si ton ventre forme une pointe/un dôme au milieu, préviens-moi avant de continuer — on adaptera le gainage (respiration profonde plutôt que contraction forcée) et on évitera les rotations appuyées jusqu'à ce que ce soit vérifié. Ce n'est pas grave du tout, c'est juste pour travailler en sécurité.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- LOGIQUE DU PROGRAMME -->
+  <div class="section-title"><div class="icon">🧭</div><h2>Comment ce programme est <em>construit</em></h2></div>
+  <p class="section-sub">Ton bilan est clair : ta taille est fine, et le stockage se fait très fortement et presque uniquement juste sous les fessiers (la fameuse "banane" et la culotte de cheval). Ce n'est pas une question de silhouette générale à revoir — c'est un point très localisé.</p>
+  <div class="important-note">
+    <strong>Important à savoir :</strong> on ne peut pas cibler la perte de graisse à un seul endroit du corps — elle se fait de façon globale, avec le cardio et l'alimentation. Par contre, on peut choisir où on met le volume musculaire. C'est pourquoi ton programme <strong>évite d'ajouter du volume musculaire sous les fessiers/cuisses</strong> (ta Séance 3 est construite en format métabolique, pas en construction musculaire) et <strong>renforce davantage le haut du corps</strong> (2 séances/semaine, épaules, dos, bras) pour ne pas accentuer ce déséquilibre visuel, en misant sur le cardio pour la perte de gras globale.
+  </div>
+  <p class="section-sub" style="margin-bottom:0">Une application générique muscle le corps de façon uniforme — elle ne peut pas savoir qu'il faut insister sur ton haut et freiner le bas. C'est exactement la différence qu'apporte un programme construit spécifiquement pour toi.</p>
+
+  <div class="divider"></div>
+
+  <!-- MENSURATIONS -->
+  <div class="section-title"><div class="icon">📏</div><h2>Mensurations <em>initiales</em></h2></div>
+  <div class="table-wrap">
+    <table class="mensuration-table">
+      <thead><tr><th>Mesure</th><th>Départ</th><th>Semaine 2</th><th>Fin du mois</th></tr></thead>
+      <tbody id="mensu-tbody">
+        <tr><td>Poids</td><td class="initial-val">79 kg</td><td><input type="text" class="mensu-input" data-label="Poids" data-row="0" data-col="1" placeholder="—"></td><td><input type="text" class="mensu-input" data-label="Poids" data-row="0" data-col="2" placeholder="—"></td></tr>
+        <tr><td>Tour de taille</td><td class="initial-val">91 cm*</td><td><input type="text" class="mensu-input" data-label="Tour de taille" data-row="1" data-col="1" placeholder="—"></td><td><input type="text" class="mensu-input" data-label="Tour de taille" data-row="1" data-col="2" placeholder="—"></td></tr>
+        <tr><td>Tour de hanches (os du bassin)</td><td class="empty-cell">à compléter</td><td><input type="text" class="mensu-input" data-label="Tour de hanches" data-row="2" data-col="1" placeholder="—"></td><td><input type="text" class="mensu-input" data-label="Tour de hanches" data-row="2" data-col="2" placeholder="—"></td></tr>
+        <tr><td>Tour de fessier (point le plus bombé)</td><td class="empty-cell">à compléter</td><td><input type="text" class="mensu-input" data-label="Tour de fessier" data-row="3" data-col="1" placeholder="—"></td><td><input type="text" class="mensu-input" data-label="Tour de fessier" data-row="3" data-col="2" placeholder="—"></td></tr>
+        <tr><td>Sous-fessier gauche (banane)</td><td class="initial-val">67-68 cm</td><td><input type="text" class="mensu-input" data-label="Sous-fessier gauche" data-row="4" data-col="1" placeholder="—"></td><td><input type="text" class="mensu-input" data-label="Sous-fessier gauche" data-row="4" data-col="2" placeholder="—"></td></tr>
+        <tr><td>Sous-fessier droite (banane)</td><td class="initial-val">72-73 cm</td><td><input type="text" class="mensu-input" data-label="Sous-fessier droite" data-row="5" data-col="1" placeholder="—"></td><td><input type="text" class="mensu-input" data-label="Sous-fessier droite" data-row="5" data-col="2" placeholder="—"></td></tr>
+        <tr><td>Tour de cuisse</td><td class="initial-val">72 cm</td><td><input type="text" class="mensu-input" data-label="Tour de cuisse" data-row="6" data-col="1" placeholder="—"></td><td><input type="text" class="mensu-input" data-label="Tour de cuisse" data-row="6" data-col="2" placeholder="—"></td></tr>
+        <tr><td>Tour de poitrine</td><td class="empty-cell">à compléter</td><td><input type="text" class="mensu-input" data-label="Tour de poitrine" data-row="7" data-col="1" placeholder="—"></td><td><input type="text" class="mensu-input" data-label="Tour de poitrine" data-row="7" data-col="2" placeholder="—"></td></tr>
+        <tr><td>Tour de dos</td><td class="empty-cell">à compléter</td><td><input type="text" class="mensu-input" data-label="Tour de dos" data-row="8" data-col="1" placeholder="—"></td><td><input type="text" class="mensu-input" data-label="Tour de dos" data-row="8" data-col="2" placeholder="—"></td></tr>
+        <tr><td>Tour de bras</td><td class="initial-val">33 cm</td><td><input type="text" class="mensu-input" data-label="Tour de bras" data-row="9" data-col="1" placeholder="—"></td><td><input type="text" class="mensu-input" data-label="Tour de bras" data-row="9" data-col="2" placeholder="—"></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="section-sub">*Ton tour de taille habituel est plutôt 85-86 cm — 91 cm reflète ton état actuel, pas ta référence. On suit l'évolution à partir d'aujourd'hui.</p>
+  <p class="section-sub">✍️ Remplis les colonnes Mois 1/2/3 au fil du temps — c'est <strong style="color:var(--cream)">sauvegardé automatiquement</strong> sur cet appareil. Utilise le bouton ci-dessous pour m'envoyer tes chiffres directement.</p>
+  <button onclick="envoyerMensurations()" style="width:100%;padding:13px;background:linear-gradient(135deg,#25D366,#1DA851);color:#fff;border:none;border-radius:12px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;margin-bottom:16px;">📲 Envoyer mes mensurations à Ornella (WhatsApp)</button>
+  <div class="important-note">📸 <strong>Photos de suivi :</strong> tu es partante pour en envoyer — au même endroit, même lumière, tous les mois, pour voir l'évolution réelle au-delà du chiffre sur la balance.</div>
+
+  <div class="divider"></div>
+
+  <!-- PLANNING -->
+  <div id="planning" class="section-title"><div class="icon">📅</div><h2>Ton <em>planning</em></h2></div>
+  <p class="section-sub">Le volume ressemble à ce que tu faisais (5 séances + marche/yoga), mais la répartition est volontairement différente : le haut revient <strong style="color:var(--cream)">2 fois</strong> dans la semaine, le bas est traité à part, uniquement en métabolique. Le matin au réveil, comme tu préfères.</p>
+
+  <div class="planning-grid">
+    <div class="planning-card"><div class="planning-card-header">Lundi</div><div class="planning-card-body"><div class="p-letter">1</div><div class="p-name">Haut & Sculpt</div></div></div>
+    <div class="planning-card"><div class="planning-card-header">Mardi</div><div class="planning-card-body"><div class="p-letter">2</div><div class="p-name">Full Body Intense</div></div></div>
+    <div class="planning-card"><div class="planning-card-header">Jeudi</div><div class="planning-card-body"><div class="p-letter">3</div><div class="p-name">Bas métabolique</div></div></div>
+    <div class="planning-card"><div class="planning-card-header">Vendredi</div><div class="planning-card-body"><div class="p-letter">4</div><div class="p-name">Cardio Intense</div></div></div>
+    <div class="planning-card"><div class="planning-card-header">Samedi</div><div class="planning-card-body"><div class="p-letter">1</div><div class="p-name">Haut & Sculpt (bis)</div></div></div>
+  </div>
+  <p class="section-sub"><strong style="color:var(--cream)">Mercredi : marche imposée, 30-45 min.</strong> <strong style="color:var(--cream)">Dimanche : marche imposée, 30 min minimum</strong> (pas de jour 100% sans bouger). Le yoga/pilates peut s'ajouter en plus si tu en as envie, mais ne remplace pas la marche. Adapte l'horaire selon tes journées — l'important c'est la régularité.</p>
+
+  <div class="important-note">
+    <strong>🚶 Bien utiliser la marche — ça compte vraiment</strong><br><br>
+    La marche n'est pas un "à-côté", c'est un vrai outil pour la perte de gras, surtout sur une zone comme la tienne où le muscle ne doit pas prendre le relais :<br><br>
+    • <strong>Allure :</strong> vise une "marche rapide" où tu peux encore parler mais pas chanter — c'est la zone qui brûle le plus de graisse sans fatiguer le système nerveux (contrairement au cardio très intense).<br>
+    • <strong>Durée :</strong> 30 à 45 minutes par séance de marche est l'idéal. En dessous de 20 min, l'effet est plus limité.<br>
+    • <strong>Quand :</strong> le matin à jeun (avant petit-déj) est optimal pour la mobilisation des graisses, mais l'important est que tu la fasses — à n'importe quel moment de ta journée ça reste bénéfique.<br>
+    • <strong>Posture :</strong> regard devant toi, épaules basses et relâchées, léger engagement du ventre — ça travaille aussi ton gainage sans y penser.<br>
+    • <strong>Astuce régularité :</strong> mets un podcast ou une playlist dédiée uniquement à tes marches — ton cerveau associe vite ce moment à un plaisir plutôt qu'à une contrainte.<br>
+    • <strong>Bonus :</strong> si tu as l'occasion de marcher en extérieur plutôt que sur tapis, encore mieux pour le moral et la gestion du stress (donc du cortisol, qui favorise justement le stockage sur hanches/fessiers chez toi).
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title"><div class="icon">📈</div><h2>Progression sur le <em>mois</em></h2></div>
+  <div class="important-note">
+    <strong>Semaine 1-2 — Prise de repères.</strong> Apprends bien chaque exercice, note tes charges de départ sur chaque mouvement aux haltères/barre. L'objectif n'est pas l'intensité maximale mais la technique parfaite.
+  </div>
+  <div class="important-note">
+    <strong>Semaine 3-4 — Progression.</strong> Sur les séances 1 et 3 (renfo) : augmente légèrement la charge sur les exercices où tu termines les reps facilement, ou ajoute 2-3 répétitions par série. Sur les séances 2 et 4 (circuits) : réduis les temps de repos de 5-10s, ou ajoute un tour supplémentaire si tu tiens la technique. Le corps s'est adapté aux 2 premières semaines — c'est le moment de pousser un peu plus.
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SÉANCE 1 -->
+  <div id="seance-a" class="section-title"><div class="icon">💪</div><h2>Séance 1 — <em>Haut du corps & Sculpt</em></h2></div>
+  <div class="seance-header">
+    <div class="day-badge">Séance 1 · Lundi + Samedi</div>
+    <h3>Haut du corps — Construction</h3>
+    <div class="seance-meta">
+      <div class="meta-item">⏱ ~40-45 min</div>
+      <div class="meta-item">🎯 Épaules · Dos · Bras</div>
+      <div class="meta-item">🏋️ Haltères, banc, barre</div>
+    </div>
+    <div class="seance-objective">Focus : construire du muscle sur le haut du corps, pour que l'équilibre visuel tienne même quand tu perds du gras. 1-2 min de repos entre les séries.</div>
+  </div>
+  <div class="exercise-table-wrapper">
+    <table class="exercise-table">
+      <thead><tr><th>Exercice</th><th>Séries</th><th>Reps</th><th>Repos</th><th>Technique & Vidéo</th></tr></thead>
+      <tbody>
+        <tr><td><span class="exercise-num">1</span>Développé couché haltères</td><td>4</td><td>10</td><td>90s</td><td>Allongée sur le banc, haltères au niveau de la poitrine, coudes à 45°. Pousse vers le haut sans verrouiller les coudes, redescends lentement.<br><a href="https://youtu.be/dE4NttjmJgE?si=K3KLB0ugg_oslyN4" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">2</span>Rowing haltère un bras</td><td>4</td><td>12 / bras</td><td>75s</td><td>Un genou et une main sur le banc, dos plat. Tire l'haltère vers la hanche, coude vers l'arrière, sans tourner le buste. Redescends lentement.<br><a href="https://www.youtube.com/watch?v=xJX8_oLf-Vo" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">3</span>Développé militaire haltères</td><td>3</td><td>10</td><td>90s</td><td>Assise ou debout, haltères à hauteur d'épaules, paumes vers l'avant. Pousse au-dessus de la tête sans cambrer le dos.<br><a href="https://www.youtube.com/results?search_query=d%C3%A9velopp%C3%A9+militaire+halt%C3%A8res+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+        <tr><td><span class="exercise-num">4</span>Élévations latérales</td><td>3</td><td>15</td><td>60s</td><td>Bras légèrement fléchis, lève les haltères sur les côtés jusqu'à hauteur d'épaules, sans hausser les épaules. Redescends lentement.<br><a href="https://www.youtube.com/results?search_query=%C3%A9l%C3%A9vations+lat%C3%A9rales+halt%C3%A8res+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+        <tr><td><span class="exercise-num">5</span>Curl biceps barre</td><td>3</td><td>12</td><td>60s</td><td>Debout, prise supination, coudes fixes le long du corps. Monte la barre en contractant les biceps, redescends lentement sans balancer le dos.<br><a href="https://www.youtube.com/results?search_query=curl+biceps+barre+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+        <tr><td><span class="exercise-num">6</span>Extension triceps haltère</td><td>3</td><td>12</td><td>60s</td><td>Assise, un haltère tenu à deux mains au-dessus de la tête, coudes pointés vers le plafond. Descends derrière la tête, remonte en tendant les bras.<br><a href="https://www.youtube.com/results?search_query=extension+triceps+halt%C3%A8re+nuque+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+        <tr><td><span class="exercise-num">7</span>Gainage (respiration 360°)</td><td>3</td><td>30s</td><td>45s</td><td>Avant-bras au sol, corps aligné. Respire profondément en gonflant les côtes tout autour plutôt que de bloquer ta respiration — adapté tant que le test du début n'est pas vérifié.<br><a href="https://www.youtube.com/results?search_query=gainage+respiration+360+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="seance-tips">
+    <div class="seance-tip">Développé couché et militaire : c'est ce qui construit le volume qui compte le plus pour ton objectif — priorité sur la charge progressive.</div>
+    <div class="seance-tip">Note tes charges à chaque séance — c'est ta boussole de progression.</div>
+    <div class="seance-tip">Élévations latérales : le tempo lent en descente fait le travail, pas la charge.</div>
+    <div class="seance-tip">Cette séance revient 2 fois dans la semaine — c'est voulu, pas une erreur.</div>
+  </div>
+
+  <!-- SÉANCE 2 -->
+  <div id="seance-b" class="section-title"><div class="icon">🔥</div><h2>Séance 2 — <em>Full Body Intense</em></h2></div>
+  <div class="seance-header">
+    <div class="day-badge">Séance 2 · Mardi</div>
+    <h3>Full Body — Renfo-Cardio</h3>
+    <div class="seance-meta">
+      <div class="meta-item">⏱ ~30 min</div>
+      <div class="meta-item">🎯 Full body</div>
+      <div class="meta-item">🏋️ Haltères, élastique</div>
+    </div>
+    <div class="seance-objective">Format circuit : enchaîne les 5 exercices sans pause, 40 secondes chacun. Repos 1 min à la fin du tour. Répète 3 à 4 tours.</div>
+  </div>
+  <div class="exercise-table-wrapper">
+    <table class="exercise-table">
+      <thead><tr><th>Exercice</th><th>Durée</th><th></th><th></th><th>Technique & Vidéo</th></tr></thead>
+      <tbody>
+        <tr><td><span class="exercise-num">1</span>Squat gobelet (haltère)</td><td>40s</td><td>—</td><td>—</td><td>Haltère tenue à deux mains devant la poitrine. Descends en squat, dos droit, remonte en poussant sur les talons. Rythme soutenu mais contrôlé.<br><a href="https://www.youtube.com/results?search_query=squat+gobelet+halt%C3%A8re+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+        <tr><td><span class="exercise-num">2</span>Rowing élastique</td><td>40s</td><td>—</td><td>—</td><td>Élastique fixé sous les pieds. Tire vers toi en amenant les coudes en arrière, serre les omoplates. <strong>Si ton élastique n'a pas la bonne résistance :</strong> remplace par un Rowing buste penché aux haltères (penchée en avant, dos plat, tire les deux haltères vers la hanche en même temps).<br><a href="https://www.youtube.com/results?search_query=rowing+%C3%A9lastique+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+        <tr><td><span class="exercise-num">3</span>Pompes</td><td>40s</td><td>—</td><td>—</td><td>Mains sur le banc si besoin pour tenir le rythme. Corps droit, poitrine vers l'appui, remonte sans bloquer les coudes.<br><a href="https://www.youtube.com/results?search_query=pompes+technique+d%C3%A9butant" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+        <tr><td><span class="exercise-num">4</span>Fentes marchées (haltères légers)</td><td>40s</td><td>—</td><td>—</td><td>Un haltère léger dans chaque main, avance en fente, genou arrière proche du sol. <strong>Charge volontairement légère</strong> — l'objectif ici est le cardio, pas le volume.<br><a href="https://www.youtube.com/results?search_query=fentes+march%C3%A9es+halt%C3%A8res+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+        <tr><td><span class="exercise-num">5</span>Planche + touche épaule</td><td>40s</td><td>—</td><td>—</td><td>Planche haute, touche ton épaule opposée avec la main, alterne. Garde le bassin stable et bas.<br><a href="https://www.youtube.com/results?search_query=planche+touche+%C3%A9paule+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="circuit-box"><div class="circuit-title">🔁 Format</div><div class="circuit-text"><strong>3 à 4 tours</strong> · 1 min de repos entre chaque tour</div></div>
+
+  <!-- SÉANCE 3 -->
+  <div id="seance-c" class="section-title"><div class="icon">🍑</div><h2>Séance 3 — <em>Bas du corps métabolique</em></h2></div>
+  <div class="seance-header">
+    <div class="day-badge">Séance 3 · Jeudi</div>
+    <h3>Bas du corps — Circuit métabolique</h3>
+    <div class="seance-meta">
+      <div class="meta-item">⏱ ~25 min</div>
+      <div class="meta-item">🎯 Fessiers · Jambes</div>
+      <div class="meta-item">🏋️ Élastique</div>
+    </div>
+    <div class="seance-objective">Volontairement différent d'un renfo classique : <strong>circuit métabolique, pas de la construction musculaire.</strong> Reps hautes, charge légère ou poids du corps, 15s de repos entre exercices, 1 min entre les tours, 3 à 4 tours.</div>
+  </div>
+  <div class="exercise-table-wrapper">
+    <table class="exercise-table">
+      <thead><tr><th>Exercice</th><th>Reps</th><th></th><th></th><th>Technique & Vidéo</th></tr></thead>
+      <tbody>
+        <tr><td><span class="exercise-num">1</span>Hip Thrust avec élastique</td><td>20</td><td>—</td><td>—</td><td>Élastique au-dessus des genoux. Allongée, pieds à plat, pousse les talons en écartant légèrement les genoux contre l'élastique. Serre les fessiers en haut. <strong>Sans charge lourde.</strong><br><a href="https://youtube.com/shorts/BLb9AZj-pSU?si=86YzHipu0BbzBX46" target="_blank" class="video-link">▶ Voir la vidéo</a></td></tr>
+        <tr><td><span class="exercise-num">2</span>Squat Sumo poids du corps</td><td>20</td><td>—</td><td>—</td><td>Pieds écartés, pointes ouvertes. Descends en poussant les genoux vers l'extérieur, dos droit. Rythme soutenu, poids du corps uniquement.<br><a href="https://www.youtube.com/results?search_query=squat+sumo+poids+du+corps+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+        <tr><td><span class="exercise-num">3</span>Fentes latérales</td><td>12 / jambe</td><td>—</td><td>—</td><td>Grand pas sur le côté, plie le genou de la jambe qui bouge en gardant l'autre tendue. Reviens au centre, alterne sans t'arrêter.<br><a href="https://www.youtube.com/results?search_query=fentes+lat%C3%A9rales+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+        <tr><td><span class="exercise-num">4</span>Marche du crabe avec élastique</td><td>15 pas / côté</td><td>—</td><td>—</td><td>Élastique au-dessus des genoux, position mi-squat, avance en pas chassés en gardant la tension. Active les moyens fessiers sans volume.<br><a href="https://www.youtube.com/results?search_query=marche+du+crabe+%C3%A9lastique+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+        <tr><td><span class="exercise-num">5</span>Gainage latéral</td><td>20s / côté</td><td>—</td><td>—</td><td>Appui sur l'avant-bras, corps aligné sur le côté. Soulève les hanches, respire normalement, enchaîne directement le tour suivant.<br><a href="https://www.youtube.com/results?search_query=gainage+lat%C3%A9ral+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="circuit-box"><div class="circuit-title">🔁 Format</div><div class="circuit-text"><strong>3 à 4 tours</strong> · 15s de repos entre exercices, 1 min entre les tours</div></div>
+
+  <!-- SÉANCE 4 -->
+  <div id="seance-d" class="section-title"><div class="icon">⚡</div><h2>Séance 4 — <em>Cardio Intense</em></h2></div>
+  <div class="seance-header">
+    <div class="day-badge">Séance 4 · Vendredi</div>
+    <h3>Cardio — Circuit intense</h3>
+    <div class="seance-meta">
+      <div class="meta-item">⏱ ~25 min</div>
+      <div class="meta-item">🎯 Cardio complet</div>
+      <div class="meta-item">🏋️ Haltères, élastique</div>
+    </div>
+    <div class="seance-objective">30s d'effort, 15s de repos, 4 exercices, 4 tours. <strong>Volontairement sans saut ni burpee</strong> tant que le test de diastasis n'est pas vérifié.</div>
+  </div>
+  <div class="exercise-table-wrapper">
+    <table class="exercise-table">
+      <thead><tr><th>Exercice</th><th>Durée</th><th></th><th></th><th>Technique & Vidéo</th></tr></thead>
+      <tbody>
+        <tr><td><span class="exercise-num">1</span>Squat + Press haltères</td><td>30s</td><td>—</td><td>—</td><td>Descends en squat, haltères aux épaules, et à la remontée pousse-les au-dessus de la tête. Rythme soutenu, technique propre.<br><a href="https://www.youtube.com/results?search_query=squat+press+halt%C3%A8res+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+        <tr><td><span class="exercise-num">2</span>Rowing élastique rapide</td><td>30s</td><td>—</td><td>—</td><td>Même mouvement que la séance 2, à rythme rapide et continu pour l'effet cardio. <strong>Option sans élastique adapté :</strong> Rowing buste penché aux haltères, même rythme soutenu.<br><a href="https://www.youtube.com/results?search_query=rowing+%C3%A9lastique+rapide+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+        <tr><td><span class="exercise-num">3</span>Montée de genoux</td><td>30s</td><td>—</td><td>—</td><td>Cours sur place en montant les genoux à hauteur des hanches, le plus vite possible sans décoller excessivement du sol.<br><a href="https://www.youtube.com/results?search_query=mont%C3%A9e+de+genoux+sur+place+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+        <tr><td><span class="exercise-num">4</span>Gainage + rotation légère</td><td>30s</td><td>—</td><td>—</td><td>Position de planche, légère rotation du buste, amplitude réduite. <strong>Arrête si tu sens une pointe/un bombement au ventre.</strong><br><a href="https://www.youtube.com/results?search_query=gainage+rotation+technique" target="_blank" class="video-link">▶ Voir la technique</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="circuit-box"><div class="circuit-title">🔁 Format</div><div class="circuit-text"><strong>4 tours</strong> · 15s de repos entre exercices, 1 min entre les tours</div></div>
+
+  <div class="divider"></div>
+
+  <!-- NUTRITION -->
+  <div id="nutrition" class="section-title"><div class="icon">🥗</div><h2>Ton plan <em>nutrition</em></h2></div>
+  <p class="nut-disclaimer">Ce calcul utilise une formule standard reconnue (Mifflin-St Jeor) — c'est une estimation, pas une prescription médicale personnalisée. Je ne suis pas diététicienne : pour un suivi nutritionnel médical spécifique, rapproche-toi d'un professionnel de santé.</p>
+
+  <div class="bmr-calc">
+    <div class="bmr-title">Ton métabolisme — 159 cm · 79 kg · 45 ans</div>
+    <div class="bmr-row"><span class="bmr-label">Formule utilisée</span><span class="bmr-val">Mifflin-St Jeor (femme)</span></div>
+    <div class="bmr-row"><span class="bmr-label">Calcul : 10×poids + 6,25×taille − 5×âge − 161</span><span class="bmr-val">10×79 + 6,25×159 − 5×45 − 161</span></div>
+    <div class="bmr-row"><span class="bmr-label">BMR (métabolisme de base, au repos)</span><span class="bmr-val">≈ 1 398 kcal/j</span></div>
+    <div class="bmr-row"><span class="bmr-label">Coefficient d'activité (5 séances/sem + marche/yoga · ×1,55)</span><span class="bmr-val">≈ 2 167 kcal/j</span></div>
+    <div class="bmr-row total"><span class="bmr-label">🎯 Objectif perte de gras (déficit modéré −15%)</span><span class="bmr-val">≈ 1 850 kcal/j</span></div>
+  </div>
+  <div class="important-note">⚠️ <strong>Ce chiffre est un point de départ, pas une règle absolue.</strong> Après "tout essayé", je ne veux pas t'enfermer dans un chiffre strict — on ajuste selon tes résultats réels sur les mensurations après 3-4 semaines, pas selon la balance seule.</div>
+
+  <div class="nutri-card full">
+    <div class="nutri-card-header">✅ Ce que tu fais déjà bien</div>
+    <div class="nutri-card-body">Ton petit-déjeuner (œufs, pain de seigle, huile d'olive) est <strong>déjà un excellent choix</strong> — protéines, bonnes graisses, glucides complets. Tes repas avec peu de pain et beaucoup de légumes vont dans le bon sens. Tes gâteaux maison healthy et barres protéinées au goûter sont de bons choix. On garde cette base — on ne change pas ce qui fonctionne.</div>
+  </div>
+
+  <div class="section-title" style="margin-top:22px"><div class="icon">⚖️</div><h2>Tes <em>objectifs macros</em></h2></div>
+  <div class="macro-grid">
+    <div class="macro-box"><div class="macro-num">140g</div><div class="macro-label">Protéines</div><div class="macro-kcal">560 kcal · 30%</div></div>
+    <div class="macro-box"><div class="macro-num">185g</div><div class="macro-label">Glucides</div><div class="macro-kcal">740 kcal · 40%</div></div>
+    <div class="macro-box"><div class="macro-num">61g</div><div class="macro-label">Lipides</div><div class="macro-kcal">549 kcal · 30%</div></div>
+  </div>
+  <div class="macro-bar"><div class="macro-bar-p" style="width:30%"></div><div class="macro-bar-g" style="width:40%"></div><div class="macro-bar-l" style="width:30%"></div></div>
+  <div class="macro-legend">
+    <span><span class="macro-dot" style="background:var(--accent)"></span>Protéines 30%</span>
+    <span><span class="macro-dot" style="background:var(--gold)"></span>Glucides 40%</span>
+    <span><span class="macro-dot" style="background:rgba(44,31,26,0.2)"></span>Lipides 30%</span>
+  </div>
+  <p class="section-sub">Protéines volontairement élevées (~1,8g/kg) pour soutenir la construction musculaire du haut du corps pendant la perte de gras.</p>
+
+  <div class="section-title" style="margin-top:22px"><div class="icon">🍽️</div><h2>Ton plan <em>alimentaire</em></h2></div>
+  <p class="section-sub">Basé sur tes habitudes réelles — on ajuste, on ne remplace pas tout.</p>
+  <div class="important-note">🎯 <strong>L'alimentation est le levier le plus important de ce programme</strong> — plus encore que les séances. Mais tu n'es pas obligée de peser au gramme près : les quantités ci-dessous sont données pesées crues (viande, poisson, féculents) comme repère précis <strong>si tu veux</strong>, mais à l'œil / à la portion habituelle, ça fonctionne aussi. Mieux vaut une alimentation suivie sans peser que la précision abandonnée après une semaine.</div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>☀️ Petit-déjeuner (post-séance)</span><span>~420 kcal</span></div>
+    <div class="repas-body">
+      <ul>
+        <li><strong>Option A</strong> : 2-3 œufs + 1-2 tranches de pain de seigle + 1 filet d'huile d'olive (ta base actuelle)<br><em style="font-size:.78rem;color:var(--brown);opacity:.8">→ ~24g P · 30g G · 20g L · 420 kcal</em></li>
+        <li><strong>Option B</strong> : Fromage blanc ou yaourt nature (150g cru) + 40g flocons d'avoine (secs) + fruits rouges + 15g beurre d'amande<br><em style="font-size:.78rem;color:var(--brown);opacity:.8">→ ~24g P · 42g G · 15g L · 410 kcal</em></li>
+        <li><strong>Option C</strong> : Omelette 2 œufs + légumes (épinards, champignons, poivrons) + 1 tranche pain complet<br><em style="font-size:.78rem;color:var(--brown);opacity:.8">→ ~20g P · 28g G · 18g L · 380 kcal</em></li>
+        <li><strong>Option D — Porridge protéiné</strong> : 40g flocons d'avoine (secs) cuits dans du lait ou boisson végétale + 1 c.à.s beurre d'amande + banane écrasée + cannelle<br><em style="font-size:.78rem;color:var(--brown);opacity:.8">→ ~14g P · 50g G · 16g L · 400 kcal</em></li>
+      </ul>
+      <p class="repas-macros">✔ Alterne selon tes envies — l'important est le combo protéines + glucides complets juste après ta séance du matin.</p>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🍗 Déjeuner</span><span>~500 kcal</span></div>
+    <div class="repas-body">
+      <ul>
+        <li><strong>Option A</strong> : 160g blanc de poulet cru grillé + légumes à volonté + féculent modéré, riz ou semoule (comme ton tagine avec peu de pain)<br><em style="font-size:.78rem;color:var(--brown);opacity:.8">→ ~35g P · 45g G · 12g L · 500 kcal</em></li>
+        <li><strong>Option B</strong> : 150g dinde ou bœuf haché maigre cru + légumes verts + 120g patate douce crue<br><em style="font-size:.78rem;color:var(--brown);opacity:.8">→ ~33g P · 42g G · 14g L · 490 kcal</em></li>
+        <li><strong>Option C</strong> : 150g poisson blanc ou saumon cru + légumes + 60g quinoa ou boulgour cru<br><em style="font-size:.78rem;color:var(--brown);opacity:.8">→ ~32g P · 40g G · 16g L · 480 kcal</em></li>
+        <li><strong>Option D — Bowl coloré</strong> : 150g poulet ou dinde cru en dés + riz complet (60g cru) + légumes rôtis (courgette, poivron, carotte) + 1 c.à.s sauce yaourt-citron<br><em style="font-size:.78rem;color:var(--brown);opacity:.8">→ ~34g P · 44g G · 12g L · 480 kcal</em></li>
+      </ul>
+      <p class="repas-macros">✔ Ton format habituel (protéine + légumes + peu de féculent) est déjà le bon réflexe — ces options te donnent juste plus de variété dans la semaine.</p>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🍪 Goûter</span><span>~200 kcal</span></div>
+    <div class="repas-body">
+      <ul>
+        <li><strong>Option A</strong> : Ton gâteau maison healthy (comme tu fais déjà)</li>
+        <li><strong>Option B</strong> : Une barre protéinée (comme tu fais déjà)</li>
+        <li><strong>Option C</strong> : Fromage blanc + fruits + une poignée d'amandes ou noix<br><em style="font-size:.78rem;color:var(--brown);opacity:.8">→ ~15g P · 20g G · 8g L · 210 kcal</em></li>
+        <li><strong>Option D</strong> : 1 pomme ou banane + 1 c.à.s beurre d'amande<br><em style="font-size:.78rem;color:var(--brown);opacity:.8">→ ~4g P · 22g G · 9g L · 180 kcal</em></li>
+        <li><strong>Option E — Energy balls maison</strong> : dattes + flocons d'avoine + beurre d'amande + cacao non sucré, mixés et roulés en boules, à préparer à l'avance pour la semaine<br><em style="font-size:.78rem;color:var(--brown);opacity:.8">→ ~4g P · 24g G · 7g L · 170 kcal (pour 2 boules)</em></li>
+      </ul>
+      <p class="repas-macros">✔ Point d'attention seulement : vérifie si c'est une vraie faim ou une baisse d'énergie de fin de journée — un verre d'eau et 5 min d'attente peuvent aider à faire la différence.</p>
+    </div>
+  </div>
+
+  <div class="repas-block">
+    <div class="repas-header"><span>🌙 Dîner</span><span>~400 kcal</span></div>
+    <div class="repas-body">
+      <ul>
+        <li><strong>Option A</strong> : Tagine avec 150g poulet cru, légumes, peu de pain (ta base actuelle)<br><em style="font-size:.78rem;color:var(--brown);opacity:.8">→ ~33g P · 20g G · 14g L · 380 kcal</em></li>
+        <li><strong>Option B</strong> : 140g cabillaud ou saumon cru + légumes vapeur + un filet d'huile d'olive<br><em style="font-size:.78rem;color:var(--brown);opacity:.8">→ ~30g P · 15g G · 14g L · 340 kcal</em></li>
+        <li><strong>Option C — Soupe complète</strong> : Omelette 2 œufs + grande soupe de légumes maison (courgette, carotte, potiron selon saison)<br><em style="font-size:.78rem;color:var(--brown);opacity:.8">→ ~22g P · 12g G · 16g L · 280 kcal</em></li>
+        <li><strong>Option D — Salade repas</strong> : 130g poulet ou dinde cru émincé + grande salade verte + tomates, concombre + 1 c.à.c huile d'olive + citron<br><em style="font-size:.78rem;color:var(--brown);opacity:.8">→ ~30g P · 8g G · 10g L · 260 kcal</em></li>
+      </ul>
+      <p class="repas-macros">✔ Continue à réduire les féculents le soir comme tu le fais déjà — le corps en a moins besoin après 20h.</p>
+    </div>
+  </div>
+
+  <div class="nutrition-grid" style="margin-top:16px">
+    <div class="nutri-card">
+      <div class="nutri-card-header">💧 Hydratation</div>
+      <div class="nutri-card-body">Vise <strong>1,5 à 2L d'eau/jour</strong>, en plus de ton café et ton thé. Bois particulièrement avant et après tes séances du matin.</div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">💤 Sommeil</div>
+      <div class="nutri-card-body">Tu dors 6-7h — <strong>si tu peux grappiller vers 7-8h</strong>, ça aide sur la récupération et le stockage graisseux. Pas une obligation, un levier simple.</div>
+    </div>
+  </div>
+
+  <div class="important-note">Après tout ce que tu as déjà essayé, <strong>l'approche ici n'est pas la restriction</strong> — c'est la régularité sur une alimentation déjà globalement équilibrée, combinée à l'entraînement. Pas de règle stricte à respecter à la lettre.</div>
+
+  <div class="section-title" style="margin-top:22px"><div class="icon">💊</div><h2>Compléments</h2></div>
+  <div class="nutri-card full"><div class="nutri-card-body">Tu ne prends actuellement aucun complément — <strong>ce n'est pas nécessaire pour commencer</strong>, priorité à l'alimentation et à la régularité. On réévaluera ensemble après quelques semaines si besoin.</div></div>
+
+  <div id="courses" class="section-title" style="margin-top:22px"><div class="icon">🛒</div><h2>Ta <em>liste de courses</em></h2></div>
+  <p class="section-sub">De quoi couvrir toutes les options ci-dessus pour une semaine type.</p>
+  <div class="aliment-grid">
+    <div class="aliment-card">
+      <div class="aliment-cat">🥩 Protéines</div>
+      <ul>
+        <li>Blanc de poulet</li>
+        <li>Dinde (escalope ou haché)</li>
+        <li>Bœuf haché maigre 5%</li>
+        <li>Cabillaud / saumon</li>
+        <li>Œufs (grand format)</li>
+        <li>Fromage blanc 0-3% / yaourt nature</li>
+      </ul>
+    </div>
+    <div class="aliment-card">
+      <div class="aliment-cat">🌾 Féculents</div>
+      <ul>
+        <li>Riz complet</li>
+        <li>Quinoa ou boulgour</li>
+        <li>Patate douce</li>
+        <li>Flocons d'avoine</li>
+        <li>Pain de seigle / pain complet</li>
+      </ul>
+    </div>
+    <div class="aliment-card">
+      <div class="aliment-cat">🥑 Bonnes graisses</div>
+      <ul>
+        <li>Huile d'olive</li>
+        <li>Beurre d'amande (sans sucre ajouté)</li>
+        <li>Amandes / noix</li>
+        <li>Avocat</li>
+      </ul>
+    </div>
+    <div class="aliment-card">
+      <div class="aliment-cat">🥦 Légumes</div>
+      <ul>
+        <li>Courgette, poivron, carotte</li>
+        <li>Épinards, champignons</li>
+        <li>Tomates, concombre</li>
+        <li>Salade verte</li>
+        <li>Légumes de saison pour tagine/soupe</li>
+      </ul>
+    </div>
+    <div class="aliment-card">
+      <div class="aliment-cat">🍎 Fruits</div>
+      <ul>
+        <li>Bananes</li>
+        <li>Fruits rouges (frais ou surgelés)</li>
+        <li>Pommes, kiwis</li>
+        <li>Dattes (pour les energy balls)</li>
+      </ul>
+    </div>
+    <div class="aliment-card">
+      <div class="aliment-cat">🧂 Épicerie</div>
+      <ul>
+        <li>Citron</li>
+        <li>Cannelle</li>
+        <li>Cacao non sucré</li>
+        <li>Épices tagine (cumin, curcuma, gingembre)</li>
+        <li>Barres protéinées (si pas faites maison)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- RENOUVELLEMENT -->
+  <div id="renouvellement" class="section-title"><div class="icon">🔄</div><h2>Envie de <em>continuer</em> ?</h2></div>
+  <p class="section-sub">Ce programme couvre ton premier mois. Un mois pose les bases, mais les vraies évolutions se voient sur la durée — si tu veux continuer sur un 2ᵉ mois, voici les deux options :</p>
+  <div class="nutrition-grid">
+    <div class="nutri-card">
+      <div class="nutri-card-header">🥗 Mois 2 — avec nutrition</div>
+      <div class="nutri-card-body">Programme d'entraînement mis à jour + suivi nutrition continué (ajustements macros, plan alimentaire).<br><br>
+        <a href="https://buy.stripe.com/14AfZh8k18JZ17Tcmh8Vi0s" target="_blank" style="display:inline-block;margin-top:8px;background:var(--accent);color:#fff;font-weight:700;font-size:0.85rem;padding:10px 20px;border-radius:50px;text-decoration:none;">119€ — Je continue →</a>
+      </div>
+    </div>
+    <div class="nutri-card">
+      <div class="nutri-card-header">💪 Mois 2 — sans nutrition</div>
+      <div class="nutri-card-body">Programme d'entraînement mis à jour uniquement (tu gères ton alimentation seule à partir des bases posées ce mois-ci).<br><br>
+        <a href="https://buy.stripe.com/fZufZh57Pd0f2bXcmh8Vi0t" target="_blank" style="display:inline-block;margin-top:8px;background:rgba(44,31,26,0.08);color:var(--cream);font-weight:700;font-size:0.85rem;padding:10px 20px;border-radius:50px;text-decoration:none;">79€ — Je continue →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CONSEILS -->
+  <div id="conseils" class="section-title"><div class="icon">🤍</div><h2>Conseils <em>importants</em></h2></div>
+
+  <div class="tip-card">
+    <div class="tip-title">Pourquoi ça se stocke précisément là</div>
+    Ce n'est pas un manque de volonté de ta part — c'est de la physiologie. Les cellules graisseuses situées sur les hanches, cuisses et sous les fessiers ont <strong>plus de récepteurs qui freinent le déstockage</strong> (récepteurs alpha-2) et sont plus sensibles aux œstrogènes que celles du ventre. C'est un mécanisme hormonal féminin classique — le corps a tendance à protéger cette réserve en priorité, et à y puiser en dernier. C'est pour ça que cette zone répond souvent plus lentement que le reste, même avec un programme sérieux. Ce n'est pas que "rien ne marche" — c'est que cette zone a besoin de plus de temps que les autres.
+  </div>
+  <div class="tip-card">
+    <div class="tip-title">Ce qui aide vraiment (pas de miracle, mais ça compte)</div>
+    • <strong>Régularité sur la durée</strong> — cette zone répond à des mois de constance, pas à 2 semaines parfaites suivies d'un abandon.<br>
+    • <strong>Le cardio régulier</strong> (marche + Séances 2 et 4) est ton meilleur levier ici — plus efficace que d'ajouter du renfo lourd sur les jambes.<br>
+    • <strong>Éviter les cycles régime strict/craquage</strong> — l'alternance restriction-excès a tendance à favoriser le stockage dans les zones déjà sensibles comme celle-ci à chaque rebond.<br>
+    • <strong>Le sommeil et la gestion du stress</strong> — le cortisol (hormone du stress) influence directement la répartition des graisses, pas seulement la quantité.<br>
+    • <strong>Le palper-rouler / brossage à sec</strong> (ton programme anti-cellulite) n'élimine pas la graisse, mais améliore la circulation et l'aspect de la peau — un vrai plus complémentaire, pas un accélérateur de perte de gras.<br>
+    On ne peut pas décider où le corps puise en premier — ça se joue sur l'ensemble du corps. Ce programme évite juste d'ajouter du volume musculaire sur cette zone pendant que le reste travaille pour toi.
+  </div>
+  <div class="tip-card">
+    <div class="tip-title">Patience</div>
+    Le premier mois pose les bases. Les vraies évolutions se voient sur plusieurs mois, avec régularité — pas en 2 semaines. Je sais que tu veux des résultats vite, et c'est normal, mais je préfère être honnête avec toi plutôt que de te promettre l'impossible.
+  </div>
+  <div class="tip-card">
+    <div class="tip-title">Ton programme anti-cellulite</div>
+    Tu peux continuer ta routine anti-cellulite (5 min/jour, 10 min le dimanche) en complément — ça ne rentre pas en conflit, fais-la après ta séance ou le soir.
+  </div>
+  <div class="tip-card">
+    <div class="tip-title">Suivi</div>
+    Photos et mensurations tous les mois — le poids seul ne raconte pas toute l'histoire, surtout avec de la musculation en parallèle.
+  </div>
+  <div class="tip-card">
+    <div class="tip-title">Une question ?</div>
+    N'hésite pas à m'envoyer un message ou une vidéo pour vérifier ta technique. Je suis là.<br>
+    <a href="https://wa.me/33756834626" target="_blank" style="display:inline-block;margin-top:10px;background:var(--accent);color:#fff;font-weight:700;font-size:0.82rem;padding:9px 18px;border-radius:50px;text-decoration:none;">💬 M'écrire sur WhatsApp →</a>
+  </div>
+
+</div>
+
+<div id="chrono-widget">
+  <button id="chrono-reduce" onclick="minimizeChrono()" title="Réduire">−</button>
+  <span id="chrono-label">⏱ Repos</span>
+  <span id="chrono-display">00:60</span>
+  <div class="chrono-btns">
+    <button class="chrono-btn" onclick="setTimer(15)">15s</button>
+    <button class="chrono-btn" onclick="setTimer(30)">30s</button>
+    <button class="chrono-btn" onclick="setTimer(45)">45s</button>
+    <button class="chrono-btn" onclick="setTimer(60)">60s</button>
+    <button class="chrono-btn" onclick="setTimer(90)">90s</button>
+  </div>
+  <div class="chrono-btns" style="margin-top:6px;">
+    <button class="chrono-btn start-btn" id="chrono-start" onclick="startTimer()">▶ Start</button>
+    <button class="chrono-btn stop-btn" onclick="resetTimer()">■ Reset</button>
+  </div>
+  <div id="chrono-mini-row">
+    <button onclick="expandChrono()" style="background:none;border:none;font-size:.75rem;color:var(--accent);cursor:pointer;font-weight:700;">+</button>
+  </div>
+</div>
+
+<script>
+  var chronoInterval = null;
+  var chronoSeconds = 60;
+  var chronoTarget = 60;
+  var chronoRunning = false;
+
+  function setTimer(sec) {
+    resetTimer();
+    chronoTarget = sec;
+    chronoSeconds = sec;
+    document.getElementById('chrono-display').textContent = formatTime(sec);
+    document.getElementById('chrono-label').textContent = '⏱ Repos — ' + sec + 's';
+  }
+  function formatTime(sec) {
+    var m = Math.floor(sec / 60);
+    var s = sec % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+  }
+  function startTimer() {
+    if (chronoRunning) return;
+    if (chronoSeconds <= 0) chronoSeconds = chronoTarget;
+    chronoRunning = true;
+    document.getElementById('chrono-start').textContent = '⏸ En cours';
+    chronoInterval = setInterval(function() {
+      chronoSeconds--;
+      document.getElementById('chrono-display').textContent = formatTime(chronoSeconds);
+      if (chronoSeconds <= 0) {
+        clearInterval(chronoInterval);
+        chronoRunning = false;
+        document.getElementById('chrono-display').textContent = 'GO !';
+        document.getElementById('chrono-start').textContent = '▶ Start';
+        if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+      }
+    }, 1000);
+  }
+  function resetTimer() {
+    if (chronoInterval) clearInterval(chronoInterval);
+    chronoRunning = false;
+    chronoSeconds = chronoTarget;
+    document.getElementById('chrono-display').textContent = formatTime(chronoTarget);
+    document.getElementById('chrono-start').textContent = '▶ Start';
+    document.getElementById('chrono-label').textContent = '⏱ Repos';
+  }
+  function minimizeChrono() {
+    document.getElementById('chrono-widget').classList.add('minimized');
+  }
+  function expandChrono() {
+    document.getElementById('chrono-widget').classList.remove('minimized');
+  }
+  setTimer(60);
+
+  // ===== MENSURATIONS localStorage =====
+  function saveMensurations() {
+    document.querySelectorAll('.mensu-input').forEach(function(inp) {
+      localStorage.setItem('khadidja_mensu_' + inp.dataset.row + '_' + inp.dataset.col, inp.value);
+    });
+  }
+  function loadMensurations() {
+    document.querySelectorAll('.mensu-input').forEach(function(inp) {
+      var saved = localStorage.getItem('khadidja_mensu_' + inp.dataset.row + '_' + inp.dataset.col);
+      if (saved) inp.value = saved;
+    });
+  }
+  document.querySelectorAll('.mensu-input').forEach(function(inp) {
+    inp.addEventListener('input', saveMensurations);
+  });
+  loadMensurations();
+
+  function envoyerMensurations() {
+    var cols = { '1': 'Mois 1', '2': 'Mois 2', '3': 'Mois 3' };
+    var parMois = { '1': [], '2': [], '3': [] };
+    document.querySelectorAll('.mensu-input').forEach(function(inp) {
+      if (inp.value.trim() !== '') {
+        parMois[inp.dataset.col].push(inp.dataset.label + ' : ' + inp.value.trim());
+      }
+    });
+    var lignes = [];
+    ['1','2','3'].forEach(function(col) {
+      if (parMois[col].length > 0) {
+        lignes.push('📅 ' + cols[col] + '\n' + parMois[col].join('\n'));
+      }
+    });
+    if (lignes.length === 0) {
+      alert('Remplis au moins une mesure avant d\'envoyer.');
+      return;
+    }
+    var msg = '📏 Mes mensurations — Khadidja\n\n' + lignes.join('\n\n');
+    var url = 'https://wa.me/33756834626?text=' + encodeURIComponent(msg);
+    window.open(url, '_blank');
+  }
+</script>
+
+</body>
+</html>
