@@ -255,18 +255,18 @@ fbq("track","PageView");
           '<tr><td style="background:#FDF0F3;padding:24px 32px;text-align:center;border-top:1px solid #EDD0D8;margin-top:32px;">' +
           '<p style="font-size:13px;color:#9E7080;line-height:1.8;margin:0;">Je suis fière de toi d\'avoir fait ce pas. 🤍<br><strong style="color:#2C1A20;">Ornella</strong><br><span style="font-size:12px;">ornellafitcoaching.com</span></p>' +
           '</td></tr>' +
-          '</table></td></tr></table>
-<script>
-function copyReferralMsg(btn){
-  var msg = "Salut ! Je viens de découvrir Ornella Fit Coaching et je suis hyper contente de mon programme \uD83D\uDE4C Si ça t'intéresse : https://www.ornellafitcoaching.com/programmes.html — dis-lui que c'est moi qui t'envoie !";
-  navigator.clipboard.writeText(msg).then(function(){
-    var original = btn.textContent;
-    btn.textContent = '✅ Copié ! Colle-le dans WhatsApp';
-    setTimeout(function(){ btn.textContent = original; }, 2500);
-  });
-}
-</script>
-</body></html>'
+          '</table></td></tr></table>' +
+          '<script>' +
+          'function copyReferralMsg(btn){' +
+          '  var msg = "Salut ! Je viens de découvrir Ornella Fit Coaching et je suis hyper contente de mon programme \uD83D\uDE4C Si ça t\'intéresse : https://www.ornellafitcoaching.com/programmes.html — dis-lui que c\'est moi qui t\'envoie !";' +
+          '  navigator.clipboard.writeText(msg).then(function(){' +
+          '    var original = btn.textContent;' +
+          "    btn.textContent = '✅ Copié ! Colle-le dans WhatsApp';" +
+          '    setTimeout(function(){ btn.textContent = original; }, 2500);' +
+          '  });' +
+          '}' +
+          '<\/script>' +
+          '</body></html>'
       })
     }).catch(() => {});
 
