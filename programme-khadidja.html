@@ -279,7 +279,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);
   </div>
   <p class="section-sub">*Ton tour de taille habituel est plutôt 85-86 cm — 91 cm reflète ton état actuel, pas ta référence. On suit l'évolution à partir d'aujourd'hui.</p>
   <p class="section-sub">✍️ Remplis les colonnes au fil des semaines — c'est <strong style="color:var(--cream)">sauvegardé automatiquement</strong> sur cet appareil. Utilise le bouton ci-dessous pour m'envoyer tes chiffres directement.</p>
-  <button onclick="envoyerMensurations()" style="width:100%;padding:13px;background:linear-gradient(135deg,#25D366,#1DA851);color:#fff;border:none;border-radius:12px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;margin-bottom:16px;">📲 Envoyer mes mensurations à Ornella (WhatsApp)</button>
+  <button onclick="envoyerMensurations()" style="width:100%;padding:13px;background:linear-gradient(135deg,#25D366,#1DA851);color:#fff;border:none;border-radius:12px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;margin-bottom:10px;">📲 Envoyer mes mensurations à Ornella (WhatsApp)</button>
+  <button onclick="envoyerPoidsFinMois1()" style="width:100%;padding:11px;background:rgba(37,211,102,0.1);color:var(--cream);border:1.5px solid #25D366;border-radius:12px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;margin-bottom:16px;">⚖️ Raccourci fin mois 1 — envoyer juste mon poids</button>
   <div class="important-note">📸 <strong>Photos de suivi :</strong> tu es partante pour en envoyer — au même endroit, même lumière, tous les mois, pour voir l'évolution réelle au-delà du chiffre sur la balance.</div>
 
   <div class="divider"></div>
@@ -311,7 +312,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);
 
   <div class="divider"></div>
 
-  <div class="section-title"><div class="icon">📈</div><h2>Progression sur le <em>mois</em></h2></div>
+  <div class="section-title"><div class="icon">📈</div><h2>Progression sur <em>8 semaines</em></h2></div>
+  <div class="planning-grid" style="grid-template-columns:repeat(4,1fr);">
+    <div class="planning-card"><div class="planning-card-header">Semaine 1</div><div class="planning-card-body"><div class="p-letter">📍</div><div class="p-name">Repères techniques</div></div></div>
+    <div class="planning-card"><div class="planning-card-header">Semaine 2</div><div class="planning-card-body"><div class="p-letter">📍</div><div class="p-name">Note tes charges</div></div></div>
+    <div class="planning-card"><div class="planning-card-header">Semaine 3</div><div class="planning-card-body"><div class="p-letter">↗️</div><div class="p-name">Charge/reps ↑</div></div></div>
+    <div class="planning-card"><div class="planning-card-header">Semaine 4</div><div class="planning-card-body"><div class="p-letter">↗️</div><div class="p-name">Repos ↓, tours ↑</div></div></div>
+    <div class="planning-card"><div class="planning-card-header">Semaine 5</div><div class="planning-card-body"><div class="p-letter">🔥</div><div class="p-name">Tours → 5</div></div></div>
+    <div class="planning-card"><div class="planning-card-header">Semaine 6</div><div class="planning-card-body"><div class="p-letter">🔥</div><div class="p-name">Charge ↑ si facile</div></div></div>
+    <div class="planning-card"><div class="planning-card-header">Semaine 7</div><div class="planning-card-body"><div class="p-letter">🏁</div><div class="p-name">Tours → 6</div></div></div>
+    <div class="planning-card"><div class="planning-card-header">Semaine 8</div><div class="planning-card-body"><div class="p-letter">🏁</div><div class="p-name">Consolidation</div></div></div>
+  </div>
   <div class="important-note">
     <strong>Semaine 1-2 — Prise de repères.</strong> Apprends bien chaque exercice, note tes charges de départ sur chaque mouvement aux haltères/barre. L'objectif n'est pas l'intensité maximale mais la technique parfaite.
   </div>
@@ -894,6 +905,18 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);
       return;
     }
     var msg = '📏 Mes mensurations — Khadidja\n\n' + lignes.join('\n\n');
+    var url = 'https://wa.me/33756834626?text=' + encodeURIComponent(msg);
+    window.open(url, '_blank');
+  }
+
+  function envoyerPoidsFinMois1() {
+    var input = document.querySelector('.mensu-input[data-row="0"][data-col="2"]');
+    var poids = input ? input.value.trim() : '';
+    if (!poids) {
+      alert('Remplis d\'abord ton poids dans la colonne "Fin mois 1" avant d\'envoyer.');
+      return;
+    }
+    var msg = '⚖️ Fin du mois 1 — mon poids : ' + poids;
     var url = 'https://wa.me/33756834626?text=' + encodeURIComponent(msg);
     window.open(url, '_blank');
   }
