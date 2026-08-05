@@ -363,11 +363,21 @@ const QUESTIONS = [
     options: [
       { emoji: '🔥', text: 'Perdre du poids et transformer mon corps', sub: '', scores: {} },
       { emoji: '🍑', text: 'Sculpter mes fessiers et affiner ma silhouette', sub: '', scores: {} },
-      { emoji: '🌸', text: 'Me remettre en forme', sub: 'Post-grossesse, reprise d\'activité ou remise en route', scores: {} },
-      { emoji: '💪', text: 'Prendre de la force et du muscle', sub: '', scores: {} }
+      { emoji: '🤱', text: 'Me remettre en forme', sub: 'Post-grossesse, reprise d\'activité ou remise en route', scores: {} },
+      { emoji: '💪', text: 'Prendre de la force et du muscle', sub: '', scores: {} },
+      { emoji: '🌸', text: 'Ménopause / anti-âge', sub: '30-50 ans — corps qui change, envie de fermeté', scores: {} }
     ]
   }
 ];
+
+const OBJECTIF_LABELS = ['poids', 'silhouette', 'remise_forme', 'muscle', 'antiage'];
+const PRODUIT_CTA = {
+  poids:        { emoji: '🌿', text: 'Tu veux aussi perdre du ventre ?', label: 'Découvrir Reset Ventre Plat', url: 'https://www.ornellafitcoaching.com/ventre-plat.html' },
+  silhouette:   { emoji: '🍑', text: 'Tu veux aussi sculpter tes fessiers ?', label: 'Découvrir Booty Sculpt', url: 'https://www.ornellafitcoaching.com/booty-sculpt.html' },
+  remise_forme: { emoji: '🤱', text: 'Tu veux retrouver ton corps après bébé ?', label: 'Découvrir le programme Post-partum', url: 'https://www.ornellafitcoaching.com/programme-postpartum.html' },
+  muscle:       { emoji: '🏋️', text: 'Tu veux aussi prendre du muscle ?', label: 'Découvrir Iron Girl', url: 'https://www.ornellafitcoaching.com/iron-girl-sales.html' },
+  antiage:      { emoji: '🌸', text: 'Tu es aussi concernée par la ménopause / anti-âge ?', label: 'Découvrir Ageless Girl', url: 'https://www.ornellafitcoaching.com/ageless-girl-sales.html' }
+};
 
 const RESULTS = {
   domicile: {
@@ -805,8 +815,8 @@ async function sendToBrevo(email, resultKey, prenom = '') {
   const listId = BREVO_LISTS[resultKey];
   const r      = RESULTS[resultKey];
 
-  const OBJECTIF_LABELS = ['poids', 'silhouette', 'remise_forme', 'muscle'];
   const objectif = selections[5] !== undefined ? OBJECTIF_LABELS[selections[5]] : '';
+  const produit   = PRODUIT_CTA[objectif] || null;
 
   /* 1 — Ajouter le contact à la liste — formulaire natif, plus de clé exposée pour cette étape */
   submitToQuizBrevoForm(email, resultKey);
@@ -824,7 +834,13 @@ async function sendToBrevo(email, resultKey, prenom = '') {
         sender: { name: 'Ornella Fit Coaching', email: 'contact@ornellafitcoaching.com' },
         replyTo: { email: 'ornellaracano@icloud.com', name: 'Ornella Fit Coaching' },
         templateId: templateId,
-        params: { PRENOM: prenom || '' }
+        params: {
+          PRENOM: prenom || '',
+          OBJECTIF: objectif || '',
+          PRODUIT_TEXT: produit ? produit.text : '',
+          PRODUIT_LABEL: produit ? produit.label : '',
+          PRODUIT_URL: produit ? produit.url : ''
+        }
       })
     });
   } catch (e) {
@@ -879,6 +895,20 @@ function renderResult(key, email) {
     <div class="quiz-confirm-box">
       <span>📩 &nbsp;Un email vient d'être envoyé à <strong>${escHtml(email)}</strong> avec le détail de cette offre.</span>
     </div>` : '';
+
+  const objectif = selections[5] !== undefined ? OBJECTIF_LABELS[selections[5]] : '';
+  const produit   = PRODUIT_CTA[objectif] || null;
+  const produitCtaHTML = produit ? `
+    <div style="background:linear-gradient(135deg,#FDF0E8,#FCE4D6);border:1px solid rgba(201,99,88,.25);border-radius:14px;padding:16px 18px;margin-bottom:16px;text-align:center;">
+      <div style="font-size:1.3rem;margin-bottom:4px;">${produit.emoji}</div>
+      <div style="font-size:0.85rem;color:#3D2B24;margin-bottom:10px;">${produit.text}</div>
+      <a href="${produit.url}" style="display:inline-block;background:#C96358;color:#fff;font-weight:700;font-size:0.82rem;padding:10px 20px;border-radius:50px;text-decoration:none;">${produit.label} →</a>
+    </div>` : '';
+
+  const bonusHTML = `
+    <div style="background:#FFF4ED;border:1px dashed #D4957A;border-radius:12px;padding:10px 16px;margin-bottom:16px;text-align:center;font-size:0.8rem;color:#7A5E44;">
+      🎁 <strong>Bonus offert</strong> dès que tu démarres ton programme : le Guide Recettes Sculptantes
+    </div>`;
 
   const domicilePricingHTML = key === 'domicile' ? `
     <div class="quiz-pricing-title">Choisis ton rythme :</div>
@@ -943,6 +973,9 @@ function renderResult(key, email) {
 
           ${domicilePricingHTML}
         </div>
+
+        ${produitCtaHTML}
+        ${bonusHTML}
 
         <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
           <a href="https://wa.me/33756834626" target="_blank"
