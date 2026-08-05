@@ -700,6 +700,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);
   var chronoSeconds = 60;
   var chronoTarget = 60;
   var chronoRunning = false;
+  var beepCtx = null;
 
   function setTimer(sec) {
     resetTimer();
@@ -717,6 +718,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);
     if (chronoRunning) return;
     if (chronoSeconds <= 0) chronoSeconds = chronoTarget;
     chronoRunning = true;
+    if (!beepCtx) {
+      try { beepCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {}
+    }
+    if (beepCtx && beepCtx.state === 'suspended') beepCtx.resume();
     document.getElementById('chrono-start').textContent = '⏸ En cours';
     chronoInterval = setInterval(function() {
       chronoSeconds--;
@@ -733,7 +738,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);
   }
   function playBeep() {
     try {
-      var ctx = new (window.AudioContext || window.webkitAudioContext)();
+      var ctx = beepCtx;
+      if (!ctx) return;
       var osc = ctx.createOscillator();
       var gain = ctx.createGain();
       osc.type = 'sine';
