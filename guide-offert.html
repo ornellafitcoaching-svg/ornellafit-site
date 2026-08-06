@@ -2747,6 +2747,19 @@ function handleGuideCapture() {
 document.addEventListener('DOMContentLoaded', function() {
   try { if (localStorage.getItem('guide_unlocked') === '1') unlockGuide(); } catch(e) {}
 });
+(function(){
+  var bar = document.getElementById('read-progress-bar');
+  if (!bar) return;
+  function updateProgress(){
+    var h = document.documentElement;
+    var scrolled = h.scrollTop;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (scrolled / max) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+  document.addEventListener('scroll', updateProgress, {passive:true});
+  updateProgress();
+})();
 </script>
 </body>
 </html>
