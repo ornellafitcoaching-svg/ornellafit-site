@@ -1113,6 +1113,11 @@ body { background: #fdf5f2 !important; }
   border: 1.5px solid rgba(201,132,138,.32) !important;
 }
 
+/* ─── Barre de progression de lecture ─── */
+#read-progress { position:fixed; top:0; left:0; width:100%; height:4px; background:rgba(58,42,42,.08); z-index:1000; }
+#read-progress-bar { height:100%; width:0%; background:linear-gradient(90deg,var(--rose),var(--rouge)); transition:width .1s linear; }
+@media print { #read-progress { display:none; } }
+
 /* ─── Navigation flottante ─── */
 #fab-nav {
   position: fixed;
@@ -1313,6 +1318,7 @@ body { background: #fdf5f2 !important; }
 <meta name="facebook-domain-verification" content="4npql1iz6n380yye9bsydf16pnj20x" />
 </head>
 <body>
+<div id="read-progress"><div id="read-progress-bar"></div></div>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -1388,7 +1394,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="profile-body" style="margin-top:32px;border:1px solid var(--border);border-radius:6px;overflow:hidden;">
       <div class="profile-left">
-        <div class="profile-avatar">👋</div>
+        <div class="profile-avatar" style="overflow:hidden;padding:0;background:none;"><img src="images/guide-photo-1.jpg" alt="Ornella, coach sportive" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"></div>
         <div class="profile-name serif">Ornella</div>
         <div class="profile-title">Ta coach pour ce guide</div>
         <div class="profile-badges">
@@ -2666,6 +2672,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#page-6" role="menuitem" onclick="document.getElementById('fab-check').checked=false">Mon approche</a>
     <a href="#page-2" role="menuitem" onclick="document.getElementById('fab-check').checked=false">Les 9 erreurs</a>
     <a href="#page-3" role="menuitem" onclick="document.getElementById('fab-check').checked=false">Le vrai problème</a>
+    <a href="#page-4" role="menuitem" onclick="document.getElementById('fab-check').checked=false">Prise de conscience</a>
     <a href="#page-5" role="menuitem" onclick="document.getElementById('fab-check').checked=false">Ce qui fonctionne</a>
     <div class="menu-sep"></div>
     <a href="#page-8" role="menuitem" onclick="document.getElementById('fab-check').checked=false">💎 Offres</a>
