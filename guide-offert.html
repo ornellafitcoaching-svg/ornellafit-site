@@ -308,6 +308,13 @@ body {
 .cover-title { font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:300; color:var(--white); line-height:1.12; margin-bottom:20px; position:relative; z-index:1; }
 .cover-title em { font-style:italic; color:var(--rose-light); }
 .cover-sub { font-size:13px; font-weight:400; color:rgba(255,255,255,.86); line-height:1.7; max-width:500px; margin:0 auto 44px; position:relative; z-index:1; }
+.quiz-objectif { background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.22); border-radius:14px; padding:24px 22px; margin:0 auto 32px; max-width:480px; text-align:center; position:relative; z-index:1; }
+.quiz-objectif-label { font-size:13px; font-weight:600; color:#fff; margin-bottom:16px; }
+.quiz-objectif-grid { display:flex; flex-wrap:wrap; gap:9px; justify-content:center; }
+.quiz-objectif-btn { font-family:'Montserrat',sans-serif; font-size:12.5px; font-weight:600; color:#fff; background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.3); border-radius:30px; padding:10px 16px; cursor:pointer; transition:all .15s; touch-action:manipulation; }
+.quiz-objectif-btn:hover { border-color:var(--rose-light); }
+.quiz-objectif-btn.selected { background:linear-gradient(135deg,var(--rose) 0%,var(--rouge) 100%); border-color:transparent; color:#fff; }
+.quiz-objectif-feedback { font-size:13px; color:var(--rose-light); font-weight:600; margin-top:14px; min-height:18px; }
 .cover-pills { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:44px; position:relative; z-index:1; }
 .cover-pill { font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.82); background:rgba(184,58,46,.12); border:1px solid rgba(184,58,46,.25); border-radius:20px; padding:6px 16px; display:flex; align-items:center; gap:6px; }
 .cover-pill span { color:var(--rose); font-size:11px; }
@@ -1342,6 +1349,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="cover-sub">
       Les 9 erreurs silencieuses qui sabotent ta transformation — et la méthode concrète, sur mesure, pour en sortir définitivement.
     </p>
+    <div class="quiz-objectif" id="quizObjectif">
+      <p class="quiz-objectif-label">🎯 Avant de commencer, dis-moi ton objectif principal :</p>
+      <div class="quiz-objectif-grid">
+        <button type="button" class="quiz-objectif-btn" onclick="selectObjectif(this)" data-obj="Perte de poids">🔥 Perdre du poids</button>
+        <button type="button" class="quiz-objectif-btn" onclick="selectObjectif(this)" data-obj="Tonifier">💪 Me tonifier</button>
+        <button type="button" class="quiz-objectif-btn" onclick="selectObjectif(this)" data-obj="Fessiers">🍑 Mes fessiers</button>
+        <button type="button" class="quiz-objectif-btn" onclick="selectObjectif(this)" data-obj="Postpartum">🤱 Après bébé</button>
+        <button type="button" class="quiz-objectif-btn" onclick="selectObjectif(this)" data-obj="Muscle">🏋️ Prendre du muscle</button>
+      </div>
+      <p class="quiz-objectif-feedback" id="quizObjectifFeedback"></p>
+    </div>
     <div class="cover-pills">
       <div class="cover-pill"><span>📘</span> 6 chapitres</div>
       <div class="cover-pill"><span>💡</span> Basé sur la science</div>
@@ -2726,6 +2744,17 @@ function unlockGuide() {
     var savedObjectif = localStorage.getItem('guide_objectif');
     if (savedObjectif) showObjectifCta(savedObjectif);
   } catch(e) {}
+}
+function selectObjectif(btn) {
+  document.querySelectorAll('.quiz-objectif-btn').forEach(function(b){ b.classList.remove('selected'); });
+  btn.classList.add('selected');
+  var obj = btn.getAttribute('data-obj');
+  try { localStorage.setItem('guide_objectif', obj); } catch(e) {}
+  var sel = document.getElementById('cap-objectif');
+  if (sel) sel.value = obj;
+  var labels = { 'Perte de poids':'perdre du poids', 'Tonifier':'te tonifier', 'Fessiers':'sculpter tes fessiers', 'Postpartum':'retrouver ton corps après bébé', 'Muscle':'prendre du muscle' };
+  var fb = document.getElementById('quizObjectifFeedback');
+  if (fb) fb.textContent = '✨ Parfait — ce guide va t\'aider à ' + (labels[obj] || obj) + '.';
 }
 function handleGuideCapture() {
   var fname = document.getElementById('cap-fname').value.trim();
