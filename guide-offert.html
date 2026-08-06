@@ -315,6 +315,20 @@ body {
 .quiz-objectif-btn:hover { border-color:var(--rose-light); }
 .quiz-objectif-btn.selected { background:linear-gradient(135deg,var(--rose) 0%,var(--rouge) 100%); border-color:transparent; color:#fff; }
 .quiz-objectif-feedback { font-size:13px; color:var(--rose-light); font-weight:600; margin-top:14px; min-height:18px; }
+.diag-progress { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.5); margin-bottom:10px; }
+.diag-q { font-size:14px; font-weight:600; color:#fff; margin-bottom:14px; line-height:1.5; }
+.diag-opts { display:flex; flex-direction:column; gap:8px; }
+.diag-opt { font-family:'Montserrat',sans-serif; font-size:13px; font-weight:500; color:#fff; text-align:left; background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.25); border-radius:10px; padding:12px 16px; cursor:pointer; transition:all .15s; touch-action:manipulation; }
+.diag-opt:hover { border-color:var(--rose-light); background:rgba(255,255,255,.14); }
+.diag-back { display:inline-block; margin-top:14px; font-size:11px; color:rgba(255,255,255,.5); background:none; border:none; cursor:pointer; text-decoration:underline; }
+.diag-result { background:rgba(255,255,255,.06); border-radius:12px; padding:22px 20px; text-align:left; }
+.diag-result-tag { display:inline-block; font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--rose-light); background:rgba(255,255,255,.1); padding:4px 12px; border-radius:20px; margin-bottom:10px; }
+.diag-result-title { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; color:#fff; margin-bottom:10px; line-height:1.3; }
+.diag-result-why { font-size:13px; color:rgba(255,255,255,.82); line-height:1.7; margin-bottom:14px; }
+.diag-result-actions { list-style:none; margin-bottom:16px; }
+.diag-result-actions li { font-size:12.5px; color:rgba(255,255,255,.85); line-height:1.6; padding:5px 0; padding-left:20px; position:relative; }
+.diag-result-actions li::before { content:'✓'; position:absolute; left:0; color:var(--rose-light); font-weight:700; }
+.diag-result-cta { display:block; text-align:center; background:linear-gradient(135deg,var(--rose) 0%,var(--rouge) 100%); color:#fff; font-size:12px; font-weight:700; text-decoration:none; padding:13px 20px; border-radius:30px; }
 .cover-pills { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:44px; position:relative; z-index:1; }
 .cover-pill { font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.82); background:rgba(184,58,46,.12); border:1px solid rgba(184,58,46,.25); border-radius:20px; padding:6px 16px; display:flex; align-items:center; gap:6px; }
 .cover-pill span { color:var(--rose); font-size:11px; }
@@ -1350,15 +1364,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       Les 9 erreurs silencieuses qui sabotent ta transformation — et la méthode concrète, sur mesure, pour en sortir définitivement.
     </p>
     <div class="quiz-objectif" id="quizObjectif">
-      <p class="quiz-objectif-label">🎯 Avant de commencer, dis-moi ton objectif principal :</p>
-      <div class="quiz-objectif-grid">
-        <button type="button" class="quiz-objectif-btn" onclick="selectObjectif(this)" data-obj="Perte de poids">🔥 Perdre du poids</button>
-        <button type="button" class="quiz-objectif-btn" onclick="selectObjectif(this)" data-obj="Tonifier">💪 Me tonifier</button>
-        <button type="button" class="quiz-objectif-btn" onclick="selectObjectif(this)" data-obj="Fessiers">🍑 Mes fessiers</button>
-        <button type="button" class="quiz-objectif-btn" onclick="selectObjectif(this)" data-obj="Postpartum">🤱 Après bébé</button>
-        <button type="button" class="quiz-objectif-btn" onclick="selectObjectif(this)" data-obj="Muscle">🏋️ Prendre du muscle</button>
-      </div>
-      <p class="quiz-objectif-feedback" id="quizObjectifFeedback"></p>
+      <p class="quiz-objectif-label" id="diagIntro">🎯 Découvre quelle erreur te freine le plus — et l'action qui aura le plus d'impact.</p>
+      <div id="diagBody"></div>
+      <button type="button" class="quiz-objectif-btn" id="diagStartBtn" onclick="diagStart()" style="margin:0 auto;display:block;">Commencer le diagnostic →</button>
     </div>
     <div class="cover-pills">
       <div class="cover-pill"><span>📘</span> 6 chapitres</div>
@@ -2752,20 +2760,81 @@ function unlockGuide() {
     if (savedObjectif) showObjectifCta(savedObjectif);
   } catch(e) {}
 }
-function selectObjectif(btn) {
-  document.querySelectorAll('.quiz-objectif-btn').forEach(function(b){ b.classList.remove('selected'); });
-  btn.classList.add('selected');
-  var obj = btn.getAttribute('data-obj');
-  try { localStorage.setItem('guide_objectif', obj); } catch(e) {}
+/* ═══ DIAGNOSTIC DES FREINS (remplace l'ancien quiz "objectif") ═══ */
+var DIAG_QUESTIONS = [
+  { q: 'Combien de repas protéinés fais-tu par jour ?', opts: [
+      {t:'0 à 1', cat:'alim', pts:2}, {t:'2 à 3', cat:'alim', pts:1}, {t:'4 et plus', cat:'alim', pts:0} ] },
+  { q: 'Fais-tu plus de cardio que de renforcement musculaire ?', opts: [
+      {t:'Oui, beaucoup plus', cat:'cardio', pts:2}, {t:'Un peu plus', cat:'cardio', pts:1}, {t:'Non, c\'est équilibré', cat:'cardio', pts:0} ] },
+  { q: 'As-tu du mal à récupérer (sommeil, fatigue, stress) ?', opts: [
+      {t:'Oui, souvent', cat:'recup', pts:2}, {t:'Parfois', cat:'recup', pts:1}, {t:'Non, je récupère bien', cat:'recup', pts:0} ] },
+  { q: 'T\'entraînes-tu avec une vraie progression (tu augmentes le poids ou les répétitions régulièrement) ?', opts: [
+      {t:'Non, je fais toujours pareil', cat:'prog', pts:2}, {t:'Un peu', cat:'prog', pts:1}, {t:'Oui, je progresse régulièrement', cat:'prog', pts:0} ] },
+  { q: 'Depuis combien de temps stagnes-tu ?', opts: [
+      {t:'Plus de 3 mois', cat:'prog', pts:1}, {t:'1 à 3 mois', cat:'alim', pts:1}, {t:'Moins d\'1 mois', cat:'', pts:0} ] },
+  { q: 'Es-tu en post-partum ?', opts: [
+      {t:'Oui', cat:'route', val:'postpartum'}, {t:'Non', cat:'route', val:''} ] },
+  { q: 'As-tu plus de 40 ans ou remarqué des changements hormonaux ?', opts: [
+      {t:'Oui', cat:'route', val:'hormonal'}, {t:'Non', cat:'route', val:''} ] },
+  { q: 'Quel est ton objectif principal ?', opts: [
+      {t:'🔥 Perdre du poids', cat:'obj', val:'Perte de poids'},
+      {t:'🍑 Mes fessiers', cat:'obj', val:'Fessiers'},
+      {t:'💪 Me tonifier', cat:'obj', val:'Tonifier'},
+      {t:'🏋️ Prendre du muscle', cat:'obj', val:'Muscle'} ] }
+];
+var FREIN_MAP = {
+  alim:    { titre:'Une alimentation qui ne soutient pas tes efforts', why:'Sans assez de protéines ni de repères précis, ton corps n\'a pas le carburant pour construire du muscle ou brûler efficacement — tu peux t\'entraîner dur et stagner quand même.', actions:['Place une source de protéines à chaque repas, dès le petit-déjeuner.', 'Ne descends jamais sous 1,6g de protéines par kg de poids de corps et par jour.', 'Pèse tes portions 3 jours pour repérer les excès invisibles (huile, oléagineux, sauces).'], produit:'ventre-plat.html', label:'→ Voir la méthode nutrition qui débloque enfin les résultats' },
+  cardio:  { titre:'Trop de cardio, pas assez de renforcement ciblé', why:'Ton corps s\'adapte vite au cardio : en quelques semaines tu brûles moins pour le même effort, et sans musculation il puise dans le muscle — ce qui ralentit encore plus ton métabolisme.', actions:['Limite le cardio à 2-3 séances/semaine et priorise la musculation.', 'Programme 2 séances de renforcement ciblé par semaine avec une charge qui progresse.', 'Vise une vraie programmation adaptée à ta morphologie, pas des exercices au hasard.'], produit:'booty-sculpt.html', label:'→ Voir la méthode de sculpte progressive' },
+  recup:   { titre:'Un déficit de récupération (stress, sommeil)', why:'Cortisol élevé et sommeil insuffisant bloquent la construction musculaire et favorisent le stockage abdominal — aucun programme ne peut compenser une récupération absente.', actions:['10 minutes de marche ou de respiration dehors, sans écran, chaque jour.', 'Fixe une heure de coucher régulière pour viser 7 à 9h de sommeil.', 'Si la fatigue persiste, demande un bilan sanguin (fer, vitamine D, B12).'], produit:'offres.html', label:'→ Découvrir le bilan personnalisé gratuit' },
+  prog:    { titre:'Un manque de progression dans tes séances', why:'Sans musculation régulière et progressive, tu perds naturellement de la masse musculaire avec le temps — résultat : métabolisme ralenti, corps qui se ramollit, même sans rien changer côté alimentation.', actions:['2 séances de musculation minimum par semaine, sans exception.', 'Augmente la charge ou les répétitions dès que tu maîtrises un mouvement.', 'Structure tes séances plutôt que de les improviser à chaque fois.'], produit:'iron-girl-sales.html', label:'→ Voir la méthode de progression structurée' },
+  postpartum: { titre:'Ton corps post-partum a besoin d\'un plan spécifique', why:'Après une grossesse, ton corps a des besoins particuliers (diastasis, plancher pelvien, fatigue) qu\'un programme générique ne prend jamais en compte.', actions:['Ne reprends jamais un programme générique sans vérifier ton diastasis.', 'Priorise le renforcement du plancher pelvien avant tout le reste.', 'Avance progressivement, sans te comparer à ton corps d\'avant.'], produit:'programme-postpartum.html', label:'→ Découvrir le programme pensé pour l\'après-accouchement' },
+  hormonal: { titre:'Des changements hormonaux qui changent la donne', why:'À partir de 40 ans, la baisse d\'œstrogènes accélère la perte musculaire et modifie le stockage des graisses — les méthodes qui marchaient à 25 ans ne fonctionnent plus pareil.', actions:['Priorise la musculation pour contrer la perte musculaire liée à l\'âge.', 'Augmente légèrement les protéines par rapport à tes habitudes actuelles.', 'Sois patiente avec les résultats — le rythme change, pas la capacité à progresser.'], produit:'ageless-girl-sales.html', label:'→ Découvrir le programme anti-âge et ménopause' }
+};
+var diagIndex = 0, diagScores = {alim:0,cardio:0,recup:0,prog:0}, diagRoute = '', diagObjectif = '';
+function diagStart() {
+  diagIndex = 0; diagScores = {alim:0,cardio:0,recup:0,prog:0}; diagRoute = ''; diagObjectif = '';
+  document.getElementById('diagIntro').style.display = 'none';
+  document.getElementById('diagStartBtn').style.display = 'none';
+  diagRenderStep();
+}
+function diagRenderStep() {
+  var body = document.getElementById('diagBody');
+  var total = DIAG_QUESTIONS.length;
+  var step = DIAG_QUESTIONS[diagIndex];
+  var html = '<div class="diag-progress">Question ' + (diagIndex+1) + ' / ' + total + '</div>';
+  html += '<p class="diag-q">' + step.q + '</p><div class="diag-opts">';
+  step.opts.forEach(function(o, i) {
+    html += '<button type="button" class="diag-opt" onclick="diagAnswer(' + i + ')">' + o.t + '</button>';
+  });
+  html += '</div>';
+  if (diagIndex > 0) html += '<button type="button" class="diag-back" onclick="diagBack()">← Question précédente</button>';
+  body.innerHTML = html;
+}
+function diagBack() { if (diagIndex > 0) { diagIndex--; diagRenderStep(); } }
+function diagAnswer(i) {
+  var step = DIAG_QUESTIONS[diagIndex];
+  var opt = step.opts[i];
+  if (opt.cat === 'route') { if (opt.val) diagRoute = opt.val; }
+  else if (opt.cat === 'obj') { diagObjectif = opt.val; }
+  else if (opt.cat && diagScores.hasOwnProperty(opt.cat)) { diagScores[opt.cat] += opt.pts; }
+  diagIndex++;
+  if (diagIndex < DIAG_QUESTIONS.length) { diagRenderStep(); } else { diagShowResult(); }
+}
+function diagShowResult() {
+  var key = diagRoute || Object.keys(diagScores).reduce(function(a,b){ return diagScores[a] >= diagScores[b] ? a : b; });
+  var r = FREIN_MAP[key];
+  try { if (diagObjectif) localStorage.setItem('guide_objectif', diagObjectif); } catch(e) {}
   var sel = document.getElementById('cap-objectif');
-  if (sel) sel.value = obj;
-  var labels = { 'Perte de poids':'perdre du poids', 'Tonifier':'te tonifier', 'Fessiers':'sculpter tes fessiers', 'Postpartum':'retrouver ton corps après bébé', 'Muscle':'prendre du muscle' };
-  var fb = document.getElementById('quizObjectifFeedback');
-  var cta = OBJECTIF_CTA[obj];
-  if (fb) {
-    fb.innerHTML = '✨ Parfait — ce guide va t\'aider à ' + (labels[obj] || obj) + '.' +
-      (cta ? '<br><a href="' + cta.url + '" target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;background:linear-gradient(135deg,var(--rose) 0%,var(--rouge) 100%);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:10px 20px;border-radius:30px;">' + cta.label.replace('→ ', '') + ' →</a>' : '');
-  }
+  if (sel && diagObjectif) sel.value = diagObjectif;
+  var actionsHtml = r.actions.map(function(a){ return '<li>' + a + '</li>'; }).join('');
+  document.getElementById('diagBody').innerHTML =
+    '<div class="diag-result">' +
+    '<span class="diag-result-tag">Ton principal frein</span>' +
+    '<div class="diag-result-title">' + r.titre + '</div>' +
+    '<p class="diag-result-why">' + r.why + '</p>' +
+    '<ul class="diag-result-actions">' + actionsHtml + '</ul>' +
+    '<a href="https://www.ornellafitcoaching.com/' + r.produit + '" target="_blank" rel="noopener" class="diag-result-cta">' + r.label.replace('→ ', '') + ' →</a>' +
+    '</div>';
 }
 function handleGuideCapture() {
   var fname = document.getElementById('cap-fname').value.trim();
