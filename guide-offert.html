@@ -590,11 +590,25 @@ img { max-width: 100%; height: auto; display: block; }
   .stat-cell { flex:1 1 50%; min-width:110px; }
 
   /* ─── Textes ─── */
-  .text-block p { font-size:16px; line-height:1.85; margin-bottom:18px; }
+  .text-block p { font-size:16px; font-weight:400; line-height:1.85; margin-bottom:18px; }
   .pull-quote p { font-size:18px; line-height:1.65; }
   .highlight p { font-size:19px; line-height:1.5; }
   .pull-quote { padding:18px 20px; }
   .highlight { padding:22px 20px; }
+
+  /* ─── Lisibilité mobile globale — poids + taille minimum partout ─── */
+  .cover-sub, .cta-miroir-texte, .cta-block-sub, .savais-tu-label { font-size:15px; }
+  .chk-list li, .compare-list li, .savais-tu p, .diag-result-why, .diag-result-actions li,
+  .testi-text, .mini-card-text, .wide-card-chain, .marketing-callout p, .urgence-box p,
+  .sec-intro, .cover-sub, .cta-miroir-texte, .cta-block-sub {
+    font-weight: 500;
+  }
+  .chk-list li, .compare-list li, .savais-tu p, .diag-result-why, .diag-result-actions li,
+  .testi-text, .marketing-callout p, .urgence-box p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .wide-card-chain { font-size: 14px; }
 
   /* ─── CTA ─── */
   .inline-cta { flex-direction:column; text-align:center; justify-content:center; align-items:center; padding:18px; gap:14px; }
@@ -1143,6 +1157,16 @@ body { background: #fdf5f2 !important; }
 #read-progress { position:fixed; top:0; left:0; width:100%; height:4px; background:rgba(58,42,42,.08); z-index:1000; }
 #read-progress-bar { height:100%; width:0%; background:linear-gradient(90deg,var(--rose),var(--rouge)); transition:width .1s linear; }
 @media print { #read-progress { display:none; } }
+
+/* ─── Popup diagnostic ─── */
+.diag-popup { position:fixed; bottom:100px; left:50%; transform:translateX(-50%); max-width:290px; width:calc(100% - 40px); background:#fff; border:1.5px solid rgba(201,132,138,.3); border-radius:16px; padding:22px 20px 18px; box-shadow:0 12px 44px rgba(58,42,42,.28); z-index:1001; text-align:center; display:none; }
+.diag-popup.show { display:block; animation:diagPopupIn .4s cubic-bezier(.22,.68,0,1.2); }
+@keyframes diagPopupIn { from { opacity:0; transform:translateX(-50%) translateY(20px) scale(.95); } to { opacity:1; transform:translateX(-50%) translateY(0) scale(1); } }
+.diag-popup-close { position:absolute; top:8px; right:10px; background:none; border:none; font-size:18px; color:#aaa; cursor:pointer; padding:4px; line-height:1; }
+.diag-popup-icon { font-size:30px; margin-bottom:8px; }
+.diag-popup-text { font-size:14px; font-weight:500; color:var(--ink); line-height:1.6; margin-bottom:16px; }
+.diag-popup-btn { background:linear-gradient(135deg,var(--rose) 0%,var(--rouge) 100%); color:#fff; border:none; border-radius:30px; padding:12px 20px; font-size:13px; font-weight:700; cursor:pointer; width:100%; touch-action:manipulation; }
+@media (max-width:720px) { .diag-popup { bottom:86px; width:calc(100% - 28px); } }
 
 /* ─── Bouton flottant WhatsApp ─── */
 #wa-float { position:fixed; bottom:24px; left:20px; z-index:999; display:flex; flex-direction:column; align-items:flex-start; gap:8px; }
@@ -2749,6 +2773,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ╔═════════════════════════════════════╗
      ║  NAVIGATION FLOTTANTE — V5 FINALE  ║
      ╚═════════════════════════════════════╝ -->
+<div id="diagPopup" class="diag-popup">
+  <button type="button" class="diag-popup-close" onclick="diagPopupClose()" aria-label="Fermer">×</button>
+  <div class="diag-popup-icon">🎯</div>
+  <p class="diag-popup-text"><strong>Ton diagnostic personnalisé t'attend.</strong><br>Découvre en 2 minutes quelle erreur te freine le plus.</p>
+  <button type="button" class="diag-popup-btn" onclick="diagPopupGo()">Faire mon diagnostic →</button>
+</div>
+
 <div id="wa-float">
   <div class="wa-float-bubble" id="waFloatBubble">
     <button type="button" class="wa-float-close" onclick="waFloatCollapse(event)" aria-label="Réduire">×</button>
@@ -2860,6 +2891,31 @@ var FREIN_MAP = {
   hormonal: { titre:'Des changements hormonaux qui changent la donne', why:'À partir de 40 ans, la baisse d\'œstrogènes accélère la perte musculaire et modifie le stockage des graisses — les méthodes qui marchaient à 25 ans ne fonctionnent plus pareil.', actions:['Priorise la musculation pour contrer la perte musculaire liée à l\'âge.', 'Augmente légèrement les protéines par rapport à tes habitudes actuelles.', 'Sois patiente avec les résultats — le rythme change, pas la capacité à progresser.'], produit:'ageless-girl-sales.html', label:'→ Découvrir le programme anti-âge et ménopause' }
 };
 var diagIndex = 0, diagScores = {alim:0,cardio:0,recup:0,prog:0}, diagRoute = '', diagObjectif = '';
+function diagPopupClose() {
+  var p = document.getElementById('diagPopup');
+  if (p) p.classList.remove('show');
+  try { localStorage.setItem('diag_popup_dismissed', '1'); } catch(e) {}
+}
+function diagPopupGo() {
+  diagPopupClose();
+  var el = document.getElementById('quizObjectif');
+  if (el) el.scrollIntoView({behavior:'smooth', block:'center'});
+}
+(function() {
+  try { if (localStorage.getItem('diag_popup_dismissed') === '1') return; } catch(e) {}
+  var shown = false;
+  function maybeShowDiagPopup() {
+    if (shown) return;
+    var docH = document.documentElement.scrollHeight - window.innerHeight;
+    if (docH > 0 && window.scrollY / docH > 0.15) {
+      shown = true;
+      var p = document.getElementById('diagPopup');
+      if (p) p.classList.add('show');
+      window.removeEventListener('scroll', maybeShowDiagPopup);
+    }
+  }
+  window.addEventListener('scroll', maybeShowDiagPopup, {passive:true});
+})();
 function waFloatCollapse(e) {
   e.preventDefault(); e.stopPropagation();
   var b = document.getElementById('waFloatBubble');
