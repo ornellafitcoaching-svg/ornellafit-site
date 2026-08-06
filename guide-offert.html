@@ -2722,10 +2722,10 @@ function toggleChapter(header) {
   }
 }
 var OBJECTIF_CTA = {
-  'Perte de poids': { text: 'Ton objectif, c\'est perdre du poids ?', label: '→ Découvrir le coaching sur mesure', url: 'https://www.ornellafitcoaching.com/offres.html' },
-  'Tonifier':       { text: 'Ton objectif, c\'est te tonifier ?', label: '→ Découvrir le coaching sur mesure', url: 'https://www.ornellafitcoaching.com/offres.html' },
+  'Perte de poids': { text: 'Ton objectif, c\'est perdre du poids ?', label: '→ Découvrir Reset Ventre Plat', url: 'https://www.ornellafitcoaching.com/ventre-plat.html' },
+  'Tonifier':       { text: 'Ton objectif, c\'est te tonifier ?', label: '→ Découvrir Summer Body Challenge', url: 'https://www.ornellafitcoaching.com/summer-body-sales.html' },
   'Fessiers':       { text: 'Ton objectif, ce sont tes fessiers ?', label: '→ Découvrir Booty Sculpt', url: 'https://www.ornellafitcoaching.com/booty-sculpt.html' },
-  'Postpartum':     { text: 'Tu veux retrouver ton corps après bébé ?', label: '→ Découvrir le programme post-partum', url: 'https://www.ornellafitcoaching.com/ventre-plat-postpartum.html' },
+  'Postpartum':     { text: 'Tu veux retrouver ton corps après bébé ?', label: '→ Découvrir le programme post-partum', url: 'https://www.ornellafitcoaching.com/programme-postpartum.html' },
   'Muscle':         { text: 'Ton objectif, c\'est prendre du muscle ?', label: '→ Découvrir Iron Girl', url: 'https://www.ornellafitcoaching.com/iron-girl-sales.html' }
 };
 function showObjectifCta(objectif) {
@@ -2754,7 +2754,11 @@ function selectObjectif(btn) {
   if (sel) sel.value = obj;
   var labels = { 'Perte de poids':'perdre du poids', 'Tonifier':'te tonifier', 'Fessiers':'sculpter tes fessiers', 'Postpartum':'retrouver ton corps après bébé', 'Muscle':'prendre du muscle' };
   var fb = document.getElementById('quizObjectifFeedback');
-  if (fb) fb.textContent = '✨ Parfait — ce guide va t\'aider à ' + (labels[obj] || obj) + '.';
+  var cta = OBJECTIF_CTA[obj];
+  if (fb) {
+    fb.innerHTML = '✨ Parfait — ce guide va t\'aider à ' + (labels[obj] || obj) + '.' +
+      (cta ? '<br><a href="' + cta.url + '" target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;background:linear-gradient(135deg,var(--rose) 0%,var(--rouge) 100%);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:10px 20px;border-radius:30px;">' + cta.label.replace('→ ', '') + ' →</a>' : '');
+  }
 }
 function handleGuideCapture() {
   var fname = document.getElementById('cap-fname').value.trim();
