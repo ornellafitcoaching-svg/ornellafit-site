@@ -1139,6 +1139,21 @@ body { background: #fdf5f2 !important; }
 #read-progress-bar { height:100%; width:0%; background:linear-gradient(90deg,var(--rose),var(--rouge)); transition:width .1s linear; }
 @media print { #read-progress { display:none; } }
 
+/* ─── Bouton flottant WhatsApp ─── */
+#wa-float { position:fixed; bottom:24px; left:20px; z-index:999; display:flex; flex-direction:column; align-items:flex-start; gap:8px; }
+.wa-float-bubble { background:#fff; border-radius:14px; padding:10px 14px; font-size:12px; font-weight:600; color:#2C1F1A; box-shadow:0 4px 16px rgba(0,0,0,.15); max-width:180px; line-height:1.4; position:relative; }
+.wa-float-bubble.hidden { display:none; }
+.wa-float-close { position:absolute; top:-8px; right:-8px; width:20px; height:20px; border-radius:50%; background:#fff; border:1px solid rgba(0,0,0,.12); font-size:12px; line-height:18px; text-align:center; cursor:pointer; color:#888; padding:0; }
+.wa-float-avatar { width:56px; height:56px; border-radius:50%; overflow:hidden; border:2.5px solid #25D366; box-shadow:0 4px 16px rgba(0,0,0,.2); position:relative; display:block; animation:waPulse 2.5s ease-in-out infinite; }
+.wa-float-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
+.wa-float-badge { position:absolute; bottom:-2px; right:-2px; background:#25D366; color:#fff; width:20px; height:20px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; border:2px solid #fff; }
+@keyframes waPulse { 0%,100% { box-shadow:0 4px 16px rgba(37,211,102,.25); } 50% { box-shadow:0 4px 20px rgba(37,211,102,.55); } }
+@media (max-width:720px) {
+  #wa-float { bottom:16px; left:14px; gap:6px; }
+  .wa-float-avatar { width:46px; height:46px; }
+  .wa-float-bubble { font-size:11px; padding:8px 12px; max-width:150px; }
+}
+
 /* ─── Navigation flottante ─── */
 #fab-nav {
   position: fixed;
@@ -2692,6 +2707,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ╔═════════════════════════════════════╗
      ║  NAVIGATION FLOTTANTE — V5 FINALE  ║
      ╚═════════════════════════════════════╝ -->
+<div id="wa-float">
+  <div class="wa-float-bubble" id="waFloatBubble">
+    <button type="button" class="wa-float-close" onclick="waFloatCollapse(event)" aria-label="Réduire">×</button>
+    💬 Une question ? Écris-moi !
+  </div>
+  <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20une%20question%20sur%20le%20guide." target="_blank" rel="noopener" class="wa-float-avatar" aria-label="Écrire à Ornella sur WhatsApp">
+    <img src="images/guide-photo-1.jpg" alt="Ornella">
+    <span class="wa-float-badge">💬</span>
+  </a>
+</div>
+
 <nav id="fab-nav" aria-label="Navigation rapide">
   <input type="checkbox" id="fab-check">
   <label for="fab-check" id="fab-toggle" aria-label="Ouvrir le menu de navigation">☰</label>
@@ -2791,6 +2817,20 @@ var FREIN_MAP = {
   hormonal: { titre:'Des changements hormonaux qui changent la donne', why:'À partir de 40 ans, la baisse d\'œstrogènes accélère la perte musculaire et modifie le stockage des graisses — les méthodes qui marchaient à 25 ans ne fonctionnent plus pareil.', actions:['Priorise la musculation pour contrer la perte musculaire liée à l\'âge.', 'Augmente légèrement les protéines par rapport à tes habitudes actuelles.', 'Sois patiente avec les résultats — le rythme change, pas la capacité à progresser.'], produit:'ageless-girl-sales.html', label:'→ Découvrir le programme anti-âge et ménopause' }
 };
 var diagIndex = 0, diagScores = {alim:0,cardio:0,recup:0,prog:0}, diagRoute = '', diagObjectif = '';
+function waFloatCollapse(e) {
+  e.preventDefault(); e.stopPropagation();
+  var b = document.getElementById('waFloatBubble');
+  if (b) b.classList.add('hidden');
+  try { localStorage.setItem('wa_bubble_collapsed', '1'); } catch(err) {}
+}
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+    if (localStorage.getItem('wa_bubble_collapsed') === '1') {
+      var b = document.getElementById('waFloatBubble');
+      if (b) b.classList.add('hidden');
+    }
+  } catch(e) {}
+});
 function diagStart() {
   diagIndex = 0; diagScores = {alim:0,cardio:0,recup:0,prog:0}; diagRoute = ''; diagObjectif = '';
   document.getElementById('diagIntro').style.display = 'none';
