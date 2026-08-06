@@ -1485,7 +1485,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <option value="Postpartum" style="color:#333;">Retrouver mon corps après bébé</option>
           <option value="Muscle" style="color:#333;">Prendre du muscle</option>
         </select>
-        <p id="cap-error" style="display:none;color:#ffb3aa;font-size:12px;margin:0;">Merci de renseigner un email valide.</p>
+        <p id="cap-error" style="display:none;color:var(--rouge);font-size:12px;margin:0;">Merci de renseigner un email valide.</p>
         <button onclick="handleGuideCapture()" class="btn btn-primary" style="width:100%;margin-top:6px;">✨ Je veux enfin comprendre mon corps →</button>
       </div>
       <p style="font-size:10px;color:rgba(58,42,42,.6);margin-top:14px;">Zéro spam. Tu peux te désinscrire en 1 clic.</p>
@@ -2763,7 +2763,7 @@ function handleGuideCapture() {
   var errEl = document.getElementById('cap-error');
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     errEl.style.display = 'block';
-    document.getElementById('cap-email').style.borderColor = '#ffb3aa';
+    document.getElementById('cap-email').style.borderColor = '#b84f55';
     return;
   }
   errEl.style.display = 'none';
