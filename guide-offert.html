@@ -324,9 +324,13 @@ body {
 .diag-result-tag { display:inline-block; font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#fff; background:var(--rose); padding:4px 12px; border-radius:20px; margin-bottom:10px; }
 .diag-result-title { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:600; color:var(--ink); margin-bottom:10px; line-height:1.3; }
 .diag-result-why { font-size:14px; color:rgba(58,42,42,.85); line-height:1.75; margin-bottom:16px; }
-.diag-result-actions { list-style:none; margin-bottom:18px; }
-.diag-result-actions li { font-size:13.5px; color:rgba(58,42,42,.88); line-height:1.65; padding:6px 0; padding-left:22px; position:relative; }
-.diag-result-actions li::before { content:'✓'; position:absolute; left:0; color:var(--rose); font-weight:700; }
+.diag-result-actions-label { font-size:10px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--rose); margin-bottom:10px; }
+.diag-result-actions { list-style:none; margin-bottom:20px; display:flex; flex-direction:column; gap:10px; }
+.diag-result-actions li { font-size:14px; color:rgba(58,42,42,.9); line-height:1.6; display:flex; align-items:flex-start; gap:10px; }
+.diag-result-num { flex-shrink:0; width:22px; height:22px; border-radius:50%; background:var(--rose); color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.diag-result-food { background:rgba(180,110,110,.06); border:1px solid rgba(180,110,110,.2); border-radius:10px; padding:14px 16px; margin-bottom:20px; text-align:left; }
+.diag-result-food-label { display:block; font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:var(--rose); margin-bottom:6px; }
+.diag-result-food p { font-size:13px; color:rgba(58,42,42,.85); line-height:1.65; margin:0; }
 .diag-result-cta { display:block; text-align:center; background:linear-gradient(135deg,var(--rose) 0%,var(--rouge) 100%); color:#fff; font-size:13px; font-weight:700; text-decoration:none; padding:14px 20px; border-radius:30px; }
 .cover-pills { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:44px; position:relative; z-index:1; }
 .cover-pill { font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.82); background:rgba(184,58,46,.12); border:1px solid rgba(184,58,46,.25); border-radius:20px; padding:6px 16px; display:flex; align-items:center; gap:6px; }
@@ -1159,14 +1163,14 @@ body { background: #fdf5f2 !important; }
 @media print { #read-progress { display:none; } }
 
 /* ─── Popup diagnostic ─── */
-.diag-popup { position:fixed; bottom:100px; left:50%; transform:translateX(-50%); max-width:290px; width:calc(100% - 40px); background:#fff; border:1.5px solid rgba(201,132,138,.3); border-radius:16px; padding:22px 20px 18px; box-shadow:0 12px 44px rgba(58,42,42,.28); z-index:1001; text-align:center; display:none; }
+.diag-popup { position:fixed; bottom:calc(100px + env(safe-area-inset-bottom, 0px)); left:50%; transform:translateX(-50%); max-width:290px; width:calc(100% - 40px); background:#fff; border:1.5px solid rgba(201,132,138,.3); border-radius:16px; padding:22px 20px 18px; box-shadow:0 12px 44px rgba(58,42,42,.28); z-index:1001; text-align:center; display:none; }
 .diag-popup.show { display:block; animation:diagPopupIn .4s cubic-bezier(.22,.68,0,1.2); }
 @keyframes diagPopupIn { from { opacity:0; transform:translateX(-50%) translateY(20px) scale(.95); } to { opacity:1; transform:translateX(-50%) translateY(0) scale(1); } }
 .diag-popup-close { position:absolute; top:8px; right:10px; background:none; border:none; font-size:18px; color:#aaa; cursor:pointer; padding:4px; line-height:1; }
 .diag-popup-icon { font-size:30px; margin-bottom:8px; }
 .diag-popup-text { font-size:14px; font-weight:500; color:var(--ink); line-height:1.6; margin-bottom:16px; }
 .diag-popup-btn { background:linear-gradient(135deg,var(--rose) 0%,var(--rouge) 100%); color:#fff; border:none; border-radius:30px; padding:12px 20px; font-size:13px; font-weight:700; cursor:pointer; width:100%; touch-action:manipulation; }
-@media (max-width:720px) { .diag-popup { bottom:86px; width:calc(100% - 28px); } }
+@media (max-width:720px) { .diag-popup { bottom:calc(86px + env(safe-area-inset-bottom, 0px)); width:calc(100% - 28px); } }
 
 /* ─── Bouton flottant WhatsApp ─── */
 #wa-float { position:fixed; bottom:24px; left:20px; z-index:999; display:flex; flex-direction:column; align-items:flex-start; gap:8px; }
@@ -2883,12 +2887,12 @@ var DIAG_QUESTIONS = [
       {t:'🏋️ Prendre du muscle', cat:'obj', val:'Muscle'} ] }
 ];
 var FREIN_MAP = {
-  alim:    { titre:'Une alimentation qui ne soutient pas tes efforts', why:'Sans assez de protéines ni de repères précis, ton corps n\'a pas le carburant pour construire du muscle ou brûler efficacement — tu peux t\'entraîner dur et stagner quand même.', actions:['Place une source de protéines à chaque repas, dès le petit-déjeuner.', 'Ne descends jamais sous 1,6g de protéines par kg de poids de corps et par jour.', 'Pèse tes portions 3 jours pour repérer les excès invisibles (huile, oléagineux, sauces).'], produit:'ventre-plat.html', label:'→ Voir la méthode nutrition qui débloque enfin les résultats' },
-  cardio:  { titre:'Trop de cardio, pas assez de renforcement ciblé', why:'Ton corps s\'adapte vite au cardio : en quelques semaines tu brûles moins pour le même effort, et sans musculation il puise dans le muscle — ce qui ralentit encore plus ton métabolisme.', actions:['Limite le cardio à 2-3 séances/semaine et priorise la musculation.', 'Programme 2 séances de renforcement ciblé par semaine avec une charge qui progresse.', 'Vise une vraie programmation adaptée à ta morphologie, pas des exercices au hasard.'], produit:'booty-sculpt.html', label:'→ Voir la méthode de sculpte progressive' },
-  recup:   { titre:'Un déficit de récupération (stress, sommeil)', why:'Cortisol élevé et sommeil insuffisant bloquent la construction musculaire et favorisent le stockage abdominal — aucun programme ne peut compenser une récupération absente.', actions:['10 minutes de marche ou de respiration dehors, sans écran, chaque jour.', 'Fixe une heure de coucher régulière pour viser 7 à 9h de sommeil.', 'Si la fatigue persiste, demande un bilan sanguin (fer, vitamine D, B12).'], produit:'offres.html', label:'→ Découvrir le bilan personnalisé gratuit' },
-  prog:    { titre:'Un manque de progression dans tes séances', why:'Sans musculation régulière et progressive, tu perds naturellement de la masse musculaire avec le temps — résultat : métabolisme ralenti, corps qui se ramollit, même sans rien changer côté alimentation.', actions:['2 séances de musculation minimum par semaine, sans exception.', 'Augmente la charge ou les répétitions dès que tu maîtrises un mouvement.', 'Structure tes séances plutôt que de les improviser à chaque fois.'], produit:'iron-girl-sales.html', label:'→ Voir la méthode de progression structurée' },
-  postpartum: { titre:'Ton corps post-partum a besoin d\'un plan spécifique', why:'Après une grossesse, ton corps a des besoins particuliers (diastasis, plancher pelvien, fatigue) qu\'un programme générique ne prend jamais en compte.', actions:['Ne reprends jamais un programme générique sans vérifier ton diastasis.', 'Priorise le renforcement du plancher pelvien avant tout le reste.', 'Avance progressivement, sans te comparer à ton corps d\'avant.'], produit:'programme-postpartum.html', label:'→ Découvrir le programme pensé pour l\'après-accouchement' },
-  hormonal: { titre:'Des changements hormonaux qui changent la donne', why:'À partir de 40 ans, la baisse d\'œstrogènes accélère la perte musculaire et modifie le stockage des graisses — les méthodes qui marchaient à 25 ans ne fonctionnent plus pareil.', actions:['Priorise la musculation pour contrer la perte musculaire liée à l\'âge.', 'Augmente légèrement les protéines par rapport à tes habitudes actuelles.', 'Sois patiente avec les résultats — le rythme change, pas la capacité à progresser.'], produit:'ageless-girl-sales.html', label:'→ Découvrir le programme anti-âge et ménopause' }
+  alim:    { titre:'Une alimentation qui ne soutient pas tes efforts', why:'Sans assez de protéines ni de repères précis, ton corps n\'a pas le carburant pour construire du muscle ou brûler efficacement — tu peux t\'entraîner dur et stagner quand même. Le vrai problème n\'est presque jamais "je mange trop" ou "je mange trop peu" au hasard : c\'est l\'absence de structure. Sans savoir combien de protéines, de calories et de repas te conviennent réellement, tu navigues à l\'aveugle, et ton corps n\'a aucune raison de changer.', actions:['Place une source de protéines à chaque repas, dès le petit-déjeuner.', 'Ne descends jamais sous 1,6g de protéines par kg de poids de corps et par jour.', 'Pèse tes portions 3 jours pour repérer les excès invisibles (huile, oléagineux, sauces).'], food:'20 à 30g de protéines au petit-déjeuner (œufs, skyr, protéine en poudre) relancent la satiété pour toute la journée. Privilégie les protéines maigres (poulet, poisson, œufs, légumineuses) et n\'aie pas peur des bonnes graisses (avocat, oléagineux, huile d\'olive) — en quantité mesurée, pas en excès invisible.', produit:'ventre-plat.html', label:'→ Voir la méthode nutrition qui débloque enfin les résultats' },
+  cardio:  { titre:'Trop de cardio, pas assez de renforcement ciblé', why:'Ton corps s\'adapte vite au cardio : en quelques semaines tu brûles moins pour le même effort, et sans musculation il puise dans le muscle — ce qui ralentit encore plus ton métabolisme. C\'est un cercle vicieux : plus tu fais de cardio sans muscler, moins ton corps a de raisons de se transformer visiblement, même si tu es épuisée après chaque séance.', actions:['Limite le cardio à 2-3 séances/semaine et priorise la musculation.', 'Programme 2 séances de renforcement ciblé par semaine avec une charge qui progresse.', 'Vise une vraie programmation adaptée à ta morphologie, pas des exercices au hasard.'], food:'Après une séance de musculation, consomme 20-30g de protéines dans l\'heure qui suit (shaker, yaourt grec, œufs) pour maximiser la reconstruction musculaire. Les glucides complexes (riz, patate douce, avoine) autour de l\'entraînement te donnent l\'énergie pour progresser en charge.', produit:'booty-sculpt.html', label:'→ Voir la méthode de sculpte progressive' },
+  recup:   { titre:'Un déficit de récupération (stress, sommeil)', why:'Cortisol élevé et sommeil insuffisant bloquent la construction musculaire et favorisent le stockage abdominal — aucun programme ne peut compenser une récupération absente. Le cortisol chronique met ton corps en mode "survie" : il retient les graisses (surtout au niveau du ventre) et freine la synthèse musculaire, quel que soit ton entraînement.', actions:['10 minutes de marche ou de respiration dehors, sans écran, chaque jour.', 'Fixe une heure de coucher régulière pour viser 7 à 9h de sommeil.', 'Si la fatigue persiste, demande un bilan sanguin (fer, vitamine D, B12).'], food:'Le magnésium (amandes, chocolat noir, légumes verts) aide à calmer le système nerveux le soir. Évite la caféine après 14h — sa demi-vie de 5 à 6h peut perturber ton sommeil profond sans que tu le remarques.', produit:'offres.html', label:'→ Découvrir le bilan personnalisé gratuit' },
+  prog:    { titre:'Un manque de progression dans tes séances', why:'Sans musculation régulière et progressive, tu perds naturellement de la masse musculaire avec le temps — résultat : métabolisme ralenti, corps qui se ramollit, même sans rien changer côté alimentation. Refaire toujours le même programme, aux mêmes charges, envoie à ton corps le signal qu\'il n\'a plus besoin de s\'adapter : c\'est la définition même du plateau.', actions:['2 séances de musculation minimum par semaine, sans exception.', 'Augmente la charge ou les répétitions dès que tu maîtrises un mouvement.', 'Structure tes séances plutôt que de les improviser à chaque fois.'], food:'La synthèse musculaire a besoin de protéines réparties sur la journée (pas tout au même repas) : vise 3-4 prises de 20-30g. Le manque de fer ou de vitamine D peut aussi expliquer une stagnation inexpliquée — un bilan sanguin annuel n\'est jamais du temps perdu.', produit:'iron-girl-sales.html', label:'→ Voir la méthode de progression structurée' },
+  postpartum: { titre:'Ton corps post-partum a besoin d\'un plan spécifique', why:'Après une grossesse, ton corps a des besoins particuliers (diastasis, plancher pelvien, fatigue) qu\'un programme générique ne prend jamais en compte. Reprendre trop vite ou avec les mauvais exercices peut aggraver un diastasis ou fragiliser un plancher pelvien déjà sollicité — la progressivité n\'est pas une option, c\'est une nécessité.', actions:['Ne reprends jamais un programme générique sans vérifier ton diastasis.', 'Priorise le renforcement du plancher pelvien avant tout le reste.', 'Avance progressivement, sans te comparer à ton corps d\'avant.'], food:'Les besoins en fer et en protéines restent élevés après l\'accouchement (encore plus si tu allaites). Vise des sources de fer facilement assimilables (viande rouge, légumineuses + vitamine C pour l\'absorption) et ne saute aucun repas malgré la fatigue et le manque de temps.', produit:'programme-postpartum.html', label:'→ Découvrir le programme pensé pour l\'après-accouchement' },
+  hormonal: { titre:'Des changements hormonaux qui changent la donne', why:'À partir de 40 ans, la baisse d\'œstrogènes accélère la perte musculaire et modifie le stockage des graisses — les méthodes qui marchaient à 25 ans ne fonctionnent plus pareil. Ce n\'est ni dans ta tête ni un manque d\'effort : c\'est un changement physiologique réel qui demande d\'ajuster l\'entraînement ET l\'alimentation, pas de travailler "plus dur".', actions:['Priorise la musculation pour contrer la perte musculaire liée à l\'âge.', 'Augmente légèrement les protéines par rapport à tes habitudes actuelles.', 'Sois patiente avec les résultats — le rythme change, pas la capacité à progresser.'], food:'Le calcium et la vitamine D deviennent prioritaires pour la santé osseuse (produits laitiers, poissons gras, exposition au soleil). Réduis les sucres rapides et les produits ultra-transformés, qui accentuent l\'inflammation et les variations hormonales de cette période.', produit:'ageless-girl-sales.html', label:'→ Découvrir le programme anti-âge et ménopause' }
 };
 var diagIndex = 0, diagScores = {alim:0,cardio:0,recup:0,prog:0}, diagRoute = '', diagObjectif = '';
 function diagPopupClose() {
@@ -2904,17 +2908,20 @@ function diagPopupGo() {
 (function() {
   try { if (localStorage.getItem('diag_popup_dismissed') === '1') return; } catch(e) {}
   var shown = false;
-  function maybeShowDiagPopup() {
+  function showDiagPopupNow() {
     if (shown) return;
-    var docH = document.documentElement.scrollHeight - window.innerHeight;
-    if (docH > 0 && window.scrollY / docH > 0.15) {
-      shown = true;
-      var p = document.getElementById('diagPopup');
-      if (p) p.classList.add('show');
-      window.removeEventListener('scroll', maybeShowDiagPopup);
-    }
+    shown = true;
+    var p = document.getElementById('diagPopup');
+    if (p) p.classList.add('show');
+    window.removeEventListener('scroll', maybeShowDiagPopup);
+    clearTimeout(fallbackTimer);
+  }
+  function maybeShowDiagPopup() {
+    if (window.scrollY > 900) showDiagPopupNow();
   }
   window.addEventListener('scroll', maybeShowDiagPopup, {passive:true});
+  /* Filet de sécurité : le calcul de scroll peut être peu fiable sur certains navigateurs mobiles (Safari iOS) */
+  var fallbackTimer = setTimeout(showDiagPopupNow, 20000);
 })();
 function waFloatCollapse(e) {
   e.preventDefault(); e.stopPropagation();
@@ -2965,13 +2972,15 @@ function diagShowResult() {
   try { if (diagObjectif) localStorage.setItem('guide_objectif', diagObjectif); } catch(e) {}
   var sel = document.getElementById('cap-objectif');
   if (sel && diagObjectif) sel.value = diagObjectif;
-  var actionsHtml = r.actions.map(function(a){ return '<li>' + a + '</li>'; }).join('');
+  var actionsHtml = r.actions.map(function(a, i){ return '<li><span class="diag-result-num">' + (i+1) + '</span>' + a + '</li>'; }).join('');
   document.getElementById('diagBody').innerHTML =
     '<div class="diag-result">' +
     '<span class="diag-result-tag">Ton principal frein</span>' +
     '<div class="diag-result-title">' + r.titre + '</div>' +
     '<p class="diag-result-why">' + r.why + '</p>' +
+    '<p class="diag-result-actions-label">Tes 3 actions prioritaires</p>' +
     '<ul class="diag-result-actions">' + actionsHtml + '</ul>' +
+    '<div class="diag-result-food"><span class="diag-result-food-label">🥗 Conseil alimentaire</span><p>' + r.food + '</p></div>' +
     '<a href="https://www.ornellafitcoaching.com/' + r.produit + '" target="_blank" rel="noopener" class="diag-result-cta">' + r.label.replace('→ ', '') + ' →</a>' +
     '</div>';
 }
