@@ -1155,9 +1155,18 @@ document.querySelectorAll('.fade-in').forEach(function(el) {
 (function(){
   var shown = sessionStorage.getItem('tpopup');
   if(shown) return;
-  setTimeout(function(){
+  function trigger(){
+    if(sessionStorage.getItem('tpopup')) return;
     document.getElementById('tpopup-overlay').classList.add('active');
-  }, 12000);
+  }
+  // Exit-intent desktop : la souris quitte la fenêtre par le haut (fermeture d'onglet, retour navigateur)
+  document.addEventListener('mouseout', function(e){
+    if(!e.relatedTarget && e.clientY < 10) trigger();
+  });
+  // Repli mobile (pas de souris) : proposition seulement une fois les témoignages parcourus, en fin de page
+  window.addEventListener('scroll', function(){
+    if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200) trigger();
+  }, {passive:true});
   document.getElementById('tpopup-overlay').addEventListener('click', function(e){
     if(e.target === this) closeTPopup();
   });

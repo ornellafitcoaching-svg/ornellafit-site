@@ -2365,10 +2365,14 @@ function toggleFaq(btn){
 function minimizeCoachingPopup(){
   document.getElementById('coaching-full').style.display='none';
   document.getElementById('coaching-mini').style.display='block';
+  var wa = document.querySelector('.floating-wa');
+  if (wa) wa.classList.remove('wa-hidden-by-popup');
 }
 function expandCoachingPopup(){
   document.getElementById('coaching-full').style.display='block';
   document.getElementById('coaching-mini').style.display='none';
+  var wa = document.querySelector('.floating-wa');
+  if (wa) wa.classList.add('wa-hidden-by-popup');
 }
 </script>
 
@@ -2470,12 +2474,17 @@ setTimeout(showLead, 9000);
 function closeCoachingPopup() {
   document.getElementById('coaching-popup').style.display = 'none';
   sessionStorage.setItem('coachingPopupSeen', '1');
+  var wa = document.querySelector('.floating-wa');
+  if (wa) wa.classList.remove('wa-hidden-by-popup');
 }
 function showCoachingPopup() {
   if (sessionStorage.getItem('coachingPopupSeen')) return;
   if (document.getElementById('lead-popup').classList.contains('active')) return;
   document.getElementById('coaching-popup').style.display = 'block';
   sessionStorage.setItem('coachingPopupSeen', '1');
+  // Un seul point d'entrée flottant visible à la fois : le popup coaching prend le pas sur la bulle WhatsApp
+  var wa = document.querySelector('.floating-wa');
+  if (wa) wa.classList.add('wa-hidden-by-popup');
 }
 setTimeout(showCoachingPopup, 18000);
 window.addEventListener('scroll', function onCoachingScroll() {
