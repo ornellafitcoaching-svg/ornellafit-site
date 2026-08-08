@@ -198,11 +198,6 @@ footer a:hover{color:var(--accent)}
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- BARRE URGENCE STICKY -->
-<div id="urgency-topbar" style="background:linear-gradient(90deg,#1C1210 0%,#2A1410 50%,#1C1210 100%);color:#fff;text-align:center;padding:10px 16px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.02em;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(201,99,88,.3)">
-  <span style="color:rgba(255,255,255,.55)">⚡ Prix lancement 19€ — expire dans&nbsp;</span><strong id="topbar-countdown" style="color:#ffb3aa;font-variant-numeric:tabular-nums;font-weight:700;letter-spacing:.04em">--:--:--</strong><span style="color:rgba(255,255,255,.55)">&nbsp;·&nbsp;</span><span id="topbar-viewers" style="color:#E8A090;font-weight:600">●&nbsp;12 personnes</span><span style="color:rgba(255,255,255,.55)"> consultent cette page</span>
-</div>
-
 <nav>
   <a href="index.html"><img src="images/logo.png" alt="Ornella Fit Coaching" class="nav-logo-img"></a>
   <a href="https://www.ornellafitcoaching.com/quiz.html" class="nav-link">Mon coaching →</a>
@@ -441,24 +436,6 @@ footer a:hover{color:var(--accent)}
 
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,5vw,2.4rem);font-weight:600;color:#fff;line-height:1.15;margin:20px 0 10px">🍑 Accède au programme<br><em style="color:var(--gold);font-weight:400">maintenant</em></h2>
     <p style="font-size:.9rem;color:rgba(255,255,255,.55);margin-bottom:20px;line-height:1.7">Prix de lancement — offre limitée.<br>Une fois les places épuisées, le tarif revient à 39€.</p>
-
-    <!-- COUNTDOWN -->
-    <div style="display:flex;justify-content:center;gap:10px;margin-bottom:24px">
-      <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 16px;min-width:60px;text-align:center">
-        <div id="cd-h" style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:#fff;line-height:1;font-variant-numeric:tabular-nums">--</div>
-        <div style="font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.12em;text-transform:uppercase;margin-top:4px">heures</div>
-      </div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:rgba(255,255,255,.3);align-self:center;margin-top:-8px">:</div>
-      <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 16px;min-width:60px;text-align:center">
-        <div id="cd-m" style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:#fff;line-height:1;font-variant-numeric:tabular-nums">--</div>
-        <div style="font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.12em;text-transform:uppercase;margin-top:4px">minutes</div>
-      </div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:rgba(255,255,255,.3);align-self:center;margin-top:-8px">:</div>
-      <div style="background:rgba(201,99,88,.15);border:1px solid rgba(201,99,88,.3);border-radius:14px;padding:12px 16px;min-width:60px;text-align:center">
-        <div id="cd-s" style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:#ffb3aa;line-height:1;font-variant-numeric:tabular-nums">--</div>
-        <div style="font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.12em;text-transform:uppercase;margin-top:4px">secondes</div>
-      </div>
-    </div>
 
     <!-- PRIX -->
     <div class="urg-price-box">
@@ -767,56 +744,6 @@ async function handleUrgPurchase() {
   <input type="text" name="email_address_check" value="" class="input--hidden">
   <input type="hidden" name="locale" value="fr">
 </form>
-
-<script>
-// ── COUNTDOWN 24h persistant ──
-(function(){
-  var KEY = 'bs_deadline';
-  var deadline = localStorage.getItem(KEY);
-  if (!deadline) {
-    deadline = Date.now() + 23 * 3600 * 1000 + 47 * 60 * 1000; // ~24h
-    localStorage.setItem(KEY, deadline);
-  }
-  deadline = parseInt(deadline);
-
-  function pad(n){ return n < 10 ? '0'+n : n; }
-
-  function tick(){
-    var left = deadline - Date.now();
-    if (left <= 0) {
-      deadline = Date.now() + 23 * 3600 * 1000 + 47 * 60 * 1000;
-      localStorage.setItem(KEY, deadline);
-      left = deadline - Date.now();
-    }
-    var h = Math.floor(left / 3600000);
-    var m = Math.floor((left % 3600000) / 60000);
-    var s = Math.floor((left % 60000) / 1000);
-    var str = pad(h)+':'+pad(m)+':'+pad(s);
-
-    var cdH = document.getElementById('cd-h');
-    var cdM = document.getElementById('cd-m');
-    var cdS = document.getElementById('cd-s');
-    var tb  = document.getElementById('topbar-countdown');
-
-    if (cdH) cdH.textContent = pad(h);
-    if (cdM) cdM.textContent = pad(m);
-    if (cdS) cdS.textContent = pad(s);
-    if (tb)  tb.textContent  = str;
-
-    setTimeout(tick, 1000);
-  }
-  tick();
-
-  // ── VIEWERS simulés (8–17, fluctuants) ──
-  function updateViewers(){
-    var base = 8 + Math.floor(Math.random() * 10);
-    var el = document.getElementById('topbar-viewers');
-    if (el) el.textContent = '● ' + base + ' personnes';
-    setTimeout(updateViewers, 12000 + Math.random() * 8000);
-  }
-  setTimeout(updateViewers, 5000);
-})();
-</script>
 
 <script>
 (function() {

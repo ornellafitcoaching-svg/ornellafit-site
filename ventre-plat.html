@@ -337,9 +337,6 @@ footer a:hover{color:var(--accent)}
 }
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Product","name":"Challenge Ventre Plat — 14 Jours","description":"Programme digital 14 jours pour aplatir le ventre et réduire les ballonnements. 6 séances guidées, plan nutrition, accès à vie.","brand":{"@type":"Brand","name":"Ornella Fit Coaching"},"offers":{"@type":"Offer","price":"12","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://www.ornellafitcoaching.com/ventre-plat.html"},"image":"https://www.ornellafitcoaching.com/images/avant-apres-ventre.jpg"}
-</script>
-<script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Combien de temps avant de voir des résultats ?","acceptedAnswer":{"@type":"Answer","text":"Ça dépend de ce que tu appelles \"résultats\". Le ventre dégonfle dès la première semaine si tu appliques la partie nutrition — certaines femmes voient la différence en 5 jours. Le renforcement du core profond devient visible à partir de la semaine 3-4. Et la vraie transformation, celle qui tient dans le temps, arrive entre la semaine 6 et 8 avec de la régularité. Pas de magie — mais une méthode qui fonctionne si tu la suis."}},
 {"@type":"Question","name":"Est-ce que ça marche sans salle de sport ?","acceptedAnswer":{"@type":"Answer","text":"Oui — et c'est justement fait pour ça. Zéro matériel, zéro abonnement. Tu peux faire les séances dans ton salon, ta chambre, en voyage. Les exercices ciblent le transverse et le core profond, des muscles de stabilisation. Pas besoin de charges pour les activer correctement."}},
@@ -353,11 +350,6 @@ footer a:hover{color:var(--accent)}
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-<!-- ══ TOPBAR URGENCE ══ -->
-<div id="urgency-topbar" style="background:linear-gradient(90deg,#1C1210 0%,#2A1410 50%,#1C1210 100%);color:#fff;text-align:center;padding:10px 16px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.02em;position:sticky;top:0;z-index:300;border-bottom:1px solid rgba(201,99,88,.3)">
-  <span style="color:rgba(255,255,255,.55)">⚡ Prix lancement 12€ — expire dans&nbsp;</span><strong id="topbar-countdown" style="color:#ffb3aa;font-variant-numeric:tabular-nums;font-weight:700;letter-spacing:.04em">--:--:--</strong><span style="color:rgba(255,255,255,.55)">&nbsp;·&nbsp;</span><span id="topbar-viewers" style="color:#E8A090;font-weight:600">●&nbsp;12 personnes</span><span style="color:rgba(255,255,255,.55)"> consultent cette page</span>
-</div>
 
 <!-- ══ NAV ══ -->
 <nav>
@@ -1137,44 +1129,6 @@ async function handlePurchase() {
   <input type="text" name="email_address_check" value="" class="input--hidden">
   <input type="hidden" name="locale" value="fr">
 </form>
-
-<script>
-// ── COUNTDOWN 24h persistant ──
-(function(){
-  var KEY = 'vp_deadline';
-  var deadline = localStorage.getItem(KEY);
-  if (!deadline) {
-    deadline = Date.now() + 23 * 3600 * 1000 + 47 * 60 * 1000;
-    localStorage.setItem(KEY, deadline);
-  }
-  deadline = parseInt(deadline);
-  function pad(n){ return n < 10 ? '0'+n : n; }
-  function tick(){
-    var left = deadline - Date.now();
-    if (left <= 0) {
-      deadline = Date.now() + 23 * 3600 * 1000 + 47 * 60 * 1000;
-      localStorage.setItem(KEY, deadline);
-      left = deadline - Date.now();
-    }
-    var h = Math.floor(left / 3600000);
-    var m = Math.floor((left % 3600000) / 60000);
-    var s = Math.floor((left % 60000) / 1000);
-    var str = pad(h)+':'+pad(m)+':'+pad(s);
-    var tb = document.getElementById('topbar-countdown');
-    if (tb) tb.textContent = str;
-    setTimeout(tick, 1000);
-  }
-  tick();
-  // ── VIEWERS simulés (8–17, fluctuants) ──
-  function updateViewers(){
-    var base = 8 + Math.floor(Math.random() * 10);
-    var el = document.getElementById('topbar-viewers');
-    if (el) el.textContent = '● ' + base + ' personnes';
-    setTimeout(updateViewers, 12000 + Math.random() * 8000);
-  }
-  setTimeout(updateViewers, 5000);
-})();
-</script>
 
 <script>
 function toggleFaq(el){

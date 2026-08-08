@@ -68,6 +68,15 @@ nav {
   font-size: 1.5rem; cursor: pointer; color: var(--dark);
   padding: 6px; margin-left: auto; line-height: 1;
 }
+/* Sur les largeurs "laptop" intermédiaires (~1280-1600px), la barre desktop peut
+   contenir trop de liens et pousser le CTA principal hors champ (masqué par
+   overflow-x:hidden, donc invisible sans erreur visible, sans perte de contenu
+   ni de fonctionnalité — tous les liens restent présents, juste plus compacts). */
+@media (min-width: 769px) and (max-width: 1600px) {
+  .nav-menu { gap: 0; }
+  .nav-link { padding: 7px 7px; font-size: 0.8rem; }
+  .nav-cta { padding: 10px 14px; margin-left: 4px; }
+}
 
 /* ===== SECTION BASE ===== */
 section { padding: 88px 24px; }
