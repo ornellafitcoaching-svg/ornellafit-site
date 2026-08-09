@@ -1101,14 +1101,108 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <!-- INTRO HYBRIDE -->
-      <div style="max-width:700px;margin:0 auto 20px;background:white;border:1px solid rgba(201,185,154,0.3);border-radius:16px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;">
-        <span style="font-size:1.3rem;line-height:1;flex-shrink:0;">🔄</span>
-        <div>
-          <p style="font-size:0.9rem;color:#1E1616;font-weight:600;margin-bottom:4px;">Je viens chez toi ET tu t'entraînes en autonomie</p>
-          <p style="font-size:0.85rem;color:#4A3E3E;line-height:1.6;margin:0;">Je viens chez toi en séance chaque mois ET tu reçois un programme sur-mesure — adapté à ton niveau et à ce qu'on a vu ensemble — pour t'entraîner jusqu'à 4 fois/semaine seule, avec ou sans matériel.</p>
+      <style>
+      #hybride .hyb-wrap{max-width:760px;margin:0 auto;}
+      #hybride .hyb-hook{text-align:center;margin-bottom:26px;}
+      #hybride .hyb-hook-tag{display:inline-block;background:#FFF0EE;color:#C96358;font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:14px;}
+      #hybride .hyb-hook h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:600;color:#1E1616;line-height:1.3;margin-bottom:12px;}
+      #hybride .hyb-hook h2 em{font-style:italic;color:#C96358;}
+      #hybride .hyb-hook p{font-size:0.96rem;color:#4A3E3E;line-height:1.7;max-width:560px;margin:0 auto;}
+      #hybride .hyb-projection{background:linear-gradient(135deg,#2C1F1A,#3D2B24);border-radius:20px;padding:30px 26px;margin-bottom:26px;text-align:center;}
+      #hybride .hyb-projection p{color:rgba(255,255,255,0.92);font-size:1rem;line-height:1.9;margin:0;}
+      #hybride .hyb-projection strong{color:#C9957A;}
+      #hybride .hyb-section-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.3rem;font-weight:600;color:#1E1616;text-align:center;margin-bottom:10px;}
+      #hybride .hyb-section-sub{font-size:0.87rem;color:#4A3E3E;line-height:1.7;text-align:center;max-width:560px;margin:0 auto 18px;}
+      #hybride .hyb-mechanism{background:white;border:1px solid rgba(201,185,154,0.3);border-radius:16px;padding:22px 24px;margin-bottom:26px;}
+      #hybride .hyb-wow{text-align:center;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.2rem;color:#C96358;padding:18px;border-top:1.5px dashed rgba(201,99,88,0.3);border-bottom:1.5px dashed rgba(201,99,88,0.3);margin:26px 0;}
+      #hybride .hyb-week{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px;}
+      #hybride .hyb-week-day{background:#F7F3F0;border-radius:12px;padding:14px 8px;text-align:center;}
+      #hybride .hyb-week-day .hyb-day-name{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#9A8080;margin-bottom:6px;}
+      #hybride .hyb-week-day .hyb-day-icon{font-size:1.25rem;margin-bottom:4px;}
+      #hybride .hyb-week-day .hyb-day-text{font-size:0.7rem;color:#4A3E3E;line-height:1.4;}
+      #hybride .hyb-week-note{font-size:0.78rem;color:#7A6E6E;text-align:center;margin-bottom:26px;line-height:1.6;}
+      #hybride .hyb-compare{margin-bottom:26px;overflow-x:auto;}
+      #hybride .hyb-compare table{width:100%;border-collapse:collapse;min-width:540px;}
+      #hybride .hyb-compare th{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.03em;padding:12px 10px;text-align:center;color:#7A6E6E;font-weight:700;}
+      #hybride .hyb-compare th.hyb-col-main{background:linear-gradient(135deg,#C96358,#C9957A);color:white;border-radius:12px 12px 0 0;}
+      #hybride .hyb-compare td{font-size:0.8rem;padding:11px 10px;text-align:center;border-top:1px solid rgba(201,185,154,0.25);color:#4A3E3E;}
+      #hybride .hyb-compare td:first-child{text-align:left;font-weight:600;color:#1E1616;}
+      #hybride .hyb-compare td.hyb-col-main{background:rgba(201,99,88,0.06);font-weight:700;color:#C96358;}
+      #hybride .hyb-value{background:#F7F3F0;border-radius:16px;padding:24px 26px;margin-bottom:28px;}
+      #hybride .hyb-value ul{list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:10px;}
+      #hybride .hyb-value li{font-size:0.89rem;color:#1E1616;line-height:1.5;display:flex;gap:10px;align-items:flex-start;}
+      #hybride .hyb-value-price{text-align:center;font-size:0.87rem;color:#4A3E3E;padding-top:14px;border-top:1px dashed rgba(201,185,154,0.4);}
+      #hybride .hyb-value-price strong{color:#C96358;font-size:1rem;}
+      @media(max-width:640px){
+        #hybride .hyb-week{grid-template-columns:repeat(3,1fr);}
+      }
+      </style>
+
+      <div class="hyb-wrap">
+
+        <!-- HOOK -->
+        <div class="hyb-hook">
+          <span class="hyb-hook-tag">💫 Présentiel + suivi permanent · Sans engagement</span>
+          <h2>Un coaching qui ne s'arrête <em>jamais</em> — même les jours où je ne suis pas chez toi.</h2>
+          <p>Je t'apprends les bons gestes en séance. Tu progresses seule le reste du temps — jamais livrée à toi-même : programme sur-mesure, suivi WhatsApp, corrections en continu.</p>
         </div>
-      </div>
+
+        <!-- PROJECTION ÉMOTIONNELLE -->
+        <div class="hyb-projection">
+          <p>Tu sais <strong>exactement quoi faire</strong>, chaque jour.<br>
+          Une question ? Je réponds <strong>avant ta prochaine séance</strong>.<br>
+          Un doute sur un mouvement ? On <strong>corrige ensemble</strong>, à distance.<br>
+          Tu n'es jamais seule face à un programme que tu ne comprends pas.</p>
+        </div>
+
+        <!-- COMMENT ÇA MARCHE -->
+        <div class="hyb-mechanism">
+          <div class="hyb-section-title">Ce n'est pas "2 séances par mois et débrouille-toi"</div>
+          <p class="hyb-section-sub" style="margin-bottom:0;">Beaucoup imaginent le coaching hybride comme une version réduite du présentiel. C'est l'inverse. En séance, je t'apprends les mouvements, je corrige ta posture, j'ajuste tes charges et je réponds à toutes tes questions. Le reste du temps, tu n'improvises jamais : tu appliques exactement ce qu'on a construit ensemble, avec mon suivi à chaque étape. Que tu débutes ou que tu sois déjà à l'aise, c'est la même méthode qui s'adapte à toi.</p>
+        </div>
+
+        <div class="hyb-wow">"Une séance pour apprendre. Tout un mois pour progresser."</div>
+
+        <!-- SEMAINE TYPE -->
+        <div class="hyb-section-title">À quoi ressemble une semaine ?</div>
+        <p class="hyb-section-sub">Exemple d'une semaine type entre deux séances — jusqu'à <strong>4 séances/semaine possibles</strong> en autonomie, adaptées à ton emploi du temps réel, pas un planning figé.</p>
+        <div class="hyb-week">
+          <div class="hyb-week-day"><div class="hyb-day-icon">🏋️</div><div class="hyb-day-name">Lun</div><div class="hyb-day-text">Entraînement seule</div></div>
+          <div class="hyb-week-day"><div class="hyb-day-icon">💬</div><div class="hyb-day-name">Mar</div><div class="hyb-day-text">Question WhatsApp</div></div>
+          <div class="hyb-week-day"><div class="hyb-day-icon">🏋️</div><div class="hyb-day-name">Mer</div><div class="hyb-day-text">Entraînement seule</div></div>
+          <div class="hyb-week-day"><div class="hyb-day-icon">🎥</div><div class="hyb-day-name">Jeu</div><div class="hyb-day-text">Vidéo technique corrigée</div></div>
+          <div class="hyb-week-day"><div class="hyb-day-icon">🏋️</div><div class="hyb-day-name">Ven</div><div class="hyb-day-text">Entraînement seule</div></div>
+        </div>
+        <p class="hyb-week-note">📍 <strong>1 à 2 fois par mois</strong> (selon ta formule), cette semaine inclut aussi ma visite chez toi : nouveaux mouvements, ajustement des charges, réponses à toutes tes questions en direct.</p>
+
+        <!-- COMPARATIF -->
+        <div class="hyb-section-title">Pourquoi ni une salle, ni un coach classique</div>
+        <div class="hyb-compare">
+          <table>
+            <thead><tr><th></th><th>Salle de sport</th><th>Coach classique</th><th class="hyb-col-main">Coaching Hybride</th></tr></thead>
+            <tbody>
+              <tr><td>Accompagnement</td><td>❌ Aucun</td><td>🟡 En séance seulement</td><td class="hyb-col-main">✅ Séance + à distance</td></tr>
+              <tr><td>Personnalisation</td><td>❌ Générique</td><td>✅ Oui</td><td class="hyb-col-main">✅ Programme évolutif</td></tr>
+              <tr><td>Suivi entre les séances</td><td>❌ Aucun</td><td>❌ Aucun</td><td class="hyb-col-main">✅ WhatsApp 5j/7</td></tr>
+              <tr><td>Corrections technique</td><td>❌ Aucune</td><td>✅ En séance</td><td class="hyb-col-main">✅ Séance + vidéos</td></tr>
+              <tr><td>Autonomie guidée</td><td>🟡 Livrée à toi-même</td><td>❌ Livrée à toi-même</td><td class="hyb-col-main">✅ Jamais seule</td></tr>
+              <tr><td>Flexibilité</td><td>✅ Totale</td><td>🟡 Selon dispo du coach</td><td class="hyb-col-main">✅ Jusqu'à 4x/semaine</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- VALEUR PERÇUE -->
+        <div class="hyb-value">
+          <div class="hyb-section-title" style="margin-bottom:14px;">Ce que tu reçois réellement chaque mois</div>
+          <ul>
+            <li><span>✅</span> Bilan complet personnalisé — <strong>offert</strong>, livré sous 7 jours ouvrés</li>
+            <li><span>✅</span> Programme d'entraînement 100% sur-mesure, qui évolue chaque mois avec toi</li>
+            <li><span>✅</span> 1 à 2 séances en direct chez toi : correction technique, ajustement des charges</li>
+            <li><span>✅</span> Suivi WhatsApp 5j/7 — questions, corrections vidéo, motivation</li>
+            <li><span>✅</span> Ajustements réguliers selon ta progression réelle</li>
+          </ul>
+          <div class="hyb-value-price">Soit <strong>3,30€/jour</strong> (Essentielle) ou <strong>5,63€/jour</strong> (Performance) pour ne plus jamais t'entraîner seule sans savoir si tu fais bien.</div>
+        </div>
 
       <!-- 2 CARTES HYBRIDE CÔTE À CÔTE -->
       <div style="max-width:700px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="hybride-cards">
@@ -1141,7 +1235,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div style="background:#F7F3F0;border-radius:10px;padding:12px 14px;margin:12px 0;font-size:0.82rem;color:#4A3E3E;line-height:1.6;">
             📋 <strong>Bilan offert</strong> · livré sous <strong>7 jours ouvrés</strong>
           </div>
-          <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20voudrais%20d%C3%A9marrer%20mon%20coaching.%20On%20en%20parle%20%3F" class="btn-offre dark" target="_blank" style="margin-top:auto;">Je réserve mon bilan →</a>
+          <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20voudrais%20d%C3%A9marrer%20mon%20coaching.%20On%20en%20parle%20%3F" class="btn-offre dark" target="_blank" style="margin-top:auto;">Je démarre mon coaching hybride →</a>
         </div>
 
         <!-- PERFORMANCE — FEATURED -->
@@ -1173,7 +1267,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div style="background:#F7F3F0;border-radius:10px;padding:12px 14px;margin:12px 0;font-size:0.82rem;color:#4A3E3E;line-height:1.6;">
             📋 <strong>Bilan offert</strong> · livré sous <strong>7 jours ouvrés</strong>
           </div>
-          <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20voudrais%20d%C3%A9marrer%20mon%20coaching.%20On%20en%20parle%20%3F" class="btn-offre dark" target="_blank" style="margin-top:auto;">Je veux mon accompagnement complet →</a>
+          <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20voudrais%20d%C3%A9marrer%20mon%20coaching.%20On%20en%20parle%20%3F" class="btn-offre dark" target="_blank" style="margin-top:auto;">Je veux le suivi le plus complet →</a>
         </div>
 
       </div>
