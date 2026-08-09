@@ -318,8 +318,13 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
   font-size: 0.81rem; color: var(--text-light);
   margin-top: 10px; margin-bottom: 0;
 }
-.hero-goal-picker { margin-bottom: 18px; }
-.hero-goal-label { font-size: 0.92rem; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+.hero-goal-picker {
+  margin-bottom: 20px; padding: 18px 20px; max-width: 500px;
+  background: rgba(255,255,255,0.6); border: 1px solid rgba(201,99,88,0.18);
+  border-radius: 16px;
+}
+.hero-goal-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+.hero-goal-label { font-size: 0.84rem; font-weight: 400; color: var(--text-mid); margin-bottom: 12px; line-height: 1.5; }
 .hero-goal-options { display: flex; flex-wrap: wrap; gap: 8px; }
 .hero-goal-btn {
   background: white; border: 1.5px solid rgba(201,99,88,0.3);
@@ -328,14 +333,16 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
   font-family: 'DM Sans', sans-serif; transition: all 0.2s;
 }
 .hero-goal-btn:hover, .hero-goal-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
-.hero-goal-result { display: none; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+.hero-goal-result { display: none; gap: 12px; flex-wrap: wrap; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(201,99,88,0.18); }
 .hero-goal-result.visible { display: flex; }
+.hero-goal-result-card { flex: 1; min-width: 180px; }
 .hero-goal-result-link {
   display: inline-block; padding: 10px 18px; border-radius: 50px;
   font-size: 0.82rem; font-weight: 700; text-decoration: none;
 }
 .hero-goal-result-digital { background: rgba(201,99,88,0.1); color: var(--accent); border: 1.5px solid rgba(201,99,88,0.3); }
 .hero-goal-result-coaching { background: var(--accent); color: white; }
+.hero-goal-result-sub { font-size: 0.76rem; color: var(--text-light); margin-top: 6px; line-height: 1.4; }
 .hero-price-day {
   margin-top: 22px; padding: 14px 18px;
   background: rgba(201,169,110,0.11);
@@ -1254,15 +1261,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- SÉLECTEUR OBJECTIF -->
       <div class="hero-goal-picker">
-        <p class="hero-goal-label">👉 Ton objectif principal ?</p>
+        <p class="hero-goal-title">Pas sûre par où commencer ?</p>
+        <p class="hero-goal-label">Dis-moi ton objectif principal, je t'oriente vers la meilleure option pour toi :</p>
         <div class="hero-goal-options">
-          <button type="button" class="hero-goal-btn" onclick="selectHeroGoal('gras')">Perdre du gras</button>
-          <button type="button" class="hero-goal-btn" onclick="selectHeroGoal('fessiers')">Fessiers galbés</button>
-          <button type="button" class="hero-goal-btn" onclick="selectHeroGoal('postpartum')">Reprendre après une grossesse</button>
+          <button type="button" class="hero-goal-btn" onclick="selectHeroGoal('gras')">🔥 Perdre du gras</button>
+          <button type="button" class="hero-goal-btn" onclick="selectHeroGoal('fessiers')">🍑 Fessiers galbés</button>
+          <button type="button" class="hero-goal-btn" onclick="selectHeroGoal('postpartum')">🤱 Reprendre après une grossesse</button>
         </div>
         <div id="hero-goal-result" class="hero-goal-result">
-          <a id="hero-goal-digital" href="#" target="_blank" class="hero-goal-result-link hero-goal-result-digital">📱 Programme digital →</a>
-          <a href="quiz.html" class="hero-goal-result-link hero-goal-result-coaching">🤝 Coaching personnalisé →</a>
+          <div class="hero-goal-result-card">
+            <a id="hero-goal-digital" href="#" target="_blank" class="hero-goal-result-link hero-goal-result-digital">📱 Programme digital →</a>
+            <p class="hero-goal-result-sub">Un plan à suivre seule, accès immédiat, à ton rythme.</p>
+          </div>
+          <div class="hero-goal-result-card">
+            <a href="quiz.html" class="hero-goal-result-link hero-goal-result-coaching">🤝 Coaching personnalisé →</a>
+            <p class="hero-goal-result-sub">Un accompagnement individuel avec Ornella, adapté à ta vie.</p>
+          </div>
         </div>
       </div>
 
