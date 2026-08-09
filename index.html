@@ -2365,10 +2365,13 @@ document.addEventListener('click', function(e) {
 // LEAD POPUP
 function showLead() {
   if (localStorage.getItem('leadDone')) return;
+  if (localStorage.getItem('ornella_lead_email')) return;
   var scOverlay = document.getElementById('sc-overlay');
   if (scOverlay && scOverlay.classList.contains('active')) return;
   var cp = document.getElementById('coaching-popup');
   if (cp && cp.style.display === 'block') return;
+  var bs = document.getElementById('bs-popup');
+  if (bs && bs.style.display === 'flex') return;
   document.getElementById('lead-popup').classList.add('active');
 }
 function closeLead() {
@@ -2389,6 +2392,8 @@ function showCoachingPopup() {
   if (document.getElementById('lead-popup').classList.contains('active')) return;
   var scOverlay = document.getElementById('sc-overlay');
   if (scOverlay && scOverlay.classList.contains('active')) return;
+  var bs = document.getElementById('bs-popup');
+  if (bs && bs.style.display === 'flex') return;
   document.getElementById('coaching-popup').style.display = 'block';
   sessionStorage.setItem('coachingPopupSeen', '1');
   // Sur mobile, démarre réduit pour ne pas recouvrir le contenu (formulaire, photos)
@@ -2732,6 +2737,8 @@ function showObjReply(btn, type) {
     if (document.getElementById('lead-popup') && document.getElementById('lead-popup').classList.contains('active')) return false;
     var cp = document.getElementById('coaching-popup');
     if (cp && cp.style.display === 'block') return false;
+    var bs = document.getElementById('bs-popup');
+    if (bs && bs.style.display === 'flex') return false;
     return true;
   }
   function _fireExit() { _exitFired = true; scShow('exit', null); }
@@ -2858,6 +2865,11 @@ if(!sessionStorage.getItem('bs_popup_closed')){
     if(_popupShown) return;
     var scrolled=(window.scrollY+window.innerHeight)/document.body.scrollHeight;
     if(scrolled>0.7){
+      if (document.getElementById('lead-popup').classList.contains('active')) return;
+      var scOv = document.getElementById('sc-overlay');
+      if (scOv && scOv.classList.contains('active')) return;
+      var cp = document.getElementById('coaching-popup');
+      if (cp && cp.style.display === 'block') return;
       _popupShown=true;
       document.getElementById('bs-popup').style.display='flex';
     }
