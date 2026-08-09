@@ -2499,6 +2499,10 @@ function showCoachingPopup() {
   if (document.getElementById('lead-popup').classList.contains('active')) return;
   document.getElementById('coaching-popup').style.display = 'block';
   sessionStorage.setItem('coachingPopupSeen', '1');
+  // Sur mobile, démarre réduit pour ne pas recouvrir le contenu (formulaire, photos)
+  if (window.innerWidth <= 768) {
+    minimizeCoachingPopup();
+  }
   // Un seul point d'entrée flottant visible à la fois : le popup coaching prend le pas sur la bulle WhatsApp
   var wa = document.querySelector('.floating-wa');
   if (wa) wa.classList.add('wa-hidden-by-popup');
