@@ -2485,7 +2485,17 @@ function showCoachingPopup() {
   var wa = document.querySelector('.floating-wa');
   if (wa) wa.classList.add('wa-hidden-by-popup');
 }
-setTimeout(showCoachingPopup, 18000);
+function maybeShowCoachingPopup() {
+  if (sessionStorage.getItem('coachingPopupSeen')) return;
+  var hero = document.getElementById('hero');
+  var heroCleared = !hero || hero.getBoundingClientRect().bottom < 0;
+  if (heroCleared || window.scrollY > 300) {
+    showCoachingPopup();
+  } else {
+    setTimeout(maybeShowCoachingPopup, 3000);
+  }
+}
+setTimeout(maybeShowCoachingPopup, 18000);
 window.addEventListener('scroll', function onCoachingScroll() {
   if (sessionStorage.getItem('coachingPopupSeen')) { window.removeEventListener('scroll', onCoachingScroll); return; }
   if ((window.scrollY / document.body.scrollHeight) > 0.40) {
