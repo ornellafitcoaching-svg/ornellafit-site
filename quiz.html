@@ -13,18 +13,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="color-scheme" content="light">
 <meta name="supported-color-schemes" content="light">
 <title>Quel coaching est fait pour toi ? Quiz gratuit – Coach Sportive Essonne (91) – Ornella Fit Coaching</title>
-<meta name="description" content="Réponds à 5 questions et reçois ta recommandation personnalisée de coaching sportif en Essonne (91) ou à distance. Gratuit, résultat immédiat.">
+<meta name="description" content="Réponds à 5 questions et reçois ta recommandation personnalisée par email — Coaching sportif en Essonne (91) ou à distance. Gratuit, résultat en 2 minutes.">
 <link rel="canonical" href="https://www.ornellafitcoaching.com/quiz.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.ornellafitcoaching.com/quiz.html">
 <meta property="og:title" content="Quel coaching est fait pour toi ? Quiz gratuit – Ornella Fit Coaching">
-<meta property="og:description" content="5 questions pour trouver le coaching sportif qui correspond à ton profil en Essonne (91) ou à distance. Résultat immédiat.">
+<meta property="og:description" content="5 questions pour trouver le coaching sportif qui correspond à ton profil en Essonne (91) ou à distance. Résultat par email en 2 minutes.">
 <meta property="og:image" content="https://www.ornellafitcoaching.com/images/poster-hero.jpg">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Ornella Fit Coaching">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Quel coaching est fait pour toi ? Quiz gratuit – Ornella Fit Coaching">
-<meta name="twitter:description" content="5 questions pour trouver le coaching sportif qui correspond à ton profil en Essonne (91) ou à distance. Résultat immédiat.">
+<meta name="twitter:description" content="5 questions pour trouver le coaching sportif qui correspond à ton profil en Essonne (91) ou à distance. Résultat par email en 2 minutes.">
 <meta name="twitter:image" content="https://www.ornellafitcoaching.com/images/poster-hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -379,11 +379,11 @@ const QUESTIONS = [
 
 const OBJECTIF_LABELS = ['poids', 'silhouette', 'remise_forme', 'muscle', 'antiage'];
 const PRODUIT_CTA = {
-  poids:        { emoji: '🌿', text: 'Tu veux aussi perdre du ventre ?', label: 'Découvrir Reset Ventre Plat', url: 'https://www.ornellafitcoaching.com/ventre-plat.html' },
-  silhouette:   { emoji: '🍑', text: 'Tu veux aussi sculpter tes fessiers ?', label: 'Découvrir Booty Sculpt', url: 'https://www.ornellafitcoaching.com/booty-sculpt.html' },
-  remise_forme: { emoji: '🤱', text: 'Tu veux retrouver ton corps après bébé ?', label: 'Découvrir le programme Post-partum', url: 'https://www.ornellafitcoaching.com/programme-postpartum.html' },
-  muscle:       { emoji: '🏋️', text: 'Tu veux aussi prendre du muscle ?', label: 'Découvrir Iron Girl', url: 'https://www.ornellafitcoaching.com/iron-girl-sales.html' },
-  antiage:      { emoji: '🌸', text: 'Tu es aussi concernée par la ménopause / anti-âge ?', label: 'Découvrir Ageless Girl', url: 'https://www.ornellafitcoaching.com/ageless-girl-sales.html' }
+  poids:        { emoji: '🌿', text: 'Tu veux aussi perdre du ventre ?', precision: 'Reset Ventre Plat — mon programme digital 100% autonome, à ton rythme (12€)', label: 'Découvrir Reset Ventre Plat', url: 'https://www.ornellafitcoaching.com/ventre-plat.html' },
+  silhouette:   { emoji: '🍑', text: 'Tu veux aussi sculpter tes fessiers ?', precision: 'Booty Sculpt — mon programme digital 100% autonome, 8 semaines (19€)', label: 'Découvrir Booty Sculpt', url: 'https://www.ornellafitcoaching.com/booty-sculpt.html' },
+  remise_forme: { emoji: '🤱', text: 'Tu veux retrouver ton corps après bébé ?', precision: 'Ventre Plat Après Bébé — mon programme digital 100% autonome, anti-diastase (17€)', label: 'Découvrir le programme Post-partum', url: 'https://www.ornellafitcoaching.com/programme-postpartum.html' },
+  muscle:       { emoji: '🏋️', text: 'Tu veux aussi prendre du muscle ?', precision: 'Iron Girl — mon programme salle 100% digital, en autonomie (49€)', label: 'Découvrir Iron Girl', url: 'https://www.ornellafitcoaching.com/iron-girl-sales.html' },
+  antiage:      { emoji: '🌸', text: 'Tu es aussi concernée par la ménopause / anti-âge ?', precision: 'Ageless Girl — mon programme digital 100% autonome (17€)', label: 'Découvrir Ageless Girl', url: 'https://www.ornellafitcoaching.com/ageless-girl-sales.html' }
 };
 
 const RESULTS = {
@@ -398,7 +398,8 @@ const RESULTS = {
       'Encadrement total à chaque séance',
       'Zéro trajet — je viens chez toi avec le matériel',
       'Programme 100% sur-mesure',
-      'Technique corrigée en temps réel'
+      'Technique corrigée en temps réel',
+      'Bilan complet offert, sans engagement'
     ],
     price: 'Séance découverte 50€ — déduite à partir d\'un pack 6 séances ou engagement 3 mois min.',
     url: 'offres.html#domicile',
@@ -407,18 +408,19 @@ const RESULTS = {
   hybride: {
     key: 'hybride',
     emoji: '🔥',
-    eyebrow: 'Coaching Hybride Performance',
-    title: 'Coaching Hybride Performance',
-    subtitle: '⭐ L\'offre la plus choisie — 169€/mois',
+    eyebrow: 'Coaching Hybride',
+    title: 'Coaching Hybride',
+    subtitle: 'Présentiel + suivi entre les séances — dès 99€/mois',
     why: 'Tu veux être encadrée à domicile ET continuer à progresser entre les séances — je viens chez toi + tu reçois un programme sur-mesure avec vidéos pour t\'entraîner jusqu\'à 4 fois/semaine seule, avec ou sans matériel.',
     benefits: [
-      'Je viens chez toi 2 fois/mois',
+      'Je viens chez toi 1 à 2 fois/mois selon ta formule',
       'Programme sur-mesure avec vidéos incluses',
       'Jusqu\'à 4 séances/semaine en autonomie',
       'Avec ou sans matériel — salle ou domicile',
-      'Suivi WhatsApp + bilan mensuel'
+      'Suivi WhatsApp illimité entre les séances',
+      'Bilan complet offert, sans engagement'
     ],
-    price: '169€ / mois — valeur réelle 230€ (tu économises 61€)',
+    price: '99€/mois (1 visite/mois, Essentielle) ou 169€/mois (2 visites/mois, Performance)',
     url: 'offres.html#hybride',
     emailSubject: 'Voici l\'offre parfaite pour toi 🔥'
   },
@@ -433,7 +435,8 @@ const RESULTS = {
       'Programme sur-mesure évolutif chaque mois',
       'Suivi WhatsApp hebdomadaire',
       'Ajustements selon ta progression',
-      'Bilan mensuel inclus'
+      'Bilan mensuel inclus',
+      'Bilan complet offert, sans engagement'
     ],
     price: 'Dès 89€/mois (6 mois) · 119€ sans engagement',
     url: 'offres.html#distanciel',
@@ -450,7 +453,8 @@ const RESULTS = {
       'Programme 100% personnalisé après bilan',
       'Vidéos de démonstration pour chaque exercice',
       'Jusqu\'à 4 séances / semaine selon tes dispo',
-      'Bilan de fin à 8 semaines'
+      'Bilan de fin à 8 semaines',
+      'Bilan complet offert, sans engagement'
     ],
     price: '79€ — programme 8 semaines complet',
     url: 'offres.html#autonomie',
@@ -591,20 +595,23 @@ function onEmailChange() {
 }
 
 function calcResult() {
-  const s = { domicile: 0, hybride: 0, distanciel: 0, autonomie: 0 };
-  for (let i = 1; i <= 5; i++) {
-    if (selections[i] !== undefined) {
-      const scores = QUESTIONS[i - 1].options[selections[i]].scores;
-      if (scores) Object.entries(scores).forEach(([k, v]) => { s[k] += v; });
-    }
+  /* Q3 (format voulu) détermine le résultat — Q4 (budget) ne choisit que la formule à l'intérieur
+     de ce format (ex: Essentielle vs Performance pour Hybride), il ne fait jamais sauter vers un
+     format avec moins d'accompagnement humain que demandé. Q1 (géo) reste prioritaire sur tout :
+     hors Île-de-France, ni domicile ni hybride (présentiel) ne sont possibles. */
+  const horsIDF = selections[1] === 1;
+  const format  = selections[3]; // 0: coach à chaque séance, 1: mix coach+seule, 2: à distance, 3: seule
+  const budget  = selections[4]; // 0: <100€, 1: 100-200€, 2: >200€
+
+  if (format === 3) return 'autonomie';   // Seule — j'ai juste besoin d'un bon programme
+  if (format === 2) return 'distanciel';  // À distance avec un vrai suivi régulier
+  if (format === 1) return horsIDF ? 'distanciel' : 'hybride'; // Quelques séances + seule le reste
+  if (format === 0) {                     // Avec mon coach à chaque séance
+    if (horsIDF) return 'distanciel';
+    if (budget === 2) return 'domicile';  // Plus de 200€/mois
+    return 'hybride';                     // 100-200€ ou <100€/mois → Hybride (Essentielle si <100€)
   }
-  /* Filtre géographique : hors IDF → domicile et hybride impossibles */
-  if (selections[1] === 1) { s.domicile = 0; s.hybride = 0; }
-  /* Filtre budget : <100€ → domicile/hybride impossible ; 100-200€ → domicile impossible (260€ mini) */
-  if (selections[4] === 0) { s.domicile = 0; s.hybride = 0; }
-  if (selections[4] === 1) { s.domicile = 0; }
-  const max = Math.max(...Object.values(s));
-  return Object.keys(s).find(k => s[k] === max) || 'distanciel';
+  return 'distanciel';
 }
 
 /* ===================================================
@@ -669,21 +676,23 @@ function quizEmailHtml(r, email, prenom) {
     hybride: {
       emoji: '🔥',
       sujet: 'Voici l\'offre parfaite pour toi',
-      tag: '⭐ Offre la plus choisie',
-      titre: 'Coaching Hybride Performance — 169€/mois',
+      tag: '🔥 Présentiel + suivi entre les séances',
+      titre: 'Coaching Hybride',
       intro: `Tu veux être encadrée à domicile <strong>et</strong> continuer à progresser entre les séances — sans te retrouver seule face à ton programme.`,
       highlight: `💡 <strong>Ce que tu reçois concrètement :</strong><br>Je viens chez toi en séance + tu reçois un programme sur-mesure avec vidéos — adaptées à ton niveau et à ce qu'on a vu ensemble — pour t'entraîner jusqu'à 4 fois/semaine seule, avec ou sans matériel. Tu es encadrée en présentiel ET en autonomie.`,
       benefits: [
-        'Je viens chez toi 2 fois/mois',
+        'Je viens chez toi 1 à 2 fois/mois selon ta formule',
         'Programme sur-mesure avec vidéos incluses',
         'Jusqu\'à 4 séances/semaine en autonomie',
         'Avec ou sans matériel — salle ou domicile',
-        'Suivi WhatsApp hebdomadaire + bilan mensuel',
-        'Résultats visibles en 4 semaines'
+        'Suivi WhatsApp illimité entre les séances',
+        'Bilan complet offert, sans engagement'
       ],
-      prix: `<div style="text-align:center;background:#F7F3F0;border-radius:14px;padding:22px 20px;margin:20px 0;">
-        <div style="font-family:Georgia,serif;font-size:2.4rem;color:#C96358;font-weight:700;line-height:1;">169€<span style="font-size:1rem;font-weight:400;color:#9A8080;">/mois</span></div>
-        <div style="font-size:0.82rem;color:#9A8080;margin-top:6px;">≈ 6€/jour · Sans engagement</div>
+      prix: `<div style="background:#F7F3F0;border-radius:12px;padding:18px 20px;margin:18px 0;">
+        <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#9A8080;margin-bottom:12px;text-align:center;">Choisis ton rythme</p>
+        <div style="display:flex;justify-content:space-between;font-size:0.85rem;padding:7px 0;border-bottom:1px solid rgba(201,185,154,0.3);"><span style="color:#4A3E3E;">Essentielle — 1 visite/mois</span><span style="color:#C96358;font-weight:700;">99€/mois</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:0.85rem;padding:7px 0;"><span style="color:#4A3E3E;">Performance <span style="background:#C9957A;color:white;font-size:0.7rem;padding:2px 8px;border-radius:50px;">La plus choisie</span></span><span style="color:#C96358;font-weight:700;">169€/mois</span></div>
+        <p style="font-size:0.75rem;color:#9A8080;margin-top:10px;margin-bottom:0;text-align:center;">Sans engagement — tu arrêtes quand tu veux</p>
       </div>`,
       cta_main: 'https://calendly.com/ornellafit-coaching/30min',
       cta_main_label: '📅 Réserver mon bilan offert',
@@ -845,6 +854,7 @@ async function sendToBrevo(email, resultKey, prenom = '') {
           PRENOM: prenom || '',
           OBJECTIF: objectif || '',
           PRODUIT_TEXT: produit ? produit.text : '',
+          PRODUIT_PRECISION: produit ? produit.precision : '',
           PRODUIT_LABEL: produit ? produit.label : '',
           PRODUIT_URL: produit ? produit.url : ''
         }
@@ -908,7 +918,8 @@ function renderResult(key, email) {
   const produitCtaHTML = produit ? `
     <div style="background:linear-gradient(135deg,#FDF0E8,#FCE4D6);border:1px solid rgba(201,99,88,.25);border-radius:14px;padding:16px 18px;margin-bottom:16px;text-align:center;">
       <div style="font-size:1.3rem;margin-bottom:4px;">${produit.emoji}</div>
-      <div style="font-size:0.85rem;color:#3D2B24;margin-bottom:10px;">${produit.text}</div>
+      <div style="font-size:0.85rem;color:#3D2B24;margin-bottom:6px;">${produit.text}</div>
+      <div style="font-size:0.76rem;color:#7A5E44;margin-bottom:10px;">${produit.precision}</div>
       <a href="${produit.url}" style="display:inline-block;background:#C96358;color:#fff;font-weight:700;font-size:0.82rem;padding:10px 20px;border-radius:50px;text-decoration:none;">${produit.label} →</a>
     </div>` : '';
 
