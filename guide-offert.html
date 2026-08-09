@@ -1540,7 +1540,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p style="font-size:13px;color:rgba(58,42,42,.84);max-width:440px;margin:0 auto 22px;line-height:1.7;">Dis-moi qui tu es et ton objectif principal — je débloque immédiatement les chapitres suivants.</p>
       <div style="max-width:360px;margin:0 auto;display:flex;flex-direction:column;gap:10px;">
         <input type="text" id="cap-fname" placeholder="Ton prénom" style="padding:13px 16px;border-radius:6px;border:1px solid rgba(180,110,110,0.375);background:rgba(180,110,110,0.108);color:var(--ink);font-size:13px;font-family:'Montserrat',sans-serif;">
-        <input type="email" id="cap-email" placeholder="Ton email" style="padding:13px 16px;border-radius:6px;border:1px solid rgba(180,110,110,0.375);background:rgba(180,110,110,0.108);color:var(--ink);font-size:13px;font-family:'Montserrat',sans-serif;">
+        <div id="cap-email-wrap">
+        <input type="email" id="cap-email" placeholder="Ton email" style="padding:13px 16px;border-radius:6px;border:1px solid rgba(180,110,110,0.375);background:rgba(180,110,110,0.108);color:var(--ink);font-size:13px;font-family:'Montserrat',sans-serif;width:100%;box-sizing:border-box;">
+        </div>
         <select id="cap-objectif" style="padding:13px 16px;border-radius:6px;border:1px solid rgba(180,110,110,0.375);background:rgba(180,110,110,0.108);color:var(--ink);font-size:13px;font-family:'Montserrat',sans-serif;">
           <option value="" style="color:#333;">Ton objectif principal (optionnel)</option>
           <option value="Perte de poids" style="color:#333;">Perdre du poids</option>
@@ -3011,10 +3013,12 @@ function handleGuideCapture() {
 }
 document.addEventListener('DOMContentLoaded', function() {
   try {
-    if (localStorage.getItem('guide_unlocked') === '1'
-        || localStorage.getItem('leadDone') === '1'
-        || localStorage.getItem('ornella_lead_email')) {
-      unlockGuide();
+    if (localStorage.getItem('guide_unlocked') === '1') { unlockGuide(); return; }
+    var knownEmail = localStorage.getItem('ornella_lead_email');
+    if (knownEmail) {
+      var wrap = document.getElementById('cap-email-wrap');
+      var emailInput = document.getElementById('cap-email');
+      if (wrap && emailInput) { wrap.style.display = 'none'; emailInput.value = knownEmail; }
     }
   } catch(e) {}
 });

@@ -2577,6 +2577,7 @@ async function submitLead(e) {
   document.getElementById('lead-form').style.display = 'none';
   document.getElementById('lead-success').style.display = 'block';
   localStorage.setItem('leadDone', '1');
+  localStorage.setItem('ornella_lead_email', email);
 }
 
 async function submitLeadInline(e, source) {
@@ -2599,6 +2600,7 @@ async function submitLeadInline(e, source) {
   var successEl = form.parentElement.querySelector('.li-success-inline');
   if (successEl) successEl.style.display = 'block';
   localStorage.setItem('leadDone', '1');
+  localStorage.setItem('ornella_lead_email', email);
 }
 
 async function submitGuideSection(e) {
