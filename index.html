@@ -523,6 +523,27 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
   background: linear-gradient(135deg, #F0E4D8, #E4D0BE);
   color: #1E1616;
 }
+.apercu-card-mini {
+  background: white; border-radius: 20px; padding: 26px 18px;
+  border: 1px solid rgba(201,185,154,0.25);
+  box-shadow: 0 4px 20px rgba(139,111,94,0.07);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  text-align: center; text-decoration: none; color: inherit;
+  transition: all 0.3s ease;
+}
+.apercu-card-mini:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(139,111,94,0.14); }
+.apercu-card-mini.featured {
+  background: linear-gradient(150deg, #2C1F1A 0%, #3D2B24 100%);
+  border-color: rgba(201,169,110,0.4);
+}
+.apercu-mini-icon { font-size: 1.8rem; line-height: 1; }
+.apercu-mini-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
+  font-weight: 600; color: var(--dark);
+}
+.apercu-card-mini.featured .apercu-mini-name { color: white; }
+.apercu-mini-price { font-size: 0.85rem; color: var(--gold); font-weight: 600; }
+.apercu-card-mini.featured .apercu-mini-price { color: #E4C89A; }
 
 /* ===== VALEUR ===== */
 #valeur { background: linear-gradient(150deg, #F5EDE4 0%, #EDD9C8 100%); text-align: center; }
@@ -928,6 +949,7 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
   #faq-home .faq-item.open .faq-a { padding: 4px 18px 18px; }
 
   /* Grilles inline non couverts — ciblage via classes ajoutées */
+  .mini-programs-grid { grid-template-columns: 1fr 1fr !important; }
   .grid-2col-mobile-stack {
     display: flex !important;
     flex-direction: column !important;
@@ -1880,33 +1902,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="avis-text">Je ne suis pas du tout sportive à la base et pourtant Ornella réussit à me motiver à chaque séance. Elle est bienveillante, drôle et toujours encourageante. Elle s'adapte au niveau de chacun, prend le temps d'expliquer, de corriger, et célèbre les petites victoires. On progresse dans la bonne humeur et sans jugement. Si j'aime (presque) le sport, c'est grâce à elle ! Je recommande à 1000% ! 🫶🏻</p>
       </div>
 
-      <div class="avis-card">
-        <div class="avis-header">
-          <div class="avis-avatar" style="background:linear-gradient(135deg,#9A8080,#C9957A);">A</div>
-          <div class="avis-meta">
-            <div class="avis-name">Alizée</div>
-            <div class="avis-date">Avis Google vérifié</div>
-          </div>
-          <svg class="avis-google" viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-        </div>
-        <div class="avis-stars">★★★★★</div>
-        <p class="avis-text">J'ai commencé le coaching avec Ornella après ma grossesse, à un moment où je ne me reconnaissais plus vraiment physiquement. En quelques semaines, j'ai retrouvé du tonus, une meilleure posture et surtout confiance en moi. Elle ne promet pas de miracle, elle travaille intelligemment, et les résultats sont là. Je recommande à 100% si vous cherchez quelqu'un de sérieux, motivant et qui comprend réellement les transformations du corps après une grossesse. 🙏</p>
-      </div>
-
-      <div class="avis-card">
-        <div class="avis-header">
-          <div class="avis-avatar" style="background:linear-gradient(135deg,#2C1F1A,#9A8080);">S</div>
-          <div class="avis-meta">
-            <div class="avis-name">Silvano</div>
-            <div class="avis-date">Avis Google vérifié</div>
-          </div>
-          <svg class="avis-google" viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-        </div>
-        <div class="avis-stars">★★★★★</div>
-        <p class="avis-text">Coach très professionnelle, à l'écoute et motivante. Les séances sont parfaitement adaptées à mon niveau et à mes objectifs, avec un vrai suivi personnalisé. On se sent accompagné du début à la fin, dans une ambiance dynamique et bienveillante. Grâce à son encadrement, j'ai gagné en motivation, en confiance et j'ai déjà constaté des progrès concrets. Merci pour ton sérieux et ton énergie communicative ! 💪</p>
-      </div>
-
     </div>
+
+    <a href="transformations.html" style="display:inline-block;margin:20px 0 4px;font-size:0.88rem;color:var(--accent);text-decoration:underline;text-underline-offset:3px;">Voir tous les avis →</a>
 
     <div class="avis-closing fade-in">
       <div class="avis-closing-text">
@@ -2067,54 +2065,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span style="display:block;text-align:center;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px;">Accès immédiat · Programmes digitaux</span>
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:600;color:#fff;text-align:center;line-height:1.15;margin-bottom:8px;">Commence <em style="font-style:italic;color:#E8A090;">dès aujourd'hui</em></h2>
     <p style="text-align:center;font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:36px;">Sans attendre. Sans RDV. Sur ton téléphone en 2 minutes.</p>
-    <div class="grid-2col-mobile-stack" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:700px;margin:0 auto;">
+    <div class="mini-programs-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:820px;margin:0 auto;">
 
-      <!-- SUMMER BODY — mis en avant été -->
-      <a href="summer-body-sales.html" style="text-decoration:none;display:block;background:linear-gradient(135deg,rgba(255,107,74,.18),rgba(255,144,96,.1));border:1.5px solid rgba(255,107,74,.5);border-radius:20px;padding:24px;transition:transform .2s,box-shadow .2s;grid-column:1/-1;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(255,107,74,.3)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#FF9060;margin-bottom:8px;">🌞 Nouveau · Édition été 2026</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#fff;margin-bottom:6px;line-height:1.2;">Summer Body Challenge</div>
-        <div style="font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:16px;line-height:1.5;">4 semaines · Full body · Sans matériel · Débutantes bienvenues</div>
-        <div style="display:flex;align-items:center;justify-content:space-between;">
-          <span style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#FF7050;">19€</span>
-          <span style="background:linear-gradient(135deg,#FF6B4A,#FF9060);color:#fff;font-size:.78rem;font-weight:700;padding:8px 16px;border-radius:50px;">Je veux mon Summer Body →</span>
-        </div>
+      <a href="summer-body-sales.html" style="text-decoration:none;display:block;background:linear-gradient(135deg,rgba(255,107,74,.18),rgba(255,144,96,.1));border:1.5px solid rgba(255,107,74,.5);border-radius:18px;padding:18px 14px;text-align:center;transition:transform .2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:1.6rem;margin-bottom:8px;">🌞</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:6px;">Summer Body</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:#FF7050;">19€</div>
       </a>
 
-      <!-- MORPHO SUMMER -->
-      <a href="morpho-summer-sales.html" style="text-decoration:none;display:block;background:linear-gradient(135deg,rgba(232,99,74,.18),rgba(27,58,45,.2));border:1.5px solid rgba(232,99,74,.5);border-radius:20px;padding:24px;transition:transform .2s,box-shadow .2s;grid-column:1/-1;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(232,99,74,.3)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#E8634A;margin-bottom:8px;">🔬 Nouveau · Programme personnalisé morphologie</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#fff;margin-bottom:6px;line-height:1.2;">Morpho Summer — Programme sur mesure</div>
-        <div style="font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:16px;line-height:1.5;">Quiz gratuit · Programme muscu + nutrition taillés pour TA morphologie · <strong style="color:rgba(255,255,255,.8)">2 versions : salle ET sans matériel</strong></div>
-        <div style="display:flex;align-items:center;justify-content:space-between;">
-          <span style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#E8634A;">12€</span>
-          <span style="background:linear-gradient(135deg,#E8634A,#1B3A2D);color:#fff;font-size:.78rem;font-weight:700;padding:8px 16px;border-radius:50px;">Je fais le quiz gratuit →</span>
-        </div>
+      <a href="morpho-summer-sales.html" style="text-decoration:none;display:block;background:linear-gradient(135deg,rgba(232,99,74,.18),rgba(27,58,45,.2));border:1.5px solid rgba(232,99,74,.5);border-radius:18px;padding:18px 14px;text-align:center;transition:transform .2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:1.6rem;margin-bottom:8px;">🔬</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:6px;">Morpho Summer</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:#E8634A;">12€</div>
       </a>
 
-      <!-- VP -->
-      <a href="ventre-plat.html" style="text-decoration:none;display:block;background:rgba(255,255,255,.06);border:1px solid rgba(201,99,88,.3);border-radius:20px;padding:24px;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(201,99,88,.25)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C9A96E;margin-bottom:8px;">✨ Programme digital</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:#fff;margin-bottom:6px;line-height:1.2;">Reset Ventre Plat</div>
-        <div style="font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:16px;line-height:1.5;">Anti-ballonnements · Exercices ciblés · Plan repas 7 jours</div>
-        <div style="display:flex;align-items:center;justify-content:space-between;">
-          <span style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#C96358;">12€</span>
-          <span style="background:linear-gradient(135deg,#C96358,#D4856A);color:#fff;font-size:.78rem;font-weight:700;padding:8px 16px;border-radius:50px;">Commencer →</span>
-        </div>
+      <a href="ventre-plat.html" style="text-decoration:none;display:block;background:rgba(255,255,255,.06);border:1px solid rgba(201,99,88,.3);border-radius:18px;padding:18px 14px;text-align:center;transition:transform .2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:1.6rem;margin-bottom:8px;">✨</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:6px;">Ventre Plat</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:#C96358;">12€</div>
       </a>
 
-      <!-- BS -->
-      <a href="booty-sculpt.html" style="text-decoration:none;display:block;background:rgba(255,255,255,.06);border:1px solid rgba(201,99,88,.2);border-radius:20px;padding:24px;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(201,99,88,.2)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C9A96E;margin-bottom:8px;">🍑 Programme fessiers</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:#fff;margin-bottom:6px;line-height:1.2;">Booty Sculpt</div>
-        <div style="font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:16px;line-height:1.5;">8 semaines · 12 séances guidées · Vidéos incluses</div>
-        <div style="display:flex;align-items:center;justify-content:space-between;">
-          <span style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#C96358;">19€</span>
-          <span style="background:rgba(201,99,88,.25);color:#E8A090;font-size:.78rem;font-weight:700;padding:8px 16px;border-radius:50px;border:1px solid rgba(201,99,88,.3);">Découvrir →</span>
-        </div>
+      <a href="booty-sculpt.html" style="text-decoration:none;display:block;background:rgba(255,255,255,.06);border:1px solid rgba(201,99,88,.2);border-radius:18px;padding:18px 14px;text-align:center;transition:transform .2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:1.6rem;margin-bottom:8px;">🍑</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:6px;">Booty Sculpt</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:#C96358;">19€</div>
       </a>
 
     </div>
-    <p style="text-align:center;font-size:.75rem;color:rgba(255,255,255,.3);margin-top:20px;">⚡ Accès immédiat après paiement · À vie · Sur tous tes appareils</p>
+    <div style="text-align:center;margin-top:24px;">
+      <a href="programmes.html" style="display:inline-block;background:linear-gradient(135deg,#C96358,#C9957A);color:#fff;text-decoration:none;font-size:.88rem;font-weight:700;padding:13px 28px;border-radius:50px;">Voir tous les programmes →</a>
+    </div>
   </div>
 </section>
 
@@ -2125,38 +2105,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2 class="section-title">L'accompagnement <em>fait pour toi</em></h2>
     <div class="apercu-grid fade-in">
 
-      <!-- DOMICILE — offre principale -->
-      <div class="apercu-card featured">
-        <div class="apercu-badge">Résultats optimaux</div>
-        <div class="apercu-type">Coaching Présentiel</div>
-        <div class="apercu-title">À Domicile</div>
-        <p class="apercu-desc">Je viens chez toi — séances 100% sur-mesure, encadrement total.</p>
-        <div class="apercu-price">Dès 50€ <span style="font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:300;color:rgba(255,255,255,0.45);">séance découverte</span></div>
-        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20suis%20int%C3%A9ress%C3%A9e%20par%20le%20coaching%20%C3%A0%20domicile%2C%20on%20peut%20en%20parler%20%3F" target="_blank" class="apercu-cta-btn">Je commence →</a>
-      </div>
+      <a href="offres.html" class="apercu-card-mini">
+        <span class="apercu-mini-icon">🏠</span>
+        <span class="apercu-mini-name">Domicile</span>
+        <span class="apercu-mini-price">Dès 50€/séance</span>
+      </a>
 
-      <!-- HYBRIDE — alternative -->
-      <div class="apercu-badge" style="background:#C96358;color:#fff;">⭐ La plus choisie</div>
-      <div class="apercu-card secondary">
-        <div class="apercu-type">Coaching Hybride</div>
-        <div class="apercu-title">Séances + Programme</div>
-        <p class="apercu-desc">Je viens chez toi en séance + programme sur-mesure avec vidéos pour t'entraîner jusqu'à 4x/semaine en autonomie.</p>
-        <div class="apercu-price" style="margin-bottom:4px;">Dès 99€ <span style="font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:300;color:var(--text-light);">/ mois</span></div>
-        <div style="font-size:0.82rem;color:var(--text-light);margin-bottom:16px;">169€/mois pour 2 séances</div>
-        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20suis%20int%C3%A9ress%C3%A9e%20par%20le%20coaching%20hybride%2C%20on%20peut%20en%20parler%20%3F" target="_blank" class="apercu-cta-btn">Je commence →</a>
-      </div>
+      <a href="offres.html" class="apercu-card-mini featured">
+        <span class="apercu-mini-icon">💫</span>
+        <span class="apercu-mini-name">Hybride</span>
+        <span class="apercu-mini-price">Dès 99€/mois</span>
+      </a>
 
-      <!-- DISTANCE — entrée de gamme -->
-      <div class="apercu-card secondary apercu-card-distance">
-        <div class="apercu-type">Coaching À Distance</div>
-        <div class="apercu-title">Depuis Chez Toi</div>
-        <p class="apercu-desc">Programme sur-mesure avec vidéos — à ton rythme, partout en France.</p>
-        <div style="font-size:0.82rem;color:var(--text-light);margin-bottom:4px;">Avec suivi : dès 89€/mois</div>
-        <div class="apercu-price">79€ <span style="font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:300;color:var(--text-light);">sans suivi · 8 semaines</span></div>
-        <p style="font-size:0.75rem;color:var(--text-light);margin:-8px 0 14px;font-style:italic;">Garantie 48h avant ouverture</p>
-        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20suis%20int%C3%A9ress%C3%A9e%20par%20le%20programme%208%20semaines%20%C3%A0%2079%E2%82%AC%2C%20on%20peut%20en%20parler%20%3F" target="_blank" class="apercu-cta-btn">Je commence →</a>
-      </div>
+      <a href="offres.html" class="apercu-card-mini">
+        <span class="apercu-mini-icon">💻</span>
+        <span class="apercu-mini-name">Distanciel</span>
+        <span class="apercu-mini-price">Dès 89€/mois</span>
+      </a>
 
+    </div>
+    <div style="text-align:center;margin-top:28px;">
+      <a href="offres.html" class="apercu-cta-btn" style="display:inline-flex;max-width:340px;margin:0 auto;">Voir toutes les offres en détail →</a>
     </div>
   </div>
 </section>
@@ -2187,76 +2156,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="faq-a">
           <p>Mes clientes voient les premières différences en 3 à 4 semaines — en centimètres, en énergie, en posture. Louise a perdu 9 cm en 4 mois. Émeline a vu sa taille affiner en 4 semaines. Les résultats dépendent de ton engagement — mais avec un programme fait pour toi, ils arrivent.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaqHome(this)">
-          Quel matériel faut-il avoir chez moi ?
-          <div class="faq-arrow">+</div>
-        </div>
-        <div class="faq-a">
-          <p>Pour le coaching à domicile, je viens avec tout le matériel nécessaire — haltères, élastiques, bandes. Tu n'as rien à acheter. Pour le coaching distanciel, on adapte le programme à ce que tu as : même juste des haltères ou des élastiques, on peut faire un travail sérieux.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaqHome(this)">
-          Tu te déplaces jusqu'où en Essonne et en IDF ?
-          <div class="faq-arrow">+</div>
-        </div>
-        <div class="faq-a">
-          <p>Je me déplace dans tout le département de l'Essonne (91) et dans les zones proches de Paris. Si tu n'es pas sûre que ta ville est couverte, envoie-moi un message — on voit ensemble. Et si je ne peux pas venir chez toi, le coaching distanciel donne exactement les mêmes résultats.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaqHome(this)">
-          C'est quoi la séance découverte à 50€ ?
-          <div class="faq-arrow">+</div>
-        </div>
-        <div class="faq-a">
-          <p>C'est une première séance à domicile (présentiel uniquement) à 50€. On fait connaissance, j'évalue ton niveau, tes objectifs, tes contraintes. Tu repars avec une première séance complète. <strong>Les 50€ sont déduits à partir d'un pack de 6 séances ou d'un engagement 3 mois minimum</strong> — sinon elle reste à 50€, sans obligation de continuer.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaqHome(this)">
-          Combien de séances par semaine pour voir des résultats ?
-          <div class="faq-arrow">+</div>
-        </div>
-        <div class="faq-a">
-          <p>2 séances par semaine suffisent pour obtenir des résultats visibles en 4 à 8 semaines — c'est ce que font la majorité de mes clientes. Avec la formule hybride, on peut aller jusqu'à 4 séances par semaine en combinant présentiel et distanciel. La clé, c'est la régularité, pas le volume.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaqHome(this)">
-          Quelle différence entre coaching hybride et distanciel ?
-          <div class="faq-arrow">+</div>
-        </div>
-        <div class="faq-a">
-          <p>Le <strong>coaching hybride</strong> : je viens chez toi 1 fois par semaine en séance + je te crée un programme sur-mesure avec vidéos pour 2 à 3 séances en autonomie. Le <strong>coaching distanciel</strong> : tout se fait à distance — programme complet avec vidéos, suivi WhatsApp régulier, bilans mensuels. Mêmes résultats, sans déplacement.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaqHome(this)">
-          Je suis totalement débutante — c'est fait pour moi ?
-          <div class="faq-arrow">+</div>
-        </div>
-        <div class="faq-a">
-          <p>Oui — et mes clientes qui ont le plus progressé partent souvent de zéro. Pas besoin de connaître les exercices, pas besoin d'un corps "prêt". Je construis ton programme selon ton niveau exact et j'explique chaque mouvement. Chez moi, tu n'es pas jugée — tu es accompagnée.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaqHome(this)">
-          Est-ce que tu travailles avec les femmes en post-partum ?
-          <div class="faq-arrow">+</div>
-        </div>
-        <div class="faq-a">
-          <p>C'est ma spécialité. J'ai moi-même vécu une grossesse difficile avec alitement prolongé — je sais ce que c'est de reconstruire son corps depuis zéro après un accouchement. Aucun exercice dangereux, respect du périnée et du diastasis, reprise progressive et sécurisée.</p>
         </div>
       </div>
 
