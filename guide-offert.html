@@ -3010,7 +3010,13 @@ function handleGuideCapture() {
   document.getElementById('gated-content').scrollIntoView({behavior:'smooth'});
 }
 document.addEventListener('DOMContentLoaded', function() {
-  try { if (localStorage.getItem('guide_unlocked') === '1') unlockGuide(); } catch(e) {}
+  try {
+    if (localStorage.getItem('guide_unlocked') === '1'
+        || localStorage.getItem('leadDone') === '1'
+        || localStorage.getItem('ornella_lead_email')) {
+      unlockGuide();
+    }
+  } catch(e) {}
 });
 (function(){
   var bar = document.getElementById('read-progress-bar');
