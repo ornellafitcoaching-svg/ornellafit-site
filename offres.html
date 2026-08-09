@@ -79,6 +79,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .anchor-pill:hover { background: #F7F3F0; color: #1E1616; border-color: rgba(201,169,110,0.5); }
 .anchor-pill.star { background: linear-gradient(135deg,#2C1F1A,#3D2B24); color: white; border-color: transparent; }
 .anchor-pill.star:hover { opacity: 0.9; }
+.anchor-pill-plain {
+  display: inline-flex; align-items: center; gap: 5px;
+  white-space: nowrap; flex-shrink: 0;
+  padding: 7px 14px; border-radius: 50px;
+  font-size: 0.78rem; font-weight: 600;
+  text-decoration: none; color: #C9A96E;
+  background: rgba(44,31,26,0.06); border: 1px solid rgba(201,169,110,0.4);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.anchor-pill-plain:hover { background: rgba(44,31,26,0.12); }
 
 /* ===== OFFRES SPÉCIFIQUE ===== */
 #offres-detail { background: #F7F3F0 !important; padding: 0 0 90px; }
@@ -672,6 +682,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="anchor-pill star" href="#hybride">💫 Hybride</a>
     <a class="anchor-pill" href="#distanciel">💻 Distanciel</a>
     <a class="anchor-pill" href="#forfaits">📦 Forfaits séances · Présentiel</a>
+    <a class="anchor-pill-plain" href="#vip">🤫 VIP</a>
   </div>
 </div>
 
@@ -770,18 +781,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- OFFRE VIP / DISCRÈTE -->
-<section style="background:linear-gradient(150deg,#2C1F1A,#3D2B24);padding:48px 24px;">
+<section id="vip" style="background:linear-gradient(150deg,#2C1F1A,#3D2B24);padding:48px 24px;scroll-margin-top:80px;">
   <div style="max-width:560px;margin:0 auto;text-align:center;">
     <div style="display:inline-block;background:rgba(201,169,110,0.18);border:1px solid rgba(201,169,110,0.4);color:#C9A96E;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;padding:6px 16px;border-radius:50px;margin-bottom:16px;">🤫 Accompagnement discret</div>
     <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:600;color:white;line-height:1.3;margin-bottom:10px;">Besoin d'un accompagnement <em style="color:#C9A96E;font-style:italic;">100% confidentiel</em> ?</h2>
     <p style="font-size:0.88rem;color:rgba(255,255,255,0.62);line-height:1.7;margin-bottom:8px;">Pour les profils qui ont besoin de flexibilité totale, de créneaux prioritaires et d'une entière discrétion — aucune communication publique, aucun témoignage. Un accompagnement pensé sur-mesure, dont les modalités se discutent uniquement en privé.</p>
-    <p style="font-size:0.78rem;color:#C9A96E;font-weight:600;line-height:1.6;margin-bottom:22px;">Pensé pour les personnalités publiques, athlètes, créatrices de contenu et tout profil exposé qui doit préserver sa vie privée.</p>
+    <p style="font-size:0.78rem;color:#C9A96E;font-weight:600;line-height:1.6;margin-bottom:8px;">Pensé pour les personnalités publiques, athlètes, créatrices de contenu et tout profil exposé qui doit préserver sa vie privée.</p>
+    <p style="font-size:0.78rem;color:rgba(255,255,255,0.5);line-height:1.6;margin-bottom:22px;">Déjà sollicitée par des profils publics et exposés, toujours dans la plus stricte discrétion.</p>
     <form id="vipForm" onsubmit="submitVipForm(event)" style="max-width:380px;margin:0 auto;display:flex;flex-direction:column;gap:10px;text-align:left;">
       <input type="text" id="vipPrenom" placeholder="Ton prénom" required style="width:100%;padding:13px 18px;border:1.5px solid rgba(201,169,110,0.3);border-radius:14px;font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;box-sizing:border-box;background:rgba(255,255,255,0.06);color:white;">
       <textarea id="vipMessage" placeholder="En quelques mots, ta situation et ce que tu recherches" required rows="3" style="width:100%;padding:13px 18px;border:1.5px solid rgba(201,169,110,0.3);border-radius:14px;font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;box-sizing:border-box;background:rgba(255,255,255,0.06);color:white;resize:vertical;"></textarea>
       <button type="submit" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#C9957A,#C9A96E);color:#2C1F1A;font-weight:700;font-size:0.92rem;padding:15px 30px;border-radius:50px;border:none;cursor:pointer;box-shadow:0 8px 28px rgba(201,169,110,0.3);">💬 Envoyer ma demande →</button>
     </form>
     <p style="font-size:0.72rem;color:rgba(255,255,255,0.35);margin-top:12px;">Sur devis · Échange direct uniquement</p>
+    <p style="font-size:0.72rem;color:rgba(255,255,255,0.35);margin-top:4px;">Accord de confidentialité (NDA) disponible sur simple demande</p>
   </div>
 </section>
 <script>
