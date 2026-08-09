@@ -760,7 +760,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="qo-item">
           <div class="qo-if">Tu veux séances + suivi sans tout déléguer</div>
           <div class="qo-offre">Je viens chez toi + programme sur-mesure jusqu'à 4x/semaine</div>
-          <div class="qo-result">→ Hybride · 169€/mois 💫</div>
+          <div class="qo-result">→ Hybride · dès 99€/mois (169€/mois pour 2 séances) 💫</div>
         </div>
         <div class="qo-item">
           <div class="qo-if">Tu habites loin ou tu voyages</div>
@@ -891,7 +891,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Quels sont les tarifs exacts ?
           <div class="faq-arrow">+</div>
         </div>
-        <div class="faq-a">Coaching présentiel : séance découverte 50€ (déduite à partir d'un pack 6 séances ou engagement 3 mois minimum), séance à l'unité 70€, Abonnement Flexible de 260€ à 660€/mois (soit 65€ à 55€/séance, sans jour fixe imposé), duo dès 200€/mois/pers, trio dès 150€/mois/pers. Forfaits séances : de 199€ (3 séances) à 1 320€ (24 séances), avec bonus inclus selon le palier (nutrition, séances offertes) et Duo/Trio disponible dès le forfait Essentiel. Coaching hybride : Essentielle 99€/mois (1 séance/mois) ou Performance 169€/mois (2 séances/mois), Accompagnement nutrition +40€/mois en option. Distanciel sans suivi : 79€ (8 semaines). Distanciel avec suivi : 119€/mois (1 mois), 99€/mois (3 mois), 89€/mois (6 mois). Bilan offert pour toutes les formules.</div>
+        <div class="faq-a">
+          Ça dépend de la formule : coaching à domicile dès 50€/séance, coaching hybride dès 99€/mois, coaching à distance dès 79€, et forfaits de séances à partir de 199€. Bilan offert pour toutes les formules. Regarde le détail complet de celle qui t'intéresse :
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+            <a href="#" onclick="document.querySelector('#offres-anchors a[href=\'#domicile\']').click();return false;" style="font-size:0.78rem;font-weight:600;color:#C96358;background:rgba(201,99,88,0.08);padding:6px 12px;border-radius:50px;text-decoration:none;">🏠 Tarifs Domicile →</a>
+            <a href="#" onclick="document.querySelector('#offres-anchors a[href=\'#hybride\']').click();return false;" style="font-size:0.78rem;font-weight:600;color:#C96358;background:rgba(201,99,88,0.08);padding:6px 12px;border-radius:50px;text-decoration:none;">💫 Tarifs Hybride →</a>
+            <a href="#" onclick="document.querySelector('#offres-anchors a[href=\'#distanciel\']').click();return false;" style="font-size:0.78rem;font-weight:600;color:#C96358;background:rgba(201,99,88,0.08);padding:6px 12px;border-radius:50px;text-decoration:none;">💻 Tarifs Distanciel →</a>
+            <a href="#" onclick="document.querySelector('#offres-anchors a[href=\'#forfaits\']').click();return false;" style="font-size:0.78rem;font-weight:600;color:#C96358;background:rgba(201,99,88,0.08);padding:6px 12px;border-radius:50px;text-decoration:none;">📦 Forfaits séances →</a>
+          </div>
+        </div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
@@ -1141,6 +1149,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       #hybride .hyb-value li{font-size:0.89rem;color:#1E1616;line-height:1.5;display:flex;gap:10px;align-items:flex-start;}
       #hybride .hyb-value-price{text-align:center;font-size:0.87rem;color:#4A3E3E;padding-top:14px;border-top:1px dashed rgba(201,185,154,0.4);}
       #hybride .hyb-value-price strong{color:#C96358;font-size:1rem;}
+      #hybride .hyb-tier-row{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;background:#FAF7F4;border:1px solid rgba(201,185,154,0.3);border-radius:14px;padding:16px 18px;margin-bottom:12px;position:relative;}
+      #hybride .hyb-tier-row.hyb-tier-featured{background:#FFF9F5;border:1.5px solid rgba(201,149,122,0.4);}
+      #hybride .hyb-tier-badge{position:absolute;top:-11px;left:18px;background:linear-gradient(135deg,#C9957A,#A87860);color:white;font-size:0.62rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 12px;border-radius:50px;white-space:nowrap;}
+      #hybride .hyb-tier-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#1E1616;}
+      #hybride .hyb-tier-desc{font-size:0.78rem;color:#7A6E6E;margin-top:2px;}
+      #hybride .hyb-tier-price{text-align:right;}
+      #hybride .hyb-tier-amount{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:#1E1616;line-height:1;}
+      #hybride .hyb-tier-amount span{font-size:0.72rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#7A6E6E;}
+      #hybride .hyb-tier-cta{display:inline-block;margin-top:6px;font-size:0.72rem;font-weight:700;color:#C96358;text-decoration:none;white-space:nowrap;}
+      #hybride .hyb-tier-cta:hover{text-decoration:underline;}
+      @media(max-width:480px){
+        #hybride .hyb-tier-row{flex-direction:column;align-items:flex-start;}
+        #hybride .hyb-tier-price{text-align:left;}
+      }
       @media(max-width:640px){
         #hybride .hyb-week{grid-template-columns:repeat(3,1fr);}
       }
@@ -1231,64 +1253,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="hyb-value-price" style="border-top:none;padding-top:0;">Ramené au quotidien : <strong>3,30€/jour</strong> (Essentielle) ou <strong>5,63€/jour</strong> (Performance) pour ne plus jamais t'entraîner seule sans savoir si tu fais bien.</div>
         </div>
 
-      <!-- 2 CARTES HYBRIDE CÔTE À CÔTE -->
+      <!-- CARTE HYBRIDE UNIQUE — 2 FORMULES -->
       <p class="hyb-section-sub" style="margin-bottom:14px;">Les deux formules incluent : bilan offert, programme 100% sur-mesure, suivi WhatsApp 5j/7 et ajustements réguliers. Seule la fréquence des séances change :</p>
-      <div style="max-width:700px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="hybride-cards">
+      <div class="offre-card" style="max-width:520px;margin:0 auto;">
+        <div class="offre-tag" style="background:rgba(201,169,110,0.12);color:#9A8080;">💫 Coaching Hybride</div>
+        <div class="offre-name" style="font-size:1.35rem;margin-bottom:14px;">Choisis ton rythme</div>
 
-        <!-- ESSENTIELLE -->
-        <div class="offre-card" style="border:1px solid rgba(201,185,154,0.3);">
-          <div class="offre-tag" style="background:rgba(201,169,110,0.12);color:#9A8080;">💫 Coaching Hybride</div>
-          <div class="offre-name" style="font-size:1.35rem;">Essentielle</div>
-          <p class="offre-desc" style="font-size:0.85rem;">Pour démarrer un vrai suivi mensuel. Je viens chez toi 1 fois/mois, tu t'entraînes en autonomie guidée le reste du temps.</p>
-          <ul class="offre-benefits" style="margin-bottom:20px;gap:8px;">
-            <li class="offre-benefit">1 séance de coaching personnalisée à domicile / mois</li>
-          </ul>
-          <div style="margin-bottom:16px;">
-            <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:#1E1616;line-height:1;">99€<span style="font-size:0.9rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#7A6E6E;"> / mois</span></div>
-            <div style="font-size:0.75rem;color:#9A8080;margin-top:5px;">≈ 23€ / semaine · sans engagement, reconductible chaque mois</div>
+        <div class="hyb-tier-row">
+          <div class="hyb-tier-info">
+            <div class="hyb-tier-name">Essentielle</div>
+            <div class="hyb-tier-desc">1 séance/mois à domicile + suivi WhatsApp 5j/7</div>
           </div>
-          <div style="background:#F0F7E6;border-radius:10px;padding:12px 16px;margin:12px 0;border-left:3px solid #6AAF3D">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-              <span style="font-size:13px;font-weight:700;color:#2D6A4F">🥗 Option Accompagnement Nutrition</span>
-              <span style="font-size:15px;font-weight:800;color:#2D6A4F">+40€/mois</span>
-            </div>
-            <p style="font-size:12px;color:#3D6B4F;margin:0;line-height:1.5">
-              Analyse alimentation · Métabolisme · Plan sur-mesure. <em style="color:#7A9A7A;">Conseils pratiques — je ne suis pas diététicienne.</em>
-            </p>
+          <div class="hyb-tier-price">
+            <div class="hyb-tier-amount">99€<span>/mois</span></div>
+            <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20voudrais%20d%C3%A9marrer%20mon%20coaching.%20On%20en%20parle%20%3F" class="hyb-tier-cta" target="_blank">Je démarre →</a>
           </div>
-          <div style="background:#F7F3F0;border-radius:10px;padding:12px 14px;margin:12px 0;font-size:0.82rem;color:#4A3E3E;line-height:1.6;">
-            📋 <strong>Bilan complet offert</strong> dès ton inscription (questionnaire + appel) pour préparer ta séance — puis je suis chez toi en personne : on revoit tout ensemble et je te remets ton programme sur-mesure.
-          </div>
-          <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20voudrais%20d%C3%A9marrer%20mon%20coaching.%20On%20en%20parle%20%3F" class="btn-offre dark" target="_blank" style="margin-top:auto;">Je démarre mon coaching hybride →</a>
         </div>
 
-        <!-- PERFORMANCE — FEATURED -->
-        <div class="offre-card featured" style="position:relative;">
-          <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#C9957A,#A87860);color:white;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 14px;border-radius:50px;white-space:nowrap;box-shadow:0 4px 14px rgba(201,169,110,0.4);">⭐ Offre la plus choisie</div>
-          <div class="offre-tag" style="background:rgba(201,149,122,0.18);color:#C9957A;">🔥 Coaching Hybride · Offre la plus choisie</div>
-          <div class="offre-name" style="font-size:1.35rem;">Performance</div>
-          <p class="offre-desc" style="font-size:0.85rem;">Deux rendez-vous par mois pour corriger plus vite ta technique et ajuster ton programme plus souvent. Progression plus rapide, motivation renforcée.</p>
-          <ul class="offre-benefits" style="margin-bottom:20px;gap:8px;">
-            <li class="offre-benefit">2 séances de coaching personnalisées à domicile / mois</li>
-          </ul>
-          <div style="margin-bottom:16px;">
-            <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:#1E1616;line-height:1;">169€<span style="font-size:0.9rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#7A6E6E;"> / mois</span></div>
-            <div style="font-size:0.75rem;color:#9A8080;margin-top:5px;">≈ 42€ / semaine · sans engagement, reconductible chaque mois</div>
+        <div class="hyb-tier-row hyb-tier-featured">
+          <span class="hyb-tier-badge">⭐ Formule la + choisie</span>
+          <div class="hyb-tier-info">
+            <div class="hyb-tier-name">Performance</div>
+            <div class="hyb-tier-desc">2 séances/mois à domicile + suivi WhatsApp 5j/7</div>
           </div>
-          <div style="background:#F0F7E6;border-radius:10px;padding:12px 16px;margin:12px 0;border-left:3px solid #6AAF3D">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-              <span style="font-size:13px;font-weight:700;color:#2D6A4F">🥗 Option Accompagnement Nutrition</span>
-              <span style="font-size:15px;font-weight:800;color:#2D6A4F">+40€/mois</span>
-            </div>
-            <p style="font-size:12px;color:#3D6B4F;margin:0;line-height:1.5">
-              Analyse alimentation · Métabolisme · Plan sur-mesure. <em style="color:#7A9A7A;">Conseils pratiques — je ne suis pas diététicienne.</em>
-            </p>
+          <div class="hyb-tier-price">
+            <div class="hyb-tier-amount">169€<span>/mois</span></div>
+            <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20voudrais%20d%C3%A9marrer%20mon%20coaching.%20On%20en%20parle%20%3F" class="hyb-tier-cta" target="_blank">Je verrouille ma place →</a>
           </div>
-          <div style="background:#F7F3F0;border-radius:10px;padding:12px 14px;margin:12px 0;font-size:0.82rem;color:#4A3E3E;line-height:1.6;">
-            📋 <strong>Bilan complet offert</strong> dès ton inscription (questionnaire + appel) pour préparer ta séance — puis je suis chez toi en personne : on revoit tout ensemble et je te remets ton programme sur-mesure.
-          </div>
-          <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20voudrais%20d%C3%A9marrer%20mon%20coaching.%20On%20en%20parle%20%3F" class="btn-offre dark" target="_blank" style="margin-top:auto;">Je veux le suivi le plus complet →</a>
         </div>
+
+        <p style="font-size:0.75rem;color:#9A8080;text-align:center;margin:4px 0 16px;">Sans engagement, reconductible chaque mois</p>
+
+        <div style="background:#F0F7E6;border-radius:10px;padding:12px 16px;margin:12px 0;border-left:3px solid #6AAF3D">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+            <span style="font-size:13px;font-weight:700;color:#2D6A4F">🥗 Option Accompagnement Nutrition</span>
+            <span style="font-size:15px;font-weight:800;color:#2D6A4F">+40€/mois</span>
+          </div>
+          <p style="font-size:12px;color:#3D6B4F;margin:0;line-height:1.5">
+            Analyse alimentation · Métabolisme · Plan sur-mesure. <em style="color:#7A9A7A;">Conseils pratiques — je ne suis pas diététicienne.</em>
+          </p>
+        </div>
+        <div style="background:#F7F3F0;border-radius:10px;padding:12px 14px;margin:12px 0;font-size:0.82rem;color:#4A3E3E;line-height:1.6;">
+          📋 <strong>Bilan complet offert</strong> dès ton inscription (questionnaire + appel) pour préparer ta séance — puis je suis chez toi en personne : on revoit tout ensemble et je te remets ton programme sur-mesure.
+        </div>
+        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20voudrais%20d%C3%A9marrer%20mon%20coaching.%20On%20en%20parle%20%3F" class="btn-offre dark" target="_blank" style="margin-top:auto;">Je verrouille ma place hybride — il ne reste que 2 créneaux 🔥</a>
+      </div>
 
       </div>
     </div>
