@@ -140,9 +140,22 @@ nav{background:rgba(254,251,248,.95);border-bottom:1px solid var(--border);paddi
 .mod-card h3{font-size:1.1rem;margin:6px 0 6px}
 .mod-card p{font-size:.82rem;color:var(--muted);line-height:1.5}
 
-.recoit-list{list-style:none;max-width:480px;margin:0 auto;display:flex;flex-direction:column;gap:11px}
+.recoit-list{list-style:none;max-width:560px;margin:0 auto 22px;display:flex;flex-direction:column;gap:11px}
 .recoit-list li{display:flex;gap:10px;font-size:.92rem;color:var(--text);align-items:flex-start}
 .recoit-list li::before{content:'✔';color:var(--sage);font-weight:800;flex-shrink:0}
+.recoit-fact{text-align:center;font-size:.82rem;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.6;border-top:1px solid var(--border);padding-top:16px}
+
+.week-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:720px;margin:0 auto}
+.week-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:20px 18px}
+.week-card .num{display:inline-block;background:var(--sage-light);color:var(--sage);font-weight:700;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:99px;margin-bottom:10px}
+.week-card h3{font-size:1.05rem;margin-bottom:6px}
+.week-card p{font-size:.85rem;color:var(--muted);line-height:1.5}
+
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:820px;margin:0 auto}
+.plan-card{background:#fff;border:2px solid var(--border);border-radius:16px;padding:20px 16px;text-align:center}
+.plan-card .l{font-weight:700;color:var(--accent);font-size:.85rem;letter-spacing:.03em}
+.plan-card h3{font-size:1rem;margin:6px 0 8px}
+.plan-card p{font-size:.83rem;color:var(--muted);line-height:1.5}
 
 .price-card{max-width:420px;margin:0 auto;background:#fff;border:2px solid var(--accent);border-radius:22px;padding:36px 30px;text-align:center;box-shadow:0 20px 50px rgba(44,31,26,.08)}
 .price-card .amount{font-family:'Cormorant Garamond',serif;font-size:3.4rem;font-weight:600;color:var(--accent);line-height:1}
@@ -195,6 +208,8 @@ footer a{color:var(--muted);text-decoration:underline}
   .nav-cta{font-size:.74rem;padding:9px 16px}
   .hero-cover{margin:20px 0 0}
   .coach-inner{grid-template-columns:1fr}
+  .week-grid{grid-template-columns:1fr}
+  .plan-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -214,7 +229,8 @@ footer a{color:var(--muted);text-decoration:underline}
   <div class="eyebrow">✨ Programme digital · 28 jours</div>
   <h1>FIT DANS TA VIE</h1>
   <p class="hero-sub">28 jours pour apprendre à faire du sport, mieux manger et t'organiser — <em>même quand tu manques de temps.</em></p>
-  <a href="https://buy.stripe.com/7sY5kD6bT2lBeYJbid8Vi0v" id="achat" class="hero-cta" onclick="fbq('track','InitiateCheckout',{value:29,currency:'EUR'})">Je commence maintenant — 29€</a>
+  <p style="font-size:.82rem;color:var(--muted);max-width:440px;margin:0 auto 22px">3 séances par semaine pendant 4 semaines (12 séances au total) — chacune disponible en 20, 30 ou 45 minutes selon ton temps du jour.</p>
+  <a href="https://buy.stripe.com/7sY5kD6bT2lBeYJbid8Vi0v" id="achat" class="hero-cta" onclick="fbq('track','InitiateCheckout',{value:29,currency:'EUR'})">Je commence FIT DANS TA VIE — 29€</a>
   <p class="hero-note">🔒 Paiement sécurisé · Accès immédiat · Utilisable sur téléphone</p>
   <p class="hero-note" style="margin-top:2px">💳 Paiement en 3 fois disponible via <strong>Klarna</strong> — soit 3 × 9,67€</p>
   <div class="hero-cover">
@@ -271,42 +287,53 @@ footer a{color:var(--muted);text-decoration:underline}
   </div>
 </section>
 
-<!-- CONTENU / MODULES -->
+<!-- VISUALISE TON PARCOURS -->
 <section class="sec">
   <div class="wrap">
-    <span class="sec-label text-center" style="text-align:center">Le contenu</span>
-    <h2 class="sec-title text-center">Ce que contient<br><em>le programme.</em></h2>
+    <span class="sec-label text-center" style="text-align:center">Ton parcours</span>
+    <h2 class="sec-title text-center">4 semaines,<br><em>une vraie progression.</em></h2>
     <div class="divider divider-center"></div>
-    <div class="mod-grid">
-      <div class="mod-card"><div class="n">Module 1</div><h3>Ton programme 28 jours</h3><p>4 semaines progressives : installer, trouver son rythme, s'adapter, devenir autonome.</p></div>
-      <div class="mod-card"><div class="n">Module 2</div><h3>Organisation sportive</h3><p>3 séances/semaine en 20, 30 ou 45 minutes, avec grille de progression.</p></div>
-      <div class="mod-card"><div class="n">Module 3</div><h3>Meal prep</h3><p>Comment préparer sans te prendre la tête, avec un exemple concret sur 4 jours.</p></div>
-      <div class="mod-card"><div class="n">Module 4</div><h3>Liste de courses</h3><p>Complète, par catégorie, + une version express en 15 minutes.</p></div>
-      <div class="mod-card"><div class="n">Module 5</div><h3>Repas de secours</h3><p>Des solutions concrètes pour les jours où tu n'as rien préparé.</p></div>
-      <div class="mod-card"><div class="n">Module 6</div><h3>Restaurant & vie sociale</h3><p>Comment gérer les sorties sans culpabiliser ni tout arrêter.</p></div>
-      <div class="mod-card"><div class="n">Module 7</div><h3>Semaine chargée</h3><p>Des scénarios réels (enfant malade, déplacement, fatigue) et quoi faire.</p></div>
-      <div class="mod-card"><div class="n">Module 8</div><h3>Plan A / B / C</h3><p>La méthode centrale pour ne jamais tomber dans le tout-ou-rien.</p></div>
-      <div class="mod-card"><div class="n">Module 9</div><h3>Tracker</h3><p>Un suivi quotidien simple, sans transformer ton programme en corvée.</p></div>
-      <div class="mod-card"><div class="n">Module 10</div><h3>Bilans</h3><p>Un bilan chaque semaine + un bilan final structuré à J28.</p></div>
-      <div class="mod-card"><div class="n">Module 11</div><h3>Après 28 jours</h3><p>Comment continuer, progresser et ne plus jamais repartir de zéro.</p></div>
+    <div class="week-grid">
+      <div class="week-card"><div class="num">Semaine 1</div><h3>Installer ta routine</h3><p>Poser les bases sans te mettre la pression du "parfait" dès le premier jour.</p></div>
+      <div class="week-card"><div class="num">Semaine 2</div><h3>Trouver ton rythme</h3><p>Tenir même quand la motivation du début redescend un peu — c'est normal.</p></div>
+      <div class="week-card"><div class="num">Semaine 3</div><h3>T'adapter</h3><p>Tester ton Plan B avant d'en avoir vraiment besoin, pour être prête le jour J.</p></div>
+      <div class="week-card"><div class="num">Semaine 4</div><h3>Devenir autonome</h3><p>Savoir ce qui fonctionne pour toi, et comment continuer après le programme.</p></div>
     </div>
   </div>
 </section>
 
-<!-- CE QUE TU RECEVRAS -->
+<!-- PLAN A/B/C -->
 <section class="sec sec-alt">
   <div class="wrap">
-    <span class="sec-label text-center" style="text-align:center">Concrètement</span>
-    <h2 class="sec-title text-center">Ce que tu<br><em>recevras.</em></h2>
+    <span class="sec-label text-center" style="text-align:center">La méthode centrale</span>
+    <h2 class="sec-title text-center">Parce que toutes les semaines<br><em>ne se ressemblent pas.</em></h2>
+    <div class="divider divider-center"></div>
+    <div class="plan-grid">
+      <div class="plan-card"><div class="l">PLAN A</div><h3>Semaine normale</h3><p>3 séances, organisation alimentaire normale.</p></div>
+      <div class="plan-card"><div class="l">PLAN B</div><h3>Semaine chargée</h3><p>2 séances courtes, repas de secours autorisés.</p></div>
+      <div class="plan-card"><div class="l">PLAN C</div><h3>Semaine chaotique</h3><p>Le minimum utile — et ce n'est pas un échec.</p></div>
+    </div>
+    <p style="text-align:center;font-size:.9rem;color:var(--dark);max-width:480px;margin:20px auto 0;font-weight:600">Le but n'est pas de suivre un programme parfait. Le but est de savoir quoi faire quand la vraie vie s'en mêle.</p>
+  </div>
+</section>
+
+<!-- APRÈS 28 JOURS TU SAURAS -->
+<section class="sec">
+  <div class="wrap">
+    <span class="sec-label text-center" style="text-align:center">Le vrai résultat</span>
+    <h2 class="sec-title text-center">Après 28 jours,<br><em>tu sauras.</em></h2>
     <div class="divider divider-center"></div>
     <ul class="recoit-list">
-      <li>12 séances d'entraînement complètes, en 3 formats (20 / 30 / 45 min)</li>
-      <li>4 semaines de progression déjà calculées — aucun calcul à faire toi-même</li>
-      <li>11 guides pratiques : organisation, nutrition, imprévus, mental</li>
-      <li>Outils interactifs : tracker quotidien, plans A/B/C, fiches de bilan</li>
-      <li>Accessible immédiatement sur ton téléphone, à vie</li>
-      <li>Zéro matériel obligatoire, zéro salle de sport nécessaire</li>
+      <li>Organiser tes séances autour de ton agenda, pas l'inverse</li>
+      <li>Faire une séance efficace même avec seulement 20 minutes devant toi</li>
+      <li>Préparer plusieurs repas en une seule session, sans y passer ton dimanche</li>
+      <li>Avoir toujours une solution de repas de secours, même quand rien n'est prévu</li>
+      <li>Gérer un restaurant, un week-end ou un anniversaire sans culpabiliser</li>
+      <li>Adapter ta semaine dès qu'un imprévu arrive, grâce à ta méthode Plan A/B/C</li>
+      <li>Reprendre après une pause sans jamais repartir de zéro</li>
+      <li>Construire une routine que tu peux réellement garder après les 28 jours</li>
     </ul>
+    <p class="recoit-fact">Concrètement : 12 séances (3 par semaine × 4 semaines) en 3 formats, guides pratiques, tracker quotidien et bilans — accessible immédiatement sur ton téléphone, à vie.</p>
   </div>
 </section>
 
@@ -319,35 +346,38 @@ footer a{color:var(--muted);text-decoration:underline}
     <div class="price-card">
       <div class="amount">29€ <span>paiement unique</span></div>
       <p style="font-size:.85rem;color:var(--muted);margin-top:10px">Accès immédiat · Sans abonnement · À vie</p>
-      <a href="https://buy.stripe.com/7sY5kD6bT2lBeYJbid8Vi0v" class="cta" onclick="fbq('track','InitiateCheckout',{value:29,currency:'EUR'})">Je commence FIT DANS TA VIE →</a>
+      <a href="https://buy.stripe.com/7sY5kD6bT2lBeYJbid8Vi0v" class="cta" onclick="fbq('track','InitiateCheckout',{value:29,currency:'EUR'})">Je commence FIT DANS TA VIE — 29€</a>
       <p class="note">🔒 Paiement sécurisé par Stripe</p>
       <p class="note" style="margin-top:2px">💳 Paiement en 3 fois disponible via <strong>Klarna</strong> — soit 3 × 9,67€</p>
     </div>
   </div>
 </section>
 
-<!-- POUR QUI -->
+<!-- CE QUE CE N'EST PAS / CE QUE C'EST -->
 <section class="sec sec-alt">
   <div class="wrap">
+    <span class="sec-label text-center" style="text-align:center">Pour être honnête</span>
+    <h2 class="sec-title text-center">Ce que ce n'est pas.<br><em>Ce que c'est vraiment.</em></h2>
+    <div class="divider divider-center"></div>
     <div class="pourqui-grid">
-      <div class="pourqui-card">
-        <h3>C'est pour toi si…</h3>
+      <div class="pourqui-card non">
+        <h3>FIT DANS TA VIE, ce n'est pas…</h3>
         <ul>
-          <li>Tu manques de temps</li>
-          <li>Tu veux reprendre le sport sans y laisser ta vie</li>
-          <li>Tu commences puis tu abandonnes</li>
-          <li>Tu veux mieux manger sans régime strict</li>
-          <li>Tu as besoin d'une vraie méthode d'organisation</li>
+          <li>Un régime</li>
+          <li>Un challenge extrême</li>
+          <li>Une méthode miracle</li>
+          <li>Une promesse de perdre X kilos</li>
+          <li>Une solution sans effort</li>
         </ul>
       </div>
-      <div class="pourqui-card non">
-        <h3>Ce n'est pas pour toi si…</h3>
+      <div class="pourqui-card">
+        <h3>Ce que c'est</h3>
         <ul>
-          <li>Tu cherches une transformation miracle</li>
-          <li>Tu veux une perte de poids garantie</li>
-          <li>Tu cherches un régime drastique</li>
-          <li>Tu veux une solution sans aucun effort</li>
-          <li>Tu as besoin d'un suivi médical personnalisé</li>
+          <li>Une méthode concrète pour être régulière</li>
+          <li>Un programme pensé pour les femmes qui manquent de temps</li>
+          <li>Un système qui s'adapte à ta vie, pas l'inverse</li>
+          <li>Utile même si tu commences puis abandonnes d'habitude</li>
+          <li>Compatible avec un travail, des enfants, une vraie vie</li>
         </ul>
       </div>
     </div>
@@ -372,6 +402,14 @@ footer a{color:var(--muted);text-decoration:underline}
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- RAPPEL MESSAGE CENTRAL + PREUVE -->
+<section class="sec" style="padding-bottom:36px">
+  <div class="wrap" style="max-width:520px;text-align:center">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--dark);line-height:1.4;margin-bottom:14px">Tu n'as pas besoin de plus de motivation.<br>Tu as besoin d'une méthode qui fonctionne dans ta vraie vie.</p>
+    <span style="display:inline-block;background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 16px;font-size:.78rem;font-weight:700;color:var(--text)">⭐ 5,0/5 · 24 avis Google</span>
   </div>
 </section>
 
@@ -446,7 +484,7 @@ footer a{color:var(--muted);text-decoration:underline}
 <div class="cta-dark">
   <h2>Tu n'as pas besoin d'une vie parfaite<br><em>pour progresser.</em></h2>
   <p>Tu as besoin d'une organisation qui fonctionne dans la tienne. C'est exactement ce que FIT DANS TA VIE t'apprend, en 28 jours.</p>
-  <a href="https://buy.stripe.com/7sY5kD6bT2lBeYJbid8Vi0v" class="btn-primary" onclick="fbq('track','InitiateCheckout',{value:29,currency:'EUR'})">Je commence maintenant — 29€</a>
+  <a href="https://buy.stripe.com/7sY5kD6bT2lBeYJbid8Vi0v" class="btn-primary" onclick="fbq('track','InitiateCheckout',{value:29,currency:'EUR'})">Je commence FIT DANS TA VIE — 29€</a>
   <p style="font-size:.76rem;color:rgba(255,255,255,.6);text-align:center;margin-top:10px;">💳 Paiement en 3 fois disponible via <strong style="color:#fff">Klarna</strong> — soit 3 × 9,67€</p>
   <div class="reassur">
     <span>✅ Accès immédiat</span>
