@@ -1177,7 +1177,8 @@ function submitVipForm(e){
       #hybride .hyb-tl-title{font-size:0.92rem;font-weight:700;color:#1E1616;margin-bottom:4px;}
       #hybride .hyb-tl-text{font-size:0.83rem;color:#4A3E3E;line-height:1.6;}
       #hybride .hyb-compare{margin-bottom:26px;overflow-x:auto;}
-      #hybride .hyb-compare table{width:100%;border-collapse:collapse;min-width:540px;}
+      #hybride .hyb-compare table{width:100%;border-collapse:collapse;}
+      @media(min-width:769px){ #hybride .hyb-compare table{min-width:540px;} }
       #hybride .hyb-compare th{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.03em;padding:12px 10px;text-align:center;color:#7A6E6E;font-weight:700;}
       #hybride .hyb-compare th.hyb-col-main{background:linear-gradient(135deg,#C96358,#C9957A);color:white;border-radius:12px 12px 0 0;}
       #hybride .hyb-compare td{font-size:0.8rem;padding:11px 10px;text-align:center;border-top:1px solid rgba(201,185,154,0.25);color:#4A3E3E;}
@@ -1376,34 +1377,6 @@ function submitVipForm(e){
         </div>
       </div>
 
-      <!-- DIAGNOSTIC DISTANCIEL -->
-      <div class="offre-card" style="max-width:700px;margin:0 auto 20px;">
-        <div style="background:linear-gradient(135deg,#2E4A34,#4A7252);border-radius:14px;padding:16px 18px;margin-bottom:16px;display:flex;align-items:center;gap:14px;">
-          <span style="font-size:1.6rem;flex-shrink:0;">🎯</span>
-          <div>
-            <div style="color:#fff;font-weight:700;font-size:.92rem;margin-bottom:3px;">Diagnostic Distanciel — 10€</div>
-            <div style="color:rgba(255,255,255,.75);font-size:.78rem;line-height:1.5;"><strong style="color:#A8D4B0;">Déductible si engagement 3 mois</strong> · À distance uniquement</div>
-          </div>
-        </div>
-        <ul class="offre-benefits" style="margin-bottom:16px;">
-          <li class="offre-benefit">Questionnaire complet <strong>habitudes de vie</strong> — sommeil, stress, activité, alimentation, contraintes d'emploi du temps</li>
-          <li class="offre-benefit">Calcul de ton <strong>métabolisme de base</strong></li>
-          <li class="offre-benefit"><strong>Bilan complet offert</strong> (formulaire détaillé), comme sur toutes mes autres offres</li>
-        </ul>
-        <div style="background:#F0F7E6;border-radius:10px;padding:12px 16px;margin-bottom:16px;border-left:3px solid #6AAF3D;">
-          <div style="font-size:13px;font-weight:700;color:#2D6A4F;">🥗 Mini-plan Nutrition OFFERT — inclus (valeur 40€)</div>
-        </div>
-        <div style="background:linear-gradient(135deg,rgba(201,169,110,0.12),rgba(201,169,110,0.06));border:1px solid rgba(201,169,110,0.35);border-radius:14px;padding:16px;margin-bottom:16px;text-align:center;">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;color:#1E1616;line-height:1;">10€</div>
-          <div style="font-size:0.76rem;color:#4A7252;font-weight:600;margin-top:6px;">✓ Déductible si engagement 3 mois</div>
-        </div>
-        <div style="background:#F7F3F0;border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:0.82rem;color:#4A3E3E;">
-          📋 <strong>Diagnostic écrit envoyé par WhatsApp sous 48h</strong>
-        </div>
-        <a href="https://buy.stripe.com/bJefZh1VD5xNaIt9a58Vi0p" class="btn-offre dark" target="_blank" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:10,currency:'EUR'})">Je réserve mon Diagnostic Distanciel — 10€ →</a>
-        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20r%C3%A9server%20mon%20Diagnostic%20Distanciel%20%C3%A0%2010%E2%82%AC.%20On%20en%20parle%20%3F" target="_blank" style="display:block;text-align:center;font-size:12px;color:#25D366;font-weight:600;text-decoration:none;margin-top:10px;padding:8px;border:1px solid #25D366;border-radius:8px;">💬 Une question ? M'écrire sur WhatsApp avant de payer</a>
-        <a href="diagnostic-distanciel.html" style="display:block;text-align:center;font-size:12px;color:#7A6E6E;font-weight:600;text-decoration:underline;margin-top:10px;">En savoir plus sur le déroulé du diagnostic →</a>
-      </div>
 
       <!-- Sans suivi -->
       <div class="offre-card" id="autonomie" style="max-width:700px;margin:0 auto 12px;">
@@ -1508,6 +1481,11 @@ function submitVipForm(e){
           <div class="compare-cell compare-no">—</div>
           <div class="compare-cell compare-yes">✓</div>
         </div>
+        <div class="compare-row">
+          <div class="compare-cell">Nutrition</div>
+          <div class="compare-cell" style="font-size:0.78rem;color:#7A6E6E;">—</div>
+          <div class="compare-cell" style="font-size:0.78rem;color:#7A6E6E;">🥗 En option (+40€/mois)</div>
+        </div>
         <div class="compare-row" style="background:rgba(192,128,128,0.05);">
           <div class="compare-cell" style="font-weight:600;color:#1E1616;">Tu es accompagnée</div>
           <div class="compare-cell" style="font-size:0.78rem;color:#7A6E6E;">Autonome</div>
@@ -1555,7 +1533,7 @@ function submitVipForm(e){
 
             <!-- Ce qui est inclus -->
             <ul class="tier-includes">
-              <li class="tier-item">✦ Bilan complet offert — habitudes de vie, objectifs, contraintes</li>
+              <li class="tier-item">✦ Bilan offert — habitudes de vie, objectifs, contraintes</li>
               <li class="tier-item">Programme <strong>100% sur-mesure</strong> adapté à <strong>ton lieu d'entraînement</strong> (domicile ou salle, avec ou sans matériel)</li>
               <li class="tier-item">Jusqu'à <strong>4 séances/semaine</strong> selon ta disponibilité</li>
               <li class="tier-item">Suivi personnalisé hebdomadaire WhatsApp</li>
@@ -1611,7 +1589,7 @@ function submitVipForm(e){
               <span style="font-size:0.78rem;color:#7A6E6E;">Analyse alimentation, métabolisme, plans nutritionnels sur-mesure adaptés à tes objectifs. <em>Conseils pratiques — je ne suis pas diététicienne.</em></span>
             </div>
             <div style="background:#F7F3F0;border-radius:10px;padding:12px 14px;margin:12px 0;font-size:0.82rem;color:#4A3E3E;line-height:1.6;">
-              📋 <strong>Bilan offert</strong> · livré sous <strong>7 jours ouvrés</strong>
+              📋 <strong>Bilan complet offert</strong> · livré sous <strong>7 jours ouvrés</strong>
             </div>
             <a href="https://pay.gocardless.com/BRT01KZ0NRVPKDS2BQZBDCA9CZ4NP" class="btn-offre" target="_blank" style="margin-top:auto;" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:99,currency:'EUR'})">Je commence ma transformation →</a>
             <p style="font-size:12px;color:#7A6E6E;text-align:center;margin:6px 0 0;">🔒 Paiement sécurisé par prélèvement SEPA — 3 mensualités de 99€</p>
@@ -1637,7 +1615,7 @@ function submitVipForm(e){
               <span style="font-size:0.78rem;color:#7A6E6E;">Analyse alimentation, métabolisme, plans nutritionnels sur-mesure adaptés à tes objectifs. <em>Conseils pratiques — je ne suis pas diététicienne.</em></span>
             </div>
             <div style="background:#F7F3F0;border-radius:10px;padding:12px 14px;margin:12px 0;font-size:0.82rem;color:#4A3E3E;line-height:1.6;">
-              📋 <strong>Bilan offert</strong> · livré sous <strong>7 jours ouvrés</strong>
+              📋 <strong>Bilan complet offert</strong> · livré sous <strong>7 jours ouvrés</strong>
             </div>
             <a href="https://pay.gocardless.com/BRT01KZ1XQ9FT5AGEXD5ZDR4KSXEZ" class="btn-offre dark" target="_blank" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:89,currency:'EUR'})">Je m'engage 6 mois →</a>
             <p style="font-size:12px;color:#7A6E6E;text-align:center;margin:6px 0 0;">🔒 Paiement sécurisé par prélèvement SEPA — 6 mensualités de 89€</p>
