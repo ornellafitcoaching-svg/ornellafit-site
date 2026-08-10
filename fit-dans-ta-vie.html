@@ -97,6 +97,13 @@ nav{background:rgba(254,251,248,.95);border-bottom:1px solid var(--border);paddi
 .hero-note{font-size:.78rem;color:var(--muted)}
 .hero-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:22px}
 .hero-strip span{background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:.74rem;font-weight:600;color:var(--text)}
+.hero-cover{margin:26px 0 0;padding:0 20px}
+.hero-cover img{width:100%;max-width:400px;margin:0 auto;display:block;border-radius:24px;box-shadow:0 24px 64px rgba(44,31,26,.18);height:auto}
+.sec-photo{width:100%;max-width:360px;margin:0 auto 30px;display:block;border-radius:18px;box-shadow:0 16px 44px rgba(44,31,26,.14);height:auto}
+.coach-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;max-width:820px;margin:0 auto}
+.coach-photo{border-radius:22px;overflow:hidden;box-shadow:0 16px 48px rgba(44,31,26,.14);width:100%;max-width:280px;height:auto;display:block;margin:0 auto}
+.coach-badge-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.coach-badge{background:#fff;border:1px solid var(--border);border-radius:999px;padding:7px 14px;font-size:.8rem;color:var(--text);font-weight:500}
 
 .sec{padding:56px 20px}
 .sec-alt{background:var(--cream2)}
@@ -170,9 +177,16 @@ footer a{color:var(--muted);text-decoration:underline}
 @media(max-width:768px){
   .pillars-grid{grid-template-columns:1fr 1fr}
   .learn-grid{grid-template-columns:1fr}
-  .mod-grid{grid-template-columns:1fr}
+  .mod-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .mod-card{padding:16px 14px}
+  .mod-card h3{font-size:1rem}
   .pourqui-grid{grid-template-columns:1fr}
   .price-card{padding:28px 20px}
+  .price-card .amount{font-size:2.6rem}
+  .nav-logo img{height:30px}
+  .nav-cta{font-size:.74rem;padding:9px 16px}
+  .hero-cover{margin:20px 0 0}
+  .coach-inner{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -194,6 +208,9 @@ footer a{color:var(--muted);text-decoration:underline}
   <p class="hero-sub">28 jours pour apprendre à faire du sport, mieux manger et t'organiser — <em>même quand tu manques de temps.</em></p>
   <a href="https://buy.stripe.com/7sY5kD6bT2lBeYJbid8Vi0v" id="achat" class="hero-cta" onclick="fbq('track','InitiateCheckout',{value:29,currency:'EUR'})">Je commence maintenant — 29€</a>
   <p class="hero-note">🔒 Paiement sécurisé · Accès immédiat · Utilisable sur téléphone</p>
+  <div class="hero-cover">
+    <img src="images/ornella-fente.webp" alt="Ornella Racano, coach sportive — programme Fit Dans Ta Vie" width="1023" height="1537">
+  </div>
   <div class="hero-strip">
     <span>🏆 Ancienne compétitrice fitness</span>
     <span>🎓 Coach diplômée d'État</span>
@@ -225,6 +242,7 @@ footer a{color:var(--muted);text-decoration:underline}
     <h2 class="sec-title text-center">Ce n'est pas juste<br><em>un programme de sport.</em></h2>
     <div class="divider divider-center"></div>
     <p style="text-align:center;font-size:.92rem;color:var(--muted);max-width:560px;margin:0 auto 30px;line-height:1.7">FIT DANS TA VIE ne t'apprend pas seulement quoi faire. Il t'apprend comment réussir à le faire — dans ta vie, pas dans une vie parfaite qui n'existe pas.</p>
+    <img src="images/meal-prep.jpg" class="sec-photo" alt="Organisation des repas et meal prep" width="1024" height="1024" loading="lazy">
     <div class="pillars-grid" style="margin-bottom:30px">
       <div class="pillar"><div class="ic">🏋️</div><div class="t">Bouger</div></div>
       <div class="pillar"><div class="ic">🥗</div><div class="t">Manger</div></div>
@@ -273,18 +291,12 @@ footer a{color:var(--muted);text-decoration:underline}
     <h2 class="sec-title text-center">Ce que tu<br><em>recevras.</em></h2>
     <div class="divider divider-center"></div>
     <ul class="recoit-list">
-      <li>Programme sportif 28 jours, 12 séances</li>
-      <li>Versions 20 / 30 / 45 minutes pour chaque séance</li>
-      <li>Guide d'organisation hebdomadaire</li>
-      <li>Guide meal prep complet + exemple sur 4 jours</li>
-      <li>Liste de courses détaillée + version express</li>
-      <li>Guide repas de secours</li>
-      <li>Guide restaurant & vie sociale</li>
-      <li>Méthode Plan A / B / C pour les semaines difficiles</li>
-      <li>Tracker quotidien intégré</li>
-      <li>Fiches de bilan hebdomadaire + bilan final</li>
-      <li>Guide de continuité après les 28 jours</li>
-      <li>Accès immédiat, à vie, utilisable sur téléphone</li>
+      <li>12 séances d'entraînement complètes, en 3 formats (20 / 30 / 45 min)</li>
+      <li>4 semaines de progression déjà calculées — aucun calcul à faire toi-même</li>
+      <li>11 guides pratiques : organisation, nutrition, imprévus, mental</li>
+      <li>Outils interactifs : tracker quotidien, plans A/B/C, fiches de bilan</li>
+      <li>Accessible immédiatement sur ton téléphone, à vie</li>
+      <li>Zéro matériel obligatoire, zéro salle de sport nécessaire</li>
     </ul>
   </div>
 </section>
@@ -335,11 +347,21 @@ footer a{color:var(--muted);text-decoration:underline}
 
 <!-- POURQUOI ORNELLA -->
 <section class="sec">
-  <div class="wrap" style="max-width:640px;text-align:center">
-    <span class="sec-label" style="text-align:center;display:block">Qui es-tu, Ornella ?</span>
-    <h2 class="sec-title">Coach sportive diplômée d'État,<br><em>ancienne compétitrice.</em></h2>
-    <div class="divider divider-center"></div>
-    <p style="font-size:.92rem;color:var(--muted);line-height:1.75">J'ai construit FIT DANS TA VIE après des années à accompagner des femmes qui n'avaient pas besoin qu'on leur dise quoi faire — elles le savaient déjà. Ce qui leur manquait, c'était une organisation qui tienne face au travail, aux enfants et aux imprévus. Ce programme rassemble ce que je répète le plus en coaching : entraînement, organisation, régularité, adaptation.</p>
+  <div class="wrap">
+    <div class="coach-inner">
+      <img src="images/ornella-profil-studio.webp" alt="Ornella Racano — coach sportive diplômée d'État" class="coach-photo" width="1023" height="1537" loading="lazy">
+      <div style="text-align:left">
+        <span class="sec-label">Qui es-tu, Ornella ?</span>
+        <h2 class="sec-title" style="text-align:left">Coach sportive diplômée d'État,<br><em>ancienne compétitrice.</em></h2>
+        <div class="divider"></div>
+        <p style="font-size:.92rem;color:var(--muted);line-height:1.75">J'ai construit FIT DANS TA VIE après des années à accompagner des femmes qui n'avaient pas besoin qu'on leur dise quoi faire — elles le savaient déjà. Ce qui leur manquait, c'était une organisation qui tienne face au travail, aux enfants et aux imprévus. Ce programme rassemble ce que je répète le plus en coaching : entraînement, organisation, régularité, adaptation.</p>
+        <div class="coach-badge-list">
+          <span class="coach-badge">🏆 Ancienne compétitrice fitness</span>
+          <span class="coach-badge">🎓 Coach diplômée d'État</span>
+          <span class="coach-badge">⭐ 5,0/5 · 24 avis Google</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

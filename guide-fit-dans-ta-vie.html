@@ -54,6 +54,16 @@ em{font-style:italic;color:var(--accent);font-weight:400}
 .pillnav-inner::-webkit-scrollbar{display:none}
 .pillnav-inner::after{content:'';min-width:8px;flex-shrink:0}
 .pill{flex-shrink:0;white-space:nowrap;background:var(--cream2);border:1px solid var(--border);color:var(--text);font-size:.75rem;font-weight:600;padding:7px 14px;border-radius:99px}
+.pill-cat{flex-basis:100%;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:8px 0 2px;display:none}
+#pillnav-mobile-bar{display:none;align-items:center;justify-content:space-between;padding:10px 14px;max-width:720px;margin:0 auto}
+#pillnav-mobile-bar a{font-size:.75rem;font-weight:700;color:var(--dark);background:var(--cream2);border-radius:99px;padding:7px 14px}
+#pillnav-mobile-bar button{background:none;border:none;font-size:.78rem;font-weight:700;color:var(--accent);padding:7px 0;cursor:pointer;font-family:'DM Sans',sans-serif}
+@media(max-width:640px){
+  .pillnav-inner{display:none}
+  .pillnav-inner.open{display:flex;flex-wrap:wrap;flex-direction:row;overflow-x:visible;max-height:60vh;overflow-y:auto}
+  .pill-cat{display:block}
+  #pillnav-mobile-bar{display:flex}
+}
 
 /* BLOCKS */
 .block{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);margin:16px 0;overflow:hidden;scroll-margin-top:130px}
@@ -117,6 +127,10 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
 @media(max-width:600px){
   .block-h h2{font-size:1.1rem}
 }
+@media(max-width:768px){
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+.guide-photo{display:block;width:100%;max-width:320px;margin:14px auto;border-radius:var(--r);box-shadow:0 10px 30px rgba(44,31,26,.12)}
 </style>
 </head>
 <body>
@@ -135,7 +149,12 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
 </div>
 
 <div id="pillnav">
+  <div id="pillnav-mobile-bar">
+    <a href="#intro">↑ Début</a>
+    <button onclick="var w=document.querySelector('.pillnav-inner');var open=w.classList.toggle('open');this.querySelector('.arr').textContent=open?'▲':'▼';">📋 Sommaire <span class="arr">▼</span></button>
+  </div>
   <div class="pillnav-inner">
+    <span class="pill-cat">Programme</span>
     <a class="pill" href="#intro">Intro</a>
     <a class="pill" href="#avant">Avant de commencer</a>
     <a class="pill" href="#sport">Programme sportif</a>
@@ -143,10 +162,12 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
     <a class="pill" href="#semaine2">Semaine 2</a>
     <a class="pill" href="#semaine3">Semaine 3</a>
     <a class="pill" href="#semaine4">Semaine 4</a>
+    <span class="pill-cat">Nutrition</span>
     <a class="pill" href="#mealprep">Meal Prep</a>
     <a class="pill" href="#courses">Liste de courses</a>
     <a class="pill" href="#secours">Repas de secours</a>
     <a class="pill" href="#assiette">Organiser ses repas</a>
+    <span class="pill-cat">Vie réelle & mental</span>
     <a class="pill" href="#social">Vie sociale</a>
     <a class="pill" href="#temps">Gestion du temps</a>
     <a class="pill" href="#planabc">Plan A/B/C</a>
@@ -154,6 +175,7 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
     <a class="pill" href="#reprise">Reprise</a>
     <a class="pill" href="#vacances">Vacances</a>
     <a class="pill" href="#chaotique">Semaine chaotique</a>
+    <span class="pill-cat">Bilan</span>
     <a class="pill" href="#bilan">Bilan final</a>
     <a class="pill" href="#apres">Après 28 jours</a>
   </div>
@@ -169,6 +191,7 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
   </div>
   <div class="block-b"><div class="block-b-in">
     <p>Si tu es ici, tu as probablement déjà essayé des programmes de sport, des débuts d'alimentation équilibrée, une bonne résolution qui a tenu deux semaines. Le problème n'est probablement pas que tu ne sais pas quoi faire. C'est que ta vie — ton travail, tes enfants, ta fatigue, tes imprévus — n'a jamais été prise en compte dans le plan qu'on t'a donné.</p>
+    <img src="images/ornella-gym-cover.jpg" class="guide-photo" alt="Ornella Racano, coach sportive" width="1152" height="2048">
     <p>Ce n'est pas toujours un problème de motivation. Ça peut être :</p>
     <ul>
       <li>Un manque de temps réel</li>
@@ -225,10 +248,11 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
   <div class="block-b"><div class="block-b-in">
     <p>3 séances par semaine, réparties sur 4 semaines. Chaque séance existe en <strong>3 formats</strong> — tu choisis selon ton temps du jour, pas selon un idéal.</p>
     <div class="callout"><strong>Règle n°1 :</strong> si tu n'as que 20 minutes, tu ne supprimes pas ta séance. Tu fais la version 20 minutes. Une séance courte faite vaut mieux qu'une séance parfaite jamais réalisée.</div>
+    <img src="images/ornella-fente.webp" class="guide-photo" alt="Exécution d'un exercice du programme" width="1023" height="1537" loading="lazy">
 
     <h3>Séance A — Bas du corps & fessiers</h3>
     <p>Échauffement (5 min) : montées de genoux, cercles de hanches, 10 squats à vide, 10 fentes marchées.</p>
-    <table class="gt">
+    <div style="overflow-x:auto;margin:12px 0"><table class="gt">
       <tr><th>Exercice</th><th>Séries × Reps</th><th>Repos</th></tr>
       <tr><td>Squats</td><td>voir grille</td><td>45-60s</td></tr>
       <tr><td>Fentes avant alternées</td><td>voir grille</td><td>45-60s</td></tr>
@@ -236,11 +260,11 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
       <tr><td>Pont fessier unilatéral</td><td>voir grille / jambe</td><td>30-45s</td></tr>
       <tr><td>Squat sumo</td><td>voir grille</td><td>45s</td></tr>
       <tr><td>Gainage latéral <em>(bonus 45 min)</em></td><td>3 × 20-30s / côté</td><td>30s</td></tr>
-    </table>
+    </table></div>
 
     <h3>Séance B — Haut du corps & gainage</h3>
     <p>Échauffement (5 min) : rotations d'épaules, cercles de bras, 5 pompes sur genoux.</p>
-    <table class="gt">
+    <div style="overflow-x:auto;margin:12px 0"><table class="gt">
       <tr><th>Exercice</th><th>Séries × Reps</th><th>Repos</th></tr>
       <tr><td>Pompes (genoux ou classiques)</td><td>voir grille</td><td>45-60s</td></tr>
       <tr><td>Rowing (élastique/bouteilles)</td><td>voir grille</td><td>45-60s</td></tr>
@@ -248,11 +272,11 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
       <tr><td>Gainage ventral (planche)</td><td>voir grille</td><td>30-45s</td></tr>
       <tr><td>Superman (dos)</td><td>voir grille</td><td>30s</td></tr>
       <tr><td>Mountain climbers <em>(bonus 45 min)</em></td><td>3 × 20s</td><td>30s</td></tr>
-    </table>
+    </table></div>
 
     <h3>Séance C — Full body & cardio léger</h3>
     <p>Échauffement (5 min) : jumping jacks légers, talons-fesses, rotations du tronc.</p>
-    <table class="gt">
+    <div style="overflow-x:auto;margin:12px 0"><table class="gt">
       <tr><th>Exercice</th><th>Séries × Reps</th><th>Repos</th></tr>
       <tr><td>Squat + poussée bras</td><td>voir grille</td><td>45s</td></tr>
       <tr><td>Fentes arrière + rotation</td><td>voir grille</td><td>45s</td></tr>
@@ -260,25 +284,27 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
       <tr><td>Jumping jacks (cardio léger)</td><td>voir grille</td><td>30s</td></tr>
       <tr><td>Mountain climbers lents <em>(bonus 45 min)</em></td><td>3 × 20s</td><td>30s</td></tr>
       <tr><td>Étirements complets</td><td>5 min</td><td>—</td></tr>
-    </table>
+    </table></div>
+
+    <div class="callout sage">Les séries et répétitions exactes de cette semaine s'affichent automatiquement dans chaque bloc « Semaine 1 à 4 » plus bas — pas besoin de revenir ici pendant tes séances.</div>
 
     <h3>Grille de progression sur 4 semaines</h3>
-    <p>Applique cette grille aux 3 séances ci-dessus, chaque semaine.</p>
-    <table class="gt">
-      <tr><th>Semaine</th><th>Séries × Reps</th><th>Repos</th><th>Note</th></tr>
-      <tr><td>1 — Installer</td><td>2 × 12</td><td>45-60s</td><td>Focus technique, pas de vitesse</td></tr>
-      <tr><td>2 — Rythme</td><td>3 × 12</td><td>45s</td><td>Même technique, un tour de plus</td></tr>
-      <tr><td>3 — S'adapter</td><td>3 × 15</td><td>30-45s</td><td>Tempo contrôlé (3s descente)</td></tr>
-      <tr><td>4 — Autonomie</td><td>3-4 × 15-20</td><td>30s</td><td>Ajoute le finisher bonus si tu es à l'aise</td></tr>
-    </table>
+    <p>Cette progression est déjà intégrée directement dans les tableaux de chaque semaine (Semaine 1 à 4 ci-dessous) — tu n'as rien à calculer. Ce tableau t'explique juste la logique globale.</p>
+    <div style="overflow-x:auto;margin:12px 0"><table class="gt">
+      <tr><th>Semaine</th><th>Séries × Reps</th><th>Note</th></tr>
+      <tr><td>1 — Installer</td><td>2 × 12</td><td>Focus technique, pas de vitesse</td></tr>
+      <tr><td>2 — Rythme</td><td>3 × 12</td><td>Même technique, un tour de plus</td></tr>
+      <tr><td>3 — S'adapter</td><td>3 × 15</td><td>Tempo contrôlé (3s descente)</td></tr>
+      <tr><td>4 — Autonomie</td><td>3-4 × 15-20</td><td>Ajoute le finisher bonus si tu es à l'aise</td></tr>
+    </table></div>
 
     <h3>Formats 20 / 30 / 45 minutes</h3>
-    <table class="gt">
+    <div style="overflow-x:auto;margin:12px 0"><table class="gt">
       <tr><th>Format</th><th>Contenu</th></tr>
       <tr><td><strong>20 min</strong></td><td>Échauffement 3 min + 4 premiers exercices × 2 séries</td></tr>
       <tr><td><strong>30 min</strong></td><td>Échauffement 5 min + les 5 exercices principaux × séries de la grille + 2 min retour au calme</td></tr>
       <tr><td><strong>45 min</strong></td><td>Version 30 min + exercice bonus + 5 min d'étirements complets</td></tr>
-    </table>
+    </table></div>
 
     <h3>Si j'ai raté une séance</h3>
     <ul>
@@ -301,27 +327,28 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
   </div>
   <div class="block-b"><div class="block-b-in">
     <p><strong>Pourquoi préparer à l'avance :</strong> ce n'est pas pour manger la même chose 7 jours de suite. C'est pour ne jamais te retrouver à 20h, fatiguée, sans solution — le moment exact où le tout-ou-rien prend le dessus.</p>
+    <img src="images/meal-prep.jpg" class="guide-photo" alt="Organisation du meal prep" width="1024" height="1024" loading="lazy">
     <p><strong>Combien de temps y consacrer :</strong> 45 minutes à 1h, une fois par semaine. Pas plus — sinon tu abandonnes après 2 semaines.</p>
     <h3>Quoi préparer</h3>
     <p>Choisis <strong>2 protéines, 2 féculents, 3 légumes et 1 à 2 sauces</strong>. Cuis-les en une seule session, puis combine-les différemment chaque jour.</p>
     <div class="callout">Ne cuisine pas 14 plats différents. Prépare des <strong>bases</strong>, assemble-les autrement chaque jour — c'est ça, varier sans s'épuiser.</div>
     <h3>Exemple sur 4 jours</h3>
-    <table class="gt">
+    <div style="overflow-x:auto;margin:12px 0"><table class="gt">
       <tr><th>Jour</th><th>Organisation</th></tr>
       <tr><td>Dimanche</td><td>Préparation des bases : 2 protéines (ex. poulet, œufs durs), 2 féculents (riz, patate douce), 3 légumes (brocolis, poivrons, courgettes), 1 sauce maison</td></tr>
       <tr><td>Lundi</td><td>Repas A : poulet + riz + brocolis + sauce</td></tr>
       <tr><td>Mardi</td><td>Repas B : œufs durs + patate douce + poivrons</td></tr>
       <tr><td>Mercredi</td><td>Combinaison différente : poulet + patate douce + courgettes + sauce</td></tr>
       <tr><td>Jeudi</td><td>Repas rapide avec les restes, assemblés en 5 minutes</td></tr>
-    </table>
+    </table></div>
     <h3>Meal Prep Express — 45 minutes</h3>
-    <table class="gt">
+    <div style="overflow-x:auto;margin:12px 0"><table class="gt">
       <tr><th>Temps</th><th>Action</th></tr>
       <tr><td>0-10 min</td><td>Lancer la cuisson des féculents (riz, patate douce au four)</td></tr>
       <tr><td>10-25 min</td><td>Cuisson des protéines (four ou poêle)</td></tr>
       <tr><td>25-35 min</td><td>Légumes vapeur ou poêlés</td></tr>
       <tr><td>35-45 min</td><td>Répartition dans les contenants + préparation des sauces/assaisonnements</td></tr>
-    </table>
+    </table></div>
   </div></div>
 </section>
 
@@ -332,7 +359,7 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
     <div class="chev">+</div>
   </div>
   <div class="block-b"><div class="block-b-in">
-    <table class="gt">
+    <div style="overflow-x:auto;margin:12px 0"><table class="gt">
       <tr><th>Catégorie</th><th>Exemples</th></tr>
       <tr><td>Protéines</td><td>Poulet, œufs, thon, yaourt grec, tofu, jambon blanc, poisson blanc</td></tr>
       <tr><td>Glucides / féculents</td><td>Riz, pâtes complètes, patate douce, flocons d'avoine, pain complet</td></tr>
@@ -343,7 +370,7 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
       <tr><td>Petits-déjeuners</td><td>Flocons d'avoine, œufs, pain complet, fruits</td></tr>
       <tr><td>Collations</td><td>Oléagineux, fruits, yaourt, barres protéinées simples</td></tr>
       <tr><td>Aliments de secours</td><td>Conserves (thon, haricots), riz précuit, soupes, légumes surgelés</td></tr>
-    </table>
+    </table></div>
     <h3>Liste express — 10-15 minutes</h3>
     <p>Poulet ou œufs · riz précuit · légumes surgelés · yaourt grec · fruits · flocons d'avoine · huile d'olive · pain complet · conserve de thon · amandes.</p>
   </div></div>
@@ -357,7 +384,7 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
   </div>
   <div class="block-b"><div class="block-b-in">
     <div class="callout sage">Tu n'as pas besoin de manger parfaitement. Tu as besoin d'avoir des solutions.</div>
-    <table class="gt">
+    <div style="overflow-x:auto;margin:12px 0"><table class="gt">
       <tr><th>Situation</th><th>Idée concrète</th></tr>
       <tr><td>5 minutes</td><td>Œufs brouillés + pain complet + fruit, ou yaourt grec + flocons d'avoine + fruits</td></tr>
       <tr><td>10 minutes</td><td>Poêlée thon/riz précuit/légumes surgelés</td></tr>
@@ -365,7 +392,7 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
       <tr><td>Au travail</td><td>Salade composée du commerce + source de protéine ajoutée</td></tr>
       <tr><td>Supermarché</td><td>Poulet rôti + salade en sachet + riz précuit</td></tr>
       <tr><td>Fast-food rapide</td><td>Choisis le moins pire : kebab sans sauce + salade, sushis, poke bowl</td></tr>
-    </table>
+    </table></div>
   </div></div>
 </section>
 
@@ -389,7 +416,7 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
   </div>
   <div class="block-b"><div class="block-b-in">
     <div class="callout">Un repas ne détruit pas une progression. Le repas suivant compte — pas « lundi ».</div>
-    <table class="gt">
+    <div style="overflow-x:auto;margin:12px 0"><table class="gt">
       <tr><th>Situation</th><th>Comment gérer</th></tr>
       <tr><td>Restaurant</td><td>Choisis d'abord ta protéine, ajoute des légumes si possible, mange à ton rythme</td></tr>
       <tr><td>Fast-food occasionnel</td><td>Un choix, pas une habitude — profite-en sans culpabiliser après</td></tr>
@@ -397,7 +424,7 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
       <tr><td>Anniversaire / repas de famille</td><td>C'est un moment social, pas un test de discipline</td></tr>
       <tr><td>Brunch / week-end</td><td>Un repas plus généreux ne remet rien en cause sur une semaine</td></tr>
       <tr><td>Vacances</td><td>Vois le guide dédié plus bas</td></tr>
-    </table>
+    </table></div>
     <h3>Ce qu'on ne fait jamais ici</h3>
     <ul>
       <li>Pas de compensation le lendemain</li>
@@ -522,7 +549,7 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
     <div class="chev">+</div>
   </div>
   <div class="block-b"><div class="block-b-in">
-    <table class="gt">
+    <div style="overflow-x:auto;margin:12px 0"><table class="gt">
       <tr><th>Situation</th><th>Que faire</th></tr>
       <tr><td>Je travaille énormément</td><td>Passe en Plan B : 2 séances de 20 min suffisent</td></tr>
       <tr><td>Mon enfant est malade</td><td>Passe en Plan C : marche ou rien, reprends la semaine suivante</td></tr>
@@ -530,7 +557,7 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
       <tr><td>Je dors mal</td><td>Réduis l'intensité, privilégie marche et mobilité cette semaine-là</td></tr>
       <tr><td>Je n'ai pas le temps de cuisiner</td><td>Repas de secours + liste express, aucune honte à ça</td></tr>
       <tr><td>Je n'ai pas accès à une salle</td><td>Toutes les séances du programme se font sans matériel</td></tr>
-    </table>
+    </table></div>
   </div></div>
 </section>
 
@@ -599,6 +626,11 @@ footer{text-align:center;padding:32px 20px;font-size:.78rem;color:var(--muted)}
 /* ===== Accordion ===== */
 function toggleAcc(block){ block.classList.toggle('open'); }
 
+/* ===== Fermeture auto du sommaire mobile au clic sur un lien ===== */
+document.querySelectorAll('.pillnav-inner a').forEach(function(a){
+  a.addEventListener('click', function(){ document.querySelector('.pillnav-inner').classList.remove('open'); });
+});
+
 /* ===== Checklist générique (avant de commencer) ===== */
 var checklistAvant = [
   "Définir mon objectif",
@@ -644,6 +676,47 @@ function selectPlan(letter){
   if(saved) selectPlan(saved);
 })();
 
+/* ===== Données exercices + progression, réutilisées pour générer un tableau concret par séance/semaine ===== */
+var exosSeance = {
+  A: [
+    {n:'Squats', repos:'45-60s', type:'reps'},
+    {n:'Fentes avant alternées', repos:'45-60s', type:'reps'},
+    {n:'Hip thrust (sol ou banc)', repos:'45-60s', type:'reps'},
+    {n:'Pont fessier unilatéral', repos:'30-45s', type:'reps', note:'par jambe'},
+    {n:'Squat sumo', repos:'45s', type:'reps'},
+    {n:'Gainage latéral', repos:'30s', type:'fixed', fixed:'3 × 20-30s / côté', bonus:true}
+  ],
+  B: [
+    {n:'Pompes (genoux ou classiques)', repos:'45-60s', type:'reps'},
+    {n:'Rowing (élastique/bouteilles)', repos:'45-60s', type:'reps'},
+    {n:'Développé épaules léger', repos:'45s', type:'reps'},
+    {n:'Gainage ventral (planche)', repos:'30-45s', type:'time'},
+    {n:'Superman (dos)', repos:'30s', type:'time'},
+    {n:'Mountain climbers', repos:'30s', type:'fixed', fixed:'3 × 20s', bonus:true}
+  ],
+  C: [
+    {n:'Squat + poussée bras', repos:'45s', type:'reps'},
+    {n:'Fentes arrière + rotation', repos:'45s', type:'reps'},
+    {n:'Gainage + extension jambe', repos:'30-45s', type:'time'},
+    {n:'Jumping jacks (cardio léger)', repos:'30s', type:'time'},
+    {n:'Mountain climbers lents', repos:'30s', type:'fixed', fixed:'3 × 20s', bonus:true},
+    {n:'Étirements complets', repos:'—', type:'fixed', fixed:'5 min'}
+  ]
+};
+var progReps = ['2 × 12','3 × 12','3 × 15','3-4 × 15-20'];
+var progTime = ['2 × 20s','3 × 20s','3 × 30s','3-4 × 30-40s'];
+var progNote = ['Focus technique, pas de vitesse','Même technique, un tour de plus','Tempo contrôlé (3s descente)',"Ajoute le finisher bonus si tu es à l'aise"];
+
+function buildSeanceTable(letter, weekIndex){
+  var rows = exosSeance[letter].map(function(ex){
+    var val = ex.type==='fixed' ? ex.fixed + (ex.bonus ? ' (fixe, non progressif)' : '')
+            : ex.type==='time' ? progTime[weekIndex]
+            : progReps[weekIndex];
+    return '<tr><td>'+ex.n+(ex.note?' <em>('+ex.note+')</em>':'')+'</td><td>'+val+'</td><td>'+ex.repos+'</td></tr>';
+  }).join('');
+  return '<div style="overflow-x:auto;margin:10px 0"><table class="gt"><tr><th>Exercice</th><th>Séries × Reps</th><th>Repos</th></tr>'+rows+'</table></div>';
+}
+
 /* ===== Génération des 4 blocs Semaine (avec planning + priorités + tracker + bilan hebdo) ===== */
 var semaines = [
   {n:1, id:'semaine1', titre:'Installer ta routine', objectif:"Arrêter de vouloir tout changer d'un coup. Cette semaine, tu poses juste les bases : 3 séances (grille semaine 1), ton premier meal prep, ton planning.", tip:"Ne cherche pas la performance. Cherche la régularité — même imparfaite."},
@@ -662,16 +735,17 @@ semaines.forEach(function(s){
   html += '<div class="callout">'+s.tip+'</div>';
 
   html += '<h3>Tes 3 séances de la semaine</h3>';
-  html += '<div class="sess-card"><div class="sh"><strong>Séance A — Bas du corps</strong><label class="sess-check"><span class="cl-box" id="box-s'+((s.n-1)*3+1)+'"></span>Faite</label></div><p style="font-size:.8rem;color:var(--muted)">Applique la grille de progression semaine '+s.n+' (voir module Programme sportif).</p></div>';
-  html += '<div class="sess-card"><div class="sh"><strong>Séance B — Haut du corps</strong><label class="sess-check"><span class="cl-box" id="box-s'+((s.n-1)*3+2)+'"></span>Faite</label></div><p style="font-size:.8rem;color:var(--muted)">Applique la grille de progression semaine '+s.n+'.</p></div>';
-  html += '<div class="sess-card"><div class="sh"><strong>Séance C — Full body</strong><label class="sess-check"><span class="cl-box" id="box-s'+((s.n-1)*3+3)+'"></span>Faite</label></div><p style="font-size:.8rem;color:var(--muted)">Applique la grille de progression semaine '+s.n+'.</p></div>';
+  html += '<p style="font-size:.78rem;color:var(--muted);margin-bottom:4px">'+progNote[s.n-1]+'</p>';
+  html += '<div class="sess-card"><div class="sh"><strong>Séance A — Bas du corps</strong><label class="sess-check"><span class="cl-box" id="box-s'+((s.n-1)*3+1)+'"></span>Faite</label></div>'+buildSeanceTable('A', s.n-1)+'</div>';
+  html += '<div class="sess-card"><div class="sh"><strong>Séance B — Haut du corps</strong><label class="sess-check"><span class="cl-box" id="box-s'+((s.n-1)*3+2)+'"></span>Faite</label></div>'+buildSeanceTable('B', s.n-1)+'</div>';
+  html += '<div class="sess-card"><div class="sh"><strong>Séance C — Full body</strong><label class="sess-check"><span class="cl-box" id="box-s'+((s.n-1)*3+3)+'"></span>Faite</label></div>'+buildSeanceTable('C', s.n-1)+'</div>';
 
   html += '<h3>Mon planning de la semaine</h3>';
-  html += '<table class="plan7"><tr><th>Jour</th><th>Choix</th></tr>';
+  html += '<div style="overflow-x:auto;margin:12px 0"><table class="plan7"><tr><th>Jour</th><th>Choix</th></tr>';
   jours.forEach(function(j, ji){
     html += '<tr><td>'+j+'</td><td><select data-plankey="fdtv_plan_s'+s.n+'_'+ji+'" onchange="localStorage.setItem(this.dataset.plankey,this.value)"><option value="">—</option><option>Séance A</option><option>Séance B</option><option>Séance C</option><option>Marche</option><option>Repos</option></select></td></tr>';
   });
-  html += '</table>';
+  html += '</table></div>';
 
   html += '<h3>Mes 3 priorités de la semaine</h3>';
   html += '<div class="field-card">';
