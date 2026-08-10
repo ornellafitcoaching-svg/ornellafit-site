@@ -58,6 +58,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   border-bottom: 1px solid rgba(201,185,154,0.25);
   padding: 0;
 }
+#offres-anchors::after {
+  content: '';
+  position: absolute; top: 0; right: 0; bottom: 1px; width: 36px;
+  background: linear-gradient(to right, rgba(247,243,240,0), rgba(247,243,240,0.95));
+  pointer-events: none;
+}
 .anchors-inner {
   display: flex; gap: 6px; align-items: center;
   overflow-x: auto; -webkit-overflow-scrolling: touch;
@@ -95,7 +101,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 #offres-detail .inner { max-width: 1000px; margin: 0 auto; }
 
 /* Offre blocs */
-.offre-bloc { margin-top: 0; padding: 48px 20px; border-top: 2px solid #F1D1CC; background: white !important; }
+.offre-bloc { margin-top: 0; padding: 48px 20px; border-top: 2px solid #F1D1CC; background: white; }
+#hybride.offre-bloc, #forfaits.offre-bloc { background: #F7F3F0; }
 .offre-bloc:first-child { border-top: none; }
 .offre-bloc-header {
   display: flex; align-items: center; gap: 18px;
@@ -122,20 +129,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;
 }
 .offre-card.featured {
-  background: linear-gradient(150deg, #FAF5F0 0%, #F2E8DF 100%);
-  border: 2px solid rgba(201,149,122,0.45);
-  box-shadow: 0 12px 48px rgba(201,149,122,0.2);
+  background: linear-gradient(150deg, #FFF3EC 0%, #F5DFCC 100%);
+  border: 2.5px solid #C9957A;
+  box-shadow: 0 14px 50px rgba(201,149,122,0.32);
 }
 .offre-card:hover:not(.featured) { transform: translateY(-4px); box-shadow: 0 16px 50px rgba(139,111,94,0.15); }
 .offre-card.featured:hover { transform: translateY(-4px); }
 .offre-tag {
   display: inline-block;
-  background: rgba(212,165,165,0.2); color: #D8A7A0;
+  background: #C96358; color: #fff;
   padding: 5px 14px; border-radius: 50px;
-  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
   text-transform: uppercase; margin-bottom: 20px;
 }
-.offre-card.featured .offre-tag { background: #C9957A; color: #1E1616; }
+.offre-card.featured .offre-tag { background: #1E1616; color: #C9957A; }
 .offre-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.6rem; font-weight: 600;
@@ -663,15 +670,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- TRANSFORMATION RÉELLE -->
 <div class="transfo-block" style="background:#F7F3F0;padding:36px 20px 44px;text-align:center;">
-  <div style="position:relative;max-width:520px;margin:0 auto;">
-    <img class="transfo-img" src="images/transformation-maman-6mois.jpg" alt="Transformation réelle d'une cliente d'Ornella Fit Coaching, maman de 2 enfants, après 6 mois de suivi" style="width:100%;border-radius:16px;box-shadow:0 10px 30px rgba(44,31,26,0.15);height:auto;display:block;" loading="lazy" width="800" height="1000">
-    <div style="position:absolute;top:14px;left:14px;background:rgba(201,99,88,0.92);color:#fff;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;padding:5px 12px;border-radius:50px;text-transform:uppercase;">Avant → Après</div>
-  </div>
-  <div style="max-width:480px;margin:14px auto 0;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
-    <span style="background:rgba(201,149,122,0.1);border-radius:8px;padding:6px 12px;font-size:0.8rem;font-weight:700;color:#1E1616;">Maman de 2 enfants</span>
-    <span style="background:rgba(201,149,122,0.1);border-radius:8px;padding:6px 12px;font-size:0.8rem;font-weight:700;color:#1E1616;">6 mois de suivi</span>
-  </div>
-  <p class="transfo-text" style="max-width:480px;margin:14px auto 4px;font-size:0.88rem;color:#4A3E3E;line-height:1.5;">Résultat réel d'une cliente accompagnée en coaching, obtenu avec de la régularité et un suivi adapté. Chaque parcours est différent — je ne te promets pas ces chiffres, je te promets un accompagnement sérieux.</p>
+  <img class="transfo-img" src="images/transformation-maman-6mois.jpg" alt="Transformation réelle d'une cliente d'Ornella Fit Coaching, maman de 2 enfants, après 6 mois de suivi" style="max-width:520px;width:100%;border-radius:16px;box-shadow:0 10px 30px rgba(44,31,26,0.15);height:auto;display:block;margin:0 auto;" loading="lazy" width="800" height="1000">
+  <p class="transfo-text" style="max-width:480px;margin:16px auto 4px;font-size:0.88rem;color:#4A3E3E;line-height:1.5;">Résultat réel d'une cliente accompagnée en coaching, obtenu avec de la régularité et un suivi adapté. Chaque parcours est différent — je ne te promets pas ces chiffres, je te promets un accompagnement sérieux.</p>
   <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J'ai%20vu%20la%20transformation%20sur%20ta%20page%2C%20j'aimerais%20en%20savoir%20plus%20sur%20ton%20accompagnement.%20On%20en%20parle%20%3F" target="_blank" class="transfo-cta" style="display:inline-block;margin-top:14px;background:#C96358;color:#fff;font-size:0.85rem;font-weight:700;padding:11px 26px;border-radius:50px;text-decoration:none;">💬 J'aimerais un résultat comme ça, on en parle ?</a>
 </div>
 
@@ -1312,7 +1312,7 @@ function submitVipForm(e){
       <div class="hyb-wow" style="font-style:normal;font-family:'DM Sans',sans-serif;font-size:0.98rem;font-weight:600;color:#4A3E3E;line-height:1.6;max-width:600px;margin:26px auto;">Concrètement : je viens chez toi 1 ou 2 fois par mois avec mon matériel — tu n'as rien à acheter, je m'adapte à ton logement. Entre mes visites, tu suis ton programme personnalisé chez toi (avec vidéos des exercices qu'on a travaillés ensemble en présentiel), jusqu'à 4 séances par semaine, et je reste joignable sur WhatsApp à chaque question.</div>
       <p class="hyb-section-sub" style="margin-bottom:14px;">Les deux formules incluent : bilan offert, programme 100% sur-mesure, suivi WhatsApp 5j/7 et ajustements tous les mois selon ton évolution (mensurations + ressenti). Seule la fréquence des séances change :</p>
       <div class="offre-card" style="max-width:520px;margin:0 auto;">
-        <div class="offre-tag" style="background:rgba(201,169,110,0.12);color:#9A8080;">💫 Coaching Hybride</div>
+        <div class="offre-tag">💫 Coaching Hybride</div>
         <div class="offre-name" style="font-size:1.35rem;margin-bottom:14px;">Choisis ton rythme</div>
 
         <div class="hyb-tier-row">
