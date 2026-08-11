@@ -690,8 +690,56 @@
     .dur-grid { grid-template-columns: 1fr; }
   }
 </style>
+<style>
+body.content-locked>*:not(#contentGate){display:none!important}
+#contentGate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(135deg,#FCD5D0 0%,#FFF4F2 100%);font-family:sans-serif}
+#contentGate .gate-box{background:#fff;border-radius:20px;max-width:420px;width:100%;padding:40px 32px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.12)}
+#contentGate .gate-title{font-size:1.4rem;color:#2C1A1A;margin-bottom:10px;font-weight:600}
+#contentGate .gate-sub{font-size:.85rem;color:#A07878;line-height:1.7;margin-bottom:24px}
+#contentGate input{width:100%;padding:14px 16px;border-radius:12px;border:1px solid #F5C0B8;font-size:1rem;text-align:center;letter-spacing:.05em;text-transform:uppercase;margin-bottom:12px;box-sizing:border-box}
+#contentGate button{width:100%;background:#D4607A;color:#fff;border:none;padding:14px;border-radius:30px;font-weight:700;font-size:.9rem;cursor:pointer}
+#contentGate .gate-err{color:#C0392B;font-size:.8rem;margin-top:10px;display:none}
+#contentGate .gate-help{font-size:.75rem;color:#A07878;margin-top:20px}
+#contentGate .gate-help a{color:#C9885A}
+</style>
 </head>
-<body>
+<body class="content-locked"><div id="contentGate">
+  <div class="gate-box">
+    <p class="gate-title">Accès à ton programme</p>
+    <p class="gate-sub">Entre le code reçu par email après ton achat pour accéder à SUMMER BODY.</p>
+    <form id="contentGateForm">
+      <input type="text" id="contentGateCode" placeholder="Code d'accès" autocomplete="off">
+      <button type="submit">Accéder →</button>
+      <p class="gate-err" id="contentGateErr">Code incorrect. Vérifie ton email de confirmation.</p>
+    </form>
+    <p class="gate-help">Tu as acheté mais tu ne trouves pas ton code ? <a href="https://wa.me/33756834626?text=Bonjour%20Ornella,%20j'ai%20achete%20SUMMER%20BODY%20mais%20je%20ne%20trouve%20pas%20mon%20code%20d'acces.">Écris-moi sur WhatsApp</a></p>
+  </div>
+</div>
+<script>
+(function(){
+  var CODE = '832ZQVT0';
+  var STORAGE_KEY = 'access_ok_832ZQVT0';
+  function unlock(){
+    document.body.classList.remove('content-locked');
+    try{ localStorage.setItem(STORAGE_KEY,'1'); }catch(e){}
+  }
+  try{
+    if (localStorage.getItem(STORAGE_KEY) === '1') { unlock(); }
+  }catch(e){}
+  var params = new URLSearchParams(window.location.search);
+  var urlCode = params.get('code');
+  if (urlCode && urlCode.trim().toUpperCase() === CODE) { unlock(); }
+  var form = document.getElementById('contentGateForm');
+  if (form) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var val = document.getElementById('contentGateCode').value.trim().toUpperCase();
+      if (val === CODE) { unlock(); } else { document.getElementById('contentGateErr').style.display = 'block'; }
+    });
+  }
+})();
+</script>
+
 <!-- GTM noscript -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
