@@ -422,7 +422,8 @@ body.ag-locked>*:not(#agGate){display:none!important}
     <div class="guide-badge">✦ Accès membre</div>
   </div>
   <nav class="guide-nav" role="navigation" aria-label="Sections du guide">
-    <button class="guide-tab active" data-tab="musculation">🏋️ Musculation</button>
+    <button class="guide-tab active" data-tab="accueil">👋 Bienvenue</button>
+    <button class="guide-tab" data-tab="musculation">🏋️ Musculation</button>
     <button class="guide-tab" data-tab="nutrition">🥗 Nutrition</button>
     <button class="guide-tab" data-tab="complements">💊 Compléments</button>
     <button class="guide-tab" data-tab="menopause">🌸 Ménopause</button>
@@ -435,8 +436,79 @@ body.ag-locked>*:not(#agGate){display:none!important}
   </nav>
 </header>
 
+<!-- ═══ ONGLET BIENVENUE ═══ -->
+<div class="guide-section active" id="tab-accueil">
+  <p class="sec-eyebrow">Bienvenue</p>
+  <h2 class="sec-title">Bienvenue dans<br><em style="color:var(--gold)">AGELESS GIRL</em></h2>
+  <p class="sec-intro">Tu viens de rejoindre un programme interactif pensé pour t'aider à rester forte, tonique et énergique de 30 à 55 ans — musculation anti-âge, nutrition, hormones, sommeil et peau. Pas un PDF à lire d'une traite : un programme organisé en sections, que tu consultes à ton rythme.</p>
+
+  <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:28px">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--dark);margin-bottom:10px">Avant de commencer</p>
+    <p style="font-size:.84rem;color:var(--muted);line-height:1.75">Ne saute pas directement à une section au hasard. Ton programme est construit autour de 6 piliers principaux, complétés par une section dédiée à la ménopause, un bonus plantes/tisanes, et deux outils pratiques (liste de courses et stack budget). Prends-les dans l'ordre si tu débutes, ou va directement à ce dont tu as le plus besoin aujourd'hui.</p>
+  </div>
+
+  <p class="sec-eyebrow" style="margin-top:8px">Les 6 piliers</p>
+  <div class="food-grid" style="margin-bottom:8px">
+    <div class="food-card" onclick="switchTab('musculation')" role="button" tabindex="0" style="cursor:pointer">
+      <div class="food-icon">🏋️</div>
+      <div><div class="food-name">Pilier 1 · Musculation</div><p class="food-why">La musculation est ton meilleur médicament — programme progressif de 8 semaines, adapté à ton corps.</p></div>
+    </div>
+    <div class="food-card" onclick="switchTab('nutrition')" role="button" tabindex="0" style="cursor:pointer">
+      <div class="food-icon">🥗</div>
+      <div><div class="food-name">Pilier 2 · Nutrition</div><p class="food-why">Ton corps a des besoins différents à 30, 40 et 50 ans — comment adapter ton alimentation à chaque décennie.</p></div>
+    </div>
+    <div class="food-card" onclick="switchTab('complements')" role="button" tabindex="0" style="cursor:pointer">
+      <div class="food-icon">💊</div>
+      <div><div class="food-name">Pilier 3 · Compléments</div><p class="food-why">Classés par tranche d'âge et par objectif, pour savoir exactement ce dont ton corps a besoin.</p></div>
+    </div>
+    <div class="food-card" onclick="switchTab('hormones')" role="button" tabindex="0" style="cursor:pointer">
+      <div class="food-icon">🔄</div>
+      <div><div class="food-name">Pilier 4 · Hormones</div><p class="food-why">Comprendre ta timeline hormonale pour adapter ton entraînement et ton alimentation.</p></div>
+    </div>
+    <div class="food-card" onclick="switchTab('sommeil')" role="button" tabindex="0" style="cursor:pointer">
+      <div class="food-icon">😴</div>
+      <div><div class="food-name">Pilier 5 · Sommeil</div><p class="food-why">L'anti-âge le plus puissant et le moins cher — protocoles de récupération et rituel du soir.</p></div>
+    </div>
+    <div class="food-card" onclick="switchTab('peau')" role="button" tabindex="0" style="cursor:pointer">
+      <div class="food-icon">✨</div>
+      <div><div class="food-name">Pilier 6 · Peau &amp; Corps</div><p class="food-why">Routine skincare complète et anti-âge, en complément du sport.</p></div>
+    </div>
+  </div>
+
+  <p class="sec-eyebrow" style="margin-top:20px">Sections dédiées</p>
+  <div class="food-grid" style="margin-bottom:8px">
+    <div class="food-card" onclick="switchTab('menopause')" role="button" tabindex="0" style="cursor:pointer">
+      <div class="food-icon">🌸</div>
+      <div><div class="food-name">Ménopause &amp; Périménopause</div><p class="food-why">Comprendre et traverser la ménopause en force — timeline, symptômes, adaptations concrètes.</p></div>
+    </div>
+    <div class="food-card" onclick="switchTab('tisanes')" role="button" tabindex="0" style="cursor:pointer">
+      <div class="food-icon">🌿</div>
+      <div><div class="food-name">Pilier bonus · Tisanes</div><p class="food-why">20 plantes anti-âge classées par besoin — énergie, sommeil, peau, ménopause.</p></div>
+    </div>
+  </div>
+
+  <p class="sec-eyebrow" style="margin-top:20px">Outils pratiques</p>
+  <div class="food-grid" style="margin-bottom:28px">
+    <div class="food-card" onclick="switchTab('courses')" role="button" tabindex="0" style="cursor:pointer">
+      <div class="food-icon">🛒</div>
+      <div><div class="food-name">Liste de courses</div><p class="food-why">Ta liste prête à cocher pour faire les courses sans réfléchir.</p></div>
+    </div>
+    <div class="food-card" onclick="switchTab('budget')" role="button" tabindex="0" style="cursor:pointer">
+      <div class="food-icon">💰</div>
+      <div><div class="food-name">Stack Budget</div><p class="food-why">3 niveaux de supplémentation selon ton budget, du plus essentiel au plus complet.</p></div>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,#FCD5D0 0%,#FFF4F2 100%);border:1px solid var(--border);border-radius:14px;padding:24px 26px;text-align:center">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--dark);margin-bottom:6px">Par où commencer ?</p>
+    <p style="font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:18px;max-width:480px;margin-left:auto;margin-right:auto">Commence par le Pilier 1 — Musculation, puis avance dans l'ordre des onglets à ton rythme. Tu peux revenir ici quand tu veux via l'onglet "Bienvenue".</p>
+    <button onclick="switchTab('musculation')" style="background:var(--violet);color:#fff;border:none;padding:14px 32px;border-radius:30px;font-weight:700;font-size:.88rem;cursor:pointer;font-family:'DM Sans',sans-serif">Commencer par le Pilier 1 →</button>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--dark);margin-top:22px">Ton corps te remerciera d'avoir commencé aujourd'hui.</p>
+  </div>
+</div>
+
 <!-- ═══ ONGLET 1 — MUSCULATION ═══ -->
-<div class="guide-section active" id="tab-musculation">
+<div class="guide-section" id="tab-musculation">
   <p class="sec-eyebrow">Pilier 1 · Corps Ferme 30-50 ans</p>
   <h2 class="sec-title">La musculation est ton<br><em style="color:var(--gold)">meilleur médicament</em></h2>
   <p class="sec-intro">À partir de 30 ans, chaque année sans musculation coûte 1% de muscle. À la ménopause, la perte s'accélère. Ce programme de 8 semaines inverse la tendance — progressif, adapté à ton corps, efficace à 30 comme à 55 ans.</p>
