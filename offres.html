@@ -101,7 +101,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 #offres-detail .inner { max-width: 1000px; margin: 0 auto; }
 
 /* Offre blocs */
-.offre-bloc { margin-top: 0; padding: 48px 20px; border-top: 2px solid #F1D1CC; background: white; }
+.offre-bloc { margin-top: 0; padding: 48px 20px; border-top: 2px solid #F1D1CC; background: white; scroll-margin-top: 90px; }
 #hybride.offre-bloc, #forfaits.offre-bloc { background: #F7F3F0; }
 .offre-bloc:first-child { border-top: none; }
 .offre-bloc-header {
@@ -299,11 +299,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 .tier-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem; font-weight: 600; color: #1E1616; margin-bottom: 4px;
+  font-size: 2rem; font-weight: 700; color: #1E1616; margin-bottom: 4px; line-height: 1.1;
 }
 .tier-card.featured .tier-name { color: #F5EDE4; }
-.tier-sub { font-size: 0.8rem; color: #7A6E6E; margin-bottom: 6px; font-style: italic; }
-.tier-card.featured .tier-sub { color: rgba(245,237,228,0.65); }
+.tier-sub { font-size: 0.74rem; color: #9A8878; margin-bottom: 10px; font-style: italic; }
+.tier-card.featured .tier-sub { color: rgba(245,237,228,0.5); }
 .tier-sub-highlight {
   font-size: 0.78rem; color: #D8A7A0; font-weight: 600;
   margin-bottom: 14px;
@@ -311,12 +311,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .tier-card.featured .tier-sub-highlight { color: #B86040; font-weight: 700; }
 .tier-price {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.4rem; font-weight: 600; color: #1E1616;
+  font-size: 3.1rem; font-weight: 700; color: #1E1616;
   line-height: 1; margin-bottom: 4px;
 }
-.tier-card.featured .tier-price { color: #C9A96E; }
+.tier-card.featured .tier-price { color: #C9A96E; font-size: 3.5rem; }
 .tier-price-unit { font-size: 0.82rem; color: #7A6E6E; margin-bottom: 12px; line-height: 1.4; }
 .tier-card.featured .tier-price-unit { color: rgba(245,237,228,0.5); }
+.tier-card.best-value {
+  background: linear-gradient(150deg, #FFFFFF 0%, #F2F8F1 100%);
+  border: 2px solid #4A7252;
+  box-shadow: 0 16px 44px rgba(74,114,82,0.2);
+  transform: translateY(-4px);
+}
+.tier-card.best-value:hover { transform: translateY(-8px); }
+.tier-badge.badge-green { background: linear-gradient(135deg, #5A9068, #2D6A4F); box-shadow: 0 2px 8px rgba(45,106,79,0.35); }
+.tier-savings { display: block; background: rgba(74,114,82,0.14); border: 1.5px solid rgba(74,114,82,0.35); color: #2D6A4F; font-size: 0.9rem; font-weight: 800; text-align: center; padding: 10px 14px; border-radius: 12px; margin-bottom: 16px; }
+.tier-card.featured .tier-savings { background: linear-gradient(135deg, #2E4A34, #4A7252); border: none; color: #fff; }
 .tier-daily {
   display: inline-block;
   background: rgba(192,128,128,0.1); color: #D8A7A0;
@@ -1576,7 +1586,7 @@ function submitVipForm(e){
             <div class="tier-sub">Résultats visibles</div>
             <div class="tier-price">99€</div>
             <div class="tier-price-unit">/ mois · soit 297€ au total</div>
-            <div style="display:inline-block;background:rgba(74,114,82,0.12);color:#2D6A4F;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:50px;margin-bottom:10px;">↓ 20€/mois de moins que sans engagement — 60€ économisés</div>
+            <div class="tier-savings">↓ 20€/mois de moins que sans engagement — 60€ économisés</div>
             <div class="tier-divider"></div>
             <ul class="tier-includes">
               <li class="tier-item">Programme sur-mesure évolutif + vidéos</li>
@@ -1598,12 +1608,13 @@ function submitVipForm(e){
           </div>
 
           <!-- 6 mois -->
-          <div class="tier-card">
+          <div class="tier-card best-value">
+            <div class="tier-badge badge-green">⭐ Meilleur tarif</div>
             <div class="tier-name">6 mois</div>
             <div class="tier-sub">Transformation complète</div>
             <div class="tier-price">89€</div>
             <div class="tier-price-unit">/ mois · le meilleur tarif</div>
-            <div style="display:inline-block;background:rgba(74,114,82,0.12);color:#2D6A4F;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:50px;margin-bottom:10px;">↓ 30€/mois de moins que sans engagement — 180€ économisés</div>
+            <div class="tier-savings">↓ 30€/mois de moins que sans engagement — 180€ économisés</div>
             <div class="tier-divider"></div>
             <ul class="tier-includes">
               <li class="tier-item">Programme sur-mesure évolutif + vidéos</li>
