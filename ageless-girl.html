@@ -260,9 +260,61 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);
 }
 .wa-float:focus-visible{outline:2px solid #25D366;outline-offset:3px}
 @keyframes waFloatIn{from{opacity:0;transform:translateY(10px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+/* ACCESS GATE */
+body.ag-locked>*:not(#agGate){display:none!important}
+#agGate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(135deg,#FCD5D0 0%,#FFF4F2 100%);font-family:'DM Sans',sans-serif}
+#agGate .gate-box{background:#fff;border-radius:20px;max-width:420px;width:100%;padding:40px 32px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.12)}
+#agGate .gate-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#2C1A1A;margin-bottom:10px}
+#agGate .gate-sub{font-size:.85rem;color:#A07878;line-height:1.7;margin-bottom:24px}
+#agGate input{width:100%;padding:14px 16px;border-radius:12px;border:1px solid #F5C0B8;font-size:1rem;text-align:center;letter-spacing:.05em;text-transform:uppercase;margin-bottom:12px;font-family:'DM Sans',sans-serif}
+#agGate button{width:100%;background:#D4607A;color:#fff;border:none;padding:14px;border-radius:30px;font-weight:700;font-size:.9rem;cursor:pointer}
+#agGate .gate-err{color:#C0392B;font-size:.8rem;margin-top:10px;display:none}
+#agGate .gate-help{font-size:.75rem;color:#A07878;margin-top:20px}
+#agGate .gate-help a{color:#C9885A}
 </style>
 </head>
-<body>
+<body class="ag-locked">
+<div id="agGate">
+  <div class="gate-box">
+    <p class="gate-title">Accès à ton programme</p>
+    <p class="gate-sub">Entre le code reçu par email après ton achat pour accéder à AGELESS GIRL.</p>
+    <form id="agGateForm">
+      <input type="text" id="agGateCode" placeholder="Code d'accès" autocomplete="off">
+      <button type="submit">Accéder →</button>
+      <p class="gate-err" id="agGateErr">Code incorrect. Vérifie ton email de confirmation.</p>
+    </form>
+    <p class="gate-help">Tu as acheté mais tu ne trouves pas ton code ? <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%2C%20j%27ai%20achet%C3%A9%20AGELESS%20GIRL%20mais%20je%20ne%20trouve%20pas%20mon%20code%20d%27acc%C3%A8s.">Écris-moi sur WhatsApp</a></p>
+  </div>
+</div>
+<script>
+(function(){
+  var CODE = 'LBKS1W58';
+  var STORAGE_KEY = 'ag_access_ok';
+  function unlock(){
+    document.body.classList.remove('ag-locked');
+    try{ localStorage.setItem(STORAGE_KEY,'1'); }catch(e){}
+  }
+  try{
+    if (localStorage.getItem(STORAGE_KEY) === '1') { unlock(); }
+  }catch(e){}
+  var params = new URLSearchParams(window.location.search);
+  var urlCode = params.get('code');
+  if (urlCode && urlCode.trim().toUpperCase() === CODE) { unlock(); }
+  var form = document.getElementById('agGateForm');
+  if (form) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var val = document.getElementById('agGateCode').value.trim().toUpperCase();
+      if (val === CODE) {
+        unlock();
+      } else {
+        document.getElementById('agGateErr').style.display = 'block';
+      }
+    });
+  }
+})();
+</script>
 <!-- GTM noscript -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
