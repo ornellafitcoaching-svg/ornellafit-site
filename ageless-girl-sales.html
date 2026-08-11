@@ -765,20 +765,38 @@ document.addEventListener('click', function(e){
 </script>
 
 <!-- POPUP GUIDE GRATUIT -->
-<div id="agPopupOverlay" style="display:none;position:fixed;inset:0;background:rgba(44,26,26,.65);z-index:1000;align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#FFF4F2;border-radius:20px;max-width:440px;width:100%;padding:36px 28px;position:relative;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3);">
-    <button id="agPopupClose" aria-label="Fermer" style="position:absolute;top:14px;right:14px;background:none;border:none;font-size:1.4rem;color:var(--muted);cursor:pointer;line-height:1;">&times;</button>
-    <img src="images/ornella-competition.jpg" alt="Ornella, ancienne compétitrice fitness" style="width:76px;height:76px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);margin:0 auto 14px;display:block;">
-    <p style="font-size:.67rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;">Avant de partir</p>
-    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:400;color:var(--dark);line-height:1.25;margin-bottom:14px;">Reçois gratuitement<br><em style="color:var(--gold);font-style:italic;">"Les 9 erreurs qui t'empêchent d'évoluer"</em></h3>
-    <p style="font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:10px;">Le guide anti-âge à lire avant de te lancer dans un programme — pour éviter les pièges les plus courants après 30 ans.</p>
-    <p style="font-size:.75rem;color:var(--gold);font-weight:700;margin-bottom:22px;">— Ornella, ancienne compétitrice fitness, demi-finaliste Championnat de France de Bikini Fitness</p>
-    <form id="agPopupForm" style="display:flex;flex-direction:column;gap:10px;">
-      <input type="email" id="agPopupEmail" required placeholder="Ton email" style="padding:14px 16px;border-radius:12px;border:1px solid var(--border);font-size:.9rem;font-family:'DM Sans',sans-serif;">
-      <button type="submit" class="btn" style="width:100%;">Je veux mon guide gratuit →</button>
-    </form>
-    <p id="agPopupMsg" style="font-size:.85rem;margin-top:12px;display:none;color:var(--dark);"></p>
-    <p style="font-size:.7rem;color:var(--muted);margin-top:14px;">Pas de spam. Désinscription en un clic.</p>
+<div id="agPopupOverlay" style="display:none;position:fixed;inset:0;background:rgba(48,45,43,.7);z-index:1000;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#F7F1EF;border-radius:20px;max-width:440px;width:100%;padding:34px 30px;position:relative;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3);">
+    <button id="agPopupClose" aria-label="Fermer" style="position:absolute;top:14px;right:14px;background:none;border:none;font-size:1.3rem;color:#CFC3BD;cursor:pointer;line-height:1;">&times;</button>
+
+    <!-- ÉTAT FORMULAIRE -->
+    <div id="agPopupFormState">
+      <p style="font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#B9825A;margin-bottom:18px;">Ornella Fit Coaching</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:400;color:#302D2B;line-height:1.25;margin-bottom:16px;">Tu allais partir ?<br>Ne pars pas les mains vides.</h3>
+      <p style="font-size:.85rem;color:#302D2B;margin-bottom:4px;">Je t'offre gratuitement :</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:#B9825A;font-weight:600;line-height:1.35;margin-bottom:14px;">"Les 9 erreurs qui t'empêchent d'évoluer après 30 ans"</p>
+      <p style="font-size:.82rem;color:#6B5F5A;line-height:1.7;margin-bottom:24px;">Un aperçu concret pour comprendre ce qui peut bloquer tes progrès — avant de te lancer dans un programme.</p>
+
+      <form id="agPopupForm" style="display:flex;flex-direction:column;gap:10px;">
+        <input type="email" id="agPopupEmail" required placeholder="Ton adresse email" style="padding:14px 16px;border-radius:12px;border:1px solid #CFC3BD;background:#fff;font-size:.9rem;font-family:'DM Sans',sans-serif;color:#302D2B;">
+        <button type="submit" class="btn" style="width:100%;background:#C45C78;">Je veux recevoir les 9 erreurs →</button>
+      </form>
+      <p style="font-size:.72rem;color:#B9825A;font-weight:600;margin-top:14px;">Gratuit • envoyé directement par email</p>
+      <p style="font-size:.68rem;color:#CFC3BD;margin-top:6px;">Pas de spam. Désinscription possible à tout moment.</p>
+
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:22px;padding-top:18px;border-top:1px solid #E5DAD3;">
+        <img src="images/ornella-competition.jpg" alt="Ornella" style="width:28px;height:28px;border-radius:50%;object-fit:cover;">
+        <p style="font-size:.68rem;color:#B9825A;margin:0;">Ornella — ancienne compétitrice fitness, demi-finaliste Championnat de France de Bikini Fitness</p>
+      </div>
+    </div>
+
+    <!-- ÉTAT SUCCÈS -->
+    <div id="agPopupSuccessState" style="display:none;">
+      <p style="font-size:2rem;margin-bottom:14px;">✨</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:#302D2B;line-height:1.3;margin-bottom:12px;">C'est envoyé !</h3>
+      <p style="font-size:.88rem;color:#6B5F5A;line-height:1.75;margin-bottom:10px;">Les 9 erreurs arrivent dans ta boîte mail.</p>
+      <p style="font-size:.8rem;color:#B9825A;line-height:1.7;">Vérifie tes spams si tu ne le vois pas dans quelques minutes.</p>
+    </div>
   </div>
 </div>
 <script>
@@ -786,14 +804,15 @@ document.addEventListener('click', function(e){
   if (localStorage.getItem('ag_purchase_pending')) return;
   var overlay = document.getElementById('agPopupOverlay');
   var closeBtn = document.getElementById('agPopupClose');
+  var formState = document.getElementById('agPopupFormState');
+  var successState = document.getElementById('agPopupSuccessState');
   var form = document.getElementById('agPopupForm');
-  var msg = document.getElementById('agPopupMsg');
   var shown = false;
   var _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
   var BREVO_KEY=_a+_b+_c;
 
   function showPopup(){
-    if (shown || sessionStorage.getItem('ag_popup_shown')) return;
+    if (shown || sessionStorage.getItem('ag_popup_shown') || localStorage.getItem('ag_purchase_pending')) return;
     shown = true;
     sessionStorage.setItem('ag_popup_shown','1');
     overlay.style.display = 'flex';
@@ -803,18 +822,26 @@ document.addEventListener('click', function(e){
   closeBtn.addEventListener('click', hidePopup);
   overlay.addEventListener('click', function(e){ if (e.target === overlay) hidePopup(); });
 
+  // Desktop : vraie intention de sortie (souris qui remonte vers l'onglet/la barre d'adresse)
   document.addEventListener('mouseout', function(e){
     if (!e.relatedTarget && e.clientY < 10) showPopup();
   });
+
+  // Mobile/desktop : signal réel de désengagement (changement d'onglet ou d'app)
+  document.addEventListener('visibilitychange', function(){
+    if (document.visibilityState === 'hidden') showPopup();
+  });
+
+  // Fallback honnête (pas un faux "exit intent") : elle a eu le temps de lire
   var scrollTimer;
   window.addEventListener('scroll', function(){
     clearTimeout(scrollTimer);
     scrollTimer = setTimeout(function(){
       var scrolled = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
-      if (scrolled > 0.35) showPopup();
+      if (scrolled > 0.5) showPopup();
     }, 300);
   });
-  setTimeout(showPopup, 12000);
+  setTimeout(showPopup, 20000);
 
   form.addEventListener('submit', async function(e){
     e.preventDefault();
@@ -852,10 +879,8 @@ document.addEventListener('click', function(e){
       });
       if (typeof fbq !== 'undefined') fbq('track', 'Lead');
     } catch (err) {}
-    form.style.display = 'none';
-    msg.style.display = 'block';
-    msg.textContent = '✅ Merci ! Vérifie ta boîte mail (et les spams) dans quelques minutes.';
-    setTimeout(hidePopup, 4000);
+    formState.style.display = 'none';
+    successState.style.display = 'block';
   });
 })();
 </script>
