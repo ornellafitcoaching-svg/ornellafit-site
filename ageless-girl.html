@@ -293,6 +293,8 @@ body.ag-locked>*:not(#agGate){display:none!important}
   var STORAGE_KEY = 'ag_access_ok';
   function unlock(){
     document.body.classList.remove('ag-locked');
+    var g = document.getElementById('agGate');
+    if (g) g.style.display = 'none';
     try{ localStorage.setItem(STORAGE_KEY,'1'); }catch(e){}
   }
   try{

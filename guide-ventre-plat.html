@@ -534,6 +534,8 @@ body.content-locked>*:not(#contentGate){display:none!important}
   var STORAGE_KEY = 'access_ok_0SD569UP';
   function unlock(){
     document.body.classList.remove('content-locked');
+    var g = document.getElementById('contentGate');
+    if (g) g.style.display = 'none';
     try{ localStorage.setItem(STORAGE_KEY,'1'); }catch(e){}
   }
   try{
