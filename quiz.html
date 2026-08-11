@@ -514,8 +514,9 @@ function buildEmailStep() {
       <p class="quiz-q-sub" style="margin-bottom:0;">Entre ton adresse pour recevoir le détail de l'offre recommandée directement dans ta boîte.</p>
     </div>
     <input type="email" class="quiz-email-input" id="qEmailInput" placeholder="ton@email.com" oninput="onEmailChange()" onkeydown="if(event.key==='Enter')submitQuiz()">
+    <input type="tel" class="quiz-email-input" id="qPhoneInput" placeholder="Ton numéro (optionnel)" onkeydown="if(event.key==='Enter')submitQuiz()">
     <button class="quiz-btn" id="qBtn-5" onclick="submitQuiz()">Voir mon offre →</button>
-    <p class="quiz-email-note">🔒 Confidentiel · Aucun spam · Désabonnement en 1 clic</p>
+    <p class="quiz-email-note">🔒 Confidentiel · Aucun spam · Désabonnement en 1 clic · Le numéro sert juste à te recontacter plus vite sur WhatsApp</p>
     <button class="quiz-skip" onclick="submitQuiz(true)">Passer et voir mon résultat directement</button>`;
 }
 
@@ -620,7 +621,9 @@ function calcResult() {
 
 async function submitQuiz(skip = false) {
   const emailInput = document.getElementById('qEmailInput');
+  const phoneInput = document.getElementById('qPhoneInput');
   const email = skip ? '' : (emailInput?.value?.trim() || '');
+  const phone = skip ? '' : (phoneInput?.value?.trim() || '');
 
   if (email && typeof fbq !== 'undefined') { fbq('init', '26675222578828123', {em: email}); }
 
@@ -635,7 +638,7 @@ async function submitQuiz(skip = false) {
   const resultKey = calcResult();
 
   if (email) {
-    await sendToBrevo(email, resultKey);
+    await sendToBrevo(email, resultKey, '', phone);
   }
 
   buildResultStep(resultKey, email);
@@ -822,7 +825,7 @@ function quizEmailHtml(r, email, prenom) {
 </html>`;
 }
 
-async function sendToBrevo(email, resultKey, prenom = '') {
+async function sendToBrevo(email, resultKey, prenom = '', phone = '') {
   if (!BREVO_API_KEY || BREVO_API_KEY === 'YOUR_BREVO_API_KEY') {
     console.warn('[Ornella Fit Quiz] Clé API Brevo non configurée — aucun email envoyé.');
     return;
@@ -836,6 +839,25 @@ async function sendToBrevo(email, resultKey, prenom = '') {
 
   /* 1 — Ajouter le contact à la liste — formulaire natif, plus de clé exposée pour cette étape */
   submitToQuizBrevoForm(email, resultKey);
+
+  /* 1bis — Numéro de téléphone : le formulaire natif ci-dessus ne porte pas ce champ,
+     donc on l'enregistre via un appel direct à l'API contacts (même clé que pour l'email plus bas). */
+  if (phone) {
+    let sms = phone.replace(/[\s.\-()]/g, '');
+    if (/^0[67]\d{8}$/.test(sms)) sms = '+33' + sms.slice(1);
+    try {
+      await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'api-key': BREVO_API_KEY },
+        body: JSON.stringify({
+          email: email,
+          attributes: { SMS: sms },
+          listIds: listId ? [listId] : [],
+          updateEnabled: true
+        })
+      });
+    } catch (e) {}
+  }
 
   /* 2 — Email transactionnel via template Brevo selon résultat */
   const TEMPLATE_IDS = { domicile: 12, hybride: 13, distanciel: 14, autonomie: 15 };
