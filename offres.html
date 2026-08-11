@@ -475,13 +475,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .ohi-btn-gold { background: linear-gradient(135deg,#C9957A,#A87860); color: white; box-shadow: 0 4px 16px rgba(201,149,122,0.3); }
 .ohi-btn:hover { transform: translateY(-2px); }
 .ohi-cta-row { max-width: 900px; margin: 0 auto; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center; }
-.quelle-offre { max-width: 900px; margin: 28px auto 0; background: white; border-radius: 20px; padding: 22px 24px; border: 1px solid rgba(201,185,154,0.3); }
-.qo-title { font-size: 0.88rem; font-weight: 700; color: #1E1616; margin-bottom: 14px; }
-.qo-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-.qo-item { background: #F7F3F0; border-radius: 14px; padding: 14px 14px; }
-.qo-if { font-size: 0.85rem; color: #7A6E6E; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 5px; }
-.qo-offre { font-size: 1.2rem; color: #4A3E3E; line-height: 1.4; }
-.qo-result { font-size: 1.3rem; color: #D8A7A0; font-weight: 700; margin-top: 8px; }
+.quelle-offre { max-width: 900px; margin: 28px auto 0; background: white; border-radius: 20px; padding: 24px; border: 1px solid rgba(201,185,154,0.3); }
+.qo-title { font-size: 0.88rem; font-weight: 700; color: #1E1616; margin-bottom: 16px; }
+.qo-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+.qo-item { background: #F7F3F0; border-radius: 16px; padding: 18px 16px; border: 1px solid rgba(201,185,154,0.25); }
+.qo-item.qo-item-main { background: linear-gradient(150deg,#FFF8F5,#FCEFE8); border: 1.5px solid rgba(201,99,88,0.3); }
+.qo-if { font-size: 0.66rem; color: #7A6E6E; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; }
+.qo-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; color: #1E1616; margin-bottom: 6px; line-height: 1.1; }
+.qo-offre { font-size: 0.8rem; color: #4A3E3E; line-height: 1.5; margin-bottom: 12px; }
+.qo-result { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 700; color: #1E1616; line-height: 1; }
+.qo-result span { font-family: 'DM Sans', sans-serif; font-size: 0.76rem; font-weight: 500; color: #7A6E6E; }
+.qo-result-sub { font-size: 0.68rem; color: #9A8878; margin-top: 4px; }
 
 /* Mobile offres */
 @media (max-width: 1024px) {
@@ -490,7 +494,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 @media (max-width: 768px) {
   .trois-offres { grid-template-columns: 1fr !important; gap: 14px; }
-  .qo-grid { grid-template-columns: 1fr !important; gap: 8px; }
+  .qo-grid { grid-template-columns: 1fr !important; gap: 10px; }
+  .qo-item { padding: 16px 16px; }
+  .qo-name { font-size: 1.25rem; }
+  .qo-result { font-size: 1.6rem; }
   .ohi-cta-row { flex-direction: column; align-items: stretch; max-width: 380px; margin: 0 auto; }
   #offres-hero { padding: 28px 14px 40px; }
   .quelle-offre { padding: 18px 16px; }
@@ -781,19 +788,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="qo-title">🧭 En 30 secondes — je te dis laquelle choisir</div>
       <div class="qo-grid">
         <div class="qo-item">
-          <div class="qo-if">Tu veux l'encadrement le plus complet</div>
-          <div class="qo-offre">Je me déplace · Technique corrigée · Progression rapide et sécurisée</div>
-          <div class="qo-result">→ Domicile · dès 50€/séance 🏠 🔥</div>
+          <div class="qo-if">Encadrement le plus complet</div>
+          <div class="qo-name">Domicile</div>
+          <div class="qo-offre">Je me déplace chez toi · technique corrigée en direct · encadrement maximal</div>
+          <div class="qo-result">Dès 50€<span>/séance</span></div>
         </div>
-        <div class="qo-item">
-          <div class="qo-if">Tu veux séances + suivi sans tout déléguer</div>
-          <div class="qo-offre">Je viens chez toi + programme sur-mesure jusqu'à 4x/semaine</div>
-          <div class="qo-result">→ Hybride · dès 99€/mois (169€/mois pour 2 séances) 💫</div>
+        <div class="qo-item qo-item-main">
+          <div class="qo-if">Séances + suivi sans tout déléguer</div>
+          <div class="qo-name">Hybride</div>
+          <div class="qo-offre">Séances avec moi + programme sur-mesure pour progresser en autonomie</div>
+          <div class="qo-result">Dès 99€<span>/mois</span></div>
+          <div class="qo-result-sub">169€/mois pour 2 séances</div>
         </div>
         <div class="qo-item">
           <div class="qo-if">Tu habites loin ou tu voyages</div>
-          <div class="qo-offre">Partout en France · Programme ou suivi</div>
-          <div class="qo-result">→ Distanciel · dès 79€ 💻</div>
+          <div class="qo-name">Distanciel</div>
+          <div class="qo-offre">Programme sur-mesure + suivi à distance, partout en France</div>
+          <div class="qo-result">Dès 79€</div>
         </div>
       </div>
     </div>
