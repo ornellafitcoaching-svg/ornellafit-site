@@ -837,6 +837,19 @@ document.addEventListener('click', function(e){
           attributes: { SOURCE: 'ageless-girl-popup' }
         })
       });
+      await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': BREVO_KEY
+        },
+        body: JSON.stringify({
+          templateId: 147,
+          to: [{ email: email }],
+          sender: { name: 'Ornella Fit Coaching', email: 'contact@ornellafitcoaching.com' },
+          params: { PRENOM: 'toi' }
+        })
+      });
       if (typeof fbq !== 'undefined') fbq('track', 'Lead');
     } catch (err) {}
     form.style.display = 'none';
