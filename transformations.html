@@ -409,6 +409,55 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .gb-text { font-size: 0.82rem; color: var(--text-mid); font-weight: 500; }
 .gb-text strong { color: var(--dark); }
 
+/* ===== CAPTURE EMAIL — PAS ENCORE PRÊTE ===== */
+.transfo-capture {
+  background: linear-gradient(150deg, var(--cream) 0%, #F0E4D8 100%);
+  padding: 64px 24px;
+}
+.transfo-capture .inner { max-width: 560px; margin: 0 auto; text-align: center; }
+.tcap-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--accent); margin-bottom: 14px;
+}
+.tcap-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  font-weight: 600; color: var(--dark);
+  line-height: 1.2; margin-bottom: 12px;
+}
+.tcap-title em { color: var(--accent); font-style: italic; }
+.tcap-sub {
+  font-size: 0.92rem; color: var(--text-mid);
+  line-height: 1.7; margin-bottom: 28px;
+  max-width: 440px; margin-left: auto; margin-right: auto;
+}
+.tcap-form { display: flex; gap: 10px; max-width: 420px; margin: 0 auto; }
+.tcap-form input {
+  flex: 1; padding: 15px 18px; border-radius: 50px;
+  border: 1.5px solid rgba(201,185,154,0.4); background: white;
+  font-size: 0.92rem; font-family: 'DM Sans', sans-serif; color: var(--dark);
+}
+.tcap-form input:focus { outline: none; border-color: var(--accent); }
+.tcap-form button {
+  flex-shrink: 0; padding: 15px 26px; border-radius: 50px; border: none;
+  background: var(--accent); color: white; font-weight: 700;
+  font-size: 0.88rem; cursor: pointer; font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+}
+.tcap-form button:disabled { opacity: 0.6; cursor: default; }
+.tcap-note { font-size: 0.72rem; color: var(--text-light); margin-top: 12px; }
+.tcap-success { display: none; }
+.tcap-success p:first-child {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;
+  color: var(--dark); font-weight: 600; margin-bottom: 6px;
+}
+.tcap-success p:last-child { font-size: 0.85rem; color: var(--text-mid); }
+@media (max-width: 560px) {
+  .tcap-form { flex-direction: column; }
+}
+
 /* ===== CTA FINAL ===== */
 .transfo-cta {
   background: linear-gradient(135deg, #2C1F1A 0%, #3D2B24 100%);
@@ -1039,6 +1088,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- CAPTURE EMAIL — PAS ENCORE PRÊTE -->
+<section class="transfo-capture">
+  <div class="inner">
+    <div class="tcap-eyebrow">Pas encore prête à écrire ?</div>
+    <h2 class="tcap-title">Reçois mes conseils<br><em>avant de te lancer.</em></h2>
+    <p class="tcap-sub">Entraînement, nutrition, récupération — droit dans ta boîte mail, sans rendez-vous à prendre. Sans spam, désinscription en 1 clic.</p>
+
+    <form id="transfoCaptureForm" class="tcap-form">
+      <input type="email" id="transfoCaptureEmail" required placeholder="Ton adresse email">
+      <button type="submit" id="transfoCaptureBtn">Je reçois les conseils →</button>
+    </form>
+    <p class="tcap-note" id="transfoCaptureNote">Gratuit · Pas de spam · Désinscription à tout moment</p>
+
+    <div class="tcap-success" id="transfoCaptureSuccess">
+      <p>C'est envoyé ✨</p>
+      <p>Surveille ta boîte mail — le premier conseil arrive bientôt.</p>
+    </div>
+  </div>
+</section>
+
 <!-- CTA FINAL -->
 <div class="transfo-cta">
   <div style="position:relative;z-index:1;max-width:580px;margin:0 auto;">
@@ -1105,6 +1174,40 @@ document.addEventListener('click', function(e) {
 document.querySelectorAll('.fade-in').forEach(function(el) {
   el.classList.add('visible');
 });
+</script>
+
+<!-- Capture email — liste Leads Transformations -->
+<script>
+(function(){
+  var form = document.getElementById('transfoCaptureForm');
+  if (!form) return;
+  var _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
+  var BREVO_KEY=_a+_b+_c;
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var email = document.getElementById('transfoCaptureEmail').value.trim();
+    if (!email) return;
+    var btn = document.getElementById('transfoCaptureBtn');
+    btn.disabled = true;
+    btn.textContent = 'Envoi...';
+    try {
+      await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'api-key': BREVO_KEY },
+        body: JSON.stringify({
+          email: email,
+          listIds: [29],
+          updateEnabled: true,
+          attributes: { SOURCE: 'transformations-page' }
+        })
+      });
+      if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+    } catch (err) {}
+    form.style.display = 'none';
+    document.getElementById('transfoCaptureNote').style.display = 'none';
+    document.getElementById('transfoCaptureSuccess').style.display = 'block';
+  });
+})();
 </script>
 
 <!-- Meta Pixel Events -->
