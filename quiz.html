@@ -837,19 +837,31 @@ async function sendToBrevo(email, resultKey, prenom = '', phone = '') {
   const objectif = selections[5] !== undefined ? OBJECTIF_LABELS[selections[5]] : '';
   const produit   = PRODUIT_CTA[objectif] || null;
 
+  /* Liste "Leads" du programme digital cross-vendu selon l'objectif — reprend les listes déjà
+     utilisées ailleurs sur le site pour ces mêmes programmes, pas de nouvelle liste par produit
+     sauf Ageless Girl qui n'en avait pas encore (liste 42, distincte de la liste 41 dédiée au
+     popup "9 erreurs" — ne pas confondre les deux). */
+  const PRODUIT_LISTS = { poids: 19, silhouette: 16, remise_forme: 25, muscle: 22, antiage: 42 };
+  const produitListId = PRODUIT_LISTS[objectif];
+
   /* 1 — Ajouter le contact à la liste — formulaire natif, plus de clé exposée pour cette étape */
   submitToQuizBrevoForm(email, resultKey);
 
   /* 1bis — Enregistre le résultat du quiz (prénom, formule recommandée, objectif, programme digital
      cross-vendu) comme attributs du contact, pour que le résultat soit visible dans Brevo et pas
-     seulement dans l'email envoyé. Le formulaire natif ci-dessus ne porte que l'email. */
+     seulement dans l'email envoyé. Le formulaire natif ci-dessus ne porte que l'email.
+     Ajoute aussi le contact à la liste "Leads" du programme digital cross-vendu, en plus de sa
+     liste de formule de coaching. */
   try {
+    const listIds = [];
+    if (listId) listIds.push(listId);
+    if (produitListId) listIds.push(produitListId);
     await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'api-key': BREVO_API_KEY },
       body: JSON.stringify({
         email: email,
-        listIds: listId ? [listId] : [],
+        listIds: listIds,
         updateEnabled: true,
         attributes: {
           PRENOM: prenom || '',
