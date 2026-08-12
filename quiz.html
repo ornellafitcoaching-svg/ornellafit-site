@@ -840,6 +840,27 @@ async function sendToBrevo(email, resultKey, prenom = '', phone = '') {
   /* 1 — Ajouter le contact à la liste — formulaire natif, plus de clé exposée pour cette étape */
   submitToQuizBrevoForm(email, resultKey);
 
+  /* 1bis — Enregistre le résultat du quiz (prénom, formule recommandée, objectif, programme digital
+     cross-vendu) comme attributs du contact, pour que le résultat soit visible dans Brevo et pas
+     seulement dans l'email envoyé. Le formulaire natif ci-dessus ne porte que l'email. */
+  try {
+    await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'api-key': BREVO_API_KEY },
+      body: JSON.stringify({
+        email: email,
+        listIds: listId ? [listId] : [],
+        updateEnabled: true,
+        attributes: {
+          PRENOM: prenom || '',
+          RESULTAT_QUIZ: r ? r.title : resultKey,
+          OBJECTIF: objectif || '',
+          PRODUIT_RECOMMANDE: produit ? produit.label : ''
+        }
+      })
+    });
+  } catch (e) {}
+
   /* 1bis — Numéro de téléphone : le formulaire natif ci-dessus ne porte pas ce champ,
      donc on l'enregistre via un appel direct à l'API contacts (même clé que pour l'email plus bas). */
   if (phone) {
