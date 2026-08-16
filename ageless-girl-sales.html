@@ -822,7 +822,15 @@ document.addEventListener('click', function(e){
   var a = e.target.closest && e.target.closest('a[href*="buy.stripe.com"]');
   if(!a) return;
   try{ localStorage.setItem('ag_purchase_pending','1'); }catch(err){}
-});
+  // Si on connaît déjà un email (popup rempli plus tôt), on l'associe au Pixel
+  // avant que le clic ne déclenche l'évènement InitiateCheckout (capture = avant le onclick du bouton).
+  try{
+    var emHash = localStorage.getItem('ag_em_hash');
+    if (emHash && typeof fbq !== 'undefined') {
+      fbq('init', '26675222578828123', {em: emHash});
+    }
+  }catch(err){}
+}, true);
 </script>
 
 <!-- POPUP GUIDE GRATUIT -->
@@ -920,6 +928,15 @@ document.addEventListener('click', function(e){
     var btn = form.querySelector('button[type="submit"]');
     btn.disabled = true;
     btn.textContent = 'Envoi...';
+    // Hash de l'email (jamais stocké en clair) pour améliorer le matching Meta
+    // sur l'évènement InitiateCheckout si elle achète ensuite.
+    try {
+      var normalized = email.toLowerCase();
+      var enc = new TextEncoder().encode(normalized);
+      var hashBuffer = await crypto.subtle.digest('SHA-256', enc);
+      var hashHex = Array.from(new Uint8Array(hashBuffer)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+      localStorage.setItem('ag_em_hash', hashHex);
+    } catch(err) {}
     try {
       await fetch('https://api.brevo.com/v3/contacts', {
         method: 'POST',
