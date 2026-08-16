@@ -102,21 +102,16 @@ src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf7
 </head>
 <body>
 
-<iframe name="bsInfoFrame" style="display:none"></iframe>
-<div class="sib-form" style="text-align: center; background-color: #EFF2F7;">
-<div id="sib-form-container" class="sib-form-container">
-<div id="sib-container" class="sib-container--large sib-container--vertical" style="max-width:540px; text-align:center; background-color:rgba(255,255,255,1); border-width:1px; border-style:solid; border-color:#C0CCD9; border-radius:3px;">
-<form id="sib-form" method="POST" target="bsInfoFrame" action="https://e605324b.sibforms.com/serve/MUIFAAmMLbBLQew1I0jow1A1D4hpeeAkNULaaKZsMVlVd018daNRrwhecRpRH2bb36PR8KO4_w-qHVlBYxlkYPgDC_4lHrjDR6e-eKMS5O2xXYzyNnymMH4ASLFkt8WTOKJPzTnih-ULaEUctL8lJJqa1yykWBaCqzOktj6rvmUxPubg2DO2IUudvIPkEh0EaKFmv7_VAIyB-ZPSmw==">
-<div style="padding: 8px 0;"><div class="sib-form-block" style="font-family:Helvetica, sans-serif; font-size:32px; font-weight:700; text-align:left; color:#3C4858;"><p>Reste informée 💌</p></div></div>
-<div style="padding: 8px 0;"><div class="sib-form-block" style="font-family:Helvetica, sans-serif; font-size:16px; text-align:left; color:#3C4858;"><div class="sib-text-form-block"><p>Reçois aussi ce guide recettes par email (pour le retrouver facilement) + des conseils bonus pour sculpter ta silhouette.</p></div></div></div>
-<div style="padding: 8px 0;"><div class="sib-input sib-form-block"><div class="form__entry entry_block"><div class="form__label-row"><label class="entry__label" style="font-weight:700; text-align:left; font-family:Helvetica, sans-serif; font-size:16px; color:#3c4858;" for="EMAIL" data-required="*">Veuillez renseigner votre adresse email pour vous inscrire</label><div class="entry__field"><input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" value="" placeholder="EMAIL" data-required="true" required /></div></div><label class="entry__error entry__error--primary" style="font-family:Helvetica, sans-serif; font-size:16px; text-align:left; color:#661d1d; background-color:#ffeded; border-color:#ff4949; border-radius:3px;"></label><label class="entry__specification" style="font-family:Helvetica, sans-serif; font-size:12px; text-align:left; color:#8390A4;">Veuillez renseigner votre adresse email pour vous inscrire. Ex. : abc@xyz.com</label></div></div></div>
-<div style="padding: 8px 0;"><div class="sib-form-block" style="text-align:left;"><button class="sib-form-block__button sib-form-block__button-with-loader" style="font-family:Helvetica, sans-serif; font-size:16px; font-weight:700; text-align:left; color:#FFFFFF; background-color:#3E4857; border-width:0px; border-radius:3px;" form="sib-form" type="submit">Recevoir mon guide</button></div></div>
-<input type="text" name="email_address_check" value="" class="input--hidden">
-<input type="hidden" name="locale" value="fr">
-<input type="hidden" name="html_type" value="simple">
-</form>
-</div>
-</div>
+<div style="text-align:center;background:#F5EFE6;padding:32px 20px;">
+  <div style="max-width:480px;margin:0 auto;background:#fff;border:1.5px solid #DDD5C8;border-radius:14px;padding:28px 26px;">
+    <p style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#A8432B;margin-bottom:8px;">Reste informée 💌</p>
+    <p id="grsIntro" style="font-size:.85rem;color:#5C4033;line-height:1.6;margin-bottom:18px;">Reçois aussi ce guide par email (pour le retrouver facilement) + des conseils bonus pour sculpter ta silhouette.</p>
+    <form id="grsForm" style="display:flex;flex-direction:column;gap:10px;">
+      <input type="email" id="grsEmail" required placeholder="Ton adresse email" style="padding:14px 16px;border-radius:10px;border:1px solid #DDD5C8;font-size:.9rem;font-family:'DM Sans',sans-serif;color:#3C4858;">
+      <button type="submit" style="padding:14px;background:#A8432B;color:#fff;border:none;border-radius:10px;font-weight:700;font-size:.9rem;cursor:pointer;font-family:'DM Sans',sans-serif;">Recevoir mon guide par email</button>
+    </form>
+    <p id="grsSuccess" style="display:none;font-size:.85rem;color:#2E7D32;margin-top:4px;">✓ Envoyé ! Vérifie ta boîte mail (et tes spams).</p>
+  </div>
 </div>
 
 <div class="page">
@@ -450,6 +445,41 @@ src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf7
     var box = document.getElementById('morpho-personal');
     if(box){ box.innerHTML = '<p>🎯 ' + messages[morpho] + '</p>'; box.style.display = 'block'; }
   }
+})();
+</script>
+<script>
+(function(){
+  var _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
+  var BREVO_KEY=_a+_b+_c;
+  var form = document.getElementById('grsForm');
+  if(!form) return;
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var email = document.getElementById('grsEmail').value.trim();
+    if (!email) return;
+    var btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true; btn.textContent = 'Envoi...';
+    try {
+      await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'api-key': BREVO_KEY },
+        body: JSON.stringify({ email: email, listIds: [44], updateEnabled: true, attributes: { SOURCE: 'guide-recettes-sculptantes-post-achat' } })
+      });
+      await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'api-key': BREVO_KEY },
+        body: JSON.stringify({
+          to: [{ email: email }],
+          sender: { name: 'Ornella Fit Coaching', email: 'contact@ornellafitcoaching.com' },
+          subject: 'Ton Guide Recettes Sculptantes 🍽️',
+          htmlContent: '<!DOCTYPE html><html><body style="margin:0;padding:0;background:#FAF7F4;font-family:Georgia,serif;"><div style="max-width:520px;margin:0 auto;padding:36px 24px;"><p style="font-size:16px;color:#1E1616;margin:0 0 16px;">Bonjour,</p><p style="font-size:15px;color:#3D2F2F;line-height:1.8;margin:0 0 24px;">Comme demandé, voici ton lien direct vers le <strong>Guide Recettes Sculptantes</strong> — garde cet email pour le retrouver facilement à tout moment.</p><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px;"><tr><td align="center"><a href="https://www.ornellafitcoaching.com/guide-recettes-sculptantes.html" style="display:inline-block;background:#C96358;color:#ffffff;font-weight:bold;font-size:15px;padding:16px 32px;border-radius:50px;text-decoration:none;font-family:Arial,sans-serif;">Voir mon guide →</a></td></tr></table><p style="font-size:14px;color:#8A6F63;">Une question ? Réponds directement à cet email ou écris sur WhatsApp : <a href="https://wa.me/33756834626" style="color:#C96358;">wa.me/33756834626</a></p><p style="font-size:15px;color:#4A3E3E;margin-top:26px;">À très vite,<br><strong style="color:#1E1616;">Ornella</strong></p></div></body></html>'
+        })
+      });
+    } catch(err) {}
+    form.style.display = 'none';
+    document.getElementById('grsIntro').style.display = 'none';
+    document.getElementById('grsSuccess').style.display = 'block';
+  });
 })();
 </script>
 </body>
