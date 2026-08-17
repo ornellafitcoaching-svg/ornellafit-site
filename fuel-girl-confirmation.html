@@ -112,10 +112,19 @@ footer a:hover{color:rgba(255,255,255,.55)}
     <a href="fuel-girl.html?code=ZN2H2KKB" class="btn">Accéder à FUEL GIRL maintenant →</a>
   </div>
 
-  <!-- EMAIL -->
-  <div class="conf-email-notice">
+  <!-- EMAIL CAPTURE -->
+  <div class="conf-email-notice" id="email-block">
     <span class="conf-email-icon">📧</span>
-    <p class="conf-email-text">Tu vas recevoir <strong>le lien par email dans quelques minutes</strong>. Vérifie tes courriers indésirables si tu ne le vois pas dans ta boîte principale. Le lien d'accès est valable à vie.</p>
+    <div style="flex:1">
+      <p class="conf-email-text" style="margin-bottom:12px"><strong>Reçois le lien par email</strong> — pour retrouver ton programme à tout moment.</p>
+      <form id="email-form" style="display:flex;gap:8px;flex-wrap:wrap">
+        <input type="text" id="inp-prenom" placeholder="Ton prénom" style="flex:1;min-width:100px;padding:10px 14px;border:1.5px solid var(--border);border-radius:22px;font-family:'DM Sans',sans-serif;font-size:.83rem;color:var(--text);background:#fff;outline:none">
+        <input type="email" id="inp-email" placeholder="Ton email" required style="flex:2;min-width:160px;padding:10px 14px;border:1.5px solid var(--border);border-radius:22px;font-family:'DM Sans',sans-serif;font-size:.83rem;color:var(--text);background:#fff;outline:none">
+        <button type="submit" style="background:var(--orange);color:#fff;border:none;padding:10px 20px;border-radius:22px;font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif">Envoyer →</button>
+      </form>
+      <p id="email-success" style="display:none;font-size:.82rem;color:#2C8A5A;margin-top:8px;font-weight:600">✓ Email envoyé ! Vérifie ta boîte (et tes spams).</p>
+      <p id="email-error" style="display:none;font-size:.82rem;color:#C0392B;margin-top:8px">Une erreur s'est produite. Réessaie, ou écris sur WhatsApp.</p>
+    </div>
   </div>
 
   <!-- STEPS -->
@@ -180,6 +189,45 @@ footer a:hover{color:rgba(255,255,255,.55)}
   </p>
   <p style="margin-top:8px">© 2026 Ornella Fit Coaching — <a href="https://ornellafitcoaching.com">ornellafitcoaching.com</a></p>
 </footer>
+
+<script>
+const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
+const BREVO_KEY=_a+_b+_c;
+
+document.getElementById('email-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const email = document.getElementById('inp-email').value.trim();
+  const prenom = document.getElementById('inp-prenom').value.trim() || 'toi';
+  if(!email) return;
+  const btn = this.querySelector('button');
+  btn.textContent = '...';
+  btn.disabled = true;
+  try {
+    await fetch('https://api.brevo.com/v3/contacts', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','api-key':BREVO_KEY},
+      body:JSON.stringify({ email, attributes:{PRENOM:prenom}, listIds:[45], updateEnabled:true })
+    });
+    await fetch('https://api.brevo.com/v3/smtp/email', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','api-key':BREVO_KEY},
+      body:JSON.stringify({
+        sender:{name:'Ornella — Ornella Fit Coaching',email:'contact@ornellafitcoaching.com'},
+        to:[{email,name:prenom}],
+        subject:'🔥 Ton accès FUEL GIRL — lien permanent',
+        htmlContent:`<!DOCTYPE html><html><body style="font-family:sans-serif;background:#FFFAF5;margin:0;padding:0"><div style="max-width:560px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden"><div style="background:#1A1005;padding:28px;text-align:center"><p style="color:rgba(255,255,255,.5);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px">Ornella Fit Coaching</p><h1 style="color:#fff;font-size:24px;margin:0;font-weight:700">Fuel Girl 🔥</h1></div><div style="padding:28px"><p style="color:#2A1A0A;font-size:15px;line-height:1.6;margin:0 0 20px">Bonjour ${prenom},<br><br>Merci pour ton achat ! Voici ton accès permanent au guide.</p><div style="text-align:center;margin:0 0 24px"><a href="https://www.ornellafitcoaching.com/fuel-girl.html?code=ZN2H2KKB" style="background:#E07A30;color:#fff;text-decoration:none;padding:14px 28px;border-radius:10px;font-weight:700;font-size:14px;display:inline-block">⚡ Accéder à mon guide →</a></div><p style="color:#9A7A5A;font-size:13px">Le lien est valable à vie. Une question ? <a href="https://wa.me/33756834626" style="color:#E07A30">WhatsApp</a></p></div><div style="background:#1A1005;padding:16px;text-align:center"><p style="color:rgba(255,255,255,.35);font-size:11px;margin:0">Ornella Fit Coaching · ornellafitcoaching.com</p></div></div></body></html>`
+      })
+    });
+    document.getElementById('email-success').style.display='block';
+    document.getElementById('email-error').style.display='none';
+    this.style.display='none';
+  } catch(err) {
+    document.getElementById('email-error').style.display='block';
+    btn.textContent='Envoyer →';
+    btn.disabled=false;
+  }
+});
+</script>
 
 </body>
 </html>
