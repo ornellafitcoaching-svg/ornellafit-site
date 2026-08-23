@@ -12,11 +12,11 @@
 
   // Ordre visuel sur la roue = ordre dans ce tableau (5 secteurs de 72°)
   var PRIZES = [
-    { label: '-5%',      code: 'ROUE5',  pct: 5,  weight: 35, win: true  },
-    { label: 'Pas de\nchance', code: '', pct: 0,  weight: 15, win: false },
+    { label: '-5%',      code: 'ROUE5',  pct: 5,  weight: 10, win: true  },
+    { label: 'Pas de\nchance', code: '', pct: 0,  weight: 10, win: false },
     { label: '-10%',     code: 'ROUE10', pct: 10, weight: 30, win: true  },
-    { label: '-15%',     code: 'ROUE15', pct: 15, weight: 15, win: true  },
-    { label: '-20%\n🎉', code: 'ROUE20', pct: 20, weight: 5,  win: true  }
+    { label: '-15%',     code: 'ROUE15', pct: 15, weight: 30, win: true  },
+    { label: '-20%\n🎉', code: 'ROUE20', pct: 20, weight: 20, win: true  }
   ];
   var SEGMENT_COLORS = ['#C45C78', '#F7F1EF', '#D9A97A', '#C45C78', '#B9825A'];
   var SEGMENT_TEXT_COLORS = ['#fff', '#302D2B', '#302D2B', '#fff', '#fff'];
