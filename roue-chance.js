@@ -2,6 +2,9 @@
   "use strict";
 
   if (localStorage.getItem('ofc_roue_played') === '1') return;
+  // Une seule fois par visiteuse : pas ré-affichée avant 7 jours si elle l'a déjà vue (même sans jouer).
+  var _shownAt = parseInt(localStorage.getItem('ofc_roue_shown_at') || '0', 10);
+  if (_shownAt && (Date.now() - _shownAt) < 7 * 24 * 60 * 60 * 1000) return;
   if (sessionStorage.getItem('ofc_roue_shown')) return;
 
   var _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
@@ -102,6 +105,9 @@
       '</div>' +
     '</div>';
   document.body.appendChild(overlay);
+  // IMPORTANT : masqué (display:none) tant que la roue n'est pas déclenchée, sinon l'overlay
+  // (invisible, opacity:0) capte les clics au centre de la page et bloque l'interaction.
+  overlay.style.display = 'none';
 
   var wheelEl = document.getElementById('ofcRoueWheel');
   var formView = overlay.querySelector('.ofc-roue-form-view');
@@ -120,6 +126,7 @@
     if (shown || played) return;
     shown = true;
     sessionStorage.setItem('ofc_roue_shown', '1');
+    try { localStorage.setItem('ofc_roue_shown_at', String(Date.now())); } catch (e) {}
     overlay.style.display = 'flex';
     document.body.style.overflow = 'hidden';
     requestAnimationFrame(function(){ overlay.classList.add('ofc-show'); });
@@ -244,15 +251,15 @@
     });
   });
 
-  // Déclenchement : 10s après chargement OU 25% de scroll, avec filet de sécurité mobile 22s
-  // et exit-intent desktop (mouvement de souris vers le haut de l'écran).
-  var timerShown = false;
-  setTimeout(function(){ if (!shown) openRoue(); }, 10000);
+  // Déclenchement RETARDÉ (visiteuse déjà engagée) : 35s après chargement OU 55% de scroll,
+  // filet de sécurité 45s, + exit-intent desktop (souris vers le haut de l'écran, prioritaire).
+  // But : ne plus couvrir la page au moment où elle commence à lire (cause n°1 de fermeture).
+  setTimeout(function(){ if (!shown) openRoue(); }, 35000);
 
   window.addEventListener('scroll', function(){
     if (shown) return;
     var scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-    if (scrolled >= 0.25) openRoue();
+    if (scrolled >= 0.55) openRoue();
   }, { passive: true });
 
   document.addEventListener('mousemove', function(e){
@@ -260,5 +267,5 @@
     if (e.clientY <= 8) openRoue();
   });
 
-  setTimeout(function(){ if (!shown) openRoue(); }, 22000);
+  setTimeout(function(){ if (!shown) openRoue(); }, 45000);
 })();
