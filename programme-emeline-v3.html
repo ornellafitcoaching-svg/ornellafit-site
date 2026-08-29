@@ -792,24 +792,41 @@ function ensureAudio() {
     if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     if (audioCtx.state === 'suspended') audioCtx.resume();
   } catch (e) {}
+  return audioCtx;
+}
+function scheduleBeeps() {
+  if (!audioCtx) return;
+  const t0 = audioCtx.currentTime + 0.06;
+  // 6 bips forts alternés (~2 s) — bien audible
+  for (let i = 0; i < 6; i++) {
+    const t = t0 + i * 0.34;
+    const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+    o.type = 'square';                       // timbre plus tranchant = plus audible
+    o.frequency.value = (i % 2 === 0) ? 990 : 660;
+    o.connect(g); g.connect(audioCtx.destination);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.6, t + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.3);
+    o.start(t); o.stop(t + 0.32);
+  }
 }
 function playBeep() {
   ensureAudio();
-  if (!audioCtx) return;
-  const now = audioCtx.currentTime;
-  // 3 bips courts et clairs
-  [0, 0.28, 0.56].forEach(t => {
-    const o = audioCtx.createOscillator(), g = audioCtx.createGain();
-    o.type = 'sine';
-    o.frequency.value = 880;
-    o.connect(g); g.connect(audioCtx.destination);
-    g.gain.setValueAtTime(0.0001, now + t);
-    g.gain.exponentialRampToValueAtTime(0.45, now + t + 0.02);
-    g.gain.exponentialRampToValueAtTime(0.0001, now + t + 0.2);
-    o.start(now + t); o.stop(now + t + 0.22);
-  });
-  if (navigator.vibrate) navigator.vibrate([200, 100, 200]); // vibration mobile
+  if (audioCtx && audioCtx.state === 'suspended') {
+    // IMPORTANT : attendre le réveil du contexte AVANT de jouer, sinon parfois silencieux
+    audioCtx.resume().then(scheduleBeeps).catch(scheduleBeeps);
+  } else {
+    scheduleBeeps();
+  }
+  if (navigator.vibrate) navigator.vibrate([300, 150, 300, 150, 300]); // vibration forte
 }
+/* Déblocage audio au tout premier contact avec la page + reprise quand elle revient au 1er plan */
+function unlockAudioOnce() { ensureAudio(); }
+['touchstart', 'click', 'keydown'].forEach(ev =>
+  document.addEventListener(ev, unlockAudioOnce, { once: true, passive: true }));
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden && audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+});
 
 function fmt(s) {
   const m = Math.floor(s / 60), sec = s % 60;
