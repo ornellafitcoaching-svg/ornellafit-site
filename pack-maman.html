@@ -17,7 +17,8 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Ornella Fit Coaching">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Product","name":"Pack Maman — Ventre Plat Après Bébé + Booty Sculpt","description":"Les 2 programmes post-partum réunis : Ventre Plat Après Bébé (8 semaines) et Booty Sculpt. Accès immédiat à vie, sur tous les appareils.","brand":{"@type":"Brand","name":"Ornella Fit Coaching"},"offers":{"@type":"Offer","price":"27","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://www.ornellafitcoaching.com/pack-maman.html"},"image":"https://www.ornellafitcoaching.com/images/poster-hero.jpg","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"24","bestRating":"5","worstRating":"1"}}
+{"@context":"https://schema.org","@type":"Product",
+  "sku": "pack-maman","name":"Pack Maman — Ventre Plat Après Bébé + Booty Sculpt","description":"Les 2 programmes post-partum réunis : Ventre Plat Après Bébé (8 semaines) et Booty Sculpt. Accès immédiat à vie, sur tous les appareils.","brand":{"@type":"Brand","name":"Ornella Fit Coaching"},"offers":{"@type":"Offer","price":"27","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://www.ornellafitcoaching.com/pack-maman.html"},"image":"https://www.ornellafitcoaching.com/images/poster-hero.jpg","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"24","bestRating":"5","worstRating":"1"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -28,7 +29,7 @@
 ]}
 </script>
 <!-- Meta Pixel -->
-<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1233548507794099");fbq("track","PageView");</script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1233548507794099");fbq("track","PageView");fbq("track","ViewContent",{value:27,currency:"EUR",content_name:"Pack Maman",content_ids:["pack-maman"],content_type:"product"});</script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1233548507794099&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -468,7 +469,7 @@ function handlePackMamanPurchase(){
     localStorage.setItem('pm_buyer_fname', fname);
   } catch(e) {}
   bdPostWithRetry('https://api.brevo.com/v3/contacts', { email: email, attributes:{PRENOM:fname}, listIds:[40], updateEnabled:true }, 2);
-  if (typeof fbq !== 'undefined') { fbq('init','1233548507794099',{em:email}); fbq('track','InitiateCheckout',{value:27,currency:'EUR'}); }
+  if (typeof fbq !== 'undefined') { fbq('init','1233548507794099',{em:email}); (fbq('track','InitiateCheckout',{value:27,currency:'EUR',content_ids:['pack-maman'],content_type:'product'}),fbq('track','AddToCart',{value:27,currency:'EUR',content_ids:['pack-maman'],content_type:'product'})); }
   setTimeout(function(){
     window.location.href = 'https://buy.stripe.com/9B6aEX7fX9O317Teup8Vi0r';
   }, 400);

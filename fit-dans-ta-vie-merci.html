@@ -10,7 +10,7 @@
   if(email){ fbq('init','1233548507794099',{em:email}); } else { fbq('init','1233548507794099'); }
   fbq('track','PageView');
   if(!fired){
-    fbq('track','Purchase',{value:49.00,currency:'EUR',content_name:'Fit Dans Ta Vie'});
+    fbq('track','Purchase',{value:49.00,currency:'EUR',content_name:'Fit Dans Ta Vie',content_ids:['fit-dans-ta-vie-28j'],content_type:'product'});
     try{ localStorage.setItem('fdtv_purchase_fired','1'); }catch(e){}
   }
 })();
@@ -98,7 +98,7 @@
       <p style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#2D6A4F;margin:0 0 8px;">🎯 Envie d'aller plus loin ?</p>
       <p style="font-size:1rem;font-weight:700;margin:0 0 8px;">Programme 100% sur-mesure</p>
       <p style="font-size:.85rem;color:#C9B8AC;line-height:1.6;margin:0 0 12px;">FIT DANS TA VIE t'a appris à organiser ta routine. Le sur-mesure adapte maintenant l'entraînement à TON objectif, TON niveau et TES contraintes précises.</p>
-      <a href="https://buy.stripe.com/8x26oHas9f8n5o9cmh8Vi03" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:79,currency:'EUR'})" style="display:inline-block;background:#2D6A4F;color:#fff;text-decoration:none;padding:14px 32px;border-radius:50px;font-weight:700;font-size:.9rem;">Découvrir le sur-mesure → 79€</a>
+      <a href="https://buy.stripe.com/8x26oHas9f8n5o9cmh8Vi03" onclick="if(typeof fbq!=='undefined')(fbq('track','InitiateCheckout',{value:79,currency:'EUR',content_ids:['sur-mesure-79'],content_type:'product'}),fbq('track','AddToCart',{value:79,currency:'EUR',content_ids:['sur-mesure-79'],content_type:'product'}))" style="display:inline-block;background:#2D6A4F;color:#fff;text-decoration:none;padding:14px 32px;border-radius:50px;font-weight:700;font-size:.9rem;">Découvrir le sur-mesure → 79€</a>
     </div>
 
     <a href="https://www.ornellafitcoaching.com/programmes.html" style="display:block;text-align:center;font-size:.85rem;color:var(--nude);margin-top:16px;text-decoration:underline;">Voir tous mes autres programmes digitaux →</a>
