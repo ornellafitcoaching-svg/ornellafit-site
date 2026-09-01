@@ -450,7 +450,7 @@ body::before {
   var fab=document.getElementById('waFab');if(!fab)return;
   var footer=document.querySelector('.footer');
   function upd(){
-    var show=window.scrollY>120; // apparaît après un petit scroll (pas dès l'arrivée)
+    var show=true; // visible par défaut (ne dépend pas d'un scroll qui pourrait ne jamais arriver)
     if(footer){var r=footer.getBoundingClientRect();if(r.top < window.innerHeight){show=false;}} // masquée près du footer
     fab.style.opacity=show?'1':'0';
     fab.style.transform=show?'translateY(0)':'translateY(12px)';
@@ -458,7 +458,9 @@ body::before {
   }
   window.addEventListener('scroll',upd,{passive:true});
   window.addEventListener('resize',upd,{passive:true});
-  window.addEventListener('load',upd);upd();
+  window.addEventListener('load',upd);
+  setTimeout(upd,700); // apparition douce ~0,7s après chargement
+  upd();
 })();
 </script>
 
