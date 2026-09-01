@@ -121,6 +121,21 @@
   var shown = false;
   var played = false;
   var currentRotation = 0;
+  var startTime = Date.now();
+  var ROUE_PAGE = (location.pathname || '/').replace(/\.html$/, '') || '/';
+
+  // Remonte un événement au Pixel Meta (événement perso) + dataLayer GTM. Silencieux si absent.
+  function track(evtName, extra){
+    var data = extra || {};
+    data.page = ROUE_PAGE;
+    try { if (typeof fbq === 'function') fbq('trackCustom', evtName, data); } catch (e) {}
+    try {
+      window.dataLayer = window.dataLayer || [];
+      var payload = { event: evtName };
+      for (var k in data) { if (data.hasOwnProperty(k)) payload[k] = data[k]; }
+      window.dataLayer.push(payload);
+    } catch (e) {}
+  }
 
   function openRoue(){
     if (shown || played) return;
@@ -130,9 +145,11 @@
     overlay.style.display = 'flex';
     document.body.style.overflow = 'hidden';
     requestAnimationFrame(function(){ overlay.classList.add('ofc-show'); });
+    track('RoueShown');
   }
 
   function closeRoue(){
+    if (!played) track('RoueClosed');
     overlay.classList.remove('ofc-show');
     document.body.style.overflow = '';
     setTimeout(function(){ overlay.style.display = 'none'; }, 250);
@@ -202,6 +219,7 @@
     if (note) note.style.display = 'none';
     formView.style.display = 'none';
     resultView.classList.add('ofc-show');
+    track('RoueAlreadyPlayed');
   }
 
   function spin(email){
@@ -217,6 +235,11 @@
     played = true;
     localStorage.setItem('ofc_roue_played', '1');
     sendToBrevo(email, prize);
+
+    // Email capturé = vrai Lead (standard Meta, exploitable pour l'optim des pubs) + détail du lot.
+    try { if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'Roue de la chance', page: ROUE_PAGE }); } catch (e) {}
+    track('RoueLead');
+    track('RouePrize', { prize: prize.win ? ('-' + prize.pct + '%') : 'perdu', code: prize.code || '', win: prize.win });
 
     setTimeout(function(){
       showResult(prize);
@@ -256,14 +279,20 @@
   // But : ne plus couvrir la page au moment où elle commence à lire (cause n°1 de fermeture).
   setTimeout(function(){ if (!shown) openRoue(); }, 35000);
 
+  // Plancher de temps : la roue ne peut JAMAIS surgir "trop vite" au début de la lecture.
+  var SCROLL_MIN_DELAY = 12000; // scroll : pas avant 12s
+  var EXIT_MIN_DELAY = 6000;    // exit-intent : pas avant 6s (garde le rattrapage de celles qui partent)
+
   window.addEventListener('scroll', function(){
     if (shown) return;
+    if (Date.now() - startTime < SCROLL_MIN_DELAY) return;
     var scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
     if (scrolled >= 0.55) openRoue();
   }, { passive: true });
 
   document.addEventListener('mousemove', function(e){
     if (shown) return;
+    if (Date.now() - startTime < EXIT_MIN_DELAY) return;
     if (e.clientY <= 8) openRoue();
   });
 
