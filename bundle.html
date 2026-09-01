@@ -500,7 +500,7 @@ function handleBundlePurchase(){
     localStorage.setItem('bd_buyer_fname', fname);
   } catch(e) {}
   bdPostWithRetry('https://api.brevo.com/v3/contacts', { email: email, attributes:{PRENOM:fname}, listIds:[40], updateEnabled:true }, 2);
-  if (typeof fbq !== 'undefined') { fbq('init','1233548507794099',{em:email}); fbq('track','InitiateCheckout',{value:25,currency:'EUR'}); }
+  if (typeof fbq !== 'undefined') { fbq('init','1233548507794099',{em:email}); (fbq('track','InitiateCheckout',{value:25,currency:'EUR',content_ids:['bundle-booty-ventre'],content_type:'product'}),fbq('track','AddToCart',{value:25,currency:'EUR',content_ids:['bundle-booty-ventre'],content_type:'product'})); }
   setTimeout(function(){
     window.location.href = 'https://buy.stripe.com/7sY14n57P2lB5o98618Vi0a';
   }, 400);

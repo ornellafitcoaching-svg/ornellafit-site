@@ -546,7 +546,7 @@ footer a{color:rgba(255,255,255,.3);}
 // Pixel InitiateCheckout sur tous les liens Stripe
 document.querySelectorAll('a[href*="stripe.com"]').forEach(a=>{
   a.addEventListener('click',()=>{
-    if(typeof fbq!=='undefined') fbq('track','InitiateCheckout',{value:17,currency:'EUR'});
+    if(typeof fbq!=='undefined') (fbq('track','InitiateCheckout',{value:17,currency:'EUR',content_ids:['postpartum-8sem'],content_type:'product'}),fbq('track','AddToCart',{value:17,currency:'EUR',content_ids:['postpartum-8sem'],content_type:'product'}));
   });
 });
 
@@ -569,7 +569,7 @@ async function submitLead(e){
     document.getElementById('pp25Form').submit();
   }catch(err){}
   try{ localStorage.setItem('pp_buyer_email', email); }catch(e){}
-  if(typeof fbq!=='undefined'){ fbq('init','1233548507794099',{em:email}); fbq('track','InitiateCheckout',{value:17,currency:'EUR'}); }
+  if(typeof fbq!=='undefined'){ fbq('init','1233548507794099',{em:email}); (fbq('track','InitiateCheckout',{value:17,currency:'EUR',content_ids:['postpartum-8sem'],content_type:'product'}),fbq('track','AddToCart',{value:17,currency:'EUR',content_ids:['postpartum-8sem'],content_type:'product'})); }
   // Délai avant redirection Stripe pour laisser le temps à la soumission Brevo (iframe cachée) de partir réellement
   setTimeout(function(){
     window.location.href='https://buy.stripe.com/00wfZhcAhaS76sdfyt8Vi0d';

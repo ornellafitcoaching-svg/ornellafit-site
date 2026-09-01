@@ -10,7 +10,7 @@ fbq("track","PageView");
   var fired=null;
   try{ fired=localStorage.getItem('ig_purchase_pending'); }catch(e){}
   if(fired){
-    fbq('track','Purchase',{value:39.00,currency:'EUR',content_name:'Iron Girl'});
+    fbq('track','Purchase',{value:39.00,currency:'EUR',content_name:'Iron Girl',content_ids:['iron-girl-8sem'],content_type:'product'});
     try{ localStorage.removeItem('ig_purchase_pending'); }catch(e){}
   }
 })();

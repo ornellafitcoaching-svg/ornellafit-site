@@ -10,7 +10,7 @@ fbq("track","PageView");
   var fired=null;
   try{ fired=localStorage.getItem('sb_purchase_pending'); }catch(e){}
   if(fired){
-    fbq('track','Purchase',{value:19.00,currency:'EUR',content_name:'Summer Body'});
+    fbq('track','Purchase',{value:19.00,currency:'EUR',content_name:'Summer Body',content_ids:['summer-body-4sem'],content_type:'product'});
     try{ localStorage.removeItem('sb_purchase_pending'); }catch(e){}
   }
 })();

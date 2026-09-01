@@ -15,7 +15,7 @@ fbq("track","PageView");
   var fired=null;
   try{ fired=localStorage.getItem('bd_purchase_pending'); }catch(e){}
   if(fired){
-    fbq('track','Purchase',{value:25.00,currency:'EUR',content_name:'Bundle Booty Sculpt + Ventre Plat'});
+    fbq('track','Purchase',{value:25.00,currency:'EUR',content_name:'Bundle Booty Sculpt + Ventre Plat',content_ids:['bundle-booty-ventre'],content_type:'product'});
     try{ localStorage.removeItem('bd_purchase_pending'); }catch(e){}
   }
 })();

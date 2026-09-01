@@ -16,7 +16,7 @@ fbq('track','PageView');
   var fired=null;
   try{ fired=localStorage.getItem('ag_purchase_pending'); }catch(e){}
   if(fired){
-    fbq('track','Purchase',{value:17.00,currency:'EUR',content_name:'AGELESS GIRL',content_type:'product'});
+    fbq('track','Purchase',{value:17.00,currency:'EUR',content_name:'AGELESS GIRL',content_ids:['ageless-girl'],content_type:'product'});
     try{ localStorage.removeItem('ag_purchase_pending'); }catch(e){}
   }
 })();
