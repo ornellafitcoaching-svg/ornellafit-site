@@ -723,15 +723,35 @@ applyWeek(1);
 document.getElementById('seance-B').style.display='none';
 document.getElementById('seance-C').style.display='none';
 
-/* Boutons démo vidéo (recherche YouTube ciblée par exercice, lien toujours valide) */
+/* Boutons démo vidéo — liens directs par exercice (clé = séance-exo) */
+const VIDEOS = {
+  'A-squat':'https://youtu.be/EXFBExFRTBY',
+  'A-hipthrust':'https://www.youtube.com/watch?v=MI3sJbT_F_Y',
+  'A-crabe':'https://www.youtube.com/watch?v=h1_YiS8M5ss',
+  'A-fente':'https://www.youtube.com/watch?v=nhqaZiSYdYo',
+  'A-rdl':'https://www.youtube.com/watch?v=Iy3J5_qzUdo',
+  'A-abd':'https://www.youtube.com/watch?v=7IytTOalmio',
+  'B-elev':'https://www.youtube.com/watch?v=q_DYeb_daeY',
+  'B-row':'https://www.youtube.com/watch?v=lcsEJQAbdiw',
+  'B-dev':'https://www.youtube.com/watch?v=CE9KiCPFw0E',
+  'B-oiseau':'https://www.youtube.com/watch?v=E3KdLunjyM8',
+  'B-pompe':'https://www.youtube.com/watch?v=SWUw2epT8P4',
+  'B-bras':'https://www.youtube.com/watch?v=8wvflicHXXw',
+  'C-resp':'https://www.youtube.com/watch?v=BRsjbw8YbJY',
+  'C-deadbug':'https://www.youtube.com/watch?v=6n7ZWnV8snU',
+  'C-birddog':'https://www.youtube.com/watch?v=ZmW47SX0lts',
+  'C-side':'https://www.youtube.com/watch?v=hz00PzRgxNc',
+  'C-pont':'https://www.youtube.com/watch?v=yuxtqS1vLoE',
+  'C-clam':'https://www.youtube.com/watch?v=2mMuZk69yCo'
+};
 document.querySelectorAll('.ex-card').forEach(card=>{
-  const nameEl = card.querySelector('.ex-name');
-  if(!nameEl) return;
-  const q = encodeURIComponent(nameEl.textContent.trim() + ' exercice technique femme');
+  const setsEl = card.querySelector('.ex-sets');
+  if(!setsEl || !setsEl.id) return;
+  const key = setsEl.id.replace('sets-','');
+  const url = VIDEOS[key];
+  if(!url) return;
   const a = document.createElement('a');
-  a.className='ex-video';
-  a.href='https://www.youtube.com/results?search_query='+q;
-  a.target='_blank'; a.rel='noopener';
+  a.className='ex-video'; a.href=url; a.target='_blank'; a.rel='noopener';
   a.innerHTML='<span class="vplay">▶</span> Voir la démo vidéo';
   const rest = card.querySelector('.ex-rest');
   if(rest) card.insertBefore(a, rest); else card.appendChild(a);
