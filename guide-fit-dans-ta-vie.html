@@ -190,26 +190,33 @@ body.content-locked>*:not(#contentGate){display:none!important}
 </div>
 <script>
 (function(){
-  var CODE = 'ZCX6K41O';
-  var STORAGE_KEY = 'access_ok_ZCX6K41O';
+  var HASH = 'b6f2008d076dfa762f1a62e936a2a3ebb03465bb0edbcfb64db327dc1e755f7b';
+  var STORAGE_KEY = 'fdtv_access_ok';
   function unlock(){
     document.body.classList.remove('content-locked');
     var g = document.getElementById('contentGate');
     if (g) g.style.display = 'none';
     try{ localStorage.setItem(STORAGE_KEY,'1'); }catch(e){}
   }
+  function check(v){
+    try{
+      return crypto.subtle.digest('SHA-256', new TextEncoder().encode((v||'').trim().toUpperCase()))
+        .then(function(b){ return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0');}).join('') === HASH; });
+    }catch(e){ return Promise.resolve(false); }
+  }
   try{
     if (localStorage.getItem(STORAGE_KEY) === '1') { unlock(); }
   }catch(e){}
   var params = new URLSearchParams(window.location.search);
   var urlCode = params.get('code');
-  if (urlCode && urlCode.trim().toUpperCase() === CODE) { unlock(); }
+  if (urlCode) { check(urlCode).then(function(ok){ if(ok) unlock(); }); }
   var form = document.getElementById('contentGateForm');
   if (form) {
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      var val = document.getElementById('contentGateCode').value.trim().toUpperCase();
-      if (val === CODE) { unlock(); } else { document.getElementById('contentGateErr').style.display = 'block'; }
+      check(document.getElementById('contentGateCode').value).then(function(ok){
+        if (ok) { unlock(); } else { document.getElementById('contentGateErr').style.display = 'block'; }
+      });
     });
   }
 })();
