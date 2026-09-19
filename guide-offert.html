@@ -1403,6 +1403,90 @@ body { background: #fdf5f2 !important; }
 }
 
 </style>
+<style>
+/* ════════════════════════════════════════════
+   REFONTE ÉDITORIALE 2026 — COMPOSANTS AJOUTÉS
+   (bloc autonome, n'altère pas le design system)
+════════════════════════════════════════════ */
+
+/* ─── Carte "erreur" homogène ─── */
+.err-card { background:#fffdfc; border:1px solid rgba(180,110,110,.18); border-left:4px solid var(--rose); border-radius:12px; padding:22px 24px; margin:0 0 18px; box-shadow:0 2px 12px rgba(58,42,42,.04); }
+.err-head { display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:6px; }
+.err-num { font-family:'Cormorant Garamond',serif; font-size:30px; font-weight:600; color:var(--rose-light); line-height:1; }
+.err-cat { font-size:9px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:#fff; background:var(--rose); padding:4px 12px; border-radius:20px; }
+.err-title { flex-basis:100%; font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:600; color:var(--ink); line-height:1.25; margin-top:2px; }
+.err-row { margin-top:14px; }
+.err-lab { display:block; font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:var(--rose); margin-bottom:5px; }
+.err-row p { font-size:14px; font-weight:400; color:rgba(58,42,42,.90); line-height:1.7; margin:0; }
+.err-row p strong { color:var(--ink); font-weight:700; }
+.err-row.err-do { background:rgba(201,132,138,.08); border-radius:8px; padding:12px 14px; }
+.err-retenir { margin-top:16px; padding:12px 16px; background:rgba(232,168,168,.12); border-radius:8px; font-family:'Cormorant Garamond',serif; font-size:17px; font-style:italic; font-weight:400; color:var(--ink); line-height:1.5; }
+.err-retenir strong { font-style:normal; color:var(--rose-light); font-weight:600; }
+
+/* ─── Plan d'action 7 jours ─── */
+.plan7 { display:flex; flex-direction:column; gap:10px; margin:8px 0 24px; }
+.plan7-day { display:grid; grid-template-columns:52px 1fr; gap:16px; align-items:center; background:#fffdfc; border:1px solid rgba(180,110,110,.16); border-radius:12px; padding:16px 18px; }
+.plan7-num { display:flex; flex-direction:column; align-items:center; justify-content:center; width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg,var(--rose),var(--rouge)); color:#fff; }
+.plan7-num small { font-size:8px; font-weight:700; letter-spacing:1px; text-transform:uppercase; opacity:.9; }
+.plan7-num b { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:600; line-height:1; }
+.plan7-txt b { display:block; font-size:14px; font-weight:700; color:var(--ink); margin-bottom:3px; }
+.plan7-txt span { font-size:13px; font-weight:400; color:rgba(58,42,42,.86); line-height:1.6; }
+
+/* ─── Auto-diagnostic (checklist statique) ─── */
+.adg { background:#fffdfc; border:1px solid rgba(180,110,110,.18); border-radius:12px; padding:24px 26px; margin:8px 0 20px; }
+.adg-item { display:flex; align-items:flex-start; gap:12px; padding:11px 0; border-bottom:1px solid rgba(180,110,110,.10); }
+.adg-item:last-child { border-bottom:none; }
+.adg-box { flex-shrink:0; width:20px; height:20px; border:2px solid var(--rose); border-radius:5px; margin-top:1px; }
+.adg-item p { font-size:14px; font-weight:400; color:rgba(58,42,42,.90); line-height:1.55; margin:0; }
+.adg-scale { margin-top:18px; }
+.adg-scale-row { display:flex; gap:12px; align-items:flex-start; padding:9px 0; font-size:13.5px; color:rgba(58,42,42,.88); line-height:1.55; }
+.adg-scale-row b { color:var(--ink); }
+.adg-scale-dot { flex-shrink:0; font-size:15px; margin-top:1px; }
+
+/* ─── Bloc "comment ton corps fonctionne" ─── */
+.sci-fact { display:grid; grid-template-columns:44px 1fr; gap:16px; align-items:start; background:#fffdfc; border:1px solid rgba(180,110,110,.16); border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+.sci-fact-ico { width:44px; height:44px; border-radius:10px; background:rgba(232,168,168,.16); display:flex; align-items:center; justify-content:center; font-size:22px; }
+.sci-fact b { display:block; font-size:15px; font-weight:700; color:var(--ink); margin-bottom:4px; }
+.sci-fact p { font-size:13.5px; font-weight:400; color:rgba(58,42,42,.88); line-height:1.65; margin:0; }
+
+/* ─── Nuance scientifique (honnêteté) ─── */
+.nuance { background:rgba(120,140,120,.08); border:1px solid rgba(120,140,120,.22); border-left:4px solid #6f9070; border-radius:0 8px 8px 0; padding:14px 18px; margin:16px 0; }
+.nuance-lab { font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#4f7052; margin-bottom:6px; display:block; }
+.nuance p { font-size:13px; font-weight:400; color:rgba(45,60,45,.90); line-height:1.65; margin:0; }
+.nuance p strong { color:#37502f; }
+
+/* ─── Bonus FDTV (produit phare) ─── */
+.fdtv-bonus { background:linear-gradient(160deg,rgba(201,132,138,.14),rgba(184,58,46,.06)); border:1.5px solid rgba(201,132,138,.4); border-radius:14px; padding:30px 28px; margin:24px 0; text-align:center; }
+.fdtv-bonus-tag { display:inline-block; font-size:9px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:#fff; background:var(--rouge); padding:5px 14px; border-radius:20px; margin-bottom:14px; }
+.fdtv-bonus h3 { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--ink); line-height:1.25; margin-bottom:10px; }
+.fdtv-bonus h3 em { font-style:italic; color:var(--rose-light); }
+.fdtv-bonus p { font-size:13.5px; font-weight:400; color:rgba(58,42,42,.88); line-height:1.7; max-width:460px; margin:0 auto 16px; }
+.fdtv-bonus .fdtv-price { font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:300; color:var(--rose-light); margin-bottom:16px; }
+.fdtv-bonus .fdtv-price span { font-size:12px; font-family:'Montserrat',sans-serif; color:rgba(58,42,42,.8); }
+
+/* ─── Cartes "pour qui" (solutions) ─── */
+.pourqui { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:24px 0; }
+.pourqui-card { background:#fffdfc; border:1px solid rgba(180,110,110,.18); border-radius:12px; padding:22px 20px; display:flex; flex-direction:column; }
+.pourqui-card.hi { background:rgba(201,132,138,.09); border:1.5px solid rgba(201,132,138,.38); }
+.pourqui-ico { font-size:26px; margin-bottom:8px; }
+.pourqui-card h4 { font-size:15px; font-weight:700; color:var(--ink); margin-bottom:2px; }
+.pourqui-price { font-size:12px; font-weight:600; color:var(--rose); margin-bottom:10px; }
+.pourqui-forwho { font-size:13px; font-weight:400; color:rgba(58,42,42,.86); line-height:1.6; margin-bottom:14px; flex:1; }
+.pourqui-forwho strong { color:var(--ink); }
+.pourqui-card .btn, .pourqui-card .t-btn-main, .pourqui-card .t-btn-outline { width:100%; text-align:center; margin-top:auto; }
+
+@media (max-width:680px){
+  .err-card { padding:20px 18px; }
+  .err-title { font-size:21px; }
+  .err-row p, .adg-item p { font-size:15px; }
+  .plan7-day { grid-template-columns:46px 1fr; gap:12px; padding:14px 14px; }
+  .plan7-num { width:46px; height:46px; }
+  .pourqui { grid-template-columns:1fr; }
+  .fdtv-bonus { padding:26px 18px; }
+  .fdtv-bonus h3 { font-size:24px; }
+  .sci-fact p, .nuance p { font-size:14px; }
+}
+</style>
 <meta name="facebook-domain-verification" content="q0lravv1bfmhpq3dob5d559cyidqq1" />
 <meta name="facebook-domain-verification" content="4npql1iz6n380yye9bsydf16pnj20x" />
 </head>
@@ -1429,13 +1513,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       Tu fais du sport. Tu fais attention à ton alimentation.<br><em>Pourtant ton corps ne change pas.</em>
     </h1>
     <p class="cover-sub">
-      Les 9 erreurs silencieuses qui sabotent ta transformation — et la méthode concrète, sur mesure, pour en sortir définitivement.
+      Un mini-guide clair et sérieux pour comprendre les 9 erreurs qui freinent le plus souvent les résultats après 30 ans — et repartir avec une vraie stratégie : corps, alimentation, entraînement et organisation.
     </p>
     <div class="cover-pills">
-      <div class="cover-pill"><span>📘</span> 6 chapitres</div>
-      <div class="cover-pill"><span>💡</span> Basé sur la science</div>
-      <div class="cover-pill"><span>🎯</span> Plan d'action inclus</div>
-      <div class="cover-pill"><span>🏆</span> Ex-compétitrice bikini fitness</div>
+      <div class="cover-pill"><span>📘</span> Mini-guide complet</div>
+      <div class="cover-pill"><span>🔬</span> Basé sur la science, sans exagérer</div>
+      <div class="cover-pill"><span>🎯</span> Plan 7 jours + auto-diagnostic</div>
+      <div class="cover-pill"><span>🏆</span> Coach diplômée d'État</div>
     </div>
     <div class="cover-strip">
       <div class="cover-strip-item">
@@ -1729,77 +1813,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-header chapter-header" onclick="toggleChapter(this)">
     <div class="sec-num serif">02</div>
     <span class="eyebrow">Chapitre 2</span>
-    <h2 class="sec-title serif">Mon approche :<em> expérimentée, diplômée, et vécue</em></h2>
-    <p class="sec-intro">Je ne suis pas juste une coach sportive. Je suis quelqu'un qui a vécu les mêmes frustrations que toi — et qui en a fait une mission professionnelle.</p>
+    <h2 class="sec-title serif">Comment ton corps <em>fonctionne vraiment</em></h2>
+    <p class="sec-intro">Avant de parler d'erreurs, il faut comprendre l'essentiel : ton corps n'est pas « cassé » et ton métabolisme ne s'est pas « bloqué ». Il suit des règles logiques. Quand on les comprend, tout devient plus simple — et beaucoup moins culpabilisant.</p>
   </div>
 
-  <div class="profile-body chapter-body collapsed">
-    <div class="profile-left">
-      <div class="profile-avatar" style="width:110px;height:110px;border-radius:50%;overflow:hidden;padding:0;background:none;border:2px solid rgba(232,168,168,.4);flex-shrink:0;"><img src="images/guide-photo-1.jpg" alt="Ornella compétitrice fitness" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" width="1206" height="1936" loading="lazy"></div>
+  <div class="body-area chapter-body collapsed">
+
+    <div class="text-block">
+      <p>On t'a peut-être fait croire qu'après 30 ans, ton corps devient ton ennemi. C'est faux. Ton corps cherche juste une chose en permanence : <strong>l'équilibre</strong>. Il s'adapte à ce que tu lui demandes. Si tu comprends comment, tu arrêtes de te battre contre lui — et tu commences à travailler avec lui.</p>
+    </div>
+
+    <div class="sci-fact">
+      <div class="sci-fact-ico">🔥</div>
       <div>
-        <div class="profile-name serif">Ornella</div>
-        <div class="profile-title">Ornella Fit Coaching</div>
-      </div>
-      <div class="profile-badges">
-        <div class="profile-badge hi">🎓 Coach Diplômée d'État</div>
-        <div class="profile-badge hi">🏆 Demi-finaliste Bikini Fitness</div>
-        <div class="profile-badge hi">👶 Maman</div>
-        <div class="profile-badge">💪 Spécialiste transformation féminine</div>
-        <div class="profile-badge">🤝 Accompagnement humain &amp; bienveillant</div>
-        <div class="profile-badge">📍 Présentiel &amp; coaching à distance</div>
-      </div>
-      <div style="font-size:13px;font-weight:300;color:rgba(58,42,42,.82);text-align:center;line-height:1.7;font-style:italic;font-family:'Cormorant Garamond',serif;">
-        "Ton plus bel investissement, c'est toi."
+        <b>Ton métabolisme n'est pas « cassé » — il s'ajuste</b>
+        <p>Ton corps dépense de l'énergie pour vivre, bouger et digérer. Ce niveau de dépense varie d'une femme à l'autre, et il s'adapte : si tu manges beaucoup moins pendant longtemps, il tend à dépenser un peu moins. Ce n'est pas un blocage définitif ni un « mode survie » irréversible — c'est un ajustement, et il se relance quand on remet de la nourriture et du muscle dans l'équation.</p>
       </div>
     </div>
-    <div class="profile-right">
-      <div class="text-block">
-        <p>Ancienne compétitrice en bikini fitness, j'ai appris à transformer le corps de façon précise et scientifique. <strong>Cette expérience m'a donné une maîtrise du corps et de la nutrition que peu de coachs possèdent.</strong></p>
-        <p>Maman moi-même, je connais les vraies contraintes : manque de temps, fatigue, priorités qui s'accumulent. C'est ça qui m'a permis de créer une approche qui s'adapte à la vraie vie — pas à un idéal théorique.</p>
-      </div>
 
-      <div class="pull-quote">
-        <p>"Je ne suis pas là pour te pousser à tes limites. Je suis là pour <strong>t'accompagner vers la version de toi que tu mérites</strong> — avec un plan qui respecte ta vie réelle."</p>
-      </div>
-
-      <div class="text-block">
-        <p style="margin-bottom:10px;"><strong>Ce qui me différencie :</strong></p>
-      </div>
-      <ul class="chk-list" style="margin-bottom:20px;">
-        <li><strong>Bilan personnalisé avant tout</strong> — je comprends qui tu es avant de te donner quoi que ce soit</li>
-        <li><strong>Programme 100% sur mesure</strong> — adapté à ton corps, tes objectifs, tes disponibilités réelles</li>
-        <li><strong>Suivi continu et ajustements réguliers</strong> — je ne disparais pas après la remise du programme</li>
-        <li><strong>Approche humaine et bienveillante</strong> — je t'écoute, je m'adapte, je te soutiens</li>
-        <li><strong>Double expertise</strong> — diplôme d'État + expérience de compétition au plus haut niveau</li>
-      </ul>
-
-      <div class="stats-row">
-        <div class="stat-cell">
-          <div class="stat-num serif">+3 ans</div>
-          <div class="stat-label">Expérience coaching</div>
-        </div>
-        <div class="stat-cell hi">
-          <div class="stat-num serif">4 sem.</div>
-          <div class="stat-label">Premiers résultats visibles</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num serif">100%</div>
-          <div class="stat-label">Sur mesure toujours</div>
-        </div>
+    <div class="sci-fact">
+      <div class="sci-fact-ico">💪</div>
+      <div>
+        <b>Le muscle est ton meilleur allié long terme</b>
+        <p>Plus tu as de muscle, plus ton corps consomme d'énergie au repos et plus ta silhouette se dessine. Le muscle ne se construit pas en s'affamant : il a besoin d'un entraînement de résistance (avec de la charge, progressive) et de suffisamment de protéines. C'est ce qui « raffermit » réellement — bien plus que des heures de cardio.</p>
       </div>
     </div>
-  </div>
 
-  <div class="body-area chapter-body collapsed" style="padding-top:28px;">
-    <!-- MICRO-PEUR -->
-    <div style="background:rgba(184,58,46,.08);border-left:3px solid var(--rouge);border-radius:0 4px 4px 0;padding:20px 24px;margin-bottom:24px;">
-      <span style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--rouge);display:block;margin-bottom:10px;">⚠️ Le vrai risque</span>
-      <p style="font-size:13px;font-weight:400;color:rgba(58,42,42,.91);line-height:1.7;">Ce n'est pas d'essayer. C'est de <strong style="color:rgba(58,42,42,.95);">rester exactement là où tu es dans 3 mois</strong> — avec les mêmes frustrations, les mêmes efforts, les mêmes questions.</p>
+    <div class="sci-fact">
+      <div class="sci-fact-ico">🌙</div>
+      <div>
+        <b>Tes hormones influencent, mais ne décident pas de tout</b>
+        <p>Le cortisol (stress), la leptine et la ghréline (faim/satiété), les œstrogènes… tous jouent un rôle réel sur l'appétit, l'énergie et le stockage. Mais aucune hormone n'est « l'ennemie » à abattre : ce sont des messagers. Un sommeil correct, une activité régulière et une alimentation suffisante suffisent, dans la grande majorité des cas, à les garder de ton côté.</p>
+      </div>
     </div>
+
+    <div class="nuance">
+      <span class="nuance-lab">🔬 Restons honnêtes</span>
+      <p>Il existe une <strong>grande variabilité d'une femme à l'autre</strong> : génétique, historique, santé, contexte de vie. Aucun chiffre « universel » ne s'applique à toutes. Ce guide te donne des repères solides et des ordres de grandeur — pas des vérités absolues. C'est justement pour ça qu'un plan adapté à <em>toi</em> fait la différence.</p>
+    </div>
+
+    <div class="sci-fact">
+      <div class="sci-fact-ico">⏳</div>
+      <div>
+        <b>Après 30 ans : ça change, mais rien n'est joué</b>
+        <p>Avec l'âge, on a tendance à perdre du muscle si on ne fait rien pour l'entretenir, et les variations hormonales peuvent modifier la répartition des graisses. Bonne nouvelle : c'est en grande partie <strong>évitable et réversible</strong>. Un entraînement de résistance régulier et assez de protéines suffisent à préserver — voire développer — ta masse musculaire à tout âge. Ce n'est pas une fatalité automatique, c'est une question d'habitudes.</p>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <p>Retiens ceci : ton corps n'est pas le problème. <strong>Le problème, c'est presque toujours l'absence de stratégie</strong> — pas un manque de volonté, ni ton âge.</p>
+    </div>
+
   </div>
 
   <div class="bottom-bar"></div>
-  <div class="page-label">Chapitre 2 · Mon approche · Ornella Fit Coaching</div>
+  <div class="page-label">Chapitre 2 · Comment ton corps fonctionne · Ornella Fit Coaching</div>
 </article>
 
 
@@ -1811,166 +1879,117 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-header chapter-header" onclick="toggleChapter(this)">
     <div class="sec-num serif">03</div>
     <span class="eyebrow">Chapitre 3</span>
-    <h2 class="sec-title serif">Les 9 raisons <em>silencieuses</em> qui bloquent tout</h2>
-    <p class="sec-intro">Ces erreurs ne font pas mal sur le moment — elles ne se voient pas tout de suite. Mais elles sabotent silencieusement chaque séance, chaque repas, chaque effort. Quelle que soit ta motivation.</p>
+    <h2 class="sec-title serif">Les 9 erreurs qui <em>freinent le plus</em> tes résultats</h2>
+    <p class="sec-intro">La plupart des femmes qui stagnent cumulent 3 à 5 de ces erreurs — souvent sans le savoir. Pour chacune, on va voir ce qu'on croit, ce qui se passe vraiment, et surtout ce que tu peux faire à la place. Aucune n'est un défaut de ta part : ce sont juste des mécanismes qu'on t'a rarement expliqués.</p>
   </div>
   <div class="body-area chapter-body collapsed">
 
-    <div class="wide-card">
-      <div class="wide-card-icon-box">🍽️</div>
-      <div>
-        <div class="wide-card-num serif">01</div>
-        <span class="tag-outline" style="margin-bottom:6px;">Alimentation</span>
-        <div class="wide-card-title">Surplus calorique non détecté</div>
-        <div class="wide-card-chain">Manger trop (même "sainement") → stockage de graisse → prise de poids insidieuse</div>
-        <div class="wide-card-text">Amandes, huile d'olive, smoothie "healthy"… tout s'accumule. <strong>Manger sain ne suffit pas : les quantités comptent autant que la qualité.</strong> Sans connaître tes besoins réels, tu peux manger trop sans t'en rendre compte. Deux cuillères à soupe d'huile d'olive, c'est déjà 180 kcal — l'équivalent d'un fruit en plus, sans t'en apercevoir.</div>
-        <div class="wide-card-action">🎯 <strong>À faire :</strong> pèse tes portions pendant 3 jours pour repérer les excès invisibles (huile, oléagineux, sauces).</div>
-      </div>
+    <!-- ERREUR 1 -->
+    <div class="err-card">
+      <div class="err-head"><span class="err-num">01</span><span class="err-cat">Nutrition</span><h3 class="err-title">Croire que « manger sain » suffit</h3></div>
+      <div class="err-row"><span class="err-lab">💭 Ce qu'on croit souvent</span><p>« Je mange healthy, donc je devrais forcément mincir. »</p></div>
+      <div class="err-row"><span class="err-lab">🔬 Ce qui se passe vraiment</span><p>La qualité compte, mais <strong>les quantités comptent aussi</strong>. Des aliments sains restent caloriques : huile d'olive, oléagineux, avocat, granola… Deux cuillères d'huile, c'est déjà environ 180 kcal. On peut manger très sainement et consommer, sans s'en rendre compte, plus que ce que son corps dépense.</p></div>
+      <div class="err-row"><span class="err-lab">⚠️ Pourquoi ça peut te freiner</span><p>Sans repère sur tes portions, tu navigues à l'aveugle : impossible de savoir si tu es en excès ou pas — donc difficile de comprendre pourquoi ça ne bouge pas.</p></div>
+      <div class="err-row"><span class="err-lab">📎 Exemple concret</span><p>Un « bowl healthy » avec avocat + oléagineux + huile + granola peut facilement dépasser 700 kcal. Délicieux et nourrissant — mais pas « léger » comme on l'imagine.</p></div>
+      <div class="err-row err-do"><span class="err-lab">✅ Ce que tu peux faire à la place</span><p>Pendant 3 jours seulement, observe tes portions des aliments « discrets mais riches » (huiles, sauces, oléagineux, fromage). Pas pour te priver — juste pour voir clair.</p></div>
+      <div class="err-retenir">⭐ <strong>À retenir :</strong> manger sain, oui — mais la quantité fait partie de l'équation.</div>
     </div>
 
-    <div class="wide-card">
-      <div class="wide-card-icon-box">⚖️</div>
-      <div>
-        <div class="wide-card-num serif">02</div>
-        <span class="tag-outline" style="margin-bottom:6px;">Alimentation</span>
-        <div class="wide-card-title">Déficit calorique mal géré</div>
-        <div class="wide-card-chain">Manger trop peu → métabolisme qui ralentit → fatigue chronique → stagnation totale</div>
-        <div class="wide-card-text">Trop peu manger envoie un signal de famine à ton corps : il <strong>ralentit tout pour préserver ses réserves.</strong> Tu brûles moins, tu perds du muscle, tu stagnes — et tu es épuisée. Un déficit efficace se calcule, il ne se devine pas. Au-delà de 500 kcal/jour sous tes besoins réels, tu perds proportionnellement plus de muscle que de graisse.</div>
-        <div class="wide-card-action">🎯 <strong>À faire :</strong> ne descends jamais sous 1,6g de protéines par kg de poids de corps et par jour.</div>
-      </div>
+    <!-- ERREUR 2 -->
+    <div class="err-card">
+      <div class="err-head"><span class="err-num">02</span><span class="err-cat">Nutrition</span><h3 class="err-title">Trop réduire, penser que « moins = mieux »</h3></div>
+      <div class="err-row"><span class="err-lab">💭 Ce qu'on croit souvent</span><p>« Si je mange très peu, je vais forcément maigrir plus vite. »</p></div>
+      <div class="err-row"><span class="err-lab">🔬 Ce qui se passe vraiment</span><p>Un déficit modéré est utile pour perdre du gras. Mais un déficit <strong>trop agressif et prolongé</strong> se paie : plus de fatigue, plus de fringales, moins de force à l'entraînement, et une tendance à perdre du muscle en même temps que du gras. Le corps ne « se bloque » pas définitivement, mais il devient plus difficile de tenir.</p></div>
+      <div class="err-row"><span class="err-lab">⚠️ Pourquoi ça peut te freiner</span><p>Tu perds du muscle (celui qui te fait justement dépenser de l'énergie et te dessine), tu es épuisée, et tu finis souvent par craquer — puis reprendre. C'est l'effet yo-yo.</p></div>
+      <div class="err-row"><span class="err-lab">📎 Exemple concret</span><p>Sauter des repas toute la semaine puis tout compenser le week-end : sur la moyenne, le déficit disparaît, mais la fatigue et la frustration, elles, restent.</p></div>
+      <div class="err-row err-do"><span class="err-lab">✅ Ce que tu peux faire à la place</span><p>Vise une réduction douce et tenable plutôt qu'une restriction extrême. Garde assez de protéines et ne descends pas à un niveau que tu ne peux pas maintenir plus de quelques jours.</p></div>
+      <div class="err-retenir">⭐ <strong>À retenir :</strong> ce qui marche, c'est le déficit que tu peux tenir — pas le plus violent.</div>
     </div>
 
-    <div class="wide-card">
-      <div class="wide-card-icon-box">🏃‍♀️</div>
-      <div>
-        <div class="wide-card-num serif">03</div>
-        <span class="tag-outline" style="margin-bottom:6px;">Entraînement</span>
-        <div class="wide-card-title">Trop de cardio</div>
-        <div class="wide-card-chain">Corps qui s'adapte → perte musculaire → métabolisme encore plus lent → plateau inévitable</div>
-        <div class="wide-card-text">Ton corps s'adapte vite. <strong>En quelques semaines, tu brûles moins pour le même effort.</strong> Sans musculation, il puise dans le muscle. Moins de muscle → métabolisme ralenti → encore moins de résultats.</div>
-        <div class="wide-card-action">🎯 <strong>À faire :</strong> limite le cardio à 2-3 séances/semaine et donne la priorité à la musculation.</div>
-      </div>
+    <!-- ERREUR 3 -->
+    <div class="err-card">
+      <div class="err-head"><span class="err-num">03</span><span class="err-cat">Nutrition</span><h3 class="err-title">Ne pas manger assez de protéines</h3></div>
+      <div class="err-row"><span class="err-lab">💭 Ce qu'on croit souvent</span><p>« Les protéines, c'est pour les hommes qui veulent du muscle. »</p></div>
+      <div class="err-row"><span class="err-lab">🔬 Ce qui se passe vraiment</span><p>Les protéines servent à <strong>construire et préserver le muscle</strong>, et elles rassasient bien. Elles demandent aussi un peu plus d'énergie à digérer que les glucides ou les graisses (l'« effet thermique » des aliments). Un apport suffisant aide donc à la fois la silhouette et la satiété — chez les femmes autant que les hommes.</p></div>
+      <div class="err-row"><span class="err-lab">⚠️ Pourquoi ça peut te freiner</span><p>Sans assez de protéines, tu as plus faim, tu grignotes, et ton corps a du mal à préserver son muscle quand tu es en déficit. Tu « fonds » sans te raffermir.</p></div>
+      <div class="err-row"><span class="err-lab">📎 Exemple concret</span><p>Un petit-déjeuner « tartines + jus » ne tient pas jusqu'à midi. Ajoute 20 à 30 g de protéines (œufs, skyr, fromage blanc) : tu verras la différence sur ta faim de la matinée.</p></div>
+      <div class="err-row err-do"><span class="err-lab">✅ Ce que tu peux faire à la place</span><p>Place une source de protéines à chaque repas, dès le matin. Comme repère courant : autour de 1,6 g par kg de poids de corps et par jour convient bien à une femme active (à ajuster selon ton profil).</p></div>
+      <div class="err-retenir">⭐ <strong>À retenir :</strong> les protéines, c'est le pilier n°1 que la plupart des femmes sous-estiment.</div>
     </div>
 
-    <div class="savais-tu">
-      <div class="savais-tu-label">💡 Le savais-tu ?</div>
-      <p>Après une séance de musculation, ton corps continue à brûler des calories pendant <strong>jusqu'à 24 à 48h</strong> pour réparer et reconstruire le muscle (l'effet "afterburn"). Le cardio, lui, arrête de brûler dès que tu t'arrêtes. C'est une des raisons pour lesquelles la musculation est souvent plus efficace sur la durée, même à volume d'effort équivalent.</p>
+    <!-- ERREUR 4 -->
+    <div class="err-card">
+      <div class="err-head"><span class="err-num">04</span><span class="err-cat">Entraînement</span><h3 class="err-title">Miser presque tout sur le cardio</h3></div>
+      <div class="err-row"><span class="err-lab">💭 Ce qu'on croit souvent</span><p>« Pour maigrir et me raffermir, il faut surtout transpirer en cardio. »</p></div>
+      <div class="err-row"><span class="err-lab">🔬 Ce qui se passe vraiment</span><p>Le cardio est <strong>excellent</strong> pour le cœur, l'endurance et la dépense d'énergie — ce n'est pas l'ennemi. Le problème, c'est d'en faire <em>presque uniquement</em>, sans renforcement musculaire. Or c'est le muscle qui redessine la silhouette et soutient le métabolisme. Cardio + renforcement, c'est le duo gagnant.</p></div>
+      <div class="err-row"><span class="err-lab">⚠️ Pourquoi ça peut te freiner</span><p>Beaucoup de cardio et zéro renforcement : tu t'épuises, tu perds parfois un peu de muscle, et la silhouette change peu — d'où l'impression de « faire beaucoup pour rien ».</p></div>
+      <div class="err-row"><span class="err-lab">📎 Exemple concret</span><p>1h de tapis 5 fois par semaine sans jamais soulever de charge : bonne santé cardio, mais fessiers et posture qui ne se transforment pas vraiment.</p></div>
+      <div class="err-row err-do"><span class="err-lab">✅ Ce que tu peux faire à la place</span><p>Garde le cardio que tu aimes, mais ajoute 2 séances de renforcement par semaine. Le but n'est pas de supprimer le cardio — c'est de l'équilibrer avec du muscle.</p></div>
+      <div class="err-retenir">⭐ <strong>À retenir :</strong> le cardio n'est pas mauvais — c'est le déséquilibre qui te freine.</div>
     </div>
 
-    <div class="wide-card">
-      <div class="wide-card-icon-box">💪</div>
-      <div>
-        <div class="wide-card-num serif">04</div>
-        <span class="tag-outline" style="margin-bottom:6px;">Entraînement</span>
-        <div class="wide-card-title">Manque de musculation ciblée</div>
-        <div class="wide-card-chain">Pas de stimulus musculaire → pas de construction → corps "mou" malgré les efforts</div>
-        <div class="wide-card-text"><strong>Le cardio seul ne transforme pas le corps.</strong> Sans musculation ciblée et progressive, le remodelage est impossible. Les fessiers ne se développent pas avec des squats au hasard — ils demandent une vraie programmation, adaptée à ta morphologie.</div>
-        <div class="wide-card-action">🎯 <strong>À faire :</strong> programme 2 séances de renforcement fessiers/semaine avec une charge qui progresse.</div>
-      </div>
+    <!-- ERREUR 5 -->
+    <div class="err-card">
+      <div class="err-head"><span class="err-num">05</span><span class="err-cat">Entraînement</span><h3 class="err-title">S'entraîner sans aucune progression</h3></div>
+      <div class="err-row"><span class="err-lab">💭 Ce qu'on croit souvent</span><p>« Tant que je bouge et que je transpire, ça travaille. »</p></div>
+      <div class="err-row"><span class="err-lab">🔬 Ce qui se passe vraiment</span><p>Ton corps s'adapte à ce qu'on lui demande. En quelques semaines, un effort qui était difficile devient facile. Sans <strong>augmenter progressivement</strong> la charge, les répétitions ou la difficulté, il n'a plus de raison de continuer à changer.</p></div>
+      <div class="err-row"><span class="err-lab">⚠️ Pourquoi ça peut te freiner</span><p>Refaire toujours les mêmes séances, aux mêmes poids, c'est la définition même du plateau. Beaucoup d'efforts, peu d'évolution.</p></div>
+      <div class="err-row"><span class="err-lab">📎 Exemple concret</span><p>Faire des squats avec les mêmes haltères de 4 kg depuis 6 mois : ton corps a intégré l'effort depuis longtemps.</p></div>
+      <div class="err-row err-do"><span class="err-lab">✅ Ce que tu peux faire à la place</span><p>Note tes séances et cherche à progresser un peu : +1 répétition, +1 kg, ou un mouvement plus exigeant dès que ça devient facile.</p></div>
+      <div class="err-retenir">⭐ <strong>À retenir :</strong> sans progression, pas d'adaptation — donc pas de transformation.</div>
     </div>
 
-    <div class="wide-card">
-      <div class="wide-card-icon-box">😰</div>
-      <div>
-        <div class="wide-card-num serif">05</div>
-        <span class="tag-outline" style="margin-bottom:6px;">Récupération</span>
-        <div class="wide-card-title">Cortisol élevé (stress chronique)</div>
-        <div class="wide-card-chain">Stress non géré → stockage abdominal → inflammation → blocage hormonal total</div>
-        <div class="wide-card-text">Cortisol élevé = mode survie. Ton corps <strong>stocke la graisse autour du ventre</strong>, bloque la construction musculaire, dérègle les hormones. Aucun programme ne peut compenser un stress chronique non géré.</div>
-        <div class="wide-card-action">🎯 <strong>À faire :</strong> 10 minutes de marche ou de respiration dehors, sans écran, chaque jour.</div>
-      </div>
+    <!-- ERREUR 6 -->
+    <div class="err-card">
+      <div class="err-head"><span class="err-num">06</span><span class="err-cat">Entraînement</span><h3 class="err-title">Négliger la technique d'exécution</h3></div>
+      <div class="err-row"><span class="err-lab">💭 Ce qu'on croit souvent</span><p>« L'important c'est de faire le mouvement, peu importe comment. »</p></div>
+      <div class="err-row"><span class="err-lab">🔬 Ce qui se passe vraiment</span><p>Un même exercice peut cibler le bon muscle… ou pas du tout, selon l'exécution. Un squat mal placé sollicite surtout les genoux et le bas du dos plutôt que les fessiers. La technique décide de <strong>où va réellement l'effort</strong>.</p></div>
+      <div class="err-row"><span class="err-lab">⚠️ Pourquoi ça peut te freiner</span><p>Tu peux t'entraîner sérieusement pendant des mois et voir peu de résultats sur la zone visée — voire créer des tensions ou des douleurs.</p></div>
+      <div class="err-row"><span class="err-lab">📎 Exemple concret</span><p>Des hip thrusts « ressentis dans les cuisses et le dos » plutôt que dans les fessiers : le mouvement est fait, mais la cible est manquée.</p></div>
+      <div class="err-row err-do"><span class="err-lab">✅ Ce que tu peux faire à la place</span><p>Filme-toi de profil, compare à une démonstration fiable, et privilégie des mouvements bien maîtrisés plutôt que lourds. Le « ressenti » au bon endroit est un bon indicateur.</p></div>
+      <div class="err-retenir">⭐ <strong>À retenir :</strong> ce n'est pas seulement <em>ce que</em> tu fais, mais <em>comment</em> tu le fais.</div>
     </div>
 
-    <div class="wide-card">
-      <div class="wide-card-icon-box">🌙</div>
-      <div>
-        <div class="wide-card-num serif">06</div>
-        <span class="tag-outline" style="margin-bottom:6px;">Récupération</span>
-        <div class="wide-card-title">Manque de sommeil</div>
-        <div class="wide-card-chain">Nuit courte → ghréline augmentée + leptine diminuée → fringales → récupération nulle</div>
-        <div class="wide-card-text">Une nuit trop courte augmente la faim et réduit la satiété. Et surtout : <strong>le muscle se construit pendant le sommeil profond.</strong> Dormir peu, c'est s'entraîner pour rien. 7 à 9h, c'est un pilier — pas un luxe.</div>
-        <div class="wide-card-action">🎯 <strong>À faire :</strong> fixe une heure de coucher régulière pour viser 7 à 9h de sommeil.</div>
-      </div>
+    <!-- ERREUR 7 -->
+    <div class="err-card">
+      <div class="err-head"><span class="err-num">07</span><span class="err-cat">Récupération</span><h3 class="err-title">Sous-estimer le sommeil et la récupération</h3></div>
+      <div class="err-row"><span class="err-lab">💭 Ce qu'on croit souvent</span><p>« Les résultats se font uniquement à l'entraînement et dans l'assiette. »</p></div>
+      <div class="err-row"><span class="err-lab">🔬 Ce qui se passe vraiment</span><p>Le muscle se répare et se construit surtout <strong>pendant le repos et le sommeil</strong>. Un sommeil régulièrement insuffisant tend à augmenter l'appétit et à rendre la récupération plus difficile. Le stress et le cortisol jouent un rôle réel, mais le cortisol n'est pas « l'ennemi » : c'est une hormone normale et utile — c'est son excès prolongé, mal géré, qui pose problème.</p></div>
+      <div class="err-row"><span class="err-lab">⚠️ Pourquoi ça peut te freiner</span><p>Mal dormir et vivre en stress permanent peut freiner tes progrès même si ton entraînement et ton alimentation sont bons. C'est souvent la pièce manquante « invisible ».</p></div>
+      <div class="err-row"><span class="err-lab">📎 Exemple concret</span><p>Enchaîner des nuits de 5h en gérant tout, et se demander pourquoi la motivation et les fringales partent dans tous les sens.</p></div>
+      <div class="err-row err-do"><span class="err-lab">✅ Ce que tu peux faire à la place</span><p>Vise une heure de coucher plus régulière (idéalement 7 à 9h), et ajoute de vrais temps de décompression : marche, respiration, quelques minutes sans écran.</p></div>
+      <div class="err-retenir">⭐ <strong>À retenir :</strong> la récupération n'est pas une pause — c'est là qu'une partie des résultats se joue.</div>
     </div>
 
-    <div class="savais-tu">
-      <div class="savais-tu-label">💡 Le savais-tu ?</div>
-      <p>Une seule nuit trop courte suffit à augmenter ton taux de cortisol le lendemain — <strong>même sans stress dans ta journée.</strong> C'est pour ça qu'un manque de sommeil chronique peut saboter tes résultats autant qu'une mauvaise alimentation, même si ton entraînement est parfait.</p>
+    <!-- ERREUR 8 -->
+    <div class="err-card">
+      <div class="err-head"><span class="err-num">08</span><span class="err-cat">Santé & énergie</span><h3 class="err-title">Ignorer les signaux de fatigue (carences)</h3></div>
+      <div class="err-row"><span class="err-lab">💭 Ce qu'on croit souvent</span><p>« Je suis toujours fatiguée, c'est normal avec mon rythme. »</p></div>
+      <div class="err-row"><span class="err-lab">🔬 Ce qui se passe vraiment</span><p>Une fatigue qui dure, des cheveux qui tombent, une humeur en berne peuvent parfois signaler une <strong>carence</strong> — le fer et la vitamine D font partie des plus fréquentes chez les femmes actives. Ce n'est pas systématique, mais ça vaut la peine d'être vérifié plutôt que subi.</p></div>
+      <div class="err-row"><span class="err-lab">⚠️ Pourquoi ça peut te freiner</span><p>Difficile de progresser à l'entraînement et de rester régulière quand ton énergie est constamment basse. On croit manquer de volonté, alors qu'il y a parfois une cause physiologique.</p></div>
+      <div class="err-row"><span class="err-lab">📎 Exemple concret</span><p>Se forcer à chaque séance en étant épuisée, sans jamais avoir vérifié un simple bilan de fer.</p></div>
+      <div class="err-row err-do"><span class="err-lab">✅ Ce que tu peux faire à la place</span><p>Si la fatigue s'installe, parles-en à ton médecin et envisage un bilan sanguin (fer, vitamine D, B12). Ce n'est pas un diagnostic à faire seule — juste une piste à ne pas ignorer.</p></div>
+      <div class="err-retenir">⭐ <strong>À retenir :</strong> une fatigue qui dure mérite une vérification, pas de la culpabilité.</div>
     </div>
 
-    <div class="wide-card">
-      <div class="wide-card-icon-box">🥗</div>
-      <div>
-        <div class="wide-card-num serif">07</div>
-        <span class="tag-outline" style="margin-bottom:6px;">Alimentation</span>
-        <div class="wide-card-title">Alimentation mal structurée</div>
-        <div class="wide-card-chain">Protéines insuffisantes + mauvais timing → pas de carburant → pas de muscle → stagnation</div>
-        <div class="wide-card-text">Sans assez de protéines (1,6 à 2,2g/kg/jour), pas de construction musculaire possible. Sans timing alimentaire adapté à tes entraînements, tu perds en performance et en récupération. <strong>L'alimentation, ça se stratégise — ça ne s'improvise pas.</strong> Exemple concret : 20 à 30g de protéines dès le petit-déjeuner (œufs, skyr, protéine en poudre) relance la satiété et la synthèse musculaire pour toute la journée.</div>
-        <div class="wide-card-action">🎯 <strong>À faire :</strong> place une source de protéines à chaque repas, dès le petit-déjeuner.</div>
-      </div>
-    </div>
-
-    <div class="savais-tu">
-      <div class="savais-tu-label">💡 Le savais-tu ?</div>
-      <p>Digérer des protéines brûle à lui seul <strong>20 à 30% des calories qu'elles apportent</strong> (contre 5-10% pour les glucides et 0-3% pour les graisses) — c'est ce qu'on appelle l'effet thermique des aliments. À quantité égale, un repas riche en protéines "coûte" donc plus cher en énergie à digérer qu'un repas riche en glucides ou en graisses.</p>
-    </div>
-
-    <div class="wide-card">
-      <div class="wide-card-icon-box">⚡</div>
-      <div>
-        <div class="wide-card-num serif">08</div>
-        <span class="tag-outline" style="margin-bottom:6px;">Alimentation</span>
-        <div class="wide-card-title">Carences nutritionnelles</div>
-        <div class="wide-card-chain">Fer, magnésium, vit. D, B12 manquants → fatigue inexpliquée → performances en chute</div>
-        <div class="wide-card-text">Fatigue inexpliquée, crampes, humeur basse, stagnation persistante… <strong>très souvent, il y a une carence derrière.</strong> Même légère, elle peut bloquer tes résultats sans que tu t'en rendes compte. Le fer et la vitamine D sont les carences les plus fréquentes chez les femmes actives — une simple prise de sang une fois par an suffit à les repérer.</div>
-        <div class="wide-card-action">🎯 <strong>À faire :</strong> si la fatigue persiste, demande un bilan sanguin (fer, vitamine D, B12).</div>
-      </div>
-    </div>
-
-    <div class="wide-card">
-      <div class="wide-card-icon-box">📉</div>
-      <div>
-        <div class="wide-card-num serif">09</div>
-        <span class="tag-outline" style="margin-bottom:6px;">Entraînement</span>
-        <div class="wide-card-title">Sarcopénie — perte musculaire progressive</div>
-        <div class="wide-card-chain">Après 30 ans → perte naturelle de 3 à 8% de muscle par décennie → métabolisme ralenti</div>
-        <div class="wide-card-text">Dès 30 ans, sans musculation régulière, tu perds naturellement de la masse musculaire. Résultat : <strong>métabolisme ralenti, corps qui se ramollit, graisse qui s'installe</strong> — même sans changer ton alimentation. La solution : entraînement de résistance + protéines adaptées.</div>
-        <div class="wide-card-action">🎯 <strong>À faire :</strong> dès 30 ans, 2 séances de musculation minimum par semaine, sans exception.</div>
-      </div>
+    <!-- ERREUR 9 -->
+    <div class="err-card">
+      <div class="err-head"><span class="err-num">09</span><span class="err-cat">Corps qui évolue</span><h3 class="err-title">Ne pas adapter à un corps qui change (30+, hormones)</h3></div>
+      <div class="err-row"><span class="err-lab">💭 Ce qu'on croit souvent</span><p>« Après 30 ans, c'est foutu, mon corps ne répond plus. »</p></div>
+      <div class="err-row"><span class="err-lab">🔬 Ce qui se passe vraiment</span><p>Avec l'âge, on a tendance à perdre du muscle <em>si on ne fait rien</em> pour l'entretenir, et les variations hormonales peuvent modifier la répartition des graisses. Mais ce n'est ni automatique ni irréversible : l'entraînement de résistance et un apport suffisant en protéines permettent de préserver — et souvent de développer — sa masse musculaire à tout âge.</p></div>
+      <div class="err-row"><span class="err-lab">⚠️ Pourquoi ça peut te freiner</span><p>Continuer avec les méthodes de ses 20 ans (beaucoup de cardio, peu de force, peu de protéines) devient moins adapté avec le temps — d'où l'impression que « rien ne marche plus ».</p></div>
+      <div class="err-row"><span class="err-lab">📎 Exemple concret</span><p>Deux femmes du même âge : celle qui fait du renforcement musculaire garde sa tonicité, l'autre qui l'évite la perd peu à peu. La différence n'est pas l'âge — c'est l'habitude.</p></div>
+      <div class="err-row err-do"><span class="err-lab">✅ Ce que tu peux faire à la place</span><p>Mets le renforcement musculaire au centre, monte un peu tes protéines, et sois patiente : le rythme peut changer avec l'âge, pas ta capacité à progresser.</p></div>
+      <div class="err-retenir">⭐ <strong>À retenir :</strong> 30, 40, 50 ans : ton corps répond toujours — à condition de lui parler le bon langage.</div>
     </div>
 
     <div class="pull-quote" style="margin:28px 0;">
-      <p>Tu n'es probablement pas concernée par une seule de ces erreurs. <strong>La plupart des femmes en cumulent 3 à 5 en même temps.</strong> C'est justement pour ça que copier le programme d'une autre personne fonctionne rarement — son plan répond à ses erreurs à elle, pas aux tiennes.</p>
-    </div>
-
-    <!-- BLOC SARCOPÉNIE — PRESSION DOUCE -->
-    <div style="border:1.5px solid rgba(212,132,122,.3);border-radius:6px;overflow:hidden;margin:28px 0;">
-      <div style="background:linear-gradient(135deg,rgba(184,58,46,.15),rgba(212,132,122,.06));padding:22px 28px 18px;border-bottom:1px solid rgba(212,132,122,.15);">
-        <span style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--rose);display:block;margin-bottom:12px;">⏳ À partir de 30 ans, ton corps change</span>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;font-weight:300;color:rgba(58,42,42,.85);line-height:1.65;">Tu perds du muscle naturellement. Ton métabolisme ralentit. Ton corps stocke plus facilement.</p>
-      </div>
-      <div style="background:rgba(180,110,110,0.054);padding:18px 28px 20px;">
-        <p style="font-size:13px;font-weight:400;color:rgba(58,42,42,.89);line-height:1.75;">Ce n'est pas une fatalité — c'est une réalité physiologique. Mais <strong style="color:rgba(58,42,42,.95);">si tu ne fais pas les bons choix maintenant, ça devient de plus en plus difficile avec le temps.</strong> Le bon moment pour agir, c'est toujours aujourd'hui — pas dans 6 mois.</p>
-      </div>
+      <p>Tu n'es probablement pas concernée par une seule de ces erreurs. <strong>La plupart des femmes en cumulent 3 à 5 en même temps.</strong> C'est justement pour ça que copier le programme d'une autre fonctionne rarement : son plan répond à ses erreurs à elle, pas aux tiennes.</p>
     </div>
 
     <div class="marketing-callout">
       <div class="marketing-callout-icon">🔑</div>
-      <p><strong>Ces 9 erreurs ne sont pas des défauts de caractère.</strong> Ce sont des mécanismes physiologiques précis — qui demandent des réponses précises. Sans plan structuré, les résultats restent limités, quelle que soit ta discipline.</p>
-    </div>
-
-    <div style="background:rgba(232,168,168,.08);border:1.5px solid rgba(232,168,168,.3);border-radius:12px;overflow:hidden;margin:28px 0;">
-      <div style="padding:24px 28px 0;text-align:center;">
-        <p class="serif" style="font-size:19px;font-style:italic;font-weight:300;color:var(--ink);line-height:1.5;max-width:440px;margin:0 auto;">Tu aimerais remplacer le cardio à l'aveugle par une méthode qui muscle vraiment tes fessiers ?</p>
-      </div>
-      <img src="images/couverture-booty-sculpt.png" alt="Booty Sculpt 8 semaines" style="width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 8%;display:block;margin-top:18px;" loading="lazy">
-      <div style="padding:26px 28px 28px;text-align:center;">
-        <span class="tag">🍑 Méthode progressive</span>
-        <h3 class="serif" style="font-size:26px;font-weight:300;color:var(--ink);margin:12px 0 8px;">Booty Sculpt <em style="color:var(--rose-light);font-style:italic;">— 8 semaines</em></h3>
-        <p style="font-size:13px;font-weight:300;color:rgba(58,42,42,.85);line-height:1.7;max-width:440px;margin:0 auto 16px;">12 vidéos guidées avec moi + plan nutrition pour sculpter, pensés pour une vraie progression — pas une liste d'exercices au hasard.</p>
-        <div class="serif" style="font-size:34px;font-weight:300;color:var(--rose-light);margin-bottom:16px;">19€ <span style="font-size:13px;font-family:'Montserrat',sans-serif;color:rgba(58,42,42,.82);">paiement unique · accès à vie</span></div>
-        <a href="https://www.ornellafitcoaching.com/booty-sculpt.html" target="_blank" rel="noopener" class="btn btn-primary">→ Découvrir la méthode progressive</a>
-      </div>
+      <p><strong>Ces 9 erreurs ne sont pas des défauts de caractère.</strong> Ce sont des mécanismes simples à comprendre — et à corriger. La suite du guide te montre comment les remplacer par une vraie stratégie.</p>
     </div>
 
   </div>
@@ -1987,97 +2006,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="sec-header chapter-header" onclick="toggleChapter(this)">
     <div class="sec-num serif">04</div>
     <span class="eyebrow">Chapitre 4</span>
-    <h2 class="sec-title serif">Le vrai problème :<em> les solutions génériques ne fonctionnent pas</em></h2>
-    <p class="sec-intro">Internet regorge de programmes "miracles", de challenges 30 jours, de régimes à la mode. Ces solutions ne sont pas toutes mauvaises en théorie. Mais elles ont un défaut fondamental : elles ne sont pas faites pour toi.</p>
+    <h2 class="sec-title serif">La nutrition qui <em>soutient</em> tes efforts</h2>
+    <p class="sec-intro">Pas de régime miracle ni d'interdits. Juste quelques principes simples qui, appliqués sans se prendre la tête, font 80 % du résultat. L'idée n'est pas de manger « parfaitement » — c'est de manger de façon cohérente avec ce que tu demandes à ton corps.</p>
   </div>
   <div class="body-area chapter-body collapsed">
 
     <div class="text-block">
-      <p>Chaque femme est unique. Métabolisme, hormones, historique sportif, contraintes du quotidien… <strong>ce qui fonctionne pour l'une ne fonctionne pas pour l'autre.</strong></p>
-      <p>Et pourtant, tous les programmes en ligne donnent les mêmes conseils à toutes. C'est pour ça que tu stagnes — pas parce que tu manques de discipline.</p>
+      <p>On te vend souvent la nutrition comme une liste d'aliments interdits. En réalité, tout tourne autour de trois idées : <strong>assez de protéines</strong>, une <strong>quantité globale cohérente</strong> avec ton objectif, et une <strong>régularité tenable</strong>. Le reste, ce sont des détails.</p>
     </div>
 
-    <div class="marketing-callout">
-      <div class="marketing-callout-icon">💬</div>
-      <p><strong>Un plan générique produit des résultats génériques</strong> — c'est-à-dire, le plus souvent, aucun résultat durable.</p>
+    <div class="sci-fact">
+      <div class="sci-fact-ico">🥩</div>
+      <div>
+        <b>Les protéines d'abord</b>
+        <p>Ce sont elles qui préservent ton muscle et te rassasient. Une source à chaque repas (œufs, skyr, poulet, poisson, légumineuses, tofu…) change déjà énormément la donne sur ta faim et ta tonicité.</p>
+      </div>
     </div>
 
-    <div class="compare">
-      <div class="compare-col before">
-        <span class="compare-label">❌ Ce que tu as essayé</span>
-        <ul class="compare-list">
-          <li>Programme trouvé sur Instagram</li>
-          <li>Challenge 30 jours générique</li>
-          <li>Régime vu dans un magazine</li>
-          <li>App fitness identique pour tout le monde</li>
-          <li>Conseils contradictoires de partout</li>
-          <li>Cardio à gogo sans vraie progression</li>
-          <li>Restriction calorique sans stratégie</li>
-          <li>Aucun suivi, aucun ajustement</li>
-        </ul>
+    <div class="sci-fact">
+      <div class="sci-fact-ico">🍽️</div>
+      <div>
+        <b>La méthode de l'assiette (sans rien peser)</b>
+        <p>Un repère simple et efficace au quotidien : environ <strong>½ assiette de légumes</strong>, <strong>¼ de protéines</strong>, <strong>¼ de féculents</strong>, plus un peu de bon gras. Pas besoin de compter chaque calorie pour manger juste.</p>
       </div>
-      <div class="compare-col after">
-        <span class="compare-label">✓ Ce dont tu as besoin</span>
-        <ul class="compare-list">
-          <li>Programme construit sur ton bilan personnel</li>
-          <li>Progression structurée semaine après semaine</li>
-          <li>Plan alimentaire adapté à ton métabolisme</li>
-          <li>Suivi continu avec ajustements réels</li>
-          <li>Une méthode claire, une seule source</li>
-          <li>Musculation ciblée + cardio dosé intelligemment</li>
-          <li>Stratégie nutritionnelle, pas restriction aveugle</li>
-          <li>Un accompagnement humain, pas un PDF</li>
-        </ul>
+    </div>
+
+    <div class="sci-fact">
+      <div class="sci-fact-ico">💧</div>
+      <div>
+        <b>L'hydratation, le réflexe oublié</b>
+        <p>Bien s'hydrater soutient l'énergie, la concentration et la satiété — on confond souvent soif et faim. Vise à boire régulièrement dans la journée ; un bon repère est d'avoir des urines claires.</p>
       </div>
+    </div>
+
+    <div class="nuance">
+      <span class="nuance-lab">🔬 Restons honnêtes</span>
+      <p>Les « chiffres parfaits » (calories, macros au gramme près) varient énormément selon les personnes et ne sont pas indispensables pour progresser. <strong>La régularité bat la précision.</strong> Mieux vaut une alimentation correcte tenue 6 jours sur 7 qu'un plan parfait tenu 3 jours puis abandonné.</p>
+    </div>
+
+    <div class="text-block">
+      <p><strong>Et le plaisir dans tout ça ?</strong> Il a toute sa place. Un repas au restaurant, un carré de chocolat, un apéro entre amies ne « ruinent » rien : c'est ce que tu fais <em>la plupart du temps</em> qui compte, pas un écart isolé. C'est même ce qui rend une alimentation tenable sur la durée.</p>
     </div>
 
     <div class="pull-quote">
-      <p>"Tu n'as pas échoué parce que tu n'étais pas assez bonne. Tu as échoué parce que <strong>la méthode n'était pas faite pour toi.</strong>"</p>
-    </div>
-
-    <div class="stats-row">
-      <div class="stat-cell">
-        <div class="stat-num serif">6 sem.</div>
-        <div class="stat-label">le délai moyen avant qu'un programme générique montre ses limites</div>
-      </div>
-      <div class="stat-cell hi">
-        <div class="stat-num serif">2 à 4</div>
-        <div class="stat-label">piliers (entraînement, nutrition, récupération) souvent négligés en même temps</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num serif">1</div>
-        <div class="stat-label">dosage entraînement + nutrition vraiment adapté à toi — pas une moyenne théorique</div>
-      </div>
-    </div>
-
-    <div class="urgence-box">
-      <div class="urgence-box-icon">⏳</div>
-      <p>Chaque semaine passée avec une mauvaise méthode, c'est une semaine perdue. Pas par manque de courage — mais parce que <strong>savoir ne suffit pas : mettre en œuvre sans accompagnement, c'est là que ça bloque pour la plupart des femmes.</strong></p>
-    </div>
-
-    <!-- BLOC MICRO-PEUR -->
-    <div style="background:rgba(184,58,46,.08);border-left:3px solid var(--rouge);border-radius:0 4px 4px 0;padding:22px 26px;margin:24px 0;">
-      <span style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--rouge);display:block;margin-bottom:12px;">⚠️ Le vrai risque</span>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;font-weight:300;color:rgba(58,42,42,.93);line-height:1.65;margin-bottom:10px;">Ce n'est pas d'essayer. C'est de rester <strong style="font-style:normal;color:var(--rose-light);">exactement comme aujourd'hui dans 3 mois</strong> — avec les mêmes frustrations.</p>
-      <p style="font-size:12.5px;font-weight:300;color:rgba(58,42,42,.82);line-height:1.7;">Le temps passe de toute façon. La question, c'est de savoir si dans 3 mois, tu regardes le chemin parcouru — ou si tu te demandes encore pourquoi rien ne change.</p>
-    </div>
-
-    <!-- BLOC CHOIX -->
-    <div style="border:1.5px solid rgba(232,168,168,.2);border-radius:6px;overflow:hidden;margin:28px 0;">
-      <div style="padding:22px 28px 18px;background:rgba(180,110,110,0.054);border-bottom:1px solid rgba(180,110,110,0.105);">
-        <span style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(58,42,42,.89);display:block;margin-bottom:12px;">Choix A — Continuer comme maintenant</span>
-        <p style="font-size:13px;font-weight:300;color:rgba(58,42,42,.88);line-height:1.7;">Faire des efforts, sans vrais résultats. Chercher encore la bonne méthode. Recommencer à zéro. Se demander pourquoi ça ne marche toujours pas.</p>
-      </div>
-      <div style="padding:22px 28px 20px;background:rgba(232,168,168,.06);">
-        <span style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--rose);display:block;margin-bottom:12px;">✨ Choix B — Passer à un accompagnement structuré</span>
-        <p style="font-size:13px;font-weight:400;color:rgba(58,42,42,.92);line-height:1.7;">Des résultats visibles. Un plan qui s'adapte à toi. Un suivi réel. Une progression mesurable, semaine après semaine.</p>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;font-weight:300;color:var(--rose-light);margin-top:10px;line-height:1.5;">La différence entre les deux ? <strong style="font-style:normal;">Un plan adapté à toi.</strong></p>
-      </div>
+      <p>"Tu n'as pas besoin d'un régime de plus. Tu as besoin d'une façon de manger que tu peux <strong>garder toute ta vie.</strong>"</p>
     </div>
 
   </div>
   <div class="bottom-bar"></div>
-  <div class="page-label">Chapitre 4 · Le vrai problème · Ornella Fit Coaching</div>
+  <div class="page-label">Chapitre 4 · La nutrition · Ornella Fit Coaching</div>
 </article>
 
 
@@ -2087,123 +2064,66 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <article class="page" id="page-4">
   <div class="accent-bar"></div>
   <div class="sec-header chapter-header" onclick="toggleChapter(this)">
-    <div class="sec-num serif">04</div>
-    <span class="eyebrow">Prise de conscience</span>
-    <h2 class="sec-title serif">Pourquoi tu n'y arrives pas seule<br><em>(et pourquoi c'est tout à fait normal)</em></h2>
-    <p class="sec-intro">Ce n'est pas une critique. C'est une réalité que vivent des milliers de femmes actives, motivées, sérieuses — et qui pourtant stagnent. Comprendre pourquoi, c'est déjà faire la moitié du chemin.</p>
+    <div class="sec-num serif">05</div>
+    <span class="eyebrow">Chapitre 5</span>
+    <h2 class="sec-title serif">Ton cerveau & <em>tes comportements</em></h2>
+    <p class="sec-intro">Tu sais déjà en grande partie quoi faire. Alors pourquoi c'est si dur de s'y tenir ? Parce que la vraie bataille n'est pas seulement physique — elle est comportementale. Bonne nouvelle : ça se travaille, et ça n'a rien à voir avec « avoir plus de volonté ».</p>
   </div>
   <div class="body-area chapter-body collapsed">
 
-    <!-- Phrase forte -->
     <div class="highlight">
-      <p><strong>"Ce n'est pas une question de volonté,</strong><br>c'est une question de <em>méthode.</em>"</p>
+      <p>La motivation, c'est une <em>humeur</em>. Elle va et vient. <strong>Ce qui te fait tenir, ce sont tes systèmes</strong> — pas ta volonté du moment.</p>
     </div>
 
     <div class="text-block">
-      <p>Si tu pouvais obtenir des résultats durables seule, tu les aurais déjà.<br>Ce n'est pas un manque d'efforts. Ce n'est pas un manque de courage.<br>C'est l'absence d'un système conçu pour <em>toi</em>.</p>
-      <p>Voici pourquoi ça bloque — honnêtement, sans filtre.</p>
+      <p>Si tu abandonnes souvent, ce n'est pas parce que tu es « moins disciplinée » que les autres. C'est parce que ton cerveau est programmé pour économiser l'énergie et chercher la récompense immédiate. Comprendre ça, c'est arrêter de te juger — et commencer à jouer avec, au lieu de lutter contre.</p>
     </div>
 
-    <!-- Les 6 raisons -->
-    <div class="wide-card">
-      <div class="wide-card-icon-box">🔄</div>
+    <div class="sci-fact">
+      <div class="sci-fact-ico">🔁</div>
       <div>
-        <div class="wide-card-num serif">1</div>
-        <div class="wide-card-title">Tu fais des efforts… mais pas les bons</div>
-        <div class="wide-card-chain">Énergie dépensée → mauvais signal envoyé au corps → aucune transformation visible</div>
-        <div class="wide-card-text">Tu t'entraînes, tu transpires — et rien ne se passe. Ce n'est pas ton corps qui résiste. C'est parce que <strong>les signaux que tu lui envoies ne correspondent pas à ton objectif.</strong> Faire du sport, oui. Faire le bon sport, dans le bon ordre, à la bonne intensité — c'est une science.</div>
+        <b>Ton cerveau adore les habitudes</b>
+        <p>Une action répétée dans le même contexte devient automatique — elle ne « coûte » presque plus d'effort mental. C'est pour ça qu'une bonne routine bien ancrée finit par tourner toute seule, même les jours sans motivation.</p>
       </div>
     </div>
 
-    <div class="wide-card">
-      <div class="wide-card-icon-box">📋</div>
+    <div class="sci-fact">
+      <div class="sci-fact-ico">🧩</div>
       <div>
-        <div class="wide-card-num serif">2</div>
-        <div class="wide-card-title">Les programmes génériques ne sont pas adaptés à ton corps</div>
-        <div class="wide-card-chain">Programme conçu pour "tout le monde" → ne correspond à personne précisément → résultats moyens au mieux</div>
-        <div class="wide-card-text">Un programme Instagram est conçu pour tout le monde — donc pour personne en particulier. Il ignore ton corps, ton historique, tes contraintes. <strong>Appliquer une solution générique à un corps unique, c'est porter les chaussures de quelqu'un d'autre.</strong> Ça ne peut pas durer.</div>
+        <b>Le piège du « tout ou rien »</b>
+        <p>« J'ai raté ma séance, autant tout arrêter cette semaine. » Ce réflexe fait plus de dégâts que l'écart lui-même. La régularité imparfaite (3 séances sur 4) bat de loin la perfection abandonnée au bout de 10 jours.</p>
       </div>
     </div>
 
-    <div class="wide-card">
-      <div class="wide-card-icon-box">🎚️</div>
+    <div class="sci-fact">
+      <div class="sci-fact-ico">🏠</div>
       <div>
-        <div class="wide-card-num serif">3</div>
-        <div class="wide-card-title">Tu ne sais pas ajuster ton entraînement</div>
-        <div class="wide-card-chain">Pas d'ajustement → corps qui s'adapte trop vite → plateau inévitable dès la 3e semaine</div>
-        <div class="wide-card-text">En 2 à 4 semaines, ton corps s'habitue à n'importe quel effort. Sans progression ni ajustement, il n'a plus de raison de changer. <strong>Savoir quand augmenter la charge, varier les exercices, ajuster le volume</strong> — ça s'apprend, ça ne se devine pas.</div>
+        <b>Ton environnement décide à ta place</b>
+        <p>On surestime la volonté et on sous-estime le contexte. Un sac de sport déjà prêt, des repas simples anticipés, des placards sans tentation permanente : tu réussis quand le bon choix devient le choix facile.</p>
       </div>
     </div>
 
-    <div class="wide-card">
-      <div class="wide-card-icon-box">👁️</div>
-      <div>
-        <div class="wide-card-num serif">4</div>
-        <div class="wide-card-title">Tu n'as pas de suivi ni de correction</div>
-        <div class="wide-card-chain">Mauvaise exécution non détectée → compensations → blessures potentielles → résultats nuls</div>
-        <div class="wide-card-text">Un squat mal réalisé ne construit pas le fessier — il charge les genoux et le dos. <strong>Sans regard extérieur pour corriger, identifier les compensations, ajuster la posture</strong> — tu peux t'entraîner des mois entiers sans résultat, et parfois aggraver des déséquilibres.</div>
-      </div>
+    <div class="nuance">
+      <span class="nuance-lab">🔬 Restons honnêtes</span>
+      <p>Le fameux « 21 jours pour ancrer une habitude » est un mythe : selon les études, ça varie fortement d'une personne et d'une habitude à l'autre (souvent bien plus). <strong>Ce n'est pas grave si c'est long</strong> — l'important, c'est de continuer, pas de tenir un chiffre magique.</p>
     </div>
 
-    <div class="wide-card">
-      <div class="wide-card-icon-box">⏰</div>
-      <div>
-        <div class="wide-card-num serif">5</div>
-        <div class="wide-card-title">Tu perds du temps et de l'énergie</div>
-        <div class="wide-card-chain">Essais-erreurs en solo → semaines perdues → découragement → abandon → recommencer à zéro</div>
-        <div class="wide-card-text">Changer de programme tous les mois. Accumuler des infos contradictoires. Tâtonner sans direction. <strong>Le temps est ta ressource la plus précieuse.</strong> L'utiliser sans stratégie, c'est le gaspiller.</div>
-      </div>
+    <div class="text-block">
+      <p><strong>3 leviers concrets pour tenir :</strong></p>
     </div>
+    <ul class="chk-list" style="margin-bottom:20px;">
+      <li><strong>Commence ridiculement petit.</strong> Une habitude minuscule tenue vaut mieux qu'un grand plan abandonné. 10 minutes valent mieux que 0.</li>
+      <li><strong>Accroche la nouvelle habitude à une ancienne.</strong> « Après avoir posé les enfants, je marche 10 min. » Le rituel existant devient ton déclencheur.</li>
+      <li><strong>Prépare une règle pour les jours difficiles.</strong> Décide à l'avance de ta version « minimale » les jours de galère, pour ne jamais tomber à zéro.</li>
+    </ul>
 
-    <div class="wide-card hi">
-      <div class="wide-card-icon-box">⚠️</div>
-      <div>
-        <div class="wide-card-num serif">6</div>
-        <div class="wide-card-title">Tu peux même empirer les choses</div>
-        <div class="wide-card-chain">Trop d'entraînement + pas assez de récupération + sous-alimentation → fatigue chronique + perte musculaire</div>
-        <div class="wide-card-text"><strong>S'entraîner sans méthode peut aggraver les choses.</strong> Trop de cardio + déficit trop fort = muscle détruit, métabolisme ralenti, fatigue profonde. Tu manges peu, tu stagnes, tu prends du poids. Ce n'est pas une fatalité — c'est le résultat direct d'une stratégie absente.</div>
-      </div>
-    </div>
-
-    <!-- Séparateur visuel -->
-    <div style="height:8px;"></div>
-
-    <!-- Projection émotionnelle -->
-    <div style="border:1.5px solid rgba(232,168,168,.2);border-radius:6px;overflow:hidden;margin:28px 0;">
-      <div style="padding:24px 28px 20px;background:rgba(180,110,110,0.054);border-bottom:1px solid rgba(180,110,110,0.105);">
-        <span style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(58,42,42,.90);display:block;margin-bottom:14px;">📍 Scénario A — Continuer comme maintenant</span>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;font-weight:300;color:rgba(58,42,42,.88);line-height:1.65;">
-          Tu continues à chercher. À recommencer. À te demander pourquoi les autres progressent et pas toi. La frustration s'accumule. L'énergie se dépense. Le corps ne change pas.
-        </p>
-      </div>
-      <div style="padding:24px 28px 20px;background:rgba(232,168,168,.06);">
-        <span style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--rose);display:block;margin-bottom:14px;">✨ Scénario B — Avoir enfin un plan fait pour toi</span>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;font-weight:300;color:rgba(58,42,42,.85);line-height:1.65;">
-          Tu sais quoi faire, quand, comment — <strong style="color:var(--rose-light);font-style:normal;">adapté à TON corps, TON objectif, TON rythme.</strong> Chaque effort a un sens. Et tu vois, enfin, ton corps évoluer.
-        </p>
-      </div>
-    </div>
-
-    <!-- Transition vers la coach -->
-    <div class="text-block" style="margin-bottom:24px;">
-      <p><strong>La différence entre ces deux scénarios ? Un accompagnement structuré, humain, adapté à qui tu es vraiment.</strong></p>
-      <p>C'est exactement ce que je propose. Diplômée d'État, ancienne compétitrice bikini fitness, maman — j'ai vécu ce que tu vis. <em>Des transformations réelles, sur des vies réelles.</em></p>
-    </div>
-
-    <!-- Transition CTA -->
-    <div class="cta-miroir">
-      <div class="cta-miroir-titre">Tu mérites mieux que de continuer seule<br><strong>à chercher ce qui fonctionne pour toi.</strong></div>
-      <p class="cta-miroir-texte">Dès ton inscription, je te contacte et on pose les bases ensemble — un plan qui correspond à ta vraie vie, pas à quelqu'un d'autre.</p>
-      <div class="cta-btns">
-        <a href="https://buy.stripe.com/9B67sL7fXgcr03P5XT8Vi04" target="_blank" rel="noopener" class="btn btn-primary">→ Coaching personnalisé + suivi hebdomadaire (119€/mois)</a>
-        <a href="https://www.ornellafitcoaching.com/offres.html" target="_blank" rel="noopener" class="btn btn-outline">Voir les formules & tarifs →</a>
-      </div>
-      <p style="font-size:.78rem;color:rgba(58,42,42,.6);text-align:center;margin-top:10px;">🔒 Paiement sécurisé par Stripe</p>
+    <div class="pull-quote">
+      <p>"Tu n'as pas besoin d'être parfaite. Tu as besoin d'être <strong>régulière plus souvent que tu n'abandonnes.</strong>"</p>
     </div>
 
   </div>
   <div class="bottom-bar"></div>
-  <div class="page-label">Prise de conscience · Pourquoi seule ça bloque · Ornella Fit Coaching</div>
+  <div class="page-label">Chapitre 5 · Cerveau & comportements · Ornella Fit Coaching</div>
 </article>
 
 <!-- ══════════════════════════════════════════
@@ -2212,9 +2132,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <article class="page" id="page-5">
   <div class="accent-bar"></div>
   <div class="sec-header chapter-header" onclick="toggleChapter(this)">
-    <div class="sec-num serif">05</div>
-    <span class="eyebrow">Chapitre 5</span>
-    <h2 class="sec-title serif">Ce qui <em>fonctionne vraiment</em> — et pourquoi</h2>
+    <div class="sec-num serif">06</div>
+    <span class="eyebrow">Chapitre 6</span>
+    <h2 class="sec-title serif">Ce qui <em>fonctionne vraiment</em> — les 4 piliers</h2>
     <p class="sec-intro">Voici les 4 piliers qui, combinés et adaptés à ta réalité, produisent des résultats durables. Ce n'est pas révolutionnaire. Mais c'est rarement tout mis en place en même temps, correctement, pour la bonne personne.</p>
   </div>
   <div class="body-area chapter-body collapsed">
@@ -2260,8 +2180,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <ul class="chk-list">
         <li><strong>Sommeil 7–9h :</strong> phase clé de synthèse protéique et de régulation hormonale.</li>
         <li><strong>Jours de repos planifiés :</strong> permettent la réparation des fibres musculaires et préviennent le surentraînement.</li>
-        <li><strong>Gestion du cortisol :</strong> marche, respiration, routine — réduire le stress hormonal pour débloquer la composition corporelle.</li>
-        <li><strong>Nutrition post-effort :</strong> fenêtre anabolique, protéines et glucides de qualité pour maximiser la récupération.</li>
+        <li><strong>Gestion du stress :</strong> marche, respiration, routine — apaiser un stress chronique aide à mieux récupérer et à progresser.</li>
+        <li><strong>Nutrition autour de l'effort :</strong> des protéines réparties sur la journée et des glucides de qualité soutiennent la récupération (pas besoin de « fenêtre » de 30 min : ce qui compte, c'est le total quotidien).</li>
       </ul>
     </div>
 
@@ -2287,7 +2207,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="mini-card">
           <div class="mini-card-title">💧 Hydratation</div>
-          <div class="mini-card-text">−1% d'hydratation = −10% de performance physique et cognitive. Le pilier le plus négligé.</div>
+          <div class="mini-card-text">Même une déshydratation légère peut peser sur l'énergie, la concentration et la performance. Le pilier le plus simple — et le plus négligé.</div>
         </div>
       </div>
     </div>
@@ -2319,16 +2239,121 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   </div>
   <div class="bottom-bar"></div>
-  <div class="page-label">Chapitre 5 · Ce qui fonctionne · Ornella Fit Coaching</div>
+  <div class="page-label">Chapitre 6 · Ce qui fonctionne · Ornella Fit Coaching</div>
 </article>
+
+<!-- ══════════════════════════════════════════
+     CHAPITRE 7 — PLAN D'ACTION 7 JOURS + BONUS ORGANISATION
+══════════════════════════════════════════ -->
+<article class="page" id="page-plan">
+  <div class="accent-bar"></div>
+  <div class="sec-header chapter-header" onclick="toggleChapter(this)">
+    <div class="sec-num serif">07</div>
+    <span class="eyebrow">Chapitre 7</span>
+    <h2 class="sec-title serif">Ton plan d'action <em>sur 7 jours</em></h2>
+    <p class="sec-intro">Pas besoin de tout changer d'un coup. Pendant une semaine, tu poses une brique par jour. À la fin, tu auras une première stratégie claire — construite par toi, pour toi.</p>
+  </div>
+  <div class="body-area chapter-body collapsed">
+
+    <div class="plan7">
+      <div class="plan7-day">
+        <div class="plan7-num"><small>Jour</small><b>1</b></div>
+        <div class="plan7-txt"><b>Définis ton objectif</b><span>Un seul, clair et concret : « me sentir plus tonique », « perdre quelques centimètres », « avoir de l'énergie ». Écris-le noir sur blanc.</span></div>
+      </div>
+      <div class="plan7-day">
+        <div class="plan7-num"><small>Jour</small><b>2</b></div>
+        <div class="plan7-txt"><b>Observe ton alimentation</b><span>Note simplement ce que tu manges, sans rien changer ni te juger. Le but : voir clair, pas culpabiliser.</span></div>
+      </div>
+      <div class="plan7-day">
+        <div class="plan7-num"><small>Jour</small><b>3</b></div>
+        <div class="plan7-txt"><b>Vérifie tes protéines</b><span>Regarde si tu as une source de protéines à chaque repas. Si le petit-déjeuner en manque, c'est souvent là qu'est le levier n°1.</span></div>
+      </div>
+      <div class="plan7-day">
+        <div class="plan7-num"><small>Jour</small><b>4</b></div>
+        <div class="plan7-txt"><b>Analyse ton entraînement</b><span>Combien de séances par semaine ? Cardio vs renforcement ? Est-ce que tu progresses, ou tu refais toujours pareil ?</span></div>
+      </div>
+      <div class="plan7-day">
+        <div class="plan7-num"><small>Jour</small><b>5</b></div>
+        <div class="plan7-txt"><b>Regarde ton sommeil & ta récup</b><span>Combien d'heures ? Quel niveau de stress ? Ce sont souvent les pièces invisibles qui bloquent les résultats.</span></div>
+      </div>
+      <div class="plan7-day">
+        <div class="plan7-num"><small>Jour</small><b>6</b></div>
+        <div class="plan7-txt"><b>Identifie ton frein n°1</b><span>Parmi les 9 erreurs, laquelle te ressemble le plus aujourd'hui ? Celle qui revient le plus, c'est ta priorité.</span></div>
+      </div>
+      <div class="plan7-day">
+        <div class="plan7-num"><small>Jour</small><b>7</b></div>
+        <div class="plan7-txt"><b>Choisis 1 à 3 changements</b><span>Pas dix. Un à trois, tenables dès cette semaine. C'est comme ça qu'on démarre une vraie transformation.</span></div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <p>En 7 jours, tu passes de « je ne comprends pas ce qui bloque » à <strong>« je sais par où commencer ».</strong> C'est déjà énorme.</p>
+    </div>
+
+    <!-- BONUS ORGANISATION → FIT DANS TA VIE -->
+    <div class="tunnel-divider" style="margin:32px 0 22px;">
+      <span class="tunnel-divider-label">🎁 Bonus — Tenir dans la durée</span>
+    </div>
+
+    <div class="text-block">
+      <p><strong>Le vrai défi n'est pas de démarrer — c'est de tenir</strong> quand la vie s'en mêle : les imprévus, la fatigue, les semaines chargées, les enfants, le travail qui déborde. La plupart des femmes ne manquent pas de connaissances. Elles manquent d'une <em>organisation</em> qui résiste à la vraie vie.</p>
+    </div>
+
+    <ul class="chk-list" style="margin-bottom:8px;">
+      <li><strong>Planifie tes séances comme des rendez-vous</strong> — dans l'agenda, à heure fixe, pas « quand j'aurai le temps ».</li>
+      <li><strong>Prépare tes repas à l'avance</strong> (même partiellement) pour ne pas décider quand tu es fatiguée.</li>
+      <li><strong>Prévois un « plan B » court</strong> (15-20 min) pour les jours où tout dérape — pour ne jamais tomber à zéro.</li>
+    </ul>
+
+    <div class="fdtv-bonus">
+      <span class="fdtv-bonus-tag">⭐ Mon programme phare</span>
+      <h3>Fit Dans Ta Vie <em>— la méthode pour ne plus abandonner</em></h3>
+      <p>C'est exactement ce que j'ai construit dans <strong>Fit Dans Ta Vie</strong> : un programme de 28 jours (sport + nutrition + organisation) pensé pour les femmes qui savent déjà quoi faire, mais qui n'arrivent pas à l'intégrer durablement dans leur quotidien. Pas un énième plan parfait — une méthode qui tient dans ta vraie vie.</p>
+      <div class="fdtv-price">49€ <span>· accès immédiat · paiement en 3× possible</span></div>
+      <a href="https://www.ornellafitcoaching.com/fit-dans-ta-vie.html" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-block;">Découvrir Fit Dans Ta Vie →</a>
+    </div>
+
+  </div>
+  <div class="bottom-bar"></div>
+  <div class="page-label">Chapitre 7 · Plan d'action 7 jours · Ornella Fit Coaching</div>
+</article>
+
 
 <!-- ══════════════════════════════════════════
      DIAGNOSTIC PERSONNALISÉ — après compréhension du problème
 ══════════════════════════════════════════ -->
 <article class="page" id="page-diag">
   <div class="accent-bar"></div>
-  <div class="body-area" style="padding-top:44px;padding-bottom:44px;text-align:center;">
-    <span class="eyebrow">Maintenant que tu comprends le pourquoi</span>
+  <div class="body-area" style="padding-top:44px;padding-bottom:8px;">
+    <div style="text-align:center;">
+      <span class="eyebrow">Auto-diagnostic</span>
+      <h2 class="sec-title serif" style="margin-bottom:8px;">Où en es-tu <em>vraiment</em> ?</h2>
+      <p class="sec-intro" style="margin-bottom:22px;">Coche mentalement chaque phrase qui te correspond. Plus tu en coches, plus tu sais où agir en priorité.</p>
+    </div>
+
+    <div class="adg">
+      <div class="adg-item"><span class="adg-box"></span><p>Je change souvent de programme sans jamais en finir un.</p></div>
+      <div class="adg-item"><span class="adg-box"></span><p>Je ne suis pas ma progression (poids, répétitions, mensurations).</p></div>
+      <div class="adg-item"><span class="adg-box"></span><p>Je fais beaucoup de cardio, mais peu de renforcement musculaire.</p></div>
+      <div class="adg-item"><span class="adg-box"></span><p>Je ne sais pas si mon alimentation correspond à mon objectif.</p></div>
+      <div class="adg-item"><span class="adg-box"></span><p>Je manque souvent de protéines, surtout le matin.</p></div>
+      <div class="adg-item"><span class="adg-box"></span><p>Je dors mal ou pas assez régulièrement.</p></div>
+      <div class="adg-item"><span class="adg-box"></span><p>Je récupère mal (fatigue installée, stress permanent).</p></div>
+      <div class="adg-item"><span class="adg-box"></span><p>Je ne sais pas comment ajuster mon programme quand ça stagne.</p></div>
+      <div class="adg-item"><span class="adg-box"></span><p>J'ai du mal à rester régulière dans la durée.</p></div>
+      <div class="adg-item"><span class="adg-box"></span><p>Je ne sais pas vraiment quoi prioriser.</p></div>
+
+      <div class="adg-scale">
+        <div class="adg-scale-row"><span class="adg-scale-dot">🟢</span><span><b>0 à 2 cochées :</b> tu as déjà de bonnes bases. Peaufine 1 ou 2 détails et sois régulière.</span></div>
+        <div class="adg-scale-row"><span class="adg-scale-dot">🟠</span><span><b>3 à 5 cochées :</b> c'est le cas le plus fréquent. Tu cumules quelques freins — un plan structuré débloquerait vite les choses.</span></div>
+        <div class="adg-scale-row"><span class="adg-scale-dot">🔴</span><span><b>6 et plus :</b> beaucoup de leviers d'un coup. Ce n'est pas un défaut — juste le signe qu'un accompagnement te ferait gagner un temps fou.</span></div>
+      </div>
+      <p style="font-size:11px;color:rgba(58,42,42,.6);text-align:center;margin-top:14px;line-height:1.5;">Cet auto-diagnostic est un repère pour t'orienter — ce n'est pas un diagnostic médical.</p>
+    </div>
+  </div>
+
+  <div class="body-area" style="padding-top:8px;padding-bottom:44px;text-align:center;">
+    <span class="eyebrow">Pour aller plus loin</span>
     <h2 class="sec-title serif" style="margin-bottom:24px;">Quel est <em>ton</em> principal frein ?</h2>
     <div class="quiz-objectif" id="quizObjectif">
       <p class="quiz-objectif-label" id="diagIntro">🎯 Diagnostic 100% gratuit — réponds à quelques questions pour identifier quelle erreur te freine le plus, et l'action qui aura le plus d'impact pour toi.</p>
@@ -2513,7 +2538,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="accent-bar"></div>
 
   <div class="cta-page-body">
-    <span class="eyebrow" style="position:relative;z-index:1;">Chapitre 6 · Passage à l'action</span>
+    <span class="eyebrow" style="position:relative;z-index:1;">Chapitre 8 · Passage à l'action</span>
 
     <h2 class="cta-main-title serif">
       Tu peux continuer seule…<br><em>ou enfin avoir un plan fait pour toi.</em>
@@ -2528,52 +2553,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p><strong>Sans plan structuré, les résultats restent limités.</strong> L'information seule ne suffit pas. Ce qui fait la différence, c'est un plan précis, suivi, ajusté — pour toi. <em>Savoir ne suffit pas : mettre en œuvre sans accompagnement, c'est là que ça bloque.</em></p>
     </div>
 
-    <div class="offer-grid">
-      <div class="offer-card featured" style="position:relative;">
-        <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--rose-light),var(--rose));color:var(--charcoal);font-size:8.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;white-space:nowrap;box-shadow:0 4px 16px rgba(232,168,168,.4);">⭐ Programme personnalisé recommandé</div>
-        <div class="offer-icon" style="margin-top:10px;">💪</div>
-        <div class="offer-title">Programme Starter – 8 semaines</div>
-        <div class="offer-price serif"><sup>€</sup>79<span style="font-size:14px;font-family:'Montserrat',sans-serif;color:rgba(58,42,42,.82);"> / 8 semaines</span></div>
-        <div class="offer-note" style="margin-bottom:16px;">Programme fixe avec vidéos intégrées</div>
-        <p style="font-size:11.5px;color:rgba(58,42,42,.91);line-height:1.6;margin-bottom:14px;text-align:left;">Soit moins de 1,40€ / jour — moins qu'un café</p>
-        <ul class="offer-perks" style="text-align:left;">
-          <li>8 semaines de programme conçu pour ton corps, tes objectifs</li>
-          <li>Vidéos démo intégrées — tu n'as pas à deviner comment faire</li>
-          <li>Adapté salle ou domicile, avec ou sans matériel</li>
-          <li>Bilan complet en fin de programme</li>
-          <li>Pas de suivi hebdomadaire</li>
-          <li>Pas d'ajustements en cours de programme</li>
-        </ul>
-        <!-- Avant/Après -->
-        <div style="margin:16px 0 14px;border-radius:4px;overflow:hidden;border:1px solid rgba(232,168,168,.2);">
-          <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--rose);padding:8px 12px 6px;background:rgba(232,168,168,.07);text-align:left;">📸 Ma transformation personnelle</div>
-          <img src="images/guide-photo-2.jpg" alt="Ma transformation personnelle" style="width:100%;display:block;object-fit:contain;background:#1a1515;height:auto;" width="1206" height="1608" loading="lazy">
-          <div style="font-size:10px;font-weight:300;color:rgba(58,42,42,.82);padding:8px 12px;text-align:center;background:rgba(0,0,0,.15);">1 mois post-partum → 2 ans post-partum · Ma propre évolution physique</div>
-        </div>
-        <div style="background:rgba(232,168,168,.08);border:1px solid rgba(232,168,168,.2);border-radius:4px;padding:10px 14px;margin-bottom:14px;text-align:left;">
-          <span style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose);">🎁 Option disponible</span>
-          <p style="font-size:11px;color:rgba(58,42,42,.91);margin-top:4px;line-height:1.5;">Plan alimentaire personnalisé <strong style="color:var(--rouge);">+40€</strong></p>
-        </div>
-        <p style="font-size:11px;font-style:italic;color:rgba(58,42,42,.88);margin-bottom:14px;text-align:center;">Rien n'est laissé au hasard. Chaque détail est pensé pour de vrais résultats.</p>
-        <a href="https://buy.stripe.com/8x26oHas9f8n5o9cmh8Vi03" target="_blank" rel="noopener" class="btn btn-primary">→ Je commence mon programme (79€)</a>
-        <p style="font-size:10px;color:rgba(58,42,42,.6);text-align:center;margin-top:8px;">🔒 Paiement sécurisé par Stripe</p>
-      </div>
+    <div style="max-width:320px;margin:0 auto 26px;border-radius:10px;overflow:hidden;border:1px solid rgba(232,168,168,.25);position:relative;z-index:1;">
+      <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--rose);padding:8px 12px 6px;background:rgba(232,168,168,.07);text-align:left;">📸 Ma propre transformation</div>
+      <img src="images/guide-photo-2.jpg" alt="Ma transformation personnelle post-partum" style="width:100%;display:block;object-fit:contain;background:#1a1515;height:auto;" width="1206" height="1608" loading="lazy">
+      <div style="font-size:10px;font-weight:300;color:rgba(58,42,42,.82);padding:8px 12px;text-align:center;background:rgba(0,0,0,.06);">1 mois post-partum → 2 ans post-partum · Ma propre évolution</div>
+    </div>
 
-      <div class="offer-card" style="position:relative;">
-        <div class="offer-icon">🎯</div>
-        <div class="offer-title">Bilan Personnalisé Offert</div>
-        <p style="font-size:11.5px;color:rgba(58,42,42,.82);line-height:1.5;margin-bottom:14px;">Un appel de 30 min pour analyser ta situation, identifier tes blocages et poser les bases de ton plan.</p>
-        <div class="offer-price serif" style="font-size:32px;color:var(--ink);">Offert</div>
-        <div class="offer-note" style="color:var(--muted);">Si engagement présentiel · Places limitées chaque mois</div>
-        <ul class="offer-perks">
-          <li>Analyse complète de ta situation actuelle</li>
-          <li>Identification de tes 3 blocages principaux</li>
-          <li>Plan d'action personnalisé offert à l'issue</li>
-          <li>Présentation des solutions disponibles</li>
-          <li>Sans pression, mais bilan lié à un engagement présentiel</li>
-        </ul>
-        <a href="https://www.ornellafitcoaching.com/offres.html" target="_blank" rel="noopener" class="btn btn-outline">Voir les formules & tarifs →</a>
+    <h3 class="serif" style="font-size:28px;font-weight:300;color:var(--ink);line-height:1.3;margin-bottom:10px;position:relative;z-index:1;">Quelle solution est faite <em style="font-style:italic;color:var(--rose-light);">pour toi</em> ?</h3>
+    <p style="font-size:13px;font-weight:300;color:rgba(58,42,42,.86);line-height:1.75;max-width:520px;margin:0 auto 8px;position:relative;z-index:1;">Tu sais maintenant quoi regarder. La difficulté suivante, c'est de transformer ces principes en une stratégie adaptée à <strong>ton corps, ton niveau, ton emploi du temps et ton objectif.</strong> Voici les différentes façons dont je peux t'accompagner — choisis celle qui te ressemble.</p>
+
+    <div class="pourqui">
+      <div class="pourqui-card hi">
+        <div class="pourqui-ico">📲</div>
+        <h4>Programmes digitaux</h4>
+        <div class="pourqui-price">Dès 12€ · Fit Dans Ta Vie 49€</div>
+        <div class="pourqui-forwho"><strong>Pour toi si</strong> tu veux avancer seule, à ton rythme, avec un budget accessible — et une méthode claire, prête à l'emploi.</div>
+        <a href="https://www.ornellafitcoaching.com/fit-dans-ta-vie.html" target="_blank" rel="noopener" class="btn btn-primary">Voir Fit Dans Ta Vie →</a>
       </div>
+      <div class="pourqui-card">
+        <div class="pourqui-ico">💻</div>
+        <h4>Coaching à distance</h4>
+        <div class="pourqui-price">Plan sur-mesure + suivi</div>
+        <div class="pourqui-forwho"><strong>Pour toi si</strong> tu veux un programme 100 % personnalisé et un vrai suivi, où que tu sois, sans contrainte de lieu.</div>
+        <a href="https://www.ornellafitcoaching.com/offres.html" target="_blank" rel="noopener" class="t-btn-outline">Voir les formules →</a>
+      </div>
+      <div class="pourqui-card">
+        <div class="pourqui-ico">🤝</div>
+        <h4>Coaching hybride</h4>
+        <div class="pourqui-price">Sur-mesure + séances encadrées</div>
+        <div class="pourqui-forwho"><strong>Pour toi si</strong> tu veux le sur-mesure à distance <em>et</em> des séances encadrées régulières pour être guidée en vrai.</div>
+        <a href="https://www.ornellafitcoaching.com/offres.html" target="_blank" rel="noopener" class="t-btn-outline">Voir les formules →</a>
+      </div>
+      <div class="pourqui-card">
+        <div class="pourqui-ico">📍</div>
+        <h4>Coaching présentiel</h4>
+        <div class="pourqui-price">En Essonne (91)</div>
+        <div class="pourqui-forwho"><strong>Pour toi si</strong> tu veux être corrigée en direct, motivée en face à face, près de chez toi.</div>
+        <a href="https://www.ornellafitcoaching.com/offres.html" target="_blank" rel="noopener" class="t-btn-outline">Voir les formules →</a>
+      </div>
+    </div>
+
+    <div class="tunnel-reassurance-box" style="position:relative;z-index:1;">
+      <p><strong>Pas sûre de ce qu'il te faut ?</strong> C'est normal. Écris-moi un message : on regarde ensemble ta situation et je t'oriente honnêtement vers la solution la plus adaptée — <em>sans pression.</em></p>
+      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20lu%20ton%20guide%20et%20j%27aimerais%20savoir%20quelle%20solution%20serait%20la%20plus%20adapt%C3%A9e%20pour%20moi." target="_blank" rel="noopener" class="t-btn-main" style="margin-top:14px;display:inline-block;">💬 En parler avec Ornella</a>
     </div>
 
     <div style="display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:32px;position:relative;z-index:1;">
@@ -2632,7 +2654,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="bottom-bar"></div>
-  <div class="page-label">Chapitre 6 · Passage à l'action · Ornella Fit Coaching</div>
+  <div class="page-label">Chapitre 8 · Passage à l'action · Ornella Fit Coaching</div>
 </article>
 
 
@@ -2816,13 +2838,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="menu-sep"></div>
     <a href="#page-0" role="menuitem" onclick="document.getElementById('fab-check').checked=false">📖 Couverture</a>
     <div class="menu-sep"></div>
-    <a href="#page-1" role="menuitem" onclick="document.getElementById('fab-check').checked=false">Pourquoi ça bloque</a>
-    <a href="#page-6" role="menuitem" onclick="document.getElementById('fab-check').checked=false">Mon approche</a>
-    <a href="#page-2" role="menuitem" onclick="document.getElementById('fab-check').checked=false">Les 9 erreurs</a>
-    <a href="#page-3" role="menuitem" onclick="document.getElementById('fab-check').checked=false">Le vrai problème</a>
-    <a href="#page-4" role="menuitem" onclick="document.getElementById('fab-check').checked=false">Prise de conscience</a>
-    <a href="#page-5" role="menuitem" onclick="document.getElementById('fab-check').checked=false">Ce qui fonctionne</a>
-    <a href="#quizObjectif" role="menuitem" onclick="document.getElementById('fab-check').checked=false">🎯 Faire le diagnostic</a>
+    <a href="#page-1" role="menuitem" onclick="document.getElementById('fab-check').checked=false">1 · Pourquoi ça bloque</a>
+    <a href="#page-6" role="menuitem" onclick="document.getElementById('fab-check').checked=false">2 · Comment ton corps fonctionne</a>
+    <a href="#page-2" role="menuitem" onclick="document.getElementById('fab-check').checked=false">3 · Les 9 erreurs</a>
+    <a href="#page-3" role="menuitem" onclick="document.getElementById('fab-check').checked=false">4 · La nutrition</a>
+    <a href="#page-4" role="menuitem" onclick="document.getElementById('fab-check').checked=false">5 · Cerveau &amp; comportements</a>
+    <a href="#page-5" role="menuitem" onclick="document.getElementById('fab-check').checked=false">6 · Ce qui fonctionne</a>
+    <a href="#page-plan" role="menuitem" onclick="document.getElementById('fab-check').checked=false">7 · Plan 7 jours + bonus</a>
+    <a href="#quizObjectif" role="menuitem" onclick="document.getElementById('fab-check').checked=false">🎯 Auto-diagnostic</a>
     <div class="menu-sep"></div>
     <a href="#page-8" role="menuitem" onclick="document.getElementById('fab-check').checked=false">💎 Offres</a>
   </div>
@@ -2901,7 +2924,7 @@ var DIAG_QUESTIONS = [
 var FREIN_MAP = {
   alim:    { titre:'Une alimentation qui ne soutient pas tes efforts', why:'Sans assez de protéines ni de repères précis, ton corps n\'a pas le carburant pour construire du muscle ou brûler efficacement — tu peux t\'entraîner dur et stagner quand même. Le vrai problème n\'est presque jamais "je mange trop" ou "je mange trop peu" au hasard : c\'est l\'absence de structure. Sans savoir combien de protéines, de calories et de repas te conviennent réellement, tu navigues à l\'aveugle, et ton corps n\'a aucune raison de changer.', actions:['Place une source de protéines à chaque repas, dès le petit-déjeuner.', 'Ne descends jamais sous 1,6g de protéines par kg de poids de corps et par jour.', 'Pèse tes portions 3 jours pour repérer les excès invisibles (huile, oléagineux, sauces).'], food:'20 à 30g de protéines au petit-déjeuner (œufs, skyr, protéine en poudre) relancent la satiété pour toute la journée. Privilégie les protéines maigres (poulet, poisson, œufs, légumineuses) et n\'aie pas peur des bonnes graisses (avocat, oléagineux, huile d\'olive) — en quantité mesurée, pas en excès invisible.', produit:'ventre-plat.html', label:'→ Voir la méthode nutrition qui débloque enfin les résultats' },
   cardio:  { titre:'Trop de cardio, pas assez de renforcement ciblé', why:'Ton corps s\'adapte vite au cardio : en quelques semaines tu brûles moins pour le même effort, et sans musculation il puise dans le muscle — ce qui ralentit encore plus ton métabolisme. C\'est un cercle vicieux : plus tu fais de cardio sans muscler, moins ton corps a de raisons de se transformer visiblement, même si tu es épuisée après chaque séance.', actions:['Limite le cardio à 2-3 séances/semaine et priorise la musculation.', 'Programme 2 séances de renforcement ciblé par semaine avec une charge qui progresse.', 'Vise une vraie programmation adaptée à ta morphologie, pas des exercices au hasard.'], food:'Après une séance de musculation, consomme 20-30g de protéines dans l\'heure qui suit (shaker, yaourt grec, œufs) pour maximiser la reconstruction musculaire. Les glucides complexes (riz, patate douce, avoine) autour de l\'entraînement te donnent l\'énergie pour progresser en charge.', produit:'booty-sculpt.html', label:'→ Voir la méthode de sculpte progressive' },
-  recup:   { titre:'Un déficit de récupération (stress, sommeil)', why:'Cortisol élevé et sommeil insuffisant bloquent la construction musculaire et favorisent le stockage abdominal — aucun programme ne peut compenser une récupération absente. Le cortisol chronique met ton corps en mode "survie" : il retient les graisses (surtout au niveau du ventre) et freine la synthèse musculaire, quel que soit ton entraînement.', actions:['10 minutes de marche ou de respiration dehors, sans écran, chaque jour.', 'Fixe une heure de coucher régulière pour viser 7 à 9h de sommeil.', 'Si la fatigue persiste, demande un bilan sanguin (fer, vitamine D, B12).'], food:'Le magnésium (amandes, chocolat noir, légumes verts) aide à calmer le système nerveux le soir. Évite la caféine après 14h — sa demi-vie de 5 à 6h peut perturber ton sommeil profond sans que tu le remarques.', produit:'offres.html', label:'→ Découvrir le bilan personnalisé gratuit' },
+  recup:   { titre:'Un déficit de récupération (stress, sommeil)', why:'Un sommeil régulièrement insuffisant et un stress chronique peuvent freiner tes progrès et rendre la récupération plus difficile. Le cortisol n\'est pas une hormone « ennemie » — il est normal et utile ; c\'est son excès prolongé, mal géré, qui peut peser sur ton énergie, ton appétit et tes résultats, même quand ton entraînement est sérieux. Bref, la récupération n\'est pas un détail : c\'est là qu\'une partie du travail se transforme en résultats.', actions:['10 minutes de marche ou de respiration dehors, sans écran, chaque jour.', 'Fixe une heure de coucher régulière pour viser 7 à 9h de sommeil.', 'Si la fatigue persiste, demande un bilan sanguin (fer, vitamine D, B12).'], food:'Le magnésium (amandes, chocolat noir, légumes verts) aide à calmer le système nerveux le soir. Évite la caféine après 14h — sa demi-vie de 5 à 6h peut perturber ton sommeil profond sans que tu le remarques.', produit:'offres.html', label:'→ Découvrir le bilan personnalisé gratuit' },
   prog:    { titre:'Un manque de progression dans tes séances', why:'Sans musculation régulière et progressive, tu perds naturellement de la masse musculaire avec le temps — résultat : métabolisme ralenti, corps qui se ramollit, même sans rien changer côté alimentation. Refaire toujours le même programme, aux mêmes charges, envoie à ton corps le signal qu\'il n\'a plus besoin de s\'adapter : c\'est la définition même du plateau.', actions:['2 séances de musculation minimum par semaine, sans exception.', 'Augmente la charge ou les répétitions dès que tu maîtrises un mouvement.', 'Structure tes séances plutôt que de les improviser à chaque fois.'], food:'La synthèse musculaire a besoin de protéines réparties sur la journée (pas tout au même repas) : vise 3-4 prises de 20-30g. Le manque de fer ou de vitamine D peut aussi expliquer une stagnation inexpliquée — un bilan sanguin annuel n\'est jamais du temps perdu.', produit:'iron-girl-sales.html', label:'→ Voir la méthode de progression structurée' },
   postpartum: { titre:'Ton corps post-partum a besoin d\'un plan spécifique', why:'Après une grossesse, ton corps a des besoins particuliers (diastasis, plancher pelvien, fatigue) qu\'un programme générique ne prend jamais en compte. Reprendre trop vite ou avec les mauvais exercices peut aggraver un diastasis ou fragiliser un plancher pelvien déjà sollicité — la progressivité n\'est pas une option, c\'est une nécessité.', actions:['Ne reprends jamais un programme générique sans vérifier ton diastasis.', 'Priorise le renforcement du plancher pelvien avant tout le reste.', 'Avance progressivement, sans te comparer à ton corps d\'avant.'], food:'Les besoins en fer et en protéines restent élevés après l\'accouchement (encore plus si tu allaites). Vise des sources de fer facilement assimilables (viande rouge, légumineuses + vitamine C pour l\'absorption) et ne saute aucun repas malgré la fatigue et le manque de temps.', produit:'programme-postpartum.html', label:'→ Découvrir le programme pensé pour l\'après-accouchement' },
   hormonal: { titre:'Des changements hormonaux qui changent la donne', why:'À partir de 40 ans, la baisse d\'œstrogènes accélère la perte musculaire et modifie le stockage des graisses — les méthodes qui marchaient à 25 ans ne fonctionnent plus pareil. Ce n\'est ni dans ta tête ni un manque d\'effort : c\'est un changement physiologique réel qui demande d\'ajuster l\'entraînement ET l\'alimentation, pas de travailler "plus dur".', actions:['Priorise la musculation pour contrer la perte musculaire liée à l\'âge.', 'Augmente légèrement les protéines par rapport à tes habitudes actuelles.', 'Sois patiente avec les résultats — le rythme change, pas la capacité à progresser.'], food:'Le calcium et la vitamine D deviennent prioritaires pour la santé osseuse (produits laitiers, poissons gras, exposition au soleil). Réduis les sucres rapides et les produits ultra-transformés, qui accentuent l\'inflammation et les variations hormonales de cette période.', produit:'ageless-girl-sales.html', label:'→ Découvrir le programme anti-âge et ménopause' }
