@@ -1040,55 +1040,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .rf-opt.reco .rf-opt-p{color:var(--rf-terra);font-size:1.3rem;}
     .rf-opt.best{border-color:rgba(45,106,79,.45);background:#F4FAF6;}
     .rf-opt.best .rf-opt-l{color:var(--rf-green);}
+    /* ==== présentation valeur + parcours (domicile) ==== */
+    .rf-value{margin:0 0 18px;}
+    .rf-value-h{font:600 1.35rem/1.25 'Cormorant Garamond',Georgia,serif;color:var(--rf-ink);margin:0 0 8px;}
+    .rf-value-lead{font-size:.9rem;color:var(--rf-ink);line-height:1.6;margin:0 0 16px;}
+    .rf-benefits{display:flex;flex-direction:column;gap:12px;}
+    .rf-benefit{display:flex;gap:12px;align-items:flex-start;}
+    .rf-benefit .rf-bi{font-size:1.2rem;line-height:1.3;flex-shrink:0;width:1.6em;text-align:center;}
+    .rf-benefit b{font:600 .9rem/1.3 'DM Sans',sans-serif;color:var(--rf-ink);}
+    .rf-benefit span.rf-bd{font-size:.8rem;color:var(--rf-mute);line-height:1.45;}
+    .rf-soft-div{height:1px;background:var(--rf-line);margin:22px 0 18px;border:none;}
+    .rf-parc-intro{display:flex;flex-direction:column;gap:10px;margin:0 0 18px;}
+    .rf-parc-line{font-size:.86rem;color:var(--rf-ink);line-height:1.5;margin:0;}
+    .rf-parc-line b{color:var(--rf-ink);}
+    .rf-mini-badge{display:inline-block;background:rgba(192,87,74,.12);color:var(--rf-terra);font:800 .58rem/1 'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:50px;vertical-align:middle;margin-left:2px;}
+    /* prix par rythme — recommandé visible, autres repliés */
+    .rf-ry{border-top:1px solid var(--rf-line);padding:16px 0;}
+    .rf-ry:first-of-type{border-top:none;padding-top:4px;}
+    .rf-ry:last-of-type{padding-bottom:4px;}
+    .rf-ry-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;}
+    .rf-ry-rythme{font:600 1rem/1.2 'DM Sans',sans-serif;color:var(--rf-ink);}
+    .rf-ry-sub{font-size:.74rem;color:var(--rf-mute);margin-top:3px;}
+    .rf-ry-pr{text-align:right;flex-shrink:0;}
+    .rf-ry-price{font:600 1.65rem/1 'Cormorant Garamond',Georgia,serif;color:var(--rf-ink);white-space:nowrap;}
+    .rf-ry-price span{font-size:.7rem;color:var(--rf-mute);font-family:'DM Sans',sans-serif;font-weight:500;}
+    .rf-ry-note{font-size:.66rem;color:var(--rf-terra);font-weight:700;margin-top:4px;}
+    .rf-ry-toggle{margin-top:11px;background:none;border:none;padding:0;color:var(--rf-terra);font:600 .76rem/1 'DM Sans',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:5px;}
+    .rf-ry-chev{transition:transform .3s ease;font-size:.62rem;display:inline-block;}
+    .rf-ry.open .rf-ry-chev{transform:rotate(180deg);}
+    .rf-ry-more{max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .3s ease,margin-top .3s ease;}
+    .rf-ry.open .rf-ry-more{max-height:180px;opacity:1;margin-top:11px;}
+    .rf-ry-opt{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 13px;border-radius:11px;background:var(--rf-paper);margin-bottom:7px;}
+    .rf-ry-opt:last-child{margin-bottom:0;}
+    .rf-ry-opt-t{font:600 .82rem/1.2 'DM Sans',sans-serif;color:var(--rf-ink);}
+    .rf-ry-opt-d{font-size:.68rem;color:var(--rf-mute);margin-top:2px;}
+    .rf-ry-opt-p{font:600 1.05rem/1 'Cormorant Garamond',Georgia,serif;color:var(--rf-ink);white-space:nowrap;}
+    .rf-ry-opt-p span{font-size:.6rem;color:var(--rf-mute);font-family:'DM Sans',sans-serif;font-weight:500;}
+    .rf-inc{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;}
+    @media(max-width:520px){.rf-inc{grid-template-columns:1fr;}}
+    .rf-inc li{font-size:.84rem;color:var(--rf-ink);line-height:1.4;padding-left:20px;position:relative;}
+    .rf-inc li::before{content:'✓';position:absolute;left:0;color:var(--rf-terra);font-weight:700;}
     </style>
 
-    <!-- ===== POURQUOI 2 TARIFS / 3 MOIS — explication partagée ===== -->
-    <div class="rf-why">
-      <div class="rf-why-grid">
-        <div class="rf-why-card">
-          <h3>3 niveaux, à toi de choisir</h3>
-          <p><strong>Sans engagement</strong> → liberté maximale, tarif le plus élevé.</p>
-          <p><strong>⭐ Parcours 3 mois</strong> → la formule recommandée, tarif préférentiel.</p>
-          <p><strong>🔥 Parcours 6 mois</strong> → accompagnement longue durée, le meilleur tarif mensuel <em>(à domicile)</em>.</p>
-        </div>
-        <div class="rf-why-card">
-          <h3>Pourquoi 3 mois ?</h3>
-          <p>Un mois permet de commencer à mettre en place les bonnes habitudes, mais reste souvent trop court pour évaluer pleinement une évolution physique. Le parcours 3 mois permet de&nbsp;:</p>
-          <ul>
-            <li>mettre en place les bonnes habitudes ;</li>
-            <li>progresser progressivement sur les entraînements ;</li>
-            <li>ajuster le programme selon ton évolution ;</li>
-            <li>suivre tes mensurations et ta progression ;</li>
-            <li>construire des changements durables.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="rf-why-grid">
-        <div class="rf-why-card">
-          <h3>Pourquoi 6 mois ?</h3>
-          <p>Le parcours 6 mois est pensé pour les personnes qui souhaitent s'inscrire dans une démarche de progression sur le long terme, avec davantage de temps pour construire, ajuster et consolider leurs habitudes et leur progression.</p>
-          <p>C'est également la formule qui bénéficie du <strong>tarif mensuel le plus avantageux</strong>.</p>
-        </div>
-        <div class="rf-why-card">
-          <h3>Comment fonctionnent les parcours avec engagement ?</h3>
-          <p>Les parcours avec engagement bénéficient d'un tarif préférentiel en contrepartie d'une durée d'accompagnement définie.</p>
-          <p>Cette durée permet de construire un véritable suivi dans le temps plutôt que de juger une évolution physique sur seulement quelques semaines.</p>
-        </div>
-      </div>
-      <div class="rf-why-grid">
-        <div class="rf-why-card hl">
-          <h3>Ce que signifie l'engagement</h3>
-          <p>Concrètement, l'engagement correspond à un <strong>tarif préférentiel sur 3 périodes de facturation</strong>.</p>
-          <p>Tu peux demander ta résiliation à tout moment avec un préavis de 15 jours. Si tu arrêtes avant la fin des 3 périodes, les prélèvements restants sont annulés ; la remise appliquée aux périodes déjà écoulées est alors régularisée conformément aux <a href="cgv.html" style="color:var(--rf-terra);font-weight:600;">CGV</a>.</p>
-        </div>
-        <div class="rf-ex">
-          <div class="rf-ex-h">Exemple concret</div>
-          <p><strong>260 €/mois</strong> avec parcours 3 mois · 280 €/mois sans engagement.</p>
-          <p>Si tu arrêtes après 2 périodes : <strong>2 × 20 € = 40 €</strong> de régularisation.</p>
-          <p>Les prélèvements suivants sont annulés. Aucun autre montant n'est dû au titre de la résiliation.</p>
-        </div>
-      </div>
-    </div>
+    <!-- intro courte & aérée -->
+    <p style="text-align:center;color:var(--rf-mute);font-size:.9rem;line-height:1.65;max-width:560px;margin:0 auto 26px;">Choisissez votre formule ci-dessous. Chaque accompagnement peut se faire <b style="color:var(--rf-ink);">à domicile, en salle ou les deux</b>, et vous choisissez la durée que vous souhaitez vous donner pour avancer vers votre objectif. Le détail des conditions reste accessible dans chaque formule.</p>
 
     <!-- ===== DOMICILE ===== -->
     <div class="rf-acc" id="tarif-domicile">
@@ -1103,48 +1098,89 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
       <div class="rf-acc-body">
         <div class="rf-acc-inner">
-          <p class="rf-acc-lead">Je me déplace chez toi avec tout mon matériel pour un accompagnement <strong style="color:var(--rf-ink);">100 % en one-to-one</strong> — rien à voir avec une salle bondée ou un cours collectif où tu te fonds dans le groupe. Ici, tu as <strong style="color:var(--rf-ink);">toute mon attention, à chaque seconde</strong> : chaque séance est construite pour toi, ton niveau et tes objectifs, avec une correction technique en direct, un suivi WhatsApp entre les séances, et <strong style="color:var(--rf-ink);">tu n'es jamais seule face à ton programme</strong>. Idéal si tu manques de temps, travailles beaucoup ou es en télétravail : pas de trajet, pas d'horaires de salle à subir.</p>
 
           <!-- ABONNEMENT — prioritaire -->
-          <div style="border:1.5px solid rgba(192,87,74,.3);border-radius:16px;padding:18px;background:#FFF9F6;margin-bottom:14px;">
-            <div style="font:700 .82rem/1.2 'DM Sans',sans-serif;color:var(--rf-ink);margin-bottom:2px;">🔁 Abonnement à domicile — créneau fixe</div>
-            <div style="font-size:.8rem;color:var(--rf-terra);font-weight:600;margin-bottom:12px;">Séances 100 % sur-mesure + consignes entre les séances · bilan toutes les 4 semaines + suivi WhatsApp · facturation par période de 4 semaines · <strong>3 niveaux : sans engagement · parcours 3 mois ⭐ · parcours 6 mois 🔥</strong></div>
-            <div class="rf-row3">
-              <div class="rf-row3-name">Flex 4 · 1 séance / semaine</div>
-              <div class="rf-row3-desc">4 séances par période de 4 semaines · créneau fixe</div>
-              <div class="rf-opts">
-                <div class="rf-opt reco"><div class="rf-opt-l">⭐ 3 mois · recommandé</div><div class="rf-opt-p">260€<span> /période</span></div><div class="rf-opt-s">−20€ vs sans engagt</div></div>
-                <div class="rf-opt best"><div class="rf-opt-l">🔥 6 mois · meilleur tarif</div><div class="rf-opt-p">240€<span> /période</span></div><div class="rf-opt-s">−40€ vs sans engagt</div></div>
-                <div class="rf-opt"><div class="rf-opt-l">Sans engagement</div><div class="rf-opt-p">280€<span> /période</span></div><div class="rf-opt-s">plus de flexibilité</div></div>
-              </div>
-              <div class="rf-nutri-add">+ nutrition : 300€/période (option)</div>
-            </div>
-            <div class="rf-row3">
-              <div class="rf-row3-name">Flex 8 · 2 séances / semaine</div>
-              <div class="rf-row3-desc">8 séances par période de 4 semaines · créneau fixe</div>
-              <div class="rf-opts">
-                <div class="rf-opt reco"><div class="rf-opt-l">⭐ 3 mois · recommandé</div><div class="rf-opt-p">480€<span> /période</span></div><div class="rf-opt-s">−20€ vs sans engagt</div></div>
-                <div class="rf-opt best"><div class="rf-opt-l">🔥 6 mois · meilleur tarif</div><div class="rf-opt-p">440€<span> /période</span></div><div class="rf-opt-s">−60€ vs sans engagt</div></div>
-                <div class="rf-opt"><div class="rf-opt-l">Sans engagement</div><div class="rf-opt-p">500€<span> /période</span></div><div class="rf-opt-s">plus de flexibilité</div></div>
-              </div>
-              <div class="rf-nutri-add">+ nutrition : 520€/période (option)</div>
-            </div>
-            <div class="rf-row3" style="margin-bottom:0;">
-              <div class="rf-row3-name">Flex 12 · 3 séances / semaine</div>
-              <div class="rf-row3-desc">12 séances par période de 4 semaines · créneau fixe · progression la plus rapide</div>
-              <div class="rf-opts">
-                <div class="rf-opt reco"><div class="rf-opt-l">⭐ 3 mois · recommandé</div><div class="rf-opt-p">660€<span> /période</span></div><div class="rf-opt-s">−20€ vs sans engagt</div></div>
-                <div class="rf-opt best"><div class="rf-opt-l">🔥 6 mois · meilleur tarif</div><div class="rf-opt-p">620€<span> /période</span></div><div class="rf-opt-s">−60€ vs sans engagt</div></div>
-                <div class="rf-opt"><div class="rf-opt-l">Sans engagement</div><div class="rf-opt-p">680€<span> /période</span></div><div class="rf-opt-s">plus de flexibilité</div></div>
-              </div>
-              <div class="rf-nutri-add">+ nutrition : 700€/période (option)</div>
-            </div>
-            <div class="rf-nutri" style="margin:14px 0 0;"><span>🥗 <b>Nutrition en option</b> — sans engagement, résiliable avec 15 j de préavis (non obligatoire)</span><b>+40€/période</b></div>
+          <div style="border:1px solid var(--rf-line);border-radius:18px;padding:22px;background:#FFF9F6;margin-bottom:14px;">
 
-            <div style="border-left:3px solid var(--rf-terra);background:var(--rf-paper);border-radius:10px;padding:14px 16px;margin:16px 0 4px;">
-              <div style="font:800 .72rem/1.2 'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--rf-terra);margin-bottom:8px;">Bon à savoir — comment ça marche</div>
-              <p style="font-size:.76rem;color:var(--rf-mute);line-height:1.6;margin:0;">🗓️ <strong>Parcours 3 mois</strong> : tu peux arrêter à tout moment avec 15 j de préavis ; avant la fin, tu régularises simplement la remise des périodes écoulées (20 €/période), jamais les périodes restantes.<br>🔥 <strong>Parcours 6 mois</strong> : nouvelle formule au meilleur tarif — ses conditions détaillées sont en cours d'ajout aux CGV. Écris-moi pour la réserver.<br>💳 Paiement à l'avance par prélèvement SEPA (GoCardless), mensuel à date (toutes les 4 semaines) — les prélèvements du parcours sont mis en place dès le départ. Tu peux régler une période en plusieurs fois dans le mois sur demande (ex : 260 € en 2 fois).<br>✍️ Ton mandat de prélèvement SEPA doit être signé et complété au plus tard 5 jours avant ta première séance.<br>📅 Ton créneau est fixe : tu le choisis selon tes disponibilités et les miennes, puis il reste le même chaque semaine.<br>🤝 Motif légitime (déménagement à +30 km, raison médicale, grossesse, perte d'emploi, sur justificatif) : aucune régularisation.</p>
+            <!-- 1 · LA VALEUR DU COACHING -->
+            <h3 class="rf-value-h">Vous n'avez pas simplement un programme</h3>
+            <p class="rf-value-lead">Vous êtes accompagnée, corrigée et guidée dans votre progression. Je construis et j'adapte votre coaching selon votre niveau, vos objectifs et votre évolution.</p>
+            <ul class="rf-inc">
+              <li>Séances 100 % personnalisées</li>
+              <li>Programme qui évolue avec vous</li>
+              <li>Correction technique en séance</li>
+              <li>Suivi entre les séances sur WhatsApp</li>
+              <li>Bilan et ajustements toutes les 4 semaines</li>
+              <li>Votre espace personnel de suivi</li>
+            </ul>
+
+            <!-- 2 · LE FORMAT -->
+            <div style="margin:20px 0;">
+              <div style="font:600 1rem/1.25 'Cormorant Garamond',Georgia,serif;color:var(--rf-ink);margin-bottom:9px;">Où souhaitez-vous vous entraîner&nbsp;?</div>
+              <div class="rf-parc-line">🏠 <b>À domicile</b> — je viens avec mon matériel : aucun trajet, rien à préparer, toute mon attention. <span style="color:var(--rf-mute);">Votre séance s'intègre à votre quotidien.</span></div>
+              <div class="rf-parc-line" style="margin-top:8px;">🏋️ <b>En salle</b> — uniquement chez ON AIR Fitness, dans une salle proche de mon secteur (à valider ensemble).</div>
+              <div class="rf-parc-line" style="margin-top:8px;">🔄 <b>Mixte</b> — alternez domicile et salle ON AIR Fitness selon vos besoins.</div>
             </div>
+
+            <hr class="rf-soft-div">
+
+            <!-- 3 · LE PARCOURS : LE TEMPS DE VOTRE TRANSFORMATION -->
+            <div style="font:600 1.15rem/1.3 'Cormorant Garamond',Georgia,serif;color:var(--rf-ink);margin-bottom:6px;">Donnez-vous le temps d'atteindre votre objectif</div>
+            <p style="font-size:.84rem;color:var(--rf-ink);line-height:1.6;margin:0 0 14px;">Une vraie transformation ne se fait pas en quelques séances. Le corps a besoin de temps pour progresser, les habitudes pour s'installer, et l'entraînement s'ajuste au fil de vos résultats. Choisir une durée, c'est choisir le temps que vous vous donnez pour être accompagnée vers votre objectif.</p>
+            <div class="rf-parc-intro">
+              <p class="rf-parc-line"><b>⭐ Parcours 3 mois <span class="rf-mini-badge">recommandé</span></b><br><span style="color:var(--rf-mute);">3 mois pour mettre en place les bonnes habitudes, progresser, ajuster votre entraînement et avancer concrètement vers votre objectif.</span></p>
+              <p class="rf-parc-line"><b>🔥 Parcours 6 mois <span class="rf-mini-badge" style="background:rgba(45,106,79,.12);color:var(--rf-green);">tarif le plus avantageux</span></b><br><span style="color:var(--rf-mute);">6 mois pour aller plus loin dans votre transformation, progresser étape après étape et travailler durablement vers votre objectif.</span></p>
+              <p class="rf-parc-line"><b>🤍 Sans engagement</b><br><span style="color:var(--rf-mute);">Pour commencer avec davantage de flexibilité.</span></p>
+            </div>
+
+            <!-- 4 · PRIX PAR RYTHME (recommandé visible, autres repliés) -->
+            <div style="font-size:.78rem;color:var(--rf-terra);font-weight:700;margin-bottom:4px;">Votre rythme — au tarif recommandé (parcours 3 mois)</div>
+            <div class="rf-ry">
+              <div class="rf-ry-top">
+                <div><div class="rf-ry-rythme">1 séance / semaine</div><div class="rf-ry-sub">4 séances / 4 semaines · créneau fixe</div></div>
+                <div class="rf-ry-pr"><div class="rf-ry-price">260€<span>/mois</span></div><div class="rf-ry-note">⭐ Tarif préférentiel</div></div>
+              </div>
+              <button class="rf-ry-toggle" type="button" onclick="rfMore(this)" aria-expanded="false">Voir les autres options <span class="rf-ry-chev">▾</span></button>
+              <div class="rf-ry-more">
+                <div class="rf-ry-opt"><div><div class="rf-ry-opt-t">✨ Parcours 6 mois</div><div class="rf-ry-opt-d">Tarif le plus avantageux</div></div><div class="rf-ry-opt-p">240€<span>/mois</span></div></div>
+                <div class="rf-ry-opt"><div><div class="rf-ry-opt-t">🤍 Sans engagement</div><div class="rf-ry-opt-d">Plus de flexibilité</div></div><div class="rf-ry-opt-p">280€<span>/mois</span></div></div>
+              </div>
+            </div>
+            <div class="rf-ry">
+              <div class="rf-ry-top">
+                <div><div class="rf-ry-rythme">2 séances / semaine</div><div class="rf-ry-sub">8 séances / 4 semaines · créneau fixe</div></div>
+                <div class="rf-ry-pr"><div class="rf-ry-price">480€<span>/mois</span></div><div class="rf-ry-note">⭐ Tarif préférentiel</div></div>
+              </div>
+              <button class="rf-ry-toggle" type="button" onclick="rfMore(this)" aria-expanded="false">Voir les autres options <span class="rf-ry-chev">▾</span></button>
+              <div class="rf-ry-more">
+                <div class="rf-ry-opt"><div><div class="rf-ry-opt-t">✨ Parcours 6 mois</div><div class="rf-ry-opt-d">Tarif le plus avantageux</div></div><div class="rf-ry-opt-p">440€<span>/mois</span></div></div>
+                <div class="rf-ry-opt"><div><div class="rf-ry-opt-t">🤍 Sans engagement</div><div class="rf-ry-opt-d">Plus de flexibilité</div></div><div class="rf-ry-opt-p">500€<span>/mois</span></div></div>
+              </div>
+            </div>
+            <div class="rf-ry">
+              <div class="rf-ry-top">
+                <div><div class="rf-ry-rythme">3 séances / semaine</div><div class="rf-ry-sub">12 séances / 4 semaines · créneau fixe · progression la plus rapide</div></div>
+                <div class="rf-ry-pr"><div class="rf-ry-price">660€<span>/mois</span></div><div class="rf-ry-note">⭐ Tarif préférentiel</div></div>
+              </div>
+              <button class="rf-ry-toggle" type="button" onclick="rfMore(this)" aria-expanded="false">Voir les autres options <span class="rf-ry-chev">▾</span></button>
+              <div class="rf-ry-more">
+                <div class="rf-ry-opt"><div><div class="rf-ry-opt-t">✨ Parcours 6 mois</div><div class="rf-ry-opt-d">Tarif le plus avantageux</div></div><div class="rf-ry-opt-p">620€<span>/mois</span></div></div>
+                <div class="rf-ry-opt"><div><div class="rf-ry-opt-t">🤍 Sans engagement</div><div class="rf-ry-opt-d">Plus de flexibilité</div></div><div class="rf-ry-opt-p">680€<span>/mois</span></div></div>
+              </div>
+            </div>
+
+            <div class="rf-nutri" style="margin:18px 0 0;"><span>🥗 <b>Nutrition en option</b> — non obligatoire, sans engagement</span><b>+40€/mois</b></div>
+
+            <!-- 5 · CONDITIONS — repliées -->
+            <details class="rf-details" style="margin-top:12px;">
+              <summary>Voir les conditions (paiement, résiliation, créneau) ▾</summary>
+              <div class="rf-details-body">
+                <p style="font-size:.8rem;line-height:1.6;"><b>Parcours 3 mois</b> — vous pouvez arrêter à tout moment avec 15 jours de préavis. Avant la fin, seule la remise des mois déjà écoulés est régularisée (20 €/mois), jamais les mois restants. En cas de motif légitime (déménagement à +30 km, raison médicale, grossesse, perte d'emploi, sur justificatif) : aucune régularisation.</p>
+                <p style="font-size:.8rem;line-height:1.6;"><b>Parcours 6 mois</b> — nouvelle formule au tarif le plus avantageux ; ses conditions détaillées sont en cours d'ajout aux CGV. Écrivez-moi pour la réserver.</p>
+                <p style="font-size:.8rem;line-height:1.6;"><b>Paiement</b> — prélèvement SEPA (GoCardless), mensuel à date (toutes les 4 semaines). Possibilité de régler un mois en plusieurs fois sur demande. Le mandat se signe au plus tard 5 jours avant la première séance.</p>
+                <p style="font-size:.8rem;line-height:1.6;margin-bottom:0;"><b>Créneau</b> — fixe, choisi selon vos disponibilités et les miennes, puis identique chaque semaine. Détails complets dans les <a href="cgv.html" style="color:var(--rf-terra);font-weight:600;">CGV</a>.</p>
+              </div>
+            </details>
           </div>
 
           <!-- Séance découverte -->
@@ -1200,6 +1236,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="rf-acc-body">
         <div class="rf-acc-inner">
           <p class="rf-acc-lead"><strong style="color:var(--rf-ink);">De vraies séances en présentiel avec moi + un programme 100 % personnalisé à réaliser entre nos rendez-vous.</strong> En séance, on apprend les mouvements ensemble et je corrige ta technique&nbsp;; ensuite tu reproduis avec ton <strong style="color:var(--rf-ink);">programme sur-mesure</strong> (construit selon ton niveau, tes objectifs et ton évolution) — vidéos et consignes à l'appui pour savoir exactement quoi faire. <strong style="color:var(--rf-ink);">Tu n'es jamais vraiment seule</strong>&nbsp;: je reste joignable sur WhatsApp entre les séances, j'observe ta progression et j'ajuste ton programme au fil des semaines. Tu t'entraînes ainsi <strong style="color:var(--rf-ink);">plus qu'en présentiel seul</strong>, tout en gardant mon accompagnement. Bilan personnalisé offert pour démarrer.</p>
+          <p style="font-size:.82rem;color:var(--rf-mute);line-height:1.55;margin:-6px 0 16px;">📍 Les séances en présentiel se font <b style="color:var(--rf-ink);">à votre domicile ou en salle ON AIR Fitness</b> (à proximité de mon secteur, à valider ensemble) — vous pouvez aussi alterner les deux.</p>
 
           <div class="rf-tier">
             <div class="rf-tier-l">
@@ -1380,6 +1417,15 @@ function rfToggle(btn){
   var acc = btn.closest('.rf-acc');
   var open = acc.classList.toggle('open');
   btn.setAttribute('aria-expanded', String(open));
+}
+function rfMore(btn){
+  var ry = btn.closest('.rf-ry');
+  var more = ry.querySelector('.rf-ry-more');
+  var open = ry.classList.toggle('open');
+  btn.setAttribute('aria-expanded', String(open));
+  if(more) more.style.maxHeight = open ? (more.scrollHeight + 'px') : '0px';
+  var t = btn.childNodes[0];
+  if(t) t.nodeValue = (open ? 'Masquer les autres options ' : 'Voir les autres options ');
 }
 function rfOpen(id){
   var acc = document.getElementById(id);
