@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Programme Maxime">
+<title>Programme Maxime — Prise de masse · Full-body débutant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#2F80ED;--cream:#EAEEF2;--dark:#0F1419;--gold:#E0A458;
+  --nude:#8FC7F0;--brown:#8A97A5;--green:#4FBE8A;--card:rgba(255,255,255,0.04);
+  --border:rgba(143,199,240,0.16);--tech:#7FB3E8;--warn:#E8A87C;--danger:#E87C7C;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);min-height:100vh;line-height:1.6}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(15,20,25,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:12px 20px;padding-top:max(12px, env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--nude);white-space:nowrap}
+.nav-links{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.nav-links a{font-size:0.75rem;color:var(--brown);text-decoration:none;padding:4px 10px;border:1px solid var(--border);border-radius:20px;transition:all .2s;white-space:nowrap}
+.nav-links a:hover{border-color:var(--accent);color:var(--cream)}
+
+/* COVER */
+.cover{text-align:center;padding:56px 20px 38px;border-bottom:1px solid var(--border)}
+.cover-badge{display:inline-block;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(224,164,88,0.4);border-radius:20px;padding:5px 14px;margin-bottom:18px}
+.cover h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.1rem,7vw,3.4rem);font-weight:600;line-height:1.15;margin-bottom:10px}
+.cover h1 em{font-style:italic;color:var(--gold)}
+.cover-sub{font-size:0.95rem;color:var(--brown);max-width:520px;margin:0 auto 18px;line-height:1.7}
+.cover-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.pill{font-size:0.78rem;background:rgba(47,128,237,0.14);border:1px solid rgba(47,128,237,0.35);border-radius:20px;padding:5px 13px;color:var(--nude)}
+
+/* QUICKNAV */
+.quicknav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:760px;margin:0 auto;padding:22px 20px 4px}
+.quicknav a{font-size:0.82rem;font-weight:500;color:var(--nude);text-decoration:none;padding:10px 15px;border:1px solid var(--border);border-radius:22px;background:rgba(47,128,237,0.08);transition:all .2s;white-space:nowrap}
+.quicknav a:active,.quicknav a:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* SECTION */
+section{padding:40px 20px;max-width:760px;margin:0 auto}
+section+section{border-top:1px solid var(--border)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:var(--nude);margin-bottom:6px}
+.section-sub{font-size:0.85rem;color:var(--brown);margin-bottom:22px;line-height:1.6}
+
+/* INTRO */
+.intro-box{background:rgba(79,190,138,0.07);border:1px solid rgba(79,190,138,0.25);border-radius:14px;padding:20px 18px;margin-bottom:8px}
+.intro-box p{font-size:0.88rem;color:var(--cream);line-height:1.7;margin-bottom:10px}
+.intro-box p:last-child{margin-bottom:0}
+.intro-box strong{color:#8fd8b0}
+
+/* SÉCURITÉ (encadré principal, très visible) */
+.safe-box{background:rgba(232,168,124,0.10);border:1.5px solid rgba(232,168,124,0.5);border-radius:16px;padding:22px 20px;margin-bottom:8px}
+.safe-box .stitle{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--warn);margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.safe-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.safe-list li{font-size:0.87rem;color:var(--cream);line-height:1.6;padding-left:28px;position:relative}
+.safe-list li::before{content:"🛡";position:absolute;left:0;top:1px;font-size:0.95rem}
+.safe-list li strong{color:#f0c3a0}
+
+/* COMMENT ÇA MARCHE */
+.how-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:8px}
+.how-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 14px}
+.how-item .hk{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.how-item .hv{font-size:0.88rem;color:var(--cream);line-height:1.5}
+.how-item .hv strong{color:var(--nude)}
+
+/* ORDRE / note */
+.note-box{background:rgba(47,128,237,0.08);border:1px solid rgba(47,128,237,0.3);border-radius:14px;padding:18px 18px;margin-bottom:22px}
+.note-box p{font-size:0.86rem;color:var(--cream);line-height:1.7}
+.note-box strong{color:var(--nude)}
+
+/* WARMUP */
+.warmup-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.warmup-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center}
+.warmup-name{font-size:0.88rem;color:var(--cream);margin-bottom:4px}
+.warmup-detail{font-size:0.75rem;color:var(--brown)}
+
+/* PROGRESS */
+.progress-wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 16px;margin-bottom:20px;flex-wrap:wrap}
+.progress-label{font-size:0.82rem;color:var(--nude)}
+.progress-label strong{color:var(--green);font-size:1rem}
+.reset-btn{font-size:0.74rem;padding:6px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--brown);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.reset-btn:hover{border-color:var(--danger);color:var(--danger)}
+
+/* EXERCISE CARD */
+.ex-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 16px;margin-bottom:14px;transition:border-color .2s}
+.ex-card.done{border-color:rgba(79,190,138,0.5);background:rgba(79,190,138,0.05)}
+.ex-top{display:flex;align-items:flex-start;gap:12px}
+.ex-num{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:rgba(47,128,237,0.15);border:1px solid rgba(47,128,237,0.45);color:var(--nude);font-size:0.9rem;font-weight:600;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif}
+.ex-body{flex:1;min-width:0}
+.ex-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px}
+.ex-name{font-family:'Cormorant Garamond',serif;font-size:1.22rem;font-weight:600;color:var(--cream);line-height:1.2}
+.badges{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.badge{font-size:0.63rem;letter-spacing:0.05em;text-transform:uppercase;padding:3px 8px;border-radius:10px;font-weight:600;white-space:nowrap}
+.badge-seen{background:rgba(79,190,138,0.2);border:1px solid rgba(79,190,138,0.5);color:#8fd8b0}
+.badge-new{background:rgba(232,168,124,0.18);border:1px solid rgba(232,168,124,0.5);color:var(--warn)}
+.badge-mat{background:rgba(127,179,232,0.15);border:1px solid rgba(127,179,232,0.45);color:var(--tech)}
+.badge-rir{background:rgba(47,128,237,0.15);border:1px solid rgba(47,128,237,0.45);color:var(--nude)}
+.ex-sets{font-size:0.95rem;color:var(--nude);margin-bottom:6px;font-weight:600}
+.ex-sets .charge{color:var(--gold)}
+.ex-reglage{font-size:0.8rem;color:var(--brown);margin-bottom:8px}
+.ex-reglage strong{color:var(--tech)}
+.ex-tip{font-size:0.83rem;color:var(--brown);line-height:1.6;padding-top:8px;border-top:1px solid var(--border)}
+.ex-tip strong{color:var(--nude)}
+.ex-safe{font-size:0.82rem;color:#f0c3a0;line-height:1.55;margin-top:9px;padding:9px 11px;background:rgba(232,168,124,0.08);border:1px solid rgba(232,168,124,0.28);border-radius:8px}
+.ex-safe strong{color:var(--warn)}
+.ex-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ex-video{display:inline-flex;align-items:center;gap:7px;font-size:0.8rem;font-weight:600;color:var(--nude);text-decoration:none;padding:9px 14px;border:1px solid rgba(47,128,237,0.45);border-radius:8px;background:rgba(47,128,237,0.1);transition:all .2s}
+.ex-video:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.done-btn{display:inline-flex;align-items:center;gap:7px;font-size:0.8rem;font-weight:600;color:var(--brown);cursor:pointer;padding:9px 14px;border:1px solid var(--border);border-radius:8px;background:transparent;font-family:'DM Sans',sans-serif;transition:all .2s}
+.done-btn:hover{border-color:var(--green);color:var(--green)}
+.ex-card.done .done-btn{background:rgba(79,190,138,0.15);border-color:var(--green);color:#8fd8b0}
+
+/* NEXT / prochaine séance */
+.next-box{background:rgba(224,164,88,0.09);border:1px dashed rgba(224,164,88,0.5);border-radius:14px;padding:20px 18px}
+.next-box .ntitle{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--gold);margin-bottom:10px}
+.next-box p{font-size:0.86rem;color:var(--cream);line-height:1.7;margin-bottom:8px}
+.next-box p:last-child{margin-bottom:0}
+.next-box strong{color:#f0c893}
+.next-box .muscles{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.next-box .muscles span{font-size:0.76rem;background:rgba(224,164,88,0.12);border:1px solid rgba(224,164,88,0.35);border-radius:20px;padding:5px 12px;color:#f0c893}
+
+/* NUTRITION */
+.nut-box{background:rgba(79,190,138,0.06);border:1px solid rgba(79,190,138,0.22);border-radius:14px;padding:20px 18px}
+.nut-box p{font-size:0.86rem;color:var(--cream);line-height:1.7;margin-bottom:8px}
+.nut-box p:last-child{margin-bottom:0}
+.nut-box strong{color:#8fd8b0}
+
+/* FOOTER */
+footer{text-align:center;padding:36px 20px 48px;padding-bottom:max(48px,env(safe-area-inset-bottom));border-top:1px solid var(--border);color:var(--brown);font-size:0.8rem;line-height:1.7}
+footer .sign{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--nude);margin-bottom:6px}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-title">Programme · Maxime</span>
+  <div class="nav-links">
+    <a href="#securite">Sécurité</a>
+    <a href="#seance">La séance</a>
+    <a href="#suite">La suite</a>
+  </div>
+</nav>
+
+<header class="cover">
+  <span class="cover-badge">Programme personnalisé · Ornella Fit Coaching</span>
+  <h1>Ta prise de masse,<br><em>en toute sécurité</em></h1>
+  <p class="cover-sub">Ton tout premier programme. On construit une base solide et propre : la technique d'abord, la charge ensuite. C'est comme ça qu'on prend du muscle durablement — et sans se blesser.</p>
+  <div class="cover-pills">
+    <span class="pill">17 ans</span>
+    <span class="pill">Débutant</span>
+    <span class="pill">Objectif : prise de masse</span>
+    <span class="pill">Full-body</span>
+    <span class="pill">3× / semaine</span>
+  </div>
+</header>
+
+<div class="quicknav">
+  <a href="#securite">🛡 Règles de sécurité</a>
+  <a href="#marche">⚙️ Comment ça marche</a>
+  <a href="#echauffement">🔥 Échauffement</a>
+  <a href="#seance">🏋️ La séance</a>
+  <a href="#suite">➡️ La suite</a>
+</div>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="intro-box">
+    <p>Bravo Maxime 👏 Tu as fait ta <strong>toute première séance</strong> en salle avec moi la semaine dernière. Ce programme reprend exactement les exercices qu'on a vus ensemble, pour que tu puisses les refaire seul, en confiance.</p>
+    <p>Pour l'instant on travaille en <strong>full-body</strong> (tout le corps à chaque séance) : c'est ce qu'il y a de plus efficace et de plus sûr quand on débute. On ajoutera les bras, épaules et pecs à la prochaine séance, <strong>qu'on verra ensemble</strong>.</p>
+  </div>
+</section>
+
+<!-- SÉCURITÉ -->
+<section id="securite">
+  <h2 class="section-title">🛡 Tes règles de sécurité</h2>
+  <p class="section-sub">À 17 ans et en débutant, ces règles ne sont pas optionnelles. Lis-les avant CHAQUE séance. C'est ce qui fait la différence entre progresser… et se blesser.</p>
+  <div class="safe-box">
+    <div class="stitle">⚠️ Les 9 règles à toujours respecter</div>
+    <ul class="safe-list">
+      <li><strong>Échauffe-toi toujours</strong> : 5 à 10 min de cardio léger (vélo / rameur) + rotations des articulations. Puis 1 série d'approche très légère sur chaque machine avant ta série de travail.</li>
+      <li><strong>La technique AVANT la charge.</strong> On garde ces charges de départ tant que le mouvement n'est pas parfaitement propre. On ne cherche pas à soulever lourd, on cherche à bien faire.</li>
+      <li><strong>Jamais jusqu'à l'échec.</strong> Tu dois toujours pouvoir faire 2 à 3 répétitions de plus à la fin de ta série. Ton corps est encore en croissance : on le respecte.</li>
+      <li><strong>Amplitude complète et contrôlée.</strong> Pas d'à-coups, pas de rebond, pas d'élan. Chaque répétition est maîtrisée, surtout la phase de descente (~2 secondes).</li>
+      <li><strong>Respire.</strong> Souffle pendant l'effort, inspire au retour. Ne bloque JAMAIS ta respiration.</li>
+      <li><strong>Dos gainé et droit</strong> sur les tirages et la presse. On ne pousse/tire jamais avec le dos arrondi.</li>
+      <li><strong>Douleur = STOP.</strong> Une douleur dans une articulation (genou, épaule, dos) n'est pas normale — ce n'est pas la même chose que le muscle qui chauffe. En cas de douleur, tu arrêtes et tu m'en parles.</li>
+      <li><strong>Repos entre les séances.</strong> Au moins 1 jour de repos entre 2 séances. Idéal : lundi / mercredi / vendredi. Le muscle se construit au repos, pas à l'entraînement.</li>
+      <li><strong>Hydrate-toi et dors bien.</strong> L'eau et le sommeil font autant partie du programme que les exercices.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- COMMENT ÇA MARCHE -->
+<section id="marche">
+  <h2 class="section-title">⚙️ Comment ça marche</h2>
+  <p class="section-sub">La même séance, répétée 3 fois par semaine. Simple et efficace.</p>
+  <div class="how-grid">
+    <div class="how-item"><div class="hk">Fréquence</div><div class="hv"><strong>3 séances</strong> / semaine, jours non consécutifs</div></div>
+    <div class="how-item"><div class="hk">Séries</div><div class="hv"><strong>3 séries</strong> par exercice</div></div>
+    <div class="how-item"><div class="hk">Répétitions</div><div class="hv"><strong>6 à 8 reps</strong> (10-12 pour les biceps)</div></div>
+    <div class="how-item"><div class="hk">Repos</div><div class="hv"><strong>1 min 30 à 2 min</strong> entre les séries</div></div>
+    <div class="how-item"><div class="hk">Tempo</div><div class="hv">Contrôlé · <strong>~2 sec</strong> à la descente</div></div>
+    <div class="how-item"><div class="hk">Progression</div><div class="hv">Quand 3×8 sont <strong>faciles et propres</strong> → tu montes un peu la charge</div></div>
+  </div>
+</section>
+
+<!-- ÉCHAUFFEMENT -->
+<section id="echauffement">
+  <h2 class="section-title">🔥 Échauffement (obligatoire)</h2>
+  <p class="section-sub">Avant de toucher la première machine. Non négociable.</p>
+  <div class="warmup-grid">
+    <div class="warmup-item"><div class="warmup-name">Cardio léger</div><div class="warmup-detail">Vélo ou rameur · 5-10 min</div></div>
+    <div class="warmup-item"><div class="warmup-name">Articulations</div><div class="warmup-detail">Rotations chevilles, genoux, hanches, épaules</div></div>
+    <div class="warmup-item"><div class="warmup-name">Série d'approche</div><div class="warmup-detail">1 série très légère sur chaque machine</div></div>
+  </div>
+</section>
+
+<!-- LA SÉANCE -->
+<section id="seance">
+  <h2 class="section-title">🏋️ La séance — Full body</h2>
+  <p class="section-sub">Les 6 exercices, dans l'ordre. Coche chaque exercice quand tu l'as fait.</p>
+
+  <div class="note-box">
+    <p><strong>Pourquoi cet ordre ?</strong> On commence par les <strong>plus gros muscles</strong> quand tu es encore frais (les jambes), puis le <strong>dos</strong>, et on finit par les <strong>biceps</strong> (petits muscles). Comme ça tes biceps ne sont pas déjà fatigués quand tu fais tes tirages. 💡</p>
+  </div>
+
+  <div class="progress-wrap">
+    <span class="progress-label"><strong id="progCount">0</strong> / 6 exercices faits</span>
+    <button class="reset-btn" onclick="resetProg()">↺ Réinitialiser</button>
+  </div>
+
+  <!-- 1 -->
+  <div class="ex-card" data-ex="1">
+    <div class="ex-top">
+      <div class="ex-num">1</div>
+      <div class="ex-body">
+        <div class="ex-header"><div class="ex-name">Presse inclinée</div></div>
+        <div class="badges">
+          <span class="badge badge-seen">✓ Vue en salle</span>
+          <span class="badge badge-mat">Machine</span>
+          <span class="badge badge-rir">Jambes</span>
+        </div>
+        <div class="ex-sets">3 séries × 6 à 8 reps · <span class="charge">Charge : 20 kg</span></div>
+        <div class="ex-tip"><strong>Technique :</strong> pieds à plat, écartés largeur des épaules. Pousse avec les talons. Descends de façon contrôlée puis remonte sans à-coup.</div>
+        <div class="ex-safe"><strong>Sécurité :</strong> ne verrouille JAMAIS les genoux en haut (garde-les légèrement fléchis). Ne décolle jamais le bas du dos ni les fesses du dossier. Genoux alignés avec les pieds, jamais rentrés vers l'intérieur.</div>
+        <div class="ex-actions">
+          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=presse+incl%C3%A9e+jambes+technique+musculation"><span>▶</span> Démonstration</a>
+          <button class="done-btn" onclick="toggleDone(1)"><span class="chk">✓ Fait</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="ex-card" data-ex="2">
+    <div class="ex-top">
+      <div class="ex-num">2</div>
+      <div class="ex-body">
+        <div class="ex-header"><div class="ex-name">Leg extension</div></div>
+        <div class="badges">
+          <span class="badge badge-seen">✓ Vue en salle</span>
+          <span class="badge badge-mat">Machine</span>
+          <span class="badge badge-rir">Quadriceps</span>
+        </div>
+        <div class="ex-sets">3 séries × 6 à 8 reps · <span class="charge">Charge : 20 kg</span></div>
+        <div class="ex-reglage">Réglage machine : <strong>taille M</strong></div>
+        <div class="ex-tip"><strong>Technique :</strong> monte les jambes de façon contrôlée, marque une petite pause en haut, puis redescends lentement. Le mouvement vient du genou uniquement.</div>
+        <div class="ex-safe"><strong>Sécurité :</strong> pas de coup sec en haut, n'hyper-étends pas le genou. Si tu sens une gêne au genou, réduis un peu l'amplitude et préviens-moi.</div>
+        <div class="ex-actions">
+          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=leg+extension+quadriceps+technique+musculation"><span>▶</span> Démonstration</a>
+          <button class="done-btn" onclick="toggleDone(2)"><span class="chk">✓ Fait</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="ex-card" data-ex="3">
+    <div class="ex-top">
+      <div class="ex-num">3</div>
+      <div class="ex-body">
+        <div class="ex-header"><div class="ex-name">Seated leg curl (ischios)</div></div>
+        <div class="badges">
+          <span class="badge badge-seen">✓ Vue en salle</span>
+          <span class="badge badge-mat">Machine assise</span>
+          <span class="badge badge-rir">Arrière cuisse</span>
+        </div>
+        <div class="ex-sets">3 séries × 6 à 8 reps · <span class="charge">Charge : 25 kg</span></div>
+        <div class="ex-reglage">Réglages : <strong>taille M</strong> · dossier position <strong>3</strong> · rembourrage sur la <strong>cheville</strong> (juste au-dessus du talon)</div>
+        <div class="ex-tip"><strong>Technique :</strong> dos bien calé contre le dossier. Ramène les talons vers les fesses en contrôlant, puis reviens lentement sans laisser le poids « claquer ».</div>
+        <div class="ex-safe"><strong>Sécurité :</strong> contrôle surtout la phase de retour (ne relâche pas d'un coup). Le rembourrage doit être bien placé sur la cheville, pas sur le mollet.</div>
+        <div class="ex-actions">
+          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=seated+leg+curl+ischios+machine+assise+technique"><span>▶</span> Démonstration</a>
+          <button class="done-btn" onclick="toggleDone(3)"><span class="chk">✓ Fait</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="ex-card" data-ex="4">
+    <div class="ex-top">
+      <div class="ex-num">4</div>
+      <div class="ex-body">
+        <div class="ex-header"><div class="ex-name">Tirage vertical (poulie haute)</div></div>
+        <div class="badges">
+          <span class="badge badge-seen">✓ Vue en salle</span>
+          <span class="badge badge-mat">Poulie</span>
+          <span class="badge badge-rir">Dos</span>
+        </div>
+        <div class="ex-sets">3 séries × 6 à 8 reps · <span class="charge">Charge : 33 kg</span></div>
+        <div class="ex-tip"><strong>Technique :</strong> tire la barre vers le HAUT de la poitrine, buste très légèrement incliné en arrière. Initie le mouvement en serrant les omoplates (ce sont les muscles du dos qui tirent, pas les bras).</div>
+        <div class="ex-safe"><strong>Sécurité :</strong> JAMAIS derrière la nuque — toujours devant, vers la poitrine. Pas d'élan avec le buste, pas d'à-coups.</div>
+        <div class="ex-actions">
+          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=tirage+vertical+poulie+haute+dos+technique+musculation"><span>▶</span> Démonstration</a>
+          <button class="done-btn" onclick="toggleDone(4)"><span class="chk">✓ Fait</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="ex-card" data-ex="5">
+    <div class="ex-top">
+      <div class="ex-num">5</div>
+      <div class="ex-body">
+        <div class="ex-header"><div class="ex-name">Tirage horizontal (assis)</div></div>
+        <div class="badges">
+          <span class="badge badge-seen">✓ Vue en salle</span>
+          <span class="badge badge-mat">Poulie</span>
+          <span class="badge badge-rir">Dos</span>
+        </div>
+        <div class="ex-sets">3 séries × 6 à 8 reps · <span class="charge">Charge : 9,5 kg</span></div>
+        <div class="ex-tip"><strong>Technique :</strong> dos droit et gainé, tire la poignée vers le ventre en serrant les omoplates. Reviens en contrôlant sans arrondir le dos.</div>
+        <div class="ex-safe"><strong>Sécurité :</strong> ne te balance pas d'avant en arrière avec le buste pour tirer. Le dos reste droit, jamais arrondi. C'est le dos qui travaille, pas l'élan.</div>
+        <div class="ex-actions">
+          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=tirage+horizontal+assis+dos+technique+musculation"><span>▶</span> Démonstration</a>
+          <button class="done-btn" onclick="toggleDone(5)"><span class="chk">✓ Fait</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="ex-card" data-ex="6">
+    <div class="ex-top">
+      <div class="ex-num">6</div>
+      <div class="ex-body">
+        <div class="ex-header"><div class="ex-name">Curl biceps aux haltères</div></div>
+        <div class="badges">
+          <span class="badge badge-new">★ Nouveau — pas encore vu</span>
+          <span class="badge badge-mat">Haltères</span>
+          <span class="badge badge-rir">Biceps</span>
+        </div>
+        <div class="ex-sets">3 séries × 10 à 12 reps · <span class="charge">Charge légère (~4 à 6 kg)</span></div>
+        <div class="ex-tip"><strong>On ne l'a pas encore fait ensemble</strong>, alors on y va prudemment et léger. <strong>Technique :</strong> debout, un haltère dans chaque main, bras le long du corps. Les coudes restent <strong>collés au corps et fixes</strong>. Monte l'haltère vers l'épaule en pliant le coude, puis <strong>redescends lentement</strong> (compte 2-3 secondes à la descente, c'est là que le muscle travaille le plus).</div>
+        <div class="ex-safe"><strong>Sécurité :</strong> ne balance PAS le dos ni les épaules pour monter l'haltère — si tu as besoin d'élan, c'est trop lourd, prends plus léger. Seul l'avant-bras bouge. Commence vraiment léger pour bien sentir le mouvement. On corrigera ensemble à la prochaine séance.</div>
+        <div class="ex-actions">
+          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=curl+biceps+halt%C3%A8res+technique+d%C3%A9butant"><span>▶</span> Démonstration</a>
+          <button class="done-btn" onclick="toggleDone(6)"><span class="chk">✓ Fait</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA SUITE -->
+<section id="suite">
+  <h2 class="section-title">➡️ La suite</h2>
+  <div class="next-box">
+    <div class="ntitle">Ce qu'on ajoutera ensemble</div>
+    <p>Pour l'instant, on se concentre sur cette séance full-body pour bien ancrer la technique. <strong>Les bras, les épaules et les pecs, on les verra à la prochaine séance</strong> — je veux te montrer les bons mouvements en direct avant de te les mettre dans le programme.</p>
+    <p>Le seul « nouveau » que je te laisse essayer seul, c'est le <strong>curl biceps aux haltères</strong> (n°6), parce que c'est simple et bien expliqué. Mais léger, et on le validera ensemble.</p>
+    <div class="muscles">
+      <span>À venir : Pecs</span>
+      <span>À venir : Épaules</span>
+      <span>À venir : Bras (suite)</span>
+    </div>
+  </div>
+</section>
+
+<!-- NUTRITION -->
+<section id="nutrition">
+  <h2 class="section-title">🍽 Un mot sur l'alimentation</h2>
+  <div class="nut-box">
+    <p>La prise de masse se joue à moitié dans l'assiette. Pour prendre du muscle, ton corps a besoin d'un peu <strong>plus d'énergie que ce qu'il dépense</strong>, et surtout de <strong>protéines à chaque repas</strong> (œufs, viande, poisson, laitages, légumineuses).</p>
+    <p>Mange à ta faim, ne saute pas de repas, et ajoute une collation si tu as encore faim. Si tu veux, on pourra construire un <strong>vrai plan nutrition ensemble</strong>. 💪</p>
+  </div>
+</section>
+
+<footer>
+  <div class="sign">Ornella Fit Coaching</div>
+  Programme personnalisé pour Maxime · Ton plus bel investissement, c'est toi.
+</footer>
+
+<script>
+const TOTAL=6, KEY='prog_maxime_done';
+function loadDone(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){ return []; } }
+function saveDone(a){ try{ localStorage.setItem(KEY, JSON.stringify(a)); }catch(e){} }
+function render(){
+  const done=loadDone();
+  document.querySelectorAll('.ex-card').forEach(c=>{
+    const id=Number(c.dataset.ex);
+    const on=done.includes(id);
+    c.classList.toggle('done', on);
+    const chk=c.querySelector('.chk');
+    if(chk) chk.textContent = on ? '✓ Fait !' : '✓ Fait';
+  });
+  const el=document.getElementById('progCount'); if(el) el.textContent=done.length;
+}
+function toggleDone(id){
+  let done=loadDone();
+  if(done.includes(id)) done=done.filter(x=>x!==id); else done.push(id);
+  saveDone(done); render();
+}
+function resetProg(){ saveDone([]); render(); }
+render();
+</script>
+</body>
+</html>
