@@ -111,6 +111,35 @@ html{scroll-padding-top:16px;}
   .info-box,.warn-box,.retract-form{break-inside:avoid;}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
 }
+
+.quick{background:#1B3A2D;border-radius:16px;padding:20px 24px;margin-bottom:18px;}
+.quick .sommaire-title{color:#fff;}
+.quick-links{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.quick-links a{display:block;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;border-radius:10px;padding:9px 12px;font-size:.84rem;font-weight:600;line-height:1.3;}
+.quick-links a span{display:block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#F2A48F;font-weight:700;margin-bottom:2px;}
+.quick-links a:hover{background:rgba(255,255,255,.16);text-decoration:none;}
+.sommaire a span{min-width:52px;font-size:.78rem;}
+h3[id]{scroll-margin-top:16px;}
+@media(max-width:560px){.quick-links{grid-template-columns:1fr 1fr;}}
+@media print{.quick{break-inside:avoid;}}
+
+.offres{background:#fff;border:2px solid #2E4A34;border-radius:16px;padding:26px 28px 18px;margin-bottom:26px;}
+.reco{background:#FDF3EE;border-left:4px solid #E8634A;border-radius:0 10px 10px 0;padding:14px 18px;margin:4px 0 8px;}
+.reco p{margin:0;color:#5a2e1e;font-size:.92rem;}
+.reco strong{background:none;color:#B8432C;}
+.tab-note{font-size:.8rem!important;color:#6B7F6E!important;margin:-2px 0 8px;}
+table.tarifs{width:100%;border-collapse:collapse;margin:0 0 14px;font-size:.88rem;}
+table.tarifs th{background:#2E4A34;color:#fff;font-weight:600;padding:8px 10px;text-align:center;font-size:.8rem;line-height:1.25;}
+table.tarifs th:first-child{text-align:left;}
+table.tarifs th small{font-weight:400;opacity:.85;}
+table.tarifs td{border-bottom:1px solid #E6EEE7;padding:8px 10px;text-align:center;font-weight:700;color:#1B3A2D;white-space:nowrap;}
+table.tarifs td:first-child{text-align:left;font-weight:600;white-space:normal;}
+table.tarifs td small{display:block;font-weight:400;color:#6B7F6E;font-size:.76rem;}
+table.tarifs th.best{background:#E8634A;}
+table.tarifs td.best{background:#FDF3EE;color:#B8432C;}
+table.tarifs-list td:last-child{text-align:right;}
+@media(max-width:560px){.offres{padding:20px 14px 12px;}table.tarifs{font-size:.8rem;}table.tarifs th,table.tarifs td{padding:7px 6px;}}
+@media print{.offres{border-width:1.5px;padding:18px 20px 10px;}table.tarifs tr{break-inside:avoid;}.offres h3,.tab-note{break-after:avoid;}}
 </style>
 </head>
 <body>
@@ -159,28 +188,97 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <p class="maj">Dernière mise à jour : Septembre 2026 (version 3)</p>
 
+  <section class="offres" id="offres-tarifs">
+    <div class="article-num">En bref</div>
+    <h2>Mes prestations et tarifs</h2>
+    <div class="reco"><p><strong>Ma recommandation : le parcours 6 mois.</strong> C'est le temps d'une vraie transformation durable, au tarif le plus avantageux. Le parcours 3 mois est le minimum pour obtenir des premiers résultats visibles. La formule sans engagement reste possible, avec plus de souplesse, à un tarif plus élevé.</p></div>
+
+    <h3>Coaching à domicile ou en salle (Essonne) — créneau fixe</h3>
+    <p class="tab-note">Tarif par période de 4 semaines · matériel inclus · prélèvement SEPA (GoCardless) · conditions : article 7</p>
+    <table class="tarifs">
+      <thead><tr><th>Rythme</th><th class="best">Parcours 6 mois<br><small>meilleur tarif</small></th><th>Parcours 3 mois</th><th>Sans engagement</th></tr></thead>
+      <tbody>
+        <tr><td>1 séance / semaine <small>(4 séances)</small></td><td class="best">240 €</td><td>260 €</td><td>280 €</td></tr>
+        <tr><td>2 séances / semaine <small>(8 séances)</small></td><td class="best">440 €</td><td>480 €</td><td>500 €</td></tr>
+        <tr><td>3 séances / semaine <small>(12 séances)</small></td><td class="best">620 €</td><td>660 €</td><td>680 €</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Coaching hybride (présentiel + programme et suivi à distance)</h3>
+    <p class="tab-note">Tarif mensuel · conditions : article 7</p>
+    <table class="tarifs">
+      <thead><tr><th>Formule</th><th>Parcours 3 mois</th><th>Sans engagement</th></tr></thead>
+      <tbody>
+        <tr><td>Essentielle <small>(1 séance en présentiel / mois + suivi WhatsApp)</small></td><td>99 €</td><td>119 €</td></tr>
+        <tr><td>Performance <small>(2 séances en présentiel / mois + suivi WhatsApp)</small></td><td>169 €</td><td>189 €</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Coaching à distance avec suivi personnalisé (partout en France)</h3>
+    <p class="tab-note">Tarif mensuel · programme évolutif + suivi WhatsApp + bilan toutes les 4 semaines · conditions : article 8</p>
+    <table class="tarifs">
+      <thead><tr><th>Formule</th><th class="best">Parcours 6 mois<br><small>meilleur tarif</small></th><th>Parcours 3 mois</th><th>Sans engagement</th></tr></thead>
+      <tbody>
+        <tr><td>Distanciel avec suivi</td><td class="best">89 €</td><td>99 €</td><td>119 €</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Option et prestations sans abonnement</h3>
+    <table class="tarifs tarifs-list">
+      <tbody>
+        <tr><td>Option Accompagnement Nutrition <small>(en complément d'un forfait · article 5)</small></td><td>+40 € / mois</td></tr>
+        <tr><td>Séance d'essai à domicile <small>(déductible · article 3)</small></td><td>50 €</td></tr>
+        <tr><td>Séance d'analyse à distance, 45 min <small>(déductible · article 3.4)</small></td><td>49 €</td></tr>
+        <tr><td>Séance à l'unité <small>(article 6.8)</small></td><td>70 €</td></tr>
+        <tr><td>Pack 6 séances <small>(valable 4 mois · article 6)</small></td><td>390 €</td></tr>
+        <tr><td>Pack 10 séances <small>(valable 4 mois · mini-plan nutrition offert)</small></td><td>650 €</td></tr>
+        <tr><td>Pack 20 séances <small>(valable 5 mois)</small></td><td>1 160 €</td></tr>
+        <tr><td>Duo / Trio <small>(par personne et par séance · article 6.7)</small></td><td>50 € / 45 €</td></tr>
+        <tr><td>Programme sur-mesure 8 semaines, sans suivi <small>(avec plan nutrition : 119 €)</small></td><td>79 €</td></tr>
+        <tr><td>Programmes digitaux en autonomie <small>(accès à vie · article 2.2)</small></td><td>12 € à 49 €</td></tr>
+      </tbody>
+    </table>
+    <p class="tab-note">Prix nets, TVA non applicable (art. 293 B du CGI). Tarifs en vigueur à la date de mise à jour des présentes CGV ; le devis accepté par le client prévaut (article 2). L'espace de suivi « Mon Suivi » est inclus dans tous les accompagnements personnalisés (article 10).</p>
+  </section>
+
+  <div class="quick">
+    <div class="sommaire-title">Accès rapide</div>
+    <div class="quick-links">
+      <a href="#offres-tarifs"><span>En bref</span>Prestations et tarifs</a>
+      <a href="#a7-2"><span>Art. 7.2</span>Résilier mon forfait</a>
+      <a href="#a7-6"><span>Art. 7.6</span>Annuler / reporter une séance</a>
+      <a href="#a7-7"><span>Art. 7.7</span>Blessure, maladie, grossesse</a>
+      <a href="#a7-8"><span>Art. 7.8</span>Mes congés</a>
+      <a href="#a11-1"><span>Art. 11.1</span>Coach malade / imprévu</a>
+      <a href="#a11-4"><span>Art. 11.4</span>Congés du coach</a>
+      <a href="#a6-1"><span>Art. 6.1</span>Validité des packs</a>
+      <a href="#a5-6"><span>Art. 5.6</span>Délai du plan nutrition</a>
+      <a href="#a7-3"><span>Art. 7.3</span>Arrêt avant 3 mois</a>
+    </div>
+  </div>
   <nav class="sommaire" id="sommaire" aria-label="Sommaire">
     <div class="sommaire-title">Sommaire</div>
     <ol>
-      <li><a href="#art-01"><span>1.</span> Objet</a></li>
-      <li><a href="#art-02"><span>2.</span> Prestations proposées</a></li>
-      <li><a href="#art-03"><span>3.</span> Séance découverte / diagnostic</a></li>
-      <li><a href="#art-04"><span>4.</span> Tarifs et modalités de paiement</a></li>
-      <li><a href="#art-05"><span>5.</span> Option Accompagnement Nutrition</a></li>
-      <li><a href="#art-06"><span>6.</span> Pack de séances</a></li>
-      <li><a href="#art-07"><span>7.</span> Forfait mensuel</a></li>
-      <li><a href="#art-08"><span>8.</span> Coaching à distance avec suivi personnalisé — tarifs et engagement</a></li>
-      <li><a href="#art-09"><span>9.</span> Délai de réalisation des programmes</a></li>
-      <li><a href="#art-10"><span>10.</span> Accès à l'application de suivi</a></li>
-      <li><a href="#art-11"><span>11.</span> Indisponibilité du coach</a></li>
-      <li><a href="#art-12"><span>12.</span> Engagements du client — Santé</a></li>
-      <li><a href="#art-13"><span>13.</span> Responsabilité et résultats</a></li>
-      <li><a href="#art-14"><span>14.</span> Droit de rétractation</a></li>
-      <li><a href="#art-15"><span>15.</span> Droit à l'image et données de suivi</a></li>
-      <li><a href="#art-16"><span>16.</span> Données personnelles (RGPD)</a></li>
-      <li><a href="#art-17"><span>17.</span> Propriété intellectuelle</a></li>
-      <li><a href="#art-18"><span>18.</span> Médiation de la consommation</a></li>
-      <li><a href="#art-19"><span>19.</span> Droit applicable et litiges</a></li>
+      <li><a href="#offres-tarifs"><span>›</span> Mes prestations et tarifs</a></li>
+      <li><a href="#art-01"><span>Art. 01</span> Objet</a></li>
+      <li><a href="#art-02"><span>Art. 02</span> Prestations proposées</a></li>
+      <li><a href="#art-03"><span>Art. 03</span> Séance découverte / diagnostic</a></li>
+      <li><a href="#art-04"><span>Art. 04</span> Tarifs et modalités de paiement</a></li>
+      <li><a href="#art-05"><span>Art. 05</span> Option Accompagnement Nutrition</a></li>
+      <li><a href="#art-06"><span>Art. 06</span> Pack de séances</a></li>
+      <li><a href="#art-07"><span>Art. 07</span> Forfait mensuel</a></li>
+      <li><a href="#art-08"><span>Art. 08</span> Coaching à distance avec suivi personnalisé — tarifs et engagement</a></li>
+      <li><a href="#art-09"><span>Art. 09</span> Délai de réalisation des programmes</a></li>
+      <li><a href="#art-10"><span>Art. 10</span> Espace de suivi « Mon Suivi »</a></li>
+      <li><a href="#art-11"><span>Art. 11</span> Indisponibilité du coach</a></li>
+      <li><a href="#art-12"><span>Art. 12</span> Engagements du client — Santé</a></li>
+      <li><a href="#art-13"><span>Art. 13</span> Responsabilité et résultats</a></li>
+      <li><a href="#art-14"><span>Art. 14</span> Droit de rétractation</a></li>
+      <li><a href="#art-15"><span>Art. 15</span> Droit à l'image et données de suivi</a></li>
+      <li><a href="#art-16"><span>Art. 16</span> Données personnelles (RGPD)</a></li>
+      <li><a href="#art-17"><span>Art. 17</span> Propriété intellectuelle</a></li>
+      <li><a href="#art-18"><span>Art. 18</span> Médiation de la consommation</a></li>
+      <li><a href="#art-19"><span>Art. 19</span> Droit applicable et litiges</a></li>
       <li><a href="#acceptation"><span>›</span> Acceptation des Conditions Générales de Vente</a></li>
       <li><a href="#annexe"><span>›</span> Formulaire type de rétractation</a></li>
     </ol>
@@ -206,15 +304,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li>un accompagnement à distance via programmes interactifs en ligne ou suivi personnalisé, selon la formule souscrite.</li>
     </ul>
     <p>Le contenu exact, les tarifs et le nombre de séances de chaque offre sont précisés sur le site internet d'Ornella Fit Coaching et/ou dans le devis accepté par le client. En cas de contradiction, <strong>le devis prévaut</strong> sur les présentes CGV, et les présentes CGV prévalent sur toute mention générale du site internet.</p>
-    <h3>2.1 — Formats d'accompagnement</h3>
+    <h3 id="a2-1">2.1 — Formats d'accompagnement</h3>
     <p>Les prestations peuvent être réalisées en présentiel, à distance, ou sous forme mixte, selon la formule sélectionnée.</p>
-    <h3>2.2 — Programmes interactifs en ligne</h3>
+    <h3 id="a2-2">2.2 — Programmes interactifs en ligne</h3>
     <p>Les programmes distanciel d'Ornella Fit Coaching se présentent sous forme d'applications web interactives hébergées en ligne (mini-applications accessibles via un lien URL). Il ne s'agit pas de fichiers PDF téléchargeables mais de contenus numériques accessibles en ligne.</p>
     <p>L'accès est accordé à vie à compter du paiement effectif. Le client peut consulter et utiliser le programme autant de fois qu'il le souhaite, sans limite de durée.</p>
     <p>Ces programmes n'incluent pas de suivi individualisé rapproché, de corrections en temps réel, ni d'échanges réguliers via messagerie, sauf mention expresse contraire dans l'offre souscrite.</p>
-    <h3>2.3 — Formules hybrides (présentiel + distanciel)</h3>
+    <h3 id="a2-3">2.3 — Formules hybrides (présentiel + distanciel)</h3>
     <p>La partie distancielle consiste en l'accès à un programme interactif en ligne personnalisé, à réaliser de manière autonome entre les séances en présentiel. Elle ne comprend pas de suivi rapproché ni de corrections vidéo, lesquels sont réservés aux offres de coaching à distance avec suivi personnalisé.</p>
-    <h3>2.4 — Coaching à distance avec suivi personnalisé</h3>
+    <h3 id="a2-4">2.4 — Coaching à distance avec suivi personnalisé</h3>
     <p>Ces prestations font l'objet d'offres distinctes, avec ou <strong>sans engagement</strong> de durée minimale selon la formule choisie, avec un accompagnement renforcé précisé dans l'offre souscrite (suivi via messagerie dédiée, bilans réguliers).</p>
   </article>
 
@@ -222,19 +320,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="article-num">Article 03</div>
     <h2>Séance découverte / diagnostic</h2>
     <p>Ornella Fit Coaching propose une séance découverte en présentiel au tarif de <strong>50 €</strong>, ou un diagnostic distanciel au tarif de <strong>10 €</strong>, permettant au prospect de découvrir la méthode de coaching avant tout engagement.</p>
-    <h3>3.1 — Conditions de déductibilité</h3>
+    <h3 id="a3-1">3.1 — Conditions de déductibilité</h3>
     <p>La séance découverte ou le diagnostic sont déductibles du premier paiement uniquement dans les cas suivants :</p>
     <ul>
       <li>souscription d'une formule de coaching au tarif <strong>avec engagement</strong> de <strong>3 mois consécutifs</strong> ;</li>
       <li>achat d'un pack d'au minimum 6 séances (offres présentielles).</li>
     </ul>
     <p>Dans tous les autres cas — notamment en l'absence d'engagement — les sommes réglées au titre de la séance découverte ou du diagnostic sont <strong>définitivement acquises</strong> à Ornella Fit Coaching et ne font l'objet d'<strong>aucun remboursement</strong>, report ou avoir.</p>
-    <h3>3.2 — Modalités</h3>
+    <h3 id="a3-2">3.2 — Modalités</h3>
     <p>La séance découverte ou le diagnostic doivent être réglés intégralement avant leur réalisation.</p>
     <p>La séance découverte en présentiel ne peut être annulée ou reportée moins de <strong>24 heures</strong> avant sa tenue. En cas d'annulation tardive ou d'absence non signalée, la séance est <strong>considérée comme réalisée</strong> et le montant <strong>reste définitivement dû</strong>.</p>
-    <h3>3.3 — Bonus inclus avec le diagnostic distanciel</h3>
+    <h3 id="a3-3">3.3 — Bonus inclus avec le diagnostic distanciel</h3>
     <p>Le diagnostic distanciel inclut un mini-plan nutrition offert (valeur <strong>40 €</strong>), établi dans les conditions et limites prévues à l'article 5 (contenu informatif, non-substitution à un suivi diététique ou médical). Ce bonus est offert à titre ponctuel et n'emporte aucun engagement de suivi nutritionnel ultérieur.</p>
-    <h3>3.4 — Séance d'analyse à distance (49 €)</h3>
+    <h3 id="a3-4">3.4 — Séance d'analyse à distance (49 €)</h3>
     <p>Ornella Fit Coaching propose également une séance d'analyse à distance, en visioconférence ou par téléphone, d'une durée d'environ 45 minutes, au tarif de <strong>49 €</strong>. Cette consultation donne lieu à une feuille de route personnalisée que le client peut suivre même s'il ne poursuit pas l'accompagnement.</p>
     <p>Son montant est déductible du premier mois uniquement en cas de souscription, à sa suite, d'une formule de coaching <strong>avec engagement</strong> de <strong>trois (3) mois</strong> (domicile, hybride ou distanciel avec suivi personnalisé). Dans tous les autres cas, la somme réglée reste <strong>définitivement acquise</strong> à Ornella Fit Coaching et ne fait l'objet d'<strong>aucun remboursement</strong>, report ou avoir. Elle est réglée intégralement avant sa réalisation, le créneau étant convenu après paiement. Les conditions d'annulation et de report de l'article 3.2 (préavis de <strong>24 heures</strong>) s'appliquent.</p>
   </article>
@@ -256,7 +354,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>Le règlement s'effectue soit en une seule fois avant le démarrage, soit par acompte, soit par <strong>prélèvement automatique</strong> périodique (mensuel ou toutes les <strong>4 semaines</strong>, selon le devis), selon les modalités propres à chaque formule décrites aux articles 5 à 8. Le versement d'un acompte ou le premier prélèvement vaut acceptation du tarif et de la période choisis, dans les conditions de l'article 7 pour les forfaits. Les sommes versées ne sont pas remboursables, sauf disposition légale contraire, sortie pour <strong>motif légitime</strong> (article 7.4) ou cessation définitive de la prestation par Ornella Fit Coaching (article 11.2).</p>
     <p>Aucune prestation ne débute sans paiement effectif préalable (intégral, premier acompte ou premier prélèvement).</p>
     <div class="info-box"><p>Sur demande, le règlement d'une période peut être fractionné en plusieurs prélèvements étalés sur la période concernée (par exemple deux prélèvements dans le mois pour une période de <strong>260 €</strong>), sans que cela modifie l'échéance de la période suivante. Les prélèvements restent mensuels, à date (toutes les <strong>4 semaines</strong>) pour le présentiel.</p></div>
-    <h3>4.1 — Pénalités en cas de retard ou d'impayé</h3>
+    <h3 id="a4-1">4.1 — Pénalités en cas de retard ou d'impayé</h3>
     <p>Sauf erreur ou dysfonctionnement du dispositif de paiement non imputable au client, tout défaut de paiement à l'échéance convenue peut entraîner :</p>
     <ul>
       <li>la suspension de l'accompagnement jusqu'à régularisation complète ;</li>
@@ -264,10 +362,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li>la facturation de frais de relance forfaitaires de <strong>15 €</strong> par relance, après mise en demeure écrite restée sans effet.</li>
     </ul>
     <p>En cas d'impayé persistant, Ornella Fit Coaching se réserve le droit de procéder au recouvrement par voie judiciaire, les frais de recouvrement pouvant être mis à la charge du client dans les limites prévues par la loi.</p>
-    <h3>4.2 — Démarrage différé et acompte</h3>
+    <h3 id="a4-2">4.2 — Démarrage différé et acompte</h3>
     <p>Sauf demande contraire du client, la prestation démarre dans un délai de <strong>15 jours</strong> suivant l'achat.</p>
     <p>Lorsque le démarrage est différé au-delà de <strong>15 jours</strong> à la demande du client, un acompte de <strong>30 %</strong> du montant total est versé à la réservation et vaut <strong>engagement ferme</strong>. Le solde est réglé avant la réalisation de la première séance.</p>
-    <h3>4.3 — Mandat de prélèvement SEPA (GoCardless)</h3>
+    <h3 id="a4-3">4.3 — Mandat de prélèvement SEPA (GoCardless)</h3>
     <p>Lorsque le règlement s'effectue par <strong>prélèvement automatique</strong>, le client signe et complète le mandat de prélèvement SEPA <strong>GoCardless</strong> au plus tard <strong>cinq (5) jours</strong> avant la date de la première séance. À défaut, la première séance est reportée au plus tôt <strong>cinq (5) jours</strong> après la signature complète du mandat. Par la signature du mandat, le client autorise les prélèvements prévus au devis, la régularisation éventuelle prévue à l'article 7.3 et, le cas échéant, la poursuite du forfait prévue à l'article 7.1.</p>
   </article>
 
@@ -275,26 +373,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="article-num">Article 05</div>
     <h2>Option Accompagnement Nutrition</h2>
     <p>Ornella Fit Coaching propose une option complémentaire d'accompagnement nutrition, souscrite en complément d'une formule de coaching (pack de séances, forfait mensuel, formule avec ou <strong>sans engagement</strong>) ou, pour les programmes distanciels, en paiement unique.</p>
-    <h3>5.1 — Contenu de l'option</h3>
+    <h3 id="a5-1">5.1 — Contenu de l'option</h3>
     <p>L'option Accompagnement Nutrition comprend :</p>
     <ul>
       <li>une estimation du métabolisme de base et des besoins caloriques du client, établie à partir des informations déclarées par celui-ci (profil, objectifs, niveau d'activité) ;</li>
       <li>un plan alimentaire indicatif, fourni à titre de conseils généraux et non prescriptifs.</li>
     </ul>
     <p>Ce contenu peut être ajusté ponctuellement en fonction des échanges avec le client, dans la limite du cadre défini au présent article.</p>
-    <h3>5.2 — Non-substitution à un suivi diététique ou médical</h3>
+    <h3 id="a5-2">5.2 — Non-substitution à un suivi diététique ou médical</h3>
     <div class="warn-box"><p>Ornella Fit Coaching n'est pas diététicienne-nutritionniste diplômée d'État. L'accompagnement nutrition constitue des conseils alimentaires généraux et informatifs, au sens de l'article 2 des présentes CGV, et ne saurait être assimilé à une consultation de diététique, à un bilan nutritionnel médical, à une prescription ou à un acte de soin.</p></div>
     <p>Il ne se substitue en aucun cas à l'avis d'un médecin, d'un diététicien-nutritionniste ou de tout professionnel de santé, notamment en cas de pathologie, de trouble du comportement alimentaire, de grossesse, d'allergie, d'intolérance ou de traitement médical en cours. Le client s'engage à consulter un professionnel de santé compétent pour toute problématique médicale ou nutritionnelle spécifique, et reste seul responsable de l'application des conseils donnés.</p>
-    <h3>5.3 — Tarif et modalités de paiement</h3>
+    <h3 id="a5-3">5.3 — Tarif et modalités de paiement</h3>
     <p>L'option est proposée au tarif de <strong>40 € par période</strong> de facturation (mois ou période de <strong>4 semaines</strong>, selon le devis) lorsqu'elle est souscrite en complément d'une formule de coaching récurrente. Elle est alors facturée avec le forfait de coaching, par <strong>prélèvement automatique</strong> via <strong>GoCardless</strong>, aux mêmes échéances que le forfait associé.</p>
     <p>Lorsqu'elle est souscrite en complément d'un programme distanciel sans suivi mensuel, ou lorsqu'elle est offerte en bonus dans le cadre d'un pack de séances, elle est facturée ou fournie en une seule fois, pour la durée précisée dans le devis ou la confirmation de commande.</p>
-    <h3>5.4 — Durée et résiliation</h3>
+    <h3 id="a5-4">5.4 — Durée et résiliation</h3>
     <p>L'option facturée périodiquement est souscrite sans durée déterminée et <strong>sans engagement</strong> de durée minimale, sauf mention contraire du devis (notamment lorsque le devis l'aligne sur la période minimale du forfait de coaching associé).</p>
     <p>Le client peut la résilier à tout moment <strong>par écrit</strong> (email à ornellafitcoaching@gmail.com), avec un préavis de <strong>15 jours calendaires</strong> avant la prochaine échéance de prélèvement, décompté à compter de la réception de l'email. À défaut de notification dans ce délai, l'échéance suivante est prélevée et reste due dans son intégralité.</p>
-    <h3>5.5 — Articulation avec la formule de coaching associée</h3>
+    <h3 id="a5-5">5.5 — Articulation avec la formule de coaching associée</h3>
     <p>L'option nutrition est indépendante de la formule de coaching à laquelle elle est associée. Sauf mention contraire précisée dans le devis ou la confirmation de commande, elle continue d'être facturée selon les modalités de l'article 5.4, y compris si le pack de séances associé est épuisé, périmé, suspendu ou résilié, jusqu'à sa résiliation propre par le client dans les conditions prévues ci-dessus.</p>
     <p>Le lien entre l'option et la formule de coaching principale peut être précisé au cas par cas dans le devis, qui prévaut alors sur le présent article conformément à l'article 2.</p>
-    <h3>5.6 — Délai de livraison</h3>
+    <h3 id="a5-6">5.6 — Délai de livraison</h3>
     <p>Le plan alimentaire, ainsi que ses ajustements ultérieurs, sont livrés au client dans un délai maximal <strong>d'une (1) semaine en jours ouvrables</strong>, à compter de la réception du bilan complété — bilan initial, puis à chaque bilan de suivi. Ce délai court à compter de la réception effective des informations nécessaires ; il est suspendu tant que le bilan n'a pas été retourné dûment complété par le client.</p>
   </article>
 
@@ -302,28 +400,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="article-num">Article 06</div>
     <h2>Pack de séances</h2>
     <p>Le pack de séances permet au client d'acheter un crédit de séances à utiliser librement, sans abonnement ni engagement de durée, sans jour ni heure fixe, selon les disponibilités du planning d'Ornella Fit Coaching. Il constitue une alternative plus souple à l'abonnement mensuel, pour le client qui ne souhaite pas s'engager sur <strong>3 mois</strong>. Le nombre de séances, le tarif et la durée de validité de chaque pack sont précisés sur le site internet et/ou dans le devis.</p>
-    <h3>6.1 — Validité</h3>
+    <h3 id="a6-1">6.1 — Validité</h3>
     <p>La durée de validité de chaque pack est ferme. Elle varie selon le nombre de séances qu'il contient et court à compter de la date d'achat :</p>
     <ul>
       <li><strong>4 mois</strong> pour les packs de 6 et 10 séances ;</li>
       <li><strong>5 mois</strong> pour le pack de 20 séances.</li>
     </ul>
     <p>La durée applicable et la date d'expiration sont indiquées sur l'offre et dans le devis ou la confirmation de commande, qui prévaut en cas de différence. Passé ce délai, les séances non utilisées sont définitivement perdues, sans remboursement ni report, sauf pause accordée au titre de l'article 6.3 ou prolongation prévue à l'article 11.1. Ornella Fit Coaching adresse au client un email de rappel environ <strong>un (1) mois</strong> avant la date d'expiration.</p>
-    <h3>6.2 — Rythme d'utilisation et disponibilité</h3>
+    <h3 id="a6-2">6.2 — Rythme d'utilisation et disponibilité</h3>
     <p>Le client est responsable de la planification régulière de ses séances afin de bénéficier pleinement de son pack avant l'expiration de sa validité. Ornella Fit Coaching ne garantit pas de créneaux disponibles en dernière minute en cas d'utilisation tardive ou irrégulière du pack, notamment en fin de période de validité, le planning étant proposé sous réserve des places disponibles à la date de la demande.</p>
-    <h3>6.3 — Pause</h3>
+    <h3 id="a6-3">6.3 — Pause</h3>
     <p>Une pause du pack peut être accordée sur demande écrite, dans la limite de <strong>3 semaines cumulées</strong> sur la durée de validité. La date d'expiration du pack est alors reportée d'une durée équivalente à la pause accordée.</p>
     <p>En cas de blessure, de pathologie ou de grossesse rendant temporairement impossible ou déconseillée la poursuite de l'activité physique, sur présentation d'un <strong>certificat médical</strong>, cette limite est portée à <strong>seize (16) semaines cumulées</strong>, la date d'expiration étant reportée d'autant. Le pack ne réservant aucun créneau fixe (article 6.4), aucune place n'est immobilisée pendant la pause : le client choisit ses créneaux à sa reprise selon les disponibilités du planning.</p>
-    <h3>6.4 — Flexibilité</h3>
+    <h3 id="a6-4">6.4 — Flexibilité</h3>
     <p>Le client choisit ses créneaux au fur et à mesure, sous réserve des disponibilités.</p>
-    <h3>6.5 — Annulation / report</h3>
+    <h3 id="a6-5">6.5 — Annulation / report</h3>
     <p>Toute séance doit être annulée ou reportée au minimum <strong>24 heures</strong> à l'avance. En cas d'annulation tardive ou d'absence non signalée, la séance est décomptée du pack sans possibilité de récupération.</p>
-    <h3>6.6 — Non cessible</h3>
+    <h3 id="a6-6">6.6 — Non cessible</h3>
     <p>Le pack est nominatif et ne peut être ni transféré ni partagé, hors offres Duo/Trio expressément prévues à cet effet.</p>
-    <h3>6.7 — Offres Duo / Trio</h3>
+    <h3 id="a6-7">6.7 — Offres Duo / Trio</h3>
     <p>Les séances peuvent être réalisées à deux (Duo) ou à trois (Trio) participantes, à un tarif préférentiel par personne précisé sur le site internet ou dans le devis. Chaque participante dispose d'un pack nominatif individuel, décompté séparément dans les conditions de l'article 6.6.</p>
     <p>Sauf accord contraire précisé au devis, l'absence ou l'annulation tardive (article 6.5) d'une participante n'affecte pas les autres : la séance a lieu pour les participantes présentes, et seule la séance de la personne absente est décomptée de son pack. En cas d'absence de l'ensemble des participantes, l'article 6.5 s'applique à chacune individuellement.</p>
-    <h3>6.8 — Séance à l'unité (hors pack)</h3>
+    <h3 id="a6-8">6.8 — Séance à l'unité (hors pack)</h3>
     <p>Le client peut réserver une séance ponctuelle en présentiel sans souscrire de pack, au tarif affiché sur le site internet ou dans le devis. Le règlement s'effectue intégralement avant la réalisation de la séance. Les conditions d'annulation et de report de l'article 6.5 s'appliquent. S'agissant d'une prestation unique, aucune notion de crédit ou de durée de validité ne s'applique.</p>
   </article>
 
@@ -331,18 +429,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="article-num">Article 07</div>
     <h2>Forfait mensuel</h2>
     <p>Le forfait mensuel correspond à un abonnement avec <strong>prélèvement automatique</strong> périodique (mensuel ou toutes les <strong>4 semaines</strong>, selon le devis), avec ou sans créneau fixe réservé chaque semaine (pour les formules à créneau fixe, le jour et l'heure sont choisis par le client selon ses disponibilités et celles d'Ornella Fit Coaching, puis restent fixes). Il couvre notamment l'abonnement à domicile en présentiel et le coaching hybride. Les packs de séances et la séance à l'unité (article 6) ne constituent pas un forfait mensuel et restent <strong>sans engagement</strong>.</p>
-    <h3>7.1 — Deux tarifs : avec engagement de 3 mois ou sans engagement</h3>
+    <h3 id="a7-1">7.1 — Deux tarifs : avec engagement de 3 mois ou sans engagement</h3>
     <p>Le forfait mensuel est proposé à deux tarifs, précisés dans le devis : un tarif <strong>avec engagement</strong> de trois (3) périodes de facturation consécutives (soit trois mois, ou trois périodes de quatre semaines, selon le devis), et un tarif <strong>sans engagement</strong>, plus élevé. Le tarif <strong>avec engagement</strong> est un tarif remisé, accordé en contrepartie d'un accompagnement sur trois périodes, durée nécessaire à la mise en place d'un accompagnement régulier et à l'obtention de résultats durables.</p>
     <p>Le paiement s'effectue par prélèvement SEPA automatique récurrent via <strong>GoCardless</strong>, mensuel ou toutes les <strong>4 semaines</strong> selon le devis, à date anniversaire (date du premier prélèvement). Le paiement de chaque période est dû en intégralité à l'avance, à chaque échéance de prélèvement, quelle que soit l'assiduité du client. Pour le tarif <strong>avec engagement</strong>, les prélèvements sont programmés sur la durée de l'engagement (trois prélèvements pour un engagement de trois mois, six pour un engagement de six mois), à raison d'un prélèvement par période : chaque prélèvement n'est effectué qu'à sa date d'échéance, jamais par anticipation. À l'issue de l'engagement, le forfait se poursuit sans durée déterminée, au tarif prévu au devis, avec un prélèvement reconduit sur le même mandat, jusqu'à sa résiliation dans les conditions de l'article 7.2. Un paiement en plusieurs fois d'une même période peut être accordé sur demande du client et convenu <strong>par écrit</strong> dans le devis ; il ne modifie ni l'engagement, ni les règles de résiliation.</p>
-    <h3>7.1 bis — Engagement de six mois (forfait à domicile)</h3>
+    <h3 id="a7-1bis">7.1 bis — Engagement de six mois (forfait à domicile)</h3>
     <p>Le forfait à domicile peut également être proposé avec un engagement de six (6) périodes de facturation, au tarif remisé correspondant précisé dans le devis. Les articles 7.2 à 7.6 s'appliquent dans les mêmes conditions. En cas de résiliation prenant effet avant la fin des six périodes, le client perd le bénéfice de la remise et règle, pour chaque période de facturation écoulée à la date d'effet de la résiliation, la différence entre le tarif <strong>sans engagement</strong> et le tarif <strong>avec engagement</strong> de six mois, telle que précisée dans le devis. Les prélèvements restants sont annulés et cette régularisation est prélevée en une seule fois sur le mandat de prélèvement, qui reste actif jusqu'à son règlement. À l'issue des six périodes, le forfait se poursuit sans durée déterminée, au tarif prévu au devis, résiliable dans les conditions de l'article 7.2.</p>
-    <h3>7.2 — Résiliation et préavis</h3>
+    <h3 id="a7-2">7.2 — Résiliation et préavis</h3>
     <p>Le client peut notifier sa résiliation à tout moment, y compris pendant les trois premières périodes et quel qu'en soit le motif, <strong>par écrit</strong> (email à ornellafitcoaching@gmail.com), avec un préavis de <strong>15 jours calendaires</strong> avant la prochaine échéance de prélèvement. Le préavis est décompté à compter de la réception de l'email, dont Ornella Fit Coaching accuse réception. La résiliation ne peut toutefois pas prendre effet avant la fin de la première période de facturation (première période de quatre semaines ou premier mois, selon le devis), dont le prix <strong>reste dû</strong> en intégralité, sauf <strong>motif légitime</strong> (article 7.4) et sous réserve du droit de rétractation (article 14).</p>
     <p>La résiliation prend effet à la première échéance de prélèvement suivant l'expiration du préavis. À défaut de notification dans le délai de préavis, l'échéance suivante est prélevée et reste due dans son intégralité. Après les trois premières périodes, Ornella Fit Coaching peut également mettre fin au forfait avec le même préavis de <strong>15 jours calendaires</strong>, notifié par email au client.</p>
-    <h3>7.3 — Perte de la remise en cas de résiliation avant la fin des trois périodes</h3>
+    <h3 id="a7-3">7.3 — Perte de la remise en cas de résiliation avant la fin des trois périodes</h3>
     <p>Lorsque la résiliation prend effet avant la fin des trois périodes du tarif <strong>avec engagement</strong>, le client perd le bénéfice de la remise : il règle, pour chaque période de facturation écoulée à la date d'effet de la résiliation, la différence entre le tarif <strong>sans engagement</strong> et le tarif <strong>avec engagement</strong>, telle que précisée dans le devis. Les prélèvements restants sont annulés et la régularisation est prélevée en une seule fois sur le mandat de prélèvement, qui reste actif jusqu'à son règlement.</p>
     <div class="info-box"><p>Exemple : forfait à <strong>260 €</strong> <strong>avec engagement</strong> (<strong>280 €</strong> <strong>sans engagement</strong>). Si la résiliation prend effet après deux périodes, la régularisation est de 2 × <strong>20 €</strong> = <strong>40 €</strong>. Aucune autre somme n'est due au titre de la résiliation. Le client ne doit jamais les périodes restantes.</p></div>
-    <h3>7.4 — Sortie sans régularisation pour motif légitime</h3>
+    <h3 id="a7-4">7.4 — Sortie sans régularisation pour motif légitime</h3>
     <p>Par dérogation à l'article 7.3, le client ne perd pas la remise et ne règle aucune régularisation lorsque la résiliation intervient, sur présentation d'un justificatif, dans l'un des cas suivants :</p>
     <ul>
       <li>blessure, pathologie ou grossesse rendant impossible ou déconseillée la poursuite de l'activité physique concernée, sur présentation d'un <strong>certificat médical</strong> ;</li>
@@ -351,35 +449,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </ul>
     <p>La demande est adressée <strong>par écrit</strong> à ornellafitcoaching@gmail.com, accompagnée du justificatif, avec un préavis de <strong>15 jours calendaires</strong>. Les périodes ou séances déjà réglées et non encore réalisées à la date d'effet de la résiliation sont remboursées au prorata. Les séances déjà réalisées restent dues.</p>
     <p>Plutôt que de résilier, le client peut également demander la suspension temporaire de son forfait pour raison médicale, dans les conditions de l'article 7.7.</p>
-    <h3>7.5 — Rappel avant la fin de la période avec engagement</h3>
+    <h3 id="a7-5">7.5 — Rappel avant la fin de la période avec engagement</h3>
     <p>Au plus tard <strong>un (1) mois</strong> avant la fin des trois périodes, Ornella Fit Coaching adresse au client un email de rappel précisant qu'à l'issue de cette période le forfait se poursuit sans durée déterminée, et rappelant les modalités et la date limite de résiliation.</p>
-    <h3>7.6 — Annulation, report et absence</h3>
+    <h3 id="a7-6">7.6 — Annulation, report et absence</h3>
     <p>Toute séance doit être annulée ou reportée au minimum <strong>24 heures</strong> à l'avance. Passé ce délai, la séance est <strong>considérée comme réalisée</strong> et reste due.</p>
     <p>Toute absence non signalée dans les délais est comptée et définitivement perdue, sans remboursement ni report possible.</p>
     <p>Un maximum de 2 reports est autorisé par mois, sous réserve d'un préavis de <strong>24 heures</strong> minimum et selon les disponibilités du planning. Une séance non utilisée dans le mois peut être reportée une fois sur le mois suivant, sauf mention contraire de l'offre souscrite.</p>
-    <h3>7.7 — Suspension pour raison médicale</h3>
+    <h3 id="a7-7">7.7 — Suspension pour raison médicale</h3>
     <p>En cas de blessure, de pathologie ou de grossesse rendant temporairement impossible ou déconseillée la poursuite de l'activité physique, le client peut demander, <strong>par écrit</strong> à ornellafitcoaching@gmail.com et sur présentation d'un <strong>certificat médical</strong>, la <strong>suspension</strong> de son forfait plutôt que sa résiliation (article 7.4). Pendant la période de suspension :</p>
     <ul>
       <li>les prélèvements sont suspendus et aucune somme n'est due au titre des périodes suspendues ; lorsque le forfait a été réglé d'avance, les périodes ou séances payées et non réalisées sont conservées et reportées d'autant ;</li>
       <li>la durée d'engagement éventuelle est prolongée d'une durée équivalente à celle de la suspension, sans perte de la remise ni régularisation ;</li>
       <li>le créneau fixe éventuellement réservé n'est pas conservé pendant la suspension : afin de ne pas immobiliser un créneau inutilisé, Ornella Fit Coaching peut le proposer à un autre client. À la reprise, le client bénéficie d'une priorité sur le premier créneau se libérant ; un créneau lui est proposé selon les disponibilités du planning à cette date, sans garantie de retrouver le créneau initial.</li>
     </ul>
+    <div class="info-box"><p><strong>Créneau fixe pendant une suspension (forfaits mensuels comme packs) :</strong> une place ne peut pas rester bloquée sans être utilisée. Pendant toute suspension, le créneau fixe est libéré et peut être attribué à un autre client. En cas de suspension pour raison médicale, le client est <strong>prioritaire</strong> à sa reprise sur le premier créneau qui se libère.</p></div>
     <p>La suspension est accordée pour une durée maximale de <strong>seize (16) semaines cumulées</strong>. La reprise s'effectue sur demande écrite du client ; les prélèvements, le cas échéant, reprennent à la première échéance suivant la reprise effective. Au-delà de <strong>seize (16) semaines</strong> sans reprise, le forfait est résilié pour <strong>motif légitime</strong> dans les conditions de l'article 7.4 (remboursement au prorata des périodes réglées et non réalisées, sans pénalité ni perte de la remise).</p>
-    <h3>7.8 — Suspension pour convenance (congés du client)</h3>
-    <p>En dehors du cas médical (article 7.7), le client peut demander, <strong>par écrit</strong> et avec un préavis raisonnable, la suspension temporaire de son forfait pour convenance personnelle, notamment lors de ses congés, dans la limite de <strong>quatre (4) semaines cumulées</strong> par période de <strong>douze (12) mois</strong>. Pendant cette suspension, les prélèvements sont suspendus ou, lorsque le forfait a été réglé d'avance, les séances non réalisées sont conservées et reportées ; la durée d'engagement éventuelle est prolongée d'autant. Le créneau fixe éventuellement réservé n'est pas conservé pendant la suspension : un créneau est proposé au client à sa reprise selon les disponibilités du planning à cette date. Au-delà de cette limite, les modalités de report (article 7.6) ou de résiliation (article 7.2) s'appliquent.</p>
+    <h3 id="a7-8">7.8 — Suspension pour convenance (congés du client)</h3>
+    <p>En dehors du cas médical (article 7.7), le client peut demander, <strong>par écrit</strong> et avec un préavis d'au moins <strong>sept (7) jours</strong>, la suspension temporaire de son forfait pour convenance personnelle, notamment lors de ses congés, dans la limite de <strong>quatre (4) semaines cumulées</strong> par période de <strong>douze (12) mois</strong>. Pendant cette suspension, les prélèvements sont suspendus ou, lorsque le forfait a été réglé d'avance, les séances non réalisées sont conservées et reportées ; la durée d'engagement éventuelle est prolongée d'autant. Le créneau fixe éventuellement réservé n'est pas conservé pendant la suspension : un créneau est proposé au client à sa reprise selon les disponibilités du planning à cette date. Au-delà de cette limite, les modalités de report (article 7.6) ou de résiliation (article 7.2) s'appliquent.</p>
+    <div class="warn-box"><p><strong>Départ de dernière minute :</strong> une absence du client prévenue moins de 7 jours à l'avance n'est pas une suspension. Les séances concernées suivent les règles d'annulation et de report de l'article 7.6 (préavis de <strong>24 heures</strong>, 2 reports maximum par mois) et le prélèvement de la période reste dû.</p></div>
   </article>
 
   <article id="art-08">
     <div class="article-num">Article 08</div>
     <h2>Coaching à distance avec suivi personnalisé — tarifs et engagement</h2>
     <p>Le coaching à distance avec suivi personnalisé est facturé par <strong>prélèvement automatique</strong> mensuel via <strong>GoCardless</strong>, à la date anniversaire du premier paiement. Il est proposé selon trois formules, précisées sur le site internet et/ou dans le devis : <strong>sans engagement</strong>, <strong>avec engagement</strong> de <strong>3 mois</strong>, ou <strong>avec engagement</strong> de <strong>6 mois</strong>.</p>
-    <h3>8.1 — Formule sans engagement (119 €/mois)</h3>
+    <h3 id="a8-1">8.1 — Formule sans engagement (119 €/mois)</h3>
     <p>Cette formule est sans durée déterminée. Le client peut notifier sa résiliation à tout moment <strong>par écrit</strong> (email à ornellafitcoaching@gmail.com), avec un préavis de <strong>15 jours calendaires</strong> avant la prochaine échéance de prélèvement, décompté à compter de la réception de l'email. À défaut de notification dans ce délai, le mois suivant est prélevé et <strong>reste dû</strong> dans son intégralité. La résiliation ne peut toutefois pas prendre effet avant la fin du premier mois, dont le prix <strong>reste dû</strong> en intégralité, sauf <strong>motif légitime</strong> (article 7.4) et sous réserve du droit de rétractation (article 14).</p>
-    <h3>8.2 — Formules avec engagement (3 mois à 99 €/mois ou 6 mois à 89 €/mois)</h3>
+    <h3 id="a8-2">8.2 — Formules avec engagement (3 mois à 99 €/mois ou 6 mois à 89 €/mois)</h3>
     <p>Les formules à <strong>3 mois</strong> (<strong>99 €/mois</strong>) et à <strong>6 mois</strong> (<strong>89 €/mois</strong>) sont des tarifs remisés, accordés en contrepartie de la durée choisie. Les articles 7.2, 7.4, 7.5 et 7.7 s'appliquent : le client peut notifier sa résiliation à tout moment avec un préavis de <strong>15 jours calendaires</strong> (sans effet avant la fin du premier mois, sauf <strong>motif légitime</strong>), et sort sans régularisation en cas de <strong>motif légitime</strong>.</p>
     <p>Lorsque la résiliation prend effet avant la fin de la période choisie, le client perd sa remise et règle, pour chaque mois écoulé, la différence avec le tarif <strong>sans engagement</strong> de <strong>119 €/mois</strong> (soit <strong>20 € par mois</strong> pour la formule <strong>3 mois</strong> et <strong>30 € par mois</strong> pour la formule <strong>6 mois</strong>). Aucune autre somme n'est due au titre de la résiliation.</p>
     <p>À l'issue de la période choisie, la formule se poursuit sans durée déterminée, au tarif prévu au devis, résiliable à tout moment avec un préavis de <strong>15 jours calendaires</strong>.</p>
-    <h3>8.3 — Suivi commun aux trois formules</h3>
+    <h3 id="a8-3">8.3 — Suivi commun aux trois formules</h3>
     <p>Un bilan de suivi est réalisé toutes les <strong>4 semaines</strong>, permettant d'ajuster le programme et les séances en fonction de la progression du client, quelle que soit la formule souscrite.</p>
   </article>
 
@@ -392,33 +492,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <article id="art-10">
     <div class="article-num">Article 10</div>
-    <h2>Accès à l'application de suivi</h2>
-    <p>L'accès à l'application de suivi et aux outils numériques de coaching renforcé est réservé aux clients ayant souscrit une formule de coaching à distance avec suivi personnalisé.</p>
-    <p>Les programmes interactifs autonomes, les formules hybrides et les packs de séances n'incluent pas cet accès.</p>
-    <p>L'accès est activé pour la durée effective de la prestation et désactivé automatiquement à son issue, sans possibilité de prolongation sans souscription d'une nouvelle offre.</p>
+    <h2>Espace de suivi personnel « Mon Suivi »</h2>
+    <p>Tout client ayant souscrit un <strong>accompagnement personnalisé</strong> (forfait à domicile ou en salle, formule hybride, coaching à distance avec suivi, pack de séances) bénéficie d'un <strong>accès inclus</strong>, sans supplément, à son espace de suivi personnel et privé « Mon Suivi » (espace.ornellafitcoaching.com).</p>
+    <p>Cet espace regroupe notamment :</p>
+    <ul>
+      <li>le planning et les horaires de ses séances, synchronisables avec son agenda (Apple, Google) ;</li>
+      <li>ses mensurations et le suivi de son évolution ;</li>
+      <li>ses bilans et ses photos de progression ;</li>
+      <li>ses programmes, ses objectifs et, s'il a souscrit l'option, son plan nutrition (article 5).</li>
+    </ul>
+    <p>Les programmes numériques en autonomie achetés à l'unité (article 2.2) et la séance à l'unité n'incluent pas cet accès, sauf mention contraire de l'offre.</p>
+    <p>L'accès est activé pour la <strong>durée effective de la prestation</strong> et désactivé à son issue. Avant la fin de l'accompagnement, le client peut demander par email une copie de ses données de suivi (bilans, mensurations, photos). Les données personnelles et photos sont traitées dans les conditions des articles 15 et 16.</p>
   </article>
 
   <article id="art-11">
     <div class="article-num">Article 11</div>
     <h2>Indisponibilité du coach</h2>
-    <h3>11.1 — Indisponibilité temporaire</h3>
-    <p>En cas d'indisponibilité temporaire du coach (maladie, obligations personnelles, force majeure au sens de l'article 1218 du Code civil), Ornella Fit Coaching s'engage à en informer le client dans les meilleurs délais.</p>
-    <p>Les séances concernées seront reportées à une date convenable, sans frais supplémentaires. Cette indisponibilité ne constitue pas un manquement contractuel et ne donne pas lieu à remboursement, dès lors qu'une solution de report est proposée. La durée de validité d'un pack de séances est prolongée d'une durée équivalente à celle de l'indisponibilité.</p>
-    <h3>11.2 — Cessation définitive de la prestation</h3>
+    <h3 id="a11-1">11.1 — Maladie ou empêchement imprévu du coach</h3>
+    <p>En cas de maladie, d'accident, d'urgence familiale ou de tout autre empêchement imprévu du coach, y compris un cas de force majeure au sens de l'article 1218 du Code civil, Ornella Fit Coaching en informe le client <strong>dès que possible, y compris le jour même</strong> de la séance, par message ou par email. Un tel empêchement ne constitue pas un manquement contractuel et n'ouvre droit à aucune indemnité.</p>
+    <p>Les séances annulées sont <strong>reportées sans frais</strong> à une date convenue avec le client, de préférence dans les <strong>4 semaines</strong> suivant la reprise. À défaut, la durée de validité du pack ou la durée d'engagement du forfait est prolongée d'autant. Le client ne paie jamais une séance qui n'a été ni réalisée ni reportée.</p>
+    <p>Si l'empêchement dure plus de <strong>quatre (4) semaines consécutives</strong>, les prélèvements du forfait sont suspendus jusqu'à la reprise. Le client peut aussi, s'il le souhaite, résilier sans préavis ni régularisation : les séances réglées et non réalisées lui sont alors remboursées au prorata.</p>
+    <h3 id="a11-2">11.2 — Cessation définitive de la prestation</h3>
     <p>Si Ornella Fit Coaching se trouve dans l'impossibilité durable et définitive de poursuivre l'accompagnement souscrit par le client (cessation d'activité, incapacité de longue durée) et qu'aucune solution de report ou de remplacement n'est possible, le client est remboursé au prorata des séances, périodes ou prestations non encore réalisées à la date de cessation, dans un délai de <strong>30 jours</strong>.</p>
-    <h3>11.3 — Retard ponctuel du coach</h3>
+    <h3 id="a11-3">11.3 — Retard ponctuel du coach</h3>
     <p>Le coaching à domicile impliquant des déplacements, un retard ponctuel du coach lié aux conditions de circulation, à un aléa de trajet ou à un cas de force majeure ne constitue pas un manquement contractuel. En cas de retard, la séance est, dans la mesure du possible, prolongée d'une durée équivalente afin que le client bénéficie de la durée intégrale prévue ; à défaut, le temps non réalisé est reporté sur une séance ultérieure. Un retard n'ouvre droit à <strong>aucun remboursement</strong>, avoir ni indemnité, dès lors que la durée de la séance est préservée. Ornella Fit Coaching informe le client dès que possible en cas de retard significatif.</p>
-    <h3>11.4 — Congés et absences programmées du coach</h3>
-    <p>Ornella Fit Coaching peut suspendre temporairement les séances lors de ses congés ou absences programmées (vacances, formation). Elle en informe les clients concernés à l'avance, dans un délai raisonnable. Pendant cette période, les séances prévues sont reportées, et la durée de validité des packs ainsi que la durée d'engagement des forfaits sont prolongées d'une durée équivalente à l'absence, sans frais. Lorsque l'absence couvre une période de facturation entière d'un forfait à prélèvement récurrent, le prélèvement correspondant est suspendu ou décalé d'autant, afin que le client ne règle aucune période sans prestation. Pour maintenir la continuité, un programme à réaliser en autonomie peut être mis à la disposition du client afin qu'il poursuive son entraînement pendant l'absence du coach. Cette absence ne donne lieu à <strong>aucun remboursement</strong> dès lors que les séances sont reportées ou la durée prolongée.</p>
+    <h3 id="a11-4">11.4 — Congés et absences programmées du coach</h3>
+    <p>Ornella Fit Coaching peut suspendre temporairement les séances lors de ses congés ou absences programmées (vacances, formation), dans la limite de <strong>six (6) semaines cumulées</strong> par période de <strong>douze (12) mois</strong>. Elle en informe les clients concernés par message ou par email au moins <strong>sept (7) jours</strong> à l'avance ; une absence décidée plus tardivement pour un motif imprévu relève de l'article 11.1. Pendant cette période, les séances prévues sont reportées, et la durée de validité des packs ainsi que la durée d'engagement des forfaits sont prolongées d'une durée équivalente à l'absence, sans frais. Lorsque l'absence couvre une période de facturation entière d'un forfait à prélèvement récurrent, le prélèvement correspondant est suspendu ou décalé d'autant, afin que le client ne règle aucune période sans prestation. Pour maintenir la continuité, un programme à réaliser en autonomie peut être mis à la disposition du client afin qu'il poursuive son entraînement pendant l'absence du coach. Cette absence ne donne lieu à <strong>aucun remboursement</strong> dès lors que les séances sont reportées ou la durée prolongée.</p>
   </article>
 
   <article id="art-12">
     <div class="article-num">Article 12</div>
     <h2>Engagements du client — Santé</h2>
     <p>Le client déclare être apte à la pratique d'une activité physique et sportive. Il s'engage à informer préalablement Ornella Fit Coaching de tout problème de santé, blessure, pathologie, grossesse, post-partum récent ou traitement médical susceptible d'affecter sa capacité à pratiquer.</p>
-    <h3>12.1 — Certificat médical</h3>
+    <h3 id="a12-1">12.1 — Certificat médical</h3>
     <p>La présentation d'un <strong>certificat médical</strong> n'est pas obligatoire. Toutefois, Ornella Fit Coaching se réserve le droit d'en demander un à tout moment si l'état de santé du client le nécessite.</p>
-    <h3>12.2 — Non-substitution au suivi médical</h3>
+    <h3 id="a12-2">12.2 — Non-substitution au suivi médical</h3>
     <p>Conformément à l'article L4161-1 du Code de la santé publique, les prestations d'Ornella Fit Coaching constituent un accompagnement sportif uniquement. Elles ne relèvent en aucun cas d'un acte médical, paramédical ou thérapeutique et ne se substituent pas à un suivi médical.</p>
   </article>
 
@@ -433,13 +541,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <article id="art-14">
     <div class="article-num">Article 14</div>
     <h2>Droit de rétractation</h2>
-    <h3>14.1 — Forfaits et prestations de coaching sur mesure</h3>
+    <h3 id="a14-1">14.1 — Forfaits et prestations de coaching sur mesure</h3>
     <p>Lorsque le contrat est conclu à distance ou hors établissement, le client consommateur dispose d'un délai de <strong>14 jours</strong> à compter de la conclusion du contrat pour se rétracter, sans avoir à justifier de motif. Il notifie sa décision <strong>par écrit</strong>, par email à ornellafitcoaching@gmail.com ou au moyen du formulaire type figurant en annexe.</p>
     <p>Si le client demande expressément, sur le devis ou au moment du paiement, que la prestation commence avant la fin de ce délai, il peut toujours se rétracter. Il règle alors à Ornella Fit Coaching un montant proportionnel à ce qui a été fourni jusqu'à la communication de sa décision de se rétracter (séances réalisées, travail préparatoire déjà effectué : analyse du bilan, conception du programme, organisation du planning), par rapport à l'ensemble des prestations prévues au contrat.</p>
     <p>À défaut de demande expresse de démarrage anticipé, aucune prestation ne débute avant l'expiration du délai de <strong>14 jours</strong>.</p>
-    <h3>14.2 — Séances ponctuelles en présentiel</h3>
+    <h3 id="a14-2">14.2 — Séances ponctuelles en présentiel</h3>
     <p>Le client dispose d'un délai de <strong>14 jours</strong> pour se rétracter tant que la séance n'a pas eu lieu. S'il demande expressément que la séance ait lieu avant la fin de ce délai, il reconnaît que, la séance une fois pleinement exécutée, il perd son droit de rétractation.</p>
-    <h3>14.3 — Programmes interactifs en ligne</h3>
+    <h3 id="a14-3">14.3 — Programmes interactifs en ligne</h3>
     <p>Les programmes interactifs en ligne constituent des contenus numériques accessibles immédiatement après paiement. Conformément à l'article L221-28 du Code de la consommation, le droit de rétractation est expressément exclu dès lors que le client a accédé au contenu numérique, après avoir donné son accord préalable exprès et reconnu la perte de son droit de rétractation.</p>
     <p><strong>Aucun remboursement</strong> ne pourra être effectué dès lors que l'accès au programme a été ouvert ou utilisé, même partiellement.</p>
   </article>
@@ -449,7 +557,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2>Droit à l'image et données de suivi</h2>
     <p>Dans le cadre du suivi, Ornella Fit Coaching peut demander des photos « avant / après » et des mensurations corporelles à des fins d'évaluation interne uniquement.</p>
     <p>Ces éléments sont strictement confidentiels et ne seront jamais diffusés sans autorisation écrite, expresse et préalable du client. Le client peut retirer son autorisation à tout moment par simple demande écrite.</p>
-    <h3>15.1 — Photos « avant / après » transmises par le client</h3>
+    <h3 id="a15-1">15.1 — Photos « avant / après » transmises par le client</h3>
     <p>Dans le cadre du suivi de sa progression, le client transmet à Ornella Fit Coaching des photos « avant » puis « après » (de face, de dos et/ou de profil). Ces photos sont utilisées, par défaut, exclusivement à des fins de suivi personnel de la progression du client et ne sont pas diffusées publiquement.</p>
     <p>Lorsque le client autorise expressément et <strong>par écrit</strong> (y compris par message WhatsApp ou email) la diffusion de tout ou partie de ces photos, Ornella Fit Coaching peut les publier sur ses supports de communication (site internet, réseaux sociaux, supports commerciaux), pour une durée de <strong>trois (3) ans</strong>, à des fins d'illustration de ses résultats et transformations clients. Le client peut retirer son autorisation de diffusion à tout moment par simple demande écrite à ornellafitcoaching@gmail.com ; le retrait ne remet pas en cause les diffusions déjà effectuées avant la demande, mais impose le retrait des supports sur lesquels Ornella Fit Coaching a la main (site internet, comptes de réseaux sociaux).</p>
   </article>
