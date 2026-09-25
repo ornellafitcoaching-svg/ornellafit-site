@@ -127,9 +127,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .ent-final{background:linear-gradient(180deg,var(--ent-cream),var(--ent-cream2));text-align:center;border-top:1px solid var(--ent-line);}
 .ent-final .ent-h2{margin-bottom:10px;}
 
+/* Stats */
+.ent-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:34px;}
+.ent-stat{background:var(--ent-ink);color:#fff;border-radius:18px;padding:26px 20px;text-align:center;}
+.ent-stat .num{font:600 2.4rem/1 'Cormorant Garamond',Georgia,serif;color:#fff;}
+.ent-stat .lab{font-size:.86rem;color:rgba(255,255,255,.82);line-height:1.45;margin-top:8px;}
+.ent-src{text-align:center;font-size:.76rem;color:var(--ent-mute);margin-top:16px;font-style:italic;}
+
+/* Financement */
+.ent-fin{background:var(--ent-green);}
+.ent-fin .ent-kicker{color:#BFE3CC;}
+.ent-fin .ent-h2,.ent-fin .ent-lead{color:#fff;}
+.ent-fin .ent-lead{opacity:.92;}
+.ent-fin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:34px;}
+.ent-fin-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:26px 22px;}
+.ent-fin-card .ic{font-size:1.6rem;display:block;margin-bottom:10px;}
+.ent-fin-card h3{font:600 1.2rem/1.25 'Cormorant Garamond',Georgia,serif;color:#fff;margin:0 0 8px;}
+.ent-fin-card p{font-size:.9rem;color:rgba(255,255,255,.86);line-height:1.6;margin:0;}
+.ent-fin-note{text-align:center;font-size:.8rem;color:rgba(255,255,255,.7);max-width:640px;margin:22px auto 0;line-height:1.6;}
+
+/* Clarté prix */
+.ent-clar{background:#FFF9F6;border:1px solid rgba(192,87,74,.22);border-radius:16px;padding:18px 22px;max-width:720px;margin:26px auto 0;}
+.ent-clar p{font-size:.92rem;color:var(--ent-ink2);line-height:1.65;margin:0;}
+.ent-clar strong{color:var(--ent-terra);}
+
 @media(max-width:600px){
   .ent-sec{padding:36px 16px;}
   .ent-btn{width:100%;text-align:center;}
+  .ent-stat .num{font-size:2.1rem;}
 }
 </style>
 </head>
@@ -168,9 +193,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <div class="ent-hero-meta">
     <span>🎓 Coach diplômée d'État</span>
-    <span>👥 Groupes jusqu'à 8 personnes</span>
-    <span>📍 Sur votre site (locaux ou extérieur)</span>
-    <span>★ 5,0 · 24 avis Google</span>
+    <span>👥 Petits groupes (8 max, pour la sécurité)</span>
+    <span>💶 Jusqu'à ~200 €/salarié/an exonérés de charges</span>
+    <span>📍 Sur votre site · ★ 5,0 Google</span>
   </div>
 </header>
 
@@ -179,14 +204,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="ent-in">
     <div class="ent-kicker">Pourquoi le sport en entreprise</div>
     <h2 class="ent-h2">Des équipes en forme, une entreprise qui avance</h2>
-    <p class="ent-lead">Le sport en entreprise n'est pas un gadget : c'est un levier concret de bien-être, de cohésion et de performance. Un investissement dans vos collaborateurs qui se voit au quotidien.</p>
+    <p class="ent-lead">La sédentarité, le stress et les douleurs de dos coûtent cher aux entreprises — en arrêts, en fatigue, en turnover. Le sport en entreprise n'est pas un gadget : c'est un levier concret de <strong>santé, de cohésion et de performance</strong>, et un vrai atout de marque employeur. Un investissement dans vos collaborateurs qui se voit au quotidien.</p>
     <div class="ent-grid">
       <div class="ent-card"><span class="ic">🤝</span><h3>Cohésion d'équipe</h3><p>Un moment partagé hors du cadre professionnel qui renforce les liens et l'esprit collectif.</p></div>
       <div class="ent-card"><span class="ic">⚡</span><h3>Plus d'énergie</h3><p>Moins de fatigue, de stress et de tensions liées à la sédentarité. Des collaborateurs plus concentrés.</p></div>
       <div class="ent-card"><span class="ic">🦴</span><h3>Prévention des TMS</h3><p>Renforcement, mobilité et posture pour limiter les douleurs de dos et les troubles musculo-squelettiques.</p></div>
-      <div class="ent-card"><span class="ic">💛</span><h3>Marque employeur</h3><p>Un avantage concret qui valorise votre entreprise, fidélise les talents et soigne votre QVT.</p></div>
+      <div class="ent-card"><span class="ic">💛</span><h3>Marque employeur</h3><p>Un avantage concret qui valorise votre entreprise, fidélise les talents et soigne votre QVCT.</p></div>
     </div>
-    <p class="ent-tarifs-note">💡 Bon à savoir : les dépenses engagées par l'employeur pour une activité physique au travail peuvent, sous conditions, être exonérées de charges sociales. Un point à vérifier avec votre expert-comptable.</p>
+    <div class="ent-stats">
+      <div class="ent-stat"><div class="num">−40&nbsp;%</div><div class="lab">d'absentéisme jusqu'à, chez les salariés actifs</div></div>
+      <div class="ent-stat"><div class="num">+9 à 14&nbsp;%</div><div class="lab">de productivité pour un salarié qui bouge</div></div>
+      <div class="ent-stat"><div class="num">−25&nbsp;%</div><div class="lab">de turnover, meilleure fidélisation des talents</div></div>
+      <div class="ent-stat"><div class="num">18&nbsp;%</div><div class="lab">des entreprises seulement agissent : une vraie longueur d'avance</div></div>
+    </div>
+    <p class="ent-src">Sources : études MEDEF / Goodwill-management et CNOSF sur le sport en entreprise. Résultats observés, non garantis.</p>
   </div>
 </section>
 
@@ -209,17 +240,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="ent-sec">
   <div class="ent-in">
     <div class="ent-kicker">Tarifs</div>
-    <h2 class="ent-h2">Des formules claires, jusqu'à 8 personnes</h2>
-    <p class="ent-lead">Un tarif unique pour tout le groupe (jusqu'à 8 participants), quel que soit le nombre présent. Prix HT, séance d'environ 1 h, sur votre site en Essonne et Île-de-France.</p>
+    <h2 class="ent-h2">Un prix par séance, tout compris</h2>
+    <p class="ent-lead">Vous payez <strong>un forfait par séance pour le groupe</strong> — pas par participant. Le tarif est le même que vos collaborateurs soient 4 ou 8. Prix HT, séance d'environ 1&nbsp;h, sur votre site en Essonne et Île-de-France.</p>
+    <div class="ent-clar">
+      <p>👥 <strong>8 personnes = un maximum, pas un minimum.</strong> Je limite volontairement chaque séance à 8 participants pour garantir la sécurité et un encadrement de qualité. Vous pouvez être moins : le prix ne change pas. Au-delà, on organise simplement plusieurs groupes ou créneaux.</p>
+    </div>
     <div class="ent-tarifs">
       <div class="ent-tarif">
         <h3>Séance découverte</h3>
-        <div class="sub">Pour tester le format avec vos équipes, sans engagement.</div>
+        <div class="sub">1 séance unique, pour tester le format avec vos équipes. Sans engagement.</div>
         <div class="price">150 €<small> HT / séance</small></div>
-        <div class="perpers">≈ 19 € / personne (groupe de 8)</div>
+        <div class="perpers">dès 19 €/pers (groupe complet)</div>
         <ul>
-          <li>Séance collective d'environ 1 h</li>
-          <li>Jusqu'à 8 participants</li>
+          <li>1 séance collective d'environ 1 h</li>
+          <li>Jusqu'à 8 participants (moins possible)</li>
           <li>Sur votre site (locaux ou extérieur)</li>
           <li>Matériel adapté fourni</li>
         </ul>
@@ -227,30 +261,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="ent-tarif feat">
         <span class="ent-tarif-badge">⭐ Le plus choisi</span>
         <h3>Formule régulière</h3>
-        <div class="sub">Séances hebdomadaires ou mensuelles, sur engagement.</div>
+        <div class="sub">Un rendez-vous récurrent : 1 séance / semaine ou / mois, sur la durée.</div>
         <div class="price">130 €<small> HT / séance</small></div>
-        <div class="perpers">≈ 16 € / personne (groupe de 8)</div>
+        <div class="perpers">dès 16 €/pers (groupe complet)</div>
         <ul>
-          <li>Tarif dégressif pour la régularité</li>
-          <li>Programme qui évolue dans le temps</li>
-          <li>Créneaux réservés pour vos équipes</li>
+          <li>Vous choisissez la fréquence (hebdo ou mensuelle)</li>
+          <li>Tarif remisé pour la régularité</li>
+          <li>Créneau réservé pour vos équipes</li>
           <li>Facturation mensuelle simple</li>
         </ul>
       </div>
       <div class="ent-tarif">
         <h3>Pack 10 séances</h3>
-        <div class="sub">Le meilleur tarif à la séance, réglé d'avance.</div>
-        <div class="price">1 200 €<small> HT</small></div>
-        <div class="perpers">120 € / séance · ≈ 15 € / personne</div>
+        <div class="sub">10 séances réglées d'avance, à utiliser au rythme que vous voulez.</div>
+        <div class="price">1 200 €<small> HT · 10 séances</small></div>
+        <div class="perpers">120 €/séance · dès 15 €/pers</div>
         <ul>
           <li>10 séances collectives</li>
-          <li>Le tarif le plus avantageux</li>
-          <li>Validité à convenir ensemble</li>
+          <li>Le meilleur tarif à la séance</li>
+          <li>Validité convenue ensemble</li>
           <li>Idéal pour un programme trimestriel</li>
         </ul>
       </div>
     </div>
-    <p class="ent-tarifs-note">Chaque intervention est adaptée à votre réalité : nombre de participants, lieu, fréquence, objectifs. <strong>Le devis fait foi.</strong> Au-delà de 8 personnes, on organise plusieurs groupes — parlons-en.</p>
+    <p class="ent-tarifs-note">Combien de séances prévoir&nbsp;? Pour de vrais résultats, je recommande un <strong>rythme régulier sur au moins 1 trimestre</strong>. Mais tout est adaptable à votre budget et à vos objectifs — <strong>le devis fait foi</strong>.</p>
+  </div>
+</section>
+
+<!-- FINANCEMENT -->
+<section class="ent-sec ent-fin">
+  <div class="ent-in">
+    <div class="ent-kicker">Financement &amp; avantages</div>
+    <h2 class="ent-h2">Ça coûte moins cher que vous ne le pensez</h2>
+    <p class="ent-lead">Le sport en entreprise bénéficie d'un cadre fiscal et social avantageux. Bien montée, l'opération peut revenir bien moins cher que son prix affiché.</p>
+    <div class="ent-fin-grid">
+      <div class="ent-fin-card">
+        <span class="ic">🧾</span>
+        <h3>Exonération de charges sociales</h3>
+        <p>Le financement par l'employeur de <strong>cours collectifs</strong> de sport est exonéré de cotisations sociales, jusqu'à environ <strong>200&nbsp;€/salarié/an</strong> (5&nbsp;% du plafond mensuel de la Sécurité sociale, 2026). Réservé au collectif — les abonnements individuels n'y ont pas droit. C'est exactement mon format.</p>
+      </div>
+      <div class="ent-fin-card">
+        <span class="ic">👛</span>
+        <h3>Budget CSE</h3>
+        <p>Votre Comité Social et Économique peut financer tout ou partie des séances via son <strong>budget activités sociales et culturelles</strong>. Un excellent moyen d'offrir le sport sans peser sur le budget de fonctionnement.</p>
+      </div>
+      <div class="ent-fin-card">
+        <span class="ic">📉</span>
+        <h3>Charge déductible</h3>
+        <p>Ma prestation est facturée à l'entreprise : c'est une <strong>charge professionnelle déductible</strong> de votre résultat, comme toute prestation de service, avec facture en bonne et due forme.</p>
+      </div>
+    </div>
+    <p class="ent-fin-note">Conditions selon la réglementation URSSAF en vigueur et la situation de votre entreprise. Je vous fournis une facture conforme ; pour l'application exacte, rapprochez-vous de votre service RH, de votre CSE ou de votre expert-comptable.</p>
   </div>
 </section>
 
@@ -275,7 +336,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <details><summary>Où se déroulent les séances ?</summary><div class="fa">Sur votre site : une salle de réunion, un espace disponible dans vos locaux, un parking abrité ou un espace vert à proximité. On définit ensemble le lieu le plus adapté selon la météo et vos possibilités. Je me déplace en Essonne (91) et en Île-de-France.</div></details>
       <details><summary>Combien de personnes par séance ?</summary><div class="fa">Jusqu'à 8 personnes par séance, volontairement, pour garantir un encadrement de qualité, la sécurité et une vraie attention à chacun. Au-delà, on met en place plusieurs groupes ou plusieurs créneaux.</div></details>
       <details><summary>Faut-il du matériel ou une tenue particulière ?</summary><div class="fa">J'apporte le matériel nécessaire. Les participants ont juste besoin d'une tenue de sport et de baskets. Les séances sont conçues pour ne demander ni douche obligatoire ni équipement lourd.</div></details>
-      <details><summary>Comment se passe la facturation ?</summary><div class="fa">La prestation est facturée à l'entreprise, en HT, sur devis accepté. Paiement par virement, selon les conditions précisées au devis et dans les conditions de prestation entreprise.</div></details>
+      <details><summary>Combien de séances faut-il prévoir, et à quelle fréquence ?</summary><div class="fa">Vous êtes libre : une séance ponctuelle (événement, séminaire, semaine QVCT), un rendez-vous hebdomadaire ou mensuel, ou un pack de 10 séances. Pour de vrais bénéfices sur la forme et la cohésion, je recommande un rythme régulier sur au moins un trimestre. On cale la fréquence ensemble selon votre budget et vos objectifs.</div></details>
+      <details><summary>Comment se passe la facturation ?</summary><div class="fa">La prestation est facturée à l'entreprise, en HT, sur devis accepté. Paiement par virement, selon les conditions précisées au devis et dans les conditions de prestation entreprise. La facture conforme vous permet d'activer les avantages (exonération, budget CSE, déduction).</div></details>
+      <details><summary>Comment bénéficier de l'exonération de charges ou du financement CSE ?</summary><div class="fa">C'est simple : je fournis une facture conforme au nom de l'entreprise pour des cours collectifs. Côté entreprise, la dépense entre dans le cadre de l'exonération URSSAF des activités physiques et sportives (cours collectifs accessibles à tous les salariés), et/ou peut être prise en charge par le budget du CSE. L'application exacte se fait avec votre service RH, votre CSE ou votre expert-comptable — je vous donne tout ce qu'il faut de mon côté.</div></details>
       <details><summary>Est-ce adapté à tous les niveaux ?</summary><div class="fa">Oui. Chaque exercice est proposé avec des variantes plus douces ou plus intenses, pour que débutants et sportifs confirmés progressent côte à côte, sans pression ni comparaison.</div></details>
       <details><summary>Êtes-vous assurée ?</summary><div class="fa">Oui, j'exerce en tant que professionnelle diplômée d'État et dispose d'une assurance responsabilité civile professionnelle. L'aptitude physique des participants reste de la responsabilité de l'employeur (voir les conditions de prestation entreprise).</div></details>
     </div>
