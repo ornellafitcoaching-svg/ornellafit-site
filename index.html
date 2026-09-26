@@ -1960,9 +1960,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="orient-badge">Résultats réels</div>
       <div class="orient-icon">🎯</div>
       <h3>Je veux être accompagnée</h3>
-      <p>Programme sur-mesure + suivi WhatsApp + ajustements. Je suis là à chaque étape.</p>
+      <p>Programme sur-mesure + suivi WhatsApp + ajustements. Pas sûre de la formule&nbsp;? Je t'oriente en 2 minutes.</p>
       <div class="orient-points">✓ Sur-mesure complet<br>✓ Suivi hebdomadaire<br>✓ Dès 89€/mois · parcours 6 mois</div>
-      <a href="offres.html" class="orient-cta orient-cta-right">Voir le coaching →</a>
+      <a href="quiz.html" class="orient-cta orient-cta-right">Quel coaching te correspond&nbsp;? · test 2 min →</a>
+      <a href="offres.html" class="orient-cta orient-cta-right" style="background:none;color:rgba(255,255,255,.62);box-shadow:none;font-size:.8rem;padding-top:6px;margin-top:2px">ou voir toutes les formules →</a>
     </div>
   </div>
 </div>
@@ -2385,15 +2386,9 @@ function maybeShowCoachingPopup() {
     setTimeout(maybeShowCoachingPopup, 3000);
   }
 }
-/* Widget « Quel coaching pour toi ? » CONSERVÉ (entrée vers le quiz + capture Brevo, jugé primordial) */
-setTimeout(maybeShowCoachingPopup, 18000);
-window.addEventListener('scroll', function onCoachingScroll() {
-  if (sessionStorage.getItem('coachingPopupSeen')) { window.removeEventListener('scroll', onCoachingScroll); return; }
-  if ((window.scrollY / document.body.scrollHeight) > 0.40) {
-    showCoachingPopup();
-    window.removeEventListener('scroll', onCoachingScroll);
-  }
-}, { passive: true });
+/* Bulle flottante « Quel coaching pour toi ? » NEUTRALISÉE (optim-home) :
+   le quiz est désormais mis en avant en section délibérée (#orientation, carte « Je veux être accompagnée »),
+   plus une pop-up qui saute au visage. Déclencheurs désactivés — fonctions conservées, jamais appelées. */
 
 function guideEmailHtml(prenom) {
   return '<html><body style="margin:0;padding:0;background-color:#FDF8F4;font-family:Arial,Helvetica,sans-serif;">' +
@@ -2594,27 +2589,10 @@ function showObjReply(btn, type) {
   };
 
   function scShow(trigger, pendingUrl) {
-    if (localStorage.getItem('ornella_lead_email')) {
-      if (pendingUrl) window.location.href = pendingUrl;
-      return;
-    }
-    if (sessionStorage.getItem('sc_' + trigger + '_seen')) {
-      if (pendingUrl) window.location.href = pendingUrl;
-      return;
-    }
-    _trigger = trigger;
-    _pendingUrl = pendingUrl || null;
-    var c = _content[trigger];
-    document.getElementById('sc-title').textContent = c.title;
-    document.getElementById('sc-sub').textContent = c.sub;
-    document.getElementById('sc-form-wrap').style.display = '';
-    document.getElementById('sc-success').style.display = 'none';
-    document.getElementById('sc-email').value = '';
-    document.getElementById('sc-prenom').value = '';
-    var btn = document.getElementById('sc-submit');
-    btn.disabled = false; btn.textContent = trigger === 'exit' ? 'Je reçois le guide gratuit →' : trigger === 'guide' ? 'Je télécharge le guide →' : 'Je veux voir les résultats →';
-    document.getElementById('sc-overlay').classList.add('active');
-    setTimeout(function() { document.getElementById('sc-email').focus(); }, 120);
+    /* Smart-capture NEUTRALISÉE (optim-home) : une seule pop-up conservée = le guide (#lead-popup).
+       Les clics sur les liens guide/transformations naviguent normalement ; l'exit-intent ne montre plus de modale. */
+    if (pendingUrl) window.location.href = pendingUrl;
+    return;
   }
 
   window.scClose = function(proceed) {
