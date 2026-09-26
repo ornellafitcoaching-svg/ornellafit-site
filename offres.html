@@ -1690,7 +1690,8 @@ var RF_PRICING={
     {n:'Distanciel avec suivi',s:'Programme évolutif + WhatsApp + bilan toutes les 4 semaines',p3:99,p6:89,pF:119,
      link3:'https://pay.gocardless.com/BRT01KZ0NRVPKDS2BQZBDCA9CZ4NP',
      link6:'https://pay.gocardless.com/BRT01KZ1XQ9FT5AGEXD5ZDR4KSXEZ',
-     linkF:'https://buy.stripe.com/9B67sL7fXgcr03P5XT8Vi04'}
+     linkF:'https://buy.stripe.com/9B67sL7fXgcr03P5XT8Vi04',
+     link3b:'https://pay.gocardless.com/BRT01KY7236RDE753T291DMSRSH7E'}
   ]}
 };
 var RF_STATE={dom:{d:'3',boost:false},hyb:{d:'3',boost:false},dist:{d:'3',boost:false}};
@@ -1709,10 +1710,14 @@ function rfRows(tab){
     if(boost){html+='<span class="rf-prow-boost">dont Boost Nutrition +40€'+(d==='6'?' · 1ᵉʳ mois offert':'')+'</span>';}
     if(tab==='dist'){
       if(boost){
-        var durTxt=d==='6'?'parcours 6 mois':d==='3'?'parcours 3 mois':'sans engagement';
-        var wa='https://wa.me/33756834626?text='+encodeURIComponent("Bonjour Ornella ! Je veux le coaching à distance avec suivi ("+durTxt+", "+base+"€/mois) + le Boost Nutrition (+40€), soit "+total+"€/mois. On met ça en place ?");
-        html+='<a class="rf-tier-cta" style="margin-top:8px" href="'+wa+'" target="_blank">Je finalise sur WhatsApp</a>';
-        html+='<span class="rf-prow-boost" style="max-width:160px;white-space:normal;text-align:right">Boost Nutrition inclus&nbsp;: on cale le prélèvement ensemble</span>';
+        if(d==='3'&&r.link3b){
+          html+='<a class="rf-tier-cta" style="margin-top:8px" href="'+r.link3b+'" target="_blank" onclick="if(typeof fbq!==\'undefined\')fbq(\'track\',\'InitiateCheckout\',{value:'+total+',currency:\'EUR\'})">Je commence</a>';
+        } else {
+          var durTxt=d==='6'?'parcours 6 mois':'sans engagement';
+          var wa='https://wa.me/33756834626?text='+encodeURIComponent("Bonjour Ornella ! Je veux le coaching à distance avec suivi ("+durTxt+", "+base+"€/mois) + le Boost Nutrition (+40€), soit "+total+"€/mois. On met ça en place ?");
+          html+='<a class="rf-tier-cta" style="margin-top:8px" href="'+wa+'" target="_blank">Je finalise sur WhatsApp</a>';
+          html+='<span class="rf-prow-boost" style="max-width:160px;white-space:normal;text-align:right">Boost Nutrition inclus&nbsp;: on cale le prélèvement ensemble sur WhatsApp</span>';
+        }
       } else {
         var link=d==='3'?r.link3:d==='6'?r.link6:r.linkF;
         var lbl=d==='6'?"Je m'engage":d==='3'?'Je commence':'Je démarre';
