@@ -803,7 +803,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul>
           <li>Je viens chez toi avec tout le matériel — aucun trajet, aucune salle, tu t'entraînes dans ton cocon</li>
           <li>Toute mon attention rien que pour toi : programme, rythme et exercices construits sur tes objectifs, ton niveau et tes contraintes</li>
-          <li>Ta technique corrigée et ajustée en direct — <strong>le maximum de séances en présentiel avec moi</strong> + des consignes à suivre les jours sans moi. <em>Envie d'un vrai programme complet entre nos séances&nbsp;? Ajoute le Boost Programme.</em></li>
+          <li>Ta technique corrigée et ajustée en direct — <strong>le maximum de séances en présentiel avec moi</strong> + des consignes à suivre les jours sans moi</li>
           <li>Ton <strong>espace de suivi privé</strong> inclus (programme, bilans, mensurations)</li>
         </ul>
         <a href="#tarif-domicile" class="rf-btn rf-btn-ghost" onclick="rfOpen('tarif-domicile')">Voir les tarifs →</a>
@@ -1206,7 +1206,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="rf-push6" id="push6-dom">✨ Passe au parcours 6 mois&nbsp;: 20€ de moins par mois <b>et</b> 89€ de cadeaux.</div>
 
             <div class="rf-boost">
-              <label><input type="checkbox" id="prog-dom" onchange="rfProg('dom')"><span><b>Ajouter le Boost Programme</b> — <b style="color:var(--rf-terra)" id="prog-price-dom">+39€/mois (+29€ en parcours 6 mois)</b>.<br><span style="font-size:.78rem;color:var(--rf-mute)">Ton vrai programme complet en vidéo, jusqu'à 4 séances/semaine entre nos rendez-vous, construit sur ce qu'on travaille ensemble et mis à jour toutes les 4 semaines dans ton espace Mon Suivi. Tu passes de 1 à 4-5 entraînements par semaine.</span></span></label>
+              <label><input type="checkbox" id="prog-dom" onchange="rfProg('dom')"><span><b>Ajouter le Boost Programme</b> — <b style="color:var(--rf-terra)" id="prog-price-dom">+39€/mois, soit 1,40€ par jour</b> <span id="prog-6m-dom">(29€ en parcours 6 mois)</span>.<br><span style="font-size:.78rem;color:var(--rf-mute)">Ton programme complet en vidéo entre nos séances : 4 à 5 entraînements par semaine au lieu d'un.</span></span></label>
+              <p id="prog-more-dom" hidden style="font-size:.78rem;color:var(--rf-mute);line-height:1.5;margin:10px 0 0 28px;">Jusqu'à 4 séances guidées par semaine, construites sur ce qu'on travaille ensemble et mises à jour toutes les 4 semaines dans ton espace Mon Suivi. <span id="prog-seance-dom">Moins de 3€ la séance.</span></p>
             </div>
 
             <div class="rf-boost">
@@ -1700,6 +1701,7 @@ var RF_PRICING={
   ]}
 };
 var RF_PROG={'3':39,'6':29,'F':49};
+var RF_PROG_JOUR={'3':'1,40€','6':'1,05€','F':'1,75€'};
 var RF_STATE={dom:{d:'3',boost:false,prog:false},hyb:{d:'3',boost:false},dist:{d:'3',boost:false}};
 function rfRows(tab){
   var cfg=RF_PRICING[tab],st=RF_STATE[tab],d=st.d,boost=st.boost,html='';
@@ -1740,7 +1742,10 @@ function rfRender(tab){
   var seg=document.querySelector('.rf-dur[data-sel="'+tab+'"]');
   if(seg){seg.querySelectorAll('button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-d')===st.d);});}
   var pp=document.getElementById('prog-price-'+tab);
-  if(pp){pp.textContent=st.d==='6'?'+29€/mois (tarif parcours 6 mois)':'+'+RF_PROG[st.d]+'€/mois (+29€ en parcours 6 mois)';}
+  if(pp){pp.textContent='+'+RF_PROG[st.d]+'€/mois, soit '+RF_PROG_JOUR[st.d]+' par jour';}
+  var p6=document.getElementById('prog-6m-'+tab);if(p6){p6.textContent=st.d==='6'?'(tarif parcours 6 mois)':'(29€ en parcours 6 mois)';}
+  var pm=document.getElementById('prog-more-'+tab);if(pm){pm.hidden=!st.prog;}
+  var ps=document.getElementById('prog-seance-'+tab);if(ps){ps.textContent=st.d==='F'?'Environ 3€ la séance.':'Moins de 3€ la séance.';}
   var wa=document.getElementById('wa-'+tab);
   if(wa){
     var msg='Bonjour Ornella ! Je veux démarrer un abonnement coaching à domicile.';
