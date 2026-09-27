@@ -324,7 +324,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="obj-wrap">
   <div class="obj-inner">
     <h2 class="obj-title">Ton objectif ?</h2>
-    <a class="obj-quizlink" href="quiz.html">Pas sûre ? Fais le quiz (1 min) →</a>
+    <a class="obj-quizlink" href="#trouver-programme">Pas sûre ? Réponds à 1 question →</a>
     <div class="obj-grid">
       <a class="obj-tile" href="#ventre-plat"><span class="ico">🌿</span><span class="lbl">Ventre plat</span></a>
       <a class="obj-tile" href="#booty-sculpt"><span class="ico">🍑</span><span class="lbl">Fessiers</span></a>
@@ -364,13 +364,55 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <!-- QUIZ ORIENTATION -->
-<div class="miniquiz-wrap">
+<div class="miniquiz-wrap" id="trouver-programme" style="scroll-margin-top:90px">
   <div class="miniquiz-card">
-    <p class="miniquiz-eyebrow">🧭 Pas sûre par où commencer ?</p>
-    <p class="miniquiz-question">5 questions pour trouver le programme fait pour toi.</p>
-    <a class="miniquiz-result-cta" href="https://www.ornellafitcoaching.com/quiz.html">Faire le quiz →</a>
+    <!-- ÉTAPE QUESTION -->
+    <div id="pf-question">
+      <p class="miniquiz-eyebrow">🧭 Trouve TON programme en 1 question</p>
+      <p class="miniquiz-question">C'est quoi ton objectif n°1 en ce moment ?</p>
+      <div class="miniquiz-options">
+        <button type="button" class="miniquiz-opt" data-pf="ventre">🌿 Un ventre plat, moins de ballonnements</button>
+        <button type="button" class="miniquiz-opt" data-pf="fessiers">🍑 Des fessiers plus galbés</button>
+        <button type="button" class="miniquiz-opt" data-pf="postpartum">🤱 Retrouver mon corps après bébé</button>
+        <button type="button" class="miniquiz-opt" data-pf="ageless">🌸 Me raffermir / anti-âge (30-50 ans)</button>
+        <button type="button" class="miniquiz-opt" data-pf="salle">🏋️ Progresser en salle de sport</button>
+        <button type="button" class="miniquiz-opt" data-pf="methode">🧠 Réussir à m'y tenir, cette fois</button>
+      </div>
+      <p style="text-align:center;font-size:.78rem;color:var(--brown);margin-top:18px">Tu cherches plutôt un accompagnement avec suivi ? <a href="quiz.html" style="color:var(--accent);font-weight:700;text-decoration:none">Le quiz coaching →</a></p>
+    </div>
+    <!-- ÉTAPE RÉSULTAT -->
+    <div id="pf-result" style="display:none">
+      <p class="miniquiz-eyebrow">✨ Ton programme</p>
+      <p class="miniquiz-result-title" id="pf-title"></p>
+      <p class="miniquiz-result-sub" id="pf-sub"></p>
+      <a class="miniquiz-result-cta" id="pf-cta" href="#">Voir ce programme →</a>
+      <button type="button" class="miniquiz-restart" id="pf-restart">↺ Recommencer</button>
+    </div>
   </div>
 </div>
+<script>
+(function(){
+  var PF={
+    ventre:{title:"Ventre Plat — 14 Jours",sub:"Le plan structuré jour par jour pour un ventre plus plat et moins de ballonnements, 15 min/jour sans matériel.",href:"ventre-plat.html",cta:"🌿 Voir Ventre Plat — 12€ →"},
+    fessiers:{title:"Booty Sculpt — 8 semaines",sub:"8 semaines de séances vidéo guidées pour galber et raffermir tes fessiers, à la maison.",href:"booty-sculpt.html",cta:"🍑 Voir Booty Sculpt — 19€ →"},
+    postpartum:{title:"Ventre Plat Après Bébé — 8 semaines",sub:"Reconnecter ton ventre, refermer la diastase et reprendre le sport en douceur, même en allaitant.",href:"programme-postpartum.html",cta:"🤱 Voir le programme post-partum — 17€ →"},
+    ageless:{title:"Ageless Girl — Corps Ferme 30-50 ans",sub:"La méthode complète pour te raffermir et ralentir le vieillissement : muscu, nutrition, hormones, sommeil.",href:"ageless-girl-sales.html",cta:"🌸 Voir Ageless Girl — 17€ →"},
+    salle:{title:"Iron Girl — Programme Salle 8 semaines",sub:"3 phases progressives, 74 exercices détaillés et un tracker de charges — pour progresser vraiment en salle.",href:"iron-girl-sales.html",cta:"🏋️ Voir Iron Girl — 49€ →"},
+    methode:{title:"Fit Dans Ta Vie — La méthode",sub:"Le programme phare : une méthode complète (sport + nutrition + organisation) pensée pour tenir dans ta vraie vie.",href:"fit-dans-ta-vie.html",cta:"🌟 Voir Fit Dans Ta Vie — 49€ →"}
+  };
+  var q=document.getElementById('pf-question'),res=document.getElementById('pf-result');
+  if(!q||!res)return;
+  function pick(k){var d=PF[k];if(!d)return;
+    document.getElementById('pf-title').textContent=d.title;
+    document.getElementById('pf-sub').textContent=d.sub;
+    var cta=document.getElementById('pf-cta');cta.setAttribute('href',d.href);cta.textContent=d.cta;
+    q.style.display='none';res.style.display='block';
+    if(typeof fbq!=='undefined')fbq('trackCustom','ProgramFinder',{choice:k,program:d.title});
+  }
+  q.querySelectorAll('.miniquiz-opt').forEach(function(b){b.addEventListener('click',function(){pick(b.getAttribute('data-pf'));});});
+  document.getElementById('pf-restart').addEventListener('click',function(){res.style.display='none';q.style.display='block';});
+})();
+</script>
 
 <!-- SECTION 1 — CLÉ EN MAIN -->
 <section class="prog-section alt" id="cle-en-main" style="scroll-margin-top:130px">
@@ -854,7 +896,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- STICKY MOBILE : trouver mon programme -->
 <div class="prog-sticky" id="progSticky">
-  <a href="quiz.html">🎯 Trouver mon programme</a>
+  <a href="#trouver-programme">🎯 Trouver mon programme</a>
 </div>
 
 <a href="https://wa.me/33756834626" class="floating-wa" target="_blank" title="WhatsApp">💬</a>
