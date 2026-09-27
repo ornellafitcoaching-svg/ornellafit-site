@@ -803,7 +803,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul>
           <li>Je viens chez toi avec tout le matériel — aucun trajet, aucune salle, tu t'entraînes dans ton cocon</li>
           <li>Toute mon attention rien que pour toi : programme, rythme et exercices construits sur tes objectifs, ton niveau et tes contraintes</li>
-          <li>Ta technique corrigée et ajustée en direct — <strong>le maximum de séances en présentiel avec moi</strong> + des consignes à suivre les jours sans moi</li>
+          <li>Ta technique corrigée et ajustée en direct — <strong>le maximum de séances en présentiel avec moi</strong> + des consignes à suivre les jours sans moi. <em>Envie d'un vrai programme complet entre nos séances&nbsp;? Ajoute le Boost Programme.</em></li>
           <li>Ton <strong>espace de suivi privé</strong> inclus (programme, bilans, mensurations)</li>
         </ul>
         <a href="#tarif-domicile" class="rf-btn rf-btn-ghost" onclick="rfOpen('tarif-domicile')">Voir les tarifs →</a>
@@ -1194,6 +1194,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             .rf-boost input{margin-top:3px;width:18px;height:18px;accent-color:var(--rf-terra);flex-shrink:0;}
             .rf-cadeaux{background:rgba(45,106,79,.07);border:1px solid rgba(45,106,79,.22);border-radius:14px;padding:14px 16px;margin:12px 0 0;display:none;}
             .rf-cadeaux.show{display:block;}
+            @media(max-width:480px){.rf-prow{flex-direction:column;gap:6px;}.rf-prow-l{min-width:0;}.rf-prow-r{align-items:flex-start;text-align:left;}}
             </style>
             <div style="font-size:.78rem;color:var(--rf-terra);font-weight:700;margin-bottom:2px;">Choisis ton parcours</div>
             <div class="rf-dur" data-sel="dom">
@@ -1203,6 +1204,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div id="rows-dom"></div>
             <div class="rf-push6" id="push6-dom">✨ Passe au parcours 6 mois&nbsp;: 20€ de moins par mois <b>et</b> 89€ de cadeaux.</div>
+
+            <div class="rf-boost">
+              <label><input type="checkbox" id="prog-dom" onchange="rfProg('dom')"><span><b>Ajouter le Boost Programme</b> — <b style="color:var(--rf-terra)" id="prog-price-dom">+39€/mois (+29€ en parcours 6 mois)</b>.<br><span style="font-size:.78rem;color:var(--rf-mute)">Ton vrai programme complet en vidéo, jusqu'à 4 séances/semaine entre nos rendez-vous, construit sur ce qu'on travaille ensemble et mis à jour toutes les 4 semaines dans ton espace Mon Suivi. Tu passes de 1 à 4-5 entraînements par semaine.</span></span></label>
+            </div>
 
             <div class="rf-boost">
               <label><input type="checkbox" id="boost-dom" onchange="rfBoost('dom')"><span><b>Ajouter le Boost Nutrition</b> — <b style="color:var(--rf-terra)">+40€/mois, soit 1,30€ par jour</b>.<br><span style="font-size:.78rem;color:var(--rf-mute)">Plans repas + liste de courses · rééquilibrage sans régime ni pesée · ajusté chaque mois avec tes mensurations. <em>Conseils pratiques, je ne suis pas diététicienne.</em></span></span></label>
@@ -1262,7 +1267,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </details>
 
-          <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20d%C3%A9marrer%20un%20abonnement%20coaching%20%C3%A0%20domicile.%20On%20en%20parle%20%3F" target="_blank" class="rf-btn rf-btn-dark rf-btn-block rf-acc-cta">💬 Choisir cette formule (on en parle sur WhatsApp) →</a>
+          <a id="wa-dom" href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20d%C3%A9marrer%20un%20abonnement%20coaching%20%C3%A0%20domicile.%20On%20en%20parle%20%3F" target="_blank" class="rf-btn rf-btn-dark rf-btn-block rf-acc-cta">💬 Choisir cette formule (on en parle sur WhatsApp) →</a>
         </div>
       </div>
     </div>
@@ -1675,7 +1680,7 @@ function rfLightbox(src){var lb=document.getElementById('rfLb');document.getElem
 function rfLbClose(){document.getElementById('rfLb').classList.remove('open');}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')rfLbClose();});
 
-/* ===== Sélecteur de durée + Boost Nutrition ===== */
+/* ===== Sélecteur de durée + Boost Nutrition + Boost Programme (domicile) ===== */
 var RF_PRICING={
   dom:{unit:'/mois',rows:[
     {n:'1 séance / semaine',s:'4 séances / mois · créneau fixe',p3:260,p6:240,pF:280},
@@ -1694,19 +1699,22 @@ var RF_PRICING={
      link3b:'https://pay.gocardless.com/BRT01KY7236RDE753T291DMSRSH7E'}
   ]}
 };
-var RF_STATE={dom:{d:'3',boost:false},hyb:{d:'3',boost:false},dist:{d:'3',boost:false}};
+var RF_PROG={'3':39,'6':29,'F':49};
+var RF_STATE={dom:{d:'3',boost:false,prog:false},hyb:{d:'3',boost:false},dist:{d:'3',boost:false}};
 function rfRows(tab){
   var cfg=RF_PRICING[tab],st=RF_STATE[tab],d=st.d,boost=st.boost,html='';
   cfg.rows.forEach(function(r){
     var base=d==='3'?r.p3:d==='6'?r.p6:r.pF;
-    var total=base+(boost?40:0);
-    var oldv=(boost?r.pF+40:r.pF);
-    var eco=d==='3'?(r.pF-r.p3)*3:d==='6'?(r.pF-r.p6)*6:0;
+    var prog=st.prog?RF_PROG[d]:0;
+    var total=base+(boost?40:0)+prog;
+    var oldv=(boost?r.pF+40:r.pF)+(st.prog?RF_PROG.F:0);
+    var eco=d==='3'?(r.pF-r.p3+(st.prog?RF_PROG.F-prog:0))*3:d==='6'?(r.pF-r.p6+(st.prog?RF_PROG.F-prog:0))*6:0;
     html+='<div class="rf-prow"><div class="rf-prow-l"><div class="rf-prow-name">'+r.n+'</div><div class="rf-prow-sub">'+r.s+'</div></div><div class="rf-prow-r">';
     html+='<div>';
     if(d!=='F'){html+='<span class="rf-prow-old">'+oldv+'€</span>';}
     html+='<span class="rf-prow-price">'+total+'€<span>'+cfg.unit+'</span></span></div>';
     if(d!=='F'&&eco>0){html+='<span class="rf-prow-eco">Tu économises '+eco+'€'+(d==='6'?' + 89€ de cadeaux':'')+'</span>';}
+    if(st.prog){html+='<span class="rf-prow-boost">dont Boost Programme +'+prog+'€</span>';}
     if(boost){html+='<span class="rf-prow-boost">dont Boost Nutrition +40€'+(d==='6'?' · 1ᵉʳ mois offert':'')+'</span>';}
     if(tab==='dist'){
       if(boost){
@@ -1731,8 +1739,20 @@ function rfRender(tab){
   var push=document.getElementById('push6-'+tab);if(push)push.style.display=(st.d==='3'?'block':'none');
   var seg=document.querySelector('.rf-dur[data-sel="'+tab+'"]');
   if(seg){seg.querySelectorAll('button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-d')===st.d);});}
+  var pp=document.getElementById('prog-price-'+tab);
+  if(pp){pp.textContent=st.d==='6'?'+29€/mois (tarif parcours 6 mois)':'+'+RF_PROG[st.d]+'€/mois (+29€ en parcours 6 mois)';}
+  var wa=document.getElementById('wa-'+tab);
+  if(wa){
+    var msg='Bonjour Ornella ! Je veux démarrer un abonnement coaching à domicile.';
+    if(st.prog||st.boost){
+      var durTxt=st.d==='6'?'parcours 6 mois':st.d==='3'?'parcours 3 mois':'sans engagement';
+      msg='Bonjour Ornella ! Je veux démarrer un abonnement coaching à domicile ('+durTxt+')'+(st.prog?' + le Boost Programme (+'+RF_PROG[st.d]+'€/mois)':'')+(st.boost?' + le Boost Nutrition (+40€/mois)':'')+'.';
+    }
+    wa.href='https://wa.me/33756834626?text='+encodeURIComponent(msg+' On en parle ?');
+  }
 }
 function rfDur(tab,d){RF_STATE[tab].d=d;rfRender(tab);}
+function rfProg(tab){var c=document.getElementById('prog-'+tab);RF_STATE[tab].prog=c&&c.checked;rfRender(tab);}
 function rfBoost(tab){var c=document.getElementById('boost-'+tab);RF_STATE[tab].boost=c&&c.checked;rfRender(tab);}
 document.addEventListener('DOMContentLoaded',function(){['dom','hyb','dist'].forEach(rfRender);});
 </script>
