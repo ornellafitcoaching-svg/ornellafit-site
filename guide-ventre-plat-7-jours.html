@@ -130,17 +130,38 @@ p{font-size:14.5px;margin-bottom:12px;}
 .offer p{color:#e7dcc9;font-size:13.5px;margin-bottom:12px;}
 .offer .price{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:14px;}
 .offer .price small{font-size:12px;color:#b7ad9c;font-weight:400;}
-.dphoto{display:block;width:100%;height:190px;object-fit:cover;object-position:center 25%;border-radius:0;}
+.dphoto{display:block;width:100%;aspect-ratio:4/5;height:auto;object-fit:cover;object-position:center 50%;border-radius:0;}
 .dprog{display:flex;align-items:center;gap:4px;margin-top:6px;font-size:11px;font-weight:700;color:#8a8478;}
 .dprog i{display:inline-block;width:14px;height:5px;border-radius:3px;background:#e6ddcd;}
 .dprog i.on{background:var(--corail);}
-.sphoto{display:block;width:100%;max-height:260px;object-fit:cover;border-radius:16px;margin:14px 0 4px;box-shadow:0 8px 20px rgba(0,0,0,.12);}
-.promo{display:flex;align-items:center;gap:12px;background:var(--vert);color:#fff;border-radius:14px;padding:12px 14px;text-decoration:none;margin-top:14px;font-size:13.5px;line-height:1.4;}
-.promo .pi{flex:none;font-size:20px;}
-.promo .pt{flex:1;color:#e7dcc9;}
-.promo .pt b{color:#fff;}
-.promo .pb{flex:none;background:var(--corail);color:#fff;font-weight:700;font-size:12.5px;padding:8px 12px;border-radius:20px;white-space:nowrap;}
-@media(max-width:480px){.promo{flex-wrap:wrap}.promo .pt{flex:1 1 calc(100% - 40px)}.promo .pb{margin-left:32px}}
+.sphoto{display:block;width:100%;aspect-ratio:1/1;height:auto;object-fit:cover;border-radius:16px;margin:14px 0 4px;box-shadow:0 8px 20px rgba(0,0,0,.12);}
+.promo{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:start;background:#fff;border:2px solid var(--corail);border-radius:18px;padding:16px;text-decoration:none;margin-top:16px;font-size:14px;line-height:1.45;box-shadow:0 10px 24px rgba(232,99,74,.16);}
+.promo .pi{font-size:26px;line-height:1;}
+.promo .pt{color:#5a5a52;}
+.promo .pt b{color:var(--vert);font-family:'Playfair Display',serif;font-size:16.5px;display:block;margin-bottom:3px;line-height:1.25;}
+.promo .pb{grid-column:1/-1;display:block;text-align:center;background:var(--corail);color:#fff;font-weight:700;font-size:15px;padding:13px 14px;border-radius:30px;margin-top:10px;box-shadow:0 6px 16px rgba(232,99,74,.35);}
+.promo.wa{border-color:#25D366;box-shadow:0 10px 24px rgba(37,211,102,.16);}
+.promo.wa .pb{background:#25D366;box-shadow:0 6px 16px rgba(37,211,102,.35);}
+.promo .sub{grid-column:1/-1;text-align:center;font-size:11.5px;color:#8a8478;margin-top:4px;}
+/* Carte Guide Recettes 7€ */
+.rcard{display:block;text-decoration:none;background:#fff;border-radius:20px;overflow:hidden;margin-top:20px;box-shadow:0 12px 28px rgba(0,0,0,.12);border:2px solid var(--corail);}
+.rcard .rimg{position:relative;}
+.rcard .rimg img{width:100%;aspect-ratio:16/10;object-fit:cover;}
+.rcard .rtag{position:absolute;top:12px;left:12px;background:var(--corail);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:20px;}
+.rcard .rprice{position:absolute;bottom:12px;right:12px;background:var(--vert);color:#fff;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;padding:6px 14px;border-radius:14px;}
+.rcard .rb{padding:18px 18px 20px;}
+.rcard h3{color:var(--vert);font-size:21px;margin-bottom:6px;}
+.rcard .rlead{font-size:14px;color:#5a5a52;margin-bottom:10px;}
+.rcard ul{list-style:none;margin:0 0 14px;}
+.rcard li{font-size:13.5px;padding:5px 0 5px 26px;position:relative;color:#2a2a26;}
+.rcard li:before{content:"✓";position:absolute;left:0;top:4px;width:18px;height:18px;border-radius:50%;background:var(--corail);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.rcard .rbtn{display:block;text-align:center;background:var(--corail);color:#fff;font-weight:700;font-size:16px;padding:15px;border-radius:30px;box-shadow:0 8px 20px rgba(232,99,74,.4);}
+.rcard .rsub{text-align:center;font-size:11.5px;color:#8a8478;margin-top:8px;}
+.pcard.hot{border:2px solid var(--corail);background:rgba(232,99,74,.12);}
+.pcard .flag{display:inline-block;background:var(--corail);color:#fff;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:10px;margin-left:6px;vertical-align:middle;font-family:'Montserrat',sans-serif;}
+.olist{list-style:none;text-align:left;margin:0 auto 14px;max-width:360px;}
+.olist li{color:#e7dcc9;font-size:13.5px;padding:4px 0 4px 24px;position:relative;}
+.olist li:before{content:"✓";position:absolute;left:0;color:var(--corail-clair);font-weight:700;}
 .cta{display:block;background:var(--corail);color:#fff;text-decoration:none;font-weight:700;font-size:16px;padding:16px;border-radius:30px;box-shadow:0 8px 20px rgba(232,99,74,.4);text-align:center;}
 .subh{font-family:'Playfair Display',serif;color:#fff;font-size:18px;margin:22px 0 10px;text-align:center;}
 .pcard{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:13px 15px;margin-bottom:10px;text-decoration:none;}
@@ -160,6 +181,32 @@ p{font-size:14.5px;margin-bottom:12px;}
 .wa-fab{position:fixed;right:16px;bottom:16px;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.28);z-index:300;text-decoration:none;animation:wapulse 2.4s infinite;}
 .wa-fab svg{width:32px;height:32px;fill:#fff;}
 @keyframes wapulse{0%{box-shadow:0 6px 18px rgba(0,0,0,.28),0 0 0 0 rgba(37,211,102,.5);}70%{box-shadow:0 6px 18px rgba(0,0,0,.28),0 0 0 14px rgba(37,211,102,0);}100%{box-shadow:0 6px 18px rgba(0,0,0,.28),0 0 0 0 rgba(37,211,102,0);}}
+/* MINI-QUIZ objectif -> programme */
+.quiz{scroll-margin-top:60px;background:#fff;border-radius:20px;padding:18px 16px 20px;box-shadow:0 10px 26px rgba(0,0,0,.08);border:2px solid var(--corail);}
+.qstep{display:none;}
+.qstep.on{display:block;animation:qfade .3s ease;}
+@keyframes qfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.qmeta{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700;color:#8a8478;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;}
+.qbar{height:6px;background:#eee2d2;border-radius:4px;overflow:hidden;margin-bottom:14px;}
+.qbar i{display:block;height:100%;background:var(--corail);border-radius:4px;transition:width .3s;}
+.qtitle{font-family:'Playfair Display',serif;color:var(--vert);font-size:20px;line-height:1.25;margin-bottom:12px;}
+.qopt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--creme);border:2px solid transparent;border-radius:14px;padding:13px 14px;margin-bottom:9px;font-family:inherit;font-size:14px;font-weight:600;color:#2a2a26;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color .15s,background .15s;}
+.qopt:hover,.qopt:focus-visible{border-color:var(--corail-clair);outline:none;}
+.qopt.sel{border-color:var(--corail);background:#fff6f3;}
+.qopt .e{font-size:22px;flex:none;}
+.qopt small{display:block;font-weight:400;font-size:12px;color:#8a8478;margin-top:1px;}
+.qback{background:none;border:none;color:#8a8478;font-family:inherit;font-size:12.5px;text-decoration:underline;cursor:pointer;margin-top:4px;}
+.qres .qwin{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--corail);}
+.qres h3{font-family:'Playfair Display',serif;color:var(--vert);font-size:24px;margin:4px 0 8px;}
+.qres .qwhy{font-size:14px;color:#5a5a52;margin-bottom:12px;}
+.qres .qprice{font-family:'Playfair Display',serif;font-size:26px;color:var(--vert);text-align:center;margin:6px 0 10px;}
+.qres .qprice small{font-family:'Montserrat',sans-serif;font-size:12px;color:#8a8478;}
+.qbump{display:flex;align-items:center;gap:12px;background:#fff6f3;border:2px dashed var(--corail);border-radius:14px;padding:12px 14px;margin-top:14px;text-decoration:none;color:#2a2a26;font-size:13px;line-height:1.4;}
+.qbump .e{font-size:24px;flex:none;}
+.qbump b{color:var(--vert);}
+.qbump .p{flex:none;background:var(--corail);color:#fff;font-weight:700;font-size:12.5px;padding:7px 11px;border-radius:20px;white-space:nowrap;}
+.qalt{display:block;text-align:center;font-size:13px;font-weight:600;color:var(--vert);margin-top:12px;}
+.qwa{display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:13px;border-radius:30px;margin-top:12px;}
 footer{background:var(--vert);color:#b7ad9c;text-align:center;font-size:11.5px;padding:18px;}
 footer b{color:#fff;font-family:'Playfair Display',serif;}
 </style>
@@ -197,7 +244,8 @@ fbq('init','1233548507794099');fbq('track','PageView');
   <!-- RACCOURCIS (scroll) -->
   <nav class="quicknav">
     <a href="#jours">🗓️ Les 7 jours</a>
-    <a href="#nutrition" class="hl">🥗 Nutrition</a>
+    <a href="#quiz-sec" class="hl">🎯 Mon programme idéal</a>
+    <a href="#nutrition">🥗 Nutrition</a>
     <a href="#tracker-sec">✅ Mon tracker</a>
     <a href="#securite">🤍 Sécurité</a>
   </nav>
@@ -215,7 +263,7 @@ fbq('init','1233548507794099');fbq('track','PageView');
     <div class="reason"><div class="n">5</div><div><p><b>Le manque de sommeil.</b> Mal dormir dérègle l'appétit et gonfle. On fait avec, sans se juger, en soignant le reste.</p></div></div>
     <div class="reason"><div class="n">6</div><div><p><b>Pas assez d'eau.</b> Paradoxe : moins tu bois, plus ton corps retient l'eau. Boire régulièrement dégonfle.</p></div></div>
     <div class="note"><b>La promesse :</b> 7 jours, 7 routines de 10 minutes. On réveille le transverse, on respire, on bouge en douceur. Pas de crunchs, pas de matériel, pas de régime.</div>
-    <a class="promo" href="ventre-plat.html?src=guide-web-p02"><span class="pi">🚀</span><span class="pt"><b>Déjà motivée ?</b> Après ces 7 jours, le <b>Ventre Plat 14 jours</b> prend le relais.</span><span class="pb">Découvrir · 12 €</span></a>
+    <a class="promo xtrack" data-cn="ventre-plat-14j" href="ventre-plat.html?src=guide-web-p02"><span class="pi">🚀</span><span class="pt"><b>Et si tu allais 2 fois plus loin&nbsp;?</b>Ces 7 jours lancent la machine. Le Ventre Plat 14 jours prend le relais avec des séances guidées et progressives, pour un ventre qui reste plat.</span><span class="pb">Je veux mes 14 jours · 12 €</span></a>
   </section>
 
   <!-- COMMENT -->
@@ -227,7 +275,7 @@ fbq('init','1233548507794099');fbq('track','PageView');
     <div class="card"><h3>🔁 Les « tours »</h3><p>Un circuit se fait en plusieurs tours : tu enchaînes les exercices puis tu recommences. Débutante : commence par 2 tours.</p></div>
     <div class="card"><h3>🌬️ La règle d'or : respirer</h3><p>À chaque effort, <b>expire en rentrant le nombril</b> vers ta colonne. C'est ça qui muscle le transverse et affine la taille.</p></div>
     <div class="card"><h3>🚫 Zéro crunch</h3><p>Pas d'abdos classiques qui font bomber le ventre. On travaille en gainage, respiration et debout : plus sûr.</p></div>
-    <img class="sphoto" src="images/guide/poussette.jpg" alt="Ornella qui pousse la poussette" loading="lazy">
+    <img class="sphoto" style="aspect-ratio:4/5;object-position:center 55%;" src="images/guide/poussette.jpg" alt="Ornella qui pousse la poussette" loading="lazy">
     <div class="note"><b>Le vacuum, ton meilleur ami :</b> vide tes poumons, <b>rentre le ventre au maximum</b> (nombril vers la colonne), tiens 5–10 s en respirant doucement, relâche. L'exercice le plus efficace pour resserrer la taille — et invisible, tu peux le faire en poussant la poussette.</div>
   </section>
 
@@ -247,7 +295,7 @@ fbq('init','1233548507794099');fbq('track','PageView');
       </ul>
     </div>
     <div class="note">Enceinte, opérée récemment ou pathologie particulière ? Demande l'avis de ton médecin avant de commencer. Ce guide ne remplace pas un avis médical.</div>
-    <a class="promo" href="programme-postpartum.html?src=guide-web-p11"><span class="pi">🤍</span><span class="pt"><b>Jeune maman ?</b> Mon programme <b>Post-Partum</b> : 8 semaines tout en douceur, pensé pour ton corps d'après bébé.</span><span class="pb">Post-Partum · 17 €</span></a>
+    <a class="promo xtrack" data-cn="post-partum" href="programme-postpartum.html?src=guide-web-p11"><span class="pi">🤍</span><span class="pt"><b>Ton ventre n'est plus le même depuis bébé&nbsp;?</b>Je suis passée par là. Mon programme Post-Partum : 8 semaines en douceur, zéro crunch, pensé pour ton corps de maman.</span><span class="pb">Je retrouve mon ventre · 17 €</span></a>
   </section>
 
   <!-- ===== 7 JOURS ===== -->
@@ -273,7 +321,6 @@ fbq('init','1233548507794099');fbq('track','PageView');
       <tr><td>Pain blanc & viennoiseries</td><td>Pain complet, flocons d'avoine</td></tr>
       <tr><td>Manger vite, devant un écran</td><td>Poser la fourchette, mâcher</td></tr>
     </table>
-    <img class="sphoto" src="images/guide/mealprep.jpg" alt="Meal prep" loading="lazy">
     <div class="blabel" style="margin-top:18px;"><span class="dot"></span>La méthode de l'assiette</div>
     <div class="plate">
       <div class="plate-circle"></div>
@@ -285,7 +332,26 @@ fbq('init','1233548507794099');fbq('track','PageView');
       </div>
     </div>
     <div class="note"><b>💧 L'eau, l'alliée n°1 :</b> vise ~1,5 L/jour, un grand verre au réveil. Bien hydratée, ton corps arrête de retenir l'eau… et tu dégonfles.</div>
-    <a class="promo" href="offres.html?src=guide-web-p12"><span class="pi">🥗</span><span class="pt"><b>Tu veux un plan fait pour toi</b> (sport + assiette), avec mon suivi ?</span><span class="pb">Le coaching →</span></a>
+    <a class="rcard xtrack" data-cn="guide-recettes" href="guide-recettes-vente.html?src=colis-guide">
+      <div class="rimg">
+        <img src="images/guide/mealprep.jpg" alt="Recettes du Guide Recettes Sculptantes" loading="lazy">
+        <span class="rtag">🥗 Le complément parfait</span>
+        <span class="rprice">7 €</span>
+      </div>
+      <div class="rb">
+        <h3>Ne te demande plus « qu'est-ce que je mange ce soir ? »</h3>
+        <p class="rlead">Tu bouges 10 min par jour, super. Mais si l'assiette ne suit pas, ton ventre regonfle. Mon <b>Guide Recettes Sculptantes</b> te dit quoi cuisiner, jour après jour.</p>
+        <ul>
+          <li><b>21 recettes faciles</b>, ingrédients de supermarché</li>
+          <li>Classées par objectif : <b>drainage, anti-rétention, satiété</b></li>
+          <li><b>Liste de courses prête</b> : tu n'as plus qu'à cocher</li>
+          <li>Accès immédiat, sur ton téléphone</li>
+        </ul>
+        <span class="rbtn">Je veux mes 21 recettes · 7 €</span>
+        <div class="rsub">Le prix d'un café en terrasse · Paiement sécurisé · Accès en 30 s</div>
+      </div>
+    </a>
+    <a class="promo xtrack" data-cn="coaching" href="offres.html?src=guide-web-p12"><span class="pi">✨</span><span class="pt"><b>Tu préfères que je fasse tout pour toi&nbsp;?</b>Programme sport + assiette sur mesure, avec mon suivi personnel chaque semaine.</span><span class="pb">Voir le coaching avec moi →</span></a>
   </section>
 
   <!-- TRACKER interactif -->
@@ -302,6 +368,35 @@ fbq('init','1233548507794099');fbq('track','PageView');
     <div class="tracker-legend">💪 = séance du jour faite &nbsp;·&nbsp; 💧 = ~1,5 L d'eau bue</div>
   </section>
 
+  <!-- MINI-QUIZ : objectif -> bon programme -->
+  <section class="sec" id="quiz-sec" style="scroll-margin-top:52px;">
+    <span class="eyebrow">20 secondes, 2 questions</span>
+    <h2 class="sec-t">Quel programme est <span class="c">fait pour toi ?</span></h2>
+    <div class="divider"></div>
+    <p class="lead">Réponds à 2 questions : je te dis quel programme suivre après ces 7 jours pour atteindre TON objectif.</p>
+    <div class="quiz" id="quiz">
+      <div class="qstep on" data-q="goal">
+        <div class="qmeta"><span>Question 1 / 2</span><span>🎯</span></div><div class="qbar"><i style="width:50%"></i></div>
+        <div class="qtitle">Ton objectif n°1 en ce moment ?</div>
+        <button class="qopt" data-v="ventre"><span class="e">🔥</span><span>Un ventre plus plat<small>Dégonfler, affiner la taille</small></span></button>
+        <button class="qopt" data-v="fessiers"><span class="e">🍑</span><span>Des fessiers galbés<small>Remonter, arrondir, raffermir</small></span></button>
+        <button class="qopt" data-v="both"><span class="e">💥</span><span>Les deux : ventre ET fessiers<small>Une silhouette complète</small></span></button>
+        <button class="qopt" data-v="postpartum"><span class="e">🤍</span><span>Retrouver mon corps après bébé<small>En douceur, sans risque</small></span></button>
+        <button class="qopt" data-v="regul"><span class="e">🔄</span><span>Arrêter de recommencer tous les lundis<small>Enfin tenir sur la durée</small></span></button>
+      </div>
+      <div class="qstep" data-q="block">
+        <div class="qmeta"><span>Question 2 / 2</span><span>🧱</span></div><div class="qbar"><i style="width:100%"></i></div>
+        <div class="qtitle">Qu'est-ce qui te bloque le plus ?</div>
+        <button class="qopt" data-v="temps"><span class="e">⏱️</span><span>Le manque de temps</span></button>
+        <button class="qopt" data-v="food"><span class="e">🍽️</span><span>L'alimentation<small>Je grignote, je ne sais pas quoi cuisiner</small></span></button>
+        <button class="qopt" data-v="motiv"><span class="e">😩</span><span>La motivation<small>Je commence fort… puis j'abandonne</small></span></button>
+        <button class="qopt" data-v="savoir"><span class="e">❓</span><span>Je ne sais pas quoi faire exactement</span></button>
+        <button class="qback" type="button">← Retour</button>
+      </div>
+      <div class="qstep qres" data-q="res" id="qres"></div>
+    </div>
+  </section>
+
   <!-- HISTOIRE -->
   <section class="sec story">
     <span class="eyebrow">Entre nous</span>
@@ -312,22 +407,28 @@ fbq('init','1233548507794099');fbq('track','PageView');
     <div class="chips"><span class="chip">Maman</span><span class="chip">Ancienne athlète fitness</span><span class="chip">Ancienne policière</span><span class="chip">Coach diplômée d'État</span></div>
     <p>Aujourd'hui j'accompagne des femmes comme toi : débutantes, en reprise de sport, jeunes mamans, souvent débordées. Mon métier : rendre le sport <b>simple, bienveillant et faisable</b>.</p>
     <div class="sig">— Ornella 💛</div>
-    <a class="promo" href="transformations.html?src=guide-web-p14"><span class="pi">👀</span><span class="pt"><b>Elles l'ont fait avant toi.</b> Découvre les transformations de mes clientes.</span><span class="pb">Voir leurs résultats →</span></a>
+    <a class="promo xtrack" data-cn="site-transformations" href="transformations.html?src=guide-web-p14"><span class="pi">👀</span><span class="pt"><b>Elles ont commencé exactement comme toi.</b>Mamans, débutantes, débordées… Regarde leurs avant / après.</span><span class="pb">Voir leurs transformations →</span></a>
   </section>
 
   <!-- ===== VENTE ===== -->
   <section class="sales">
     <span class="eyebrow">La suite, si tu veux</span>
-    <h2>Tu as aimé ces 7 jours ?<br><span class="c">Passe au niveau supérieur.</span></h2>
+    <h2>Tu viens de prouver que tu en es capable.<br><span class="c">Ne t'arrête pas maintenant.</span></h2>
     <div class="offer">
       <span class="best">⭐ La suite logique</span>
       <h3>Ventre Plat — 14 jours</h3>
-      <p>14 séances guidées et progressives pour des résultats visibles, à ton rythme, sans matériel. Accès à vie.</p>
+      <p>Tu as lancé la machine. Maintenant, on passe à la vitesse supérieure.</p>
+      <ul class="olist">
+        <li>14 séances guidées et progressives</li>
+        <li>Toujours 10–20 min, toujours sans matériel</li>
+        <li>Accès à vie, à ton rythme</li>
+      </ul>
       <div class="price">12&nbsp;€ <small>· paiement unique</small></div>
-      <a class="cta xtrack" data-cn="ventre-plat-14j" href="ventre-plat.html?src=colis-guide">Je continue avec les 14 jours →</a>
+      <a class="cta xtrack" data-cn="ventre-plat-14j" href="ventre-plat.html?src=colis-guide">Je démarre mes 14 jours →</a>
     </div>
 
     <div class="subh">Ou choisis ton objectif</div>
+    <a class="pcard hot xtrack" data-cn="guide-recettes" href="guide-recettes-vente.html?src=colis-guide"><span class="ico">🥗</span><span class="info"><b>Guide Recettes <span class="flag">Petit prix</span></b><span>21 recettes qui dégonflent + liste de courses.</span></span><span class="pr">7€</span></a>
     <a class="pcard xtrack" data-cn="post-partum" href="programme-postpartum.html?src=colis-guide"><span class="ico">🤍</span><span class="info"><b>Post-Partum</b><span>Ventre plat après bébé, spécial jeunes mamans.</span></span><span class="pr">17€</span></a>
     <a class="pcard xtrack" data-cn="booty-sculpt" href="booty-sculpt.html?src=colis-guide"><span class="ico">🍑</span><span class="info"><b>Booty Sculpt</b><span>Galber les fessiers, à la maison. 8 semaines.</span></span><span class="pr">19€</span></a>
     <a class="pcard xtrack" data-cn="bundle" href="bundle.html?src=colis-guide"><span class="ico">💥</span><span class="info"><b>Le Bundle</b><span>Booty Sculpt + Ventre Plat réunis.</span></span><span class="pr">25€</span></a>
@@ -336,14 +437,14 @@ fbq('init','1233548507794099');fbq('track','PageView');
 
     <div class="offer" style="margin-top:18px;">
       <span class="best">Le vrai déclic</span>
-      <h3>Tu veux que je m'occupe de toi ?</h3>
-      <p>Coaching en ligne : un programme fait pour TON corps, ton emploi du temps et tes objectifs, avec mon suivi à chaque étape.</p>
-      <a class="cta xtrack" data-cn="coaching" href="offres.html?src=colis-guide">Découvrir le coaching en ligne →</a>
+      <h3>Marre de recommencer seule ?</h3>
+      <p>Coaching en ligne : un programme fait pour TON corps, ton emploi du temps et tes objectifs. Je te suis, je t'ajuste, je te remotive. Tu n'es plus seule.</p>
+      <a class="cta xtrack" data-cn="coaching" href="offres.html?src=colis-guide">Je veux être coachée par Ornella →</a>
     </div>
 
     <div class="subh">Pas encore décidée ? 🧭</div>
-    <p style="color:#e7dcc9;font-size:13.5px;text-align:center;margin:0 auto 12px;max-width:420px;">Fais le point en 2 minutes : je t'oriente vers LE programme fait pour toi.</p>
-    <a class="cta xtrack" data-cn="site-quiz" href="quiz.html?src=colis-guide" style="background:#fff;color:var(--vert);">🧭 Trouver mon programme idéal →</a>
+    <p style="color:#e7dcc9;font-size:13.5px;text-align:center;margin:0 auto 12px;max-width:420px;">2 questions, 20 secondes : je t'oriente vers LE programme fait pour toi.</p>
+    <a class="cta" href="#quiz-sec" style="background:#fff;color:var(--vert);">🧭 Faire le mini-quiz (20 s) →</a>
     <a class="allp xtrack" data-cn="site-transformations" href="transformations.html?src=colis-guide" style="margin-top:12px;">👀 Voir les transformations de mes clientes →</a>
 
     <a class="wa-cta wa-contact" href="https://wa.me/33756834626?text=Bonjour%20Ornella%2C%20j%27ai%20re%C3%A7u%20ton%20guide%20Ventre%20Plat%20via%20mon%20colis%20%F0%9F%98%8A">💬 Une question ? Écris-moi sur WhatsApp</a>
@@ -383,7 +484,7 @@ const DAYS=[
       ["Gainage latéral genoux","20 s / côté","Sur le côté, appui avant-bras + genoux. Ligne épaule-hanche."]],
   calm:"Cobra doux × 5 respirations + posture de l'enfant.",
   note:"Quand tu portes une charge (sac, courses, bébé) : « je grandis, j'ouvre les épaules, je rentre le ventre »."},
- {n:3,promo:"<a class=\"promo\" href=\"ventre-plat.html?src=guide-web-p06\"><span class=\"pi\">🔥</span><span class=\"pt\"><b>Tu sens déjà la différence ?</b> Imagine en 14 jours, avec des séances guidées et progressives.</span><span class=\"pb\">Ventre Plat 14 j · 12 €</span></a>",t:"Cardio doux debout",f:"On fait circuler, sans sauter",
+ {n:3,promo:"<a class=\"promo xtrack\" data-cn=\"ventre-plat-14j\" href=\"ventre-plat.html?src=guide-web-p06\"><span class=\"pi\">🔥</span><span class=\"pt\"><b>Ton ventre est déjà moins gonflé&nbsp;?</b>Imagine après 14 jours de séances guidées et progressives.</span><span class=\"pb\">Je continue sur 14 jours · 12 €</span></a>",t:"Cardio doux debout",f:"On fait circuler, sans sauter",
   warm:"Marche rapide sur place (1 min) · balancé des bras · quelques squats lents.",
   rounds:"3 tours",
   ex:[["Talons-fesses dynamiques","40 s","Rythme confortable, ventre gainé. Impact minimal."],
@@ -401,7 +502,7 @@ const DAYS=[
       ["Inclinaisons latérales","12 / côté","Main qui glisse le long de la cuisse, on grandit."]],
   calm:"Étirement latéral debout × 3 par côté + grande respiration.",
   note:"Mi-parcours ! Souvent, on se sent déjà « plus légère ». C'est le transit et la posture qui répondent."},
- {n:5,promo:"<a class=\"promo\" href=\"https://wa.me/33756834626?text=Bonjour%20Ornella%2C%20je%20fais%20ton%20guide%20Ventre%20Plat%207%20jours%20%F0%9F%98%8A\"><span class=\"pi\">💬</span><span class=\"pt\"><b>Un coup de mou ? Une question ?</b> Écris-moi, je te réponds personnellement.</span><span class=\"pb\">M'écrire sur WhatsApp</span></a>",t:"Full body complet",f:"10 minutes qui comptent double",
+ {n:5,promo:"<a class=\"promo wa wa-contact\" href=\"https://wa.me/33756834626?text=JOUR%205%20%F0%9F%92%AA%20Coucou%20Ornella%2C%20je%20fais%20ton%20guide%20Ventre%20Plat%207%20jours%20!\"><span class=\"pi\">💬</span><span class=\"pt\"><b>Coup de mou à mi-parcours&nbsp;?</b>Envoie-moi « JOUR 5 » sur WhatsApp : je te réponds moi-même et je te remotive pour finir en beauté.</span><span class=\"pb\">J'écris à Ornella</span></a>",t:"Full body complet",f:"10 minutes qui comptent double",
   warm:"Marche rapide + montées de genoux (1 min) · cercles de bras · 5 squats lents.",
   rounds:"3 tours",
   ex:[["Squat + montée pointes","12 reps","Descends en squat, remonte sur la pointe des pieds. Ventre gainé."],
@@ -410,7 +511,7 @@ const DAYS=[
       ["Good morning mains nuque","12 reps","Dos droit, bascule du buste depuis les hanches."]],
   calm:"Étirement des fessiers allongée + respiration profonde × 5.",
   note:"Fatiguée ? Fais 2 tours au lieu de 3. Une séance imparfaite faite vaut mille séances parfaites imaginées."},
- {n:6,t:"Respiration anti-ballonnement",f:"On relâche le stress, on dégonfle",
+ {n:6,promo:"<a class=\"promo xtrack\" data-cn=\"guide-recettes\" href=\"guide-recettes-vente.html?src=guide-web-j6\"><span class=\"pi\">🥗</span><span class=\"pt\"><b>Dégonfler, ça se joue aussi dans l'assiette.</b>21 recettes drainantes et anti-rétention + ta liste de courses prête. Fini le « je mange quoi ce soir ? ».</span><span class=\"pb\">Je veux les recettes · 7 €</span><span class=\"sub\">Accès immédiat sur ton téléphone</span></a>",t:"Respiration anti-ballonnement",f:"On relâche le stress, on dégonfle",
   warm:"Marche lente + grandes respirations (1 min) · rotations douces épaules et bassin.",
   rounds:"3 tours",
   ex:[["Respiration diaphragmatique","6 cycles","Inspire 4 s (ventre gonfle), expire 6 s (ventre rentre). Masse les intestins."],
@@ -419,7 +520,7 @@ const DAYS=[
       ["Vacuum debout","6 resp.","Dos droit, on aspire le ventre et on tient 8 s."]],
   calm:"Torsion douce allongée × 3 par côté + posture de l'enfant.",
   note:"5 min de respiration profonde par jour font baisser le cortisol — l'hormone qui stocke au ventre."},
- {n:7,promo:"<a class=\"promo\" href=\"ventre-plat.html?src=guide-web-p10\"><span class=\"pi\">⭐</span><span class=\"pt\"><b>Tu as tenu 7 jours, bravo !</b> Ne perds pas ton élan : enchaîne avec le Ventre Plat 14 jours.</span><span class=\"pb\">Je continue · 12 €</span></a>",t:"Récap & célébration",f:"Le meilleur de ta semaine 🎉",
+ {n:7,promo:"<a class=\"promo xtrack\" data-cn=\"ventre-plat-14j\" href=\"ventre-plat.html?src=guide-web-p10\"><span class=\"pi\">⭐</span><span class=\"pt\"><b>7 jours tenus, bravo ! 🎉</b>L'habitude est lancée : c'est maintenant qu'il ne faut pas lâcher. Enchaîne avec le Ventre Plat 14 jours.</span><span class=\"pb\">Je garde mon élan · 12 €</span></a>",t:"Récap & célébration",f:"Le meilleur de ta semaine 🎉",
   warm:"Mobilité complète : cercles de bras, du bassin, montées de genoux, 3 vacuums debout.",
   rounds:"2 à 3 tours",
   ex:[["Vacuum debout","5 resp.","Ton nouvel automatisme. Aspire, tiens 8 s."],
@@ -428,14 +529,16 @@ const DAYS=[
       ["Pont fessier","15 reps","Serre les fessiers, rentre le ventre en haut."],
       ["Talons-fesses","40 s","Pour finir en légèreté et faire circuler."]],
   calm:"Étirement complet + une main sur le ventre : ressens la différence depuis le Jour 1. Tu l'as fait. 🎉",
-  note:"Et maintenant ? Rejoue ces 7 jours, ou passe au Ventre Plat 14 jours (plus bas 👇)."},
+  note:"Et maintenant ? Fais le <a href=\"#quiz-sec\" style=\"color:var(--corail);font-weight:700;\">mini-quiz (20 s)</a> : je te dis quel programme choisir pour ton objectif 👇"},
 ];
 
 /* Rendu des jours */
+/* Cadrage vertical de chaque photo (photos portrait, recadrées en 4:5) */
+const DPOS={1:'60%',2:'50%',3:'60%',4:'90%',5:'80%',6:'50%',7:'50%'};
 const daysEl=document.getElementById('days');
 daysEl.innerHTML=DAYS.map(d=>`
   <div class="day">
-    <img class="dphoto" src="images/guide/j${d.n}.jpg" alt="" loading="lazy">
+    <img class="dphoto" src="images/guide/j${d.n}.jpg" alt="" loading="lazy" style="object-position:center ${DPOS[d.n]||'50%'};">
     <div class="day-head">
       <div class="day-num"><small>Jour</small><b>${d.n}</b></div>
       <div><div class="day-title">${d.t}</div><div class="day-focus">${d.f}</div><div class="dprog">${[1,2,3,4,5,6,7].map(k=>`<i class="${k<=d.n?'on':''}"></i>`).join('')}&nbsp;Jour ${d.n} sur 7</div></div>
@@ -486,6 +589,67 @@ document.getElementById('resetBtn').addEventListener('click',()=>{
   state={}; localStorage.removeItem(KEY); render();
 });
 render();
+
+/* ===== Mini-quiz : objectif -> programme digital ===== */
+(function(){
+  const PROGS={
+    ventre:{n:"Ventre Plat — 14 jours",p:"12 €",u:"ventre-plat.html",cn:"ventre-plat-14j",b:"Je démarre mes 14 jours",
+      w:"Tu viens de réveiller ton transverse : c'est LE moment de continuer. 14 séances guidées et progressives, sans matériel, pour un ventre qui reste plat."},
+    fessiers:{n:"Booty Sculpt — 8 semaines",p:"19 €",u:"booty-sculpt.html",cn:"booty-sculpt",b:"Je galbe mes fessiers",
+      w:"8 semaines à la maison pour remonter, arrondir et raffermir tes fessiers, avec une progression pensée pour toi."},
+    both:{n:"Le Bundle — Booty Sculpt + Ventre Plat",p:"25 €",u:"bundle.html",cn:"bundle",b:"Je prends le Bundle",
+      w:"Ventre ET fessiers : les deux programmes réunis pour travailler toute ta silhouette. Le meilleur rapport qualité-prix."},
+    postpartum:{n:"Programme Post-Partum — 8 semaines",p:"17 €",u:"programme-postpartum.html",cn:"post-partum",b:"Je retrouve mon corps",
+      w:"Pensé pour ton corps d'après bébé : 8 semaines progressives, en douceur, zéro crunch. Exactement ce que j'aurais voulu avoir après ma grossesse."},
+    regul:{n:"Fit Dans Ta Vie",p:"49 €",u:"fit-dans-ta-vie.html",cn:"fit-dans-ta-vie",b:"Je veux enfin tenir",
+      w:"Ton vrai sujet, ce n'est pas l'exercice, c'est de tenir. Ce programme t'aide à intégrer le sport dans TA vie, pour arrêter de recommencer tous les lundis."}
+  };
+  const ALT={ventre:["both","Tu veux aussi des fessiers galbés ?"],fessiers:["both","Tu veux aussi un ventre plus plat ?"],
+    both:["ventre","Tu préfères commencer par le ventre ?"],postpartum:["ventre","Déjà remise et envie d'aller plus loin ?"],
+    regul:["ventre","Tu préfères commencer petit ?"]};
+  const BLOCK={
+    temps:"Et bonne nouvelle pour ton emploi du temps : des séances courtes, que tu fais chez toi.",
+    food:"Comme l'alimentation te bloque, je te conseille d'ajouter le Guide Recettes juste en dessous 👇",
+    motiv:"Pour la motivation : suis ton tracker et écris-moi sur WhatsApp dès que tu flanches, je suis là.",
+    savoir:"Tout est guidé, jour par jour : tu n'as plus qu'à suivre."
+  };
+  const LBL={ventre:"ventre plat",fessiers:"fessiers",both:"ventre + fessiers",postpartum:"post-partum",regul:"régularité",
+    temps:"le temps",food:"l'alimentation",motiv:"la motivation",savoir:"je ne sais pas quoi faire"};
+  const quiz=document.getElementById('quiz'); if(!quiz)return;
+  const steps=[...quiz.querySelectorAll('.qstep')];
+  const ans={}; let cur=0;
+  const show=i=>{steps.forEach((s,k)=>s.classList.toggle('on',k===i));cur=i;};
+  const src=new URLSearchParams(location.search).get('src')||'colis-guide';
+  const pix=(ev,o)=>{if(typeof fbq!=='undefined')fbq(ev==='Lead'?'track':'trackCustom',ev,o);};
+  quiz.addEventListener('click',e=>{
+    if(e.target.closest('.qback')){show(Math.max(0,cur-1));return;}
+    const o=e.target.closest('.qopt'); if(!o)return;
+    const st=o.closest('.qstep'); st.querySelectorAll('.qopt').forEach(x=>x.classList.remove('sel')); o.classList.add('sel');
+    ans[st.dataset.q]=o.dataset.v;
+    setTimeout(()=>{ if(cur<1) show(cur+1); else result(); },220);
+  });
+  function result(){
+    const P=PROGS[ans.goal];
+    const wa="https://wa.me/33756834626?text="+encodeURIComponent("Coucou Ornella 😊 J'ai fait le quiz du guide Ventre Plat. Mon objectif : "+LBL[ans.goal]+". Ce qui me bloque : "+LBL[ans.block]+". Tu peux me conseiller ?");
+    const bump=`<a class="qbump xtrack" data-cn="guide-recettes" href="guide-recettes-vente.html?src=guide-quiz"><span class="e">🥗</span><span><b>${ans.block==='food'?'Indispensable pour toi :':'Le petit plus :'}</b> 21 recettes qui dégonflent + ta liste de courses prête.</span><span class="p">+ 7 €</span></a>`;
+    const A=ALT[ans.goal], AP=PROGS[A[0]];
+    let html;
+    html=`<div class="qwin">🎯 Ton programme idéal</div><h3>${P.n}</h3>
+        <p class="qwhy">${P.w} ${BLOCK[ans.block]||''}</p>
+        <div class="qprice">${P.p} <small>· paiement unique · accès immédiat</small></div>
+        <a class="cta xtrack" data-cn="${P.cn}" href="${P.u}?src=guide-quiz">${P.b} · ${P.p} →</a>
+        ${bump}
+        <a class="qalt xtrack" data-cn="${AP.cn}" href="${AP.u}?src=guide-quiz">${A[1]} Découvre ${AP.n} (${AP.p}) →</a>
+        <a class="qwa wa-contact" href="${wa}">💬 Une hésitation ? Envoie-moi ton résultat</a>`;
+    html+=`<button class="qback" type="button" style="display:block;margin:12px auto 0;" id="qredo">↺ Refaire le quiz</button>`;
+    const r=document.getElementById('qres'); r.innerHTML=html; show(2);
+    r.querySelector('#qredo').addEventListener('click',ev=>{ev.stopPropagation();quiz.querySelectorAll('.qopt').forEach(x=>x.classList.remove('sel'));show(0);});
+    r.querySelectorAll('.xtrack').forEach(el=>el.addEventListener('click',()=>pix('ViewContent',{content_name:el.getAttribute('data-cn'),source:'guide-quiz'})));
+    r.querySelectorAll('.wa-contact').forEach(el=>el.addEventListener('click',()=>pix('Contact',{method:'whatsapp',source:'guide-quiz'})));
+    pix('QuizResult',{goal:ans.goal,block:ans.block,source:src});
+    quiz.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+})();
 
 /* Pixel : ViewContent programmes, Contact WhatsApp */
 const src=new URLSearchParams(location.search).get('src')||'colis-guide';
