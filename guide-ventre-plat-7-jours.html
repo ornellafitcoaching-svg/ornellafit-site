@@ -130,6 +130,11 @@ p{font-size:14.5px;margin-bottom:12px;}
 .offer p{color:#e7dcc9;font-size:13.5px;margin-bottom:12px;}
 .offer .price{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:14px;}
 .offer .price small{font-size:12px;color:#b7ad9c;font-weight:400;}
+.dphoto{display:block;width:100%;height:190px;object-fit:cover;object-position:center 25%;border-radius:0;}
+.dprog{display:flex;align-items:center;gap:4px;margin-top:6px;font-size:11px;font-weight:700;color:#8a8478;}
+.dprog i{display:inline-block;width:14px;height:5px;border-radius:3px;background:#e6ddcd;}
+.dprog i.on{background:var(--corail);}
+.sphoto{display:block;width:100%;max-height:260px;object-fit:cover;border-radius:16px;margin:14px 0 4px;box-shadow:0 8px 20px rgba(0,0,0,.12);}
 .promo{display:flex;align-items:center;gap:12px;background:var(--vert);color:#fff;border-radius:14px;padding:12px 14px;text-decoration:none;margin-top:14px;font-size:13.5px;line-height:1.4;}
 .promo .pi{flex:none;font-size:20px;}
 .promo .pt{flex:1;color:#e7dcc9;}
@@ -222,6 +227,7 @@ fbq('init','1233548507794099');fbq('track','PageView');
     <div class="card"><h3>🔁 Les « tours »</h3><p>Un circuit se fait en plusieurs tours : tu enchaînes les exercices puis tu recommences. Débutante : commence par 2 tours.</p></div>
     <div class="card"><h3>🌬️ La règle d'or : respirer</h3><p>À chaque effort, <b>expire en rentrant le nombril</b> vers ta colonne. C'est ça qui muscle le transverse et affine la taille.</p></div>
     <div class="card"><h3>🚫 Zéro crunch</h3><p>Pas d'abdos classiques qui font bomber le ventre. On travaille en gainage, respiration et debout : plus sûr.</p></div>
+    <img class="sphoto" src="images/guide/poussette.jpg" alt="Ornella qui pousse la poussette" loading="lazy">
     <div class="note"><b>Le vacuum, ton meilleur ami :</b> vide tes poumons, <b>rentre le ventre au maximum</b> (nombril vers la colonne), tiens 5–10 s en respirant doucement, relâche. L'exercice le plus efficace pour resserrer la taille — et invisible, tu peux le faire en poussant la poussette.</div>
   </section>
 
@@ -230,6 +236,7 @@ fbq('init','1233548507794099');fbq('track','PageView');
     <span class="eyebrow">Le plus important</span>
     <h2 class="sec-t">Sécurité <span class="c">post-partum</span></h2>
     <div class="divider"></div>
+    <img class="sphoto" src="images/guide/postpartum.jpg" alt="Ornella après bébé" loading="lazy">
     <div class="secu">
       <h3>🤍 Si tu as accouché récemment, lis ça d'abord</h3>
       <ul>
@@ -266,6 +273,7 @@ fbq('init','1233548507794099');fbq('track','PageView');
       <tr><td>Pain blanc & viennoiseries</td><td>Pain complet, flocons d'avoine</td></tr>
       <tr><td>Manger vite, devant un écran</td><td>Poser la fourchette, mâcher</td></tr>
     </table>
+    <img class="sphoto" src="images/guide/mealprep.jpg" alt="Meal prep" loading="lazy">
     <div class="blabel" style="margin-top:18px;"><span class="dot"></span>La méthode de l'assiette</div>
     <div class="plate">
       <div class="plate-circle"></div>
@@ -427,9 +435,10 @@ const DAYS=[
 const daysEl=document.getElementById('days');
 daysEl.innerHTML=DAYS.map(d=>`
   <div class="day">
+    <img class="dphoto" src="images/guide/j${d.n}.jpg" alt="" loading="lazy">
     <div class="day-head">
       <div class="day-num"><small>Jour</small><b>${d.n}</b></div>
-      <div><div class="day-title">${d.t}</div><div class="day-focus">${d.f}</div></div>
+      <div><div class="day-title">${d.t}</div><div class="day-focus">${d.f}</div><div class="dprog">${[1,2,3,4,5,6,7].map(k=>`<i class="${k<=d.n?'on':''}"></i>`).join('')}&nbsp;Jour ${d.n} sur 7</div></div>
     </div>
     <div class="day-body">
       <div class="blabel"><span class="dot"></span>Échauffement · 2 min</div>
