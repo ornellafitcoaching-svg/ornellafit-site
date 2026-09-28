@@ -182,6 +182,12 @@ p{font-size:14.5px;margin-bottom:12px;}
 .wa-fab svg{width:32px;height:32px;fill:#fff;}
 @keyframes wapulse{0%{box-shadow:0 6px 18px rgba(0,0,0,.28),0 0 0 0 rgba(37,211,102,.5);}70%{box-shadow:0 6px 18px rgba(0,0,0,.28),0 0 0 14px rgba(37,211,102,0);}100%{box-shadow:0 6px 18px rgba(0,0,0,.28),0 0 0 0 rgba(37,211,102,0);}}
 /* MINI-QUIZ objectif -> programme */
+.qsec{background:linear-gradient(180deg,#fff6f3 0%,var(--creme) 100%);}
+.qhook{display:inline-block;background:var(--vert);color:#fff;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:6px 12px;border-radius:20px;margin-bottom:10px;}
+.qstart{display:block;text-align:center;font-size:13px;font-weight:600;color:var(--vert);margin-top:12px;text-decoration:underline;}
+/* Raccourci flottant vers le quiz */
+.qfab{position:fixed;left:16px;bottom:22px;z-index:299;display:flex;align-items:center;gap:8px;background:var(--corail);color:#fff;text-decoration:none;font-weight:700;font-size:13.5px;padding:12px 16px;border-radius:30px;box-shadow:0 8px 20px rgba(232,99,74,.45);transform:translateY(140%);opacity:0;transition:transform .3s,opacity .3s;max-width:calc(100% - 110px);}
+.qfab.show{transform:none;opacity:1;}
 .quiz{scroll-margin-top:60px;background:#fff;border-radius:20px;padding:18px 16px 20px;box-shadow:0 10px 26px rgba(0,0,0,.08);border:2px solid var(--corail);}
 .qstep{display:none;}
 .qstep.on{display:block;animation:qfade .3s ease;}
@@ -243,12 +249,41 @@ fbq('init','1233548507794099');fbq('track','PageView');
 
   <!-- RACCOURCIS (scroll) -->
   <nav class="quicknav">
-    <a href="#jours">🗓️ Les 7 jours</a>
     <a href="#quiz-sec" class="hl">🎯 Mon programme idéal</a>
+    <a href="#jours">🗓️ Les 7 jours</a>
     <a href="#nutrition">🥗 Nutrition</a>
     <a href="#tracker-sec">✅ Mon tracker</a>
     <a href="#securite">🤍 Sécurité</a>
   </nav>
+
+  <!-- MINI-QUIZ : objectif -> bon programme -->
+  <section class="sec qsec" id="quiz-sec" style="scroll-margin-top:52px;">
+    <span class="qhook">🎯 Avant de commencer · 20 secondes</span>
+    <h2 class="sec-t">Quel programme est <span class="c">fait pour toi&nbsp;?</span></h2>
+    <div class="divider"></div>
+    <p class="lead">Choisis ton objectif 👇 Je te montre <b>exactement quoi faire après ces 7 jours</b> pour l'atteindre.</p>
+    <div class="quiz" id="quiz">
+      <div class="qstep on" data-q="goal">
+        <div class="qmeta"><span>Question 1 / 2</span><span>🎯</span></div><div class="qbar"><i style="width:50%"></i></div>
+        <div class="qtitle">Ton objectif n°1 en ce moment ?</div>
+        <button class="qopt" data-v="ventre"><span class="e">🔥</span><span>Un ventre plus plat<small>Dégonfler, affiner la taille</small></span></button>
+        <button class="qopt" data-v="fessiers"><span class="e">🍑</span><span>Des fessiers galbés<small>Remonter, arrondir, raffermir</small></span></button>
+        <button class="qopt" data-v="both"><span class="e">💥</span><span>Les deux : ventre ET fessiers<small>Une silhouette complète</small></span></button>
+        <button class="qopt" data-v="postpartum"><span class="e">🤍</span><span>Retrouver mon corps après bébé<small>En douceur, sans risque</small></span></button>
+        <button class="qopt" data-v="regul"><span class="e">🔄</span><span>Arrêter de recommencer tous les lundis<small>Enfin tenir sur la durée</small></span></button>
+      </div>
+      <div class="qstep" data-q="block">
+        <div class="qmeta"><span>Question 2 / 2</span><span>🧱</span></div><div class="qbar"><i style="width:100%"></i></div>
+        <div class="qtitle">Qu'est-ce qui te bloque le plus ?</div>
+        <button class="qopt" data-v="temps"><span class="e">⏱️</span><span>Le manque de temps</span></button>
+        <button class="qopt" data-v="food"><span class="e">🍽️</span><span>L'alimentation<small>Je grignote, je ne sais pas quoi cuisiner</small></span></button>
+        <button class="qopt" data-v="motiv"><span class="e">😩</span><span>La motivation<small>Je commence fort… puis j'abandonne</small></span></button>
+        <button class="qopt" data-v="savoir"><span class="e">❓</span><span>Je ne sais pas quoi faire exactement</span></button>
+        <button class="qback" type="button">← Retour</button>
+      </div>
+      <div class="qstep qres" data-q="res" id="qres"></div>
+    </div>
+  </section>
 
   <!-- POURQUOI -->
   <section class="sec">
@@ -368,35 +403,6 @@ fbq('init','1233548507794099');fbq('track','PageView');
     <div class="tracker-legend">💪 = séance du jour faite &nbsp;·&nbsp; 💧 = ~1,5 L d'eau bue</div>
   </section>
 
-  <!-- MINI-QUIZ : objectif -> bon programme -->
-  <section class="sec" id="quiz-sec" style="scroll-margin-top:52px;">
-    <span class="eyebrow">20 secondes, 2 questions</span>
-    <h2 class="sec-t">Quel programme est <span class="c">fait pour toi ?</span></h2>
-    <div class="divider"></div>
-    <p class="lead">Réponds à 2 questions : je te dis quel programme suivre après ces 7 jours pour atteindre TON objectif.</p>
-    <div class="quiz" id="quiz">
-      <div class="qstep on" data-q="goal">
-        <div class="qmeta"><span>Question 1 / 2</span><span>🎯</span></div><div class="qbar"><i style="width:50%"></i></div>
-        <div class="qtitle">Ton objectif n°1 en ce moment ?</div>
-        <button class="qopt" data-v="ventre"><span class="e">🔥</span><span>Un ventre plus plat<small>Dégonfler, affiner la taille</small></span></button>
-        <button class="qopt" data-v="fessiers"><span class="e">🍑</span><span>Des fessiers galbés<small>Remonter, arrondir, raffermir</small></span></button>
-        <button class="qopt" data-v="both"><span class="e">💥</span><span>Les deux : ventre ET fessiers<small>Une silhouette complète</small></span></button>
-        <button class="qopt" data-v="postpartum"><span class="e">🤍</span><span>Retrouver mon corps après bébé<small>En douceur, sans risque</small></span></button>
-        <button class="qopt" data-v="regul"><span class="e">🔄</span><span>Arrêter de recommencer tous les lundis<small>Enfin tenir sur la durée</small></span></button>
-      </div>
-      <div class="qstep" data-q="block">
-        <div class="qmeta"><span>Question 2 / 2</span><span>🧱</span></div><div class="qbar"><i style="width:100%"></i></div>
-        <div class="qtitle">Qu'est-ce qui te bloque le plus ?</div>
-        <button class="qopt" data-v="temps"><span class="e">⏱️</span><span>Le manque de temps</span></button>
-        <button class="qopt" data-v="food"><span class="e">🍽️</span><span>L'alimentation<small>Je grignote, je ne sais pas quoi cuisiner</small></span></button>
-        <button class="qopt" data-v="motiv"><span class="e">😩</span><span>La motivation<small>Je commence fort… puis j'abandonne</small></span></button>
-        <button class="qopt" data-v="savoir"><span class="e">❓</span><span>Je ne sais pas quoi faire exactement</span></button>
-        <button class="qback" type="button">← Retour</button>
-      </div>
-      <div class="qstep qres" data-q="res" id="qres"></div>
-    </div>
-  </section>
-
   <!-- HISTOIRE -->
   <section class="sec story">
     <span class="eyebrow">Entre nous</span>
@@ -457,6 +463,9 @@ fbq('init','1233548507794099');fbq('track','PageView');
 
   <footer><b>Ornella Fit Coaching</b> · Coach sportive diplômée d'État<br>ornellafitcoaching.com</footer>
 </div>
+
+<!-- Raccourci flottant vers le quiz -->
+<a class="qfab" id="qfab" href="#quiz-sec">🎯 Quel programme pour moi ?</a>
 
 <!-- Bouton WhatsApp rond flottant -->
 <a class="wa-fab wa-contact" href="https://wa.me/33756834626?text=Bonjour%20Ornella%2C%20j%27ai%20re%C3%A7u%20ton%20guide%20Ventre%20Plat%20via%20mon%20colis%20%F0%9F%98%8A" target="_blank" rel="noopener" aria-label="Écris-moi sur WhatsApp">
@@ -628,7 +637,7 @@ render();
     ans[st.dataset.q]=o.dataset.v;
     setTimeout(()=>{ if(cur<1) show(cur+1); else result(); },220);
   });
-  function result(){
+  function result(restore){
     const P=PROGS[ans.goal];
     const wa="https://wa.me/33756834626?text="+encodeURIComponent("Coucou Ornella 😊 J'ai fait le quiz du guide Ventre Plat. Mon objectif : "+LBL[ans.goal]+". Ce qui me bloque : "+LBL[ans.block]+". Tu peux me conseiller ?");
     const bump=`<a class="qbump xtrack" data-cn="guide-recettes" href="guide-recettes-vente.html?src=guide-quiz"><span class="e">🥗</span><span><b>${ans.block==='food'?'Indispensable pour toi :':'Le petit plus :'}</b> 21 recettes qui dégonflent + ta liste de courses prête.</span><span class="p">+ 7 €</span></a>`;
@@ -641,14 +650,33 @@ render();
         ${bump}
         <a class="qalt xtrack" data-cn="${AP.cn}" href="${AP.u}?src=guide-quiz">${A[1]} Découvre ${AP.n} (${AP.p}) →</a>
         <a class="qwa wa-contact" href="${wa}">💬 Une hésitation ? Envoie-moi ton résultat</a>`;
+    html+=`<a class="qstart" href="#jours">📖 Ou commence d'abord tes 7 jours ↓</a>`;
     html+=`<button class="qback" type="button" style="display:block;margin:12px auto 0;" id="qredo">↺ Refaire le quiz</button>`;
     const r=document.getElementById('qres'); r.innerHTML=html; show(2);
     r.querySelector('#qredo').addEventListener('click',ev=>{ev.stopPropagation();quiz.querySelectorAll('.qopt').forEach(x=>x.classList.remove('sel'));show(0);});
     r.querySelectorAll('.xtrack').forEach(el=>el.addEventListener('click',()=>pix('ViewContent',{content_name:el.getAttribute('data-cn'),source:'guide-quiz'})));
     r.querySelectorAll('.wa-contact').forEach(el=>el.addEventListener('click',()=>pix('Contact',{method:'whatsapp',source:'guide-quiz'})));
+    done=true; updFab();
+    if(restore) return;
+    try{localStorage.setItem('vp7_quiz',JSON.stringify(ans));}catch(e){}
     pix('QuizResult',{goal:ans.goal,block:ans.block,source:src});
     quiz.scrollIntoView({behavior:'smooth',block:'start'});
   }
+  /* Raccourci flottant : visible quand le quiz n'est plus à l'écran */
+  let done=false, quizVisible=true;
+  const fab=document.getElementById('qfab');
+  function updFab(){
+    if(!fab)return;
+    fab.innerHTML=done?'🎯 Voir mon programme idéal':'🎯 Quel programme pour moi ? <small style="font-weight:500;opacity:.9">20 s</small>';
+    fab.classList.toggle('show',!quizVisible);
+  }
+  if(fab && 'IntersectionObserver' in window){
+    new IntersectionObserver(es=>{es.forEach(e=>{quizVisible=e.isIntersecting||e.boundingClientRect.top>0;updFab();});},{threshold:0}).observe(quiz);
+    fab.addEventListener('click',()=>pix('QuizShortcut',{done:done,source:src}));
+  }
+  /* Résultat déjà obtenu ? On le réaffiche directement */
+  try{const sv=JSON.parse(localStorage.getItem('vp7_quiz')||'null'); if(sv&&PROGS[sv.goal]&&BLOCK[sv.block]){Object.assign(ans,sv);result(true);}}catch(e){}
+  updFab();
 })();
 
 /* Pixel : ViewContent programmes, Contact WhatsApp */
