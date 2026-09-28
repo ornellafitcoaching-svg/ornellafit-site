@@ -902,6 +902,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .rf-gallery::-webkit-scrollbar{display:none;}
 .rf-shot{flex:0 0 auto;scroll-snap-align:center;border:1px solid var(--rf-line);border-radius:16px;overflow:hidden;cursor:zoom-in;background:var(--rf-paper);box-shadow:0 6px 22px rgba(139,111,94,.1);position:relative;}
 .rf-shot img{display:block;width:auto;height:230px;max-width:none;}
+/* Visuels paysage : jamais plus larges que l'écran (sinon coupés sur mobile), la suivante dépasse pour inviter au swipe */
+.rf-shot.rf-wide{width:min(86%,307px);}
+.rf-shot.rf-wide img{width:100%;height:auto;}
 .rf-shot figcaption{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(35,26,22,.82),transparent);color:#fff;font:600 .74rem/1.3 'DM Sans',sans-serif;padding:20px 12px 8px;text-align:left;}
 /* Lightbox */
 .rf-lb{position:fixed;inset:0;background:rgba(20,14,12,.9);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;}
@@ -1151,9 +1154,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <li>Ton espace personnel de suivi</li>
             </ul>
             <div class="rf-gallery" style="margin-top:12px" aria-label="Aperçu de ton coaching à domicile">
-              <figure class="rf-shot" onclick="rfLightbox('images/apercu/domicile-materiel.webp')"><img src="images/apercu/domicile-materiel.webp" alt="Coach venant à domicile avec tout le matériel d'entraînement" loading="lazy"><figcaption>Je viens avec tout le matériel</figcaption></figure>
-              <figure class="rf-shot" onclick="rfLightbox('images/apercu/suivi-mensurations.webp')"><img src="images/apercu/suivi-mensurations.webp" alt="Suivi de l'évolution des mensurations dans ton espace personnel" loading="lazy"><figcaption>Ton évolution suivie</figcaption></figure>
-              <figure class="rf-shot" onclick="rfLightbox('images/apercu/whatsapp-suivi.webp')"><img src="images/apercu/whatsapp-suivi.webp" alt="Suivi et échanges avec la coach sur WhatsApp entre les séances" loading="lazy"><figcaption>Je reste dispo entre les séances</figcaption></figure>
+              <figure class="rf-shot rf-wide" onclick="rfLightbox('images/apercu/domicile-materiel.webp')"><img src="images/apercu/domicile-materiel.webp" width="1200" height="900" alt="Coach venant à domicile avec tout le matériel d'entraînement" loading="lazy"><figcaption>Je viens avec tout le matériel</figcaption></figure>
+              <figure class="rf-shot rf-wide" onclick="rfLightbox('images/apercu/suivi-mensurations.webp')"><img src="images/apercu/suivi-mensurations.webp" width="1200" height="900" alt="Suivi de l'évolution des mensurations dans ton espace personnel" loading="lazy"><figcaption>Ton évolution suivie</figcaption></figure>
+              <figure class="rf-shot rf-wide" onclick="rfLightbox('images/apercu/whatsapp-suivi.webp')"><img src="images/apercu/whatsapp-suivi.webp" width="1200" height="900" alt="Suivi et échanges avec la coach sur WhatsApp entre les séances" loading="lazy"><figcaption>Je reste dispo entre les séances</figcaption></figure>
             </div>
 
             <!-- 2 · LE FORMAT -->
@@ -1282,11 +1285,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!-- 1 · LE PRINCIPE, EN CLAIR -->
           <div class="rf-hyb-principle">On s'entraîne <b>ensemble en présentiel, séance après séance</b> — et entre nos rendez-vous, tu continues avec un <b>vrai programme sur-mesure et interactif</b> guidé en vidéo. Je te <b>revois régulièrement</b>, je corrige et j'ajuste ton programme au fil de tes séances (<b>mis à jour toutes les 4 semaines</b>). Résultat&nbsp;: tu <b>t'entraînes toute la semaine</b>, pas seulement le jour du coaching, et tu gardes ta coach à tes côtés dans la durée — jamais livrée à toi-même.</div>
           <div class="rf-gallery" id="apercu-hybride" style="margin-top:12px" aria-label="Aperçu de ton programme hybride">
-            <figure class="rf-shot" onclick="rfLightbox('images/apercu/programme-reel-seance.webp')"><img src="images/apercu/programme-reel-seance.webp" alt="Séance du programme avec exercices, séries, reps et boutons vidéo de démonstration" loading="lazy"><figcaption>Chaque exo en vidéo</figcaption></figure>
-            <figure class="rf-shot" onclick="rfLightbox('images/apercu/programme-reel-chrono.webp')"><img src="images/apercu/programme-reel-chrono.webp" alt="Chrono de repos intégré au programme, lancé entre deux séries" loading="lazy"><figcaption>Chrono de repos intégré</figcaption></figure>
-            <figure class="rf-shot" onclick="rfLightbox('images/apercu/programme-reel-semaine.webp')"><img src="images/apercu/programme-reel-semaine.webp" alt="Vue semaine du programme avec sélection des séances" loading="lazy"><figcaption>Tes séances, semaine par semaine</figcaption></figure>
-            <figure class="rf-shot" onclick="rfLightbox('images/apercu/semaine-type-hybride.webp')"><img src="images/apercu/semaine-type-hybride.webp" alt="Exemple de semaine type combinant séances avec la coach et séances en autonomie" loading="lazy"><figcaption>Ta semaine type</figcaption></figure>
-            <figure class="rf-shot" onclick="rfLightbox('images/apercu/programme-evolutif.webp')"><img src="images/apercu/programme-evolutif.webp" alt="Programme mis à jour toutes les 4 semaines pour suivre ta progression" loading="lazy"><figcaption>Mis à jour toutes les 4 semaines</figcaption></figure>
+            <figure class="rf-shot rf-wide" onclick="rfLightbox('images/apercu/programme-reel-seance.webp')"><img src="images/apercu/programme-reel-seance.webp" width="1200" height="900" alt="Séance du programme avec exercices, séries, reps et boutons vidéo de démonstration" loading="lazy"><figcaption>Chaque exo en vidéo</figcaption></figure>
+            <figure class="rf-shot rf-wide" onclick="rfLightbox('images/apercu/programme-reel-chrono.webp')"><img src="images/apercu/programme-reel-chrono.webp" width="1200" height="900" alt="Chrono de repos intégré au programme, lancé entre deux séries" loading="lazy"><figcaption>Chrono de repos intégré</figcaption></figure>
+            <figure class="rf-shot rf-wide" onclick="rfLightbox('images/apercu/programme-reel-semaine.webp')"><img src="images/apercu/programme-reel-semaine.webp" width="1200" height="900" alt="Vue semaine du programme avec sélection des séances" loading="lazy"><figcaption>Tes séances, semaine par semaine</figcaption></figure>
+            <figure class="rf-shot rf-wide" onclick="rfLightbox('images/apercu/semaine-type-hybride.webp')"><img src="images/apercu/semaine-type-hybride.webp" width="1200" height="900" alt="Exemple de semaine type combinant séances avec la coach et séances en autonomie" loading="lazy"><figcaption>Ta semaine type</figcaption></figure>
+            <figure class="rf-shot rf-wide" onclick="rfLightbox('images/apercu/programme-evolutif.webp')"><img src="images/apercu/programme-evolutif.webp" width="1200" height="900" alt="Programme mis à jour toutes les 4 semaines pour suivre ta progression" loading="lazy"><figcaption>Mis à jour toutes les 4 semaines</figcaption></figure>
           </div>
 
           <!-- 2 · LES DEUX FORMULES + SÉLECTEUR DE DURÉE -->
@@ -1366,9 +1369,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div style="font:700 .82rem/1.2 'DM Sans',sans-serif;color:var(--rf-ink);margin-bottom:2px;">📋 A · Programme seul</div>
             <div style="font-size:.8rem;color:var(--rf-terra);font-weight:600;margin-bottom:14px;">Tu reçois ton programme personnalisé et tu deviens autonome.</div>
             <div class="rf-gallery" style="margin-top:0;margin-bottom:14px;" aria-label="Aperçu de ton programme à distance">
-              <figure class="rf-shot" onclick="rfLightbox('images/apercu/programme-8sem.webp')"><img src="images/apercu/programme-8sem.webp" alt="Programme sur-mesure de 8 semaines livré à distance" loading="lazy"><figcaption>Ton programme 8 semaines</figcaption></figure>
-              <figure class="rf-shot" onclick="rfLightbox('images/apercu/bilan.webp')"><img src="images/apercu/bilan.webp" alt="Bilan de départ à partir duquel le programme est construit" loading="lazy"><figcaption>Créé après ton bilan</figcaption></figure>
-              <figure class="rf-shot" onclick="rfLightbox('images/apercu/video-demo.webp')"><img src="images/apercu/video-demo.webp" alt="Vidéos de démonstration des exercices du programme" loading="lazy"><figcaption>Vidéos de démo des exercices</figcaption></figure>
+              <figure class="rf-shot rf-wide" onclick="rfLightbox('images/apercu/programme-8sem.webp')"><img src="images/apercu/programme-8sem.webp" width="1200" height="900" alt="Programme sur-mesure de 8 semaines livré à distance" loading="lazy"><figcaption>Ton programme 8 semaines</figcaption></figure>
+              <figure class="rf-shot rf-wide" onclick="rfLightbox('images/apercu/bilan.webp')"><img src="images/apercu/bilan.webp" width="1200" height="900" alt="Bilan de départ à partir duquel le programme est construit" loading="lazy"><figcaption>Créé après ton bilan</figcaption></figure>
+              <figure class="rf-shot rf-wide" onclick="rfLightbox('images/apercu/video-demo.webp')"><img src="images/apercu/video-demo.webp" width="1200" height="900" alt="Vidéos de démonstration des exercices du programme" loading="lazy"><figcaption>Vidéos de démo des exercices</figcaption></figure>
             </div>
             <div class="rf-tier" style="margin-bottom:0;">
               <div class="rf-tier-l">
