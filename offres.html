@@ -990,6 +990,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .rf-hyb-principle b{color:var(--rf-terra);font-weight:700;}
 .rf-hyb-h{font:800 .74rem/1.2 'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--rf-terra);margin:26px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--rf-line);}
 .rf-hyb-note{font-size:.8rem;color:var(--rf-mute);line-height:1.55;margin:10px 0 0;}
+.rf-hyb-principle p{margin:0 0 9px;}
+.rf-hyb-principle p:last-child{margin:0;}
+/* Options (Boost) : bien séparées de ce qui est inclus */
+.rf-opt-sep{display:flex;align-items:center;gap:12px;margin:28px 0 4px;font:800 .72rem/1.2 'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--rf-terra);}
+.rf-opt-sep::before,.rf-opt-sep::after{content:'';flex:1;height:1px;background:rgba(192,87,74,.3);}
+.rf-opt-sub{text-align:center;font-size:.8rem;color:var(--rf-mute);margin:0 0 4px;}
+.rf-boost-n{background:linear-gradient(160deg,rgba(45,106,79,.08),rgba(45,106,79,.02));border:1.5px solid rgba(45,106,79,.28);border-radius:18px;padding:18px 18px 16px;}
+.rf-boost-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+.rf-boost-tag{font:800 .8rem/1.2 'DM Sans',sans-serif;color:var(--rf-green);text-transform:uppercase;letter-spacing:.06em;}
+.rf-boost-price{font:600 1.35rem/1 'Cormorant Garamond',Georgia,serif;color:var(--rf-ink);white-space:nowrap;}
+.rf-boost-price small{font:500 .7rem 'DM Sans',sans-serif;color:var(--rf-mute);margin-left:3px;}
+.rf-boost-title{font:600 1.12rem/1.3 'Cormorant Garamond',Georgia,serif;color:var(--rf-ink);margin-bottom:8px;}
+.rf-boost-title em{color:var(--rf-green);}
+.rf-boost-why{font-size:.84rem;color:var(--rf-ink2);line-height:1.6;margin:0 0 12px;}
+.rf-boost-list{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.rf-boost-list li{font-size:.84rem;color:var(--rf-ink);line-height:1.45;padding-left:22px;position:relative;}
+.rf-boost-list li::before{content:'→';position:absolute;left:0;color:var(--rf-green);font-weight:800;}
+.rf-boost-n .rf-gallery{margin-top:12px;}
+.rf-boost-n label.rf-boost-add{display:flex;gap:10px;align-items:center;background:var(--rf-paper);border:1.5px solid rgba(45,106,79,.35);border-radius:12px;padding:12px 14px;margin-top:6px;font:700 .88rem/1.35 'DM Sans',sans-serif;color:var(--rf-ink);}
+.rf-boost-n label.rf-boost-add:has(input:checked){background:rgba(45,106,79,.1);border-color:var(--rf-green);}
+.rf-boost-n input{accent-color:var(--rf-green);margin:0;}
+.rf-boost-hint{font-size:.74rem;color:var(--rf-mute);margin:6px 0 0;text-align:center;}
+.rf-boost-ok{display:none;background:var(--rf-green);color:#fff;border-radius:10px;padding:10px 12px;margin-top:8px;font:600 .82rem/1.4 'DM Sans',sans-serif;}
+.rf-boost-ok.show{display:block;}
+.rf-boost-ok a{color:#fff;font-weight:800;text-decoration:underline;white-space:nowrap;}
+@keyframes rfFlash{0%,100%{background:transparent;}25%,60%{background:rgba(45,106,79,.16);}}
+.rf-flash{animation:rfFlash 1.6s ease;border-radius:12px;}
+.rf-boost-disc{font-size:.72rem;color:var(--rf-mute);font-style:italic;margin:8px 0 0;line-height:1.45;}
 .rf-klarna{font-size:.72rem;color:var(--rf-mute);text-align:center;margin:8px 0 0;}
 @media(max-width:520px){
   .rf-packs{grid-template-columns:1fr;}
@@ -1212,17 +1240,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div id="rows-dom"></div>
             <div class="rf-push6" id="push6-dom">✨ Passe au parcours 6 mois&nbsp;: 20€ de moins par mois <b>et</b> 89€ de cadeaux.</div>
 
-            <div class="rf-boost">
-              <label><input type="checkbox" id="bprog-dom" onchange="rfBprog('dom')"><span><b>Ajouter le Boost Programme</b> — <b style="color:var(--rf-terra)" id="bprog-price-dom">+39€/mois, soit 1,40€ par jour</b>.<br><span style="font-size:.78rem;color:var(--rf-mute)">Pour aller plus vite&nbsp;: tu ne t'entraînes plus 1 fois par semaine, mais 4 à 5.</span><span id="bprog-more-dom" style="display:none;font-size:.78rem;color:var(--rf-mute);margin-top:6px;">Ton programme vidéo sur-mesure pour les jours sans moi, construit sur nos séances et ajusté toutes les 4 semaines. Moins de 3€ la séance.</span></span></label>
+            <div class="rf-opt-sep">En option</div>
+            <p class="rf-opt-sub">Non inclus dans le prix ci-dessus</p>
+            <div class="rf-boost rf-boost-n">
+              <div class="rf-boost-top">
+                <span class="rf-boost-tag">⚡ Boost Programme</span>
+                <span class="rf-boost-price" id="bprog-price-dom">+39€<small>/mois · 1,40€/jour</small></span>
+              </div>
+              <div class="rf-boost-title">Entraîne-toi aussi <em>les jours sans moi</em>.</div>
+              <ul class="rf-boost-list">
+                <li><b>Un programme vidéo sur-mesure</b> pour les jours sans moi</li>
+                <li><b>Construit sur nos séances</b> — tu sais exactement quoi faire</li>
+                <li><b>Jusqu'à 4 à 5 entraînements</b> par semaine au total · ajusté toutes les 4 semaines</li>
+              </ul>
+              <label class="rf-boost-add"><input type="checkbox" id="bprog-dom" onchange="rfBprog('dom')"><span>Oui, j'ajoute le Boost Programme à ma formule</span></label>
+              <p class="rf-boost-hint" id="bprog-hint-dom">↑ En cochant, le prix en haut s'ajuste automatiquement</p>
+              <div class="rf-boost-ok" id="bprog-ok-dom">✓ Ajouté&nbsp;! Ton nouveau prix est affiché plus haut. <a href="#rows-dom" onclick="rfSeePrice('dom');return false;">Voir mon prix ↑</a></div>
             </div>
 
-            <div class="rf-boost">
-              <label><input type="checkbox" id="boost-dom" onchange="rfBoost('dom')"><span><b>Ajouter le Boost Nutrition</b> — <b style="color:var(--rf-terra)">+40€/mois, soit 1,30€ par jour</b>.<br><span style="font-size:.78rem;color:var(--rf-mute)">Plans repas <b>sur mesure</b>, calculés d'après ton métabolisme de base, + liste de courses · rééquilibrage sans régime ni pesée · ajusté chaque mois avec tes mensurations. <em>Conseils pratiques, je ne suis pas diététicienne.</em></span></span></label>
-              <div class="rf-gallery" style="margin-top:12px">
+            <div class="rf-boost rf-boost-n">
+              <div class="rf-boost-top">
+                <span class="rf-boost-tag">🥗 Boost Nutrition</span>
+                <span class="rf-boost-price">+40€<small>/mois · 1,30€/jour</small></span>
+              </div>
+              <div class="rf-boost-title">Ton assiette travaille <em>avec</em> tes séances : des résultats plus rapides.</div>
+              <ul class="rf-boost-list">
+                <li><b>Tu sais quoi manger chaque jour</b> — repas sur mesure + liste de courses</li>
+                <li><b>Sans régime ni pesée</b> — tenable dans la durée</li>
+                <li><b>Ajusté chaque mois</b> selon tes mensurations</li>
+              </ul>
+              <div class="rf-gallery">
                 <figure class="rf-shot" onclick="rfLightbox('images/apercu/journees-types.webp')"><img src="images/apercu/journees-types.webp" alt="Aperçu de journées types" loading="lazy" width="645" height="945"><figcaption>Tes journées types</figcaption></figure>
                 <figure class="rf-shot" onclick="rfLightbox('images/apercu/fiches-petit-dej.webp')"><img src="images/apercu/fiches-petit-dej.webp" alt="Aperçu fiches recettes" loading="lazy" width="645" height="997"><figcaption>Fiches recettes</figcaption></figure>
                 <figure class="rf-shot" onclick="rfLightbox('images/apercu/calendrier-repas.webp')"><img src="images/apercu/calendrier-repas.webp" alt="Aperçu calendrier repas" loading="lazy" width="645" height="990"><figcaption>Ton calendrier repas</figcaption></figure>
               </div>
+              <label class="rf-boost-add"><input type="checkbox" id="boost-dom" onchange="rfBoost('dom')"><span>Oui, j'ajoute le Boost Nutrition à ma formule</span></label>
+              <p class="rf-boost-hint" id="boost-hint-dom">↑ En cochant, le prix en haut s'ajuste automatiquement</p>
+              <div class="rf-boost-ok" id="boost-ok-dom">✓ Ajouté&nbsp;! Ton nouveau prix est affiché plus haut. <a href="#rows-dom" onclick="rfSeePrice('dom');return false;">Voir mon prix ↑</a></div>
+              <p class="rf-boost-disc">Conseils pratiques, je ne suis pas diététicienne.</p>
             </div>
 
             <div class="rf-cadeaux" id="cadeaux-dom">
@@ -1280,7 +1335,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="rf-acc-body">
         <div class="rf-acc-inner">
           <!-- 1 · LE PRINCIPE, EN CLAIR -->
-          <div class="rf-hyb-principle">On s'entraîne <b>ensemble en présentiel, séance après séance</b> — et entre nos rendez-vous, tu continues avec un <b>vrai programme sur-mesure et interactif</b> guidé en vidéo. Je te <b>revois régulièrement</b>, je corrige et j'ajuste ton programme au fil de tes séances (<b>mis à jour toutes les 4 semaines</b>). Résultat&nbsp;: tu <b>t'entraînes toute la semaine</b>, pas seulement le jour du coaching, et tu gardes ta coach à tes côtés dans la durée — jamais livrée à toi-même.</div>
+          <div class="rf-hyb-principle">
+            <p>🤝 <b>Avec moi, en présentiel&nbsp;:</b> on s'entraîne ensemble, je te corrige et j'ajuste ton programme au fil des séances.</p>
+            <p>📱 <b>Entre nos rendez-vous&nbsp;:</b> tu continues seule avec un programme sur-mesure et interactif, guidé en vidéo, mis à jour toutes les 4 semaines.</p>
+            <p>✨ <b>Résultat&nbsp;:</b> tu t'entraînes toute la semaine, pas seulement le jour du coaching — et tu n'es jamais livrée à toi-même.</p>
+          </div>
           <div class="rf-gallery" id="apercu-hybride" style="margin-top:12px" aria-label="Aperçu de ton programme hybride">
             <figure class="rf-shot" onclick="rfLightbox('images/apercu/programme-reel-seance.webp')"><img src="images/apercu/programme-reel-seance.webp" alt="Séance du programme avec exercices, séries, reps et boutons vidéo de démonstration" loading="lazy"><figcaption>Chaque exo en vidéo</figcaption></figure>
             <figure class="rf-shot" onclick="rfLightbox('images/apercu/programme-reel-chrono.webp')"><img src="images/apercu/programme-reel-chrono.webp" alt="Chrono de repos intégré au programme, lancé entre deux séries" loading="lazy"><figcaption>Chrono de repos intégré</figcaption></figure>
@@ -1289,7 +1348,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <figure class="rf-shot" onclick="rfLightbox('images/apercu/programme-evolutif.webp')"><img src="images/apercu/programme-evolutif.webp" alt="Programme mis à jour toutes les 4 semaines pour suivre ta progression" loading="lazy"><figcaption>Mis à jour toutes les 4 semaines</figcaption></figure>
           </div>
 
-          <!-- 2 · LES DEUX FORMULES + SÉLECTEUR DE DURÉE -->
+          <!-- 2 · CE QUI EST INCLUS -->
+          <div class="rf-hyb-h">Inclus dans ton coaching hybride</div>
+          <ul class="rf-inc">
+            <li>De <b>vraies séances</b> avec moi à domicile dans l'Essonne (ou en salle ON AIR Fitness proche de mon secteur)</li>
+            <li><b>Jusqu'à 5 entraînements à faire seule</b> entre nos rendez-vous — pour t'entraîner bien plus souvent</li>
+            <li>Un <b>programme 100 % sur-mesure</b>, construit à partir de ce qu'on travaille ensemble et adapté à ton évolution</li>
+            <li>Un <b>programme interactif et guidé</b> (vidéos intégrées, chrono)&nbsp;: tu sais exactement quoi faire</li>
+            <li><b>Réactualisé toutes les 4 semaines</b>&nbsp;: ton programme évolue avec toi et ta vie, jamais un plan figé</li>
+            <li>Ton <b>espace coaché personnel</b>&nbsp;: programme, bilans, mensurations, suivi de ton évolution</li>
+            <li><b>Suivi WhatsApp</b> entre les séances pour poser tes questions et ajuster si besoin</li>
+          </ul>
+
+          <!-- 3 · LES DEUX FORMULES + SÉLECTEUR DE DURÉE -->
           <div class="rf-hyb-h">Choisis ton rythme de séances avec moi</div>
           <div style="font-size:.78rem;color:var(--rf-terra);font-weight:700;margin-bottom:2px;">Choisis ton parcours</div>
           <div class="rf-dur" data-sel="hyb">
@@ -1301,14 +1372,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="rf-push6" id="push6-hyb">✨ Passe au parcours 6 mois&nbsp;: même tarif mensuel <b>et</b> 89€ de cadeaux en plus.</div>
           <p class="rf-hyb-note"><b style="color:var(--rf-ink);">Dans les deux formules&nbsp;:</b> ton programme sur-mesure à faire seule entre les rendez-vous <b>+</b> le suivi WhatsApp sont inclus. Seul le nombre de séances avec moi change.</p>
 
-          <div class="rf-boost">
-            <label><input type="checkbox" id="boost-hyb" onchange="rfBoost('hyb')"><span><b>Ajouter le Boost Nutrition</b> — <b style="color:var(--rf-terra)">+40€/mois, soit 1,30€ par jour</b>.<br><span style="font-size:.78rem;color:var(--rf-mute)">Plans repas <b>sur mesure</b>, calculés d'après ton métabolisme de base, + liste de courses · rééquilibrage sans régime ni pesée · ajusté chaque mois. <em>Conseils pratiques, je ne suis pas diététicienne.</em></span></span></label>
-            <div class="rf-gallery" style="margin-top:12px">
-              <figure class="rf-shot" onclick="rfLightbox('images/apercu/journees-types.webp')"><img src="images/apercu/journees-types.webp" alt="Aperçu de journées types" loading="lazy" width="645" height="945"><figcaption>Tes journées types</figcaption></figure>
-              <figure class="rf-shot" onclick="rfLightbox('images/apercu/fiches-petit-dej.webp')"><img src="images/apercu/fiches-petit-dej.webp" alt="Aperçu fiches recettes" loading="lazy" width="645" height="997"><figcaption>Fiches recettes</figcaption></figure>
-              <figure class="rf-shot" onclick="rfLightbox('images/apercu/calendrier-repas.webp')"><img src="images/apercu/calendrier-repas.webp" alt="Aperçu calendrier repas" loading="lazy" width="645" height="990"><figcaption>Ton calendrier repas</figcaption></figure>
+          <div class="rf-opt-sep">En option</div>
+            <p class="rf-opt-sub">Non inclus dans le prix ci-dessus</p>
+            <div class="rf-boost rf-boost-n">
+              <div class="rf-boost-top">
+                <span class="rf-boost-tag">🥗 Boost Nutrition</span>
+                <span class="rf-boost-price">+40€<small>/mois · 1,30€/jour</small></span>
+              </div>
+              <div class="rf-boost-title">Ton assiette travaille <em>avec</em> tes séances : des résultats plus rapides.</div>
+              <ul class="rf-boost-list">
+                <li><b>Tu sais quoi manger chaque jour</b> — repas sur mesure + liste de courses</li>
+                <li><b>Sans régime ni pesée</b> — tenable dans la durée</li>
+                <li><b>Ajusté chaque mois</b> selon tes mensurations</li>
+              </ul>
+              <div class="rf-gallery">
+                <figure class="rf-shot" onclick="rfLightbox('images/apercu/journees-types.webp')"><img src="images/apercu/journees-types.webp" alt="Aperçu de journées types" loading="lazy" width="645" height="945"><figcaption>Tes journées types</figcaption></figure>
+                <figure class="rf-shot" onclick="rfLightbox('images/apercu/fiches-petit-dej.webp')"><img src="images/apercu/fiches-petit-dej.webp" alt="Aperçu fiches recettes" loading="lazy" width="645" height="997"><figcaption>Fiches recettes</figcaption></figure>
+                <figure class="rf-shot" onclick="rfLightbox('images/apercu/calendrier-repas.webp')"><img src="images/apercu/calendrier-repas.webp" alt="Aperçu calendrier repas" loading="lazy" width="645" height="990"><figcaption>Ton calendrier repas</figcaption></figure>
+              </div>
+              <label class="rf-boost-add"><input type="checkbox" id="boost-hyb" onchange="rfBoost('hyb')"><span>Oui, j'ajoute le Boost Nutrition à ma formule</span></label>
+              <p class="rf-boost-hint" id="boost-hint-hyb">↑ En cochant, le prix en haut s'ajuste automatiquement</p>
+              <div class="rf-boost-ok" id="boost-ok-hyb">✓ Ajouté&nbsp;! Ton nouveau prix est affiché plus haut. <a href="#rows-hyb" onclick="rfSeePrice('hyb');return false;">Voir mon prix ↑</a></div>
+              <p class="rf-boost-disc">Conseils pratiques, je ne suis pas diététicienne.</p>
             </div>
-          </div>
           <div class="rf-cadeaux" id="cadeaux-hyb">
             <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;">
               <span style="font:700 .95rem/1.3 'DM Sans',sans-serif;color:var(--rf-ink);">🎁 Tu t'engages 6 mois&nbsp;? Voilà 89€ de cadeaux</span>
@@ -1316,18 +1402,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <p style="font-size:.82rem;color:var(--rf-green);font-weight:600;line-height:1.5;margin:8px 0 0;">✅ Fit Dans Ta Vie, ma méthode 28 jours (valeur 49€)<br>✅ Ton 1er mois de Boost Nutrition offert (valeur 40€)</p>
           </div>
-
-          <!-- 3 · CE QUI EST INCLUS -->
-          <div class="rf-hyb-h">Ce que tu as, quelle que soit la formule</div>
-          <ul class="rf-inc">
-            <li>De <b>vraies séances</b> avec moi à domicile dans l'Essonne (ou en salle ON AIR Fitness proche de mon secteur)</li>
-            <li><b>Jusqu'à 5 entraînements à faire seule</b> entre nos rendez-vous — pour t'entraîner bien plus souvent</li>
-            <li>Un <b>programme 100 % sur-mesure</b>, construit à partir de ce qu'on travaille ensemble et adapté à ton évolution</li>
-            <li>Un <b>programme interactif et guidé</b> (vidéos intégrées, chrono)&nbsp;: tu sais exactement quoi faire</li>
-            <li><b>Réactualisé toutes les 4 semaines</b>&nbsp;: ton programme évolue avec toi et ta vie, jamais un plan figé</li>
-            <li>Ton <b>espace coaché personnel</b>&nbsp;: programme, bilans, mensurations, suivi de ton évolution</li>
-            <li><b>Suivi WhatsApp</b> entre les séances pour poser tes questions et ajuster si besoin</li>
-          </ul>
 
           <!-- 4 · RÉASSURANCE -->
           <div style="background:#FFF9F6;border:1px solid rgba(192,87,74,.22);border-radius:14px;padding:15px 18px;margin:18px 0 10px;">
@@ -1398,13 +1472,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div id="rows-dist"></div>
             <div class="rf-push6" id="push6-dist">✨ Passe au parcours 6 mois&nbsp;: 10€ de moins par mois <b>et</b> 89€ de cadeaux.</div>
 
-            <div class="rf-boost">
-              <label><input type="checkbox" id="boost-dist" onchange="rfBoost('dist')"><span><b>Ajouter le Boost Nutrition</b> — <b style="color:var(--rf-terra)">+40€/mois, soit 1,30€ par jour</b>.<br><span style="font-size:.78rem;color:var(--rf-mute)">Plans repas <b>sur mesure</b>, calculés d'après ton métabolisme de base, + liste de courses · rééquilibrage sans régime ni pesée · ajusté chaque mois. Résiliable avec 15&nbsp;j de préavis. <em>Conseils pratiques, je ne suis pas diététicienne.</em></span></span></label>
-              <div class="rf-gallery" style="margin-top:12px">
+            <div class="rf-opt-sep">En option</div>
+            <p class="rf-opt-sub">Non inclus dans le prix ci-dessus</p>
+            <div class="rf-boost rf-boost-n">
+              <div class="rf-boost-top">
+                <span class="rf-boost-tag">🥗 Boost Nutrition</span>
+                <span class="rf-boost-price">+40€<small>/mois · 1,30€/jour</small></span>
+              </div>
+              <div class="rf-boost-title">Ton assiette travaille <em>avec</em> tes séances : des résultats plus rapides.</div>
+              <ul class="rf-boost-list">
+                <li><b>Tu sais quoi manger chaque jour</b> — repas sur mesure + liste de courses</li>
+                <li><b>Sans régime ni pesée</b> — tenable dans la durée</li>
+                <li><b>Ajusté chaque mois</b> selon tes mensurations</li>
+              </ul>
+              <div class="rf-gallery">
                 <figure class="rf-shot" onclick="rfLightbox('images/apercu/journees-types.webp')"><img src="images/apercu/journees-types.webp" alt="Aperçu de journées types" loading="lazy" width="645" height="945"><figcaption>Tes journées types</figcaption></figure>
                 <figure class="rf-shot" onclick="rfLightbox('images/apercu/fiches-petit-dej.webp')"><img src="images/apercu/fiches-petit-dej.webp" alt="Aperçu fiches recettes" loading="lazy" width="645" height="997"><figcaption>Fiches recettes</figcaption></figure>
                 <figure class="rf-shot" onclick="rfLightbox('images/apercu/calendrier-repas.webp')"><img src="images/apercu/calendrier-repas.webp" alt="Aperçu calendrier repas" loading="lazy" width="645" height="990"><figcaption>Ton calendrier repas</figcaption></figure>
               </div>
+              <label class="rf-boost-add"><input type="checkbox" id="boost-dist" onchange="rfBoost('dist')"><span>Oui, j'ajoute le Boost Nutrition à ma formule</span></label>
+              <p class="rf-boost-hint" id="boost-hint-dist">↑ En cochant, le prix en haut s'ajuste automatiquement</p>
+              <div class="rf-boost-ok" id="boost-ok-dist">✓ Ajouté&nbsp;! Ton nouveau prix est affiché plus haut. <a href="#rows-dist" onclick="rfSeePrice('dist');return false;">Voir mon prix ↑</a></div>
+              <p class="rf-boost-disc">Résiliable avec 15&nbsp;j de préavis. Conseils pratiques, je ne suis pas diététicienne.</p>
             </div>
             <div class="rf-cadeaux" id="cadeaux-dist">
               <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;">
@@ -1749,15 +1838,21 @@ function rfRender(tab){
   if(seg){seg.querySelectorAll('button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-d')===st.d);});}
   if(tab==='dom'){
     var bp=RF_BPROG[st.d];
-    var pl=document.getElementById('bprog-price-dom');if(pl)pl.textContent='+'+bp.p+'€/mois, soit '+bp.day+' par jour';
-    var mo=document.getElementById('bprog-more-dom');if(mo)mo.style.display=st.bprog?'block':'none';
+    var pl=document.getElementById('bprog-price-dom');if(pl)pl.innerHTML='+'+bp.p+'€<small>/mois · '+bp.day+'/jour</small>';
     var cta=document.getElementById('cta-dom');
     if(cta){var msg='Bonjour Ornella ! Je veux démarrer un abonnement coaching à domicile.'+(st.bprog?' Avec le Boost Programme.':'')+' On en parle ?';cta.href='https://wa.me/33756834626?text='+encodeURIComponent(msg);}
   }
 }
 function rfDur(tab,d){RF_STATE[tab].d=d;rfRender(tab);}
-function rfBoost(tab){var c=document.getElementById('boost-'+tab);RF_STATE[tab].boost=c&&c.checked;rfRender(tab);}
-function rfBprog(tab){var c=document.getElementById('bprog-'+tab);RF_STATE[tab].bprog=c&&c.checked;rfRender(tab);}
+/* Retour visuel : le prix en haut s'ajuste quand on coche une option */
+function rfOptFeedback(kind,tab,on){
+  var ok=document.getElementById(kind+'-ok-'+tab),hint=document.getElementById(kind+'-hint-'+tab);
+  if(ok)ok.classList.toggle('show',on);if(hint)hint.style.display=on?'none':'block';
+  var box=document.getElementById('rows-'+tab);if(box){box.classList.remove('rf-flash');void box.offsetWidth;box.classList.add('rf-flash');}
+}
+function rfSeePrice(tab){var box=document.getElementById('rows-'+tab);if(!box)return;box.scrollIntoView({behavior:'smooth',block:'center'});box.classList.remove('rf-flash');void box.offsetWidth;box.classList.add('rf-flash');}
+function rfBoost(tab){var c=document.getElementById('boost-'+tab);RF_STATE[tab].boost=c&&c.checked;rfRender(tab);rfOptFeedback('boost',tab,RF_STATE[tab].boost);}
+function rfBprog(tab){var c=document.getElementById('bprog-'+tab);RF_STATE[tab].bprog=c&&c.checked;rfRender(tab);rfOptFeedback('bprog',tab,RF_STATE[tab].bprog);}
 document.addEventListener('DOMContentLoaded',function(){['dom','hyb','dist'].forEach(rfRender);});
 </script>
 
