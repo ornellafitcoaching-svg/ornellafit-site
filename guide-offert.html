@@ -2869,7 +2869,7 @@ document.querySelectorAll('a[href*="9B67sL7fXgcr03P5XT8Vi04"]').forEach(function
 </script>
 
 <script>
-const GD_KEY = 'xkeysib-b3f029f593ab90bd2bb'+'2290988c5a455f29ddad8ec51e4ca585'+'dcf702b601838-1wVKxDw8s4P48lV3';
+const GD_KEY = 'via-proxy-securise'+''+'';
 function gdPostWithRetry(url, payload, retries) {
   return fetch(url, { method:'POST', headers:{'api-key':GD_KEY,'Content-Type':'application/json'}, body:JSON.stringify(payload) })
     .then(function(r){ if(!r.ok && retries>0){ return new Promise(function(res){setTimeout(res,800);}).then(function(){return gdPostWithRetry(url,payload,retries-1);}); } return r; })
@@ -3039,7 +3039,7 @@ function handleGuideCapture() {
   }
   errEl.style.display = 'none';
   try { localStorage.setItem('guide_unlocked', '1'); if (objectif) localStorage.setItem('guide_objectif', objectif); } catch(e) {}
-  gdPostWithRetry('https://api.brevo.com/v3/contacts', { email: email, attributes:{PRENOM:fname, OBJECTIF:objectif}, listIds:[15], updateEnabled:true }, 2);
+  gdPostWithRetry('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=contacts', { email: email, attributes:{PRENOM:fname, OBJECTIF:objectif}, listIds:[15], updateEnabled:true }, 2);
   if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'Guide 9 Erreurs - Page complète'});
   unlockGuide();
   document.getElementById('gated-content').scrollIntoView({behavior:'smooth'});

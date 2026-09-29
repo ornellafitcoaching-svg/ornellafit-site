@@ -633,7 +633,7 @@ footer a:hover{color:var(--accent)}
 <a href="https://wa.me/33756834626" class="floating-wa" target="_blank" title="WhatsApp">💬</a>
 
 <script>
-const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
+const _a='via-proxy-securise',_b='',_c='';
 const BREVO_KEY=_a+_b+_c;
 
 function submitToBrevoList16(email) {
@@ -659,7 +659,7 @@ async function submitWaitlist(inputId, successId) {
 
   try {
     // Email de confirmation transactionnel Booty Sculpt
-    await fetch('https://api.brevo.com/v3/smtp/email', {
+    await fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=email', {
       method: 'POST',
       headers: {'Content-Type':'application/json','api-key':BREVO_KEY},
       body: JSON.stringify({
@@ -724,7 +724,7 @@ async function handlePurchase() {
   localStorage.setItem('bs_buyer_fname', fname);
   if (typeof fbq !== 'undefined') { fbq('init', '1233548507794099', {em: email}); (fbq('track','InitiateCheckout',{value:19,currency:'EUR',content_ids:['booty-sculpt-8sem'],content_type:'product'}),fbq('track','AddToCart',{value:19,currency:'EUR',content_ids:['booty-sculpt-8sem'],content_type:'product'})); }
   setTimeout(function(){
-    window.location.href = 'https://buy.stripe.com/00w00j6bTbWb8Al0Dz8Vi06';
+    (window.ofcPanierGo ? ofcPanierGo('https://buy.stripe.com/00w00j6bTbWb8Al0Dz8Vi06', email, fname) : (window.location.href = 'https://buy.stripe.com/00w00j6bTbWb8Al0Dz8Vi06'));
   }, 400);
 }
 
@@ -745,7 +745,7 @@ async function handleUrgPurchase() {
   localStorage.setItem('bs_buyer_fname', fname);
   if (typeof fbq !== 'undefined') { fbq('init', '1233548507794099', {em: email}); (fbq('track','InitiateCheckout',{value:19,currency:'EUR',content_ids:['booty-sculpt-8sem'],content_type:'product'}),fbq('track','AddToCart',{value:19,currency:'EUR',content_ids:['booty-sculpt-8sem'],content_type:'product'})); }
   setTimeout(function(){
-    window.location.href = 'https://buy.stripe.com/00w00j6bTbWb8Al0Dz8Vi06';
+    (window.ofcPanierGo ? ofcPanierGo('https://buy.stripe.com/00w00j6bTbWb8Al0Dz8Vi06', email, fname) : (window.location.href = 'https://buy.stripe.com/00w00j6bTbWb8Al0Dz8Vi06'));
   }, 400);
 }
 </script>
@@ -783,5 +783,6 @@ document.querySelectorAll('.faq-q').forEach(q => {
 /* Tracker de scroll : "ou les gens s'arretent" -> Pixel Meta (si present) + dataLayer GTM. Aucun compte externe. */
 (function(){var PAGE=location.pathname.replace(/^\//,'').replace(/\.html$/,'')||'accueil';var M=[25,50,75,90,100],done={},t=false;function depth(){var d=document.documentElement,b=document.body,top=d.scrollTop||b.scrollTop,max=(d.scrollHeight||b.scrollHeight)-d.clientHeight;return max>0?Math.min(100,Math.round(top/max*100)):100;}function fire(m){if(done[m])return;done[m]=1;if(typeof fbq!=='undefined')fbq('trackCustom','ScrollDepth',{page:PAGE,percent:m});(window.dataLayer=window.dataLayer||[]).push({event:'scroll_depth',page:PAGE,percent:m});}function chk(){var p=depth();M.forEach(function(m){if(p>=m)fire(m);});t=false;}window.addEventListener('scroll',function(){if(t)return;t=true;setTimeout(chk,300);},{passive:true});window.addEventListener('load',chk);})();
 </script>
+<script src="panier.js" defer></script>
 </body>
 </html>

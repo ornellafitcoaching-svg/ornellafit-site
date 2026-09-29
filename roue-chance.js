@@ -7,7 +7,7 @@
   if (_shownAt && (Date.now() - _shownAt) < 7 * 24 * 60 * 60 * 1000) return;
   if (sessionStorage.getItem('ofc_roue_shown')) return;
 
-  var _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
+  var _a='via-proxy-securise',_b='',_c='';
   var BREVO_KEY=_a+_b+_c;
   var LIST_ID = 43;
   var TEMPLATE_ID = 160;
@@ -169,7 +169,7 @@
       PRIZE_PCT: String(prize.pct),
       PROMO_CODE: prize.code
     };
-    fetch('https://api.brevo.com/v3/contacts', {
+    fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=contacts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'api-key': BREVO_KEY },
       body: JSON.stringify({
@@ -180,7 +180,7 @@
       })
     }).catch(function(){});
 
-    fetch('https://api.brevo.com/v3/smtp/email', {
+    fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'api-key': BREVO_KEY },
       body: JSON.stringify({
@@ -259,11 +259,10 @@
 
     // Vérifie côté Brevo (source de vérité) si cet email a déjà joué, pour ne jamais
     // ré-attribuer un code si le localStorage local ne suffit pas (ex: navigateur in-app différent).
-    fetch('https://api.brevo.com/v3/contacts/' + encodeURIComponent(email), {
-      headers: { 'api-key': BREVO_KEY }
-    }).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
-    .then(function(contact){
-      var already = contact && contact.listIds && contact.listIds.indexOf(LIST_ID) !== -1;
+    fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=in-list&list=' + LIST_ID + '&email=' + encodeURIComponent(email)
+    ).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
+    .then(function(res){
+      var already = !!(res && res.inList);
       if (already) {
         played = true;
         localStorage.setItem('ofc_roue_played', '1');

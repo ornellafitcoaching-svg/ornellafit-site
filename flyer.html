@@ -713,7 +713,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <input type="hidden" name="locale" value="fr">
 </form>
 <script>
-const BREVO_API_KEY = 'xkeysib-b3f029f593ab90bd2bb'+'2290988c5a455f29ddad8ec51e4ca585'+'dcf702b601838-1wVKxDw8s4P48lV3';
+const BREVO_API_KEY = 'via-proxy-securise'+''+'';
 
 function flyerGuideEmailHtml() {
   return '<html><body style="margin:0;padding:0;background-color:#FDF8F4;font-family:Arial,Helvetica,sans-serif;">' +
@@ -784,7 +784,7 @@ function submitFlyerLeadGeneric(suffix) {
   var btn = document.getElementById('fly-lead-submit' + suffix);
   btn.disabled = true; btn.textContent = 'Envoi…';
   // FIX : ajoute/met à jour le contact directement via l'API Brevo (fiable, avec retry) — liste #37 Lead Flyer + #21 Challenge Ventre Plat 5J
-  postWithRetry('https://api.brevo.com/v3/contacts', BREVO_API_KEY, {
+  postWithRetry('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=contacts', BREVO_API_KEY, {
     email: email,
     listIds: [37, 21],
     updateEnabled: true
@@ -793,7 +793,7 @@ function submitFlyerLeadGeneric(suffix) {
   document.getElementById('flyerLeadForm').submit();
   document.getElementById('cvp21FlyerEmail').value = email;
   document.getElementById('cvp21FormFlyer').submit();
-  fetch('https://api.brevo.com/v3/smtp/email', {
+  fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=email', {
     method: 'POST',
     headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
     body: JSON.stringify({

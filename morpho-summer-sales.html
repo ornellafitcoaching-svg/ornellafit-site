@@ -923,7 +923,7 @@ function buyMorpho(){
     if(lastEmail){ localStorage.setItem('ofc_last_email', lastEmail); }
     localStorage.setItem('ofc_last_morpho', pendingMorpho);
   }catch(e){}
-  window.open(link,'_blank');
+  (window.ofcPanierGo ? ofcPanierGo(link, lastEmail, lastPrenom, true) : window.open(link,'_blank'));
 }
 
 function beginJourney(){
@@ -1012,13 +1012,13 @@ function submitEmail(){
     fbq('track','Lead',{content_name:'Morpho Summer Quiz',value:12,currency:'EUR'});
   }
 
-  const _a='xkeysib-b3f029f593ab90bd2bb';
-  const _b='2290988c5a455f29ddad8ec51e4ca585';
-  const _c='dcf702b601838-1wVKxDw8s4P48lV3';
+  const _a='via-proxy-securise';
+  const _b='';
+  const _c='';
   const key=_a+_b+_c;
 
   // 1. FIX : ajoute/met à jour le contact directement via l'API Brevo (fiable, avec retry) — remplace le formulaire iframe comme source principale
-  postWithRetry('https://api.brevo.com/v3/contacts', key, {
+  postWithRetry('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=contacts', key, {
     email: email,
     attributes:{MORPHO:pendingMorpho, PRENOM:prenom},
     listIds:[28],
@@ -1031,7 +1031,7 @@ function submitEmail(){
 
   Promise.resolve().then(()=>{
     // 2. Envoie l'email personnalisé
-    return fetch('https://api.brevo.com/v3/smtp/email',{
+    return fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=email',{
       method:'POST',
       headers:{'api-key':key,'Content-Type':'application/json'},
       body:JSON.stringify({
@@ -1215,5 +1215,6 @@ document.getElementById('stickyMob').style.display = 'none';
 /* Tracker de scroll : "ou les gens s'arretent" -> Pixel Meta (si present) + dataLayer GTM. Aucun compte externe. */
 (function(){var PAGE=location.pathname.replace(/^\//,'').replace(/\.html$/,'')||'accueil';var M=[25,50,75,90,100],done={},t=false;function depth(){var d=document.documentElement,b=document.body,top=d.scrollTop||b.scrollTop,max=(d.scrollHeight||b.scrollHeight)-d.clientHeight;return max>0?Math.min(100,Math.round(top/max*100)):100;}function fire(m){if(done[m])return;done[m]=1;if(typeof fbq!=='undefined')fbq('trackCustom','ScrollDepth',{page:PAGE,percent:m});(window.dataLayer=window.dataLayer||[]).push({event:'scroll_depth',page:PAGE,percent:m});}function chk(){var p=depth();M.forEach(function(m){if(p>=m)fire(m);});t=false;}window.addEventListener('scroll',function(){if(t)return;t=true;setTimeout(chk,300);},{passive:true});window.addEventListener('load',chk);})();
 </script>
+<script src="panier.js" defer></script>
 </body>
 </html>
