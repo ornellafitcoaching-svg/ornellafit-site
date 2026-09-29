@@ -3,6 +3,8 @@
    - Clic_Achat_<Produit>  : clic vers une page de paiement (Stripe / GoCardless)
    - Clic_Bilan            : clic vers Calendly (bilan gratuit)
    - Clic_WhatsApp         : clic vers WhatsApp
+   - Clic_Vers_<Page>      : clic vers une autre page du site (ex. Clic_Vers_BootySculpt, Clic_Vers_Offres)
+   - Clic_Instagram        : clic vers Instagram
    Le paramètre "page" indique la page où le clic a eu lieu. */
 (function () {
   if (window._suiviClicsReady) return;
@@ -39,6 +41,15 @@
   };
   var PAGE = location.pathname.replace(/^\//, '').replace(/\.html$/, '') || 'accueil';
 
+  // "/booty-sculpt.html" -> "BootySculpt", "/blog/xxx.html" -> "Blog", "/" -> "Accueil"
+  function nomPage(chemin) {
+    if (/^\/blog\//.test(chemin)) return 'Blog';
+    var slug = chemin.replace(/^\//, '').replace(/\.html$/, '') || 'accueil';
+    if (slug === 'index') slug = 'accueil';
+    return slug.normalize('NFD').replace(/[\u0300-\u036f]/g, '').split(/[^A-Za-z0-9]+/)
+      .map(function (m) { return m.charAt(0).toUpperCase() + m.slice(1); }).join('').slice(0, 30);
+  }
+
   function envoyer(nom) {
     if (typeof fbq !== 'undefined') fbq('trackCustom', nom, { page: PAGE });
     (window.dataLayer = window.dataLayer || []).push({ event: 'clic_bouton', bouton: nom, page: PAGE });
@@ -63,6 +74,10 @@
       envoyer('Clic_Bilan');
     } else if (href.indexOf('wa.me/') !== -1 || href.indexOf('api.whatsapp.com') !== -1) {
       envoyer('Clic_WhatsApp');
+    } else if (href.indexOf('instagram.com') !== -1) {
+      envoyer('Clic_Instagram');
+    } else if (a.host === location.host && /\.html$|\/$/.test(a.pathname) && a.pathname !== location.pathname) {
+      envoyer('Clic_Vers_' + nomPage(a.pathname));
     }
   }, true);
 })();
