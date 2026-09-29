@@ -48,6 +48,15 @@ p{ font-size:13.5px; margin-bottom:11px; }
 .reason .ico{ flex:none; width:30px; height:30px; border-radius:9px; background:var(--corail); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; font-family:'Playfair Display',serif; }
 .reason b{ color:var(--vert); }
 
+/* ===== Visuels ===== */
+.day-photo{ margin-left:auto; flex:none; width:152px; height:190px; object-fit:cover; object-position:center 50%; border-radius:16px; box-shadow:0 8px 20px rgba(0,0,0,.14); border:3px solid #fff; }
+.day-prog{ display:flex; align-items:center; gap:5px; margin-top:7px; font-size:10.5px; font-weight:700; color:#8a8478; letter-spacing:.5px; }
+.day-prog i{ display:inline-block; width:16px; height:6px; border-radius:4px; background:#e6ddcd; }
+.day-prog i.on{ background:var(--corail); }
+.checkrow{ margin-top:12px; display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; background:#fff; border:1.5px solid #e6ddcd; border-radius:12px; padding:9px 14px; font-size:12px; font-weight:600; color:var(--vert); }
+.checkrow .bx{ display:inline-block; width:15px; height:15px; border:2px solid var(--corail); border-radius:4px; vertical-align:-3px; margin-right:6px; }
+.checkrow .mood{ margin-left:auto; font-size:15px; letter-spacing:4px; }
+.side-photo{ float:right; width:150px; height:190px; object-fit:cover; border-radius:16px; margin:0 0 8px 16px; box-shadow:0 8px 20px rgba(0,0,0,.14); border:3px solid #fff; }
 /* DAY */
 .day-head{ display:flex; align-items:center; gap:16px; margin-bottom:4px; }
 .day-num{ flex:none; width:74px; height:74px; border-radius:18px; background:var(--corail); color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:0 8px 18px rgba(232,99,74,.35); }
@@ -68,6 +77,11 @@ table.circuit td.dose{ width:22%; color:var(--corail); font-weight:600; }
 table.circuit tr:last-child td{ border-bottom:none; }
 .rounds{ display:inline-block; background:var(--vert); color:#fff; border-radius:8px; padding:3px 10px; font-size:11px; font-weight:700; margin-left:8px; vertical-align:middle; }
 .calm{ background:#eef3ef; border-left:4px solid var(--vert-clair); border-radius:0 10px 10px 0; padding:10px 14px; font-size:13px; }
+.promo{ margin-top:14px; display:flex; align-items:center; gap:12px; background:var(--vert); color:#fff; border-radius:14px; padding:13px 16px; border:2px solid var(--corail); text-decoration:none; font-size:12px; line-height:1.4; }
+.promo .pi{ flex:none; font-size:18px; }
+.promo .pt{ flex:1; color:#e7dcc9; }
+.promo .pt b{ color:#fff; }
+.promo .pb{ flex:none; background:var(--corail); color:#fff; font-weight:700; font-size:12.5px; padding:9px 14px; border-radius:20px; white-space:nowrap; }
 .coach-note{ margin-top:14px; background:#fff6f3; border:1px dashed var(--corail-clair); border-radius:12px; padding:12px 15px; font-size:12.5px; }
 .coach-note b{ color:var(--corail); }
 
@@ -125,6 +139,14 @@ table.track td{ background:var(--creme); padding:0; }
 .offer ul{ list-style:none; margin:10px 0; }
 .offer li{ font-size:12.8px; padding:4px 0 4px 22px; position:relative; color:#e7dcc9; }
 .offer li:before{ content:"✓"; position:absolute; left:0; color:var(--corail-clair); font-weight:700; }
+/* Carte Guide Recettes 7€ */
+.rbox{ display:flex; gap:16px; align-items:center; background:#fff; border:2px solid var(--corail); border-radius:16px; padding:14px 16px; margin-top:16px; text-decoration:none; color:#2a2a26; box-shadow:0 8px 20px rgba(232,99,74,.15); }
+.rbox img{ width:120px; height:120px; flex:none; object-fit:cover; border-radius:12px; }
+.rbox .k{ font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--corail); }
+.rbox b.t{ display:block; font-family:'Playfair Display',serif; color:var(--vert); font-size:17px; line-height:1.2; margin:2px 0 5px; }
+.rbox .d{ font-size:11.5px; color:#5a5a52; line-height:1.45; display:block; }
+.rbox .btn{ display:inline-block; margin-top:8px; background:var(--corail); color:#fff; font-weight:700; font-size:12.5px; padding:8px 14px; border-radius:20px; }
+.pbox.hot{ grid-column:1/-1; border:2px solid var(--corail); background:rgba(232,99,74,.14); }
 .psales{ display:grid; grid-template-columns:1fr 1fr; gap:11px; margin-top:14px; }
 .pbox{ background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.16); border-radius:14px; padding:13px 15px; text-decoration:none; display:block; }
 .pbox b{ color:#fff; font-family:'Playfair Display',serif; font-size:16px; display:block; }
@@ -177,6 +199,7 @@ table.track td{ background:var(--creme); padding:0; }
   <div class="reason"><div class="ico">6</div><div><b>Pas assez d'eau.</b> Paradoxe : moins tu bois, plus ton corps retient l'eau et plus tu gonfles. Boire régulièrement dégonfle.</div></div>
 
   <div class="coach-note"><b>La promesse de ce guide :</b> 7 jours, 7 routines de 10 minutes. On réveille le transverse, on respire, on bouge en douceur. Pas de crunchs, pas de matériel, pas de régime. Juste toi, un tapis (ou une serviette) et 10 minutes.</div>
+  <a class="promo" href="https://ornellafitcoaching.com/ventre-plat.html?src=guide-p02"><span class="pi">🚀</span><span class="pt"><b>Et si tu allais 2 fois plus loin ?</b> Ces 7 jours lancent la machine. Le <b>Ventre Plat 14 jours</b> prend le relais avec des séances guidées et progressives.</span><span class="pb">Je veux mes 14 jours · 12 €</span></a>
   <div class="footer"><span><b>@coach.ornella</b> · ornellafitcoaching.com</span><span>Ornella Fit Coaching · 02</span></div>
 </section>
 
@@ -193,9 +216,9 @@ table.track td{ background:var(--creme); padding:0; }
   </div>
 
   <div class="block-label" style="margin-top:22px;"><span class="dot"></span>Le vacuum, ton meilleur ami</div>
-  <p>Tu vas le retrouver chaque jour. Le <b>vacuum</b> : vide tes poumons, puis <b>rentre le ventre le plus possible</b> comme pour coller ton nombril à ta colonne, garde 5 à 10 secondes en respirant doucement, relâche. C'est l'exercice le plus efficace pour resserrer la taille de l'intérieur — et il ne se voit même pas, tu peux le faire en poussant la poussette.</p>
+  <img class="side-photo" style="height:200px;object-position:center 55%;" src="../images/guide/poussette.jpg" alt="Ornella qui pousse la poussette"><p>Tu vas le retrouver chaque jour. Le <b>vacuum</b> : vide tes poumons, puis <b>rentre le ventre le plus possible</b> comme pour coller ton nombril à ta colonne, garde 5 à 10 secondes en respirant doucement, relâche. C'est l'exercice le plus efficace pour resserrer la taille de l'intérieur — et il ne se voit même pas, tu peux le faire en poussant la poussette.</p>
 
-  <div class="coach-note"><b>Écoute ton corps.</b> Aucune douleur ne doit apparaître. Un exercice tire trop ? Fais la version « genoux au sol » ou passe au suivant. La régularité bat l'intensité, toujours.</div>
+  <div class="coach-note" style="clear:both"><b>Écoute ton corps.</b> Aucune douleur ne doit apparaître. Un exercice tire trop ? Fais la version « genoux au sol » ou passe au suivant. La régularité bat l'intensité, toujours.</div>
   <div class="footer"><span><b>@coach.ornella</b> · ornellafitcoaching.com</span><span>Ornella Fit Coaching · 03</span></div>
 </section>
 
@@ -203,7 +226,8 @@ table.track td{ background:var(--creme); padding:0; }
 <section class="page">
   <div class="day-head">
     <div class="day-num"><small>Jour</small><b>1</b></div>
-    <div><div class="day-title">Réveiller le transverse</div><div class="day-focus">Respiration & gainage profond</div></div>
+    <div><div class="day-title">Réveiller le transverse</div><div class="day-focus">Respiration & gainage profond</div><div class="day-prog"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i>&nbsp; Jour 1 sur 7</div></div>
+    <img class="day-photo" src="../images/guide/j1.jpg" alt="" style="object-position:center 60%;">
   </div>
   <div class="block-label"><span class="dot"></span>Échauffement · 2 min</div>
   <div class="warmup">Marche sur place dynamique (40 s) · cercles de bras avant/arrière (20 s) · rotations lentes du bassin (30 s) · 5 grandes respirations en ouvrant la cage thoracique.</div>
@@ -216,6 +240,7 @@ table.track td{ background:var(--creme); padding:0; }
   </table>
   <div class="block-label"><span class="dot"></span>Retour au calme · 1 min</div>
   <div class="calm">Chat-vache lent à 4 pattes (arrondir / creuser le dos) × 6, puis une grande respiration allongée. Bravo, tu as posé la première pierre. 💛</div>
+  <div class="checkrow"><span><span class="bx"></span>Séance faite</span><span><span class="bx"></span>1,5 L d'eau</span><span class="mood">😣 😐 🙂 😍</span></div>
   <div class="coach-note"><b>Le geste du jour :</b> ce soir, en te brossant les dents, fais 3 vacuums debout. Ça ancre l'habitude.</div>
   <div class="footer"><span><b>@coach.ornella</b> · ornellafitcoaching.com</span><span>Jour 1 · 04</span></div>
 </section>
@@ -224,7 +249,8 @@ table.track td{ background:var(--creme); padding:0; }
 <section class="page creme">
   <div class="day-head">
     <div class="day-num"><small>Jour</small><b>2</b></div>
-    <div><div class="day-title">Gainage & posture</div><div class="day-focus">Un dos solide = un ventre qui rentre</div></div>
+    <div><div class="day-title">Gainage & posture</div><div class="day-focus">Un dos solide = un ventre qui rentre</div><div class="day-prog"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i>&nbsp; Jour 2 sur 7</div></div>
+    <img class="day-photo" src="../images/guide/j2.jpg" alt="" style="object-position:center 50%;">
   </div>
   <div class="block-label"><span class="dot"></span>Échauffement · 2 min</div>
   <div class="warmup">Montées de genoux tranquilles (40 s) · ouverture d'épaules bras tendus (20 s) · rotations du buste (30 s) · 5 respirations en grandissant la colonne.</div>
@@ -237,6 +263,7 @@ table.track td{ background:var(--creme); padding:0; }
   </table>
   <div class="block-label"><span class="dot"></span>Retour au calme · 1 min</div>
   <div class="calm">Cobra doux (buste relevé sur les mains, épaules basses) × 5 respirations + étirement du dos en boule (posture de l'enfant).</div>
+  <div class="checkrow"><span><span class="bx"></span>Séance faite</span><span><span class="bx"></span>1,5 L d'eau</span><span class="mood">😣 😐 🙂 😍</span></div>
   <div class="coach-note"><b>Posture du jour :</b> quand tu portes une charge (sac, courses, bébé), pense « je grandis, j'ouvre les épaules, je rentre légèrement le ventre ». Ton dos te dira merci.</div>
   <div class="footer"><span><b>@coach.ornella</b> · ornellafitcoaching.com</span><span>Jour 2 · 05</span></div>
 </section>
@@ -245,7 +272,8 @@ table.track td{ background:var(--creme); padding:0; }
 <section class="page">
   <div class="day-head">
     <div class="day-num"><small>Jour</small><b>3</b></div>
-    <div><div class="day-title">Cardio doux debout</div><div class="day-focus">On fait circuler, sans sauter</div></div>
+    <div><div class="day-title">Cardio doux debout</div><div class="day-focus">On fait circuler, sans sauter</div><div class="day-prog"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i>&nbsp; Jour 3 sur 7</div></div>
+    <img class="day-photo" src="../images/guide/j3.jpg" alt="" style="object-position:center 60%;">
   </div>
   <div class="block-label"><span class="dot"></span>Échauffement · 2 min</div>
   <div class="warmup">Marche rapide sur place (1 min) · balancé des bras · quelques squats à vide lents pour réveiller les jambes.</div>
@@ -258,8 +286,10 @@ table.track td{ background:var(--creme); padding:0; }
   </table>
   <div class="block-label"><span class="dot"></span>Retour au calme · 1 min</div>
   <div class="calm">Étirement des quadriceps (talon vers la fesse) + mollets contre un mur + 5 respirations pour faire redescendre le cœur.</div>
+  <div class="checkrow"><span><span class="bx"></span>Séance faite</span><span><span class="bx"></span>1,5 L d'eau</span><span class="mood">😣 😐 🙂 😍</span></div>
   <div class="coach-note"><b>Bonus dégonflant :</b> après ce circuit, une marche de 10 min dans la journée relance la digestion et dégonfle le bas-ventre.</div>
   <div class="coach-note" style="background:#eef3ef;border:1px dashed var(--vert-clair);"><b style="color:var(--vert)">📲 On se motive ensemble :</b> filme-toi pendant ta routine et identifie-moi en story <b>@coach.ornella</b> — je repartage avec plaisir&nbsp;! Ça motive plein d'autres femmes. 💛</div>
+  <a class="promo" href="https://ornellafitcoaching.com/ventre-plat.html?src=guide-p06"><span class="pi">🔥</span><span class="pt"><b>Ton ventre est déjà moins gonflé ?</b> Imagine après 14 jours de séances guidées et progressives.</span><span class="pb">Je continue · 12 €</span></a>
   <div class="footer"><span><b>@coach.ornella</b> · ornellafitcoaching.com</span><span>Jour 3 · 06</span></div>
 </section>
 
@@ -267,7 +297,8 @@ table.track td{ background:var(--creme); padding:0; }
 <section class="page creme">
   <div class="day-head">
     <div class="day-num"><small>Jour</small><b>4</b></div>
-    <div><div class="day-title">Transverse & taille</div><div class="day-focus">On dessine la ceinture, en douceur</div></div>
+    <div><div class="day-title">Transverse & taille</div><div class="day-focus">On dessine la ceinture, en douceur</div><div class="day-prog"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i>&nbsp; Jour 4 sur 7</div></div>
+    <img class="day-photo" src="../images/guide/j4.jpg" alt="" style="object-position:center 90%;">
   </div>
   <div class="block-label"><span class="dot"></span>Échauffement · 2 min</div>
   <div class="warmup">Rotations du buste mains sur les hanches (30 s) · inclinaisons latérales lentes (30 s) · marche sur place (40 s) · 3 vacuums debout.</div>
@@ -280,6 +311,7 @@ table.track td{ background:var(--creme); padding:0; }
   </table>
   <div class="block-label"><span class="dot"></span>Retour au calme · 1 min</div>
   <div class="calm">Étirement latéral debout (un bras au-dessus de la tête, on s'incline) × 3 par côté + grande respiration.</div>
+  <div class="checkrow"><span><span class="bx"></span>Séance faite</span><span><span class="bx"></span>1,5 L d'eau</span><span class="mood">😣 😐 🙂 😍</span></div>
   <div class="coach-note"><b>Mi-parcours !</b> Tu es à la moitié. Prends 10 secondes pour noter comment tu te sens : souvent, on se sent déjà « plus légère ». C'est le transit et la posture qui répondent.</div>
   <div class="footer"><span><b>@coach.ornella</b> · ornellafitcoaching.com</span><span>Jour 4 · 07</span></div>
 </section>
@@ -288,7 +320,8 @@ table.track td{ background:var(--creme); padding:0; }
 <section class="page">
   <div class="day-head">
     <div class="day-num"><small>Jour</small><b>5</b></div>
-    <div><div class="day-title">Full body complet</div><div class="day-focus">10 minutes qui comptent double</div></div>
+    <div><div class="day-title">Full body complet</div><div class="day-focus">10 minutes qui comptent double</div><div class="day-prog"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i>&nbsp; Jour 5 sur 7</div></div>
+    <img class="day-photo" src="../images/guide/j5.jpg" alt="" style="object-position:center 80%;">
   </div>
   <div class="block-label"><span class="dot"></span>Échauffement · 2 min</div>
   <div class="warmup">Marche rapide + montées de genoux (1 min) · cercles de bras · 5 squats lents pour lancer la machine.</div>
@@ -301,7 +334,9 @@ table.track td{ background:var(--creme); padding:0; }
   </table>
   <div class="block-label"><span class="dot"></span>Retour au calme · 1 min</div>
   <div class="calm">Étirement des fessiers allongée (genou ramené vers la poitrine) + respiration profonde × 5.</div>
+  <div class="checkrow"><span><span class="bx"></span>Séance faite</span><span><span class="bx"></span>1,5 L d'eau</span><span class="mood">😣 😐 🙂 😍</span></div>
   <div class="coach-note"><b>Fatiguée aujourd'hui ?</b> Fais 2 tours au lieu de 3. Une séance imparfaite faite vaut mille séances parfaites imaginées.</div>
+  <a class="promo" href="https://wa.me/33756834626?text=JOUR%205%20%F0%9F%92%AA%20Coucou%20Ornella%2C%20je%20fais%20ton%20guide%20Ventre%20Plat%207%20jours%20!"><span class="pi">💬</span><span class="pt"><b>Coup de mou à mi-parcours ?</b> Envoie-moi « JOUR 5 » sur WhatsApp : je te réponds moi-même et je te remotive.</span><span class="pb">J'écris à Ornella</span></a>
   <div class="footer"><span><b>@coach.ornella</b> · ornellafitcoaching.com</span><span>Jour 5 · 08</span></div>
 </section>
 
@@ -309,7 +344,8 @@ table.track td{ background:var(--creme); padding:0; }
 <section class="page creme">
   <div class="day-head">
     <div class="day-num"><small>Jour</small><b>6</b></div>
-    <div><div class="day-title">Respiration anti-ballonnement</div><div class="day-focus">On relâche le stress, on dégonfle</div></div>
+    <div><div class="day-title">Respiration anti-ballonnement</div><div class="day-focus">On relâche le stress, on dégonfle</div><div class="day-prog"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i>&nbsp; Jour 6 sur 7</div></div>
+    <img class="day-photo" src="../images/guide/j6.jpg" alt="" style="object-position:center 50%;">
   </div>
   <div class="block-label"><span class="dot"></span>Échauffement · 2 min</div>
   <div class="warmup">Marche lente + grandes respirations (1 min) · rotations douces des épaules et du bassin.</div>
@@ -322,7 +358,9 @@ table.track td{ background:var(--creme); padding:0; }
   </table>
   <div class="block-label"><span class="dot"></span>Retour au calme · 1 min</div>
   <div class="calm">Torsion douce allongée (genoux d'un côté, regard de l'autre) × 3 par côté + posture de l'enfant.</div>
+  <div class="checkrow"><span><span class="bx"></span>Séance faite</span><span><span class="bx"></span>1,5 L d'eau</span><span class="mood">😣 😐 🙂 😍</span></div>
   <div class="coach-note"><b>Le saviais-tu ?</b> 5 minutes de respiration profonde par jour font baisser le cortisol — l'hormone qui stocke au niveau du ventre. Respirer, c'est vraiment un exercice minceur.</div>
+  <a class="promo" href="https://ornellafitcoaching.com/guide-recettes-vente.html?src=guide-p09"><span class="pi">🥗</span><span class="pt"><b>Dégonfler, ça se joue aussi dans l'assiette.</b> 21 recettes drainantes et anti-rétention + ta liste de courses prête.</span><span class="pb">Les recettes · 7 €</span></a>
   <div class="footer"><span><b>@coach.ornella</b> · ornellafitcoaching.com</span><span>Jour 6 · 09</span></div>
 </section>
 
@@ -330,7 +368,8 @@ table.track td{ background:var(--creme); padding:0; }
 <section class="page">
   <div class="day-head">
     <div class="day-num"><small>Jour</small><b>7</b></div>
-    <div><div class="day-title">Récap & célébration</div><div class="day-focus">Le meilleur de ta semaine</div></div>
+    <div><div class="day-title">Récap & célébration</div><div class="day-focus">Le meilleur de ta semaine</div><div class="day-prog"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>&nbsp; Jour 7 sur 7</div></div>
+    <img class="day-photo" src="../images/guide/j7.jpg" alt="" style="object-position:center 50%;">
   </div>
   <div class="block-label"><span class="dot"></span>Échauffement · 2 min</div>
   <div class="warmup">Mobilité complète : cercles de bras, du bassin, montées de genoux, 3 vacuums debout. Souris, tu as tenu 7 jours. 💪</div>
@@ -344,7 +383,9 @@ table.track td{ background:var(--creme); padding:0; }
   </table>
   <div class="block-label"><span class="dot"></span>Retour au calme · 1 min</div>
   <div class="calm">Étirement complet du corps + une main sur le ventre : ressens la différence depuis le Jour 1. Tu l'as fait. 🎉</div>
-  <div class="coach-note"><b>Et maintenant ?</b> Rejoue ces 7 jours, ou passe à la vitesse supérieure avec le programme <b>Ventre Plat 14 jours</b> (dernière page 👉). Ton transverse est réveillé : c'est le moment idéal pour continuer sur ta lancée.</div>
+  <div class="checkrow"><span><span class="bx"></span>Séance faite</span><span><span class="bx"></span>1,5 L d'eau</span><span class="mood">😣 😐 🙂 😍</span></div>
+  <div class="coach-note"><b>Et maintenant ?</b> Rejoue ces 7 jours, ou passe à la vitesse supérieure avec le programme <b>Ventre Plat 14 jours</b> (juste en dessous 👇). Ton transverse est réveillé : c'est le moment idéal pour continuer sur ta lancée.</div>
+  <a class="promo" href="https://ornellafitcoaching.com/ventre-plat.html?src=guide-p10"><span class="pi">⭐</span><span class="pt"><b>7 jours tenus, bravo ! 🎉</b> L'habitude est lancée : c'est maintenant qu'il ne faut pas lâcher. Enchaîne avec le Ventre Plat 14 jours.</span><span class="pb">Je garde mon élan · 12 €</span></a>
   <div class="footer"><span><b>@coach.ornella</b> · ornellafitcoaching.com</span><span>Jour 7 · 10</span></div>
 </section>
 
@@ -353,7 +394,7 @@ table.track td{ background:var(--creme); padding:0; }
   <span class="eyebrow">Le plus important</span>
   <h2 class="sec">Sécurité <span class="accent">post-partum</span></h2>
   <div class="divider"></div>
-  <p class="lead">Si tu as accouché récemment, lis attentivement cette page avant toute chose. C'est le message le plus important du guide — celui d'une coach, mais aussi d'une maman.</p>
+  <img class="side-photo" src="../images/guide/postpartum.jpg" alt="Ornella après bébé" style="height:170px"><p class="lead">Si tu as accouché récemment, lis attentivement cette page avant toute chose. C'est le message le plus important du guide — celui d'une coach, mais aussi d'une maman.</p>
   <div class="secu">
     <h3>🤍 Après un bébé, on protège son corps</h3>
     <ul>
@@ -366,6 +407,7 @@ table.track td{ background:var(--creme); padding:0; }
     </ul>
   </div>
   <div class="coach-note"><b>Enceinte, opérée récemment ou pathologie particulière ?</b> Demande l'avis de ton médecin avant de commencer. Ce guide ne remplace pas un avis médical.</div>
+  <a class="promo" href="https://ornellafitcoaching.com/programme-postpartum.html?src=guide-p11"><span class="pi">🤍</span><span class="pt"><b>Ton ventre n'est plus le même depuis bébé ?</b> Mon programme <b>Post-Partum</b> : 8 semaines en douceur, zéro crunch, pensé pour ton corps de maman.</span><span class="pb">Je retrouve mon ventre · 17 €</span></a>
   <div class="footer"><span><b>@coach.ornella</b> · ornellafitcoaching.com</span><span>Sécurité · 11</span></div>
 </section>
 
@@ -399,6 +441,11 @@ table.track td{ background:var(--creme); padding:0; }
   </div>
 
   <div class="coach-note" style="margin-top:18px;"><b>💧 L'eau, l'alliée n°1 :</b> vise ~1,5 L par jour. Un grand verre au réveil pour relancer le transit, et on évite de boire d'énormes quantités d'un coup pendant le repas. Bien hydratée, ton corps arrête de retenir l'eau… et tu dégonfles.</div>
+  <a class="rbox" href="https://ornellafitcoaching.com/guide-recettes-vente.html?src=guide-pdf">
+    <img src="../images/guide/mealprep.jpg" alt="">
+    <span><span class="k">🥗 Le complément parfait · 7 €</span><b class="t">Ne te demande plus « je mange quoi ce soir ? »</b>
+    <span class="d"><b>21 recettes faciles</b> classées par objectif (drainage, anti-rétention, satiété) + <b>ta liste de courses prête</b>. Accès immédiat sur ton téléphone.</span>
+    <span class="btn">Je veux mes 21 recettes · 7 € →</span></span></a>
   <div class="footer"><span><b>@coach.ornella</b> · ornellafitcoaching.com</span><span>Nutrition · 12</span></div>
 </section>
 
@@ -446,13 +493,14 @@ table.track td{ background:var(--creme); padding:0; }
       <div class="sig">— Ornella 💛</div>
     </div>
   </div>
+  <a class="promo" href="https://ornellafitcoaching.com/transformations.html?src=guide-p14"><span class="pi">👀</span><span class="pt"><b>Elles ont commencé exactement comme toi.</b> Mamans, débutantes, débordées… Regarde leurs avant / après.</span><span class="pb">Voir leurs transformations →</span></a>
   <div class="footer"><span><b>@coach.ornella</b> · ornellafitcoaching.com</span><span>Mon histoire · 14</span></div>
 </section>
 
 <!-- ============ PAGE VENTE 1 — PROGRAMMES ============ -->
 <section class="page sales">
   <span class="eyebrow" style="color:var(--corail-clair)">La suite, si tu veux</span>
-  <h2>Tu as aimé ces 7 jours ?<br><span class="c">Passe au niveau supérieur.</span></h2>
+  <h2>Tu viens de prouver que tu en es capable.<br><span class="c">Ne t'arrête pas maintenant.</span></h2>
   <div class="divider"></div>
   <p style="color:#e7dcc9;font-size:13.5px;max-width:150mm;">Ton transverse est réveillé, ton habitude est lancée. C'est LE moment de continuer pendant que la motivation est là. 💛</p>
 
@@ -461,11 +509,13 @@ table.track td{ background:var(--creme); padding:0; }
     <h3>Ventre Plat — 14 jours</h3>
     <p>14 séances guidées et progressives, un vrai plan jour par jour pour des résultats visibles — à ton rythme, sans matériel. Accès à vie.</p>
     <div class="price">12&nbsp;€ <span style="font-size:13px;font-weight:400;color:#b7ad9c;">· paiement unique</span></div>
-    <a class="cta" href="https://ornellafitcoaching.com/ventre-plat.html?src=colis-guide">Je continue avec les 14 jours →</a>
+    <a class="cta" href="https://ornellafitcoaching.com/ventre-plat.html?src=colis-guide">Je démarre mes 14 jours →</a>
   </div>
 
   <p style="color:#fff;font-family:'Playfair Display',serif;font-size:17px;margin:20px 0 2px;">Ou choisis ton objectif&nbsp;:</p>
   <div class="psales">
+    <a class="pbox hot" href="https://ornellafitcoaching.com/guide-recettes-vente.html?src=colis-guide">
+      <b>🥗 Guide Recettes · petit prix</b><span class="d">21 recettes qui dégonflent + liste de courses prête. Le complément idéal de n'importe quel programme.</span><span class="pr">7&nbsp;€</span></a>
     <a class="pbox" href="https://ornellafitcoaching.com/programme-postpartum.html?src=colis-guide">
       <b>🤍 Post-Partum</b><span class="d">Ventre plat après bébé, spécial jeunes mamans. 8 semaines tout en douceur.</span><span class="pr">17&nbsp;€</span></a>
     <a class="pbox" href="https://ornellafitcoaching.com/booty-sculpt.html?src=colis-guide">
@@ -475,7 +525,7 @@ table.track td{ background:var(--creme); padding:0; }
     <a class="pbox" href="https://ornellafitcoaching.com/fit-dans-ta-vie.html?src=colis-guide">
       <b>🔥 Fit Dans Ta Vie</b><span class="d">La méthode pour arrêter de recommencer tous les lundis.</span><span class="pr">49&nbsp;€</span></a>
   </div>
-  <div style="text-align:center;margin-top:14px;"><a href="https://ornellafitcoaching.com/programmes.html?src=colis-guide" style="color:var(--corail-clair);font-weight:600;font-size:13px;text-decoration:none;">Voir tous mes programmes →</a></div>
+  <div style="text-align:center;margin-top:14px;"><a href="https://ornellafitcoaching.com/guide-ventre-plat-7-jours.html?src=guide-pdf#quiz-sec" style="color:#fff;font-weight:700;font-size:13.5px;text-decoration:none;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);padding:9px 16px;border-radius:22px;display:inline-block;">🎯 Pas sûre ? Fais le mini-quiz (20 s) →</a></div>
 
   <div style="position:absolute;bottom:9mm;left:16mm;right:16mm;text-align:center;color:#b7ad9c;font-size:11px;border-top:1px solid rgba(255,255,255,.15);padding-top:8px;">
     @coach.ornella · ornellafitcoaching.com · Coach sportive diplômée d'État

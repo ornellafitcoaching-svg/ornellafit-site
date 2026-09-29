@@ -124,6 +124,47 @@ h2.title .c{color:var(--corail);}
 .fsoc a{color:#b0a99c;font-size:22px;text-decoration:none;}
 .fsoc a:hover{color:var(--corail);}
 
+
+/* ===== V2 : désir, preuve, projection ===== */
+.hero h1{font-size:30px;}
+.hero .kick{margin-bottom:14px;}
+.proofmini{display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:10px;margin:0 auto 16px;max-width:420px;text-align:left;}
+.proofmini img{flex:none;width:92px;height:92px;object-fit:cover;border-radius:12px;}
+.proofmini p{font-size:13px;color:#e7dcc9;line-height:1.45;}
+.proofmini p b{color:#fff;}
+.stars{color:#f5c26b;letter-spacing:1px;font-size:13px;}
+.gifttag{display:inline-block;background:var(--corail);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:20px;margin-bottom:8px;}
+.proj{background:#fff;border-radius:18px;padding:20px 18px;box-shadow:0 6px 20px rgba(0,0,0,.06);}
+.proj li{list-style:none;display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed #eee3d2;font-size:14.5px;color:#3a3a34;}
+.proj li:last-child{border-bottom:none;}
+.proj li .d{flex:none;font-family:'Playfair Display',serif;font-weight:800;color:var(--corail);min-width:58px;font-size:14px;}
+.tcard{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.10);margin-bottom:16px;}
+.tcard img{width:100%;}
+.tcard .tb{padding:14px 16px 16px;}
+.tcard .tpill{display:inline-block;background:var(--creme);color:var(--vert);font-weight:700;font-size:12px;padding:4px 10px;border-radius:20px;margin:0 6px 8px 0;}
+.tcard .tq{font-family:'Playfair Display',serif;font-style:italic;color:var(--vert);font-size:16px;}
+.tcard .tn{font-size:12.5px;color:#8a8478;margin-top:6px;}
+.real{text-align:center;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8478;margin:-10px 0 16px;}
+.path{position:relative;padding-left:26px;}
+.path:before{content:"";position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:repeating-linear-gradient(var(--corail) 0 6px,transparent 6px 11px);}
+.step{position:relative;background:#fff;border-radius:14px;padding:13px 15px;margin-bottom:12px;box-shadow:0 4px 14px rgba(0,0,0,.05);text-decoration:none;display:block;}
+.step:before{content:"";position:absolute;left:-22px;top:17px;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--corail);}
+.step.here{border:2px solid var(--corail);}
+.step.here:before{background:var(--corail);}
+.step .sl{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--corail);font-weight:700;}
+.step b{display:block;font-family:'Playfair Display',serif;color:var(--vert);font-size:16px;margin:2px 0;}
+.step span{font-size:13px;color:#6a6a60;}
+.step .pr{float:right;font-family:'Playfair Display',serif;color:var(--corail);font-weight:700;font-size:15px;}
+.faq details{background:#fff;border-radius:12px;padding:13px 15px;margin-bottom:9px;box-shadow:0 3px 10px rgba(0,0,0,.04);}
+.faq summary{cursor:pointer;font-weight:600;color:var(--vert);font-size:14.5px;list-style:none;}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary:after{content:"+";float:right;color:var(--corail);font-weight:700;}
+.faq details[open] summary:after{content:"–";}
+.faq p{font-size:13.5px;color:#5a5a52;margin-top:8px;}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(245,239,230,.96);backdrop-filter:blur(6px);box-shadow:0 -6px 18px rgba(0,0,0,.08);transform:translateY(110%);transition:transform .25s;}
+.sticky.on{transform:none;}
+.sticky button{max-width:520px;display:block;margin:0 auto;}
+
 footer{text-align:center;padding:22px 20px 30px;font-size:11.5px;color:#a59f92;}
 footer b{color:var(--vert);font-family:'Playfair Display',serif;}
 </style>
@@ -146,17 +187,24 @@ fbq('init','1233548507794099');fbq('track','PageView');
   <section class="hero">
     <span class="badge">💛 Merci pour ta commande</span>
     <img class="hero-photo" src="images/cadeau/ornella.jpg" alt="Ornella, coach sportive">
-    <h1>Ton cadeau t'attend :<br>le guide <span class="c">Ventre Plat 7 jours</span></h1>
-    <p class="kick"><b>10 min par jour</b>, sans matériel, sans régime.</p>
+    <h1>Un ventre plus plat<br>et <span class="c">moins gonflé</span>,<br>dès cette semaine.</h1>
+    <p class="kick">Ton guide <b>Ventre Plat 7 jours</b> glissé dans ton colis : <b>10 min par jour</b>, sans matériel, sans régime.</p>
+
+    <!-- Preuve immédiate : on n'est plus « une inconnue » -->
+    <div class="proofmini">
+      <img src="images/cadeau/avant-apres.jpg" alt="Ornella enceinte puis aujourd'hui" loading="eager">
+      <p><b>Moi, enceinte → moi aujourd'hui.</b><br>Maman, coach sportive diplômée d'État. Mes routines express, enfin <b>pour toi</b>.</p>
+    </div>
 
     <div class="formcard" id="formcard">
-      <div class="ftitle">Où je t'envoie ton guide gratuit ?</div>
+      <span class="gifttag">🎁 Offert avec ton colis</span>
+      <div class="ftitle">Où je t'envoie ton guide ?</div>
       <form id="giftForm" novalidate>
         <div class="field"><input type="text" id="prenom" name="PRENOM" placeholder="Ton prénom" autocomplete="given-name" required></div>
-        <div class="field"><input type="email" id="email" name="EMAIL" placeholder="Ton email" autocomplete="email" inputmode="email" required></div>
-        <button type="submit" class="submit" id="submitBtn">Je reçois mon guide gratuit →</button>
+        <div class="field"><input type="email" id="email" name="EMAIL" placeholder="Ton email (pour recevoir le guide)" autocomplete="email" inputmode="email" required></div>
+        <button type="submit" class="submit" id="submitBtn">Je commence mon Jour 1 →</button>
         <div class="formnote" id="formnote"></div>
-        <div class="reassure">Gratuit · <b>0 spam</b> · désinscription en 1 clic</div>
+        <div class="reassure">100 % gratuit · <b>accès immédiat</b> · 0 spam · désinscription en 1 clic</div>
       </form>
     </div>
 
@@ -170,8 +218,20 @@ fbq('init','1233548507794099');fbq('track','PageView');
     </div>
   </section>
 
-  <!-- ===== 3 BÉNÉFICES (repris du flyer) ===== -->
+  <!-- ===== PROJECTION : ta semaine avec le guide ===== -->
   <section class="sec">
+    <span class="eyebrow">Imagine ta semaine</span>
+    <h2 class="title">Dans 7 jours, <span class="c">toi</span>…</h2>
+    <ul class="proj">
+      <li><span class="d">Jour 1</span><span>10 minutes dans ton salon. Pas de salle, pas de matériel, pas d'excuse.</span></li>
+      <li><span class="d">Jour 3</span><span>Tu sais enfin <b>quels aliments te font gonfler</b> — et quoi manger à la place.</span></li>
+      <li><span class="d">Jour 5</span><span>Ventre moins gonflé le soir, tu te sens plus légère dans ton jean.</span></li>
+      <li><span class="d">Jour 7</span><span>Tu as tenu. <b>Fière de toi</b>, et tu as envie de continuer.</span></li>
+    </ul>
+  </section>
+
+  <!-- ===== CE QUE TU REÇOIS ===== -->
+  <section class="sec" style="padding-top:0">
     <span class="eyebrow">Ce que tu vas recevoir</span>
     <h2 class="title">Dans ton guide <span class="c">offert</span></h2>
     <div class="benefit"><div class="ico">⏱️</div><div><b>7 routines de 10 min</b><span>Sans matériel, faisables à la maison, niveau débutante.</span></div></div>
@@ -179,19 +239,58 @@ fbq('init','1233548507794099');fbq('track','PageView');
     <div class="benefit"><div class="ico">🤍</div><div><b>Adapté à toi</b><span>Débutante, reprise de sport ou jeune maman : chacune à son rythme.</span></div></div>
   </section>
 
-  <!-- ===== AVANT / APRÈS ===== -->
-  <section class="aa">
-    <img src="images/cadeau/avant-apres.jpg" alt="Mon ventre après bébé">
-    <p class="quote">« Mon ventre après bébé.<br>Je te montre <span style="color:var(--corail)">comment</span>. »</p>
-    <div class="sig">— Ornella, coach sportive diplômée d'État</div>
+  <!-- ===== PREUVES : vraies clientes ===== -->
+  <section class="sec" style="padding-top:0">
+    <span class="eyebrow">Elles l'ont fait</span>
+    <h2 class="title">De vraies femmes, <span class="c">de vrais résultats</span></h2>
+    <p class="real">Clientes réelles · aucune retouche</p>
+    <div class="tcard">
+      <img src="images/transformation-chantal.webp" alt="Chantal avant / après — ventre" loading="lazy" width="1536" height="1024">
+      <div class="tb">
+        <span class="tpill">−4 kg</span><span class="tpill">3 mois</span><span class="tpill">Ventre affiné</span>
+        <div class="tq">« Après des années sans résultats, j'ai enfin compris pourquoi je stagnais. »</div>
+        <div class="tn">Chantal · coaching à distance</div>
+      </div>
+    </div>
+    <div class="tcard">
+      <img src="images/transformation-emeline.png" alt="Emeline avant / après — fessiers et posture" loading="lazy" width="1080" height="1350">
+      <div class="tb">
+        <span class="tpill">Fessiers galbés</span><span class="tpill">Posture corrigée</span><span class="tpill">2 mois</span>
+        <div class="tn">Emeline · 31 ans · maman de 2 enfants</div>
+      </div>
+    </div>
+    <button type="button" class="submit js-top" style="max-width:360px;margin:6px auto 0;display:block">Moi aussi, je commence →</button>
+  </section>
+
+  <!-- ===== TON PARCOURS : le guide = étape 1 (pré-vend les programmes) ===== -->
+  <section class="sec" style="padding-top:6px">
+    <span class="eyebrow">Et après ?</span>
+    <h2 class="title">Le guide, c'est <span class="c">ton étape 1</span></h2>
+    <div class="path">
+      <div class="step here"><span class="sl">📍 Tu es ici · offert</span><b>Guide Ventre Plat 7 jours</b><span>Tu dégonfles, tu prends le rythme.</span></div>
+      <a class="step xtrack" data-cn="path-ventre-plat-14j" href="ventre-plat.html?src=colis"><span class="pr">12 €</span><span class="sl">Étape 2</span><b>Ventre Plat 14 jours</b><span>14 séances guidées pour des résultats visibles.</span></a>
+      <a class="step xtrack" data-cn="path-programmes" href="programmes.html?src=colis"><span class="pr">dès 17 €</span><span class="sl">Étape 3 · 8 semaines</span><b>Booty Sculpt · Post-Partum · Fit Dans Ta Vie</b><span>Tu sculptes ton corps selon ton objectif.</span></a>
+      <a class="step xtrack" data-cn="path-coaching" href="offres.html?src=colis"><span class="sl">Étape 4</span><b>Coaching personnalisé avec moi</b><span>Un programme fait pour TON corps, avec mon suivi.</span></a>
+    </div>
+    <p class="reassure" style="margin-top:4px">Commence par le guide gratuit — tu décides ensuite, sans pression.</p>
+  </section>
+
+  <!-- ===== FAQ : lever les freins ===== -->
+  <section class="sec faq" style="padding-top:0">
+    <span class="eyebrow">Tu te demandes…</span>
+    <h2 class="title">Questions <span class="c">fréquentes</span></h2>
+    <details><summary>C'est vraiment gratuit ?</summary><p>Oui, 100 %. C'est mon cadeau pour ta commande. Pas de carte bancaire, rien à payer.</p></details>
+    <details><summary>Je n'ai jamais fait de sport, c'est pour moi ?</summary><p>Oui. Les 7 routines sont niveau débutante, 10 minutes, sans matériel. Tu avances à ton rythme.</p></details>
+    <details><summary>J'ai accouché récemment…</summary><p>Le guide contient une page sécurité post-partum à lire avant de commencer. Je suis passée par là, je sais ce que c'est. 🤍</p></details>
+    <details><summary>Pourquoi tu me demandes mon email ?</summary><p>Pour t'envoyer ton guide et quelques conseils utiles. Zéro spam, et tu te désinscris en 1 clic quand tu veux.</p></details>
   </section>
 
   <!-- ===== RAPPEL FORMULAIRE ===== -->
   <section class="rappel" id="rappel">
     <span class="eyebrow">On y va ?</span>
-    <h2>Reçois ton guide,<br>commence le Jour 1 aujourd'hui</h2>
-    <button type="button" class="submit" id="scrollTop" style="max-width:340px;margin:0 auto;">Je reçois mon guide gratuit →</button>
-    <div class="reassure" style="color:#cbd8ce;margin-top:12px;">Gratuit · 0 spam · reçu par mail en 1 minute</div>
+    <h2>Dans 7 jours, tu seras contente<br>d'avoir commencé aujourd'hui.</h2>
+    <button type="button" class="submit js-top" id="scrollTop" style="max-width:340px;margin:0 auto;">Je reçois mon guide gratuit →</button>
+    <div class="reassure" style="color:#cbd8ce;margin-top:12px;">Gratuit · 0 spam · accès immédiat</div>
   </section>
 
   <!-- ===== APRÈS INSCRIPTION (ordre : offre → réseaux → WhatsApp → programmes → coaching) ===== -->
@@ -269,6 +368,9 @@ fbq('init','1233548507794099');fbq('track','PageView');
   </footer>
 </div>
 
+<!-- CTA collant (mobile) : visible quand le formulaire n'est plus à l'écran, masqué après inscription -->
+<div class="sticky" id="sticky"><button type="button" class="submit js-top">🎁 Je reçois mon guide gratuit</button></div>
+
 <script>
 /* ============================================================
    CAPTURE LEAD → BREVO (formulaire natif, sans clé API exposée)
@@ -321,6 +423,8 @@ const BREVO_FORM_URL = "https://e605324b.sibforms.com/serve/MUIFAIgM7GdN5D_DjX7a
     // Le rappel du bas n'a plus lieu d'être une fois inscrite
     const rappel = document.getElementById('rappel');
     if(rappel) rappel.style.display = 'none';
+    if(sticky) sticky.classList.remove('on');
+    document.querySelectorAll('.js-top').forEach(function(b){ b.style.display='none'; });
     // Meta Pixel : Lead UNIQUEMENT après un envoi réussi
     if (typeof fbq !== 'undefined') { fbq('track','Lead',{content_name:'guide-ventre-plat-7j',source:SOURCE}); }
     success.scrollIntoView({behavior:'smooth', block:'center'});
@@ -355,10 +459,22 @@ const BREVO_FORM_URL = "https://e605324b.sibforms.com/serve/MUIFAIgM7GdN5D_DjX7a
   });
 
   // Boutons "rappel" → remonte au formulaire
-  document.getElementById('scrollTop').addEventListener('click', function(){
-    formcard.scrollIntoView({behavior:'smooth', block:'center'});
-    setTimeout(()=>prenom.focus(), 400);
+  document.querySelectorAll('.js-top').forEach(function(b){
+    b.addEventListener('click', function(){
+      formcard.scrollIntoView({behavior:'smooth', block:'center'});
+      setTimeout(()=>prenom.focus(), 400);
+    });
   });
+
+  // CTA collant : visible seulement quand le formulaire n'est plus à l'écran, et jamais après inscription.
+  const sticky = document.getElementById('sticky');
+  if (sticky && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      const visible = entries[0].isIntersecting;
+      const inscrite = success.style.display === 'block';
+      sticky.classList.toggle('on', !visible && !inscrite);
+    }, {threshold:0}).observe(formcard);
+  }
 
   // Meta Pixel : ViewContent sur clic programme, Contact sur clic WhatsApp
   document.querySelectorAll('.xtrack').forEach(function(el){
@@ -373,5 +489,6 @@ const BREVO_FORM_URL = "https://e605324b.sibforms.com/serve/MUIFAIgM7GdN5D_DjX7a
   });
 })();
 </script>
+<script defer src="/suivi-clics.js"></script>
 </body>
 </html>

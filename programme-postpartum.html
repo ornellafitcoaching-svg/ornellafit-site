@@ -575,7 +575,7 @@ async function submitLead(e){
   if(typeof fbq!=='undefined'){ fbq('init','1233548507794099',{em:email}); (fbq('track','InitiateCheckout',{value:17,currency:'EUR',content_ids:['postpartum-8sem'],content_type:'product'}),fbq('track','AddToCart',{value:17,currency:'EUR',content_ids:['postpartum-8sem'],content_type:'product'})); }
   // Délai avant redirection Stripe pour laisser le temps à la soumission Brevo (iframe cachée) de partir réellement
   setTimeout(function(){
-    window.location.href='https://buy.stripe.com/00wfZhcAhaS76sdfyt8Vi0d';
+    window.suiviAchat&&window.suiviAchat('https://buy.stripe.com/00wfZhcAhaS76sdfyt8Vi0d');window.location.href = 'https://buy.stripe.com/00wfZhcAhaS76sdfyt8Vi0d';
   }, 400);
 }
 </script>
@@ -587,5 +587,6 @@ async function submitLead(e){
   <input type="text" name="email_address_check" value="" class="input--hidden">
   <input type="hidden" name="locale" value="fr">
 </form>
+<script defer src="/suivi-clics.js"></script>
 </body>
 </html>
