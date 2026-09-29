@@ -2759,6 +2759,17 @@ document.addEventListener('click', function(e) {
   var a = e.target.closest('a[href*="wa.me"]');
   if (a && typeof fbq !== 'undefined') fbq('track', 'Contact');
 });
+
+// Meta Pixel — clics "bilan gratuit" (Calendly) et comparatif, par emplacement
+document.addEventListener('click', function(e) {
+  var a = e.target.closest('a[href*="calendly.com"], a[href*="coach-sportif-ou-salle-de-sport"]');
+  if (!a) return;
+  var sec = a.closest('section');
+  var zone = !sec ? 'BarreBas' : sec.id === 'hero' ? 'Hero' : sec.classList.contains('svc-home') ? 'SalleVsCoaching' : sec.id === 'cta-final' ? 'Final' : 'Autre';
+  var evt = a.href.indexOf('calendly.com') !== -1 ? 'ClicBilan_' + zone : 'ClicComparatif';
+  if (typeof fbq !== 'undefined') fbq('trackCustom', evt);
+  (window.dataLayer = window.dataLayer || []).push({event: 'clic_cta', cta: evt});
+});
 </script>
 
 <!-- POPUP PROGRAMMES -->
