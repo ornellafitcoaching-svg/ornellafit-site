@@ -1,6 +1,6 @@
 // relances-paniers — appelée toutes les 15 min par pg_cron.
 // Envoie les relances de panier via les modèles Brevo :
-//   R1 (modèle 190) à +1 h · R2 (191) à +24 h · R3 (192) à +72 h avec un code Stripe -15 % unique valable 48 h.
+//   R1 (modèle 193) à +1 h · R2 (194) à +24 h · R3 (195) à +72 h avec un code Stripe -15 % unique valable 48 h.
 // S'arrête dès que le panier est payé (webhook Stripe), stoppé (lien dans l'e-mail) ou remplacé par un nouveau panier.
 // Sécurité : n'accepte que les appels portant l'en-tête x-cron-secret = secret CRON_SECRET.
 //
@@ -14,7 +14,7 @@ const supa = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_
 const BREVO_KEY = Deno.env.get("BREVO_API_KEY") ?? "";
 const STRIPE_KEY = Deno.env.get("STRIPE_SECRET_KEY") ?? "";
 const COUPON = "RELANCE_PANIER_15";
-const TEMPLATES = { 1: 190, 2: 191, 3: 192 } as const;
+const TEMPLATES = { 1: 193, 2: 194, 3: 195 } as const;
 const STOP_BASE = `${Deno.env.get("SUPABASE_URL")}/functions/v1/site-brevo?op=stop&t=`;
 
 const H = 3600_000;
@@ -25,8 +25,34 @@ const STEPS: { n: 1 | 2 | 3; after: number; before: number }[] = [
   { n: 3, after: 72 * H, before: 110 * H },
 ];
 
+// Visuel produit affiché dans les e-mails (images hébergées sur le site, dossier images/email/)
+const IMG = "https://www.ornellafitcoaching.com/images/email/";
+const IMAGES: [RegExp, string][] = [
+  [/fit dans ta vie/i, "p-fit-dans-ta-vie.jpg"],
+  [/apr[eè]s b[eé]b[eé]|pack maman/i, "p-postpartum.jpg"],
+  [/ventre plat/i, "p-ventre-plat.jpg"],
+  [/booty/i, "p-booty-sculpt.jpg"],
+  [/iron girl/i, "p-iron-girl.jpg"],
+  [/ageless/i, "p-ageless-girl.jpg"],
+  [/summer body/i, "p-summer-body.jpg"],
+  [/planner/i, "p-planner.jpg"],
+  [/recettes/i, "p-recettes.jpg"],
+  [/morpho/i, "p-morpho.jpg"],
+];
+function imageFor(produit: string) {
+  for (const [re, f] of IMAGES) if (re.test(produit)) return IMG + f;
+  return IMG + "p-fit-dans-ta-vie.jpg"; // coaching / consultation : photo d'Ornella
+}
+const euros = (n: number) => (Math.round(n * 100) / 100).toFixed(2).replace(".", ",").replace(",00", "");
+function expireLabel(ms: number) {
+  const d = new Date(ms);
+  const jour = new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long", timeZone: "Europe/Paris" }).format(d);
+  const h = new Intl.DateTimeFormat("fr-FR", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Paris" }).format(d).replace(":", "h");
+  return `${jour} à ${h}`;
+}
+
 type Panier = {
-  id: string; email: string; prenom: string | null; produit: string; payment_link: string;
+  id: string; email: string; prenom: string | null; produit: string; payment_link: string; montant: number | null;
   created_at: string; relance1_at: string | null; relance2_at: string | null; relance3_at: string | null;
   promo_code: string | null; stop_token: string; test: boolean;
 };
@@ -67,12 +93,17 @@ async function sendTemplate(p: Panier, n: 1 | 2 | 3, code: string | null) {
   const params: Record<string, string> = {
     PRENOM: p.prenom || "toi",
     PRODUIT: p.produit,
+    IMAGE: imageFor(p.produit),
     LIEN: lien,
     STOP: STOP_BASE + p.stop_token,
   };
   if (n === 3 && code) {
     params.CODE = code;
     params.LIEN_PROMO = `${lien}&prefilled_promo_code=${encodeURIComponent(code)}`;
+    const prix = Number(p.montant) || 0;
+    params.PRIX = euros(prix);
+    params.PRIX_REMISE = euros(prix * 0.85);
+    params.EXPIRE = expireLabel(Date.now() + 48 * 3600_000);
   }
   const r = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
