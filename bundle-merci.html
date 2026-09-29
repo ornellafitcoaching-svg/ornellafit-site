@@ -184,7 +184,7 @@ fbq("track","PageView");
 </div>
 
 <script>
-  const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
+  const _a='via-proxy-securise',_b='',_c='';
   const BREVO_KEY=_a+_b+_c;
 
   async function sendAccess() {
@@ -205,7 +205,7 @@ fbq("track","PageView");
     } catch(e) {}
 
     // Envoyer l'email d'accès avec les 2 programmes
-    fetch('https://api.brevo.com/v3/smtp/email', {
+    fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=email', {
       method: 'POST',
       headers: { 'api-key': BREVO_KEY, 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -289,5 +289,6 @@ fbq("track","PageView");
   <input type="text" name="email_address_check" value="" class="input--hidden">
   <input type="hidden" name="locale" value="fr">
 </form>
+<script src="panier.js" defer></script>
 </body>
 </html>

@@ -180,7 +180,7 @@ body{font-family:'Jost',sans-serif;background:#F2F8F3;color:#1A2018;min-height:1
 </form>
 
 <script>
-const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
+const _a='via-proxy-securise',_b='',_c='';
 const BK=_a+_b+_c;
 
 async function submitAcheteur(e){
@@ -194,7 +194,7 @@ async function submitAcheteur(e){
     document.getElementById('pp26Email').value = email;
     document.getElementById('pp26Form').submit();
     // Email transactionnel avec lien programme
-    await fetch('https://api.brevo.com/v3/smtp/email',{
+    await fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=email',{
       method:'POST',
       headers:{'Content-Type':'application/json','api-key':BK},
       body:JSON.stringify({
@@ -281,5 +281,6 @@ function copyReferralMsg(btn){
   });
 }
 </script>
+<script src="panier.js" defer></script>
 </body>
 </html>
