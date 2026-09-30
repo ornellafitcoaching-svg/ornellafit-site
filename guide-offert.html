@@ -3077,6 +3077,7 @@ function handleGuideCapture() {
     sendResult.then(function() {
       try {
         localStorage.setItem('guide_unlocked', '1');
+        localStorage.setItem('guide_lead_sent', '1');
         localStorage.setItem('ornella_lead_email', email);
         if (objectif) localStorage.setItem('guide_objectif', objectif);
       } catch(e) {}
@@ -3096,8 +3097,11 @@ function handleGuideCapture() {
 }
 document.addEventListener('DOMContentLoaded', function() {
   try {
-    if (localStorage.getItem('guide_unlocked') === '1') { unlockGuide(); return; }
     var knownEmail = localStorage.getItem('ornella_lead_email');
+    var leadSent = localStorage.getItem('guide_lead_sent') === '1';
+    // Les anciennes versions marquaient le guide comme débloqué AVANT l'envoi Brevo.
+    // Sans preuve d'inscription, on redemande l'email pour laisser la personne retenter.
+    if (leadSent || (localStorage.getItem('guide_unlocked') === '1' && knownEmail)) { unlockGuide(); return; }
     if (knownEmail) {
       var wrap = document.getElementById('cap-email-wrap');
       var emailInput = document.getElementById('cap-email');
