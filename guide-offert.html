@@ -672,6 +672,7 @@ img { max-width: 100%; height: auto; display: block; }
 
   /* ─── Accordéons chapitres ─── */
   .chapter-header { cursor:pointer; }
+  .chapter-header:focus-visible { outline:3px solid rgba(184,79,85,.35); outline-offset:4px; border-radius:6px; }
   .chapter-body.collapsed { display:none; }
 }
 
@@ -1210,13 +1211,6 @@ body { background: #fdf5f2 !important; }
   bottom: calc(28px + env(safe-area-inset-bottom, 0px));
   z-index: 9999;
 }
-#fab-check {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-}
 #fab-toggle {
   width:  50px;
   height: 50px;
@@ -1225,6 +1219,7 @@ body { background: #fdf5f2 !important; }
   color: #fff;
   font-size: 20px;
   border: none;
+  padding: 0;
   cursor: pointer;
   box-shadow: 0 4px 18px rgba(184,79,85,.45);
   display: flex;
@@ -1249,7 +1244,6 @@ body { background: #fdf5f2 !important; }
   min-width: 230px;
   box-shadow: 0 10px 40px rgba(0,0,0,.55);
 }
-#fab-check:checked ~ .fab-menu { display: block; }
 #fab-nav.open .fab-menu { display: block; }
 #fab-nav .fab-menu a {
   display: block;
@@ -1434,12 +1428,19 @@ body { background: #fdf5f2 !important; }
 .plan7-txt b { display:block; font-size:14px; font-weight:700; color:var(--ink); margin-bottom:3px; }
 .plan7-txt span { font-size:13px; font-weight:400; color:rgba(58,42,42,.86); line-height:1.6; }
 
-/* ─── Auto-diagnostic (checklist statique) ─── */
+/* ─── Auto-diagnostic interactif ─── */
 .adg { background:#fffdfc; border:1px solid rgba(180,110,110,.18); border-radius:12px; padding:24px 26px; margin:8px 0 20px; }
-.adg-item { display:flex; align-items:flex-start; gap:12px; padding:11px 0; border-bottom:1px solid rgba(180,110,110,.10); }
+.adg-list { border:0; padding:0; margin:0; min-width:0; }
+.adg-legend { font-size:13px; font-weight:700; color:var(--ink); margin-bottom:8px; }
+.adg-item { display:flex; align-items:flex-start; gap:12px; padding:11px 0; border-bottom:1px solid rgba(180,110,110,.10); cursor:pointer; }
 .adg-item:last-child { border-bottom:none; }
-.adg-box { flex-shrink:0; width:20px; height:20px; border:2px solid var(--rose); border-radius:5px; margin-top:1px; }
-.adg-item p { font-size:14px; font-weight:400; color:rgba(58,42,42,.90); line-height:1.55; margin:0; }
+.adg-item input { flex-shrink:0; width:20px; height:20px; margin:1px 0 0; accent-color:var(--rose); cursor:pointer; }
+.adg-item input:focus-visible { outline:3px solid rgba(184,79,85,.35); outline-offset:2px; }
+.adg-item span { font-size:14px; font-weight:400; color:rgba(58,42,42,.90); line-height:1.55; }
+.adg-item.is-checked span { color:var(--ink); font-weight:600; }
+.adg-result { padding:12px 14px; margin-top:12px; border-radius:8px; background:rgba(201,132,138,.10); color:var(--ink); font-size:13px; line-height:1.6; }
+.adg-scale-row.is-current { background:rgba(201,132,138,.10); border-radius:8px; padding-left:8px; padding-right:8px; }
+.adg-privacy { font-size:11px; color:rgba(58,42,42,.68); text-align:center; margin:12px 0 0; line-height:1.5; }
 .adg-scale { margin-top:18px; }
 .adg-scale-row { display:flex; gap:12px; align-items:flex-start; padding:9px 0; font-size:13.5px; color:rgba(58,42,42,.88); line-height:1.55; }
 .adg-scale-row b { color:var(--ink); }
@@ -1477,10 +1478,25 @@ body { background: #fdf5f2 !important; }
 .pourqui-forwho strong { color:var(--ink); }
 .pourqui-card .btn, .pourqui-card .t-btn-main, .pourqui-card .t-btn-outline { width:100%; text-align:center; margin-top:auto; }
 
+/* Formulaire officiel Brevo : conserve le style du guide et les messages Ajax. */
+#capture-block .sib-form { width:100%; max-width:100%; background:transparent !important; text-align:left !important; }
+#capture-block #sib-form-container, #capture-block #sib-container { width:100%; max-width:360px; margin:0 auto; }
+#capture-block #sib-container { padding:0 !important; border:0 !important; background:transparent !important; }
+#capture-block #sib-form { margin:0; }
+#capture-block .sib-form-block { padding:0; }
+#capture-block .entry__label { display:block; margin-bottom:7px; font-family:'Montserrat',sans-serif; }
+#capture-block .entry__field { width:100%; border:0; padding:0; background:transparent; }
+#capture-block .entry__error--primary { margin-top:5px; font-size:12px; }
+#capture-block .sib-form-message-panel { box-sizing:border-box; width:100%; max-width:360px; border-radius:8px; font-family:'Montserrat',sans-serif; font-size:12px; }
+#capture-block .sib-form-message-panel__text { padding:10px 12px; }
+#capture-block .progress-indicator__icon { display:inline-block; width:14px; height:14px; margin-right:8px; vertical-align:-2px; border:2px solid rgba(255,255,255,.5); border-top-color:#fff; border-radius:50%; animation:sib-guide-spin .8s linear infinite; }
+#capture-block .sib-hide-loader-icon { display:none !important; }
+@keyframes sib-guide-spin { to { transform:rotate(360deg); } }
+
 @media (max-width:680px){
   .err-card { padding:20px 18px; }
   .err-title { font-size:21px; }
-  .err-row p, .adg-item p { font-size:15px; }
+  .err-row p, .adg-item span { font-size:15px; }
   .plan7-day { grid-template-columns:46px 1fr; gap:12px; padding:14px 14px; }
   .plan7-num { width:46px; height:46px; }
   .pourqui { grid-template-columns:1fr; }
@@ -1489,6 +1505,7 @@ body { background: #fdf5f2 !important; }
   .sci-fact p, .nuance p { font-size:14px; }
 }
 </style>
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 <meta name="facebook-domain-verification" content="q0lravv1bfmhpq3dob5d559cyidqq1" />
 <meta name="facebook-domain-verification" content="4npql1iz6n380yye9bsydf16pnj20x" />
 </head>
@@ -1627,45 +1644,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div id="capture-block" style="background:rgba(232,168,168,.08);border:1.5px solid rgba(232,168,168,.3);border-radius:8px;padding:32px 28px;text-align:center;margin-top:8px;">
-      <h3 class="serif" style="font-size:24px;font-weight:300;color:var(--ink);margin-bottom:10px;">Trouve ce qui bloque <em style="color:var(--rose-light);font-style:italic;">(vraiment)</em> chez toi</h3>
-      <p style="font-size:13px;color:rgba(58,42,42,.84);max-width:440px;margin:0 auto 22px;line-height:1.7;">Réponds à 3 questions rapides. Je débloque immédiatement <strong>le guide complet + ton diagnostic personnalisé.</strong></p>
+      <h3 class="serif" style="font-size:24px;font-weight:300;color:var(--ink);margin-bottom:10px;">Accède au guide <em style="color:var(--rose-light);font-style:italic;">complet</em></h3>
+      <p style="font-size:13px;color:rgba(58,42,42,.84);max-width:440px;margin:0 auto 22px;line-height:1.7;">Indique ton adresse e-mail pour ouvrir la suite du guide et son auto-diagnostic.</p>
 
-      <!-- MINI-QUIZ DE CAPTURE -->
-      <div id="cap-quiz" aria-live="polite" style="max-width:400px;margin:0 auto;text-align:left;"></div>
-
-      <div id="cap-form" style="max-width:360px;margin:0 auto;display:none;flex-direction:column;gap:10px;">
-        <p id="cap-form-intro" style="font-size:13.5px;color:var(--ink);font-weight:600;line-height:1.5;margin-bottom:6px;text-align:center;">✨ On a cerné ton profil.<br><span style="font-weight:400;color:rgba(58,42,42,.82);font-size:12.5px;">Laisse ton prénom + email pour voir ce qui te bloque vraiment et débloquer le guide.</span></p>
-        <input type="text" id="cap-fname" autocomplete="given-name" placeholder="Ton prénom" style="padding:13px 16px;border-radius:6px;border:1px solid rgba(180,110,110,0.375);background:rgba(180,110,110,0.108);color:var(--ink);font-size:13px;font-family:'Montserrat',sans-serif;">
-        <div id="cap-email-wrap">
-        <input type="email" id="cap-email" autocomplete="email" required placeholder="Ton email" style="padding:13px 16px;border-radius:6px;border:1px solid rgba(180,110,110,0.375);background:rgba(180,110,110,0.108);color:var(--ink);font-size:13px;font-family:'Montserrat',sans-serif;width:100%;box-sizing:border-box;">
+      <div class="sib-form" style="background:transparent;text-align:left;">
+        <div id="sib-form-container" class="sib-form-container">
+          <div id="error-message" class="sib-form-message-panel" role="alert" aria-live="assertive" style="max-width:360px;margin:0 auto 12px;">
+            <div class="sib-form-message-panel__text sib-form-message-panel__text--center"><span class="sib-form-message-panel__inner-text">L’inscription n’a pas pu être confirmée. Vérifie ton adresse et réessaie.</span></div>
+          </div>
+          <div id="success-message" class="sib-form-message-panel" role="status" aria-live="polite" style="max-width:360px;margin:0 auto 12px;">
+            <div class="sib-form-message-panel__text sib-form-message-panel__text--center"><span class="sib-form-message-panel__inner-text">Ton inscription est confirmée.</span></div>
+          </div>
+          <div id="sib-container" class="sib-container--large sib-container--vertical" style="box-sizing:border-box;width:100%;max-width:360px;margin:0 auto;padding:0;text-align:left;background:transparent;border:0;border-radius:0;direction:ltr;">
+            <form id="sib-form" method="POST" action="https://e605324b.sibforms.com/serve/MUIFALoL1fcMVo0ja25kWMtYWzSqwAywgjRBpUj5ZvwYNzLwrB9rHaDmrlfePrdBh56VbztE-9CF2otkSiflgd8BfQyfpe1oRInSR756--DIIrCBh2QwHnMs_EA61TA_qZvdV_43IDbmR2FXAtovfd2QIObZZhwYeoYA8R4_lGR-Kv-d6snW-06f0R3-niv-huUnbbPPZcmpqp1x_w==" data-type="subscription">
+              <div class="sib-input sib-form-block">
+                <div class="form__entry entry_block">
+                  <div class="form__label-row">
+                    <label class="entry__label" for="EMAIL" data-required="*" style="font-size:12px;font-weight:600;color:var(--ink);">Ton adresse e-mail</label>
+                    <div class="entry__field">
+                      <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="email" inputmode="email" aria-describedby="cap-privacy" placeholder="exemple@email.fr" data-required="true" required style="width:100%;box-sizing:border-box;padding:13px 16px;border-radius:6px;border:1px solid rgba(180,110,110,.38);background:rgba(180,110,110,.11);color:var(--ink);font:13px 'Montserrat',sans-serif;">
+                    </div>
+                  </div>
+                  <label class="entry__error entry__error--primary" role="alert"></label>
+                </div>
+              </div>
+              <div class="sib-form-block" style="text-align:left;padding:6px 0 0;">
+                <button class="sib-form-block__button sib-form-block__button-with-loader btn btn-primary" style="width:100%;min-height:46px;margin-top:0;padding:13px 16px;border:0;border-radius:8px;background:linear-gradient(135deg,#c9848a,#b84f55);color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;" form="sib-form" type="submit"><span class="progress-indicator__icon sib-hide-loader-icon" aria-hidden="true"></span>Ouvrir le guide gratuit →</button>
+              </div>
+              <input type="text" name="email_address_check" value="" class="input--hidden" tabindex="-1" autocomplete="off">
+              <input type="hidden" name="locale" value="fr">
+            </form>
+          </div>
         </div>
-        <select id="cap-objectif" style="padding:13px 16px;border-radius:6px;border:1px solid rgba(180,110,110,0.375);background:rgba(180,110,110,0.108);color:var(--ink);font-size:13px;font-family:'Montserrat',sans-serif;">
-          <option value="" style="color:#333;">Ton objectif principal (optionnel)</option>
-          <option value="Perte de poids" style="color:#333;">Perdre du poids</option>
-          <option value="Tonifier" style="color:#333;">Me tonifier</option>
-          <option value="Fessiers" style="color:#333;">Travailler mes fessiers</option>
-          <option value="Postpartum" style="color:#333;">Retrouver mon corps après bébé</option>
-          <option value="Muscle" style="color:#333;">Prendre du muscle</option>
-        </select>
-        <p id="cap-error" role="alert" style="display:none;color:var(--rouge);font-size:12px;margin:0;">Merci de renseigner un email valide.</p>
-        <button type="button" onclick="handleGuideCapture()" class="btn btn-primary" style="width:100%;margin-top:6px;">✨ Je veux enfin comprendre mon corps →</button>
       </div>
-      <p style="font-size:10px;color:rgba(58,42,42,.6);margin-top:14px;">Zéro spam. Tu peux te désinscrire en 1 clic.</p>
+      <p id="cap-privacy" style="font-size:10px;color:rgba(58,42,42,.68);margin:14px auto 0;max-width:430px;line-height:1.6;">Si tu valides, tu seras ajoutée à la liste Brevo « Guide offert » et recevras le mail avec le lien du guide. Tu peux te désinscrire à tout moment.</p>
     </div>
 
   </div>
   <div class="bottom-bar"></div>
   <div class="page-label">Ornella Fit Coaching · Ton plus bel investissement, c'est toi.</div>
 </article>
-
-<!-- Formulaire natif Brevo pour la liste #15 « Guide offert ».
-     Le formulaire Brevo est public par conception et n'expose aucune clé API privée. -->
-<iframe name="guideBrevoFrame" id="guideBrevoFrame" title="Réponse du formulaire Brevo" aria-hidden="true" tabindex="-1" style="display:none"></iframe>
-<form id="guideBrevoForm" method="POST" target="guideBrevoFrame" action="https://e605324b.sibforms.com/serve/MUIFALoL1fcMVo0ja25kWMtYWzSqwAywgjRBpUj5ZvwYNzLwrB9rHaDmrlfePrdBh56VbztE-9CF2otkSiflgd8BfQyfpe1oRInSR756--DIIrCBh2QwHnMs_EA61TA_qZvdV_43IDbmR2FXAtovfd2QIObZZhwYeoYA8R4_lGR-Kv-d6snW-06f0R3-niv-huUnbbPPZcmpqp1x_w==" style="display:none">
-  <input type="email" name="EMAIL" id="guideBrevoEmail" autocomplete="off">
-  <input type="text" name="email_address_check" value="" class="input--hidden" tabindex="-1" autocomplete="off">
-  <input type="hidden" name="locale" value="fr">
-</form>
 
 <div id="gated-content" style="display:none">
 
@@ -1685,13 +1703,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      PAGE 1 — INTRO : IDENTIFICATION══════════════════════════════════════════ -->
 <article class="page" id="page-1">
   <div class="accent-bar"></div>
-  <div class="sec-header chapter-header" onclick="toggleChapter(this)">
+  <div class="sec-header chapter-header" role="button" tabindex="0" aria-expanded="false" aria-controls="chapter-body-page-1" onclick="toggleChapter(this)" onkeydown="chapterKeydown(event,this)">
     <div class="sec-num serif">01</div>
     <span class="eyebrow">Chapitre 1</span>
     <h2 class="sec-title serif">Tu fais tout bien… <em>et pourtant rien ne bouge.</em></h2>
     <p class="sec-intro">Tu t'entraînes. Tu surveilles ce que tu manges. Tu essaies différentes méthodes. Mais ton corps refuse de changer. Cette frustration, je la connais — et si tu lis ces lignes, c'est que tu la vis en ce moment.</p>
   </div>
-  <div class="body-area chapter-body collapsed">
+  <div class="body-area chapter-body collapsed" id="chapter-body-page-1">
 
     <div class="pull-quote">
       <p>"Je fais des efforts depuis des semaines, je fais du sport 3 à 5 fois par semaine… mais quand je me regarde dans le miroir, <strong>je ne vois aucune différence.</strong>"</p>
@@ -1829,14 +1847,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 ══════════════════════════════════════════ -->
 <article class="page" id="page-6">
   <div class="accent-bar"></div>
-  <div class="sec-header chapter-header" onclick="toggleChapter(this)">
+  <div class="sec-header chapter-header" role="button" tabindex="0" aria-expanded="false" aria-controls="chapter-body-page-6" onclick="toggleChapter(this)" onkeydown="chapterKeydown(event,this)">
     <div class="sec-num serif">02</div>
     <span class="eyebrow">Chapitre 2</span>
     <h2 class="sec-title serif">Comment ton corps <em>fonctionne vraiment</em></h2>
     <p class="sec-intro">Avant de parler d'erreurs, il faut comprendre l'essentiel : ton corps n'est pas « cassé » et ton métabolisme ne s'est pas « bloqué ». Il suit des règles logiques. Quand on les comprend, tout devient plus simple — et beaucoup moins culpabilisant.</p>
   </div>
 
-  <div class="body-area chapter-body collapsed">
+  <div class="body-area chapter-body collapsed" id="chapter-body-page-6">
 
     <div class="text-block">
       <p>On t'a peut-être fait croire qu'après 30 ans, ton corps devient ton ennemi. C'est faux. Ton corps cherche juste une chose en permanence : <strong>l'équilibre</strong>. Il s'adapte à ce que tu lui demandes. Si tu comprends comment, tu arrêtes de te battre contre lui — et tu commences à travailler avec lui.</p>
@@ -1895,13 +1913,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 ══════════════════════════════════════════ -->
 <article class="page" id="page-2">
   <div class="accent-bar"></div>
-  <div class="sec-header chapter-header" onclick="toggleChapter(this)">
+  <div class="sec-header chapter-header" role="button" tabindex="0" aria-expanded="false" aria-controls="chapter-body-page-2" onclick="toggleChapter(this)" onkeydown="chapterKeydown(event,this)">
     <div class="sec-num serif">03</div>
     <span class="eyebrow">Chapitre 3</span>
     <h2 class="sec-title serif">Les 9 erreurs qui <em>freinent le plus</em> tes résultats</h2>
     <p class="sec-intro">La plupart des femmes qui stagnent cumulent 3 à 5 de ces erreurs — souvent sans le savoir. Pour chacune, on va voir ce qu'on croit, ce qui se passe vraiment, et surtout ce que tu peux faire à la place. Aucune n'est un défaut de ta part : ce sont juste des mécanismes qu'on t'a rarement expliqués.</p>
   </div>
-  <div class="body-area chapter-body collapsed">
+  <div class="body-area chapter-body collapsed" id="chapter-body-page-2">
 
     <!-- ERREUR 1 -->
     <div class="err-card">
@@ -2022,13 +2040,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 ══════════════════════════════════════════ -->
 <article class="page" id="page-3">
   <div class="accent-bar"></div>
-  <div class="sec-header chapter-header" onclick="toggleChapter(this)">
+  <div class="sec-header chapter-header" role="button" tabindex="0" aria-expanded="false" aria-controls="chapter-body-page-3" onclick="toggleChapter(this)" onkeydown="chapterKeydown(event,this)">
     <div class="sec-num serif">04</div>
     <span class="eyebrow">Chapitre 4</span>
     <h2 class="sec-title serif">La nutrition qui <em>soutient</em> tes efforts</h2>
     <p class="sec-intro">Pas de régime miracle ni d'interdits. Juste quelques principes simples qui, appliqués sans se prendre la tête, font 80 % du résultat. L'idée n'est pas de manger « parfaitement » — c'est de manger de façon cohérente avec ce que tu demandes à ton corps.</p>
   </div>
-  <div class="body-area chapter-body collapsed">
+  <div class="body-area chapter-body collapsed" id="chapter-body-page-3">
 
     <div class="text-block">
       <p>On te vend souvent la nutrition comme une liste d'aliments interdits. En réalité, tout tourne autour de trois idées : <strong>assez de protéines</strong>, une <strong>quantité globale cohérente</strong> avec ton objectif, et une <strong>régularité tenable</strong>. Le reste, ce sont des détails.</p>
@@ -2082,13 +2100,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 ══════════════════════════════════════════ -->
 <article class="page" id="page-4">
   <div class="accent-bar"></div>
-  <div class="sec-header chapter-header" onclick="toggleChapter(this)">
+  <div class="sec-header chapter-header" role="button" tabindex="0" aria-expanded="false" aria-controls="chapter-body-page-4" onclick="toggleChapter(this)" onkeydown="chapterKeydown(event,this)">
     <div class="sec-num serif">05</div>
     <span class="eyebrow">Chapitre 5</span>
     <h2 class="sec-title serif">Ton cerveau & <em>tes comportements</em></h2>
     <p class="sec-intro">Tu sais déjà en grande partie quoi faire. Alors pourquoi c'est si dur de s'y tenir ? Parce que la vraie bataille n'est pas seulement physique — elle est comportementale. Bonne nouvelle : ça se travaille, et ça n'a rien à voir avec « avoir plus de volonté ».</p>
   </div>
-  <div class="body-area chapter-body collapsed">
+  <div class="body-area chapter-body collapsed" id="chapter-body-page-4">
 
     <div class="highlight">
       <p>La motivation, c'est une <em>humeur</em>. Elle va et vient. <strong>Ce qui te fait tenir, ce sont tes systèmes</strong> — pas ta volonté du moment.</p>
@@ -2150,13 +2168,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 ══════════════════════════════════════════ -->
 <article class="page" id="page-5">
   <div class="accent-bar"></div>
-  <div class="sec-header chapter-header" onclick="toggleChapter(this)">
+  <div class="sec-header chapter-header" role="button" tabindex="0" aria-expanded="false" aria-controls="chapter-body-page-5" onclick="toggleChapter(this)" onkeydown="chapterKeydown(event,this)">
     <div class="sec-num serif">06</div>
     <span class="eyebrow">Chapitre 6</span>
     <h2 class="sec-title serif">Ce qui <em>fonctionne vraiment</em> — les 4 piliers</h2>
     <p class="sec-intro">Voici les 4 piliers qui, combinés et adaptés à ta réalité, produisent des résultats durables. Ce n'est pas révolutionnaire. Mais c'est rarement tout mis en place en même temps, correctement, pour la bonne personne.</p>
   </div>
-  <div class="body-area chapter-body collapsed">
+  <div class="body-area chapter-body collapsed" id="chapter-body-page-5">
 
     <div style="margin-bottom:32px;">
       <span class="eyebrow" style="font-size:9px;margin-bottom:10px;">Pilier 01</span>
@@ -2266,13 +2284,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 ══════════════════════════════════════════ -->
 <article class="page" id="page-plan">
   <div class="accent-bar"></div>
-  <div class="sec-header chapter-header" onclick="toggleChapter(this)">
+  <div class="sec-header chapter-header" role="button" tabindex="0" aria-expanded="false" aria-controls="chapter-body-page-plan" onclick="toggleChapter(this)" onkeydown="chapterKeydown(event,this)">
     <div class="sec-num serif">07</div>
     <span class="eyebrow">Chapitre 7</span>
     <h2 class="sec-title serif">Ton plan d'action <em>sur 7 jours</em></h2>
     <p class="sec-intro">Pas besoin de tout changer d'un coup. Pendant une semaine, tu poses une brique par jour. À la fin, tu auras une première stratégie claire — construite par toi, pour toi.</p>
   </div>
-  <div class="body-area chapter-body collapsed">
+  <div class="body-area chapter-body collapsed" id="chapter-body-page-plan">
 
     <div class="plan7">
       <div class="plan7-day">
@@ -2347,27 +2365,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div style="text-align:center;">
       <span class="eyebrow">Auto-diagnostic</span>
       <h2 class="sec-title serif" style="margin-bottom:8px;">Où en es-tu <em>vraiment</em> ?</h2>
-      <p class="sec-intro" style="margin-bottom:22px;">Coche mentalement chaque phrase qui te correspond. Plus tu en coches, plus tu sais où agir en priorité.</p>
+      <p class="sec-intro" style="margin-bottom:22px;">Sélectionne les phrases qui te correspondent. Ton repère s’actualise au fur et à mesure.</p>
     </div>
 
-    <div class="adg">
-      <div class="adg-item"><span class="adg-box"></span><p>Je change souvent de programme sans jamais en finir un.</p></div>
-      <div class="adg-item"><span class="adg-box"></span><p>Je ne suis pas ma progression (poids, répétitions, mensurations).</p></div>
-      <div class="adg-item"><span class="adg-box"></span><p>Je fais beaucoup de cardio, mais peu de renforcement musculaire.</p></div>
-      <div class="adg-item"><span class="adg-box"></span><p>Je ne sais pas si mon alimentation correspond à mon objectif.</p></div>
-      <div class="adg-item"><span class="adg-box"></span><p>Je manque souvent de protéines, surtout le matin.</p></div>
-      <div class="adg-item"><span class="adg-box"></span><p>Je dors mal ou pas assez régulièrement.</p></div>
-      <div class="adg-item"><span class="adg-box"></span><p>Je récupère mal (fatigue installée, stress permanent).</p></div>
-      <div class="adg-item"><span class="adg-box"></span><p>Je ne sais pas comment ajuster mon programme quand ça stagne.</p></div>
-      <div class="adg-item"><span class="adg-box"></span><p>J'ai du mal à rester régulière dans la durée.</p></div>
-      <div class="adg-item"><span class="adg-box"></span><p>Je ne sais pas vraiment quoi prioriser.</p></div>
+    <div class="adg" id="auto-diagnostic">
+      <fieldset class="adg-list">
+        <legend class="adg-legend">Coche toutes les phrases qui te correspondent</legend>
+        <label class="adg-item"><input type="checkbox" class="adg-checkbox"><span>Je change souvent de programme sans jamais en finir un.</span></label>
+        <label class="adg-item"><input type="checkbox" class="adg-checkbox"><span>Je ne suis pas ma progression (poids, répétitions, mensurations).</span></label>
+        <label class="adg-item"><input type="checkbox" class="adg-checkbox"><span>Je fais beaucoup de cardio, mais peu de renforcement musculaire.</span></label>
+        <label class="adg-item"><input type="checkbox" class="adg-checkbox"><span>Je ne sais pas si mon alimentation correspond à mon objectif.</span></label>
+        <label class="adg-item"><input type="checkbox" class="adg-checkbox"><span>Je manque souvent de protéines, surtout le matin.</span></label>
+        <label class="adg-item"><input type="checkbox" class="adg-checkbox"><span>Je dors mal ou pas assez régulièrement.</span></label>
+        <label class="adg-item"><input type="checkbox" class="adg-checkbox"><span>Je récupère mal (fatigue installée, stress permanent).</span></label>
+        <label class="adg-item"><input type="checkbox" class="adg-checkbox"><span>Je ne sais pas comment ajuster mon programme quand ça stagne.</span></label>
+        <label class="adg-item"><input type="checkbox" class="adg-checkbox"><span>J'ai du mal à rester régulière dans la durée.</span></label>
+        <label class="adg-item"><input type="checkbox" class="adg-checkbox"><span>Je ne sais pas vraiment quoi prioriser.</span></label>
+      </fieldset>
+
+      <p class="adg-result" id="adg-result" aria-live="polite">Coche les phrases qui te correspondent pour afficher ton repère.</p>
 
       <div class="adg-scale">
-        <div class="adg-scale-row"><span class="adg-scale-dot">🟢</span><span><b>0 à 2 cochées :</b> tu as déjà de bonnes bases. Peaufine 1 ou 2 détails et sois régulière.</span></div>
-        <div class="adg-scale-row"><span class="adg-scale-dot">🟠</span><span><b>3 à 5 cochées :</b> c'est le cas le plus fréquent. Tu cumules quelques freins — un plan structuré débloquerait vite les choses.</span></div>
-        <div class="adg-scale-row"><span class="adg-scale-dot">🔴</span><span><b>6 et plus :</b> beaucoup de leviers d'un coup. Ce n'est pas un défaut — juste le signe qu'un accompagnement te ferait gagner un temps fou.</span></div>
+        <div class="adg-scale-row" data-adg-range="low"><span class="adg-scale-dot">🟢</span><span><b>1 à 2 cochées :</b> tu as déjà de bonnes bases. Choisis un détail à améliorer et garde une routine régulière.</span></div>
+        <div class="adg-scale-row" data-adg-range="mid"><span class="adg-scale-dot">🟠</span><span><b>3 à 5 cochées :</b> quelques habitudes peuvent être ajustées. Un plan structuré peut t'aider à choisir tes priorités.</span></div>
+        <div class="adg-scale-row" data-adg-range="high"><span class="adg-scale-dot">🔴</span><span><b>6 et plus :</b> plusieurs leviers sont à explorer. Commence par un changement à la fois ; un accompagnement peut t'aider à les prioriser.</span></div>
       </div>
-      <p style="font-size:11px;color:rgba(58,42,42,.6);text-align:center;margin-top:14px;line-height:1.5;">Cet auto-diagnostic est un repère pour t'orienter — ce n'est pas un diagnostic médical.</p>
+      <p class="adg-privacy">Tes réponses restent sur cette page : elles ne sont ni enregistrées ni envoyées. Ce repère ne remplace pas un avis médical.</p>
     </div>
   </div>
 
@@ -2849,24 +2872,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <nav id="fab-nav" aria-label="Navigation rapide">
-  <input type="checkbox" id="fab-check">
-  <label for="fab-check" id="fab-toggle" aria-label="Ouvrir le menu de navigation">☰</label>
-  <div class="fab-menu" role="menu">
-    <a href="https://wa.me/33756834626" role="menuitem" target="_blank" rel="noopener">💬 WhatsApp</a>
-    <a href="https://www.ornellafitcoaching.com/offres.html" role="menuitem" target="_blank" rel="noopener">💎 Voir les offres</a>
+  <button type="button" id="fab-toggle" aria-controls="fab-menu" aria-expanded="false" aria-label="Ouvrir le menu de navigation" onclick="toggleFabMenu()">☰</button>
+  <div class="fab-menu" id="fab-menu">
+    <a href="https://wa.me/33756834626" target="_blank" rel="noopener">💬 WhatsApp</a>
+    <a href="https://www.ornellafitcoaching.com/offres.html" target="_blank" rel="noopener">💎 Voir les offres</a>
     <div class="menu-sep"></div>
-    <a href="#page-0" role="menuitem" onclick="document.getElementById('fab-check').checked=false">📖 Couverture</a>
+    <a href="#page-0" onclick="closeFabMenu()">📖 Couverture</a>
     <div class="menu-sep"></div>
-    <a href="#page-1" role="menuitem" onclick="document.getElementById('fab-check').checked=false">1 · Pourquoi ça bloque</a>
-    <a href="#page-6" role="menuitem" onclick="document.getElementById('fab-check').checked=false">2 · Comment ton corps fonctionne</a>
-    <a href="#page-2" role="menuitem" onclick="document.getElementById('fab-check').checked=false">3 · Les 9 erreurs</a>
-    <a href="#page-3" role="menuitem" onclick="document.getElementById('fab-check').checked=false">4 · La nutrition</a>
-    <a href="#page-4" role="menuitem" onclick="document.getElementById('fab-check').checked=false">5 · Cerveau &amp; comportements</a>
-    <a href="#page-5" role="menuitem" onclick="document.getElementById('fab-check').checked=false">6 · Ce qui fonctionne</a>
-    <a href="#page-plan" role="menuitem" onclick="document.getElementById('fab-check').checked=false">7 · Plan 7 jours + bonus</a>
-    <a href="#quizObjectif" role="menuitem" onclick="document.getElementById('fab-check').checked=false">🎯 Auto-diagnostic</a>
+    <a href="#page-1" onclick="closeFabMenu()">1 · Pourquoi ça bloque</a>
+    <a href="#page-6" onclick="closeFabMenu()">2 · Comment ton corps fonctionne</a>
+    <a href="#page-2" onclick="closeFabMenu()">3 · Les 9 erreurs</a>
+    <a href="#page-3" onclick="closeFabMenu()">4 · La nutrition</a>
+    <a href="#page-4" onclick="closeFabMenu()">5 · Cerveau &amp; comportements</a>
+    <a href="#page-5" onclick="closeFabMenu()">6 · Ce qui fonctionne</a>
+    <a href="#page-plan" onclick="closeFabMenu()">7 · Plan 7 jours + bonus</a>
+    <a href="#auto-diagnostic" onclick="closeFabMenu()">🎯 Auto-diagnostic</a>
     <div class="menu-sep"></div>
-    <a href="#page-8" role="menuitem" onclick="document.getElementById('fab-check').checked=false">💎 Offres</a>
+    <a href="#page-8" onclick="closeFabMenu()">💎 Offres</a>
   </div>
 </nav>
 
@@ -2881,13 +2903,71 @@ document.querySelectorAll('a[href*="9B67sL7fXgcr03P5XT8Vi04"]').forEach(function
 
 <script>
 function toggleChapter(header) {
-  header.classList.toggle('open');
+  var isOpen = !header.classList.contains('open');
+  header.classList.toggle('open', isOpen);
+  header.setAttribute('aria-expanded', String(isOpen));
   var el = header.nextElementSibling;
   while (el && el.classList.contains('chapter-body')) {
-    el.classList.toggle('collapsed');
+    el.classList.toggle('collapsed', !isOpen);
     el = el.nextElementSibling;
   }
 }
+function chapterKeydown(event, header) {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    toggleChapter(header);
+  }
+}
+function setFabMenuOpen(isOpen) {
+  var nav = document.getElementById('fab-nav');
+  var button = document.getElementById('fab-toggle');
+  if (!nav || !button) return;
+  nav.classList.toggle('open', isOpen);
+  button.setAttribute('aria-expanded', String(isOpen));
+  button.setAttribute('aria-label', isOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation');
+  button.textContent = isOpen ? '×' : '☰';
+}
+function toggleFabMenu() {
+  var button = document.getElementById('fab-toggle');
+  setFabMenuOpen(!(button && button.getAttribute('aria-expanded') === 'true'));
+}
+function closeFabMenu() { setFabMenuOpen(false); }
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') closeFabMenu();
+});
+document.addEventListener('click', function(event) {
+  var nav = document.getElementById('fab-nav');
+  if (nav && !nav.contains(event.target)) closeFabMenu();
+});
+function updateAutoDiagnostic() {
+  var result = document.getElementById('adg-result');
+  var boxes = document.querySelectorAll('#auto-diagnostic .adg-checkbox');
+  if (!result || !boxes.length) return;
+  var count = 0;
+  boxes.forEach(function(box) {
+    if (box.checked) count++;
+    var row = box.closest('.adg-item');
+    if (row) row.classList.toggle('is-checked', box.checked);
+  });
+  var ranges = document.querySelectorAll('#auto-diagnostic [data-adg-range]');
+  ranges.forEach(function(row) { row.classList.remove('is-current'); });
+  if (!count) {
+    result.textContent = 'Coche les phrases qui te correspondent pour afficher ton repère.';
+    return;
+  }
+  var range = count <= 2 ? 'low' : (count <= 5 ? 'mid' : 'high');
+  var message = count <= 2
+    ? 'Tu as sélectionné ' + count + ' phrase' + (count === 1 ? '' : 's') + ' sur ' + boxes.length + '. Tu as déjà de bonnes bases : choisis un détail à améliorer et garde une routine régulière.'
+    : (count <= 5
+      ? 'Tu as sélectionné ' + count + ' phrases sur ' + boxes.length + '. Quelques habitudes peuvent être ajustées ; un plan structuré peut t’aider à choisir tes priorités.'
+      : 'Tu as sélectionné ' + count + ' phrases sur ' + boxes.length + '. Plusieurs leviers sont à explorer : commence par un changement à la fois.');
+  result.textContent = message;
+  var activeRange = document.querySelector('#auto-diagnostic [data-adg-range="' + range + '"]');
+  if (activeRange) activeRange.classList.add('is-current');
+}
+document.addEventListener('change', function(event) {
+  if (event.target && event.target.matches('#auto-diagnostic .adg-checkbox')) updateAutoDiagnostic();
+});
 var OBJECTIF_CTA = {
   'Perte de poids': { text: 'Tu perds un peu, puis ça stagne ? C\'est presque toujours un déficit mal calculé — pas un manque de volonté.', label: '→ Voir la méthode qui évite le plateau', url: 'https://www.ornellafitcoaching.com/ventre-plat.html' },
   'Tonifier':       { text: 'Tu veux te tonifier mais rien ne se dessine vraiment ? Le bon dosage entraînement + nutrition change tout.', label: '→ Découvrir l\'entraînement qui cible vraiment', url: 'https://www.ornellafitcoaching.com/summer-body-sales.html' },
@@ -2940,9 +3020,10 @@ var FREIN_MAP = {
   recup:   { titre:'Un déficit de récupération (stress, sommeil)', why:'Un sommeil régulièrement insuffisant et un stress chronique peuvent freiner tes progrès et rendre la récupération plus difficile. Le cortisol n\'est pas une hormone « ennemie » — il est normal et utile ; c\'est son excès prolongé, mal géré, qui peut peser sur ton énergie, ton appétit et tes résultats, même quand ton entraînement est sérieux. Bref, la récupération n\'est pas un détail : c\'est là qu\'une partie du travail se transforme en résultats.', actions:['10 minutes de marche ou de respiration dehors, sans écran, chaque jour.', 'Fixe une heure de coucher régulière pour viser 7 à 9h de sommeil.', 'Si la fatigue persiste, demande un bilan sanguin (fer, vitamine D, B12).'], food:'Le magnésium (amandes, chocolat noir, légumes verts) aide à calmer le système nerveux le soir. Évite la caféine après 14h — sa demi-vie de 5 à 6h peut perturber ton sommeil profond sans que tu le remarques.', produit:'offres.html', label:'→ Découvrir le bilan personnalisé gratuit' },
   prog:    { titre:'Un manque de progression dans tes séances', why:'Sans musculation régulière et progressive, tu perds naturellement de la masse musculaire avec le temps — résultat : métabolisme ralenti, corps qui se ramollit, même sans rien changer côté alimentation. Refaire toujours le même programme, aux mêmes charges, envoie à ton corps le signal qu\'il n\'a plus besoin de s\'adapter : c\'est la définition même du plateau.', actions:['2 séances de musculation minimum par semaine, sans exception.', 'Augmente la charge ou les répétitions dès que tu maîtrises un mouvement.', 'Structure tes séances plutôt que de les improviser à chaque fois.'], food:'La synthèse musculaire a besoin de protéines réparties sur la journée (pas tout au même repas) : vise 3-4 prises de 20-30g. Le manque de fer ou de vitamine D peut aussi expliquer une stagnation inexpliquée — un bilan sanguin annuel n\'est jamais du temps perdu.', produit:'iron-girl-sales.html', label:'→ Voir la méthode de progression structurée' },
   postpartum: { titre:'Ton corps post-partum a besoin d\'un plan spécifique', why:'Après une grossesse, ton corps a des besoins particuliers (diastasis, plancher pelvien, fatigue) qu\'un programme générique ne prend jamais en compte. Reprendre trop vite ou avec les mauvais exercices peut aggraver un diastasis ou fragiliser un plancher pelvien déjà sollicité — la progressivité n\'est pas une option, c\'est une nécessité.', actions:['Ne reprends jamais un programme générique sans vérifier ton diastasis.', 'Priorise le renforcement du plancher pelvien avant tout le reste.', 'Avance progressivement, sans te comparer à ton corps d\'avant.'], food:'Les besoins en fer et en protéines restent élevés après l\'accouchement (encore plus si tu allaites). Vise des sources de fer facilement assimilables (viande rouge, légumineuses + vitamine C pour l\'absorption) et ne saute aucun repas malgré la fatigue et le manque de temps.', produit:'programme-postpartum.html', label:'→ Découvrir le programme pensé pour l\'après-accouchement' },
-  hormonal: { titre:'Des changements hormonaux qui changent la donne', why:'À partir de 40 ans, la baisse d\'œstrogènes accélère la perte musculaire et modifie le stockage des graisses — les méthodes qui marchaient à 25 ans ne fonctionnent plus pareil. Ce n\'est ni dans ta tête ni un manque d\'effort : c\'est un changement physiologique réel qui demande d\'ajuster l\'entraînement ET l\'alimentation, pas de travailler "plus dur".', actions:['Priorise la musculation pour contrer la perte musculaire liée à l\'âge.', 'Augmente légèrement les protéines par rapport à tes habitudes actuelles.', 'Sois patiente avec les résultats — le rythme change, pas la capacité à progresser.'], food:'Le calcium et la vitamine D deviennent prioritaires pour la santé osseuse (produits laitiers, poissons gras, exposition au soleil). Réduis les sucres rapides et les produits ultra-transformés, qui accentuent l\'inflammation et les variations hormonales de cette période.', produit:'ageless-girl-sales.html', label:'→ Découvrir le programme anti-âge et ménopause' }
+  hormonal: { titre:'Des changements hormonaux qui changent la donne', why:'À partir de 40 ans, la baisse d\'œstrogènes accélère la perte musculaire et modifie le stockage des graisses — les méthodes qui marchaient à 25 ans ne fonctionnent plus pareil. Ce n\'est ni dans ta tête ni un manque d\'effort : c\'est un changement physiologique réel qui demande d\'ajuster l\'entraînement ET l\'alimentation, pas de travailler "plus dur".', actions:['Priorise la musculation pour contrer la perte musculaire liée à l\'âge.', 'Augmente légèrement les protéines par rapport à tes habitudes actuelles.', 'Sois patiente avec les résultats — le rythme change, pas la capacité à progresser.'], food:'Le calcium et la vitamine D deviennent prioritaires pour la santé osseuse (produits laitiers, poissons gras, exposition au soleil). Réduis les sucres rapides et les produits ultra-transformés, qui accentuent l\'inflammation et les variations hormonales de cette période.', produit:'ageless-girl-sales.html', label:'→ Découvrir le programme anti-âge et ménopause' },
+  equilibre: { titre:'Des bases déjà bien en place', why:'Tes réponses ne font pas ressortir de frein marqué parmi les habitudes évaluées. Continue à observer tes progrès et ajuste une seule chose à la fois si tu stagnes.', actions:['Garde une routine de renforcement que tu peux tenir dans la durée.', 'Note tes charges, répétitions ou mensurations pour voir l’évolution.', 'Si un plateau apparaît, vérifie d’abord le sommeil, la récupération et la régularité.'], food:'Continue à construire des repas variés et réguliers, avec une source de protéines adaptée à tes besoins. Pas besoin de règles extrêmes.', produit:'offres.html', label:'→ Découvrir les accompagnements' }
 };
-var diagIndex = 0, diagScores = {alim:0,cardio:0,recup:0,prog:0}, diagRoute = '', diagObjectif = '';
+var diagIndex = 0, diagAnswers = [];
 function diagPopupClose() {
   var p = document.getElementById('diagPopup');
   if (p) p.classList.remove('show');
@@ -2986,7 +3067,7 @@ document.addEventListener('DOMContentLoaded', function() {
   } catch(e) {}
 });
 function diagStart() {
-  diagIndex = 0; diagScores = {alim:0,cardio:0,recup:0,prog:0}; diagRoute = ''; diagObjectif = '';
+  diagIndex = 0; diagAnswers = [];
   document.getElementById('diagIntro').style.display = 'none';
   document.getElementById('diagStartBtn').style.display = 'none';
   diagRenderStep();
@@ -2995,10 +3076,12 @@ function diagRenderStep() {
   var body = document.getElementById('diagBody');
   var total = DIAG_QUESTIONS.length;
   var step = DIAG_QUESTIONS[diagIndex];
+  if (!body || !step) return;
   var html = '<div class="diag-progress">Question ' + (diagIndex+1) + ' / ' + total + '</div>';
   html += '<p class="diag-q">' + step.q + '</p><div class="diag-opts">';
   step.opts.forEach(function(o, i) {
-    html += '<button type="button" class="diag-opt" onclick="diagAnswer(' + i + ')">' + o.t + '</button>';
+    var selected = diagAnswers[diagIndex] === i;
+    html += '<button type="button" class="diag-opt" aria-pressed="' + selected + '" onclick="diagAnswer(' + i + ')">' + o.t + '</button>';
   });
   html += '</div>';
   if (diagIndex > 0) html += '<button type="button" class="diag-back" onclick="diagBack()">← Question précédente</button>';
@@ -3007,107 +3090,74 @@ function diagRenderStep() {
 function diagBack() { if (diagIndex > 0) { diagIndex--; diagRenderStep(); } }
 function diagAnswer(i) {
   var step = DIAG_QUESTIONS[diagIndex];
+  if (!step || !step.opts[i]) return;
   var opt = step.opts[i];
-  if (opt.cat === 'route') { if (opt.val) diagRoute = opt.val; }
-  else if (opt.cat === 'obj') { diagObjectif = opt.val; }
-  else if (opt.cat && diagScores.hasOwnProperty(opt.cat)) { diagScores[opt.cat] += opt.pts; }
+  diagAnswers[diagIndex] = i;
+  diagAnswers.length = diagIndex + 1;
   diagIndex++;
   if (diagIndex < DIAG_QUESTIONS.length) { diagRenderStep(); } else { diagShowResult(); }
 }
 function diagShowResult() {
-  var key = diagRoute || Object.keys(diagScores).reduce(function(a,b){ return diagScores[a] >= diagScores[b] ? a : b; });
+  var scores = {alim:0,cardio:0,recup:0,prog:0};
+  var objectif = '';
+  DIAG_QUESTIONS.forEach(function(question, index) {
+    var answerIndex = diagAnswers[index];
+    var opt = typeof answerIndex === 'number' ? question.opts[answerIndex] : null;
+    if (!opt) return;
+    if (opt.cat === 'obj') objectif = opt.val || '';
+    else if (opt.cat && Object.prototype.hasOwnProperty.call(scores, opt.cat)) scores[opt.cat] += opt.pts || 0;
+  });
+  var postpartum = DIAG_QUESTIONS[5].opts[diagAnswers[5]];
+  var hormonal = DIAG_QUESTIONS[6].opts[diagAnswers[6]];
+  var scoreTotal = Object.keys(scores).reduce(function(sum, category) { return sum + scores[category]; }, 0);
+  var key = postpartum && postpartum.val === 'postpartum' ? 'postpartum'
+    : (hormonal && hormonal.val === 'hormonal' ? 'hormonal'
+      : (scoreTotal === 0 ? 'equilibre' : Object.keys(scores).reduce(function(best, category) {
+        return scores[category] > scores[best] ? category : best;
+      }, 'alim')));
   var r = FREIN_MAP[key];
-  try { if (diagObjectif) localStorage.setItem('guide_objectif', diagObjectif); } catch(e) {}
-  var sel = document.getElementById('cap-objectif');
-  if (sel && diagObjectif) sel.value = diagObjectif;
+  try {
+    if (objectif) localStorage.setItem('guide_objectif', objectif);
+    else localStorage.removeItem('guide_objectif');
+  } catch(e) {}
   var actionsHtml = r.actions.map(function(a, i){ return '<li><span class="diag-result-num">' + (i+1) + '</span>' + a + '</li>'; }).join('');
   document.getElementById('diagBody').innerHTML =
     '<div class="diag-result">' +
-    '<span class="diag-result-tag">Ton principal frein</span>' +
+    '<span class="diag-result-tag">' + (key === 'equilibre' ? 'Ce qui ressort de tes réponses' : 'Ton principal levier') + '</span>' +
     '<div class="diag-result-title">' + r.titre + '</div>' +
     '<p class="diag-result-why">' + r.why + '</p>' +
     '<p class="diag-result-actions-label">Tes 3 actions prioritaires</p>' +
     '<ul class="diag-result-actions">' + actionsHtml + '</ul>' +
-    '<div class="diag-result-food"><span class="diag-result-food-label">🥗 Conseil alimentaire</span><p>' + r.food + '</p></div>' +
+    '<div class="diag-result-food"><span class="diag-result-food-label">🥗 Repère alimentaire</span><p>' + r.food + '</p></div>' +
     '<a href="https://www.ornellafitcoaching.com/' + r.produit + '" target="_blank" rel="noopener" class="diag-result-cta">' + r.label.replace('→ ', '') + ' →</a>' +
     '</div>';
 }
-function handleGuideCapture() {
-  var email = document.getElementById('cap-email').value.trim();
-  var objectif = document.getElementById('cap-objectif').value;
-  var errEl = document.getElementById('cap-error');
-  var btn = document.querySelector('#cap-form button');
-  if (btn && btn.disabled) return;
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    errEl.textContent = 'Merci de renseigner un email valide.';
-    errEl.style.display = 'block';
-    document.getElementById('cap-email').style.borderColor = '#b84f55';
-    document.getElementById('cap-email').focus();
-    return;
+function connectGuideBrevoSuccess() {
+  var form = document.getElementById('sib-form');
+  var success = document.getElementById('success-message');
+  if (!form || !success || !window.MutationObserver) return;
+  var unlocked = false;
+  function onConfirmedSignup() {
+    var visible = window.getComputedStyle(success).display !== 'none' && success.getClientRects().length > 0;
+    if (!visible || unlocked) return;
+    unlocked = true;
+    form.removeAttribute('aria-busy');
+    try { localStorage.setItem('guide_form_submitted', '1'); } catch(e) {}
+    if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'Guide 9 Erreurs - Page complète'});
+    unlockGuide();
+    var content = document.getElementById('gated-content');
+    if (content) content.scrollIntoView({behavior:'smooth'});
   }
-  errEl.style.display = 'none';
-  if (btn) { btn.disabled = true; btn.textContent = 'Envoi en cours…'; }
-  var form = document.getElementById('guideBrevoForm');
-  var frame = document.getElementById('guideBrevoFrame');
-  var brevoEmail = document.getElementById('guideBrevoEmail');
-  if (!form || !frame || !brevoEmail) {
-    if (btn) { btn.disabled = false; btn.textContent = '✨ Je veux enfin comprendre mon corps →'; }
-    errEl.textContent = 'Le formulaire ne peut pas être envoyé pour le moment. Réessaie dans un instant.';
-    errEl.style.display = 'block';
-    return;
-  }
-  brevoEmail.value = email;
-  try {
-    var timeout;
-    var onLoad;
-    var settled = false;
-    var sendResult = new Promise(function(resolve, reject) {
-      function finish(error) {
-        if (settled) return;
-        settled = true;
-        clearTimeout(timeout);
-        frame.removeEventListener('load', onLoad);
-        if (error) reject(error); else resolve();
-      }
-      onLoad = function() { finish(); };
-      frame.addEventListener('load', onLoad, { once: true });
-      timeout = setTimeout(function() { finish(new Error('Brevo timeout')); }, 15000);
-      try { form.submit(); } catch(error) { finish(error); }
-    });
-    sendResult.then(function() {
-      try {
-        localStorage.setItem('guide_unlocked', '1');
-        localStorage.setItem('guide_lead_sent', '1');
-        localStorage.setItem('ornella_lead_email', email);
-        if (objectif) localStorage.setItem('guide_objectif', objectif);
-      } catch(e) {}
-      if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'Guide 9 Erreurs - Page complète'});
-      unlockGuide();
-      document.getElementById('gated-content').scrollIntoView({behavior:'smooth'});
-    }).catch(function() {
-      if (btn) { btn.disabled = false; btn.textContent = '✨ Je veux enfin comprendre mon corps →'; }
-      errEl.textContent = 'L’envoi n’a pas pu être confirmé. Vérifie ton email et réessaie.';
-      errEl.style.display = 'block';
-    });
-  } catch(error) {
-    if (btn) { btn.disabled = false; btn.textContent = '✨ Je veux enfin comprendre mon corps →'; }
-    errEl.textContent = 'L’envoi n’a pas pu être confirmé. Vérifie ton email et réessaie.';
-    errEl.style.display = 'block';
-  }
+  var observer = new MutationObserver(onConfirmedSignup);
+  observer.observe(success, {attributes:true, childList:true, characterData:true, subtree:true});
+  form.addEventListener('submit', function() { form.setAttribute('aria-busy', 'true'); });
 }
 document.addEventListener('DOMContentLoaded', function() {
   try {
-    var knownEmail = localStorage.getItem('ornella_lead_email');
-    var leadSent = localStorage.getItem('guide_lead_sent') === '1';
-    // Les anciennes versions marquaient le guide comme débloqué AVANT l'envoi Brevo.
-    // Sans preuve d'inscription, on redemande l'email pour laisser la personne retenter.
-    if (leadSent || (localStorage.getItem('guide_unlocked') === '1' && knownEmail)) { unlockGuide(); return; }
-    if (knownEmail) {
-      var wrap = document.getElementById('cap-email-wrap');
-      var emailInput = document.getElementById('cap-email');
-      if (wrap && emailInput) { wrap.style.display = 'none'; emailInput.value = knownEmail; }
-    }
+    // Les anciennes versions déverrouillaient parfois sans retour de succès fiable.
+    if (localStorage.getItem('guide_form_submitted') === '1') unlockGuide();
   } catch(e) {}
+  connectGuideBrevoSuccess();
 });
 (function(){
   var bar = document.getElementById('read-progress-bar');
@@ -3124,78 +3174,22 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 </script>
 <script>
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Veuillez choisir un code pays';
+  window.LOCALE = 'fr';
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = 'Les informations fournies ne sont pas valides. Vérifie le format du champ et réessaie.';
+  window.REQUIRED_ERROR_MESSAGE = 'Tu dois renseigner ce champ.';
+  window.GENERIC_INVALID_MESSAGE = 'Les informations fournies ne sont pas valides. Vérifie le format du champ et réessaie.';
+  window.INVALID_NUMBER = window.INVALID_DATE = window.GENERIC_INVALID_MESSAGE;
+  window.REQUIRED_MULTISELECT_MESSAGE = 'Choisis au moins une option.';
+  window.translation = {common:{selectedList:'{quantity} liste sélectionnée',selectedLists:'{quantity} listes sélectionnées',selectedOption:'{quantity} sélectionné',selectedOptions:'{quantity} sélectionnés'}};
+  var AUTOHIDE = Boolean(0);
+</script>
+<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+<script>
 /* Tracker de scroll : "ou les gens s'arretent" -> Pixel Meta (si present) + dataLayer GTM. Aucun compte externe. */
 (function(){var PAGE=location.pathname.replace(/^\//,'').replace(/\.html$/,'')||'accueil';var M=[25,50,75,90,100],done={},t=false;function depth(){var d=document.documentElement,b=document.body,top=d.scrollTop||b.scrollTop,max=(d.scrollHeight||b.scrollHeight)-d.clientHeight;return max>0?Math.min(100,Math.round(top/max*100)):100;}function fire(m){if(done[m])return;done[m]=1;if(typeof fbq!=='undefined')fbq('trackCustom','ScrollDepth',{page:PAGE,percent:m});(window.dataLayer=window.dataLayer||[]).push({event:'scroll_depth',page:PAGE,percent:m});}function chk(){var p=depth();M.forEach(function(m){if(p>=m)fire(m);});t=false;}window.addEventListener('scroll',function(){if(t)return;t=true;setTimeout(chk,300);},{passive:true});window.addEventListener('load',chk);})();
 </script>
-<script>
-/* ═══ MINI-QUIZ DE CAPTURE — "Trouve ce qui bloque chez toi" ═══ */
-var CAP_Q=[
-  {q:'Ton objectif n°1 en ce moment ?',opts:[
-    {t:'🔥 Perdre du gras',v:'Perte de poids'},
-    {t:'💪 Me raffermir / me tonifier',v:'Tonifier'},
-    {t:'🍑 Développer mes fessiers',v:'Fessiers'},
-    {t:'🤱 Retrouver mon corps après bébé',v:'Postpartum'}]},
-  {q:'Ton plus gros frein ressenti ?',opts:[
-    {t:'Je stagne malgré mes efforts'},
-    {t:'Je manque de temps & d\'organisation'},
-    {t:'Je ne sais pas quoi manger'},
-    {t:'J\'ai du mal à rester régulière'}]},
-  {q:'Depuis combien de temps ça coince ?',opts:[
-    {t:'Quelques semaines'},
-    {t:'Quelques mois'},
-    {t:'Plus de 6 mois'}]}
-];
-var capI=0, capObj='', capAnswers=[];
-function capRender(){
-  var host=document.getElementById('cap-quiz'); if(!host) return;
-  var s=CAP_Q[capI];
-  var h='<div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--rose);margin-bottom:8px;">Question '+(capI+1)+' / '+CAP_Q.length+'</div>';
-  h+='<p style="font-size:15px;font-weight:600;color:var(--ink);margin-bottom:8px;line-height:1.4;">'+s.q+'</p>';
-  h+='<p style="font-size:11px;color:rgba(58,42,42,.7);margin:0 0 12px;">Choisis une seule réponse, puis continue.</p>';
-  h+='<fieldset style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;"><legend style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">'+s.q+'</legend>';
-  s.opts.forEach(function(o,i){
-    var checked=capAnswers[capI]===i;
-    h+='<label style="display:flex;align-items:center;gap:11px;font-family:\'Montserrat\',sans-serif;font-size:14px;font-weight:'+(checked?'700':'500')+';color:var(--ink);text-align:left;background:'+(checked?'rgba(201,132,138,.14)':'rgba(180,110,110,.06)')+';border:1.5px solid '+(checked?'var(--rose)':'rgba(180,110,110,.22)')+';border-radius:10px;padding:13px 16px;cursor:pointer;min-height:48px;box-sizing:border-box;-webkit-tap-highlight-color:transparent;">'+
-      '<input type="radio" name="cap-answer-'+capI+'" value="'+i+'" onchange="capSelect('+i+')"'+(checked?' checked':'')+' style="width:20px;height:20px;flex:none;margin:0;accent-color:var(--rose);">'+
-      '<span>'+o.t+'</span></label>';
-  });
-  h+='</fieldset><button type="button" id="cap-next" onclick="capNext()"'+(capAnswers[capI]===undefined?' disabled':'')+' style="width:100%;margin-top:12px;padding:12px 16px;border:0;border-radius:8px;background:linear-gradient(135deg,#c9848a,#b84f55);color:#fff;font-family:\'Montserrat\',sans-serif;font-size:13px;font-weight:700;cursor:'+(capAnswers[capI]===undefined?'not-allowed':'pointer')+';opacity:'+(capAnswers[capI]===undefined?'.5':'1')+';">'+(capI===CAP_Q.length-1?'Voir mon diagnostic →':'Continuer →')+'</button>';
-  if(capI>0) h+='<button type="button" onclick="capBack()" style="width:100%;margin-top:7px;padding:8px;font-size:12px;color:rgba(58,42,42,.7);background:none;border:none;cursor:pointer;text-decoration:underline;">← Question précédente</button>';
-  host.innerHTML=h;
-}
-function capBack(){ if(capI>0){capI--;capRender();} }
-function capSelect(i){
-  capAnswers[capI]=i;
-  var labels=document.querySelectorAll('#cap-quiz fieldset label');
-  labels.forEach(function(label,index){
-    var selected=index===i;
-    label.style.fontWeight=selected?'700':'500';
-    label.style.background=selected?'rgba(201,132,138,.14)':'rgba(180,110,110,.06)';
-    label.style.borderColor=selected?'var(--rose)':'rgba(180,110,110,.22)';
-  });
-  var next=document.getElementById('cap-next');
-  if(next){next.disabled=false;next.style.opacity='1';next.style.cursor='pointer';}
-}
-function capNext(){
-  if(capAnswers[capI]===undefined) return;
-  var s=CAP_Q[capI];
-  var answer=s.opts[capAnswers[capI]];
-  if(answer.v) capObj=answer.v;
-  capI++;
-  if(capI<CAP_Q.length){ capRender(); } else { capDone(); }
-}
-function capDone(){
-  var q=document.getElementById('cap-quiz'); if(q) q.style.display='none';
-  var f=document.getElementById('cap-form'); if(f) f.style.display='flex';
-  try{ var sel=document.getElementById('cap-objectif'); if(sel&&capObj) sel.value=capObj; }catch(e){}
-  try{ if(capObj) localStorage.setItem('guide_objectif',capObj); }catch(e){}
-  var fn=document.getElementById('cap-fname'); if(fn) fn.focus();
-}
-document.addEventListener('DOMContentLoaded',function(){
-  try{ if(localStorage.getItem('guide_unlocked')==='1') return; }catch(e){}
-  if(document.getElementById('cap-quiz')) capRender();
-});
-</script>
+
 <script defer src="/suivi-clics.js"></script>
 </body>
 </html>
