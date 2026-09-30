@@ -1505,6 +1505,53 @@ body { background: #fdf5f2 !important; }
   .fdtv-bonus h3 { font-size:24px; }
   .sci-fact p, .nuance p { font-size:14px; }
 }
+
+/* Navigation plus lisible et chapitres clairement ouvrables. */
+#gated-content .chapter-header {
+  cursor:pointer;
+  margin:18px 22px 0;
+  padding:26px 30px 48px;
+  border:1px solid rgba(184,79,85,.22);
+  border-left:4px solid #b84f55;
+  border-radius:14px;
+  background:linear-gradient(135deg,#fff 0%,#fff8f6 100%);
+  box-shadow:0 4px 18px rgba(58,42,42,.07);
+}
+#gated-content .chapter-header::after {
+  content:'＋ Ouvrir le chapitre';
+  left:auto;
+  right:28px;
+  bottom:14px;
+  width:auto;
+  height:auto;
+  background:none;
+  color:#a64349;
+  font:700 11px/1.2 'Montserrat',sans-serif;
+  letter-spacing:.2px;
+  opacity:1;
+}
+#gated-content .chapter-header[aria-expanded="true"]::after { content:'− Réduire le chapitre'; }
+#gated-content .chapter-header:focus-visible { outline:3px solid rgba(184,79,85,.35); outline-offset:3px; }
+
+#fab-toggle {
+  width:auto;
+  min-width:126px;
+  height:46px;
+  padding:0 16px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+  gap:8px;
+}
+@media (max-width:720px) {
+  #gated-content .chapter-header {
+    margin:14px 12px 0;
+    padding:20px 17px 48px !important;
+    border-radius:12px;
+  }
+  #gated-content .chapter-header::after { right:17px; bottom:13px; font-size:10px; }
+  #fab-toggle { min-width:116px; height:44px; padding:0 14px; font-size:12px; }
+}
 </style>
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 <meta name="facebook-domain-verification" content="q0lravv1bfmhpq3dob5d559cyidqq1" />
@@ -2873,7 +2920,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <nav id="fab-nav" aria-label="Navigation rapide">
-  <button type="button" id="fab-toggle" aria-controls="fab-menu" aria-expanded="false" aria-label="Ouvrir le menu de navigation" onclick="toggleFabMenu()">☰</button>
+  <button type="button" id="fab-toggle" aria-controls="fab-menu" aria-expanded="false" aria-label="Ouvrir le sommaire" onclick="toggleFabMenu()">☰ Sommaire</button>
   <div class="fab-menu" id="fab-menu">
     <a href="https://wa.me/33756834626" target="_blank" rel="noopener">💬 WhatsApp</a>
     <a href="https://www.ornellafitcoaching.com/offres.html" target="_blank" rel="noopener">💎 Voir les offres</a>
@@ -2925,8 +2972,8 @@ function setFabMenuOpen(isOpen) {
   if (!nav || !button) return;
   nav.classList.toggle('open', isOpen);
   button.setAttribute('aria-expanded', String(isOpen));
-  button.setAttribute('aria-label', isOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation');
-  button.textContent = isOpen ? '×' : '☰';
+  button.setAttribute('aria-label', isOpen ? 'Fermer le sommaire' : 'Ouvrir le sommaire');
+  button.textContent = isOpen ? '× Fermer' : '☰ Sommaire';
 }
 function toggleFabMenu() {
   var button = document.getElementById('fab-toggle');
@@ -3035,24 +3082,7 @@ function diagPopupGo() {
   var el = document.getElementById('quizObjectif');
   if (el) el.scrollIntoView({behavior:'smooth', block:'center'});
 }
-(function() {
-  try { if (localStorage.getItem('diag_popup_dismissed') === '1') return; } catch(e) {}
-  var shown = false;
-  function showDiagPopupNow() {
-    if (shown) return;
-    shown = true;
-    var p = document.getElementById('diagPopup');
-    if (p) p.classList.add('show');
-    window.removeEventListener('scroll', maybeShowDiagPopup);
-    clearTimeout(fallbackTimer);
-  }
-  function maybeShowDiagPopup() {
-    if (window.scrollY > 900) showDiagPopupNow();
-  }
-  window.addEventListener('scroll', maybeShowDiagPopup, {passive:true});
-  /* Filet de sécurité : le calcul de scroll peut être peu fiable sur certains navigateurs mobiles (Safari iOS) */
-  var fallbackTimer = setTimeout(showDiagPopupNow, 20000);
-})();
+/* Le diagnostic est déjà accessible dans le guide : il ne s'ouvre plus tout seul pendant la lecture. */
 function waFloatCollapse(e) {
   e.preventDefault(); e.stopPropagation();
   var b = document.getElementById('waFloatBubble');
