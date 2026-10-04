@@ -542,7 +542,7 @@ footer a{color:rgba(255,255,255,.3);}
     <a href="faq.html">FAQ</a> ·
     <a href="https://wa.me/33756834626" target="_blank">WhatsApp</a>
   </p>
-  <p style="margin-top:6px;">Programme conçu par Ornella Racano, coach sportive diplômée d'État. Ce programme ne remplace pas un avis médical.</p>
+  <p style="margin-top:6px;">Programme conçu par Ornella, coach sportive diplômée d'État. Ce programme ne remplace pas un avis médical.</p>
 </footer>
 
 <script>
@@ -575,7 +575,7 @@ async function submitLead(e){
   if(typeof fbq!=='undefined'){ fbq('init','1233548507794099',{em:email}); (fbq('track','InitiateCheckout',{value:17,currency:'EUR',content_ids:['postpartum-8sem'],content_type:'product'}),fbq('track','AddToCart',{value:17,currency:'EUR',content_ids:['postpartum-8sem'],content_type:'product'})); }
   // Délai avant redirection Stripe pour laisser le temps à la soumission Brevo (iframe cachée) de partir réellement
   setTimeout(function(){
-    (window.ofcPanierGo ? ofcPanierGo('https://buy.stripe.com/00wfZhcAhaS76sdfyt8Vi0d', email, (typeof prenom!=='undefined'?prenom:'')) : (window.location.href='https://buy.stripe.com/00wfZhcAhaS76sdfyt8Vi0d'));
+    window.suiviAchat&&window.suiviAchat('https://buy.stripe.com/00wfZhcAhaS76sdfyt8Vi0d');(window.ofcPanierGo ? ofcPanierGo('https://buy.stripe.com/00wfZhcAhaS76sdfyt8Vi0d', email, (typeof prenom!=='undefined'?prenom:'')) : (window.location.href='https://buy.stripe.com/00wfZhcAhaS76sdfyt8Vi0d'));
   }, 400);
 }
 </script>
@@ -588,5 +588,6 @@ async function submitLead(e){
   <input type="hidden" name="locale" value="fr">
 </form>
 <script src="panier.js" defer></script>
+<script defer src="/suivi-clics.js"></script>
 </body>
 </html>
