@@ -196,7 +196,7 @@
   </form>
 
   <script>
-    const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
+    const _a='via-proxy-securise',_b='',_c='';
     const BREVO_KEY=_a+_b+_c;
 
     // Pré-remplir depuis localStorage si dispo
@@ -226,7 +226,7 @@
       } catch(e) {}
 
       // Envoyer l'email transactionnel avec le lien d'accès
-      fetch('https://api.brevo.com/v3/smtp/email', {
+      fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=email', {
         method: 'POST',
         headers: { 'api-key': BREVO_KEY, 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -323,6 +323,7 @@ function copyReferralMsg(btn){
     }
   </script>
 
+<script src="panier.js" defer></script>
 <script defer src="/suivi-clics.js"></script>
 </body>
 </html>

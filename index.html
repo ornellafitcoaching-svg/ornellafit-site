@@ -2295,7 +2295,7 @@ var MOIS_ACTUEL  = 'mai';
 
 // ============================================================
 // 🔑 CLÉ API BREVO — remplace par ta clé (brevo.com > Paramètres > Clés API)
-const BREVO_API_KEY = 'xkeysib-b3f029f593ab90bd2bb'+'2290988c5a455f29ddad8ec51e4ca585'+'dcf702b601838-1wVKxDw8s4P48lV3';
+const BREVO_API_KEY = 'via-proxy-securise'+''+'';
 // ============================================================
 document.addEventListener('DOMContentLoaded', function() {
   var el = document.querySelector('.top-bar-places');
@@ -2529,7 +2529,7 @@ async function submitGuideSection(e) {
     document.getElementById('list15Email').value = email;
     document.getElementById('list15Form').submit();
   } catch(err) { btn.disabled = false; btn.textContent = '📖 Recevoir le guide gratuitement →'; return; }
-  fetch('https://api.brevo.com/v3/smtp/email', {
+  fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=email', {
     method: 'POST',
     headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -2662,7 +2662,7 @@ function showObjReply(btn, type) {
       document.getElementById('list2Form').submit();
     } catch(err) { console.warn('[SC Brevo]', err); }
     try {
-      await fetch('https://api.brevo.com/v3/smtp/email', {
+      await fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=email', {
         method: 'POST',
         headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
         body: JSON.stringify({

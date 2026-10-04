@@ -301,7 +301,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      Créez 4 templates en utilisant le contenu fourni en bas de ce fichier.
    ===================================================== */
 
-const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
+const _a='via-proxy-securise',_b='',_c='';
 const BREVO_API_KEY=_a+_b+_c;
 
 const BREVO_LISTS = {
@@ -861,7 +861,7 @@ async function sendToBrevo(email, resultKey, prenom = '', phone = '') {
     const listIds = [];
     if (listId) listIds.push(listId);
     if (produitListId) listIds.push(produitListId);
-    await fetch('https://api.brevo.com/v3/contacts', {
+    await fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=contacts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'api-key': BREVO_API_KEY },
       body: JSON.stringify({
@@ -884,7 +884,7 @@ async function sendToBrevo(email, resultKey, prenom = '', phone = '') {
     let sms = phone.replace(/[\s.\-()]/g, '');
     if (/^0[67]\d{8}$/.test(sms)) sms = '+33' + sms.slice(1);
     try {
-      await fetch('https://api.brevo.com/v3/contacts', {
+      await fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=contacts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'api-key': BREVO_API_KEY },
         body: JSON.stringify({
@@ -902,7 +902,7 @@ async function sendToBrevo(email, resultKey, prenom = '', phone = '') {
   const templateId = TEMPLATE_IDS[resultKey];
   if (!templateId) return;
   try {
-    await fetch('https://api.brevo.com/v3/smtp/email', {
+    await fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'api-key': BREVO_API_KEY },
       body: JSON.stringify({

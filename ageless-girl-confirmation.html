@@ -253,7 +253,7 @@ footer a:hover{color:var(--text)}
 </footer>
 
 <script>
-const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
+const _a='via-proxy-securise',_b='',_c='';
 const BREVO_KEY=_a+_b+_c;
 
 document.getElementById('email-form').addEventListener('submit', async function(e){
@@ -268,7 +268,7 @@ document.getElementById('email-form').addEventListener('submit', async function(
     // Ajout Brevo liste 27 — formulaire natif, plus de clé exposée pour cette étape
     document.getElementById('ag27Email').value = email;
     document.getElementById('ag27Form').submit();
-    await fetch('https://api.brevo.com/v3/smtp/email', {
+    await fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=email', {
       method:'POST',
       headers:{'Content-Type':'application/json','api-key':BREVO_KEY},
       body:JSON.stringify({
@@ -307,6 +307,7 @@ function copyReferralMsg(btn){
   });
 }
 </script>
+<script src="panier.js" defer></script>
 <script defer src="/suivi-clics.js"></script>
 </body>
 </html>

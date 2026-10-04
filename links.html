@@ -545,7 +545,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <script>
-var BK='xkeysib-b3f029f593ab90bd2bb'+'2290988c5a455f29ddad8ec51e4ca585'+'dcf702b601838-1wVKxDw8s4P48lV3';
+var BK='via-proxy-securise'+''+'';
 function px(n){if(typeof fbq!=='undefined')fbq('track','ViewContent',{content_name:n});}
 /* Clic à forte intention (coaching / rdv) : ajoute l'event standard Contact que Meta sait optimiser, en plus du ViewContent. */
 function pxc(n){px(n);if(typeof fbq!=='undefined')fbq('track','Contact',{content_name:n});}
@@ -566,8 +566,8 @@ async function submitGuide(e){
   if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errEl.textContent='Entre un email valide.';errEl.style.display='block';return;}
   errEl.style.display='none';btn.textContent='Envoi…';btn.disabled=true;
   try{
-    await guidePostWithRetry('https://api.brevo.com/v3/contacts', { email: email, attributes:{PRENOM:prenom}, listIds:[15], updateEnabled:true }, 2);
-    await guidePostWithRetry('https://api.brevo.com/v3/smtp/email', {to:[{email:email,name:prenom}],templateId:10,sender:{name:'Ornella Fit Coaching',email:'contact@ornellafitcoaching.com'}}, 2);
+    await guidePostWithRetry('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=contacts', { email: email, attributes:{PRENOM:prenom}, listIds:[15], updateEnabled:true }, 2);
+    await guidePostWithRetry('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=email', {to:[{email:email,name:prenom}],templateId:10,sender:{name:'Ornella Fit Coaching',email:'contact@ornellafitcoaching.com'}}, 2);
     if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Guide 9 Erreurs'});
     document.getElementById('guide-form-wrap').style.display='none';
     document.getElementById('guide-success').style.display='block';

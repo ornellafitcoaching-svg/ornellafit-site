@@ -487,7 +487,7 @@ document.addEventListener('click', function(e){
 
 <script>
 // Capture lead Bundle — liste #40 "Bundle Leads" — API directe (fiable, avec retry)
-const BD_KEY = 'xkeysib-b3f029f593ab90bd2bb'+'2290988c5a455f29ddad8ec51e4ca585'+'dcf702b601838-1wVKxDw8s4P48lV3';
+const BD_KEY = 'via-proxy-securise'+''+'';
 function bdPostWithRetry(url, payload, retries) {
   return fetch(url, { method:'POST', headers:{'api-key':BD_KEY,'Content-Type':'application/json'}, body:JSON.stringify(payload) })
     .then(function(r){ if(!r.ok && retries>0){ return new Promise(function(res){setTimeout(res,800);}).then(function(){return bdPostWithRetry(url,payload,retries-1);}); } return r; })
@@ -507,10 +507,10 @@ function handleBundlePurchase(){
     localStorage.setItem('bd_buyer_email', email);
     localStorage.setItem('bd_buyer_fname', fname);
   } catch(e) {}
-  bdPostWithRetry('https://api.brevo.com/v3/contacts', { email: email, attributes:{PRENOM:fname}, listIds:[40], updateEnabled:true }, 2);
+  bdPostWithRetry('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=contacts', { email: email, attributes:{PRENOM:fname}, listIds:[40], updateEnabled:true }, 2);
   if (typeof fbq !== 'undefined') { fbq('init','1233548507794099',{em:email}); (fbq('track','InitiateCheckout',{value:25,currency:'EUR',content_ids:['bundle-booty-ventre'],content_type:'product'}),fbq('track','AddToCart',{value:25,currency:'EUR',content_ids:['bundle-booty-ventre'],content_type:'product'})); }
   setTimeout(function(){
-    window.suiviAchat&&window.suiviAchat('https://buy.stripe.com/7sY14n57P2lB5o98618Vi0a');window.location.href = 'https://buy.stripe.com/7sY14n57P2lB5o98618Vi0a';
+    window.suiviAchat&&window.suiviAchat('https://buy.stripe.com/7sY14n57P2lB5o98618Vi0a');(window.ofcPanierGo ? ofcPanierGo('https://buy.stripe.com/7sY14n57P2lB5o98618Vi0a', email, fname) : (window.location.href = 'https://buy.stripe.com/7sY14n57P2lB5o98618Vi0a'));
   }, 400);
 }
 </script>
@@ -518,6 +518,7 @@ function handleBundlePurchase(){
 /* Tracker de scroll : "ou les gens s'arretent" -> Pixel Meta (si present) + dataLayer GTM. Aucun compte externe. */
 (function(){var PAGE=location.pathname.replace(/^\//,'').replace(/\.html$/,'')||'accueil';var M=[25,50,75,90,100],done={},t=false;function depth(){var d=document.documentElement,b=document.body,top=d.scrollTop||b.scrollTop,max=(d.scrollHeight||b.scrollHeight)-d.clientHeight;return max>0?Math.min(100,Math.round(top/max*100)):100;}function fire(m){if(done[m])return;done[m]=1;if(typeof fbq!=='undefined')fbq('trackCustom','ScrollDepth',{page:PAGE,percent:m});(window.dataLayer=window.dataLayer||[]).push({event:'scroll_depth',page:PAGE,percent:m});}function chk(){var p=depth();M.forEach(function(m){if(p>=m)fire(m);});t=false;}window.addEventListener('scroll',function(){if(t)return;t=true;setTimeout(chk,300);},{passive:true});window.addEventListener('load',chk);})();
 </script>
+<script src="panier.js" defer></script>
 <script defer src="/suivi-clics.js"></script>
 </body>
 </html>

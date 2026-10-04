@@ -163,7 +163,7 @@ body{font-family:'Jost',sans-serif;background:#F2F8F3;color:#1A2018;min-height:1
 </div>
 
 <script>
-const _a='xkeysib-b3f029f593ab90bd2bb',_b='2290988c5a455f29ddad8ec51e4ca585',_c='dcf702b601838-1wVKxDw8s4P48lV3';
+const _a='via-proxy-securise',_b='',_c='';
 const BK=_a+_b+_c;
 
 async function submitAcheteur(e){
@@ -173,12 +173,12 @@ async function submitAcheteur(e){
   const btn=document.getElementById('achBtn');
   btn.disabled=true;btn.textContent='Envoi...';
   try{
-    await fetch('https://api.brevo.com/v3/contacts',{
+    await fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=contacts',{
       method:'POST',
       headers:{'Content-Type':'application/json','api-key':BK},
       body:JSON.stringify({ email:email, attributes:{PRENOM:prenom}, listIds:[40], updateEnabled:true })
     });
-    await fetch('https://api.brevo.com/v3/smtp/email',{
+    await fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=email',{
       method:'POST',
       headers:{'Content-Type':'application/json','api-key':BK},
       body:JSON.stringify({
@@ -220,6 +220,7 @@ async function submitAcheteur(e){
   btn.textContent='Envoyé ✓';
 }
 </script>
+<script src="panier.js" defer></script>
 <script defer src="/suivi-clics.js"></script>
 </body>
 </html>
