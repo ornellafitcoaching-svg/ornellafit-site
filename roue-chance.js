@@ -11,7 +11,8 @@
   var BREVO_KEY=_a+_b+_c;
   var LIST_ID = 43;
   var TEMPLATE_ID = 160;
-  var EXPIRY_LABEL = '19 août 2026';
+  // Date affichée = aujourd'hui + 7 jours (urgence douce ; les codes ROUE* n'expirent pas côté Stripe)
+  var EXPIRY_LABEL = (function(){ var d = new Date(Date.now() + 7*24*3600*1000); try { return d.toLocaleDateString('fr-FR', { day:'numeric', month:'long' }); } catch(e) { return d.getDate() + '/' + (d.getMonth()+1); } })();
 
   // Ordre visuel sur la roue = ordre dans ce tableau (5 secteurs de 72°)
   var PRIZES = [
@@ -84,8 +85,8 @@
       '<button type="button" class="ofc-roue-close" aria-label="Fermer">✕</button>' +
       '<div class="ofc-roue-form-view">' +
         '<p class="ofc-roue-eyebrow">Le Club Ornella Fit</p>' +
-        '<h2 class="ofc-roue-title">🎡 Tente ta chance</h2>' +
-        '<p class="ofc-roue-sub">Entre ton email et fais tourner la roue pour tenter de gagner une réduction sur tes programmes.</p>' +
+        '<h2 class="ofc-roue-title">🎁 Jusqu\'à -20 % sur ton programme</h2>' +
+        '<p class="ofc-roue-sub"><strong>9 chances sur 10 de gagner.</strong> Entre ton email, fais tourner la roue et ton code s\'affiche tout de suite.</p>' +
         '<div class="ofc-roue-wrap">' +
           '<div class="ofc-roue-pointer">▼</div>' +
           '<div class="ofc-roue-wheel" id="ofcRoueWheel" style="background:' + wheelBg + '">' + labelHtml + '</div>' +
@@ -94,7 +95,7 @@
         '<form class="ofc-roue-form" id="ofcRoueForm">' +
           '<input type="email" class="ofc-roue-input" id="ofcRoueEmail" placeholder="Ton email" required>' +
           '<p class="ofc-roue-err" id="ofcRoueErr"></p>' +
-          '<button type="submit" class="ofc-roue-btn" id="ofcRoueBtn">Je fais tourner la roue</button>' +
+          '<button type="submit" class="ofc-roue-btn" id="ofcRoueBtn">Je découvre ma réduction 🎡</button>' +
         '</form>' +
       '</div>' +
       '<div class="ofc-roue-result" id="ofcRoueResult">' +
@@ -204,7 +205,7 @@
       sub.innerHTML = 'Ton code : <span class="ofc-roue-code">' + prize.code + '</span><br>Valable jusqu\'au ' + EXPIRY_LABEL + ' sur tous mes programmes digitaux.';
     } else {
       title.textContent = 'Pas de chance cette fois-ci 🎡';
-      sub.textContent = 'Ça arrive ! Reviens tenter ta chance lors d\'une prochaine visite.';
+      sub.innerHTML = 'Ça arrive ! Mais tu ne repars pas les mains vides : <a href="/guide-offert.html" style="color:#C45C78;font-weight:bold">ton guide offert t\'attend ici →</a>';
     }
     formView.style.display = 'none';
     resultView.classList.add('ofc-show');
