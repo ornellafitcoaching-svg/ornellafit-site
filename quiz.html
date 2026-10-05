@@ -942,6 +942,9 @@ function buildResultStep(key, email) {
         style="width:100%;box-sizing:border-box;padding:14px 18px;font-size:15px;border:2px solid #e0e0e0;border-radius:50px;outline:none;margin-bottom:8px;" />
       <input id="quiz-email" type="email" placeholder="ton@email.fr"
         style="width:100%;box-sizing:border-box;padding:14px 18px;font-size:15px;border:2px solid #e0e0e0;border-radius:50px;outline:none;margin-bottom:8px;" />
+      <input id="quiz-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ton WhatsApp (optionnel) 📲"
+        style="width:100%;box-sizing:border-box;padding:14px 18px;font-size:15px;border:2px solid #e0e0e0;border-radius:50px;outline:none;margin-bottom:4px;" />
+      <p style="font-size:12px;color:#888;margin:0 0 10px 0;">Laisse ton numéro si tu veux que je te conseille en perso sur WhatsApp 💬</p>
       <p id="quiz-email-error" style="color:#C96358;font-size:13px;margin:0 0 10px 0;display:none;">Entre un email valide.</p>
       <button id="quiz-email-submit"
         style="width:100%;padding:15px;background:#C96358;color:#fff;font-size:16px;font-weight:700;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 16px rgba(232,0,13,.3);">
@@ -960,7 +963,7 @@ function buildResultStep(key, email) {
     error.style.display = 'none';
 
     // Redondant avec le fetch direct retiré : sendToBrevo() gère déjà l'ajout à la liste (formulaire natif) + l'email template
-    sendToBrevo(emailVal, key, document.getElementById('quiz-prenom').value.trim()).catch(() => {});
+    sendToBrevo(emailVal, key, document.getElementById('quiz-prenom').value.trim(), (document.getElementById('quiz-phone').value || '').trim()).catch(() => {});
 
     renderResult(key, emailVal);
   });
