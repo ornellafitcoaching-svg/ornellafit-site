@@ -190,6 +190,32 @@ table.prog td strong{color:var(--gold)}
 .wa-cta{display:flex;align-items:center;justify-content:center;gap:9px;font-size:0.92rem;font-weight:600;color:#fff;text-decoration:none;background:#25D366;border-radius:12px;padding:14px 20px;margin-top:8px;transition:transform .15s}
 .wa-cta:active{transform:scale(0.98)}
 
+/* REST LINE (chrono par exo) */
+.ex-rest{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font-size:0.82rem;color:var(--nude);margin-top:10px}
+.t-btn{font-family:'DM Sans',sans-serif;font-size:0.76rem;font-weight:600;color:var(--nude);background:rgba(155,109,214,0.12);border:1px solid rgba(155,109,214,0.45);border-radius:20px;padding:5px 12px;cursor:pointer;transition:all .2s}
+.t-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* FLOATING TIMER */
+#timer-widget{position:fixed;bottom:max(20px,env(safe-area-inset-bottom));right:16px;z-index:200;background:#211830;border:1px solid var(--border);border-radius:16px;padding:16px 18px;width:180px;box-shadow:0 8px 32px rgba(0,0,0,0.5);display:none}
+#timer-widget.visible{display:block}
+.timer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.timer-title{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)}
+#timer-close{background:none;border:none;color:var(--brown);cursor:pointer;font-size:1rem;padding:0}
+#timer-display{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;text-align:center;color:#fff;line-height:1;margin-bottom:12px}
+.timer-presets{display:flex;gap:5px;margin-bottom:10px}
+.preset-btn{flex:1;font-size:0.72rem;padding:6px 2px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--brown);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;text-align:center}
+.preset-btn:hover,.preset-btn.active-preset{background:var(--accent);border-color:var(--accent);color:#fff}
+.timer-controls{display:flex;gap:6px}
+.timer-hint{margin-top:9px;font-size:0.68rem;line-height:1.4;color:var(--brown);text-align:center}
+.ctrl-btn{flex:1;padding:8px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;cursor:pointer;transition:all .2s}
+#btn-start{background:var(--accent);color:#fff}
+#btn-start:hover{opacity:.85}
+#btn-reset{background:rgba(255,255,255,0.07);color:var(--brown)}
+#btn-reset:hover{background:rgba(255,255,255,0.12)}
+#timer-open-btn{position:fixed;bottom:max(20px,env(safe-area-inset-bottom));right:16px;z-index:199;background:var(--accent);border:none;border-radius:50%;width:52px;height:52px;font-size:1.4rem;cursor:pointer;box-shadow:0 4px 20px rgba(155,109,214,0.45);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+#timer-open-btn:hover{transform:scale(1.08)}
+#timer-open-btn.hidden{display:none}
+
 /* FOOTER */
 footer{text-align:center;padding:36px 20px 48px;padding-bottom:max(48px,env(safe-area-inset-bottom));border-top:1px solid var(--border);color:var(--brown);font-size:0.82rem;line-height:1.7}
 footer .sign{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--nude);margin-bottom:6px}
@@ -219,6 +245,7 @@ footer .sign{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(-
     <span class="pill">Débutante en salle</span>
     <span class="pill">Perte de poids &amp; tonification</span>
     <span class="pill">2 séances salle + 1 avec moi</span>
+    <span class="pill">⏱ Chrono repos intégré</span>
   </div>
 </header>
 
@@ -330,27 +357,28 @@ footer .sign{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(-
     <div class="ex-top">
       <div class="ex-num">1</div>
       <div class="ex-body">
-        <div class="ex-header"><div class="ex-name">Squat (barre à vide)</div></div>
+        <div class="ex-header"><div class="ex-name">Squat à la barre guidée</div></div>
         <div class="badges">
           <span class="badge badge-seen">✓ Vu en salle</span>
-          <span class="badge badge-mat">Barre / rack</span>
+          <span class="badge badge-mat">Barre guidée (Smith)</span>
           <span class="badge badge-rir">Cuisses + fessiers</span>
         </div>
-        <div class="ex-sets">3 séries × 8 à 10 reps · <span class="charge">Charge : barre à vide</span></div>
-        <div class="ex-why"><strong>Pourquoi&nbsp;:</strong> c'est LE mouvement roi pour tonifier cuisses et fessiers et renforcer tout le bas du corps. Il muscle aussi le dos et le gainage — précieux pour votre posture et vos lombaires.</div>
-        <div class="ex-block"><span class="lbl">Réglage pas à pas</span>Placez les <strong>sécurités du rack</strong> à hauteur de vos hanches basses (pour que la barre soit rattrapée si besoin). Réglez les <strong>crochets</strong> qui tiennent la barre à hauteur du haut de votre poitrine : vous devez passer dessous sans vous mettre sur la pointe des pieds ni trop plier. Barre bien au milieu.</div>
-        <div class="ex-block"><span class="lbl">Exécution</span>Placez la barre sur le <strong>haut du dos (les trapèzes)</strong>, jamais sur la nuque. Décrochez, faites 1-2 pas en arrière, pieds largeur d'épaules, pointes légèrement vers l'extérieur. <strong>Inspirez</strong>, descendez en poussant les fesses vers l'arrière comme pour s'asseoir, dos droit. <strong>Soufflez en remontant</strong> en poussant dans les talons.</div>
-        <div class="ex-block"><span class="lbl">Erreurs fréquentes</span>Genoux qui rentrent vers l'intérieur · talons qui décollent · dos qui s'arrondit · descendre trop bas en forçant. Mieux vaut une amplitude un peu réduite et propre qu'une descente profonde mal maîtrisée.</div>
-        <div class="ex-safe"><strong>Sécurité (important pour vous) :</strong> ne bloquez JAMAIS la respiration (cœur + périnée) — soufflez en remontant. Barre sur les trapèzes, pas la nuque. Sécurités du rack en place à chaque série. Genou droit (ménisque) : on reste dans le confortable, aligné sur le pied. On garde la barre à vide tant que le mouvement n'est pas parfaitement fluide.</div>
+        <div class="ex-sets">3 séries × 8 à 10 reps · <span class="charge">Charge : poids de la barre guidée</span></div>
+        <div class="ex-why"><strong>Pourquoi&nbsp;:</strong> c'est LE mouvement roi pour tonifier cuisses et fessiers et renforcer tout le bas du corps. On le fait <strong>à la barre guidée (machine Smith)</strong> : la barre coulisse sur des rails, elle ne peut pas basculer. C'est beaucoup plus <strong>stable et sûr</strong> pour débuter — vous vous concentrez sur le mouvement, pas sur l'équilibre.</div>
+        <div class="ex-block"><span class="lbl">Réglage pas à pas</span>1) Réglez la <strong>hauteur de départ de la barre</strong> au niveau du haut de votre poitrine (vous devez passer dessous sans vous dresser sur la pointe des pieds). 2) Réglez les <strong>butées de sécurité</strong> (les crans réglables en bas des rails) juste sous votre position basse, à hauteur des hanches basses : si vous n'y arrivez plus, la barre se repose dessus toute seule. 3) Mettez la barre seule au départ (poids de la barre).</div>
+        <div class="ex-block"><span class="lbl">Exécution</span>Placez la barre sur le <strong>haut du dos (les trapèzes)</strong>, jamais sur la nuque. <strong>Déverrouillez</strong> en tournant légèrement la barre vers l'avant. Placez les pieds <strong>un peu en avant</strong> de la barre (pas pile dessous) : ça garde le dos droit et protège les genoux. <strong>Inspirez</strong>, descendez en poussant les fesses vers l'arrière, dos droit. <strong>Soufflez en remontant</strong> en poussant dans les talons. En fin de série, <strong>re-verrouillez</strong> la barre en la tournant au niveau des crochets.</div>
+        <div class="ex-block"><span class="lbl">Erreurs fréquentes</span>Pieds trop reculés (genoux qui avancent trop) · talons qui décollent · dos qui s'arrondit · oublier de re-verrouiller la barre à la fin. Mieux vaut une amplitude un peu réduite et propre qu'une descente profonde mal maîtrisée.</div>
+        <div class="ex-safe"><strong>Sécurité (important pour vous) :</strong> ne bloquez JAMAIS la respiration (cœur + périnée) — soufflez en remontant. Barre sur les trapèzes, pas la nuque. <strong>Butées de sécurité réglées</strong> à chaque série, et on <strong>re-verrouille</strong> la barre à la fin. Genou droit (ménisque) : on reste dans le confortable, aligné sur le pied. On garde le <strong>poids de la barre seule</strong> tant que le mouvement n'est pas parfaitement fluide.</div>
         <div class="ex-rir"><strong>Le bon repère :</strong> les 2 dernières reps doivent être un peu difficiles mais toujours propres. Si c'est encore très facile à 10 reps, on le notera pour le bilan.</div>
         <div class="track">
-          <div class="tf"><label>Charge réelle</label><input type="text" data-k="a1-charge" placeholder="ex : barre 20 kg"></div>
+          <div class="tf"><label>Charge réelle</label><input type="text" data-k="a1-charge" placeholder="ex : barre guidée"></div>
           <div class="tf"><label>Reps réalisées</label><input type="text" data-k="a1-reps" placeholder="ex : 3×10"></div>
           <div class="tf"><label>Ressenti (1-10)</label><input type="text" data-k="a1-rpe" placeholder="ex : 6"></div>
           <div class="tf"><label>Remarque</label><input type="text" data-k="a1-note" placeholder="ex : genou ok"></div>
         </div>
+        <div class="ex-rest">⏱ Repos conseillé : <strong style="color:var(--gold)">1 min 30</strong> <button class="t-btn" onclick="timerLaunch(90)">▶ Lancer 90s</button></div>
         <div class="ex-actions">
-          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=squat+barre+technique+femme+d%C3%A9butante+musculation"><span>▶</span> Démonstration</a>
+          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=squat+barre+guid%C3%A9e+machine+smith+technique+d%C3%A9butante"><span>▶</span> Démonstration</a>
           <button class="done-btn" onclick="toggleDone('a1')"><span class="chk">✓ Fait</span></button>
         </div>
       </div>
@@ -381,6 +409,7 @@ footer .sign{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(-
           <div class="tf"><label>Ressenti (1-10)</label><input type="text" data-k="a2-rpe" placeholder="ex : 6"></div>
           <div class="tf"><label>Remarque</label><input type="text" data-k="a2-note" placeholder="boudin M"></div>
         </div>
+        <div class="ex-rest">⏱ Repos conseillé : <strong style="color:var(--gold)">1 min</strong> <button class="t-btn" onclick="timerLaunch(60)">▶ Lancer 60s</button></div>
         <div class="ex-actions">
           <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=leg+curl+assis+ischios+machine+technique+musculation"><span>▶</span> Démonstration</a>
           <button class="done-btn" onclick="toggleDone('a2')"><span class="chk">✓ Fait</span></button>
@@ -413,6 +442,7 @@ footer .sign{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(-
           <div class="tf"><label>Ressenti (1-10)</label><input type="text" data-k="a3-rpe" placeholder="ex : 6"></div>
           <div class="tf"><label>Remarque</label><input type="text" data-k="a3-note" placeholder=""></div>
         </div>
+        <div class="ex-rest">⏱ Repos conseillé : <strong style="color:var(--gold)">1 min</strong> <button class="t-btn" onclick="timerLaunch(60)">▶ Lancer 60s</button></div>
         <div class="ex-actions">
           <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=machine+abducteurs+hip+abduction+fessiers+technique"><span>▶</span> Démonstration</a>
           <button class="done-btn" onclick="toggleDone('a3')"><span class="chk">✓ Fait</span></button>
@@ -445,6 +475,7 @@ footer .sign{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(-
           <div class="tf"><label>Ressenti (1-10)</label><input type="text" data-k="a4-rpe" placeholder="ex : 6"></div>
           <div class="tf"><label>Remarque</label><input type="text" data-k="a4-note" placeholder="boudin D"></div>
         </div>
+        <div class="ex-rest">⏱ Repos conseillé : <strong style="color:var(--gold)">1 min</strong> <button class="t-btn" onclick="timerLaunch(60)">▶ Lancer 60s</button></div>
         <div class="ex-actions">
           <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=lat+pulldown+hammer+strength+tirage+vertical+dos+technique"><span>▶</span> Démonstration</a>
           <button class="done-btn" onclick="toggleDone('a4')"><span class="chk">✓ Fait</span></button>
@@ -475,23 +506,24 @@ footer .sign{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(-
     <div class="ex-top">
       <div class="ex-num">1</div>
       <div class="ex-body">
-        <div class="ex-header"><div class="ex-name">Squat (barre à vide)</div></div>
+        <div class="ex-header"><div class="ex-name">Squat à la barre guidée</div></div>
         <div class="badges">
           <span class="badge badge-seen">✓ Vu en salle</span>
-          <span class="badge badge-mat">Barre / rack</span>
+          <span class="badge badge-mat">Barre guidée (Smith)</span>
           <span class="badge badge-rir">Cuisses + fessiers</span>
         </div>
-        <div class="ex-sets">3 séries × 8 à 10 reps · <span class="charge">Charge : barre à vide</span></div>
-        <div class="ex-recall"><strong>Rappel express</strong> (détail complet en Séance A) : sécurités du rack à hauteur des hanches · barre sur les trapèzes, pas la nuque · descendre fesses en arrière, dos droit · <strong>souffler en remontant, jamais bloquer la respiration</strong> · genou droit dans le confortable.</div>
-        <div class="ex-safe"><strong>Sécurité (important pour vous) :</strong> respiration jamais bloquée (cœur + périnée). On reste à la barre à vide ce mois-ci.</div>
+        <div class="ex-sets">3 séries × 8 à 10 reps · <span class="charge">Charge : poids de la barre guidée</span></div>
+        <div class="ex-recall"><strong>Rappel express</strong> (détail complet en Séance A) : barre guidée (Smith) · butées de sécurité réglées sous la position basse · barre sur les trapèzes, pas la nuque · déverrouiller/re-verrouiller en tournant la barre · pieds un peu en avant · descendre fesses en arrière, dos droit · <strong>souffler en remontant, jamais bloquer la respiration</strong> · genou droit dans le confortable.</div>
+        <div class="ex-safe"><strong>Sécurité (important pour vous) :</strong> respiration jamais bloquée (cœur + périnée). On reste au poids de la barre seule ce mois-ci.</div>
         <div class="track">
-          <div class="tf"><label>Charge réelle</label><input type="text" data-k="b1-charge" placeholder="ex : barre 20 kg"></div>
+          <div class="tf"><label>Charge réelle</label><input type="text" data-k="b1-charge" placeholder="ex : barre guidée"></div>
           <div class="tf"><label>Reps réalisées</label><input type="text" data-k="b1-reps" placeholder="ex : 3×10"></div>
           <div class="tf"><label>Ressenti (1-10)</label><input type="text" data-k="b1-rpe" placeholder="ex : 6"></div>
           <div class="tf"><label>Remarque</label><input type="text" data-k="b1-note" placeholder=""></div>
         </div>
+        <div class="ex-rest">⏱ Repos conseillé : <strong style="color:var(--gold)">1 min 30</strong> <button class="t-btn" onclick="timerLaunch(90)">▶ Lancer 90s</button></div>
         <div class="ex-actions">
-          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=squat+barre+technique+femme+d%C3%A9butante+musculation"><span>▶</span> Démonstration</a>
+          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=squat+barre+guid%C3%A9e+machine+smith+technique+d%C3%A9butante"><span>▶</span> Démonstration</a>
           <button class="done-btn" onclick="toggleDone('b1')"><span class="chk">✓ Fait</span></button>
         </div>
       </div>
@@ -522,6 +554,7 @@ footer .sign{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(-
           <div class="tf"><label>Ressenti (1-10)</label><input type="text" data-k="b2-rpe" placeholder="ex : 6"></div>
           <div class="tf"><label>Remarque</label><input type="text" data-k="b2-note" placeholder="réglage 6"></div>
         </div>
+        <div class="ex-rest">⏱ Repos conseillé : <strong style="color:var(--gold)">1 min</strong> <button class="t-btn" onclick="timerLaunch(60)">▶ Lancer 60s</button></div>
         <div class="ex-actions">
           <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=machine+adducteurs+hip+adduction+int%C3%A9rieur+cuisse+technique"><span>▶</span> Démonstration</a>
           <button class="done-btn" onclick="toggleDone('b2')"><span class="chk">✓ Fait</span></button>
@@ -549,6 +582,7 @@ footer .sign{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(-
           <div class="tf"><label>Ressenti (1-10)</label><input type="text" data-k="b3-rpe" placeholder="ex : 6"></div>
           <div class="tf"><label>Remarque</label><input type="text" data-k="b3-note" placeholder=""></div>
         </div>
+        <div class="ex-rest">⏱ Repos conseillé : <strong style="color:var(--gold)">1 min</strong> <button class="t-btn" onclick="timerLaunch(60)">▶ Lancer 60s</button></div>
         <div class="ex-actions">
           <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=machine+abducteurs+hip+abduction+fessiers+technique"><span>▶</span> Démonstration</a>
           <button class="done-btn" onclick="toggleDone('b3')"><span class="chk">✓ Fait</span></button>
@@ -581,6 +615,7 @@ footer .sign{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(-
           <div class="tf"><label>Ressenti (1-10)</label><input type="text" data-k="b4-rpe" placeholder="ex : 6"></div>
           <div class="tf"><label>Remarque</label><input type="text" data-k="b4-note" placeholder=""></div>
         </div>
+        <div class="ex-rest">⏱ Repos conseillé : <strong style="color:var(--gold)">1 min</strong> <button class="t-btn" onclick="timerLaunch(60)">▶ Lancer 60s</button></div>
         <div class="ex-actions">
           <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=tirage+horizontal+assis+poulie+dos+technique+musculation"><span>▶</span> Démonstration</a>
           <button class="done-btn" onclick="toggleDone('b4')"><span class="chk">✓ Fait</span></button>
@@ -664,7 +699,7 @@ footer .sign{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(-
   <p class="section-sub">La règle simple pour progresser sans se brusquer — c'est votre carnet de bord qui décide, pas l'humeur du jour.</p>
   <div class="note-box">
     <p><strong>La règle :</strong> quand vous réussissez <strong>toutes vos séries au nombre de reps prévu, avec les 2 dernières encore propres</strong>, sur <strong>2 séances d'affilée</strong> → vous pouvez monter la charge <strong>au cran suivant</strong> à la séance d'après.</p>
-    <p><strong>De combien ?</strong> Sur les machines (goupille) : <strong>1 seul cran</strong> à la fois (souvent +2,5 à +5 kg). Sur le squat : on garde la <strong>barre à vide ce mois-ci</strong>, on ajoutera du poids ensemble quand la technique sera parfaite.</p>
+    <p><strong>De combien ?</strong> Sur les machines (goupille) : <strong>1 seul cran</strong> à la fois (souvent +2,5 à +5 kg). Sur le squat à la barre guidée : on garde le <strong>poids de la barre seule ce mois-ci</strong>, on ajoutera des petits disques ensemble quand la technique sera parfaite.</p>
     <p><strong>Si la technique se dégrade</strong> (dos qui s'arrondit, à-coups, vous retenez votre respiration) : on <strong>n'augmente pas</strong>, on reste au poids actuel, voire on redescend. La qualité passe toujours avant le chiffre.</p>
     <p>Notez vos charges dans les cases de chaque exercice : au bilan, on verra ensemble tout ce qui a progressé 💪</p>
   </div>
@@ -720,7 +755,7 @@ footer .sign{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(-
   <p class="section-sub">Pour l'instant, chaque exercice renvoie vers une démonstration fiable sur YouTube (bonne machine). Idéalement, je remplace ces liens par <strong>mes propres vidéos</strong>, filmées sur les machines exactes de votre salle. À filmer :</p>
   <div class="film-box">
     <ul>
-      <li>Squat barre à vide (mise en place rack + mouvement)</li>
+      <li>Squat à la barre guidée / Smith (réglage barre + butées + mouvement)</li>
       <li>Leg curl (ischios) — boudin position M</li>
       <li>Hip adduction (intérieur cuisses) — réglage 6</li>
       <li>Hip abduction (fessiers) — 31 kg</li>
@@ -730,6 +765,26 @@ footer .sign{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(-
     </ul>
   </div>
 </section>
+
+<!-- TIMER -->
+<button id="timer-open-btn" onclick="openTimer()" title="Ouvrir le chrono">⏱</button>
+<div id="timer-widget">
+  <div class="timer-top">
+    <span class="timer-title">Chrono repos</span>
+    <button id="timer-close" onclick="closeTimer()">✕</button>
+  </div>
+  <div id="timer-display">01:00</div>
+  <div class="timer-presets">
+    <button class="preset-btn" onclick="setPreset(60)">60s</button>
+    <button class="preset-btn active-preset" onclick="setPreset(90)">90s</button>
+    <button class="preset-btn" onclick="setPreset(120)">120s</button>
+  </div>
+  <div class="timer-controls">
+    <button class="ctrl-btn" id="btn-start" onclick="toggleTimer()">▶ Start</button>
+    <button class="ctrl-btn" id="btn-reset" onclick="resetTimer()">↺ Reset</button>
+  </div>
+  <p class="timer-hint">🔔 Gardez l'écran allumé pour entendre le bip</p>
+</div>
 
 <footer>
   <div class="sign">Ornella Fit Coaching</div>
@@ -782,8 +837,53 @@ function initTrack(){
   });
 }
 
+/* --- chrono de repos --- */
+let timerTotal=90, timerLeft=90, timerRunning=false, timerInterval=null, audioCtx=null;
+function ensureAudio(){ try{ if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)(); if(audioCtx.state==='suspended') audioCtx.resume(); }catch(e){} return audioCtx; }
+function scheduleBeeps(){
+  if(!audioCtx) return;
+  const t0=audioCtx.currentTime+0.06;
+  for(let i=0;i<6;i++){
+    const t=t0+i*0.34;
+    const o=audioCtx.createOscillator(), g=audioCtx.createGain();
+    o.type='square'; o.frequency.value=(i%2===0)?990:660;
+    o.connect(g); g.connect(audioCtx.destination);
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(0.6,t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+0.3);
+    o.start(t); o.stop(t+0.32);
+  }
+}
+function playBeep(){
+  ensureAudio();
+  if(audioCtx && audioCtx.state==='suspended'){ audioCtx.resume().then(scheduleBeeps).catch(scheduleBeeps); } else { scheduleBeeps(); }
+  if(navigator.vibrate) navigator.vibrate([300,150,300,150,300]);
+}
+['touchstart','click','keydown'].forEach(ev=>document.addEventListener(ev,ensureAudio,{once:true,passive:true}));
+document.addEventListener('visibilitychange',()=>{ if(!document.hidden && audioCtx && audioCtx.state==='suspended') audioCtx.resume(); });
+function fmt(s){ const m=Math.floor(s/60), sec=s%60; return (m<10?'0':'')+m+':'+(sec<10?'0':'')+sec; }
+function updateDisplay(){ document.getElementById('timer-display').textContent=fmt(timerLeft); }
+function setPreset(s){ clearInterval(timerInterval); timerRunning=false; timerTotal=s; timerLeft=s; document.getElementById('btn-start').textContent='▶ Start'; document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active-preset')); updateDisplay(); }
+function toggleTimer(){
+  if(timerRunning){ clearInterval(timerInterval); timerRunning=false; document.getElementById('btn-start').textContent='▶ Resume'; }
+  else{
+    ensureAudio();
+    if(timerLeft<=0){ timerLeft=timerTotal; }
+    timerRunning=true; document.getElementById('btn-start').textContent='⏸ Pause';
+    timerInterval=setInterval(()=>{
+      timerLeft--; updateDisplay();
+      if(timerLeft<=0){ clearInterval(timerInterval); timerRunning=false; document.getElementById('btn-start').textContent='▶ Start'; playBeep(); }
+    },1000);
+  }
+}
+function resetTimer(){ clearInterval(timerInterval); timerRunning=false; timerLeft=timerTotal; document.getElementById('btn-start').textContent='▶ Start'; updateDisplay(); }
+function openTimer(){ document.getElementById('timer-widget').classList.add('visible'); document.getElementById('timer-open-btn').classList.add('hidden'); }
+function closeTimer(){ document.getElementById('timer-widget').classList.remove('visible'); document.getElementById('timer-open-btn').classList.remove('hidden'); }
+function timerLaunch(s){ ensureAudio(); setPreset(s); openTimer(); timerLeft=s; timerTotal=s; updateDisplay(); if(timerRunning){ clearInterval(timerInterval); timerRunning=false; } setTimeout(()=>toggleTimer(),100); }
+
 renderDone();
 initTrack();
+updateDisplay();
 </script>
 </body>
 </html>
