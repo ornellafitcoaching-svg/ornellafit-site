@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Programme Sophie">
+<title>Programme Sophie — Mois 1 · Salle en autonomie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#9B6DD6;--cream:#F5F1F7;--dark:#181121;--gold:#D4A5C4;
+  --nude:#E0B8D8;--brown:#9a8a9e;--green:#5FB88A;--card:rgba(255,255,255,0.04);
+  --border:rgba(224,184,216,0.18);--tech:#8BB8E8;--warn:#E8A87C;--danger:#E8879B;--heart:#E87C9B;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);min-height:100vh;line-height:1.6}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(24,17,33,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:12px 20px;padding-top:max(12px, env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--nude);white-space:nowrap}
+.nav-links{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.nav-links a{font-size:0.75rem;color:var(--brown);text-decoration:none;padding:4px 10px;border:1px solid var(--border);border-radius:20px;transition:all .2s;white-space:nowrap}
+.nav-links a:hover{border-color:var(--accent);color:var(--cream)}
+
+/* COVER */
+.cover{text-align:center;padding:56px 20px 38px;border-bottom:1px solid var(--border)}
+.cover-badge{display:inline-block;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(212,165,196,0.45);border-radius:20px;padding:5px 14px;margin-bottom:18px}
+.cover h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.1rem,7vw,3.4rem);font-weight:600;line-height:1.15;margin-bottom:10px}
+.cover h1 em{font-style:italic;color:var(--gold)}
+.cover-sub{font-size:0.95rem;color:var(--brown);max-width:540px;margin:0 auto 18px;line-height:1.7}
+.cover-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.pill{font-size:0.78rem;background:rgba(155,109,214,0.14);border:1px solid rgba(155,109,214,0.35);border-radius:20px;padding:5px 13px;color:var(--nude)}
+
+/* QUICKNAV */
+.quicknav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:820px;margin:0 auto;padding:22px 20px 4px}
+.quicknav a{font-size:0.82rem;font-weight:500;color:var(--nude);text-decoration:none;padding:10px 15px;border:1px solid var(--border);border-radius:22px;background:rgba(155,109,214,0.08);transition:all .2s;white-space:nowrap}
+.quicknav a:active,.quicknav a:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* SECTION */
+section{padding:40px 20px;max-width:820px;margin:0 auto}
+section+section{border-top:1px solid var(--border)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:var(--nude);margin-bottom:6px}
+.section-sub{font-size:0.85rem;color:var(--brown);margin-bottom:22px;line-height:1.6}
+
+/* INTRO */
+.intro-box{background:rgba(95,184,138,0.07);border:1px solid rgba(95,184,138,0.25);border-radius:14px;padding:20px 18px;margin-bottom:8px}
+.intro-box p{font-size:0.9rem;color:var(--cream);line-height:1.7;margin-bottom:10px}
+.intro-box p:last-child{margin-bottom:0}
+.intro-box strong{color:#9fe0b8}
+
+/* SÉCURITÉ */
+.safe-box{background:rgba(232,168,124,0.10);border:1.5px solid rgba(232,168,124,0.5);border-radius:16px;padding:22px 20px;margin-bottom:16px}
+.safe-box .stitle{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--warn);margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.safe-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.safe-list li{font-size:0.88rem;color:var(--cream);line-height:1.6;padding-left:28px;position:relative}
+.safe-list li::before{content:"🛡";position:absolute;left:0;top:1px;font-size:0.95rem}
+.safe-list li strong{color:#f0c3a0}
+
+/* SANTÉ (cœur) */
+.heart-box{background:rgba(232,124,155,0.10);border:1.5px solid rgba(232,124,155,0.5);border-radius:16px;padding:22px 20px}
+.heart-box .stitle{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--heart);margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.heart-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.heart-list li{font-size:0.88rem;color:var(--cream);line-height:1.6;padding-left:28px;position:relative}
+.heart-list li::before{content:"💗";position:absolute;left:0;top:1px;font-size:0.9rem}
+.heart-list li strong{color:#f0a8bf}
+
+/* COMMENT ÇA MARCHE */
+.how-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:8px}
+.how-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 14px}
+.how-item .hk{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.how-item .hv{font-size:0.88rem;color:var(--cream);line-height:1.5}
+.how-item .hv strong{color:var(--nude)}
+
+/* NOTE */
+.note-box{background:rgba(155,109,214,0.08);border:1px solid rgba(155,109,214,0.3);border-radius:14px;padding:18px 18px;margin-bottom:22px}
+.note-box p{font-size:0.87rem;color:var(--cream);line-height:1.7}
+.note-box p+p{margin-top:10px}
+.note-box strong{color:var(--nude)}
+
+/* WARMUP */
+.warmup-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.warmup-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center}
+.warmup-name{font-size:0.9rem;color:var(--cream);margin-bottom:4px}
+.warmup-detail{font-size:0.76rem;color:var(--brown)}
+
+/* SÉANCE HEADER */
+.seance-head{background:linear-gradient(135deg,rgba(155,109,214,0.18),rgba(212,165,196,0.08));border:1px solid rgba(155,109,214,0.4);border-radius:16px;padding:18px 18px;margin-bottom:18px}
+.seance-head .st{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--nude);margin-bottom:4px}
+.seance-head .ss{font-size:0.84rem;color:var(--brown);line-height:1.6}
+
+/* PROGRESS */
+.progress-wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 16px;margin-bottom:20px;flex-wrap:wrap}
+.progress-label{font-size:0.82rem;color:var(--nude)}
+.progress-label strong{color:var(--green);font-size:1rem}
+.reset-btn{font-size:0.74rem;padding:6px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--brown);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.reset-btn:hover{border-color:var(--danger);color:var(--danger)}
+
+/* EXERCISE CARD */
+.ex-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 16px;margin-bottom:14px;transition:border-color .2s}
+.ex-card.done{border-color:rgba(95,184,138,0.5);background:rgba(95,184,138,0.05)}
+.ex-top{display:flex;align-items:flex-start;gap:12px}
+.ex-num{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:rgba(155,109,214,0.15);border:1px solid rgba(155,109,214,0.45);color:var(--nude);font-size:0.9rem;font-weight:600;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif}
+.ex-body{flex:1;min-width:0}
+.ex-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px}
+.ex-name{font-family:'Cormorant Garamond',serif;font-size:1.22rem;font-weight:600;color:var(--cream);line-height:1.2}
+.badges{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.badge{font-size:0.63rem;letter-spacing:0.05em;text-transform:uppercase;padding:3px 8px;border-radius:10px;font-weight:600;white-space:nowrap}
+.badge-seen{background:rgba(95,184,138,0.2);border:1px solid rgba(95,184,138,0.5);color:#9fe0b8}
+.badge-new{background:rgba(232,168,124,0.18);border:1px solid rgba(232,168,124,0.5);color:var(--warn)}
+.badge-mat{background:rgba(139,184,232,0.15);border:1px solid rgba(139,184,232,0.45);color:var(--tech)}
+.badge-rir{background:rgba(155,109,214,0.15);border:1px solid rgba(155,109,214,0.45);color:var(--nude)}
+.ex-sets{font-size:0.95rem;color:var(--nude);margin-bottom:8px;font-weight:600}
+.ex-sets .charge{color:var(--gold)}
+.ex-block{font-size:0.84rem;color:var(--cream);line-height:1.62;margin-bottom:8px}
+.ex-block .lbl{display:block;font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.ex-block strong{color:var(--tech)}
+.ex-why{font-size:0.84rem;color:var(--brown);line-height:1.6;margin-bottom:10px;font-style:italic}
+.ex-why strong{color:var(--nude);font-style:normal}
+.ex-safe{font-size:0.83rem;color:#f0a8bf;line-height:1.55;margin-top:9px;padding:10px 12px;background:rgba(232,124,155,0.08);border:1px solid rgba(232,124,155,0.3);border-radius:8px}
+.ex-safe strong{color:var(--heart)}
+.ex-rir{font-size:0.82rem;color:#9fe0b8;line-height:1.5;margin-top:9px;padding:8px 11px;background:rgba(95,184,138,0.08);border:1px solid rgba(95,184,138,0.28);border-radius:8px}
+.ex-rir strong{color:var(--green)}
+.ex-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ex-video{display:inline-flex;align-items:center;gap:7px;font-size:0.8rem;font-weight:600;color:var(--nude);text-decoration:none;padding:9px 14px;border:1px solid rgba(155,109,214,0.45);border-radius:8px;background:rgba(155,109,214,0.1);transition:all .2s}
+.ex-video:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.done-btn{display:inline-flex;align-items:center;gap:7px;font-size:0.8rem;font-weight:600;color:var(--brown);cursor:pointer;padding:9px 14px;border:1px solid var(--border);border-radius:8px;background:transparent;font-family:'DM Sans',sans-serif;transition:all .2s}
+.done-btn:hover{border-color:var(--green);color:var(--green)}
+.ex-card.done .done-btn{background:rgba(95,184,138,0.15);border-color:var(--green);color:#9fe0b8}
+
+/* TRACKER (inputs dans la carte) */
+.track{margin-top:12px;padding-top:12px;border-top:1px dashed var(--border);display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.track .tf{display:flex;flex-direction:column;gap:3px}
+.track .tf.full{grid-column:1 / -1}
+.track label{font-size:0.66rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--brown)}
+.track input{width:100%;font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--cream);background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:8px 10px}
+.track input:focus{outline:none;border-color:var(--accent)}
+.track input::placeholder{color:#6d6072}
+
+/* COMPACT (exo répété) */
+.ex-recall{font-size:0.83rem;color:var(--brown);line-height:1.6;margin-bottom:8px;padding:9px 11px;background:rgba(139,184,232,0.07);border:1px solid rgba(139,184,232,0.28);border-radius:8px}
+.ex-recall strong{color:var(--tech)}
+
+/* TAPIS */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:16px;border:1px solid var(--border);border-radius:12px}
+table.prog{width:100%;border-collapse:collapse;min-width:460px}
+table.prog th,table.prog td{padding:11px 12px;text-align:left;font-size:0.84rem;border-bottom:1px solid var(--border)}
+table.prog th{background:rgba(155,109,214,0.12);color:var(--nude);font-weight:600;letter-spacing:0.03em}
+table.prog td{color:var(--cream)}
+table.prog tr:last-child td{border-bottom:none}
+table.prog td strong{color:var(--gold)}
+.var-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.var-pills span{font-size:0.78rem;background:rgba(155,109,214,0.12);border:1px solid rgba(155,109,214,0.35);border-radius:20px;padding:6px 13px;color:var(--nude)}
+
+/* ÉTIREMENTS */
+.stretch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.stretch-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:15px 15px}
+.stretch-item .sn{font-size:0.92rem;color:var(--cream);margin-bottom:5px;font-weight:600}
+.stretch-item .sd{font-size:0.8rem;color:var(--brown);line-height:1.55}
+
+/* BILAN */
+.bilan-box{background:rgba(224,184,216,0.08);border:1px dashed rgba(224,184,216,0.5);border-radius:14px;padding:20px 18px;margin-bottom:14px}
+.bilan-box .bq{font-size:0.9rem;color:var(--nude);margin-bottom:8px;font-weight:600}
+.bilan-box textarea{width:100%;min-height:72px;font-family:'DM Sans',sans-serif;font-size:0.86rem;color:var(--cream);background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:10px 12px;resize:vertical;line-height:1.6}
+.bilan-box textarea:focus{outline:none;border-color:var(--accent)}
+
+/* NEXT */
+.next-box{background:rgba(212,165,196,0.09);border:1px dashed rgba(212,165,196,0.5);border-radius:14px;padding:20px 18px}
+.next-box .ntitle{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--gold);margin-bottom:10px}
+.next-box p{font-size:0.88rem;color:var(--cream);line-height:1.7;margin-bottom:8px}
+.next-box p:last-child{margin-bottom:0}
+.next-box strong{color:#f0c7e0}
+.next-box .muscles{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.next-box .muscles span{font-size:0.76rem;background:rgba(212,165,196,0.12);border:1px solid rgba(212,165,196,0.35);border-radius:20px;padding:5px 12px;color:#f0c7e0}
+
+/* VIDÉOS À FILMER */
+.film-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 18px}
+.film-box ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.film-box li{font-size:0.86rem;color:var(--cream);padding-left:24px;position:relative;line-height:1.5}
+.film-box li::before{content:"🎥";position:absolute;left:0;top:0}
+
+/* WHATSAPP */
+.wa-cta{display:flex;align-items:center;justify-content:center;gap:9px;font-size:0.92rem;font-weight:600;color:#fff;text-decoration:none;background:#25D366;border-radius:12px;padding:14px 20px;margin-top:8px;transition:transform .15s}
+.wa-cta:active{transform:scale(0.98)}
+
+/* FOOTER */
+footer{text-align:center;padding:36px 20px 48px;padding-bottom:max(48px,env(safe-area-inset-bottom));border-top:1px solid var(--border);color:var(--brown);font-size:0.82rem;line-height:1.7}
+footer .sign{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--nude);margin-bottom:6px}
+
+.save-hint{font-size:0.76rem;color:var(--brown);margin-top:10px;line-height:1.5;text-align:center}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-title">Programme · Sophie</span>
+  <div class="nav-links">
+    <a href="#securite">Sécurité</a>
+    <a href="#seanceA">Séance A</a>
+    <a href="#seanceB">Séance B</a>
+    <a href="#tapis">Tapis</a>
+    <a href="#bilan">Bilan</a>
+  </div>
+</nav>
+
+<header class="cover">
+  <span class="cover-badge">Programme personnalisé · Ornella Fit Coaching</span>
+  <h1>Votre salle,<br><em>en toute confiance</em></h1>
+  <p class="cover-sub">Mois 1 de votre parcours. Deux séances simples et complètes à faire seule en salle, détaillées pas à pas : réglages, placement, respiration. Vous n'avez rien à deviner. On construit la technique d'abord, la force ensuite — à votre rythme, en respectant votre corps.</p>
+  <div class="cover-pills">
+    <span class="pill">Mois 1 · dès le 3 oct. 2026</span>
+    <span class="pill">Débutante en salle</span>
+    <span class="pill">Perte de poids &amp; tonification</span>
+    <span class="pill">2 séances salle + 1 avec moi</span>
+  </div>
+</header>
+
+<div class="quicknav">
+  <a href="#securite">🛡 Sécurité</a>
+  <a href="#coeur">💗 Santé</a>
+  <a href="#marche">⚙️ Comment ça marche</a>
+  <a href="#echauffement">🔥 Échauffement</a>
+  <a href="#seanceA">🏋️ Séance A</a>
+  <a href="#seanceB">🏋️ Séance B</a>
+  <a href="#tapis">🚶‍♀️ Tapis incliné</a>
+  <a href="#etirements">🧘‍♀️ Étirements</a>
+  <a href="#progression">📈 Progression</a>
+  <a href="#bilan">📝 Bilan</a>
+</div>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="intro-box">
+    <p>Bravo Sophie 👏 Vous vous lancez en salle, et je suis fière de vous accompagner. Ce programme reprend <strong>uniquement les exercices qu'on a déjà vus ensemble</strong> : vous les connaissez, vous allez juste les refaire seule, en confiance.</p>
+    <p>Chaque semaine, vous avez <strong>1 séance à domicile avec moi (le samedi)</strong> et <strong>2 séances en salle en autonomie</strong> (une Séance A, une Séance B). <strong>Deux fois par mois, je viens avec vous à la salle</strong> : c'est là qu'on vérifie votre technique et qu'on ajoute de nouveaux exercices.</p>
+    <p>Ce programme n'est pas un régime, ni une punition. C'est une base saine et progressive pour <strong>vous affiner, vous tonifier et vous sentir plus forte</strong>, en prenant soin de votre cœur, de votre dos et de votre périnée. On avance en douceur, et on ajuste chaque mois au bilan. 💜</p>
+  </div>
+</section>
+
+<!-- SÉCURITÉ GÉNÉRALE -->
+<section id="securite">
+  <h2 class="section-title">🛡 Vos règles de sécurité</h2>
+  <p class="section-sub">À lire avant CHAQUE séance. Ce sont elles qui font la différence entre progresser sereinement… et se faire mal.</p>
+  <div class="safe-box">
+    <div class="stitle">⚠️ Les règles de base</div>
+    <ul class="safe-list">
+      <li><strong>Hydratez-vous</strong> (une gourde avec vous) et <strong>mangez un peu avant</strong> : jamais à jeun, pas juste après un gros repas non plus. Une petite collation 1 à 2 h avant est idéale.</li>
+      <li><strong>Échauffez-vous toujours</strong> (voir plus bas) : jamais une série de travail sur une machine froide.</li>
+      <li><strong>La technique AVANT la charge.</strong> On garde les charges de départ tant que le mouvement n'est pas fluide et propre. Si la technique se dégrade, on <strong>n'augmente jamais</strong> le poids — on le baisse.</li>
+      <li><strong>Douleur articulaire = on arrête.</strong> Une douleur dans une articulation (genou, dos, poignet, épaule) n'est pas normale. Une légère chaleur / fatigue dans le muscle, elle, est normale et attendue.</li>
+      <li><strong>Amplitude contrôlée, jamais d'à-coup.</strong> On ne lâche jamais le poids d'un coup : la phase de retour (descente) se fait lentement, en ~2 secondes.</li>
+      <li><strong>Remettez tout en place :</strong> charges rangées et <strong>goupilles</strong> remises dans les machines après usage.</li>
+      <li><strong>En cas de doute</strong> sur un réglage ou un mouvement : vous ne forcez pas, vous me posez la question sur WhatsApp <strong>avant</strong> de continuer. Il n'y a aucune question bête. 💬</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SANTÉ / CŒUR -->
+<section id="coeur">
+  <h2 class="section-title">💗 Vos points de vigilance santé</h2>
+  <p class="section-sub">On a vu tout ça ensemble. Ce ne sont pas des interdits, mais des réflexes à garder pour que le sport vous fasse du bien à 100 %.</p>
+  <div class="heart-box">
+    <div class="stitle">💗 Spécial vous</div>
+    <ul class="heart-list">
+      <li><strong>Ne bloquez JAMAIS votre respiration.</strong> C'est la règle n°1 pour vous. On <strong>souffle pendant l'effort</strong> (quand on pousse ou qu'on tire) et on inspire au retour. Bloquer la respiration fait monter la tension — on l'évite pour votre cœur et pour votre périnée.</li>
+      <li><strong>Protégez votre périnée.</strong> À chaque effort, imaginez que vous « remontez » légèrement le bas-ventre en soufflant. Pas de mouvement qui pousse vers le bas. C'est pour ça qu'on évite aussi les abdos « crunch » classiques : on tonifie le ventre autrement (gainage doux, voir Séance).</li>
+      <li><strong>Zéro impact.</strong> Pas de saut, pas de course. Le tapis se fait en <strong>marche</strong>, jamais en courant.</li>
+      <li><strong>Genou droit (ménisque) :</strong> on ne descend jamais dans une douleur, et sur le squat on ne va que jusqu'où le genou reste confortable et aligné sur le pied.</li>
+      <li><strong>Dos (lombaires) :</strong> dos droit et gainé sur tous les tirages et le squat, jamais arrondi.</li>
+      <li><strong>Poignets (rhizarthrose) :</strong> gardez le poignet droit (dans l'axe de l'avant-bras), ne le cassez pas. Si une prise fait mal, dites-le moi, on change la poignée.</li>
+      <li><strong>Asthme :</strong> gardez votre inhalateur dans votre sac. Un essoufflement normal passe vite ; une gêne respiratoire inhabituelle = on s'arrête et on se repose.</li>
+      <li><strong>Signaux d'arrêt immédiat :</strong> douleur ou serrement dans la poitrine, vertiges, palpitations, essoufflement anormal, malaise. On arrête, on s'assoit, on respire — et on m'appelle.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- COMMENT ÇA MARCHE -->
+<section id="marche">
+  <h2 class="section-title">⚙️ Comment ça marche</h2>
+  <p class="section-sub">Deux séances en salle par semaine, en alternance : A puis B. Simple à suivre.</p>
+  <div class="how-grid">
+    <div class="how-item"><div class="hk">Rythme</div><div class="hv"><strong>2 séances salle</strong> / semaine (A &amp; B) + <strong>1 séance avec moi</strong> le samedi</div></div>
+    <div class="how-item"><div class="hk">Jours salle</div><div class="hv"><strong>Jour 1 &amp; Jour 2</strong> <em>(à caler avec Sophie — jours non consécutifs de préférence)</em></div></div>
+    <div class="how-item"><div class="hk">Séries</div><div class="hv"><strong>3 séries</strong> par exercice</div></div>
+    <div class="how-item"><div class="hk">Répétitions</div><div class="hv"><strong>12 à 15 reps</strong> (8 à 10 pour le squat)</div></div>
+    <div class="how-item"><div class="hk">Repos</div><div class="hv"><strong>1 min à 1 min 30</strong> entre les séries</div></div>
+    <div class="how-item"><div class="hk">Tempo</div><div class="hv">Contrôlé · <strong>~2 sec</strong> à la descente, on souffle à l'effort</div></div>
+    <div class="how-item"><div class="hk">Tapis</div><div class="hv">En fin de séance, <strong>en marche</strong> (voir section dédiée)</div></div>
+    <div class="how-item"><div class="hk">Le bon repère</div><div class="hv">Les <strong>2 dernières reps</strong> doivent être difficiles mais <strong>propres</strong></div></div>
+  </div>
+  <div class="note-box" style="margin-top:18px">
+    <p><strong>Pourquoi 2 séances différentes (A et B) ?</strong> On répartit les exercices vus pour que votre corps travaille de façon équilibrée sur la semaine, sans tout faire le même jour. Le <strong>squat</strong> est dans les deux séances : c'est le mouvement le plus important à maîtriser, on le répète pour l'ancrer. Les autres exercices sont répartis pour toucher les cuisses, les fessiers et le dos sous différents angles.</p>
+    <p><strong>Pourquoi cet ordre dans chaque séance ?</strong> On commence par les exercices qui demandent le plus d'énergie et font travailler les <strong>gros muscles</strong> (squat, jambes), pendant que vous êtes fraîche et concentrée. On finit par les plus petits (dos sur machine) puis le tapis. 💡</p>
+  </div>
+</section>
+
+<!-- ÉCHAUFFEMENT -->
+<section id="echauffement">
+  <h2 class="section-title">🔥 Échauffement (5-10 min, obligatoire)</h2>
+  <p class="section-sub">Avant de toucher la première machine. Il réveille le cœur en douceur, lubrifie les articulations (genou, dos, épaules) et prépare les muscles — chez vous, c'est non négociable.</p>
+  <div class="warmup-grid">
+    <div class="warmup-item"><div class="warmup-name">Cardio très léger</div><div class="warmup-detail">Vélo assis ou tapis en marche lente · 5 min · juste de quoi avoir un peu chaud</div></div>
+    <div class="warmup-item"><div class="warmup-name">Articulations</div><div class="warmup-detail">Rotations douces : chevilles, genoux, hanches, épaules, poignets · 5 à 8 de chaque</div></div>
+    <div class="warmup-item"><div class="warmup-name">Activation</div><div class="warmup-detail">10 squats au poids du corps, lents · + 10 élévations de bras. On « réveille » sans fatiguer</div></div>
+    <div class="warmup-item"><div class="warmup-name">Série d'approche</div><div class="warmup-detail">Sur chaque machine, 1 série très légère avant la série de travail</div></div>
+  </div>
+</section>
+
+<!-- SÉANCE A -->
+<section id="seanceA">
+  <div class="seance-head">
+    <div class="st">🏋️ Séance A</div>
+    <div class="ss">Squat · Ischios · Fessiers (abduction) · Dos (tirage vertical). Puis tapis + étirements. Cochez chaque exercice fait, et notez vos vraies charges — ça nous servira au bilan.</div>
+  </div>
+
+  <div class="progress-wrap">
+    <span class="progress-label"><strong data-count>0</strong> / 4 exercices faits</span>
+    <button class="reset-btn" onclick="resetGroup(this)">↺ Réinitialiser</button>
+  </div>
+
+  <!-- A1 Squat -->
+  <div class="ex-card" data-ex="a1">
+    <div class="ex-top">
+      <div class="ex-num">1</div>
+      <div class="ex-body">
+        <div class="ex-header"><div class="ex-name">Squat (barre à vide)</div></div>
+        <div class="badges">
+          <span class="badge badge-seen">✓ Vu en salle</span>
+          <span class="badge badge-mat">Barre / rack</span>
+          <span class="badge badge-rir">Cuisses + fessiers</span>
+        </div>
+        <div class="ex-sets">3 séries × 8 à 10 reps · <span class="charge">Charge : barre à vide</span></div>
+        <div class="ex-why"><strong>Pourquoi&nbsp;:</strong> c'est LE mouvement roi pour tonifier cuisses et fessiers et renforcer tout le bas du corps. Il muscle aussi le dos et le gainage — précieux pour votre posture et vos lombaires.</div>
+        <div class="ex-block"><span class="lbl">Réglage pas à pas</span>Placez les <strong>sécurités du rack</strong> à hauteur de vos hanches basses (pour que la barre soit rattrapée si besoin). Réglez les <strong>crochets</strong> qui tiennent la barre à hauteur du haut de votre poitrine : vous devez passer dessous sans vous mettre sur la pointe des pieds ni trop plier. Barre bien au milieu.</div>
+        <div class="ex-block"><span class="lbl">Exécution</span>Placez la barre sur le <strong>haut du dos (les trapèzes)</strong>, jamais sur la nuque. Décrochez, faites 1-2 pas en arrière, pieds largeur d'épaules, pointes légèrement vers l'extérieur. <strong>Inspirez</strong>, descendez en poussant les fesses vers l'arrière comme pour s'asseoir, dos droit. <strong>Soufflez en remontant</strong> en poussant dans les talons.</div>
+        <div class="ex-block"><span class="lbl">Erreurs fréquentes</span>Genoux qui rentrent vers l'intérieur · talons qui décollent · dos qui s'arrondit · descendre trop bas en forçant. Mieux vaut une amplitude un peu réduite et propre qu'une descente profonde mal maîtrisée.</div>
+        <div class="ex-safe"><strong>Sécurité (important pour vous) :</strong> ne bloquez JAMAIS la respiration (cœur + périnée) — soufflez en remontant. Barre sur les trapèzes, pas la nuque. Sécurités du rack en place à chaque série. Genou droit (ménisque) : on reste dans le confortable, aligné sur le pied. On garde la barre à vide tant que le mouvement n'est pas parfaitement fluide.</div>
+        <div class="ex-rir"><strong>Le bon repère :</strong> les 2 dernières reps doivent être un peu difficiles mais toujours propres. Si c'est encore très facile à 10 reps, on le notera pour le bilan.</div>
+        <div class="track">
+          <div class="tf"><label>Charge réelle</label><input type="text" data-k="a1-charge" placeholder="ex : barre 20 kg"></div>
+          <div class="tf"><label>Reps réalisées</label><input type="text" data-k="a1-reps" placeholder="ex : 3×10"></div>
+          <div class="tf"><label>Ressenti (1-10)</label><input type="text" data-k="a1-rpe" placeholder="ex : 6"></div>
+          <div class="tf"><label>Remarque</label><input type="text" data-k="a1-note" placeholder="ex : genou ok"></div>
+        </div>
+        <div class="ex-actions">
+          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=squat+barre+technique+femme+d%C3%A9butante+musculation"><span>▶</span> Démonstration</a>
+          <button class="done-btn" onclick="toggleDone('a1')"><span class="chk">✓ Fait</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A2 Leg curl -->
+  <div class="ex-card" data-ex="a2">
+    <div class="ex-top">
+      <div class="ex-num">2</div>
+      <div class="ex-body">
+        <div class="ex-header"><div class="ex-name">Leg curl (ischios)</div></div>
+        <div class="badges">
+          <span class="badge badge-seen">✓ Vu en salle</span>
+          <span class="badge badge-mat">Machine</span>
+          <span class="badge badge-rir">Arrière de la cuisse</span>
+        </div>
+        <div class="ex-sets">3 séries × 12 reps · <span class="charge">Charge : 7,5 kg</span></div>
+        <div class="ex-why"><strong>Pourquoi&nbsp;:</strong> il muscle l'arrière des cuisses (ischios), souvent négligé. Équilibré avec le squat, il protège vos genoux et affine l'arrière de la jambe.</div>
+        <div class="ex-block"><span class="lbl">Réglage pas à pas</span>Boudin (rouleau) en <strong>position M</strong>, comme on l'a réglé ensemble. Installez-vous bien calée, dos contre le dossier. Le rouleau doit reposer <strong>sur la cheville</strong> (juste au-dessus du talon), pas sur le mollet. Pour la charge : on sort la <strong>goupille</strong> et on la replace en face du repère 7,5 kg.</div>
+        <div class="ex-block"><span class="lbl">Exécution</span>Ramenez les talons vers les fesses en <strong>contrôlant</strong>, petite pause en bas, puis revenez <strong>lentement</strong> sans laisser le poids « claquer ». Soufflez quand vous pliez, inspirez au retour.</div>
+        <div class="ex-block"><span class="lbl">Erreurs fréquentes</span>Décoller les hanches du siège · relâcher d'un coup au retour · à-coups. Tout vient du genou, le reste du corps reste calme.</div>
+        <div class="ex-safe"><strong>Sécurité :</strong> contrôlez surtout le retour (ne relâchez jamais d'un coup). Si une gêne au genou apparaît, réduisez l'amplitude et dites-le moi.</div>
+        <div class="ex-rir"><strong>Le bon repère :</strong> les 2 dernières reps difficiles mais propres. Dos qui ne décolle pas.</div>
+        <div class="track">
+          <div class="tf"><label>Charge réelle</label><input type="text" data-k="a2-charge" placeholder="ex : 7,5 kg"></div>
+          <div class="tf"><label>Reps réalisées</label><input type="text" data-k="a2-reps" placeholder="ex : 3×12"></div>
+          <div class="tf"><label>Ressenti (1-10)</label><input type="text" data-k="a2-rpe" placeholder="ex : 6"></div>
+          <div class="tf"><label>Remarque</label><input type="text" data-k="a2-note" placeholder="boudin M"></div>
+        </div>
+        <div class="ex-actions">
+          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=leg+curl+assis+ischios+machine+technique+musculation"><span>▶</span> Démonstration</a>
+          <button class="done-btn" onclick="toggleDone('a2')"><span class="chk">✓ Fait</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A3 Hip abduction -->
+  <div class="ex-card" data-ex="a3">
+    <div class="ex-top">
+      <div class="ex-num">3</div>
+      <div class="ex-body">
+        <div class="ex-header"><div class="ex-name">Hip abduction (fessiers)</div></div>
+        <div class="badges">
+          <span class="badge badge-seen">✓ Vu en salle</span>
+          <span class="badge badge-mat">Machine</span>
+          <span class="badge badge-rir">Fessiers (côté)</span>
+        </div>
+        <div class="ex-sets">3 séries × 20 reps · <span class="charge">Charge : 31 kg</span></div>
+        <div class="ex-why"><strong>Pourquoi&nbsp;:</strong> il cible le moyen fessier (le muscle qui galbe et arrondit le haut des fesses) et stabilise le bassin. Doux pour le dos et parfait pour vous : aucun impact.</div>
+        <div class="ex-block"><span class="lbl">Réglage pas à pas</span>Asseyez-vous bien au fond, dos contre le dossier. Les <strong>coussins latéraux</strong> à l'extérieur des cuisses, genoux posés dessus. Réglez la charge à <strong>31 kg</strong> avec la goupille. Si votre salle a un réglage d'écartement de départ, gardez celui qu'on a utilisé ensemble (confortable, sans tirer).</div>
+        <div class="ex-block"><span class="lbl">Exécution</span><strong>Écartez les genoux</strong> vers l'extérieur en poussant avec les fessiers, soufflez à l'effort. Petite pause en position écartée, puis revenez <strong>lentement</strong> (sans refermer d'un coup).</div>
+        <div class="ex-block"><span class="lbl">Erreurs fréquentes</span>Se pencher en arrière pour pousser plus fort · revenir trop vite · à-coups. Le buste reste calme, c'est l'extérieur des fesses qui travaille.</div>
+        <div class="ex-safe"><strong>Sécurité :</strong> mouvement lent et contrôlé, on souffle à l'ouverture. Aucun à-coup sur le bassin (lombaires).</div>
+        <div class="ex-rir"><strong>Le bon repère :</strong> à 20 reps, les 3-4 dernières doivent brûler un peu. Si c'est trop facile, on notera pour monter.</div>
+        <div class="track">
+          <div class="tf"><label>Charge réelle</label><input type="text" data-k="a3-charge" placeholder="ex : 31 kg"></div>
+          <div class="tf"><label>Reps réalisées</label><input type="text" data-k="a3-reps" placeholder="ex : 3×20"></div>
+          <div class="tf"><label>Ressenti (1-10)</label><input type="text" data-k="a3-rpe" placeholder="ex : 6"></div>
+          <div class="tf"><label>Remarque</label><input type="text" data-k="a3-note" placeholder=""></div>
+        </div>
+        <div class="ex-actions">
+          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=machine+abducteurs+hip+abduction+fessiers+technique"><span>▶</span> Démonstration</a>
+          <button class="done-btn" onclick="toggleDone('a3')"><span class="chk">✓ Fait</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A4 Lat pulldown -->
+  <div class="ex-card" data-ex="a4">
+    <div class="ex-top">
+      <div class="ex-num">4</div>
+      <div class="ex-body">
+        <div class="ex-header"><div class="ex-name">Lat pulldown (Hammer Strength)</div></div>
+        <div class="badges">
+          <span class="badge badge-seen">✓ Vu en salle</span>
+          <span class="badge badge-mat">Machine Hammer</span>
+          <span class="badge badge-rir">Dos (largeur)</span>
+        </div>
+        <div class="ex-sets">3 séries × 12 reps · <span class="charge">Charge : 14,5 kg</span></div>
+        <div class="ex-why"><strong>Pourquoi&nbsp;:</strong> il muscle le dos en largeur, améliore la posture (épaules en arrière) et dessine la silhouette. Un dos fort soulage aussi les lombaires.</div>
+        <div class="ex-block"><span class="lbl">Réglage pas à pas</span>Boudin (le coussin qui bloque les cuisses) en <strong>position D</strong>, comme réglé ensemble : il doit caler vos cuisses pour que vous ne décolliez pas. Réglez la charge à <strong>14,5 kg</strong>. Asseyez-vous, attrapez les poignées <strong>mains un peu plus larges que les épaules</strong>, poignets droits.</div>
+        <div class="ex-block"><span class="lbl">Exécution</span>Tirez les poignées <strong>vers le haut de la poitrine</strong>, buste très légèrement incliné en arrière. Pensez à <strong>serrer les omoplates</strong> (c'est le dos qui tire, pas les bras). Soufflez en tirant, revenez en contrôlant, bras presque tendus (sans relâcher d'un coup).</div>
+        <div class="ex-block"><span class="lbl">Erreurs fréquentes</span>Tirer avec les bras au lieu du dos · se balancer avec le buste · casser les poignets. Amplitude complète mais contrôlée.</div>
+        <div class="ex-safe"><strong>Sécurité :</strong> tirez toujours <strong>devant</strong>, vers la poitrine, jamais derrière la nuque. Poignets droits (rhizarthrose). Dos gainé, pas d'élan.</div>
+        <div class="ex-rir"><strong>Le bon repère :</strong> les 2 dernières reps difficiles mais propres, sans tricher avec l'élan.</div>
+        <div class="track">
+          <div class="tf"><label>Charge réelle</label><input type="text" data-k="a4-charge" placeholder="ex : 14,5 kg"></div>
+          <div class="tf"><label>Reps réalisées</label><input type="text" data-k="a4-reps" placeholder="ex : 3×12"></div>
+          <div class="tf"><label>Ressenti (1-10)</label><input type="text" data-k="a4-rpe" placeholder="ex : 6"></div>
+          <div class="tf"><label>Remarque</label><input type="text" data-k="a4-note" placeholder="boudin D"></div>
+        </div>
+        <div class="ex-actions">
+          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=lat+pulldown+hammer+strength+tirage+vertical+dos+technique"><span>▶</span> Démonstration</a>
+          <button class="done-btn" onclick="toggleDone('a4')"><span class="chk">✓ Fait</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <p>👉 On termine la Séance A par le <strong>tapis incliné</strong> (section dédiée plus bas) puis les <strong>étirements</strong>. Bravo, séance complète !</p>
+  </div>
+</section>
+
+<!-- SÉANCE B -->
+<section id="seanceB">
+  <div class="seance-head">
+    <div class="st">🏋️ Séance B</div>
+    <div class="ss">Squat · Adducteurs (intérieur cuisse) · Fessiers (abduction) · Dos (tirage horizontal). Puis tapis + étirements. Le squat et l'abduction, vous les connaissez déjà de la Séance A : je vous remets juste l'essentiel.</div>
+  </div>
+
+  <div class="progress-wrap">
+    <span class="progress-label"><strong data-count>0</strong> / 4 exercices faits</span>
+    <button class="reset-btn" onclick="resetGroup(this)">↺ Réinitialiser</button>
+  </div>
+
+  <!-- B1 Squat (rappel) -->
+  <div class="ex-card" data-ex="b1">
+    <div class="ex-top">
+      <div class="ex-num">1</div>
+      <div class="ex-body">
+        <div class="ex-header"><div class="ex-name">Squat (barre à vide)</div></div>
+        <div class="badges">
+          <span class="badge badge-seen">✓ Vu en salle</span>
+          <span class="badge badge-mat">Barre / rack</span>
+          <span class="badge badge-rir">Cuisses + fessiers</span>
+        </div>
+        <div class="ex-sets">3 séries × 8 à 10 reps · <span class="charge">Charge : barre à vide</span></div>
+        <div class="ex-recall"><strong>Rappel express</strong> (détail complet en Séance A) : sécurités du rack à hauteur des hanches · barre sur les trapèzes, pas la nuque · descendre fesses en arrière, dos droit · <strong>souffler en remontant, jamais bloquer la respiration</strong> · genou droit dans le confortable.</div>
+        <div class="ex-safe"><strong>Sécurité (important pour vous) :</strong> respiration jamais bloquée (cœur + périnée). On reste à la barre à vide ce mois-ci.</div>
+        <div class="track">
+          <div class="tf"><label>Charge réelle</label><input type="text" data-k="b1-charge" placeholder="ex : barre 20 kg"></div>
+          <div class="tf"><label>Reps réalisées</label><input type="text" data-k="b1-reps" placeholder="ex : 3×10"></div>
+          <div class="tf"><label>Ressenti (1-10)</label><input type="text" data-k="b1-rpe" placeholder="ex : 6"></div>
+          <div class="tf"><label>Remarque</label><input type="text" data-k="b1-note" placeholder=""></div>
+        </div>
+        <div class="ex-actions">
+          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=squat+barre+technique+femme+d%C3%A9butante+musculation"><span>▶</span> Démonstration</a>
+          <button class="done-btn" onclick="toggleDone('b1')"><span class="chk">✓ Fait</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B2 Hip adduction -->
+  <div class="ex-card" data-ex="b2">
+    <div class="ex-top">
+      <div class="ex-num">2</div>
+      <div class="ex-body">
+        <div class="ex-header"><div class="ex-name">Hip adduction (intérieur des cuisses)</div></div>
+        <div class="badges">
+          <span class="badge badge-seen">✓ Vu en salle</span>
+          <span class="badge badge-mat">Machine</span>
+          <span class="badge badge-rir">Adducteurs</span>
+        </div>
+        <div class="ex-sets">3 séries × 15 reps · <span class="charge">Charge : 24 kg · réglage 6</span></div>
+        <div class="ex-why"><strong>Pourquoi&nbsp;:</strong> il tonifie l'<strong>intérieur des cuisses</strong> — exactement une des zones que vous souhaitez affiner — et renforce la stabilité du bassin. Sans impact, très doux pour vous.</div>
+        <div class="ex-block"><span class="lbl">Réglage pas à pas</span>Réglage d'écartement sur <strong>6</strong> (le cran qu'on a utilisé ensemble) : les coussins sont à l'<strong>intérieur</strong> des cuisses, jambes ouvertes au départ. Charge à <strong>24 kg</strong> avec la goupille. Dos bien calé contre le dossier, mains sur les poignées.</div>
+        <div class="ex-block"><span class="lbl">Exécution</span><strong>Resserrez les genoux</strong> l'un vers l'autre en soufflant (ce sont les cuisses qui serrent), petite pause au centre, puis laissez ré-ouvrir <strong>lentement et en contrôlant</strong> — sans vous laisser « tirer » brutalement en ouverture.</div>
+        <div class="ex-block"><span class="lbl">Erreurs fréquentes</span>Laisser les genoux s'ouvrir d'un coup au retour (jamais) · se cambrer · ouverture de départ trop grande qui tire à l'intérieur de la cuisse. On reste dans le confortable.</div>
+        <div class="ex-safe"><strong>Sécurité :</strong> le retour (ouverture) doit être <strong>lent et maîtrisé</strong> — c'est le point clé ici. Jamais d'ouverture brutale. Si ça tire à l'aine, réduisez l'écartement de départ.</div>
+        <div class="ex-rir"><strong>Le bon repère :</strong> les 2-3 dernières reps difficiles mais propres.</div>
+        <div class="track">
+          <div class="tf"><label>Charge réelle</label><input type="text" data-k="b2-charge" placeholder="ex : 24 kg"></div>
+          <div class="tf"><label>Reps réalisées</label><input type="text" data-k="b2-reps" placeholder="ex : 3×15"></div>
+          <div class="tf"><label>Ressenti (1-10)</label><input type="text" data-k="b2-rpe" placeholder="ex : 6"></div>
+          <div class="tf"><label>Remarque</label><input type="text" data-k="b2-note" placeholder="réglage 6"></div>
+        </div>
+        <div class="ex-actions">
+          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=machine+adducteurs+hip+adduction+int%C3%A9rieur+cuisse+technique"><span>▶</span> Démonstration</a>
+          <button class="done-btn" onclick="toggleDone('b2')"><span class="chk">✓ Fait</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B3 Hip abduction (rappel) -->
+  <div class="ex-card" data-ex="b3">
+    <div class="ex-top">
+      <div class="ex-num">3</div>
+      <div class="ex-body">
+        <div class="ex-header"><div class="ex-name">Hip abduction (fessiers)</div></div>
+        <div class="badges">
+          <span class="badge badge-seen">✓ Vu en salle</span>
+          <span class="badge badge-mat">Machine</span>
+          <span class="badge badge-rir">Fessiers (côté)</span>
+        </div>
+        <div class="ex-sets">3 séries × 20 reps · <span class="charge">Charge : 31 kg</span></div>
+        <div class="ex-recall"><strong>Rappel express</strong> (détail complet en Séance A) : coussins à l'<strong>extérieur</strong> des cuisses · <strong>écartez les genoux</strong> en soufflant · retour lent, pas d'à-coup · buste calme.</div>
+        <div class="track">
+          <div class="tf"><label>Charge réelle</label><input type="text" data-k="b3-charge" placeholder="ex : 31 kg"></div>
+          <div class="tf"><label>Reps réalisées</label><input type="text" data-k="b3-reps" placeholder="ex : 3×20"></div>
+          <div class="tf"><label>Ressenti (1-10)</label><input type="text" data-k="b3-rpe" placeholder="ex : 6"></div>
+          <div class="tf"><label>Remarque</label><input type="text" data-k="b3-note" placeholder=""></div>
+        </div>
+        <div class="ex-actions">
+          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=machine+abducteurs+hip+abduction+fessiers+technique"><span>▶</span> Démonstration</a>
+          <button class="done-btn" onclick="toggleDone('b3')"><span class="chk">✓ Fait</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B4 Tirage horizontal -->
+  <div class="ex-card" data-ex="b4">
+    <div class="ex-top">
+      <div class="ex-num">4</div>
+      <div class="ex-body">
+        <div class="ex-header"><div class="ex-name">Tirage horizontal (assis)</div></div>
+        <div class="badges">
+          <span class="badge badge-seen">✓ Vu en salle</span>
+          <span class="badge badge-mat">Poulie / machine</span>
+          <span class="badge badge-rir">Dos (épaisseur)</span>
+        </div>
+        <div class="ex-sets">3 séries × 12 reps · <span class="charge">Charge : 6 kg</span></div>
+        <div class="ex-why"><strong>Pourquoi&nbsp;:</strong> il muscle le milieu du dos en épaisseur, complète le lat pulldown et <strong>ouvre la poitrine / redresse les épaules</strong>. Excellent pour la posture quand on travaille assise toute la journée.</div>
+        <div class="ex-block"><span class="lbl">Réglage pas à pas</span>Asseyez-vous, pieds calés sur les cale-pieds, genoux légèrement fléchis. Charge à <strong>6 kg</strong> avec la goupille. Attrapez la poignée, <strong>dos droit</strong>, bras tendus devant au départ (sans vous laisser tirer vers l'avant).</div>
+        <div class="ex-block"><span class="lbl">Exécution</span>Tirez la poignée <strong>vers le nombril / le bas des côtes</strong> en serrant les omoplates, coudes qui longent le corps. Soufflez en tirant. Revenez en contrôlant, dos toujours droit (ne pas s'avachir vers l'avant).</div>
+        <div class="ex-block"><span class="lbl">Erreurs fréquentes</span>Se balancer d'avant en arrière avec le buste pour tirer · arrondir le dos au retour · hausser les épaules vers les oreilles.</div>
+        <div class="ex-safe"><strong>Sécurité :</strong> le dos reste <strong>droit et gainé</strong>, jamais arrondi (lombaires). Pas d'élan avec le buste : c'est le dos qui tire. Poignets droits.</div>
+        <div class="ex-rir"><strong>Le bon repère :</strong> les 2 dernières reps difficiles mais propres, sans se balancer.</div>
+        <div class="track">
+          <div class="tf"><label>Charge réelle</label><input type="text" data-k="b4-charge" placeholder="ex : 6 kg"></div>
+          <div class="tf"><label>Reps réalisées</label><input type="text" data-k="b4-reps" placeholder="ex : 3×12"></div>
+          <div class="tf"><label>Ressenti (1-10)</label><input type="text" data-k="b4-rpe" placeholder="ex : 6"></div>
+          <div class="tf"><label>Remarque</label><input type="text" data-k="b4-note" placeholder=""></div>
+        </div>
+        <div class="ex-actions">
+          <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=tirage+horizontal+assis+poulie+dos+technique+musculation"><span>▶</span> Démonstration</a>
+          <button class="done-btn" onclick="toggleDone('b4')"><span class="chk">✓ Fait</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <p>👉 Comme en Séance A, on termine par le <strong>tapis incliné</strong> puis les <strong>étirements</strong>. 💜</p>
+  </div>
+</section>
+
+<!-- TAPIS INCLINÉ -->
+<section id="tapis">
+  <h2 class="section-title">🚶‍♀️ Le tapis incliné</h2>
+  <p class="section-sub">En fin de chaque séance (A et B). C'est votre cardio doux : il fait travailler le cœur et brûle des calories, sans aucun impact pour vos articulations.</p>
+
+  <div class="note-box">
+    <p><strong>Votre objectif final :</strong> 5 km/h · inclinaison 12 · <strong>30 minutes en continu</strong>. On n'y est pas encore, et c'est normal — on y va <strong>en douceur</strong>.</p>
+    <p><strong>La règle d'or :</strong> on ne change qu'<strong>une seule chose à la fois</strong>. Ce mois-ci (Mois 1), on travaille uniquement la <strong>durée</strong> : on garde une vitesse et une inclinaison confortables, et on allonge petit à petit le temps jusqu'à tenir 30 min. Les mois suivants, on montera l'<strong>inclinaison</strong>, puis enfin la <strong>vitesse</strong>.</p>
+  </div>
+
+  <div class="var-pills">
+    <span>Mois 1 → la durée</span>
+    <span>Mois 2 → l'inclinaison</span>
+    <span>Mois 3 → la vitesse</span>
+  </div>
+
+  <h3 style="font-family:'Cormorant Garamond',serif;color:var(--nude);font-size:1.25rem;margin:8px 0 10px">Votre progression — Mois 1 (durée)</h3>
+  <div class="table-wrap">
+    <table class="prog">
+      <thead>
+        <tr><th>Semaine</th><th>Vitesse</th><th>Inclinaison</th><th>Durée visée</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Semaine 1</td><td>4 km/h</td><td>3</td><td><strong>15 min</strong></td></tr>
+        <tr><td>Semaine 2</td><td>4 km/h</td><td>3</td><td><strong>20 min</strong></td></tr>
+        <tr><td>Semaine 3</td><td>4 km/h</td><td>3</td><td><strong>25 min</strong></td></tr>
+        <tr><td>Semaine 4</td><td>4 km/h</td><td>3</td><td><strong>30 min</strong> en continu 🎯</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note-box">
+    <p><strong>Si un palier n'est pas terminé</strong> (vous n'arrivez pas au bout de la durée visée) : aucun souci, on <strong>refait la même semaine</strong> la fois suivante avant de monter. On ne passe au palier suivant que lorsque le précédent est confortable. La vitesse (4 km/h) et l'inclinaison (3) restent <strong>fixes</strong> tout le mois — seule la durée bouge.</p>
+    <p>Si 4 km/h / inclinaison 3 est trop dur au début, baissez d'abord l'inclinaison à 2 (ou la vitesse à 3,5) : l'important ce mois-ci, c'est de <strong>tenir la durée en marchant confortablement</strong>.</p>
+  </div>
+
+  <div class="safe-box">
+    <div class="stitle">⚙️ Régler et utiliser le tapis en sécurité</div>
+    <ul class="safe-list">
+      <li><strong>Avant de monter :</strong> attachez le <strong>clip de sécurité</strong> (le cordon aimanté) à votre vêtement. S'il se détache, le tapis s'arrête tout seul — c'est votre filet de sécurité.</li>
+      <li><strong>Démarrer :</strong> montez en posant les pieds sur les <strong>repose-pieds latéraux</strong> (de chaque côté de la bande), pas sur la bande. Lancez le tapis à vitesse lente, puis montez progressivement à 4 km/h et réglez l'inclinaison sur 3 une fois en marche.</li>
+      <li><strong>Pendant :</strong> <strong>ne vous tenez pas aux barres.</strong> Buste droit, regard devant, bras qui se balancent naturellement, pas naturels. Vous tenir aux barres fausse l'effort et votre posture.</li>
+      <li><strong>S'arrêter :</strong> utilisez le bouton <strong>STOP</strong> et laissez la bande ralentir. <strong>Ne descendez JAMAIS quand la bande bouge encore.</strong> Posez les pieds sur les côtés seulement une fois arrêtée.</li>
+      <li><strong>Signaux d'arrêt immédiat :</strong> vertiges, douleur (surtout poitrine), palpitations, essoufflement anormal. On appuie sur STOP, on s'assoit, on respire.</li>
+    </ul>
+  </div>
+  <div class="ex-actions" style="margin-top:14px">
+    <a class="ex-video" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=comment+utiliser+tapis+de+course+incrustation+marche+inclin%C3%A9e+s%C3%A9curit%C3%A9+d%C3%A9butant"><span>▶</span> Démonstration tapis</a>
+  </div>
+</section>
+
+<!-- ÉTIREMENTS -->
+<section id="etirements">
+  <h2 class="section-title">🧘‍♀️ Retour au calme &amp; étirements</h2>
+  <p class="section-sub">3 à 5 min en fin de séance. On fait redescendre le cœur en douceur et on détend les muscles travaillés. On étire sans forcer : jusqu'à sentir une légère tension, jamais de douleur. On respire lentement, on ne bloque pas la respiration.</p>
+  <div class="stretch-grid">
+    <div class="stretch-item"><div class="sn">Respiration + bas-ventre</div><div class="sd">Assise bien droite, 5 respirations lentes. À l'expiration, rentrez doucement le bas-ventre (réveil du périnée). Puis relâchez.</div></div>
+    <div class="stretch-item"><div class="sn">Quadriceps (avant cuisse)</div><div class="sd">Debout, attrapez une cheville derrière vous, genou vers le sol, appui sur un mur. 20-30 sec par jambe. Sans tirer sur le genou douloureux.</div></div>
+    <div class="stretch-item"><div class="sn">Ischios (arrière cuisse)</div><div class="sd">Un pied devant, jambe tendue, penchez le buste en gardant le dos droit (pas arrondi). 20-30 sec par jambe.</div></div>
+    <div class="stretch-item"><div class="sn">Intérieur des cuisses</div><div class="sd">Assise, plantes de pieds l'une contre l'autre, laissez les genoux descendre doucement. 20-30 sec.</div></div>
+    <div class="stretch-item"><div class="sn">Fessiers</div><div class="sd">Allongée sur le dos, une cheville posée sur le genou opposé, ramenez la cuisse vers vous. 20-30 sec par côté.</div></div>
+    <div class="stretch-item"><div class="sn">Dos &amp; épaules</div><div class="sd">Debout, mains jointes devant, arrondissez le haut du dos en poussant les mains loin. Puis ouvrez la poitrine. 20-30 sec.</div></div>
+  </div>
+</section>
+
+<!-- PROGRESSION -->
+<section id="progression">
+  <h2 class="section-title">📈 Quand et de combien augmenter</h2>
+  <p class="section-sub">La règle simple pour progresser sans se brusquer — c'est votre carnet de bord qui décide, pas l'humeur du jour.</p>
+  <div class="note-box">
+    <p><strong>La règle :</strong> quand vous réussissez <strong>toutes vos séries au nombre de reps prévu, avec les 2 dernières encore propres</strong>, sur <strong>2 séances d'affilée</strong> → vous pouvez monter la charge <strong>au cran suivant</strong> à la séance d'après.</p>
+    <p><strong>De combien ?</strong> Sur les machines (goupille) : <strong>1 seul cran</strong> à la fois (souvent +2,5 à +5 kg). Sur le squat : on garde la <strong>barre à vide ce mois-ci</strong>, on ajoutera du poids ensemble quand la technique sera parfaite.</p>
+    <p><strong>Si la technique se dégrade</strong> (dos qui s'arrondit, à-coups, vous retenez votre respiration) : on <strong>n'augmente pas</strong>, on reste au poids actuel, voire on redescend. La qualité passe toujours avant le chiffre.</p>
+    <p>Notez vos charges dans les cases de chaque exercice : au bilan, on verra ensemble tout ce qui a progressé 💪</p>
+  </div>
+</section>
+
+<!-- BILAN -->
+<section id="bilan">
+  <h2 class="section-title">📝 Préparer votre bilan</h2>
+  <p class="section-sub">À remplir à la fin du Mois 1 (bilan prévu fin octobre / début novembre), avant notre point. Pas besoin de belles phrases : notez ce qui vous vient. Ça reste enregistré sur votre téléphone.</p>
+
+  <div class="bilan-box">
+    <div class="bq">1. Les charges que vous avez atteintes</div>
+    <textarea data-k="bilan-charges" placeholder="Pour chaque exercice, la charge et les reps de la fin du mois (ex : leg curl 10 kg × 12, abduction 35 kg × 20…). Les cases de chaque exo vous aident à vous souvenir."></textarea>
+  </div>
+  <div class="bilan-box">
+    <div class="bq">2. Votre ressenti général</div>
+    <textarea data-k="bilan-ressenti" placeholder="Comment vous êtes-vous sentie ce mois-ci ? Énergie, motivation, sommeil, confiance en salle, plaisir…"></textarea>
+  </div>
+  <div class="bilan-box">
+    <div class="bq">3. Les difficultés rencontrées</div>
+    <textarea data-k="bilan-difficultes" placeholder="Un exercice pas clair, un réglage compliqué, une gêne (genou, dos, poignet, essoufflement), un manque de temps…"></textarea>
+  </div>
+  <div class="bilan-box">
+    <div class="bq">4. Le tapis</div>
+    <textarea data-k="bilan-tapis" placeholder="Quel palier avez-vous atteint ? (durée / inclinaison / vitesse). Était-ce confortable ?"></textarea>
+  </div>
+  <div class="bilan-box">
+    <div class="bq">5. Vos questions pour moi</div>
+    <textarea data-k="bilan-questions" placeholder="Tout ce que vous voulez me demander ou qu'on revoie ensemble à la prochaine séance."></textarea>
+  </div>
+  <p class="save-hint">💾 Tout ce que vous tapez (charges, notes, bilan) est sauvegardé automatiquement sur votre téléphone. Vous pouvez fermer la page et revenir, vos infos seront là.</p>
+  <a class="wa-cta" target="_blank" rel="noopener" href="https://wa.me/33756834626?text=Bonjour%20Ornella%2C%20voici%20mon%20bilan%20du%20Mois%201%20%3A">💬 Envoyer mon bilan sur WhatsApp</a>
+</section>
+
+<!-- LA SUITE -->
+<section id="suite">
+  <h2 class="section-title">➡️ La suite</h2>
+  <div class="next-box">
+    <div class="ntitle">Ce qu'on ajoutera ensemble</div>
+    <p>Ce programme couvre <strong>uniquement les exercices qu'on a déjà vus</strong> en salle, pour que vous soyez à l'aise seule. Lors de nos <strong>séances à la salle ensemble (2 fois par mois)</strong>, je vous montrerai de nouveaux mouvements en direct avant de les ajouter à votre programme.</p>
+    <p>Au <strong>bilan de fin de Mois 1</strong>, on fait le point sur vos charges et votre ressenti, et je construis le <strong>Mois 2</strong> : même format, mêmes repères, avec une progression ajustée (charges, durée de tapis, et 1 ou 2 nouveaux exercices).</p>
+    <div class="muscles">
+      <span>À venir : gainage doux (ventre, sans crunch)</span>
+      <span>À venir : fessiers (hip thrust léger)</span>
+      <span>À venir : épaules / bras</span>
+    </div>
+  </div>
+</section>
+
+<!-- VIDÉOS À FILMER (note pour Ornella) -->
+<section id="videos">
+  <h2 class="section-title">🎥 Vidéos à filmer (note pour moi)</h2>
+  <p class="section-sub">Pour l'instant, chaque exercice renvoie vers une démonstration fiable sur YouTube (bonne machine). Idéalement, je remplace ces liens par <strong>mes propres vidéos</strong>, filmées sur les machines exactes de votre salle. À filmer :</p>
+  <div class="film-box">
+    <ul>
+      <li>Squat barre à vide (mise en place rack + mouvement)</li>
+      <li>Leg curl (ischios) — boudin position M</li>
+      <li>Hip adduction (intérieur cuisses) — réglage 6</li>
+      <li>Hip abduction (fessiers) — 31 kg</li>
+      <li>Lat pulldown Hammer Strength — boudin position D</li>
+      <li>Tirage horizontal assis — 6 kg</li>
+      <li>Tapis incliné : démarrage, clip de sécurité, arrêt</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="sign">Ornella Fit Coaching</div>
+  Programme personnalisé pour Sophie · Mois 1 · Vous prenez soin de vous, je m'occupe du reste. 💜<br>
+  Une question à tout moment : WhatsApp 07 56 83 46 26
+</footer>
+
+<script>
+const DONE_KEY='prog_sophie_done', TRACK_KEY='prog_sophie_track';
+
+/* --- checkboxes "Fait" --- */
+function loadDone(){ try{ return JSON.parse(localStorage.getItem(DONE_KEY)||'[]'); }catch(e){ return []; } }
+function saveDone(a){ try{ localStorage.setItem(DONE_KEY, JSON.stringify(a)); }catch(e){} }
+function renderDone(){
+  const done=loadDone();
+  document.querySelectorAll('.ex-card').forEach(c=>{
+    const id=c.dataset.ex, on=done.includes(id);
+    c.classList.toggle('done', on);
+    const chk=c.querySelector('.chk'); if(chk) chk.textContent = on ? '✓ Fait !' : '✓ Fait';
+  });
+  document.querySelectorAll('[data-count]').forEach(cnt=>{
+    const sec=cnt.closest('section');
+    const cards=sec?sec.querySelectorAll('.ex-card'):[];
+    cnt.textContent=[...cards].filter(c=>done.includes(c.dataset.ex)).length;
+  });
+}
+function toggleDone(id){
+  let done=loadDone();
+  if(done.includes(id)) done=done.filter(x=>x!==id); else done.push(id);
+  saveDone(done); renderDone();
+}
+function resetGroup(btn){
+  const sec=btn.closest('section');
+  if(!sec) return;
+  const ids=[...sec.querySelectorAll('.ex-card')].map(c=>c.dataset.ex);
+  saveDone(loadDone().filter(x=>!ids.includes(x)));
+  renderDone();
+}
+
+/* --- champs de suivi (inputs + textareas bilan) --- */
+function loadTrack(){ try{ return JSON.parse(localStorage.getItem(TRACK_KEY)||'{}'); }catch(e){ return {}; } }
+function saveTrack(o){ try{ localStorage.setItem(TRACK_KEY, JSON.stringify(o)); }catch(e){} }
+function initTrack(){
+  const data=loadTrack();
+  document.querySelectorAll('[data-k]').forEach(el=>{
+    if(data[el.dataset.k]!=null) el.value=data[el.dataset.k];
+    el.addEventListener('input', ()=>{
+      const d=loadTrack(); d[el.dataset.k]=el.value; saveTrack(d);
+    });
+  });
+}
+
+renderDone();
+initTrack();
+</script>
+</body>
+</html>
