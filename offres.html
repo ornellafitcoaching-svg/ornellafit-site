@@ -741,7 +741,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <p style="margin:2px 0 18px;"><a href="quiz.html" style="font-size:.88rem;color:var(--rf-ink2);text-decoration:none;">Tu hésites&nbsp;? <strong style="color:var(--rf-terra);text-decoration:underline;">Trouve ta formule en 2 min →</strong></a></p>
       <div class="rf-trust-row">
-        <a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" class="rf-chip">★ 5,0 sur Google · 25 avis</a>
+        <a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" class="rf-chip" aria-label="Note 5 sur 5 sur Google, 25 avis"><span aria-hidden="true" style="color:#E0A42E;letter-spacing:.5px;font-size:.82rem;">★★★★★</span> 5,0 · 25 avis Google</a>
         <span class="rf-chip">🏆 Ancienne compétitrice fitness</span>
         <span class="rf-chip">👶 Spécialiste post-partum</span>
       </div>
@@ -1787,6 +1787,47 @@ document.addEventListener('DOMContentLoaded', function(){
   <a href="#tarifs" class="rf-st-tarifs">💶 Voir les tarifs</a>
   <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J'ai%20une%20question%20sur%20tes%20formules.%20On%20en%20parle%20%3F" target="_blank" class="rf-st-wa">💬 WhatsApp</a>
 </div>
+
+<!-- ===== AFFINAGE PREMIUM (pass 2) — typographie · motion douce · signature · focus/accessibilité ===== -->
+<!-- Purement cosmétique : n'altère ni prix, ni liens, ni contenu, ni logique JS. -->
+<style>
+/* 1 · Rendu typographique soigné (lecture plus « éditoriale ») */
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
+.rf-h1,.rf-h2,.rf-kicker,.rf-fcard-for,.rf-value-h,.rf-boost-title,.rf-fcard-price,.rf-acc-name{font-feature-settings:"liga" 1,"calt" 1,"kern" 1;}
+.rf-lead,.rf-acc-lead,.rf-fcard li,.rf-inc li,.rf-fs-d,.rf-hyb-principle p{text-wrap:pretty;}
+.rf-eyebrow{opacity:.95;}
+
+/* 2 · Motion unifiée avec la courbe douce globale (--ease) — élégante, jamais flashy */
+.rf-fcard,.rf-inc-item,.rf-shot,.rf-fs-card,.rf-tier,.rf-pack{transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .4s var(--ease);}
+.rf-btn,.rf-chip,.rf-tier-cta{transition:transform .28s var(--ease),box-shadow .28s var(--ease),border-color .3s var(--ease);}
+
+/* Cartes formules : lift plus doux + bord qui s'affine au survol */
+.rf-fcard:hover{transform:translateY(-5px);box-shadow:0 22px 48px -18px rgba(44,31,26,.24);border-color:rgba(192,87,74,.26);}
+.rf-fcard.feat:hover{transform:translateY(-6px);}
+
+/* 3 · Carte signature (Hybride) : halo discret + liseré doré intérieur → lecture « la méthode », sans bling */
+.rf-fcard.feat{box-shadow:0 20px 56px -22px rgba(192,87,74,.30);}
+.rf-fcard.feat::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(191,160,103,.22);}
+
+/* 4 · Bandeau « inclus » + galeries : matière plus vivante au survol */
+.rf-inc-item:hover{transform:translateY(-3px);box-shadow:var(--shadow-soft);border-color:rgba(192,87,74,.2);}
+.rf-shot:hover{box-shadow:0 18px 40px -16px rgba(44,31,26,.28);}
+.rf-chip:hover{transform:translateY(-1px);border-color:rgba(192,87,74,.32);}
+
+/* 5 · Focus clavier soigné (accessibilité) */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,
+.rf-btn:focus-visible,.rf-chip:focus-visible,.rf-acc-head:focus-visible,.rf-tier-cta:focus-visible{
+  outline:2px solid var(--rf-terra);outline-offset:3px;border-radius:10px;
+}
+
+/* 6 · Respect strict de prefers-reduced-motion sur tout le namespace rf */
+@media (prefers-reduced-motion: reduce){
+  .rf-fcard,.rf-inc-item,.rf-shot,.rf-fs-card,.rf-tier,.rf-pack,.rf-chip,.rf-btn,.rf-tier-cta,
+  .rf-fcard:hover,.rf-fcard.feat:hover,.rf-inc-item:hover,.rf-shot:hover,.rf-chip:hover{
+    transition:none !important;transform:none !important;animation:none !important;
+  }
+}
+</style>
 
 <script>
 /* ===== Lightbox ===== */
