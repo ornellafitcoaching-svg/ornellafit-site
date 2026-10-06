@@ -2,7 +2,8 @@
    Noms lisibles dans le Gestionnaire d'événements Meta :
    - Clic_Achat_<Produit>  : clic vers une page de paiement (Stripe / GoCardless)
    - Clic_Bilan            : clic vers Calendly (bilan gratuit)
-   - Clic_WhatsApp         : clic vers WhatsApp
+   - Clic_WhatsApp         : clic vers WhatsApp (Clic_WhatsApp_Entreprise sur la page entreprise)
+   - Clic_Email / Clic_Tel : clic mailto / tel (suffixe _Entreprise sur la page entreprise)
    - Clic_Vers_<Page>      : clic vers une autre page du site (ex. Clic_Vers_BootySculpt, Clic_Vers_Offres)
    - Clic_Instagram        : clic vers Instagram
    Le paramètre "page" indique la page où le clic a eu lieu. */
@@ -73,7 +74,11 @@
     } else if (href.indexOf('calendly.com') !== -1) {
       envoyer('Clic_Bilan');
     } else if (href.indexOf('wa.me/') !== -1 || href.indexOf('api.whatsapp.com') !== -1) {
-      envoyer('Clic_WhatsApp');
+      envoyer(PAGE === 'entreprise' ? 'Clic_WhatsApp_Entreprise' : 'Clic_WhatsApp');
+    } else if (href.indexOf('mailto:') === 0) {
+      envoyer(PAGE === 'entreprise' ? 'Clic_Email_Entreprise' : 'Clic_Email');
+    } else if (href.indexOf('tel:') === 0) {
+      envoyer(PAGE === 'entreprise' ? 'Clic_Tel_Entreprise' : 'Clic_Tel');
     } else if (href.indexOf('instagram.com') !== -1) {
       envoyer('Clic_Instagram');
     } else if (a.host === location.host && /\.html$|\/$/.test(a.pathname) && a.pathname !== location.pathname) {
