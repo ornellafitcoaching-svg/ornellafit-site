@@ -422,11 +422,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .compare-stat em { color: #C96358; font-style: italic; font-weight: 600; }
 
 /* FAQ */
-#faq-offres { background: white; }
+#faq-offres { background: var(--rf-cream); }
 #faq-offres .inner { max-width: 750px; margin: 0 auto; }
 .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; }
 .faq-item {
-  background: #F7F3F0; border: 1px solid rgba(201,185,154,0.3);
+  background: var(--rf-cream2); border: 1px solid var(--rf-line);
   border-radius: 16px; overflow: hidden;
 }
 .faq-q {
@@ -434,10 +434,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   display: flex; justify-content: space-between; align-items: center; gap: 16px;
   font-weight: 500; font-size: 0.95rem; color: #1E1616;
 }
-.faq-q:hover { background: rgba(201,185,154,0.1); }
+.faq-q:hover { background: rgba(23,63,52,0.04); }
 .faq-arrow {
   width: 28px; height: 28px; border-radius: 50%;
-  background: #D8A7A0; color: white;
+  background: var(--rf-ink); color: white;
   display: flex; align-items: center; justify-content: center;
   font-size: 1rem; flex-shrink: 0; transition: transform 0.3s ease;
 }
@@ -679,21 +679,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===================== REFONTE OFFRES 2026-09 ===================== -->
 <style>
 :root{
-  /* ===== DESIGN SYSTEM v2 — crème / vert forêt / corail ===== */
-  --rf-ink:#1B3A2D;        /* vert foncé — titres & texte fort */
-  --rf-ink2:#415349;       /* gris-vert doux — texte secondaire (AA sur crème) */
-  --rf-mute:#667970;       /* gris-vert clair — texte tertiaire / légendes */
-  --rf-cream:#F5EFE6;      /* fond crème */
-  --rf-cream2:#FBF7F0;     /* crème clair — remplissages subtils */
-  --rf-paper:#FFFDF9;      /* blanc cassé — cartes */
-  --rf-line:rgba(27,58,45,.14);
-  --rf-terra:#E8634A;      /* corail — boutons d'action & accents rares UNIQUEMENT */
-  --rf-terra2:#E8634A;
-  --rf-coral-d:#CF4E36;    /* corail foncé (dégradés boutons) */
-  --rf-gold:#B8923F;       /* doré sobre — sur fonds verts foncés */
-  --rf-esp1:#143024;       /* vert très foncé (sections sombres, cartes VIP) */
-  --rf-esp2:#1B3A2D;
-  --rf-green:#2D6A4F;      /* vert accent (réassurance, économies) */
+  /* ===== DESIGN SYSTEM v2 — palette éditoriale : vert forêt / ivoire / terracotta / champagne ===== */
+  --rf-ink:#173F34;        /* vert signature — titres & texte fort */
+  --rf-ink2:#1D2E28;       /* vert texte — corps de texte principal */
+  --rf-mute:#66756E;       /* vert gris — texte secondaire / légendes */
+  --rf-cream:#F8F5EF;      /* ivoire chaud — fond principal de page */
+  --rf-cream2:#FCFAF6;     /* crème — remplissages & zones de lecture */
+  --rf-paper:#FCFAF6;      /* crème — cartes (plus de blanc froid) */
+  --rf-sage:#E9EEE9;       /* sauge pâle — sections secondaires / respiration */
+  --rf-line:rgba(23,63,52,.12);
+  --rf-terra:#C65A4A;      /* terracotta — accent commercial / action */
+  --rf-terra2:#C65A4A;
+  --rf-coral-d:#A8432F;    /* terracotta foncé (dégradés boutons) */
+  --rf-gold:#C9A96E;       /* champagne — micro-accent premium TRÈS discret */
+  --rf-esp1:#143A2E;       /* vert très foncé (sections sombres, cartes signature) */
+  --rf-esp2:#173F34;
+  --rf-green:#2F5D48;      /* vert accent (réassurance, économies) */
 }
 /* ===== DS v2 — base typo, accents verts, boutons, alignement cartes ===== */
 body{font-family:'Inter',sans-serif;font-size:17px;line-height:1.6;color:var(--rf-ink2);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
@@ -792,21 +793,25 @@ body{font-family:'Inter',sans-serif;font-size:17px;line-height:1.6;color:var(--r
 <!-- LES 3 FORMULES -->
 <style>
 .rf-formulas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch;}
-.rf-fcard{background:var(--rf-paper);border:1px solid var(--rf-line);border-radius:22px;padding:30px 24px;display:flex;flex-direction:column;position:relative;box-shadow:0 6px 24px rgba(139,111,94,.07);}
-.rf-fcard.feat{background:linear-gradient(165deg,#1F4234,#122B20);border:1px solid rgba(184,146,63,.5);box-shadow:0 22px 54px rgba(18,43,32,.34);}
-.rf-fcard.feat .rf-fcard-icon,.rf-fcard.feat .rf-fcard-name,.rf-fcard.feat .rf-fcard-price{color:#FFFDF9;}
-.rf-fcard.feat .rf-fcard-for{color:#EBC878;}
-.rf-fcard.feat .rf-fcard-price small{color:rgba(255,253,249,.72);}
-.rf-fcard.feat li{color:rgba(255,253,249,.9);}
+.rf-fcard{background:var(--rf-paper);border:1px solid var(--rf-line);border-radius:22px;padding:30px 26px 28px;display:flex;flex-direction:column;position:relative;box-shadow:0 8px 26px rgba(23,63,52,.06);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease;}
+.rf-formulas>.rf-fcard:last-child{background:#F7F1EC;}
+.rf-fcard.feat{background:linear-gradient(165deg,#1C4A3C,#143A2E);border:1px solid rgba(201,169,110,.45);box-shadow:0 24px 56px rgba(20,58,46,.3);}
+@media(min-width:821px){.rf-fcard.feat{margin:-14px 0;padding-top:40px;padding-bottom:34px;}}
+.rf-fcard.feat .rf-fcard-name,.rf-fcard.feat .rf-fcard-price{color:#FCFAF6;}
+.rf-fcard.feat .rf-fcard-for{color:#D4B878;}
+.rf-fcard.feat .rf-fcard-price small{color:rgba(252,250,246,.72);}
+.rf-fcard.feat li{color:rgba(252,250,246,.9);}
 .rf-fcard.feat li strong{color:#fff;}
-.rf-fcard.feat li::before{color:#EBC878;}
-.rf-fcard.feat .rf-card-more>summary{color:#EBC878;}
-.rf-fcard.feat .rf-fcard-hero{background:rgba(255,253,249,.08);border-color:rgba(235,200,120,.32);color:#FFFDF9;}
-.rf-fcard.feat .rf-fcard-hero b{color:#EBC878;}
-.rf-fcard-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--rf-terra),var(--rf-terra2));color:#fff;font:700 .64rem/1 'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:6px 15px;border-radius:50px;white-space:nowrap;box-shadow:0 4px 14px rgba(192,87,74,.35);}
-.rf-fcard-icon{font-size:2.1rem;line-height:1;}
+.rf-fcard.feat li::before{color:#C9A96E;}
+.rf-fcard.feat .rf-card-more>summary{color:#D4B878;}
+.rf-fcard.feat .rf-fcard-hero{background:rgba(252,250,246,.08);border-color:rgba(201,169,110,.3);color:#FCFAF6;}
+.rf-fcard.feat .rf-fcard-hero b{color:#D4B878;}
+.rf-fcard.feat .rf-fcard-icon{background:rgba(201,169,110,.14);border-color:rgba(201,169,110,.32);color:#D4B878;}
+.rf-fcard-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--rf-terra);color:#FFF7F3;font:700 .6rem/1 'Inter',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:6px 16px;border-radius:40px;white-space:nowrap;box-shadow:0 4px 12px rgba(166,67,47,.24);}
+.rf-fcard-icon{font-size:1.6rem;line-height:1;width:54px;height:54px;display:inline-flex;align-items:center;justify-content:center;border-radius:15px;background:rgba(23,63,52,.055);border:1px solid rgba(23,63,52,.1);color:var(--rf-ink);margin-bottom:8px;}
 .rf-fcard-name{font:600 1.55rem/1.08 'Playfair Display',Georgia,serif;letter-spacing:-.01em;color:var(--rf-ink);margin:12px 0 6px;}
-.rf-fcard-for{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:1.12rem;color:var(--rf-terra);line-height:1.4;margin-bottom:18px;}
+.rf-fcard-for{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:1.12rem;color:var(--rf-terra);line-height:1.4;margin-bottom:16px;}
+@media(min-width:821px){.rf-fcard-for{min-height:4.4em;}}
 .rf-fcard-price{font-family:'Playfair Display',serif;font-weight:600;font-size:1.75rem;color:var(--rf-ink);line-height:1;}
 .rf-fcard-price small{font:400 .82rem/1 'Inter',sans-serif;color:var(--rf-mute);}
 .rf-fcard ul{list-style:none;padding:0;margin:16px 0 24px;display:flex;flex-direction:column;gap:10px;}
@@ -814,7 +819,13 @@ body{font-family:'Inter',sans-serif;font-size:17px;line-height:1.6;color:var(--r
 .rf-fcard li::before{content:'✓';position:absolute;left:0;color:var(--rf-terra);font-weight:700;}
 .rf-fcard .rf-btn{margin-top:auto;width:100%;}
 .rf-card-more{margin:0 0 20px;}
-.rf-card-more>summary{list-style:none;cursor:pointer;font:600 .82rem/1.2 'Inter',sans-serif;color:var(--rf-green);display:inline-flex;align-items:center;gap:7px;padding:4px 0;}
+.rf-card-more>summary{list-style:none;cursor:pointer;font:700 .68rem/1.2 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--rf-green);display:inline-flex;align-items:center;gap:8px;padding:4px 0;transition:color .2s;}
+.rf-card-more>summary:hover{color:var(--rf-terra);}
+@media(hover:hover) and (min-width:821px){
+  .rf-fcard:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(23,63,52,.1);}
+  .rf-fcard.feat:hover{transform:translateY(-4px);box-shadow:0 30px 64px rgba(20,58,46,.36);}
+}
+@media(prefers-reduced-motion:reduce){.rf-fcard,.rf-fcard.feat{transition:none;}.rf-fcard:hover,.rf-fcard.feat:hover{transform:none;}}
 .rf-card-more>summary::-webkit-details-marker{display:none;}
 .rf-card-more>summary::after{content:'+';font-weight:700;font-size:1.05rem;line-height:1;}
 .rf-card-more[open]>summary::after{content:'–';}
@@ -965,7 +976,7 @@ body{font-family:'Inter',sans-serif;font-size:17px;line-height:1.6;color:var(--r
 
 <!-- ===================== SECTION 3 — INCLUS DANS TOUTES LES FORMULES ===================== -->
 <style>
-.rf-inclus{background:var(--rf-paper);padding:clamp(40px,6vw,64px) 20px;border-top:1px solid var(--rf-line);}
+.rf-inclus{background:var(--rf-sage);padding:clamp(40px,6vw,64px) 20px;border-top:1px solid var(--rf-line);}
 .rf-inclus-wrap{max-width:960px;margin:0 auto;}
 .rf-inc-band{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:30px 0 8px;}
 @media(max-width:820px){.rf-inc-band{grid-template-columns:1fr 1fr;}}
