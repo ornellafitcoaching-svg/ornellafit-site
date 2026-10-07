@@ -17,6 +17,9 @@
   var DATA = window.OFC_TEMOIGNAGES || [];
   if (!DATA.length) return;
 
+  /* chemins depuis la racine du site : le carrousel marche aussi dans /blog/ */
+  function root(p) { p = String(p || ''); return (/^(https?:|\/|#|data:)/.test(p)) ? p : '/' + p; }
+
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -63,7 +66,7 @@
 
   function card(t) {
     return '<article class="ofc-avis-card">' +
-      (t.photo ? '<div class="ofc-avis-ph"><img src="' + esc(t.photo) + '" alt="' + esc(t.alt || ('Transformation ' + t.prenom)) + '" loading="lazy" decoding="async" width="720" height="720">' +
+      (t.photo ? '<div class="ofc-avis-ph"><img src="' + esc(root(t.photo)) + '" alt="' + esc(t.alt || ('Transformation ' + t.prenom)) + '" loading="lazy" decoding="async" width="720" height="720">' +
         '<span class="ofc-avis-tag">Avant → Après</span></div>' : '') +
       '<div class="ofc-avis-b">' +
         '<span class="ofc-avis-st" aria-label="5 étoiles">★★★★★</span>' +
@@ -71,7 +74,7 @@
         (t.formule ? '<div class="ofc-avis-f">' + esc(t.formule) + '</div>' : '') +
         (t.resultat ? '<div class="ofc-avis-r">' + esc(t.resultat) + '</div>' : '') +
         (t.texte ? '<p class="ofc-avis-p">' + esc(t.texte) + '</p>' : '') +
-        (t.lien ? '<a class="ofc-avis-cta" href="' + esc(t.lien) + '"><span>' + esc(t.lienTexte || 'Découvrir sa formule') + '</span> →</a>' : '') +
+        (t.lien ? '<a class="ofc-avis-cta" href="' + esc(root(t.lien)) + '"><span>' + esc(t.lienTexte || 'Découvrir sa formule') + '</span> →</a>' : '') +
       '</div></article>';
   }
 
@@ -108,7 +111,7 @@
       if (!a) return;
       var href = a.getAttribute('href') || '', i = href.indexOf('#');
       if (i < 0) return;
-      var page = href.slice(0, i), id = href.slice(i + 1);
+      var page = href.slice(0, i).replace(/^\//, ''), id = href.slice(i + 1);
       var ici = location.pathname.split('/').pop() || 'index.html';
       if (page && page !== ici) return;
       var cible = document.getElementById(id);
@@ -149,8 +152,8 @@
     var texte = el.getAttribute('data-texte') || ('<b>Voir leurs avant/après</b> →');
     var l1 = google ? '<span class="st">★★★★★</span>5,0 · 25 avis Google' : '<span class="st">★★★★★</span>Résultats réels';
     var cible = document.querySelector('.ofc-avis');
-    el.innerHTML = '<a href="' + (cible ? '#' : 'transformations.html') + '">' +
-      '<span class="fa">' + list.map(function (t) { return '<img src="' + esc(t.photo) + '" alt="" loading="lazy" width="38" height="38">'; }).join('') + '</span>' +
+    el.innerHTML = '<a href="' + (cible ? '#' : '/transformations.html') + '">' +
+      '<span class="fa">' + list.map(function (t) { return '<img src="' + esc(root(t.photo)) + '" alt="" loading="lazy" width="38" height="38">'; }).join('') + '</span>' +
       '<span class="tx"><span class="l1">' + l1 + '</span><span class="l2">' + texte.replace(/<(?!\/?b>)[^>]*>/g, '') + '</span></span></a>';
     if (cible) {
       el.querySelector('a').addEventListener('click', function (e) {
