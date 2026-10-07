@@ -9,6 +9,16 @@
  */
 window.OFC_TEMOIGNAGES = [
   {
+    id: 'lise',
+    prenom: 'Lise',
+    infos: 'Suivi en cours',
+    formule: 'Distanciel puis hybride · 6 mois',
+    resultat: 'Ventre et taille transformés en 6 mois',
+    texte: 'Un suivi à distance puis en hybride, sans régime extrême : la silhouette s’est redessinée mois après mois. Et elle continue.',
+    photo: 'images/avis/lise.webp',
+    alt: 'Avant / après de Lise, cliente coachée par Ornella'
+  },
+  {
     id: 'louise',
     prenom: 'Louise',
     infos: 'Maman de 2 enfants',
