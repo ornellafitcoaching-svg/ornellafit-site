@@ -82,7 +82,7 @@
     if (accent) el.style.setProperty('--oa-accent', accent);
     var kicker = el.getAttribute('data-kicker') || 'Résultats réels · Photos non retouchées';
     var titre = el.getAttribute('data-titre') || 'Elles ont transformé leur corps avec Ornella';
-    var note = el.getAttribute('data-note') || '';
+    var note = el.getAttribute('data-note') || 'Résultats de clientes accompagnées en coaching par Ornella, avec la même méthode. Photos publiées avec leur accord.';
     el.innerHTML =
       '<div class="ofc-avis-head"><span class="ofc-avis-k">' + esc(kicker) + '</span>' +
         '<h2 class="ofc-avis-t">' + esc(titre) + '</h2>' +
@@ -103,11 +103,57 @@
     el.querySelector('.next').addEventListener('click', function () { step(1); });
   }
 
+  /* ---------- Bandeau compact pour les héros : "preuve en un coup d'œil" ----------
+   * <div class="ofc-preuve" data-ordre="lise,louise,emeline,chantal"
+   *      data-theme="dark"      (optionnel : sur fond foncé)
+   *      data-google="non"      (optionnel : masque la note si elle est déjà affichée)
+   *      data-texte="…"></div>  (optionnel : texte de la 2e ligne)
+   * Un clic descend jusqu'au carrousel de la page (ou ouvre transformations.html). */
+  var cssPreuve = '' +
+    '.ofc-preuve{margin:18px 0 0;position:relative;z-index:3;max-width:100%;min-width:0}' +
+    '.ofc-preuve a{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:#2C1F1A;background:rgba(255,255,255,.75);border:1px solid rgba(44,31,26,.1);border-radius:999px;padding:5px 14px 5px 5px;max-width:100%;box-sizing:border-box;-webkit-tap-highlight-color:transparent}' +
+    '.ofc-preuve.dark a{color:#fff;background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22)}' +
+    '.ofc-preuve .fa{display:flex;flex-shrink:0}' +
+    '.ofc-preuve .fa img{width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid #fff;margin-left:-9px;background:#eee}' +
+    '.ofc-preuve .fa img:first-child{margin-left:0}' +
+    '.ofc-preuve.dark .fa img{border-color:rgba(255,255,255,.85)}' +
+    '.ofc-preuve .tx{display:flex;flex-direction:column;line-height:1.25;text-align:left;min-width:0}' +
+    '.ofc-preuve .l1{font-size:.74rem;font-weight:700;white-space:nowrap}' +
+    '.ofc-preuve .l1 .st{color:#E0A526;letter-spacing:0;margin-right:5px}' +
+    '.ofc-preuve .l2{font-size:.72rem;opacity:.8;white-space:nowrap}' +
+    '.ofc-preuve .l2 b{font-weight:700;opacity:1;text-decoration:underline;text-underline-offset:2px}';
+
+  function buildPreuve(el) {
+    var ordre = (el.getAttribute('data-ordre') || 'lise,louise,emeline,chantal').split(',').map(function (s) { return s.trim(); });
+    var list = ordre.map(function (id) { return DATA.filter(function (t) { return t.id === id && t.photo; })[0]; }).filter(Boolean).slice(0, 3);
+    if (!list.length) return;
+    if (el.getAttribute('data-theme') === 'dark') el.classList.add('dark');
+    var google = el.getAttribute('data-google') !== 'non';
+    var texte = el.getAttribute('data-texte') || ('<b>Voir leurs avant/après</b> →');
+    var l1 = google ? '<span class="st">★★★★★</span>5,0 · 25 avis Google' : '<span class="st">★★★★★</span>Résultats réels';
+    var cible = document.querySelector('.ofc-avis');
+    el.innerHTML = '<a href="' + (cible ? '#' : 'transformations.html') + '">' +
+      '<span class="fa">' + list.map(function (t) { return '<img src="' + esc(t.photo) + '" alt="" loading="lazy" width="38" height="38">'; }).join('') + '</span>' +
+      '<span class="tx"><span class="l1">' + l1 + '</span><span class="l2">' + texte.replace(/<(?!\/?b>)[^>]*>/g, '') + '</span></span></a>';
+    if (cible) {
+      el.querySelector('a').addEventListener('click', function (e) {
+        e.preventDefault();
+        var y = cible.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - 70;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      });
+    }
+  }
+
   function init() {
     var els = document.querySelectorAll('.ofc-avis');
-    if (!els.length) return;
+    var pr = document.querySelectorAll('.ofc-preuve');
+    if (!els.length && !pr.length) return;
     injectCss();
+    if (pr.length && !document.getElementById('ofc-preuve-css')) {
+      var s = document.createElement('style'); s.id = 'ofc-preuve-css'; s.textContent = cssPreuve; document.head.appendChild(s);
+    }
     for (var i = 0; i < els.length; i++) build(els[i]);
+    for (var j = 0; j < pr.length; j++) buildPreuve(pr[j]);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
