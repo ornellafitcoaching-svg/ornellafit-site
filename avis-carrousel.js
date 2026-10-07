@@ -44,6 +44,8 @@
     '.ofc-avis-f{font-size:.75rem;color:var(--oa-muted)}' +
     '.ofc-avis-r{font-weight:700;color:var(--oa-accent);font-size:.92rem;margin-top:2px}' +
     '.ofc-avis-p{font-size:.88rem;line-height:1.55;color:#4A3B34;margin:2px 0 0}' +
+    '.ofc-avis-cta{margin-top:auto;padding-top:12px;font-size:.82rem;font-weight:700;color:var(--oa-accent);text-decoration:none;display:inline-flex;align-items:center;gap:4px}' +
+    '.ofc-avis-cta span{text-decoration:underline;text-underline-offset:3px}' +
     '.ofc-avis-nav{display:none}' +
     '@media(min-width:900px){.ofc-avis-nav{display:flex;position:absolute;top:38%;width:44px;height:44px;border-radius:50%;border:1px solid var(--oa-line);background:#fff;color:var(--oa-ink);font-size:20px;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.08);z-index:2}' +
     '.ofc-avis-nav.prev{left:-6px}.ofc-avis-nav.next{right:-6px}}' +
@@ -69,6 +71,7 @@
         (t.formule ? '<div class="ofc-avis-f">' + esc(t.formule) + '</div>' : '') +
         (t.resultat ? '<div class="ofc-avis-r">' + esc(t.resultat) + '</div>' : '') +
         (t.texte ? '<p class="ofc-avis-p">' + esc(t.texte) + '</p>' : '') +
+        (t.lien ? '<a class="ofc-avis-cta" href="' + esc(t.lien) + '"><span>' + esc(t.lienTexte || 'Découvrir sa formule') + '</span> →</a>' : '') +
       '</div></article>';
   }
 
@@ -100,6 +103,20 @@
       track.scrollBy({ left: dir * ((c ? c.offsetWidth : 300) + 14), behavior: 'smooth' });
     }
     el.querySelector('.prev').addEventListener('click', function () { step(-1); });
+    track.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('.ofc-avis-cta');
+      if (!a) return;
+      var href = a.getAttribute('href') || '', i = href.indexOf('#');
+      if (i < 0) return;
+      var page = href.slice(0, i), id = href.slice(i + 1);
+      var ici = location.pathname.split('/').pop() || 'index.html';
+      if (page && page !== ici) return;
+      var cible = document.getElementById(id);
+      if (!cible) return;
+      e.preventDefault();
+      if (typeof window.rfOpen === 'function' && id.indexOf('tarif-') === 0) { window.rfOpen(id); }
+      else { cible.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
     el.querySelector('.next').addEventListener('click', function () { step(1); });
   }
 

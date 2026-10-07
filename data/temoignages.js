@@ -6,6 +6,7 @@
  *
  * Pour ajouter une cliente : copie un bloc { ... }, change les infos, mets sa photo
  * (format carré, ~720 px, .webp) dans images/avis/ et choisis un "id" unique.
+ * lien / lienTexte : la formule de coaching qu'elle a suivie (affichée en bas de sa carte).
  */
 window.OFC_TEMOIGNAGES = [
   {
@@ -16,7 +17,9 @@ window.OFC_TEMOIGNAGES = [
     resultat: '−10 kg en 6 mois',
     texte: 'Coachée entièrement à distance, avec le Boost Nutrition. Un programme fait pour elle, ajusté à chaque bilan : −10 kg et une silhouette complètement redessinée.',
     photo: 'images/avis/maria.webp',
-    alt: 'Avant / après de Maria, coachée à distance par Ornella'
+    alt: 'Avant / après de Maria, coachée à distance par Ornella',
+    lien: 'offres.html#tarif-distanciel',
+    lienTexte: 'Découvrir le coaching à distance'
   },
   {
     id: 'lise',
@@ -26,17 +29,33 @@ window.OFC_TEMOIGNAGES = [
     resultat: 'Ventre et taille transformés en 6 mois',
     texte: 'Un suivi à distance puis en hybride, sans régime extrême : la silhouette s’est redessinée mois après mois. Et elle continue.',
     photo: 'images/avis/lise.webp',
-    alt: 'Avant / après de Lise, cliente coachée par Ornella'
+    alt: 'Avant / après de Lise, cliente coachée par Ornella',
+    lien: 'offres.html#tarif-hybride',
+    lienTexte: 'Découvrir le coaching hybride'
+  },
+  {
+    id: 'lucie',
+    prenom: 'Lucie',
+    infos: '32 ans · suivi en cours',
+    formule: 'Coaching hybride · 4 mois · domicile + salle',
+    resultat: 'Ventre affiné, fessiers redessinés en 4 mois',
+    texte: 'Des séances avec Ornella à domicile + un programme sur-mesure en autonomie, à la salle et à la maison. Taille affinée, fessiers galbés, et elle continue.',
+    photo: 'images/avis/lucie.webp',
+    alt: 'Avant / après de Lucie, coachée en hybride par Ornella',
+    lien: 'offres.html#tarif-hybride',
+    lienTexte: 'Découvrir le coaching hybride'
   },
   {
     id: 'louise',
     prenom: 'Louise',
     infos: 'Maman de 2 enfants',
-    formule: 'Coaching à domicile · 4 mois',
+    formule: 'Coaching à domicile · 9 mois',
     resultat: '−9 cm de tour de taille · −5 kg',
     texte: 'Reprendre le contrôle de son corps sans se priver ni s’épuiser : 2 séances par semaine, adaptées à sa vraie vie.',
     photo: 'images/avis/louise.webp',
-    alt: 'Avant / après de Louise, cliente coachée par Ornella'
+    alt: 'Avant / après de Louise, cliente coachée par Ornella',
+    lien: 'offres.html#tarif-domicile',
+    lienTexte: 'Découvrir le coaching à domicile'
   },
   {
     id: 'emeline',
@@ -46,7 +65,9 @@ window.OFC_TEMOIGNAGES = [
     resultat: '−3 cm de tour de taille dès le 1er mois',
     texte: 'Peu de temps pour elle : 1 séance par semaine avec Ornella + des séances sur-mesure en autonomie. Fessiers redessinés, taille affinée.',
     photo: 'images/avis/emeline.webp',
-    alt: 'Avant / après d’Émeline, cliente coachée par Ornella'
+    alt: 'Avant / après d’Émeline, cliente coachée par Ornella',
+    lien: 'offres.html#tarif-hybride',
+    lienTexte: 'Découvrir le coaching hybride'
   },
   {
     id: 'chantal',
@@ -56,7 +77,9 @@ window.OFC_TEMOIGNAGES = [
     resultat: '−4 kg en 3 mois',
     texte: 'Elle tournait en rond depuis des années sans programme fait pour elle. On a tout repris de zéro, sans se presser.',
     photo: 'images/avis/chantal.webp',
-    alt: 'Avant / après de Chantal, cliente coachée par Ornella'
+    alt: 'Avant / après de Chantal, cliente coachée par Ornella',
+    lien: 'offres.html#formules',
+    lienTexte: 'Voir les formules de coaching'
   },
   {
     id: 'anonyme',
@@ -66,7 +89,9 @@ window.OFC_TEMOIGNAGES = [
     resultat: '−4 cm de cuisses en 4 séances',
     texte: 'Fessiers remontés, silhouette affinée — sans régime et sans s’épuiser.',
     photo: 'images/avis/anonyme.webp',
-    alt: 'Avant / après d’une cliente anonyme coachée par Ornella'
+    alt: 'Avant / après d’une cliente anonyme coachée par Ornella',
+    lien: 'offres.html#tarif-domicile',
+    lienTexte: 'Découvrir le coaching à domicile'
   },
   {
     id: 'ornella',
@@ -76,6 +101,8 @@ window.OFC_TEMOIGNAGES = [
     resultat: 'Grossesse → 1 an après',
     texte: 'Je suis passée par là. Si j’ai pu reconstruire mon corps après ma grossesse, toi aussi.',
     photo: 'images/avis/ornella-postpartum.webp',
-    alt: 'Avant / après post-partum d’Ornella'
+    alt: 'Avant / après post-partum d’Ornella',
+    lien: 'programme-postpartum.html',
+    lienTexte: 'Découvrir le programme post-partum'
   }
 ];
