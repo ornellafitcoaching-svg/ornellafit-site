@@ -831,6 +831,7 @@ function quizEmailHtml(r, email, prenom) {
 }
 
 async function sendToBrevo(email, resultKey, prenom = '', phone = '') {
+  if (prenom && prenom.includes('@')) prenom = ''; // jamais d'email enregistré comme prénom
   if (!BREVO_API_KEY || BREVO_API_KEY === 'YOUR_BREVO_API_KEY') {
     console.warn('[Ornella Fit Quiz] Clé API Brevo non configurée — aucun email envoyé.');
     return;
@@ -938,9 +939,9 @@ function buildResultStep(key, email) {
       <div style="font-size:32px;margin-bottom:12px;">🎯</div>
       <h3 style="font-size:22px;font-weight:800;color:#1a1a1a;margin:0 0 8px 0;">Ton résultat est prêt !</h3>
       <p style="font-size:15px;color:#555;margin:0 0 24px 0;">Entre ton email pour recevoir ta recommandation personnalisée.</p>
-      <input id="quiz-prenom" type="text" placeholder="Ton prénom"
+      <input id="quiz-prenom" type="text" name="given-name" autocomplete="given-name" autocapitalize="words" placeholder="Ton prénom"
         style="width:100%;box-sizing:border-box;padding:14px 18px;font-size:15px;border:2px solid #e0e0e0;border-radius:50px;outline:none;margin-bottom:8px;" />
-      <input id="quiz-email" type="email" placeholder="ton@email.fr"
+      <input id="quiz-email" type="email" name="email" autocomplete="email" inputmode="email" placeholder="ton@email.fr"
         style="width:100%;box-sizing:border-box;padding:14px 18px;font-size:15px;border:2px solid #e0e0e0;border-radius:50px;outline:none;margin-bottom:8px;" />
       <input id="quiz-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ton WhatsApp (optionnel) 📲"
         style="width:100%;box-sizing:border-box;padding:14px 18px;font-size:15px;border:2px solid #e0e0e0;border-radius:50px;outline:none;margin-bottom:4px;" />
@@ -954,7 +955,17 @@ function buildResultStep(key, email) {
     </div>`;
 
   document.getElementById('quiz-email-submit').addEventListener('click', function() {
-    const emailVal = document.getElementById('quiz-email').value.trim();
+    const emailInput  = document.getElementById('quiz-email');
+    const prenomInput = document.getElementById('quiz-prenom');
+    let emailVal  = emailInput.value.trim();
+    let prenomVal = prenomInput.value.trim();
+    /* Garde-fou : le remplissage auto du téléphone met parfois l'email dans le champ prénom.
+       Si le "prénom" contient un @ : on le récupère comme email si besoin, et on ne l'enregistre jamais comme prénom. */
+    if (prenomVal.includes('@')) {
+      if (!emailVal) { emailVal = prenomVal; emailInput.value = emailVal; }
+      prenomVal = '';
+      prenomInput.value = '';
+    }
     const error    = document.getElementById('quiz-email-error');
     if (!emailVal || !emailVal.includes('@') || !emailVal.includes('.')) {
       error.style.display = 'block';
@@ -963,7 +974,7 @@ function buildResultStep(key, email) {
     error.style.display = 'none';
 
     // Redondant avec le fetch direct retiré : sendToBrevo() gère déjà l'ajout à la liste (formulaire natif) + l'email template
-    sendToBrevo(emailVal, key, document.getElementById('quiz-prenom').value.trim(), (document.getElementById('quiz-phone').value || '').trim()).catch(() => {});
+    sendToBrevo(emailVal, key, prenomVal, (document.getElementById('quiz-phone').value || '').trim()).catch(() => {});
 
     renderResult(key, emailVal);
   });
