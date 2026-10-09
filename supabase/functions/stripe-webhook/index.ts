@@ -1,6 +1,7 @@
 // stripe-webhook — reçoit les paiements Stripe (checkout.session.completed).
 // Marque les paniers de la personne comme payés → les relances s'arrêtent immédiatement,
 // et met à jour sa fiche Brevo (PANIER_STATUT = paye, sortie de la liste « Paniers abandonnés »).
+// + Enregistre le paiement dans la fiche de la cliente de l'espace (table paiements).
 // Signature vérifiée avec le secret du webhook (stocké dans private.config, ou variable STRIPE_WEBHOOK_SECRET).
 
 import { createClient } from "npm:@supabase/supabase-js@2";
@@ -39,6 +40,63 @@ async function panierListId() {
   return l?.id ?? null;
 }
 
+
+// ---- Paiement → fiche cliente de l'espace (table paiements) ------------------
+// Retrouve la/les cliente(s) : metadata.clientes (« Prénom Nom, Prénom Nom » → montant
+// partagé), sinon email (email_perso), sinon nom saisi au paiement. Introuvable →
+// tâche « paiement à rattacher » dans l'espace coach. Idempotent (réf = id session).
+const norm = (s: string) => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
+async function versFicheCliente(s: Record<string, any>, email: string) {
+  const ref = String(s.id);
+  const { data: deja } = await supa.from("paiements").select("id").ilike("note", `%${ref}%`).limit(1);
+  if (deja && deja.length) return "deja";
+  const total = Number(s.amount_total || 0) / 100;
+  if (!total) return "zero";
+  const date = new Date((s.created || Date.now() / 1000) * 1000).toISOString().slice(0, 10);
+  const { data: toutes } = await supa.from("clientes").select("id,prenom,nom,email_perso").neq("statut", "termine");
+  const list = toutes || [];
+  let cibles: Array<{ id: string }> = [];
+  const meta = String(s.metadata?.clientes || "").trim();
+  if (meta) {
+    for (const nomComplet of meta.split(/\s*,\s*/)) {
+      const n = norm(nomComplet);
+      const c = list.find((x) => norm(`${x.prenom} ${x.nom || ""}`) === n || norm(x.prenom) === n);
+      if (c && !cibles.some((x) => x.id === c.id)) cibles.push(c);
+    }
+  }
+  if (!cibles.length && email) {
+    const c = list.filter((x) => norm(x.email_perso || "") === norm(email));
+    if (c.length === 1) cibles = c;
+  }
+  const nomPayeur = String(s.customer_details?.name || s.collected_information?.individual_name || "");
+  if (!cibles.length && nomPayeur) {
+    const parts = nomPayeur.trim().split(/\s+/);
+    const c = list.filter((x) => norm(x.prenom) === norm(parts[0]) && (parts.length < 2 || !x.nom || norm(x.nom) === norm(parts.slice(1).join(" "))));
+    if (c.length === 1) cibles = c;
+  }
+  if (!cibles.length) {
+    // Achat d'un programme en ligne par une inconnue : pas une cliente de l'espace → rien à faire.
+    if (!meta && !s.metadata?.devis) return "hors_espace";
+    await supa.from("taches_coach").insert({
+      titre: `💳 Paiement Stripe à rattacher : ${total} € — ${nomPayeur || email || "?"}`,
+      echeance: date, priorite: "haute", note: `${meta} · ${email} · réf ${ref}`,
+    });
+    return "a_rattacher";
+  }
+  const part = Math.round((total / cibles.length) * 100) / 100;
+  for (const c of cibles) {
+    await supa.from("paiements").insert({
+      cliente_id: c.id, date, montant: part, mode: "Stripe",
+      note: `${s.metadata?.devis ? "Devis " + s.metadata.devis + " · " : ""}Paiement Stripe${cibles.length > 1 ? ` (partagé entre ${cibles.length})` : ""} · réf ${ref}`,
+    });
+    const { data: ac } = await supa.from("accompagnements").select("id,montant_du").eq("cliente_id", c.id).limit(1);
+    if (ac && ac.length && ac[0].montant_du != null && Number(ac[0].montant_du) > 0) {
+      await supa.from("accompagnements").update({ montant_du: Math.max(0, Math.round((Number(ac[0].montant_du) - part) * 100) / 100) }).eq("id", ac[0].id);
+    }
+  }
+  return "ok:" + cibles.length;
+}
+
 Deno.serve(async (req) => {
   if (req.method !== "POST") return new Response("ok");
   const WEBHOOK_SECRET = await secret("STRIPE_WEBHOOK_SECRET", "stripe_webhook_secret");
@@ -55,7 +113,10 @@ Deno.serve(async (req) => {
     return new Response(JSON.stringify({ attente: "paiement différé" }), { status: 200 });
   }
   const email = String(s.customer_details?.email ?? s.customer_email ?? "").toLowerCase();
-  if (!email) return new Response(JSON.stringify({ sans_email: true }), { status: 200 });
+  if (!email) {
+    let fiche = ""; try { fiche = await versFicheCliente(s, ""); } catch (e) { fiche = "erreur: " + String(e); }
+    return new Response(JSON.stringify({ sans_email: true, fiche }), { status: 200 });
+  }
 
   const { data } = await supa.from("paniers")
     .update({ statut: "paye", paid_at: new Date().toISOString(), stripe_session_id: s.id })
@@ -76,5 +137,7 @@ Deno.serve(async (req) => {
       body: JSON.stringify(body),
     }).catch(() => {});
   }
-  return new Response(JSON.stringify({ paniers_payes: data?.length ?? 0 }), { status: 200 });
+  let fiche = "";
+  try { fiche = await versFicheCliente(s, email); } catch (e) { fiche = "erreur: " + String(e); }
+  return new Response(JSON.stringify({ paniers_payes: data?.length ?? 0, fiche }), { status: 200 });
 });
