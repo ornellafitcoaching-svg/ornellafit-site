@@ -61,7 +61,7 @@ window.OFC_TEMOIGNAGES = [
     id: 'emeline',
     prenom: 'Émeline',
     infos: 'Maman de 2 enfants',
-    formule: 'Coaching hybride',
+    formule: 'Présentiel, puis hybride, puis à distance',
     resultat: '−3 cm de tour de taille dès le 1er mois',
     texte: 'Peu de temps pour elle : 1 séance par semaine avec Ornella + des séances sur-mesure en autonomie. Fessiers redessinés, taille affinée.',
     photo: 'images/avis/emeline.webp',
