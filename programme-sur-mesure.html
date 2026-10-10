@@ -173,7 +173,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="rf-lead">Les applis et les programmes tout faits donnent la même chose à tout le monde. Ici, je construis <strong>tes 8 semaines de A à Z</strong> à partir de ton bilan : ton objectif, ton niveau, ton matériel, ton emploi du temps.</p>
       <div class="sm-price"><b>79€</b><span>paiement unique · ou 3 × 26,33€ avec Klarna</span></div>
       <div class="rf-cta-row">
-        <a href="https://buy.stripe.com/8x26oHas9f8n5o9cmh8Vi03" class="rf-btn rf-btn-primary" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:79,currency:'EUR',content_name:'Programme sur-mesure'})">🎯 Je veux mon programme — 79€</a>
+        <a href="https://buy.stripe.com/8x26oHas9f8n5o9cmh8Vi03" class="rf-btn rf-btn-primary" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:79,currency:'EUR',content_name:'Programme sur-mesure',content_ids:['programme-sur-mesure-8sem'],content_type:'product'})">🎯 Je veux mon programme — 79€</a>
         <a href="programme-exemple.html" class="rf-btn rf-btn-ghost">Voir un exemple de programme</a>
       </div>
       <p class="rf-note">🔒 Paiement sécurisé · Livré sous 5 à 7 jours ouvrés</p>
@@ -260,7 +260,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li>Jusqu'à 4 séances par semaine, maison ou salle</li>
       <li>Livré par email sous 5 à 7 jours ouvrés</li>
     </ul>
-    <a href="https://buy.stripe.com/8x26oHas9f8n5o9cmh8Vi03" class="rf-btn rf-btn-primary" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:79,currency:'EUR',content_name:'Programme sur-mesure'})">🎯 Je veux mon programme — 79€</a>
+    <a href="https://buy.stripe.com/8x26oHas9f8n5o9cmh8Vi03" class="rf-btn rf-btn-primary" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:79,currency:'EUR',content_name:'Programme sur-mesure',content_ids:['programme-sur-mesure-8sem'],content_type:'product'})">🎯 Je veux mon programme — 79€</a>
     <p class="rf-note" style="text-align:center;">💳 Ou 3 × 26,33€ avec Klarna, au moment du paiement</p>
     <div class="sm-addon">🥗 <b>Tu veux aussi la nutrition ?</b> Programme + plan nutrition unique : <a href="https://buy.stripe.com/eVq6oH6bT0dteYJ2LH8Vi07" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:119,currency:'EUR',content_name:'Programme sur-mesure + nutrition'})">119€ →</a></div>
     <p class="rf-note" style="text-align:center;">Sans suivi mensuel. Une question avant de commander ? <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%2C%20j%27ai%20une%20question%20sur%20le%20programme%20sur-mesure%20%C3%A0%2079%E2%82%AC" target="_blank" rel="noopener" style="color:var(--rf-terra);font-weight:600;">Écris-moi sur WhatsApp</a></p>
@@ -333,6 +333,7 @@ if (!isWebView && 'IntersectionObserver' in window) {
 }
 </script>
 
+<script>if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:79,currency:'EUR',content_name:'Programme sur-mesure',content_ids:['programme-sur-mesure-8sem'],content_type:'product'});</script>
 <!-- Meta Pixel Events -->
 <script>
 (function() {
@@ -343,9 +344,7 @@ if (!isWebView && 'IntersectionObserver' in window) {
     if (!a || typeof fbq === "undefined") return;
     var href = a.href || "";
     /* WhatsApp « Contact » : géré une seule fois par suivi-clics.js */
-    if (href.indexOf("buy.stripe.com") !== -1) {
-      fbq("track", "InitiateCheckout");
-    }
+    /* InitiateCheckout : déjà envoyé par chaque bouton Stripe (avec content_ids), pas de doublon ici */
   });
 })();
 </script>

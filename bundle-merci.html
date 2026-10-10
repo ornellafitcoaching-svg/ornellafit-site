@@ -16,6 +16,12 @@ button{width:100%;margin-top:12px;font-size:16px;font-weight:700;padding:15px;bo
 .err{color:#B4503F;font-size:14px;margin-top:10px;min-height:20px}
 a{color:#C0574A}
 </style>
+<!-- Meta Pixel + achat (Purchase) — compté 1 seule fois, uniquement au retour de Stripe -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1233548507794099");</script>
+<script>(function(){try{var q=new URLSearchParams(location.search),sid=q.get('session_id')||'',fromStripe=/stripe\.com/.test(document.referrer)||!!sid||q.get('achat')==='1',k='ofc_purchase_bundle-booty-ventre'+(sid?'_'+sid:'');
+fbq('track','PageView');
+if(fromStripe&&!localStorage.getItem(k)){fbq('track','Purchase',{value:25,currency:'EUR',content_name:'Bundle Booty Sculpt + Ventre Plat',content_ids:['bundle-booty-ventre'],content_type:'product'},sid?{eventID:sid}:undefined);localStorage.setItem(k,'1');
+(window.dataLayer=window.dataLayer||[]).push({event:'purchase',ecommerce:{transaction_id:sid||undefined,value:25,currency:'EUR',items:[{item_id:'bundle-booty-ventre',item_name:'Bundle Booty Sculpt + Ventre Plat',price:25,quantity:1}]}});}}catch(e){}})();</script>
 </head>
 <body>
 <div class="box" id="box">
