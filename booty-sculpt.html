@@ -209,27 +209,40 @@ footer a:hover{color:var(--accent)}
   <a href="offres.html" class="nav-link">Voir les offres →</a>
 </nav>
 
+<style>
+/* Vidéos (js/videos.js) : taille réservée = zéro décalage, jamais > 70 % de l'écran */
+.vid{--vid-max:340px;--vid-r:.5625;position:relative;overflow:hidden;border-radius:20px;background:#EFE6DF;box-shadow:0 12px 32px rgba(44,31,26,.14);aspect-ratio:9/16;width:min(100%,var(--vid-max),calc(70vh*var(--vid-r)));margin:0 auto}
+@supports (height:1svh){.vid{width:min(100%,var(--vid-max),calc(70svh*var(--vid-r)))}}
+.vid--1x1{aspect-ratio:1/1;--vid-r:1}
+.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* HERO : titre → vidéo → achat (mobile) · texte + vidéo | achat (ordi) */
+.bs-video{margin:4px 0 24px}
+.bs-video .vid{--vid-max:380px}
+@media(min-width:761px){
+  .hero-inner.bs-grid{align-items:start;grid-template-rows:auto auto 1fr;row-gap:0}
+  .bs-grid .bs-before,.bs-grid .bs-video,.bs-grid .bs-after{grid-column:1}
+  .bs-grid .form-box{grid-column:2;grid-row:1/4}
+}
+@media(max-width:760px){
+  .hero-inner.bs-grid{gap:0}
+  .bs-video .vid{--vid-max:340px}
+  .bs-grid .form-box{position:static!important}
+  .bs-after{margin-top:32px}
+}
+</style>
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-inner wrap">
-    <div>
+  <div class="hero-inner wrap bs-grid">
+    <div class="bs-before">
       <div class="hero-eyebrow"><span></span>✨ Disponible maintenant · 19€ lancement</div>
       <p class="hero-problem">Tu fais du sport régulièrement… mais tes fessiers restent plats, sans galbe, et rien ne semble changer ?</p>
       <h1>La méthode pour des fessiers <em>plus ronds et galbés</em> — même si tu n'as jamais vu de résultats avant</h1>
-      <p class="hero-lead">8 semaines de programme progressif, 12 séances guidées avec démonstrations vidéo, conseils nutrition ciblés — zéro matériel, depuis chez toi. Résultats visibles dès la semaine 3.</p>
-      <ul class="hero-benefits">
-        <li>8 semaines de programme progressif · 12 séances guidées</li>
-        <li>Démonstrations vidéo pour chaque exercice</li>
-        <li>Conseils nutrition pour soutenir la croissance musculaire</li>
-        <li>Bonus : guide "Les 9 erreurs qui t'empêchent d'évoluer"</li>
-        <li>📲 Mini-appli gratuite — installe le programme sur ton iPhone en 30 sec</li>
-        <li>Zéro matériel · À domicile · Accès à vie</li>
-      </ul>
-      <div style="margin-top:24px;border-radius:20px;overflow:hidden;box-shadow:0 12px 40px rgba(44,31,26,.15)">
-        <img src="BOOTY-SCULPT-1080.png" alt="Booty Sculpt 2026 — Programme Ornella Fit Coaching" style="width:100%;display:block;height:auto;" width="1080" height="1080">
+    </div>
+    <div class="bs-video">
+      <div class="vid">
+        <video muted playsinline loop preload="none" aria-hidden="true" poster="images/video/site_booty_sculpt_poster.jpg" data-src="images/video/site_booty_sculpt.mp4"></video>
       </div>
     </div>
-
     <div class="form-box" id="achat" style="position:sticky;top:80px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border);">
         <img src="images/ornella-profil-studio.webp" alt="Ornella" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0;" width="1023" height="1537" loading="lazy">
@@ -273,6 +286,22 @@ footer a:hover{color:var(--accent)}
         <p>✅ Redirection en cours...</p>
       </div>
     </div>
+
+    <div class="bs-after">
+      <p class="hero-lead">8 semaines de programme progressif, 12 séances guidées avec démonstrations vidéo, conseils nutrition ciblés — zéro matériel, depuis chez toi. Résultats visibles dès la semaine 3.</p>
+      <ul class="hero-benefits">
+        <li>8 semaines de programme progressif · 12 séances guidées</li>
+        <li>Démonstrations vidéo pour chaque exercice</li>
+        <li>Conseils nutrition pour soutenir la croissance musculaire</li>
+        <li>Bonus : guide "Les 9 erreurs qui t'empêchent d'évoluer"</li>
+        <li>📲 Mini-appli gratuite — installe le programme sur ton iPhone en 30 sec</li>
+        <li>Zéro matériel · À domicile · Accès à vie</li>
+      </ul>
+      <div style="margin-top:24px;border-radius:20px;overflow:hidden;box-shadow:0 12px 40px rgba(44,31,26,.15)">
+        <img src="BOOTY-SCULPT-1080.png" alt="Booty Sculpt 2026 — Programme Ornella Fit Coaching" style="width:100%;display:block;height:auto;" width="1080" height="1080">
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -796,5 +825,6 @@ document.querySelectorAll('.faq-q').forEach(q => {
 <script src="sticky-achat.js" defer data-prix="19€" data-sous="8 semaines · 12 vidéos · accès à vie" data-bouton="Je commence" data-lien="#achat"></script>
 <script src="data/temoignages.js" defer></script>
 <script src="avis-carrousel.js" defer></script>
+<script src="js/videos.js" defer></script>
 </body>
 </html>

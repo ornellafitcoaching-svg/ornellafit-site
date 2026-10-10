@@ -237,12 +237,37 @@ footer a{color:rgba(255,255,255,.3);}
   <a class="sticky-cta" href="https://buy.stripe.com/00wfZhcAhaS76sdfyt8Vi0d" target="_blank">Je l'achète — 17€ →</a>
 </div>
 
+<style>
+/* Vidéos (js/videos.js) : taille réservée = zéro décalage, jamais > 70 % de l'écran */
+.vid{--vid-max:340px;--vid-r:.5625;position:relative;overflow:hidden;border-radius:20px;background:#EFE6DF;box-shadow:0 12px 32px rgba(44,31,26,.14);aspect-ratio:9/16;width:min(100%,var(--vid-max),calc(70vh*var(--vid-r)));margin:0 auto}
+@supports (height:1svh){.vid{width:min(100%,var(--vid-max),calc(70svh*var(--vid-r)))}}
+.vid--1x1{aspect-ratio:1/1;--vid-r:1}
+.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* HERO : titre → vidéo → achat (mobile) · texte | vidéo (ordi) */
+.pp-hero{position:relative}
+.pp-video{margin:0 0 32px}
+@media(min-width:861px){
+  .wrap.pp-hero{max-width:960px;display:grid;grid-template-columns:minmax(0,1fr) 380px;grid-template-rows:auto 1fr;column-gap:48px}
+  .pp-before{grid-column:1;grid-row:1}
+  .pp-after{grid-column:1;grid-row:2}
+  .pp-video{grid-column:2;grid-row:1/3;align-self:start;margin:0}
+  .pp-video .vid{--vid-max:380px}
+}
+</style>
 <!-- HERO -->
 <div class="hero">
-  <div class="wrap">
+  <div class="wrap pp-hero">
+    <div class="pp-before">
     <div class="hero-eyebrow">Programme digital post-partum</div>
     <h1>Ton ventre après bébé<br>te ressemble <em>encore</em>.</h1>
     <p class="hero-hook">Tu as accouché et tu ne reconnais plus ce ventre. Tu veux reprendre le sport mais tu ne sais pas par où commencer — sans te blesser, sans aggraver la diastase, sans t'épuiser. <strong>Ce programme est fait exactement pour toi.</strong></p>
+    </div>
+    <div class="pp-video">
+      <div class="vid">
+        <video muted playsinline loop preload="none" aria-hidden="true" poster="images/video/site_postpartum_poster.jpg" data-src="images/video/site_postpartum.mp4"></video>
+      </div>
+    </div>
+    <div class="pp-after">
     <div class="hero-pills">
       <span class="hero-pill">🤱 Allaitement OK</span>
       <span class="hero-pill">🏠 À la maison</span>
@@ -263,6 +288,7 @@ footer a{color:rgba(255,255,255,.3);}
       </form>
       <div class="ofc-preuve" data-ordre="ornella,maria,lise,lucie,emeline,louise" data-theme="dark" style="margin:16px 0 0"></div>
       <p class="hero-reassure">Paiement sécurisé · Ton email reste confidentiel</p>
+    </div>
     </div>
   </div>
 </div>
@@ -598,5 +624,6 @@ async function submitLead(e){
 <script defer src="/suivi-clics.js"></script>
 <script src="data/temoignages.js" defer></script>
 <script src="avis-carrousel.js" defer></script>
+<script src="js/videos.js" defer></script>
 </body>
 </html>

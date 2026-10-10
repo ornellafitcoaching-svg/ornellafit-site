@@ -821,6 +821,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .rf-carou-hint{display:none;}
 @media(max-width:820px){.rf-carou-hint{display:block;text-align:center;font-size:.76rem;color:var(--rf-mute);margin:-6px 0 0;}}
 </style>
+<style>
+/* Vidéos (js/videos.js) : taille réservée = zéro décalage, jamais > 70 % de l'écran */
+.vid{--vid-max:340px;--vid-r:.5625;position:relative;overflow:hidden;border-radius:20px;background:#EFE6DF;box-shadow:0 12px 32px rgba(44,31,26,.14);aspect-ratio:9/16;width:min(100%,var(--vid-max),calc(70vh*var(--vid-r)));margin:0 auto}
+@supports (height:1svh){.vid{width:min(100%,var(--vid-max),calc(70svh*var(--vid-r)))}}
+.vid--1x1{aspect-ratio:1/1;--vid-r:1}
+.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* COMMENT ÇA MARCHE */
+.rf-how-grid{display:grid;gap:28px;max-width:940px;margin:0 auto;align-items:center}
+.rf-how-grid .vid{--vid-max:420px}
+.rf-how-steps{list-style:none;margin:0 auto;padding:0;display:grid;gap:12px;max-width:420px;width:100%}
+.rf-how-steps li{display:flex;gap:14px;align-items:baseline;background:var(--rf-paper);border:1px solid var(--rf-line);border-radius:14px;padding:14px 16px}
+.rf-how-steps b{font:800 1.05rem/1 'DM Sans',sans-serif;color:var(--rf-terra);min-width:1.1em}
+.rf-how-steps span{font-size:.92rem;line-height:1.5;color:var(--rf-ink2)}
+.rf-how-steps strong{color:var(--rf-ink)}
+@media(min-width:860px){.rf-how-grid{grid-template-columns:420px 1fr;gap:52px}}
+/* AVIS : vidéo + titre (2 colonnes sur ordi) */
+.rf-avis-intro{display:grid;gap:26px;max-width:940px;margin:0 auto;padding:0 20px;align-items:center}
+.rf-avis-intro .vid{--vid-max:360px}
+.rf-avis-txt{order:-1;text-align:center}
+.rf-avis-g{display:inline-flex;align-items:center;gap:8px;margin-top:6px;font-size:.88rem;color:var(--rf-ink2)}
+.rf-avis-g .st{color:#E0A526;letter-spacing:1px}
+@media(min-width:860px){.rf-avis-intro{grid-template-columns:360px 1fr;gap:56px}.rf-avis-txt{order:0;text-align:left}}
+</style>
+
+<!-- ===================== COMMENT ÇA MARCHE (avant les prix) ===================== -->
+<section class="rf-sec" id="comment-ca-marche" style="background:var(--rf-cream2);">
+  <div class="rf-wrap">
+    <div style="text-align:center;max-width:620px;margin:0 auto 34px;">
+      <span class="rf-eyebrow">Comment ça marche</span>
+      <h2 class="rf-h2" style="margin-top:.3em;">4 étapes, <em>zéro improvisation</em></h2>
+    </div>
+    <div class="rf-how-grid">
+      <div class="vid vid--1x1">
+        <video muted playsinline loop preload="none" aria-hidden="true" poster="images/video/site_methode_poster.jpg" data-src="images/video/site_methode.mp4"></video>
+      </div>
+      <ol class="rf-how-steps">
+        <li><b>1</b><span><strong>Bilan</strong> — on fait le point sur ton corps, ton rythme et tes objectifs.</span></li>
+        <li><b>2</b><span><strong>Programme</strong> — je construis ton plan, rien que pour toi.</span></li>
+        <li><b>3</b><span><strong>Suivi</strong> — je te corrige, je te motive, j'ajuste au fil des semaines.</span></li>
+        <li><b>4</b><span><strong>Progrès</strong> — bilans réguliers&nbsp;: tu vois tes résultats.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="rf-sec" id="formules" style="background:var(--rf-paper);">
   <div class="rf-wrap">
     <div style="text-align:center;max-width:660px;margin:0 auto 44px;">
@@ -1406,7 +1451,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div style="display:flex;justify-content:center;margin:16px 0 4px;">
             <figure style="margin:0;max-width:300px;width:100%;">
-              <video src="images/seance-domicile.mp4" poster="images/seance-domicile-poster.jpg" autoplay muted loop playsinline preload="metadata" style="width:100%;height:auto;border-radius:16px;display:block;box-shadow:0 14px 34px rgba(192,87,74,.18);"></video>
+              <div class="vid" style="--vid-max:300px;--vid-r:.879;aspect-ratio:494/562;border-radius:16px;box-shadow:0 14px 34px rgba(192,87,74,.18);"><video muted playsinline loop preload="none" aria-hidden="true" poster="images/seance-domicile-poster.jpg" data-src="images/seance-domicile.mp4"></video></div>
               <figcaption style="text-align:center;font-size:.8rem;color:var(--rf-mute);margin-top:8px;font-style:italic;">Une vraie séance à domicile — je corrige, j'ajuste, je motive.</figcaption>
             </figure>
           </div>
@@ -1627,8 +1672,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- PREUVE SOCIALE (carrousel avant/après) -->
-<section id="avis-photos" style="background:var(--rf-cream)">
-  <div class="ofc-avis" data-ordre="lucie,emeline,chantal,anonyme,ornella" data-titre="Elles ont choisi un accompagnement. Voilà le résultat."></div>
+<section id="avis-photos" style="background:var(--rf-cream);padding-top:clamp(44px,7vw,72px)">
+  <div class="rf-avis-intro">
+    <div class="vid">
+      <video muted playsinline loop preload="none" aria-hidden="true" poster="images/video/site_avis_clientes_poster.jpg" data-src="images/video/site_avis_clientes.mp4"></video>
+    </div>
+    <div class="rf-avis-txt">
+      <span class="rf-eyebrow">Résultats réels · Photos non retouchées</span>
+      <h2 class="rf-h2" style="margin-top:.3em;">Elles ont choisi un accompagnement. <em>Voilà le résultat.</em></h2>
+      <div class="rf-avis-g"><span class="st">★★★★★</span><span><b>5,0/5</b> · 25 avis Google</span></div>
+    </div>
+  </div>
+  <div class="ofc-avis" data-tete="non" data-ordre="lucie,emeline,chantal,anonyme,ornella" style="padding-top:28px"></div>
 </section>
 
 <!-- ===================== SECTION 6 — PREUVES ===================== -->
@@ -2153,5 +2208,6 @@ document.querySelectorAll('a.btn-offre, a.ohi-btn').forEach(function(btn) {
 <script defer src="/suivi-clics.js"></script>
 <script src="data/temoignages.js" defer></script>
 <script src="avis-carrousel.js" defer></script>
+<script src="js/videos.js" defer></script>
 </body>
 </html>
