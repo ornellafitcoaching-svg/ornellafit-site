@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Tarifs — Ornella Fit Coaching</title>
+<!-- Source de la brochure PDF (hors site). Générer : node scripts/tarifs-pdf/build.js -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--coral:#E8634A;--coral-d:#C9503A;--green:#1B3A2D;--green-l:#2D5A45;--cream:#F5EFE6;--cream2:#FBF7F1;--ink:#231A16;--ink2:#5B4A42;--mute:#8B7A71;--line:rgba(35,26,22,.12);}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:#fff;}
+body{font-family:'DM Sans',Arial,sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:10.5pt;line-height:1.45;}
+.page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;background:var(--cream2);padding:13mm 15mm 18mm;}
+.page:last-child{page-break-after:auto;}
+h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
+em{font-style:italic;color:var(--coral);}
+.eyebrow{font:800 7.5pt/1 'DM Sans',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);}
+.foot{position:absolute;left:16mm;right:16mm;bottom:9mm;display:flex;justify-content:space-between;font-size:7.5pt;color:var(--mute);border-top:1px solid var(--line);padding-top:3mm;}
+.foot b{color:var(--green);}
+a{color:inherit;text-decoration:none;}
+
+/* COUVERTURE */
+.cover{background:var(--green);color:#fff;padding:0;display:grid;grid-template-columns:1fr 1fr;}
+.cover-txt{padding:20mm 12mm 20mm 16mm;display:flex;flex-direction:column;}
+.cover-logo{background:#fff;border-radius:10px;padding:8px 12px;width:52mm;}
+.cover-logo img{width:100%;display:block;}
+.cover h1{font-size:34pt;line-height:1.05;font-weight:600;margin:20mm 0 6mm;}
+.cover h1 em{color:#F4A28F;}
+.cover .lead{font-size:11pt;color:rgba(255,255,255,.82);line-height:1.6;max-width:80mm;}
+.cover-badges{margin-top:auto;display:flex;flex-direction:column;gap:3mm;font-size:9pt;color:rgba(255,255,255,.9);}
+.cover-badges span::before{content:'✦  ';color:#F4A28F;}
+.cover-photo{position:relative;}
+.cover-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;}
+.cover-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--green) 0%,rgba(27,58,45,0) 28%);}
+.cover-date{position:absolute;right:10mm;bottom:10mm;z-index:2;background:rgba(255,255,255,.94);color:var(--green);font:700 8pt/1 'DM Sans';padding:7px 12px;border-radius:50px;}
+
+/* SOMMAIRE 3 FORMULES (p.2) */
+.intro h2{font-size:24pt;line-height:1.1;font-weight:600;margin:3mm 0 3mm;}
+.intro p{color:var(--ink2);max-width:150mm;}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;margin-top:8mm;}
+.tcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:6mm 5mm;position:relative;}
+.tcard.feat{border:2px solid var(--coral);}
+.tcard .tag{position:absolute;top:-3.2mm;left:50%;transform:translateX(-50%);background:var(--coral);color:#fff;font:800 6.5pt/1 'DM Sans';letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:50px;white-space:nowrap;}
+.tcard .ico{font-size:18pt;}
+.tcard h3{font-size:14pt;margin:2mm 0 1mm;}
+.tcard .for{font-family:'Playfair Display';font-style:italic;color:var(--coral);font-size:9.5pt;line-height:1.35;min-height:13mm;}
+.tcard .from{font-family:'Playfair Display';font-size:20pt;font-weight:600;margin:3mm 0 1mm;}
+.tcard .from small{font:500 7.5pt 'DM Sans';color:var(--mute);}
+.tcard ul{list-style:none;margin-top:3mm;}
+.tcard li{font-size:8.5pt;color:var(--ink2);padding-left:4mm;position:relative;margin-bottom:1.5mm;}
+.tcard li::before{content:'✓';position:absolute;left:0;color:var(--coral);font-weight:800;}
+.tcard .proof{margin-top:3mm;padding-top:3mm;border-top:1px dashed var(--line);font-size:8pt;color:var(--green);font-weight:700;}
+.inclus{margin-top:8mm;background:var(--green);color:#fff;border-radius:14px;padding:6mm 7mm;}
+.inclus h3{font-size:13pt;margin-bottom:3mm;}
+.inclus-grid{display:grid;grid-template-columns:1fr 1fr;gap:2mm 8mm;font-size:9pt;color:rgba(255,255,255,.88);}
+.inclus-grid span::before{content:'✓  ';color:#F4A28F;font-weight:800;}
+
+/* PAGES FORMULE */
+.fhead{display:flex;justify-content:space-between;align-items:flex-end;gap:6mm;border-bottom:2px solid var(--green);padding-bottom:3.5mm;margin-bottom:5mm;}
+.fhead h2{font-size:26pt;line-height:1;font-weight:600;margin-top:2mm;}
+.fhead .sub{color:var(--ink2);font-size:9.5pt;margin-top:2mm;}
+.fhead .big{white-space:nowrap;text-align:right;font-family:'Playfair Display';font-size:24pt;font-weight:600;color:var(--coral);line-height:1;}
+.fhead .big small{display:block;font:500 8pt 'DM Sans';color:var(--mute);margin-top:1.5mm;}
+.cols{display:grid;grid-template-columns:1.35fr 1fr;gap:7mm;}
+.box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:4mm 4.5mm;margin-bottom:4mm;}
+.box h4{font:800 7.5pt/1 'DM Sans';letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:3mm;}
+table{width:100%;border-collapse:collapse;font-size:9pt;}
+th{font:800 7pt 'DM Sans';text-transform:uppercase;letter-spacing:.06em;color:var(--mute);text-align:right;padding:0 0 2mm;}
+th:first-child{text-align:left;}
+td{padding:1.7mm 0;border-top:1px solid var(--line);text-align:right;white-space:nowrap;}
+td:first-child{text-align:left;white-space:normal;}
+td .p{font-family:'Playfair Display';font-size:13pt;font-weight:600;}
+td .u{font-size:7pt;color:var(--mute);}
+td .n{font-weight:700;}
+td .d{display:block;font-size:7.5pt;color:var(--mute);}
+th.reco,td.reco{background:rgba(232,99,74,.07);padding-left:2mm;padding-right:2mm;}
+td.reco .p{color:var(--coral);}
+.packs{display:grid;grid-template-columns:repeat(5,1fr);gap:1.8mm;}
+.pk{background:var(--cream2);border:1px solid var(--line);border-radius:9px;padding:2.2mm 1.5mm;text-align:center;display:flex;flex-direction:column;gap:.8mm;}
+.pk.hl{border-color:var(--coral);background:#FFF5F1;}
+.pn{font:800 6.8pt/1.2 'DM Sans';text-transform:uppercase;letter-spacing:.04em;color:var(--ink2);}
+.pp{font-family:'Playfair Display';font-weight:600;font-size:12.5pt;white-space:nowrap;}
+.pu{font-size:6.5pt;color:var(--mute);line-height:1.3;}
+.note{font-size:7.8pt;color:var(--mute);margin-top:2mm;line-height:1.45;}
+.check{list-style:none;}
+.check li{font-size:8.8pt;color:var(--ink2);padding-left:5mm;position:relative;margin-bottom:1.4mm;}
+.check li::before{content:'✓';position:absolute;left:0;color:var(--coral);font-weight:800;}
+.boost{border-left:3px solid var(--green-l);background:rgba(45,90,69,.06);border-radius:0 10px 10px 0;padding:2.6mm 3.5mm;margin-bottom:2.5mm;}
+.boost b{color:var(--green);}
+.boost .bp{float:right;font-family:'Playfair Display';font-weight:600;font-size:11pt;color:var(--ink);}
+.boost p{font-size:8.5pt;color:var(--ink2);margin-top:1mm;clear:both;}
+.gift{background:var(--green);color:#fff;border-radius:12px;padding:4mm 5mm;font-size:8.8pt;}
+.gift b{color:#F4A28F;}
+.safe{background:rgba(45,90,69,.08);border:1px solid rgba(45,90,69,.2);border-radius:12px;padding:3mm 4mm;font-size:8.3pt;color:var(--ink2);margin-top:3.5mm;}
+.safe b{color:var(--green);}
+
+/* TRANSFO */
+.transfo{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+.transfo img{width:100%;aspect-ratio:5/4;object-fit:cover;display:block;}
+.transfo .tb{padding:4mm 4.5mm 5mm;}
+.transfo .k{font:800 6.8pt/1 'DM Sans';letter-spacing:.16em;text-transform:uppercase;color:var(--coral);}
+.transfo .nm{font-family:'Playfair Display';font-size:15pt;font-weight:600;margin:1.5mm 0 .5mm;}
+.transfo .ctx{font-size:8pt;color:var(--mute);}
+.stats{display:flex;gap:2mm;margin:3mm 0;}
+.stat{flex:1;background:var(--cream);border-radius:8px;padding:2.2mm 1mm;text-align:center;}
+.stat b{display:block;font-family:'Playfair Display';font-size:13pt;color:var(--green);}
+.stat span{font-size:6.8pt;color:var(--ink2);text-transform:uppercase;letter-spacing:.04em;}
+.stat.acc{background:var(--coral);}
+.stat.acc b,.stat.acc span{color:#fff;}
+.transfo .story{font-size:8.3pt;color:var(--ink2);line-height:1.5;}
+.transfo .ok{font-size:7pt;color:var(--mute);margin-top:2mm;font-style:italic;}
+
+/* DERNIÈRE PAGE */
+.start h2{font-size:26pt;font-weight:600;line-height:1.1;margin:3mm 0 6mm;}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:6mm;}
+.try{background:#fff;border:1px solid var(--line);border-radius:14px;padding:6mm;}
+.try.feat{border:2px solid var(--coral);}
+.try .q{font-size:8.5pt;font-weight:700;color:var(--coral);}
+.try h3{font-size:14pt;margin:1.5mm 0 2mm;}
+.try .pr{font-family:'Playfair Display';font-size:26pt;font-weight:600;}
+.try p{font-size:9pt;color:var(--ink2);}
+.try .ded{color:var(--green);font-weight:700;font-size:8.5pt;margin-top:2mm;}
+.contact{margin-top:10mm;display:grid;grid-template-columns:1fr auto;gap:8mm;align-items:center;background:var(--green);color:#fff;border-radius:16px;padding:8mm 9mm;}
+.contact h3{font-size:18pt;font-weight:600;margin-bottom:2mm;}
+.contact h3 em{color:#F4A28F;}
+.contact p{color:rgba(255,255,255,.82);font-size:9.5pt;}
+.contact .lines{margin-top:4mm;display:flex;flex-direction:column;gap:1.5mm;font-size:9.5pt;}
+.contact .lines b{color:#F4A28F;display:inline-block;width:22mm;}
+.qr{background:#fff;border-radius:12px;padding:3mm;text-align:center;}
+.qr img{width:32mm;height:32mm;display:block;}
+.qr span{display:block;font:700 7pt 'DM Sans';color:var(--green);margin-top:1.5mm;}
+.legal{margin-top:6mm;font-size:7.5pt;color:var(--mute);line-height:1.55;}
+</style>
+</head>
+<body>
+
+<!-- ========== 1 · COUVERTURE ========== -->
+<section class="page cover">
+  <div class="cover-txt">
+    <div class="cover-logo"><img src="img/logo.png" alt="Ornella Fit Coaching"></div>
+    <h1>Tes formules<br>&amp; <em>tarifs</em></h1>
+    <p class="lead">Ventre, fessiers, perte de poids, post-partum&nbsp;: un programme construit pour ton corps, et une coach qui ne te lâche pas. Voici, en clair, comment on peut travailler ensemble — et les résultats de celles qui l'ont fait.</p>
+    <div class="cover-badges">
+      <span>Coach sportive diplômée d'État</span>
+      <span>Ancienne compétitrice fitness · spécialiste post-partum</span>
+      <span>Essonne (91) à domicile · partout en France à distance</span>
+      <span>5,0 ★ · 25 avis Google</span>
+    </div>
+  </div>
+  <div class="cover-photo">
+    <img src="img/ornella.jpg" alt="Ornella, coach sportive">
+    <span class="cover-date">Tarifs en vigueur · octobre 2026</span>
+  </div>
+</section>
+
+<!-- ========== 2 · LES 3 FORMULES ========== -->
+<section class="page">
+  <div class="intro">
+    <span class="eyebrow">Choisir mon accompagnement</span>
+    <h2>Trois façons de <em>travailler avec moi</em></h2>
+    <p>À la salle, tu paies un accès. Ici, tu paies un résultat. Chaque formule part d'un bilan et d'un programme construit pour toi — jamais un plan générique. Celle que je recommande le plus&nbsp;: l'<b>hybride</b>.</p>
+  </div>
+  <div class="trio">
+    <div class="tcard">
+      <div class="ico">🏠</div>
+      <h3>À domicile</h3>
+      <div class="for">« Je veux être accompagnée à chaque séance. »</div>
+      <div class="from">dès 260€ <small>/ mois</small></div>
+      <ul><li>Je viens chez toi avec tout le matériel</li><li>1, 2 ou 3 séances / semaine</li><li>Correction technique à chaque séance</li><li>Suivi WhatsApp entre les séances</li></ul>
+      <div class="proof">Résultat : Louise, −9 cm de tour de taille → p.3</div>
+    </div>
+    <div class="tcard feat">
+      <span class="tag">⭐ Le plus choisi</span>
+      <div class="ico">💫</div>
+      <h3>Présence + (hybride)</h3>
+      <div class="for">« Je veux progresser toute la semaine, pas seulement le jour où on s'entraîne ensemble. »</div>
+      <div class="from">149€ <small>/ mois</small></div>
+      <ul><li>1 rendez-vous en présentiel par mois</li><li>Programme vidéo sur-mesure, jusqu'à 5 entraînements guidés</li><li>Mis à jour toutes les 4 semaines</li><li>Suivi WhatsApp au quotidien</li></ul>
+      <div class="proof">Résultat : Lise, ventre et taille transformés → p.4</div>
+    </div>
+    <div class="tcard">
+      <div class="ico">💻</div>
+      <h3>À distance</h3>
+      <div class="for">« Je veux être accompagnée, où que je sois. »</div>
+      <div class="from">dès 79€</div>
+      <ul><li>Programme 100 % sur-mesure après bilan</li><li>Seul (79€) ou avec suivi (dès 89€/mois)</li><li>Vidéos de démonstration</li><li>Partout en France</li></ul>
+      <div class="proof">Résultat : Maria, −10 kg en 8 mois → p.5</div>
+    </div>
+  </div>
+  <div class="inclus">
+    <h3 class="serif">Inclus dans chaque accompagnement avec suivi</h3>
+    <div class="inclus-grid">
+      <span>Bilan personnalisé offert</span>
+      <span>Programme sur-mesure, jamais générique</span>
+      <span>Ton espace de suivi privé : séances, bilans, mensurations, photos</span>
+      <span>Suivi WhatsApp</span>
+      <span>Ajustements toutes les 4 semaines</span>
+      <span>Paiement sécurisé (SEPA / Stripe)</span>
+    </div>
+  </div>
+  <div class="foot"><span><b>Ornella Fit Coaching</b> · ornellafitcoaching.com</span><span>2</span></div>
+</section>
+
+<!-- ========== 3 · DOMICILE + LOUISE ========== -->
+<section class="page">
+  <div class="fhead">
+    <div><span class="eyebrow">Formule 1 · Présentiel Essonne (91)</span><h2>🏠 À domicile</h2><div class="sub">Abonnement mensuel ou pack · je viens avec tout le matériel · créneau fixe</div></div>
+    <div class="big">dès 260€<small>par mois</small></div>
+  </div>
+  <div class="cols">
+    <div>
+      <div class="box">
+        <h4>Abonnement mensuel — prix par mois</h4>
+        <table>
+          <tr><th>Rythme</th><th class="reco">3 mois ⭐</th><th>6 mois</th><th>Sans engagement</th></tr>
+          <tr><td><span class="n">1 séance / semaine</span><span class="d">4 séances / mois</span></td><td class="reco"><span class="p">260€</span></td><td><span class="p">240€</span></td><td><span class="p">280€</span></td></tr>
+          <tr><td><span class="n">2 séances / semaine</span><span class="d">8 séances / mois</span></td><td class="reco"><span class="p">480€</span></td><td><span class="p">440€</span></td><td><span class="p">500€</span></td></tr>
+          <tr><td><span class="n">3 séances / semaine</span><span class="d">12 séances / mois · progression la plus rapide</span></td><td class="reco"><span class="p">660€</span></td><td><span class="p">620€</span></td><td><span class="p">680€</span></td></tr>
+        </table>
+        <p class="note">⭐ 3 mois : le parcours recommandé. 6 mois : le tarif le plus avantageux <b>+ 89€ de cadeaux</b>. Possible à domicile, en salle ON AIR Fitness (proche de mon secteur) ou les deux.</p>
+      </div>
+      <div class="box">
+        <h4>Pour accélérer tes résultats (en plus de l'abonnement)</h4>
+        <div class="boost"><b>⚡ Boost Programme</b><span class="bp">+39€ / mois</span><p>Un programme vidéo sur-mesure pour les jours sans moi, construit sur nos séances. Jusqu'à 4 à 5 entraînements par semaine au total. 29€/mois en parcours 6 mois · 49€/mois sans engagement.</p></div>
+        <div class="boost"><b>🥗 Boost Nutrition</b><span class="bp">+40€ / mois</span><p>Ton assiette travaille avec tes séances : repas sur mesure + liste de courses, sans régime ni pesée, ajusté chaque mois selon tes mensurations. Conseils pratiques, je ne suis pas diététicienne.</p></div>
+      </div>
+      <div class="box">
+        <h4>Sans abonnement : séance ou pack</h4>
+        <div class="packs">
+          <div class="pk hl"><span class="pn">Séance d'essai</span><span class="pp">50€</span><span class="pu">déduite si tu continues*</span></div>
+          <div class="pk"><span class="pn">À l'unité</span><span class="pp">70€</span><span class="pu">ponctuel</span></div>
+          <div class="pk"><span class="pn">Pack 6</span><span class="pp">390€</span><span class="pu">65€/séance · 4 mois</span></div>
+          <div class="pk"><span class="pn">Pack 10</span><span class="pp">650€</span><span class="pu">65€/séance · 4 mois · 🎁 mini-plan nutrition</span></div>
+          <div class="pk"><span class="pn">Pack 20</span><span class="pp">1 300€</span><span class="pu">65€/séance · 5 mois</span></div>
+        </div>
+        <p class="note">*Essai déduit si tu continues en parcours 3 mois ou pack de 6 séances. Validité des packs à partir de la date d'achat · payables en 1× ou mensualisés · sans créneau fixe.</p>
+      </div>
+    </div>
+    <div>
+      <div class="transfo">
+        <img src="img/louise.jpg" alt="Avant / après de Louise">
+        <div class="tb">
+          <span class="k">Transformation · à domicile</span>
+          <div class="nm">Louise</div>
+          <div class="ctx">Maman de 2 enfants · 2 séances / semaine</div>
+          <div class="stats"><div class="stat acc"><b>−9 cm</b><span>tour de taille</span></div><div class="stat"><b>−5 kg</b><span>poids</span></div><div class="stat"><b>9 mois</b><span>de suivi</span></div></div>
+          <p class="story">Une vraie envie de reprendre le contrôle de son corps, sans se priver ni s'épuiser. Programme sur-mesure, 2 séances par semaine chez elle, adapté à sa vie réelle. Dos redessiné, silhouette transformée.</p>
+          <p class="ok">Résultat réel, photo publiée avec son accord. Chaque histoire est différente.</p>
+        </div>
+      </div>
+      <div class="safe"><b>Tu t'engages sans risque.</b> Arrêt possible à tout moment (préavis 15 j), rien à régulariser en cas de blessure, grossesse ou déménagement (sur justificatif). Paiement SEPA sécurisé.</div>
+      <div class="safe"><b>📍 Hors de mon secteur&nbsp;?</b> Certaines communes du 92 et de l'ouest francilien peuvent être desservies sur devis personnalisé — l'hybride est souvent la formule la plus adaptée.</div>
+    </div>
+  </div>
+  <div class="foot"><span><b>Ornella Fit Coaching</b> · Conditions complètes : ornellafitcoaching.com/cgv.html</span><span>3</span></div>
+</section>
+
+<!-- ========== 4 · HYBRIDE + LISE ========== -->
+<section class="page">
+  <div class="fhead">
+    <div><span class="eyebrow">Formule 2 · ⭐ La plus choisie</span><h2>💫 Présence + <span style="font-size:15pt;color:var(--mute);font-style:italic;">l'hybride</span></h2><div class="sub">1 rendez-vous en présentiel par mois + programme sur-mesure + suivi toute la semaine · Essonne</div></div>
+    <div class="big">149€<small>par mois · moins de 5€ / jour</small></div>
+  </div>
+  <div class="cols">
+    <div>
+      <div class="box">
+        <h4>Le principe, en clair</h4>
+        <ul class="check">
+          <li><b>Avec moi, en présentiel&nbsp;:</b> ton rendez-vous mensuel — on s'entraîne ensemble, je te corrige et j'ajuste ton programme.</li>
+          <li><b>Entre nos rendez-vous&nbsp;:</b> tu continues seule avec un programme sur-mesure et interactif, guidé en vidéo.</li>
+          <li><b>Résultat&nbsp;:</b> tu t'entraînes toute la semaine, pas seulement le jour du coaching — et tu n'es jamais livrée à toi-même.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h4>Ce qui est inclus</h4>
+        <ul class="check">
+          <li>Ton rendez-vous mensuel avec moi, à domicile dans l'Essonne (ou en salle ON AIR Fitness proche de mon secteur)</li>
+          <li>Jusqu'à 5 entraînements guidés par semaine à faire seule (vidéos + chrono)</li>
+          <li>Programme 100 % sur-mesure, réactualisé toutes les 4 semaines</li>
+          <li>Ton espace coaché personnel : programme, bilans, mensurations</li>
+          <li>Suivi WhatsApp entre nos rendez-vous</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h4>Tarif selon ton parcours</h4>
+        <table>
+          <tr><th>Parcours</th><th>Prix / mois</th></tr>
+          <tr><td class="reco"><span class="n">Parcours 3 mois ⭐ recommandé</span></td><td class="reco"><span class="p">149€</span></td></tr>
+          <tr><td><span class="n">Parcours 6 mois</span><span class="d">même tarif mensuel + 89€ de cadeaux</span></td><td><span class="p">149€</span></td></tr>
+          <tr><td><span class="n">Sans engagement</span><span class="d">plus de souplesse</span></td><td><span class="p">169€</span></td></tr>
+        </table>
+        <p class="note">Tu souhaites 2 séances en présentiel par mois&nbsp;? C'est possible, sur devis personnalisé.</p>
+        <div class="boost" style="margin-top:3mm;margin-bottom:0;"><b>🥗 Boost Nutrition</b><span class="bp">+40€ / mois</span><p>Pour accélérer tes résultats : repas sur mesure + liste de courses, ajusté chaque mois.</p></div>
+      </div>
+    </div>
+    <div>
+      <div class="transfo">
+        <img src="img/lise.jpg" alt="Avant / après de Lise">
+        <div class="tb">
+          <span class="k">Transformation · à distance puis hybride</span>
+          <div class="nm">Lise</div>
+          <div class="ctx">Programme sur-mesure · suivi WhatsApp</div>
+          <div class="stats"><div class="stat acc"><b>Ventre</b><span>affiné</span></div><div class="stat"><b>Taille</b><span>redessinée</span></div><div class="stat"><b>6 mois</b><span>de suivi</span></div></div>
+          <p class="story">Lise s'entraînait déjà mais stagnait : beaucoup d'efforts, peu de changements visibles. On a tout restructuré ensemble — un programme réellement progressif, ajusté à chaque bilan, sans régime extrême. Et elle continue.</p>
+          <p class="ok">Résultat réel, photo publiée avec son accord.</p>
+        </div>
+      </div>
+      <div class="gift" style="margin-top:4mm;"><b>🎁 Parcours 6 mois : 89€ de cadeaux</b><br>✓ Fit Dans Ta Vie, ma méthode 28 jours (valeur 49€)<br>✓ Ton 1er mois de Boost Nutrition offert (valeur 40€)</div>
+      <div class="safe"><b>Tu t'engages sans risque.</b> Arrêt possible à tout moment (préavis 15 j), rien à régulariser en cas de blessure, grossesse ou déménagement (sur justificatif).</div>
+    </div>
+  </div>
+  <div class="foot"><span><b>Ornella Fit Coaching</b> · Conditions complètes : ornellafitcoaching.com/cgv.html</span><span>4</span></div>
+</section>
+
+<!-- ========== 5 · DISTANCE + MARIA ========== -->
+<section class="page">
+  <div class="fhead">
+    <div><span class="eyebrow">Formule 3 · Partout en France</span><h2>💻 À distance</h2><div class="sub">Programme 100 % sur-mesure après bilan · à domicile ou en salle · selon ton niveau et tes contraintes</div></div>
+    <div class="big">dès 79€<small>programme seul</small></div>
+  </div>
+  <div class="cols">
+    <div>
+      <div class="box">
+        <h4>A · Programme seul — tu deviens autonome</h4>
+        <table>
+          <tr><td><span class="n">Programme sur-mesure 8 semaines</span><span class="d">Créé après bilan · vidéos de démo · jusqu'à 4 séances/sem · livré sous 5-7 j · sans suivi ni ajustements mensuels</span></td><td><span class="p">79€</span><span class="d">paiement unique</span></td></tr>
+          <tr><td><span class="n">+ Nutrition</span><span class="d">plan unique</span></td><td><span class="p">119€</span><span class="d">au lieu de 79€</span></td></tr>
+        </table>
+        <p class="note">💳 Paiement en 3× via Klarna — soit 3 × 26,33€ (programme 79€).</p>
+      </div>
+      <div class="box">
+        <h4>B · Avec suivi — je t'accompagne et j'adapte dans le temps</h4>
+        <table>
+          <tr><th>Parcours</th><th>Prix / mois</th></tr>
+          <tr><td class="reco"><span class="n">Parcours 3 mois ⭐ recommandé</span></td><td class="reco"><span class="p">99€</span></td></tr>
+          <tr><td><span class="n">Parcours 6 mois</span><span class="d">10€ de moins par mois + 89€ de cadeaux</span></td><td><span class="p">89€</span></td></tr>
+          <tr><td><span class="n">Sans engagement</span></td><td><span class="p">119€</span></td></tr>
+        </table>
+        <p class="note">Programme évolutif + suivi WhatsApp + bilan toutes les 4 semaines.</p>
+        <div class="boost" style="margin-top:3mm;margin-bottom:0;"><b>🥗 Boost Nutrition</b><span class="bp">+40€ / mois</span><p>Ce que Maria a choisi : repas sur mesure + liste de courses, sans régime ni pesée, ajusté chaque mois. Résiliable avec 15 j de préavis. Conseils pratiques, je ne suis pas diététicienne.</p></div>
+      </div>
+      <div class="box" style="margin-bottom:0;">
+        <h4>Programme seul ou avec suivi&nbsp;?</h4>
+        <p style="font-size:8.8pt;color:var(--ink2);">Le programme seul te donne un plan sur-mesure. Le suivi te donne le plan <b>et</b> quelqu'un qui s'assure que tu l'appliques, que tu progresses, et qui l'ajuste chaque mois si tu stagnes.</p>
+      </div>
+    </div>
+    <div>
+      <div class="transfo">
+        <img src="img/maria.jpg" alt="Avant / après de Maria">
+        <div class="tb">
+          <span class="k">Transformation · 100 % à distance</span>
+          <div class="nm">Maria</div>
+          <div class="ctx">38 ans · maman de 2 enfants · suivi + Boost Nutrition</div>
+          <div class="stats"><div class="stat acc"><b>−10 kg</b><span>poids</span></div><div class="stat"><b>8 mois</b><span>de suivi</span></div><div class="stat"><b>100 %</b><span>à distance</span></div></div>
+          <p class="story">Deux enfants, peu de temps, et jamais une séance en face à face. Un programme construit pour elle, l'alimentation ajustée chaque mois, un suivi WhatsApp et un bilan régulier : ventre affiné, fessiers redessinés.</p>
+          <p class="ok">Résultat réel, photo publiée avec son accord.</p>
+        </div>
+      </div>
+      <div class="gift" style="margin-top:4mm;"><b>🎁 Parcours 6 mois : 89€ de cadeaux</b><br>✓ Fit Dans Ta Vie, ma méthode 28 jours (valeur 49€)<br>✓ Ton 1er mois de Boost Nutrition offert (valeur 40€)</div>
+    </div>
+  </div>
+  <div class="foot"><span><b>Ornella Fit Coaching</b> · Conditions complètes : ornellafitcoaching.com/cgv.html</span><span>5</span></div>
+</section>
+
+<!-- ========== 6 · COMMENCER ========== -->
+<section class="page start">
+  <span class="eyebrow">Pas encore décidée&nbsp;?</span>
+  <h2>Teste <em>avant</em> de t'engager</h2>
+  <div class="duo">
+    <div class="try">
+      <div class="q">🏡 Tu es en Essonne</div>
+      <h3>Séance d'essai à domicile</h3>
+      <div class="pr">50€</div>
+      <p>Je vois ton niveau, on pose les bases ensemble.</p>
+      <p class="ded">✓ Déduite si tu continues — parcours 3 mois ou pack de 6 séances</p>
+    </div>
+    <div class="try feat">
+      <div class="q">📞 Hors secteur, ou tu veux faire le point</div>
+      <h3>Consultation 45 min · visio ou téléphone</h3>
+      <div class="pr">49€</div>
+      <p>On trouve ce qui te bloque, tu repars avec ta feuille de route — à toi, que tu continues ou non.</p>
+      <p class="ded">✓ Déduite de ton 1er mois si tu continues en coaching 3 mois (toutes formules avec suivi)</p>
+    </div>
+  </div>
+
+  <div class="box" style="margin-top:7mm;">
+    <h4>Comment on démarre</h4>
+    <ul class="check">
+      <li><b>1. Tu m'écris sur WhatsApp</b> — on parle de toi, de tes objectifs, de ta vie réelle. Premier échange sans engagement.</li>
+      <li><b>2. Ton bilan personnalisé</b> — offert avec chaque accompagnement avec suivi.</li>
+      <li><b>3. Ton programme sur-mesure</b> — et on avance, ensemble, semaine après semaine.</li>
+    </ul>
+  </div>
+
+  <div class="contact">
+    <div>
+      <h3>Prête à <em>commencer&nbsp;?</em></h3>
+      <p>Scanne le QR code ou écris-moi directement : je te réponds rapidement.</p>
+      <div class="lines">
+        <a href="https://wa.me/33756834626"><b>WhatsApp</b>07 56 83 46 26</a>
+        <a href="https://www.ornellafitcoaching.com/offres.html"><b>Site</b>ornellafitcoaching.com</a>
+        <a href="https://www.instagram.com/coach.ornella"><b>Instagram</b>@coach.ornella</a>
+        <a href="mailto:ornellafit.coaching@gmail.com"><b>Email</b>ornellafit.coaching@gmail.com</a>
+      </div>
+    </div>
+    <a class="qr" href="https://wa.me/33756834626"><img src="img/qr-whatsapp.png" alt="QR code WhatsApp"><span>M'écrire sur WhatsApp</span></a>
+  </div>
+
+  <p class="legal">Tarifs en vigueur en octobre 2026, susceptibles d'évoluer. Les résultats présentés sont réels et varient d'une personne à l'autre selon l'engagement, le point de départ et l'hygiène de vie. Conditions générales de vente complètes (engagement, préavis, suspension, validité des packs) : ornellafitcoaching.com/cgv.html.</p>
+  <div class="foot"><span><b>Ornella Fit Coaching</b> · « Ton plus bel investissement, c'est toi. »</span><span>6</span></div>
+</section>
+
+</body>
+</html>
