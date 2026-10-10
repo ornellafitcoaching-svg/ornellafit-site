@@ -10,7 +10,7 @@
   var _a='via-proxy-securise',_b='',_c='';
   var BREVO_KEY=_a+_b+_c;
   var LIST_ID = 43;
-  var TEMPLATE_ID = 160;
+  var TEMPLATE_ID = 202; // v2 : email « Pas de chance » aligné sur le site (guide offert + WhatsApp)
   // Date affichée = aujourd'hui + 7 jours (urgence douce ; les codes ROUE* n'expirent pas côté Stripe)
   var EXPIRY_LABEL = (function(){ var d = new Date(Date.now() + 7*24*3600*1000); try { return d.toLocaleDateString('fr-FR', { day:'numeric', month:'long' }); } catch(e) { return d.getDate() + '/' + (d.getMonth()+1); } })();
 
