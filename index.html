@@ -2266,10 +2266,11 @@ function syncNavPosition() {
   if (navMenu) navMenu.style.top = (tbH + 64) + 'px';
   var hero = document.getElementById('hero');
   if (hero) {
-    // Dégage exactement sous la nav fixe (robuste que le top-bar soit dans le flux ou fixe)
-    var navBottom = nav.getBoundingClientRect().bottom;
-    var heroTop = hero.getBoundingClientRect().top;
-    hero.style.paddingTop = Math.max(16, Math.round(navBottom - heroTop + 14)) + 'px';
+    // IMPORTANT : formule indépendante du scroll (offsetHeight, pas getBoundingClientRect)
+    // — sinon un resize déclenché par la barre d'URL mobile pendant le défilement
+    // recalcule une marge énorme et la page « saute/remonte ». La nav est fixée sous
+    // le top-bar (lui-même dans le flux), donc on dégage simplement la hauteur de la nav.
+    hero.style.paddingTop = (nav.offsetHeight + 16) + 'px';
   }
 }
 document.addEventListener('DOMContentLoaded', syncNavPosition);
