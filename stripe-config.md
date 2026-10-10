@@ -25,8 +25,9 @@ ce qui garantit que l'achat est compté (et jamais deux fois).
 | Ageless Girl | 17€ | `https://www.ornellafitcoaching.com/ageless-girl-confirmation.html?session_id={CHECKOUT_SESSION_ID}` |
 | Ventre Plat Après Bébé | 17€ | `https://www.ornellafitcoaching.com/confirmation-postpartum.html?session_id={CHECKOUT_SESSION_ID}` |
 | Summer Body Challenge | 19€ | `https://www.ornellafitcoaching.com/summer-body-confirmation.html?session_id={CHECKOUT_SESSION_ID}` |
+| Guide Recettes Sculptantes | 7€ | `https://www.ornellafitcoaching.com/guide-recettes-sculptantes.html?session_id={CHECKOUT_SESSION_ID}` |
 
-Le Guide Recettes (7€) n'a pas encore de page de remerciement dédiée : son achat n'est pas compté dans Meta.
+Les pages d'accès sont protégées : elles attendent que le Pixel Meta soit chargé (1,5 s max) avant d'afficher le contenu débloqué, pour que l'achat parte bien.
 
 ## Vérifier
 

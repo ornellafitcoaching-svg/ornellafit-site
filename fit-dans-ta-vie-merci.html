@@ -20,7 +20,7 @@ a{color:#C0574A}
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1233548507794099");</script>
 <script>(function(){try{var q=new URLSearchParams(location.search),sid=q.get('session_id')||'',fromStripe=/stripe\.com/.test(document.referrer)||!!sid||q.get('achat')==='1',k='ofc_purchase_fit-dans-ta-vie-28j'+(sid?'_'+sid:'');
 fbq('track','PageView');
-if(fromStripe&&!localStorage.getItem(k)){fbq('track','Purchase',{value:49,currency:'EUR',content_name:'Fit Dans Ta Vie',content_ids:['fit-dans-ta-vie-28j'],content_type:'product'},sid?{eventID:sid}:undefined);localStorage.setItem(k,'1');
+if(fromStripe&&!localStorage.getItem(k)){fbq('track','Purchase',{value:49,currency:'EUR',content_name:'Fit Dans Ta Vie',content_ids:['fit-dans-ta-vie-28j'],content_type:'product'},sid?{eventID:sid}:undefined);localStorage.setItem(k,'1');window.__ofcAttendrePixel=Date.now();
 (window.dataLayer=window.dataLayer||[]).push({event:'purchase',ecommerce:{transaction_id:sid||undefined,value:49,currency:'EUR',items:[{item_id:'fit-dans-ta-vie-28j',item_name:'Fit Dans Ta Vie',price:49,quantity:1}]}});}}catch(e){}})();</script>
 </head>
 <body>
@@ -46,7 +46,7 @@ if(fromStripe&&!localStorage.getItem(k)){fbq('track','Purchase',{value:49,curren
       .then(function(buf){
         try{localStorage.setItem(KEY,String(code).trim().toUpperCase())}catch(e){}
         var html=new TextDecoder().decode(buf);
-        document.open();document.write(html);document.close();
+        (function ecrire(){var t=window.__ofcAttendrePixel;if(t&&!(window.fbq&&fbq.instance)&&Date.now()-t<1500)return setTimeout(ecrire,100);document.open();document.write(html);document.close();})();
         return true;
       });
   }
