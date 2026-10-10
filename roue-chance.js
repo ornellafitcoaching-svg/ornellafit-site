@@ -283,11 +283,16 @@
   var SCROLL_MIN_DELAY = 12000; // scroll : pas avant 12s
   var EXIT_MIN_DELAY = 6000;    // exit-intent : pas avant 6s (garde le rattrapage de celles qui partent)
 
+  var _rTick = false;
   window.addEventListener('scroll', function(){
-    if (shown) return;
+    if (shown || _rTick) return;
     if (Date.now() - startTime < SCROLL_MIN_DELAY) return;
-    var scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-    if (scrolled >= 0.55) openRoue();
+    _rTick = true;
+    requestAnimationFrame(function(){
+      _rTick = false;
+      var scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      if (scrolled >= 0.55) openRoue();
+    });
   }, { passive: true });
 
   document.addEventListener('mousemove', function(e){

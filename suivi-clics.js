@@ -3,6 +3,7 @@
    - Clic_Achat_<Produit>  : clic vers une page de paiement (Stripe / GoCardless)
    - Clic_Bilan            : clic vers Calendly (bilan gratuit)
    - Clic_WhatsApp         : clic vers WhatsApp (Clic_WhatsApp_Entreprise sur la page entreprise)
+                             + événement standard Meta « Contact » et GA4 « contact_whatsapp » (dataLayer)
    - Clic_Email / Clic_Tel : clic mailto / tel (suffixe _Entreprise sur la page entreprise)
    - Clic_Vers_<Page>      : clic vers une autre page du site (ex. Clic_Vers_BootySculpt, Clic_Vers_Offres)
    - Clic_Instagram        : clic vers Instagram
@@ -94,6 +95,10 @@
       // décommenter ci-dessous (et vérifier que la prise de RDV s'affiche bien pour un vrai visiteur).
       // if (/calendly\.com\/ornellafit-coaching/.test(href)) { e.preventDefault(); ouvrirCalendly(href); }
     } else if (href.indexOf('wa.me/') !== -1 || href.indexOf('api.whatsapp.com') !== -1) {
+      // Contact WhatsApp : événement standard Meta « Contact » + GA4 « contact_whatsapp » (GTM).
+      // Seul endroit du site qui les envoie. Pas de preventDefault : le lien s'ouvre normalement.
+      if (typeof fbq !== 'undefined') fbq('track', 'Contact', { content_name: 'whatsapp', page: PAGE });
+      (window.dataLayer = window.dataLayer || []).push({ event: 'contact_whatsapp', page: PAGE, page_path: location.pathname, link_url: href.split('?')[0] });
       envoyer(PAGE === 'entreprise' ? 'Clic_WhatsApp_Entreprise' : 'Clic_WhatsApp');
     } else if (href.indexOf('mailto:') === 0) {
       envoyer(PAGE === 'entreprise' ? 'Clic_Email_Entreprise' : 'Clic_Email');

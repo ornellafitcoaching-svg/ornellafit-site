@@ -662,7 +662,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo">
+  <a href="/" class="nav-logo">
     <img src="images/logo.png" alt="Ornella Fit Coaching" class="nav-logo-img" width="3135" height="793">
   </a>
   <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
@@ -749,7 +749,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="rf-chip">🏆 Ancienne compétitrice fitness</span>
         <span class="rf-chip">👶 Spécialiste post-partum</span>
       </div>
-      <div style="margin-top:16px;"><span class="rf-note" data-ofc-places>Octobre : plus que 2 places à domicile (+ 3 en hybride)</span></div>
+      <div style="margin-top:16px;"><span class="rf-note" data-ofc-places></span></div>
     </div>
     <img class="rf-hero-photo" src="images/ornella-portrait-full.jpg" alt="Ornella, coach sportive diplômée d'État en Essonne" width="360" height="630">
   </div>
@@ -781,7 +781,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <div class="rf-tx-track">
     <a class="rf-tx-card" href="transformations.html#transfo-louise"><img src="images/avis/louise.webp" width="720" height="720" alt="Avant / après de Louise, coachée à domicile : −9 cm de tour de taille" fetchpriority="high" decoding="async"><span class="rf-tx-txt"><b>Louise</b> · −9 cm de tour de taille</span></a>
-    <a class="rf-tx-card" href="transformations.html#transfo-maria"><img src="images/avis/maria.webp" width="720" height="720" alt="Avant / après de Maria : −10 kg, coaching 100 % à distance" loading="lazy" decoding="async"><span class="rf-tx-txt"><b>Maria</b> · −10 kg, 100 % à distance</span></a>
+    <a class="rf-tx-card" href="transformations.html#transfo-maria"><img src="images/avis/maria.webp?v=3" width="720" height="720" alt="Avant / après de Maria : −10 kg, coaching 100 % à distance" loading="lazy" decoding="async"><span class="rf-tx-txt"><b>Maria</b> · −10 kg, 100 % à distance</span></a>
     <a class="rf-tx-card" href="transformations.html#transfo-lise"><img src="images/avis/lise.webp" width="720" height="720" alt="Avant / après de Lise : recomposition, ventre et taille affinés" loading="lazy" decoding="async"><span class="rf-tx-txt"><b>Lise</b> · recomposition, taille affinée</span></a>
   </div>
 </section>
@@ -990,8 +990,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .rf-acc-price{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.25rem;color:var(--rf-terra);white-space:nowrap;flex-shrink:0;}
 .rf-acc-plus{font-size:1.5rem;color:var(--rf-mute);transition:transform .25s;flex-shrink:0;width:20px;text-align:center;}
 .rf-acc.open .rf-acc-plus{transform:rotate(45deg);}
-.rf-acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease;}
-.rf-acc.open .rf-acc-body{max-height:9000px;}
+.rf-acc-body{max-height:0;overflow:hidden;} /* contenu déjà mis en page : ouverture instantanée, sans transition max-height (qui recalculait toute la page à chaque image) */
+.rf-acc.open .rf-acc-body{max-height:none;animation:rfAccIn .22s ease;}
+@keyframes rfAccIn{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){.rf-acc.open .rf-acc-body{animation:none;}}
 .rf-acc-inner{padding:2px 22px 26px;}
 .rf-acc-lead{font-size:.9rem;color:var(--rf-ink2);line-height:1.6;margin:0 0 16px;}
 .rf-packs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:8px 0 14px;}
@@ -1548,7 +1550,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div style="font-size:.8rem;color:var(--rf-terra);font-weight:600;margin-bottom:14px;">Ton programme personnalisé + je t'accompagne et je l'adapte dans le temps. Plus tu t'engages longtemps, plus le tarif est remisé.</div>
             <!-- PREUVE : Maria, 100 % distanciel + nutrition -->
             <a href="transformations.html#transfo-maria" style="display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--rf-line);border-radius:14px;padding:10px;margin:0 0 16px;text-decoration:none;color:inherit;">
-              <img src="images/avis/maria.webp" alt="Avant / après de Maria, coachée à distance par Ornella" width="96" height="96" loading="lazy" style="width:96px;height:96px;border-radius:10px;object-fit:cover;flex-shrink:0;">
+              <img src="images/avis/maria.webp?v=3" alt="Avant / après de Maria, coachée à distance par Ornella" width="96" height="96" loading="lazy" style="width:96px;height:96px;border-radius:10px;object-fit:cover;flex-shrink:0;">
               <span style="display:flex;flex-direction:column;gap:3px;min-width:0;">
                 <span style="color:#E0A526;font-size:.78rem;letter-spacing:1px;">★★★★★</span>
                 <span style="font:700 .9rem/1.3 'DM Sans',sans-serif;color:var(--rf-ink);">Maria · −10 kg en 6 mois, 100 % à distance</span>
@@ -1882,7 +1884,7 @@ document.addEventListener('DOMContentLoaded', function(){
   </div>
   <p class="footer-slogan">« Ton plus bel investissement, c'est toi. »</p>
   <div class="footer-links">
-    <a href="index.html">Accueil</a>
+    <a href="/">Accueil</a>
     <a href="offres.html">Coaching</a>
     <a href="programmes.html">Programmes digitaux</a>
     <a href="transformations.html">Transformations</a>
@@ -1910,6 +1912,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
 <!-- LIGHTBOX visuels -->
 <div class="rf-lb" id="rfLb" onclick="rfLbClose()"><button class="rf-lb-close" aria-label="Fermer" onclick="rfLbClose()">×</button><img id="rfLbImg" src="" alt="Aperçu agrandi"></div>
+
+<!-- Perf : sections basses rendues seulement à l'approche (réactivité au toucher) -->
+<style>
+/* uniquement APRÈS #tester : les ancres (#tarifs, #tester…) restent exactes */
+#faq-offres,#cta-final,body>footer{content-visibility:auto;}
+#faq-offres{contain-intrinsic-size:auto 860px;}#cta-final{contain-intrinsic-size:auto 500px;}body>footer{contain-intrinsic-size:auto 540px;}
+</style>
 
 <!-- BARRE FIXE MOBILE -->
 <style>
@@ -2043,9 +2052,11 @@ function rfDur(tab,d){RF_STATE[tab].d=d;rfRender(tab);}
 function rfOptFeedback(kind,tab,on){
   var ok=document.getElementById(kind+'-ok-'+tab),hint=document.getElementById(kind+'-hint-'+tab);
   if(ok)ok.classList.toggle('show',on);if(hint)hint.style.display=on?'none':'block';
-  var box=document.getElementById('rows-'+tab);if(box){box.classList.remove('rf-flash');void box.offsetWidth;box.classList.add('rf-flash');}
+  rfFlash(document.getElementById('rows-'+tab));
 }
-function rfSeePrice(tab){var box=document.getElementById('rows-'+tab);if(!box)return;box.scrollIntoView({behavior:'smooth',block:'center'});box.classList.remove('rf-flash');void box.offsetWidth;box.classList.add('rf-flash');}
+/* relance l'animation sans forcer de reflow synchrone (2 frames) */
+function rfFlash(box){if(!box)return;box.classList.remove('rf-flash');requestAnimationFrame(function(){requestAnimationFrame(function(){box.classList.add('rf-flash');});});}
+function rfSeePrice(tab){var box=document.getElementById('rows-'+tab);if(!box)return;box.scrollIntoView({behavior:'smooth',block:'center'});rfFlash(box);}
 function rfBoost(tab){var c=document.getElementById('boost-'+tab);RF_STATE[tab].boost=c&&c.checked;rfRender(tab);rfOptFeedback('boost',tab,RF_STATE[tab].boost);}
 function rfBprog(tab){var c=document.getElementById('bprog-'+tab);RF_STATE[tab].bprog=c&&c.checked;rfRender(tab);rfOptFeedback('bprog',tab,RF_STATE[tab].bprog);}
 document.addEventListener('DOMContentLoaded',function(){['dom','hyb','dist'].forEach(rfRender);});
@@ -2093,11 +2104,7 @@ if (!isWebView && 'IntersectionObserver' in window) {
   document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
 }
 
-// Meta Pixel — WhatsApp Contact tracking
-document.addEventListener('click', function(e) {
-  var a = e.target.closest('a[href*="wa.me"]');
-  if (a && typeof fbq !== 'undefined') fbq('track', 'Contact');
-});
+// WhatsApp « Contact » : géré une seule fois par suivi-clics.js
 </script>
 <script>
 // Étiquettes WhatsApp / Stripe sous les boutons CTA
@@ -2161,8 +2168,7 @@ document.querySelectorAll('a.btn-offre, a.ohi-btn').forEach(function(btn) {
 (function(){var PAGE=location.pathname.replace(/^\//,'').replace(/\.html$/,'')||'accueil';var M=[25,50,75,90,100],done={},t=false;function depth(){var d=document.documentElement,b=document.body,top=d.scrollTop||b.scrollTop,max=(d.scrollHeight||b.scrollHeight)-d.clientHeight;return max>0?Math.min(100,Math.round(top/max*100)):100;}function fire(m){if(done[m])return;done[m]=1;if(typeof fbq!=='undefined')fbq('trackCustom','ScrollDepth',{page:PAGE,percent:m});(window.dataLayer=window.dataLayer||[]).push({event:'scroll_depth',page:PAGE,percent:m});}function chk(){var p=depth();M.forEach(function(m){if(p>=m)fire(m);});t=false;}window.addEventListener('scroll',function(){if(t)return;t=true;setTimeout(chk,300);},{passive:true});window.addEventListener('load',chk);})();
 </script>
 <script src="panier.js" defer></script>
-<script src="/data/places.js"></script>
-<script>(function(){if(window.OFC_PLACES){document.querySelectorAll('[data-ofc-places]').forEach(function(el){el.textContent=window.OFC_PLACES;});}})();</script>
+<script src="/data/places.js" defer></script>
 <script defer src="/suivi-clics.js"></script>
 <script src="data/temoignages.js" defer></script>
 <script src="avis-carrousel.js" defer></script>
