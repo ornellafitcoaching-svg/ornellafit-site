@@ -1168,7 +1168,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- TOP ANNOUNCEMENT BAR -->
 <div id="top-bar">
   <span class="top-bar-urgency">
-    <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#C96358;margin-right:8px;vertical-align:middle;"></span><strong style="color:#D4A5A5;">Octobre : plus que 2 places à domicile</strong> <strong style="color:#fff;">(+ 3 en hybride)</strong>
+    <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#C96358;margin-right:8px;vertical-align:middle;"></span><strong style="color:#D4A5A5;" data-ofc-places>Octobre : plus que 2 places à domicile (+ 3 en hybride)</strong>
   </span>
   <span class="top-bar-divider">·</span>
   <a href="https://share.google/NcyAyWaS3WMZgQ4B6" class="top-bar-reviews" target="_blank">
@@ -2684,6 +2684,8 @@ document.addEventListener('click', function(e) {
 /* Tracker de scroll : "ou les gens s'arretent" -> Pixel Meta (si present) + dataLayer GTM. Aucun compte externe. */
 (function(){var PAGE=location.pathname.replace(/^\//,'').replace(/\.html$/,'')||'accueil';var M=[25,50,75,90,100],done={},t=false;function depth(){var d=document.documentElement,b=document.body,top=d.scrollTop||b.scrollTop,max=(d.scrollHeight||b.scrollHeight)-d.clientHeight;return max>0?Math.min(100,Math.round(top/max*100)):100;}function fire(m){if(done[m])return;done[m]=1;if(typeof fbq!=='undefined')fbq('trackCustom','ScrollDepth',{page:PAGE,percent:m});(window.dataLayer=window.dataLayer||[]).push({event:'scroll_depth',page:PAGE,percent:m});}function chk(){var p=depth();M.forEach(function(m){if(p>=m)fire(m);});t=false;}window.addEventListener('scroll',function(){if(t)return;t=true;setTimeout(chk,300);},{passive:true});window.addEventListener('load',chk);})();
 </script>
+<script src="/data/places.js"></script>
+<script>(function(){if(window.OFC_PLACES){document.querySelectorAll('[data-ofc-places]').forEach(function(el){el.textContent=window.OFC_PLACES;});}})();</script>
 <script defer src="/suivi-clics.js"></script>
 </body>
 </html>
