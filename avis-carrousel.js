@@ -7,6 +7,7 @@
  *        data-ordre="louise,emeline,chantal"          (optionnel : ids + ordre, sinon tout)
  *        data-kicker="Résultats réels"                 (optionnel)
  *        data-titre="Elles ont transformé leur corps"  (optionnel)
+ *        data-tete="non"                               (optionnel : sans titre)
  *        data-note="Texte sous le carrousel"           (optionnel)
  *        data-accent="#C96358"></div>                  (optionnel : couleur de la page)
  *   <script src="data/temoignages.js" defer></script>
@@ -89,10 +90,11 @@
     var kicker = el.getAttribute('data-kicker') || 'Résultats réels · Photos non retouchées';
     var titre = el.getAttribute('data-titre') || 'Elles ont transformé leur corps avec Ornella';
     var note = el.getAttribute('data-note') || 'Résultats de clientes accompagnées en coaching par Ornella, avec la même méthode. Photos publiées avec leur accord.';
+    var tete = el.getAttribute('data-tete') !== 'non'; /* "non" : titre déjà affiché par la page */
     el.innerHTML =
-      '<div class="ofc-avis-head"><span class="ofc-avis-k">' + esc(kicker) + '</span>' +
+      (tete ? '<div class="ofc-avis-head"><span class="ofc-avis-k">' + esc(kicker) + '</span>' +
         '<h2 class="ofc-avis-t">' + esc(titre) + '</h2>' +
-        '<div class="ofc-avis-g"><span class="st">★★★★★</span><span><b>5,0/5</b> · 25 avis Google</span></div></div>' +
+        '<div class="ofc-avis-g"><span class="st">★★★★★</span><span><b>5,0/5</b> · 25 avis Google</span></div></div>' : '') +
       '<div class="ofc-avis-wrap">' +
         '<button type="button" class="ofc-avis-nav prev" aria-label="Avis précédent">‹</button>' +
         '<div class="ofc-avis-track" tabindex="0">' + list.map(card).join('') + '</div>' +

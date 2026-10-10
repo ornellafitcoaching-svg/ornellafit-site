@@ -412,19 +412,38 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   <a href="#achat" class="nav-cta">Je commence — 49€</a>
 </nav>
 
+<style>
+/* Vidéos (js/videos.js) : taille réservée = zéro décalage, jamais > 70 % de l'écran */
+.vid{--vid-max:340px;--vid-r:.5625;position:relative;overflow:hidden;border-radius:20px;background:#EFE6DF;box-shadow:0 12px 32px rgba(44,31,26,.14);aspect-ratio:9/16;width:min(100%,var(--vid-max),calc(70vh*var(--vid-r)));margin:0 auto}
+@supports (height:1svh){.vid{width:min(100%,var(--vid-max),calc(70svh*var(--vid-r)))}}
+.vid--1x1{aspect-ratio:1/1;--vid-r:1}
+.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* HERO : titre → vidéo → achat (mobile) · texte | vidéo (ordi) */
+.hero-grid.fd-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);grid-template-rows:1fr auto auto 1fr;row-gap:0}
+.fd-grid .hero-text{grid-column:1;grid-row:2}
+.fd-grid .fd-after{grid-column:1;grid-row:3}
+.fd-grid .hero-media{grid-column:2;grid-row:1/5;align-self:center;margin:0}
+.fd-grid .vid{--vid-max:380px}
+@media(max-width:820px){
+  .hero-grid.fd-grid{display:block}
+  .fd-grid .hero-media{max-width:none;margin:26px 0 4px}
+  .fd-grid .vid{--vid-max:340px}
+}
+</style>
 <!-- 01 · HERO -->
 <header class="hero">
-  <div class="hero-grid">
+  <div class="hero-grid fd-grid">
     <div class="hero-text">
       <span class="hero-badge">28 jours · <b>pour ta vraie vie</b></span>
       <h1>Tu recommences<br>tous les <em>lundis.</em></h1>
       <p class="hero-sub">Et si le problème n'était pas ta motivation — mais un programme qui ne s'adapte jamais à ta vraie vie&nbsp;?</p>
-      <!-- VIDÉO -->
-      <div class="ofc-video" style="max-width:420px;margin:20px 0 0;">
-        <video autoplay muted loop playsinline preload="metadata" poster="images/video/site_fit_dans_ta_vie.jpg" aria-label="Vidéo Fit Dans Ta Vie — Ornella Fit Coaching" style="display:block;width:auto;max-width:100%;height:auto;max-height:70vh;margin:0 auto;border-radius:20px;background:#F4EEE9;box-shadow:0 12px 34px rgba(44,31,26,.15);">
-          <source src="images/video/site_fit_dans_ta_vie.mp4" type="video/mp4">
-        </video>
+    </div>
+    <figure class="hero-media">
+      <div class="vid">
+        <video muted playsinline loop preload="none" aria-hidden="true" poster="images/video/site_fit_dans_ta_vie_poster.jpg" data-src="images/video/site_fit_dans_ta_vie.mp4"></video>
       </div>
+    </figure>
+    <div class="fd-after">
       <p class="hero-desc"><strong>Fit Dans Ta Vie, c'est la méthode pour ne plus jamais abandonner&nbsp;:</strong> une façon simple d'organiser ton sport, ton alimentation et ton quotidien autour de ta vraie vie — même quand la semaine part en vrille.</p>
       <div class="hero-actions">
         <div class="hero-price"><b>49€</b><span>paiement unique · accès à vie</span></div>
@@ -438,13 +457,6 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         <span><svg class="ico ico-sm"><use href="#i-check"/></svg> Paiement en 3× avec Klarna</span>
       </div>
     </div>
-    <figure class="hero-media">
-      <img src="images/ornella-fente.webp" alt="Ornella, coach sportive diplômée d'État et ancienne compétitrice fitness" width="1023" height="1537" fetchpriority="high">
-      <figcaption>
-        <b>Plan A / B / C</b>
-        <span>la méthode qui t'évite d'abandonner quand la semaine dérape</span>
-      </figcaption>
-    </figure>
   </div>
   <div class="hero-proof">
     <span class="stars">★★★★★</span>
@@ -911,6 +923,6 @@ function tgl(el){
 <script src="sticky-achat.js" defer data-prix="49€" data-sous="Accès à vie · ou 3× 16,33€ Klarna" data-bouton="Je commence" data-lien="https://buy.stripe.com/6oUfZh7fX1hxdUF9a58Vi0w" data-valeur="49" data-produit="fit-dans-ta-vie-28j"></script>
 <script src="data/temoignages.js" defer></script>
 <script src="avis-carrousel.js" defer></script>
-<script src="video-site.js" defer></script>
+<script src="js/videos.js" defer></script>
 </body>
 </html>
