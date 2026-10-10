@@ -11,6 +11,19 @@
   if (window._suiviClicsReady) return;
   window._suiviClicsReady = true;
 
+  // ===== Balise Pinterest (conversion tag) — ID 2612860981138 =====
+  // Chargée ici pour être présente sur TOUTES les pages (suivi-clics.js est inclus partout).
+  (function (e) {
+    if (!window.pintrk) {
+      window.pintrk = function () { window.pintrk.queue.push(Array.prototype.slice.call(arguments)); };
+      var n = window.pintrk; n.queue = []; n.version = "3.0";
+      var t = document.createElement("script"); t.async = !0; t.src = e;
+      var r = document.getElementsByTagName("script")[0]; r.parentNode.insertBefore(t, r);
+    }
+  })("https://s.pinimg.com/ct/core.js");
+  window.pintrk('load', '2612860981138');
+  window.pintrk('page');
+
   var PRODUITS = {
     '8x26oHas9f8n5o9cmh8Vi03': 'SurMesure',
     'eVq6oH6bT0dteYJ2LH8Vi07': 'SurMesureNutrition',
@@ -69,10 +82,13 @@
     if (href.indexOf('buy.stripe.com/') !== -1) {
       var code = href.split('buy.stripe.com/')[1].split(/[?#]/)[0];
       envoyer('Clic_Achat_' + (PRODUITS[code] || 'Autre'));
+      if (window.pintrk) pintrk('track', 'checkout', { product_name: PRODUITS[code] || 'Autre' });
     } else if (href.indexOf('pay.gocardless.com') !== -1) {
       envoyer('Clic_Achat_Coaching');
+      if (window.pintrk) pintrk('track', 'checkout', { product_name: 'Coaching' });
     } else if (href.indexOf('calendly.com') !== -1) {
       envoyer('Clic_Bilan');
+      if (window.pintrk) pintrk('track', 'lead', { lead_type: 'Bilan gratuit' });
       // NB : le lien ouvre directement la page de réservation Calendly (/15min) — fiable partout.
       // Le popup widget a été désactivé (ne s'affichait pas de façon fiable). Pour le réactiver :
       // décommenter ci-dessous (et vérifier que la prise de RDV s'affiche bien pour un vrai visiteur).
