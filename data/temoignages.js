@@ -13,10 +13,10 @@ window.OFC_TEMOIGNAGES = [
     id: 'maria',
     prenom: 'Maria',
     infos: '38 ans · maman de 2 enfants',
-    formule: '100 % à distance + nutrition · 6 mois',
-    resultat: '−10 kg en 6 mois',
+    formule: '100 % à distance + nutrition · 8 mois',
+    resultat: '−10 kg en 8 mois',
     texte: 'Coachée entièrement à distance, avec le Boost Nutrition. Un programme fait pour elle, ajusté à chaque bilan : −10 kg et une silhouette complètement redessinée.',
-    photo: 'images/avis/maria.webp?v=3',
+    photo: 'images/avis/maria.webp?v=5',
     alt: 'Avant / après de Maria, coachée à distance par Ornella',
     lien: 'offres.html#tarif-distanciel',
     lienTexte: 'Découvrir le coaching à distance'
