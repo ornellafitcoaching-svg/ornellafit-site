@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<script>/* menu ☰ dispo dès le 1er clic (navigateurs Instagram/Facebook) */window.toggleMenu=window.toggleMenu||function(){var m=document.getElementById("navMenu");if(m)m.classList.toggle("open");};</script>
+<script src="/js/menu.js"></script>
 <link rel="icon" type="image/png" href="/images/favicon.png">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <!-- Google Tag Manager -->
@@ -665,14 +665,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="/" class="nav-logo">
     <img src="images/logo.png" alt="Ornella Fit Coaching" class="nav-logo-img" width="3135" height="793">
   </a>
-  <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  <button type="button" class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Menu">☰</button>
   <div class="nav-menu" id="navMenu">
     <a href="offres.html" class="nav-link">Tarifs coaching</a>
     <a href="transformations.html" class="nav-link">Transformations</a>
     <a href="programmes.html" class="nav-link">Programmes digitaux</a>
     <a href="entreprise.html" class="nav-link">Entreprise</a>
     <a href="apropos.html" class="nav-link">À propos</a>
-    <a href="https://www.ornellafitcoaching.com/quiz.html" class="nav-link">Mon coaching →</a>
+    <a href="https://www.ornellafitcoaching.com/quiz.html" class="nav-link">Quelle formule pour moi ?</a>
     <a href="https://wa.me/33756834626" class="nav-cta" target="_blank">M'écrire →</a>
   </div>
 </nav>
@@ -801,6 +801,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .rf-fcard li{font-size:.88rem;color:var(--rf-ink2);line-height:1.45;padding-left:24px;position:relative;}
 .rf-fcard li::before{content:'✓';position:absolute;left:0;color:var(--rf-terra);font-weight:700;}
 .rf-fcard .rf-btn{margin-top:auto;width:100%;}
+.rf-fcard[data-tarif]{cursor:pointer;}
 .rf-fcard-hero{background:linear-gradient(135deg,rgba(201,99,88,.10),rgba(201,99,88,.035));border:1px solid rgba(201,99,88,.22);border-radius:14px;padding:13px 15px;font-size:.9rem;line-height:1.55;color:var(--rf-ink);margin:2px 0 2px;}
 .rf-fcard-hero b{color:var(--rf-terra);font-weight:700;}
 .rf-short{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;}
@@ -878,7 +879,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="rf-formulas">
       <!-- DOMICILE -->
-      <div class="rf-fcard">
+      <div class="rf-fcard" data-tarif="tarif-domicile">
         <div class="rf-fcard-icon">🏠</div>
         <div class="rf-fcard-name">À domicile</div>
         <div class="rf-fcard-for">« Je veux être accompagnée directement chez moi. »</div>
@@ -892,7 +893,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="#tarif-domicile" class="rf-btn rf-btn-ghost" onclick="rfOpen('tarif-domicile')">Voir les tarifs →</a>
       </div>
       <!-- HYBRIDE — RECOMMANDÉ -->
-      <div class="rf-fcard feat">
+      <div class="rf-fcard feat" data-tarif="tarif-hybride">
         <span class="rf-fcard-badge">⭐ Le plus choisi</span>
         <div class="rf-fcard-icon">💫</div>
         <div class="rf-fcard-name">Présence +</div>
@@ -910,11 +911,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="#tarif-hybride" class="rf-btn rf-btn-primary" onclick="rfOpen('tarif-hybride')">Voir les tarifs →</a>
       </div>
       <!-- DISTANCIEL -->
-      <div class="rf-fcard">
+      <div class="rf-fcard" data-tarif="tarif-distanciel">
         <div class="rf-fcard-icon">💻</div>
         <div class="rf-fcard-name">À distance</div>
         <div class="rf-fcard-for">« Je veux être accompagnée où que je sois en France. »</div>
-        <div class="rf-fcard-price">79€ <small>· programme seul · avec suivi dès 89€/mois</small></div>
+        <div class="rf-fcard-price"><small>avec suivi</small> dès 89€<small>/mois</small></div>
+        <div style="font-size:.82rem;color:var(--rf-mute);margin-top:6px;">ou programme seul 79€</div>
         <ul>
           <li>Programme 100% sur-mesure, pas générique</li>
           <li>Suivie même hors Essonne</li>
@@ -926,7 +928,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <p class="rf-carou-hint">← glisse pour comparer les 3 formules →</p>
-    <p style="text-align:center;font-size:.9rem;color:var(--rf-ink2);margin-top:32px;">🧘‍♀️ Tu préfères t'entraîner seule, à ton rythme&nbsp;? <a href="programmes.html" style="color:var(--rf-terra);font-weight:700;">Programmes dès 12€ →</a></p>
 
     <!-- RACCOURCIS VIP + DUO/TRIO — repliés pour alléger le premier écran -->
     <details class="rf-more-x">
@@ -1339,8 +1340,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div id="rows-dom"></div>
             <div class="rf-push6" id="push6-dom">✨ Passe au parcours 6 mois&nbsp;: 20€ de moins par mois <b>et</b> 89€ de cadeaux.</div>
 
-            <div class="rf-opt-sep">Pour accélérer tes résultats</div>
-            <p class="rf-opt-sub">Non inclus dans le prix ci-dessus</p>
+            <div class="rf-opt-sep">🚀 Pour des résultats plus rapides</div>
             <div class="rf-boost rf-boost-n">
               <div class="rf-boost-top">
                 <span class="rf-boost-tag">⚡ Boost Programme</span>
@@ -1497,8 +1497,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="rf-hyb-note"><b style="color:var(--rf-ink);">Un rendez-vous en présentiel par mois, un accompagnement tous les jours</b> — tout est compris, pour moins de 5€ par jour. Le tarif est identique en 3 ou 6 mois (le parcours 6 mois ajoute 89€ de cadeaux)&nbsp;; la formule sans engagement offre plus de souplesse, à un tarif un peu plus élevé.</p>
           <p class="rf-hyb-note" style="margin-top:8px;">Tu souhaites <b style="color:var(--rf-ink);">2 séances en présentiel par mois</b>&nbsp;? C'est tout à fait possible, sur <b style="color:var(--rf-ink);">devis personnalisé</b> — écris-moi, on construit ta formule ensemble.</p>
 
-          <div class="rf-opt-sep">Pour accélérer tes résultats</div>
-            <p class="rf-opt-sub">Non inclus dans le prix ci-dessus</p>
+          <div class="rf-opt-sep">🚀 Pour des résultats plus rapides</div>
             <div class="rf-boost rf-boost-n">
               <div class="rf-boost-top">
                 <span class="rf-boost-tag">🥗 Boost Nutrition</span>
@@ -1611,8 +1610,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div id="rows-dist"></div>
             <div class="rf-push6" id="push6-dist">✨ Passe au parcours 6 mois&nbsp;: 10€ de moins par mois <b>et</b> 89€ de cadeaux.</div>
 
-            <div class="rf-opt-sep">Pour accélérer tes résultats</div>
-            <p class="rf-opt-sub">Non inclus dans le prix ci-dessus</p>
+            <div class="rf-opt-sep">🚀 Pour des résultats plus rapides</div>
             <div class="rf-boost rf-boost-n">
               <div class="rf-boost-top">
                 <span class="rf-boost-tag">🥗 Boost Nutrition</span>
@@ -1913,6 +1911,9 @@ document.addEventListener('DOMContentLoaded', function(){
   </div>
 </section>
 
+<!-- PROGRAMMES EN AUTONOMIE — alternative, en bas de page -->
+<p style="text-align:center;font-size:.9rem;color:var(--rf-ink2);margin:0;padding:26px 16px;">🧘‍♀️ Tu préfères t'entraîner seule, à ton rythme&nbsp;? <a href="programmes.html" style="color:var(--rf-terra);font-weight:700;">Programmes dès 12€ →</a></p>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
@@ -2014,6 +2015,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,
 /* ===== Lightbox ===== */
 function rfLightbox(src){var lb=document.getElementById('rfLb');document.getElementById('rfLbImg').src=src;lb.classList.add('open');}
 function rfLbClose(){document.getElementById('rfLb').classList.remove('open');}
+/* Cartes des 3 formules : toute la carte est cliquable -> même action que son bouton « Voir les tarifs » */
+document.querySelectorAll('.rf-fcard[data-tarif]').forEach(function(card){
+  card.addEventListener('click',function(e){
+    if(e.target.closest('a,button,summary,input,label')) return;
+    var btn=card.querySelector('a.rf-btn'); if(btn) btn.click();
+  });
+});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')rfLbClose();});
 
 /* ===== Sélecteur de durée + Boost Nutrition ===== */
@@ -2099,12 +2107,6 @@ document.addEventListener('DOMContentLoaded',function(){['dom','hyb','dist'].for
 </script>
 
 <script>
-function toggleMenu() { document.getElementById('navMenu').classList.toggle('open'); }
-document.addEventListener('click', function(e) {
-  const menu = document.getElementById('navMenu');
-  const toggle = document.querySelector('.nav-toggle');
-  if (!menu.contains(e.target) && !toggle.contains(e.target)) menu.classList.remove('open');
-});
 function toggleFaq(el) {
   const item = el.parentElement;
   const isOpen = item.classList.contains('open');

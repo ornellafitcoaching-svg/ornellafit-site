@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<script>/* menu ☰ dispo dès le 1er clic (navigateurs Instagram/Facebook) */window.toggleMenu=window.toggleMenu||function(){var m=document.getElementById("navMenu");if(m)m.classList.toggle("open");};</script>
+<script src="/js/menu.js"></script>
 <link rel="icon" type="image/png" href="/images/favicon.png">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <!-- Google Tag Manager -->
@@ -39,8 +39,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="images/logo.png">
-<link rel="preload" as="image" href="images/video/site_hero_mobile_poster.jpg" media="(max-width: 767px)" fetchpriority="high">
-<link rel="preload" as="image" href="images/video/site_hero_ordi_poster.jpg" media="(min-width: 768px)" fetchpriority="high">
+<link rel="preload" as="image" href="images/ornella-ext-arbre.webp" type="image/webp" fetchpriority="high">
 <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">
 {
@@ -786,59 +785,6 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
 #lead-success a { display:inline-block; background:#C96358; color:white; padding:13px 28px; border-radius:50px; font-weight:700; font-size:0.9rem; text-decoration:none; }
 @media(max-width:768px) { #lead-box { padding:30px 20px; border-radius:22px; } .lead-title { font-size:1.35rem; } }
 
-/* ===== SMART CAPTURE ===== */
-#sc-overlay {
-  display:none; position:fixed; inset:0; z-index:10000;
-  align-items:center; justify-content:center; padding:20px;
-  background:rgba(30,22,22,0.72); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
-}
-#sc-overlay.active { display:flex; }
-#sc-box {
-  position:relative; background:white; border-radius:28px;
-  padding:40px 36px; max-width:460px; width:100%;
-  box-shadow:0 32px 80px rgba(44,31,26,0.3); text-align:center;
-  animation:leadIn 0.35s ease;
-}
-#sc-close {
-  position:absolute; top:14px; right:18px;
-  background:none; border:none; font-size:1.6rem; cursor:pointer;
-  color:var(--text-light); line-height:1; padding:4px;
-}
-#sc-title {
-  font-family:'Cormorant Garamond',serif; font-size:1.6rem;
-  font-weight:600; color:var(--dark); line-height:1.3; margin-bottom:10px;
-}
-#sc-sub { font-size:0.88rem; color:var(--text-mid); line-height:1.65; margin-bottom:22px; }
-#sc-form { display:flex; flex-direction:column; gap:10px; }
-#sc-prenom, #sc-email {
-  width:100%; padding:16px 20px; border:1.5px solid rgba(201,185,154,0.4);
-  border-radius:14px; font-size:0.95rem; font-family:'DM Sans',sans-serif;
-  outline:none; transition:border-color 0.2s; box-sizing:border-box;
-}
-#sc-prenom:focus, #sc-email:focus { border-color:var(--accent); }
-#sc-submit {
-  width:100%; padding:17px; background:#C96358; color:white;
-  border:none; border-radius:14px; font-family:'DM Sans',sans-serif;
-  font-size:0.95rem; font-weight:700; cursor:pointer; transition:all 0.2s;
-}
-#sc-submit:hover { background:#b85348; transform:translateY(-1px); }
-#sc-submit:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
-#sc-skip {
-  display:block; margin-top:12px; font-size:0.8rem; color:var(--text-light);
-  cursor:pointer; background:none; border:none; font-family:'DM Sans',sans-serif;
-  text-decoration:underline; text-underline-offset:2px;
-}
-#sc-skip:hover { color:var(--text-mid); }
-#sc-success {
-  display:none; padding:20px; background:rgba(37,211,102,0.07);
-  border:1px solid rgba(37,211,102,0.2); border-radius:14px; margin-top:14px;
-}
-#sc-success p { font-size:0.95rem; color:var(--dark); font-weight:600; margin:0; }
-@media(max-width:768px) {
-  #sc-box { padding:30px 20px; border-radius:22px; max-width:100%; }
-  #sc-title { font-size:1.35rem; }
-}
-
 
 /* ===== MOBILE INDEX ===== */
 @media (max-width: 768px) {
@@ -1202,14 +1148,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="/" class="nav-logo">
     <img src="images/logo.png" alt="Ornella Fit Coaching" class="nav-logo-img" decoding="async" width="3135" height="793">
   </a>
-  <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  <button type="button" class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Menu">☰</button>
   <div class="nav-menu" id="navMenu">
     <a href="offres.html" class="nav-link">Tarifs coaching</a>
     <a href="transformations.html" class="nav-link">Transformations</a>
     <a href="programmes.html" class="nav-link">Programmes digitaux</a>
     <a href="entreprise.html" class="nav-link">Entreprise</a>
     <a href="apropos.html" class="nav-link">À propos</a>
-    <a href="https://www.ornellafitcoaching.com/quiz.html" class="nav-link">Mon coaching →</a>
+    <a href="https://www.ornellafitcoaching.com/quiz.html" class="nav-link">Quelle formule pour moi ?</a>
     <a href="https://wa.me/33756834626" class="nav-cta" target="_blank">M'écrire →</a>
   </div>
 </nav>
@@ -1221,14 +1167,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 @supports (height:1svh){.vid{width:min(100%,var(--vid-max),calc(70svh*var(--vid-r)))}}
 .vid--1x1{aspect-ratio:1/1;--vid-r:1}
 .vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-/* HERO VIDÉO — poster prioritaire (LCP), vidéo après le chargement, voile sombre pour le contraste AA */
+/* HERO — photo d'Ornella prioritaire (LCP). Vidéo désactivable : HERO_VIDEO dans js/videos.js.
+   Ordi : photo sur la droite, dégradé seulement côté texte. Mobile : photo en haut, visage dégagé. */
 #hero.hero--video{background:#1E1616}
 #hero.hero--video::before,#hero.hero--video::after{display:none}
 .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
 .hero-bg img,.hero-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .hero-bg video{opacity:0;transition:opacity .6s ease}
 .hero-bg.is-playing video{opacity:1}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(30,22,22,.86) 0%,rgba(30,22,22,.74) 50%,rgba(30,22,22,.3) 100%)}
+.hero-bg img{left:auto;right:0;width:48%;object-position:center 22%}
+.hero-bg::after{content:'';position:absolute;top:0;bottom:0;right:0;width:48%;background:linear-gradient(90deg,#1E1616 0%,rgba(30,22,22,.55) 16%,rgba(30,22,22,0) 42%)}
+#hero.hero--video .hero-content{max-width:56%}
+@media(min-width:769px){#hero.hero--video .hero-title{font-size:clamp(2.4rem,3.9vw,3.6rem);line-height:1.08}}
 #hero.hero--video .hero-badge{color:#fff;background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.32)}
 #hero.hero--video .hero-title{color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.25)}
 #hero.hero--video .hero-title{max-width:820px}
@@ -1240,7 +1190,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 #hero.hero--video .hero-alt a{color:#F6C9BF!important}
 #hero.hero--video .hero-note{color:rgba(255,255,255,.8)}
 @media(max-width:768px){
-  .hero-bg::after{background:linear-gradient(180deg,rgba(30,22,22,.64) 0%,rgba(30,22,22,.72) 50%,rgba(30,22,22,.86) 100%)}
+  .hero-bg{position:relative;inset:auto;flex-shrink:0;align-self:center;width:100vw;height:340px;margin:-16px 0 -100px}
+  .hero-bg img{right:auto;left:0;width:100%;object-position:center 15%}
+  .hero-bg::after{left:0;width:100%;background:linear-gradient(180deg,rgba(30,22,22,0) 0%,rgba(30,22,22,0) 48%,rgba(30,22,22,.75) 78%,#1E1616 100%)}
+  #hero.hero--video .hero-content{max-width:100%}
   #hero.hero--video{padding-top:30px;padding-bottom:36px}
 }
 /* AVIS : vidéo + titre (2 colonnes sur ordi) */
@@ -1256,10 +1209,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </style>
 <section id="hero" class="hero--video">
   <div class="hero-bg" aria-hidden="true">
-    <picture>
-      <source media="(min-width: 768px)" srcset="images/video/site_hero_ordi_poster.jpg">
-      <img src="images/video/site_hero_mobile_poster.jpg" alt="" fetchpriority="high" decoding="async">
-    </picture>
+    <img src="images/ornella-ext-arbre.webp" alt="" width="864" height="1080" fetchpriority="high" decoding="async">
     <video muted playsinline loop preload="none" aria-hidden="true" data-attente="interaction" data-src-mobile="images/video/site_hero_mobile.mp4" data-src-ordi="images/video/site_hero_ordi.mp4"></video>
   </div>
   <div class="hero-split">
@@ -1279,11 +1229,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </p>
 
       <div style="margin-top:24px;">
-        <a href="https://calendly.com/ornellafit-coaching/15min"
+        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20r%C3%A9server%20mon%20bilan%20gratuit%20%F0%9F%98%8A"
            target="_blank"
            class="btn-main"
            style="display:inline-flex;font-size:1.02rem;padding:18px 34px;">
-          Réserver mon bilan gratuit →
+          Réserver mon appel gratuit →
         </a>
         <p class="hero-proof-line" style="margin-top:12px;font-size:0.92rem;color:var(--dark);font-weight:600;">
           <span style="color:#C9A96E;">★ 5,0</span> · 25 avis Google
@@ -1466,8 +1416,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="chiffres-footer-note">Résultats réels issus de mes clientes</p>
 
     <div class="chiffres-cta-wrap">
-      <a href="https://calendly.com/ornellafit-coaching/15min" class="chiffres-cta" target="_blank">
-        Réserver mon bilan gratuit →
+      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20r%C3%A9server%20mon%20bilan%20gratuit%20%F0%9F%98%8A" class="chiffres-cta" target="_blank">
+        Réserver mon appel gratuit →
       </a>
     </div>
   </div>
@@ -1548,7 +1498,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="svc-home-sub">Le meilleur investissement que tu puisses faire, c'est toi.</p>
       <p class="svc-home-txt">Salle, cours collectifs, applis… tu as déjà payé pour t'entraîner. Ce qui te manquait, ce n'est pas la volonté : c'est un plan fait pour toi et quelqu'un qui te suit.</p>
       <div class="svc-home-ctas">
-        <a href="https://calendly.com/ornellafit-coaching/15min" target="_blank" class="btn-main">Réserver mon bilan gratuit →</a>
+        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20r%C3%A9server%20mon%20bilan%20gratuit%20%F0%9F%98%8A" target="_blank" class="btn-main">Réserver mon appel gratuit →</a>
         <a href="coach-sportif-ou-salle-de-sport.html" class="svc-home-link">Salle ou coach : le comparatif →</a>
       </div>
     </div>
@@ -1702,11 +1652,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- MARIA — 100 % à distance -->
       <div class="transfo-card transfo-card-featured transfo-card-emeline">
-        <div class="transfo-card-img transfo-card-img-duo">
+        <a class="transfo-card-img transfo-card-img-duo" href="transformations.html#transfo-maria" aria-label="Voir la transformation de Maria">
           <img src="images/maria-face.webp?v=5" alt="Transformation Maria face — coaching 100 % à distance Ornella Fit" loading="lazy" width="1200" height="1200">
           <img src="images/maria-dos.webp?v=5" alt="Transformation Maria dos — coaching 100 % à distance Ornella Fit" loading="lazy" width="1080" height="1080">
           <div class="transfo-card-tag">AVANT → APRÈS</div>
-        </div>
+        </a>
         <div class="transfo-card-body">
           <div class="transfo-card-objectif">Objectif : Perte de poids</div>
           <div class="transfo-card-name">Maria · Maman 2 enfants · Coaching 100 % à distance</div>
@@ -1721,11 +1671,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- EMELINE 2 MOIS -->
       <div class="transfo-card transfo-card-emeline">
-        <div class="transfo-card-img transfo-card-img-duo">
+        <a class="transfo-card-img transfo-card-img-duo" href="transformations.html#transfo-emeline" aria-label="Voir la transformation d’Emeline">
           <img src="images/avant-apres-emeline-2.webp?v=2" alt="Transformation Emeline face 2 mois — coaching Ornella Fit" loading="lazy" width="4319" height="4319">
           <img src="images/avant-apres-emeline-dos.webp?v=2" alt="Transformation Emeline dos 2 mois — coaching Ornella Fit" loading="lazy" width="4319" height="4319">
           <div class="transfo-card-tag">AVANT → APRÈS</div>
-        </div>
+        </a>
         <div class="transfo-card-body">
           <div class="transfo-card-objectif">Objectif : Prise de masse ciblée</div>
           <div class="transfo-card-name">Emeline · Présentiel → hybride → à distance · Maman 2 enfants</div>
@@ -1740,11 +1690,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- LOUISE — à domicile -->
       <div class="transfo-card transfo-card-emeline">
-        <div class="transfo-card-img transfo-card-img-duo">
+        <a class="transfo-card-img transfo-card-img-duo" href="transformations.html#transfo-louise" aria-label="Voir la transformation de Louise">
           <img src="images/louise-face.webp?v=2" alt="Transformation Louise face — coaching à domicile Ornella Fit Essonne" loading="lazy" width="4319" height="4319">
           <img src="images/louise-dos-avant-apres.webp?v=2" alt="Transformation Louise dos — coaching à domicile Ornella Fit Essonne" loading="lazy" width="4319" height="4319">
           <div class="transfo-card-tag">AVANT → APRÈS</div>
-        </div>
+        </a>
         <div class="transfo-card-body">
           <div class="transfo-card-objectif">Objectif : Perte de gras</div>
           <div class="transfo-card-name">Louise · Maman 2 enfants · Coaching à domicile · Essonne (91)</div>
@@ -1762,10 +1712,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="transformations.html" style="display:inline-block;margin-bottom:16px;font-size:0.88rem;color:var(--accent);text-decoration:underline;text-underline-offset:3px;">Voir toutes les transformations →</a>
 
     <div style="display:block;">
-    <a href="https://calendly.com/ornellafit-coaching/15min" class="btn-main" target="_blank" style="display:inline-flex;margin-top:4px;">
-      Réserver mon bilan gratuit →
+    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20r%C3%A9server%20mon%20bilan%20gratuit%20%F0%9F%98%8A" class="btn-main" target="_blank" style="display:inline-flex;margin-top:4px;">
+      Réserver mon appel gratuit →
     </a>
-    <p style="margin-top:10px;font-size:0.88rem;color:var(--text-mid);">ou <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20vu%20les%20transformations%20sur%20ton%20site%20et%20j%27aimerais%20des%20r%C3%A9sultats%20similaires.%20Comment%20on%20commence%20%3F" target="_blank" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">m'écrire sur WhatsApp</a></p>
     </div>
   </div>
 </section>
@@ -1848,8 +1797,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="avis-closing-sub">Celles qui sont accompagnées avancent — semaine après semaine, résultat après résultat.</p>
       </div>
       <div style="flex-shrink:0;text-align:center;">
-        <a href="https://calendly.com/ornellafit-coaching/15min" class="btn-main" target="_blank" style="white-space:nowrap;">Réserver mon bilan gratuit →</a>
-        <p style="margin-top:9px;font-size:0.84rem;color:rgba(255,255,255,0.5);">ou <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20lu%20les%20avis%20sur%20ton%20site%20et%20%C3%A7a%20m%27a%20convaincue.%20Comment%20on%20commence%20%3F" target="_blank" style="color:var(--rose);text-decoration:underline;text-underline-offset:3px;">m'écrire sur WhatsApp</a></p>
+        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20r%C3%A9server%20mon%20bilan%20gratuit%20%F0%9F%98%8A" class="btn-main" target="_blank" style="white-space:nowrap;">Réserver mon appel gratuit →</a>
       </div>
     </div>
   </div>
@@ -1943,8 +1891,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="obj-reply-body">Parce que je ne te donne pas un régime à suivre 30 jours puis arrêter. Je t'apprends à t'entraîner correctement, à comprendre ton corps, à progresser seule entre les séances. Mes clientes qui arrêtent le coaching continuent d'avancer — parce qu'elles ont les outils. C'est ça la vraie différence entre un programme générique et un accompagnement sur-mesure.</p>
     </div>
 
-    <a href="https://calendly.com/ornellafit-coaching/15min" class="obj-reply-cta" target="_blank" style="display:inline-block;margin-top:8px;">Réserver mon bilan gratuit →</a>
-    <p style="margin-top:10px;font-size:0.88rem;color:var(--text-mid);">ou <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20une%20question%20avant%20de%20me%20lancer.%20On%20en%20parle%20%3F" target="_blank" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">pose ta question sur WhatsApp</a></p>
+    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20r%C3%A9server%20mon%20bilan%20gratuit%20%F0%9F%98%8A" class="obj-reply-cta" target="_blank" style="display:inline-block;margin-top:8px;">Réserver mon appel gratuit →</a>
 
   </div>
 </section>
@@ -2188,10 +2135,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span style="font-size:0.83rem;color:rgba(255,255,255,0.8);font-weight:600;">Accompagnement volontairement limité <strong style="color:#D4A5A5;">pour garantir un suivi de qualité</strong></span>
     </div>
     <div class="cta-buttons">
-      <a href="https://calendly.com/ornellafit-coaching/15min" class="btn-main" target="_blank" style="font-size:1.08rem;padding:22px 44px;font-weight:700;">
-        Réserver mon bilan gratuit →
+      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20r%C3%A9server%20mon%20bilan%20gratuit%20%F0%9F%98%8A" class="btn-main" target="_blank" style="font-size:1.08rem;padding:22px 44px;font-weight:700;">
+        Réserver mon appel gratuit →
       </a>
-      <p style="font-size:0.92rem;color:rgba(255,255,255,0.6);margin-top:2px;">ou <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20suis%20pr%C3%AAte%20%C3%A0%20me%20lancer.%20Quelles%20sont%20les%20prochaines%20%C3%A9tapes%20%3F" target="_blank" style="color:var(--rose);text-decoration:underline;text-underline-offset:3px;font-weight:600;">m'écrire sur WhatsApp</a></p>
     </div>
     <p class="cta-reassure" style="margin-top:20px;">✓ Réponse rapide · Premier échange sans engagement · Même si tu débutes</p>
   </div>
@@ -2254,28 +2200,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<!-- SMART CAPTURE MODAL -->
-<div id="sc-overlay" onclick="scOverlayClick(event)">
-  <div id="sc-box">
-    <button id="sc-close" onclick="scClose(false)" aria-label="Fermer">×</button>
-    <h2 id="sc-title"></h2>
-    <p id="sc-sub"></p>
-    <div id="sc-form-wrap">
-      <form id="sc-form" onsubmit="scSubmit(event)">
-        <input type="text" id="sc-prenom" placeholder="Ton prénom" autocomplete="given-name">
-        <input type="email" id="sc-email" placeholder="ton@email.com" required autocomplete="email" inputmode="email">
-        <button type="submit" id="sc-submit">Je veux ça →</button>
-      </form>
-      <button id="sc-skip" onclick="scClose(true)">Non merci, continuer sans</button>
-    </div>
-    <div id="sc-success"><p>✅ C'est noté ! Vérifie ta boîte mail.</p></div>
-  </div>
-</div>
-
-<!-- STICKY MOBILE BAR — CTA unique "Réserver mon bilan gratuit" + WhatsApp secondaire -->
+<!-- STICKY MOBILE BAR — un seul CTA : "Réserver mon appel gratuit" (WhatsApp) -->
 <div class="mobile-sticky-bar">
-  <a href="https://calendly.com/ornellafit-coaching/15min" class="sticky-cta-main" id="sticky-main-cta" target="_blank">Réserver mon bilan gratuit</a>
-  <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20viens%20de%20voir%20ton%20site%20et%20j%27aimerais%20transformer%20mon%20corps.%20Comment%20%C3%A7a%20fonctionne%20%3F" class="sticky-cta-secondary" target="_blank">WhatsApp</a>
+  <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20r%C3%A9server%20mon%20bilan%20gratuit%20%F0%9F%98%8A" class="sticky-cta-main" id="sticky-main-cta" target="_blank">Réserver mon appel gratuit</a>
 </div>
 
 <a href="https://wa.me/33756834626" class="floating-wa" target="_blank" title="WhatsApp" aria-label="WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
@@ -2342,9 +2269,6 @@ function selectHeroGoal(goal) {
   result.classList.add('visible');
   result.scrollIntoView({behavior:'smooth', block:'nearest'});
 }
-function toggleMenu() {
-  document.getElementById('navMenu').classList.toggle('open');
-}
 function toggleFaqHome(el) {
   const item = el.parentElement;
   document.querySelectorAll('#faq-home .faq-item').forEach(function(i) {
@@ -2352,28 +2276,28 @@ function toggleFaqHome(el) {
   });
   item.classList.toggle('open');
 }
-document.addEventListener('click', function(e) {
-  const menu = document.getElementById('navMenu');
-  const toggle = document.querySelector('.nav-toggle');
-  if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-    menu.classList.remove('open');
-  }
-});
-// LEAD POPUP (guide gratuit) — SEULE pop-up du site. 1×/session, déclenchée à l'intention de sortie OU à 50 % de scroll.
+// LEAD POPUP (guide gratuit) — SEULE pop-up du site. Jamais à l'arrivée.
+// Mobile : 50 % de scroll. Desktop : exit-intent OU 50 % de scroll (le premier des deux).
+// Une seule fois par visiteuse, puis plus rien pendant 7 jours (mémorisé dans localStorage).
+var LEAD_POPUP_KEY = 'leadPopupSeenAt';
+var LEAD_POPUP_DELAI_MS = 7 * 24 * 60 * 60 * 1000;
+function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+function leadPopupAutorise() {
+  if (lsGet('ornella_lead_email') || lsGet('leadDone')) return false; // déjà inscrite
+  var vu = parseInt(lsGet(LEAD_POPUP_KEY), 10);
+  return !(vu && Date.now() - vu < LEAD_POPUP_DELAI_MS);
+}
+var _leadShown = false;
 function showLead() {
-  if (sessionStorage.getItem('leadShownSession')) return;
-  if (localStorage.getItem('leadDone')) return;
-  if (localStorage.getItem('ornella_lead_email')) return;
-  var scOverlay = document.getElementById('sc-overlay');
-  if (scOverlay && scOverlay.classList.contains('active')) return;
-  sessionStorage.setItem('leadShownSession', '1');
+  if (_leadShown || !leadPopupAutorise()) return;
+  _leadShown = true;
+  lsSet(LEAD_POPUP_KEY, String(Date.now()));
   document.getElementById('lead-popup').classList.add('active');
 }
 function closeLead() {
   document.getElementById('lead-popup').classList.remove('active');
-  localStorage.setItem('leadDone', '1');
 }
-/* Déclencheurs : exit-intent (desktop) OU 50 % de scroll (tous écrans), 1×/session via showLead */
 if (window.matchMedia && window.matchMedia('(min-width: 769px)').matches) {
   document.addEventListener('mouseleave', function(e) {
     if (e.clientY > 10) return;
@@ -2526,7 +2450,7 @@ function showObjReply(btn, type) {
   if (btn) { btn.style.background = 'var(--accent)'; btn.style.borderColor = 'var(--accent)'; btn.style.color = 'white'; }
 }
 
-// STICKY CTA — libellé unique "Réserver mon bilan gratuit" (Calendly), pas de réécriture contextuelle.
+// STICKY CTA — libellé unique "Réserver mon appel gratuit" (WhatsApp), pas de réécriture contextuelle.
 
 // STAT COUNTER ANIMATION
 (function() {
@@ -2554,147 +2478,6 @@ function showObjReply(btn, type) {
   counters.forEach(function(c) { obs.observe(c); });
 })();
 
-// ===== SMART CAPTURE SYSTEM =====
-(function() {
-  var _trigger = null;
-  var _pendingUrl = null;
-  var _content = {
-    guide: {
-      title: 'Ton guide arrive — juste ton email',
-      sub:   'Reçois les 9 erreurs qui sabotent ta transformation, directement dans ta boîte.'
-    },
-    transformations: {
-      title: 'Tu veux voir les vraies transformations ?',
-      sub:   'Entre ton email pour accéder aux résultats complets de mes clientes.'
-    },
-    exit: {
-      title: 'Attends — tu repars sans ton guide gratuit ?',
-      sub:   'Entre ton email et reçois les 9 erreurs qui sabotent ta transformation + mon offre la moins chère. Gratuit.'
-    }
-  };
-
-  function scShow(trigger, pendingUrl) {
-    /* Smart-capture NEUTRALISÉE (optim-home) : une seule pop-up conservée = le guide (#lead-popup).
-       Les clics sur les liens guide/transformations naviguent normalement ; l'exit-intent ne montre plus de modale. */
-    if (pendingUrl) window.location.href = pendingUrl;
-    return;
-  }
-
-  window.scClose = function(proceed) {
-    document.getElementById('sc-overlay').classList.remove('active');
-    if (_trigger) sessionStorage.setItem('sc_' + _trigger + '_seen', '1');
-    var url = _pendingUrl;
-    _trigger = null; _pendingUrl = null;
-    if (proceed && url) window.location.href = url;
-  };
-
-  window.scOverlayClick = function(e) {
-    if (e.target === document.getElementById('sc-overlay')) scClose(false);
-  };
-
-  window.scSubmit = async function(e) {
-    e.preventDefault();
-    var email = document.getElementById('sc-email').value.trim();
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      document.getElementById('sc-email').focus(); return;
-    }
-    var prenom = (document.getElementById('sc-prenom').value || '').trim();
-    var btn = document.getElementById('sc-submit');
-    btn.disabled = true; btn.textContent = 'Envoi…';
-    localStorage.setItem('ornella_lead_email', email);
-    if (_trigger) sessionStorage.setItem('sc_' + _trigger + '_seen', '1');
-    var url = _pendingUrl;
-    _trigger = null; _pendingUrl = null;
-    var attrs = { SOURCE: 'smart-capture' };
-    if (prenom) attrs.PRENOM = prenom;
-    try {
-      document.getElementById('list2Email').value = email;
-      document.getElementById('list2Form').submit();
-    } catch(err) { console.warn('[SC Brevo]', err); }
-    try {
-      await fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=email', {
-        method: 'POST',
-        headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          to: [{ email: email }],
-          sender: { name: 'Ornella Fit Coaching', email: 'contact@ornellafitcoaching.com' },
-          subject: 'Bienvenue chez Ornella Fit Coaching \uD83D\uDD25',
-          htmlContent: '<html><body style="margin:0;padding:0;background-color:#FDF8F4;font-family:Arial,Helvetica,sans-serif;"><table width="100%" cellpadding="0" cellspacing="0" bgcolor="#FDF8F4"><tr><td align="center" style="padding:32px 16px;"><table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;"><tr><td bgcolor="#2C1F1A" style="padding:32px 36px;text-align:center;border-radius:14px 14px 0 0;"><div style="font-family:Georgia,serif;font-size:22px;font-weight:bold;color:#ffffff;">Ornella Fit Coaching</div><div style="font-size:11px;color:#aaaaaa;letter-spacing:2px;margin-top:6px;text-transform:uppercase;">Transformation f&#233;minine</div></td></tr><tr><td bgcolor="#ffffff" style="padding:32px 36px;"><h2 style="font-family:Georgia,serif;font-size:22px;color:#1E1616;margin:0 0 16px;">Bonjour &#128293;</h2><p style="font-size:14px;color:#5C4A40;line-height:1.75;margin:0 0 24px;">Merci de ton int&#233;r&#234;t pour Ornella Fit Coaching.<br><br>Si tu veux transformer ton corps avec un programme fait rien que pour toi, d&#233;couvre mes formules ci-dessous &#8212; et &#233;cris-moi sur WhatsApp pour qu\'on en parle.</p><table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center"><a href="https://www.ornellafitcoaching.com/offres.html" style="display:inline-block;background-color:#C96358;color:#ffffff;font-weight:bold;font-size:14px;padding:16px 36px;border-radius:50px;text-decoration:none;">Voir mes programmes &#8594;</a></td></tr></table></td></tr><tr><td bgcolor="#F5EDE4" style="padding:20px 36px;text-align:center;border-radius:0 0 14px 14px;border-top:1px solid #e8ddd4;"><p style="font-size:13px;color:#8A7060;line-height:1.7;margin:0;">&#192; tr&#232;s vite,<br><strong style="color:#1E1616;">Ornella &#128293;</strong></p></td></tr></table></td></tr></table></body></html>'
-        })
-      });
-    } catch(err) { console.warn('[SC email]', err); }
-    document.getElementById('sc-form-wrap').style.display = 'none';
-    document.getElementById('sc-success').style.display = 'block';
-    if (url) {
-      setTimeout(function() { window.location.href = url; }, 800);
-    } else {
-      setTimeout(function() { document.getElementById('sc-overlay').classList.remove('active'); }, 1400);
-    }
-  };
-
-  document.addEventListener('DOMContentLoaded', function() {
-    // Trigger B — Transformations nav & footer links
-    document.querySelectorAll('a[href="transformations.html"]').forEach(function(a) {
-      a.addEventListener('click', function(e) {
-        if (localStorage.getItem('ornella_lead_email')) return;
-        if (sessionStorage.getItem('sc_transformations_seen')) return;
-        e.preventDefault();
-        scShow('transformations', 'transformations.html');
-      });
-    });
-
-    // Trigger A — Direct guide links (outside success states)
-    document.querySelectorAll('a[href="guide-offert.html"]').forEach(function(a) {
-      var inSuccess = a.closest('#lead-success') || a.closest('.li-success-inline');
-      if (inSuccess) return;
-      a.addEventListener('click', function(e) {
-        if (localStorage.getItem('ornella_lead_email')) return;
-        if (sessionStorage.getItem('sc_guide_seen')) return;
-        e.preventDefault();
-        scShow('guide', 'guide-offert.html');
-      });
-    });
-  });
-
-  // Trigger C — Exit-intent (desktop + mobile)
-  var _exitFired = false;
-  function _canShowExit() {
-    if (_exitFired) return false;
-    if (sessionStorage.getItem('sc_exit_seen')) return false;
-    if (localStorage.getItem('ornella_lead_email')) return false;
-    if (document.getElementById('sc-overlay').classList.contains('active')) return false;
-    if (document.getElementById('lead-popup') && document.getElementById('lead-popup').classList.contains('active')) return false;
-    return true;
-  }
-  function _fireExit() { _exitFired = true; scShow('exit', null); }
-
-  // Desktop : souris vers la barre d'adresse
-  document.addEventListener('mouseleave', function(e) {
-    if (e.clientY >= 10) return;
-    if (!_canShowExit()) return;
-    _fireExit();
-  });
-
-  // Mobile : scroll rapide vers le haut après 40%+ de la page vue
-  (function() {
-    var _maxScroll = 0, _lastY = window.scrollY, _lastTime = Date.now();
-    var _tick = false;
-    window.addEventListener('scroll', function() {
-      if (_tick) return; _tick = true;
-      requestAnimationFrame(function() { _tick = false; _onScrollExit(); });
-    }, { passive: true });
-    function _onScrollExit() {
-      var y = window.scrollY;
-      var pageH = document.body.scrollHeight - window.innerHeight;
-      if (pageH > 0) _maxScroll = Math.max(_maxScroll, y / pageH);
-      var dy = _lastY - y;
-      var dt = Date.now() - _lastTime;
-      if (dy > 120 && dt < 400 && _maxScroll > 0.4 && _canShowExit()) _fireExit();
-      _lastY = y; _lastTime = Date.now();
-    }
-  })();
-})();
-
 var ua = navigator.userAgent || '';
 var isWebView = /Instagram|FBAN|FBAV|FB_IAB|Line|Twitter|Snapchat/.test(ua);
 if (!isWebView && 'IntersectionObserver' in window) {
@@ -2707,13 +2490,13 @@ if (!isWebView && 'IntersectionObserver' in window) {
 
 // WhatsApp « Contact » : géré une seule fois par suivi-clics.js
 
-// Meta Pixel — clics "bilan gratuit" (Calendly) et comparatif, par emplacement
+// Meta Pixel — clics "appel gratuit" (WhatsApp) et comparatif, par emplacement
 document.addEventListener('click', function(e) {
-  var a = e.target.closest('a[href*="calendly.com"], a[href*="coach-sportif-ou-salle-de-sport"]');
+  var a = e.target.closest('a[href*="r%C3%A9server%20mon%20bilan%20gratuit"], a[href*="coach-sportif-ou-salle-de-sport"]');
   if (!a) return;
   var sec = a.closest('section');
   var zone = !sec ? 'BarreBas' : sec.id === 'hero' ? 'Hero' : sec.classList.contains('svc-home') ? 'SalleVsCoaching' : sec.id === 'cta-final' ? 'Final' : 'Autre';
-  var evt = a.href.indexOf('calendly.com') !== -1 ? 'ClicBilan_' + zone : 'ClicComparatif';
+  var evt = a.href.indexOf('wa.me/') !== -1 ? 'ClicBilan_' + zone : 'ClicComparatif';
   if (typeof fbq !== 'undefined') fbq('trackCustom', evt);
   (window.dataLayer = window.dataLayer || []).push({event: 'clic_cta', cta: evt});
 });

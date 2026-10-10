@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<script>/* menu ☰ dispo dès le 1er clic (navigateurs Instagram/Facebook) */window.toggleMenu=window.toggleMenu||function(){var m=document.getElementById("navMenu");if(m)m.classList.toggle("open");};</script>
+<script src="/js/menu.js"></script>
 <link rel="icon" type="image/png" href="/images/favicon.png">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <!-- Google Tag Manager -->
@@ -59,7 +59,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <a href="/" class="nav-logo">
     <img src="../images/logo.png" alt="Ornella Fit Coaching" class="nav-logo-img" width="3135" height="793">
   </a>
-  <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  <button type="button" class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Menu">☰</button>
   <div class="nav-menu" id="navMenu">
     <a href="../offres.html" class="nav-link">Coaching</a>
     <a href="../programmes.html" class="nav-link">Programmes</a>
@@ -252,10 +252,6 @@ function blogGuideSubmit(e,form){e.preventDefault();var em=(form.querySelector('
 </footer>
 
 <a href="https://wa.me/33756834626" class="floating-wa" target="_blank" title="WhatsApp">💬</a>
-<script>
-function toggleMenu(){document.getElementById('navMenu').classList.toggle('open')}
-document.addEventListener('click',function(e){const m=document.getElementById('navMenu');const t=document.querySelector('.nav-toggle');if(!m.contains(e.target)&&!t.contains(e.target))m.classList.remove('open')});
-</script>
 <script defer src="/suivi-clics.js"></script>
 </body>
 </html>

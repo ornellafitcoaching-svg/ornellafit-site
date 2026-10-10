@@ -1,9 +1,9 @@
 /* Suivi des clics sur les boutons importants -> Meta Pixel (événements personnalisés) + dataLayer GTM.
    Noms lisibles dans le Gestionnaire d'événements Meta :
    - Clic_Achat_<Produit>  : clic vers une page de paiement (Stripe / GoCardless)
-   - Clic_Bilan            : clic vers Calendly (bilan gratuit)
    - Clic_WhatsApp         : clic vers WhatsApp (Clic_WhatsApp_Entreprise sur la page entreprise)
-                             + événement standard Meta « Contact » et GA4 « contact_whatsapp » (dataLayer)
+                             + événement standard Meta « Contact » + dataLayer « whatsapp_click » (GTM)
+                             et GA4 « contact_whatsapp » (dataLayer)
    - Clic_Email / Clic_Tel : clic mailto / tel (suffixe _Entreprise sur la page entreprise)
    - Clic_Vers_<Page>      : clic vers une autre page du site (ex. Clic_Vers_BootySculpt, Clic_Vers_Offres)
    - Clic_Instagram        : clic vers Instagram
@@ -87,17 +87,13 @@
     } else if (href.indexOf('pay.gocardless.com') !== -1) {
       envoyer('Clic_Achat_Coaching');
       if (window.pintrk) pintrk('track', 'checkout', { product_name: 'Coaching' });
-    } else if (href.indexOf('calendly.com') !== -1) {
-      envoyer('Clic_Bilan');
-      if (window.pintrk) pintrk('track', 'lead', { lead_type: 'Bilan gratuit' });
-      // NB : le lien ouvre directement la page de réservation Calendly (/15min) — fiable partout.
-      // Le popup widget a été désactivé (ne s'affichait pas de façon fiable). Pour le réactiver :
-      // décommenter ci-dessous (et vérifier que la prise de RDV s'affiche bien pour un vrai visiteur).
-      // if (/calendly\.com\/ornellafit-coaching/.test(href)) { e.preventDefault(); ouvrirCalendly(href); }
     } else if (href.indexOf('wa.me/') !== -1 || href.indexOf('api.whatsapp.com') !== -1) {
-      // Contact WhatsApp : événement standard Meta « Contact » + GA4 « contact_whatsapp » (GTM).
+      // Contact WhatsApp (CTA principal « Réserver mon appel gratuit » + bouton flottant) :
+      // événement standard Meta « Contact » + dataLayer « whatsapp_click » (GTM) + GA4 « contact_whatsapp ».
       // Seul endroit du site qui les envoie. Pas de preventDefault : le lien s'ouvre normalement.
       if (typeof fbq !== 'undefined') fbq('track', 'Contact', { content_name: 'whatsapp', page: PAGE });
+      if (window.pintrk) pintrk('track', 'lead', { lead_type: 'WhatsApp' });
+      (window.dataLayer = window.dataLayer || []).push({ event: 'whatsapp_click', page: PAGE, link_url: href.split('?')[0] });
       (window.dataLayer = window.dataLayer || []).push({ event: 'contact_whatsapp', page: PAGE, page_path: location.pathname, link_url: href.split('?')[0] });
       envoyer(PAGE === 'entreprise' ? 'Clic_WhatsApp_Entreprise' : 'Clic_WhatsApp');
     } else if (href.indexOf('mailto:') === 0) {
@@ -110,42 +106,4 @@
       envoyer('Clic_Vers_' + nomPage(a.pathname));
     }
   }, true);
-
-  // ===== Calendly : popup widget officiel + tracking du RDV réellement pris =====
-  var _calLoading = false;
-  function chargerCalendly(cb) {
-    if (window.Calendly) { cb(); return; }
-    if (!_calLoading) {
-      _calLoading = true;
-      var l = document.createElement('link');
-      l.rel = 'stylesheet';
-      l.href = 'https://assets.calendly.com/assets/external/widget.css';
-      document.head.appendChild(l);
-      var s = document.createElement('script');
-      s.src = 'https://assets.calendly.com/assets/external/widget.js';
-      s.async = true;
-      document.head.appendChild(s);
-    }
-    var t0 = Date.now();
-    (function attendre() {
-      if (window.Calendly) return cb();
-      if (Date.now() - t0 > 5000) return cb(true); // timeout -> repli nouvel onglet
-      setTimeout(attendre, 100);
-    })();
-  }
-  function ouvrirCalendly(url) {
-    chargerCalendly(function (echec) {
-      if (echec || !window.Calendly) { window.open(url, '_blank', 'noopener'); return; }
-      window.Calendly.initPopupWidget({ url: url });
-    });
-  }
-  window.ouvrirCalendly = ouvrirCalendly;
-
-  // RDV effectivement réservé dans le widget Calendly -> conversion
-  window.addEventListener('message', function (e) {
-    if (e && e.data && e.data.event === 'calendly.event_scheduled') {
-      if (typeof fbq !== 'undefined') fbq('track', 'Schedule');
-      (window.dataLayer = window.dataLayer || []).push({ event: 'bilan_reserve' });
-    }
-  });
 })();

@@ -4,7 +4,7 @@
 <link rel="icon" type="image/png" href="/images/favicon.png">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <meta charset="UTF-8">
-<script>/* menu ☰ dispo dès le 1er clic (navigateurs Instagram/Facebook) */window.toggleMenu=window.toggleMenu||function(){var m=document.getElementById("navMenu");if(m)m.classList.toggle("open");};</script>
+<script src="/js/menu.js"></script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -402,14 +402,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <a href="/" class="nav-logo">
     <img src="images/logo.png" alt="Ornella Fit Coaching" class="nav-logo-img" width="3135" height="793">
   </a>
-  <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  <button type="button" class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Menu">☰</button>
   <div class="nav-menu" id="navMenu">
     <a href="offres.html" class="nav-link">Tarifs coaching</a>
     <a href="transformations.html" class="nav-link">Transformations</a>
     <a href="programmes.html" class="nav-link">Programmes digitaux</a>
     <a href="entreprise.html" class="nav-link">Entreprise</a>
     <a href="apropos.html" class="nav-link">À propos</a>
-    <a href="https://www.ornellafitcoaching.com/quiz.html" class="nav-link">Mon coaching →</a>
+    <a href="https://www.ornellafitcoaching.com/quiz.html" class="nav-link">Quelle formule pour moi ?</a>
     <a href="https://wa.me/33756834626" class="nav-cta" target="_blank">M'écrire →</a>
   </div>
 </nav>
@@ -1058,12 +1058,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <a href="https://wa.me/33756834626" class="floating-wa" target="_blank" title="WhatsApp">💬</a>
 
 <script>
-function toggleMenu(){document.getElementById('navMenu').classList.toggle('open')}
-document.addEventListener('click',function(e){
-  const menu=document.getElementById('navMenu');
-  const toggle=document.querySelector('.nav-toggle');
-  if(menu&&toggle&&!menu.contains(e.target)&&!toggle.contains(e.target)){menu.classList.remove('open')}
-});
 
 (function(){
   var cue=document.querySelector('.scroll-cue');
