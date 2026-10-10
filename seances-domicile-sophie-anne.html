@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Séances domicile — Sophie & Anne</title>
+<style>
+  :root{
+    --bg:#0f1216; --card:#1a2028; --line:#2a323d; --txt:#f2f5f8; --muted:#9aa6b4;
+    --sophie:#1fa36b; --anne:#e0863b;
+    --accent:var(--sophie);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.4;
+    padding-bottom:60px}
+  .tabs{position:sticky;top:0;z-index:10;display:flex;background:var(--card);border-bottom:1px solid var(--line)}
+  .tabs button{flex:1;border:0;background:transparent;color:var(--muted);font-size:15px;font-weight:800;
+    padding:16px 6px;letter-spacing:.3px}
+  .tabs button.active{color:var(--txt);box-shadow:inset 0 -3px 0 var(--accent)}
+  header{padding:20px 18px 6px;text-align:center}
+  header h1{margin:0;font-size:22px;font-weight:800}
+  header .meta{color:var(--muted);font-size:13px;margin-top:6px}
+  .intro{margin:14px 16px;padding:14px 16px;background:var(--card);border:1px solid var(--line);
+    border-radius:16px;font-size:14px;color:var(--muted)}
+  .intro b{color:var(--txt)}
+  .phase{margin:26px 16px 8px;display:flex;align-items:center;gap:10px}
+  .phase h2{margin:0;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:800}
+  .phase .ln{flex:1;height:1px;background:var(--line)}
+  .phase .t{font-size:12px;color:var(--muted)}
+  .card{margin:10px 16px;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    display:flex;gap:0}
+  .fig{width:118px;min-width:118px;background:#11161c;display:flex;align-items:center;justify-content:center;
+    border-right:1px solid var(--line)}
+  .fig svg{width:100%;height:auto;color:#eef3f8;padding:6px}
+  .body{padding:12px 14px;flex:1;min-width:0}
+  .body .nm{font-size:16px;font-weight:800;margin:0 0 2px}
+  .body .cue{font-size:13.5px;color:var(--muted);margin:4px 0 0}
+  .badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#0b0e12;
+    font-weight:800;font-size:13px;padding:4px 10px;border-radius:20px;margin-top:8px;border:0;cursor:pointer}
+  .badge.run{background:#0b0e12;color:var(--accent);border:1px solid var(--accent)}
+  .count{font-variant-numeric:tabular-nums}
+  .side{display:inline-block;font-size:11px;font-weight:800;color:var(--accent);
+    border:1px solid var(--accent);border-radius:6px;padding:1px 6px;margin-left:6px;vertical-align:middle}
+  .end{margin:24px 16px 10px;padding:16px;text-align:center;color:var(--muted);font-size:14px}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+
+<div class="tabs">
+  <button id="tabS" class="active" onclick="show('sophie')">🟢 SOPHIE</button>
+  <button id="tabA" onclick="show('anne')">🟠 ANNE</button>
+</div>
+
+<div id="content"></div>
+
+<script>
+/* ============ BIBLIOTHÈQUE DE DESSINS (SVG) ============ */
+const S = s => `<svg viewBox="0 0 200 180" fill="none" stroke="currentColor" stroke-width="7"
+  stroke-linecap="round" stroke-linejoin="round">
+  <line x1="18" y1="162" x2="182" y2="162" stroke="#39434f" stroke-width="4"/>${s}</svg>`;
+const head = (x,y,r=12)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="currentColor" stroke="none"/>`;
+const L = (x1,y1,x2,y2)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`;
+const box = (x,y,w,h)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" fill="#39434f" stroke="#5a6676" stroke-width="3"/>`;
+const arrow = (x1,y1,x2,y2)=>`<path d="M${x1},${y1} L${x2},${y2}" stroke="#7fd3ad" stroke-width="4"
+  stroke-dasharray="2 6"/><circle cx="${x2}" cy="${y2}" r="3.5" fill="#7fd3ad" stroke="none"/>`;
+
+const FIG = {
+  marche: S(head(100,42)+L(100,54,100,100)+L(100,66,74,86)+L(100,66,126,70)
+    +L(100,100,86,140)+L(86,140,86,162)             /* jambe au sol */
+    +L(100,100,120,118)+L(120,118,118,138)          /* genou levé */
+    +arrow(118,138,118,120)),
+  stepTouch: S(head(100,44)+L(100,56,100,104)+L(100,70,70,92)+L(100,70,130,92)
+    +L(100,104,70,160)+L(100,104,132,150)
+    +arrow(140,120,160,120)+arrow(60,120,40,120)),
+  epaules: S(head(100,46)+L(100,58,100,120)+L(100,120,84,162)+L(100,120,116,162)
+    +`<path d="M100,70 q-34,-14 -30,20" stroke="#7fd3ad" stroke-width="4" stroke-dasharray="2 5"/>`
+    +`<path d="M100,70 q34,-14 30,20" stroke="#7fd3ad" stroke-width="4" stroke-dasharray="2 5"/>`
+    +L(100,72,80,74)+L(100,72,120,74)),
+  hanches: S(head(100,44)+L(100,56,100,108)+L(100,70,78,66)+L(100,70,122,66)
+    +L(100,108,82,160)+L(100,108,118,160)
+    +`<ellipse cx="100" cy="108" rx="26" ry="10" stroke="#7fd3ad" stroke-width="4" stroke-dasharray="2 5"/>`),
+  talonsFesses: S(head(100,42)+L(100,54,100,102)+L(100,68,76,88)+L(100,68,124,88)
+    +L(100,102,88,160)                               /* jambe appui */
+    +L(100,102,116,124)+L(116,124,98,122)            /* talon vers fesse */
+    +arrow(104,132,100,118)),
+
+  squat: S(head(112,52)+L(112,62,96,106)             /* dos penché */
+    +L(104,78,134,74)+L(100,80,130,86)               /* bras tendus devant */
+    +L(96,106,80,126)+L(80,126,80,160)               /* jambe */
+    +L(96,106,120,126)+L(120,126,120,160)
+    +arrow(150,110,150,150)),
+  squatPointes: S(head(100,46)+L(100,56,100,100)+L(100,70,124,64)+L(100,70,76,64)
+    +L(100,100,84,150)+L(84,150,80,158)              /* pointe */
+    +L(100,100,116,150)+L(116,150,120,158)
+    +arrow(150,120,150,100)),
+  fente: S(head(96,48)+L(96,58,96,104)+L(96,72,80,96)+L(96,72,112,96)
+    +L(96,104,70,140)+L(70,140,70,162)               /* jambe avant pliée */
+    +L(96,104,126,138)+L(126,138,146,160)            /* jambe arrière */
+    +L(126,138,126,158)),
+  pont: S(`<line x1="40" y1="150" x2="70" y2="150"/>`  /* épaules/dos au sol */
+    +head(52,150)+L(70,150,108,116)                   /* buste monte vers hanches hautes */
+    +L(108,116,108,150)+L(108,150,140,150)            /* cuisse puis tibia au sol */
+    +L(108,116,78,150)                                /* autre appui dos */
+    +arrow(108,100,108,116)),
+  monteesGenoux: S(head(100,42)+L(100,54,100,98)+L(100,68,122,54)+L(100,68,80,86)
+    +L(100,98,88,150)+L(88,150,88,162)
+    +L(100,98,122,112)+L(122,112,120,132)
+    +arrow(120,132,122,110)),
+  gainage: S(`<line x1="40" y1="150" x2="150" y2="118"/>` /* corps incliné genoux */
+    +head(150,112)+L(60,150,60,162)                   /* genou au sol */
+    +L(60,150,46,162)                                 /* avant-bras */
+    +L(46,162,70,162)),
+  boxing: S(head(96,48)+L(96,58,96,106)+L(96,70,72,92)  /* bras garde */
+    +L(96,70,138,64)                                  /* bras qui frappe */
+    +L(96,106,80,160)+L(96,106,114,160)
+    +arrow(142,66,160,66)),
+
+  ischios: S(head(120,60)+L(120,68,88,96)             /* buste penché */
+    +L(104,82,124,96)+L(100,86,120,100)               /* bras vers jambe */
+    +L(88,96,78,160)                                  /* jambe tendue */
+    +L(88,96,110,160)),
+  quad: S(head(96,46)+L(96,56,96,110)+L(96,70,80,64)
+    +L(96,70,120,96)                                  /* bras tient pied */
+    +L(96,110,84,160)                                 /* jambe appui */
+    +L(96,110,122,120)+L(122,120,116,98)              /* talon à la fesse */),
+  fessiers: S(`<line x1="40" y1="150" x2="88" y2="150"/>`+head(50,150)
+    +L(88,150,98,120)                                  /* cuisse ramenée */
+    +L(98,120,120,150)                                 /* tibia vers sol */
+    +`<path d="M88,150 q24,-30 10,-30" stroke="#7fd3ad" stroke-width="4" stroke-dasharray="2 5"/>`
+    +arrow(104,132,96,120)),
+  chat: S(`<path d="M50,150 q50,-40 100,0" stroke="currentColor" stroke-width="7"/>` /* dos arrondi */
+    +head(150,120)+L(60,150,60,162)+L(140,150,140,162)+L(80,138,80,162)+L(120,138,120,162)
+    +arrow(100,96,100,118)),
+  respiration: S(head(100,50)+L(100,60,100,116)+L(100,116,86,160)+L(100,116,114,160)
+    +L(100,72,74,50)+L(100,72,126,50)                 /* bras levés */
+    +arrow(100,40,100,24)),
+
+  /* ---- exercices STEP (Anne) ---- */
+  stepUp: S(box(96,118,66,44)                          /* step */
+    +head(78,44)+L(78,54,86,104)+L(80,70,60,92)+L(86,74,106,74)
+    +L(86,104,78,160)                                  /* jambe au sol */
+    +L(86,104,112,118)+L(112,118,112,118)              /* pied sur step */
+    +L(112,118,118,138)+arrow(140,100,118,118)),
+  boxSquat: S(box(96,132,70,30)                        /* step bas pour s'asseoir */
+    +head(80,52)+L(80,62,96,112)                       /* se pose sur le step */
+    +L(86,78,112,72)+L(84,80,110,84)                   /* bras devant */
+    +L(96,112,78,132)+L(78,132,78,160)
+    +L(96,112,116,132)+L(116,132,116,160)
+    +arrow(60,100,60,128)),
+  bulgare: S(box(128,120,44,42)                        /* step derrière */
+    +head(86,46)+L(86,56,86,104)+L(86,72,72,94)+L(86,72,100,94)
+    +L(86,104,70,138)+L(70,138,70,162)                 /* jambe avant pliée */
+    +L(86,104,120,118)+L(120,118,138,120)              /* pied arrière sur step */
+    +arrow(50,108,50,140)),
+  pompesInc: S(box(118,128,56,34)                       /* step sous les mains */
+    +`<line x1="52" y1="156" x2="130" y2="128"/>`       /* corps incliné */
+    +head(136,122)+L(52,156,40,162)                     /* pieds */
+    +L(130,128,130,128)+arrow(90,108,90,138)),
+  dips: S(box(72,120,56,42)                             /* step derrière */
+    +head(120,70)+L(120,80,120,118)                     /* buste devant le step */
+    +L(120,92,100,120)                                  /* bras appui sur step */
+    +L(120,118,150,118)+L(150,118,150,160)              /* jambes devant */
+    +arrow(120,54,120,70)),
+  pontStep: S(box(128,140,44,22)                         /* pieds sur step */
+    +`<line x1="40" y1="150" x2="68" y2="150"/>`+head(50,150)
+    +L(68,150,110,112)+L(110,112,138,140)               /* hanches hautes, pieds sur step */
+    +L(68,150,110,112,false)
+    +arrow(110,96,110,112)),
+  stepGenou: S(box(96,122,64,40)
+    +head(82,38)+L(82,48,88,100)+L(84,66,108,54)+L(80,70,60,90)
+    +L(88,100,116,122)                                  /* pied sur step */
+    +L(88,100,74,140)+L(74,140,74,162,false)            /* genou monté */
+    +L(88,100,78,130)+arrow(60,120,78,100)),
+  climbersStep: S(box(118,128,56,34)
+    +`<line x1="48" y1="158" x2="128" y2="128"/>`+head(136,122)
+    +L(48,158,34,162)                                   /* un pied arrière */
+    +L(70,148,74,120)                                   /* genou ramené */
+    +arrow(90,150,90,124))
+};
+
+/* ============ CONTENU DES SÉANCES ============ */
+const w = (fig,nm,sec,cue,side)=>({fig,nm,sec,cue,side});
+const ph = (name,note)=>({phase:name,note});
+
+const SOPHIE = {
+  title:"Sophie — Cardio-renfo, dos protégé",
+  color:"var(--sophie)",
+  meta:"45 min · à la maison · tout en secondes (rien à compter)",
+  intro:`<b>Objectif :</b> faire monter le cœur et transpirer en douceur, sans jamais forcer sur le dos.
+    Garde toujours le <b>dos droit</b>, respire, bois entre les blocs. Tu regardes le dessin, tu fais le mouvement
+    pendant le temps indiqué. Tape sur le petit <b>chrono</b> si tu veux qu'il te décompte les secondes.`,
+  items:[
+    ph("Échauffement","≈ 5 min · on réveille tout en douceur"),
+    w("marche","Marche sur place + bras",45,"Rythme tranquille, on monte la température."),
+    w("stepTouch","Pas chassés sur place",45,"Petits pas de côté, genoux souples."),
+    w("epaules","Rotations des épaules",40,"Grands cercles lents, on relâche la nuque."),
+    w("hanches","Cercles de hanches",40,"Mains sur les hanches, le bassin dessine un cercle."),
+    w("squat","Squats lents de mobilité",50,"Fesses en arrière, dos droit, talons au sol."),
+    w("talonsFesses","Talons-fesses légers",40,"On commence à activer le cardio."),
+
+    ph("Circuit · Tour 1 sur 3","40 sec d'effort / 20 sec de repos · dos toujours gainé"),
+    w("squat","Squats",40,"Fesses en arrière comme pour s'asseoir, poitrine ouverte."),
+    w("stepTouch","Pas chassés rapides",40,"Dynamique de côté, on fait monter le cœur."),
+    w("fente","Fentes alternées",40,"Grand pas, genou arrière vers le sol, buste droit."),
+    w("pont","Pont fessier au sol",40,"Dos à plat, on serre les fesses en montant le bassin."),
+    w("monteesGenoux","Montées de genoux",40,"Genoux à hauteur des hanches, ventre serré."),
+    w("squatPointes","Squat + montée sur pointes",40,"Squat, puis on monte sur la pointe des pieds."),
+    w("gainage","Gainage sur les genoux",40,"Appui genoux + avant-bras, corps bien aligné."),
+    w("boxing","Boxing debout",40,"Coups de poing devant soi, jambes légèrement fléchies."),
+
+    ph("Circuit · Tour 2 sur 3","même chose · bois une gorgée d'eau avant"),
+    w("squat","Squats",40,"On garde le rythme, respiration régulière."),
+    w("stepTouch","Pas chassés rapides",40,"On accélère un peu si ça va."),
+    w("fente","Fentes alternées",40,"Genou arrière qui descend bien, sans à-coup."),
+    w("pont","Pont fessier au sol",40,"On pousse dans les talons, fesses serrées en haut."),
+    w("monteesGenoux","Montées de genoux",40,"Bras qui accompagnent pour le cardio."),
+    w("squatPointes","Squat + montée sur pointes",40,"Équilibre, on contrôle la descente."),
+    w("gainage","Gainage sur les genoux",40,"Ne creuse pas le dos, nombril rentré."),
+    w("boxing","Boxing debout",40,"On y met de l'énergie, ça défoule !"),
+
+    ph("Circuit · Tour 3 sur 3","dernier tour · tu gères !"),
+    w("squat","Squats",40,"Toujours le dos droit, c'est le dernier."),
+    w("stepTouch","Pas chassés rapides",40,"On donne ce qu'il reste, en souplesse."),
+    w("fente","Fentes alternées",40,"Buste droit, regard devant."),
+    w("pont","Pont fessier au sol",40,"Belle poussée de fessiers."),
+    w("monteesGenoux","Montées de genoux",40,"Cardio à fond mais contrôlé."),
+    w("squatPointes","Squat + montée sur pointes",40,"Mollets qui travaillent."),
+    w("gainage","Gainage sur les genoux",40,"On tient, on respire."),
+    w("boxing","Boxing debout",40,"Dernier effort du circuit 💪"),
+
+    ph("Finisher cardio","≈ 3 min · on fait grimper le cœur une dernière fois"),
+    w("stepTouch","Pas chassés rapides",40,"Doux pour le dos, intense pour le cœur."),
+    w("monteesGenoux","Montées de genoux",40,"Rythme soutenu."),
+    w("talonsFesses","Talons-fesses",40,"Dernière ligne droite, on respire."),
+
+    ph("Retour au calme","≈ 5 min · étirements, on récupère"),
+    w("ischios","Étirement arrière de cuisse",40,"Jambe tendue, on se penche léger, dos droit."),
+    w("quad","Étirement avant de cuisse",30,"Talon vers la fesse — 30 sec par jambe.","× 2 côtés"),
+    w("fessiers","Étirement fessier (allongée)",40,"Genou ramené vers la poitrine, tranquille."),
+    w("chat","Dos de chat (à 4 pattes)",40,"On arrondit puis on creuse légèrement le dos."),
+    w("respiration","Respiration profonde",40,"Grandes inspirations, on relâche tout. Bravo Sophie 👏")
+  ]
+};
+
+const ANNE = {
+  title:"Anne — Renfo tonique au step",
+  color:"var(--anne)",
+  meta:"45 min · à la maison avec le step · tout en secondes",
+  intro:`<b>Objectif :</b> dégonfler et tonifier avec plus d'intensité — Anne a de la force, on exploite le step.
+    Le <b>step</b> sert de marche et de banc (dips, fentes bulgares, pont). Garde le dos gainé, pousse dans les talons.
+    Tape sur le <b>chrono</b> d'une carte si tu veux le décompte.`,
+  items:[
+    ph("Échauffement","≈ 5 min"),
+    w("marche","Marche dynamique sur place",45,"On monte les genoux, bras actifs."),
+    w("stepUp","Montées calmes sur le step",45,"Pied à plat sur le step, on alterne sans à-coup."),
+    w("epaules","Rotations des épaules",40,"Grands cercles, on ouvre la poitrine."),
+    w("squat","Squats de mobilité",50,"Descente contrôlée, dos droit, talons ancrés."),
+    w("talonsFesses","Talons-fesses",40,"On lance le cardio."),
+
+    ph("Circuit · Tour 1 sur 3","40 sec effort / 20 sec repos"),
+    w("stepUp","Montées alternées sur le step",40,"Pousse dans la jambe du dessus, buste droit."),
+    w("boxSquat","Squats sur le step (s'asseoir/se relever)",40,"On effleure le step puis on remonte, fessiers."),
+    w("bulgare","Fente bulgare — pied arrière sur le step",40,"Jambe droite devant · descente verticale.","DROITE"),
+    w("bulgare","Fente bulgare — pied arrière sur le step",40,"Jambe gauche devant · on change de côté.","GAUCHE"),
+    w("pompesInc","Pompes inclinées, mains sur le step",40,"Corps gainé en planche, coudes vers l'arrière."),
+    w("dips","Dips triceps sur le step",40,"Mains derrière sur le step, on plie les coudes."),
+    w("pontStep","Pont fessier, pieds sur le step",40,"On monte le bassin haut, on serre les fessiers."),
+    w("stepGenou","Montée sur step + genou (cardio)",40,"Monte et lève le genou opposé, dynamique."),
+
+    ph("Circuit · Tour 2 sur 3","on garde l'intensité · gorgée d'eau"),
+    w("stepUp","Montées alternées sur le step",40,"Rythme soutenu, contrôle la descente."),
+    w("boxSquat","Squats sur le step",40,"On ralentit la descente pour sentir les fessiers."),
+    w("bulgare","Fente bulgare au step",40,"Jambe droite devant.","DROITE"),
+    w("bulgare","Fente bulgare au step",40,"Jambe gauche devant.","GAUCHE"),
+    w("pompesInc","Pompes inclinées sur le step",40,"Ne creuse pas le dos, ventre serré."),
+    w("dips","Dips triceps sur le step",40,"Coudes serrés, on descend bien."),
+    w("pontStep","Pont fessier, pieds sur le step",40,"Pause d'1 sec en haut à chaque montée."),
+    w("stepGenou","Montée sur step + genou",40,"Cardio à fond, bras qui accompagnent."),
+
+    ph("Circuit · Tour 3 sur 3","dernier tour, tu assures !"),
+    w("stepUp","Montées alternées sur le step",40,"On tient le rythme."),
+    w("boxSquat","Squats sur le step",40,"Pousse fort dans les talons pour remonter."),
+    w("bulgare","Fente bulgare au step",40,"Jambe droite devant.","DROITE"),
+    w("bulgare","Fente bulgare au step",40,"Jambe gauche devant.","GAUCHE"),
+    w("pompesInc","Pompes inclinées sur le step",40,"Dernière série, on garde la ligne du corps."),
+    w("dips","Dips triceps sur le step",40,"Triceps qui brûlent, c'est normal."),
+    w("pontStep","Pont fessier, pieds sur le step",40,"Belle poussée finale de fessiers."),
+    w("stepGenou","Montée sur step + genou",40,"On vide le réservoir 💪"),
+
+    ph("Finisher cardio","≈ 3 min"),
+    w("climbersStep","Grimpeur rapide, mains sur le step",30,"Genoux qui montent vite vers la poitrine."),
+    w("stepGenou","Montées sur step + genou",40,"Rythme élevé."),
+    w("monteesGenoux","Montées de genoux sur place",30,"On finit le cardio à bloc."),
+
+    ph("Retour au calme","≈ 5 min · étirements"),
+    w("ischios","Étirement arrière de cuisse",40,"Talon sur le step, on se penche doux, dos droit."),
+    w("quad","Étirement avant de cuisse",30,"Talon vers la fesse — 30 sec par jambe.","× 2 côtés"),
+    w("fessiers","Étirement fessier (allongée)",40,"Genou vers la poitrine."),
+    w("chat","Dos de chat (à 4 pattes)",40,"On mobilise le dos en douceur."),
+    w("respiration","Respiration profonde",40,"On relâche tout. Bravo Anne 👏")
+  ]
+};
+
+/* ============ RENDU ============ */
+let audioCtx=null;
+function beep(f,d){try{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+  const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.connect(g);g.connect(audioCtx.destination);
+  o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(.001,audioCtx.currentTime);
+  g.gain.exponentialRampToValueAtTime(.3,audioCtx.currentTime+.02);
+  g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+d);
+  o.start();o.stop(audioCtx.currentTime+d);}catch(e){}}
+
+function startChrono(btn,sec){
+  if(btn.dataset.running){return;}
+  btn.dataset.running="1";btn.classList.add('run');
+  let t=sec;const span=btn.querySelector('.count');
+  span.textContent=t+'s';
+  const id=setInterval(()=>{
+    t--;
+    if(t<=3&&t>0)beep(880,.1);
+    if(t<=0){clearInterval(id);beep(1320,.25);span.textContent='✔';
+      btn.classList.remove('run');delete btn.dataset.running;
+      setTimeout(()=>{span.textContent=sec+'s';},1500);return;}
+    span.textContent=t+'s';
+  },1000);
+}
+
+function render(data){
+  let html=`<header style="--accent:${data.color}">
+    <h1>${data.title}</h1><div class="meta">${data.meta}</div></header>
+    <div class="intro">${data.intro}</div>`;
+  data.items.forEach(it=>{
+    if(it.phase){
+      html+=`<div class="phase"><h2>${it.phase}</h2><div class="ln"></div><span class="t">${it.note||''}</span></div>`;
+    }else{
+      const side=it.side?`<span class="side">${it.side}</span>`:'';
+      html+=`<div class="card">
+        <div class="fig">${FIG[it.fig]||''}</div>
+        <div class="body">
+          <p class="nm">${it.nm}${side}</p>
+          <p class="cue">${it.cue}</p>
+          <button class="badge" onclick="startChrono(this,${it.sec})">⏱ <span class="count">${it.sec}s</span></button>
+        </div></div>`;
+    }
+  });
+  html+=`<div class="end">Fin de séance — pense à noter ses sensations 📝</div>`;
+  return html;
+}
+
+function show(who){
+  const data = who==='sophie'?SOPHIE:ANNE;
+  document.documentElement.style.setProperty('--accent', data.color);
+  document.getElementById('content').innerHTML = render(data);
+  document.getElementById('tabS').classList.toggle('active',who==='sophie');
+  document.getElementById('tabA').classList.toggle('active',who==='anne');
+  window.scrollTo(0,0);
+}
+show('sophie');
+</script>
+</body>
+</html>
