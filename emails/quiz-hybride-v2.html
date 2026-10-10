@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<style>
+:root{color-scheme:light only;}
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#FFFFFF; font-family:'DM Sans',Arial,sans-serif; }
+  .wrap { max-width:560px; margin:32px auto; background:white; border-radius:18px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.08); }
+  .top { background:#FFFFFF; border-bottom:1px solid rgba(201,185,154,0.25); padding:40px 32px; text-align:center; }
+  .top-emoji { font-size:2.5rem; display:block; margin-bottom:14px; }
+  .top h1 { color:#1E1616; font-family:Georgia,serif; font-size:1.55rem; line-height:1.3; font-weight:600; }
+  .top p { color:#C96358; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; font-size:0.82rem; margin-top:8px; }
+  .body { padding:36px 32px; }
+  .tag { display:inline-block; background:#F7F3F0; border:1px solid rgba(201,149,122,0.4); color:#C96358; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; padding:5px 14px; border-radius:50px; margin-bottom:16px; }
+  h2 { font-family:Georgia,serif; font-size:1.35rem; color:#1E1616; margin-bottom:10px; font-weight:600; }
+  p { font-size:0.9rem; color:#4A3E3E; line-height:1.75; margin-bottom:16px; }
+  .benefits { background:#F7F3F0; border-radius:12px; padding:18px 20px; margin:18px 0 22px; }
+  .benefit { font-size:0.88rem; color:#1E1616; padding:5px 0; line-height:1.5; }
+  .price { text-align:center; background:#FFF8F5; border:1px solid rgba(201,149,122,0.35); border-radius:14px; padding:18px 20px; margin:0 0 22px; }
+  .price-amount { font-family:Georgia,serif; font-size:1.7rem; color:#C96358; font-weight:700; line-height:1.1; }
+  .price-sub { font-size:0.8rem; color:#7A6E6E; margin:6px 0 10px; line-height:1.5; }
+  .price a { color:#C96358; font-weight:700; font-size:0.85rem; }
+  .cta-wrap { text-align:center; margin:6px 0 8px; }
+  .cta-main { display:inline-block; background:linear-gradient(135deg,#C96358,#C9957A); color:white !important; font-weight:700; font-size:0.98rem; padding:16px 34px; border-radius:50px; text-decoration:none; }
+  .cta-note { font-size:0.76rem; color:#9A8080; margin-top:10px; }
+  .guide { background:#1B3A2D; border-radius:14px; padding:20px; margin:26px 0 18px; text-align:center; }
+  .guide-k { font-size:0.68rem; color:#C9A96E; font-weight:700; text-transform:uppercase; letter-spacing:.1em; margin-bottom:6px; }
+  .guide-t { font-family:Georgia,serif; font-size:1.15rem; color:#F5EFE6; margin-bottom:12px; line-height:1.35; }
+  .guide a { display:inline-block; background:#F5EFE6; color:#1B3A2D !important; font-weight:700; font-size:0.85rem; padding:11px 22px; border-radius:50px; text-decoration:none; }
+  .sign { text-align:center; margin-top:24px; font-size:0.9rem; color:#4A3E3E; line-height:1.8; }
+  .sign strong { color:#1E1616; font-size:1rem; }
+  .footer { padding:18px 32px; background:#F7F3F0; text-align:center; font-size:0.74rem; color:#9A8080; line-height:1.6; }
+  .footer a { color:#9A8080; }
+  @media (max-width:600px) { .wrap { margin:0; border-radius:0; } .body, .top { padding:28px 20px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <span class="top-emoji">🔥</span>
+    <h1>Voici l'offre parfaite pour toi</h1>
+    <p>Résultat de ton quiz — Ornella Fit Coaching</p>
+  </div>
+  <div class="body">
+    <p>Bonjour{% if params.PRENOM %} {{ params.PRENOM }}{% endif %},</p>
+    <p>D'après ton quiz, tu veux t'entraîner souvent, mais avec un vrai cadre pour que ça donne des résultats. 👇</p>
+    <div class="tag">🔥 Présentiel + suivi toute la semaine</div>
+    <h2>Coaching Hybride</h2>
+    <p>Une séance avec moi chez toi chaque mois, et un programme sur-mesure en vidéo pour t'entraîner seule le reste de la semaine. <strong>Tu progresses toute la semaine, pas seulement le jour du coaching.</strong></p>
+    <div class="benefits">
+      <div class="benefit">✔️&nbsp; Je viens chez toi 1 fois/mois (2 possibles sur devis)</div>
+      <div class="benefit">✔️&nbsp; Programme sur-mesure avec vidéos</div>
+      <div class="benefit">✔️&nbsp; Jusqu'à 4 séances/semaine en autonomie</div>
+      <div class="benefit">✔️&nbsp; Avec ou sans matériel — salle ou domicile</div>
+      <div class="benefit">✔️&nbsp; Suivi WhatsApp entre les séances</div>
+    </div>
+    <div class="price">
+      <div class="price-amount">dès 149€ / mois</div>
+      <div class="price-sub">Parcours 3 ou 6 mois · formule sans engagement possible, à un tarif un peu plus élevé</div>
+      <a href="https://www.ornellafitcoaching.com/offres.html?utm_source=brevo&utm_medium=email&utm_campaign=quiz&utm_content=tarif-hybride#tarif-hybride">Voir le détail de l'hybride →</a>
+    </div>
+    <div class="cta-wrap">
+      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20%21%20J%27ai%20re%C3%A7u%20le%20r%C3%A9sultat%20de%20mon%20quiz%20%3A%20Coaching%20Hybride.%20On%20en%20parle%20%3F" class="cta-main">💬 Réserver mon appel gratuit</a>
+      <div class="cta-note">15 min sur WhatsApp · gratuit · sans engagement</div>
+    </div>
+    <div class="guide">
+      <div class="guide-k">🎁 Ton guide offert</div>
+      <div class="guide-t">Les 9 erreurs qui t'empêchent d'évoluer</div>
+      <a href="https://www.ornellafitcoaching.com/guide-offert.html?utm_source=brevo&utm_medium=email&utm_campaign=quiz&utm_content=guide-9-erreurs">Lire le guide →</a>
+    </div>
+    <div style="background:white;border:1.5px solid rgba(201,185,154,0.4);border-radius:14px;padding:18px 12px;margin:18px 0;text-align:center;">
+  <span class="tag" style="margin-bottom:14px;">⭐ Elles ont choisi l'hybride</span>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td width="50%" valign="top" style="padding:0 5px;text-align:center;"><img src="https://www.ornellafitcoaching.com/images/email/avis-lucie.jpg" width="240" alt="Avant / après de Lucie, coachée par Ornella" style="width:100%;max-width:240px;height:auto;border-radius:10px;display:block;margin:0 auto 8px;"><div style="font-size:0.85rem;font-weight:700;color:#1E1616;">Lucie <span style="font-weight:400;color:#9A8080;font-size:0.75rem;">· 32 ans</span></div><div style="font-size:0.82rem;font-weight:700;color:#C96358;margin-top:2px;">Ventre affiné, fessiers redessinés</div><div style="font-size:0.74rem;color:#7A6E6E;margin-top:2px;">Coaching hybride · 4 mois</div></td><td width="50%" valign="top" style="padding:0 5px;text-align:center;"><img src="https://www.ornellafitcoaching.com/images/email/avis-lise.jpg" width="240" alt="Avant / après de Lise, coachée par Ornella" style="width:100%;max-width:240px;height:auto;border-radius:10px;display:block;margin:0 auto 8px;"><div style="font-size:0.85rem;font-weight:700;color:#1E1616;">Lise <span style="font-weight:400;color:#9A8080;font-size:0.75rem;">· suivi en cours</span></div><div style="font-size:0.82rem;font-weight:700;color:#C96358;margin-top:2px;">Ventre et taille transformés</div><div style="font-size:0.74rem;color:#7A6E6E;margin-top:2px;">Distanciel puis hybride · 6 mois</div></td></tr></table>
+  <div style="font-size:0.7rem;color:#9A8080;margin-top:12px;line-height:1.5;">Vraies clientes, photos publiées avec leur accord, sans retouche. Les résultats varient selon chacune.</div>
+</div>
+    {% if params.PRODUIT_TEXT %}
+<div style="background:linear-gradient(135deg,#FDF0E8,#FCE4D6);border:1px solid rgba(201,99,88,.25);border-radius:14px;padding:16px 20px;margin:18px 0;text-align:center;">
+  <div style="font-size:0.88rem;color:#3D2B24;margin-bottom:6px;">{{ params.PRODUIT_TEXT }}</div>
+  {% if params.PRODUIT_PRECISION %}<div style="font-size:0.78rem;color:#7A5E44;margin-bottom:10px;">{{ params.PRODUIT_PRECISION }}</div>{% endif %}
+  <a href="{{ params.PRODUIT_URL }}" style="display:inline-block;background:#C96358;color:#fff;font-weight:700;font-size:0.82rem;padding:10px 20px;border-radius:50px;text-decoration:none;">{{ params.PRODUIT_LABEL }} →</a>
+</div>
+{% endif %}
+    <div class="sign">
+      À très vite,<br>
+      <strong>Ornella</strong><br>
+      <span style="font-size:0.78rem;color:#9A8080;">Coach diplômée d'État · ornellafitcoaching.com</span>
+    </div>
+  </div>
+  <div class="footer">
+    © 2026 Ornella Fit Coaching<br>
+    <a href="{{ unsubscribe }}">Se désabonner</a>
+  </div>
+</div>
+</body>
+</html>
