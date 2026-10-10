@@ -73,11 +73,10 @@
       envoyer('Clic_Achat_Coaching');
     } else if (href.indexOf('calendly.com') !== -1) {
       envoyer('Clic_Bilan');
-      // Ouvre le bilan en popup Calendly officiel (reste sur la page) au lieu d'un nouvel onglet
-      if (/calendly\.com\/ornellafit-coaching/.test(href)) {
-        e.preventDefault();
-        ouvrirCalendly(href);
-      }
+      // NB : le lien ouvre directement la page de réservation Calendly (/15min) — fiable partout.
+      // Le popup widget a été désactivé (ne s'affichait pas de façon fiable). Pour le réactiver :
+      // décommenter ci-dessous (et vérifier que la prise de RDV s'affiche bien pour un vrai visiteur).
+      // if (/calendly\.com\/ornellafit-coaching/.test(href)) { e.preventDefault(); ouvrirCalendly(href); }
     } else if (href.indexOf('wa.me/') !== -1 || href.indexOf('api.whatsapp.com') !== -1) {
       envoyer(PAGE === 'entreprise' ? 'Clic_WhatsApp_Entreprise' : 'Clic_WhatsApp');
     } else if (href.indexOf('mailto:') === 0) {
