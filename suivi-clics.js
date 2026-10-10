@@ -73,6 +73,11 @@
       envoyer('Clic_Achat_Coaching');
     } else if (href.indexOf('calendly.com') !== -1) {
       envoyer('Clic_Bilan');
+      // Ouvre le bilan en popup Calendly officiel (reste sur la page) au lieu d'un nouvel onglet
+      if (/calendly\.com\/ornellafit-coaching/.test(href)) {
+        e.preventDefault();
+        ouvrirCalendly(href);
+      }
     } else if (href.indexOf('wa.me/') !== -1 || href.indexOf('api.whatsapp.com') !== -1) {
       envoyer(PAGE === 'entreprise' ? 'Clic_WhatsApp_Entreprise' : 'Clic_WhatsApp');
     } else if (href.indexOf('mailto:') === 0) {
@@ -85,4 +90,42 @@
       envoyer('Clic_Vers_' + nomPage(a.pathname));
     }
   }, true);
+
+  // ===== Calendly : popup widget officiel + tracking du RDV réellement pris =====
+  var _calLoading = false;
+  function chargerCalendly(cb) {
+    if (window.Calendly) { cb(); return; }
+    if (!_calLoading) {
+      _calLoading = true;
+      var l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = 'https://assets.calendly.com/assets/external/widget.css';
+      document.head.appendChild(l);
+      var s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.head.appendChild(s);
+    }
+    var t0 = Date.now();
+    (function attendre() {
+      if (window.Calendly) return cb();
+      if (Date.now() - t0 > 5000) return cb(true); // timeout -> repli nouvel onglet
+      setTimeout(attendre, 100);
+    })();
+  }
+  function ouvrirCalendly(url) {
+    chargerCalendly(function (echec) {
+      if (echec || !window.Calendly) { window.open(url, '_blank', 'noopener'); return; }
+      window.Calendly.initPopupWidget({ url: url });
+    });
+  }
+  window.ouvrirCalendly = ouvrirCalendly;
+
+  // RDV effectivement réservé dans le widget Calendly -> conversion
+  window.addEventListener('message', function (e) {
+    if (e && e.data && e.data.event === 'calendly.event_scheduled') {
+      if (typeof fbq !== 'undefined') fbq('track', 'Schedule');
+      (window.dataLayer = window.dataLayer || []).push({ event: 'bilan_reserve' });
+    }
+  });
 })();
