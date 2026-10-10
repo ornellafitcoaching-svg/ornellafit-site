@@ -15,8 +15,15 @@
  * - "Réduire les animations" ou économie de données : poster seul, aucune vidéo
  * - Le conteneur .vid reçoit la classe "is-playing" pendant la lecture
  */
+/* 🔧 Vidéo du hero (accueil) : false = photo seule, la vidéo n'est ni chargée ni affichée.
+   Remettre true pour réactiver la vidéo (fichiers images/video/site_hero_*.mp4 conservés). */
+const HERO_VIDEO = false;
+
 (function () {
   'use strict';
+  if (!HERO_VIDEO) {
+    [].forEach.call(document.querySelectorAll('.hero-bg video'), function (v) { v.parentNode.removeChild(v); });
+  }
   var videos = [].slice.call(document.querySelectorAll('video[data-src], video[data-src-mobile]'));
   if (!videos.length) return;
 
