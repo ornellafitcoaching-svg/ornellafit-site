@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<script src="/js/stats-guard.js"></script>
 <link rel="icon" type="image/png" href="/images/favicon.png">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <meta property="og:image" content="https://www.ornellafitcoaching.com/images/og-ornella-fit.jpg">
@@ -9,7 +10,7 @@
 <meta name="twitter:image" content="https://www.ornellafitcoaching.com/images/og-ornella-fit.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<script>(function(w,d,s,l,i){if(w.OFC_INTERNAL)return;w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -220,6 +221,24 @@ body::before {
 .modal-success{display:none;text-align:center;padding:20px 0 4px;}
 .modal-success-icon{font-size:2.2rem;margin-bottom:12px;}
 .modal-success-text{font-size:14px;font-weight:300;color:#2C1F1A;line-height:1.7;}
+
+/* ── SIMPLIFICATION BIO (quiz → appel → preuves → tarifs) ── */
+.google-proof{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(212,160,144,.35);border-radius:999px;padding:7px 16px;margin:-8px 0 22px;text-decoration:none;color:#2C1F1A;box-shadow:0 2px 10px rgba(180,90,60,.08);animation:fadeUp .7s .5s both}
+.gp-note{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:#C96358;line-height:1}
+.gp-stars{color:#E8A020;font-size:.85rem;letter-spacing:2px}
+.gp-txt{font-size:.78rem;font-weight:500}
+.link-btn.big{padding:22px 22px;font-size:16px;font-weight:600;border-radius:18px}
+.link-btn.big .link-emoji{font-size:1.5rem}
+.link-btn.big .link-sub{font-size:12px;font-weight:400}
+.links>.link-btn:nth-of-type(1){animation-delay:.55s}.links>.link-btn:nth-of-type(2){animation-delay:.62s}
+.links>.link-btn:nth-of-type(3){animation-delay:.69s}.links>.link-btn:nth-of-type(4){animation-delay:.76s}
+.more{width:100%;background:rgba(255,255,255,.6);border:1px solid rgba(212,160,144,.3);border-radius:16px;animation:fadeUp .7s .85s both}
+.more summary{list-style:none;cursor:pointer;padding:15px 22px;font-size:13px;font-weight:600;color:#7A5E54;display:flex;justify-content:space-between;align-items:center}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:'+';font-size:18px;color:#C96358;transition:transform .2s}
+.more[open] summary::after{transform:rotate(45deg)}
+.more-list{display:flex;flex-direction:column;gap:8px;padding:0 10px 12px}
+.more-list .link-btn{animation:none;opacity:1;padding:13px 16px;font-size:13.5px}
 </style>
 <meta name="facebook-domain-verification" content="q0lravv1bfmhpq3dob5d559cyidqq1" />
 <meta name="facebook-domain-verification" content="4npql1iz6n380yye9bsydf16pnj20x" />
@@ -299,203 +318,119 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          onerror="this.src='images/ornella-outdoor-side.jpg'" width="1024" height="1536">
   </div>
 
-  <!-- INSTAGRAM BOUTON HAUT -->
-  <a href="https://www.instagram.com/coach.ornella" target="_blank" onclick="px('Instagram')" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff;border-radius:50px;padding:7px 16px;font-size:.75rem;font-weight:600;text-decoration:none;margin-bottom:14px;box-shadow:0 3px 12px rgba(180,60,60,.25);animation:fadeUp .7s .2s both">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-    @coach.ornella
-  </a>
-
   <div class="profile-name">Ornella Fit Coaching</div>
-  <div class="profile-badge">🏆 Participante Championnat de France Fitness</div>
-  <div style="font-size:.88rem;font-weight:600;color:#7A5E54;text-align:center;margin-bottom:8px;animation:fadeUp .7s .35s both">Tu veux perdre du ventre, sculpter tes fessiers ou retrouver confiance en ton corps ?</div>
-  <div class="profile-tag">Coach sportive diplômée d'État · Essonne (91)<br>Transformations féminines · Résultats visibles</div>
+  <div class="profile-tag">Coach diplômée d'État · Domicile 91/92 ou en ligne</div>
 
-  <!-- STATS SOCIALES -->
-  <div style="display:flex;gap:10px;justify-content:center;margin-bottom:18px;animation:fadeUp .7s .5s both">
-    <div style="position:relative;">
-      <svg class="guide-arrow" width="36" height="36" viewBox="0 0 36 36" fill="none">
-        <path d="M5 3 C5 18, 15 27, 27 29" stroke="#C96358" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-        <path d="M20 24 L28 30 L20 32" stroke="#C96358" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      </svg>
-      <button onclick="openGuide()" title="Guide gratuit : les 9 erreurs qui t'empêchent d'évoluer" style="background:linear-gradient(135deg,#C96358,#D4856A);border:none;border-radius:14px;padding:10px 14px;text-align:center;box-shadow:0 2px 10px rgba(180,90,60,.2);cursor:pointer;font-family:inherit">
-        <div style="font-size:1.2rem;line-height:1">🎁</div>
-        <div style="font-size:.63rem;color:#fff;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;white-space:nowrap">Gratuit : 9 erreurs</div>
-      </button>
-    </div>
-    <div style="background:#fff;border:1px solid rgba(212,160,144,.35);border-radius:14px;padding:10px 14px;text-align:center;box-shadow:0 2px 10px rgba(180,90,60,.06)">
-      <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#C96358;line-height:1">4 sem</div>
-      <div style="font-size:.65rem;color:#A08070;text-transform:uppercase;letter-spacing:.08em;margin-top:2px">premiers résultats</div>
-    </div>
-  </div>
-
-  <!-- PREUVE SOCIALE VÉRIFIÉE (Google) — cliquable vers le profil avis -->
-  <a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" rel="noopener" onclick="px('Avis Google')" style="text-decoration:none;color:inherit;background:#fff;border:1px solid rgba(212,160,144,.3);border-radius:18px;padding:16px 18px;margin-bottom:20px;width:100%;box-shadow:0 2px 12px rgba(180,90,60,.07);animation:fadeUp .7s .6s both;display:flex;align-items:center;gap:14px;cursor:pointer">
-    <div style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:#C96358;line-height:1">5,0</div>
-    <div style="flex:1">
-      <div style="color:#E8A020;font-size:1rem;letter-spacing:3px;line-height:1">★★★★★</div>
-      <div style="font-size:.8rem;color:#2C1F1A;font-weight:500;margin-top:3px">25 avis clientes vérifiés sur Google</div>
-      <div style="font-size:.7rem;color:#A08070;margin-top:1px">Note maximale · Coach diplômée d'État · Essonne (91)</div>
-    </div>
-    <span style="color:#D4A090;font-size:16px;flex-shrink:0">›</span>
+  <!-- PREUVE SOCIALE VÉRIFIÉE (Google) -->
+  <a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" rel="noopener" onclick="px('Avis Google')" class="google-proof">
+    <span class="gp-note">5,0</span>
+    <span class="gp-stars">★★★★★</span>
+    <span class="gp-txt">25 avis Google</span>
   </a>
-
-  <div class="sep">
-    <div class="sep-line"></div>
-    <div class="sep-dot"></div>
-    <div class="sep-line"></div>
-  </div>
 
   <div class="links">
-  <div style="text-align:center;font-size:.7rem;color:#C8A898;letter-spacing:.08em;margin-bottom:4px;animation:fadeUp .7s .7s both">↓ par où commencer</div>
 
-    <!-- QUIZ — 1er bouton (trafic Instagram) -->
-    <a href="https://www.ornellafitcoaching.com/quiz.html" class="link-btn featured" onclick="px('Quiz')" style="background:linear-gradient(135deg,#C96358,#D4856A);animation-delay:.72s">
+    <!-- 1 · QUIZ — action principale -->
+    <a href="https://www.ornellafitcoaching.com/quiz.html?utm_source=ig&utm_medium=bio&utm_content=quiz" class="link-btn featured big" onclick="px('Quiz')">
       <span class="link-emoji">🎯</span>
-      <span class="link-text">Trouve ta formule en 2 min<span class="link-sub">Ton objectif → l'offre faite pour toi · Résultat immédiat</span></span>
+      <span class="link-text">Quel coaching est fait pour toi ?<span class="link-sub">Fais le test (2 min) · résultat immédiat</span></span>
       <span class="link-arrow">›</span>
     </a>
 
-    <!-- COACHING AVEC MOI (offres à valeur) -->
-    <div class="link-section-label">Coaching avec moi</div>
-
-    <!-- HYBRIDE — offre phare (hero) -->
-    <a href="https://www.ornellafitcoaching.com/offres.html#tarif-hybride" class="vp-hero-card" onclick="px('Offre Hybride')">
-      <div class="vp-price-tag">dès 149€/mois · parcours 3 mois</div>
-      <div class="vp-badge">⭐ Mon offre phare</div>
-      <div class="vp-title">Coaching Hybride — Séances + Suivi</div>
-      <div class="vp-sub">Le meilleur des deux mondes : séances en présentiel (Essonne) + suivi personnalisé à distance pour ne rien lâcher entre les séances.</div>
-      <div class="vp-stats">
-        <div class="vp-stat"><div class="vp-stat-num">🏠</div><div class="vp-stat-label">présentiel</div></div>
-        <div class="vp-stat"><div class="vp-stat-num">💻</div><div class="vp-stat-label">distanciel</div></div>
-        <div class="vp-stat"><div class="vp-stat-num">📈</div><div class="vp-stat-label">suivi perso</div></div>
-      </div>
-      <div class="vp-cta"><span class="vp-cta-text">Découvrir l'offre Hybride</span><span class="vp-cta-arrow">→</span></div>
-    </a>
-
-    <!-- DISTANCIEL avec suivi — 2e offre mise en valeur -->
-    <a href="https://www.ornellafitcoaching.com/offres.html#tarif-distanciel" class="vp-hero-card" onclick="px('Offre Distanciel suivi')" style="background:linear-gradient(150deg,#C96358 0%,#A8455A 55%,#6E3348 100%);animation-delay:.55s">
-      <div class="vp-price-tag" style="background:rgba(255,255,255,.22)">dès 79€</div>
-      <div class="vp-badge" style="background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.4);color:#fff">💻 Partout en France</div>
-      <div class="vp-title">Coaching distanciel sur-mesure</div>
-      <div class="vp-sub" style="color:rgba(255,255,255,.85)">Programme 100% sur-mesure où que tu sois — avec suivi perso en option (dès 89€/mois · parcours 6 mois). Idéal si tu n'es pas en Essonne.</div>
-      <div class="vp-cta" style="background:rgba(0,0,0,.22)"><span class="vp-cta-text">Découvrir l'offre distanciel</span><span class="vp-cta-arrow">→</span></div>
-    </a>
-
-    <!-- 100% Présentiel — rareté réelle (Essonne) -->
-    <a href="https://wa.me/33756834626?text=Salut%20Ornella%20%21%20Je%20viens%20d%27Instagram%2C%20je%20suis%20int%C3%A9ress%C3%A9e%20par%20le%20coaching%20100%25%20pr%C3%A9sentiel%20%C3%A0%20domicile%20%28Essonne%29.%20Il%20reste%20des%20places%20%3F%20%F0%9F%98%8A" class="link-btn" target="_blank" onclick="px('WhatsApp Presentiel 100')" style="animation-delay:.58s">
-      <span class="link-emoji">🏠</span>
-      <span class="link-text">Coaching 100% présentiel — Essonne (91)<span class="link-sub">Séances à domicile ou en extérieur · <strong style="color:#C96358">Places limitées</strong></span></span>
+    <a href="https://wa.me/33756834626?text=Salut%20Ornella%20%21%20Je%20viens%20d%27Instagram%2C%20je%20veux%20r%C3%A9server%20mon%20appel%20gratuit%20%F0%9F%98%8A" class="link-btn wa" target="_blank" rel="noopener" onclick="px('Appel Gratuit WhatsApp')">
+      <span class="link-emoji">💬</span>
+      <span class="link-text">Réserver mon appel gratuit (15 min)<span class="link-sub">Sur WhatsApp · gratuit · sans engagement</span></span>
       <span class="link-arrow">›</span>
     </a>
 
-    <!-- Appel découverte -->
-    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20r%C3%A9server%20mon%20bilan%20gratuit%20%F0%9F%98%8A" class="link-btn cal" target="_blank" onclick="px('Appel Gratuit WhatsApp')" style="animation-delay:.62s">
-      <span class="link-emoji">📅</span>
-      <span class="link-text">Pas encore décidée ? Appel découverte<span class="link-sub">15 min · Gratuit · Sans engagement</span></span>
-      <span class="link-arrow">›</span>
-    </a>
-
-    <a href="https://www.ornellafitcoaching.com/entreprise.html" class="link-btn" onclick="px('Entreprise')" style="animation-delay:.66s">
-      <span class="link-emoji">🏢</span>
-      <span class="link-text">Sport en entreprise / CSE<span class="link-sub">Séances collectives sur votre site · devis rapide</span></span>
-      <span class="link-arrow">›</span>
-    </a>
-
-    <!-- Spécialités (breadth sans surcharge de CTA) -->
-    <div style="font-size:.68rem;color:#A08070;text-align:center;line-height:1.95;margin:10px 6px 2px;animation:fadeUp .7s .75s both">Perte de poids · Remise en forme · Post-partum · Fessiers · Ventre plat · Prise de muscle · Ménopause</div>
-
-    <!-- EN AUTONOMIE (6 produits condensés en 1 accès) -->
-    <div class="link-section-label">Nouveau sur le blog</div>
-
-    <a href="https://www.ornellafitcoaching.com/blog/graisse-ventre-ou-cuisses-gynoide-androide.html" class="link-btn" onclick="px('Blog Ventre ou cuisses')">
-      <span class="link-emoji">📖</span>
-      <span class="link-text">Ventre ou cuisses ? L'article complet<span class="link-sub">Profil poire ou pomme · ton tour de taille · ce qui marche</span></span>
-      <span class="link-arrow">›</span>
-    </a>
-
-    <div class="link-section-label">Programmes en autonomie</div>
-
-    <a href="https://www.ornellafitcoaching.com/fit-dans-ta-vie.html" class="link-btn" onclick="px('Fit Dans Ta Vie')" style="background:linear-gradient(135deg,#2C1F1A,#4A3428);border-color:transparent;color:#fff;animation-delay:.9s">
-      <span class="link-emoji">⭐</span>
-      <span class="link-text" style="color:#fff">Fit Dans Ta Vie — programme phare<span class="link-sub" style="color:rgba(255,255,255,.72)">Arrête de recommencer tous les lundis · 49€ · Accès immédiat</span></span>
-      <span class="link-arrow" style="color:rgba(255,255,255,.6)">›</span>
-    </a>
-
-    <a href="https://www.ornellafitcoaching.com/planner-ventre-fessiers.html" class="link-btn" onclick="px('Planner Ventre Fessiers')" style="animation-delay:.93s">
-      <span class="link-emoji">🗒️</span>
-      <span class="link-text">Le plus simple pour démarrer — Planner V&amp;F<span class="link-sub">Calories + séances + suivi, tout se calcule tout seul · <strong style="color:#C96358">12,75€</strong> · lancement</span></span>
-      <span class="link-arrow">›</span>
-    </a>
-
-    <a href="https://www.ornellafitcoaching.com/programmes.html" class="link-btn" onclick="px('Programmes hub')" style="animation-delay:.95s">
-      <span class="link-emoji">📚</span>
-      <span class="link-text">Tous mes programmes à faire seule<span class="link-sub">Fessiers · Ventre plat · Muscle · Post-partum · Anti-âge · dès 12€</span></span>
-      <span class="link-arrow">›</span>
-    </a>
-
-    <a href="https://www.ornellafitcoaching.com/pack-maman.html" class="link-btn" onclick="px('Pack Maman postpartum')" style="animation-delay:1s">
-      <span class="link-emoji">🤱</span>
-      <span class="link-text">Post-partum : retrouver mon corps<span class="link-sub">Pack Maman · Ventre plat après bébé + Fessiers · 27€</span></span>
-      <span class="link-arrow">›</span>
-    </a>
-
-    <a href="https://www.ornellafitcoaching.com/transformations.html" class="link-btn" onclick="px('Transformations')" style="animation-delay:1.05s">
+    <a href="https://www.ornellafitcoaching.com/transformations.html?utm_source=ig&utm_medium=bio&utm_content=transformations" class="link-btn" onclick="px('Transformations')">
       <span class="link-emoji">✨</span>
-      <span class="link-text">Voir les transformations<span class="link-sub">Vraies clientes · Avant / après</span></span>
+      <span class="link-text">Voir les transformations<span class="link-sub">Vraies clientes · avant / après</span></span>
       <span class="link-arrow">›</span>
     </a>
 
-    <!-- GRATUIT -->
-    <div class="link-section-label">Gratuit</div>
+    <a href="https://www.ornellafitcoaching.com/offres.html?utm_source=ig&utm_medium=bio&utm_content=tarifs" class="link-btn" onclick="px('Formules tarifs')">
+      <span class="link-emoji">💶</span>
+      <span class="link-text">Mes formules &amp; tarifs<span class="link-sub">Domicile · hybride · à distance</span></span>
+      <span class="link-arrow">›</span>
+    </a>
 
-    <a href="https://www.ornellafitcoaching.com/challenge-ventre-plat.html" class="link-btn" style="background:linear-gradient(135deg,#2d4a26,#4A6741);border-color:transparent;color:#fff;animation-delay:1.1s" onclick="px('Challenge Ventre Plat')">
+    <details class="more">
+      <summary>Programmes à faire seule</summary>
+      <div class="more-list">
+    <a href="https://www.ornellafitcoaching.com/fit-dans-ta-vie.html?utm_source=ig&utm_medium=bio&utm_content=fit-dans-ta-vie" class="link-btn" onclick="px('Fit Dans Ta Vie')">
+      <span class="link-emoji">⭐</span>
+      <span class="link-text">Fit Dans Ta Vie<span class="link-sub">Le programme phare · 49€ · accès immédiat</span></span>
+      <span class="link-arrow">›</span>
+    </a>
+    <a href="https://www.ornellafitcoaching.com/planner-ventre-fessiers.html?utm_source=ig&utm_medium=bio&utm_content=planner" class="link-btn" onclick="px('Planner Ventre Fessiers')">
+      <span class="link-emoji">🗒️</span>
+      <span class="link-text">Planner Ventre &amp; Fessiers<span class="link-sub">Calories + séances + suivi · 12,75€</span></span>
+      <span class="link-arrow">›</span>
+    </a>
+    <a href="https://www.ornellafitcoaching.com/programmes.html?utm_source=ig&utm_medium=bio&utm_content=programmes" class="link-btn" onclick="px('Programmes hub')">
+      <span class="link-emoji">📚</span>
+      <span class="link-text">Tous mes programmes<span class="link-sub">Fessiers · ventre plat · muscle · post-partum · anti-âge</span></span>
+      <span class="link-arrow">›</span>
+    </a>
+    <a href="https://www.ornellafitcoaching.com/pack-maman.html?utm_source=ig&utm_medium=bio&utm_content=pack-maman" class="link-btn" onclick="px('Pack Maman postpartum')">
+      <span class="link-emoji">🤱</span>
+      <span class="link-text">Pack Maman<span class="link-sub">Ventre plat après bébé + fessiers · 27€</span></span>
+      <span class="link-arrow">›</span>
+    </a>
+    <a href="https://www.ornellafitcoaching.com/challenge-ventre-plat.html?utm_source=ig&utm_medium=bio&utm_content=challenge" class="link-btn" onclick="px('Challenge Ventre Plat')">
       <span class="link-emoji">🌿</span>
-      <span class="link-text" style="color:#fff;">Challenge Ventre Plat 5 Jours — GRATUIT<span class="link-sub" style="color:rgba(255,255,255,.7);">1 exercice + 1 astuce par jour · Résultats visibles dès J1</span></span>
-      <span class="link-arrow" style="color:rgba(255,255,255,.6);">›</span>
+      <span class="link-text">Challenge Ventre Plat 5 jours<span class="link-sub">Gratuit · 1 exercice + 1 astuce par jour</span></span>
+      <span class="link-arrow">›</span>
     </a>
+      </div>
+    </details>
 
-    <!-- PARRAINAGE -->
-    <div class="link-section-label">Entre copines</div>
-
-    <a href="https://www.ornellafitcoaching.com/carte-marraine.html" class="link-btn" onclick="px('Parrainage')" style="background:linear-gradient(135deg,#C96358,#E8A080);border-color:transparent;color:#fff;animation-delay:1.12s">
+    <details class="more">
+      <summary>Plus</summary>
+      <div class="more-list">
+    <a href="https://www.ornellafitcoaching.com/entreprise.html?utm_source=ig&utm_medium=bio&utm_content=entreprise" class="link-btn" onclick="px('Entreprise')">
+      <span class="link-emoji">🏢</span>
+      <span class="link-text">Sport en entreprise / CSE<span class="link-sub">Séances collectives · devis rapide</span></span>
+      <span class="link-arrow">›</span>
+    </a>
+    <a href="https://www.ornellafitcoaching.com/carte-marraine.html?utm_source=ig&utm_medium=bio&utm_content=parrainage" class="link-btn" onclick="px('Parrainage')">
       <span class="link-emoji">🎁</span>
-      <span class="link-text" style="color:#fff">Parrainage — offre une séance, gagne une séance<span class="link-sub" style="color:rgba(255,255,255,.78)">Ta copine démarre, tu reçois 1 séance offerte (70€)</span></span>
-      <span class="link-arrow" style="color:rgba(255,255,255,.7)">›</span>
+      <span class="link-text">Parrainage<span class="link-sub">Offre une séance, gagne une séance</span></span>
+      <span class="link-arrow">›</span>
     </a>
-
-    <!-- VIP -->
-    <a href="https://www.ornellafitcoaching.com/offres.html#vip" class="link-btn" onclick="px('VIP')" style="background:linear-gradient(150deg,#2C1F1A,#3D2B24);border-color:rgba(201,169,110,.4);color:#fff;animation-delay:1.15s">
+    <a href="https://www.ornellafitcoaching.com/offres.html?utm_source=ig&utm_medium=bio&utm_content=vip#vip" class="link-btn" onclick="px('VIP')">
       <span class="link-emoji">👑</span>
-      <span class="link-text" style="color:#fff">Coaching VIP — exclusif &amp; confidentiel<span class="link-sub" style="color:rgba(201,169,110,.9)">Sur-mesure, discrétion totale · places très limitées</span></span>
-      <span class="link-arrow" style="color:rgba(201,169,110,.7)">›</span>
-    </a>
-
-    <!-- ME SUIVRE -->
-    <div class="link-section-label">Me suivre</div>
-
-    <a href="https://www.instagram.com/coach.ornella" class="link-btn subtle" target="_blank" onclick="px('Instagram Bio')" style="animation-delay:1.2s">
-      <span class="link-emoji">📷</span>
-      <span class="link-text">Suis-moi sur Instagram<span class="link-sub">@coach.ornella</span></span>
+      <span class="link-text">Coaching VIP<span class="link-sub">Sur-mesure, discrétion totale</span></span>
       <span class="link-arrow">›</span>
     </a>
-
-    <a href="https://www.ornellafitcoaching.com/" class="link-btn subtle" onclick="px('Site')" style="animation-delay:1.2s">
+    <a href="https://www.ornellafitcoaching.com/blog.html?utm_source=ig&utm_medium=bio&utm_content=blog" class="link-btn" onclick="px('Blog')">
+      <span class="link-emoji">📖</span>
+      <span class="link-text">Le blog<span class="link-sub">Conseils training, nutrition, post-partum</span></span>
+      <span class="link-arrow">›</span>
+    </a>
+    <a href="https://www.ornellafitcoaching.com/?utm_source=ig&utm_medium=bio&utm_content=site" class="link-btn" onclick="px('Site')">
       <span class="link-emoji">🌐</span>
-      <span class="link-text">Visiter mon site complet<span class="link-sub">ornellafitcoaching.com</span></span>
+      <span class="link-text">Mon site complet<span class="link-sub">ornellafitcoaching.com</span></span>
       <span class="link-arrow">›</span>
     </a>
-
-    <a href="https://ornellafitcoaching.etsy.com" class="link-btn subtle" target="_blank" rel="noopener" onclick="px('Etsy Boutique')" style="animation-delay:1.25s;border-color:rgba(241,100,30,.35)">
+    <a href="https://ornellafitcoaching.etsy.com" class="link-btn" target="_blank" rel="noopener" onclick="px('Etsy Boutique')">
       <span class="link-emoji">🛍️</span>
-      <span class="link-text">Ma boutique Etsy<span class="link-sub">Outils &amp; accessoires fitness pour t'accompagner</span></span>
-      <span class="link-arrow" style="color:#F1641E">›</span>
+      <span class="link-text">Ma boutique Etsy<span class="link-sub">Outils &amp; accessoires fitness</span></span>
+      <span class="link-arrow">›</span>
     </a>
-
-    <a href="https://fr.pinterest.com/Ornellafitcaoching/" class="link-btn subtle" target="_blank" rel="noopener" onclick="px('Pinterest')" style="animation-delay:1.3s;border-color:rgba(230,0,35,.3)">
+    <a href="https://fr.pinterest.com/Ornellafitcoaching/" class="link-btn" target="_blank" rel="noopener" onclick="px('Pinterest')">
       <span class="link-emoji">📌</span>
       <span class="link-text">Mon Pinterest<span class="link-sub">Idées training, recettes &amp; inspiration</span></span>
-      <span class="link-arrow" style="color:#E60023">›</span>
+      <span class="link-arrow">›</span>
     </a>
+    <a href="https://www.instagram.com/coach.ornella" class="link-btn" target="_blank" rel="noopener" onclick="px('Instagram Bio')">
+      <span class="link-emoji">📷</span>
+      <span class="link-text">Instagram<span class="link-sub">@coach.ornella</span></span>
+      <span class="link-arrow">›</span>
+    </a>
+      </div>
+    </details>
 
   </div>
 
@@ -580,6 +515,21 @@ async function submitGuide(e){
   }catch(e2){btn.textContent='Recevoir le guide →';btn.disabled=false;errEl.textContent='Erreur, réessaie.';errEl.style.display='block';}
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGuide();});
+</script>
+<script>
+/* Popup guide : seulement à 50 % de scroll, au plus une fois tous les 7 jours. */
+(function(){
+  var KEY='ofc_guide_popup_ts', SEPT=7*24*3600*1000;
+  try{ var last=+localStorage.getItem(KEY)||0; if(Date.now()-last<SEPT) return; }catch(e){}
+  function onScroll(){
+    var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+    if(max<=0 || (window.scrollY||d.scrollTop)/max < 0.5) return;
+    window.removeEventListener('scroll',onScroll);
+    try{ localStorage.setItem(KEY, String(Date.now())); }catch(e){}
+    openGuide();
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+})();
 </script>
 <!-- Roue de la chance volontairement retirée de la link-in-bio : page de routage (trafic pub IG),
      l'email est déjà capturé via le bouton "Gratuit : 9 erreurs" sans popup intrusif. -->

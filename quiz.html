@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<script src="/js/stats-guard.js"></script>
 <script src="/js/menu.js"></script>
 <link rel="icon" type="image/png" href="/images/favicon.png">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<script>(function(w,d,s,l,i){if(w.OFC_INTERNAL)return;w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -228,10 +229,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="quiz-intro-badges">
           <span class="quiz-intro-badge">⏱️ 2 minutes</span>
           <span class="quiz-intro-badge">🎯 5 questions</span>
-          <span class="quiz-intro-badge">✓ Résultat par email</span>
+          <span class="quiz-intro-badge">✓ Résultat immédiat</span>
         </div>
         <button class="quiz-btn on" onclick="goToStep(1)">Commencer le quiz →</button>
-        <p style="font-size:0.74rem;color:#9A8080;margin-top:13px;">Gratuit · Sans engagement · Résultat par email</p>
+        <p style="font-size:0.74rem;color:#9A8080;margin-top:13px;">Gratuit · Sans engagement · Résultat immédiat</p>
       </div>
     </div>
 
@@ -586,8 +587,10 @@ function selectOption(n, j) {
 function advance(n) {
   if (selections[n] === undefined) return;
   if (n === 5) {
-    buildResultStep(calcResult(), '');
+    const key = calcResult();
+    renderResult(key);
     goToStep(7);
+    if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'quiz', content_category: key });
     return;
   }
   goToStep(n + 1);
@@ -647,8 +650,8 @@ async function submitQuiz(skip = false) {
     await sendToBrevo(email, resultKey, '', phone);
   }
 
-  buildResultStep(resultKey, email);
-  goToStep(6);
+  renderResult(resultKey);
+  goToStep(7);
 }
 
 function quizEmailHtml(r, email, prenom) {
@@ -925,162 +928,97 @@ async function sendToBrevo(email, resultKey, prenom = '', phone = '') {
    RENDER RESULT
    =================================================== */
 
-function buildResultStep(key, email) {
+/* Résultat immédiat : formule, bénéfice, prix, CTA WhatsApp pré-rempli.
+   L'email est facultatif, sous le résultat (mêmes listes Brevo que avant : sendToBrevo). */
+const RESULT_PITCH = {
+  domicile:   { pitch: 'Je viens chez toi avec tout le matériel : zéro trajet, zéro excuse. Chaque séance est construite pour toi et ta technique est corrigée en direct.', des: 'dès 260€ / mois', tarif: 'offres.html#tarif-domicile' },
+  hybride:    { pitch: 'Une séance avec moi chez toi chaque mois, et un programme sur-mesure en vidéo pour t\'entraîner seule le reste de la semaine. Tu progresses toute la semaine, pas seulement le jour du coaching.', des: 'dès 149€ / mois', tarif: 'offres.html#tarif-hybride' },
+  distanciel: { pitch: 'Un programme sur-mesure qui évolue chaque mois, où que tu sois en France. Je suis ta progression et j\'ajuste avec toi sur WhatsApp.', des: 'dès 89€ / mois', tarif: 'offres.html#tarif-distanciel' },
+  autonomie:  { pitch: 'Tu es disciplinée, il te manque juste la structure. Fit Dans Ta Vie te donne une méthode de 28 jours que tu tiens dans ta vraie vie, à ton rythme.', des: '49€ · accès à vie', tarif: 'fit-dans-ta-vie.html#achat' }
+};
+
+function renderResult(key) {
   const r = RESULTS[key];
+  const c = RESULT_PITCH[key];
+  const objIdx = selections[5];
+  const objectifTxt = objIdx !== undefined ? QUESTIONS[4].options[objIdx].text.toLowerCase() : '';
+  const objectif = objIdx !== undefined ? OBJECTIF_LABELS[objIdx] : '';
+  const produit = PRODUIT_CTA[objectif] || null;
+  const msg = `Bonjour Ornella ! J'ai fait ton quiz : mon résultat c'est ${r.title}` +
+              (objectifTxt ? `, objectif ${objectifTxt}` : '') + '. On en parle ?';
+  const wa = 'https://wa.me/33756834626?text=' + encodeURIComponent(msg);
 
-  // — EMAIL GATE : afficher le formulaire d'abord —
-  document.getElementById('qStep-7').innerHTML = `
-    <div id="email-gate" style="text-align:center;padding:32px 20px;max-width:480px;margin:0 auto;">
-      <div style="font-size:32px;margin-bottom:12px;">🎯</div>
-      <h3 style="font-size:22px;font-weight:800;color:#1a1a1a;margin:0 0 8px 0;">Ton résultat est prêt !</h3>
-      <p style="font-size:15px;color:#555;margin:0 0 24px 0;">Entre ton email pour recevoir ta recommandation personnalisée.</p>
-      <input id="quiz-prenom" type="text" name="given-name" autocomplete="given-name" autocapitalize="words" placeholder="Ton prénom"
-        style="width:100%;box-sizing:border-box;padding:14px 18px;font-size:15px;border:2px solid #e0e0e0;border-radius:50px;outline:none;margin-bottom:8px;" />
-      <input id="quiz-email" type="email" name="email" autocomplete="email" inputmode="email" placeholder="ton@email.fr"
-        style="width:100%;box-sizing:border-box;padding:14px 18px;font-size:15px;border:2px solid #e0e0e0;border-radius:50px;outline:none;margin-bottom:8px;" />
-      <input id="quiz-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ton WhatsApp (optionnel) 📲"
-        style="width:100%;box-sizing:border-box;padding:14px 18px;font-size:15px;border:2px solid #e0e0e0;border-radius:50px;outline:none;margin-bottom:4px;" />
-      <p style="font-size:12px;color:#888;margin:0 0 10px 0;">Laisse ton numéro si tu veux que je te conseille en perso sur WhatsApp 💬</p>
-      <p id="quiz-email-error" style="color:#C96358;font-size:13px;margin:0 0 10px 0;display:none;">Entre un email valide.</p>
-      <button id="quiz-email-submit"
-        style="width:100%;padding:15px;background:#C96358;color:#fff;font-size:16px;font-weight:700;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 16px rgba(232,0,13,.3);">
-        Voir mon résultat →
-      </button>
-      <p style="font-size:12px;color:#aaa;margin:10px 0 0 0;">✓ Pas de spam · Désabonnement en 1 clic</p>
-    </div>`;
-
-  document.getElementById('quiz-email-submit').addEventListener('click', function() {
-    const emailInput  = document.getElementById('quiz-email');
-    const prenomInput = document.getElementById('quiz-prenom');
-    let emailVal  = emailInput.value.trim();
-    let prenomVal = prenomInput.value.trim();
-    /* Garde-fou : le remplissage auto du téléphone met parfois l'email dans le champ prénom.
-       Si le "prénom" contient un @ : on le récupère comme email si besoin, et on ne l'enregistre jamais comme prénom. */
-    if (prenomVal.includes('@')) {
-      if (!emailVal) { emailVal = prenomVal; emailInput.value = emailVal; }
-      prenomVal = '';
-      prenomInput.value = '';
-    }
-    const error    = document.getElementById('quiz-email-error');
-    if (!emailVal || !emailVal.includes('@') || !emailVal.includes('.')) {
-      error.style.display = 'block';
-      return;
-    }
-    error.style.display = 'none';
-
-    // Redondant avec le fetch direct retiré : sendToBrevo() gère déjà l'ajout à la liste (formulaire natif) + l'email template
-    sendToBrevo(emailVal, key, prenomVal, (document.getElementById('quiz-phone').value || '').trim()).catch(() => {});
-
-    renderResult(key, emailVal);
-  });
-}
-
-function renderResult(key, email) {
-  const r = RESULTS[key];
-  const confirmHTML = email ? `
-    <div class="quiz-confirm-box">
-      <span>📩 &nbsp;Un email vient d'être envoyé à <strong>${escHtml(email)}</strong> avec le détail de cette offre.</span>
-    </div>` : '';
-
-  const objectif = selections[5] !== undefined ? OBJECTIF_LABELS[selections[5]] : '';
-  const produit   = PRODUIT_CTA[objectif] || null;
-  const produitCtaHTML = produit ? `
-    <div style="background:linear-gradient(135deg,#FDF0E8,#FCE4D6);border:1px solid rgba(201,99,88,.25);border-radius:14px;padding:16px 18px;margin-bottom:16px;text-align:center;">
+  const produitCtaHTML = produit && key !== 'autonomie' ? `
+    <div style="background:linear-gradient(135deg,#FDF0E8,#FCE4D6);border:1px solid rgba(201,99,88,.25);border-radius:14px;padding:16px 18px;margin-top:16px;text-align:center;">
       <div style="font-size:1.3rem;margin-bottom:4px;">${produit.emoji}</div>
       <div style="font-size:0.85rem;color:#3D2B24;margin-bottom:6px;">${produit.text}</div>
       <div style="font-size:0.76rem;color:#7A5E44;margin-bottom:10px;">${produit.precision}</div>
       <a href="${produit.url}" style="display:inline-block;background:#C96358;color:#fff;font-weight:700;font-size:0.82rem;padding:10px 20px;border-radius:50px;text-decoration:none;">${produit.label} →</a>
     </div>` : '';
 
-  const bonusHTML = `
-    <div style="background:#FFF4ED;border:1px dashed #D4957A;border-radius:12px;padding:10px 16px;margin-bottom:16px;text-align:center;font-size:0.8rem;color:#7A5E44;">
-      🎁 <strong>Bonus offert</strong> dès que tu démarres ton programme : le Guide Recettes Sculptantes
-    </div>`;
-
-  const domicilePricingHTML = key === 'domicile' ? `
-    <div class="quiz-pricing-title">Choisis ton rythme :</div>
-    <div class="quiz-pricing-cards">
-
-      <div class="quiz-pricing-card">
-        <div class="quiz-pricing-freq">Flex 4 · 1 séance / semaine</div>
-        <div class="quiz-pricing-price">65€<span>/séance</span></div>
-        <div class="quiz-pricing-month">→ 260€/période · 280€ sans engagt</div>
-        <div class="quiz-pricing-day">= 8,50€/jour</div>
-        <div class="quiz-pricing-coffee">☕ 2 cafés</div>
-      </div>
-
-      <div class="quiz-pricing-card quiz-pricing-card--popular">
-        <div class="quiz-pricing-badge">⭐ La plus choisie</div>
-        <div class="quiz-pricing-freq">Flex 8 · 2 séances / semaine</div>
-        <div class="quiz-pricing-price">60€<span>/séance</span></div>
-        <div class="quiz-pricing-month">→ 480€/période · 500€ sans engagt</div>
-        <div class="quiz-pricing-day">= 15,70€/jour</div>
-        <div class="quiz-pricing-coffee">☕ 4 cafés</div>
-        <div class="quiz-pricing-save">Tu économises 40€/mois vs 1×</div>
-      </div>
-
-      <div class="quiz-pricing-card">
-        <div class="quiz-pricing-freq">Flex 12 · 3 séances / semaine</div>
-        <div class="quiz-pricing-price">55€<span>/séance</span></div>
-        <div class="quiz-pricing-month">→ 660€/période · 680€ sans engagt</div>
-        <div class="quiz-pricing-day">= 21,60€/jour</div>
-        <div class="quiz-pricing-coffee">☕ 5 cafés</div>
-        <div class="quiz-pricing-save">Meilleur tarif — -15% vs 1×</div>
-      </div>
-
-    </div>
-    <p style="font-size:0.73rem;color:#9A8080;text-align:center;margin-top:4px;">Facturation par période de 4 semaines · parcours 3 mois (tarif remisé) ou sans engagement (+20€/période) · arrêt possible avec 15 j de préavis · premier échange WhatsApp sans engagement</p>
-  ` : `<div class="quiz-result-price">${r.price}</div>`;
-
   document.getElementById('qStep-7').innerHTML = `
       <div style="max-width:520px;margin:0 auto;padding:8px 0;">
 
-        <div style="text-align:center;margin-bottom:20px;">
-          <div style="display:inline-block;background:#F7F3F0;border:1px solid rgba(201,149,122,0.4);color:#C96358;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:5px 14px;border-radius:50px;margin-bottom:12px;">✓ Ton résultat personnalisé</div>
-          <div style="font-family:Georgia,serif;font-size:1.4rem;color:#1E1616;font-weight:600;">Voici l'offre <em>faite pour toi</em></div>
+        <div style="text-align:center;margin-bottom:18px;">
+          <div style="display:inline-block;background:#F7F3F0;border:1px solid rgba(201,149,122,0.4);color:#C96358;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:5px 14px;border-radius:50px;margin-bottom:12px;">✓ Ton résultat</div>
+          <div style="font-family:Georgia,serif;font-size:1.4rem;color:#1E1616;font-weight:600;">Voici la formule <em>faite pour toi</em></div>
         </div>
 
-        ${confirmHTML}
+        <div id="quizResultCard" style="background:white;border:1.5px solid rgba(201,185,154,0.4);border-radius:18px;padding:26px 22px;box-shadow:0 4px 24px rgba(0,0,0,0.06);margin-bottom:16px;text-align:center;">
+          <span style="font-size:2.4rem;">${r.emoji}</span>
+          <div style="font-family:Georgia,serif;font-size:1.45rem;color:#1E1616;font-weight:600;margin:6px 0 10px;">${r.title}</div>
+          <p style="font-size:0.92rem;color:#3D2B24;line-height:1.65;margin:0 0 14px;">${c.pitch}</p>
+          <div style="font-family:Georgia,serif;font-size:1.35rem;color:#C96358;font-weight:600;margin-bottom:4px;">${c.des}</div>
+          <a href="${c.tarif}" style="font-size:0.85rem;color:#C96358;font-weight:600;text-decoration:underline;text-underline-offset:3px;">Voir le tarif en détail →</a>
+        </div>
 
-        <div style="background:white;border:1.5px solid rgba(201,185,154,0.4);border-radius:18px;padding:28px 24px;box-shadow:0 4px 24px rgba(0,0,0,0.06);margin-bottom:16px;">
-          <div style="text-align:center;margin-bottom:16px;">
-            <span style="font-size:2.5rem;">${r.emoji}</span>
-            <div style="display:inline-block;background:#F7F3F0;border:1px solid rgba(201,149,122,0.4);color:#C96358;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 12px;border-radius:50px;margin:8px 0 4px;">${r.eyebrow}</div>
-            <div style="font-family:Georgia,serif;font-size:1.3rem;color:#1E1616;font-weight:600;margin-bottom:4px;">${r.title}</div>
-            <div style="font-size:0.85rem;color:#7A6E6E;">${r.subtitle}</div>
-          </div>
+        <a id="quizWaCta" href="${wa}" target="_blank" rel="noopener"
+           style="display:block;text-align:center;background:linear-gradient(135deg,#C96358,#C9957A);color:white;font-weight:700;font-size:1rem;padding:17px 24px;border-radius:50px;text-decoration:none;box-shadow:0 4px 16px rgba(201,99,88,0.3);">
+          Réserver mon appel gratuit →
+        </a>
+        <p style="font-size:0.76rem;color:#9A8080;text-align:center;margin:8px 0 22px;">15 min sur WhatsApp · gratuit · sans engagement</p>
 
-          <div style="background:#FFF8F5;border-left:3px solid #C9957A;border-radius:8px;padding:12px 16px;margin:16px 0;font-size:0.85rem;color:#3D2B24;line-height:1.7;">
-            <strong>Pourquoi cette offre ?</strong><br>${r.why}
-          </div>
-
-          <ul style="list-style:none;padding:0;margin:16px 0;">
-            ${r.benefits.map(b => `<li style="font-size:0.88rem;color:#1E1616;padding:5px 0;display:flex;align-items:flex-start;gap:10px;line-height:1.5;"><span style="color:#C9957A;font-weight:700;flex-shrink:0;">✔️</span><span>${b}</span></li>`).join('')}
-          </ul>
-
-          ${domicilePricingHTML}
+        <div id="quizMailBox" style="background:#FBF7F4;border:1px solid rgba(201,185,154,0.35);border-radius:16px;padding:18px 18px 16px;">
+          <div style="font-size:0.9rem;font-weight:700;color:#1E1616;margin-bottom:10px;text-align:center;">📩 Recevoir mon résultat + le guide des 9 erreurs par email</div>
+          <input id="quiz-prenom" type="text" autocomplete="given-name" autocapitalize="words" placeholder="Ton prénom (facultatif)"
+            style="width:100%;box-sizing:border-box;padding:13px 18px;font-size:16px;border:1.5px solid #e0d6cf;border-radius:50px;outline:none;margin-bottom:8px;background:#fff;" />
+          <input id="quiz-email" type="email" autocomplete="email" inputmode="email" placeholder="ton@email.fr"
+            style="width:100%;box-sizing:border-box;padding:13px 18px;font-size:16px;border:1.5px solid #e0d6cf;border-radius:50px;outline:none;margin-bottom:8px;background:#fff;" />
+          <p id="quiz-email-error" style="color:#C96358;font-size:13px;margin:0 0 8px;display:none;">Entre un email valide.</p>
+          <button id="quiz-email-submit" type="button"
+            style="width:100%;padding:13px;background:#fff;color:#C96358;font-size:0.92rem;font-weight:700;border:1.5px solid #C96358;border-radius:50px;cursor:pointer;">
+            Recevoir par email
+          </button>
+          <p style="font-size:11.5px;color:#9A8080;margin:8px 0 0;text-align:center;">Facultatif · Pas de spam · Désabonnement en 1 clic</p>
         </div>
 
         ${produitCtaHTML}
-        ${bonusHTML}
 
-        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
-          <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20r%C3%A9server%20mon%20bilan%20gratuit%20%F0%9F%98%8A" target="_blank"
-             style="display:block;text-align:center;background:linear-gradient(135deg,#C96358,#C9957A);color:white;font-weight:700;font-size:0.95rem;padding:16px 24px;border-radius:50px;text-decoration:none;box-shadow:0 4px 16px rgba(201,99,88,0.3);">
-            Réserver mon appel gratuit →
-          </a>
-          <a href="${r.url}"
-             style="display:block;text-align:center;color:#C96358;font-size:0.85rem;font-weight:600;text-decoration:none;padding:8px;">
-            Voir le détail de cette offre →
-          </a>
-        </div>
-
-        <div style="text-align:center;padding-top:12px;border-top:1px solid rgba(201,185,154,0.3);">
+        <div style="text-align:center;padding-top:14px;margin-top:16px;border-top:1px solid rgba(201,185,154,0.3);">
           <p style="font-size:0.82rem;color:#9A8080;margin-bottom:8px;">Ce résultat ne te correspond pas ?</p>
           <button onclick="restart()" style="background:none;border:none;color:#C96358;font-size:0.82rem;font-weight:600;cursor:pointer;text-decoration:underline;">Recommencer le quiz →</button>
         </div>
 
       </div>`;
+
+  document.getElementById('quiz-email-submit').addEventListener('click', function () {
+    const emailInput  = document.getElementById('quiz-email');
+    const prenomInput = document.getElementById('quiz-prenom');
+    let emailVal  = emailInput.value.trim();
+    let prenomVal = prenomInput.value.trim();
+    /* Garde-fou : le remplissage auto met parfois l'email dans le champ prénom. */
+    if (prenomVal.includes('@')) { if (!emailVal) emailVal = prenomVal; prenomVal = ''; }
+    const error = document.getElementById('quiz-email-error');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) { error.style.display = 'block'; return; }
+    error.style.display = 'none';
+    sendToBrevo(emailVal, key, prenomVal, '').catch(() => {});
+    document.getElementById('quizMailBox').innerHTML = `
+      <div style="text-align:center;font-size:0.88rem;color:#3D2B24;line-height:1.6;">
+        ✅ C'est envoyé à <strong>${escHtml(emailVal)}</strong>.<br>
+        Et ton guide, tu peux le lire tout de suite :
+        <a href="guide-offert.html" style="display:inline-block;margin-top:10px;color:#C96358;font-weight:700;">📖 Les 9 erreurs qui t'empêchent d'évoluer →</a>
+      </div>`;
+  });
 }
 
 function restart() {
