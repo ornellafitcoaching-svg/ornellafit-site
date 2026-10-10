@@ -5,6 +5,8 @@
  *   <div class="vid"><video muted playsinline loop preload="none" aria-hidden="true"
  *        poster="images/video/xxx_poster.jpg" data-src="images/video/xxx.mp4"></video></div>
  *   Source selon la largeur (hero) : data-src-mobile="..." data-src-ordi="..." (bascule à 768 px)
+ *   data-attente="interaction" : vidéo lourde au-dessus de la ligne de flottaison (hero),
+ *   chargée seulement au premier scroll / toucher / mouvement de souris (poids d'arrivée < 1,5 Mo)
  *   <script src="js/videos.js" defer></script>
  *
  * - Rien n'est téléchargé avant la fin du chargement de la page (LCP protégé)
@@ -60,7 +62,18 @@
       });
       choisir();
     }, { threshold: [0, 0.2, 0.35, 0.5, 0.75, 1] });
-    videos.forEach(function (v) { io.observe(v); });
+    var enAttente = [];
+    videos.forEach(function (v) {
+      if (v.dataset.attente === 'interaction') enAttente.push(v); else io.observe(v);
+    });
+    if (enAttente.length) {
+      var evts = ['scroll', 'touchstart', 'pointerdown', 'mousemove', 'keydown', 'wheel'];
+      var go = function () {
+        evts.forEach(function (e) { window.removeEventListener(e, go, { passive: true }); });
+        enAttente.forEach(function (v) { io.observe(v); });
+      };
+      evts.forEach(function (e) { window.addEventListener(e, go, { passive: true }); });
+    }
 
     document.addEventListener('visibilitychange', function () {
       if (!active) return;
