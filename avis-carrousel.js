@@ -39,7 +39,7 @@
     '.ofc-avis-track::-webkit-scrollbar{display:none}' +
     '.ofc-avis-card{flex:0 0 80%;max-width:320px;scroll-snap-align:start;background:#fff;border:1px solid var(--oa-line);border-radius:20px;overflow:hidden;box-shadow:0 8px 28px rgba(44,31,26,.08);display:flex;flex-direction:column}' +
     '@media(min-width:700px){.ofc-avis-card{flex-basis:300px}}' +
-    '.ofc-avis-ph{position:relative;background:#F4EEE9;aspect-ratio:1/1}' +
+    '.ofc-avis-ph{display:block;position:relative;background:#F4EEE9;aspect-ratio:1/1}' +
     '.ofc-avis-ph img{width:100%;height:100%;object-fit:cover;display:block}' +
     '.ofc-avis-tag{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.94);color:var(--oa-ink);font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px}' +
     '.ofc-avis-b{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}' +
@@ -67,8 +67,9 @@
 
   function card(t) {
     return '<article class="ofc-avis-card">' +
-      (t.photo ? '<div class="ofc-avis-ph"><img src="' + esc(root(t.photo)) + '" alt="' + esc(t.alt || ('Transformation ' + t.prenom)) + '" loading="lazy" decoding="async" width="720" height="720">' +
-        '<span class="ofc-avis-tag">Avant → Après</span></div>' : '') +
+      /* photo cliquable -> sa transformation (transformations.html#transfo-<id>) */
+      (t.photo ? '<a class="ofc-avis-ph" href="/transformations.html#transfo-' + esc(t.id) + '" aria-label="Voir la transformation de ' + esc(t.prenom) + '"><img src="' + esc(root(t.photo)) + '" alt="' + esc(t.alt || ('Transformation ' + t.prenom)) + '" loading="lazy" decoding="async" width="720" height="720">' +
+        '<span class="ofc-avis-tag">Avant → Après</span></a>' : '') +
       '<div class="ofc-avis-b">' +
         '<span class="ofc-avis-st" aria-label="5 étoiles">★★★★★</span>' +
         '<div class="ofc-avis-n">' + esc(t.prenom) + (t.infos ? ' <span>· ' + esc(t.infos) + '</span>' : '') + '</div>' +

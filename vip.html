@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<script>/* menu ☰ dispo dès le 1er clic (navigateurs Instagram/Facebook) */window.toggleMenu=window.toggleMenu||function(){var m=document.getElementById("navMenu");if(m)m.classList.toggle("open");};</script>
+<script src="/js/menu.js"></script>
 <link rel="icon" type="image/png" href="/images/favicon.png">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <!-- Google Tag Manager -->
@@ -36,7 +36,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav>
   <a href="/" class="nav-logo"><img src="images/logo.png" alt="Ornella Fit Coaching" class="nav-logo-img" width="3135" height="793"></a>
-  <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  <button type="button" class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Menu">☰</button>
   <div class="nav-menu" id="navMenu">
     <a href="offres.html" class="nav-link">Tarifs coaching</a>
     <a href="transformations.html" class="nav-link">Transformations</a>
@@ -98,9 +98,5 @@ function submitVipForm(e){e.preventDefault();var prenom=document.getElementById(
   <p class="footer-legal"><a href="mentions-legales.html">Mentions légales</a> · <a href="cgv.html">CGV</a></p>
 </footer>
 <a href="https://wa.me/33756834626" class="floating-wa" target="_blank" title="WhatsApp">💬</a>
-<script>
-function toggleMenu(){document.getElementById('navMenu').classList.toggle('open');}
-document.addEventListener('click',function(e){var m=document.getElementById('navMenu'),t=document.querySelector('.nav-toggle');if(m&&!m.contains(e.target)&&t&&!t.contains(e.target))m.classList.remove('open');});
-</script>
 <script defer src="/suivi-clics.js"></script>
 </body></html>

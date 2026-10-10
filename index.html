@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<script>/* menu ☰ dispo dès le 1er clic (navigateurs Instagram/Facebook) */window.toggleMenu=window.toggleMenu||function(){var m=document.getElementById("navMenu");if(m)m.classList.toggle("open");};</script>
+<script src="/js/menu.js"></script>
 <link rel="icon" type="image/png" href="/images/favicon.png">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <!-- Google Tag Manager -->
@@ -1148,7 +1148,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="/" class="nav-logo">
     <img src="images/logo.png" alt="Ornella Fit Coaching" class="nav-logo-img" decoding="async" width="3135" height="793">
   </a>
-  <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  <button type="button" class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Menu">☰</button>
   <div class="nav-menu" id="navMenu">
     <a href="offres.html" class="nav-link">Tarifs coaching</a>
     <a href="transformations.html" class="nav-link">Transformations</a>
@@ -1652,11 +1652,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- MARIA — 100 % à distance -->
       <div class="transfo-card transfo-card-featured transfo-card-emeline">
-        <div class="transfo-card-img transfo-card-img-duo">
+        <a class="transfo-card-img transfo-card-img-duo" href="transformations.html#transfo-maria" aria-label="Voir la transformation de Maria">
           <img src="images/maria-face.webp?v=5" alt="Transformation Maria face — coaching 100 % à distance Ornella Fit" loading="lazy" width="1200" height="1200">
           <img src="images/maria-dos.webp?v=5" alt="Transformation Maria dos — coaching 100 % à distance Ornella Fit" loading="lazy" width="1080" height="1080">
           <div class="transfo-card-tag">AVANT → APRÈS</div>
-        </div>
+        </a>
         <div class="transfo-card-body">
           <div class="transfo-card-objectif">Objectif : Perte de poids</div>
           <div class="transfo-card-name">Maria · Maman 2 enfants · Coaching 100 % à distance</div>
@@ -1671,11 +1671,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- EMELINE 2 MOIS -->
       <div class="transfo-card transfo-card-emeline">
-        <div class="transfo-card-img transfo-card-img-duo">
+        <a class="transfo-card-img transfo-card-img-duo" href="transformations.html#transfo-emeline" aria-label="Voir la transformation d’Emeline">
           <img src="images/avant-apres-emeline-2.webp?v=2" alt="Transformation Emeline face 2 mois — coaching Ornella Fit" loading="lazy" width="4319" height="4319">
           <img src="images/avant-apres-emeline-dos.webp?v=2" alt="Transformation Emeline dos 2 mois — coaching Ornella Fit" loading="lazy" width="4319" height="4319">
           <div class="transfo-card-tag">AVANT → APRÈS</div>
-        </div>
+        </a>
         <div class="transfo-card-body">
           <div class="transfo-card-objectif">Objectif : Prise de masse ciblée</div>
           <div class="transfo-card-name">Emeline · Présentiel → hybride → à distance · Maman 2 enfants</div>
@@ -1690,11 +1690,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- LOUISE — à domicile -->
       <div class="transfo-card transfo-card-emeline">
-        <div class="transfo-card-img transfo-card-img-duo">
+        <a class="transfo-card-img transfo-card-img-duo" href="transformations.html#transfo-louise" aria-label="Voir la transformation de Louise">
           <img src="images/louise-face.webp?v=2" alt="Transformation Louise face — coaching à domicile Ornella Fit Essonne" loading="lazy" width="4319" height="4319">
           <img src="images/louise-dos-avant-apres.webp?v=2" alt="Transformation Louise dos — coaching à domicile Ornella Fit Essonne" loading="lazy" width="4319" height="4319">
           <div class="transfo-card-tag">AVANT → APRÈS</div>
-        </div>
+        </a>
         <div class="transfo-card-body">
           <div class="transfo-card-objectif">Objectif : Perte de gras</div>
           <div class="transfo-card-name">Louise · Maman 2 enfants · Coaching à domicile · Essonne (91)</div>
@@ -2269,9 +2269,6 @@ function selectHeroGoal(goal) {
   result.classList.add('visible');
   result.scrollIntoView({behavior:'smooth', block:'nearest'});
 }
-function toggleMenu() {
-  document.getElementById('navMenu').classList.toggle('open');
-}
 function toggleFaqHome(el) {
   const item = el.parentElement;
   document.querySelectorAll('#faq-home .faq-item').forEach(function(i) {
@@ -2279,13 +2276,6 @@ function toggleFaqHome(el) {
   });
   item.classList.toggle('open');
 }
-document.addEventListener('click', function(e) {
-  const menu = document.getElementById('navMenu');
-  const toggle = document.querySelector('.nav-toggle');
-  if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-    menu.classList.remove('open');
-  }
-});
 // LEAD POPUP (guide gratuit) — SEULE pop-up du site. Jamais à l'arrivée.
 // Mobile : 50 % de scroll. Desktop : exit-intent OU 50 % de scroll (le premier des deux).
 // Une seule fois par visiteuse, puis plus rien pendant 7 jours (mémorisé dans localStorage).
