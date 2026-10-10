@@ -897,7 +897,7 @@ async function sendToBrevo(email, resultKey, prenom = '', phone = '') {
   }
 
   /* 2 — Email transactionnel via template Brevo selon résultat */
-  const TEMPLATE_IDS = { domicile: 205, hybride: 206, distanciel: 207, autonomie: 208 }; // v2 (sources : emails/quiz-*-v2.html) — anciens : 12, 13, 14, 15
+  const TEMPLATE_IDS = { domicile: 209, hybride: 210, distanciel: 211, autonomie: 212 }; // v3 (sources : emails/quiz-*-v3.html) — précédents : v2 205-208, v1 12-15
   const templateId = TEMPLATE_IDS[resultKey];
   if (!templateId) return;
   try {
