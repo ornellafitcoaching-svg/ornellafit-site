@@ -25,5 +25,12 @@ Ne pas utiliser « Réseaux » (tableau auto Instagram).
 - Photos : uniquement les vraies photos d'Ornella (assets/, images/ornella-*.jpg…). **Interdit** : photos retouchées IA / tenue bleue studio (images/ornella-profil-ext.jpg, images/poster-hero.jpg, images/ornella-profil-studio.*, images/ornella-fente.webp), photos de clientes, visuels produits avec un ancien prix (IRON-GIRL-Creme-1080.png affiche 39 €). Photos basse résolution (360 px) → `"fit":"contain"`.
 - Pas de Canva.
 
+## Gabarit visuel (v2, render.py)
+- Titre EN HAUT, gros (lisible en miniature dans le fil), 1 ligne de sous-titre max.
+- Photo au milieu ; gros bandeau CTA corail en bas avec une action claire (« Lire l'article gratuit », « Faire le quiz gratuit », « Je rejoins le challenge », « Voir le programme ») + ornellafitcoaching.com.
+- Avant/après : 3-4 épingles par lot, uniquement les transformations d'Ornella elle-même (ornella-avant-apres-postpartum, ornella-postpartum, guide-photo-2, ornella-sculpture-2mois, ornella-competition), étiquettes via `"labels":["AVANT","APRÈS"]`, sans promesse chiffrée. Jamais de clientes.
+- Pas deux épingles de la même file avec la même photo.
+- Ajouter `?v=<date>` à `image_url` à la publication (évite qu'un ancien visuel en cache soit repris).
+
 ## Publication (Chrome, session Pinterest d'Ornella)
 Depuis un onglet fr.pinterest.com : POST `/resource/PinResource/create/` (form `source_url`, `data={options,context:{}}`, en-têtes `X-Requested-With`, `X-CSRFToken` = cookie csrftoken, `X-Pinterest-PWS-Handler`) avec options `{board_id, title, description, link, image_url:"https://www.ornellafitcoaching.com/images/pinterest/<slug>.jpg", method:"uploaded", section:null}`. `scheduled_ts` est ignoré (publie tout de suite). Attendre ≥ 6 s entre deux épingles. Vérifier ensuite (PinResource get) : image 1000x1500 + lien ornellafitcoaching.com.
