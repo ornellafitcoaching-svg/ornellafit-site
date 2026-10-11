@@ -9,8 +9,8 @@
    - Clic_Instagram        : clic vers Instagram
    Le paramètre "page" indique la page où le clic a eu lieu.
 
-   Google Analytics 4 (G-HV00M7VGJD) — événements envoyés via la balise Google déjà chargée par GTM
-   (commande gtag dans le dataLayer, aucun 2e chargement donc aucune visite en double) :
+   Google Analytics 4 (G-HV00M7VGJD) — balise chargée par ce fichier avec un dataLayer séparé (ofcDL),
+   sans page vue (comptées par GTM) donc sans visite en double. Événements :
    - contact_whatsapp : clic vers WhatsApp
    - begin_checkout   : clic vers un paiement (Stripe / GoCardless), item_name = produit
    - generate_lead    : email laissé (quiz, guide, roue, captures…) — 1 fois par email et par page
@@ -74,14 +74,24 @@
   }
 
   var GA_ID = 'G-HV00M7VGJD';
+  // Balise Google Analytics chargée ici, avec son propre dataLayer (« ofcDL ») pour ne jamais
+  // interférer avec GTM. send_page_view: false → les pages vues restent comptées par GTM seul.
+  function ofcTag() { window.ofcDL.push(arguments); }
+  if (!window.OFC_INTERNAL && !window.ofcDL) {
+    window.ofcDL = [];
+    ofcTag('js', new Date());
+    ofcTag('config', GA_ID, { send_page_view: false });
+    var gs = document.createElement('script');
+    gs.async = true;
+    gs.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID + '&l=ofcDL';
+    (document.head || document.documentElement).appendChild(gs);
+  }
   function ga(nom, params) {
-    if (window.OFC_INTERNAL) return;
-    window.dataLayer = window.dataLayer || [];
-    if (typeof window.gtag !== 'function') window.gtag = function () { window.dataLayer.push(arguments); };
+    if (window.OFC_INTERNAL || !window.ofcDL) return;
     params = params || {};
-    params.send_to = GA_ID;
     params.page_path = location.pathname;
-    window.gtag('event', nom, params);
+    params.transport_type = 'beacon'; // part même si la page change juste après (paiement)
+    ofcTag('event', nom, params);
   }
   window.ofcGA = ga;
 
