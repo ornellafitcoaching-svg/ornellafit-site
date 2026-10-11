@@ -450,7 +450,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         <div class="hero-price"><b>49€</b><span>paiement unique · accès à vie</span></div>
         <a href="https://buy.stripe.com/6oUfZh7fX1hxdUF9a58Vi0w" class="btn btn-terra btn-lg" onclick="(fbq('track','InitiateCheckout',{value:49,currency:'EUR',content_ids:['fit-dans-ta-vie-28j'],content_type:'product'}),fbq('track','AddToCart',{value:49,currency:'EUR',content_ids:['fit-dans-ta-vie-28j'],content_type:'product'}))">Je commence — 49€</a>
       </div>
-      <div class="ofc-preuve" data-ordre="maria,lise,lucie,louise,emeline,chantal" style="margin:20px 0 0"></div>
+      <div class="ofc-preuve" data-ordre="maria,lise,lucie,louise,emeline,chantal" data-google-txt="Coach notée 5,0 sur Google (25 avis)" style="margin:20px 0 0"></div>
       <div class="hero-reassure">
         <span><svg class="ico ico-sm"><use href="#i-lock"/></svg> Paiement sécurisé</span>
         <span><svg class="ico ico-sm"><use href="#i-check"/></svg> Accès immédiat</span>
@@ -461,7 +461,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   </div>
   <div class="hero-proof">
     <span class="stars">★★★★★</span>
-    <span class="p-txt"><b>5,0</b> · 25 avis Google</span>
+    <span class="p-txt">Coach notée <b>5,0</b> sur Google (25 avis)</span>
     <span class="p-sep"></span>
     <span class="p-cred">Coach diplômée d'État · Ancienne compétitrice fitness</span>
   </div>
@@ -469,7 +469,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
 
 <!-- PREUVE SOCIALE (remontée sous le héros) -->
 <section id="avis-photos" style="background:var(--cream,#FBF6F2)">
-  <div class="ofc-avis" data-ordre="maria,lise,lucie,louise,emeline,chantal,anonyme,ornella" data-accent="var(--terra)" data-kicker="Mes clientes coachées · Photos réelles" data-titre="La méthode de ce programme, en vrai" data-note="Ces résultats sont ceux de clientes accompagnées en coaching (sur plusieurs mois) avec la même méthode que ce programme. Photos publiées avec leur accord, sans retouche. Les résultats varient selon chacune."></div>
+  <div class="ofc-avis" data-ordre="maria,lise,lucie,louise,emeline,chantal,anonyme,ornella" data-google-txt="Coach notée 5,0 sur Google (25 avis)" data-accent="var(--terra)" data-kicker="Mes clientes coachées · Photos réelles" data-titre="La méthode de ce programme, en vrai" data-note="Ces résultats sont ceux de clientes accompagnées en coaching (sur plusieurs mois) avec la même méthode que ce programme. Photos publiées avec leur accord, sans retouche. Les résultats varient selon chacune."></div>
 </section>
 
 <!-- 02 · IDENTIFICATION -->
@@ -775,6 +775,33 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       <h2 class="sec-title">Une méthode à vie,<br><em>pour le prix d'un dîner.</em></h2>
       <p class="lead" style="margin-left:auto;margin-right:auto;max-width:560px">Tu fais partie des <strong>premières</strong> à la suivre. Et chaque lundi que tu repousses, c'est une semaine de plus à recommencer — autant que ce soit celle-ci.</p>
     </div>
+    <!-- ============================================================
+         EMPLACEMENT « ELLES L'ONT SUIVI » — 3 témoignages Fit Dans Ta Vie
+         Masqué tant qu'il est vide (attribut hidden sur la section ci-dessous).
+         POUR L'ACTIVER :
+           1. Remplace chaque [PRÉNOM], [DÉTAIL] et [TEXTE DU TÉMOIGNAGE] par un VRAI retour
+              de cliente qui a suivi Fit Dans Ta Vie (avec son accord écrit). Ne rien inventer.
+           2. Supprime l'attribut hidden de <div class="fdtv-temos" hidden>.
+           Moins de 3 témoignages ? Supprime simplement les cartes en trop.
+         ============================================================ -->
+    <div class="fdtv-temos" hidden>
+      <p class="kicker center" style="margin-bottom:14px">Elles l'ont suivi</p>
+      <div class="fdtv-temos-grid">
+        <figure class="fdtv-temo"><blockquote>[TEXTE DU TÉMOIGNAGE 1]</blockquote><figcaption><b>[PRÉNOM]</b> · [DÉTAIL, ex. maman de 2 enfants]</figcaption></figure>
+        <figure class="fdtv-temo"><blockquote>[TEXTE DU TÉMOIGNAGE 2]</blockquote><figcaption><b>[PRÉNOM]</b> · [DÉTAIL]</figcaption></figure>
+        <figure class="fdtv-temo"><blockquote>[TEXTE DU TÉMOIGNAGE 3]</blockquote><figcaption><b>[PRÉNOM]</b> · [DÉTAIL]</figcaption></figure>
+      </div>
+    </div>
+    <style>
+    .fdtv-temos[hidden]{display:none!important}
+    .fdtv-temos{margin:0 auto 28px;max-width:900px}
+    .fdtv-temos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .fdtv-temo{margin:0;background:#fff;border:1px solid rgba(27,58,45,.14);border-radius:16px;padding:18px}
+    .fdtv-temo blockquote{margin:0 0 10px;font-size:.92rem;line-height:1.6;color:#1B3A2D}
+    .fdtv-temo figcaption{font-size:.8rem;color:#6B5E5E}
+    @media(max-width:760px){.fdtv-temos-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;scrollbar-width:none}.fdtv-temos-grid::-webkit-scrollbar{display:none}.fdtv-temo{flex:0 0 82%;scroll-snap-align:start}}
+    </style>
+
     <div class="offer">
       <div class="offer-top">
         <div class="lbl">Fit Dans Ta Vie · 28 jours</div>
