@@ -3,7 +3,7 @@
 const path = require('path');
 let pw; try { pw = require('playwright'); } catch (e) { pw = require('/opt/node22/lib/node_modules/playwright'); }
 (async () => {
-  const browser = await pw.chromium.launch();
+  const browser = await pw.chromium.launch(process.env.PW_CHROME ? {executablePath: process.env.PW_CHROME} : {});
   const page = await browser.newPage();
   await page.goto('file://' + path.join(__dirname, 'tarifs.html'), { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
