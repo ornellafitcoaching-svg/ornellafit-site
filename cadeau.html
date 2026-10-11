@@ -196,15 +196,15 @@ fbq('init','1233548507794099');fbq('track','PageView');
 
     <!-- Preuve immédiate : on n'est plus « une inconnue » -->
     <div class="proofmini">
-      <img src="images/cadeau/avant-apres.jpg" alt="Ornella enceinte puis aujourd'hui" loading="eager">
-      <p><b>Moi, enceinte → moi aujourd'hui.</b><br>Maman, coach sportive diplômée d'État. Mes routines express, enfin <b>pour toi</b>.</p>
+      <img src="images/cadeau/avant-apres.jpg" alt="Ornella avant puis aujourd'hui" loading="eager">
+      <p><b>Moi avant → moi aujourd'hui.</b><br>Coach sportive diplômée d'État, ex-athlète fitness. Mes routines express, enfin <b>pour toi</b>.</p>
     </div>
 
     <div class="formcard" id="formcard">
       <span class="gifttag">🎁 Offert avec ton colis</span>
       <div class="ftitle">Où je t'envoie ton guide ?</div>
       <form id="giftForm" novalidate>
-        <div class="field"><input type="text" id="prenom" name="PRENOM" placeholder="Ton prénom" autocomplete="given-name" required></div>
+        <div class="field"><input type="text" id="prenom" name="PRENOM" placeholder="Ton prénom (facultatif)" autocomplete="given-name"></div>
         <div class="field"><input type="email" id="email" name="EMAIL" placeholder="Ton email (pour recevoir le guide)" autocomplete="email" inputmode="email" required></div>
         <button type="submit" class="submit" id="submitBtn">Je commence mon Jour 1 →</button>
         <div class="formnote" id="formnote"></div>
@@ -249,18 +249,18 @@ fbq('init','1233548507794099');fbq('track','PageView');
     <h2 class="title">De vraies femmes, <span class="c">de vrais résultats</span></h2>
     <p class="real">Clientes réelles · aucune retouche</p>
     <div class="tcard">
+      <img src="images/maria-face.webp?v=5" alt="Maria avant / après — ventre affiné" loading="lazy" width="1200" height="1200">
+      <div class="tb">
+        <span class="tpill">−10 kg</span><span class="tpill">8 mois</span><span class="tpill">Ventre affiné</span>
+        <div class="tn">Maria · 38 ans · 100 % à distance, sans jamais se voir</div>
+      </div>
+    </div>
+    <div class="tcard">
       <img src="images/transformation-chantal.webp" alt="Chantal avant / après — ventre" loading="lazy" width="1536" height="1024">
       <div class="tb">
         <span class="tpill">−4 kg</span><span class="tpill">3 mois</span><span class="tpill">Ventre affiné</span>
         <div class="tq">« Après des années sans résultats, j'ai enfin compris pourquoi je stagnais. »</div>
         <div class="tn">Chantal · coaching à distance</div>
-      </div>
-    </div>
-    <div class="tcard">
-      <img src="images/transformation-emeline.png" alt="Emeline avant / après — fessiers et posture" loading="lazy" width="1080" height="1350">
-      <div class="tb">
-        <span class="tpill">Fessiers galbés</span><span class="tpill">Posture corrigée</span><span class="tpill">2 mois</span>
-        <div class="tn">Emeline · 31 ans · maman de 2 enfants</div>
       </div>
     </div>
     <button type="button" class="submit js-top" style="max-width:360px;margin:6px auto 0;display:block">Moi aussi, je commence →</button>
@@ -420,7 +420,7 @@ const BREVO_FORM_URL = "https://e605324b.sibforms.com/serve/MUIFAIgM7GdN5D_DjX7a
 
   function showSuccess(){
     document.getElementById('successTitle').textContent =
-      "C'est envoyé, " + (prenom.value.trim() || 'toi') + " ! 📩";
+      prenom.value.trim() ? "C'est envoyé, " + prenom.value.trim() + " ! 📩" : "C'est envoyé ! 📩";
     formcard.style.display = 'none';
     success.style.display = 'block';
     offerblock.style.display = 'block';
@@ -442,7 +442,6 @@ const BREVO_FORM_URL = "https://e605324b.sibforms.com/serve/MUIFAIgM7GdN5D_DjX7a
     note.textContent = '';
     email.classList.remove('err'); prenom.classList.remove('err');
 
-    if (!prenom.value.trim()){ prenom.classList.add('err'); note.textContent = 'Dis-moi ton prénom 🙂'; prenom.focus(); return; }
     if (!isEmail(email.value.trim())){ email.classList.add('err'); note.textContent = 'Vérifie ton adresse email.'; email.focus(); return; }
 
     sending = true;
@@ -451,6 +450,15 @@ const BREVO_FORM_URL = "https://e605324b.sibforms.com/serve/MUIFAIgM7GdN5D_DjX7a
     btn.textContent = 'Envoi en cours…';
 
     const ok = await sendToBrevo();
+    // Le formulaire Brevo n'enregistre ni le prénom ni la source : on les ajoute au contact.
+    if (ok) {
+      const attrs = { SOURCE: SOURCE };
+      if (prenom.value.trim()) attrs.PRENOM = prenom.value.trim().slice(0,60);
+      fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=contacts', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ email: email.value.trim(), attributes: attrs, updateEnabled: true })
+      }).catch(function(){});
+    }
 
     if (ok){
       showSuccess();
