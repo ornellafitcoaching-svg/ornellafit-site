@@ -205,7 +205,7 @@
       sub.innerHTML = 'Ton code : <span class="ofc-roue-code">' + prize.code + '</span><br>Valable jusqu\'au ' + EXPIRY_LABEL + ' sur tous mes programmes digitaux.';
     } else {
       title.textContent = 'Pas de chance cette fois-ci 🎡';
-      sub.innerHTML = 'Ça arrive ! Mais tu ne repars pas les mains vides : <a href="/guide-offert.html" style="color:#C45C78;font-weight:bold">ton guide offert t\'attend ici →</a>';
+      sub.innerHTML = 'Ça arrive ! Mais tu ne repars pas les mains vides : <a href="/guide-offert.html?acces=1" style="color:#C45C78;font-weight:bold">ton guide offert t\'attend ici →</a>';
     }
     formView.style.display = 'none';
     resultView.classList.add('ofc-show');

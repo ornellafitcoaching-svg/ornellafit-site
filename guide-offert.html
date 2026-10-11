@@ -1665,6 +1665,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="grid-3">
       <div class="mini-card" style="padding:0;overflow:hidden;">
+        <img src="images/maria-face.webp?v=5" alt="Transformation Maria" style="width:100%;display:block;height:auto;" width="1200" height="1200" loading="lazy">
+        <div style="padding:14px 16px;">
+          <div style="font-size:12px;font-weight:700;color:var(--ink);">Maria · 8 mois · 100 % à distance</div>
+          <div style="font-size:11px;color:rgba(58,42,42,.78);margin-top:2px;">−10 kg, ventre affiné — maman de 2 enfants</div>
+        </div>
+      </div>
+      <div class="mini-card" style="padding:0;overflow:hidden;">
+        <img src="images/lise-face.webp?v=2" alt="Transformation Lise" style="width:100%;display:block;height:auto;" width="1191" height="1191" loading="lazy">
+        <div style="padding:14px 16px;">
+          <div style="font-size:12px;font-weight:700;color:var(--ink);">Lise · 6 mois · distance puis hybride</div>
+          <div style="font-size:11px;color:rgba(58,42,42,.78);margin-top:2px;">Recomposition : taille dessinée, sans régime extrême</div>
+        </div>
+      </div>
+      <div class="mini-card" style="padding:0;overflow:hidden;">
         <img src="images/louise-avant-apres.jpg" alt="Transformation Louise" style="width:100%;display:block;height:auto;" width="1440" height="1440" loading="lazy">
         <div style="padding:14px 16px;">
           <div style="font-size:12px;font-weight:700;color:var(--ink);">Louise · 9 mois</div>
@@ -3185,10 +3199,17 @@ function connectGuideBrevoSuccess() {
   form.addEventListener('submit', function() { form.setAttribute('aria-busy', 'true'); });
 }
 document.addEventListener('DOMContentLoaded', function() {
+  // Déjà inscrite ailleurs (quiz, mail, popup, flyer) : on ne redemande pas l'email.
+  var dejaInscrite = false;
   try {
-    // Les anciennes versions déverrouillaient parfois sans retour de succès fiable.
-    if (localStorage.getItem('guide_form_submitted') === '1') unlockGuide();
+    var qs = new URLSearchParams(window.location.search);
+    dejaInscrite = qs.get('acces') === '1' || qs.get('utm_medium') === 'email';
   } catch(e) {}
+  try {
+    if (dejaInscrite) localStorage.setItem('guide_form_submitted', '1');
+    if (localStorage.getItem('guide_form_submitted') === '1') dejaInscrite = true;
+  } catch(e) {}
+  if (dejaInscrite) unlockGuide();
   connectGuideBrevoSuccess();
 });
 (function(){

@@ -980,7 +980,7 @@ function renderResult(key) {
         <div id="quizMailBox" style="background:#FBF7F4;border:1px solid rgba(201,185,154,0.35);border-radius:16px;padding:18px 18px 16px;">
           <div style="text-align:center;margin-bottom:12px;">
             <div style="display:inline-block;background:#C96358;color:#fff;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;padding:5px 12px;border-radius:50px;margin-bottom:8px;">🎁 CADEAU OFFERT</div>
-            <div style="font-size:1rem;font-weight:700;color:#1E1616;line-height:1.35;">Ton guide gratuit : les 9 erreurs qui t'empêchent d'avoir un ventre plat</div>
+            <div style="font-size:1rem;font-weight:700;color:#1E1616;line-height:1.35;">Ton guide gratuit : les 9 erreurs qui bloquent tes résultats (ventre, fessiers, énergie)</div>
             <div style="font-size:0.82rem;color:#6B5A5A;margin-top:4px;">+ ton résultat personnalisé, envoyé par mail</div>
           </div>
           <input id="quiz-prenom" type="text" autocomplete="given-name" autocapitalize="words" placeholder="Ton prénom (facultatif)"
@@ -1015,11 +1015,12 @@ function renderResult(key) {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) { error.style.display = 'block'; return; }
     error.style.display = 'none';
     sendToBrevo(emailVal, key, prenomVal, '').catch(() => {});
+    try { localStorage.setItem("guide_form_submitted", "1"); } catch(e) {}
     document.getElementById('quizMailBox').innerHTML = `
       <div style="text-align:center;font-size:0.88rem;color:#3D2B24;line-height:1.6;">
         ✅ C'est envoyé à <strong>${escHtml(emailVal)}</strong>.<br>
         Et ton guide, tu peux le lire tout de suite :
-        <a href="guide-offert.html" style="display:inline-block;margin-top:10px;color:#C96358;font-weight:700;">📖 Les 9 erreurs qui t'empêchent d'évoluer →</a>
+        <a href="guide-offert.html?acces=1" style="display:inline-block;margin-top:10px;color:#C96358;font-weight:700;">📖 Les 9 erreurs qui t'empêchent d'évoluer →</a>
       </div>`;
   });
 }
