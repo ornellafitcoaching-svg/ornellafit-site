@@ -23,7 +23,7 @@ h1{font:600 54px/1.08 'Playfair Display';color:#1B3A2D;margin:16px 0 10px}
 .pr{background:#E8634A;color:#fff;font:700 44px/1 'Playfair Display';padding:16px 34px;border-radius:999px}
 .br{font:700 22px/1.3 'DM Sans';color:#1B3A2D;text-align:right}.br span{display:block;font-weight:500;color:#8B7A71;font-size:19px}
 </style></head><body><div class="top">${imgs}</div><div class="bot"><span class="k">${esc(p.type)}</span><h1>${esc(p.title.split(' — ')[0])}</h1><div class="s">${esc(p.title.includes(' — ') ? p.title.split(' — ')[1] + ' · ' + p.sub : p.sub)}</div>
-<div class="row"><span class="pr">${prix(p.price)}</span><span class="br">Ornella Fit Coaching<span>Coach diplômée d'État · accès immédiat</span></span></div></div></body></html>`;
+<div class="row"><span class="pr">${esc(p.label || prix(p.price))}</span><span class="br">Ornella Fit Coaching<span>${esc(p.tag || "Coach diplômée d'État · accès immédiat")}</span></span></div></div></body></html>`;
 }
 (async () => {
   const b = await pw.chromium.launch();
