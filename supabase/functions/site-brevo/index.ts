@@ -247,7 +247,9 @@ Deno.serve(async (req) => {
       const r = await upsertContact(email, cleanAttributes(body.attributes), cleanListIds(body.listIds));
       await logEvent(ipHash, op, email, page, r.ok);
       const txt = await r.text();
-      return new Response(txt || "{}", { status: r.status, headers: { ...cors(origin), "Content-Type": "application/json" } });
+      // 204 (contact existant mis à jour) : une Response 204 ne peut pas avoir de corps → on renvoie 200
+      const status = r.status === 204 ? 200 : r.status;
+      return new Response(txt || "{}", { status, headers: { ...cors(origin), "Content-Type": "application/json" } });
     }
 
     // ---------- email ----------
@@ -295,7 +297,9 @@ Deno.serve(async (req) => {
       const r = await brevo("/smtp/email", { method: "POST", body: JSON.stringify(payload) });
       await logEvent(ipHash, "email", email, page, r.ok);
       const txt = await r.text();
-      return new Response(txt || "{}", { status: r.status, headers: { ...cors(origin), "Content-Type": "application/json" } });
+      // 204 (contact existant mis à jour) : une Response 204 ne peut pas avoir de corps → on renvoie 200
+      const status = r.status === 204 ? 200 : r.status;
+      return new Response(txt || "{}", { status, headers: { ...cors(origin), "Content-Type": "application/json" } });
     }
 
     // ---------- panier ----------
