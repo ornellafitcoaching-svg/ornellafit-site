@@ -592,6 +592,7 @@ function advance(n) {
     renderResult(key);
     goToStep(7);
     if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'quiz', content_category: key });
+    if (window.ofcGA) ofcGA('quiz_termine', { formule: key, objectif: selections[5] !== undefined ? OBJECTIF_LABELS[selections[5]] : '' });
     return;
   }
   goToStep(n + 1);

@@ -7,7 +7,15 @@
    - Clic_Email / Clic_Tel : clic mailto / tel (suffixe _Entreprise sur la page entreprise)
    - Clic_Vers_<Page>      : clic vers une autre page du site (ex. Clic_Vers_BootySculpt, Clic_Vers_Offres)
    - Clic_Instagram        : clic vers Instagram
-   Le paramètre "page" indique la page où le clic a eu lieu. */
+   Le paramètre "page" indique la page où le clic a eu lieu.
+
+   Google Analytics 4 (G-HV00M7VGJD) — événements envoyés via la balise Google déjà chargée par GTM
+   (commande gtag dans le dataLayer, aucun 2e chargement donc aucune visite en double) :
+   - contact_whatsapp : clic vers WhatsApp
+   - begin_checkout   : clic vers un paiement (Stripe / GoCardless), item_name = produit
+   - generate_lead    : email laissé (quiz, guide, roue, captures…) — 1 fois par email et par page
+   - quiz_termine     : fin du quiz (envoyé par quiz.html via window.ofcGA)
+   Rien n'est envoyé sur un appareil exclu des stats (?moi=1, js/stats-guard.js). */
 (function () {
   if (window._suiviClicsReady) return;
   window._suiviClicsReady = true;
@@ -65,6 +73,34 @@
       .map(function (m) { return m.charAt(0).toUpperCase() + m.slice(1); }).join('').slice(0, 30);
   }
 
+  var GA_ID = 'G-HV00M7VGJD';
+  function ga(nom, params) {
+    if (window.OFC_INTERNAL) return;
+    window.dataLayer = window.dataLayer || [];
+    if (typeof window.gtag !== 'function') window.gtag = function () { window.dataLayer.push(arguments); };
+    params = params || {};
+    params.send_to = GA_ID;
+    params.page_path = location.pathname;
+    window.gtag('event', nom, params);
+  }
+  window.ofcGA = ga;
+
+  // Email laissé sur le site : tous les formulaires passent par le proxy Brevo (site-brevo?op=contacts)
+  if (window.fetch && !window._ofcFetchLead) {
+    window._ofcFetchLead = true;
+    var vus = {}, fetchOrig = window.fetch;
+    window.fetch = function (url, opts) {
+      try {
+        var u = String(url && url.url || url);
+        if (u.indexOf('site-brevo') !== -1 && u.indexOf('op=contacts') !== -1 && opts && opts.body) {
+          var email = (JSON.parse(opts.body).email || '').toLowerCase();
+          if (email && !vus[email]) { vus[email] = 1; ga('generate_lead', { method: PAGE }); }
+        }
+      } catch (err) {}
+      return fetchOrig.apply(this, arguments);
+    };
+  }
+
   function envoyer(nom) {
     if (typeof fbq !== 'undefined') fbq('trackCustom', nom, { page: PAGE });
     (window.dataLayer = window.dataLayer || []).push({ event: 'clic_bouton', bouton: nom, page: PAGE });
@@ -73,7 +109,11 @@
   // Pour les boutons qui redirigent en JavaScript (window.location.href = lien Stripe)
   window.suiviAchat = function (url) {
     var code = String(url).split('buy.stripe.com/')[1];
-    if (code) envoyer('Clic_Achat_' + (PRODUITS[code.split(/[?#]/)[0]] || 'Autre'));
+    if (code) {
+      var prod = PRODUITS[code.split(/[?#]/)[0]] || 'Autre';
+      envoyer('Clic_Achat_' + prod);
+      ga('begin_checkout', { item_name: prod, currency: 'EUR' });
+    }
   };
 
   document.addEventListener('click', function (e) {
@@ -84,9 +124,11 @@
       var code = href.split('buy.stripe.com/')[1].split(/[?#]/)[0];
       envoyer('Clic_Achat_' + (PRODUITS[code] || 'Autre'));
       if (window.pintrk) pintrk('track', 'checkout', { product_name: PRODUITS[code] || 'Autre' });
+      ga('begin_checkout', { item_name: PRODUITS[code] || 'Autre', currency: 'EUR' });
     } else if (href.indexOf('pay.gocardless.com') !== -1) {
       envoyer('Clic_Achat_Coaching');
       if (window.pintrk) pintrk('track', 'checkout', { product_name: 'Coaching' });
+      ga('begin_checkout', { item_name: 'Coaching', currency: 'EUR' });
     } else if (href.indexOf('wa.me/') !== -1 || href.indexOf('api.whatsapp.com') !== -1) {
       // Contact WhatsApp (CTA principal « Réserver mon appel gratuit » + bouton flottant) :
       // événement standard Meta « Contact » + dataLayer « whatsapp_click » (GTM) + GA4 « contact_whatsapp ».
@@ -96,6 +138,7 @@
       (window.dataLayer = window.dataLayer || []).push({ event: 'whatsapp_click', page: PAGE, link_url: href.split('?')[0] });
       (window.dataLayer = window.dataLayer || []).push({ event: 'contact_whatsapp', page: PAGE, page_path: location.pathname, link_url: href.split('?')[0] });
       envoyer(PAGE === 'entreprise' ? 'Clic_WhatsApp_Entreprise' : 'Clic_WhatsApp');
+      ga('contact_whatsapp', { link_url: href.split('?')[0] });
     } else if (href.indexOf('mailto:') === 0) {
       envoyer(PAGE === 'entreprise' ? 'Clic_Email_Entreprise' : 'Clic_Email');
     } else if (href.indexOf('tel:') === 0) {
