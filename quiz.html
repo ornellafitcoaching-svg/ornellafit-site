@@ -362,12 +362,13 @@ const QUESTIONS = [
   },
   {
     eyebrow: 'Question 4 / 5',
-    title: 'Tu es prête à investir combien par mois ?',
-    sub: 'Pour t\'orienter vers la formule la plus adaptée à toi.',
+    title: 'Tu aimerais t\'entraîner avec moi à quelle fréquence ?',
+    sub: 'Pas de mauvaise réponse : c\'est ce qui te correspond vraiment aujourd\'hui.',
     options: [
-      { emoji: '💸', text: 'Moins de 100€ / mois', sub: 'Je veux un programme solide sans me ruiner', scores: { autonomie: 3 } },
-      { emoji: '💰', text: 'Entre 100€ et 200€ / mois', sub: 'Investissement sérieux pour des résultats concrets', scores: { hybride: 2, distanciel: 2 } },
-      { emoji: '🏆', text: 'Plus de 200€ / mois', sub: 'Je veux le meilleur accompagnement possible — je m\'en donne les moyens', scores: { domicile: 3, hybride: 1 } }
+      { emoji: '🗓️', text: '1 fois par mois', sub: 'Et seule le reste du temps, avec un programme fait pour moi', scores: { hybride: 3 } },
+      { emoji: '💪', text: '1 fois par semaine', sub: 'Un rendez-vous fixe pour ne plus lâcher', scores: { domicile: 3 } },
+      { emoji: '🔥', text: '2 fois par semaine ou plus', sub: 'Je veux aller vite et être vraiment encadrée', scores: { domicile: 3 } },
+      { emoji: '📲', text: 'Pas besoin de se voir', sub: 'Un suivi à distance me suffit', scores: { distanciel: 3 } }
     ]
   },
   {
@@ -605,23 +606,20 @@ function onEmailChange() {
 }
 
 function calcResult() {
-  /* Q3 (format voulu) détermine le résultat — Q4 (budget) ne choisit que la formule à l'intérieur
-     de ce format (ex: Essentielle vs Performance pour Hybride), il ne fait jamais sauter vers un
-     format avec moins d'accompagnement humain que demandé. Q1 (géo) reste prioritaire sur tout :
-     hors Île-de-France, ni domicile ni hybride (présentiel) ne sont possibles. */
+  /* Q1 (géo) d'abord : hors 91/92, ni domicile ni hybride (présentiel) ne sont possibles.
+     Q3 (format voulu) ensuite : « seule » → Fit Dans Ta Vie, « à distance avec suivi » → distanciel.
+     Pour celles qui veulent être encadrées (Q3 = coach à chaque séance ou mix), Q4 (fréquence
+     souhaitée avec Ornella — remplace l'ancienne question budget) choisit la formule. */
   const horsIDF = selections[1] === 1;
   const format  = selections[3]; // 0: coach à chaque séance, 1: mix coach+seule, 2: à distance, 3: seule
-  const budget  = selections[4]; // 0: <100€, 1: 100-200€, 2: >200€
+  const freq    = selections[4]; // 0: 1×/mois, 1: 1×/semaine, 2: 2×/semaine ou +, 3: pas besoin de se voir
 
   if (format === 3) return 'autonomie';   // Seule — j'ai juste besoin d'un bon programme
+  if (horsIDF)      return 'distanciel';
   if (format === 2) return 'distanciel';  // À distance avec un vrai suivi régulier
-  if (format === 1) return horsIDF ? 'distanciel' : 'hybride'; // Quelques séances + seule le reste
-  if (format === 0) {                     // Avec mon coach à chaque séance
-    if (horsIDF) return 'distanciel';
-    if (budget === 2) return 'domicile';  // Plus de 200€/mois
-    return 'hybride';                     // 100-200€ ou <100€/mois → Hybride (Essentielle si <100€)
-  }
-  return 'distanciel';
+  if (freq === 3)   return 'distanciel';  // Pas besoin de se voir
+  if (freq === 1 || freq === 2) return 'domicile'; // 1×/semaine ou plus avec Ornella
+  return 'hybride';                       // 1×/mois + seule le reste du temps
 }
 
 /* ===================================================
