@@ -22,13 +22,13 @@ Ne pas utiliser « Réseaux » (tableau auto Instagram).
 - Lien = page précise du site (article de blog, page programme, challenge-ventre-plat.html, guide-offert.html, quiz.html), toujours avec `?utm_source=pinterest&utm_medium=organic`. Jamais Instagram.
 - Mix par lot de 10 : ~6 articles de blog, 2 aimants à leads (challenge ventre plat, guide 9 erreurs, quiz), 2 programmes payants (prix à jour sur la page !).
 - Une même page peut revenir avec un **nouveau visuel et un nouvel angle** (fresh pin), pas le même.
-- Photos : uniquement les vraies photos d'Ornella (assets/, images/ornella-*.jpg…). **Interdit** : photos retouchées IA / tenue bleue studio (images/ornella-profil-ext.jpg, images/poster-hero.jpg, images/ornella-profil-studio.*, images/ornella-fente.webp), photos de clientes, visuels produits avec un ancien prix (IRON-GIRL-Creme-1080.png affiche 39 €). Photos basse résolution (360 px) → `"fit":"contain"`.
+- Photos : uniquement les vraies photos d'Ornella (assets/, images/ornella-*.jpg…). **Interdit** : photos retouchées IA / tenue bleue studio (images/ornella-profil-ext.jpg, images/poster-hero.jpg, images/ornella-profil-studio.*, images/ornella-fente.webp), photos en maillot de bain / bikini / lingerie (images/guide-photo-1.jpg, images/guide-photo-2.jpg, images/ornella-competition.jpg, images/ornella-competition-fitness.jpg — Ornella ne veut pas apparaître en maillot), photos de clientes, visuels produits avec un ancien prix (IRON-GIRL-Creme-1080.png affiche 39 €). Photos basse résolution (360 px) → `"fit":"contain"`.
 - Pas de Canva.
 
 ## Gabarit visuel (v2, render.py)
 - Titre EN HAUT, gros (lisible en miniature dans le fil), 1 ligne de sous-titre max.
 - Photo au milieu ; gros bandeau CTA corail en bas avec une action claire (« Lire l'article gratuit », « Faire le quiz gratuit », « Je rejoins le challenge », « Voir le programme ») + ornellafitcoaching.com.
-- Avant/après : 3-4 épingles par lot, uniquement les transformations d'Ornella elle-même (ornella-avant-apres-postpartum, ornella-postpartum, guide-photo-2, ornella-sculpture-2mois, ornella-competition), étiquettes via `"labels":["AVANT","APRÈS"]`, sans promesse chiffrée. Jamais de clientes.
+- Avant/après : 3-4 épingles par lot, uniquement les transformations d'Ornella elle-même (ornella-avant-apres-postpartum, ornella-postpartum cadré haut sans le bas, avant-apres-ornella-sport, ornella-sculpture-2mois), habillée — jamais en maillot, étiquettes via `"labels":["AVANT","APRÈS"]`, sans promesse chiffrée. Jamais de clientes.
 - Pas deux épingles de la même file avec la même photo.
 - Ajouter `?v=<date>` à `image_url` à la publication (évite qu'un ancien visuel en cache soit repris).
 
