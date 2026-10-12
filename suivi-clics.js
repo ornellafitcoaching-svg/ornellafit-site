@@ -9,8 +9,8 @@
    - Clic_Instagram        : clic vers Instagram
    Le paramètre "page" indique la page où le clic a eu lieu.
 
-   Google Analytics 4 (G-HV00M7VGJD) — balise chargée par ce fichier avec un dataLayer séparé (ofcDL),
-   sans page vue (comptées par GTM) donc sans visite en double. Événements :
+   Google Analytics 4 (G-HV00M7VGJD, chargé UNIQUEMENT par GTM) — événements poussés dans le dataLayer
+   (à relier dans GTM par une balise « Événement GA4 », nom = {{Event}}) :
    - contact_whatsapp : clic vers WhatsApp
    - begin_checkout   : clic vers un paiement (Stripe / GoCardless), item_name = produit
    - generate_lead    : email laissé (quiz, guide, roue, captures…) — 1 fois par email et par page
@@ -73,25 +73,16 @@
       .map(function (m) { return m.charAt(0).toUpperCase() + m.slice(1); }).join('').slice(0, 30);
   }
 
-  var GA_ID = 'G-HV00M7VGJD';
-  // Balise Google Analytics chargée ici, avec son propre dataLayer (« ofcDL ») pour ne jamais
-  // interférer avec GTM. send_page_view: false → les pages vues restent comptées par GTM seul.
-  function ofcTag() { window.ofcDL.push(arguments); }
-  if (!window.OFC_INTERNAL && !window.ofcDL) {
-    window.ofcDL = [];
-    ofcTag('js', new Date());
-    ofcTag('config', GA_ID, { send_page_view: false });
-    var gs = document.createElement('script');
-    gs.async = true;
-    gs.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID + '&l=ofcDL';
-    (document.head || document.documentElement).appendChild(gs);
-  }
+  // Événements GA4 : poussés dans le dataLayer de GTM (balise « Événement GA4 » côté GTM).
+  // NE PAS recharger gtag.js pour G-HV00M7VGJD ici : un 2e chargement du même ID à côté de GTM
+  // (11/10/2026, config send_page_view: false) a cassé le comptage des pages vues dans GA4.
   function ga(nom, params) {
-    if (window.OFC_INTERNAL || !window.ofcDL) return;
+    if (window.OFC_INTERNAL) return;
     params = params || {};
+    params.event = nom;
+    params.page = PAGE;
     params.page_path = location.pathname;
-    params.transport_type = 'beacon'; // part même si la page change juste après (paiement)
-    ofcTag('event', nom, params);
+    (window.dataLayer = window.dataLayer || []).push(params);
   }
   window.ofcGA = ga;
 
@@ -146,7 +137,6 @@
       if (typeof fbq !== 'undefined') fbq('track', 'Contact', { content_name: 'whatsapp', page: PAGE });
       if (window.pintrk) pintrk('track', 'lead', { lead_type: 'WhatsApp' });
       (window.dataLayer = window.dataLayer || []).push({ event: 'whatsapp_click', page: PAGE, link_url: href.split('?')[0] });
-      (window.dataLayer = window.dataLayer || []).push({ event: 'contact_whatsapp', page: PAGE, page_path: location.pathname, link_url: href.split('?')[0] });
       envoyer(PAGE === 'entreprise' ? 'Clic_WhatsApp_Entreprise' : 'Clic_WhatsApp');
       ga('contact_whatsapp', { link_url: href.split('?')[0] });
     } else if (href.indexOf('mailto:') === 0) {
