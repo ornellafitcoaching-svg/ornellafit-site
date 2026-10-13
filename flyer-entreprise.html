@@ -52,21 +52,29 @@ body{font-family:'DM Sans',Arial,sans-serif;color:var(--ink);-webkit-print-color
 .v{padding:9mm;}
 .v-h2{font:600 8mm/1.05 'Cormorant Garamond',Georgia,serif;color:var(--ink);}
 .v-lead{font-size:3mm;color:var(--ink2);line-height:1.4;margin-top:2mm;}
-.v-steps{display:grid;grid-template-columns:1fr 1fr;gap:2mm;margin-top:3.5mm;}
-.v-step{background:#fff;border:0.3mm solid var(--line);border-radius:3mm;padding:2.4mm 3mm;}
+.v-steps{display:grid;grid-template-columns:1fr 1fr;gap:1.6mm;margin-top:3mm;}
+.v-step{background:#fff;border:0.3mm solid var(--line);border-radius:3mm;padding:1.7mm 2.6mm;}
 .v-step .n{display:inline-block;width:5.2mm;height:5.2mm;border-radius:50%;background:var(--terra);color:#fff;font:700 2.9mm/5.2mm 'DM Sans';text-align:center;}
-.v-step b{display:block;font-size:3.05mm;margin-top:1.4mm;color:var(--ink);}
-.v-step span{font-size:2.75mm;color:var(--mute);line-height:1.4;}
+.v-step b{display:inline;font-size:3.05mm;margin-left:1.6mm;color:var(--ink);vertical-align:middle;}
+.v-step span{display:block;font-size:2.75mm;color:var(--mute);line-height:1.4;margin-top:1mm;}
+.v-step span.n{display:inline-block;margin-top:0;vertical-align:middle;}
 .v-sec{font:800 2.3mm/1.2 'DM Sans';letter-spacing:.12em;text-transform:uppercase;color:var(--terra);margin-top:4.5mm;}
 table{width:100%;border-collapse:collapse;margin-top:2mm;font-size:3mm;}
-td{padding:1.05mm 0;border-bottom:0.3mm solid var(--line);color:var(--ink2);}
+td{padding:.75mm 0;border-bottom:0.3mm solid var(--line);color:var(--ink2);}
 td:last-child{text-align:right;font-weight:700;color:var(--ink);white-space:nowrap;}
 td small{font-weight:500;color:var(--mute);}
+.r-duo{margin-top:2.6mm;display:inline-block;background:var(--terra);color:#fff;border-radius:2mm;padding:1.6mm 2.6mm;font:700 2.75mm/1.35 'DM Sans';}
+.r-duo b{font-weight:800;}
+.v-duo{margin-top:3mm;background:#FCE6DE;border-left:1.2mm solid var(--terra);border-radius:0 3mm 3mm 0;padding:2.8mm 3.5mm;display:flex;justify-content:space-between;align-items:center;gap:3mm;}
+.v-duo h3{font:600 4.6mm/1.1 'Cormorant Garamond',Georgia,serif;color:var(--ink);}
+.v-duo p{font-size:2.65mm;line-height:1.45;color:var(--ink2);margin-top:1mm;}
+.v-duo .px{font:600 7mm/1 'Cormorant Garamond',Georgia,serif;color:var(--terra);white-space:nowrap;text-align:right;}
+.v-duo .px small{display:block;font:600 2.3mm 'DM Sans';color:var(--mute);margin-top:.8mm;}
 .v-note{font-size:2.6mm;color:var(--mute);line-height:1.45;margin-top:2mm;}
 .v-log{display:grid;grid-template-columns:1fr 1fr;gap:1.6mm 4mm;margin-top:2.5mm;font-size:2.9mm;color:var(--ink2);line-height:1.35;}
 .v-log div::before{content:"✓ ";color:var(--green);font-weight:800;}
-.v-end{position:absolute;left:9mm;right:9mm;bottom:9mm;background:var(--dark);color:#fff;border-radius:4mm;padding:4mm 5mm;display:flex;gap:4mm;align-items:center;}
-.v-end img{width:22mm;height:22mm;background:#fff;border-radius:2mm;padding:1mm;}
+.v-end{position:absolute;left:9mm;right:9mm;bottom:9mm;background:var(--dark);color:#fff;border-radius:4mm;padding:3mm 4.5mm;display:flex;gap:4mm;align-items:center;}
+.v-end img{width:17mm;height:17mm;background:#fff;border-radius:2mm;padding:1mm;}
 .v-end b{display:block;font:600 5.2mm/1.1 'Cormorant Garamond',Georgia,serif;}
 .v-end span{font-size:2.8mm;line-height:1.5;color:rgba(255,255,255,.88);}
 </style>
@@ -94,6 +102,7 @@ td small{font-weight:500;color:var(--mute);}
       <div class="lab">Tarif clair</div>
       <div class="lab" style="color:var(--mute);letter-spacing:.04em;text-transform:none;font-weight:600;margin-top:2mm">à partir de</div><div class="big">110 €<small> la séance</small></div>
       <div class="det">pour <strong>tout le groupe</strong> (jusqu'à 8 pers.)<br>soit <strong>moins de 14 €</strong> par participant*<br><strong>Prix nets</strong> : aucune TVA en plus.</div>
+      <div class="r-duo">👥 2e créneau d'affilée : <b>90 € seulement</b></div>
       <p class="r-for">Pour dirigeants, RH, office managers & CSE en Essonne et Île-de-France.</p>
     </div>
     <div class="r-qr">
@@ -132,7 +141,8 @@ td small{font-weight:500;color:var(--mute);}
       <tr><td>Pack 10 séances <small>· événement, semaine QVCT</small></td><td>1 250 €</td></tr>
       <tr><td>Séance découverte <small>· déduite si forfait 3 mois +</small></td><td>180 €</td></tr>
     </table>
-    <p class="v-note">Même tarif de 1 à 8 participants. 2e groupe enchaîné le même jour : dès 90 €. Déplacement et petit matériel inclus. TVA non applicable, art. 293 B du CGI. *Base 110 € / 8 participants, forfait annuel.</p>
+    <div class="v-duo"><div><h3>2 créneaux d'affilée : toute l'équipe en profite</h3><p>Midi et 12 h 45 : ceux qui ratent le 1er viennent au 2nd.</p></div><div class="px">90 €<small>le 2e créneau au lieu de 110 €</small></div></div>
+    <p class="v-note">Même tarif de 1 à 8 participants. Déplacement et petit matériel inclus. TVA non applicable, art. 293 B du CGI. *Base 110 € / 8 participants, forfait annuel.</p>
 
     <div class="v-sec">Ce qu'il vous faut</div>
     <div class="v-log">
