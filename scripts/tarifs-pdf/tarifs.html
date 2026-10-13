@@ -97,21 +97,20 @@ td.reco .p{color:var(--coral);}
 .safe{background:rgba(45,90,69,.08);border:1px solid rgba(45,90,69,.2);border-radius:12px;padding:3mm 4mm;font-size:8.3pt;color:var(--ink2);margin-top:3.5mm;}
 .safe b{color:var(--green);}
 
-/* TRANSFO */
-.transfo{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
-.transfo img{width:100%;aspect-ratio:5/4;object-fit:cover;display:block;}
-.transfo .tb{padding:4mm 4.5mm 5mm;}
-.transfo .k{font:800 6.8pt/1 'DM Sans';letter-spacing:.16em;text-transform:uppercase;color:var(--coral);}
-.transfo .nm{font-family:'Playfair Display';font-size:15pt;font-weight:600;margin:1.5mm 0 .5mm;}
-.transfo .ctx{font-size:8pt;color:var(--mute);}
-.stats{display:flex;gap:2mm;margin:3mm 0;}
-.stat{flex:1;background:var(--cream);border-radius:8px;padding:2.2mm 1mm;text-align:center;}
-.stat b{display:block;font-family:'Playfair Display';font-size:13pt;color:var(--green);}
-.stat span{font-size:6.8pt;color:var(--ink2);text-transform:uppercase;letter-spacing:.04em;}
-.stat.acc{background:var(--coral);}
-.stat.acc b,.stat.acc span{color:#fff;}
-.transfo .story{font-size:8.3pt;color:var(--ink2);line-height:1.5;}
-.transfo .ok{font-size:7pt;color:var(--mute);margin-top:2mm;font-style:italic;}
+/* TRANSFO — photo d'abord, un seul résultat fort */
+.transfo{background:var(--cream);border-radius:16px;overflow:hidden;padding-bottom:4.5mm;}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:1.2mm;}
+.ba figure{position:relative;overflow:hidden;aspect-ratio:10/19;background:#EDE5D9;}
+.ba img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.ba figcaption{position:absolute;left:2.5mm;top:2.5mm;font:800 6.5pt/1 'DM Sans';letter-spacing:.12em;text-transform:uppercase;padding:4px 8px;border-radius:50px;background:rgba(255,255,255,.92);color:var(--ink2);}
+.ba figure.after figcaption{background:var(--coral);color:#fff;}
+.transfo .ok{font-size:6.3pt;color:var(--mute);margin:1.5mm 4.5mm 0;text-align:center;}
+.transfo .res{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:27pt;line-height:1.05;color:var(--coral);margin:4mm 4.5mm 0;}
+.transfo .ctx{font-size:8.4pt;font-weight:700;color:var(--ink);margin:1.5mm 4.5mm 0;line-height:1.4;}
+.transfo .ctx span{white-space:nowrap;}
+.transfo .story{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:10.5pt;line-height:1.35;color:var(--ink2);margin:2.5mm 4.5mm 0;}
+.transfo .cta{display:block;margin:4mm 4.5mm 0;padding-top:3mm;border-top:1px solid var(--line);font-size:8.6pt;line-height:1.45;color:var(--ink);}
+.transfo .cta b{color:var(--coral);white-space:nowrap;}
 
 /* DERNIÈRE PAGE */
 .start h2{font-size:26pt;font-weight:600;line-height:1.1;margin:3mm 0 6mm;}
@@ -241,15 +240,15 @@ td.reco .p{color:var(--coral);}
     </div>
     <div>
       <div class="transfo">
-        <img src="img/louise.jpg" alt="Avant / après de Louise">
-        <div class="tb">
-          <span class="k">Transformation · à domicile</span>
-          <div class="nm">Louise</div>
-          <div class="ctx">Maman de 2 enfants · 2 séances / semaine</div>
-          <div class="stats"><div class="stat acc"><b>−9 cm</b><span>tour de taille</span></div><div class="stat"><b>−5 kg</b><span>poids</span></div><div class="stat"><b>9 mois</b><span>de suivi</span></div></div>
-          <p class="story">Une vraie envie de reprendre le contrôle de son corps, sans se priver ni s'épuiser. Programme sur-mesure, 2 séances par semaine chez elle, adapté à sa vie réelle. Dos redessiné, silhouette transformée.</p>
-          <p class="ok">Résultat réel, photo publiée avec son accord. Chaque histoire est différente.</p>
+        <div class="ba">
+          <figure><img src="img/louise-avant.jpg" alt="Avant"><figcaption>Avant</figcaption></figure>
+          <figure class="after"><img src="img/louise-apres.jpg" alt="Après"><figcaption>Après</figcaption></figure>
         </div>
+        <p class="ok">Louise · résultat réel, photo publiée avec son accord.</p>
+        <div class="res">−9&nbsp;cm de taille</div>
+        <div class="ctx"><span>Maman de 2 enfants</span> · <span>2 séances/semaine à domicile</span> · <span>9 mois</span></div>
+        <p class="story">Ni régime, ni salle. Deux séances par semaine dans son salon — et elle a tenu.</p>
+        <a class="cta" href="https://wa.me/33756834626">Et toi, c'est quoi ton objectif&nbsp;? <b>→ Écris-moi sur WhatsApp</b></a>
       </div>
       <div class="safe"><b>Tu t'engages sans risque.</b> Arrêt possible à tout moment (préavis 15 j), rien à régulariser en cas de blessure, grossesse ou déménagement (sur justificatif). Paiement SEPA sécurisé.</div>
       <div class="safe"><b>📍 Hors de mon secteur&nbsp;?</b> Certaines communes du 92 et de l'ouest francilien peuvent être desservies sur devis personnalisé — l'Hybride est souvent la formule la plus adaptée.</div>
@@ -298,15 +297,15 @@ td.reco .p{color:var(--coral);}
     </div>
     <div>
       <div class="transfo">
-        <img src="img/lise.jpg" alt="Avant / après de Lise">
-        <div class="tb">
-          <span class="k">Transformation · à distance puis hybride</span>
-          <div class="nm">Lise</div>
-          <div class="ctx">Programme sur-mesure · suivi WhatsApp</div>
-          <div class="stats"><div class="stat acc"><b>Ventre</b><span>affiné</span></div><div class="stat"><b>Taille</b><span>redessinée</span></div><div class="stat"><b>6 mois</b><span>de suivi</span></div></div>
-          <p class="story">Lise s'entraînait déjà mais stagnait : beaucoup d'efforts, peu de changements visibles. On a tout restructuré ensemble — un programme réellement progressif, ajusté à chaque bilan, sans régime extrême. Et elle continue.</p>
-          <p class="ok">Résultat réel, photo publiée avec son accord.</p>
+        <div class="ba">
+          <figure><img src="img/lise-avant.jpg" alt="Avant"><figcaption>Avant</figcaption></figure>
+          <figure class="after"><img src="img/lise-apres.jpg" alt="Après"><figcaption>Après</figcaption></figure>
         </div>
+        <p class="ok">Lise · résultat réel, photo publiée avec son accord.</p>
+        <div class="res">Ventre affiné</div>
+        <div class="ctx"><span>S'entraînait déjà mais stagnait</span> · <span>à distance puis hybride</span> · <span>6 mois</span></div>
+        <p class="story">Beaucoup d'efforts, peu de résultats. On a tout repris, et son corps a suivi.</p>
+        <a class="cta" href="https://wa.me/33756834626">Et toi, c'est quoi ton objectif&nbsp;? <b>→ Écris-moi sur WhatsApp</b></a>
       </div>
       <div class="gift" style="margin-top:4mm;"><b>🎁 Parcours 6 mois : 89€ de cadeaux</b><br>✓ Fit Dans Ta Vie, ma méthode 28 jours (valeur 49€)<br>✓ Ton 1er mois de Boost Nutrition offert (valeur 40€)</div>
       <div class="safe"><b>Tu t'engages sans risque.</b> Arrêt possible à tout moment (préavis 15 j), rien à régulariser en cas de blessure, grossesse ou déménagement (sur justificatif).</div>
@@ -349,15 +348,15 @@ td.reco .p{color:var(--coral);}
     </div>
     <div>
       <div class="transfo">
-        <img src="img/maria.jpg" alt="Avant / après de Maria">
-        <div class="tb">
-          <span class="k">Transformation · 100 % à distance</span>
-          <div class="nm">Maria</div>
-          <div class="ctx">38 ans · maman de 2 enfants · suivi + Boost Nutrition</div>
-          <div class="stats"><div class="stat acc"><b>−10 kg</b><span>poids</span></div><div class="stat"><b>8 mois</b><span>de suivi</span></div><div class="stat"><b>100 %</b><span>à distance</span></div></div>
-          <p class="story">Deux enfants, peu de temps, et jamais une séance en face à face. Un programme construit pour elle, l'alimentation ajustée chaque mois, un suivi WhatsApp et un bilan régulier : ventre affiné, fessiers redessinés.</p>
-          <p class="ok">Résultat réel, photo publiée avec son accord.</p>
+        <div class="ba">
+          <figure><img src="img/maria-avant.jpg" alt="Avant"><figcaption>Avant</figcaption></figure>
+          <figure class="after"><img src="img/maria-apres.jpg" alt="Après"><figcaption>Après</figcaption></figure>
         </div>
+        <p class="ok">Maria · résultat réel, photo publiée avec son accord.</p>
+        <div class="res">−10&nbsp;kg</div>
+        <div class="ctx"><span>38 ans, maman de 2 enfants</span> · <span>100 % à distance</span> · <span>8 mois</span></div>
+        <p class="story">Deux enfants, zéro temps, jamais une séance en face à face. Et pourtant.</p>
+        <a class="cta" href="https://wa.me/33756834626">Et toi, c'est quoi ton objectif&nbsp;? <b>→ Écris-moi sur WhatsApp</b></a>
       </div>
       <div class="gift" style="margin-top:4mm;"><b>🎁 Parcours 6 mois : 89€ de cadeaux</b><br>✓ Fit Dans Ta Vie, ma méthode 28 jours (valeur 49€)<br>✓ Ton 1er mois de Boost Nutrition offert (valeur 40€)</div>
     </div>
