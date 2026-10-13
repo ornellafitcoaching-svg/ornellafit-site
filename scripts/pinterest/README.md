@@ -14,10 +14,12 @@ Compte : fr.pinterest.com/Ornellafitcoaching — objectif : **trafic → leads �
 - P Sport post-partum & remise en forme après bébé — 1087267603730476937
 - Q Sport femme 40 ans & ménopause — 1087267603730476933
 - C Recettes rééquilibrage alimentaire — 1087267603730870212
-Ne pas utiliser « Réseaux » (tableau auto Instagram).
+Ne pas utiliser « Réseaux » (tableau auto Instagram) ni « Archives hors sujet » (tableau secret, épingle Etsy rangée là le 12/10/2026).
 
 ## Règles de contenu
 - Un titre = une recherche Pinterest réelle (mots-clés en tête), pas une légende Insta.
+- **Description (champ `desc`) : 350 à 500 caractères**, en phrases naturelles qui disent concrètement ce qu'on trouve sur la page (les exercices, les étapes, les erreurs, pour qui, le prix pour un programme). Mots-clés de recherche dans la 1re phrase. **Pas de hashtags** (Pinterest ne s'en sert presque plus). Ne rien promettre que la page ne dit pas.
+- **Texte alternatif (champ `alt`) obligatoire** : décrit le visuel tel qu'il est (titre affiché + ce que montre la photo), ≤ 500 caractères. Envoyé en `alt_text` à la publication.
 - Formats qui s'enregistrent : listes, routines, « combien / comment / quoi », programmes types.
 - Lien = page précise du site (article de blog, page programme, challenge-ventre-plat.html, guide-offert.html, quiz.html), toujours avec `?utm_source=pinterest&utm_medium=organic`. Jamais Instagram.
 - Mix par lot de 10 : ~6 articles de blog, 2 aimants à leads (challenge ventre plat, guide 9 erreurs, quiz), 2 programmes payants (prix à jour sur la page !).
@@ -33,4 +35,7 @@ Ne pas utiliser « Réseaux » (tableau auto Instagram).
 - Ajouter `?v=<date>` à `image_url` à la publication (évite qu'un ancien visuel en cache soit repris).
 
 ## Publication (Chrome, session Pinterest d'Ornella)
-Depuis un onglet fr.pinterest.com : POST `/resource/PinResource/create/` (form `source_url`, `data={options,context:{}}`, en-têtes `X-Requested-With`, `X-CSRFToken` = cookie csrftoken, `X-Pinterest-PWS-Handler`) avec options `{board_id, title, description, link, image_url:"https://www.ornellafitcoaching.com/images/pinterest/<slug>.jpg", method:"uploaded", section:null}`. `scheduled_ts` est ignoré (publie tout de suite). Attendre ≥ 6 s entre deux épingles. Vérifier ensuite (PinResource get) : image 1000x1500 + lien ornellafitcoaching.com.
+Depuis un onglet fr.pinterest.com : POST `/resource/PinResource/create/` (form `source_url`, `data={options,context:{}}`, en-têtes `X-Requested-With`, `X-CSRFToken` = cookie csrftoken, `X-Pinterest-PWS-Handler`) avec options `{board_id, title, description, link, image_url:"https://www.ornellafitcoaching.com/images/pinterest/<slug>.jpg", method:"uploaded", section:null}`. `scheduled_ts` est ignoré (publie tout de suite). Ajouter `alt_text` (= champ `alt`) aux options. **Jamais plus de 2 épingles le même jour** (le 11/10/2026, 17 épingles publiées en une heure ont été très peu diffusées : Pinterest freine les rafales sur un petit compte). Attendre ≥ 6 s entre deux épingles. Vérifier ensuite (PinResource get) : image 1000x1500 + lien ornellafitcoaching.com.
+
+## Patience
+Une épingle met en général plusieurs semaines à être diffusée (recherche Pinterest), contrairement à Instagram. Juger les résultats sur 4 à 8 semaines, pas sur quelques jours. Garder le compte 100 % fitness femme (pas d'épingles hors sujet).
