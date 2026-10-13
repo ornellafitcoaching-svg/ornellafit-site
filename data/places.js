@@ -14,8 +14,10 @@ var OFC_PLACES_HYBRIDE  = 3;
   var MOIS = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
   window.OFC_PLACES = MOIS[new Date().getMonth()] + ' : plus que ' + OFC_PLACES_DOMICILE + ' place' + (OFC_PLACES_DOMICILE > 1 ? 's' : '') +
     ' à domicile (+ ' + OFC_PLACES_HYBRIDE + ' en hybride)';
+  window.OFC_PLACES_DOM = 'Encore ' + OFC_PLACES_DOMICILE + ' place' + (OFC_PLACES_DOMICILE > 1 ? 's' : '') + ' à domicile pour novembre';
   function fill() {
     document.querySelectorAll('[data-ofc-places]').forEach(function (el) { el.textContent = window.OFC_PLACES; });
+    document.querySelectorAll('[data-ofc-places-dom]').forEach(function (el) { el.textContent = window.OFC_PLACES_DOM; });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fill); else fill();
 })();
