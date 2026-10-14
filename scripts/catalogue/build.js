@@ -28,7 +28,11 @@ h1{font:600 54px/1.08 'Playfair Display';color:#1B3A2D;margin:16px 0 10px}
 (async () => {
   const b = await pw.chromium.launch();
   const pg = await b.newPage({ viewport: { width: 1080, height: 1080 } });
-  for (const p of P) {
+  // Polices hors ligne : FONTS_CSS=chemin/vers/fonts.css remplace Google Fonts si le réseau les bloque.
+  if (process.env.FONTS_CSS) await pg.route(/fonts\.(googleapis|gstatic)\.com/, r => r.fulfill({ contentType: 'text/css', body: fs.readFileSync(process.env.FONTS_CSS, 'utf8') }));
+  // ONLY=id1,id2 : ne régénère que ces visuels (le flux CSV est toujours régénéré en entier).
+  const only = process.env.ONLY ? process.env.ONLY.split(',') : null;
+  for (const p of P.filter(p => !only || only.includes(p.id))) {
     const tmp = path.join(__dirname, '_tmp.html');
     fs.writeFileSync(tmp, page(p));
     await pg.goto('file://' + tmp, { waitUntil: 'networkidle' });
@@ -38,8 +42,9 @@ h1{font:600 54px/1.08 'Playfair Display';color:#1B3A2D;margin:16px 0 10px}
   await b.close();
   fs.unlinkSync(path.join(__dirname, '_tmp.html'));
   const q = v => '"' + String(v).replace(/"/g, '""') + '"';
-  const head = ['id', 'title', 'description', 'availability', 'condition', 'price', 'link', 'image_link', 'brand', 'google_product_category', 'product_type'];
-  const rows = P.map(p => [p.id, p.title, p.desc, p.avail, 'new', p.price + ' EUR', SITE + p.link, SITE + 'images/catalogue/' + p.id + '.jpg', 'Ornella Fit Coaching', 'Sporting Goods > Exercise & Fitness', p.type].map(q).join(','));
+  // "extra" : images supplémentaires déjà prêtes (chemins du site), visibles en faisant défiler la fiche.
+  const head = ['id', 'title', 'description', 'availability', 'condition', 'price', 'link', 'image_link', 'additional_image_link', 'brand', 'google_product_category', 'product_type'];
+  const rows = P.map(p => [p.id, p.title, p.desc, p.avail, 'new', p.price + ' EUR', SITE + p.link, SITE + 'images/catalogue/' + p.id + '.jpg', (p.extra || []).map(e => SITE + e).join(','), 'Ornella Fit Coaching', 'Sporting Goods > Exercise & Fitness', p.type].map(q).join(','));
   fs.writeFileSync(path.join(ROOT, 'meta-catalogue.csv'), head.join(',') + '\n' + rows.join('\n') + '\n');
   console.log(P.length + ' produits → meta-catalogue.csv + images/catalogue/');
 })();
