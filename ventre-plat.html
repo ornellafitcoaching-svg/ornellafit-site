@@ -1154,6 +1154,23 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 <script src="panier.js" defer></script>
 <script defer src="/suivi-clics.js"></script>
 <script src="sticky-achat.js" defer data-prix="12€" data-sous="Programme 14 jours · accès immédiat" data-bouton="Je commence" data-lien="#achat"></script>
+<!-- Visiteuses venues des colis Vinted (mails de la séquence colis, ?src=colis…) : même prix que sur la page cadeau et le guide, 9 € avec le code COLIS -->
+<script>
+(function(){
+  var src=(new URLSearchParams(location.search).get('src')||'').toLowerCase();
+  if(src.indexOf('colis')!==0) return;
+  var u='https://buy.stripe.com/9B69AT7fXbWb9Epfyt8Vi09?prefilled_promo_code=COLIS';
+  var b=document.createElement('a');
+  b.href=u; b.className='xtrack'; b.setAttribute('data-cn','ventre-plat-14j-colis');
+  b.style.cssText='display:block;background:#1B3A2D;color:#F5EFE6;text-align:center;font:600 14px/1.45 Montserrat,Arial,sans-serif;padding:11px 16px;text-decoration:none;';
+  b.innerHTML='🎁 Ton prix colis : <b style="color:#fff;">9&nbsp;€</b> au lieu de 12&nbsp;€, code COLIS déjà appliqué · <span style="text-decoration:underline;white-space:nowrap;">J\'en profite →</span>';
+  b.addEventListener('click',function(){ if(typeof fbq!=='undefined') fbq('track','InitiateCheckout',{value:9,currency:'EUR',content_ids:['ventre-plat-14j'],content_type:'product'}); });
+  document.body.insertBefore(b,document.body.firstChild);
+  // Barre d'achat du bas : même prix colis
+  var sb=document.querySelector('script[src="sticky-achat.js"]');
+  if(sb){ sb.setAttribute('data-prix','9€'); sb.setAttribute('data-sous','Prix colis · code COLIS appliqué'); sb.setAttribute('data-lien',u); sb.setAttribute('data-valeur','9'); }
+})();
+</script>
 <script src="data/temoignages.js" defer></script>
 <script src="avis-carrousel.js" defer></script>
 </body>
