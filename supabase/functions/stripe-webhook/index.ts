@@ -2,6 +2,10 @@
 // Marque les paniers de la personne comme payés → les relances s'arrêtent immédiatement,
 // et met à jour sa fiche Brevo (PANIER_STATUT = paye, sortie de la liste « Paniers abandonnés »).
 // + Enregistre le paiement dans la fiche de la cliente de l'espace (table paiements).
+// + Enregistre la session payée (achats_stripe) → déverrouille la page achetée (acces-achat).
+// + Bonus fêtes : après l'achat de Fit Dans Ta Vie ou du programme sur-mesure 8 semaines,
+//   envoie automatiquement le guide « Les fêtes sans tout reprendre en janvier » (modèle Brevo 215),
+//   une seule fois par paiement (table envois_bonus), jusqu'au 31/12/2026.
 // Signature vérifiée avec le secret du webhook (stocké dans private.config, ou variable STRIPE_WEBHOOK_SECRET).
 
 import { createClient } from "npm:@supabase/supabase-js@2";
@@ -10,6 +14,44 @@ const supa = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_
   auth: { persistSession: false },
 });
 const BREVO_KEY = Deno.env.get("BREVO_API_KEY") ?? "";
+
+// ---- Bonus fêtes ------------------------------------------------------------
+const BONUS_FETES = {
+  template: 215,
+  fin: Date.parse("2027-01-01T00:00:00+01:00"),
+  liens: new Set([
+    "plink_1UFKcpHs3WWrZYFwoW4N5ujx", // Fit Dans Ta Vie
+    "plink_1U95MPHs3WWrZYFwdvO3JxtC", // Fit Dans Ta Vie
+    "plink_1U2nmyHs3WWrZYFwxJJTE8WL", // Fit Dans Ta Vie
+    "plink_1UDLuaHs3WWrZYFwAu5kgU5J", // Programme sur-mesure 8 semaines (79 €)
+    "plink_1TXRqAHs3WWrZYFwj109z1gN", // Programme sur-mesure 8 semaines + nutrition (119 €)
+  ]),
+};
+
+async function bonusFetes(s: Record<string, any>, email: string) {
+  if (!BREVO_KEY || !email) return "non";
+  if (!s.payment_link || !BONUS_FETES.liens.has(String(s.payment_link))) return "non";
+  if (Date.now() >= BONUS_FETES.fin) return "termine";
+  // Une seule fois par paiement, même si Stripe renvoie l'évènement.
+  const { error } = await supa.from("envois_bonus").insert({ session_id: String(s.id), bonus: "fetes-2026", email });
+  if (error) return "deja";
+  const nom = String(s.customer_details?.name || s.collected_information?.individual_name || "").trim();
+  const prenom = nom ? nom.split(/\s+/)[0] : "";
+  const r = await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: { "api-key": BREVO_KEY, "Content-Type": "application/json", accept: "application/json" },
+    body: JSON.stringify({
+      templateId: BONUS_FETES.template,
+      to: [{ email, ...(nom ? { name: nom } : {}) }],
+      params: { PRENOM: prenom },
+    }),
+  });
+  if (!r.ok) {
+    await supa.from("envois_bonus").delete().eq("session_id", String(s.id));
+    return "erreur " + r.status;
+  }
+  return "envoye";
+}
 
 async function secret(name: string, key: string) {
   const env = Deno.env.get(name);
@@ -40,12 +82,11 @@ async function panierListId() {
   return l?.id ?? null;
 }
 
-
 // ---- Paiement → fiche cliente de l'espace (table paiements) ------------------
 // Retrouve la/les cliente(s) : metadata.clientes (« Prénom Nom, Prénom Nom » → montant
 // partagé), sinon email (email_perso), sinon nom saisi au paiement. Introuvable →
 // tâche « paiement à rattacher » dans l'espace coach. Idempotent (réf = id session).
-const norm = (s: string) => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
+const norm = (s: string) => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").trim().toLowerCase();
 async function versFicheCliente(s: Record<string, any>, email: string) {
   const ref = String(s.id);
   const { data: deja } = await supa.from("paiements").select("id").ilike("note", `%${ref}%`).limit(1);
@@ -113,10 +154,22 @@ Deno.serve(async (req) => {
     return new Response(JSON.stringify({ attente: "paiement différé" }), { status: 200 });
   }
   const email = String(s.customer_details?.email ?? s.customer_email ?? "").toLowerCase();
+
+  // Session payée → mémorisée pour déverrouiller la page achetée (fonction acces-achat).
+  try {
+    await supa.from("achats_stripe").upsert({
+      session_id: String(s.id), payment_link: s.payment_link ? String(s.payment_link) : null,
+      email: email || null, montant: Number(s.amount_total || 0) / 100,
+    }, { onConflict: "session_id" });
+  } catch (_) { /* ne bloque jamais le reste */ }
+
   if (!email) {
     let fiche = ""; try { fiche = await versFicheCliente(s, ""); } catch (e) { fiche = "erreur: " + String(e); }
     return new Response(JSON.stringify({ sans_email: true, fiche }), { status: 200 });
   }
+
+  let bonus = "";
+  try { bonus = await bonusFetes(s, email); } catch (e) { bonus = "erreur: " + String(e); }
 
   const { data } = await supa.from("paniers")
     .update({ statut: "paye", paid_at: new Date().toISOString(), stripe_session_id: s.id })
@@ -139,5 +192,5 @@ Deno.serve(async (req) => {
   }
   let fiche = "";
   try { fiche = await versFicheCliente(s, email); } catch (e) { fiche = "erreur: " + String(e); }
-  return new Response(JSON.stringify({ paniers_payes: data?.length ?? 0, fiche }), { status: 200 });
+  return new Response(JSON.stringify({ paniers_payes: data?.length ?? 0, fiche, bonus }), { status: 200 });
 });
