@@ -82,6 +82,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .quiz-option.selected .quiz-opt-check { background: #C9957A; border-color: #C9957A; }
 .quiz-option.selected .quiz-opt-check::after { content: '✓'; }
 
+/* Silhouette zones (question 1) */
+.quiz-bodymap { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; background: white; border: 1.5px solid rgba(201,185,154,0.38); border-radius: 20px; padding: 16px 8px 10px; margin-bottom: 14px; }
+.quiz-bodyfig { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.quiz-bodyfig svg { width: 100%; max-width: 150px; height: auto; }
+.quiz-bodyfig span { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9A8080; font-weight: 600; }
+.qz-base { fill: #F3EAE3; stroke: #D9C7B8; stroke-width: 1; }
+.qz-zone { fill: #F3EAE3; stroke: #D9C7B8; stroke-width: 1; cursor: pointer; transition: fill 0.2s; -webkit-tap-highlight-color: transparent; }
+.qz-zone:hover { fill: rgba(201,149,122,0.35); }
+.qz-zone.on { fill: #C96358; stroke: #A94E44; }
+.qz-zone:focus { outline: none; }
+.qz-zone:focus-visible { stroke: #1E1616; stroke-width: 2; }
+.quiz-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+.quiz-chip { font-family: 'DM Sans', sans-serif; font-size: 0.86rem; font-weight: 500; padding: 9px 15px; border-radius: 50px; border: 1.5px solid rgba(201,185,154,0.45); background: white; color: #1E1616; cursor: pointer; transition: all 0.15s; -webkit-tap-highlight-color: transparent; }
+.quiz-chip.selected { background: #C96358; border-color: #C96358; color: white; }
+
 /* Next button */
 .quiz-btn {
   width: 100%; padding: 16px 24px; border-radius: 50px; border: none; cursor: pointer;
@@ -328,9 +343,11 @@ function submitToQuizBrevoForm(email, resultKey) {
    DONNÉES DU QUIZ
    =================================================== */
 
+/* Question 1 = la silhouette (zones), construite par buildZoneStep().
+   Les 4 questions ci-dessous sont les étapes 2 à 5 (selections[2..5]). */
 const QUESTIONS = [
   {
-    eyebrow: 'Question 1 / 5',
+    eyebrow: 'Question 2 / 5',
     title: 'Tu es où ?',
     sub: 'Ça m\'aide à te proposer ce qui est vraiment possible pour toi.',
     options: [
@@ -339,7 +356,7 @@ const QUESTIONS = [
     ]
   },
   {
-    eyebrow: 'Question 2 / 5',
+    eyebrow: 'Question 3 / 5',
     title: 'Ta situation en ce moment :',
     sub: 'Choisis ce qui te ressemble le plus en ce moment.',
     options: [
@@ -350,7 +367,7 @@ const QUESTIONS = [
     ]
   },
   {
-    eyebrow: 'Question 3 / 5',
+    eyebrow: 'Question 4 / 5',
     title: 'Tu préfères t\'entraîner comment ?',
     sub: 'Ce qui te correspond vraiment dans ton quotidien.',
     options: [
@@ -361,7 +378,7 @@ const QUESTIONS = [
     ]
   },
   {
-    eyebrow: 'Question 4 / 5',
+    eyebrow: 'Question 5 / 5',
     title: 'Tu aimerais t\'entraîner avec moi à quelle fréquence ?',
     sub: 'Pas de mauvaise réponse : c\'est ce qui te correspond vraiment aujourd\'hui.',
     options: [
@@ -370,22 +387,120 @@ const QUESTIONS = [
       { emoji: '🔥', text: '2 fois par semaine ou plus', sub: 'Je veux aller vite et être vraiment encadrée', scores: { domicile: 3 } },
       { emoji: '📲', text: 'Pas besoin de se voir', sub: 'Un suivi à distance me suffit', scores: { distanciel: 3 } }
     ]
-  },
-  {
-    eyebrow: 'Question 5 / 5',
-    title: 'Ton objectif principal ?',
-    sub: 'Pour personnaliser ton résultat et te proposer le meilleur plan.',
-    options: [
-      { emoji: '🔥', text: 'Perdre du poids et transformer mon corps', sub: '', scores: {} },
-      { emoji: '🍑', text: 'Sculpter mes fessiers et affiner ma silhouette', sub: '', scores: {} },
-      { emoji: '🤱', text: 'Me remettre en forme', sub: 'Post-grossesse, reprise d\'activité ou remise en route', scores: {} },
-      { emoji: '💪', text: 'Prendre de la force et du muscle', sub: '', scores: {} },
-      { emoji: '🌸', text: 'Ménopause / anti-âge', sub: '30-50 ans — corps qui change, envie de fermeté', scores: {} }
-    ]
   }
 ];
 
-const OBJECTIF_LABELS = ['poids', 'silhouette', 'remise_forme', 'muscle', 'antiage'];
+/* ===================================================
+   QUESTION 1 — SILHOUETTE (zones, choix multiple)
+   Les zones choisies donnent l'objectif (mêmes clés qu'avant :
+   poids / silhouette / remise_forme / muscle / antiage) → mêmes
+   listes Brevo et même programme digital proposé en résultat.
+   =================================================== */
+const ZONE_LABELS = {
+  ventre: 'Ventre plat', fessiers: 'Fessiers', cuisses: 'Cuisses', bras: 'Bras', dos: 'Dos',
+  postpartum: 'Après grossesse', tout: 'Tout le corps', muscle: 'Prendre du muscle', antiage: 'Raffermir (30-50 ans)'
+};
+const BODY_ZONES = ['ventre', 'fessiers', 'cuisses', 'bras', 'dos'];
+let zones = new Set();
+
+function getObjectif() {
+  if (zones.has('postpartum')) return 'remise_forme';
+  if (zones.has('antiage'))    return 'antiage';
+  if (zones.has('muscle'))     return 'muscle';
+  const lower = zones.has('fessiers') || zones.has('cuisses');
+  if (lower && !zones.has('ventre') && !zones.has('tout')) return 'silhouette';
+  if (zones.has('ventre') || zones.has('tout')) return 'poids';
+  return '';
+}
+
+function zonesText() {
+  const l = [...zones].map(k => ZONE_LABELS[k].toLowerCase());
+  if (!l.length) return '';
+  return l.length > 1 ? l.slice(0, -1).join(', ') + ' et ' + l[l.length - 1] : l[0];
+}
+
+function buildZoneStep() {
+  const div = document.createElement('div');
+  div.className = 'quiz-step';
+  div.id = 'qStep-1';
+  const chips = Object.keys(ZONE_LABELS).map(k =>
+    `<button type="button" class="quiz-chip" data-z="${k}" aria-pressed="false">${ZONE_LABELS[k]}</button>`).join('');
+  const torso = 'M38 46 Q60 40 82 46 L86 70 Q80 98 76 110 Q86 128 84 142 L36 142 Q34 128 44 110 Q40 98 34 70 Z';
+  const mirror = 'transform="translate(120 0) scale(-1 1)"';
+  div.innerHTML = `
+    <button class="quiz-back" onclick="goBack()">← Retour</button>
+    <div class="quiz-q-eyebrow">Question 1 / 5</div>
+    <div class="quiz-q-title">Qu'est-ce que tu veux <em>changer</em> en premier ?</div>
+    <p class="quiz-q-sub">Touche la silhouette ou choisis en dessous. Plusieurs choix possibles.</p>
+    <div class="quiz-bodymap">
+      <div class="quiz-bodyfig">
+        <svg viewBox="0 0 120 262" role="group" aria-label="Silhouette de face">
+          <defs>
+            <path id="qzArmL" d="M37 49 Q27 52 25 68 L20 126 Q21 134 28 132 L33 92 L40 64 Z"/>
+            <path id="qzLegL" d="M38 140 L59 142 L57 196 L55 246 Q50 254 45 247 L42 196 Z"/>
+            <path id="qzThighL" d="M38 140 L59 142 L58 190 L43 190 Z"/>
+          </defs>
+          <ellipse class="qz-base" cx="60" cy="22" rx="13" ry="15"/>
+          <rect class="qz-base" x="54" y="34" width="12" height="12" rx="3"/>
+          <path class="qz-base" d="${torso}"/>
+          <use href="#qzLegL" class="qz-base"/><use href="#qzLegL" class="qz-base" ${mirror}/>
+          <use href="#qzArmL" class="qz-zone" data-z="bras"/><use href="#qzArmL" class="qz-zone" data-z="bras" ${mirror}/>
+          <ellipse class="qz-zone" data-z="ventre" cx="60" cy="101" rx="14" ry="17"/>
+          <use href="#qzThighL" class="qz-zone" data-z="cuisses"/><use href="#qzThighL" class="qz-zone" data-z="cuisses" ${mirror}/>
+        </svg>
+        <span>Face</span>
+      </div>
+      <div class="quiz-bodyfig">
+        <svg viewBox="0 0 120 262" role="group" aria-label="Silhouette de dos">
+          <ellipse class="qz-base" cx="60" cy="22" rx="13" ry="15"/>
+          <rect class="qz-base" x="54" y="34" width="12" height="12" rx="3"/>
+          <path class="qz-base" d="${torso}"/>
+          <use href="#qzLegL" class="qz-base"/><use href="#qzLegL" class="qz-base" ${mirror}/>
+          <use href="#qzArmL" class="qz-zone" data-z="bras"/><use href="#qzArmL" class="qz-zone" data-z="bras" ${mirror}/>
+          <path class="qz-zone" data-z="dos" d="M41 50 Q60 45 79 50 L82 70 Q74 96 60 100 Q46 96 38 70 Z"/>
+          <ellipse class="qz-zone" data-z="fessiers" cx="49" cy="126" rx="11.5" ry="13"/>
+          <ellipse class="qz-zone" data-z="fessiers" cx="71" cy="126" rx="11.5" ry="13"/>
+          <use href="#qzThighL" class="qz-zone" data-z="cuisses" transform="translate(0 4)"/><use href="#qzThighL" class="qz-zone" data-z="cuisses" transform="translate(120 4) scale(-1 1)"/>
+        </svg>
+        <span>Dos</span>
+      </div>
+    </div>
+    <div class="quiz-chips">${chips}</div>
+    <button class="quiz-btn" id="qBtn-1" onclick="advance(1)">Continuer →</button>`;
+  document.getElementById('qStep-6').before(div);
+
+  div.querySelectorAll('.qz-zone').forEach(el => {
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('role', 'button');
+    el.setAttribute('aria-label', ZONE_LABELS[el.dataset.z]);
+    el.addEventListener('click', () => toggleZone(el.dataset.z));
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleZone(el.dataset.z); } });
+  });
+  div.querySelectorAll('.quiz-chip').forEach(c => c.addEventListener('click', () => toggleZone(c.dataset.z)));
+}
+
+function toggleZone(k) {
+  if (k === 'tout') {
+    if (zones.has('tout')) zones.delete('tout');
+    else { BODY_ZONES.forEach(b => zones.delete(b)); zones.add('tout'); }
+  } else {
+    zones.has(k) ? zones.delete(k) : zones.add(k);
+    if (BODY_ZONES.includes(k)) zones.delete('tout');
+  }
+  paintZones();
+}
+
+function paintZones() {
+  const all = zones.has('tout');
+  document.querySelectorAll('.qz-zone').forEach(el => el.classList.toggle('on', all || zones.has(el.dataset.z)));
+  document.querySelectorAll('.quiz-chip').forEach(c => {
+    const on = zones.has(c.dataset.z);
+    c.classList.toggle('selected', on);
+    c.setAttribute('aria-pressed', on);
+  });
+  if (zones.size) selections[1] = 1; else delete selections[1];
+  document.getElementById('qBtn-1')?.classList.toggle('on', zones.size > 0);
+}
 const PRODUIT_CTA = {
   poids:        { emoji: '🌿', text: 'Tu veux aussi perdre du ventre ?', precision: 'Reset Ventre Plat — mon programme digital 100% autonome, à ton rythme (12€)', label: 'Découvrir Reset Ventre Plat', url: 'https://www.ornellafitcoaching.com/ventre-plat.html' },
   silhouette:   { emoji: '🍑', text: 'Tu veux aussi sculpter tes fessiers ?', precision: 'Booty Sculpt — mon programme digital 100% autonome, 8 semaines (19€)', label: 'Découvrir Booty Sculpt', url: 'https://www.ornellafitcoaching.com/booty-sculpt.html' },
@@ -480,7 +595,8 @@ let selections  = {};   /* { 1: idx, 2: idx, ... } */
    INIT
    =================================================== */
 (function init() {
-  QUESTIONS.forEach((q, i) => buildQuestionStep(q, i + 1));
+  buildZoneStep();
+  QUESTIONS.forEach((q, i) => buildQuestionStep(q, i + 2));
 })();
 
 /* ===================================================
@@ -574,7 +690,7 @@ function updateProgress(n) {
 
 function selectOption(n, j) {
   /* Déselectionner toutes les options de cette question */
-  QUESTIONS[n - 1].options.forEach((_, k) => {
+  QUESTIONS[n - 2].options.forEach((_, k) => {
     document.getElementById(`qOpt-${n}-${k}`)?.classList.remove('selected');
   });
   /* Sélectionner */
@@ -592,7 +708,7 @@ function advance(n) {
     renderResult(key);
     goToStep(7);
     if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'quiz', content_category: key });
-    if (window.ofcGA) ofcGA('quiz_termine', { formule: key, objectif: selections[5] !== undefined ? OBJECTIF_LABELS[selections[5]] : '' });
+    if (window.ofcGA) ofcGA('quiz_termine', { formule: key, objectif: getObjectif(), zones: [...zones].join(',') });
     return;
   }
   goToStep(n + 1);
@@ -611,9 +727,9 @@ function calcResult() {
      Q3 (format voulu) ensuite : « seule » → Fit Dans Ta Vie, « à distance avec suivi » → distanciel.
      Pour celles qui veulent être encadrées (Q3 = coach à chaque séance ou mix), Q4 (fréquence
      souhaitée avec Ornella — remplace l'ancienne question budget) choisit la formule. */
-  const horsIDF = selections[1] === 1;
-  const format  = selections[3]; // 0: coach à chaque séance, 1: mix coach+seule, 2: à distance, 3: seule
-  const freq    = selections[4]; // 0: 1×/mois, 1: 1×/semaine, 2: 2×/semaine ou +, 3: pas besoin de se voir
+  const horsIDF = selections[2] === 1;
+  const format  = selections[4]; // 0: coach à chaque séance, 1: mix coach+seule, 2: à distance, 3: seule
+  const freq    = selections[5]; // 0: 1×/mois, 1: 1×/semaine, 2: 2×/semaine ou +, 3: pas besoin de se voir
 
   if (format === 3) return 'autonomie';   // Seule — j'ai juste besoin d'un bon programme
   if (horsIDF)      return 'distanciel';
@@ -837,7 +953,7 @@ async function sendToBrevo(email, resultKey, prenom = '', phone = '') {
   const listId = BREVO_LISTS[resultKey];
   const r      = RESULTS[resultKey];
 
-  const objectif = selections[5] !== undefined ? OBJECTIF_LABELS[selections[5]] : '';
+  const objectif = getObjectif();
   const produit   = PRODUIT_CTA[objectif] || null;
 
   /* Liste "Leads" du programme digital cross-vendu selon l'objectif — reprend les listes déjà
@@ -939,12 +1055,11 @@ const RESULT_PITCH = {
 function renderResult(key) {
   const r = RESULTS[key];
   const c = RESULT_PITCH[key];
-  const objIdx = selections[5];
-  const objectifTxt = objIdx !== undefined ? QUESTIONS[4].options[objIdx].text.toLowerCase() : '';
-  const objectif = objIdx !== undefined ? OBJECTIF_LABELS[objIdx] : '';
+  const objectifTxt = zonesText();
+  const objectif = getObjectif();
   const produit = PRODUIT_CTA[objectif] || null;
   const msg = `Bonjour Ornella ! Le quiz m'a recommandé ${c.nom}` +
-              (objectifTxt ? ` (objectif : ${objectifTxt})` : '') + '. On en parle ?';
+              (objectifTxt ? ` (je veux travailler : ${objectifTxt})` : '') + '. On en parle ?';
   const wa = 'https://wa.me/33756834626?text=' + encodeURIComponent(msg);
 
   const produitCtaHTML = produit && key !== 'autonomie' ? `
@@ -1029,8 +1144,10 @@ function renderResult(key) {
 
 function restart() {
   selections = {};
+  zones = new Set();
+  paintZones();
   QUESTIONS.forEach((q, i) => {
-    const n = i + 1;
+    const n = i + 2;
     q.options.forEach((_, j) => {
       document.getElementById(`qOpt-${n}-${j}`)?.classList.remove('selected');
     });
