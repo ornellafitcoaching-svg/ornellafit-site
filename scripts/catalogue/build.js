@@ -32,7 +32,8 @@ h1{font:600 54px/1.08 'Playfair Display';color:#1B3A2D;margin:16px 0 10px}
   if (process.env.FONTS_CSS) await pg.route(/fonts\.(googleapis|gstatic)\.com/, r => r.fulfill({ contentType: 'text/css', body: fs.readFileSync(process.env.FONTS_CSS, 'utf8') }));
   // ONLY=id1,id2 : ne régénère que ces visuels (le flux CSV est toujours régénéré en entier).
   const only = process.env.ONLY ? process.env.ONLY.split(',') : null;
-  for (const p of P.filter(p => !only || only.includes(p.id))) {
+  // "static": true = visuel fait à part (images/catalogue/<id>.jpg), jamais régénéré.
+  for (const p of P.filter(p => !p.static && (!only || only.includes(p.id)))) {
     const tmp = path.join(__dirname, '_tmp.html');
     fs.writeFileSync(tmp, page(p));
     await pg.goto('file://' + tmp, { waitUntil: 'networkidle' });
@@ -40,7 +41,7 @@ h1{font:600 54px/1.08 'Playfair Display';color:#1B3A2D;margin:16px 0 10px}
     await pg.screenshot({ path: path.join(ROOT, 'images', 'catalogue', p.id + '.jpg'), type: 'jpeg', quality: 86 });
   }
   await b.close();
-  fs.unlinkSync(path.join(__dirname, '_tmp.html'));
+  fs.rmSync(path.join(__dirname, '_tmp.html'), { force: true });
   const q = v => '"' + String(v).replace(/"/g, '""') + '"';
   // "extra" : images supplémentaires déjà prêtes (chemins du site), visibles en faisant défiler la fiche.
   const head = ['id', 'title', 'description', 'availability', 'condition', 'price', 'link', 'image_link', 'additional_image_link', 'brand', 'google_product_category', 'product_type'];
