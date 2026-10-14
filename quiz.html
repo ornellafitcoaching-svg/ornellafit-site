@@ -597,6 +597,16 @@ let selections  = {};   /* { 1: idx, 2: idx, ... } */
 (function init() {
   buildZoneStep();
   QUESTIONS.forEach((q, i) => buildQuestionStep(q, i + 2));
+  /* Arrivée depuis la silhouette de l'accueil (quiz.html?zones=ventre) :
+     zone déjà cochée, on ouvre directement la question 1. */
+  try {
+    const pre = (new URLSearchParams(location.search).get('zones') || '')
+      .split(',').filter(k => ZONE_LABELS[k]);
+    if (pre.length) {
+      pre.forEach(k => toggleZone(k));
+      goToStep(1);
+    }
+  } catch (e) {}
 })();
 
 /* ===================================================
