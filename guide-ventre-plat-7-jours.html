@@ -427,11 +427,11 @@ fbq('init','1233548507794099');fbq('track','PageView');
     <p style="color:#e7dcc9;font-size:14px;text-align:center;margin:10px auto 0;max-width:420px;">3 façons de continuer, toutes depuis chez toi. Choisis celle qui te ressemble 👇</p>
 
     <div class="offer">
-      <span class="best" style="background:rgba(255,255,255,.18);">1 · Je continue seule</span>
+      <span class="best">1 · Seule · 🎁 prix colis</span>
       <h3>Ventre Plat — 14 jours</h3>
       <p>La suite directe de ce guide : 14 séances guidées et progressives, 10–20 min, sans matériel. Accès à vie.</p>
-      <div class="price">12&nbsp;€ <small>· paiement unique</small></div>
-      <a class="cta xtrack" data-cn="ventre-plat-14j" href="ventre-plat.html?src=colis-guide">Je démarre mes 14 jours →</a>
+      <div class="price">9&nbsp;€ <s style="opacity:.6;font-size:.6em;">12&nbsp;€</s> <small>· code COLIS déjà appliqué</small></div>
+      <a class="cta xtrack" data-cn="ventre-plat-14j" href="https://buy.stripe.com/9B69AT7fXbWb9Epfyt8Vi09?prefilled_promo_code=COLIS">Je continue à 9 € →</a>
     </div>
 
     <div class="offer">
@@ -507,7 +507,7 @@ const DAYS=[
       ["Gainage latéral genoux","20 s / côté","Sur le côté, appui avant-bras + genoux. Ligne épaule-hanche."]],
   calm:"Cobra doux × 5 respirations + posture de l'enfant.",
   note:"Quand tu portes une charge (sac, courses, bébé) : « je grandis, j'ouvre les épaules, je rentre le ventre »."},
- {n:3,promo:"<a class=\"promo xtrack\" data-cn=\"ventre-plat-14j\" href=\"ventre-plat.html?src=guide-web-p06\"><span class=\"pi\">🔥</span><span class=\"pt\"><b>Tu sens ton ventre plus léger&nbsp;? Note-le dans ton tracker&nbsp;!</b>Imagine après 14 jours de séances guidées et progressives.</span><span class=\"pb\">Je continue sur 14 jours · 12 €</span></a>",t:"Cardio doux debout",f:"On fait circuler, sans sauter",
+ {n:3,promo:"<a class=\"promo xtrack\" data-cn=\"ventre-plat-14j\" href=\"https://buy.stripe.com/9B69AT7fXbWb9Epfyt8Vi09?prefilled_promo_code=COLIS\"><span class=\"pi\">🔥</span><span class=\"pt\"><b>Tu sens ton ventre plus léger&nbsp;? Note-le dans ton tracker&nbsp;!</b>Imagine après 14 jours de séances guidées et progressives.</span><span class=\"pb\">Je continue · 9 € au lieu de 12 €</span></a>",t:"Cardio doux debout",f:"On fait circuler, sans sauter",
   warm:"Marche rapide sur place (1 min) · balancé des bras · quelques squats lents.",
   rounds:"Débutante : 2 tours. À l'aise : 3 tours.",
   ex:[["Talons-fesses dynamiques","40 s","Rythme confortable, ventre gainé. Impact minimal."],
@@ -543,7 +543,7 @@ const DAYS=[
       ["Vacuum debout","6 resp.","Dos droit, on aspire le ventre et on tient 8 s."]],
   calm:"Torsion douce allongée × 3 par côté + posture de l'enfant.",
   note:"5 min de respiration profonde par jour font baisser le cortisol — l'hormone qui stocke au ventre."},
- {n:7,promo:"<a class=\"promo xtrack\" data-cn=\"suite\" href=\"#suite\"><span class=\"pi\">⭐</span><span class=\"pt\"><b>7 jours tenus, bravo ! 🎉</b>C'est maintenant qu'il ne faut pas lâcher. Choisis ta suite : seule ou avec moi.</span><span class=\"pb\">Je choisis ma suite ↓</span></a>",t:"Récap & célébration",f:"Le meilleur de ta semaine 🎉",
+ {n:7,promo:"<a class=\"promo xtrack\" data-cn=\"ventre-plat-14j\" href=\"https://buy.stripe.com/9B69AT7fXbWb9Epfyt8Vi09?prefilled_promo_code=COLIS\"><span class=\"pi\">⭐</span><span class=\"pt\"><b>7 jours tenus, bravo ! 🎉</b>Ton cadeau de fin de Reset : le <span style=\"font-weight:700\">Ventre Plat 14 jours à 9 € au lieu de 12 €</span>, réservé aux colis (code COLIS déjà appliqué).</span><span class=\"pb\">Je continue à 9 € →</span></a>",t:"Récap & célébration",f:"Le meilleur de ta semaine 🎉",
   warm:"Mobilité complète : cercles de bras, du bassin, montées de genoux, 3 vacuums debout.",
   rounds:"Débutante : 2 tours. À l'aise : 3 tours.",
   ex:[["Vacuum debout","5 resp.","Ton nouvel automatisme. Aspire, tiens 8 s."],
@@ -616,7 +616,7 @@ render();
 /* ===== Mini-quiz : objectif -> programme digital ===== */
 (function(){
   const PROGS={
-    ventre:{n:"Ventre Plat — 14 jours",p:"12 €",u:"ventre-plat.html",cn:"ventre-plat-14j",b:"Je démarre mes 14 jours",
+    ventre:{n:"Ventre Plat — 14 jours",p:"9 €",was:"12 €",save:"3 €",u:"https://buy.stripe.com/9B69AT7fXbWb9Epfyt8Vi09?prefilled_promo_code=COLIS",cn:"ventre-plat-14j",b:"Je démarre mes 14 jours",
       w:"Tu viens de réveiller ton transverse : c'est LE moment de continuer. 14 séances guidées et progressives, sans matériel, pour un ventre qui reste plat."},
     fessiers:{n:"Booty Sculpt — 8 semaines",p:"19 €",u:"booty-sculpt.html",cn:"booty-sculpt",b:"Je galbe mes fessiers",
       w:"8 semaines à la maison pour remonter, arrondir et raffermir tes fessiers, avec une progression pensée pour toi."},
@@ -651,6 +651,7 @@ render();
     ans[st.dataset.q]=o.dataset.v;
     setTimeout(()=>{ if(cur<1) show(cur+1); else result(); },220);
   });
+  const lk=u=>u.indexOf('buy.stripe.com')>-1?u:u+'?src=guide-quiz';
   function result(restore){
     const P=PROGS[ans.goal];
     const wa="https://wa.me/33756834626?text="+encodeURIComponent("Coucou Ornella 😊 J'ai fait le quiz du guide Ventre Plat. Mon objectif : "+LBL[ans.goal]+". Ce qui me bloque : "+LBL[ans.block]+". Tu peux me conseiller ?");
@@ -660,9 +661,9 @@ render();
     html=`<div class="qwin">🎯 Ton programme idéal</div><h3>${P.n}</h3>
         <p class="qwhy">${P.w} ${BLOCK[ans.block]||''}</p>
         <div class="qprice">${P.p}${P.was?` au lieu de ${P.was} (${P.save} d'économie)`:''} <small>· paiement unique · accès immédiat</small></div>
-        <a class="cta xtrack" data-cn="${P.cn}" href="${P.u}?src=guide-quiz">${P.b} · ${P.p} →</a>
+        <a class="cta xtrack" data-cn="${P.cn}" href="${lk(P.u)}">${P.b} · ${P.p} →</a>
         ${bump}
-        <a class="qalt xtrack" data-cn="${AP.cn}" href="${AP.u}?src=guide-quiz">${A[1]} Découvre ${AP.n} (${AP.p}) →</a>
+        <a class="qalt xtrack" data-cn="${AP.cn}" href="${lk(AP.u)}">${A[1]} Découvre ${AP.n} (${AP.p}) →</a>
         <a class="qwa wa-contact" href="${wa}">💬 Une hésitation ? Envoie-moi ton résultat</a>`;
     html+=`<a class="qstart" href="#jours">📖 Ou commence d'abord tes 7 jours ↓</a>`;
     html+=`<button class="qback" type="button" style="display:block;margin:12px auto 0;" id="qredo">↺ Refaire le quiz</button>`;
