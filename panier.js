@@ -91,10 +91,21 @@
 
   // Enregistre le panier puis part sur Stripe (e-mail pré-rempli). Ne bloque jamais le paiement :
   // si le serveur ne répond pas en 4 s, on part quand même sur Stripe.
+  // Garde le code promo du lien d'origine (COLIS, ROUE10…) : sans ça, il était perdu au passage par le panier.
+  function promoOf(link) {
+    var m = String(link).match(/[?&]prefilled_promo_code=([^&#]+)/);
+    return m ? m[1] : '';
+  }
+  function withPromo(url, promo) {
+    if (!promo || /[?&]prefilled_promo_code=/.test(url)) return url;
+    return url + (url.indexOf('?') === -1 ? '?' : '&') + 'prefilled_promo_code=' + promo;
+  }
+
   function register(link, email, prenom, newTab) {
+    var promo = promoOf(link);
     link = String(link).split('?')[0];
     set(STORE_EMAIL, email); if (prenom) set(STORE_PRENOM, prenom);
-    var fallback = link + '?prefilled_email=' + encodeURIComponent(email);
+    var fallback = withPromo(link + '?prefilled_email=' + encodeURIComponent(email), promo);
     var win = newTab ? window.open('', '_blank') : null; // ouvert tout de suite pour ne pas être bloqué
     var done = false;
     function go(url) {
@@ -111,7 +122,7 @@
       .catch(function () { return null; })
       .then(function (res) {
         clearTimeout(timer);
-        go(res && res.url && res.url.indexOf('https://buy.stripe.com/') === 0 ? res.url : fallback);
+        go(res && res.url && res.url.indexOf('https://buy.stripe.com/') === 0 ? withPromo(res.url, promo) : fallback);
       });
   }
 
