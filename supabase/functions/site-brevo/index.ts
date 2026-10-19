@@ -62,7 +62,9 @@ const PAYMENT_LINKS: Record<string, { produit: string; montant: number }> = {
 };
 
 // Modèles Brevo que le site a le droit d'envoyer (quiz, guides, confirmations…)
-const TEMPLATES_OK = [10, 12, 13, 14, 15, 79, 93, 131, 147, 160];
+// 202 = Roue de la chance v2 (roue-chance.js du 12/10 au 19/10/2026)
+// 219 = Roue de la chance v3, 100 % gagnante, lot + avant/après selon l'objectif (roue-chance.js depuis le 19/10/2026)
+const TEMPLATES_OK = [10, 12, 13, 14, 15, 79, 93, 131, 147, 160, 202, 219];
 
 // Limites anti-abus
 const LIMIT_IP_10MIN = 25;        // toutes opérations confondues, par IP
@@ -207,7 +209,6 @@ Deno.serve(async (req) => {
         await supa.from("paniers").update({ statut: "stop" }).ilike("email", data[0].email).eq("statut", "ouvert");
       }
     }
-
     return new Response(STOP_PAGE, { status: 200, headers: { "Content-Type": "text/html; charset=utf-8" } });
   }
 
@@ -271,13 +272,17 @@ Deno.serve(async (req) => {
 
       if (body.templateId != null) {
         const t = Number(body.templateId);
-        if (!TEMPLATES_OK.includes(t)) return json({ error: "template invalide" }, 400, origin);
+        if (!TEMPLATES_OK.includes(t)) {
+          await logEvent(ipHash, "email-refuse", email, page, false);
+          return json({ error: "template invalide" }, 400, origin);
+        }
         payload.templateId = t;
         if (body.params && typeof body.params === "object") {
-          const p: Record<string, string | number> = {};
+          const p: Record<string, string | number | boolean> = {};
           for (const [k, v] of Object.entries(body.params).slice(0, 30)) {
             if (typeof v === "string") p[k] = v.slice(0, 1000);
             else if (typeof v === "number") p[k] = v;
+            else if (typeof v === "boolean") p[k] = v; // ex. IS_WIN (roue de la chance)
           }
           payload.params = p;
         }
