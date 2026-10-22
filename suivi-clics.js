@@ -26,8 +26,22 @@
     if (!window.pintrk) {
       window.pintrk = function () { window.pintrk.queue.push(Array.prototype.slice.call(arguments)); };
       var n = window.pintrk; n.queue = []; n.version = "3.0";
-      var t = document.createElement("script"); t.async = !0; t.src = e;
-      var r = document.getElementsByTagName("script")[0]; r.parentNode.insertBefore(t, r);
+      // Allègement mobile : le script Pinterest (externe) ne se télécharge qu'à la 1re interaction
+      // (scroll, toucher, clic, touche) ou après 4 s. Les appels pintrk() restent en file d'attente
+      // (n.queue) et sont rejoués par core.js une fois chargé : aucun événement n'est perdu.
+      var charge = false;
+      var charger = function () {
+        if (charge) return; charge = true;
+        ['scroll', 'touchstart', 'pointerdown', 'keydown', 'mousemove'].forEach(function (ev) {
+          window.removeEventListener(ev, charger);
+        });
+        var t = document.createElement("script"); t.async = !0; t.src = e;
+        var r = document.getElementsByTagName("script")[0]; r.parentNode.insertBefore(t, r);
+      };
+      ['scroll', 'touchstart', 'pointerdown', 'keydown', 'mousemove'].forEach(function (ev) {
+        window.addEventListener(ev, charger, { passive: true, once: true });
+      });
+      setTimeout(charger, 4000);
     }
   })("https://s.pinimg.com/ct/core.js");
   window.pintrk('load', '2612860981138');
