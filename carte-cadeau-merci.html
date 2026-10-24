@@ -77,9 +77,13 @@ fbq('init','1233548507794099');fbq('track','PageView');
 </section></div>
 <script>
 try{
-  var k='ofc_gift_purchase_sent', sid=(new URLSearchParams(location.search).get('session_id')||'');
+  var params=new URLSearchParams(location.search);
+  var k='ofc_gift_purchase_sent', sid=(params.get('session_id')||'');
+  var v=parseFloat(params.get('v')||'0');
   if(typeof fbq!=='undefined' && sid && localStorage.getItem(k)!==sid){
-    fbq('track','Purchase',{value:150,currency:'EUR',content_name:'Carte cadeau coaching'},{eventID:sid});
+    var d={currency:'EUR',content_name:'Carte cadeau coaching'};
+    if(v>0){d.value=v;}
+    fbq('track','Purchase',d,{eventID:sid});
     localStorage.setItem(k,sid);
   }
 }catch(e){}

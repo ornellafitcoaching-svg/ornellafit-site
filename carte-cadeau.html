@@ -60,7 +60,7 @@ a{color:inherit}
 .bg-sand{background:var(--sand)}
 
 /* HERO vidéo */
-.hero{position:relative;min-height:600px;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:#1a1411}
+.hero{position:relative;min-height:440px;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:#1a1411}
 .hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,16,12,.5) 0%,rgba(26,16,12,.12) 32%,rgba(26,16,12,.9) 100%)}
 .hero .in{position:relative;z-index:2;width:100%;max-width:560px;margin:0 auto;padding:0 24px 32px}
@@ -102,6 +102,17 @@ a{color:inherit}
 .obtn{flex:1 1 auto;text-align:center;text-decoration:none;font-weight:700;font-size:14.5px;color:#fff;background:var(--c);padding:13px 16px;border-radius:40px;box-shadow:0 8px 18px rgba(201,99,88,.34);min-width:150px}
 .obtn:active{transform:scale(.98)}
 .olink{text-decoration:none;color:var(--cd);font-weight:600;font-size:13.5px;white-space:nowrap;border-bottom:1.5px solid rgba(176,79,68,.35)}
+.ocard{position:relative}
+.ocard.feat{border:1px solid #f0d6cf;border-top:4px solid var(--cd);box-shadow:0 14px 32px rgba(201,99,88,.16)}
+.obadge{position:absolute;top:-11px;left:18px;background:var(--cd);color:#fff;font-size:11px;font-weight:700;letter-spacing:.03em;padding:4px 12px;border-radius:30px;box-shadow:0 6px 14px rgba(176,79,68,.35)}
+.obadge.best{background:var(--v)}
+.ocard .op{text-align:right}
+.ocard .op .mo{display:block;font-family:'Montserrat',sans-serif;font-weight:600;font-size:11px;color:var(--mut);white-space:normal}
+.ogroup{text-align:center;margin:30px 0 4px}
+.ogroup .gt{font-family:'Playfair Display',serif;font-size:21px;color:var(--ink)}
+.ogroup .gs{font-size:12.5px;color:var(--mut)}
+.other{text-align:center;margin-top:22px;font-size:13.5px;color:#5f4d44}
+.other a{color:var(--cd);font-weight:700;border-bottom:1.5px solid rgba(176,79,68,.35);text-decoration:none}
 
 /* MONTANTS */
 .amts{display:grid;gap:12px;margin-top:24px}
@@ -182,7 +193,20 @@ details a{color:var(--c);font-weight:600}
 .stick{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(251,244,234,.97);box-shadow:0 -6px 20px rgba(0,0,0,.1);z-index:9;display:none;transform:translateY(110%);transition:transform .3s}
 .stick.on{transform:none}.stick .btn{padding:15px;font-size:16px}
 @media(max-width:700px){.stick{display:block}}
-@media(min-width:700px){.hero{min-height:660px}.rea{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:700px){.hero{min-height:520px}.rea{grid-template-columns:repeat(4,1fr)}}
+/* bulle WhatsApp flottante */
+.wabubble{position:fixed;right:16px;bottom:88px;z-index:12;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(37,211,102,.45);text-decoration:none;font-size:27px}
+.wabubble:active{transform:scale(.94)}
+@media(min-width:700px){.wabubble{bottom:24px;width:60px;height:60px}}
+@media(max-width:430px){
+.hero h1{font-size:34px}
+.hero .tag{font-size:15px}
+.sec{padding:40px 18px}
+.sec h2{font-size:25px}
+.ocard h3{font-size:16px}
+.ocard .op{font-size:15px}
+.giftcard{max-width:100%}
+}
 </style>
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -204,7 +228,7 @@ fbq('init','1233548507794099');fbq('track','PageView');
 <a class="grev" href="https://www.google.com/search?q=Ornella+Fit+Coaching+avis" target="_blank" rel="noopener"><span class="st">★★★★★</span> <b>5,0</b> · 25 avis Google</a>
 <h1 id="hhook">Offre-lui <em>l'inoubliable.</em></h1>
 <p class="tag">Pas un objet de plus. Du temps rien que pour elle, une coach à ses côtés, et un vrai nouveau départ : le cadeau dont on se souvient.</p>
-<a class="btn gift-cta" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau">Offrir la carte cadeau →</a>
+<a class="btn" href="#cartes">Choisir une carte cadeau →</a>
 <div class="sub">Montant libre dès 49 € · Carte personnalisée sur WhatsApp sous 24 h · Paiement sécurisé Stripe</div>
 </div>
 </section>
@@ -228,79 +252,80 @@ fbq('init','1233548507794099');fbq('track','PageView');
 
 <!-- ===== CARTES-OFFRES ===== -->
 <div class="wrap">
-<section class="sec bg-white">
+<section class="sec bg-white" id="cartes">
 <span class="eyebrow">Elle choisit sa formule</span>
-<h2>Une formule pour chaque femme</h2>
-<p class="lead">La carte s'utilise sur l'offre qui lui correspond. Tu peux même en choisir une en particulier :</p>
+<h2>Une carte = une vraie formule</h2>
+<p class="lead">Chaque carte correspond exactement à une offre du site. Choisis celle qui lui ressemble :</p>
 <div class="ocards">
 
 <div class="ocard">
-<div class="oh"><span class="oem">🏡</span><h3>À domicile</h3><span class="op">dès 260 €/mois</span></div>
-<p class="ow">Je viens m'entraîner avec elle chez elle, en Essonne (91) et Hauts-de-Seine (92).</p>
-<ul><li>Zéro trajet : son salon devient sa salle de sport</li><li>Exercices adaptés à son niveau et à son matériel</li><li>Ma présence qui motive et corrige en direct</li></ul>
-<p class="ofor">Pour celle qui manque de temps ou n'ose pas la salle. (Essai possible dès 50 €)</p>
-<div class="oact"><a class="obtn gift-cta" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau-domicile">Offrir celle-ci →</a><a class="olink" href="offres.html#tarif-domicile">Voir le détail</a></div>
-</div>
-
-<div class="ocard">
-<div class="oh"><span class="oem">🏋️</span><h3>En présentiel, en salle</h3><span class="op">séance dès 65 €</span></div>
-<p class="ow">On s'entraîne ensemble dans sa salle : elle apprend enfin les bons gestes.</p>
-<ul><li>Confiance sur les machines, plus de séances au hasard</li><li>Un vrai plan construit pour son objectif</li><li>Correction de la posture en direct</li></ul>
-<p class="ofor">Pour celle qui a une salle mais ne sait pas quoi y faire.</p>
-<div class="oact"><a class="obtn gift-cta" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau-salle">Offrir celle-ci →</a><a class="olink" href="offres.html#formules">Voir le détail</a></div>
-</div>
-
-<div class="ocard">
-<div class="oh"><span class="oem">📱</span><h3>À distance, avec suivi</h3><span class="op">dès 89 €/mois</span></div>
-<p class="ow">Partout en France. Un programme sur-mesure qui évolue chaque mois + mon suivi sur WhatsApp.</p>
-<ul><li>Elle s'entraîne quand elle veut, où elle veut</li><li>Je corrige ses vidéos et j'ajuste chaque mois</li><li>Un bilan régulier pour rester motivée</li></ul>
-<p class="ofor">Pour celle qui vit loin ou a un emploi du temps serré.</p>
-<div class="oact"><a class="obtn gift-cta" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau-distance">Offrir celle-ci →</a><a class="olink" href="offres.html#tarif-distanciel">Voir le détail</a></div>
-</div>
-
-<div class="ocard">
-<div class="oh"><span class="oem">🔄</span><h3>Hybride</h3><span class="op">149 €/mois</span></div>
-<p class="ow">Le meilleur des deux : des séances avec moi + un suivi à distance entre les rendez-vous.</p>
-<ul><li>La présence ET l'autonomie</li><li>Des résultats plus rapides</li><li>Jamais seule entre deux séances</li></ul>
-<p class="ofor">Pour celle qui veut du présentiel sans y être tous les jours.</p>
-<div class="oact"><a class="obtn gift-cta" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau-hybride">Offrir celle-ci →</a><a class="olink" href="offres.html#tarif-hybride">Voir le détail</a></div>
+<div class="oh"><span class="oem">🎁</span><h3>Séance découverte à domicile</h3><span class="op">50 €</span></div>
+<p class="ow">Une première séance chez elle pour goûter au coaching, sans engagement.</p>
+<ul><li>Bilan de forme offert</li><li>Séance 100 % adaptée à elle</li><li>Chez elle (91 / 92), zéro trajet</li></ul>
+<div class="oact"><a class="obtn gift-cta" data-value="50" href="https://buy.stripe.com/5kQbJ1as9f8n6sdae98Vi0H?client_reference_id=site-cadeau-decouverte">Offrir celle-ci →</a><a class="olink" href="offres.html#tarif-domicile">Voir le détail</a></div>
 </div>
 
 <div class="ocard">
 <div class="oh"><span class="oem">🎯</span><h3>Programme sur-mesure · 8 semaines</h3><span class="op">79 €</span></div>
-<p class="ow">Un programme en vidéo construit pour SON corps et SON objectif, à faire en autonomie.</p>
-<ul><li>Maison ou salle, à son rythme, accès à vie</li><li>Sans engagement, paiement unique</li><li>Pensé selon son niveau et son emploi du temps</li></ul>
-<p class="ofor">Pour celle qui est autonome et veut un cap clair.</p>
-<div class="oact"><a class="obtn gift-cta" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau-surmesure">Offrir celui-ci →</a><a class="olink" href="programme-sur-mesure.html">Voir le détail</a></div>
+<p class="ow">Un programme en vidéo construit pour son corps et son objectif, à faire en autonomie.</p>
+<ul><li>Programme 100 % sur-mesure</li><li>Maison ou salle, accès à vie</li><li>Sans suivi, sans engagement</li></ul>
+<div class="oact"><a class="obtn gift-cta" data-value="79" href="https://buy.stripe.com/bJecN5cAh7FV17T0Dz8Vi0I?client_reference_id=site-cadeau-programme">Offrir celui-ci →</a><a class="olink" href="programme-sur-mesure.html">Voir le détail</a></div>
+</div>
+
+<div class="ogroup"><div class="gt">Les parcours coaching · 3 mois</div><div class="gs">Le plus efficace pour de vrais résultats</div></div>
+
+<div class="ocard feat">
+<span class="obadge">⭐ Recommandé</span>
+<div class="oh"><span class="oem">📱</span><h3>À distance, avec suivi · 3 mois</h3><span class="op">297 €<span class="mo">soit 99 €/mois</span></span></div>
+<p class="ow">3 mois de coaching à distance, partout en France, avec un vrai suivi humain.</p>
+<ul><li>Programme sur-mesure qui évolue chaque mois</li><li>Suivi WhatsApp 7j/7</li><li>Espace de suivi privé</li></ul>
+<div class="oact"><a class="obtn gift-cta" data-value="297" href="https://buy.stripe.com/3cI9AT43L6BR5o9fyt8Vi0J?client_reference_id=site-cadeau-distanciel-3m">Offrir ce parcours →</a><a class="olink" href="offres.html#tarif-distanciel">Voir le détail</a></div>
+</div>
+
+<div class="ocard feat">
+<span class="obadge">🔥 Le plus choisi</span>
+<div class="oh"><span class="oem">🔄</span><h3>Hybride · 3 mois</h3><span class="op">447 €<span class="mo">soit 149 €/mois</span></span></div>
+<p class="ow">1 séance en présentiel par mois + suivi à distance toute la semaine.</p>
+<ul><li>La présence ET l'autonomie</li><li>Suivi WhatsApp + espace privé</li><li>Des résultats plus rapides</li></ul>
+<div class="oact"><a class="obtn gift-cta" data-value="447" href="https://buy.stripe.com/4gM6oHbwdd0f2bXcmh8Vi0K?client_reference_id=site-cadeau-hybride-3m">Offrir ce parcours →</a><a class="olink" href="offres.html#tarif-hybride">Voir le détail</a></div>
 </div>
 
 <div class="ocard">
-<div class="oh"><span class="oem">🥗</span><h3>Suivi nutrition</h3><span class="op">+ 40 €/mois</span></div>
-<p class="ow">Un rééquilibrage sans régime ni privation, adapté à sa vie, en complément de son coaching.</p>
-<ul><li>Pas de privation, pas d'aliments interdits</li><li>Des repas simples qui lui ressemblent</li><li>Des résultats qui durent vraiment</li></ul>
-<p class="ofor">Pour celle qui veut booster ses résultats côté assiette.</p>
-<div class="oact"><a class="obtn gift-cta" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau-nutrition">Offrir celle-ci →</a><a class="olink" href="offres.html#boost-nutrition">Voir le détail</a></div>
+<div class="oh"><span class="oem">🏡</span><h3>À domicile · 3 mois</h3><span class="op">780 €<span class="mo">soit 260 €/mois</span></span></div>
+<p class="ow">1 séance par semaine chez elle avec moi, pendant 3 mois (91 / 92).</p>
+<ul><li>Coach à domicile chaque semaine</li><li>Programme sur-mesure + suivi WhatsApp</li><li>Zéro trajet, zéro excuse</li></ul>
+<div class="oact"><a class="obtn gift-cta" data-value="780" href="https://buy.stripe.com/cNi6oH0Rz2lBaItdql8Vi0L?client_reference_id=site-cadeau-domicile-3m">Offrir ce parcours →</a><a class="olink" href="offres.html#tarif-domicile">Voir le détail</a></div>
+</div>
+
+<div class="ogroup"><div class="gt">Parcours 6 mois · meilleur prix</div><div class="gs">Le tarif mensuel le plus bas, pour aller au bout</div></div>
+
+<div class="ocard">
+<span class="obadge best">Meilleur prix</span>
+<div class="oh"><span class="oem">📱</span><h3>À distance · 6 mois</h3><span class="op">534 €<span class="mo">soit 89 €/mois</span></span></div>
+<p class="ow">6 mois de coaching à distance avec suivi, au tarif le plus avantageux.</p>
+<ul><li>Programme sur-mesure qui évolue</li><li>Suivi WhatsApp + espace privé</li><li>Le temps de transformer durablement</li></ul>
+<div class="oact"><a class="obtn gift-cta" data-value="534" href="https://buy.stripe.com/3cI00j8k14tJ03Pbid8Vi0M?client_reference_id=site-cadeau-distanciel-6m">Offrir ce parcours →</a><a class="olink" href="offres.html#tarif-distanciel">Voir le détail</a></div>
+</div>
+
+<div class="ocard">
+<span class="obadge best">Meilleur prix</span>
+<div class="oh"><span class="oem">🔄</span><h3>Hybride · 6 mois</h3><span class="op">894 €<span class="mo">149 €/mois + 89 € de cadeaux</span></span></div>
+<p class="ow">6 mois en hybride : séances présentielles + suivi à distance, avec des bonus offerts.</p>
+<ul><li>Présentiel + suivi 7j/7</li><li>89 € de cadeaux inclus</li><li>L'accompagnement le plus complet</li></ul>
+<div class="oact"><a class="obtn gift-cta" data-value="894" href="https://buy.stripe.com/eVqfZh9o51hx17T2LH8Vi0N?client_reference_id=site-cadeau-hybride-6m">Offrir ce parcours →</a><a class="olink" href="offres.html#tarif-hybride">Voir le détail</a></div>
+</div>
+
+<div class="ocard">
+<span class="obadge best">Meilleur prix</span>
+<div class="oh"><span class="oem">🏡</span><h3>À domicile · 6 mois</h3><span class="op">1 440 €<span class="mo">soit 240 €/mois</span></span></div>
+<p class="ow">6 mois de coaching à domicile, 1 séance/semaine, au meilleur tarif (91 / 92).</p>
+<ul><li>Coach à domicile chaque semaine</li><li>Programme sur-mesure + suivi WhatsApp</li><li>Le suivi le plus rapproché</li></ul>
+<div class="oact"><a class="obtn gift-cta" data-value="1440" href="https://buy.stripe.com/28E8wP43L4tJ5o90Dz8Vi0O?client_reference_id=site-cadeau-domicile-6m">Offrir ce parcours →</a><a class="olink" href="offres.html#tarif-domicile">Voir le détail</a></div>
 </div>
 
 </div>
+<p class="other">Tu préfères un autre montant ? <a class="gift-cta" href="https://buy.stripe.com/6oU5kD8k12lB03PgCx8Vi0P?client_reference_id=site-cadeau-autre">Offrir un montant libre (dès 49 €) →</a></p>
 <p class="note-c">Pas sûr(e) de la formule ? Aucun souci : elle choisit avec moi lors de son bilan offert.</p>
-</section>
-</div>
-
-<!-- ===== MONTANTS ===== -->
-<div class="wrap">
-<section class="sec bg-sand">
-<span class="eyebrow">Quel montant offrir ?</span>
-<h2>Tu choisis librement</h2>
-<p class="lead">À partir de 49 €. Pour t'aider à te repérer :</p>
-<div class="amts">
-<div class="amt"><strong>49 €</strong><span>Une consultation à distance ou une première séance pour démarrer</span></div>
-<div class="amt"><strong>79 €</strong><span>Un programme sur-mesure de 8 semaines, à son rythme</span></div>
-<div class="amt"><strong>89 €</strong><span>Un premier mois de coaching à distance avec suivi</span></div>
-<div class="amt free"><strong>+</strong><span>Plus le montant est élevé, plus elle profite : séances à domicile, accompagnement sur la durée</span></div>
-</div>
-<p class="note-c">Tarifs indicatifs de mes offres. Tu offres le montant que tu veux, dès 49 € — elle complète la différence si elle souhaite aller plus loin.</p>
-<div style="margin-top:24px"><a class="btn gift-cta" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau-montant">Offrir la carte cadeau →</a></div>
 </section>
 </div>
 
@@ -368,7 +393,7 @@ fbq('init','1233548507794099');fbq('track','PageView');
 <div class="step"><div class="n">2</div><p><strong>Tu m'indiques deux prénoms</strong> : le sien et le tien, écrits sur la carte.</p></div>
 <div class="step"><div class="n">3</div><p><strong>Je t'envoie la carte sur WhatsApp sous 24 h</strong>, prête à offrir : imprimée ou sur ton téléphone.</p></div>
 </div>
-<div style="margin-top:24px"><a class="btn gift-cta" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau-etapes">Offrir la carte cadeau →</a></div>
+<div style="margin-top:24px"><a class="btn" href="#cartes">Choisir une carte cadeau →</a></div>
 </section>
 </div>
 
@@ -418,24 +443,26 @@ fbq('init','1233548507794099');fbq('track','PageView');
 <section class="final">
 <h2>Offre-lui un cadeau qui <em>change la vie.</em></h2>
 <p>Celui dont on se souvient longtemps après Noël.</p>
-<div class="wrap"><a class="btn ghost gift-cta" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau-final">Offrir la carte cadeau →</a></div>
+<div class="wrap"><a class="btn ghost" href="#cartes">Choisir une carte cadeau →</a></div>
 </section>
 <p class="legal">Ornella Fit Coaching · <a href="cgv.html">CGV</a></p>
 
-<div class="stick" id="stick"><a class="btn gift-cta" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau-sticky">Offrir la carte cadeau →</a></div>
+<a class="wabubble" id="wabubble" href="https://wa.me/33756834626?text=Bonjour%20Ornella%2C%20j%27ai%20une%20question%20sur%20la%20carte%20cadeau%20%F0%9F%8E%81" target="_blank" rel="noopener" aria-label="M'écrire sur WhatsApp">💬</a>
+<div class="stick" id="stick"><a class="btn" href="#cartes">Choisir une carte cadeau →</a></div>
 
 <script src="data/temoignages.js" defer></script>
 <script src="avis-carrousel.js" defer></script>
 <script>
 (function(){
   try{ if(typeof fbq!=='undefined') fbq('track','ViewContent',{content_name:'Carte cadeau coaching',content_category:'carte-cadeau'}); }catch(e){}
-  // InitiateCheckout sur TOUS les CTA vers Stripe
+  // InitiateCheckout sur TOUS les CTA Stripe, avec la bonne valeur
   document.querySelectorAll('a.gift-cta').forEach(function(el){
-    el.addEventListener('click',function(){ try{ if(typeof fbq!=='undefined') fbq('track','InitiateCheckout',{content_name:'Carte cadeau coaching',currency:'EUR'}); }catch(e){} });
+    el.addEventListener('click',function(){ try{ if(typeof fbq!=='undefined'){ var v=parseInt(el.getAttribute('data-value')||'0',10); var d={content_name:'Carte cadeau coaching',currency:'EUR'}; if(v>0){d.value=v;} fbq('track','InitiateCheckout',d);} }catch(e){} });
   });
-  // Contact sur WhatsApp
-  var wa=document.getElementById('wacta');
-  if(wa) wa.addEventListener('click',function(){ try{ if(typeof fbq!=='undefined') fbq('track','Contact',{content_name:'Carte cadeau coaching'}); }catch(e){} });
+  // Contact sur WhatsApp (bloc contact + bulle flottante)
+  document.querySelectorAll('#wacta, #wabubble').forEach(function(wa){
+    wa.addEventListener('click',function(){ try{ if(typeof fbq!=='undefined') fbq('track','Contact',{content_name:'Carte cadeau coaching'}); }catch(e){} });
+  });
   // Barre collante : visible après le hero
   var st=document.getElementById('stick'), h=document.querySelector('.hero');
   function chk(){ if(h && window.scrollY>h.offsetHeight-120) st.classList.add('on'); else st.classList.remove('on'); }
