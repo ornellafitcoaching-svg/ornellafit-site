@@ -14,48 +14,69 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--corail:#E8634A;--vert:#1B3A2D;--creme:#F5EFE6;--clair:#f3a595;--ink:#2a2a26}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Montserrat',-apple-system,sans-serif;color:var(--ink);background:var(--creme);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{max-width:100%;height:auto;display:block}
-h1,h2,h3{font-family:'Playfair Display',Georgia,serif;line-height:1.12;overflow-wrap:break-word}
+:root{--c:#C96358;--cd:#B04F44;--v:#1B3A2D;--cr:#F7F0E6;--cl:#F3A595;--ink:#2C1F1A;--mut:#7A6A62}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Montserrat',-apple-system,sans-serif;color:var(--ink);background:var(--cr);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{max-width:100%;display:block}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;line-height:1.1}
 .wrap{max-width:560px;margin:0 auto}
-.hero{background:linear-gradient(160deg,var(--vert),#14281f);color:#fff;padding:34px 22px 38px;text-align:center}
-.eyebrow{display:block;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;color:var(--clair);margin-bottom:14px}
-.hero h1{font-size:36px;font-weight:800;margin-bottom:14px}
-.hero h1 em{color:var(--clair);font-style:italic}
-.hero p{font-size:16px;color:#e7dcc9;margin-bottom:24px}
-.btn{display:block;width:100%;text-align:center;text-decoration:none;font-weight:700;font-size:17px;color:#fff;background:var(--corail);padding:18px 20px;border-radius:40px;box-shadow:0 10px 24px rgba(232,99,74,.45)}
+.btn{display:block;text-align:center;text-decoration:none;font-weight:700;font-size:17px;color:#fff;background:var(--c);padding:19px 22px;border-radius:50px;box-shadow:0 12px 28px rgba(201,99,88,.5);letter-spacing:.2px}
 .btn:active{transform:scale(.98)}
-.sub{font-size:12.5px;color:#cfc4b0;margin-top:12px}
-.sec{padding:34px 22px}
-.sec .eyebrow{color:var(--corail);text-align:center}
-.sec h2{font-size:27px;text-align:center;color:var(--vert);margin-bottom:18px}
-.steps{display:grid;gap:12px}
-.step{background:#fff;border-radius:16px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start;box-shadow:0 6px 18px rgba(0,0,0,.06)}
-.step b.n{flex:0 0 34px;height:34px;border-radius:50%;background:var(--corail);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px}
-.step p{font-size:15px}.step strong{color:var(--vert)}
-.formules{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.f{background:#fff;border-radius:14px;padding:14px 12px;font-weight:600;font-size:14.5px;text-align:center;color:var(--vert);box-shadow:0 4px 14px rgba(0,0,0,.05)}
-.note{font-size:13.5px;text-align:center;color:#6b6659;margin-top:14px}
-.ba{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.1)}
-.ba .cap{padding:14px 16px;font-size:14px;text-align:center}
-.ba .cap b{color:var(--vert)}
-.ba small{display:block;color:#8a8478;font-size:12px;margin-top:4px}
-.coach{display:flex;gap:16px;align-items:center;background:#fff;border-radius:18px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
-.coach img{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid var(--corail);flex:0 0 84px}
+.eyebrow{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--c);margin-bottom:12px;text-align:center}
+/* HERO video */
+.hero{position:relative;min-height:640px;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:#1a1411}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,12,10,.55) 0%,rgba(20,12,10,.15) 30%,rgba(20,12,10,.88) 100%)}
+.hero .in{position:relative;z-index:2;width:100%;max-width:560px;margin:0 auto;padding:0 24px 34px}
+.brand{position:absolute;z-index:2;top:22px;left:0;right:0;text-align:center;font-size:11px;letter-spacing:.34em;text-transform:uppercase;opacity:.92}
+.hero h1{font-size:46px;font-weight:700;margin-bottom:14px;text-shadow:0 4px 30px rgba(0,0,0,.45)}
+.hero h1 em{color:var(--cl)}
+.hero p{font-size:16.5px;color:#f1e7da;margin-bottom:24px;max-width:430px}
+.hero .sub{font-size:12.5px;color:#d9ccbc;margin-top:12px;text-align:center}
+/* card */
+.sec{padding:52px 24px}
+.sec h2{font-size:31px;text-align:center;margin-bottom:16px;color:var(--ink)}
+.sec .lead{font-size:16px;text-align:center;color:#4b3b34;max-width:440px;margin:0 auto}
+.giftcard{margin:30px auto 0;max-width:340px;aspect-ratio:1.62;border-radius:20px;background:linear-gradient(135deg,#D4705F,#B04F44);color:#fff;padding:22px 24px;position:relative;box-shadow:0 26px 50px rgba(176,79,68,.38);overflow:hidden;transform:rotate(-2.5deg)}
+.giftcard:before{content:"";position:absolute;right:40px;top:0;bottom:0;width:30px;background:rgba(255,255,255,.18)}
+.giftcard small{font-size:10px;letter-spacing:.3em;text-transform:uppercase;opacity:.85}
+.giftcard b{display:block;font-family:'Playfair Display',serif;font-size:27px;line-height:1.1;margin-top:46px;font-weight:700}
+.giftcard i{display:block;font-size:12px;margin-top:10px;opacity:.9;font-style:normal}
+/* benefits */
+.bens{display:grid;gap:14px;margin-top:28px}
+.ben{background:#fff;border-radius:20px;padding:22px 22px;box-shadow:0 8px 26px rgba(44,31,26,.07);display:flex;gap:16px}
+.ben .ic{flex:0 0 44px;height:44px;border-radius:50%;background:#F9E3DD;display:flex;align-items:center;justify-content:center;font-size:22px}
+.ben h3{font-size:19px;margin-bottom:4px}.ben p{font-size:14.5px;color:#5a4a43}
+/* montants */
+.dark{background:var(--v);color:#fff}
+.dark h2{color:#fff}.dark .eyebrow{color:var(--cl)}.dark .lead{color:#e3d8c8}
+.amts{display:grid;gap:12px;margin-top:26px}
+.amt{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:18px 20px;display:flex;align-items:center;gap:16px}
+.amt strong{font-family:'Playfair Display',serif;font-size:30px;color:var(--cl);flex:0 0 96px}
+.amt span{font-size:14.5px;color:#f1e7da}
+.dark .note{font-size:12.5px;text-align:center;color:#c9bcaa;margin-top:14px}
+/* steps */
+.steps{display:grid;gap:12px;margin-top:26px}
+.step{background:#fff;border-radius:18px;padding:18px 20px;display:flex;gap:16px;box-shadow:0 6px 20px rgba(44,31,26,.06)}
+.step .n{flex:0 0 36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.step p{font-size:15px}.step strong{color:var(--v)}
+/* ba */
+.ba{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 14px 36px rgba(44,31,26,.12);margin-top:24px}
+.ba img{display:block;width:100%;height:auto}
+.ba .cap{padding:16px 18px;text-align:center;font-size:14.5px}.ba small{display:block;color:#8a7c74;font-size:12px;margin-top:4px}
+.coach{display:flex;gap:16px;align-items:center;background:#fff;border-radius:20px;padding:20px;box-shadow:0 8px 24px rgba(44,31,26,.07)}
+.coach img{width:88px;height:88px;border-radius:50%;object-fit:cover;border:3px solid var(--c);flex:0 0 88px}
 .coach p{font-size:14.5px}
-details{background:#fff;border-radius:14px;padding:15px 18px;margin-bottom:10px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
-summary{font-weight:700;color:var(--vert);cursor:pointer;font-size:15px}
-details p{margin-top:8px;font-size:14.5px;color:#4a4a44}
-.final{background:var(--vert);color:#fff;text-align:center;padding:40px 22px 46px}
-.final h2{color:#fff;font-size:30px;margin-bottom:12px}.final h2 em{color:var(--clair)}
-.final p{color:#e7dcc9;margin-bottom:22px;font-size:15.5px}
-.legal{font-size:11.5px;color:#8a8478;text-align:center;padding:18px 22px 90px}
-.stick{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(245,239,230,.96);box-shadow:0 -6px 20px rgba(0,0,0,.1);z-index:9;display:none}
-.stick .btn{padding:15px;font-size:16px}
+details{background:#fff;border-radius:16px;padding:16px 20px;margin-bottom:10px;box-shadow:0 4px 14px rgba(44,31,26,.05)}
+summary{font-weight:700;color:var(--v);cursor:pointer;font-size:15px}details p{margin-top:9px;font-size:14.5px;color:#4f4039}
+.final{background:linear-gradient(160deg,#B04F44,#8E3B33);color:#fff;text-align:center;padding:52px 24px 58px}
+.final h2{color:#fff;font-size:34px;margin-bottom:12px}.final p{color:#fde9e4;margin-bottom:26px}
+.final .btn{background:#fff;color:var(--cd);box-shadow:0 12px 28px rgba(0,0,0,.25)}
+.legal{font-size:11.5px;color:#8a7c74;text-align:center;padding:18px 24px 96px}
+.stick{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(247,240,230,.96);box-shadow:0 -6px 20px rgba(0,0,0,.1);z-index:9;display:none;transform:translateY(110%);transition:transform .3s}
+.stick.on{transform:none}.stick .btn{padding:15px;font-size:16px}
 @media(max-width:700px){.stick{display:block}}
+@media(min-width:700px){.hero{min-height:720px}}
 </style>
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -68,37 +89,62 @@ fbq('init','1233548507794099');fbq('track','PageView');
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1233548507794099&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
-<div class="wrap">
 <section class="hero">
-<span class="eyebrow">Carte cadeau · Noël, anniversaire, mariage</span>
-<h1>Offre-lui <em>l'inoubliable.</em></h1>
-<p>Pas un objet de plus : du temps pour elle, une coach à ses côtés et une vraie remise en forme. Le cadeau dont on se souvient.</p>
+<video autoplay muted loop playsinline preload="metadata" poster="images/video/site_avis_clientes_poster.jpg" aria-hidden="true"><source src="images/video/site_avis_clientes.mp4" type="video/mp4"></video>
+<div class="brand">Ornella Fit Coaching</div>
+<div class="in">
+<h1>Offre-lui<br><em>l'inoubliable.</em></h1>
+<p>Pas un objet de plus. Du temps rien que pour elle, une coach à ses côtés, et un nouveau départ : le cadeau dont on se souvient.</p>
 <a class="btn" id="cta1" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau">Offrir la carte cadeau →</a>
-<div class="sub">Montant libre dès 49 € · Paiement sécurisé Stripe</div>
+<div class="sub">Montant libre dès 49 € · Carte personnalisée sous 24 h · Paiement sécurisé</div>
+</div>
 </section>
 
+<div class="wrap">
+<section class="sec">
+<span class="eyebrow">Un cadeau pas comme les autres</span>
+<h2>Celui qu'on n'oublie pas</h2>
+<p class="lead">Un bijou, un parfum, on les range. Un coaching, lui, change la façon dont elle se sent, se tient, se regarde. Voilà pourquoi ce cadeau reste.</p>
+<div class="giftcard"><small>Ornella Fit Coaching</small><b>Carte cadeau<br>coaching</b><i>Pour toi, avec tout mon amour 💛</i></div>
+<div class="bens">
+<div class="ben"><div class="ic">⏳</div><div><h3>Du temps rien que pour elle</h3><p>Dans une vie où elle pense à tout le monde, une coach qui pense enfin à elle.</p></div></div>
+<div class="ben"><div class="ic">🤝</div><div><h3>Une coach à ses côtés</h3><p>Je la guide, je la corrige, je l'encourage, même quand elle croit ne pas avoir le temps.</p></div></div>
+<div class="ben"><div class="ic">✨</div><div><h3>Énergie, confiance, plaisir</h3><p>Elle retrouve le plaisir de bouger et de se sentir bien dans son corps.</p></div></div>
+</div>
+</section>
+
+<section class="sec" style="padding-top:8px">
+<span class="eyebrow">Elle choisit</span>
+<h2>À domicile, en salle ou à distance</h2>
+<p class="lead">La carte s'utilise sur la formule qui lui correspond : coaching à domicile, en salle, à distance avec suivi, hybride, programmes à faire chez soi, suivi nutrition.</p>
+</section>
+</div>
+
+<section class="sec dark"><div class="wrap">
+<span class="eyebrow">Quel montant offrir ?</span>
+<h2>Tu choisis librement</h2>
+<p class="lead">À partir de 49 €. Pour t'aider à choisir :</p>
+<div class="amts">
+<div class="amt"><strong>79 €</strong><span>Un programme sur-mesure de 8 semaines, à son rythme</span></div>
+<div class="amt"><strong>89 €</strong><span>Un premier mois de coaching à distance avec suivi</span></div>
+<div class="amt"><strong>+</strong><span>Plus ton montant est élevé, plus elle profite : séances à domicile ou en salle, accompagnement long</span></div>
+</div>
+<p class="note">Tarifs indicatifs de mes offres. Tu peux offrir le montant que tu veux, dès 49 €.</p>
+<div style="margin-top:26px"><a class="btn" id="cta2" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau">Offrir la carte cadeau →</a></div>
+</div></section>
+
+<div class="wrap">
 <section class="sec">
 <span class="eyebrow">Comment ça marche</span>
 <h2>Prêt en 3 minutes</h2>
 <div class="steps">
-<div class="step"><b class="n">1</b><p><strong>Tu choisis le montant</strong> que tu veux offrir et tu paies en ligne, en toute sécurité.</p></div>
-<div class="step"><b class="n">2</b><p><strong>Tu m'indiques deux prénoms</strong> : le sien et le tien, qui seront écrits sur la carte.</p></div>
-<div class="step"><b class="n">3</b><p><strong>Je t'envoie la carte personnalisée sur WhatsApp sous 24 h</strong>, prête à être offerte (imprimée ou sur téléphone).</p></div>
+<div class="step"><div class="n">1</div><p><strong>Tu choisis le montant</strong> et tu paies en ligne, en toute sécurité.</p></div>
+<div class="step"><div class="n">2</div><p><strong>Tu m'indiques deux prénoms</strong> : le sien et le tien, écrits sur la carte.</p></div>
+<div class="step"><div class="n">3</div><p><strong>Je t'envoie la carte sur WhatsApp sous 24 h</strong>, prête à offrir : imprimée ou sur ton téléphone.</p></div>
 </div>
 </section>
 
-<section class="sec" style="padding-top:6px">
-<span class="eyebrow">Elle choisit</span>
-<h2>Toutes les formules</h2>
-<div class="formules">
-<div class="f">Coaching à domicile</div><div class="f">En salle</div>
-<div class="f">À distance, avec suivi</div><div class="f">Hybride</div>
-<div class="f">Programmes à faire chez soi</div><div class="f">Suivi nutrition</div>
-</div>
-<p class="note">La carte s'utilise sur l'offre qui lui correspond : on en parle ensemble lors de son bilan.</p>
-</section>
-
-<section class="sec" style="padding-top:6px">
+<section class="sec" style="padding-top:8px">
 <span class="eyebrow">Une vraie cliente</span>
 <h2>Elle ne l'a pas fait seule</h2>
 <div class="ba">
@@ -106,38 +152,47 @@ fbq('init','1233548507794099');fbq('track','PageView');
 <div class="cap"><b>Monya : −11 cm de tour de taille en 5 semaines</b> avec le coaching à domicile.<small>Photos publiées avec son accord. Les résultats varient selon chaque personne.</small></div>
 </div>
 </section>
+</div>
 
-<section class="sec" style="padding-top:6px">
+<div class="ofc-avis" data-ordre="maria,louise,emeline,chantal" data-kicker="Elles ont osé" data-titre="Elles ont transformé leur quotidien" data-accent="#C96358"></div>
+
+<div class="wrap">
+<section class="sec" style="padding-top:8px">
 <div class="coach">
-<img src="images/cadeau/ornella.jpg" alt="Ornella, coach sportive" width="84" height="84" loading="lazy">
-<p><strong>Ornella</strong>, éducatrice sportive diplômée d'État, en Essonne (91) et à distance. Je guide, je corrige et j'encourage chaque cliente, <strong>même quand elle croit ne pas avoir le temps</strong>.</p>
+<img src="images/cadeau/ornella.jpg" alt="Ornella, coach sportive" width="88" height="88" loading="lazy">
+<p><strong>Ornella</strong>, éducatrice sportive diplômée d'État, en Essonne (91) et à distance. Chaque carte offerte, je la prends comme un cadeau que je fais moi aussi : j'accompagne celle qui la reçoit avec le même soin.</p>
 </div>
 </section>
 
-<section class="sec" style="padding-top:6px">
+<section class="sec" style="padding-top:8px">
 <span class="eyebrow">Questions</span>
 <h2>Tu te demandes…</h2>
 <details><summary>Comment la reçoit-elle ?</summary><p>Je t'envoie la carte personnalisée sur WhatsApp sous 24 h. Tu peux l'imprimer ou la lui montrer sur ton téléphone le jour J.</p></details>
-<details><summary>Quel montant puis-je offrir ?</summary><p>Tu choisis librement, à partir de 49 €. Écris-moi sur WhatsApp si tu veux que je te conseille selon la formule qui lui irait le mieux.</p></details>
+<details><summary>Quel montant puis-je offrir ?</summary><p>Tu choisis librement, à partir de 49 €. Écris-moi sur WhatsApp si tu veux un conseil selon la formule qui lui irait le mieux.</p></details>
 <details><summary>Et si elle ne sait pas par où commencer ?</summary><p>Aucun souci : elle commence par un bilan avec moi, et on construit ensemble la formule qui lui convient (domicile, salle, distance ou hybride).</p></details>
-<details><summary>Une question avant de commander ?</summary><p>Écris-moi directement sur <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%2C%20j%27ai%20une%20question%20sur%20la%20carte%20cadeau%20%F0%9F%8E%81" target="_blank" rel="noopener">WhatsApp</a>, je te réponds vite.</p></details>
+<details><summary>Une question avant de commander ?</summary><p>Écris-moi sur <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%2C%20j%27ai%20une%20question%20sur%20la%20carte%20cadeau%20%F0%9F%8E%81" target="_blank" rel="noopener">WhatsApp</a>, je te réponds vite.</p></details>
 </section>
+</div>
 
 <section class="final">
-<h2>Offre-lui un cadeau qui <em>change la vie.</em></h2>
+<h2>Offre-lui un cadeau qui change la vie.</h2>
 <p>Celui dont on se souvient longtemps après Noël.</p>
-<a class="btn" id="cta2" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau">Offrir la carte cadeau →</a>
+<div class="wrap"><a class="btn" id="cta3" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau">Offrir la carte cadeau →</a></div>
 </section>
-<p class="legal">Ornella Fit Coaching · <a href="cgv.html">CGV</a></p>
-</div>
-<div class="stick"><a class="btn" id="cta3" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau">Offrir la carte cadeau →</a></div>
+<p class="legal">Ornella Fit Coaching · <a href="cgv.html" style="color:inherit">CGV</a></p>
+<div class="stick" id="stick"><a class="btn" id="cta4" href="https://buy.stripe.com/aFa3cv7fXaS7aIteup8Vi0G?client_reference_id=site-cadeau">Offrir la carte cadeau →</a></div>
+<script src="data/temoignages.js" defer></script>
+<script src="avis-carrousel.js" defer></script>
 <script>
 (function(){
   try{ if(typeof fbq!=='undefined') fbq('track','ViewContent',{content_name:'Carte cadeau coaching',content_category:'carte-cadeau'}); }catch(e){}
-  ['cta1','cta2','cta3'].forEach(function(id){
+  ['cta1','cta2','cta3','cta4'].forEach(function(id){
     var el=document.getElementById(id); if(!el) return;
     el.addEventListener('click',function(){ try{ if(typeof fbq!=='undefined') fbq('track','InitiateCheckout',{content_name:'Carte cadeau coaching',currency:'EUR'}); }catch(e){} });
   });
+  var st=document.getElementById('stick'), h=document.querySelector('.hero');
+  function chk(){ if(window.scrollY>h.offsetHeight-120) st.classList.add('on'); else st.classList.remove('on'); }
+  window.addEventListener('scroll',chk,{passive:true}); chk();
   try{
     var src=(new URLSearchParams(location.search).get('src')||'direct').slice(0,30);
     var data=JSON.stringify({page:'carte-cadeau',src:src});
