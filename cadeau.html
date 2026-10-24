@@ -393,6 +393,18 @@ fbq('init','1233548507794099');fbq('track','PageView');
    ============================================================ */
 const BREVO_FORM_URL = "https://e605324b.sibforms.com/serve/MUIFAIgM7GdN5D_DjX7asIJy46VgYZVkZVwKUPudN7jibnY4v-Uj3lJibwZ-58GKeOJqOlx9SqRJkTteukt9cdIvOlG_BHce2OJAeh-F5fY5UgtW4N09Tm3pBzv0g1HufFrC23y7SzCGTdwzILdzQmKA-m1fEX66TZzFWE881gwmHx2MOGxR5bA8GC4Zh-bYEcIFfI4skSFjsam58Q==";
 
+// Compteur de visites côté serveur (sans cookie, sans donnée perso) : sert à mesurer les scans des flyers colis.
+(function(){
+  try {
+    var src = (new URLSearchParams(location.search).get('src') || 'colis').slice(0,30);
+    var data = JSON.stringify({ page:'cadeau', src:src });
+    var url = 'https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/track-visit';
+    if (!(navigator.sendBeacon && navigator.sendBeacon(url, data))) {
+      fetch(url, { method:'POST', body:data, keepalive:true, headers:{'Content-Type':'text/plain'} }).catch(function(){});
+    }
+  } catch(e) {}
+})();
+
 (function(){
   const form   = document.getElementById('giftForm');
   const btn    = document.getElementById('submitBtn');
