@@ -95,7 +95,7 @@
     el.innerHTML =
       (tete ? '<div class="ofc-avis-head"><span class="ofc-avis-k">' + esc(kicker) + '</span>' +
         '<h2 class="ofc-avis-t">' + esc(titre) + '</h2>' +
-        '<div class="ofc-avis-g"><span class="st">★★★★★</span><span>' + (el.getAttribute('data-google-txt') ? esc(el.getAttribute('data-google-txt')) : '<b>5,0/5</b> · 25 avis Google') + '</span></div></div>' : '') +
+        '<div class="ofc-avis-g"><span class="st">★★★★★</span><span>' + (el.getAttribute('data-google-txt') ? esc(el.getAttribute('data-google-txt')) : '<b>5,0/5</b> · 26 avis Google') + '</span></div></div>' : '') +
       '<div class="ofc-avis-wrap">' +
         '<button type="button" class="ofc-avis-nav prev" aria-label="Avis précédent">‹</button>' +
         '<div class="ofc-avis-track" tabindex="0">' + list.map(card).join('') + '</div>' +
@@ -130,7 +130,7 @@
    * <div class="ofc-preuve" data-ordre="lise,louise,emeline,chantal"
    *      data-theme="dark"      (optionnel : sur fond foncé)
    *      data-google="non"      (optionnel : masque la note si elle est déjà affichée)
- *      data-google-txt="…"    (optionnel : remplace « 5,0 · 25 avis Google », ex. sur une page programme digital)
+ *      data-google-txt="…"    (optionnel : remplace « 5,0 · 26 avis Google », ex. sur une page programme digital)
    *      data-texte="…"></div>  (optionnel : texte de la 2e ligne)
    * Un clic descend jusqu'au carrousel de la page (ou ouvre transformations.html). */
   var cssPreuve = '' +
@@ -154,7 +154,7 @@
     if (el.getAttribute('data-theme') === 'dark') el.classList.add('dark');
     var google = el.getAttribute('data-google') !== 'non';
     var texte = el.getAttribute('data-texte') || ('<b>Voir leurs avant/après</b> →');
-    var l1 = google ? '<span class="st">★★★★★</span>' + (el.getAttribute('data-google-txt') ? esc(el.getAttribute('data-google-txt')) : '5,0 · 25 avis Google') : '<span class="st">★★★★★</span>Résultats réels';
+    var l1 = google ? '<span class="st">★★★★★</span>' + (el.getAttribute('data-google-txt') ? esc(el.getAttribute('data-google-txt')) : '5,0 · 26 avis Google') : '<span class="st">★★★★★</span>Résultats réels';
     var cible = document.querySelector('.ofc-avis');
     el.innerHTML = '<a href="' + (cible ? '#' : '/transformations.html') + '">' +
       '<span class="fa">' + list.map(function (t) { return '<img src="' + esc(root(t.photo)) + '" alt="" loading="lazy" width="38" height="38">'; }).join('') + '</span>' +
