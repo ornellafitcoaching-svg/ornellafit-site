@@ -2367,5 +2367,52 @@ document.querySelectorAll('a.btn-offre, a.ohi-btn').forEach(function(btn) {
 <script src="data/temoignages.js" defer></script>
 <script src="avis-carrousel.js" defer></script>
 <script src="js/videos.js" defer></script>
+
+<style id="v2-couleurs">
+/* ===== CODE COULEUR — une couleur = un rôle =====
+   Domicile = corail · Hybride = vert · Distance = bleu · fonds qui alternent clairement */
+:root{
+  --c-dom:#B8483A;--t-dom:#FCE7E1;--m-dom:#F2B8AB;
+  --c-hyb:#1F6B4A;--t-hyb:#DDEFE4;--m-hyb:#A9D3BB;
+  --c-dist:#2F6A8C;--t-dist:#E0EEF7;--m-dist:#A9CCE2;
+  --bg-sand:#F4E8DA;--bg-sage:#E6F1EA;--bg-white:#FFFFFF;--bg-coral:#FCE3DB;
+}
+/* fonds de sections : on voit où on change de bloc */
+#rf-transfos{background:var(--bg-sand)!important;}
+#formules{background:var(--bg-white)!important;}
+.rf-inclus{background:var(--bg-sage)!important;}
+#tarifs{background:var(--bg-sand)!important;}
+#comment-ca-marche{background:var(--bg-white)!important;}
+#avis-photos{background:var(--bg-sage)!important;}
+.rf-proof{background:var(--bg-white)!important;}
+#avis-clients{background:var(--bg-sand)!important;}
+#tester{background:var(--bg-white)!important;}
+#faq-offres{background:var(--bg-sage)!important;}
+#cta-final{background:var(--bg-coral)!important;}
+/* cartes des 3 formules : chacune sa couleur */
+.rf-fcard.fc-dom{--fc:var(--c-dom);background:var(--t-dom);border:2px solid var(--m-dom);}
+.rf-fcard.fc-hyb{--fc:var(--c-hyb);background:var(--t-hyb);border:2.5px solid var(--c-hyb);}
+.rf-fcard.fc-dist{--fc:var(--c-dist);background:var(--t-dist);border:2px solid var(--m-dist);}
+.rf-fcard .rf-fcard-price{color:var(--fc);}
+.rf-fcard .rf-fcard-pricebox{border-top-color:rgba(35,26,22,.14);}
+.rf-fcard .rf-btn{background:var(--fc);border-color:var(--fc);color:#fff;box-shadow:none;}
+.rf-fcard.fc-hyb .rf-btn{box-shadow:0 10px 22px -10px rgba(31,107,74,.6);}
+.rf-fcard-badge{background:var(--c-hyb)!important;color:#fff!important;}
+.rf-fcard-chip{background:rgba(255,255,255,.7);color:var(--fc);}
+/* accordéons : bandeau de la couleur de la formule */
+#tarif-domicile{border:2px solid var(--m-dom);}
+#tarif-hybride{border:2.5px solid var(--c-hyb);}
+#tarif-distanciel{border:2px solid var(--m-dist);}
+#tarif-domicile .rf-acc-head{background:var(--t-dom);}
+#tarif-hybride .rf-acc-head{background:var(--t-hyb);}
+#tarif-distanciel .rf-acc-head{background:var(--t-dist);}
+#tarif-domicile .rf-acc-name,#tarif-domicile .rf-acc-price{color:var(--c-dom);}
+#tarif-hybride .rf-acc-name,#tarif-hybride .rf-acc-price{color:var(--c-hyb);}
+#tarif-distanciel .rf-acc-name,#tarif-distanciel .rf-acc-price{color:var(--c-dist);}
+/* numéros 1-2-3-4 à l'intérieur : la couleur de leur formule (plus de mélange) */
+#tarif-domicile .rt-num{background:var(--c-dom)!important;}
+#tarif-hybride .rt-num{background:var(--c-hyb)!important;}
+#tarif-distanciel .rt-num{background:var(--c-dist)!important;}
+</style>
 </body>
 </html>
