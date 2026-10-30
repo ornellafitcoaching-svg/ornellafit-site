@@ -315,6 +315,24 @@ tr.row-f td:nth-child(3){background:#fff}
 .cta .btn.alt{background:#fff;color:var(--ink);box-shadow:none}
 section{padding-top:52px}
 .nav a{border:1px solid var(--ink);box-shadow:var(--shadow-s)}
+
+/* Fiches repliables */
+summary.err-top{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px}
+summary.err-top::-webkit-details-marker{display:none}
+summary.err-top::after{content:"+";margin-left:auto;font-size:1.7rem;font-weight:700;line-height:1;opacity:.95}
+details[open]>summary.err-top::after{content:"\2212"}
+.err-top .tt{display:block;flex:1;min-width:0}
+.err-top .tt h3{font-size:clamp(1.05rem,4.2vw,1.3rem)}
+/* Mise en avant + barre collante */
+.proof-line{font-size:.85rem;font-weight:700;color:#FFD9A0;letter-spacing:.02em}
+body{padding-block:0 100px}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:25;display:flex;justify-content:center;text-decoration:none;
+  padding:10px max(18px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));
+  background:linear-gradient(180deg,rgba(243,236,223,0),var(--bg) 45%);transform:translateY(130%);transition:transform .25s ease;pointer-events:none}
+.sticky-cta.on{transform:none}
+.sticky-cta span{pointer-events:auto;display:flex;flex-direction:column;align-items:center;width:100%;max-width:520px;background:var(--cta);color:#fff;font-weight:700;font-size:1rem;padding:12px 16px;border-radius:14px;box-shadow:0 8px 22px rgba(201,74,51,.45);text-align:center}
+.sticky-cta small{font-weight:500;font-size:.74rem;opacity:.95}
+@media (prefers-reduced-motion:reduce){.sticky-cta{transition:none}}
 </style>
 </head>
 <body>
@@ -326,6 +344,7 @@ section{padding-top:52px}
   <h1>Tu t'entraînes, tu fais attention… et ton corps ne change pas&nbsp;?</h1>
   <p class="lead">Neuf erreurs reviennent très souvent chez les femmes de plus de 30 ans qui stagnent. Tu vas repérer lesquelles te concernent, calculer ton métabolisme de base et partir avec un plan de 7 jours. Environ 10 minutes.</p>
   <div class="who"><img src="/images/cadeau/ornella-avatar.jpg" width="46" height="46" alt="Ornella"><span><b>Ornella</b>, éducatrice sportive diplômée d'État<br>Ancienne compétitrice, demi-finaliste du Championnat de France de Bikini Fitness</span></div>
+  <p class="proof-line">★★★★★ 5,0 sur Google · 26 avis · Bilan gratuit de 15 min</p>
   <div>
     <div class="legend" aria-label="Légende des couleurs">
       <span class="pill f-nutri">Nutrition</span>
@@ -357,8 +376,8 @@ section{padding-top:52px}
   <a href="#apercu">Les 9 erreurs</a>
   <a href="#calcul">Mon métabolisme</a>
   <a href="#exercices">Exercices</a>
-  <a href="#histoire">Mon histoire</a>
   <a href="#plan">Plan 7 jours</a>
+  <a href="#histoire">Mon histoire</a>
   <a href="#parler">Me parler</a>
 </div></nav>
 
@@ -394,7 +413,7 @@ section{padding-top:52px}
   <div class="sec-head">
     <div class="eyebrow">Étape 2 · Les 9 erreurs</div>
     <h2>En un coup d'œil</h2>
-    <p>Le résumé. Les fiches détaillées suivent juste après.</p>
+    <p>Le résumé. Touche une fiche ensuite pour ouvrir le détail.</p>
   </div>
   <div class="tbl-wrap"><table>
     <thead><tr><th class="num">N°</th><th>L'erreur</th><th>À faire à la place</th></tr></thead>
@@ -417,8 +436,8 @@ section{padding-top:52px}
     <p>Ce que tu mets dans l'assiette.</p>
   </div>
 
-  <article class="err f-nutri" id="e1">
-    <div class="err-top"><span class="badge">1</span><div><span class="fam-tag">Nutrition</span><h3>Croire que « manger sain » suffit</h3></div></div>
+  <details class="err f-nutri" id="e1">
+    <summary class="err-top"><span class="badge">1</span><span class="tt"><span class="fam-tag">Nutrition</span><h3>Croire que « manger sain » suffit</h3></span></summary>
     <div class="kv"><table><tbody>
       <tr><th>Tu crois</th><td>« Je mange healthy, donc je devrais forcément mincir. »</td></tr>
       <tr><th>En réalité</th><td>La qualité compte, mais les quantités aussi. Huile d'olive, oléagineux, avocat et granola restent des aliments denses en énergie. Sans repère sur tes portions, impossible de savoir si tu es en excès ou non.</td></tr>
@@ -426,10 +445,10 @@ section{padding-top:52px}
       <tr class="todo"><th>À faire</th><td>Pendant 3 jours seulement, observe tes portions des aliments « discrets mais riches » (huiles, sauces, oléagineux, granola). Sans rien interdire : juste regarder.</td></tr>
     </tbody></table></div>
     <div class="retenir"><b>À retenir</b>Manger sain, oui. Mais la quantité fait partie de l'équation.</div>
-  </article>
+  </details>
 
-  <article class="err f-nutri" id="e2">
-    <div class="err-top"><span class="badge">2</span><div><span class="fam-tag">Nutrition</span><h3>Trop réduire : penser que « moins = mieux »</h3></div></div>
+  <details class="err f-nutri" id="e2">
+    <summary class="err-top"><span class="badge">2</span><span class="tt"><span class="fam-tag">Nutrition</span><h3>Trop réduire : penser que « moins = mieux »</h3></span></summary>
     <div class="kv"><table><tbody>
       <tr><th>Tu crois</th><td>« Si je mange très peu, je vais forcément maigrir plus vite. »</td></tr>
       <tr><th>En réalité</th><td>Un déficit modéré aide à perdre du gras. Un déficit trop agressif et prolongé se paie : fatigue, fringales, perte de muscle (celui qui te fait dépenser de l'énergie et dessine ta silhouette).</td></tr>
@@ -437,10 +456,10 @@ section{padding-top:52px}
       <tr class="todo"><th>À faire</th><td>Vise une réduction douce et tenable plutôt qu'une restriction extrême. Garde assez de protéines et ne saute pas de repas pour « compenser ». Le calculateur plus bas te donne un repère.</td></tr>
     </tbody></table></div>
     <div class="retenir"><b>À retenir</b>Ce qui marche, c'est le déficit que tu peux tenir, pas le plus violent.</div>
-  </article>
+  </details>
 
-  <article class="err f-nutri" id="e3">
-    <div class="err-top"><span class="badge">3</span><div><span class="fam-tag">Nutrition</span><h3>Ne pas manger assez de protéines</h3></div></div>
+  <details class="err f-nutri" id="e3">
+    <summary class="err-top"><span class="badge">3</span><span class="tt"><span class="fam-tag">Nutrition</span><h3>Ne pas manger assez de protéines</h3></span></summary>
     <div class="kv"><table><tbody>
       <tr><th>Tu crois</th><td>« Les protéines, c'est pour les hommes qui veulent du muscle. »</td></tr>
       <tr><th>En réalité</th><td>Les protéines servent à construire et préserver le muscle, et elles rassasient bien. Sans elles, tu as plus faim, tu grignotes, et ton corps garde moins bien son muscle.</td></tr>
@@ -448,7 +467,7 @@ section{padding-top:52px}
       <tr class="todo"><th>À faire</th><td>Place une source de protéines à chaque repas, dès le matin. Repère courant : autour de 1,6 g par kilo de poids de corps et par jour.</td></tr>
     </tbody></table></div>
     <div class="retenir"><b>À retenir</b>Les protéines sont le pilier n°1 que la plupart des femmes sous-estiment.</div>
-  </article>
+  </details>
 
   <div class="fam-head f-train" id="entrainement">
     <div class="eyebrow">Famille 2 · Erreurs 4 à 6</div>
@@ -456,8 +475,8 @@ section{padding-top:52px}
     <p>Comment tu t'entraînes, concrètement.</p>
   </div>
 
-  <article class="err f-train" id="e4">
-    <div class="err-top"><span class="badge">4</span><div><span class="fam-tag">Entraînement</span><h3>Miser presque tout sur le cardio</h3></div></div>
+  <details class="err f-train" id="e4">
+    <summary class="err-top"><span class="badge">4</span><span class="tt"><span class="fam-tag">Entraînement</span><h3>Miser presque tout sur le cardio</h3></span></summary>
     <div class="kv"><table><tbody>
       <tr><th>Tu crois</th><td>« Pour maigrir et me raffermir, il faut surtout transpirer en cardio. »</td></tr>
       <tr><th>En réalité</th><td>Le cardio est excellent pour le cœur, l'endurance et la dépense d'énergie. Le problème, c'est d'en faire presque uniquement : sans renforcement, la silhouette se raffermit peu.</td></tr>
@@ -465,10 +484,10 @@ section{padding-top:52px}
       <tr class="todo"><th>À faire</th><td>Garde le cardio que tu aimes et ajoute 2 séances de renforcement par semaine.</td></tr>
     </tbody></table></div>
     <div class="retenir"><b>À retenir</b>Le cardio n'est pas mauvais : c'est le déséquilibre qui freine.</div>
-  </article>
+  </details>
 
-  <article class="err f-train" id="e5">
-    <div class="err-top"><span class="badge">5</span><div><span class="fam-tag">Entraînement</span><h3>T'entraîner sans aucune progression</h3></div></div>
+  <details class="err f-train" id="e5">
+    <summary class="err-top"><span class="badge">5</span><span class="tt"><span class="fam-tag">Entraînement</span><h3>T'entraîner sans aucune progression</h3></span></summary>
     <div class="kv"><table><tbody>
       <tr><th>Tu crois</th><td>« Tant que je bouge et que je transpire, ça travaille. »</td></tr>
       <tr><th>En réalité</th><td>Ton corps s'adapte. En quelques semaines, un effort difficile devient normal. Sans augmenter progressivement, il n'a plus de raison de changer.</td></tr>
@@ -476,10 +495,10 @@ section{padding-top:52px}
       <tr class="todo"><th>À faire</th><td>Note tes séances et cherche à progresser un peu : +1 répétition, +1 kg, ou un mouvement plus exigeant.</td></tr>
     </tbody></table></div>
     <div class="retenir"><b>À retenir</b>Sans progression, pas d'adaptation, donc pas de transformation.</div>
-  </article>
+  </details>
 
-  <article class="err f-train" id="e6">
-    <div class="err-top"><span class="badge">6</span><div><span class="fam-tag">Entraînement</span><h3>Négliger la technique d'exécution</h3></div></div>
+  <details class="err f-train" id="e6">
+    <summary class="err-top"><span class="badge">6</span><span class="tt"><span class="fam-tag">Entraînement</span><h3>Négliger la technique d'exécution</h3></span></summary>
     <div class="kv"><table><tbody>
       <tr><th>Tu crois</th><td>« L'important, c'est de faire le mouvement, peu importe comment. »</td></tr>
       <tr><th>En réalité</th><td>Un même exercice peut cibler le bon muscle… ou pas du tout, selon l'exécution. On peut s'entraîner sérieusement pendant des mois et voir peu de résultats sur la zone visée.</td></tr>
@@ -487,7 +506,7 @@ section{padding-top:52px}
       <tr class="todo"><th>À faire</th><td>Filme-toi de profil, compare à une démonstration fiable, et maîtrise le mouvement avant d'alourdir.</td></tr>
     </tbody></table></div>
     <div class="retenir"><b>À retenir</b>Ce n'est pas seulement ce que tu fais, c'est comment tu le fais.</div>
-  </article>
+  </details>
 
   <div class="fam-head f-rec" id="recup">
     <div class="eyebrow">Famille 3 · Erreur 7</div>
@@ -495,8 +514,8 @@ section{padding-top:52px}
     <p>Ce qui se joue quand tu te reposes.</p>
   </div>
 
-  <article class="err f-rec" id="e7">
-    <div class="err-top"><span class="badge">7</span><div><span class="fam-tag">Récupération</span><h3>Sous-estimer le sommeil et la récupération</h3></div></div>
+  <details class="err f-rec" id="e7">
+    <summary class="err-top"><span class="badge">7</span><span class="tt"><span class="fam-tag">Récupération</span><h3>Sous-estimer le sommeil et la récupération</h3></span></summary>
     <div class="kv"><table><tbody>
       <tr><th>Tu crois</th><td>« Les résultats se font uniquement à l'entraînement et dans l'assiette. »</td></tr>
       <tr><th>En réalité</th><td>Le muscle se répare et se construit surtout pendant le repos et le sommeil. Un sommeil régulièrement insuffisant tend à augmenter la faim et à faire baisser l'énergie.</td></tr>
@@ -504,7 +523,7 @@ section{padding-top:52px}
       <tr class="todo"><th>À faire</th><td>Vise une heure de coucher plus régulière (idéalement 7 à 9 h) et ajoute de vrais temps de décompression.</td></tr>
     </tbody></table></div>
     <div class="retenir"><b>À retenir</b>La récupération n'est pas une pause : une partie de tes résultats s'y joue.</div>
-  </article>
+  </details>
 
   <div class="fam-head f-sante" id="sante">
     <div class="eyebrow">Famille 4 · Erreur 8</div>
@@ -512,8 +531,8 @@ section{padding-top:52px}
     <p>Ce que ton corps essaie de te dire.</p>
   </div>
 
-  <article class="err f-sante" id="e8">
-    <div class="err-top"><span class="badge">8</span><div><span class="fam-tag">Santé &amp; énergie</span><h3>Ignorer les signaux de fatigue</h3></div></div>
+  <details class="err f-sante" id="e8">
+    <summary class="err-top"><span class="badge">8</span><span class="tt"><span class="fam-tag">Santé &amp; énergie</span><h3>Ignorer les signaux de fatigue</h3></span></summary>
     <div class="kv"><table><tbody>
       <tr><th>Tu crois</th><td>« Je suis toujours fatiguée, c'est normal avec mon rythme. »</td></tr>
       <tr><th>En réalité</th><td>Une fatigue qui dure, des cheveux qui tombent ou une humeur en berne peuvent parfois signaler une carence. Seul un professionnel de santé peut le confirmer.</td></tr>
@@ -521,7 +540,7 @@ section{padding-top:52px}
       <tr class="todo"><th>À faire</th><td>Si la fatigue s'installe, parles-en à ton médecin et demande-lui s'il y a lieu de faire un bilan sanguin (fer, vitamine D, B12…).</td></tr>
     </tbody></table></div>
     <div class="retenir"><b>À retenir</b>Une fatigue qui dure mérite une vérification, pas de la culpabilité.</div>
-  </article>
+  </details>
 
   <div class="fam-head f-corps" id="corps">
     <div class="eyebrow">Famille 5 · Erreur 9</div>
@@ -529,8 +548,8 @@ section{padding-top:52px}
     <p>Après 30 ans, on ajuste. On n'abandonne pas.</p>
   </div>
 
-  <article class="err f-corps" id="e9">
-    <div class="err-top"><span class="badge">9</span><div><span class="fam-tag">Corps qui évolue</span><h3>Ne pas adapter ton entraînement à un corps qui change</h3></div></div>
+  <details class="err f-corps" id="e9">
+    <summary class="err-top"><span class="badge">9</span><span class="tt"><span class="fam-tag">Corps qui évolue</span><h3>Ne pas adapter ton entraînement à un corps qui change</h3></span></summary>
     <div class="kv"><table><tbody>
       <tr><th>Tu crois</th><td>« Après 30 ans, c'est fini, mon corps ne répond plus. »</td></tr>
       <tr><th>En réalité</th><td>Avec l'âge, on tend à perdre du muscle si on ne l'entretient pas, et les variations hormonales peuvent modifier l'appétit, le sommeil et la récupération. Cela change la méthode, pas la possibilité de progresser.</td></tr>
@@ -538,7 +557,7 @@ section{padding-top:52px}
       <tr class="todo"><th>À faire</th><td>Mets le renforcement au centre, monte un peu tes protéines, et sois patiente : le rythme change, la progression reste possible.</td></tr>
     </tbody></table></div>
     <div class="retenir"><b>À retenir</b>À 30, 40 ou 50 ans, ton corps répond toujours, à condition de lui parler le bon langage.</div>
-  </article>
+  </details>
 
   <div class="cross">
     <h3>Tu en as sans doute plusieurs à la fois</h3>
@@ -643,33 +662,10 @@ section{padding-top:52px}
   </div>
 </section>
 
-<!-- MON HISTOIRE -->
-<section id="histoire">
-  <div class="sec-head">
-    <div class="eyebrow">Étape 5 · Mon histoire</div>
-    <h2>Comment j'y suis arrivée</h2>
-    <p>Je suis coach, et après ma grossesse, je ne me reconnaissais plus. Voilà ce que j'ai fait, avec le temps que j'avais vraiment.</p>
-  </div>
-  <div class="story">
-    <figure><img src="/images/guide/guide-9-ornella-histoire.jpg" width="900" height="900" alt="Ornella à la maternité, puis en salle de sport après sa reprise" loading="lazy"><figcaption>Moi : de la grossesse à la reprise. Un vrai parcours, pas un miracle.</figcaption></figure>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Ce que j'ai fait</th><th>Comment</th></tr></thead>
-      <tbody>
-        <tr class="f-nutri"><td><span class="pill f-nutri">Alimentation</span></td><td>Ajustée à mon corps et à ma vie, avec un léger déficit en post-partum. Pas de régime extrême.</td></tr>
-        <tr class="f-train"><td><span class="pill f-train">Musculation</span></td><td><b>5 fois par semaine.</b> Toujours avec une progression.</td></tr>
-        <tr class="f-rec"><td><span class="pill f-rec">Sans excuse</span></td><td>Pas le temps d'aller à la salle ? Séance à la maison, ou à ma pause du midi au travail.</td></tr>
-        <tr class="f-corps"><td><span class="pill f-corps">Ce qui ne m'a pas aidée</span></td><td>Les cours collectifs, la salle sans plan, les vidéos YouTube prises au hasard : rien n'était adapté à moi.</td></tr>
-      </tbody>
-    </table></div>
-    <p class="say">Ce n'est pas la salle qui change un corps. C'est <em>un plan adapté à ta vie</em>, ton niveau et ton emploi du temps.</p>
-    <p>Même si tu penses ne pas avoir le temps, il existe toujours une version qui rentre dans ta semaine. C'est exactement ce que je construis avec mes clientes.</p>
-  </div>
-</section>
-
 <!-- PLAN 7 JOURS -->
 <section id="plan">
   <div class="sec-head">
-    <div class="eyebrow">Étape 6 · Ton plan</div>
+    <div class="eyebrow">Étape 5 · Ton plan</div>
     <h2>Tes 7 premiers jours</h2>
     <p>Dix minutes par jour. Une seule chose à faire à la fois.</p>
   </div>
@@ -700,6 +696,29 @@ section{padding-top:52px}
       <tr><td><span class="meh">Poids sur la balance</span>, seul</td><td>Un chiffre parmi d'autres, qui varie d'un jour à l'autre.</td></tr>
     </tbody>
   </table></div>
+</section>
+
+<!-- MON HISTOIRE -->
+<section id="histoire">
+  <div class="sec-head">
+    <div class="eyebrow">Mon histoire</div>
+    <h2>Comment j'y suis arrivée</h2>
+    <p>Je suis coach, et après ma grossesse, je ne me reconnaissais plus. Voilà ce que j'ai fait, avec le temps que j'avais vraiment.</p>
+  </div>
+  <div class="story">
+    <figure><img src="/images/guide/guide-9-ornella-histoire.jpg" width="900" height="900" alt="Ornella à la maternité, puis en salle de sport après sa reprise" loading="lazy"><figcaption>Moi : de la grossesse à la reprise. Un vrai parcours, pas un miracle.</figcaption></figure>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Ce que j'ai fait</th><th>Comment</th></tr></thead>
+      <tbody>
+        <tr class="f-nutri"><td><span class="pill f-nutri">Alimentation</span></td><td>Ajustée à mon corps et à ma vie, avec un léger déficit en post-partum. Pas de régime extrême.</td></tr>
+        <tr class="f-train"><td><span class="pill f-train">Musculation</span></td><td><b>5 fois par semaine.</b> Toujours avec une progression.</td></tr>
+        <tr class="f-rec"><td><span class="pill f-rec">Sans excuse</span></td><td>Pas le temps d'aller à la salle ? Séance à la maison, ou à ma pause du midi au travail.</td></tr>
+        <tr class="f-corps"><td><span class="pill f-corps">Ce qui ne m'a pas aidée</span></td><td>Les cours collectifs, la salle sans plan, les vidéos YouTube prises au hasard : rien n'était adapté à moi.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="say">Ce n'est pas la salle qui change un corps. C'est <em>un plan adapté à ta vie</em>, ton niveau et ton emploi du temps.</p>
+    <p>Même si tu penses ne pas avoir le temps, il existe toujours une version qui rentre dans ta semaine. C'est exactement ce que je construis avec mes clientes.</p>
+  </div>
 </section>
 
 <!-- RESULTATS -->
@@ -741,7 +760,7 @@ section{padding-top:52px}
         <tr><th>Programme sur mesure, avec suivi</th><td>Le même plan, plus un point toutes les 4 semaines avec tes mensurations, des ajustements, et moi derrière toi pour te motiver. À distance ou en hybride.</td></tr>
       </tbody>
     </table></div>
-    <p><b>Premier échange gratuit, sans engagement.</b> Choisis ce qui te convient :</p>
+    <p><b>Premier échange gratuit, sans engagement.</b> C'est moi qui te réponds personnellement. Choisis ce qui te convient :</p>
     <div class="btns">
       <a class="btn" data-cta="appel_15min" href="https://wa.me/33756834626?text=Bonjour%20Ornella%20%21%20J%27ai%20lu%20ton%20guide%2C%20je%20veux%20mon%20bilan%20gratuit%20par%20appel%20de%2015%20min%20%F0%9F%98%8A">Un appel de 15 min<span>sur WhatsApp</span></a>
       <a class="btn alt" data-cta="bilan_messages" href="https://wa.me/33756834626?text=Bonjour%20Ornella%20%21%20J%27ai%20lu%20ton%20guide%2C%20je%20veux%20faire%20mon%20bilan%20gratuit%20par%20messages%20%F0%9F%98%8A">Le bilan par messages<span>sur WhatsApp</span></a>
@@ -754,6 +773,8 @@ section{padding-top:52px}
   <div><b>Ornella Fit Coaching</b> · Éducatrice sportive diplômée d'État (carte professionnelle n° 09126ED0021) · Essonne (91) et à distance.</div>
   <div>Ce guide est informatif et ne remplace pas l'avis d'un professionnel de santé. En cas de doute (grossesse, post-partum récent, pathologie), demande l'accord de ton médecin avant de changer ton alimentation ou ton entraînement.</div>
 </footer>
+
+<a class="sticky-cta" id="sticky-cta" data-cta="sticky_bilan" href="https://wa.me/33756834626?text=Bonjour%20Ornella%20%21%20J%27ai%20lu%20ton%20guide%2C%20je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A"><span>Mon bilan gratuit · 15 min<small>Réponse directe d'Ornella sur WhatsApp</small></span></a>
 
 </div>
 </div>
@@ -837,6 +858,20 @@ section{padding-top:52px}
     function done(){cp.textContent='Lien copié ✓';setTimeout(function(){cp.textContent='Copier le lien';},2200);}
     try{navigator.clipboard.writeText(url).then(done,function(){cp.textContent=url;});}catch(e){cp.textContent=url;}
   });}
+
+  /* Ouvrir la fiche ciblée par un lien interne */
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#e"]'); if(!a) return;
+    var d=document.querySelector(a.getAttribute('href'));
+    if(d&&d.tagName==='DETAILS') d.open=true;
+  });
+  /* Barre collante : visible après le diagnostic, cachée devant le bloc final */
+  var st=document.getElementById('sticky-cta'),fin=document.getElementById('parler'),finVis=false;
+  function stUpd(){ if(!st) return; st.classList.toggle('on',window.scrollY>900&&!finVis); }
+  if(st&&'IntersectionObserver' in window&&fin){
+    new IntersectionObserver(function(en){finVis=en[0].isIntersecting;stUpd();}).observe(fin);
+  }
+  window.addEventListener('scroll',stUpd,{passive:true}); stUpd();
 })();
 </script>
 
