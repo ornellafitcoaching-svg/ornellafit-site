@@ -32,13 +32,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <style>
 /* Guide « Les 9 erreurs » · une colonne mobile · 5 familles = 5 couleurs sourdes, sur ivoire */
 :root{
-  --bg:#F7F2E9; --paper:#FFFEFB; --ink:#1B3A2D; --text:#2B302D; --muted:#5E655F; --line:#E4DBCB;
+  --bg:#F3ECDF; --paper:#FFFFFF; --ink:#1B3A2D; --text:#1F2623; --muted:#5E655F; --line:#DDD2BF;
   --cta:#C94A33; --cta-dark:#A93B27;
-  --nutri:#B4552F; --nutri-t:#F5E6DD; --nutri-i:#7A3519;
-  --train:#2D5C8A; --train-t:#E3ECF4; --train-i:#1D3F61;
-  --rec:#3C7557;   --rec-t:#E2EEE7;   --rec-i:#25513A;
-  --sante:#9A7420; --sante-t:#F3EAD2; --sante-i:#66490F;
-  --corps:#9C4668; --corps-t:#F2E3E9; --corps-i:#6A2641;
+  --nutri:#D9532B; --nutri-t:#FCDFD2; --nutri-i:#7C2A0E;
+  --train:#2468B0; --train-t:#D6E7F9; --train-i:#123F72;
+  --rec:#2A8C60;   --rec-t:#D2F0E0;   --rec-i:#145232;
+  --sante:#B07A00; --sante-t:#FBEBB5; --sante-i:#5E4000;
+  --corps:#B93A78; --corps-t:#F9D9E8; --corps-i:#74123F;
   --serif:'Playfair Display',Georgia,'Times New Roman',serif;
   --sans:'Montserrat',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   color-scheme:light;
@@ -232,6 +232,89 @@ footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-si
   .paths th,.paths td{display:block;width:auto}
   .paths th{padding-bottom:2px;border-bottom:0}
 }
+
+/* ===== Contraste & profondeur ===== */
+:root{--shadow:0 10px 28px rgba(27,58,45,.14);--shadow-s:0 4px 14px rgba(27,58,45,.10)}
+/* Hero : bandeau vert profond */
+.hero{background:var(--ink);color:#fff;border-radius:22px;padding:28px 20px 24px;margin-top:16px;box-shadow:var(--shadow)}
+.hero h1{color:#fff}
+.hero h1 em{color:#FFB39E}
+.hero .eyebrow{color:#FFB39E}
+.hero .lead{color:rgba(255,255,255,.88)}
+.who{color:rgba(255,255,255,.8)}
+.who b{color:#fff}
+.who img{border:2px solid #fff}
+.legend-note{color:rgba(255,255,255,.7)}
+.pill{background:var(--c);color:#fff;font-weight:700}
+.pill::before{background:#fff}
+.f-sante .pill,.pill.f-sante{background:var(--sante)}
+/* Cartes et tableaux : relief */
+.tbl-wrap{border:1px solid var(--line);box-shadow:var(--shadow-s)}
+.err,.cross,.calc,.result,.proof,.cta{border:1px solid var(--line);box-shadow:var(--shadow)}
+.explain div{background:var(--t);border:0;border-left:6px solid var(--c);box-shadow:var(--shadow-s)}
+.explain b{color:var(--i)}
+.explain span{color:var(--text)}
+/* Titres de familles : bandeaux pleins */
+.fam-head{background:var(--c);color:#fff;box-shadow:var(--shadow);padding:20px 20px}
+.fam-head .eyebrow,.fam-head h2,.fam-head p{color:#fff}
+.fam-head .eyebrow{opacity:.85}
+.fam-head h2{font-size:clamp(1.8rem,7vw,2.4rem)}
+/* Fiches : en-tête coloré pleine largeur */
+.err{padding:0;overflow:hidden}
+.err-top{margin:0;padding:16px 18px;background:var(--c);color:#fff}
+.err-top h3{color:#fff}
+.err-top .fam-tag{color:rgba(255,255,255,.88)}
+.err-top .badge{background:#fff;color:var(--c);box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.err .kv{margin:18px 18px 0}
+.err .retenir{margin:14px 18px 18px;background:var(--t);border-left:5px solid var(--c)}
+.kv{border:1px solid var(--line)}
+.kv th{background:var(--t);color:var(--i)}
+/* Récap des 9 erreurs : colonne numéro pleine couleur */
+tr.row-f td.num{background:var(--c)}
+tr.row-f .badge{background:#fff;color:var(--c)}
+tr.row-f td:nth-child(2){background:var(--t)}
+tr.row-f td:nth-child(3){background:#fff}
+/* Diagnostic */
+.diag td:first-child{border-left:7px solid var(--c)}
+.diag tr.on td{background:var(--t)}
+.result-top{background:var(--c);color:#fff}
+.result-top .eyebrow,.result-top h3{color:#fff}
+.result.empty .result-top{background:#E6DECE;color:var(--muted)}
+.result-body .first{background:var(--t)}
+/* Plan 7 jours : jour en couleur pleine */
+.plan td:first-child{background:var(--c);color:#fff}
+.plan td:nth-child(2){background:var(--t)}
+.plan .tag{background:var(--c);color:#fff}
+/* Exercices */
+.ex thead th{background:var(--c)}
+.ex .rep{background:var(--c);color:#fff}
+.ex .where i{color:var(--c)}
+/* Idées reçues */
+.tag-f{background:#C62F3B;color:#fff}
+.tag-v{background:var(--rec);color:#fff}
+.myth td:first-child{background:#FBE9EA}
+.myth td:nth-child(2){background:#EAF7F0}
+/* Calculateur */
+.calc-out tr.big td{background:var(--nutri);color:#fff}
+.calc-out tr.big td:last-child{font-size:1.45rem}
+.btn{box-shadow:0 6px 16px rgba(201,74,51,.35)}
+.btn.alt{box-shadow:0 6px 16px rgba(27,58,45,.3)}
+/* Mon histoire */
+.story .say{background:var(--nutri-t);border-left:6px solid var(--nutri);padding:14px 16px;border-radius:0 14px 14px 0}
+/* Partage : fond chaud, texte foncé */
+.share{background:var(--sante-t);color:var(--sante-i);box-shadow:var(--shadow)}
+.share h2{color:var(--sante-i)}
+.share .eyebrow{color:var(--sante-i)!important}
+.share .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--ink);box-shadow:none}
+/* Conclusion : bloc vert profond */
+.cta{background:var(--ink);color:#fff;border:0}
+.cta h2{color:#fff}
+.cta .eyebrow{color:#FFB39E}
+.cta .more,.cta .more a{color:rgba(255,255,255,.85)}
+.cta .paths{background:#fff;color:var(--text);border:0}
+.cta .btn.alt{background:#fff;color:var(--ink);box-shadow:none}
+section{padding-top:52px}
+.nav a{border:1px solid var(--ink);box-shadow:var(--shadow-s)}
 </style>
 </head>
 <body>
