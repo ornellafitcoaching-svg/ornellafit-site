@@ -1,0 +1,10 @@
+/* OFC clarté — échelle unique, pas d'italique, titres lisibles, sections alternées */
+:root{--ofc-s1:.9rem;--ofc-s2:1rem;--ofc-s3:1.15rem;--ofc-s4:1.4rem;--ofc-s5:1.8rem;}
+main em,main i:not([class*="fa"]):not([class*="icon"]),section em,section i:not([class*="fa"]):not([class*="icon"]),h1,h2,h3,h4,blockquote,.quote,[style*="italic"]{font-style:normal!important;}
+h1,h2,h3{text-transform:none!important;letter-spacing:0!important;}
+main p,section p,main li,section li,details p,details li{font-size:max(1rem,1em);line-height:1.65;}
+main small,section small,.sub,.note{font-size:var(--ofc-s1)!important;line-height:1.5;}
+summary{font-size:var(--ofc-s2);font-weight:600;}
+@media(max-width:640px){
+  main p,section p,main li,section li{font-size:1rem!important;}
+}
