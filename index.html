@@ -1990,18 +1990,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 // ============================================================
-// 🔧 MISE À JOUR MENSUELLE — modifie uniquement ces 2 lignes
-var PLACES_DISPO = 5;
-var MOIS_ACTUEL  = 'mai';
-
-// ============================================================
 // 🔑 CLÉ API BREVO — remplace par ta clé (brevo.com > Paramètres > Clés API)
 const BREVO_API_KEY = 'via-proxy-securise'+''+'';
 // ============================================================
-document.addEventListener('DOMContentLoaded', function() {
-  var el = document.querySelector('.top-bar-places');
-  if (el) el.innerHTML = 'Je prends <strong>' + PLACES_DISPO + ' nouvelles clientes</strong> par mois';
-});
+// NB : le compteur de places de la barre du haut est désormais géré par /data/places.js
+// (span data-ofc-places). L'ancien bloc PLACES_DISPO/MOIS_ACTUEL='mai' a été retiré (code mort).
 
 /* Floating WA — apparaît après 300px de scroll sur desktop */
 (function() {
