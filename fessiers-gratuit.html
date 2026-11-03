@@ -105,7 +105,7 @@ async function submitLead(e){
       await fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=email',{
         method:'POST',
         headers:{'api-key':_a+_b+_c,'Content-Type':'application/json'},
-        body:JSON.stringify({to:[{email,name:prenom}],templateId:/*⚠️ À COMPLÉTER*/0,params:{FIRSTNAME:prenom}})
+        body:JSON.stringify({to:[{email,name:prenom}],templateId:238,params:{FIRSTNAME:prenom}})
       });
     }
     if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Routine Fessiers'});
