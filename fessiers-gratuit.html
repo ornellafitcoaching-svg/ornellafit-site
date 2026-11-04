@@ -14,8 +14,8 @@
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1233548507794099");fbq("track","PageView");</script>
 <!-- Brevo : clé API fragmentée (même principe que tes autres pages) -->
 <script>
-  /* ⚠️ À COMPLÉTER : colle ici les 3 fragments de ta clé Brevo (comme sur quiz.html / challenge). */
-  var _a='', _b='', _c='';
+  /* Passerelle sécurisée : la vraie clé Brevo est côté serveur (fonction Supabase site-brevo). */
+  var _a='via-proxy-securise', _b='', _c='';
 </script>
 <style>
   :root{--ink:#231A16;--ink2:#5B4A42;--mute:#8B7A71;--cream:#FBF6F1;--cream2:#F6EFE8;--paper:#fff;--line:rgba(35,26,22,.12);--terra:#C0574A;--gold:#C9A96E;--green:#2D6A4F;}
@@ -76,7 +76,7 @@
 <!-- Formulaire natif Brevo (liste « Fessiers – Leads ») — soumis en arrière-plan.
      ⚠️ À COMPLÉTER : crée la liste + un formulaire Brevo, puis colle ici l'URL "serve/..." (comme sur challenge-ventre-plat.html). -->
 <iframe name="fessiersFrame" style="display:none"></iframe>
-<form id="fessiersForm" method="POST" target="fessiersFrame" action="A_REMPLACER_URL_SIBFORMS_BREVO" style="display:none">
+<form id="fessiersForm" method="POST" target="fessiersFrame" action="https://e605324b.sibforms.com/serve/MUIFAKDkee_lKFM2JoOodsKZEyQaGhhR8YyV2iJyqwM9k-7jhz30WovCi2AU627eRmgM-ZNTXi5nTUp-SHEO1L6lflfFNhhTv60XcHFp8ApdSgWVGu7x8CAOOn0eqDKXO0hUXdP5khszcEaKie1C2lbRjsRxCcbrE2fW7_yHyJkRUpeFaK_m3C_HkCoKvMyAIvy4lHfuMunLBCn-og==" style="display:none">
   <input type="text" name="EMAIL" id="fessiersEmail">
   <input type="text" name="PRENOM" id="fessiersPrenom">
   <input type="text" name="email_address_check" value="">
@@ -100,8 +100,8 @@ async function submitLead(e){
       document.getElementById('fessiersPrenom').value=prenom;
       document.getElementById('fessiersForm').submit();
     }
-    // 2) Email de livraison immédiat (template Brevo) — actif une fois la clé + templateId renseignés
-    if(_a&&_b&&_c){
+    // 2) Email de livraison immédiat (template Brevo #238) via la passerelle Supabase
+    if(_a){
       await fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=email',{
         method:'POST',
         headers:{'api-key':_a+_b+_c,'Content-Type':'application/json'},
