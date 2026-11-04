@@ -10,43 +10,58 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#231A16;--ink2:#5B4A42;--mute:#8B7A71;--cream:#FBF6F1;--paper:#fff;--line:rgba(35,26,22,.12);--terra:#C0574A;--gold:#C9A96E;--green:#2D6A4F;}
+  :root{--ink:#231A16;--ink2:#5B4A42;--mute:#8B7A71;--cream:#FBF6F1;--cream2:#F6EFE8;--paper:#fff;--line:rgba(35,26,22,.12);--terra:#C0574A;--gold:#C9A96E;--green:#2D6A4F;}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased;}
   .wrap{max-width:720px;margin:0 auto;padding:28px 20px 60px;}
   .brand{text-align:center;font:800 .78rem/1 'DM Sans',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-bottom:6px;}
   .kicker{text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--ink2);}
-  h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(2rem,6vw,2.9rem);line-height:1.05;text-align:center;margin:.2em 0 .3em;}
+  h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(2rem,6vw,3rem);line-height:1.04;text-align:center;margin:.2em 0 .3em;}
   h1 em{font-style:italic;color:var(--terra);}
-  .lead{text-align:center;max-width:540px;margin:0 auto 24px;color:var(--ink2);}
+  .lead{text-align:center;max-width:540px;margin:0 auto 22px;color:var(--ink2);}
   .meta{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 auto 30px;}
   .chip{font:700 .8rem/1 'DM Sans',sans-serif;background:var(--paper);border:1px solid var(--line);border-radius:50px;padding:9px 15px;color:var(--ink2);}
-  .how{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin:0 0 26px;}
-  .how b{color:var(--terra);}
-  ol.ex{list-style:none;counter-reset:ex;display:grid;gap:14px;}
-  li.ex{counter-increment:ex;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px 18px 62px;position:relative;box-shadow:0 6px 20px rgba(139,111,94,.07);}
-  li.ex::before{content:counter(ex);position:absolute;left:16px;top:18px;width:32px;height:32px;border-radius:50%;background:var(--terra);color:#fff;font:800 1rem/32px 'DM Sans',sans-serif;text-align:center;}
-  li.ex h3{font:800 1.08rem/1.2 'DM Sans',sans-serif;margin-bottom:3px;}
-  li.ex .reps{font:700 .9rem/1 'DM Sans',sans-serif;color:var(--green);margin-bottom:6px;}
-  li.ex p{font-size:.92rem;color:var(--ink2);}
-  .tip{background:#FFF9F6;border-left:3px solid var(--gold);border-radius:0 14px 14px 0;padding:16px 18px;margin:22px 0;}
-  .tip b{color:var(--ink);}
-  .safe{font-size:.86rem;color:var(--mute);background:rgba(45,106,79,.07);border:1px solid rgba(45,106,79,.18);border-radius:14px;padding:14px 16px;margin:0 0 30px;}
-  .next{background:linear-gradient(150deg,#2C1F1A,#3D2B24);color:#fff;border-radius:22px;padding:28px 24px;text-align:center;margin-top:34px;}
-  .next h2{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.7rem;margin-bottom:8px;}
-  .next p{color:rgba(255,255,255,.8);font-size:.95rem;max-width:460px;margin:0 auto 18px;}
+  .why{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:20px 22px;margin:0 0 14px;box-shadow:0 6px 20px rgba(139,111,94,.06);}
+  .why h2{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.5rem;margin-bottom:8px;}
+  .why p{font-size:.95rem;color:var(--ink2);margin-bottom:10px;}
+  .order{display:grid;gap:8px;margin-top:12px;}
+  .order div{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:var(--ink);}
+  .order b{color:var(--terra);}
+  .step{display:inline-block;min-width:22px;height:22px;border-radius:50%;background:var(--cream2);border:1px solid var(--line);text-align:center;font:800 .78rem/22px 'DM Sans',sans-serif;color:var(--terra);flex-shrink:0;}
+  .howto{background:#FFF9F6;border-left:3px solid var(--gold);border-radius:0 14px 14px 0;padding:14px 18px;margin:0 0 26px;font-size:.92rem;color:var(--ink2);}
+  .howto b{color:var(--ink);}
+  ol.ex{list-style:none;counter-reset:ex;display:grid;gap:16px;}
+  li.ex{counter-increment:ex;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 6px 20px rgba(139,111,94,.07);}
+  .ex-top{display:flex;gap:16px;align-items:center;}
+  .ex-illus{flex:0 0 132px;width:132px;height:96px;background:var(--cream2);border-radius:14px;border:1px solid var(--line);}
+  .ex-illus svg{width:100%;height:100%;display:block;}
+  .ex-head .num{display:inline-block;font:800 .74rem/1 'DM Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);}
+  .ex-head h3{font:800 1.18rem/1.15 'DM Sans',sans-serif;margin:2px 0 4px;}
+  .ex-head .reps{font:700 .9rem/1 'DM Sans',sans-serif;color:var(--green);}
+  .ex-body{margin-top:14px;display:grid;gap:8px;}
+  .ex-body p{font-size:.93rem;color:var(--ink2);}
+  .ex-body .cue{color:var(--ink);} .ex-body .cue b{color:var(--terra);}
+  .ex-body .err{color:var(--ink2);}
+  @media(max-width:500px){.ex-top{flex-direction:column;align-items:stretch;}.ex-illus{width:100%;flex-basis:auto;height:120px;}}
+  .tip{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin:24px 0 0;}
+  .tip h3{font:800 1rem/1.2 'DM Sans',sans-serif;margin-bottom:6px;}
+  .tip p{font-size:.92rem;color:var(--ink2);}
+  .safe{font-size:.86rem;color:var(--mute);background:rgba(45,106,79,.07);border:1px solid rgba(45,106,79,.18);border-radius:14px;padding:14px 16px;margin:16px 0 0;}
+  .next{background:linear-gradient(150deg,#2C1F1A,#3D2B24);color:#fff;border-radius:22px;padding:28px 24px;text-align:center;margin-top:30px;}
+  .next h2{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.8rem;margin-bottom:8px;}
+  .next p{color:rgba(255,255,255,.82);font-size:.95rem;max-width:470px;margin:0 auto 18px;}
   .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--terra),#a8483d);color:#fff;text-decoration:none;font:800 1rem/1 'DM Sans',sans-serif;padding:16px 28px;border-radius:50px;box-shadow:0 8px 26px rgba(192,87,74,.32);}
   .print{display:block;text-align:center;margin:26px auto 0;background:none;border:0;color:var(--terra);font:700 .9rem/1 'DM Sans',sans-serif;text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
-  .sign{text-align:center;color:var(--mute);font-size:.86rem;margin-top:26px;}
-  @media print{body{background:#fff;}.next,.print{display:none;}.wrap{padding:0;}}
+  .sign{text-align:center;color:var(--mute);font-size:.86rem;margin-top:24px;}
+  @media print{body{background:#fff;}.next,.print{display:none;}.wrap{padding:0;}li.ex{break-inside:avoid;}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <p class="brand">Ornella Fit Coaching</p>
   <p class="kicker">Offert rien que pour toi 🍑</p>
-  <h1>Ta routine <em>fessiers</em> maison</h1>
-  <p class="lead">4 exercices, 10 minutes, <strong>sans matériel ni salle</strong>. À faire 3 fois par semaine. Un vrai avant-goût de ma méthode.</p>
+  <h1>Des fessiers plus <em>ronds</em>, 10&nbsp;min chez toi</h1>
+  <p class="lead">4 exercices, dans le bon ordre, pour sentir tes fessiers travailler <strong>dès la première séance</strong>. Sans matériel, sans salle.</p>
   <div class="meta">
     <span class="chip">⏱️ 10 min</span>
     <span class="chip">🏠 À la maison</span>
@@ -54,40 +69,145 @@
     <span class="chip">🔁 3×/semaine</span>
   </div>
 
-  <div class="how"><b>Comment faire&nbsp;:</b> enchaîne les 4 exercices l'un après l'autre. Repose-toi 45&nbsp;s entre chaque. Refais le tour 2 fois si tu as le temps. L'important, ce n'est pas la vitesse — c'est de <b>bien sentir le fessier travailler</b>.</div>
+  <div class="why">
+    <h2>Pourquoi cette routine marche (et l'ordre compte)</h2>
+    <p>La plupart des femmes font des exercices au hasard et sentent surtout les <strong>cuisses</strong>. Ici, on attaque le fessier sous tous les angles, dans un ordre pensé pour qu'il travaille vraiment&nbsp;:</p>
+    <div class="order">
+      <div><span class="step">1</span><span><b>On réveille</b> le fessier (hip thrust) — pour qu'il «&nbsp;s'allume&nbsp;» avant le reste.</span></div>
+      <div><span class="step">2</span><span><b>On charge</b> en grand mouvement (fentes) — plus de muscle sollicité, plus de résultats.</span></div>
+      <div><span class="step">3</span><span><b>On corrige les déséquilibres</b> (pont 1 jambe) — chaque fessier bosse seul, aucun ne se cache.</span></div>
+      <div><span class="step">4</span><span><b>On isole &amp; on finit</b> (donkey kick) — on cible le haut du fessier, celui qui galbe.</span></div>
+    </div>
+  </div>
+  <div class="howto"><b>Comment faire&nbsp;:</b> enchaîne les 4 exercices dans l'ordre. Repos 45&nbsp;s entre chaque. Refais le tour 2 fois si tu as le temps. Ce n'est pas la vitesse qui compte — c'est de <b>bien sentir le fessier</b> à chaque répétition.</div>
 
   <ol class="ex">
+
     <li class="ex">
-      <h3>Hip thrust au sol</h3>
-      <div class="reps">3 × 15 répétitions</div>
-      <p>Allongée sur le dos, pieds à plat près des fessiers. Monte le bassin en poussant dans les talons, <strong>serre les fessiers 2&nbsp;secondes en haut</strong>, redescends lentement.</p>
+      <div class="ex-top">
+        <div class="ex-illus" aria-hidden="true">
+          <svg viewBox="0 0 200 130"><g fill="none" stroke="#C0574A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="15" y1="118" x2="185" y2="118" stroke="#C9A96E" stroke-width="3"/>
+            <circle cx="42" cy="108" r="9" fill="#C0574A" stroke="none"/>
+            <line x1="52" y1="109" x2="112" y2="70"/>
+            <line x1="112" y1="70" x2="150" y2="72"/>
+            <line x1="150" y1="72" x2="152" y2="117"/>
+            <line x1="52" y1="109" x2="40" y2="117"/>
+            <circle cx="112" cy="70" r="4" fill="#C0574A" stroke="none"/>
+            <circle cx="150" cy="72" r="4" fill="#C0574A" stroke="none"/>
+          </g></svg>
+        </div>
+        <div class="ex-head">
+          <span class="num">Exercice 1 · On réveille</span>
+          <h3>Hip thrust au sol</h3>
+          <div class="reps">3 × 15 répétitions</div>
+        </div>
+      </div>
+      <div class="ex-body">
+        <p><b>Comment&nbsp;:</b> allongée sur le dos, pieds à plat près des fessiers. Monte le bassin en poussant dans les <strong>talons</strong>, redescends lentement sans poser les fesses à fond.</p>
+        <p class="cue">🔑 <b>Le détail qui change tout&nbsp;:</b> serre le fessier <b>2 secondes en haut</b> de chaque montée.</p>
+        <p class="err">⚠️ <b>Erreur à éviter&nbsp;:</b> cambrer le bas du dos pour monter plus haut. C'est le fessier qui pousse, pas les reins.</p>
+      </div>
     </li>
+
     <li class="ex">
-      <h3>Fentes arrière</h3>
-      <div class="reps">3 × 12 par jambe</div>
-      <p>Debout, recule une jambe en fléchissant les deux genoux. Pousse dans le talon avant pour revenir. Le dos reste droit, le buste légèrement penché pour cibler le fessier.</p>
+      <div class="ex-top">
+        <div class="ex-illus" aria-hidden="true">
+          <svg viewBox="0 0 200 130"><g fill="none" stroke="#C0574A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="15" y1="118" x2="185" y2="118" stroke="#C9A96E" stroke-width="3"/>
+            <circle cx="100" cy="24" r="9" fill="#C0574A" stroke="none"/>
+            <line x1="100" y1="33" x2="102" y2="72"/>
+            <line x1="102" y1="72" x2="116" y2="96"/>
+            <line x1="116" y1="96" x2="116" y2="117"/>
+            <line x1="102" y1="72" x2="78" y2="104"/>
+            <line x1="78" y1="104" x2="62" y2="117"/>
+            <line x1="101" y1="48" x2="120" y2="64"/>
+            <circle cx="102" cy="72" r="4" fill="#C0574A" stroke="none"/>
+          </g></svg>
+        </div>
+        <div class="ex-head">
+          <span class="num">Exercice 2 · On charge</span>
+          <h3>Fentes arrière</h3>
+          <div class="reps">3 × 12 par jambe</div>
+        </div>
+      </div>
+      <div class="ex-body">
+        <p><b>Comment&nbsp;:</b> debout, recule une jambe loin derrière et fléchis les deux genoux. Pousse dans le <strong>talon avant</strong> pour remonter. Le buste légèrement penché pour cibler le fessier.</p>
+        <p class="cue">🔑 <b>Le détail&nbsp;:</b> le genou avant reste <b>au-dessus de la cheville</b>, jamais en avant.</p>
+        <p class="err">⚠️ <b>Erreur à éviter&nbsp;:</b> se pencher trop en arrière ou faire un pas trop court — tu sentirais surtout la cuisse.</p>
+      </div>
     </li>
+
     <li class="ex">
-      <h3>Pont fessier sur une jambe</h3>
-      <div class="reps">3 × 10 par côté</div>
-      <p>Position du hip thrust, mais une jambe tendue vers le haut. Monte le bassin avec la jambe au sol uniquement. Plus dur&nbsp;: tu sentiras vite le côté qui travaille&nbsp;!</p>
+      <div class="ex-top">
+        <div class="ex-illus" aria-hidden="true">
+          <svg viewBox="0 0 200 130"><g fill="none" stroke="#C0574A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="15" y1="118" x2="185" y2="118" stroke="#C9A96E" stroke-width="3"/>
+            <circle cx="40" cy="108" r="9" fill="#C0574A" stroke="none"/>
+            <line x1="50" y1="109" x2="110" y2="66"/>
+            <line x1="110" y1="66" x2="146" y2="70"/>
+            <line x1="146" y1="70" x2="148" y2="117"/>
+            <line x1="110" y1="66" x2="170" y2="42"/>
+            <line x1="50" y1="109" x2="38" y2="117"/>
+            <circle cx="110" cy="66" r="4" fill="#C0574A" stroke="none"/>
+            <circle cx="170" cy="42" r="4" fill="#C0574A" stroke="none"/>
+          </g></svg>
+        </div>
+        <div class="ex-head">
+          <span class="num">Exercice 3 · On équilibre</span>
+          <h3>Pont fessier sur une jambe</h3>
+          <div class="reps">3 × 10 par côté</div>
+        </div>
+      </div>
+      <div class="ex-body">
+        <p><b>Comment&nbsp;:</b> position du hip thrust, mais une jambe tendue vers le haut. Monte le bassin avec <strong>la jambe au sol uniquement</strong>, en gardant le bassin bien droit.</p>
+        <p class="cue">🔑 <b>Le détail&nbsp;:</b> ne laisse pas une hanche s'affaisser — les deux restent à la même hauteur.</p>
+        <p class="err">⚠️ <b>Erreur à éviter&nbsp;:</b> aller trop vite. Plus dur qu'il n'y paraît&nbsp;: tu sentiras vite le côté qui travaille&nbsp;!</p>
+      </div>
     </li>
+
     <li class="ex">
-      <h3>Donkey kick</h3>
-      <div class="reps">3 × 15 par côté</div>
-      <p>À quatre pattes, pousse un talon vers le plafond, jambe fléchie à 90°. Monte sans cambrer le bas du dos&nbsp;: c'est le fessier qui pousse, pas les reins.</p>
+      <div class="ex-top">
+        <div class="ex-illus" aria-hidden="true">
+          <svg viewBox="0 0 200 130"><g fill="none" stroke="#C0574A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="15" y1="118" x2="185" y2="118" stroke="#C9A96E" stroke-width="3"/>
+            <circle cx="46" cy="70" r="9" fill="#C0574A" stroke="none"/>
+            <line x1="56" y1="72" x2="120" y2="72"/>
+            <line x1="60" y1="72" x2="58" y2="117"/>
+            <line x1="120" y1="72" x2="122" y2="117"/>
+            <line x1="120" y1="72" x2="150" y2="56"/>
+            <line x1="150" y1="56" x2="176" y2="70"/>
+            <circle cx="120" cy="72" r="4" fill="#C0574A" stroke="none"/>
+            <circle cx="150" cy="56" r="4" fill="#C0574A" stroke="none"/>
+          </g></svg>
+        </div>
+        <div class="ex-head">
+          <span class="num">Exercice 4 · On galbe</span>
+          <h3>Donkey kick</h3>
+          <div class="reps">3 × 15 par côté</div>
+        </div>
+      </div>
+      <div class="ex-body">
+        <p><b>Comment&nbsp;:</b> à quatre pattes, pousse un talon vers le plafond, jambe fléchie à 90°. Monte depuis le fessier, puis redescends sans poser le genou.</p>
+        <p class="cue">🔑 <b>Le détail&nbsp;:</b> pousse avec le <b>talon</b> vers le haut, comme pour laisser une empreinte au plafond.</p>
+        <p class="err">⚠️ <b>Erreur à éviter&nbsp;:</b> creuser le bas du dos. Le dos reste plat, seul le fessier monte la jambe.</p>
+      </div>
     </li>
+
   </ol>
 
-  <div class="tip">🔑 <b>Le détail qui change tout&nbsp;:</b> à chaque répétition, <b>serre le fessier 2&nbsp;secondes en haut</b> du mouvement. C'est cette «&nbsp;connexion fessier&nbsp;» qui fait la différence entre s'agiter… et vraiment galber.</div>
+  <div class="tip">
+    <h3>Et pour continuer à progresser&nbsp;?</h3>
+    <p>Chaque semaine, rends ça un peu plus dur&nbsp;: ajoute <strong>2 répétitions</strong> par exercice, ou une <strong>3ᵉ fois</strong> dans ton tour. C'est cette petite progression, semaine après semaine, qui transforme vraiment — pas l'intensité d'une seule séance.</p>
+  </div>
 
   <p class="safe">🤍 <strong>Post-partum ou périnée fragile&nbsp;?</strong> Commence doucement et valide avec ta sage-femme ou ton kiné avant d'intensifier. On ne brûle pas les étapes.</p>
 
   <button type="button" class="print" onclick="window.print()">🖨️ Imprimer / enregistrer en PDF</button>
 
   <div class="next">
-    <h2>Tu veux le programme complet&nbsp;?</h2>
-    <p>Cette routine, c'est le début. <strong>Booty Sculpt</strong>, c'est 8&nbsp;semaines guidées en vidéo, à la maison, pour des fessiers que tu reconnais — avec la progression qui fait vraiment la différence.</p>
+    <h2>Tu sens déjà la différence&nbsp;?</h2>
+    <p>Cette routine, c'est le premier pas. <strong>Booty Sculpt</strong>, c'est 8&nbsp;semaines guidées en vidéo, avec la progression complète semaine après semaine — pour des fessiers que tu reconnais dans le miroir.</p>
     <a class="btn" href="booty-sculpt.html" onclick="if(typeof fbq!=='undefined')fbq('track','ViewContent',{content_name:'Booty Sculpt',value:19,currency:'EUR'})">Découvrir Booty Sculpt — 19€ →</a>
   </div>
 
