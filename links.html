@@ -257,6 +257,24 @@ body::before{animation:none}
 .tile{display:flex;flex-direction:column;gap:3px;background:#fff;border:1px solid rgba(212,160,144,.4);border-radius:16px;padding:14px 14px 15px;text-decoration:none;color:#2C1F1A;box-shadow:0 2px 12px rgba(180,90,60,.07);transition:transform .2s,border-color .2s}
 .tile:hover{transform:translateY(-2px);border-color:#C96358}
 .tile-emoji{font-size:1.3rem}.tile-t{font-size:14px;font-weight:600;line-height:1.25}.tile-s{font-size:11.5px;font-weight:300;color:#A08070;line-height:1.4}
+
+/* ── 2 PARCOURS (orientation premier niveau) ── */
+.orient-q{width:100%;text-align:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:#2C1F1A;margin:2px 0 14px;line-height:1.3}
+.paths{width:100%;display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+.path-card{display:flex;align-items:center;gap:14px;width:100%;padding:20px 20px;border-radius:18px;text-decoration:none;box-shadow:0 4px 18px rgba(180,90,60,.1);transition:transform .2s cubic-bezier(.22,.68,0,1.2),box-shadow .2s}
+.path-card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,99,88,.22)}
+.path-card:active{transform:scale(.98)}
+.path-emoji{font-size:1.7rem;flex-shrink:0}
+.path-txt{flex:1;line-height:1.3}
+.path-t{display:block;font-size:16px;font-weight:700}
+.path-s{display:block;font-size:12px;font-weight:300;margin-top:3px;line-height:1.45}
+.path-arrow{font-size:20px;flex-shrink:0}
+.path-coach{background:linear-gradient(135deg,#C96358,#D4856A);color:#fff}
+.path-coach .path-s{color:rgba(255,255,255,.82)}
+.path-coach .path-arrow{color:rgba(255,255,255,.7)}
+.path-solo{background:#fff;color:#2C1F1A;border:1px solid rgba(212,160,144,.45)}
+.path-solo .path-s{color:#A08070}
+.path-solo .path-arrow{color:#C96358}
 </style>
 <meta name="facebook-domain-verification" content="q0lravv1bfmhpq3dob5d559cyidqq1" />
 <meta name="facebook-domain-verification" content="4npql1iz6n380yye9bsydf16pnj20x" />
@@ -289,14 +307,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="links">
 
-    <!-- 1 · UNE SEULE action principale : le quiz (personnalisé, 2 min) -->
-    <a href="https://www.ornellafitcoaching.com/quiz.html?utm_source=ig&utm_medium=bio&utm_content=quiz" class="link-btn featured big" onclick="px('Quiz')">
-      <span class="link-emoji">🎯</span>
-      <span class="link-text">Quel coaching est fait pour toi&nbsp;?<span class="link-sub">Test en 2 min · résultat personnalisé</span></span>
-      <span class="link-arrow">›</span>
-    </a>
+    <!-- ORIENTATION : « Qu'est-ce que je veux faire maintenant ? » → 2 parcours au 1er niveau -->
+    <div class="orient-q">Tu veux faire quoi, maintenant&nbsp;?</div>
+    <div class="paths">
+      <a href="https://www.ornellafitcoaching.com/quiz.html?utm_source=ig&utm_medium=bio&utm_content=parcours-accompagnee" class="path-card path-coach" onclick="px('Parcours Accompagnee')">
+        <span class="path-emoji">🎯</span>
+        <span class="path-txt">
+          <span class="path-t">Je veux être accompagnée</span>
+          <span class="path-s">Fais le test (2 min) → je t'oriente vers la formule faite pour toi</span>
+        </span>
+        <span class="path-arrow">›</span>
+      </a>
+      <a href="https://www.ornellafitcoaching.com/programmes.html?utm_source=ig&utm_medium=bio&utm_content=parcours-seule" class="path-card path-solo" onclick="px('Parcours Seule')">
+        <span class="path-emoji">🧘‍♀️</span>
+        <span class="path-txt">
+          <span class="path-t">Je préfère m'entraîner seule</span>
+          <span class="path-s">Mes programmes à suivre à ton rythme · accès immédiat</span>
+        </span>
+        <span class="path-arrow">›</span>
+      </a>
+    </div>
 
-    <!-- 2 · PREUVE juste sous le bouton principal -->
+    <!-- RÉASSURANCE : transformations réelles de clientes -->
     <a href="https://www.ornellafitcoaching.com/transformations.html?utm_source=ig&utm_medium=bio&utm_content=transformations" class="proof-strip" onclick="px('Transformations')">
       <span class="proof-imgs">
         <img src="/images/links-aa-1.jpg" width="720" height="720" alt="Avant et après d'une cliente, de face" loading="lazy">
@@ -307,8 +339,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="proof-cap">Vraies clientes · sans retouche <b>Voir les transformations ›</b></span>
     </a>
 
-    <!-- 3 · Deux cadeaux gratuits (hiérarchie plus petite) -->
-    <div class="duo-label">Gratuit, pour démarrer</div>
+    <!-- GRATUIT : actions faciles, réversibles, sans pression -->
+    <div class="duo-label">Gratuit, pour démarrer sans pression</div>
     <div class="duo">
       <a href="https://www.ornellafitcoaching.com/guide-9-erreurs.html?src=ig-bio" class="tile" onclick="px('Guide 9 erreurs page')">
         <span class="tile-emoji">📘</span>
@@ -322,21 +354,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
     </div>
 
-    <!-- 4 · Action à forte intention -->
-    <a href="https://wa.me/33756834626?text=Salut%20Ornella%20%21%20Je%20viens%20d%27Instagram%2C%20je%20veux%20r%C3%A9server%20mon%20appel%20gratuit%20%F0%9F%98%8A" class="link-btn wa" target="_blank" rel="noopener" onclick="px('Appel Gratuit WhatsApp')">
+    <!-- CONTACT & TARIFS : message écrit d'abord (sans appel), appel présenté comme facultatif -->
+    <div class="link-section-label">Me parler ou voir les tarifs</div>
+    <a href="https://wa.me/33756834626?text=Salut%20Ornella%20%21%20Je%20viens%20d%27Instagram%2C%20j%27ai%20une%20question%20%F0%9F%98%8A" class="link-btn wa" target="_blank" rel="noopener" onclick="px('WhatsApp Question')">
       <span class="link-emoji">💬</span>
-      <span class="link-text">Réserver mon appel gratuit (15 min)<span class="link-sub">Sur WhatsApp · sans engagement</span></span>
+      <span class="link-text">Une question&nbsp;? Écris-moi<span class="link-sub">Réponse perso sur WhatsApp · sans appel</span></span>
       <span class="link-arrow">›</span>
     </a>
 
     <a href="https://www.ornellafitcoaching.com/offres.html?utm_source=ig&utm_medium=bio&utm_content=tarifs" class="link-btn" onclick="px('Formules tarifs')">
       <span class="link-emoji">💶</span>
-      <span class="link-text">Mes formules &amp; tarifs<span class="link-sub">Domicile · hybride · à distance</span></span>
+      <span class="link-text">Mes formules &amp; tarifs<span class="link-sub">Si tu es déjà décidée · domicile, hybride ou à distance</span></span>
+      <span class="link-arrow">›</span>
+    </a>
+
+    <a href="https://wa.me/33756834626?text=Salut%20Ornella%20%21%20Je%20viens%20d%27Instagram%2C%20je%20veux%20r%C3%A9server%20mon%20appel%20gratuit%20%F0%9F%98%8A" class="link-btn cal" target="_blank" rel="noopener" onclick="px('Appel Gratuit WhatsApp')">
+      <span class="link-emoji">📞</span>
+      <span class="link-text">Réserver un appel gratuit (15 min)<span class="link-sub">Si tu préfères échanger de vive voix · facultatif, sans engagement</span></span>
       <span class="link-arrow">›</span>
     </a>
 
     <details class="more">
-      <summary>Programmes à faire seule</summary>
+      <summary>Voir mes programmes à faire seule</summary>
       <div class="more-list">
     <a href="https://www.ornellafitcoaching.com/fit-dans-ta-vie.html?utm_source=ig&utm_medium=bio&utm_content=fit-dans-ta-vie" class="link-btn" onclick="px('Fit Dans Ta Vie')">
       <span class="link-emoji">⭐</span>
@@ -367,7 +406,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </details>
 
     <details class="more">
-      <summary>Plus</summary>
+      <summary>Entreprise, parrainage, boutique &amp; réseaux</summary>
       <div class="more-list">
     <a href="https://www.nutrimuscle.com/discount/NMA_ORNELLAA?redirect=/pages/ambassadeurs" class="link-btn" target="_blank" rel="noopener sponsored" onclick="px('Nutrimuscle')">
       <span class="link-emoji">💪</span>
@@ -481,13 +520,13 @@ async function submitGuide(e){
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGuide();});
 </script>
 <script>
-/* Popup guide : seulement à 50 % de scroll, au plus une fois tous les 7 jours. */
+/* Popup guide : à 80 % de scroll (après les 2 parcours + accès secondaires, pour ne pas les masquer ni interrompre la visite), au plus une fois tous les 7 jours. */
 (function(){
   var KEY='ofc_guide_popup_ts', SEPT=7*24*3600*1000;
   try{ var last=+localStorage.getItem(KEY)||0; if(Date.now()-last<SEPT) return; }catch(e){}
   function onScroll(){
     var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
-    if(max<=0 || (window.scrollY||d.scrollTop)/max < 0.5) return;
+    if(max<=0 || (window.scrollY||d.scrollTop)/max < 0.8) return;
     window.removeEventListener('scroll',onScroll);
     try{ localStorage.setItem(KEY, String(Date.now())); }catch(e){}
     openGuide();
