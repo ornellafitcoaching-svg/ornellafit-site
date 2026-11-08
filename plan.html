@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="/js/stats-guard.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ton cadeau | Ornella Fit Coaching</title>
+<meta name="description" content="Gratte ta carte et découvre ton cadeau : un plan 7 jours et un bilan forme offert.">
+<meta property="og:title" content="Ton cadeau t'attend">
+<meta property="og:description" content="Gratte ta carte et découvre ton cadeau.">
+<meta property="og:image" content="https://ornellafitcoaching.com/images/noel/ornella-pied.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--sauge:#8FA88C;--sauge-fonce:#6F8A6C;--sauge-clair:#E4ECDF;--creme:#FAF6EF;--corail:#E8634A;--texte:#2B2B28;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--texte);background:var(--creme);line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:84px;}
+img{max-width:100%;height:auto;display:block;}
+.wrap{max-width:520px;margin:0 auto;overflow:hidden;}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:700;line-height:1.15;}
+.sec{padding:34px 20px;}
+.sec.sauge{background:var(--sauge-clair);}
+.eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--sauge-fonce);margin-bottom:8px;}
+h2.t{font-size:26px;text-align:center;margin-bottom:18px;}
+
+.hero{position:relative;}
+.hero img{width:100%;height:46vh;max-height:420px;object-fit:cover;object-position:50% 12%;}
+.hero .tag{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.93);border-radius:30px;padding:7px 14px;font-size:12.5px;font-weight:600;}
+.herotxt{padding:16px 20px 4px;text-align:center;}
+.herotxt h1{font-size:30px;margin-bottom:12px;}
+.herotxt p{font-size:14.5px;margin-bottom:8px;}
+
+.cardzone{padding:14px 20px 8px;}
+.scratchbox{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 14px 34px rgba(43,43,40,.18);background:#fff;aspect-ratio:16/10;max-width:430px;margin:0 auto;}
+.prize{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;background:linear-gradient(160deg,#fff,var(--sauge-clair));}
+.prize .gift{font-size:36px;margin-bottom:4px;}
+.prize b{font-family:'Playfair Display',serif;font-size:25px;line-height:1.12;}
+.prize span{font-size:14.5px;margin-top:6px;}
+#scratch{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:pointer;transition:opacity .5s;}
+#scratch.gone{opacity:0;pointer-events:none;}
+.hint{text-align:center;font-size:13.5px;margin-top:12px;}
+.linkbtn{display:block;margin:10px auto 0;background:#fff;border:2px solid var(--sauge,#8FA88C);border-radius:30px;padding:10px 18px;font:inherit;font-size:14px;font-weight:700;color:var(--texte);cursor:pointer;}
+
+.won{display:none;padding:10px 20px 30px;}
+.won.on{display:block;}
+.wincard{background:#fff;border-radius:20px;padding:24px 20px;box-shadow:0 10px 28px rgba(43,43,40,.1);text-align:center;max-width:430px;margin:0 auto;}
+.wincard h2{font-size:25px;margin-bottom:6px;}
+.wincard .lead{font-size:15px;margin-bottom:16px;}
+.field{width:100%;padding:15px 16px;border:1.5px solid #d9d9d2;border-radius:14px;font:inherit;font-size:16px;color:var(--texte);background:#fff;margin-bottom:10px;}
+.field:focus{outline:none;border-color:var(--sauge);}
+.field.err{border-color:var(--corail);}
+.note{font-size:13px;color:var(--corail);min-height:18px;margin-bottom:6px;}
+.btn{display:block;width:100%;padding:17px;border-radius:30px;border:none;font:inherit;font-weight:700;font-size:16.5px;text-decoration:none;text-align:center;cursor:pointer;}
+.btn.main{background:var(--corail);color:#fff;box-shadow:0 8px 20px rgba(232,99,74,.38);}
+.btn.alt{background:#fff;color:var(--texte);border:1.5px solid var(--sauge);margin-top:10px;}
+.btn[disabled]{opacity:.6;}
+.fine{font-size:13px;margin-top:12px;}
+.ok{display:none;}
+.ok.on{display:block;}
+.bilan{margin-top:18px;padding-top:18px;border-top:1.5px solid var(--sauge-clair);}
+.bilan h3{font-size:20px;margin-bottom:6px;}
+.bilan p{font-size:14.5px;margin-bottom:14px;}
+
+.story{font-size:15.5px;margin-bottom:12px;}
+.expert{display:flex;gap:16px;align-items:center;margin-bottom:14px;}
+.expert img{flex:none;width:92px;height:92px;border-radius:50%;object-fit:cover;object-position:50% 18%;border:3px solid var(--sauge);}
+.expert b{font-family:'Playfair Display',serif;font-size:21px;display:block;line-height:1.15;}
+.expert span{font-size:14px;}
+.facts{list-style:none;margin-top:6px;}
+.facts li{padding:0 0 10px 28px;position:relative;font-size:15px;}
+.facts li::before{content:"★";position:absolute;left:0;color:var(--corail);}
+
+.proofs{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 20px 8px;margin:0 -20px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.proofs::-webkit-scrollbar{display:none;}
+.proof{flex:none;width:78%;max-width:300px;scroll-snap-align:center;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 22px rgba(43,43,40,.1);}
+.proof img{width:100%;aspect-ratio:1/1;object-fit:cover;}
+.proof div{padding:12px 14px 14px;}
+.proof b{display:block;font-size:16px;margin-bottom:2px;}
+.proof span{font-size:13.5px;}
+
+
+.beat{display:flex;gap:14px;align-items:flex-start;background:#fff;border-radius:14px;padding:13px 15px;margin-bottom:10px;}
+.beat .n{flex:none;width:30px;height:30px;border-radius:50%;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.beat b{display:block;font-size:15.5px;margin-bottom:1px;}
+.beat span{font-size:14.5px;}
+.c1{background:#8FA88C;}.c2{background:#E8634A;}.c3{background:#D9A441;}.c4{background:#5E8CA8;}
+.pain{display:flex;gap:12px;align-items:flex-start;background:var(--sauge-clair);border-radius:14px;padding:13px 15px;margin-bottom:10px;font-size:15px;}
+.pain span{flex:none;font-size:20px;line-height:1.3;}
+.pill{display:inline-block;background:var(--sauge-clair);color:var(--sauge-fonce);font-weight:700;font-size:11.5px;border-radius:20px;padding:3px 10px;margin-bottom:6px;}
+.opt{background:#fff;border-radius:14px;padding:14px 16px 14px 20px;margin-bottom:10px;border-left:5px solid var(--sauge);box-shadow:0 4px 14px rgba(43,43,40,.06);}
+.opt.c1{border-left-color:#8FA88C;background:#fff}.opt.c2{border-left-color:#E8634A;background:#fff}.opt.c3{border-left-color:#D9A441;background:#fff}.opt.c4{border-left-color:#5E8CA8;background:#fff}
+.opt b{display:block;font-size:15.5px;margin-bottom:2px;}
+.opt span{font-size:14.5px;}
+.opt a{color:var(--texte);text-decoration:underline;}
+.step{display:flex;gap:14px;align-items:flex-start;background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:10px;}
+.step .n{flex:none;width:32px;height:32px;border-radius:50%;background:var(--sauge);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px;}
+.step b{display:block;font-size:15.5px;margin-bottom:1px;}
+.step span{font-size:14.5px;}
+details{background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:10px;}
+summary{font-weight:600;font-size:15px;cursor:pointer;list-style:none;}
+summary::-webkit-details-marker{display:none;}
+details p{font-size:14.5px;margin-top:8px;}
+.share{text-align:center;}
+.share p{font-size:15px;margin-bottom:14px;}
+footer{padding:12px 20px 26px;text-align:center;font-size:12.5px;}
+
+.sticky{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(250,246,239,.96);backdrop-filter:blur(6px);box-shadow:0 -6px 18px rgba(43,43,40,.1);transform:translateY(110%);transition:transform .35s;z-index:10;}
+.sticky.on{transform:none;}
+.sticky .btn{max-width:488px;margin:0 auto;}
+</style>
+</head>
+<body>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1233548507794099');fbq('init','26675222578828123');fbq('track','PageView');
+</script>
+
+<div class="wrap">
+
+  <section class="hero">
+    <img src="/images/noel/ornella-pied.jpg" alt="Ornella, coach sportive" width="1080" height="1350">
+    <span class="tag">🎁 Une surprise dans ton colis</span>
+  </section>
+
+  <section class="herotxt">
+    <h1>Ton plan ventre plat 7&nbsp;jours, offert</h1>
+    <p>J'espère que tu es contente de ton colis ! Moi, c'est Ornella, c'est moi qui l'ai préparé. Je vends aussi des vêtements en plus de mon métier de coach sportive, et cette petite carte m'aide à me faire connaître.</p>
+    <p><b>Pour te remercier, j'ai un cadeau pour toi.</b></p>
+  </section>
+
+  <section class="cardzone">
+    <div class="scratchbox" id="box">
+      <div class="prize">
+        <div class="gift">🎁</div>
+        <b>Ton plan ventre plat 7 jours</b>
+        <span>+ ton bilan forme offert (5 places par semaine)</span>
+      </div>
+      <canvas id="scratch" aria-label="Carte à gratter"></canvas>
+    </div>
+    <p class="hint" id="hint">Passe ton doigt sur la carte pour gratter</p>
+    <button class="linkbtn" id="skip" type="button">Je ne veux pas gratter : je reçois mon plan</button>
+  </section>
+
+  <section class="won" id="won">
+    <div class="wincard">
+      <h2>C'est gagné, bravo !</h2>
+
+      <div id="step1">
+        <p class="lead">Où je t'envoie ton plan 7 jours ? Tu le reçois par email, tout de suite.</p>
+        <form id="giftForm" novalidate>
+          <input class="field" id="prenom" type="text" placeholder="Ton prénom" autocomplete="given-name">
+          <input class="field" id="email" type="email" placeholder="Ton email" autocomplete="email" inputmode="email">
+          <div class="note" id="note"></div>
+          <button class="btn main" id="submitBtn" type="submit">Je reçois mon plan 7 jours</button>
+        </form>
+        <p class="fine">Tu peux te désinscrire quand tu veux<span id="seasonDeadline"></span></p>
+      </div>
+
+      <div class="ok" id="step2">
+        <p class="lead" id="okTitle">C'est envoyé ! Regarde dans ta boîte mail (et dans les spams si besoin).</p>
+        <a class="btn alt" href="/guide-ventre-plat-7-jours.html" style="margin-top:0">J'ouvre mon plan maintenant</a>
+        <div class="bilan">
+          <h3>Et ton bilan forme offert</h3>
+          <p>Si tu veux aller plus loin, on fait le point ensemble sur ton objectif : par appel de 15 min ou par messages, comme tu préfères. Sans engagement.</p>
+          <a class="btn main" id="wa" href="#" target="_blank" rel="noopener">Je réserve mon bilan sur WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sauge">
+    <span class="eyebrow">Mon histoire</span>
+    <h2 class="t">Je ne suis pas née avec ce corps. Je l'ai construit.</h2>
+    <div class="expert">
+      <img src="/images/noel/ornella.jpg" alt="Ornella" loading="lazy" width="184" height="184">
+      <div><b>Ornella</b><span>Coach sportive, demi-finaliste du championnat de France de fitness, maman</span></div>
+    </div>
+    <div class="beat"><div class="n c1">1</div><div><b>Débutante</b><span>Aucune base sportive, et pas un corps de compétitrice au départ. Avant, j'étais fonctionnaire.</span></div></div>
+    <div class="beat"><div class="n c2">2</div><div><b>Compétitrice</b><span>Entraînement structuré, diète précise, mental : jusqu'aux demi-finales du championnat de France de bikini fitness, en 2019.</span></div></div>
+    <div class="beat"><div class="n c3">3</div><div><b>Maman</b><span>Grossesse alitée, +13 kg, les muscles qui fondent. J'ai tout reconstruit, avec un bébé et très peu de temps.</span></div></div>
+    <div class="beat"><div class="n c4">4</div><div><b>Coach</b><span>En 2025, je quitte mon poste pour en faire mon métier. Passionnée de sport depuis 10 ans.</span></div></div>
+    <p class="story">Des transformations, j'en ai vécu plusieurs. Alors je sais ce que c'est de galérer, et surtout comment s'en sortir.</p>
+    <ul class="facts">
+      <li>Éducatrice sportive, carte professionnelle</li>
+      <li>5,0/5 sur Google</li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <span class="eyebrow">En quoi je peux t'aider</span>
+    <h2 class="t">Tu t'es déjà reconnue là-dedans ?</h2>
+    <div class="pain"><span>😩</span> Tu t'entraînes ou tu fais attention, mais ton corps ne change pas.</div>
+    <div class="pain"><span>🔁</span> Tu reprends tout dès que tu relâches : régimes, fêtes, vacances.</div>
+    <div class="pain"><span>⏱️</span> Tu manques de temps ou de motivation pour tenir.</div>
+    <div class="pain"><span>🤷‍♀️</span> Tu ne sais pas par où commencer, ni quoi faire pour toi.</div>
+    <p class="story" style="margin-top:14px"><b>Ce que je fais :</b> je construis ton programme sur mesure, j'ajuste ton alimentation sans régime, et je te suis par WhatsApp avec un bilan régulier. Pas un PDF pour tout le monde : un plan fait pour ta vie.</p>
+  </section>
+
+  <section class="sec sauge">
+    <span class="eyebrow">Les résultats</span>
+    <h2 class="t">Des résultats, même à distance</h2>
+    <div class="proofs">
+      <div class="proof"><img src="/images/noel/maria.jpg" alt="Avant et après de Maria, coaching 100 % à distance" loading="lazy" width="900" height="900"><div><span class="pill">100 % à distance</span><b>−10 kg en 8 mois</b><span>Maria · jamais une séance en face à face : programme sur mesure, alimentation ajustée, suivi WhatsApp</span></div></div>
+      <div class="proof"><img src="/images/noel/louise.jpg" alt="Avant et après de Louise" loading="lazy" width="800" height="800"><div><b>−9 cm de tour de taille</b><span>Louise · −5 kg en 9 mois, coachée à domicile</span></div></div>
+      <div class="proof"><img src="/images/noel/emeline.jpg" alt="Avant et après d'Emeline" loading="lazy" width="800" height="800"><div><b>−3 cm de taille en 4 semaines</b><span>Emeline · fessiers galbés, et elle continue</span></div></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="eyebrow">Et après ton cadeau</span>
+    <h2 class="t">Si tu veux aller plus loin</h2>
+    <div class="opt c1"><b>Coaching à distance</b><span>Programme sur mesure, nutrition, suivi WhatsApp : où que tu sois.</span></div>
+    <div class="opt c2"><b>Coaching à domicile</b><span>En Essonne et Hauts-de-Seine, séance par séance avec moi.</span></div>
+    <div class="opt c3"><b>Programmes digitaux</b><span>Des programmes prêts à suivre, à ton rythme, sur ton téléphone.</span></div>
+    <div class="opt c4"><b>Carte cadeau</b><span>Pour offrir du bien-être à quelqu'un que tu aimes. <a href="/carte-cadeau.html">Voir la carte cadeau</a></span></div>
+  </section>
+
+  <section class="sec">
+    <h2 class="t">Tes questions</h2>
+    <details><summary>C'est vraiment offert ?</summary><p>Oui. Le plan 7 jours et le bilan sont offerts, sans engagement et sans carte bancaire.</p></details>
+    <details><summary>Pourquoi tu m'offres ça ?</summary><p>Parce que je suis coach sportive et que je veux me faire connaître. Si ça te plaît, tu sais où me trouver. Sinon, tu gardes ton plan.</p></details>
+    <details><summary>Je n'habite pas près de chez toi</summary><p>Aucun souci : je coache aussi 100 % à distance, par WhatsApp, avec un programme fait pour toi.</p></details>
+    <details><summary>Je n'ai jamais fait de sport</summary><p>Pas de problème. On démarre à ton niveau, sans matériel si tu veux.</p></details>
+  </section>
+
+  <section class="sec sauge share">
+    <h2 class="t">Une amie à gâter ?</h2>
+    <p>Envoie-lui sa propre carte à gratter.</p>
+    <a class="btn alt" id="share" href="#" target="_blank" rel="noopener">Offrir une carte sur WhatsApp</a>
+  </section>
+
+  <footer>Ornella Fit Coaching · ornellafitcoaching.com</footer>
+</div>
+
+<div class="sticky" id="sticky">
+  <button class="btn main" id="stickyBtn" type="button">Je récupère mon cadeau</button>
+</div>
+
+<script>
+(function(){
+  var BREVO_FORM_URL="https://e605324b.sibforms.com/serve/MUIFAIgM7GdN5D_DjX7asIJy46VgYZVkZVwKUPudN7jibnY4v-Uj3lJibwZ-58GKeOJqOlx9SqRJkTteukt9cdIvOlG_BHce2OJAeh-F5fY5UgtW4N09Tm3pBzv0g1HufFrC23y7SzCGTdwzILdzQmKA-m1fEX66TZzFWE881gwmHx2MOGxR5bA8GC4Zh-bYEcIFfI4skSFjsam58Q==";
+  var q=new URLSearchParams(location.search), SRC=(q.get('src')||'colis').slice(0,40);
+  var local=(location.hostname==='localhost'||location.hostname==='127.0.0.1');
+
+  /* SAISONS : on change ici les dates et textes, la carte imprimée ne change jamais */
+  var SAISONS=[
+    {nom:'noel', du:'11-01', au:'12-20', carte:'Ton cadeau de Noël', limite:' · cadeau à récupérer avant le 20 décembre', msg:'CADEAU NOËL'}
+  ];
+  var DEF={nom:'standard', carte:'Ton cadeau', limite:'', msg:'CADEAU COLIS'};
+  function saison(){
+    var f=q.get('saison'); if(f){ for(var k=0;k<SAISONS.length;k++) if(SAISONS[k].nom===f) return SAISONS[k]; return DEF; }
+    var d=new Date(), m=('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);
+    for(var i=0;i<SAISONS.length;i++){ var x=SAISONS[i]; if(m>=x.du && m<=x.au) return x; }
+    return DEF;
+  }
+  var S=saison();
+  document.getElementById('seasonDeadline').textContent=S.limite;
+  var wa=document.getElementById('wa');
+  wa.href='https://wa.me/33756834626?text='+encodeURIComponent(S.msg+" 🎁 Bonjour Ornella, j'ai gratté ma carte cadeau, je voudrais mon bilan offert 😊");
+
+  /* compteur de visites (scans de cartes), sans cookie ni donnée perso */
+  if(!local){ try{
+    var data=JSON.stringify({page:'plan-colis',src:SRC}), url='https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/track-visit';
+    if(!(navigator.sendBeacon&&navigator.sendBeacon(url,data))) fetch(url,{method:'POST',body:data,keepalive:true,headers:{'Content-Type':'text/plain'}}).catch(function(){});
+  }catch(e){} }
+
+  /* CARTE A GRATTER */
+  var box=document.getElementById('box'), c=document.getElementById('scratch'), ctx=c.getContext('2d'),
+      won=document.getElementById('won'), hint=document.getElementById('hint'), skip=document.getElementById('skip'),
+      sticky=document.getElementById('sticky'), stickyBtn=document.getElementById('stickyBtn'),
+      done=false, drawing=false, moves=0, W=0, H=0;
+  function paint(){
+    var r=box.getBoundingClientRect(), dpr=window.devicePixelRatio||1;
+    W=r.width; H=r.height; c.width=W*dpr; c.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    var g=ctx.createLinearGradient(0,0,W,H);
+    g.addColorStop(0,'#A8BDA5'); g.addColorStop(.35,'#8FA88C'); g.addColorStop(.65,'#C9D6C4'); g.addColorStop(1,'#8FA88C');
+    ctx.globalCompositeOperation='source-over'; ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='rgba(255,255,255,.4)';
+    for(var i=0;i<70;i++){ ctx.beginPath(); ctx.arc(Math.random()*W,Math.random()*H,Math.random()*2+.5,0,6.3); ctx.fill(); }
+    ctx.strokeStyle='rgba(255,255,255,.7)'; ctx.lineWidth=2; ctx.strokeRect(10,10,W-20,H-20);
+    ctx.fillStyle='#fff'; ctx.textAlign='center';
+    ctx.font='700 24px Playfair Display, Georgia, serif'; ctx.fillText(S.carte,W/2,H/2-4);
+    ctx.font='600 14px Montserrat, sans-serif'; ctx.fillText('Gratte ici',W/2,H/2+22);
+  }
+  function pos(e){ var r=c.getBoundingClientRect(); return {x:e.clientX-r.left,y:e.clientY-r.top}; }
+  function scratch(e){
+    if(!drawing||done) return; var p=pos(e);
+    ctx.globalCompositeOperation='destination-out'; ctx.beginPath(); ctx.arc(p.x,p.y,22,0,6.3); ctx.fill();
+    if(++moves%8===0) check();
+  }
+  function check(){
+    var d=ctx.getImageData(0,0,c.width,c.height).data, n=0, t=0;
+    for(var i=3;i<d.length;i+=64){ t++; if(d[i]===0) n++; }
+    if(n/t>.4) reveal();
+  }
+  function reveal(){
+    if(done) return; done=true; c.classList.add('gone'); hint.style.display='none'; skip.style.display='none';
+    won.classList.add('on'); sticky.classList.add('on');
+    if(typeof fbq!=='undefined') fbq('track','ViewContent',{content_name:'cadeau-colis',source:SRC});
+    setTimeout(function(){ won.scrollIntoView({behavior:'smooth',block:'start'}); },350);
+  }
+  c.addEventListener('pointerdown',function(e){ drawing=true; c.setPointerCapture(e.pointerId); scratch(e); });
+  c.addEventListener('pointermove',scratch);
+  c.addEventListener('pointerup',function(){ drawing=false; check(); });
+  c.addEventListener('pointercancel',function(){ drawing=false; });
+  skip.addEventListener('click',reveal);
+  window.addEventListener('resize',function(){ if(!done) paint(); });
+  paint();
+
+  /* FORMULAIRE -> BREVO (liste « Colis Vinted ») */
+  var form=document.getElementById('giftForm'), btn=document.getElementById('submitBtn'),
+      email=document.getElementById('email'), prenom=document.getElementById('prenom'),
+      note=document.getElementById('note'), step1=document.getElementById('step1'), step2=document.getElementById('step2'),
+      sent=false, sending=false;
+  function isEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  async function sendToBrevo(){
+    var fd=new FormData();
+    fd.append('EMAIL',email.value.trim()); fd.append('PRENOM',prenom.value.trim()); fd.append('SOURCE',SRC);
+    fd.append('email_address_check',''); fd.append('locale','fr');
+    var opts={method:'POST',body:fd,mode:'no-cors'};
+    try{ await fetch(BREVO_FORM_URL,opts); return true; }
+    catch(e){ try{ await fetch(BREVO_FORM_URL,opts); return true; }catch(e2){ return false; } }
+  }
+  function success(){
+    sent=true; step1.style.display='none'; step2.classList.add('on');
+    var p=prenom.value.trim();
+    document.getElementById('okTitle').textContent=(p?'C\'est envoyé, '+p+' ! ':'C\'est envoyé ! ')+'Regarde dans ta boîte mail (et dans les spams si besoin).';
+    stickyBtn.textContent='Je réserve mon bilan offert';
+    if(typeof fbq!=='undefined') fbq('track','Lead',{content_name:'plan-7-jours',source:SRC});
+    document.getElementById('won').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  form.addEventListener('submit',async function(e){
+    e.preventDefault(); if(sending) return;
+    note.textContent=''; email.classList.remove('err');
+    if(!isEmail(email.value.trim())){ email.classList.add('err'); note.textContent='Vérifie ton adresse email.'; email.focus(); return; }
+    sending=true; btn.disabled=true; var o=btn.textContent; btn.textContent='Envoi en cours…';
+    var ok=await sendToBrevo();
+    if(ok){
+      var attrs={SOURCE:SRC}; if(prenom.value.trim()) attrs.PRENOM=prenom.value.trim().slice(0,60);
+      fetch('https://xvetwfqzkkcfchxxifuu.supabase.co/functions/v1/site-brevo?op=contacts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email.value.trim(),attributes:attrs,updateEnabled:true})}).catch(function(){});
+      success();
+    } else { sending=false; btn.disabled=false; btn.textContent=o; note.textContent='Oups, réessaie dans un instant (connexion instable).'; }
+  });
+  stickyBtn.addEventListener('click',function(){
+    if(sent){ window.open(wa.href,'_blank'); }
+    else { document.getElementById('won').scrollIntoView({behavior:'smooth',block:'start'}); setTimeout(function(){ prenom.focus(); },500); }
+  });
+
+  var site='https://ornellafitcoaching.com/plan.html?src=partage';
+  document.getElementById('share').href='https://wa.me/?text='+encodeURIComponent("Ornella (coach sportive) m'a offert une carte à gratter, je t'envoie la tienne 🎁 "+site);
+})();
+</script>
+<script defer src="/suivi-clics.js"></script>
+</body>
+</html>
