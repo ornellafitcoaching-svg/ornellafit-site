@@ -1057,13 +1057,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="rf-boostcard-top">
           <span class="rf-boostcard-ico">⚡</span>
           <div>
-            <div class="rf-boostcard-name">Boost Programme</div>
+            <div class="rf-boostcard-name">Boost Entraînement</div>
             <div class="rf-boostcard-tag">t'entraîner les jours sans moi</div>
           </div>
         </div>
         <p class="rf-boostcard-txt">Un programme vidéo sur-mesure pour t'entraîner <b>entre nos rendez-vous ou en autonomie</b> : jusqu'à 4-5 séances par semaine, construites sur nos séances et ajustées toutes les 4 semaines.</p>
         <div class="rf-boostcard-incl">✅ Déjà inclus en hybride et à distance</div>
         <div class="rf-boostcard-add">➕ En Boost à domicile · dès +29€/mois</div>
+        <div style="margin-top:9px;font-size:.82rem;line-height:1.45;color:var(--rf-mute);">👉 <b style="color:var(--rf-ink2);">Pour qui&nbsp;:</b> tu veux t'entraîner plusieurs fois par semaine et accélérer — surtout utile <b style="color:var(--rf-ink2);">à domicile</b>, où tu n'as qu'une séance avec moi.</div>
       </div>
       <!-- BOOST NUTRITION -->
       <div class="rf-boostcard">
@@ -1076,7 +1077,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <p class="rf-boostcard-txt">Tu sais quoi manger chaque jour : repas sur-mesure + liste de courses, <b>sans régime ni pesée</b>, ajustés chaque mois selon tes mensurations. Ton assiette travaille <em>avec</em> tes séances.</p>
         <div class="rf-boostcard-add">➕ En Boost sur les 3 formules · +40€/mois</div>
-        <a class="rf-opt-more" href="#boost-nutrition">Voir le détail du Boost Nutrition ↓</a>
+        <div style="margin-top:9px;font-size:.82rem;line-height:1.45;color:var(--rf-mute);">👉 <b style="color:var(--rf-ink2);">Pour qui&nbsp;:</b> ton objectif est la <b style="color:var(--rf-ink2);">perte de poids</b> ou le <b style="color:var(--rf-ink2);">ventre plat</b>, ou tu ne sais jamais quoi manger.</div>
+        <a class="rf-opt-more" href="#boost-nutrition" style="margin-top:8px;">Voir le détail du Boost Nutrition ↓</a>
       </div>
     </div>
 
@@ -1373,7 +1375,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <thead><tr><th class="rt-corner" scope="col"></th><th scope="col" class="rt-c3"><span class="rt-th-t">3 mois</span></th><th scope="col" class="rt-c6"><span class="rt-th-t">6 mois</span></th><th scope="col" class="rt-cF"><span class="rt-th-t">Sans engagement</span></th></tr></thead>
                 <tbody>
                   <tr>
-                    <th class="rt-rowh rt-o-prog" scope="row"><label class="rt-chk"><input type="checkbox" id="bprog-dom" onchange="rfBprog('dom')"><span><b>⚡ Boost Programme</b><i>jours sans moi</i></span></label></th>
+                    <th class="rt-rowh rt-o-prog" scope="row"><label class="rt-chk"><input type="checkbox" id="bprog-dom" onchange="rfBprog('dom')"><span><b>⚡ Boost Entraînement</b><i>jours sans moi</i></span></label></th>
                     <td class="rt-c3"><span class="rt-p">+39€</span><span class="rt-u">/mois · 1,40€/jour</span></td>
                     <td class="rt-c6"><span class="rt-p">+29€</span><span class="rt-u">/mois · 1€/jour</span></td>
                     <td class="rt-cF"><span class="rt-p">+49€</span><span class="rt-u">/mois · 1,75€/jour</span></td>
@@ -1390,7 +1392,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="rf-boost-hint" id="opt-hint-dom">↑ En cochant, le prix du tableau s'ajuste automatiquement</p>
             <div class="rf-boost-ok" id="opt-ok-dom">✓ Ajouté&nbsp;! Ton nouveau prix est affiché dans le tableau. <a href="#rows-dom" onclick="rfSeePrice('dom');return false;">Voir mon prix ↑</a></div>
             <div class="rt-optlines">
-              <div class="rt-optline rt-o-prog"><b>⚡ Boost Programme</b> — Entraîne-toi aussi <em>les jours sans moi</em>.
+              <div class="rt-optline rt-o-prog"><b>⚡ Boost Entraînement</b> — Entraîne-toi aussi <em>les jours sans moi</em>.
                 <details class="rf-more-d"><summary><span class="rf-more-o">Voir le détail</span><span class="rf-more-c">Masquer le détail</span></summary>
                   <ul class="rf-boost-list">
                     <li><b>Un programme vidéo sur-mesure</b> pour les jours sans moi</li>
@@ -2247,7 +2249,7 @@ var RF_PRICING={
   ]}
 };
 var RF_STATE={dom:{d:'3',boost:false,bprog:false},hyb:{d:'3',boost:false},dist:{d:'3',boost:false}};
-/* Boost Programme (forfaits domicile uniquement) : prix selon le parcours */
+/* Boost Entraînement (forfaits domicile uniquement) : prix selon le parcours */
 var RF_BPROG={'3':{p:39,day:'1,40€'},'6':{p:29,day:'1€'},'F':{p:49,day:'1,75€'}};
 var RT_COLS=[{d:'3',cls:'rt-c3',t:'3 mois',m:3},{d:'6',cls:'rt-c6',t:'6 mois',m:6},{d:'F',cls:'rt-cF',t:'Sans engagement',m:0}];
 var RT_BADGE={
@@ -2277,7 +2279,7 @@ function rfRows(tab){
       if(eco>0){h+='<span class="rt-eco">Économie '+eco+'€</span>';}
       var inc=[];
       if(boost){inc.push('dont Boost Nutrition +40€'+(c.d==='6'?' · 1ᵉʳ mois offert':''));}
-      if(bpOn){inc.push('dont Boost Programme +'+bpNow+'€');}
+      if(bpOn){inc.push('dont Boost Entraînement +'+bpNow+'€');}
       if(inc.length){h+='<span class="rt-inc">'+inc.join('<br>')+'</span>';}
       h+='</td>';
     });
@@ -2311,7 +2313,7 @@ function rfRender(tab){
   var st=RF_STATE[tab];
   if(tab==='dom'){
     var cta=document.getElementById('cta-dom');
-    if(cta){var msg='Bonjour Ornella ! Je veux démarrer un abonnement coaching à domicile.'+(st.bprog?' Avec le Boost Programme.':'')+' On en parle ?';cta.href='https://wa.me/33756834626?text='+encodeURIComponent(msg);}
+    if(cta){var msg='Bonjour Ornella ! Je veux démarrer un abonnement coaching à domicile.'+(st.bprog?' Avec le Boost Entraînement.':'')+' On en parle ?';cta.href='https://wa.me/33756834626?text='+encodeURIComponent(msg);}
   }
 }
 /* Retour visuel : le prix du tableau s'ajuste quand on coche une option */
