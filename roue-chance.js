@@ -376,7 +376,7 @@
         '<a class="ofc-roue-btn" href="' + progUrl(o, prize, email) + '" id="ofcRoueBuy">J’en profite, code appliqué →</a>' +
         '<a class="ofc-roue-link" href="' + o.prog.page + '?src=roue">Voir le programme en détail</a>';
     }
-    note.textContent = 'Ton code t’attend aussi par email (valable jusqu’au ' + EXPIRY_LABEL + ').';
+    note.textContent = 'Ton code personnel t’attend aussi par email — garde-le précieusement.';
     formView.style.display = 'none';
     resultView.classList.add('ofc-show');
     var buy = document.getElementById('ofcRoueBuy');
