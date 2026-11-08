@@ -212,6 +212,10 @@
   var currentRotation = 0;
   var startTime = Date.now();
   var ROUE_PAGE = (location.pathname || '/').replace(/\.html$/, '') || '/';
+  // Mode DISCRET (pages d'achat/comparaison, ex. offres & programmes) : on ne déclenche PAS
+  // la roue au scroll ni à 35s pour ne jamais couvrir les tarifs/programmes/boutons d'achat ;
+  // seuls l'exit-intent (desktop, celle qui s'en va) et un filet tardif (90s) restent actifs.
+  var DISCREET = !!window.OFC_ROUE_DISCREET;
 
   // Remonte un événement au Pixel Meta (événement perso) + dataLayer GTM. Silencieux si absent.
   function track(evtName, extra){
@@ -453,7 +457,8 @@
   // Déclenchement RETARDÉ (visiteuse déjà engagée) : 35s après chargement OU 55% de scroll,
   // filet de sécurité 45s, + exit-intent desktop (souris vers le haut de l'écran, prioritaire).
   // But : ne plus couvrir la page au moment où elle commence à lire (cause n°1 de fermeture).
-  setTimeout(function(){ if (!shown) openRoue(); }, 35000);
+  // En mode DISCRET, ce premier timer passe à 90s (jamais d'interruption précoce sur une page d'achat).
+  setTimeout(function(){ if (!shown) openRoue(); }, DISCREET ? 90000 : 35000);
 
   // Plancher de temps : la roue ne peut JAMAIS surgir "trop vite" au début de la lecture.
   var SCROLL_MIN_DELAY = 12000; // scroll : pas avant 12s
@@ -461,7 +466,7 @@
 
   var _rTick = false;
   window.addEventListener('scroll', function(){
-    if (shown || _rTick) return;
+    if (DISCREET || shown || _rTick) return; // page d'achat : pas de déclenchement au scroll
     if (Date.now() - startTime < SCROLL_MIN_DELAY) return;
     _rTick = true;
     requestAnimationFrame(function(){
@@ -477,5 +482,5 @@
     if (e.clientY <= 8) openRoue();
   });
 
-  setTimeout(function(){ if (!shown) openRoue(); }, 45000);
+  setTimeout(function(){ if (!shown) openRoue(); }, DISCREET ? 90000 : 45000);
 })();
