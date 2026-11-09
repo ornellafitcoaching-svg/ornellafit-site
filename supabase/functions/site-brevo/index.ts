@@ -64,7 +64,8 @@ const PAYMENT_LINKS: Record<string, { produit: string; montant: number }> = {
 // Modèles Brevo que le site a le droit d'envoyer (quiz, guides, confirmations…)
 // 202 = Roue de la chance v2 (roue-chance.js du 12/10 au 19/10/2026)
 // 219 = Roue de la chance v3, 100 % gagnante, lot + avant/après selon l'objectif (roue-chance.js depuis le 19/10/2026)
-const TEMPLATES_OK = [10, 12, 13, 14, 15, 79, 93, 131, 147, 160, 202, 219];
+// 209-212 = résultats du quiz v3 (quiz.html, depuis le 18/10/2026) · 238 = livraison routine fessiers (fessiers-gratuit.html, depuis le 04/11/2026)
+const TEMPLATES_OK = [10, 12, 13, 14, 15, 79, 93, 131, 147, 160, 202, 209, 210, 211, 212, 219, 238];
 
 // Limites anti-abus
 const LIMIT_IP_10MIN = 25;        // toutes opérations confondues, par IP
