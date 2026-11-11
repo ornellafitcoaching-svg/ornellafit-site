@@ -742,12 +742,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h1 class="rf-h1">Tu n'as pas besoin de plus de motivation. Tu as besoin d'<em>un vrai accompagnement</em>.</h1>
       <p class="rf-lead">Ventre, fessiers, perte de poids, post-partum : un programme construit pour ton corps, et une coach qui ne te lâche pas.</p>
       <div class="rf-hero-cta">
-        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20ne%20sais%20pas%20quelle%20formule%20choisir%2C%20peux-tu%20m'aider%20%3F" target="_blank" class="rf-btn rf-btn-primary">💬 Aide-moi à choisir — échange gratuit 15&nbsp;min</a>
+        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20ne%20sais%20pas%20quelle%20formule%20choisir%2C%20peux-tu%20m'aider%20%3F" target="_blank" class="rf-btn rf-btn-primary" onclick="if(typeof fbq!=='undefined')fbq('trackCustom','Clic_WhatsApp_Hero',{page:'offres'})">💬 Aide-moi à choisir — échange gratuit 15&nbsp;min</a>
         <a href="#formules" class="rf-btn rf-btn-ghost">Voir les 3 formules ↓</a>
       </div>
-      <p style="margin-top:10px;font-size:.84rem;line-height:1.5;"><a href="quiz.html?utm_source=site&amp;utm_medium=offres&amp;utm_content=hero" style="color:var(--rf-mute);text-decoration:underline;text-underline-offset:3px;">Tu préfères un test express&nbsp;? Fais le quiz (2&nbsp;min) →</a></p>
-      <p style="margin:-6px 0 10px;font-size:.8rem;color:var(--rf-mute);">5 questions · résultat immédiat · sans email obligatoire</p>
-      <p style="margin:0 0 18px;font-size:.86rem;color:var(--rf-ink2);">Déjà décidée&nbsp;? <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" target="_blank" style="color:var(--rf-terra);font-weight:700;text-decoration:underline;text-underline-offset:3px;" onclick="if(typeof fbq!=='undefined')fbq('trackCustom','Clic_WhatsApp_Hero',{page:'offres'})">Commence par un échange gratuit de 15&nbsp;min sur WhatsApp →</a></p>
+      <p style="margin:10px 0 18px;font-size:.84rem;line-height:1.5;"><a href="quiz.html?utm_source=site&amp;utm_medium=offres&amp;utm_content=hero" style="color:var(--rf-mute);text-decoration:underline;text-underline-offset:3px;">Tu préfères un test express&nbsp;? Fais le quiz (2&nbsp;min, sans email) →</a></p>
       <div class="rf-trust-row">
         <a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" class="rf-chip" aria-label="Note 5 sur 5 sur Google, 26 avis"><span aria-hidden="true" style="color:#E0A42E;letter-spacing:.5px;font-size:.82rem;">★★★★★</span> 5,0 · 26 avis Google</a>
         <span class="rf-chip">🏆 Ancienne compétitrice fitness</span>
@@ -818,13 +816,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .rf-more-x .rf-more-chev{transition:transform .3s;font-size:.6rem;color:var(--rf-mute);}
 .rf-more-x[open]>summary .rf-more-chev{transform:rotate(180deg);}
 @media(max-width:820px){
-  .rf-formulas{display:flex;grid-template-columns:none;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:6px 16px 14px;margin:0 -20px;scrollbar-width:none;}
-  .rf-formulas::-webkit-scrollbar{display:none;}
-  .rf-fcard{flex:0 0 84%;max-width:340px;scroll-snap-align:center;}
-  .rf-fcard.feat{order:-1;}
+  /* Empilement vertical simple sur mobile (pas de carrousel horizontal à comparer) */
+  .rf-formulas{display:flex;flex-direction:column;grid-template-columns:none;gap:18px;}
+  .rf-fcard{width:100%;max-width:none;}
+  .rf-fcard.feat{order:-1;} /* Hybride (la plus choisie) en tête */
 }
-.rf-carou-hint{display:none;}
-@media(max-width:820px){.rf-carou-hint{display:block;text-align:center;font-size:.76rem;color:var(--rf-mute);margin:-6px 0 0;}}
+.rf-carou-hint{display:none !important;}
 </style>
 <style>
 /* Vidéos (js/videos.js) : taille réservée = zéro décalage, jamais > 70 % de l'écran */
@@ -849,27 +846,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .rf-avis-g .st{color:#E0A526;letter-spacing:1px}
 @media(min-width:860px){.rf-avis-intro{grid-template-columns:360px 1fr;gap:56px}.rf-avis-txt{order:0;text-align:left}}
 </style>
-
-<!-- ===================== COMMENT ÇA MARCHE (avant les prix) ===================== -->
-<section class="rf-sec" id="comment-ca-marche" style="background:var(--rf-cream2);">
-  <div class="rf-wrap">
-    <div style="text-align:center;max-width:620px;margin:0 auto 34px;">
-      <span class="rf-eyebrow">Comment ça marche</span>
-      <h2 class="rf-h2" style="margin-top:.3em;">4 étapes, <em>zéro improvisation</em></h2>
-    </div>
-    <div class="rf-how-grid">
-      <div class="vid vid--1x1">
-        <video muted playsinline loop preload="none" aria-hidden="true" poster="images/video/site_methode_poster.jpg?v=3" data-src="images/video/site_methode.mp4?v=3"></video>
-      </div>
-      <ol class="rf-how-steps">
-        <li><b>1</b><span><strong>Bilan</strong> — on fait le point sur ton corps, ton rythme et tes objectifs.</span></li>
-        <li><b>2</b><span><strong>Programme</strong> — je construis tes séances rien que pour toi. <small style="display:block;margin-top:4px;color:var(--rf-ink2);font-size:.86em;">Programme des jours sans moi&nbsp;: inclus en hybride et à distance, en Boost à domicile.</small></span></li>
-        <li><b>3</b><span><strong>Suivi</strong> — je te corrige, je te motive, j'ajuste au fil des semaines.</span></li>
-        <li><b>4</b><span><strong>Progrès</strong> — bilans réguliers&nbsp;: tu vois tes résultats.</span></li>
-      </ol>
-    </div>
-  </div>
-</section>
 
 <section class="rf-sec" id="formules" style="background:var(--rf-paper);">
   <div class="rf-wrap">
@@ -978,6 +954,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span style="flex-shrink:0;color:var(--rf-terra);font-weight:700;font-size:.82rem;">J'en profite →</span>
       </a>
     </div>
+    </details>
+  </div>
+</section>
+
+<!-- ===================== COMMENT ÇA MARCHE (détails repliés par défaut · placé après les formules) ===================== -->
+<section class="rf-sec" id="comment-ca-marche" style="background:var(--rf-cream2);">
+  <div class="rf-wrap">
+    <div style="text-align:center;max-width:620px;margin:0 auto 18px;">
+      <span class="rf-eyebrow">Comment ça marche</span>
+      <h2 class="rf-h2" style="margin-top:.3em;">Un accompagnement <em>qui s'adapte à toi</em></h2>
+    </div>
+    <details class="rf-more-d" style="max-width:940px;margin:0 auto;">
+      <summary style="justify-content:center;"><span class="rf-more-o">Voir les 4 étapes de l'accompagnement</span><span class="rf-more-c">Masquer les étapes</span></summary>
+      <div class="rf-how-grid" style="margin-top:22px;">
+      <div class="vid vid--1x1">
+        <video muted playsinline loop preload="none" aria-hidden="true" poster="images/video/site_methode_poster.jpg?v=3" data-src="images/video/site_methode.mp4?v=3"></video>
+      </div>
+      <ol class="rf-how-steps">
+        <li><b>1</b><span><strong>Bilan</strong> — on fait le point sur ton corps, ton rythme et tes objectifs.</span></li>
+        <li><b>2</b><span><strong>Programme</strong> — je construis tes séances rien que pour toi. <small style="display:block;margin-top:4px;color:var(--rf-ink2);font-size:.86em;">Programme des jours sans moi&nbsp;: inclus en hybride et à distance, en Boost à domicile.</small></span></li>
+        <li><b>3</b><span><strong>Suivi</strong> — je te corrige, je te motive, j'ajuste au fil des semaines.</span></li>
+        <li><b>4</b><span><strong>Progrès</strong> — bilans réguliers&nbsp;: tu vois tes résultats.</span></li>
+      </ol>
+      </div>
     </details>
   </div>
 </section>
@@ -1453,8 +1453,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- ===== HYBRIDE ===== -->
-    <div class="rf-acc feat open" id="tarif-hybride">
-      <button class="rf-acc-head" type="button" onclick="rfToggle(this)" aria-expanded="true">
+    <div class="rf-acc feat" id="tarif-hybride">
+      <button class="rf-acc-head" type="button" onclick="rfToggle(this)" aria-expanded="false">
         <span class="rf-acc-ico">💫</span>
         <span class="rf-acc-titles">
           <span class="rf-acc-name">Hybride <span class="rf-acc-tag">⭐ Le plus choisi</span></span>
