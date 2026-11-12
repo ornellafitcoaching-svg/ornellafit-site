@@ -809,6 +809,11 @@ nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
   #hero { padding: 22px 18px 30px; min-height: auto; justify-content: flex-start; }
   .hero-split { flex-direction: column; gap: 0; }
   .hero-content { text-align: center; }
+  /* Hero plus court sur mobile : photo recadrée en bannière (au lieu d'un plein écran) */
+  #hero .hero-bg { position: relative; height: 288px; min-height: 0; overflow: hidden; border-radius: 0 0 22px 22px; }
+  #hero .hero-bg img, #hero .hero-bg video { position: absolute; inset: 0; width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: top center !important; left: 0 !important; right: auto !important; }
+  /* Carte Maria retirée du hero (déjà présente dans la barre de preuve + les transformations) */
+  .hero-maria { display: none; }
   /* Photo d'Ornella remontée au-dessus du texte sur mobile */
   .hero-photo-col { order: -1; display: block; width: 100%; max-width: 230px; margin: 0 auto 16px; }
   .hero-mosaic { grid-template-columns: 1fr !important; }
@@ -1519,7 +1524,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </p>
       </div>
 
-      <p class="hero-note">✓ Par WhatsApp · réponse rapide · premier échange sans engagement, tu choisis ta formule après</p>
+      <p class="hero-note">✓ Par WhatsApp · sans engagement · tu choisis ta formule après</p>
     </div>
 
   </div>
@@ -1545,6 +1550,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
   </div>
   <p class="preuve-zone">Domicile : Saulx-les-Chartreux, Massy, Palaiseau, Longjumeau, Champlan, Villebon-sur-Yvette, Chilly-Mazarin, Épinay-sur-Orge, Antony · partout ailleurs à distance.</p>
+</section>
+
+<!-- APERÇU DES 3 OFFRES -->
+<section id="apercu-offres">
+  <div class="inner">
+    <span class="section-label">Coaching sur mesure</span>
+    <h2 class="section-title">L'accompagnement <em>fait pour toi</em></h2>
+    <div class="offre-list">
+      <a href="offres.html" class="offre-row">
+        <span class="offre-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5 12 4l8.5 6.5"/><path d="M5.5 9.5V19a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/><path d="M10 20v-5h4v5"/></svg></span>
+        <span class="offre-txt"><b>Domicile</b><small>Je viens chez toi · séance découverte 50 €</small></span>
+        <span class="offre-price">dès 240 €<small>/mois</small></span>
+      </a>
+      <a href="offres.html" class="offre-row offre-featured">
+        <span class="offre-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M18 7v6"/><path d="M15 10h6"/></svg></span>
+        <span class="offre-txt"><b>Hybride</b><small>Séances avec moi + suivi à distance</small></span>
+        <span class="offre-price">dès 149 €<small>/mois</small></span>
+      </a>
+      <a href="offres.html" class="offre-row">
+        <span class="offre-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12" rx="1.5"/><path d="M2 20h20"/></svg></span>
+        <span class="offre-txt"><b>Distanciel</b><small>Programme sur-mesure + suivi WhatsApp</small></span>
+        <span class="offre-price">dès 89 €<small>/mois</small></span>
+      </a>
+    </div>
+    <p class="offre-inclus"><strong>Inclus partout :</strong> ton espace de suivi privé (séances, bilans, mensurations, photos) sur ton téléphone.</p>
+    <div class="cta-block">
+      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn-main" target="_blank">Mon bilan gratuit 15 min →</a>
+    </div>
+    <a href="offres.html" class="link-discret">Voir toutes les offres en détail →</a>
+    <p class="fdtv-line"><b style="color:var(--dark);">Tu préfères avancer à ton rythme, sans coaching&nbsp;?</b><br>Mes programmes à suivre seule, accès immédiat&nbsp;: <a href="fit-dans-ta-vie.html" onclick="if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:49,currency:'EUR',content_name:'Fit Dans Ta Vie'})">⭐ Fit Dans Ta Vie</a> · <a href="programmes.html">voir tous mes programmes →</a></p>
+  </div>
 </section>
 
 <!-- IDENTIFICATION -->
@@ -1582,37 +1618,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="coach-sportif-ou-salle-de-sport.html" class="svc-home-link">Salle ou coach : le comparatif</a>
     </div>
     <img class="svc-home-img" src="images/salle-vs-coaching.webp" alt="À la salle tu paies un accès, avec Ornella Fit Coaching un vrai accompagnement – coach sportive femme Essonne" loading="lazy" decoding="async" width="1080" height="1350">
-  </div>
-</section>
-
-<!-- APERÇU DES 3 OFFRES -->
-<section id="apercu-offres">
-  <div class="inner">
-    <span class="section-label">Coaching sur mesure</span>
-    <h2 class="section-title">L'accompagnement <em>fait pour toi</em></h2>
-    <div class="offre-list">
-      <a href="offres.html" class="offre-row">
-        <span class="offre-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5 12 4l8.5 6.5"/><path d="M5.5 9.5V19a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/><path d="M10 20v-5h4v5"/></svg></span>
-        <span class="offre-txt"><b>Domicile</b><small>Je viens chez toi · séance découverte 50 €</small></span>
-        <span class="offre-price">dès 240 €<small>/mois</small></span>
-      </a>
-      <a href="offres.html" class="offre-row offre-featured">
-        <span class="offre-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M18 7v6"/><path d="M15 10h6"/></svg></span>
-        <span class="offre-txt"><b>Hybride</b><small>Séances avec moi + suivi à distance</small></span>
-        <span class="offre-price">dès 149 €<small>/mois</small></span>
-      </a>
-      <a href="offres.html" class="offre-row">
-        <span class="offre-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12" rx="1.5"/><path d="M2 20h20"/></svg></span>
-        <span class="offre-txt"><b>Distanciel</b><small>Programme sur-mesure + suivi WhatsApp</small></span>
-        <span class="offre-price">dès 89 €<small>/mois</small></span>
-      </a>
-    </div>
-    <p class="offre-inclus"><strong>Inclus partout :</strong> ton espace de suivi privé (séances, bilans, mensurations, photos) sur ton téléphone.</p>
-    <div class="cta-block">
-      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn-main" target="_blank">Mon bilan gratuit 15 min →</a>
-    </div>
-    <a href="offres.html" class="link-discret">Voir toutes les offres en détail →</a>
-    <p class="fdtv-line"><b style="color:var(--dark);">Tu préfères avancer à ton rythme, sans coaching&nbsp;?</b><br>Mes programmes à suivre seule, accès immédiat&nbsp;: <a href="fit-dans-ta-vie.html" onclick="if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:49,currency:'EUR',content_name:'Fit Dans Ta Vie'})">⭐ Fit Dans Ta Vie</a> · <a href="programmes.html">voir tous mes programmes →</a></p>
   </div>
 </section>
 
@@ -1838,24 +1843,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="obj-btns">
       <button type="button" class="obj-btn" onclick="showObjReply(this,'prix')">Le prix</button>
       <button type="button" class="obj-btn" onclick="showObjReply(this,'temps')">Le temps</button>
-      <button type="button" class="obj-btn" onclick="showObjReply(this,'doute')">Le doute</button>
-      <button type="button" class="obj-btn" onclick="showObjReply(this,'coach')">J'ai déjà essayé un coach</button>
-      <button type="button" class="obj-btn" onclick="showObjReply(this,'debutante')">Je suis trop débutante</button>
-      <button type="button" class="obj-btn" onclick="showObjReply(this,'lieu')">Je n'habite pas en Essonne</button>
       <button type="button" class="obj-btn" onclick="showObjReply(this,'postpartum')">Enceinte / post-partum</button>
+      <button type="button" class="obj-btn" onclick="showObjReply(this,'lieu')">Je n'habite pas en Essonne</button>
+      <button type="button" class="obj-btn" onclick="showObjReply(this,'debutante')">Je suis trop débutante</button>
       <button type="button" class="obj-btn" onclick="showObjReply(this,'age')">Je suis trop âgée</button>
-      <button type="button" class="obj-btn" onclick="showObjReply(this,'duree')">Les résultats vont-ils durer ?</button>
     </div>
 
     <div id="obj-reply-prix" class="obj-reply" hidden><p><strong>Une salle que tu n'utilises pas coûte plus cher qu'un coaching qui marche.</strong> Distanciel dès 89 €/mois, hybride dès 149 €, domicile dès 240 € : programme sur-mesure et suivi inclus.</p></div>
     <div id="obj-reply-temps" class="obj-reply" hidden><p><strong>30 minutes suffisent.</strong> À distance, tes séances durent 30 à 40 min chez toi. À domicile, je viens : zéro trajet. Ton programme s'adapte à ton planning, pas l'inverse.</p></div>
-    <div id="obj-reply-doute" class="obj-reply" hidden><p><strong>Tu doutes de toi, pas de la méthode. C'est normal.</strong> Si rien n'a marché jusqu'ici, c'est que rien n'était fait pour toi. Le bilan est gratuit : tu ne risques rien à en parler.</p></div>
-    <div id="obj-reply-coach" class="obj-reply" hidden><p><strong>Si ça n'a pas marché, c'était sûrement un programme générique et zéro suivi.</strong> Ici : bilan complet, programme construit pour toi, suivi WhatsApp entre les séances.</p></div>
     <div id="obj-reply-debutante" class="obj-reply" hidden><p><strong>Celles qui partent de zéro progressent le plus vite.</strong> Je pars de ton niveau réel, sans jugement. Et à domicile, personne ne te regarde.</p></div>
     <div id="obj-reply-lieu" class="obj-reply" hidden><p><strong>Domicile en Essonne (91) et dans le sud du 92.</strong> Partout ailleurs : coaching à distance, même programme sur-mesure, même suivi WhatsApp.</p></div>
     <div id="obj-reply-postpartum" class="obj-reply" hidden><p><strong>C'est ma spécialité, je l'ai vécu.</strong> Reprise en sécurité : périnée, diastasis, progression à ton rythme. Je travaille en complément de ta rééducation périnéale, validée par ta sage-femme ou ton kiné.</p></div>
     <div id="obj-reply-age" class="obj-reply" hidden><p><strong>Mes clientes ont de 25 à 55 ans.</strong> Ton corps change avec l'âge, il ne s'arrête pas d'évoluer : il lui faut juste un programme adapté à lui.</p></div>
-    <div id="obj-reply-duree" class="obj-reply" hidden><p><strong>Je ne te donne pas un régime de 30 jours.</strong> Je t'apprends à t'entraîner et à manger pour toi : les résultats restent parce que tu as les outils.</p></div>
 
     <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="obj-reply-cta" target="_blank">On en parle ? Mon bilan gratuit 15 min →</a>
   </div>

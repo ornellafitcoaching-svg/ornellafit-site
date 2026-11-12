@@ -804,6 +804,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .rf-fcard li::before{content:'✓';position:absolute;left:0;color:var(--rf-terra);font-weight:700;}
 .rf-fcard .rf-btn{margin-top:auto;width:100%;}
 .rf-fcard[data-tarif]{cursor:pointer;}
+/* Carte = résumé ; le détail "ce qui est inclus" est à la demande */
+.rf-fcard details.fc-incl{margin:2px 0 14px;border-top:1px solid var(--rf-line);padding-top:8px;}
+.rf-fcard details.fc-incl>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font:700 .82rem/1.3 'DM Sans',sans-serif;color:var(--rf-terra);padding:4px 0;}
+.rf-fcard details.fc-incl>summary::-webkit-details-marker{display:none;}
+.rf-fcard details.fc-incl>summary::marker{content:'';}
+.rf-fcard details.fc-incl>summary::after{content:'▾';font-size:.7rem;transition:transform .25s;}
+.rf-fcard details.fc-incl[open]>summary::after{transform:rotate(180deg);}
+.rf-fcard details.fc-incl .lbl-c{display:none;}
+.rf-fcard details.fc-incl[open] .lbl-o{display:none;}
+.rf-fcard details.fc-incl[open] .lbl-c{display:inline;}
+.rf-fcard details.fc-incl ul{margin:10px 0 2px;}
 .rf-fcard-hero{background:linear-gradient(135deg,rgba(201,99,88,.10),rgba(201,99,88,.035));border:1px solid rgba(201,99,88,.22);border-radius:14px;padding:13px 15px;font-size:.9rem;line-height:1.55;color:var(--rf-ink);margin:2px 0 2px;}
 .rf-fcard-hero b{color:var(--rf-terra);font-weight:700;}
 .rf-short{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;}
@@ -863,12 +874,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="rf-fcard-kicker">🏠 À domicile</div>
         <h3 class="rf-fcard-promise">Je viens chez toi. Tu n'as qu'à être là, je m'occupe du reste.</h3>
         <p style="font:500 .8rem/1.45 'DM Sans',sans-serif;color:var(--rf-mute);margin:2px 0 10px;"><b style="color:var(--rf-ink2);">Pour qui&nbsp;:</b> tu es en Essonne (91) ou dans le sud du 92, et tu veux être guidée et corrigée en direct, sans salle ni trajet.</p>
-        <ul>
-          <li>Une technique corrigée en direct, pour des résultats qui se voient</li>
-          <li>Un coaching 100&nbsp;% sur toi : tes objectifs, ton niveau, tes contraintes</li>
-          <li>Zéro trajet, zéro salle : j'apporte tout le matériel</li>
-        </ul>
-        <p style="font:600 .82rem/1.45 'DM Sans',sans-serif;color:var(--rf-ink2);background:rgba(192,87,74,.06);border-radius:10px;padding:9px 12px;margin:0 0 4px;">🏋️ Programme pour t'entraîner les jours sans moi&nbsp;: en <b>Boost</b> ici (inclus d'office en hybride &amp; à distance).</p>
+        <details class="fc-incl">
+          <summary><span class="lbl-o">Ce qui est inclus</span><span class="lbl-c">Masquer</span></summary>
+          <ul>
+            <li>Une technique corrigée en direct, pour des résultats qui se voient</li>
+            <li>Un coaching 100&nbsp;% sur toi : tes objectifs, ton niveau, tes contraintes</li>
+            <li>Zéro trajet, zéro salle : j'apporte tout le matériel</li>
+          </ul>
+          <p style="font:600 .82rem/1.45 'DM Sans',sans-serif;color:var(--rf-ink2);background:rgba(192,87,74,.06);border-radius:10px;padding:9px 12px;margin:2px 0 4px;">🏋️ Programme pour t'entraîner les jours sans moi&nbsp;: en <b>Boost</b> ici (inclus d'office en hybride &amp; à distance).</p>
+        </details>
         <div class="rf-fcard-pricebox">
           <div class="rf-fcard-from">À partir de</div>
           <div class="rf-fcard-price">240€<small>/mois</small></div>
@@ -883,11 +897,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="rf-fcard-kicker">💫 Hybride</div>
         <h3 class="rf-fcard-promise">Progresse toute la semaine, pas seulement le jour de la séance.</h3>
         <p style="font:500 .8rem/1.45 'DM Sans',sans-serif;color:var(--rf-mute);margin:2px 0 10px;"><b style="color:var(--rf-ink2);">Pour qui&nbsp;:</b> tu veux de vrais résultats sans y passer tes journées — un rendez-vous avec moi + des séances guidées en autonomie, pour un budget maîtrisé. C'est pour ça que c'est la plus choisie.</p>
-        <ul>
-          <li><strong>Jusqu'à 5 entraînements guidés</strong> par semaine en vidéo : tu t'entraînes plus, donc <strong>tu avances plus vite</strong></li>
-          <li>Un programme sur-mesure qui évolue avec toi, <strong>mis à jour toutes les 4 semaines</strong></li>
-          <li>Moi à tes côtés : rendez-vous mensuel à domicile + <strong>suivi WhatsApp</strong></li>
-        </ul>
+        <details class="fc-incl">
+          <summary><span class="lbl-o">Ce qui est inclus</span><span class="lbl-c">Masquer</span></summary>
+          <ul>
+            <li><strong>Jusqu'à 5 entraînements guidés</strong> par semaine en vidéo : tu t'entraînes plus, donc <strong>tu avances plus vite</strong></li>
+            <li>Un programme sur-mesure qui évolue avec toi, <strong>mis à jour toutes les 4 semaines</strong></li>
+            <li>Moi à tes côtés : rendez-vous mensuel à domicile + <strong>suivi WhatsApp</strong></li>
+          </ul>
+        </details>
         <div class="rf-fcard-pricebox">
           <div class="rf-fcard-from">Tout compris</div>
           <div class="rf-fcard-price">149€<small>/mois</small></div>
@@ -900,11 +917,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="rf-fcard-kicker">💻 À distance</div>
         <h3 class="rf-fcard-promise">Un coaching construit pour toi, où que tu sois en France.</h3>
         <p style="font:500 .8rem/1.45 'DM Sans',sans-serif;color:var(--rf-mute);margin:2px 0 10px;"><b style="color:var(--rf-ink2);">Pour qui&nbsp;:</b> tu es hors Essonne, ou tu aimes gérer ton emploi du temps, et tu veux un vrai suivi (pas un PDF générique), partout en France.</p>
-        <ul>
-          <li>Un programme 100&nbsp;% sur-mesure, pas un PDF générique</li>
-          <li>Une coach qui te suit : WhatsApp + bilan toutes les 4 semaines</li>
-          <li>Suivie même hors Essonne</li>
-        </ul>
+        <details class="fc-incl">
+          <summary><span class="lbl-o">Ce qui est inclus</span><span class="lbl-c">Masquer</span></summary>
+          <ul>
+            <li>Un programme 100&nbsp;% sur-mesure, pas un PDF générique</li>
+            <li>Une coach qui te suit : WhatsApp + bilan toutes les 4 semaines</li>
+            <li>Suivie même hors Essonne</li>
+          </ul>
+        </details>
         <div class="rf-fcard-pricebox">
           <div class="rf-fcard-from">Avec suivi, dès</div>
           <div class="rf-fcard-price">89€<small>/mois</small></div>
