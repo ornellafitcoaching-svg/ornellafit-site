@@ -70,6 +70,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .clem-points{list-style:none;display:flex;flex-direction:column;gap:8px;margin:0;padding:0}
 .clem-points li{font-size:.85rem;color:var(--text-mid);line-height:1.5;padding-left:20px;position:relative}
 .clem-points li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:700}
+/* Carte produit = résumé (prix + bénéfice) ; détail repliable */
+.clem-more{margin:2px 0 10px}
+.clem-more>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font:700 .82rem/1.3 'DM Sans',sans-serif;color:var(--accent);padding:6px 0}
+.clem-more>summary::-webkit-details-marker{display:none}
+.clem-more>summary::marker{content:''}
+.clem-more>summary::after{content:'▾';font-size:.7rem;transition:transform .25s}
+.clem-more[open]>summary::after{transform:rotate(180deg)}
+.clem-more .lbl-c{display:none}
+.clem-more[open] .lbl-o{display:none}
+.clem-more[open] .lbl-c{display:inline}
+.clem-more .clem-points{margin-top:6px}
 .clem-cta{display:block;background:linear-gradient(135deg,#2C1F1A,var(--accent));color:#fff;font-weight:700;font-size:.9rem;padding:14px 20px;border-radius:50px;text-decoration:none;text-align:center;transition:opacity .2s,transform .2s;margin-top:auto}
 .clem-cta:hover{opacity:.9;transform:translateY(-1px)}
 .clem-note{font-size:.75rem;color:var(--brown);text-align:center;margin-top:6px}
@@ -623,6 +634,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div style="background:var(--cream);border-radius:10px;padding:12px 14px;font-size:.8rem;color:var(--text-mid);line-height:1.7;margin:4px 0">
           🏠 À la maison, sans matériel · ⏱️ 20/30/45 min · 🧠 Méthode Plan A/B/C
         </div>
+        <details class="clem-more"><summary><span class="lbl-o">Voir le détail</span><span class="lbl-c">Masquer le détail</span></summary>
         <ul class="clem-points">
           <li>28 jours · 12 séances progressives (3/sem) en 3 formats, à la maison sans matériel</li>
           <li>Adaptations débutante + variantes si genoux, dos, épaules ou post-grossesse sensibles</li>
@@ -631,6 +643,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <li>Trackers, planning, bilans hebdo + guide de continuité après 28 j</li>
           <li>Accès à vie · Programme interactif sur ton téléphone</li>
         </ul>
+        </details>
         <!-- TODO ORNELLA : dès que tu as le bonus + sa date limite, décommente la ligne ci-dessous et remplis-la -->
         <!-- <div class="fdtv-bonus">🎁 Bonus ce mois-ci : ______ (jusqu'au ______)</div> -->
         <a href="fit-dans-ta-vie.html" class="clem-cta" style="background:linear-gradient(135deg,#C96358,#C9A96E)" onclick="if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:49,currency:'EUR',content_name:'Fit Dans Ta Vie'})">🌟 Je commence Fit Dans Ta Vie — 49€ →</a>
@@ -653,6 +666,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div style="background:var(--cream);border-radius:10px;padding:12px 14px;font-size:.8rem;color:var(--text-mid);line-height:1.7;margin:4px 0">
           🏠 À faire chez toi · ⏱️ 15 min/jour · 📵 Sans matériel
         </div>
+        <details class="clem-more"><summary><span class="lbl-o">Voir le détail</span><span class="lbl-c">Masquer le détail</span></summary>
         <ul class="clem-points">
           <li>14 jours de plan structuré jour par jour</li>
           <li>6 séances guidées ciblées abdos profonds</li>
@@ -660,6 +674,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <li>Plan nutrition & liste de courses inclus</li>
           <li>Accès à vie · Installable sur ton téléphone</li>
         </ul>
+        </details>
         <a href="ventre-plat.html" class="clem-cta" onclick="if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:12,currency:'EUR',content_name:'Ventre Plat',content_ids:['ventre-plat-14j'],content_type:'product'})">🔥 Je retrouve un ventre plat — 12€ →</a>
       </div>
       <div class="clem-card" id="planner">
@@ -671,6 +686,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div style="background:var(--cream);border-radius:10px;padding:12px 14px;font-size:.8rem;color:var(--text-mid);line-height:1.7;margin:4px 0">
           🧮 Calculateur calories auto · 📊 Graphiques de suivi · 📱 Tél. / tablette / PC
         </div>
+        <details class="clem-more"><summary><span class="lbl-o">Voir le détail</span><span class="lbl-c">Masquer le détail</span></summary>
         <ul class="clem-points">
           <li>Calculateur calories &amp; macros automatique</li>
           <li>Programme 8 semaines + 4 séances détaillées</li>
@@ -678,6 +694,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <li>24 idées de repas + « Ma journée type »</li>
           <li>Accès à vie · Google Sheets + Excel inclus</li>
         </ul>
+        </details>
         <a href="planner-ventre-fessiers.html" class="clem-cta" onclick="if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:12.75,currency:'EUR',content_name:'Planner Ventre Fessiers',content_ids:['planner-ventre-fessiers'],content_type:'product'})">🗒️ Je veux mon planner — 12,75€ →</a>
       </div>
     </div>
@@ -698,6 +715,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div style="background:var(--cream);border-radius:10px;padding:12px 14px;font-size:.8rem;color:var(--text-mid);line-height:1.7;margin:4px 0">
           🏠 À domicile ou en vacances · 🎥 Démo vidéo par exercice · 🔄 Avec ou sans élastiques
         </div>
+        <details class="clem-more"><summary><span class="lbl-o">Voir le détail</span><span class="lbl-c">Masquer le détail</span></summary>
         <ul class="clem-points">
           <li>8 semaines de programme progressif</li>
           <li>12 séances · vidéo de démonstration pour chaque exercice</li>
@@ -705,6 +723,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <li>Plan nutrition pour sculpter inclus</li>
           <li>Accès à vie · Installable sur ton téléphone</li>
         </ul>
+        </details>
         <a href="booty-sculpt.html" class="clem-cta" onclick="if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:19,currency:'EUR',content_name:'Booty Sculpt',content_ids:['booty-sculpt-8sem'],content_type:'product'})">🍑 Je veux des fessiers galbés — 19€ →</a>
       </div>
     </div>
@@ -726,6 +745,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div style="background:var(--cream);border-radius:10px;padding:12px 14px;font-size:.8rem;color:var(--text-mid);line-height:1.7;margin:4px 0">
           🏠 À la maison · 🤱 Allaitement OK · 💚 Adapté diastasis · ⏱️ 25-35 min/séance
         </div>
+        <details class="clem-more"><summary><span class="lbl-o">Voir le détail</span><span class="lbl-c">Masquer le détail</span></summary>
         <ul class="clem-points">
           <li>8 semaines progressives (reconnexion → transformation)</li>
           <li>Exercices expliqués pas à pas + erreurs fréquentes</li>
@@ -733,6 +753,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <li>Conseils hormones, sommeil avec bébé, anti-ballonnements</li>
           <li>Chrono repos intégré · Accès à vie</li>
         </ul>
+        </details>
         <a href="programme-postpartum.html" class="clem-cta" style="background:linear-gradient(135deg,#2E4A34,#4A7252);" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:17,currency:'EUR'})">👶 Je reconstruis mon corps — 17€ →</a>
       </div>
     </div>
@@ -754,6 +775,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div style="background:var(--cream);border-radius:10px;padding:12px 14px;font-size:.8rem;color:var(--text-mid);line-height:1.7;margin:4px 0">
           🏋️ Musculation · 🌸 Ménopause · 💊 Compléments · ✨ Skincare rétinal
         </div>
+        <details class="clem-more"><summary><span class="lbl-o">Voir le détail</span><span class="lbl-c">Masquer le détail</span></summary>
         <ul class="clem-points">
           <li>Programme musculation anti-âge 3 phases</li>
           <li>Nutrition longévité + compléments classés par âge</li>
@@ -761,6 +783,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <li>Skincare K-beauty, rétinal & lumière rouge</li>
           <li>Accès à vie · Programme interactif sur téléphone</li>
         </ul>
+        </details>
         <a href="ageless-girl-sales.html" class="clem-cta" style="background:linear-gradient(135deg,#D4607A,#C9885A);" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:17,currency:'EUR'})">🌸 Je retrouve un corps ferme — 17€ →</a>
       </div>
     </div>
@@ -781,6 +804,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div style="background:var(--cream);border-radius:10px;padding:12px 14px;font-size:.8rem;color:var(--text-mid);line-height:1.7;margin:4px 0">
           🏋️ En salle équipée · 📈 Progressive overload · ⏱️ 55–75 min/séance
         </div>
+        <details class="clem-more"><summary><span class="lbl-o">Voir le détail</span><span class="lbl-c">Masquer le détail</span></summary>
         <ul class="clem-points">
           <li>3 phases : Be Iron · Gainz Max · I Know It (60% → 90% RM)</li>
           <li>Split A,B,C,D,E — Ischios, Push, Quads, Pull, Fessiers</li>
@@ -788,6 +812,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <li>Guide nutrition · Cycle féminin · 12 compléments alimentaires</li>
           <li>Accès à vie · Installable sur ton téléphone</li>
         </ul>
+        </details>
         <a href="iron-girl-sales.html" class="clem-cta" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:49,currency:'EUR'})">🏋️ Je deviens une Iron Girl — 49€ →</a>
       </div>
     </div>
