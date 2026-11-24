@@ -263,481 +263,624 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="images/logo.png">
-<link rel="stylesheet" href="style.css">
-<style>
-:root{
-  --ent-cream:#F6EFE8;--ent-cream2:#FBF6F1;--ent-paper:#FFFFFF;--ent-line:rgba(35,26,22,.12);
-  --ent-terra:#C0574A;--ent-green:#2D6A4F;--ent-dark:#1B3A2D;--ent-gold:#BFA067;
-  --ent-ink:#231A16;--ent-ink2:#3D2B24;--ent-mute:#7A6A60;
-}
-.ent-wrap{overflow-x:hidden;}
-.ent-sec{padding:clamp(40px,6vw,76px) 20px;}
-.ent-in{max-width:1040px;margin:0 auto;}
-.ent-kicker{font:800 .72rem/1.2 'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:.14em;color:var(--ent-terra);text-align:center;margin-bottom:12px;}
-.ent-h2{font:600 clamp(1.75rem,4vw,2.6rem)/1.15 'Cormorant Garamond',Georgia,serif;color:var(--ent-ink);text-align:center;margin:0 0 14px;}
-.ent-lead{font-size:1.02rem;color:var(--ent-ink2);line-height:1.7;text-align:center;max-width:680px;margin:0 auto;}
-.ent-alt{background:var(--ent-paper);}
-
-/* HERO */
-.ent-hero{background:linear-gradient(180deg,var(--ent-cream2),var(--ent-cream));padding:calc(64px + clamp(28px,5vw,64px)) 20px clamp(44px,7vw,80px);}
-.ent-hero-grid{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center;}
-.ent-hero-badge{display:inline-block;background:rgba(45,106,79,.1);color:var(--ent-green);font:800 .68rem/1.2 'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:.1em;padding:8px 14px;border-radius:50px;margin-bottom:18px;}
-.ent-hero h1{font:600 clamp(2.2rem,5.4vw,3.7rem)/1.06 'Cormorant Garamond',Georgia,serif;color:var(--ent-ink);margin:0 0 18px;}
-.ent-hero h1 em{color:var(--ent-terra);font-style:italic;}
-.ent-hero-sub{font-size:1.08rem;color:var(--ent-ink2);line-height:1.65;margin:0 0 26px;max-width:560px;}
-.ent-hero-proof{list-style:none;padding:0;margin:24px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;max-width:560px;}
-.ent-hero-proof li{font-size:.9rem;color:var(--ent-ink2);padding-left:22px;position:relative;line-height:1.45;}
-.ent-hero-proof li::before{content:"✓";position:absolute;left:0;color:var(--ent-green);font-weight:800;}
-.ent-hero-photo{position:relative;}
-.ent-hero-photo img{width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;border-radius:22px;box-shadow:0 22px 50px rgba(35,26,22,.16);display:block;}
-.ent-hero-card{position:absolute;left:-18px;bottom:22px;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 10px 30px rgba(35,26,22,.14);font-size:.82rem;color:var(--ent-ink2);line-height:1.35;max-width:220px;}
-.ent-hero-card strong{display:block;font:600 1.15rem/1.1 'Cormorant Garamond',Georgia,serif;color:var(--ent-ink);}
-.ent-avail{display:inline-block;margin-top:16px;font-size:.84rem;color:var(--ent-green);font-weight:700;}
-
-/* CTA buttons */
-.ent-cta-row{display:flex;flex-wrap:wrap;gap:12px;}
-.ent-cta-row.center{justify-content:center;}
-.ent-btn{display:inline-block;font:700 .98rem/1.2 'DM Sans',sans-serif;padding:16px 24px;border-radius:50px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease;text-align:center;}
-.ent-btn:hover{transform:translateY(-2px);}
-.ent-btn-primary{background:var(--ent-terra);color:#fff;box-shadow:0 10px 26px rgba(192,87,74,.28);}
-.ent-btn-ghost{background:var(--ent-paper);color:var(--ent-ink);border:1.5px solid var(--ent-line);}
-.ent-btn small{display:block;font-weight:500;font-size:.78rem;opacity:.9;margin-top:3px;}
-
-/* Problème */
-.ent-pb{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:30px;}
-.ent-pb div{background:var(--ent-cream2);border:1px solid var(--ent-line);border-radius:14px;padding:16px 16px;font-size:.92rem;color:var(--ent-ink2);line-height:1.5;}
-.ent-pb strong{display:block;color:var(--ent-ink);margin-bottom:2px;}
-.ent-fact{max-width:720px;margin:26px auto 0;background:var(--ent-dark);color:#fff;border-radius:18px;padding:22px 24px;display:flex;gap:18px;align-items:center;}
-.ent-fact .num{font:600 2.6rem/1 'Cormorant Garamond',Georgia,serif;white-space:nowrap;}
-.ent-fact p{margin:0;font-size:.93rem;line-height:1.55;color:rgba(255,255,255,.9);}
-.ent-fact a{color:#BFE3CC;}
-
-/* Cards (bénéfices) */
-.ent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:32px;}
-.ent-card{background:var(--ent-paper);border:1px solid var(--ent-line);border-radius:18px;padding:24px 22px;box-shadow:0 6px 22px rgba(139,111,94,.06);}
-.ent-card .ic{font-size:1.6rem;display:block;margin-bottom:10px;}
-.ent-card h3{font:600 1.2rem/1.25 'Cormorant Garamond',Georgia,serif;color:var(--ent-ink);margin:0 0 6px;}
-.ent-card p{font-size:.9rem;color:var(--ent-mute);line-height:1.6;margin:0;}
-
-/* Étapes */
-.ent-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:32px;}
-.ent-step{background:var(--ent-cream2);border:1px solid var(--ent-line);border-radius:16px;padding:22px 20px;}
-.ent-step .n{width:34px;height:34px;border-radius:50%;background:var(--ent-terra);color:#fff;font:700 1rem/34px 'DM Sans',sans-serif;text-align:center;margin-bottom:12px;}
-.ent-step h3{font:600 1.15rem/1.25 'Cormorant Garamond',Georgia,serif;color:var(--ent-ink);margin:0 0 6px;}
-.ent-step p{font-size:.88rem;color:var(--ent-mute);line-height:1.6;margin:0;}
-
-/* Tarifs */
-.ent-tarifs{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:16px;margin-top:34px;align-items:stretch;}
-.ent-tarif{background:var(--ent-paper);border:1px solid var(--ent-line);border-radius:18px;padding:28px 22px;display:flex;flex-direction:column;box-shadow:0 6px 22px rgba(139,111,94,.06);position:relative;}
-.ent-tarif.feat{border:1.5px solid var(--ent-terra);box-shadow:0 12px 34px rgba(192,87,74,.14);}
-.ent-tarif-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--ent-terra);color:#fff;font:800 .62rem/1 'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:.06em;padding:6px 14px;border-radius:50px;white-space:nowrap;}
-.ent-tarif h3{font:600 1.35rem/1.2 'Cormorant Garamond',Georgia,serif;color:var(--ent-ink);margin:0 0 4px;}
-.ent-tarif .sub{font-size:.85rem;color:var(--ent-mute);margin-bottom:14px;line-height:1.5;}
-.ent-tarif .price{font:600 2.2rem/1 'Cormorant Garamond',Georgia,serif;color:var(--ent-terra);}
-.ent-tarif .price small{font-size:.88rem;color:var(--ent-mute);font-family:'DM Sans',sans-serif;}
-.ent-tarif .perpers{font-size:.82rem;color:var(--ent-green);font-weight:700;margin-top:8px;}
-.ent-tarif ul{list-style:none;padding:0;margin:14px 0 0;}
-.ent-tarif li{font-size:.88rem;color:var(--ent-ink2);line-height:1.5;padding:5px 0 5px 22px;position:relative;}
-.ent-tarif li::before{content:"✓";position:absolute;left:0;color:var(--ent-green);font-weight:800;}
-.ent-grille{width:100%;border-collapse:collapse;margin-top:14px;font-size:.88rem;}
-.ent-grille td{padding:7px 4px;border-bottom:1px solid var(--ent-line);color:var(--ent-ink2);}
-.ent-grille td:last-child{text-align:right;white-space:nowrap;}
-.ent-grille tr.best td{font-weight:700;color:var(--ent-ink);}
-.ent-grille .ps{display:block;font-size:.74rem;color:var(--ent-mute);font-weight:500;}
-.ent-multi{max-width:760px;margin:22px auto 0;background:#FFF9F6;border:1px solid rgba(192,87,74,.22);border-radius:16px;padding:16px 20px;font-size:.92rem;color:var(--ent-ink2);line-height:1.6;}
-.ent-multi strong{color:var(--ent-terra);}
-.ent-tarifs-note{text-align:center;font-size:.82rem;color:var(--ent-mute);max-width:700px;margin:18px auto 0;line-height:1.6;}
-
-/* Logistique */
-.ent-log{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:30px;}
-.ent-log div{display:flex;gap:12px;align-items:flex-start;background:var(--ent-paper);border:1px solid var(--ent-line);border-radius:14px;padding:16px;}
-.ent-log .ic{font-size:1.3rem;line-height:1;}
-.ent-log p{margin:0;font-size:.9rem;color:var(--ent-ink2);line-height:1.5;}
-.ent-log strong{display:block;color:var(--ent-ink);}
-
-/* Pour qui */
-.ent-tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px;}
-.ent-tags span{background:var(--ent-cream2);border:1px solid var(--ent-line);border-radius:50px;padding:9px 16px;font-size:.88rem;color:var(--ent-ink2);}
-.ent-zones{text-align:center;margin-top:20px;font-size:.9rem;color:var(--ent-mute);line-height:1.6;}
-
-/* Financement */
-.ent-fin{background:var(--ent-dark);}
-.ent-fin .ent-kicker{color:#BFE3CC;}
-.ent-fin .ent-h2,.ent-fin .ent-lead{color:#fff;}
-.ent-fin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:30px;}
-.ent-fin-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:24px 22px;}
-.ent-fin-card h3{font:600 1.22rem/1.25 'Cormorant Garamond',Georgia,serif;color:#fff;margin:0 0 8px;}
-.ent-fin-card p{font-size:.9rem;color:rgba(255,255,255,.86);line-height:1.6;margin:0;}
-.ent-fin-note{text-align:center;font-size:.78rem;color:rgba(255,255,255,.66);max-width:700px;margin:20px auto 0;line-height:1.6;}
-.ent-fin-note a{color:inherit;text-decoration:underline;}
-
-/* À propos */
-.ent-about{display:grid;grid-template-columns:220px 1fr;gap:30px;align-items:center;max-width:820px;margin:0 auto;}
-.ent-about img{width:100%;border-radius:18px;aspect-ratio:3/4;object-fit:cover;}
-.ent-about p{font-size:.98rem;color:var(--ent-ink2);line-height:1.7;margin:0 0 12px;}
-.ent-about ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px;}
-.ent-about li{background:var(--ent-cream2);border:1px solid var(--ent-line);border-radius:50px;padding:6px 12px;font-size:.82rem;color:var(--ent-ink2);}
-
-/* FAQ */
-.ent-faq{max-width:760px;margin:30px auto 0;}
-.ent-faq details{background:var(--ent-paper);border:1px solid var(--ent-line);border-radius:14px;margin-bottom:10px;overflow:hidden;}
-.ent-faq summary{list-style:none;cursor:pointer;padding:17px 20px;font:600 .98rem/1.4 'DM Sans',sans-serif;color:var(--ent-ink);display:flex;justify-content:space-between;gap:12px;}
-.ent-faq summary::-webkit-details-marker{display:none;}
-.ent-faq summary::after{content:"+";color:var(--ent-terra);font-weight:700;font-size:1.3rem;line-height:1;}
-.ent-faq details[open] summary::after{content:"–";}
-.ent-faq .fa{padding:0 20px 18px;font-size:.92rem;color:var(--ent-ink2);line-height:1.65;}
-
-/* Final */
-.ent-final{background:linear-gradient(180deg,var(--ent-cream),var(--ent-cream2));text-align:center;border-top:1px solid var(--ent-line);}
-.ent-final-contact{margin-top:18px;font-size:.92rem;color:var(--ent-ink2);}
-.ent-final-contact a{color:var(--ent-terra);font-weight:700;}
-
-/* Sticky mobile CTA */
-.ent-sticky{display:none;}
-@media(max-width:860px){
-  .ent-hero-grid{grid-template-columns:1fr;gap:28px;}
-  .ent-hero-photo{max-width:320px;margin:0 auto;}
-  .ent-hero-card{left:-8px;}
-  .ent-tarifs{grid-template-columns:1fr;}
-  .ent-tarif.feat{order:-1;}
-  .ent-about{grid-template-columns:1fr;text-align:center;}
-  .ent-about img{max-width:220px;margin:0 auto;}
-  .ent-about ul{justify-content:center;}
-}
-@media(max-width:600px){
-  .ent-sec{padding:38px 16px;}
-  .ent-hero{padding-left:16px;padding-right:16px;}
-  .ent-btn{width:100%;}
-  .ent-hero-proof{grid-template-columns:1fr;}
-  .ent-fact{flex-direction:column;text-align:center;gap:8px;}
-  .ent-sticky{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:98;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:1px solid var(--ent-line);box-shadow:0 -6px 20px rgba(35,26,22,.08);transform:translateY(110%);transition:transform .3s ease;}
-  .ent-sticky.show{transform:none;}
-  .ent-sticky a{flex:1;text-align:center;font:700 .9rem/1.2 'DM Sans',sans-serif;padding:13px 10px;border-radius:50px;text-decoration:none;}
-  .ent-sticky .p{background:var(--ent-terra);color:#fff;}
-  .ent-sticky .g{flex:0 0 auto;background:#fff;color:var(--ent-ink);border:1.5px solid var(--ent-line);}
-  footer{padding-bottom:90px !important;}
-}
-
-/* PDF plaquette */
-.ent-pdf{margin:14px 0 0;font-size:.82rem;color:var(--ent-mute);line-height:1.45;}
-.ent-pdf a{display:inline-block;font:700 .9rem/1.3 'DM Sans',sans-serif;color:var(--ent-dark);text-decoration:underline;text-underline-offset:3px;margin-right:8px;}
-.ent-pdf span{display:inline-block;}
-.ent-pdf.center{text-align:center;}
-.ent-sup{color:var(--ent-terra);text-decoration:none;font-weight:700;}
-.ent-zone-note{text-align:center;font-size:.8rem;color:var(--ent-mute);max-width:700px;margin:10px auto 0;line-height:1.55;}
-/* Carte « Toute l'équipe » */
-.ent-tarif-team{grid-column:1/-1;background:linear-gradient(135deg,rgba(27,58,45,.06),rgba(27,58,45,.02));border:1.5px solid rgba(27,58,45,.3);}
-.ent-badge-green{background:var(--ent-dark);}
-.ent-tarif-team .price{color:var(--ent-dark);}
-@media(min-width:861px){.ent-tarif-team{display:grid;grid-template-columns:1.2fr .8fr 1fr;column-gap:24px;align-items:center;}.ent-tarif-team h3,.ent-tarif-team .sub{grid-column:1;}.ent-tarif-team .price,.ent-tarif-team .perpers{grid-column:2;}.ent-tarif-team ul{grid-column:3;grid-row:1/span 4;margin:0;}}
-/* Votre coach */
-.ent-police{font-size:.95rem!important;}
-.ent-cartepro{font-size:.9rem!important;background:var(--ent-cream2);border:1px solid var(--ent-line);border-radius:12px;padding:10px 14px;}
-.ent-cartepro a{color:var(--ent-dark);font-weight:700;}
-/* Formulaire */
-.ent-form{max-width:640px;margin:0 auto;text-align:left;background:var(--ent-paper);border:1px solid var(--ent-line);border-radius:20px;padding:22px;box-shadow:0 10px 30px rgba(35,26,22,.07);display:grid;gap:12px;}
-.ent-f2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.ent-form label{display:flex;flex-direction:column;gap:5px;font:700 .82rem/1.3 'DM Sans',sans-serif;color:var(--ent-ink);}
-.ent-form .opt{font-weight:500;color:var(--ent-mute);}
-.ent-form input,.ent-form select,.ent-form textarea{font:400 16px/1.3 'DM Sans',sans-serif;color:var(--ent-ink);background:#FDFBF8;border:1.5px solid var(--ent-line);border-radius:12px;padding:12px 13px;width:100%;box-sizing:border-box;}
-.ent-form input:focus,.ent-form select:focus,.ent-form textarea:focus{outline:none;border-color:var(--ent-dark);box-shadow:0 0 0 3px rgba(27,58,45,.12);}
-.ent-form [aria-invalid="true"]{border-color:var(--ent-terra);}
-.ent-form[hidden],.ent-form-ok[hidden],.ent-pdf[hidden]{display:none!important;}
-.ent-form button{width:100%;border:0;cursor:pointer;}
-.ent-form button:disabled{opacity:.6;cursor:default;}
-.ent-form-err{display:none;margin:0;font-size:.85rem;color:var(--ent-terra);font-weight:600;}
-.ent-form-err.show{display:block;}
-.ent-form-rgpd{margin:0;font-size:.74rem;color:var(--ent-mute);line-height:1.5;text-align:center;}
-.ent-form-rgpd a{color:inherit;}
-.ent-form-ok{max-width:640px;margin:0 auto;background:var(--ent-dark);color:#fff;border-radius:20px;padding:26px 22px;}
-.ent-form-ok .t{font:600 1.5rem/1.3 'Cormorant Garamond',Georgia,serif;margin:0;}
-.ent-alt-contact{margin-top:26px;}
-.ent-alt-contact p{font-size:.9rem;color:var(--ent-mute);margin:0 0 10px;}
-.ent-alt-contact .ent-btn{padding:12px 18px;font-size:.88rem;}
-@media(max-width:600px){.ent-f2{grid-template-columns:1fr;}.ent-form{padding:18px 16px;}.ent-alt-contact .ent-btn{width:auto;flex:1 1 30%;padding:11px 4px;font-size:.8rem;white-space:nowrap;}}
-</style>
 <!-- Meta Pixel -->
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1233548507794099");fbq("track","PageView");</script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1233548507794099&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
+<style>
+
+/* VOICE  : calme, haut de gamme, une idée par écran, phrases courtes.
+   IDEA   : une fiche de coach bien tenue : la photo, les preuves, le prix, une question, un message.
+   PICTURE: la photo en pied d'Ornella, puis les avant/après réels des clientes.
+   COLOUR+TYPE : un bloc de couleur par partie (ivoire, rose poudré, sauge, brun, sable, corail) ; texte courant d'une seule couleur ;
+                 titres Cormorant Garamond 700 droit avec la fin en couleur ; DM Sans pour le texte.
+   LAYOUT : mobile d'abord, 6 blocs au lieu de 11, 3 boutons de contact + barre basse. */
+:root{--ivory:#FBF7F2;--sand:#F3EBE2;--blush:#F5E2DA;--blush2:#FBEEE9;--sage:#E4E8DB;--sage-d:#5F7258;--coral2:#C35F50;--peach:#F2A796;--ink:#2B201C;--line:rgba(43,32,28,.14);--coral:#B4513F;--coral-d:#9A4232;--night:#2B201C;--night2:#221916;--cream:#F6EFE8;
+--serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;--sans:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;color-scheme:light}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ivory);color:var(--ink);font:400 16.5px/1.6 var(--sans);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.06;margin:0;text-wrap:balance;letter-spacing:-.005em;font-variant-numeric:lining-nums}
+h1{font-size:clamp(2.2rem,7vw,3.7rem)}
+h2{font-size:clamp(2rem,5.6vw,2.9rem)}
+h3{font-size:1.55rem}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.band{padding:60px 0}
+.band--sand{background:var(--sand)}
+.band--white{background:#fff}
+.band--blush{background:var(--blush)}
+.band--sage{background:var(--sage)}
+.band--night{background:var(--night);color:var(--cream)}
+.band--coral{background:var(--coral2);color:#fff}
+.hl{color:var(--coral)}
+.band--night .hl{color:var(--peach)}
+.band--coral .hl{color:var(--night)}
+.band--sage .hl{color:var(--sage-d)}
+.head{max-width:640px;margin-bottom:32px}
+.head p{margin-top:14px;font-size:1.04rem}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:58px;padding:0 30px;border-radius:999px;background:var(--coral);color:#fff;font:600 1.03rem/1.2 var(--sans);text-decoration:none;box-shadow:0 10px 24px -14px rgba(154,66,50,.7);transition:background .2s,transform .2s}
+.btn:hover{background:var(--coral-d);transform:translateY(-1px)}
+.btn svg{flex:none}
+.btn:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+.link{display:inline-block;padding:10px 0;font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.link:hover{text-decoration-thickness:2px}
+.small{font-size:.92rem}
+@media(min-width:620px){.btn{display:inline-flex;width:auto}}
+@media(min-width:900px){.band{padding:108px 0}}
+
+/* Bandeau + navigation */
+.topbar{background:var(--night);color:var(--cream);font-size:.82rem;text-align:center;padding:8px 16px;line-height:1.35}
+.topbar:empty{display:none}
+.nav{position:sticky;top:0;z-index:60;background:rgba(251,247,242,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .25s}
+.nav.is-scrolled{border-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1120px;margin:0 auto;padding:0 22px;position:relative}
+.nav-logo img{height:38px;width:auto}
+.nav-toggle{appearance:none;border:0;background:none;width:46px;height:46px;margin-right:-12px;font-size:25px;line-height:1;color:var(--ink);cursor:pointer}
+#navMenu{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--ivory);padding:4px 22px 22px;border-bottom:1px solid var(--line);box-shadow:0 18px 30px -24px rgba(43,32,28,.4)}
+#navMenu.open{display:flex}
+#navMenu a{padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:500}
+#navMenu a.nav-cta{margin-top:16px;border:0;padding:0}
+@media(min-width:1040px){
+  .nav-toggle{display:none}
+  #navMenu{display:flex;position:static;flex-direction:row;align-items:center;gap:28px;padding:0;background:none;border:0;box-shadow:none}
+  #navMenu a{border:0;padding:6px 0;font-size:.95rem}
+  #navMenu a.nav-cta{margin:0}
+  #navMenu .btn{min-height:46px;padding:0 22px;font-size:.95rem}
+}
+
+/* Hero */
+.hero{padding:14px 0 60px}
+.hero-grid{display:grid;gap:26px}
+.hero-photo{width:100%;max-width:520px;margin:0 auto;border-radius:22px;overflow:hidden;background:#E8DDD2;box-shadow:0 24px 40px -30px rgba(43,32,28,.55)}
+.hero-photo img{width:100%;height:auto}
+.hero-sub{margin-top:16px;font-size:1.06rem;max-width:520px}
+.hero-act{margin-top:26px}
+.hero-note{margin-top:12px;font-size:.9rem}
+.hero-quiz{margin-top:2px;font-size:.95rem}
+.trust{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:34px 0 0;padding:20px 0 0;list-style:none;border-top:1px solid var(--line);text-align:center}
+.trust li{padding:0 8px;font-size:.84rem;line-height:1.35}
+.trust li+li{border-left:1px solid var(--line)}
+.trust b{display:block;font-size:.92rem;margin-bottom:3px}
+@media(min-width:900px){
+  .hero{padding:40px 0 96px}
+  .hero-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:64px;align-items:center}
+  .hero-photo{order:2;max-width:470px;margin:0 0 0 auto}
+  .trust{text-align:left;max-width:560px}
+  .trust li{padding:0 16px}.trust li:first-child{padding-left:0}
+}
+
+/* Carrousels (avant/après, avis) */
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:84%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -22px;padding:2px 22px 6px;scroll-padding:0 22px}
+.rail::-webkit-scrollbar{display:none}
+.rail>*{scroll-snap-align:start}
+.dots{display:flex;justify-content:center;gap:7px;margin-top:16px}
+.dots button{width:8px;height:8px;padding:0;border:0;border-radius:99px;background:rgba(43,32,28,.22);cursor:pointer;transition:width .25s,background .25s}
+.dots button[aria-current=true]{width:22px;background:var(--ink)}
+@media(min-width:900px){
+  .rail{grid-auto-flow:row;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;margin:0;padding:0}
+  .rail--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dots{display:none}
+}
+.case{display:block;background:#fff;border-radius:20px;overflow:hidden;text-decoration:none}
+.case img{width:100%;aspect-ratio:1;object-fit:cover;background:#E8DDD2}
+.case-b{padding:18px 20px 22px}
+.case-n{font-weight:700}
+.case-r{font-variant-numeric:lining-nums;font-family:var(--serif);font-weight:600;font-size:1.55rem;line-height:1.12;margin:4px 0 8px}
+.case-c{font-size:.92rem}
+.more{margin-top:18px;text-align:center}
+
+.rating{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 18px;margin-bottom:22px}
+.rating h2{font-size:clamp(2rem,5.6vw,2.9rem)}
+.stars{color:#C58B2A;letter-spacing:2px;font-size:1rem;margin-left:6px;vertical-align:2px}
+.quote{background:#fff;border-radius:20px;padding:24px 22px 20px;margin:0;display:flex;flex-direction:column}
+.quote p{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;font-size:1rem}
+.quote.is-open p{-webkit-line-clamp:unset;display:block}
+.quote footer{margin-top:auto;padding-top:14px;font-size:.88rem}
+.quote footer b{font-size:.95rem}
+.quote button{align-self:flex-start;margin-top:8px;padding:8px 0;border:0;background:none;color:var(--ink);font:600 .9rem var(--sans);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+
+/* Formules */
+.offers{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.offer{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 18px;align-items:center;padding:22px 22px;text-decoration:none;transition:background .2s}
+.offer+.offer{border-top:1px solid var(--line)}
+.offer:hover{background:#FDFAF7}
+.offer h3{font-size:1.6rem;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.offer p{font-size:.93rem;margin-top:4px}
+.tag{font:700 .72rem/1 var(--sans);background:var(--coral);color:#fff;border-radius:99px;padding:6px 10px;letter-spacing:.01em}
+.price{text-align:right;white-space:nowrap;font-size:.86rem;line-height:1.2}
+.price b{display:block;font-variant-numeric:lining-nums;font-family:var(--serif);font-size:1.75rem;font-weight:600}
+.offer--top{background:var(--blush2)}
+.incl{margin-top:22px;display:grid;gap:10px;font-size:.95rem}
+.offers-act{margin-top:30px;display:flex;flex-direction:column;gap:6px;align-items:stretch;text-align:center}
+.solo{margin-top:40px;padding-top:26px;border-top:1px solid var(--line);font-size:.98rem}
+.solo a{font-weight:600;text-underline-offset:4px}
+@media(min-width:620px){.offers-act{flex-direction:row;align-items:center;gap:26px;text-align:left}}
+@media(min-width:900px){.split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:start}.split>.head{position:sticky;top:110px;margin-bottom:0}}
+
+/* Histoire */
+.story p{font-size:1.06rem}
+.story p+p{margin-top:16px}
+.story .cred{font-size:.92rem;margin-top:22px}
+.story .cred a{text-underline-offset:4px}
+.band--night .link,.band--night a{color:var(--cream)}
+
+/* FAQ */
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:20px 0;font-weight:600;font-size:1.03rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;font:400 1.6rem/1 var(--sans);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 0 22px;display:grid;gap:10px}
+.faq .a a{text-underline-offset:4px}
+
+/* Final + pied de page */
+.final{text-align:center}
+.final .btn{background:#fff;color:var(--coral-d);box-shadow:0 14px 28px -16px rgba(43,32,28,.6)}
+.final .btn:hover{background:var(--cream)}
+.final p{margin:16px auto 0;max-width:520px;font-size:1.05rem}
+.final .btn{margin-top:30px}
+.final .small{margin-top:16px}
+.final a:not(.btn){text-underline-offset:4px}
+.foot{background:var(--night2);color:var(--cream);padding:56px 0 calc(96px + env(safe-area-inset-bottom));font-size:.93rem}
+.foot img{height:34px;width:auto;filter:brightness(0) invert(1);opacity:.9}
+.foot-slogan{margin-top:12px}
+.foot nav{display:flex;flex-wrap:wrap;gap:4px 22px;margin-top:28px}
+.foot nav a,.foot .contact a{display:inline-block;padding:7px 0;text-decoration:none}
+.foot nav a:hover,.foot .contact a:hover{text-decoration:underline;text-underline-offset:4px}
+.contact{display:flex;flex-wrap:wrap;gap:4px 22px;margin-top:10px;padding-top:12px;border-top:1px solid rgba(246,239,232,.16)}
+.foot details{margin-top:18px;border-top:1px solid rgba(246,239,232,.16)}
+.foot summary{cursor:pointer;padding:16px 0;font-weight:600}
+.foot details div{display:flex;flex-wrap:wrap;gap:2px 18px;padding-bottom:10px}
+.foot details a{padding:6px 0;text-underline-offset:3px}
+.legal{margin-top:20px;font-size:.84rem;display:flex;flex-wrap:wrap;gap:4px 16px}
+.legal a{text-underline-offset:3px}
+@media(min-width:900px){.foot{padding-bottom:56px}}
+
+/* Barre de contact en bas (téléphone) */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(251,247,242,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s ease}
+.sticky.show{transform:none}
+.sticky .btn{min-height:52px}
+@media(min-width:900px){.sticky{display:none}}
+
+/* Pop-up guide */
+#lead-popup{display:none;position:fixed;inset:0;z-index:100;align-items:flex-end;justify-content:center;padding:14px}
+#lead-popup.active{display:flex}
+#lead-overlay{position:absolute;inset:0;background:rgba(34,25,22,.55)}
+#lead-box{position:relative;width:100%;max-width:440px;background:var(--ivory);border-radius:24px;padding:30px 24px 24px}
+#lead-box h2{font-size:1.9rem;padding-right:26px}
+#lead-box p{margin-top:10px}
+#lead-close{position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;background:none;font-size:26px;color:var(--ink);cursor:pointer}
+#lead-form{display:grid;gap:10px;margin-top:18px}
+#lead-email{width:100%;min-height:54px;border:1px solid var(--line);border-radius:14px;padding:0 16px;font:16px var(--sans);background:#fff;color:var(--ink)}
+#lead-submit{border:0;cursor:pointer;width:100%}
+#lead-success{display:none;margin-top:16px;font-weight:600}
+@media(min-width:620px){#lead-popup{align-items:center}}
+
+/* ===== Code couleur (effet « repère visuel ») =====
+   Formules : domicile = miel, hybride = corail, à distance = bleu doux, programmes = sauge.
+   Dans un groupe .cc, chaque carte prend la couleur suivante. */
+:root{--c1:#B4513F;--t1:#F8E1D9;--c2:#5F7258;--t2:#E3EADF;--c3:#A06E22;--t3:#F6E8CF;--c4:#3F6A85;--t4:#E1EBF1;--c5:#2B201C;--t5:#EDE6E0}
+.cc>*{--acc:var(--c1);--tint:var(--t1)}
+.cc>*:nth-child(4n+2){--acc:var(--c2);--tint:var(--t2)}
+.cc>*:nth-child(4n+3){--acc:var(--c3);--tint:var(--t3)}
+.cc>*:nth-child(4n+4){--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-hyb,.is-hyb{--acc:var(--c1);--tint:var(--t1)}
+.cc>.is-prog,.is-prog{--acc:var(--c2);--tint:var(--t2)}
+.cc>.is-dom,.is-dom{--acc:var(--c3);--tint:var(--t3)}
+.cc>.is-dist,.is-dist{--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-ink,.is-ink{--acc:var(--c5);--tint:var(--t5)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.tcard,.act,.fcard,.box,.quote,.sm,.panel,.hero-prog,.mind>div,.solo-card){border-top:5px solid var(--acc,transparent)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.act,.fcard,.box,.sm,.panel,.hero-prog,.solo-card) :is(h3,h4){color:var(--acc,inherit)}
+.case-r,.tb h3,.mind .to,.obj b{color:var(--acc,inherit)}
+.trust b{color:var(--acc,inherit)}
+.trust.cc li{position:relative}
+.offer{border-left:5px solid var(--acc,transparent)}
+.offer h3,.offer .price b{color:var(--acc,inherit)}
+.steps li::before{background:var(--acc,var(--sage-d))!important}
+.faq.cc>details>summary::after,.faq .cc>details>summary::after{content:"+";width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--acc);color:#fff;font:600 1.2rem/1 var(--sans)}
+.faq.cc>details[open]>summary,.faq .cc>details[open]>summary{color:var(--acc)}
+.stats.cc>div,.tstats>div{background:var(--tint,transparent)}
+.stats.cc b,.tstats b{color:var(--acc,inherit)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* ===== Page Entreprise : même charte (blocs de couleur, titres gras avec accent, code couleur) ===== */
+.kick{font:700 .86rem/1.2 var(--sans);color:var(--coral);margin-bottom:10px}
+.band--sage .kick{color:var(--sage-d)}
+.band--night .kick{color:var(--peach)}
+.band--coral .kick{color:#fff}
+.lead{margin-top:14px;font-size:1.04rem}
+.ehero{padding:18px 0 56px}
+.badge{display:inline-block;font:700 .8rem/1.35 var(--sans);background:var(--sage);border-radius:999px;padding:7px 14px}
+.ehero h1{margin-top:14px}
+.ehero .btn{flex-direction:column;gap:3px;min-height:64px;padding:10px 30px}
+.ehero .btn small{font:500 .8rem/1.2 var(--sans);opacity:.92}
+.pdf{margin-top:8px;font-size:.92rem}
+.pdf a{font-weight:700;text-underline-offset:4px}
+.pdf span{display:block;font-size:.85rem}
+.avail{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font:600 .88rem/1.3 var(--sans);background:var(--blush);border-radius:999px;padding:8px 14px}
+.avail::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--coral)}
+.proof{list-style:none;padding:0;margin:24px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.proof li{background:var(--tint);border-left:4px solid var(--acc);border-radius:12px;padding:11px 12px;font-weight:600;font-size:.9rem;line-height:1.3}
+.ehero .hero-photo{position:relative}
+.pcard{position:absolute;left:12px;bottom:12px;max-width:240px;background:#fff;border-radius:16px;padding:12px 16px;font-size:.86rem;line-height:1.35;box-shadow:0 14px 30px -18px rgba(43,32,28,.6)}
+.pcard b{display:block;font-family:var(--serif);font-variant-numeric:lining-nums;font-size:1.75rem;line-height:1.05;color:var(--coral)}
+.items{display:grid;gap:12px}
+@media(min-width:760px){.items{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1000px){.items--3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.item{background:#fff;border-radius:18px;padding:20px 18px}
+.item h3{font-size:1.4rem;margin-bottom:8px}
+.item p{font-size:.95rem}
+.items--2{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.items--2 .item{padding:16px 14px}
+.items--2 .item h3{font-size:1.2rem;margin-bottom:6px}
+.items--2 .item p{font-size:.9rem;line-height:1.45}
+@media(min-width:900px){.items--2{gap:14px}.items--2 .item{padding:22px 20px}.items--2 .item h3{font-size:1.45rem}.items--2 .item p{font-size:.95rem}}
+.fact{margin-top:18px;background:#fff;border-radius:20px;padding:22px 20px;display:grid;gap:8px}
+.fact b{font-family:var(--serif);font-variant-numeric:lining-nums;font-size:3rem;line-height:1;color:var(--coral)}
+.fact .src{font-size:.85rem}
+.fact a{text-underline-offset:3px}
+.steps{list-style:none;padding:0;margin:0;display:grid;gap:12px;counter-reset:st}
+.steps{background:#fff;border-radius:22px;padding:8px 18px;gap:0}
+.steps li{display:grid;grid-template-columns:42px minmax(0,1fr);gap:14px;align-items:start;padding:16px 0}
+.steps li+li{border-top:1px solid var(--line)}
+.steps li::before{counter-increment:st;content:counter(st);width:38px;height:38px;border-radius:50%;color:#fff;display:grid;place-items:center;font-weight:700}
+.steps h3{font-size:1.3rem;color:var(--acc)}
+.steps p{font-size:.95rem;margin-top:4px}
+@media(min-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px;padding:12px 30px}.steps li:nth-child(2){border-top:0}}
+.tarifs{display:grid;gap:14px;margin-top:8px}
+@media(min-width:760px){.tarifs{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}}
+.tarif{position:relative;background:#fff;border-radius:22px;padding:24px 20px;border-top:5px solid var(--acc)}
+.tarif.feat{box-shadow:0 0 0 2px var(--acc)}
+.tarif .tag{position:absolute;top:-14px;right:16px;background:var(--acc)}
+.tarif h3{font-size:1.6rem;color:var(--acc)}
+.tarif .sub{font-size:.93rem;margin-top:6px}
+.tarif .big{font-family:var(--serif);font-variant-numeric:lining-nums;font-weight:700;font-size:2.5rem;line-height:1;margin-top:16px;color:var(--acc)}
+.tarif .big small{font:500 .95rem var(--sans);color:var(--ink)}
+.tarif .pp{font-size:.88rem;margin-top:6px}
+.ticks{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:8px;font-size:.93rem}
+.ticks li{padding-left:22px;position:relative}
+.ticks li::before{content:"✓";position:absolute;left:0;font-weight:700;color:var(--acc)}
+.grille{width:100%;border-collapse:collapse;margin-top:16px;font-size:.93rem}
+.grille td{padding:10px 0;border-top:1px solid var(--line);vertical-align:top}
+.grille td+td{text-align:right;font-weight:700;white-space:nowrap}
+.grille .ps{display:block;font-weight:400;font-size:.82rem}
+.grille .best td{color:var(--acc)}
+.multi{margin-top:16px;background:#fff;border-left:5px solid var(--c4);border-radius:16px;padding:18px 18px;font-size:.95rem}
+.multi strong:first-child{color:var(--c4)}
+.legal-note{margin-top:16px;font-size:.85rem}
+.legal-note a,.zone-note a{text-underline-offset:3px;font-weight:600}
+.tarif-act{margin-top:24px;text-align:center}
+.zone-note{margin-top:18px;font-size:.85rem}
+.rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.rows>div{background:#fff;border-radius:16px;border-top:5px solid var(--acc);padding:14px 14px 16px}
+.rows b{display:block;color:var(--acc);font-size:.98rem;line-height:1.25;margin-bottom:4px}
+.rows p{font-size:.88rem;line-height:1.45}
+@media(min-width:900px){.rows{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.rows>div{padding:20px}.rows b{font-size:1.05rem}.rows p{font-size:.95rem}}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.tags span{background:var(--tint);color:var(--ink);border-radius:999px;padding:8px 13px;font-weight:600;font-size:.88rem;line-height:1.2}
+.subhead{font-size:clamp(1.7rem,4.6vw,2.2rem)}
+.srcs{margin-top:20px;font-size:.85rem}
+.srcs a{text-underline-offset:3px}
+.coach{display:grid;grid-template-columns:118px minmax(0,1fr);gap:18px 18px;align-items:center}
+.coach img{width:100%;border-radius:16px;box-shadow:0 24px 40px -30px rgba(43,32,28,.55)}
+.coach-h h2{font-size:clamp(1.7rem,6vw,2.9rem)}
+.coach-t{grid-column:1/-1}
+.coach-t p+p{margin-top:12px}
+.coach .cpro{font-size:.92rem}
+.coach .cpro a{font-weight:600;text-underline-offset:3px}
+@media(min-width:900px){.coach{grid-template-columns:320px minmax(0,1fr);grid-template-rows:auto 1fr;gap:0 56px;align-items:start}.coach img{grid-row:1/3;border-radius:20px}.coach-h{align-self:end}.coach-h h2{font-size:clamp(2rem,5.6vw,2.9rem)}.coach-t{grid-column:2;margin-top:16px}}
+.faqw{max-width:780px}
+.contact-sec{text-align:center}
+.contact-sec .lead{max-width:520px;margin-left:auto;margin-right:auto}
+.formcard{background:#fff;color:var(--ink);border-radius:24px;padding:24px 20px;max-width:660px;margin:28px auto 0;text-align:left;box-shadow:0 20px 40px -26px rgba(43,32,28,.7)}
+.ent-form{display:grid;gap:14px}
+.ent-f2{display:grid;gap:14px}
+@media(min-width:620px){.ent-f2{grid-template-columns:repeat(2,minmax(0,1fr))}.formcard{padding:30px 30px}}
+.ent-form label{display:block;font-weight:600;font-size:.9rem}
+.ent-form label>input,.ent-form label>select,.ent-form label>textarea{display:block;margin-top:6px}
+.ent-form .opt{font-weight:400}
+.ent-form input,.ent-form select,.ent-form textarea{width:100%;min-height:50px;border:1px solid rgba(43,32,28,.22);border-radius:12px;padding:12px 14px;font:16px/1.4 var(--sans);background:var(--ivory);color:var(--ink)}
+.ent-form textarea{min-height:96px;resize:vertical}
+.ent-form :focus{outline:2px solid var(--coral);outline-offset:1px}
+.ent-form [aria-invalid=true]{border-color:#B03A2E;background:#FDF1EF}
+.ent-form-err{display:none;color:#B03A2E;font-weight:600;font-size:.9rem}
+.ent-form-err.show{display:block}
+.ent-form-err a{color:inherit}
+.ent-form button{border:0;cursor:pointer;width:100%}
+.ent-form button:disabled{opacity:.6;cursor:wait}
+.ent-form-rgpd{font-size:.82rem}
+.ent-form-rgpd a{text-underline-offset:3px}
+.ent-form-ok{text-align:center;padding:20px 6px;font-family:var(--serif);font-weight:700;font-size:1.6rem;line-height:1.2;color:var(--sage-d)}
+.ent-form-ok:focus{outline:none}
+.alt{margin-top:30px}
+.alt p{font-weight:600}
+.alt-row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:14px}
+.alt-row a{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;border:1.5px solid #fff;border-radius:999px;color:#fff;font-weight:600;text-decoration:none}
+.alt-row a:hover{background:rgba(255,255,255,.12)}
+.foot .info{margin-top:22px;font-size:.88rem}
+.band--night .item{color:var(--ink)}
+.ent-sticky{display:flex;gap:10px;align-items:center}
+.ent-sticky .btn{flex:1;width:auto;min-height:52px;padding:0 18px;font-size:.98rem}
+.ent-sticky .g{flex:none;display:grid;place-items:center;min-height:52px;padding:0 20px;border:1.5px solid var(--ink);border-radius:999px;font-weight:600;text-decoration:none}
+.ent-sticky.off{transform:translateY(110%)}
+@media(min-width:900px){.ehero{padding:40px 0 96px}}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<!-- NAV -->
-<nav>
-  <a href="/" class="nav-logo">
-    <img src="images/logo.png" alt="Ornella Fit Coaching" class="nav-logo-img" width="3135" height="793">
-  </a>
-  <button type="button" class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Menu">☰</button>
-  <div class="nav-menu" id="navMenu">
-    <a href="#format" class="nav-link">Le format</a>
-    <a href="#formules" class="nav-link">Tarifs</a>
-    <a href="#coach" class="nav-link">Votre coach</a>
-    <a href="#faq" class="nav-link">FAQ</a>
-    <a href="#contact" class="nav-cta js-cta-form" data-pos="nav">Demander un appel →</a>
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="nav-logo"><img src="images/logo.png" alt="Ornella Fit Coaching" width="3135" height="793" decoding="async"></a>
+    <button type="button" class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Menu">☰</button>
+    <nav id="navMenu" aria-label="Menu principal">
+      <a href="#format">Le format</a>
+      <a href="#formules">Tarifs</a>
+      <a href="#coach">Votre coach</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="nav-cta js-cta-form" data-pos="nav"><span class="btn">Demander un appel</span></a>
+    </nav>
   </div>
-</nav>
+</header>
 
-<div class="ent-wrap">
-
+<main>
 <!-- 1. HERO -->
-<header class="ent-hero">
-  <div class="ent-hero-grid">
+<section class="ehero ent-hero">
+  <div class="wrap hero-grid">
     <div>
-      <span class="ent-hero-badge">Coaching sportif en entreprise · Essonne & Île-de-France</span>
-      <h1>Le sport vient <em>directement</em> dans votre entreprise.</h1>
-      <p class="ent-hero-sub">Des séances de renforcement musculaire et pause active pour aider vos équipes à bouger, récupérer et créer du lien — sans quitter leur lieu de travail.</p>
-      <div class="ent-cta-row">
-        <a href="#contact" class="ent-btn ent-btn-primary js-cta-form" data-pos="hero">Demander un appel découverte<small>15 min offertes · réponse sous 24 h ouvrées</small></a>
-        <a href="#formules" class="ent-btn ent-btn-ghost">Voir les formules & tarifs</a>
+      <span class="badge">Coaching sportif en entreprise · Essonne &amp; Île-de-France</span>
+      <h1>Le sport vient directement <span class="hl">dans votre entreprise.</span></h1>
+      <p class="hero-sub">Des séances de renforcement musculaire et pause active pour aider vos équipes à bouger, récupérer et créer du lien, sans quitter leur lieu de travail.</p>
+      <div class="hero-act">
+        <a href="#contact" class="btn js-cta-form" data-pos="hero">Demander un appel découverte<small>15 min offertes · réponse sous 24 h ouvrées</small></a>
+        <p class="hero-quiz"><a href="#formules" class="link">Voir les formules &amp; tarifs</a></p>
+        <p class="pdf js-pdf"><a href="/docs/plaquette-ornella-fit-entreprise.pdf" target="_blank" rel="noopener" data-pos="hero">Télécharger la présentation (PDF)</a><span>À transmettre à votre direction ou à votre CSE.</span></p>
       </div>
-      <p class="ent-pdf js-pdf"><a href="/docs/plaquette-ornella-fit-entreprise.pdf" target="_blank" rel="noopener" data-pos="hero">📄 Télécharger la présentation (PDF)</a><span>À transmettre à votre direction ou à votre CSE.</span></p>
-      <span class="ent-avail">● Disponible à partir de fin novembre 2026 — places limitées</span>
-      <ul class="ent-hero-proof">
+      <span class="avail">Disponible à partir de fin novembre 2026 — places limitées</span>
+      <ul class="proof cc">
         <li>Coach diplômée d'État</li>
         <li>Groupes de 8 participants max</li>
         <li>Petit matériel fourni</li>
         <li>Aucune salle de sport nécessaire</li>
       </ul>
     </div>
-    <div class="ent-hero-photo">
+    <div class="hero-photo">
       <img src="images/ornella-photo-bleue-originale.webp" alt="Ornella, coach sportive diplômée d'État — Ornella Fit Coaching" width="1080" height="1350" fetchpriority="high">
-      <div class="ent-hero-card"><strong>Dès 110 €</strong>la séance d'1 h pour tout le groupe (jusqu'à 8 pers.)</div>
-    </div>
-  </div>
-</header>
-
-<!-- 2. PROBLÈME -->
-<section class="ent-sec ent-alt">
-  <div class="ent-in">
-    <div class="ent-kicker">Le constat</div>
-    <h2 class="ent-h2">Vos collaborateurs passent leurs journées assis ?</h2>
-    <p class="ent-lead">Écran, réunions, trajets… Au bureau, on bouge très peu. Et ça se ressent dans les équipes.</p>
-    <div class="ent-pb">
-      <div><strong>🪑 Sédentarité</strong>Des heures assis, sans vraie pause pour le corps.</div>
-      <div><strong>🔋 Coups de fatigue</strong>Baisse d'énergie en milieu de journée.</div>
-      <div><strong>🧍 Tensions musculaires</strong>Nuque, épaules et dos sollicités par la position assise.</div>
-      <div><strong>🤝 Peu de lien</strong>Entre services, télétravail : difficile de créer des moments communs.</div>
-    </div>
-    <div class="ent-fact">
-      <div class="num">95 %</div>
-      <p>des adultes en France sont exposés à un risque pour leur santé lié au manque d'activité physique ou à trop de temps assis. <br><small>Source : <a href="https://pole-sante.creps-vichy.sports.gouv.fr/?p=7718" target="_blank" rel="noopener">Anses, avis de février 2022</a></small></p>
+      <div class="pcard"><b>Dès 110 €</b>la séance d'1 h pour tout le groupe (jusqu'à 8 pers.)</div>
     </div>
   </div>
 </section>
 
-<!-- 3-4. SOLUTION & BÉNÉFICES -->
-<section class="ent-sec" id="format">
-  <div class="ent-in">
-    <div class="ent-kicker">La solution</div>
-    <h2 class="ent-h2">Un rendez-vous sport régulier, clé en main</h2>
-    <p class="ent-lead">Une fois par semaine, je viens dans vos locaux avec le matériel et j'anime une séance d'1 h adaptée à tous les niveaux. Vous fournissez un espace dégagé et vos équipes : <strong>je m'occupe du reste.</strong></p>
-    <div class="ent-grid">
-      <div class="ent-card"><span class="ic">⚡</span><h3>Une vraie pause active</h3><p>Un moment pour bouger, souffler et repartir avec plus d'énergie sur l'après-midi.</p></div>
-      <div class="ent-card"><span class="ic">💪</span><h3>Renforcement musculaire</h3><p>Gainage, renforcement du dos et des épaules : pour un corps mieux préparé aux journées assises.</p></div>
-      <div class="ent-card"><span class="ic">🤝</span><h3>Cohésion d'équipe</h3><p>Un rendez-vous partagé, hors des réunions, qui crée du lien entre collègues et entre services.</p></div>
-      <div class="ent-card"><span class="ic">✅</span><h3>Zéro organisation pour vous</h3><p>Matériel, programmation, animation : un seul interlocuteur, une facture mensuelle claire.</p></div>
+<!-- 2. LE CONSTAT -->
+<section class="band band--blush">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Le constat</p>
+      <h2>Vos collaborateurs passent leurs journées <span class="hl">assis ?</span></h2>
+      <p>Écran, réunions, trajets… Au bureau, on bouge très peu. Et ça se ressent dans les équipes.</p>
+    </div>
+    <div class="items items--2 cc">
+      <div class="item"><h3>Sédentarité</h3><p>Des heures assis, sans vraie pause pour le corps.</p></div>
+      <div class="item"><h3>Coups de fatigue</h3><p>Baisse d'énergie en milieu de journée.</p></div>
+      <div class="item"><h3>Tensions musculaires</h3><p>Nuque, épaules et dos sollicités par la position assise.</p></div>
+      <div class="item"><h3>Peu de lien</h3><p>Entre services, télétravail : difficile de créer des moments communs.</p></div>
+    </div>
+    <div class="fact">
+      <b>95 %</b>
+      <p>des adultes en France sont exposés à un risque pour leur santé lié au manque d'activité physique ou à trop de temps assis.</p>
+      <p class="src">Source : <a href="https://pole-sante.creps-vichy.sports.gouv.fr/?p=7718" target="_blank" rel="noopener">Anses, avis de février 2022</a></p>
     </div>
   </div>
 </section>
 
-<!-- 5. COMMENT ÇA MARCHE -->
-<section class="ent-sec ent-alt">
-  <div class="ent-in">
-    <div class="ent-kicker">Comment ça marche</div>
-    <h2 class="ent-h2">De l'appel à la première séance en 4 étapes</h2>
-    <div class="ent-steps">
-      <div class="ent-step"><div class="n">1</div><h3>Appel découverte — 15 min offertes</h3><p>Effectif, objectifs, lieu, créneaux : on fait le point rapidement.</p></div>
-      <div class="ent-step"><div class="n">2</div><h3>Proposition adaptée</h3><p>Un devis clair sous 48 h ouvrées : formule, créneau, nombre de groupes.</p></div>
-      <div class="ent-step"><div class="n">3</div><h3>Première séance dans vos locaux</h3><p>Vos équipes testent le format, je valide l'espace et le niveau du groupe.</p></div>
-      <div class="ent-step"><div class="n">4</div><h3>Mise en place des créneaux</h3><p>Un créneau fixe chaque semaine, réservé à vos équipes. C'est parti.</p></div>
+<!-- 3. LA SOLUTION -->
+<section class="band" id="format">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">La solution</p>
+      <h2>Un rendez-vous sport régulier, <span class="hl">clé en main</span></h2>
+      <p>Une fois par semaine, je viens dans vos locaux avec le matériel et j'anime une séance d'1 h adaptée à tous les niveaux. Vous fournissez un espace dégagé et vos équipes : <strong>je m'occupe du reste.</strong></p>
+    </div>
+    <div class="items items--2 cc">
+      <div class="item"><h3>Une vraie pause active</h3><p>Un moment pour bouger, souffler et repartir avec plus d'énergie sur l'après-midi.</p></div>
+      <div class="item"><h3>Renforcement musculaire</h3><p>Gainage, renforcement du dos et des épaules : pour un corps mieux préparé aux journées assises.</p></div>
+      <div class="item"><h3>Cohésion d'équipe</h3><p>Un rendez-vous partagé, hors des réunions, qui crée du lien entre collègues et entre services.</p></div>
+      <div class="item"><h3>Zéro organisation pour vous</h3><p>Matériel, programmation, animation : un seul interlocuteur, une facture mensuelle claire.</p></div>
     </div>
   </div>
 </section>
 
-<!-- 6. FORMULES -->
-<section class="ent-sec" id="formules">
-  <div class="ent-in">
-    <div class="ent-kicker">Formules & tarifs</div>
-    <h2 class="ent-h2">Un prix pour le groupe, pas par salarié</h2>
-    <p class="ent-lead">Même tarif de 1 à 8 participants. Séance d'environ 1 h (ou 45 min sur la pause déjeuner, même tarif). Petit matériel inclus. Déplacement inclus dans mon secteur<a href="#zone" class="ent-sup">*</a>.</p>
-    <div class="ent-tarifs">
-      <div class="ent-tarif">
+<!-- 4. COMMENT ÇA MARCHE -->
+<section class="band band--sage">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Comment ça marche</p>
+      <h2>De l'appel à la première séance <span class="hl">en 4 étapes</span></h2>
+    </div>
+    <ol class="steps cc">
+      <li><div><h3>Appel découverte — 15 min offertes</h3><p>Effectif, objectifs, lieu, créneaux : on fait le point rapidement.</p></div></li>
+      <li><div><h3>Proposition adaptée</h3><p>Un devis clair sous 48 h ouvrées : formule, créneau, nombre de groupes.</p></div></li>
+      <li><div><h3>Première séance dans vos locaux</h3><p>Vos équipes testent le format, je valide l'espace et le niveau du groupe.</p></div></li>
+      <li><div><h3>Mise en place des créneaux</h3><p>Un créneau fixe chaque semaine, réservé à vos équipes. C'est parti.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 5. FORMULES & TARIFS -->
+<section class="band band--sand" id="formules">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Formules &amp; tarifs</p>
+      <h2>Un prix pour le groupe, <span class="hl">pas par salarié</span></h2>
+      <p>Même tarif de 1 à 8 participants. Séance d'environ 1 h (ou 45 min sur la pause déjeuner, même tarif). Petit matériel inclus. Déplacement inclus dans mon secteur<a href="#zone">*</a>.</p>
+    </div>
+    <div class="tarifs">
+      <article class="tarif is-dom">
         <h3>Séance découverte</h3>
-        <div class="sub">Pour tester le format, ou pour un temps fort cohésion avant les fêtes.</div>
-        <div class="price">180 €</div>
-        <div class="perpers">soit 22,50 € par participant (groupe de 8)</div>
-        <ul>
+        <p class="sub">Pour tester le format, ou pour un temps fort cohésion avant les fêtes.</p>
+        <p class="big">180 €</p>
+        <p class="pp">soit 22,50 € par participant (groupe de 8)</p>
+        <ul class="ticks">
           <li>1 séance d'environ 1 h dans vos locaux</li>
           <li>Jusqu'à 8 participants</li>
           <li><strong>Déduite de votre 1er mois</strong> si vous démarrez un forfait trimestre, semestre ou annuel</li>
         </ul>
-      </div>
-      <div class="ent-tarif feat">
-        <span class="ent-tarif-badge">⭐ Recommandé</span>
+      </article>
+      <article class="tarif feat is-hyb">
+        <span class="tag">Recommandé</span>
         <h3>Forfait mensuel</h3>
-        <div class="sub">1 séance par semaine (4 / mois), créneau fixe réservé à vos équipes.</div>
-        <div class="price">dès 440 €<small> / mois</small></div>
-        <div class="perpers">dès 110 € la séance · soit 13,75 € par participant</div>
-        <table class="ent-grille" aria-label="Tarifs du forfait mensuel selon l'engagement">
+        <p class="sub">1 séance par semaine (4 / mois), créneau fixe réservé à vos équipes.</p>
+        <p class="big">dès 440 €<small> / mois</small></p>
+        <p class="pp">dès 110 € la séance · soit 13,75 € par participant</p>
+        <table class="grille" aria-label="Tarifs du forfait mensuel selon l'engagement">
           <tr class="best"><td>Annuel (12 mois)</td><td>440 €/mois<span class="ps">110 €/séance</span></td></tr>
           <tr><td>Semestre (6 mois)</td><td>460 €/mois<span class="ps">115 €/séance</span></td></tr>
           <tr><td>Trimestre (3 mois)</td><td>480 €/mois<span class="ps">120 €/séance</span></td></tr>
           <tr><td>Sans engagement</td><td>520 €/mois<span class="ps">130 €/séance</span></td></tr>
         </table>
-      </div>
-      <div class="ent-tarif">
+      </article>
+      <article class="tarif is-prog">
         <h3>Pack 10 séances</h3>
-        <div class="sub">Pour un format ponctuel : semaine QVCT, séminaire, temps fort.</div>
-        <div class="price">1 250 €</div>
-        <div class="perpers">125 € la séance · 15,60 € par participant</div>
-        <ul>
+        <p class="sub">Pour un format ponctuel : semaine QVCT, séminaire, temps fort.</p>
+        <p class="big">1 250 €</p>
+        <p class="pp">125 € la séance · 15,60 € par participant</p>
+        <ul class="ticks">
           <li>10 séances à votre rythme</li>
           <li>Validité convenue au devis</li>
           <li>Jusqu'à 8 participants par séance</li>
         </ul>
-      </div>
-      <div class="ent-tarif ent-tarif-team">
-        <span class="ent-tarif-badge ent-badge-green">👥 Plus de 8 salariés</span>
+      </article>
+      <article class="tarif is-dist">
+        <span class="tag">Plus de 8 salariés</span>
         <h3>Toute l'équipe : 2 groupes à la suite</h3>
-        <div class="sub">J'enchaîne un 2e groupe le même jour, juste après le premier, sur le même site.</div>
-        <div class="price">dès 90 €<small> la séance supplémentaire</small></div>
-        <div class="perpers">jusqu'à 16 participants sur le même créneau</div>
-        <ul>
+        <p class="sub">J'enchaîne un 2e groupe le même jour, juste après le premier, sur le même site.</p>
+        <p class="big">dès 90 €<small> la séance supplémentaire</small></p>
+        <p class="pp">jusqu'à 16 participants sur le même créneau</p>
+        <ul class="ticks">
           <li>Ouvrez le sport à toute l'équipe</li>
           <li>Même coach, même programme pour les 2 groupes</li>
           <li>Tarif précisé au devis</li>
         </ul>
-      </div>
+      </article>
     </div>
-    <div class="ent-multi" style="margin-top:16px;">📅 <strong>2 séances par semaine ?</strong> 8 séances/mois, créneaux fixes : <strong>840 €/mois</strong> en annuel (105 €/séance) · 880 € en semestre · 920 € en trimestre · 1 000 € sans engagement. Idéal pour installer une vraie routine ou proposer 2 jours différents à vos équipes. 3 séances/semaine : sur devis.</div>
-    <p class="ent-tarifs-note">Tarifs nets. TVA non applicable, art. 293 B du CGI (le prix affiché est le prix facturé). Facturation à l'entreprise ou au CSE, paiement par virement à 30 jours. Prestation soumise aux <a href="cgv-entreprise.html" style="color:var(--ent-terra);font-weight:600;">conditions de prestation entreprise</a> ; le devis fait foi.</p>
-    <div class="ent-cta-row center" style="margin-top:22px;">
-      <a href="#contact" class="ent-btn ent-btn-primary js-cta-form" data-pos="tarifs">Demander un appel découverte</a>
+    <div class="multi"><strong>2 séances par semaine ?</strong> 8 séances/mois, créneaux fixes : <strong>840 €/mois</strong> en annuel (105 €/séance) · 880 € en semestre · 920 € en trimestre · 1 000 € sans engagement. Idéal pour installer une vraie routine ou proposer 2 jours différents à vos équipes. 3 séances/semaine : sur devis.</div>
+    <p class="legal-note">Tarifs nets. TVA non applicable, art. 293 B du CGI (le prix affiché est le prix facturé). Facturation à l'entreprise ou au CSE, paiement par virement à 30 jours. Prestation soumise aux <a href="cgv-entreprise.html">conditions de prestation entreprise</a> ; le devis fait foi.</p>
+    <div class="tarif-act">
+      <a href="#contact" class="btn js-cta-form" data-pos="tarifs">Demander un appel découverte</a>
+      <p class="pdf js-pdf"><a href="/docs/plaquette-ornella-fit-entreprise.pdf" target="_blank" rel="noopener" data-pos="tarifs">Télécharger la présentation (PDF)</a><span>À transmettre à votre direction ou à votre CSE.</span></p>
     </div>
-    <p class="ent-pdf center js-pdf"><a href="/docs/plaquette-ornella-fit-entreprise.pdf" target="_blank" rel="noopener" data-pos="tarifs">📄 Télécharger la présentation (PDF)</a><span>À transmettre à votre direction ou à votre CSE.</span></p>
-    <p class="ent-zone-note" id="zone">* Déplacement inclus dans mon secteur : Massy, Palaiseau, Courtabœuf (Les Ulis, Villebon), Saclay, Orsay, Longjumeau, Chilly-Mazarin, Wissous, Antony, Évry-Courcouronnes. Ailleurs en Île-de-France : frais de déplacement précisés au devis.</p>
+    <p class="zone-note" id="zone">* Déplacement inclus dans mon secteur : Massy, Palaiseau, Courtabœuf (Les Ulis, Villebon), Saclay, Orsay, Longjumeau, Chilly-Mazarin, Wissous, Antony, Évry-Courcouronnes. Ailleurs en Île-de-France : frais de déplacement précisés au devis.</p>
   </div>
 </section>
 
-<!-- 7. LOGISTIQUE -->
-<section class="ent-sec ent-alt">
-  <div class="ent-in">
-    <div class="ent-kicker">Logistique</div>
-    <h2 class="ent-h2">Ce qu'il vous faut : un espace dégagé. C'est tout.</h2>
-    <div class="ent-log">
-      <div><span class="ic">🏢</span><p><strong>Pas besoin de salle de sport</strong>Salle de réunion, espace commun, salle de pause ou extérieur à proximité.</p></div>
-      <div><span class="ic">🎒</span><p><strong>Petit matériel fourni</strong>Élastiques, mini-bands, haltères légers, petits accessoires.</p></div>
-      <div><span class="ic">🧘</span><p><strong>Tapis</strong>Idéalement prévus sur place ou apportés par les participants. Beaucoup d'exercices se font debout.</p></div>
-      <div><span class="ic">👥</span><p><strong>Groupes de 8 max</strong>Pour corriger chacun et garantir un accompagnement de qualité.</p></div>
-      <div><span class="ic">👟</span><p><strong>Tenue simple</strong>Tenue confortable et baskets. Séances adaptées à tous les niveaux.</p></div>
-      <div><span class="ic">📍</span><p><strong>Essonne & Île-de-France</strong>Déplacement inclus dans mon secteur (Massy, Palaiseau, Courtabœuf, Saclay…). Ailleurs en Île-de-France : frais de déplacement précisés au devis.</p></div>
+<!-- 6. LOGISTIQUE -->
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Logistique</p>
+      <h2>Ce qu'il vous faut : un espace dégagé. <span class="hl">C'est tout.</span></h2>
     </div>
-  </div>
-</section>
-
-<!-- 8. POUR QUI -->
-<section class="ent-sec">
-  <div class="ent-in">
-    <div class="ent-kicker">Pour qui</div>
-    <h2 class="ent-h2">Pensé pour les PME et les équipes de bureau</h2>
-    <p class="ent-lead">Dirigeants, RH, office managers, CSE : vous voulez une action QVCT concrète, simple à mettre en place et appréciée des équipes.</p>
-    <div class="ent-tags">
-      <span>PME de 10 à 100 salariés</span><span>Cabinets comptables & d'avocats</span><span>Bureaux d'études & ingénierie</span><span>Cabinets de conseil</span><span>Startups & entreprises tech</span><span>Agences immobilières & de communication</span><span>Espaces de coworking</span><span>CSE</span>
-    </div>
-    <p class="ent-zones">📍 Déplacement inclus : Massy · Palaiseau · Courtabœuf (Les Ulis, Villebon) · Saclay · Orsay · Longjumeau · Chilly-Mazarin · Wissous · Antony · Évry-Courcouronnes<br>Ailleurs en Île-de-France : frais de déplacement précisés au devis.</p>
-  </div>
-</section>
-
-<!-- 8bis. POUR LES DÉCIDEURS RH -->
-<section class="ent-sec ent-alt">
-  <div class="ent-in">
-    <div class="ent-kicker">Côté RH & direction</div>
-    <h2 class="ent-h2">Un investissement QVCT concret, pas un gadget</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:22px;text-align:left;">
-      <div style="background:#fff;border:1px solid rgba(201,185,154,0.3);border-radius:16px;padding:20px 22px;">
-        <h3 style="margin:0 0 6px;font-size:1.05rem;color:var(--ent-terra);">Une action QVCT visible</h3>
-        <p style="margin:0;font-size:.9rem;color:#5A4A42;line-height:1.6;">Un rendez-vous sport régulier dans vos locaux : simple à déployer, apprécié des équipes et facile à valoriser dans votre démarche qualité de vie au travail.</p>
-      </div>
-      <div style="background:#fff;border:1px solid rgba(201,185,154,0.3);border-radius:16px;padding:20px 22px;">
-        <h3 style="margin:0 0 6px;font-size:1.05rem;color:var(--ent-terra);">Moins de douleurs, moins d'arrêts</h3>
-        <p style="margin:0;font-size:.9rem;color:#5A4A42;line-height:1.6;">Le renforcement musculaire (dos, épaules, gainage) cible les tensions du travail assis — premières causes de TMS et d'absentéisme. Bouger régulièrement aide à les prévenir.</p>
-      </div>
-      <div style="background:#fff;border:1px solid rgba(201,185,154,0.3);border-radius:16px;padding:20px 22px;">
-        <h3 style="margin:0 0 6px;font-size:1.05rem;color:var(--ent-terra);">Éligible au budget CSE</h3>
-        <p style="margin:0;font-size:.9rem;color:#5A4A42;line-height:1.6;">Facturation à l'entreprise ou au CSE, jamais aux salariés, et cadre social favorable sous conditions (détaillé ci-dessous).</p>
-      </div>
+    <div class="rows cc">
+      <div><b>Pas besoin de salle de sport</b><p>Salle de réunion, espace commun, salle de pause ou extérieur à proximité.</p></div>
+      <div><b>Petit matériel fourni</b><p>Élastiques, mini-bands, haltères légers, petits accessoires.</p></div>
+      <div><b>Tapis</b><p>Idéalement prévus sur place ou apportés par les participants. Beaucoup d'exercices se font debout.</p></div>
+      <div><b>Groupes de 8 max</b><p>Pour corriger chacun et garantir un accompagnement de qualité.</p></div>
+      <div><b>Tenue simple</b><p>Tenue confortable et baskets. Séances adaptées à tous les niveaux.</p></div>
+      <div><b>Essonne &amp; Île-de-France</b><p>Déplacement inclus dans mon secteur (Massy, Palaiseau, Courtabœuf, Saclay…). Ailleurs en Île-de-France : frais de déplacement précisés au devis.</p></div>
     </div>
   </div>
 </section>
 
-<!-- FINANCEMENT -->
-<section class="ent-sec ent-fin">
-  <div class="ent-in">
-    <div class="ent-kicker">Bon à savoir</div>
-    <h2 class="ent-h2">Un cadre social favorable, sous conditions</h2>
-    <div class="ent-fin-grid">
-      <div class="ent-fin-card">
-        <h3>Hors cotisations sociales, sous conditions</h3>
-        <p>Les activités sportives organisées par l'employeur et <strong>ouvertes à tous les salariés</strong> peuvent être exclues de l'assiette des cotisations, dans la limite de <strong>5 % du plafond mensuel de la Sécurité sociale par salarié et par an</strong> (soit environ 200 € en 2026). L'application dépend de votre situation : à valider avec votre gestionnaire de paie ou votre expert-comptable.</p>
-      </div>
-      <div class="ent-fin-card">
-        <h3>Financement possible par le CSE</h3>
-        <p>Dans les entreprises dotées d'un CSE, les séances peuvent être prises en charge sur le budget des activités sociales et culturelles. Je facture directement l'entreprise ou le CSE, jamais les salariés.</p>
-      </div>
+<!-- 7. POUR QUI + CÔTÉ RH -->
+<section class="band band--blush">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Pour qui</p>
+      <h2>Pensé pour les PME et <span class="hl">les équipes de bureau</span></h2>
+      <p>Dirigeants, RH, office managers, CSE : vous voulez une action QVCT concrète, simple à mettre en place et appréciée des équipes.</p>
     </div>
-    <p class="ent-fin-note">Sources : <a href="https://www.legisocial.fr/actualites-sociales/6938-sport-entreprise-informations-boss.html" target="_blank" rel="noopener">BOSS, rubrique avantages en nature (sept. 2024)</a> · <a href="https://www.legisocial.fr/reperes-sociaux/plafond-securite-sociale-2026.html" target="_blank" rel="noopener">PMSS 2026 : 4 005 €</a>. Information générale, ne constitue pas un conseil juridique ou fiscal.</p>
+    <div class="tags cc">
+      <span>PME de 10 à 100 salariés</span><span>Cabinets comptables &amp; d'avocats</span><span>Bureaux d'études &amp; ingénierie</span><span>Cabinets de conseil</span><span>Startups &amp; entreprises tech</span><span>Agences immobilières &amp; de communication</span><span>Espaces de coworking</span><span>CSE</span>
+    </div>
+    <p class="kick" style="margin-top:44px">Côté RH &amp; direction</p>
+    <h2 class="subhead">Un investissement QVCT concret, <span class="hl">pas un gadget</span></h2>
+    <div class="items items--3 cc" style="margin-top:22px">
+      <div class="item"><h3>Une action QVCT visible</h3><p>Un rendez-vous sport régulier dans vos locaux : simple à déployer, apprécié des équipes et facile à valoriser dans votre démarche qualité de vie au travail.</p></div>
+      <div class="item"><h3>Moins de douleurs, moins d'arrêts</h3><p>Le renforcement musculaire (dos, épaules, gainage) cible les tensions du travail assis — premières causes de TMS et d'absentéisme. Bouger régulièrement aide à les prévenir.</p></div>
+      <div class="item"><h3>Éligible au budget CSE</h3><p>Facturation à l'entreprise ou au CSE, jamais aux salariés, et cadre social favorable sous conditions (détaillé ci-dessous).</p></div>
+    </div>
   </div>
 </section>
 
-<!-- 9. À PROPOS -->
-<section class="ent-sec ent-alt" id="coach">
-  <div class="ent-in">
-    <div class="ent-kicker">Votre coach</div>
-    <h2 class="ent-h2">Ornella, coach sportive diplômée d'État</h2>
-    <div class="ent-about">
-      <img src="images/ornella-portrait-arms.jpg" alt="Portrait d'Ornella, Ornella Fit Coaching" width="360" height="450" loading="lazy">
-      <div>
-        <p>Éducatrice sportive diplômée d'État et ancienne athlète de fitness en compétition, j'accompagne chaque semaine des personnes de tous niveaux, du grand débutant au sportif confirmé.</p>
-        <p>En entreprise, mon rôle est simple : des séances efficaces, accessibles à toutes et à tous, avec une vraie attention portée à chaque participant. Vous avez un seul interlocuteur, toujours le même.</p>
-        <p class="ent-police"><strong>Ponctualité, rigueur, fiabilité :</strong> un engagement sérieux à chaque intervention en entreprise.</p>
-        <p class="ent-cartepro">🪪 Carte professionnelle n° <strong>09126ED0021</strong> · <a href="https://recherche-educateur.sports.gouv.fr" target="_blank" rel="noopener">Vérifier sur le site du ministère des Sports →</a></p>
-        <ul><li>🎓 Diplômée d'État</li><li>🏆 Ex-compétitrice fitness</li><li>★ 5,0 sur Google</li><li>🛡️ RC professionnelle</li></ul>
-      </div>
+<!-- 8. CADRE SOCIAL -->
+<section class="band band--night">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Bon à savoir</p>
+      <h2>Un cadre social favorable, <span class="hl">sous conditions</span></h2>
+    </div>
+    <div class="items cc">
+      <div class="item"><h3>Hors cotisations sociales, sous conditions</h3><p>Les activités sportives organisées par l'employeur et <strong>ouvertes à tous les salariés</strong> peuvent être exclues de l'assiette des cotisations, dans la limite de <strong>5 % du plafond mensuel de la Sécurité sociale par salarié et par an</strong> (soit environ 200 € en 2026). L'application dépend de votre situation : à valider avec votre gestionnaire de paie ou votre expert-comptable.</p></div>
+      <div class="item"><h3>Financement possible par le CSE</h3><p>Dans les entreprises dotées d'un CSE, les séances peuvent être prises en charge sur le budget des activités sociales et culturelles. Je facture directement l'entreprise ou le CSE, jamais les salariés.</p></div>
+    </div>
+    <p class="srcs">Sources : <a href="https://www.legisocial.fr/actualites-sociales/6938-sport-entreprise-informations-boss.html" target="_blank" rel="noopener">BOSS, rubrique avantages en nature (sept. 2024)</a> · <a href="https://www.legisocial.fr/reperes-sociaux/plafond-securite-sociale-2026.html" target="_blank" rel="noopener">PMSS 2026 : 4 005 €</a>. Information générale, ne constitue pas un conseil juridique ou fiscal.</p>
+  </div>
+</section>
+
+<!-- 9. VOTRE COACH -->
+<section class="band band--sand" id="coach">
+  <div class="wrap coach">
+    <img src="images/ornella-portrait-arms.jpg" alt="Portrait d'Ornella, Ornella Fit Coaching" width="360" height="450" loading="lazy">
+    <div class="coach-h">
+      <p class="kick">Votre coach</p>
+      <h2>Ornella, coach sportive <span class="hl">diplômée d'État</span></h2>
+    </div>
+    <div class="coach-t">
+      <p>Éducatrice sportive diplômée d'État et ancienne athlète de fitness en compétition, j'accompagne chaque semaine des personnes de tous niveaux, du grand débutant au sportif confirmé.</p>
+      <p>En entreprise, mon rôle est simple : des séances efficaces, accessibles à toutes et à tous, avec une vraie attention portée à chaque participant. Vous avez un seul interlocuteur, toujours le même.</p>
+      <p><strong>Ponctualité, rigueur, fiabilité :</strong> un engagement sérieux à chaque intervention en entreprise.</p>
+      <p class="cpro">Carte professionnelle n° <strong>09126ED0021</strong> · <a href="https://recherche-educateur.sports.gouv.fr" target="_blank" rel="noopener">Vérifier sur le site du ministère des Sports</a></p>
+      <ul class="proof cc"><li>Diplômée d'État</li><li>Ex-compétitrice fitness</li><li>5,0 sur Google</li><li>RC professionnelle</li></ul>
     </div>
   </div>
 </section>
 
 <!-- 10. FAQ -->
-<section class="ent-sec" id="faq">
-  <div class="ent-in">
-    <div class="ent-kicker">Vos questions</div>
-    <h2 class="ent-h2">Questions fréquentes des RH & dirigeants</h2>
-    <div class="ent-faq">
-      <details><summary>Faut-il une salle de sport ?</summary><div class="fa">Non. Une salle de réunion, un espace commun, une salle de pause ou un extérieur à proximité suffisent. Comptez environ 2 à 3 m² par participant. Si vous avez déjà des tapis, haltères ou une petite salle, c'est un plus.</div></details>
-      <details><summary>Combien de salariés peuvent participer ?</summary><div class="fa">Jusqu'à 8 par séance, volontairement : c'est ce qui me permet de corriger chacun et d'assurer la qualité. Le tarif est le même de 1 à 8 participants.</div></details>
-      <details><summary>Peut-on avoir plusieurs groupes ?</summary><div class="fa">Oui. J'enchaîne un 2e groupe le même jour, juste après le premier, dès 90 € la séance supplémentaire. C'est la formule idéale pour ouvrir le sport à toute l'équipe.</div></details>
-      <details><summary>Fournissez-vous le matériel ?</summary><div class="fa">Oui, j'apporte le petit matériel : élastiques, mini-bands, haltères légers, petits accessoires. Pour les tapis, l'idéal est qu'ils soient prévus sur place ou apportés par les participants ; beaucoup d'exercices se font debout et je peux en apporter quelques-uns si besoin.</div></details>
-      <details><summary>Est-ce adapté aux débutants ?</summary><div class="fa">Oui. Chaque exercice a une version plus douce et une version plus intense : débutants et sportifs pratiquent ensemble, sans pression ni comparaison.</div></details>
-      <details><summary>Comment se passe la première séance ?</summary><div class="fa">Je viens dans vos locaux, je découvre l'espace et le groupe, puis j'anime une séance complète d'environ 1 h. Vous voyez concrètement le format avant de vous engager. Si vous démarrez ensuite un forfait trimestre, semestre ou annuel, les 180 € de la séance découverte sont déduits de votre 1er mois.</div></details>
-      <details><summary>Que se passe-t-il si nous devons annuler ?</summary><div class="fa">Une séance annulée ou reportée au moins 48 h à l'avance n'est pas due. Vos périodes de fermeture (été, fin d'année) sont prévues au devis : un mois de fermeture complète n'est pas facturé. Le détail figure dans les <a href="cgv-entreprise.html">conditions de prestation entreprise</a>.</div></details>
-      <details><summary>Intervenez-vous dans notre ville ?</summary><div class="fa">Le déplacement est inclus dans mon secteur : Massy, Palaiseau, Courtabœuf (Les Ulis, Villebon), Saclay, Orsay, Longjumeau, Chilly-Mazarin, Wissous, Antony et Évry-Courcouronnes. Ailleurs en Île-de-France, j'interviens aussi : les frais de déplacement sont précisés au devis. Indiquez-moi votre adresse dans le formulaire.</div></details>
-      <details><summary>Combien coûte la prestation ?</summary><div class="fa">De 110 à 130 € la séance en forfait mensuel (4 séances par mois), selon la durée d'engagement, pour tout le groupe. À 2 séances par semaine : de 105 à 125 € la séance (dès 840 €/mois). Séance découverte 180 €, pack 10 séances 1 250 €. Petit matériel inclus ; déplacement inclus dans mon secteur, précisé au devis ailleurs en Île-de-France.</div></details>
-      <details><summary>Êtes-vous assurée ?</summary><div class="fa">Oui, je dispose d'une assurance responsabilité civile professionnelle. L'aptitude des participants à la pratique reste de la responsabilité de l'employeur (voir les <a href="cgv-entreprise.html">conditions de prestation entreprise</a>).</div></details>
+<section class="band" id="faq">
+  <div class="wrap faqw">
+    <div class="head">
+      <p class="kick">Vos questions</p>
+      <h2>Questions fréquentes <span class="hl">des RH &amp; dirigeants</span></h2>
+    </div>
+    <div class="faq cc">
+      <details><summary>Faut-il une salle de sport ?</summary><div class="a">Non. Une salle de réunion, un espace commun, une salle de pause ou un extérieur à proximité suffisent. Comptez environ 2 à 3 m² par participant. Si vous avez déjà des tapis, haltères ou une petite salle, c'est un plus.</div></details>
+      <details><summary>Combien de salariés peuvent participer ?</summary><div class="a">Jusqu'à 8 par séance, volontairement : c'est ce qui me permet de corriger chacun et d'assurer la qualité. Le tarif est le même de 1 à 8 participants.</div></details>
+      <details><summary>Peut-on avoir plusieurs groupes ?</summary><div class="a">Oui. J'enchaîne un 2e groupe le même jour, juste après le premier, dès 90 € la séance supplémentaire. C'est la formule idéale pour ouvrir le sport à toute l'équipe.</div></details>
+      <details><summary>Fournissez-vous le matériel ?</summary><div class="a">Oui, j'apporte le petit matériel : élastiques, mini-bands, haltères légers, petits accessoires. Pour les tapis, l'idéal est qu'ils soient prévus sur place ou apportés par les participants ; beaucoup d'exercices se font debout et je peux en apporter quelques-uns si besoin.</div></details>
+      <details><summary>Est-ce adapté aux débutants ?</summary><div class="a">Oui. Chaque exercice a une version plus douce et une version plus intense : débutants et sportifs pratiquent ensemble, sans pression ni comparaison.</div></details>
+      <details><summary>Comment se passe la première séance ?</summary><div class="a">Je viens dans vos locaux, je découvre l'espace et le groupe, puis j'anime une séance complète d'environ 1 h. Vous voyez concrètement le format avant de vous engager. Si vous démarrez ensuite un forfait trimestre, semestre ou annuel, les 180 € de la séance découverte sont déduits de votre 1er mois.</div></details>
+      <details><summary>Que se passe-t-il si nous devons annuler ?</summary><div class="a">Une séance annulée ou reportée au moins 48 h à l'avance n'est pas due. Vos périodes de fermeture (été, fin d'année) sont prévues au devis : un mois de fermeture complète n'est pas facturé. Le détail figure dans les <a href="cgv-entreprise.html">conditions de prestation entreprise</a>.</div></details>
+      <details><summary>Intervenez-vous dans notre ville ?</summary><div class="a">Le déplacement est inclus dans mon secteur : Massy, Palaiseau, Courtabœuf (Les Ulis, Villebon), Saclay, Orsay, Longjumeau, Chilly-Mazarin, Wissous, Antony et Évry-Courcouronnes. Ailleurs en Île-de-France, j'interviens aussi : les frais de déplacement sont précisés au devis. Indiquez-moi votre adresse dans le formulaire.</div></details>
+      <details><summary>Combien coûte la prestation ?</summary><div class="a">De 110 à 130 € la séance en forfait mensuel (4 séances par mois), selon la durée d'engagement, pour tout le groupe. À 2 séances par semaine : de 105 à 125 € la séance (dès 840 €/mois). Séance découverte 180 €, pack 10 séances 1 250 €. Petit matériel inclus ; déplacement inclus dans mon secteur, précisé au devis ailleurs en Île-de-France.</div></details>
+      <details><summary>Êtes-vous assurée ?</summary><div class="a">Oui, je dispose d'une assurance responsabilité civile professionnelle. L'aptitude des participants à la pratique reste de la responsabilité de l'employeur (voir les <a href="cgv-entreprise.html">conditions de prestation entreprise</a>).</div></details>
     </div>
   </div>
 </section>
 
 <!-- 11. CONTACT : FORMULAIRE (envoi Brevo via le proxy site-brevo, comme les autres formulaires du site) -->
-<section class="ent-sec ent-final" id="contact">
-  <div class="ent-in">
-    <div class="ent-kicker">On en parle ?</div>
-    <h2 class="ent-h2">Parlons de votre équipe.</h2>
-    <p class="ent-lead" style="margin-bottom:24px;">15 minutes pour comprendre votre besoin et vous proposer le bon format. Sans engagement.</p>
+<section class="band band--coral contact-sec" id="contact">
+  <div class="wrap">
+    <p class="kick">On en parle ?</p>
+    <h2>Parlons de <span class="hl">votre équipe.</span></h2>
+    <p class="lead">15 minutes pour comprendre votre besoin et vous proposer le bon format. Sans engagement.</p>
+    <div class="formcard">
     <form class="ent-form" id="entForm" novalidate>
       <div class="ent-f2">
         <label>Nom<input type="text" name="nom" autocomplete="name" required></label>
@@ -761,50 +904,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <label>Message <span class="opt">(facultatif)</span><textarea name="message" rows="3" placeholder="Créneaux envisagés, contexte, questions…"></textarea></label>
       <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
       <p class="ent-form-err" id="entFormErr" role="alert"></p>
-      <button type="submit" class="ent-btn ent-btn-primary" id="entFormBtn">Demander un appel découverte</button>
+      <button type="submit" class="btn" id="entFormBtn">Demander un appel découverte</button>
       <p class="ent-form-rgpd">Vos coordonnées servent uniquement à vous recontacter au sujet de votre demande. <a href="mentions-legales.html#rgpd">Politique de confidentialité</a></p>
     </form>
     <div class="ent-form-ok" id="entFormOk" role="status" hidden>
       <p class="t">Merci, je vous recontacte sous 24 h ouvrées.</p>
     </div>
-    <div class="ent-alt-contact">
+    </div>
+    <div class="alt">
       <p>Vous préférez échanger directement ?</p>
-      <div class="ent-cta-row center">
-        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%2C%20je%20repr%C3%A9sente%20une%20entreprise%20et%20je%20souhaite%20r%C3%A9server%20un%20appel%20d%C3%A9couverte%20de%2015%20min%20pour%20des%20s%C3%A9ances%20de%20sport%20dans%20nos%20locaux.%0A%0AEntreprise%20%3A%0AVille%20%3A%0ANombre%20de%20salari%C3%A9s%20int%C3%A9ress%C3%A9s%20%3A%0ACr%C3%A9neaux%20envisag%C3%A9s%20%3A" target="_blank" rel="noopener" class="ent-btn ent-btn-ghost js-wa-b2b" data-pos="fin">💬 WhatsApp</a>
-        <a href="tel:+33756834626" class="ent-btn ent-btn-ghost" data-pos="fin">📞 07 56 83 46 26</a>
-        <a href="mailto:ornellafit.coaching@gmail.com?subject=Appel%20d%C3%A9couverte%20%E2%80%94%20sport%20en%20entreprise&body=Bonjour%20Ornella%2C%0A%0ANous%20souhaitons%20%C3%A9changer%20sur%20des%20s%C3%A9ances%20de%20sport%20dans%20nos%20locaux.%0A%0AEntreprise%20%3A%0AVille%20%3A%0ANombre%20de%20salari%C3%A9s%20int%C3%A9ress%C3%A9s%20%3A%0ACr%C3%A9neaux%20envisag%C3%A9s%20%3A%0AT%C3%A9l%C3%A9phone%20%3A%0A%0AMerci%20!" class="ent-btn ent-btn-ghost js-mail-b2b" data-pos="fin">✉️ Email</a>
+      <div class="alt-row">
+        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%2C%20je%20repr%C3%A9sente%20une%20entreprise%20et%20je%20souhaite%20r%C3%A9server%20un%20appel%20d%C3%A9couverte%20de%2015%20min%20pour%20des%20s%C3%A9ances%20de%20sport%20dans%20nos%20locaux.%0A%0AEntreprise%20%3A%0AVille%20%3A%0ANombre%20de%20salari%C3%A9s%20int%C3%A9ress%C3%A9s%20%3A%0ACr%C3%A9neaux%20envisag%C3%A9s%20%3A" target="_blank" rel="noopener" class="js-wa-b2b" data-pos="fin">WhatsApp</a>
+        <a href="tel:+33756834626" data-pos="fin">07 56 83 46 26</a>
+        <a href="mailto:ornellafit.coaching@gmail.com?subject=Appel%20d%C3%A9couverte%20%E2%80%94%20sport%20en%20entreprise&body=Bonjour%20Ornella%2C%0A%0ANous%20souhaitons%20%C3%A9changer%20sur%20des%20s%C3%A9ances%20de%20sport%20dans%20nos%20locaux.%0A%0AEntreprise%20%3A%0AVille%20%3A%0ANombre%20de%20salari%C3%A9s%20int%C3%A9ress%C3%A9s%20%3A%0ACr%C3%A9neaux%20envisag%C3%A9s%20%3A%0AT%C3%A9l%C3%A9phone%20%3A%0A%0AMerci%20!" class="js-mail-b2b" data-pos="fin">Email</a>
       </div>
     </div>
   </div>
 </section>
+</main>
 
-</div><!-- /ent-wrap -->
-
-<footer>
-  <div class="footer-logo">
-    <img src="images/logo.png" alt="Ornella Fit Coaching" class="footer-logo-img" loading="lazy" width="3135" height="793">
+<footer class="foot">
+  <div class="wrap">
+    <img src="images/logo.png" alt="Ornella Fit Coaching" width="3135" height="793" loading="lazy">
+    <p class="foot-slogan">« Le sport au travail, simplement. »</p>
+    <nav aria-label="Pages entreprise">
+      <a href="#format">Le format</a>
+      <a href="#formules">Tarifs</a>
+      <a href="#coach">Votre coach</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="contact">
+      <a href="https://www.instagram.com/coach.ornella" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:ornellafit.coaching@gmail.com" data-pos="footer">ornellafit.coaching@gmail.com</a>
+    </div>
+    <p class="info">Ornella Fit Coaching · Coach sportive diplômée d'État · Essonne (91) &amp; Île-de-France</p>
+    <details>
+      <summary>Coach sportive à domicile (particuliers)</summary>
+      <div>
+        <a href="/coach-sportif-domicile-saulx-les-chartreux.html">Saulx-les-Chartreux</a>
+        <a href="/coach-sportif-domicile-massy.html">Massy</a>
+        <a href="/coach-sportif-domicile-palaiseau.html">Palaiseau</a>
+        <a href="/coach-sportif-domicile-longjumeau.html">Longjumeau</a>
+        <a href="/coach-sportif-domicile-champlan.html">Champlan</a>
+        <a href="/coach-sportif-domicile-villebon-sur-yvette.html">Villebon-sur-Yvette</a>
+        <a href="/coach-sportif-domicile-chilly-mazarin.html">Chilly-Mazarin</a>
+        <a href="/coach-sportif-domicile-epinay-sur-orge.html">Épinay-sur-Orge</a>
+        <a href="/coach-sportif-domicile-antony.html">Antony</a>
+      </div>
+    </details>
+    <p class="legal"><span>© 2026 Ornella Fit Coaching</span><a href="mentions-legales.html">Mentions légales</a><a href="cgv-entreprise.html">CGV Entreprise</a><a href="mentions-legales.html#rgpd">Confidentialité</a></p>
   </div>
-  <p class="footer-slogan">« Le sport au travail, simplement. »</p>
-  <div class="footer-links">
-    <a href="#format">Le format</a>
-    <a href="#formules">Tarifs</a>
-    <a href="#coach">Votre coach</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <div class="footer-social">
-    <a href="https://www.instagram.com/coach.ornella" target="_blank">📷 Instagram</a>
-    <a href="mailto:ornellafit.coaching@gmail.com" data-pos="footer">✉️ Email</a>
-  </div>
-  <p class="footer-info">Ornella Fit Coaching · Coach sportive diplômée d'État · Essonne (91) & Île-de-France · ornellafit.coaching@gmail.com</p>
-  <p class="footer-info footer-zones">Coach sportive à domicile : <a href="/coach-sportif-domicile-saulx-les-chartreux.html">Saulx-les-Chartreux</a> · <a href="/coach-sportif-domicile-massy.html">Massy</a> · <a href="/coach-sportif-domicile-palaiseau.html">Palaiseau</a> · <a href="/coach-sportif-domicile-longjumeau.html">Longjumeau</a> · <a href="/coach-sportif-domicile-champlan.html">Champlan</a> · <a href="/coach-sportif-domicile-villebon-sur-yvette.html">Villebon-sur-Yvette</a> · <a href="/coach-sportif-domicile-chilly-mazarin.html">Chilly-Mazarin</a> · <a href="/coach-sportif-domicile-epinay-sur-orge.html">Épinay-sur-Orge</a> · <a href="/coach-sportif-domicile-antony.html">Antony</a></p>
-  <p class="footer-copy">© 2026 Ornella Fit Coaching — Tous droits réservés</p>
-  <p class="footer-legal"><a href="mentions-legales.html">Mentions légales</a> · <a href="cgv-entreprise.html">CGV Entreprise</a> · <a href="mentions-legales.html#rgpd">Politique de confidentialité</a></p>
 </footer>
 
 <!-- Barre CTA mobile -->
-<div class="ent-sticky" id="entSticky">
-  <a class="p js-cta-form" href="#contact" data-pos="sticky">Demander un appel découverte</a>
+<div class="sticky ent-sticky" id="entSticky">
+  <a class="btn p js-cta-form" href="#contact" data-pos="sticky">Demander un appel découverte</a>
   <a class="g" href="#formules">Tarifs</a>
 </div>
 
@@ -940,5 +1095,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 <script defer src="/suivi-clics.js"></script>
+<script>
+{
+  const nav=document.querySelector('.nav');
+  const onScroll=()=>nav.classList.toggle('is-scrolled',scrollY>8);
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+  document.querySelectorAll('#navMenu a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{
+    document.getElementById('navMenu').classList.remove('open');
+    const t=document.querySelector('.nav-toggle');if(t)t.setAttribute('aria-expanded','false');
+  }));
+  /* La barre du bas s'efface quand le formulaire est à l'écran */
+  const bar=document.getElementById('entSticky'),contact=document.getElementById('contact');
+  if(bar&&contact&&'IntersectionObserver' in window){
+    new IntersectionObserver(es=>es.forEach(e=>bar.classList.toggle('off',e.isIntersecting)),{threshold:0}).observe(contact);
+  }
+}
+</script>
 </body>
 </html>
