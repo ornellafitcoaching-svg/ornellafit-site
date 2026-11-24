@@ -35,252 +35,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="images/logo.png">
-<link rel="stylesheet" href="style.css">
-<style>
-/* ===== PAGE PROGRAMMES ===== */
-.page-header{background:linear-gradient(160deg,#2C1F1A 0%,#3d2b24 60%,#C96358 100%);padding:80px 20px 64px;text-align:center;color:#fff}
-.page-header .label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:14px}
-.page-header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.4rem);font-weight:600;color:#fff;line-height:1.15;margin-bottom:14px}
-.page-header h1 em{font-style:italic;color:#E8B4A0}
-.page-header p{font-size:1rem;color:rgba(255,255,255,.8);max-width:560px;margin:0 auto;line-height:1.7}
-.scroll-cue{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:40;display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:rgba(44,31,26,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:10px 18px;border-radius:50px;border:1px solid rgba(255,255,255,.22);box-shadow:0 6px 20px rgba(0,0,0,.25);transition:opacity .3s ease,transform .3s ease;animation:scrollCueFade .8s ease .5s both}
-.scroll-cue.scroll-cue-hidden{opacity:0;transform:translateX(-50%) translateY(12px);pointer-events:none}
-.scroll-cue svg{animation:scrollCueBounce 1.6s ease-in-out infinite;flex-shrink:0}
-@keyframes scrollCueBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
-@keyframes scrollCueFade{from{opacity:0}to{opacity:1}}
-@media(prefers-reduced-motion:reduce){.scroll-cue svg{animation:none}}
-
-/* ===== SECTIONS ===== */
-.prog-section{padding:72px 20px}
-.prog-section.alt{background:var(--cream)}
-.prog-inner{max-width:900px;margin:0 auto}
-.section-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brown);margin-bottom:10px}
-.section-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:600;color:var(--dark);margin-bottom:12px;line-height:1.2}
-.section-heading em{font-style:italic;color:var(--accent)}
-.section-intro{font-size:.95rem;color:var(--text-mid);line-height:1.75;max-width:620px;margin-bottom:40px}
-
-/* ===== CARDS CLÉ EN MAIN ===== */
-.clem-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.clem-card{background:var(--white);border:1.5px solid var(--sand);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;gap:14px;position:relative;transition:box-shadow .25s,transform .25s}
-.clem-card:hover{box-shadow:0 12px 40px rgba(30,22,22,.1);transform:translateY(-3px)}
-.clem-badge{display:inline-block;background:linear-gradient(135deg,#2C1F1A,var(--accent));color:#fff;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:50px;align-self:flex-start}
-.clem-price{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;color:var(--accent);line-height:1}
-.clem-price span{font-size:1rem;color:var(--brown);font-family:'DM Sans',sans-serif;font-weight:400;margin-left:4px}
-.clem-subtitle{font-size:.92rem;color:var(--text-mid);font-style:italic;line-height:1.5;margin:0}
-.clem-points{list-style:none;display:flex;flex-direction:column;gap:8px;margin:0;padding:0}
-.clem-points li{font-size:.85rem;color:var(--text-mid);line-height:1.5;padding-left:20px;position:relative}
-.clem-points li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:700}
-/* Carte produit = résumé (prix + bénéfice) ; détail repliable */
-.clem-more{margin:2px 0 10px}
-.clem-more>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font:700 .82rem/1.3 'DM Sans',sans-serif;color:var(--accent);padding:6px 0}
-.clem-more>summary::-webkit-details-marker{display:none}
-.clem-more>summary::marker{content:''}
-.clem-more>summary::after{content:'▾';font-size:.7rem;transition:transform .25s}
-.clem-more[open]>summary::after{transform:rotate(180deg)}
-.clem-more .lbl-c{display:none}
-.clem-more[open] .lbl-o{display:none}
-.clem-more[open] .lbl-c{display:inline}
-.clem-more .clem-points{margin-top:6px}
-/* Images produit plus courtes sur mobile (moins de scroll) — le cadrage suit l'object-position propre à chaque image */
-@media(max-width:560px){.clem-card>img{height:210px!important;aspect-ratio:auto!important;object-fit:cover!important}}
-.clem-cta{display:block;background:linear-gradient(135deg,#2C1F1A,var(--accent));color:#fff;font-weight:700;font-size:.9rem;padding:14px 20px;border-radius:50px;text-decoration:none;text-align:center;transition:opacity .2s,transform .2s;margin-top:auto}
-.clem-cta:hover{opacity:.9;transform:translateY(-1px)}
-.clem-note{font-size:.75rem;color:var(--brown);text-align:center;margin-top:6px}
-
-/* ===== SECTION SUR-MESURE ===== */
-.mesure-badge{display:inline-block;background:rgba(201,99,88,.12);border:1px solid rgba(201,99,88,.28);color:var(--accent);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:20px}
-.mesure-card{background:var(--white);border:2px solid var(--accent);border-radius:20px;padding:40px 36px;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
-.mesure-price-wrap .price{font-family:'Cormorant Garamond',serif;font-size:3.6rem;font-weight:600;color:var(--dark);line-height:1}
-.mesure-price-wrap .price-sub{font-size:.82rem;color:var(--brown);margin-top:4px}
-.mesure-subtitle{font-size:1rem;color:var(--text-mid);font-style:italic;margin:16px 0 20px;line-height:1.5}
-.mesure-points{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
-.mesure-points li{font-size:.88rem;color:var(--text-mid);line-height:1.5;padding-left:22px;position:relative}
-.mesure-points li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:700}
-.mesure-note{display:inline-block;background:var(--cream);border:1px solid var(--sand);border-radius:10px;padding:10px 16px;font-size:.8rem;color:var(--brown);margin-top:20px;font-style:italic}
-.mesure-cta-wrap{display:flex;flex-direction:column;gap:10px;justify-content:center}
-.mesure-cta{display:block;background:linear-gradient(135deg,#2C1F1A,var(--accent));color:#fff;font-weight:700;font-size:.95rem;padding:16px 24px;border-radius:50px;text-decoration:none;text-align:center;transition:opacity .2s,transform .2s}
-.mesure-cta:hover{opacity:.9;transform:translateY(-1px)}
-.mesure-cta-note{font-size:.75rem;color:var(--brown);text-align:center}
-
-/* ===== PILLS STICKY ===== */
-#prog-anchors{position:sticky;top:64px;z-index:90;background:var(--white);border-bottom:1px solid var(--sand);padding:0}
-.prog-anchors-inner{display:flex;gap:6px;align-items:center;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;padding:10px 16px;max-width:900px;margin:0 auto}
-.prog-anchors-inner::-webkit-scrollbar{display:none}
-.prog-anchors-inner::after{content:'';display:block;min-width:16px;flex-shrink:0}
-.prog-pill{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;flex-shrink:0;padding:7px 16px;border-radius:50px;font-size:.78rem;font-weight:600;text-decoration:none;color:var(--text-mid);background:var(--white);border:1px solid var(--sand);transition:all .2s}
-.prog-pill:hover{background:var(--cream);color:var(--dark);border-color:var(--rose-deep)}
-.prog-pill.active{background:linear-gradient(135deg,#2C1F1A,var(--accent));color:#fff;border-color:transparent}
-.prog-pill.coaching{background:rgba(201,99,88,.1);color:var(--accent);border-color:rgba(201,99,88,.3);font-weight:700}
-.prog-pill.coaching:hover{background:rgba(201,99,88,.18)}
-
-/* ===== TABLEAU COMPARATIF ===== */
-.comp-section{padding:72px 20px;background:var(--white)}
-.comp-table{width:100%;border-collapse:collapse;margin-top:36px;border-radius:16px;overflow:hidden;border:1.5px solid var(--sand)}
-.comp-table th{padding:14px 16px;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;background:var(--dark);color:rgba(255,255,255,.7)}
-.comp-table th:first-child{text-align:left;color:rgba(255,255,255,.5)}
-.comp-table th.highlight{color:#E8B4A0}
-.comp-table td{padding:13px 16px;font-size:.88rem;color:var(--text-mid);text-align:center;border-bottom:1px solid var(--sand)}
-.comp-table td:first-child{text-align:left;font-weight:600;color:var(--dark);font-size:.82rem}
-.comp-table tr:last-child td{border-bottom:none}
-.comp-table tr:nth-child(even) td{background:var(--cream)}
-.comp-table .tick{color:#4A6741;font-weight:700;font-size:1rem}
-.comp-table .cross{color:#C0A898;font-size:1rem}
-.comp-table td.highlight{font-weight:700;color:var(--accent)}
-
-/* ===== CTA FINAL ===== */
-.cta-final-section{background:linear-gradient(145deg,#2C1F1A,#3d2b24);padding:72px 20px;text-align:center}
-.cta-final-section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:600;color:#fff;margin-bottom:12px;line-height:1.2}
-.cta-final-section h2 em{font-style:italic;color:#E8B4A0}
-.cta-final-section p{font-size:.95rem;color:rgba(255,255,255,.75);margin-bottom:32px;line-height:1.7}
-.cta-wa{display:inline-block;background:#25D366;color:#fff;font-weight:700;font-size:1rem;padding:17px 40px;border-radius:50px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 6px 24px rgba(37,211,102,.35)}
-.cta-wa:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(37,211,102,.45)}
-.cta-final-note{font-size:.78rem;color:rgba(255,255,255,.45);margin-top:12px}
-
-/* ===== BUNDLE TEASER ===== */
-.bundle-strip{background:linear-gradient(135deg,#F6E6DF,#EAF2EA);padding:40px 20px;text-align:center}
-.bundle-strip p{font-size:.95rem;color:var(--dark);margin-bottom:16px}
-.bundle-strip a{display:inline-block;background:linear-gradient(135deg,#C9957A,var(--accent));color:#fff;font-weight:700;font-size:.9rem;padding:13px 32px;border-radius:50px;text-decoration:none;box-shadow:0 6px 20px rgba(201,99,88,.3)}
-
-@media(max-width:660px){
-  .clem-grid{grid-template-columns:1fr}
-  .mesure-card{grid-template-columns:1fr;gap:24px;padding:28px 22px}
-  /* Comparatif : table 6 colonnes → cartes verticales empilées (fini le scroll horizontal) */
-  .comp-section>.prog-inner>div[style*="overflow-x"]{overflow-x:visible}
-  .comp-table,.comp-table thead,.comp-table tbody,.comp-table tr,.comp-table td{display:block;width:100%}
-  .comp-table{border:none;border-radius:0;margin-top:22px}
-  .comp-table thead{display:none}
-  .comp-table tr{border:1.5px solid var(--sand);border-radius:14px;margin-bottom:14px;padding:4px 16px 12px;background:var(--white)}
-  .comp-table tr:nth-child(even) td{background:transparent}
-  .comp-table td{display:flex;justify-content:space-between;align-items:center;gap:14px;text-align:left!important;border:none!important;border-bottom:1px solid rgba(201,160,130,.18)!important;padding:9px 0!important;font-size:.9rem}
-  .comp-table tr td:last-child{border-bottom:none!important}
-  .comp-table td:first-child{display:block;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--dark);border-bottom:1.5px solid var(--sand)!important;padding:8px 0 10px!important;margin-bottom:2px}
-  .comp-table td:not(:first-child)::before{content:attr(data-label);font-weight:600;color:var(--text-mid);font-size:.82rem;text-align:left}
-  .comp-table td.comp-star{background:rgba(201,99,88,.07)!important;border:none!important;border-radius:9px;padding:9px 12px!important;margin-top:4px}
-  .comp-table td.comp-star::before{color:var(--accent)}
-  /* Étapes sur-mesure — 3 colonnes → 1 colonne */
-  .etapes-grid{grid-template-columns:1fr!important;gap:8px!important}
-}
-
-/* ===== MINI-QUIZ ORIENTATION ===== */
-.miniquiz-wrap{padding:32px 20px;background:var(--white)}
-.miniquiz-card{max-width:640px;margin:0 auto;background:var(--cream);border:1.5px solid var(--sand);border-radius:20px;padding:32px 28px}
-.miniquiz-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brown);text-align:center;margin-bottom:16px}
-.miniquiz-question{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--dark);text-align:center;margin-bottom:20px;line-height:1.3}
-.miniquiz-options{display:flex;flex-direction:column;gap:10px}
-.miniquiz-opt{display:block;width:100%;text-align:left;background:var(--white);border:1.5px solid var(--sand);border-radius:14px;padding:14px 18px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:500;color:var(--dark);cursor:pointer;transition:border-color .2s,background .2s,transform .15s}
-.miniquiz-opt:hover{border-color:var(--accent);background:rgba(201,99,88,.06);transform:translateX(2px)}
-.miniquiz-result-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--dark);text-align:center;margin-bottom:10px}
-.miniquiz-result-sub{font-size:.88rem;color:var(--text-mid);text-align:center;line-height:1.6;margin-bottom:22px}
-.miniquiz-result-cta{display:block;background:linear-gradient(135deg,#2C1F1A,var(--accent));color:#fff;font-weight:700;font-size:.92rem;padding:15px 24px;border-radius:50px;text-decoration:none;text-align:center;margin-bottom:14px;transition:opacity .2s}
-.miniquiz-result-cta:hover{opacity:.9}
-.miniquiz-restart{display:block;text-align:center;font-size:.8rem;color:var(--brown);background:none;border:none;cursor:pointer;text-decoration:underline;margin:0 auto;font-family:'DM Sans',sans-serif}
-@media(max-width:660px){
-  .miniquiz-card{padding:24px 20px}
-  .miniquiz-question{font-size:1.2rem}
-}
-
-/* ===== BADGE AVIS GOOGLE (hero) ===== */
-.hero-google{display:inline-flex;align-items:center;gap:8px;margin-top:18px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:.86rem;font-weight:700;padding:9px 18px;border-radius:50px;text-decoration:none;transition:background .2s}
-.hero-google:hover{background:rgba(255,255,255,.2)}
-.hero-google .stars{color:#FFC940;letter-spacing:1px}
-
-/* ===== SÉLECTEUR D'OBJECTIF ===== */
-.obj-wrap{background:var(--white);padding:40px 20px 34px;border-bottom:1px solid var(--sand)}
-.obj-inner{max-width:900px;margin:0 auto;text-align:center}
-.obj-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.6vw,2.1rem);font-weight:600;color:var(--dark);margin-bottom:6px}
-.obj-quizlink{display:inline-block;font-size:.86rem;color:var(--brown);text-decoration:none;margin-bottom:24px;border-bottom:1px solid rgba(155,120,110,.4)}
-.obj-quizlink:hover{color:var(--accent);border-color:var(--accent)}
-.obj-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.obj-tile{display:flex;flex-direction:column;align-items:center;gap:8px;background:var(--cream);border:1.5px solid var(--sand);border-radius:16px;padding:20px 10px;text-decoration:none;transition:border-color .2s,transform .15s,box-shadow .2s}
-.obj-tile:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 10px 26px rgba(30,22,22,.08)}
-.obj-tile .ico{font-size:1.9rem;line-height:1}
-.obj-tile .lbl{font-size:.82rem;font-weight:700;color:var(--dark);line-height:1.25}
-@media(max-width:660px){
-  .obj-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-  .obj-tile{padding:16px 8px}
-  .obj-tile .ico{font-size:1.6rem}
-}
-
-/* ===== QUI JE SUIS ===== */
-.whoami{background:var(--white);padding:44px 20px}
-.whoami-inner{max-width:760px;margin:0 auto;display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:center}
-.whoami-photo{width:150px;height:150px;border-radius:50%;object-fit:cover;object-position:center 20%;border:3px solid var(--sand)}
-.whoami-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3.4vw,2rem);font-weight:600;color:var(--dark);margin-bottom:10px;line-height:1.25}
-.whoami-text p{font-size:.95rem;color:var(--text-mid);line-height:1.75}
-@media(max-width:640px){
-  .whoami-inner{grid-template-columns:1fr;text-align:center;gap:18px;justify-items:center}
-  .whoami-photo{width:120px;height:120px}
-}
-
-/* ===== ELLES ONT FAIT LES PROGRAMMES ===== */
-.shots-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:760px;margin:0 auto 8px}
-.shot-ph{aspect-ratio:9/16;background:var(--cream);border:1.5px dashed var(--rose-deep);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--brown);text-align:center;padding:16px;font-size:.78rem;line-height:1.5}
-.shot-ph .ph-ico{font-size:1.8rem}
-@media(max-width:640px){.shots-grid{grid-template-columns:1fr;max-width:340px}.shot-ph{aspect-ratio:16/9}}
-
-/* ===== PACKS ===== */
-.packs-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
-.pack-card{background:var(--white);border:1.5px solid var(--sand);border-radius:20px;padding:28px 26px;display:flex;flex-direction:column;gap:12px;text-align:center}
-.pack-emoji{font-size:2rem;line-height:1}
-.pack-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--dark);margin:0}
-.pack-desc{font-size:.86rem;color:var(--text-mid);line-height:1.6;margin:0}
-.pack-price{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--accent);line-height:1}
-.pack-price s{font-size:1.1rem;color:var(--brown);opacity:.6;font-weight:400;margin-right:6px}
-.pack-price small{display:block;font-family:'DM Sans',sans-serif;font-size:.78rem;color:#4A6741;font-weight:700;margin-top:4px}
-.pack-cta{display:block;background:linear-gradient(135deg,#C9957A,var(--accent));color:#fff;font-weight:700;font-size:.9rem;padding:14px 20px;border-radius:50px;text-decoration:none;margin-top:auto;box-shadow:0 6px 20px rgba(201,99,88,.28);transition:transform .2s}
-.pack-cta:hover{transform:translateY(-2px)}
-@media(max-width:660px){.packs-grid{grid-template-columns:1fr}}
-
-/* ===== PASSERELLE COACHING ===== */
-.gw-strip{background:linear-gradient(135deg,#F6E6DF,#EAF2EA);padding:34px 20px;text-align:center}
-.gw-inner{max-width:680px;margin:0 auto}
-.gw-inner p{font-size:.96rem;color:var(--dark);line-height:1.65;margin-bottom:16px}
-.gw-inner a.gw-btn{display:inline-block;background:linear-gradient(135deg,#2C1F1A,var(--accent));color:#fff;font-weight:700;font-size:.9rem;padding:13px 30px;border-radius:50px;text-decoration:none;box-shadow:0 6px 20px rgba(201,99,88,.28)}
-
-/* ===== FAQ ===== */
-.faq-section{padding:64px 20px;background:var(--cream)}
-.faq-inner{max-width:720px;margin:0 auto}
-.faq-item{background:var(--white);border:1.5px solid var(--sand);border-radius:14px;margin-bottom:12px;overflow:hidden}
-.faq-item summary{list-style:none;cursor:pointer;padding:18px 22px;font-weight:700;font-size:.95rem;color:var(--dark);display:flex;justify-content:space-between;align-items:center;gap:12px}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary::after{content:'+';font-size:1.4rem;color:var(--accent);font-weight:400;flex-shrink:0;transition:transform .2s}
-.faq-item[open] summary::after{content:'−'}
-.faq-item .faq-body{padding:0 22px 20px;font-size:.9rem;color:var(--text-mid);line-height:1.75}
-.faq-item .faq-body a{color:var(--accent);font-weight:700;text-decoration:none}
-
-/* ===== BONUS BANNER (FDTV) ===== */
-.fdtv-bonus{background:rgba(201,99,88,.1);border:1px dashed rgba(201,99,88,.4);border-radius:10px;padding:10px 14px;font-size:.82rem;color:var(--dark);font-weight:600;text-align:center}
-
-/* ===== COMPARATIF — COLONNE VEDETTE ===== */
-.comp-table th.comp-star{color:#fff;background:var(--accent);position:relative}
-.comp-table td.comp-star{border-left:2px solid var(--accent);border-right:2px solid var(--accent);background:rgba(201,99,88,.06)!important;font-weight:600;color:var(--dark)}
-.comp-table th.comp-star{border-left:2px solid var(--accent);border-right:2px solid var(--accent);border-top:2px solid var(--accent)}
-.comp-table tr:last-child td.comp-star{border-bottom:2px solid var(--accent)}
-.comp-star-badge{display:block;font-size:.6rem;font-weight:800;letter-spacing:.06em;color:#FFE3C4;margin-top:3px}
-
-/* ===== STICKY MOBILE QUIZ ===== */
-.prog-sticky{display:none}
-@media(max-width:660px){
-  .prog-sticky{display:block;position:fixed;bottom:16px;left:16px;right:84px;z-index:120;transition:opacity .3s,transform .3s}
-  .prog-sticky.hide{opacity:0;transform:translateY(20px);pointer-events:none}
-  .prog-sticky a{display:block;background:linear-gradient(135deg,#2C1F1A,var(--accent));color:#fff;font-weight:700;font-size:.92rem;padding:15px 18px;border-radius:50px;text-decoration:none;text-align:center;box-shadow:0 8px 24px rgba(44,31,26,.35)}
-}
-.obj-tabs{position:sticky;top:64px;z-index:90;background:rgba(255,255,255,.97);border-bottom:1px solid var(--sand);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.obj-tabs-in{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:10px 16px;max-width:1000px;margin:0 auto;scroll-snap-type:x proximity}
-.obj-tabs-in::-webkit-scrollbar{display:none}
-.obj-tabs a{flex:0 0 auto;scroll-snap-align:start;font-size:.84rem;font-weight:700;color:var(--dark);text-decoration:none;background:var(--cream);border:1.5px solid var(--sand);border-radius:50px;padding:9px 14px;white-space:nowrap}
-.obj-tabs a.on{background:var(--accent);border-color:var(--accent);color:#fff}
-.obj-group{padding-top:40px;padding-bottom:40px;scroll-margin-top:120px}
-#par-ou-commencer,#sur-mesure{scroll-margin-top:120px}
-.obj-group:nth-of-type(even){background:var(--cream)}
-.obj-group-h{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3.5vw,2rem);font-weight:600;color:var(--dark);margin:0 0 20px}
-.clem-one{grid-template-columns:1fr;max-width:560px;margin-left:auto;margin-right:auto}
-.obj-pack-link{text-align:center;font-size:.88rem;color:var(--text-mid);margin-top:18px}
-.obj-pack-link a{color:var(--accent);font-weight:700}
-.prog-reassure{max-width:640px;margin:0 auto;padding:28px 20px 40px;text-align:center;font-size:.86rem;color:var(--text-mid);line-height:1.6}
-.prog-reassure p{margin:0 0 6px}
-.prog-garantie{background:var(--cream);border:1px solid var(--sand);border-radius:14px;padding:12px 14px;margin-top:10px!important}
-</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -320,10 +74,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Combien coûte un programme de musculation personnalisé en ligne ?",
+      "name": "Voir le détail</summary>\n          <div><ul class=\"ticks\">\n            <li>28 jours · 12 séances progressives (3 par semaine) en 3 formats, à la maison sans matériel</li>\n            <li>Adaptations débutante + variantes si genoux, dos, épaules ou post-grossesse sensibles</li>\n            <li>Méthode Plan A / B / C pour tenir même avec enfants, télétravail ou semaine surchargée</li>\n            <li>Nutrition sans régime : quoi manger et quand, meal prep, courses, repas de secours, restos et sorties</li>\n            <li>Trackers, planning, bilans hebdo + guide de continuité après 28 j</li>\n            <li>Accès à vie · programme interactif sur ton téléphone</li>\n          </ul></div>\n        </details>\n      </div>\n    </article>\n  </div>\n</section>\n\n<!-- 4. CATALOGUE -->\n<section id=\"cle-en-main\" class=\"band band--sand sec-scroll\">\n  <div class=\"wrap\">\n    <div class=\"head\">\n      <h2>Tous les programmes, <span class=\"hl\">accès immédiat.</span></h2>\n      <p>À la maison ou en salle, en vacances, partout : tu ouvres ton téléphone, ton programme est là.</p>\n    </div>\n\n    <div class=\"group sec-scroll\" id=\"obj-ventre\">\n      <div class=\"group-h\"><h3>Ventre</h3><span>plus plat, moins de ballonnements</span></div>\n      <div class=\"cards\">\n        <article class=\"pcard\" id=\"ventre-plat\">\n          <div class=\"pcard-top\">\n            <img src=\"images/avant-apres-ventre.webp\" alt=\"Ventre Plat 14 jours\" width=\"4320\" height=\"4320\" loading=\"lazy\" decoding=\"async\">\n            <div><p class=\"pbadge\">Bestseller</p><h4>Ventre Plat, 14 jours</h4><p class=\"pdesc\">La méthode pour aplatir ton ventre et réduire les ballonnements, même si tu as déjà tout essayé.</p><p class=\"pmeta\">Chez toi · 15 min/jour · sans matériel</p></div>\n          </div>\n          <div class=\"pfoot\"><span class=\"pprice\"><b>12 €</b>paiement unique</span><a href=\"ventre-plat.html\" class=\"btn btn--sm\" onclick=\"if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:12,currency:'EUR',content_name:'Ventre Plat',content_ids:['ventre-plat-14j'],content_type:'product'})\">Je retrouve un ventre plat</a></div>\n          <details class=\"acc\"><summary>Voir le détail</summary><div><ul class=\"ticks\">\n            <li>14 jours de plan structuré jour par jour</li><li>6 séances guidées ciblées abdos profonds</li><li>8 chapitres stratégie anti-ballonnements</li><li>Plan nutrition et liste de courses inclus</li><li>Accès à vie · installable sur ton téléphone</li>\n          </ul></div></details>\n        </article>\n        <article class=\"pcard\" id=\"planner\">\n          <div class=\"pcard-top\">\n            <img src=\"images/planner/planner-01.jpg\" alt=\"Planner Ventre et Fessiers 8 semaines, Google Sheets\" width=\"3000\" height=\"2250\" loading=\"lazy\" decoding=\"async\">\n            <div><p class=\"pbadge\">Google Sheets · tout se calcule</p><h4>Planner Ventre & Fessiers, 8 semaines</h4><p class=\"pdesc\">Tes calories, tes séances et ton suivi au même endroit. Tu ouvres, tu coches, tu avances.</p><p class=\"pmeta\">Calculateur calories auto · graphiques · téléphone, tablette, PC</p></div>\n          </div>\n          <div class=\"pfoot\"><span class=\"pprice\"><b>12,75 €</b>paiement unique</span><a href=\"planner-ventre-fessiers.html\" class=\"btn btn--sm\" onclick=\"if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:12.75,currency:'EUR',content_name:'Planner Ventre Fessiers',content_ids:['planner-ventre-fessiers'],content_type:'product'})\">Je veux mon planner</a></div>\n          <details class=\"acc\"><summary>Voir le détail</summary><div><ul class=\"ticks\">\n            <li>Calculateur calories et macros automatique</li><li>Programme 8 semaines + 4 séances détaillées</li><li>Tracker quotidien et suivi des mensurations</li><li>24 idées de repas + « Ma journée type »</li><li>Accès à vie · Google Sheets + Excel inclus</li>\n          </ul></div></details>\n        </article>\n        <article class=\"pcard\" id=\"guide-recettes\">\n          <div class=\"pcard-top\">\n            <img src=\"images/meal-prep.jpg\" alt=\"Guide Recettes Sculptantes\" width=\"1024\" height=\"1024\" loading=\"lazy\" decoding=\"async\">\n            <div><p class=\"pbadge\">Nutrition</p><h4>Guide Recettes Sculptantes</h4><p class=\"pdesc\">21 recettes faciles classées par objectif (légères, anti-ballonnements, satiété) + liste de courses prête à l'emploi.</p><p class=\"pmeta\">Accès immédiat</p></div>\n          </div>\n          <div class=\"pfoot\"><span class=\"pprice\"><b>7 €</b>paiement unique</span><a href=\"guide-recettes-vente.html\" class=\"btn btn--sm\">Voir le guide</a></div>\n        </article>\n      </div>\n    </div>\n\n    <div class=\"group sec-scroll\" id=\"obj-fessiers\">\n      <div class=\"group-h\"><h3>Fessiers</h3><span>plus galbés</span></div>\n      <div class=\"cards\">\n        <article class=\"pcard\" id=\"booty-sculpt\">\n          <div class=\"pcard-top\">\n            <img src=\"images/couverture-booty-sculpt.png\" alt=\"Booty Sculpt 8 semaines\" width=\"720\" height=\"1020\" loading=\"lazy\" decoding=\"async\">\n            <div><p class=\"pbadge\">Vidéo de démo pour chaque exercice</p><h4>Booty Sculpt, 8 semaines</h4><p class=\"pdesc\">Le programme fessiers pour galber, raffermir et progresser, avec une vidéo de démonstration pour chaque exercice.</p><p class=\"pmeta\">À domicile ou en vacances · avec ou sans élastiques</p></div>\n          </div>\n          <div class=\"pfoot\"><span class=\"pprice\"><b>19 €</b>paiement unique</span><a href=\"booty-sculpt.html\" class=\"btn btn--sm\" onclick=\"if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:19,currency:'EUR',content_name:'Booty Sculpt',content_ids:['booty-sculpt-8sem'],content_type:'product'})\">Je veux des fessiers galbés</a></div>\n          <details class=\"acc\"><summary>Voir le détail</summary><div><ul class=\"ticks\">\n            <li>8 semaines de programme progressif</li><li>12 séances · vidéo de démonstration pour chaque exercice</li><li>Adapté débutantes et confirmées</li><li>Plan nutrition pour sculpter inclus</li><li>Accès à vie · installable sur ton téléphone</li>\n          </ul></div></details>\n          <p class=\"pack-link\">Ventre + fessiers ? <a href=\"bundle.html\">Le bundle Ventre Plat + Booty Sculpt : 25 €</a></p>\n        </article>\n      </div>\n    </div>\n\n    <div class=\"group sec-scroll\" id=\"obj-postpartum\">\n      <div class=\"group-h\"><h3>Après bébé</h3><span>reprendre après l'accouchement</span></div>\n      <div class=\"cards\">\n        <article class=\"pcard\" id=\"post-partum\">\n          <div class=\"pcard-top\">\n            <img src=\"images/ornella-avant-apres-postpartum.jpg\" alt=\"Ventre plat après bébé, post-partum\" width=\"2048\" height=\"2048\" loading=\"lazy\" decoding=\"async\">\n            <div><p class=\"pbadge\">Post-partum · nouveau</p><h4>Post-partum, 8 semaines</h4><p class=\"pdesc\">Reprendre le sport et renforcer ta sangle abdominale en douceur, en complément de ta rééducation, même si tu allaites. À commencer après ton feu vert médical et ta rééducation périnéale validée.</p><p class=\"pmeta\">À la maison · allaitement OK · adapté diastasis · 25-35 min/séance</p></div>\n          </div>\n          <div class=\"pfoot\"><span class=\"pprice\"><b>17 €</b>paiement unique</span><a href=\"programme-postpartum.html\" class=\"btn btn--sm\" onclick=\"if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:17,currency:'EUR'})\">Je reconstruis mon corps</a></div>\n          <details class=\"acc\"><summary>Voir le détail</summary><div><ul class=\"ticks\">\n            <li>8 semaines progressives (reconnexion → transformation)</li><li>Exercices expliqués pas à pas + erreurs fréquentes</li><li>Plan nutrition + macros allaitement</li><li>Conseils hormones, sommeil avec bébé, anti-ballonnements</li><li>Chrono repos intégré · accès à vie</li>\n          </ul></div></details>\n          <p class=\"pack-link\">Avec Booty Sculpt ? <a href=\"pack-maman.html\">Le Pack Maman : 27 €</a></p>\n        </article>\n      </div>\n    </div>\n\n    <div class=\"group sec-scroll\" id=\"obj-3050\">\n      <div class=\"group-h\"><h3>30-50 ans</h3><span>te raffermir, à ton âge</span></div>\n      <div class=\"cards\">\n        <article class=\"pcard\" id=\"ageless-girl\">\n          <div class=\"pcard-top\">\n            <img src=\"images/ageless-girl-cover.png\" alt=\"Ageless Girl, corps ferme 30-50 ans\" width=\"562\" height=\"790\" loading=\"lazy\" decoding=\"async\">\n            <div><p class=\"pbadge\">Anti-âge · nouveau</p><h4>Ageless Girl, corps ferme 30-50 ans</h4><p class=\"pdesc\">La méthode complète pour ralentir le vieillissement de l'intérieur : sport, nutrition, hormones, sommeil, skincare. Programme interactif à vie, pas un PDF.</p><p class=\"pmeta\">Musculation · ménopause · compléments · skincare rétinal</p></div>\n          </div>\n          <div class=\"pfoot\"><span class=\"pprice\"><b>17 €</b>paiement unique</span><a href=\"ageless-girl-sales.html\" class=\"btn btn--sm\" onclick=\"if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:17,currency:'EUR'})\">Je retrouve un corps ferme</a></div>\n          <details class=\"acc\"><summary>Voir le détail</summary><div><ul class=\"ticks\">\n            <li>Programme musculation anti-âge en 3 phases</li><li>Nutrition longévité + compléments classés par âge</li><li>Guide ménopause et hormones complet</li><li>Skincare K-beauty, rétinal et lumière rouge</li><li>Accès à vie · programme interactif sur téléphone</li>\n          </ul></div></details>\n        </article>\n      </div>\n    </div>\n\n    <div class=\"group sec-scroll\" id=\"obj-salle\">\n      <div class=\"group-h\"><h3>En salle</h3><span>progresser vraiment</span></div>\n      <div class=\"cards\">\n        <article class=\"pcard\" id=\"iron-girl\">\n          <div class=\"pcard-top\">\n            <img src=\"images/ornella-gym-cover.jpg\" alt=\"Iron Girl, programme salle\" width=\"1152\" height=\"2048\" loading=\"lazy\" decoding=\"async\">\n            <div><p class=\"pbadge\">Programme salle · nouveau</p><h4>Iron Girl, programme salle 8 semaines</h4><p class=\"pdesc\">3 phases progressives · 5 séances par semaine · 74 exercices détaillés · guide nutrition + compléments inclus. Conçu par une ancienne compétitrice fitness.</p><p class=\"pmeta\">En salle équipée · progressive overload · 55-75 min/séance</p></div>\n          </div>\n          <div class=\"pfoot\"><span class=\"pprice\"><b>49 €</b>paiement unique</span><a href=\"iron-girl-sales.html\" class=\"btn btn--sm\" onclick=\"if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:49,currency:'EUR'})\">Je deviens une Iron Girl</a></div>\n          <details class=\"acc\"><summary>Voir le détail</summary><div><ul class=\"ticks\">\n            <li>3 phases : Be Iron · Gainz Max · I Know It (60 % → 90 % RM)</li><li>Split A, B, C, D, E : ischios, push, quads, pull, fessiers</li><li>Tracker de charges avec sauvegarde automatique</li><li>Guide nutrition · cycle féminin · 12 compléments alimentaires</li><li>Accès à vie · installable sur ton téléphone</li>\n          </ul></div></details>\n        </article>\n      </div>\n    </div>\n\n    <div class=\"reassure\">\n      <p><b>Paiement sécurisé · accès immédiat · accès à vie.</b> Un exercice ne te convient pas ? Je t'envoie une variante sur WhatsApp.</p>\n      <p><b>Garantie 48 h :</b> tu changes d'avis dans les 48 h après ton achat et tu n'as pas encore ouvert ton programme ? Écris-moi sur WhatsApp, je te rembourse. Une fois le programme ouvert, c'est un contenu numérique non remboursable (voir <a href=\"cgv.html\">CGV</a>).</p>\n    </div>\n  </div>\n</section>\n\n<!-- 5. PACKS -->\n<section id=\"packs\" class=\"band band--blush sec-scroll\">\n  <div class=\"wrap\">\n    <div class=\"head\"><h2>Deux programmes, <span class=\"hl\">un prix malin.</span></h2></div>\n    <div class=\"packs\">\n      <div class=\"pack\">\n        <h3>Bundle Ventre Plat + Booty Sculpt</h3>\n        <p>Le duo pour un ventre plat et des fessiers galbés : les deux programmes réunis.</p>\n        <div class=\"price-line\" style=\"margin-top:6px\"><span class=\"was\">31 €</span><b>25 €</b> tu économises 6 €</div>\n        <a href=\"bundle.html\" class=\"btn btn--ghost\">Voir le bundle</a>\n      </div>\n      <div class=\"pack\">\n        <h3>Pack Maman</h3>\n        <p>Post-partum, 8 semaines + Booty Sculpt : reconstruire ton corps après bébé, en douceur.</p>\n        <div class=\"price-line\" style=\"margin-top:6px\"><span class=\"was\">36 €</span><b>27 €</b> tu économises 9 €</div>\n        <a href=\"pack-maman.html\" class=\"btn btn--ghost\">Voir le Pack Maman</a>\n      </div>\n    </div>\n  </div>\n</section>\n\n<!-- 6. SUR-MESURE -->\n<section id=\"sur-mesure\" class=\"band band--sage sec-scroll\">\n  <div class=\"wrap split\">\n    <div class=\"head\">\n      <h2>Pas un programme générique. <span class=\"hl\">Un plan fait pour toi.</span></h2>\n      <p>Tu remplis un questionnaire détaillé. Je construis ton programme 8 semaines de A à Z : exercices, vidéos, nutrition, tout est pensé pour ton corps, ton niveau et ton quotidien. Livré sur ton téléphone, où que tu sois en France.</p>\n    </div>\n    <div class=\"sm\">\n      <p class=\"pbadge\">100 % à distance · toute la France</p>\n      <h3 style=\"font-size:1.8rem\">Programme sur-mesure, sans suivi</h3>\n      <div class=\"price-line\"><b>79 €</b> paiement unique · livré sous 7 jours ouvrés</div>\n      <ol class=\"steps\">\n        <li><span><b>Bilan complet offert :</b> questionnaire, objectifs, niveau.</span></li>\n        <li><span><b>Je construis tout :</b> 8 semaines, exercices, vidéos, nutrition.</span></li>\n        <li><span><b>Livré sous 7 jours ouvrés</b> sur ton téléphone.</span></li>\n      </ol>\n      <ul class=\"ticks\">\n        <li>Programme 8 semaines 100 % sur-mesure, créé uniquement pour toi</li>\n        <li>Vidéos de démonstration incluses</li>\n        <li>Jusqu'à 4 séances par semaine</li>\n        <li>Sans suivi mensuel : pour celles qui sont autonomes et n'ont pas besoin d'ajustements réguliers</li>\n      </ul>\n      <a href=\"https://buy.stripe.com/8x26oHas9f8n5o9cmh8Vi03\" class=\"btn\" target=\"_blank\" rel=\"noopener\" onclick=\"if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:79,currency:'EUR'})\">Je veux mon programme unique · 79 €</a>\n      <p class=\"small\" style=\"margin-top:8px\">Livré sous 7 jours ouvrés · paiement sécurisé</p>\n      <div class=\"sm-links\"><a href=\"programme-sur-mesure.html\" class=\"link\">Voir le détail et des exemples</a><a href=\"offres.html#tarif-distanciel\" class=\"link\">Avec suivi : le coaching à distance</a></div>\n    </div>\n  </div>\n</section>\n\n<!-- 7. AVIS -->\n<section id=\"avis\" class=\"band\">\n  <div class=\"wrap\">\n    <div class=\"head\">\n      <h2>Elles sont accompagnées <span class=\"hl\">par Ornella.</span></h2>\n      <p>Avis Google vérifiés sur mon accompagnement : la même coach, la même exigence derrière chaque programme.</p>\n    </div>\n    <div class=\"rating\">\n      <h3 style=\"font-size:clamp(1.7rem,4.6vw,2.2rem)\"><span class=\"hl\">5,0</span> sur Google <span class=\"stars\" aria-label=\"5 étoiles sur 5\">★★★★★</span></h3>\n      <a href=\"https://share.google/NcyAyWaS3WMZgQ4B6\" class=\"link\" target=\"_blank\" rel=\"noopener\">Lire les 26 avis</a>\n    </div>\n    <div class=\"rail\" data-rail aria-label=\"Avis Google\" style=\"align-items:start\">\n      <figure class=\"quote\">\n        <p>Je ne suis pas du tout sportive à la base et pourtant Ornella réussit à me motiver à chaque séance. Elle est bienveillante, drôle et toujours encourageante. Elle s'adapte au niveau de chacun, prend le temps d'expliquer, de corriger, et célèbre les petites victoires. On progresse dans la bonne humeur et sans jugement. Si j'aime (presque) le sport, c'est grâce à elle ! Je recommande à 1000% ! 🫶🏻</p>\n        <button type=\"button\" hidden>Lire la suite</button>\n        <footer><b>Charlotte C.</b> · avis Google vérifié</footer>\n      </figure>\n      <figure class=\"quote\">\n        <p>J’ai conseillé Ornella, pour une amie qui voulait perdre du poids et se raffermir, elle en ai hyper satisfaite, , et ce qu’elle attendait de sa transformation, elle s’est reconstruite avec le travail de coaching professionnel, qu’offre Ornella , je recommande vivement</p>\n        <button type=\"button\" hidden>Lire la suite</button>\n        <footer><b>Audrey B.</b> · avis Google vérifié</footer>\n      </figure>\n      <figure class=\"quote\">\n        <p>Soucieuse de rester en forme et d'entretenir mes muscles de quarantenaire, j'ai fait appel à Ornella pour quelques séances en groupe; je recherchais des exercices faciles à refaire seule et Ornella a parfaitement répondu à ma demande. J'ai beaucoup apprécié la variété des entraînements, ses encouragements et surtout le fait qu'elle fait très attention à notre posture et à la façon dont on réalise les exercices. En 4 séances je commence déjà à constater les bénéfices d'un entraînement regulier et adapté. Merci Ornella !</p>\n        <button type=\"button\" hidden>Lire la suite</button>\n        <footer><b>Anne-C.</b> · avis Google vérifié</footer>\n      </figure>\n    </div>\n  </div>\n</section>\n\n<!-- 8. PROGRAMME OU COACHING -->\n<section id=\"programme-ou-coaching\" class=\"band band--white\">\n  <div class=\"wrap\">\n    <div class=\"head\"><h2>Programme ou coaching : <span class=\"hl\">lequel choisir ?</span></h2></div>\n    <div class=\"vs\">\n      <div class=\"vs-card\">\n        <h3>Programme digital</h3>\n        <p class=\"sub\">Économique, dès 7 €</p>\n        <ul class=\"ticks\"><li>Accès immédiat, à ton rythme</li><li>Autonomie totale, où que tu sois</li><li>Idéal si tu sais te motiver seule</li></ul>\n      </div>\n      <div class=\"vs-card vs-card--coach\">\n        <h3>Coaching avec suivi</h3>\n        <p class=\"sub\">Un vrai accompagnement humain</p>\n        <ul class=\"ticks\"><li>Corrections de technique en direct</li><li>Ajustements réguliers selon tes progrès</li><li>Idéal si tu as besoin d'être portée</li></ul>\n        <a href=\"offres.html\" class=\"link\" style=\"margin-top:8px\">Découvrir le coaching</a>\n      </div>\n    </div>\n    <p class=\"vs-note\"><b>Tu veux passer au coaching avec suivi ?</b> Le prix de ton programme est déduit de ton 1er mois si tu passes en coaching dans les 30 jours.</p>\n    <details class=\"acc\">\n      <summary>Voir le comparatif complet (prix et ce qui est inclus)</summary>\n      <div class=\"ctab-wrap\">\n        <table class=\"ctab\">\n          <thead><tr><th></th><th>Clé en main</th><th>Fit Dans Ta Vie</th><th>Iron Girl</th><th>Sur-mesure</th><th>Coaching suivi</th></tr></thead>\n          <tbody>\n            <tr><td>Prix</td><td>12-19 €</td><td>49 €</td><td>49 €</td><td>79 €</td><td>dès 89 €/mois</td></tr>\n            <tr><td>Personnalisé</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>\n            <tr><td>Programme salle</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>\n            <tr><td>Guide nutrition</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>\n            <tr><td>Suivi WhatsApp</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>\n            <tr><td>Ajustements</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>\n            <tr><td>Pour qui</td><td>Maison · démarrer</td><td>Maison · méthode</td><td>Salle · sérieuse</td><td>Autonome</td><td>Accompagnée</td></tr>\n          </tbody>\n        </table>\n      </div>\n    </details>\n  </div>\n</section>\n\n<!-- 9. FAQ -->\n<section id=\"faq\" class=\"band band--sage sec-scroll\">\n  <div class=\"wrap split\">\n    <div class=\"head\"><h2>Tes questions, <span class=\"hl\">mes réponses.</span></h2></div>\n    <div class=\"faq\">\n      <details><summary>Combien coûte un programme de musculation personnalisé en ligne ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Le programme sur-mesure d'Ornella Fit Coaching coûte 79 € en paiement unique, sans abonnement. 8 semaines, jusqu'à 4 séances par semaine, vidéos de démonstration incluses. Il est construit après un bilan complet offert et livré sous 7 jours ouvrés."
+        "text": "Mon programme sur-mesure coûte 79 € en paiement unique, sans abonnement. 8 semaines, jusqu'à 4 séances par semaine, vidéos de démonstration incluses. Il est construit après un bilan complet offert et livré sous 7 jours ouvrés sur ton téléphone. Voir le programme sur-mesure"
       }
     },
     {
@@ -331,7 +85,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Le programme est-il adapté au matériel que j'ai à la maison ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Oui. Le programme sur-mesure est construit selon le matériel disponible : sans matériel, avec élastiques, haltères, ou en salle équipée."
+        "text": "Oui. Le programme sur-mesure est construit selon ton matériel : sans matériel, avec élastiques, haltères, ou en salle équipée. Tu me dis ce que tu as lors du bilan, et chaque exercice est choisi en fonction."
       }
     },
     {
@@ -339,7 +93,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Y a-t-il un abonnement ou un engagement ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Non. Les programmes digitaux et le programme sur-mesure à 79 € sont en paiement unique, sans abonnement. Le coaching distanciel avec suivi existe dès 89 € par mois."
+        "text": "Non. Tous mes programmes digitaux et le programme sur-mesure à 79 € sont en paiement unique, sans abonnement. Si tu veux un suivi avec ajustements réguliers, le coaching distanciel existe dès 89 €/mois."
       }
     },
     {
@@ -347,7 +101,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Quelle différence entre le programme sur-mesure et le coaching distanciel ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Le programme sur-mesure (79 €) est construit pour la cliente, qui avance ensuite en autonomie sans suivi. Le coaching distanciel (dès 89 € par mois) inclut un programme sur-mesure, un suivi WhatsApp et des ajustements réguliers."
+        "text": "Le programme sur-mesure (79 €) est construit pour toi, puis tu avances en autonomie, sans suivi ni ajustements. Le coaching distanciel (dès 89 €/mois) inclut un programme sur-mesure, un suivi WhatsApp et des ajustements réguliers selon tes progrès, pour celles qui veulent être accompagnées."
       }
     },
     {
@@ -355,7 +109,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Je suis débutante, c'est pour moi ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Oui. Chaque programme propose des adaptations et des variantes pour débuter en sécurité, quel que soit ton niveau de départ. Tu commences là où tu en es et tu progresses à ton rythme."
+        "text": "Oui, totalement. Chaque programme propose des adaptations et des variantes pour débuter en sécurité, quel que soit ton niveau de départ. Tu commences là où tu en es et tu progresses à ton rythme, pas besoin d'avoir déjà de l'expérience."
       }
     },
     {
@@ -363,15 +117,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Combien de temps par jour ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Selon le programme, compte entre 15 et 45 minutes par séance, 3 à 5 fois par semaine. Certains programmes proposent plusieurs formats (20/30/45 min) pour t'adapter aux semaines chargées."
+        "text": "Selon le programme, compte entre 15 et 45 minutes par séance, 3 à 5 fois par semaine. Certains programmes (comme Fit Dans Ta Vie) proposent plusieurs formats, 20, 30 ou 45 min, pour t'adapter même aux semaines chargées."
       }
     },
     {
       "@type": "Question",
-      "name": "Comment je reçois mon programme ?",
+      "name": "Voir les 8 autres questions</summary>\n      <div style=\"display:block\">\n      <details><summary>Comment je reçois mon programme ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "En accès immédiat après le paiement. Tu ouvres ton programme directement sur ton téléphone (installable comme une application) et tu y as accès à vie."
+        "text": "En accès immédiat après le paiement. Tu ouvres ton programme directement sur ton téléphone (installable comme une application), et tu y as accès à vie : tu peux le refaire autant de fois que tu veux."
       }
     },
     {
@@ -379,7 +133,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Je peux être remboursée ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Garantie 48 h : tu changes d'avis dans les 48 h après ton achat et tu n'as pas encore ouvert ton programme ? Écris-moi sur WhatsApp, je te rembourse. Une fois le programme ouvert, c'est un contenu numérique non remboursable (voir CGV). Je reste disponible pour t'envoyer des variantes d'exercices si besoin."
+        "text": "Garantie 48 h : tu changes d'avis dans les 48 h après ton achat et tu n'as pas encore ouvert ton programme ? Écris-moi sur WhatsApp, je te rembourse. Une fois le programme ouvert, c'est un contenu numérique non remboursable (voir CGV). Je reste disponible pour t'envoyer des variantes d'exercices si quelque chose ne te convient pas."
       }
     },
     {
@@ -387,7 +141,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Programme ou coaching, je choisis quoi ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Un programme digital est idéal si tu es autonome et que tu sais te motiver seule. Le coaching avec suivi est fait pour toi si tu as besoin d'un accompagnement humain, de corrections et d'ajustements réguliers. Pas sûre ? Fais le quiz d'orientation ou découvre les formules de coaching."
+        "text": "Un programme digital est idéal si tu es autonome et que tu sais te motiver seule. Le coaching avec suivi est fait pour toi si tu as besoin d'un accompagnement humain, de corrections et d'ajustements réguliers. Pas sûre ? Fais le quiz d'orientation (1 min) ou découvre les formules de coaching."
       }
     },
     {
@@ -395,7 +149,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Avez-vous un programme pour perdre du ventre ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Oui. Ventre Plat 14 jours (12 €) : 15 minutes par jour, sans matériel, avec plan nutrition. Fit Dans Ta Vie (49 €) est une méthode de 28 jours à la maison avec nutrition sans régime."
+        "text": "Oui. Ventre Plat 14 jours (12 €) : 15 minutes par jour, sans matériel, avec plan nutrition et liste de courses. Pour un plan plus complet, Fit Dans Ta Vie (49 €) : une méthode de 28 jours à la maison avec nutrition sans régime."
       }
     },
     {
@@ -403,7 +157,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Avez-vous un programme pour les fessiers ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Oui. Booty Sculpt (19 €) : 8 semaines, 12 séances vidéo, avec ou sans élastiques, plan nutrition inclus."
+        "text": "Oui. Booty Sculpt (19 €) : 8 semaines, 12 séances vidéo filmées avec moi, avec ou sans élastiques, plan nutrition inclus. Il existe aussi en bundle avec Ventre Plat à 25 €."
       }
     },
     {
@@ -411,7 +165,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Avez-vous un programme post-partum ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Oui. Post-partum — 8 semaines (17 €) : 8 semaines progressives pour reprendre le sport et renforcer ta sangle abdominale en douceur, en complément de ta rééducation, compatible allaitement."
+        "text": "Oui. Post-partum, 8 semaines (17 €) : 8 semaines progressives pour reprendre le sport et renforcer ta sangle abdominale en douceur, en complément de ta rééducation, compatible allaitement. Le post-partum est ma spécialité : j'ai moi-même reconstruit mon corps après une grossesse difficile."
       }
     },
     {
@@ -419,7 +173,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Avez-vous un programme de musculation en salle pour femme ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Oui. Iron Girl (49 €) : 8 semaines en salle, 5 séances par semaine, 3 phases progressives, guide nutrition et tracker de charges inclus."
+        "text": "Oui. Iron Girl (49 €) : 8 semaines en salle, 5 séances par semaine, 3 phases progressives, 74 exercices détaillés, guide nutrition et tracker de charges inclus."
       }
     },
     {
@@ -427,749 +181,748 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Qui crée les programmes ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ornella, éducatrice sportive diplômée d'État (carte professionnelle n° 09126ED0021), ancienne compétitrice en Bikini Fitness, coach à domicile en Essonne et Hauts-de-Seine et en ligne partout en France. Note de 5,0 sur Google (26 avis)."
+        "text": "Moi, Ornella : éducatrice sportive diplômée d'État (carte professionnelle n° 09126ED0021, vérifiable sur recherche-educateur.sports.gouv.fr), ancienne compétitrice en Bikini Fitness, coach à domicile en Essonne (91) et Hauts-de-Seine (92) et en ligne partout en France. 5,0 ★ sur Google (26 avis)."
       }
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="ofc-clarte.css?v=2">
+<style>
+
+/* VOICE  : calme, haut de gamme, une idée par écran, phrases courtes.
+   IDEA   : une fiche de coach bien tenue : la photo, les preuves, le prix, une question, un message.
+   PICTURE: la photo en pied d'Ornella, puis les avant/après réels des clientes.
+   COLOUR+TYPE : un bloc de couleur par partie (ivoire, rose poudré, sauge, brun, sable, corail) ; texte courant d'une seule couleur ;
+                 titres Cormorant Garamond 700 droit avec la fin en couleur ; DM Sans pour le texte.
+   LAYOUT : mobile d'abord, 6 blocs au lieu de 11, 3 boutons de contact + barre basse. */
+:root{--ivory:#FBF7F2;--sand:#F3EBE2;--blush:#F5E2DA;--blush2:#FBEEE9;--sage:#E4E8DB;--sage-d:#5F7258;--coral2:#C35F50;--peach:#F2A796;--ink:#2B201C;--line:rgba(43,32,28,.14);--coral:#B4513F;--coral-d:#9A4232;--night:#2B201C;--night2:#221916;--cream:#F6EFE8;
+--serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;--sans:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;color-scheme:light}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ivory);color:var(--ink);font:400 16.5px/1.6 var(--sans);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.06;margin:0;text-wrap:balance;letter-spacing:-.005em;font-variant-numeric:lining-nums}
+h1{font-size:clamp(2.2rem,7vw,3.7rem)}
+h2{font-size:clamp(2rem,5.6vw,2.9rem)}
+h3{font-size:1.55rem}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.band{padding:60px 0}
+.band--sand{background:var(--sand)}
+.band--white{background:#fff}
+.band--blush{background:var(--blush)}
+.band--sage{background:var(--sage)}
+.band--night{background:var(--night);color:var(--cream)}
+.band--coral{background:var(--coral2);color:#fff}
+.hl{color:var(--coral)}
+.band--night .hl{color:var(--peach)}
+.band--coral .hl{color:var(--night)}
+.band--sage .hl{color:var(--sage-d)}
+.head{max-width:640px;margin-bottom:32px}
+.head p{margin-top:14px;font-size:1.04rem}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:58px;padding:0 30px;border-radius:999px;background:var(--coral);color:#fff;font:600 1.03rem/1.2 var(--sans);text-decoration:none;box-shadow:0 10px 24px -14px rgba(154,66,50,.7);transition:background .2s,transform .2s}
+.btn:hover{background:var(--coral-d);transform:translateY(-1px)}
+.btn svg{flex:none}
+.btn:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+.link{display:inline-block;padding:10px 0;font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.link:hover{text-decoration-thickness:2px}
+.small{font-size:.92rem}
+@media(min-width:620px){.btn{display:inline-flex;width:auto}}
+@media(min-width:900px){.band{padding:108px 0}}
+
+/* Bandeau + navigation */
+.topbar{background:var(--night);color:var(--cream);font-size:.82rem;text-align:center;padding:8px 16px;line-height:1.35}
+.topbar:empty{display:none}
+.nav{position:sticky;top:0;z-index:60;background:rgba(251,247,242,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .25s}
+.nav.is-scrolled{border-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1120px;margin:0 auto;padding:0 22px;position:relative}
+.nav-logo img{height:38px;width:auto}
+.nav-toggle{appearance:none;border:0;background:none;width:46px;height:46px;margin-right:-12px;font-size:25px;line-height:1;color:var(--ink);cursor:pointer}
+#navMenu{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--ivory);padding:4px 22px 22px;border-bottom:1px solid var(--line);box-shadow:0 18px 30px -24px rgba(43,32,28,.4)}
+#navMenu.open{display:flex}
+#navMenu a{padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:500}
+#navMenu a.nav-cta{margin-top:16px;border:0;padding:0}
+@media(min-width:1040px){
+  .nav-toggle{display:none}
+  #navMenu{display:flex;position:static;flex-direction:row;align-items:center;gap:28px;padding:0;background:none;border:0;box-shadow:none}
+  #navMenu a{border:0;padding:6px 0;font-size:.95rem}
+  #navMenu a.nav-cta{margin:0}
+  #navMenu .btn{min-height:46px;padding:0 22px;font-size:.95rem}
+}
+
+/* Hero */
+.hero{padding:14px 0 60px}
+.hero-grid{display:grid;gap:26px}
+.hero-photo{width:100%;max-width:520px;margin:0 auto;border-radius:22px;overflow:hidden;background:#E8DDD2;box-shadow:0 24px 40px -30px rgba(43,32,28,.55)}
+.hero-photo img{width:100%;height:auto}
+.hero-sub{margin-top:16px;font-size:1.06rem;max-width:520px}
+.hero-act{margin-top:26px}
+.hero-note{margin-top:12px;font-size:.9rem}
+.hero-quiz{margin-top:2px;font-size:.95rem}
+.trust{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:34px 0 0;padding:20px 0 0;list-style:none;border-top:1px solid var(--line);text-align:center}
+.trust li{padding:0 8px;font-size:.84rem;line-height:1.35}
+.trust li+li{border-left:1px solid var(--line)}
+.trust b{display:block;font-size:.92rem;margin-bottom:3px}
+@media(min-width:900px){
+  .hero{padding:40px 0 96px}
+  .hero-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:64px;align-items:center}
+  .hero-photo{order:2;max-width:470px;margin:0 0 0 auto}
+  .trust{text-align:left;max-width:560px}
+  .trust li{padding:0 16px}.trust li:first-child{padding-left:0}
+}
+
+/* Carrousels (avant/après, avis) */
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:84%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -22px;padding:2px 22px 6px;scroll-padding:0 22px}
+.rail::-webkit-scrollbar{display:none}
+.rail>*{scroll-snap-align:start}
+.dots{display:flex;justify-content:center;gap:7px;margin-top:16px}
+.dots button{width:8px;height:8px;padding:0;border:0;border-radius:99px;background:rgba(43,32,28,.22);cursor:pointer;transition:width .25s,background .25s}
+.dots button[aria-current=true]{width:22px;background:var(--ink)}
+@media(min-width:900px){
+  .rail{grid-auto-flow:row;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;margin:0;padding:0}
+  .rail--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dots{display:none}
+}
+.case{display:block;background:#fff;border-radius:20px;overflow:hidden;text-decoration:none}
+.case img{width:100%;aspect-ratio:1;object-fit:cover;background:#E8DDD2}
+.case-b{padding:18px 20px 22px}
+.case-n{font-weight:700}
+.case-r{font-variant-numeric:lining-nums;font-family:var(--serif);font-weight:600;font-size:1.55rem;line-height:1.12;margin:4px 0 8px}
+.case-c{font-size:.92rem}
+.more{margin-top:18px;text-align:center}
+
+.rating{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 18px;margin-bottom:22px}
+.rating h2{font-size:clamp(2rem,5.6vw,2.9rem)}
+.stars{color:#C58B2A;letter-spacing:2px;font-size:1rem;margin-left:6px;vertical-align:2px}
+.quote{background:#fff;border-radius:20px;padding:24px 22px 20px;margin:0;display:flex;flex-direction:column}
+.quote p{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;font-size:1rem}
+.quote.is-open p{-webkit-line-clamp:unset;display:block}
+.quote footer{margin-top:auto;padding-top:14px;font-size:.88rem}
+.quote footer b{font-size:.95rem}
+.quote button{align-self:flex-start;margin-top:8px;padding:8px 0;border:0;background:none;color:var(--ink);font:600 .9rem var(--sans);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+
+/* Formules */
+.offers{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.offer{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 18px;align-items:center;padding:22px 22px;text-decoration:none;transition:background .2s}
+.offer+.offer{border-top:1px solid var(--line)}
+.offer:hover{background:#FDFAF7}
+.offer h3{font-size:1.6rem;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.offer p{font-size:.93rem;margin-top:4px}
+.tag{font:700 .72rem/1 var(--sans);background:var(--coral);color:#fff;border-radius:99px;padding:6px 10px;letter-spacing:.01em}
+.price{text-align:right;white-space:nowrap;font-size:.86rem;line-height:1.2}
+.price b{display:block;font-variant-numeric:lining-nums;font-family:var(--serif);font-size:1.75rem;font-weight:600}
+.offer--top{background:var(--blush2)}
+.incl{margin-top:22px;display:grid;gap:10px;font-size:.95rem}
+.offers-act{margin-top:30px;display:flex;flex-direction:column;gap:6px;align-items:stretch;text-align:center}
+.solo{margin-top:40px;padding-top:26px;border-top:1px solid var(--line);font-size:.98rem}
+.solo a{font-weight:600;text-underline-offset:4px}
+@media(min-width:620px){.offers-act{flex-direction:row;align-items:center;gap:26px;text-align:left}}
+@media(min-width:900px){.split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:start}.split>.head{position:sticky;top:110px;margin-bottom:0}}
+
+/* Histoire */
+.story p{font-size:1.06rem}
+.story p+p{margin-top:16px}
+.story .cred{font-size:.92rem;margin-top:22px}
+.story .cred a{text-underline-offset:4px}
+.band--night .link,.band--night a{color:var(--cream)}
+
+/* FAQ */
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:20px 0;font-weight:600;font-size:1.03rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;font:400 1.6rem/1 var(--sans);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 0 22px;display:grid;gap:10px}
+.faq .a a{text-underline-offset:4px}
+
+/* Final + pied de page */
+.final{text-align:center}
+.final .btn{background:#fff;color:var(--coral-d);box-shadow:0 14px 28px -16px rgba(43,32,28,.6)}
+.final .btn:hover{background:var(--cream)}
+.final p{margin:16px auto 0;max-width:520px;font-size:1.05rem}
+.final .btn{margin-top:30px}
+.final .small{margin-top:16px}
+.final a:not(.btn){text-underline-offset:4px}
+.foot{background:var(--night2);color:var(--cream);padding:56px 0 calc(96px + env(safe-area-inset-bottom));font-size:.93rem}
+.foot img{height:34px;width:auto;filter:brightness(0) invert(1);opacity:.9}
+.foot-slogan{margin-top:12px}
+.foot nav{display:flex;flex-wrap:wrap;gap:4px 22px;margin-top:28px}
+.foot nav a,.foot .contact a{display:inline-block;padding:7px 0;text-decoration:none}
+.foot nav a:hover,.foot .contact a:hover{text-decoration:underline;text-underline-offset:4px}
+.contact{display:flex;flex-wrap:wrap;gap:4px 22px;margin-top:10px;padding-top:12px;border-top:1px solid rgba(246,239,232,.16)}
+.foot details{margin-top:18px;border-top:1px solid rgba(246,239,232,.16)}
+.foot summary{cursor:pointer;padding:16px 0;font-weight:600}
+.foot details div{display:flex;flex-wrap:wrap;gap:2px 18px;padding-bottom:10px}
+.foot details a{padding:6px 0;text-underline-offset:3px}
+.legal{margin-top:20px;font-size:.84rem;display:flex;flex-wrap:wrap;gap:4px 16px}
+.legal a{text-underline-offset:3px}
+@media(min-width:900px){.foot{padding-bottom:56px}}
+
+/* Barre de contact en bas (téléphone) */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(251,247,242,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s ease}
+.sticky.show{transform:none}
+.sticky .btn{min-height:52px}
+@media(min-width:900px){.sticky{display:none}}
+
+/* Pop-up guide */
+#lead-popup{display:none;position:fixed;inset:0;z-index:100;align-items:flex-end;justify-content:center;padding:14px}
+#lead-popup.active{display:flex}
+#lead-overlay{position:absolute;inset:0;background:rgba(34,25,22,.55)}
+#lead-box{position:relative;width:100%;max-width:440px;background:var(--ivory);border-radius:24px;padding:30px 24px 24px}
+#lead-box h2{font-size:1.9rem;padding-right:26px}
+#lead-box p{margin-top:10px}
+#lead-close{position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;background:none;font-size:26px;color:var(--ink);cursor:pointer}
+#lead-form{display:grid;gap:10px;margin-top:18px}
+#lead-email{width:100%;min-height:54px;border:1px solid var(--line);border-radius:14px;padding:0 16px;font:16px var(--sans);background:#fff;color:var(--ink)}
+#lead-submit{border:0;cursor:pointer;width:100%}
+#lead-success{display:none;margin-top:16px;font-weight:600}
+@media(min-width:620px){#lead-popup{align-items:center}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* ===== Page programmes : même charte que l'accueil et les tarifs ===== */
+.phero{padding:26px 0 56px}
+.phero h1{max-width:820px}
+.phero .hero-sub{max-width:620px}
+.ticks{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.ticks li{position:relative;padding-left:27px}
+.ticks li::before{content:"";position:absolute;left:3px;top:.42em;width:13px;height:7px;border-left:2px solid var(--coral);border-bottom:2px solid var(--coral);transform:rotate(-45deg)}
+.btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);box-shadow:none}
+.btn--ghost:hover{background:var(--ink);color:#fff}
+.btn--sm{min-height:48px;padding:0 20px;font-size:.95rem;box-shadow:none}
+details.acc{border-top:1px solid var(--line);margin-top:16px}
+details.acc>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:14px 0;font-weight:700;font-size:.95rem}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary::after{content:"+";font:400 1.5rem/1 var(--sans);flex:none;transition:transform .25s}
+details.acc[open]>summary::after{transform:rotate(45deg)}
+details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
+.sec-scroll{scroll-margin-top:84px}
+
+/* Trouve ton programme */
+.finder{background:#fff;border-radius:24px;padding:24px 20px}
+.finder-q{font-weight:700;font-size:1.05rem;margin-bottom:14px}
+.fopts{display:grid;gap:8px}
+.fopts button{display:flex;align-items:center;min-height:52px;padding:10px 16px;border:1.5px solid var(--line);border-radius:14px;background:#fff;font:600 .98rem/1.3 var(--sans);color:var(--ink);text-align:left;cursor:pointer;transition:border-color .2s,background .2s}
+.fopts button:hover{border-color:var(--coral);background:var(--blush2)}
+.fres h3{font-size:1.8rem;margin-top:4px}
+.fres p{margin-top:8px}
+.fres .btn{margin-top:18px}
+.fres .restart{display:inline-block;margin-top:12px;border:0;background:none;padding:8px 0;font:600 .9rem var(--sans);color:var(--ink);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+@media(min-width:760px){.fopts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Programme phare */
+.hero-prog{background:#fff;border-radius:24px;overflow:hidden;display:grid}
+.hero-prog img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 40%}
+.hero-prog .in{padding:24px 20px 22px}
+.hero-prog h3{font-size:2rem}
+.hero-prog .lead{margin-top:10px}
+.hero-prog .meta{margin-top:10px;font-size:.9rem;font-weight:600}
+.price-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-top:16px;font-size:.88rem}
+.price-line b{font-family:var(--serif);font-variant-numeric:lining-nums;font-size:2.3rem;line-height:1}
+.hero-prog .btn{margin-top:16px;width:100%}
+@media(min-width:900px){.hero-prog{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}.hero-prog img{aspect-ratio:auto;height:100%}.hero-prog .in{padding:36px 36px 30px}.hero-prog .btn{width:auto}}
+
+/* Catalogue */
+.group{margin-top:34px}
+.group:first-of-type{margin-top:6px}
+.group-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.group-h h3{font-size:1.65rem}
+.group-h span{font-size:.92rem}
+.cards{display:grid;gap:12px}
+@media(min-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}}
+.pcard{background:#fff;border-radius:20px;padding:16px;scroll-margin-top:90px}
+.pcard-top{display:grid;grid-template-columns:84px minmax(0,1fr);gap:14px;align-items:start}
+.pcard-top img{width:84px;height:106px;object-fit:cover;border-radius:12px;background:#E8DDD2}
+.pbadge{font:700 .74rem/1 var(--sans);color:var(--coral);margin-bottom:6px}
+.pcard h4{font-family:var(--serif);font-weight:700;font-variant-numeric:lining-nums;font-size:1.4rem;line-height:1.1;margin:0}
+.pdesc{font-size:.92rem;margin-top:6px;line-height:1.45}
+.pmeta{font-size:.82rem;margin-top:6px;font-weight:600}
+.pfoot{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:14px;margin-top:14px}
+.pfoot .btn{width:100%;min-height:50px;padding:6px 14px;font-size:.9rem;line-height:1.2;text-align:center}
+.pprice{font-size:.84rem;line-height:1.2}
+.pprice b{font-family:var(--serif);font-variant-numeric:lining-nums;font-size:1.75rem;display:block}
+.pcard .acc{margin-top:12px}
+.pack-link{margin-top:10px;font-size:.92rem}
+.pack-link a{font-weight:700;text-underline-offset:3px}
+.reassure{margin-top:30px;background:#fff;border-radius:20px;padding:20px;display:grid;gap:10px;font-size:.93rem}
+
+/* Packs */
+.packs{display:grid;gap:14px}
+@media(min-width:760px){.packs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pack{background:#fff;border-radius:20px;padding:22px 20px;display:flex;flex-direction:column;gap:8px}
+.pack h3{font-size:1.55rem}
+.pack .was{text-decoration:line-through;margin-right:6px}
+.pack .btn{margin-top:8px;width:100%}
+
+/* Sur-mesure */
+.sm{background:#fff;border-radius:24px;padding:24px 20px}
+.sm .steps{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:12px;counter-reset:st}
+.sm .steps li{display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px;align-items:start}
+.sm .steps li::before{counter-increment:st;content:counter(st);width:34px;height:34px;border-radius:50%;background:var(--sage-d);color:#fff;display:grid;place-items:center;font-weight:700}
+.sm .ticks{margin-top:18px}
+.sm .btn{margin-top:18px;width:100%}
+.sm-links{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px 22px}
+@media(min-width:900px){.sm{padding:34px}.sm .btn{width:auto}}
+
+/* Programme ou coaching */
+.vs{display:grid;gap:14px}
+@media(min-width:760px){.vs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.vs-card{border-radius:20px;padding:22px 20px;background:var(--ivory)}
+.vs-card--coach{background:var(--blush)}
+.vs-card h3{font-size:1.5rem;margin-bottom:4px}
+.vs-card .sub{font-weight:700;margin-bottom:12px}
+.vs-note{margin-top:18px;font-size:.95rem}
+.ctab-wrap{overflow-x:auto;margin-top:4px}
+.ctab{border-collapse:collapse;font-size:.86rem;min-width:620px;width:100%}
+.ctab th,.ctab td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:center;white-space:nowrap}
+.ctab th:first-child,.ctab td:first-child{text-align:left;position:sticky;left:0;background:#fff}
+.final .links{margin-top:22px;display:grid;gap:6px;font-size:.95rem}
+.sticky2{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:8px}
+.sticky2 .btn{min-height:50px;padding:0 12px;font-size:.95rem}
+.sticky2 .btn--ghost{background:#fff}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
-<!-- NAV -->
-<nav>
-  <a href="/" class="nav-logo">
-    <img src="images/logo.png" alt="Ornella Fit Coaching" class="nav-logo-img" width="3135" height="793">
-  </a>
-  <button type="button" class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Menu">☰</button>
-  <div class="nav-menu" id="navMenu">
-    <a href="offres.html" class="nav-link">Tarifs coaching</a>
-    <a href="transformations.html" class="nav-link">Transformations</a>
-    <a href="programmes.html" class="nav-link">Programmes digitaux</a>
-    <a href="entreprise.html" class="nav-link">Entreprise</a>
-    <a href="apropos.html" class="nav-link">À propos</a>
-    <a href="https://www.ornellafitcoaching.com/quiz.html" class="nav-link">Quelle formule pour moi ?</a>
-    <a href="https://wa.me/33756834626" class="nav-cta" target="_blank">M'écrire →</a>
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="nav-logo"><img src="images/logo.png" alt="Ornella Fit Coaching" width="3135" height="793" decoding="async"></a>
+    <button type="button" class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Menu">☰</button>
+    <nav id="navMenu" aria-label="Menu principal">
+      <a href="offres.html">Tarifs coaching</a>
+      <a href="transformations.html">Transformations</a>
+      <a href="programmes.html">Programmes</a>
+      <a href="entreprise.html">Entreprise</a>
+      <a href="apropos.html">À propos</a>
+      <a href="quiz.html">Quelle formule pour moi ?</a>
+      <a href="https://wa.me/33756834626" class="nav-cta" target="_blank" rel="noopener"><span class="btn">M'écrire</span></a>
+    </nav>
   </div>
-</nav>
+</header>
 
-<!-- HERO -->
-<div class="page-header">
-  <p class="label">Mes programmes</p>
-  <h1>Programmes fitness femme : <em>ventre plat, fessiers, post-partum</em></h1>
-  <p>Créés pour ton corps, faits pour ta vraie vie. <strong>Dès 7 €.</strong></p>
-  <a class="hero-google" href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" rel="noopener"><span class="stars">★</span> 5,0 sur Google · 26 avis sur mon accompagnement</a>
-  <div style="margin-top:22px;display:inline-flex;gap:10px;flex-wrap:wrap;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:12px 16px;">
-    <span style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:0.9rem;font-weight:700;padding:8px 18px;border-radius:50px;">🏆 Ancienne compétitrice fitness</span>
-    <span style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:0.9rem;font-weight:700;padding:8px 18px;border-radius:50px;">✓ Coach diplômée d'État</span>
-    <span style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:0.9rem;font-weight:700;padding:8px 18px;border-radius:50px;">🔥 Plus de 50 femmes accompagnées</span>
-  </div>
-  <a href="#cle-en-main" class="scroll-cue">
-    Voir les programmes
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-  </a>
-</div>
-
-<!-- ONGLETS PAR OBJECTIF (collants, défilement horizontal sur mobile) -->
-<nav class="obj-tabs" id="objTabs" aria-label="Programmes par objectif">
-  <div class="obj-tabs-in">
-    <a href="#par-ou-commencer" class="on">⭐ Par où commencer</a>
-    <a href="#obj-ventre">🌿 Ventre</a>
-    <a href="#obj-fessiers">🍑 Fessiers</a>
-    <a href="#obj-postpartum">🤱 Post-partum</a>
-    <a href="#obj-3050">🌸 30-50 ans</a>
-    <a href="#obj-salle">🏋️ Salle</a>
-    <a href="#sur-mesure">🎯 Sur-mesure</a>
-  </div>
-</nav>
-
-<!-- QUI JE SUIS -->
-<div class="whoami">
-  <div class="whoami-inner">
-    <img class="whoami-photo" src="images/ornella-fente.webp" alt="Ornella, coach sportive diplômée d'État" loading="lazy">
-    <div class="whoami-text">
-      <h2>Qui je suis</h2>
-      <p>Maman avant tout : je sais ce que c'est de caser le sport entre le boulot, les enfants et la fatigue. Chaque programme est pensé pour ta vraie vie.</p>
+<main>
+<!-- 1. HERO -->
+<section id="hero" class="phero">
+  <div class="wrap">
+    <h1>Programmes fitness femme : <span class="hl">ventre plat, fessiers, post-partum.</span></h1>
+    <p class="hero-sub">Créés pour ton corps, faits pour ta vraie vie. Dès 7 €, accès immédiat et à vie sur ton téléphone. Maman avant tout, je sais ce que c'est de caser le sport entre le boulot, les enfants et la fatigue.</p>
+    <div class="hero-act">
+      <a href="#trouver-programme" class="btn" id="hero-cta">Trouve ton programme en 1 question</a>
+      <p class="hero-quiz"><a href="#cle-en-main" class="link">Voir tous les programmes</a></p>
     </div>
+    <ul class="trust">
+      <li><a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" rel="noopener" style="text-decoration:none"><b>5,0 ★ Google</b>26 avis</a></li>
+      <li><b>Diplômée d'État</b>ancienne compétitrice fitness</li>
+      <li><b>50+ femmes</b>accompagnées</li>
+    </ul>
   </div>
-</div>
+</section>
 
-<!-- BLOC RÉCIT AVANT LA VENTE -->
-<div style="background:var(--cream);padding:36px 20px;">
-  <div style="max-width:640px;margin:0 auto;text-align:center;">
-    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.4rem,3.5vw,1.9rem);font-weight:600;color:var(--dark);line-height:1.3;margin-bottom:14px;">Tu as déjà 3 programmes téléchargés que tu n'as jamais finis ?</h2>
-    <p style="font-size:0.92rem;color:var(--text-mid);line-height:1.75;margin-bottom:20px;">Le problème n'est pas ta motivation. C'est un programme générique, pas pensé pour ton corps, ton emploi du temps, ton niveau réel. Chaque programme ci-dessous est construit pour de vrai — pas un template recyclé. Tu commences là où tu en es, tu progresses à ton rythme, avec un vrai plan structuré jour par jour.</p>
-  </div>
-</div>
-
-<!-- BANDEAU ORIENTATION -->
-<div style="background:#F0F7EA;border-bottom:1px solid #C8DFB8;padding:10px 20px;text-align:center;">
-  <span style="font-size:.82rem;color:#4A6741;">💡 Tu cherches un <strong>coaching avec suivi humain</strong> (séances, suivi mensuel) ? →</span>
-  <a href="offres.html" style="font-size:.82rem;font-weight:700;color:#4A6741;text-decoration:underline;margin-left:4px;">Voir le Coaching →</a>
-</div>
-
-<!-- QUIZ ORIENTATION -->
-<div class="miniquiz-wrap" id="trouver-programme" style="scroll-margin-top:90px">
-  <div class="miniquiz-card">
-    <!-- ÉTAPE QUESTION -->
-    <div id="pf-question">
-      <p class="miniquiz-eyebrow">🧭 Trouve TON programme en 1 question</p>
-      <p class="miniquiz-question">C'est quoi ton objectif n°1 en ce moment ?</p>
-      <div class="miniquiz-options">
-        <button type="button" class="miniquiz-opt" data-pf="ventre">🌿 Un ventre plat, moins de ballonnements</button>
-        <button type="button" class="miniquiz-opt" data-pf="fessiers">🍑 Des fessiers plus galbés</button>
-        <button type="button" class="miniquiz-opt" data-pf="postpartum">🤱 Retrouver mon corps après bébé</button>
-        <button type="button" class="miniquiz-opt" data-pf="ageless">🌸 Me raffermir / anti-âge (30-50 ans)</button>
-        <button type="button" class="miniquiz-opt" data-pf="salle">🏋️ Progresser en salle de sport</button>
-        <button type="button" class="miniquiz-opt" data-pf="methode">🧠 Réussir à m'y tenir, cette fois</button>
+<!-- 2. TROUVE TON PROGRAMME -->
+<section id="trouver-programme" class="band band--blush sec-scroll">
+  <div class="wrap split">
+    <div class="head">
+      <h2>Trouve ton programme <span class="hl">en 1 question.</span></h2>
+      <p>Tu as déjà 3 programmes téléchargés que tu n'as jamais finis ? Le problème n'est pas ta motivation : c'est un programme générique, pas pensé pour ton corps, ton emploi du temps, ton niveau réel. Ici, chaque programme est construit pour de vrai, avec un plan structuré jour par jour.</p>
+    </div>
+    <div class="finder">
+      <div id="pf-question">
+        <p class="finder-q">C'est quoi ton objectif n°1 en ce moment ?</p>
+        <div class="fopts">
+          <button type="button" data-pf="ventre">Un ventre plat, moins de ballonnements</button>
+          <button type="button" data-pf="fessiers">Des fessiers plus galbés</button>
+          <button type="button" data-pf="postpartum">Retrouver mon corps après bébé</button>
+          <button type="button" data-pf="ageless">Me raffermir, anti-âge (30-50 ans)</button>
+          <button type="button" data-pf="salle">Progresser en salle de sport</button>
+          <button type="button" data-pf="methode">Réussir à m'y tenir, cette fois</button>
+        </div>
+        <p class="small" style="margin-top:16px">Tu cherches plutôt un accompagnement avec suivi ? <a href="quiz.html">Le quiz coaching</a> · <a href="offres.html">voir le coaching</a></p>
       </div>
-      <p style="text-align:center;font-size:.78rem;color:var(--brown);margin-top:18px">Tu cherches plutôt un accompagnement avec suivi ? <a href="quiz.html" style="color:var(--accent);font-weight:700;text-decoration:none">Le quiz coaching →</a></p>
-    </div>
-    <!-- ÉTAPE RÉSULTAT -->
-    <div id="pf-result" style="display:none">
-      <p class="miniquiz-eyebrow">✨ Ton programme</p>
-      <p class="miniquiz-result-title" id="pf-title"></p>
-      <p class="miniquiz-result-sub" id="pf-sub"></p>
-      <a class="miniquiz-result-cta" id="pf-cta" href="#">Voir ce programme →</a>
-      <button type="button" class="miniquiz-restart" id="pf-restart">↺ Recommencer</button>
+      <div id="pf-result" class="fres" hidden>
+        <p class="small"><b>Ton programme</b></p>
+        <h3 id="pf-title"></h3>
+        <p id="pf-sub"></p>
+        <a class="btn" id="pf-cta" href="#">Voir ce programme</a><br>
+        <button type="button" class="restart" id="pf-restart">Recommencer</button>
+      </div>
     </div>
   </div>
-</div>
-<script>
-(function(){
-  var PF={
-    ventre:{title:"Ventre Plat — 14 Jours",sub:"Le plan structuré jour par jour pour un ventre plus plat et moins de ballonnements, 15 min/jour sans matériel.",href:"ventre-plat.html",cta:"🌿 Voir Ventre Plat — 12€ →"},
-    fessiers:{title:"Booty Sculpt — 8 semaines",sub:"8 semaines de séances vidéo guidées pour galber et raffermir tes fessiers, à la maison.",href:"booty-sculpt.html",cta:"🍑 Voir Booty Sculpt — 19€ →"},
-    postpartum:{title:"Post-partum — 8 semaines",sub:"Reprendre le sport et renforcer ta sangle abdominale en douceur, en complément de ta rééducation, même en allaitant.",href:"programme-postpartum.html",cta:"🤱 Voir le programme post-partum — 17€ →"},
-    ageless:{title:"Ageless Girl — Corps Ferme 30-50 ans",sub:"La méthode complète pour te raffermir et ralentir le vieillissement : muscu, nutrition, hormones, sommeil.",href:"ageless-girl-sales.html",cta:"🌸 Voir Ageless Girl — 17€ →"},
-    salle:{title:"Iron Girl — Programme Salle 8 semaines",sub:"3 phases progressives, 74 exercices détaillés et un tracker de charges — pour progresser vraiment en salle.",href:"iron-girl-sales.html",cta:"🏋️ Voir Iron Girl — 49€ →"},
-    methode:{title:"Fit Dans Ta Vie — La méthode",sub:"Le programme phare : une méthode complète (sport + nutrition + organisation) pensée pour tenir dans ta vraie vie.",href:"fit-dans-ta-vie.html",cta:"🌟 Voir Fit Dans Ta Vie — 49€ →"}
-  };
-  var q=document.getElementById('pf-question'),res=document.getElementById('pf-result');
-  if(!q||!res)return;
-  function pick(k){var d=PF[k];if(!d)return;
-    document.getElementById('pf-title').textContent=d.title;
-    document.getElementById('pf-sub').textContent=d.sub;
-    var cta=document.getElementById('pf-cta');cta.setAttribute('href',d.href);cta.textContent=d.cta;
-    q.style.display='none';res.style.display='block';
-    if(typeof fbq!=='undefined')fbq('trackCustom','ProgramFinder',{choice:k,program:d.title});
-  }
-  q.querySelectorAll('.miniquiz-opt').forEach(function(b){b.addEventListener('click',function(){pick(b.getAttribute('data-pf'));});});
-  document.getElementById('pf-restart').addEventListener('click',function(){res.style.display='none';q.style.display='block';});
-})();
-</script>
+</section>
 
-<!-- SECTION 1 — CLÉ EN MAIN -->
-<section class="prog-section alt" id="cle-en-main" style="scroll-margin-top:130px">
-  <div class="prog-inner">
-    <p class="section-eyebrow">Programmes clé en main</p>
-    <h2 class="section-heading">Programmes digitaux<br><em>— accès immédiat.</em></h2>
-    <p class="section-intro">Des programmes fitness femme à la maison ou en salle, en vacances, partout. Tu ouvres ton téléphone — ton programme est là.</p>
+<!-- 3. PROGRAMME PHARE -->
+<section id="par-ou-commencer" class="band band--white sec-scroll">
+  <div class="wrap">
+    <div class="head"><h2>Tu ne sais pas par où commencer ? <span class="hl">C'est ici.</span></h2></div>
+    <article class="hero-prog" id="fit-dans-ta-vie">
+      <img src="images/ornella-fente.webp" alt="Fit Dans Ta Vie, programme phare 28 jours" width="1023" height="1537" loading="lazy" decoding="async">
+      <div class="in">
+        <p class="pbadge">Le programme phare · le point de départ recommandé</p>
+        <h3>Fit Dans Ta Vie, la méthode</h3>
+        <p class="lead">Le problème n'est pas ta motivation, mais un programme qui ne s'adapte jamais à ta vraie vie. Fit Dans Ta Vie t'apprend à intégrer le sport, les repas et l'organisation dans ton quotidien, même les semaines où tout part en vrille.</p>
+        <p class="meta">À la maison, sans matériel · 20, 30 ou 45 min · méthode Plan A/B/C</p>
+        <div class="price-line"><b>49 €</b> paiement unique · 12 séances + nutrition + méthode, moins de 2 € par jour</div>
+        <a href="fit-dans-ta-vie.html" class="btn" onclick="if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:49,currency:'EUR',content_name:'Fit Dans Ta Vie'})">Je commence Fit Dans Ta Vie</a>
+        <details class="acc">
+          <summary>Voir le détail</summary>
+          <div><ul class="ticks">
+            <li>28 jours · 12 séances progressives (3 par semaine) en 3 formats, à la maison sans matériel</li>
+            <li>Adaptations débutante + variantes si genoux, dos, épaules ou post-grossesse sensibles</li>
+            <li>Méthode Plan A / B / C pour tenir même avec enfants, télétravail ou semaine surchargée</li>
+            <li>Nutrition sans régime : quoi manger et quand, meal prep, courses, repas de secours, restos et sorties</li>
+            <li>Trackers, planning, bilans hebdo + guide de continuité après 28 j</li>
+            <li>Accès à vie · programme interactif sur ton téléphone</li>
+          </ul></div>
+        </details>
+      </div>
+    </article>
+  </div>
+</section>
 
-    <!-- AVIS GOOGLE VÉRIFIÉS (coaching — cadrés honnêtement : ils parlent de l'accompagnement, pas des ebooks) -->
-    <p class="miniquiz-eyebrow" style="margin-bottom:6px;">⭐ Elles sont accompagnées par Ornella</p>
-    <p style="text-align:center;font-size:.82rem;color:var(--text-mid);max-width:560px;margin:0 auto 20px;line-height:1.6;">Avis Google vérifiés sur mon <strong>accompagnement</strong> — la même coach, la même exigence derrière chaque programme ci-dessous.</p>
-    <div class="avis-grid" style="max-width:900px;margin:0 auto 40px;">
-      <div class="avis-card">
-        <div class="avis-header">
-          <div class="avis-avatar" style="background:linear-gradient(135deg,#C96358,#C9957A);">A</div>
-          <div class="avis-meta">
-            <div class="avis-name">Anne-C.</div>
-            <div class="avis-date">Avis Google vérifié</div>
+<!-- 4. CATALOGUE -->
+<section id="cle-en-main" class="band band--sand sec-scroll">
+  <div class="wrap">
+    <div class="head">
+      <h2>Tous les programmes, <span class="hl">accès immédiat.</span></h2>
+      <p>À la maison ou en salle, en vacances, partout : tu ouvres ton téléphone, ton programme est là.</p>
+    </div>
+
+    <div class="group sec-scroll" id="obj-ventre">
+      <div class="group-h"><h3>Ventre</h3><span>plus plat, moins de ballonnements</span></div>
+      <div class="cards">
+        <article class="pcard" id="ventre-plat">
+          <div class="pcard-top">
+            <img src="images/avant-apres-ventre.webp" alt="Ventre Plat 14 jours" width="4320" height="4320" loading="lazy" decoding="async">
+            <div><p class="pbadge">Bestseller</p><h4>Ventre Plat, 14 jours</h4><p class="pdesc">La méthode pour aplatir ton ventre et réduire les ballonnements, même si tu as déjà tout essayé.</p><p class="pmeta">Chez toi · 15 min/jour · sans matériel</p></div>
           </div>
-          <a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" aria-label="Voir les avis Google d'Ornella Fit Coaching"><svg class="avis-google" viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></a>
-        </div>
-        <div class="avis-stars">★★★★★</div>
-        <p class="avis-text">Soucieuse de rester en forme et d'entretenir mes muscles de quarantenaire, j'ai fait appel à Ornella pour quelques séances en groupe; je recherchais des exercices faciles à refaire seule et Ornella a parfaitement répondu à ma demande. J'ai beaucoup apprécié la variété des entraînements, ses encouragements et surtout le fait qu'elle fait très attention à notre posture et à la façon dont on réalise les exercices. En 4 séances je commence déjà à constater les bénéfices d'un entraînement regulier et adapté. Merci Ornella !</p>
-      </div>
-      <div class="avis-card">
-        <div class="avis-header">
-          <div class="avis-avatar" style="background:linear-gradient(135deg,#9A8080,#C9957A);">A</div>
-          <div class="avis-meta">
-            <div class="avis-name">Audrey B.</div>
-            <div class="avis-date">Avis Google vérifié</div>
+          <div class="pfoot"><span class="pprice"><b>12 €</b>paiement unique</span><a href="ventre-plat.html" class="btn btn--sm" onclick="if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:12,currency:'EUR',content_name:'Ventre Plat',content_ids:['ventre-plat-14j'],content_type:'product'})">Je retrouve un ventre plat</a></div>
+          <details class="acc"><summary>Voir le détail</summary><div><ul class="ticks">
+            <li>14 jours de plan structuré jour par jour</li><li>6 séances guidées ciblées abdos profonds</li><li>8 chapitres stratégie anti-ballonnements</li><li>Plan nutrition et liste de courses inclus</li><li>Accès à vie · installable sur ton téléphone</li>
+          </ul></div></details>
+        </article>
+        <article class="pcard" id="planner">
+          <div class="pcard-top">
+            <img src="images/planner/planner-01.jpg" alt="Planner Ventre et Fessiers 8 semaines, Google Sheets" width="3000" height="2250" loading="lazy" decoding="async">
+            <div><p class="pbadge">Google Sheets · tout se calcule</p><h4>Planner Ventre & Fessiers, 8 semaines</h4><p class="pdesc">Tes calories, tes séances et ton suivi au même endroit. Tu ouvres, tu coches, tu avances.</p><p class="pmeta">Calculateur calories auto · graphiques · téléphone, tablette, PC</p></div>
           </div>
-          <a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" aria-label="Voir les avis Google d'Ornella Fit Coaching"><svg class="avis-google" viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></a>
-        </div>
-        <div class="avis-stars">★★★★★</div>
-        <p class="avis-text">J’ai conseillé Ornella, pour une amie qui voulait perdre du poids et se raffermir, elle en ai hyper satisfaite, , et ce qu’elle attendait de sa transformation, elle s’est reconstruite avec le travail de coaching professionnel, qu’offre Ornella , je recommande vivement</p>
-      </div>
-      <div class="avis-card">
-        <div class="avis-header">
-          <div class="avis-avatar" style="background:linear-gradient(135deg,#C96358,#C9957A);">C</div>
-          <div class="avis-meta">
-            <div class="avis-name">Charlotte C.</div>
-            <div class="avis-date">Avis Google vérifié</div>
+          <div class="pfoot"><span class="pprice"><b>12,75 €</b>paiement unique</span><a href="planner-ventre-fessiers.html" class="btn btn--sm" onclick="if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:12.75,currency:'EUR',content_name:'Planner Ventre Fessiers',content_ids:['planner-ventre-fessiers'],content_type:'product'})">Je veux mon planner</a></div>
+          <details class="acc"><summary>Voir le détail</summary><div><ul class="ticks">
+            <li>Calculateur calories et macros automatique</li><li>Programme 8 semaines + 4 séances détaillées</li><li>Tracker quotidien et suivi des mensurations</li><li>24 idées de repas + « Ma journée type »</li><li>Accès à vie · Google Sheets + Excel inclus</li>
+          </ul></div></details>
+        </article>
+        <article class="pcard" id="guide-recettes">
+          <div class="pcard-top">
+            <img src="images/meal-prep.jpg" alt="Guide Recettes Sculptantes" width="1024" height="1024" loading="lazy" decoding="async">
+            <div><p class="pbadge">Nutrition</p><h4>Guide Recettes Sculptantes</h4><p class="pdesc">21 recettes faciles classées par objectif (légères, anti-ballonnements, satiété) + liste de courses prête à l'emploi.</p><p class="pmeta">Accès immédiat</p></div>
           </div>
-          <a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" aria-label="Voir les avis Google d'Ornella Fit Coaching"><svg class="avis-google" viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></a>
-        </div>
-        <div class="avis-stars">★★★★★</div>
-        <p class="avis-text">Je ne suis pas du tout sportive à la base et pourtant Ornella réussit à me motiver à chaque séance. Elle est bienveillante, drôle et toujours encourageante. Elle s'adapte au niveau de chacun, prend le temps d'expliquer, de corriger, et célèbre les petites victoires. On progresse dans la bonne humeur et sans jugement. Si j'aime (presque) le sport, c'est grâce à elle ! Je recommande à 1000% ! 🫶🏻</p>
+          <div class="pfoot"><span class="pprice"><b>7 €</b>paiement unique</span><a href="guide-recettes-vente.html" class="btn btn--sm">Voir le guide</a></div>
+        </article>
       </div>
     </div>
 
-    <!-- ELLES ONT FAIT LES PROGRAMMES — masqué tant qu'il n'y a pas de vraies captures.
-         TODO ORNELLA : mets 3 captures de messages clientes dans images/temoignages/ (capture-1/2/3.jpg),
-         puis décommente ce bloc en remplaçant les .shot-ph par des <img>. -->
-    <!--
-    <p class="miniquiz-eyebrow" style="margin-bottom:6px;">📱 Elles ont fait les programmes</p>
-    <p style="text-align:center;font-size:.82rem;color:var(--text-mid);max-width:560px;margin:0 auto 20px;line-height:1.6;">Les messages qu'elles m'envoient après leur programme.</p>
-    <div class="shots-grid">
-      <img src="images/temoignages/capture-1.jpg" alt="Message d'une cliente après son programme" loading="lazy" style="width:100%;border-radius:16px;display:block">
-      <img src="images/temoignages/capture-2.jpg" alt="Message d'une cliente après son programme" loading="lazy" style="width:100%;border-radius:16px;display:block">
-      <img src="images/temoignages/capture-3.jpg" alt="Message d'une cliente après son programme" loading="lazy" style="width:100%;border-radius:16px;display:block">
+    <div class="group sec-scroll" id="obj-fessiers">
+      <div class="group-h"><h3>Fessiers</h3><span>plus galbés</span></div>
+      <div class="cards">
+        <article class="pcard" id="booty-sculpt">
+          <div class="pcard-top">
+            <img src="images/couverture-booty-sculpt.png" alt="Booty Sculpt 8 semaines" width="720" height="1020" loading="lazy" decoding="async">
+            <div><p class="pbadge">Vidéo de démo pour chaque exercice</p><h4>Booty Sculpt, 8 semaines</h4><p class="pdesc">Le programme fessiers pour galber, raffermir et progresser, avec une vidéo de démonstration pour chaque exercice.</p><p class="pmeta">À domicile ou en vacances · avec ou sans élastiques</p></div>
+          </div>
+          <div class="pfoot"><span class="pprice"><b>19 €</b>paiement unique</span><a href="booty-sculpt.html" class="btn btn--sm" onclick="if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:19,currency:'EUR',content_name:'Booty Sculpt',content_ids:['booty-sculpt-8sem'],content_type:'product'})">Je veux des fessiers galbés</a></div>
+          <details class="acc"><summary>Voir le détail</summary><div><ul class="ticks">
+            <li>8 semaines de programme progressif</li><li>12 séances · vidéo de démonstration pour chaque exercice</li><li>Adapté débutantes et confirmées</li><li>Plan nutrition pour sculpter inclus</li><li>Accès à vie · installable sur ton téléphone</li>
+          </ul></div></details>
+          <p class="pack-link">Ventre + fessiers ? <a href="bundle.html">Le bundle Ventre Plat + Booty Sculpt : 25 €</a></p>
+        </article>
+      </div>
     </div>
-    -->
 
-    <div class="clem-grid clem-one" id="par-ou-commencer">
-      <div class="clem-card" id="fit-dans-ta-vie" style="grid-column:1/-1;border:2.5px solid #C96358;box-shadow:0 20px 50px rgba(201,99,88,.18)">
-        <div style="position:absolute;top:14px;right:14px;background:linear-gradient(135deg,#C96358,#C9A96E);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:99px;z-index:2">🌟 Le programme phare</div>
-        <img src="images/ornella-fente.webp" alt="Fit Dans Ta Vie — programme phare 28 jours" style="width:calc(100% + 56px);margin:-32px -28px 0;aspect-ratio:3/2;object-fit:cover;object-position:center 12%;border-radius:18px 18px 0 0;display:block" loading="lazy">
-        <div class="clem-badge" style="background:linear-gradient(135deg,#2C1F1A,#C96358)">🗓️ Le point de départ recommandé</div>
-        <div class="clem-price">49€ <span>paiement unique</span></div>
-        <p style="font-size:.82rem;color:var(--brown);font-weight:600;margin:-6px 0 0">12 séances + nutrition + méthode = moins de 2€/jour</p>
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;color:var(--dark);margin:0">FIT DANS TA VIE — La méthode</h3>
-        <p class="clem-subtitle"><strong>Tu ne sais pas par où commencer ? C'est ici.</strong> Le problème n'est pas ta motivation, mais un programme qui ne s'adapte jamais à ta vraie vie. Fit Dans Ta Vie t'apprend à intégrer le sport, les repas et l'organisation dans ton quotidien — même les semaines où tout part en vrille.</p>
-        <div style="background:var(--cream);border-radius:10px;padding:12px 14px;font-size:.8rem;color:var(--text-mid);line-height:1.7;margin:4px 0">
-          🏠 À la maison, sans matériel · ⏱️ 20/30/45 min · 🧠 Méthode Plan A/B/C
-        </div>
-        <details class="clem-more"><summary><span class="lbl-o">Voir le détail</span><span class="lbl-c">Masquer le détail</span></summary>
-        <ul class="clem-points">
-          <li>28 jours · 12 séances progressives (3/sem) en 3 formats, à la maison sans matériel</li>
-          <li>Adaptations débutante + variantes si genoux, dos, épaules ou post-grossesse sensibles</li>
-          <li>Méthode Plan A / B / C pour tenir même avec enfants, télétravail ou semaine surchargée</li>
-          <li>Nutrition sans régime : quoi manger et quand, meal prep, courses, repas de secours, restos &amp; sorties</li>
-          <li>Trackers, planning, bilans hebdo + guide de continuité après 28 j</li>
-          <li>Accès à vie · Programme interactif sur ton téléphone</li>
-        </ul>
-        </details>
-        <!-- TODO ORNELLA : dès que tu as le bonus + sa date limite, décommente la ligne ci-dessous et remplis-la -->
-        <!-- <div class="fdtv-bonus">🎁 Bonus ce mois-ci : ______ (jusqu'au ______)</div> -->
-        <a href="fit-dans-ta-vie.html" class="clem-cta" style="background:linear-gradient(135deg,#C96358,#C9A96E)" onclick="if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:49,currency:'EUR',content_name:'Fit Dans Ta Vie'})">🌟 Je commence Fit Dans Ta Vie — 49€ →</a>
+    <div class="group sec-scroll" id="obj-postpartum">
+      <div class="group-h"><h3>Après bébé</h3><span>reprendre après l'accouchement</span></div>
+      <div class="cards">
+        <article class="pcard" id="post-partum">
+          <div class="pcard-top">
+            <img src="images/ornella-avant-apres-postpartum.jpg" alt="Ventre plat après bébé, post-partum" width="2048" height="2048" loading="lazy" decoding="async">
+            <div><p class="pbadge">Post-partum · nouveau</p><h4>Post-partum, 8 semaines</h4><p class="pdesc">Reprendre le sport et renforcer ta sangle abdominale en douceur, en complément de ta rééducation, même si tu allaites. À commencer après ton feu vert médical et ta rééducation périnéale validée.</p><p class="pmeta">À la maison · allaitement OK · adapté diastasis · 25-35 min/séance</p></div>
+          </div>
+          <div class="pfoot"><span class="pprice"><b>17 €</b>paiement unique</span><a href="programme-postpartum.html" class="btn btn--sm" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:17,currency:'EUR'})">Je reconstruis mon corps</a></div>
+          <details class="acc"><summary>Voir le détail</summary><div><ul class="ticks">
+            <li>8 semaines progressives (reconnexion → transformation)</li><li>Exercices expliqués pas à pas + erreurs fréquentes</li><li>Plan nutrition + macros allaitement</li><li>Conseils hormones, sommeil avec bébé, anti-ballonnements</li><li>Chrono repos intégré · accès à vie</li>
+          </ul></div></details>
+          <p class="pack-link">Avec Booty Sculpt ? <a href="pack-maman.html">Le Pack Maman : 27 €</a></p>
+        </article>
+      </div>
+    </div>
+
+    <div class="group sec-scroll" id="obj-3050">
+      <div class="group-h"><h3>30-50 ans</h3><span>te raffermir, à ton âge</span></div>
+      <div class="cards">
+        <article class="pcard" id="ageless-girl">
+          <div class="pcard-top">
+            <img src="images/ageless-girl-cover.png" alt="Ageless Girl, corps ferme 30-50 ans" width="562" height="790" loading="lazy" decoding="async">
+            <div><p class="pbadge">Anti-âge · nouveau</p><h4>Ageless Girl, corps ferme 30-50 ans</h4><p class="pdesc">La méthode complète pour ralentir le vieillissement de l'intérieur : sport, nutrition, hormones, sommeil, skincare. Programme interactif à vie, pas un PDF.</p><p class="pmeta">Musculation · ménopause · compléments · skincare rétinal</p></div>
+          </div>
+          <div class="pfoot"><span class="pprice"><b>17 €</b>paiement unique</span><a href="ageless-girl-sales.html" class="btn btn--sm" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:17,currency:'EUR'})">Je retrouve un corps ferme</a></div>
+          <details class="acc"><summary>Voir le détail</summary><div><ul class="ticks">
+            <li>Programme musculation anti-âge en 3 phases</li><li>Nutrition longévité + compléments classés par âge</li><li>Guide ménopause et hormones complet</li><li>Skincare K-beauty, rétinal et lumière rouge</li><li>Accès à vie · programme interactif sur téléphone</li>
+          </ul></div></details>
+        </article>
+      </div>
+    </div>
+
+    <div class="group sec-scroll" id="obj-salle">
+      <div class="group-h"><h3>En salle</h3><span>progresser vraiment</span></div>
+      <div class="cards">
+        <article class="pcard" id="iron-girl">
+          <div class="pcard-top">
+            <img src="images/ornella-gym-cover.jpg" alt="Iron Girl, programme salle" width="1152" height="2048" loading="lazy" decoding="async">
+            <div><p class="pbadge">Programme salle · nouveau</p><h4>Iron Girl, programme salle 8 semaines</h4><p class="pdesc">3 phases progressives · 5 séances par semaine · 74 exercices détaillés · guide nutrition + compléments inclus. Conçu par une ancienne compétitrice fitness.</p><p class="pmeta">En salle équipée · progressive overload · 55-75 min/séance</p></div>
+          </div>
+          <div class="pfoot"><span class="pprice"><b>49 €</b>paiement unique</span><a href="iron-girl-sales.html" class="btn btn--sm" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:49,currency:'EUR'})">Je deviens une Iron Girl</a></div>
+          <details class="acc"><summary>Voir le détail</summary><div><ul class="ticks">
+            <li>3 phases : Be Iron · Gainz Max · I Know It (60 % → 90 % RM)</li><li>Split A, B, C, D, E : ischios, push, quads, pull, fessiers</li><li>Tracker de charges avec sauvegarde automatique</li><li>Guide nutrition · cycle féminin · 12 compléments alimentaires</li><li>Accès à vie · installable sur ton téléphone</li>
+          </ul></div></details>
+        </article>
+      </div>
+    </div>
+
+    <div class="reassure">
+      <p><b>Paiement sécurisé · accès immédiat · accès à vie.</b> Un exercice ne te convient pas ? Je t'envoie une variante sur WhatsApp.</p>
+      <p><b>Garantie 48 h :</b> tu changes d'avis dans les 48 h après ton achat et tu n'as pas encore ouvert ton programme ? Écris-moi sur WhatsApp, je te rembourse. Une fois le programme ouvert, c'est un contenu numérique non remboursable (voir <a href="cgv.html">CGV</a>).</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. PACKS -->
+<section id="packs" class="band band--blush sec-scroll">
+  <div class="wrap">
+    <div class="head"><h2>Deux programmes, <span class="hl">un prix malin.</span></h2></div>
+    <div class="packs">
+      <div class="pack">
+        <h3>Bundle Ventre Plat + Booty Sculpt</h3>
+        <p>Le duo pour un ventre plat et des fessiers galbés : les deux programmes réunis.</p>
+        <div class="price-line" style="margin-top:6px"><span class="was">31 €</span><b>25 €</b> tu économises 6 €</div>
+        <a href="bundle.html" class="btn btn--ghost">Voir le bundle</a>
+      </div>
+      <div class="pack">
+        <h3>Pack Maman</h3>
+        <p>Post-partum, 8 semaines + Booty Sculpt : reconstruire ton corps après bébé, en douceur.</p>
+        <div class="price-line" style="margin-top:6px"><span class="was">36 €</span><b>27 €</b> tu économises 9 €</div>
+        <a href="pack-maman.html" class="btn btn--ghost">Voir le Pack Maman</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="prog-section obj-group" id="obj-ventre">
-  <div class="prog-inner">
-    <p class="section-eyebrow">Objectif ventre</p>
-    <h2 class="obj-group-h">Ventre plus plat, moins de ballonnements</h2>
-    <div class="clem-grid">
-      <div class="clem-card" id="ventre-plat">
-        <img src="images/avant-apres-ventre.webp" alt="Ventre Plat 14 jours" style="width:calc(100% + 56px);margin:-32px -28px 0;aspect-ratio:1/1;object-fit:cover;object-position:center 30%;border-radius:18px 18px 0 0;display:block" loading="lazy">
-        <div class="clem-badge">Bestseller</div>
-        <div class="clem-price">12€ <span>paiement unique</span></div>
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--dark);margin:0">Ventre Plat — 14 Jours</h3>
-        <p class="clem-subtitle">La méthode pour aplatir ton ventre et réduire les ballonnements — même si tu as déjà tout essayé.</p>
-        <div style="background:var(--cream);border-radius:10px;padding:12px 14px;font-size:.8rem;color:var(--text-mid);line-height:1.7;margin:4px 0">
-          🏠 À faire chez toi · ⏱️ 15 min/jour · 📵 Sans matériel
-        </div>
-        <details class="clem-more"><summary><span class="lbl-o">Voir le détail</span><span class="lbl-c">Masquer le détail</span></summary>
-        <ul class="clem-points">
-          <li>14 jours de plan structuré jour par jour</li>
-          <li>6 séances guidées ciblées abdos profonds</li>
-          <li>8 chapitres stratégie anti-ballonnements</li>
-          <li>Plan nutrition & liste de courses inclus</li>
-          <li>Accès à vie · Installable sur ton téléphone</li>
-        </ul>
-        </details>
-        <a href="ventre-plat.html" class="clem-cta" onclick="if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:12,currency:'EUR',content_name:'Ventre Plat',content_ids:['ventre-plat-14j'],content_type:'product'})">🔥 Je retrouve un ventre plat — 12€ →</a>
-      </div>
-      <div class="clem-card" id="planner">
-        <img src="images/planner/planner-01.jpg" alt="Planner Ventre & Fessiers 8 semaines — Google Sheets" style="width:calc(100% + 56px);margin:-32px -28px 0;aspect-ratio:4/3;object-fit:cover;object-position:center;border-radius:18px 18px 0 0;display:block" loading="lazy">
-        <div class="clem-badge">Google Sheets · tout se calcule</div>
-        <div class="clem-price">12,75€ <span>paiement unique</span></div>
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--dark);margin:0">Planner Ventre &amp; Fessiers — 8 semaines</h3>
-        <p class="clem-subtitle">Tes calories, tes séances et ton suivi au même endroit. Tu ouvres, tu coches, tu avances.</p>
-        <div style="background:var(--cream);border-radius:10px;padding:12px 14px;font-size:.8rem;color:var(--text-mid);line-height:1.7;margin:4px 0">
-          🧮 Calculateur calories auto · 📊 Graphiques de suivi · 📱 Tél. / tablette / PC
-        </div>
-        <details class="clem-more"><summary><span class="lbl-o">Voir le détail</span><span class="lbl-c">Masquer le détail</span></summary>
-        <ul class="clem-points">
-          <li>Calculateur calories &amp; macros automatique</li>
-          <li>Programme 8 semaines + 4 séances détaillées</li>
-          <li>Tracker quotidien &amp; suivi mensurations</li>
-          <li>24 idées de repas + « Ma journée type »</li>
-          <li>Accès à vie · Google Sheets + Excel inclus</li>
-        </ul>
-        </details>
-        <a href="planner-ventre-fessiers.html" class="clem-cta" onclick="if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:12.75,currency:'EUR',content_name:'Planner Ventre Fessiers',content_ids:['planner-ventre-fessiers'],content_type:'product'})">🗒️ Je veux mon planner — 12,75€ →</a>
-      </div>
+<!-- 6. SUR-MESURE -->
+<section id="sur-mesure" class="band band--sage sec-scroll">
+  <div class="wrap split">
+    <div class="head">
+      <h2>Pas un programme générique. <span class="hl">Un plan fait pour toi.</span></h2>
+      <p>Tu remplis un questionnaire détaillé. Je construis ton programme 8 semaines de A à Z : exercices, vidéos, nutrition, tout est pensé pour ton corps, ton niveau et ton quotidien. Livré sur ton téléphone, où que tu sois en France.</p>
+    </div>
+    <div class="sm">
+      <p class="pbadge">100 % à distance · toute la France</p>
+      <h3 style="font-size:1.8rem">Programme sur-mesure, sans suivi</h3>
+      <div class="price-line"><b>79 €</b> paiement unique · livré sous 7 jours ouvrés</div>
+      <ol class="steps">
+        <li><span><b>Bilan complet offert :</b> questionnaire, objectifs, niveau.</span></li>
+        <li><span><b>Je construis tout :</b> 8 semaines, exercices, vidéos, nutrition.</span></li>
+        <li><span><b>Livré sous 7 jours ouvrés</b> sur ton téléphone.</span></li>
+      </ol>
+      <ul class="ticks">
+        <li>Programme 8 semaines 100 % sur-mesure, créé uniquement pour toi</li>
+        <li>Vidéos de démonstration incluses</li>
+        <li>Jusqu'à 4 séances par semaine</li>
+        <li>Sans suivi mensuel : pour celles qui sont autonomes et n'ont pas besoin d'ajustements réguliers</li>
+      </ul>
+      <a href="https://buy.stripe.com/8x26oHas9f8n5o9cmh8Vi03" class="btn" target="_blank" rel="noopener" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:79,currency:'EUR'})">Je veux mon programme unique · 79 €</a>
+      <p class="small" style="margin-top:8px">Livré sous 7 jours ouvrés · paiement sécurisé</p>
+      <div class="sm-links"><a href="programme-sur-mesure.html" class="link">Voir le détail et des exemples</a><a href="offres.html#tarif-distanciel" class="link">Avec suivi : le coaching à distance</a></div>
     </div>
   </div>
 </section>
 
-<section class="prog-section obj-group" id="obj-fessiers">
-  <div class="prog-inner">
-    <p class="section-eyebrow">Objectif fessiers</p>
-    <h2 class="obj-group-h">Des fessiers plus galbés</h2>
-    <div class="clem-grid clem-one">
-      <div class="clem-card" id="booty-sculpt">
-        <img src="images/couverture-booty-sculpt.png" alt="Booty Sculpt 8 semaines" style="width:calc(100% + 56px);margin:-32px -28px 0;aspect-ratio:1/1;object-fit:cover;object-position:center 8%;border-radius:18px 18px 0 0;display:block" loading="lazy">
-        <div class="clem-badge">Vidéo de démo pour chaque exercice</div>
-        <div class="clem-price">19€ <span>paiement unique</span></div>
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--dark);margin:0">Booty Sculpt — 8 semaines</h3>
-        <p class="clem-subtitle">Le programme fessiers pour galber, raffermir et progresser — avec une vidéo de démonstration pour chaque exercice.</p>
-        <div style="background:var(--cream);border-radius:10px;padding:12px 14px;font-size:.8rem;color:var(--text-mid);line-height:1.7;margin:4px 0">
-          🏠 À domicile ou en vacances · 🎥 Démo vidéo par exercice · 🔄 Avec ou sans élastiques
-        </div>
-        <details class="clem-more"><summary><span class="lbl-o">Voir le détail</span><span class="lbl-c">Masquer le détail</span></summary>
-        <ul class="clem-points">
-          <li>8 semaines de programme progressif</li>
-          <li>12 séances · vidéo de démonstration pour chaque exercice</li>
-          <li>Adapté débutantes et confirmées</li>
-          <li>Plan nutrition pour sculpter inclus</li>
-          <li>Accès à vie · Installable sur ton téléphone</li>
-        </ul>
-        </details>
-        <a href="booty-sculpt.html" class="clem-cta" onclick="if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:19,currency:'EUR',content_name:'Booty Sculpt',content_ids:['booty-sculpt-8sem'],content_type:'product'})">🍑 Je veux des fessiers galbés — 19€ →</a>
-      </div>
+<!-- 7. AVIS -->
+<section id="avis" class="band">
+  <div class="wrap">
+    <div class="head">
+      <h2>Elles sont accompagnées <span class="hl">par Ornella.</span></h2>
+      <p>Avis Google vérifiés sur mon accompagnement : la même coach, la même exigence derrière chaque programme.</p>
     </div>
-    <p class="obj-pack-link">Ventre + fessiers ? <a href="bundle.html">Le bundle Ventre Plat + Booty Sculpt → 25€</a></p>
-  </div>
-</section>
-
-<section class="prog-section obj-group" id="obj-postpartum">
-  <div class="prog-inner">
-    <p class="section-eyebrow">Après bébé</p>
-    <h2 class="obj-group-h">Reprendre après l'accouchement</h2>
-    <div class="clem-grid clem-one">
-      <div class="clem-card" id="post-partum" style="border:2px solid #7A9E82;">
-        <img src="images/ornella-avant-apres-postpartum.jpg" alt="Ventre plat après bébé post-partum" style="width:calc(100% + 56px);margin:-32px -28px 0;aspect-ratio:1/1;object-fit:cover;object-position:center 20%;border-radius:18px 18px 0 0;display:block" loading="lazy">
-        <div class="clem-badge" style="background:#4A7252;">🤱 Post-partum · Nouveau</div>
-        <div class="clem-price">17€ <span>paiement unique</span></div>
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--dark);margin:0">Post-partum — 8 semaines</h3>
-        <p class="clem-subtitle">Reprendre le sport et renforcer ta sangle abdominale en douceur, en complément de ta rééducation, même si tu allaites. À commencer après ton feu vert médical et ta rééducation périnéale validée.</p>
-        <div style="background:var(--cream);border-radius:10px;padding:12px 14px;font-size:.8rem;color:var(--text-mid);line-height:1.7;margin:4px 0">
-          🏠 À la maison · 🤱 Allaitement OK · 💚 Adapté diastasis · ⏱️ 25-35 min/séance
-        </div>
-        <details class="clem-more"><summary><span class="lbl-o">Voir le détail</span><span class="lbl-c">Masquer le détail</span></summary>
-        <ul class="clem-points">
-          <li>8 semaines progressives (reconnexion → transformation)</li>
-          <li>Exercices expliqués pas à pas + erreurs fréquentes</li>
-          <li>Plan nutrition + macros allaitement</li>
-          <li>Conseils hormones, sommeil avec bébé, anti-ballonnements</li>
-          <li>Chrono repos intégré · Accès à vie</li>
-        </ul>
-        </details>
-        <a href="programme-postpartum.html" class="clem-cta" style="background:linear-gradient(135deg,#2E4A34,#4A7252);" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:17,currency:'EUR'})">👶 Je reconstruis mon corps — 17€ →</a>
-      </div>
+    <div class="rating">
+      <h3 style="font-size:clamp(1.7rem,4.6vw,2.2rem)"><span class="hl">5,0</span> sur Google <span class="stars" aria-label="5 étoiles sur 5">★★★★★</span></h3>
+      <a href="https://share.google/NcyAyWaS3WMZgQ4B6" class="link" target="_blank" rel="noopener">Lire les 26 avis</a>
     </div>
-    <p class="obj-pack-link">Avec Booty Sculpt ? <a href="pack-maman.html">Le Pack Maman → 27€</a></p>
-  </div>
-</section>
-
-<section class="prog-section obj-group" id="obj-3050">
-  <div class="prog-inner">
-    <p class="section-eyebrow">30-50 ans</p>
-    <h2 class="obj-group-h">Te raffermir, à ton âge</h2>
-    <div class="clem-grid clem-one">
-      <div class="clem-card" id="ageless-girl" style="border:2px solid #D4607A;scroll-margin-top:130px">
-        <img src="images/ageless-girl-cover.png" alt="Ageless Girl Corps Ferme 30-50 ans" style="width:calc(100% + 56px);margin:-32px -28px 0;aspect-ratio:4/5;object-fit:cover;object-position:center top;border-radius:18px 18px 0 0;display:block" loading="lazy">
-        <div class="clem-badge" style="background:linear-gradient(135deg,#D4607A,#C9885A);">🌸 Anti-âge · Nouveau</div>
-        <div class="clem-price">17€ <span>paiement unique</span></div>
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--dark);margin:0">AGELESS GIRL — Corps Ferme 30-50 ans</h3>
-        <p class="clem-subtitle">La méthode complète pour ralentir le vieillissement de l'intérieur — sport, nutrition, hormones, sommeil, skincare. Programme interactif à vie, pas un PDF.</p>
-        <div style="background:var(--cream);border-radius:10px;padding:12px 14px;font-size:.8rem;color:var(--text-mid);line-height:1.7;margin:4px 0">
-          🏋️ Musculation · 🌸 Ménopause · 💊 Compléments · ✨ Skincare rétinal
-        </div>
-        <details class="clem-more"><summary><span class="lbl-o">Voir le détail</span><span class="lbl-c">Masquer le détail</span></summary>
-        <ul class="clem-points">
-          <li>Programme musculation anti-âge 3 phases</li>
-          <li>Nutrition longévité + compléments classés par âge</li>
-          <li>Guide ménopause & hormones complet</li>
-          <li>Skincare K-beauty, rétinal & lumière rouge</li>
-          <li>Accès à vie · Programme interactif sur téléphone</li>
-        </ul>
-        </details>
-        <a href="ageless-girl-sales.html" class="clem-cta" style="background:linear-gradient(135deg,#D4607A,#C9885A);" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:17,currency:'EUR'})">🌸 Je retrouve un corps ferme — 17€ →</a>
-      </div>
+    <div class="rail" data-rail aria-label="Avis Google" style="align-items:start">
+      <figure class="quote">
+        <p>Je ne suis pas du tout sportive à la base et pourtant Ornella réussit à me motiver à chaque séance. Elle est bienveillante, drôle et toujours encourageante. Elle s'adapte au niveau de chacun, prend le temps d'expliquer, de corriger, et célèbre les petites victoires. On progresse dans la bonne humeur et sans jugement. Si j'aime (presque) le sport, c'est grâce à elle ! Je recommande à 1000% ! 🫶🏻</p>
+        <button type="button" hidden>Lire la suite</button>
+        <footer><b>Charlotte C.</b> · avis Google vérifié</footer>
+      </figure>
+      <figure class="quote">
+        <p>J’ai conseillé Ornella, pour une amie qui voulait perdre du poids et se raffermir, elle en ai hyper satisfaite, , et ce qu’elle attendait de sa transformation, elle s’est reconstruite avec le travail de coaching professionnel, qu’offre Ornella , je recommande vivement</p>
+        <button type="button" hidden>Lire la suite</button>
+        <footer><b>Audrey B.</b> · avis Google vérifié</footer>
+      </figure>
+      <figure class="quote">
+        <p>Soucieuse de rester en forme et d'entretenir mes muscles de quarantenaire, j'ai fait appel à Ornella pour quelques séances en groupe; je recherchais des exercices faciles à refaire seule et Ornella a parfaitement répondu à ma demande. J'ai beaucoup apprécié la variété des entraînements, ses encouragements et surtout le fait qu'elle fait très attention à notre posture et à la façon dont on réalise les exercices. En 4 séances je commence déjà à constater les bénéfices d'un entraînement regulier et adapté. Merci Ornella !</p>
+        <button type="button" hidden>Lire la suite</button>
+        <footer><b>Anne-C.</b> · avis Google vérifié</footer>
+      </figure>
     </div>
   </div>
 </section>
 
-<section class="prog-section obj-group" id="obj-salle">
-  <div class="prog-inner">
-    <p class="section-eyebrow">En salle</p>
-    <h2 class="obj-group-h">Progresser en salle de sport</h2>
-    <div class="clem-grid clem-one">
-      <div class="clem-card" id="iron-girl" >
-        <img src="images/ornella-gym-cover.jpg" alt="Iron Girl programme salle" style="width:calc(100% + 56px);margin:-32px -28px 0;aspect-ratio:16/9;object-fit:cover;object-position:center 12%;border-radius:18px 18px 0 0;display:block" loading="lazy">
-        <div class="clem-badge">🆕 Nouveau · Programme salle</div>
-        <div class="clem-price">49€ <span>paiement unique</span></div>
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--dark);margin:0">IRON GIRL — Programme Salle 8 Semaines</h3>
-        <p class="clem-subtitle">3 phases progressives · 5 séances/semaine · 74 exercices détaillés · Guide nutrition + compléments inclus. Conçu par une ancienne compétitrice fitness.</p>
-        <div style="background:var(--cream);border-radius:10px;padding:12px 14px;font-size:.8rem;color:var(--text-mid);line-height:1.7;margin:4px 0">
-          🏋️ En salle équipée · 📈 Progressive overload · ⏱️ 55–75 min/séance
-        </div>
-        <details class="clem-more"><summary><span class="lbl-o">Voir le détail</span><span class="lbl-c">Masquer le détail</span></summary>
-        <ul class="clem-points">
-          <li>3 phases : Be Iron · Gainz Max · I Know It (60% → 90% RM)</li>
-          <li>Split A,B,C,D,E — Ischios, Push, Quads, Pull, Fessiers</li>
-          <li>Tracker de charges avec sauvegarde automatique</li>
-          <li>Guide nutrition · Cycle féminin · 12 compléments alimentaires</li>
-          <li>Accès à vie · Installable sur ton téléphone</li>
-        </ul>
-        </details>
-        <a href="iron-girl-sales.html" class="clem-cta" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:49,currency:'EUR'})">🏋️ Je deviens une Iron Girl — 49€ →</a>
+<!-- 8. PROGRAMME OU COACHING -->
+<section id="programme-ou-coaching" class="band band--white">
+  <div class="wrap">
+    <div class="head"><h2>Programme ou coaching : <span class="hl">lequel choisir ?</span></h2></div>
+    <div class="vs">
+      <div class="vs-card">
+        <h3>Programme digital</h3>
+        <p class="sub">Économique, dès 7 €</p>
+        <ul class="ticks"><li>Accès immédiat, à ton rythme</li><li>Autonomie totale, où que tu sois</li><li>Idéal si tu sais te motiver seule</li></ul>
       </div>
+      <div class="vs-card vs-card--coach">
+        <h3>Coaching avec suivi</h3>
+        <p class="sub">Un vrai accompagnement humain</p>
+        <ul class="ticks"><li>Corrections de technique en direct</li><li>Ajustements réguliers selon tes progrès</li><li>Idéal si tu as besoin d'être portée</li></ul>
+        <a href="offres.html" class="link" style="margin-top:8px">Découvrir le coaching</a>
+      </div>
+    </div>
+    <p class="vs-note"><b>Tu veux passer au coaching avec suivi ?</b> Le prix de ton programme est déduit de ton 1er mois si tu passes en coaching dans les 30 jours.</p>
+    <details class="acc">
+      <summary>Voir le comparatif complet (prix et ce qui est inclus)</summary>
+      <div class="ctab-wrap">
+        <table class="ctab">
+          <thead><tr><th></th><th>Clé en main</th><th>Fit Dans Ta Vie</th><th>Iron Girl</th><th>Sur-mesure</th><th>Coaching suivi</th></tr></thead>
+          <tbody>
+            <tr><td>Prix</td><td>12-19 €</td><td>49 €</td><td>49 €</td><td>79 €</td><td>dès 89 €/mois</td></tr>
+            <tr><td>Personnalisé</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Programme salle</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Guide nutrition</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Suivi WhatsApp</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+            <tr><td>Ajustements</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+            <tr><td>Pour qui</td><td>Maison · démarrer</td><td>Maison · méthode</td><td>Salle · sérieuse</td><td>Autonome</td><td>Accompagnée</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 9. FAQ -->
+<section id="faq" class="band band--sage sec-scroll">
+  <div class="wrap split">
+    <div class="head"><h2>Tes questions, <span class="hl">mes réponses.</span></h2></div>
+    <div class="faq">
+      <details><summary>Combien coûte un programme de musculation personnalisé en ligne ?</summary><div class="a"><p>Mon programme sur-mesure coûte 79 € en paiement unique, sans abonnement. 8 semaines, jusqu'à 4 séances par semaine, vidéos de démonstration incluses. Il est construit après un bilan complet offert et livré sous 7 jours ouvrés sur ton téléphone. <a href="#sur-mesure">Voir le programme sur-mesure</a></p></div></details>
+      <details><summary>Le programme est-il adapté au matériel que j'ai à la maison ?</summary><div class="a"><p>Oui. Le programme sur-mesure est construit selon ton matériel : sans matériel, avec élastiques, haltères, ou en salle équipée. Tu me dis ce que tu as lors du bilan, et chaque exercice est choisi en fonction.</p></div></details>
+      <details><summary>Y a-t-il un abonnement ou un engagement ?</summary><div class="a"><p>Non. Tous mes programmes digitaux et le programme sur-mesure à 79 € sont en paiement unique, sans abonnement. Si tu veux un suivi avec ajustements réguliers, le <a href="offres.html">coaching distanciel</a> existe dès 89 €/mois.</p></div></details>
+      <details><summary>Quelle différence entre le programme sur-mesure et le coaching distanciel ?</summary><div class="a"><p>Le programme sur-mesure (79 €) est construit pour toi, puis tu avances en autonomie, sans suivi ni ajustements. Le coaching distanciel (dès 89 €/mois) inclut un programme sur-mesure, un suivi WhatsApp et des ajustements réguliers selon tes progrès, pour celles qui veulent être accompagnées.</p></div></details>
+      <details><summary>Je suis débutante, c'est pour moi ?</summary><div class="a"><p>Oui, totalement. Chaque programme propose des adaptations et des variantes pour débuter en sécurité, quel que soit ton niveau de départ. Tu commences là où tu en es et tu progresses à ton rythme, pas besoin d'avoir déjà de l'expérience.</p></div></details>
+      <details><summary>Combien de temps par jour ?</summary><div class="a"><p>Selon le programme, compte entre 15 et 45 minutes par séance, 3 à 5 fois par semaine. Certains programmes (comme Fit Dans Ta Vie) proposent plusieurs formats, 20, 30 ou 45 min, pour t'adapter même aux semaines chargées.</p></div></details>
+      <details class="acc" style="border-bottom:0"><summary>Voir les 8 autres questions</summary>
+      <div style="display:block">
+      <details><summary>Comment je reçois mon programme ?</summary><div class="a"><p>En accès immédiat après le paiement. Tu ouvres ton programme directement sur ton téléphone (installable comme une application), et tu y as accès à vie : tu peux le refaire autant de fois que tu veux.</p></div></details>
+      <details><summary>Je peux être remboursée ?</summary><div class="a"><p>Garantie 48 h : tu changes d'avis dans les 48 h après ton achat et tu n'as pas encore ouvert ton programme ? Écris-moi sur <a href="https://wa.me/33756834626" target="_blank" rel="noopener">WhatsApp</a>, je te rembourse. Une fois le programme ouvert, c'est un contenu numérique non remboursable (voir <a href="cgv.html">CGV</a>). Je reste disponible pour t'envoyer des variantes d'exercices si quelque chose ne te convient pas.</p></div></details>
+      <details><summary>Programme ou coaching, je choisis quoi ?</summary><div class="a"><p>Un programme digital est idéal si tu es autonome et que tu sais te motiver seule. Le coaching avec suivi est fait pour toi si tu as besoin d'un accompagnement humain, de corrections et d'ajustements réguliers. Pas sûre ? <a href="quiz.html">Fais le quiz d'orientation (1 min)</a> ou <a href="offres.html">découvre les formules de coaching</a>.</p></div></details>
+      <details><summary>Avez-vous un programme pour perdre du ventre ?</summary><div class="a"><p>Oui. Ventre Plat 14 jours (12 €) : 15 minutes par jour, sans matériel, avec plan nutrition et liste de courses. Pour un plan plus complet, Fit Dans Ta Vie (49 €) : une méthode de 28 jours à la maison avec nutrition sans régime.</p></div></details>
+      <details><summary>Avez-vous un programme pour les fessiers ?</summary><div class="a"><p>Oui. Booty Sculpt (19 €) : 8 semaines, 12 séances vidéo filmées avec moi, avec ou sans élastiques, plan nutrition inclus. Il existe aussi en <a href="bundle.html">bundle avec Ventre Plat à 25 €</a>.</p></div></details>
+      <details><summary>Avez-vous un programme post-partum ?</summary><div class="a"><p>Oui. Post-partum, 8 semaines (17 €) : 8 semaines progressives pour reprendre le sport et renforcer ta sangle abdominale en douceur, en complément de ta rééducation, compatible allaitement. Le post-partum est ma spécialité : j'ai moi-même reconstruit mon corps après une grossesse difficile.</p></div></details>
+      <details><summary>Avez-vous un programme de musculation en salle pour femme ?</summary><div class="a"><p>Oui. Iron Girl (49 €) : 8 semaines en salle, 5 séances par semaine, 3 phases progressives, 74 exercices détaillés, guide nutrition et tracker de charges inclus.</p></div></details>
+      <details><summary>Qui crée les programmes ?</summary><div class="a"><p>Moi, Ornella : éducatrice sportive diplômée d'État (carte professionnelle n° 09126ED0021, vérifiable sur recherche-educateur.sports.gouv.fr), ancienne compétitrice en Bikini Fitness, coach à domicile en Essonne (91) et Hauts-de-Seine (92) et en ligne partout en France. 5,0 ★ sur Google (26 avis).</p></div></details>
+      </div></details>
     </div>
   </div>
 </section>
 
-<!-- RÉASSURANCE + GARANTIE (une seule fois) -->
-<div class="prog-reassure">
-  <p><strong>🔒 Paiement sécurisé · Accès immédiat · Accès à vie</strong></p>
-  <p>Un exercice ne te convient pas ? Je t'envoie une variante sur WhatsApp.</p>
-  <p class="prog-garantie">🛡️ Garantie 48 h : tu changes d'avis dans les 48 h après ton achat et tu n'as pas encore ouvert ton programme ? Écris-moi sur WhatsApp, je te rembourse. Une fois le programme ouvert, c'est un contenu numérique non remboursable (voir CGV).</p>
-</div>
-
-<!-- SECTION PACKS -->
-<section class="prog-section alt" id="packs" style="padding-top:0;scroll-margin-top:130px">
-  <div class="prog-inner">
-    <p class="section-eyebrow" style="text-align:center">💥 Les packs</p>
-    <h2 class="section-heading" style="text-align:center">Deux programmes,<br><em>un prix malin.</em></h2>
-    <div class="packs-grid">
-      <div class="pack-card">
-        <div class="pack-emoji">🍑🌿</div>
-        <h3 class="pack-title">Bundle Ventre Plat + Booty Sculpt</h3>
-        <p class="pack-desc">Le duo pour un ventre plat et des fessiers galbés — les deux programmes réunis.</p>
-        <div class="pack-price"><s>31€</s>25€<small>tu économises 6€</small></div>
-        <a href="bundle.html" class="pack-cta">Voir le bundle → 25€</a>
-      </div>
-      <div class="pack-card">
-        <div class="pack-emoji">🤱🍑</div>
-        <h3 class="pack-title">Pack Maman</h3>
-        <p class="pack-desc">Post-partum — 8 semaines + Booty Sculpt — reconstruire son corps après bébé, en douceur.</p>
-        <div class="pack-price"><s>36€</s>27€<small>tu économises 9€</small></div>
-        <a href="pack-maman.html" class="pack-cta">Voir le Pack Maman → 27€</a>
-      </div>
-    </div>
+<!-- 10. CTA FINAL -->
+<section id="cta-final" class="band band--coral final">
+  <div class="wrap">
+    <h2>Tu hésites <span class="hl">encore ?</span></h2>
+    <p>Écris-moi : je t'oriente en 2 minutes vers la formule faite pour toi.</p>
+    <a href="https://wa.me/33756834626" class="btn" target="_blank" rel="noopener">M'écrire sur WhatsApp</a>
+    <p class="small">Sans engagement · réponse rapide</p>
+    <div class="links"><p>Envie de l'offrir ? <a href="carte-cadeau.html">Offrir en carte cadeau</a></p></div>
   </div>
 </section>
+</main>
 
-<!-- SECTION 2 — SUR-MESURE -->
-<section class="prog-section" id="sur-mesure" style="scroll-margin-top:130px">
-  <div class="prog-inner">
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
-      <div class="mesure-badge">🎯 Sur-mesure</div>
-      <div style="display:inline-block;background:rgba(74,103,65,.12);border:1px solid rgba(74,103,65,.28);color:#4A6741;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:50px;">📱 100% à distance · Toute la France</div>
-    </div>
-    <p class="section-eyebrow">Programme sur-mesure distanciel</p>
-    <h2 class="section-heading">Pas un programme générique.<br><em>Un plan fait pour TOI.</em></h2>
-    <p class="section-intro">Tu remplis un questionnaire détaillé. Je construis ton programme 8 semaines de A à Z — exercices, vidéos, nutrition, tout est pensé pour ton corps, ton niveau et ton quotidien. Livré sur ton téléphone, où que tu sois en France.</p>
-    <div class="etapes-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px;">
-      <div style="background:var(--cream);border-radius:14px;padding:16px;text-align:center;">
-        <div style="font-size:1.4rem;margin-bottom:6px;">📋</div>
-        <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brown);margin-bottom:4px;">Étape 1</div>
-        <div style="font-size:.82rem;color:var(--dark);font-weight:600;">Bilan complet offert</div>
-        <div style="font-size:.75rem;color:var(--text-mid);margin-top:3px;">Questionnaire · Objectifs · Niveau</div>
-      </div>
-      <div style="background:var(--cream);border-radius:14px;padding:16px;text-align:center;">
-        <div style="font-size:1.4rem;margin-bottom:6px;">⚙️</div>
-        <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brown);margin-bottom:4px;">Étape 2</div>
-        <div style="font-size:.82rem;color:var(--dark);font-weight:600;">Je construis tout</div>
-        <div style="font-size:.75rem;color:var(--text-mid);margin-top:3px;">8 sem · exercices · vidéos · nutrition</div>
-      </div>
-      <div style="background:var(--cream);border-radius:14px;padding:16px;text-align:center;">
-        <div style="font-size:1.4rem;margin-bottom:6px;">📲</div>
-        <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brown);margin-bottom:4px;">Étape 3</div>
-        <div style="font-size:.82rem;color:var(--dark);font-weight:600;">Livré sous 7 jours ouvrés</div>
-        <div style="font-size:.75rem;color:var(--text-mid);margin-top:3px;">Sur ton téléphone · Accès immédiat</div>
-      </div>
-    </div>
 
-    <div class="mesure-card">
-      <div>
-        <div class="mesure-price-wrap">
-          <div class="price">79€</div>
-          <div class="price-sub">paiement unique · livré sous 7 jours ouvrés</div>
-        </div>
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--dark);margin:16px 0 8px">Programme sur-mesure<br>sans suivi</h3>
-        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--accent);margin:0 0 10px;">Ce programme n'existe qu'en un seul exemplaire. Il est créé uniquement pour toi.</p>
-        <p class="mesure-subtitle">8 semaines 100% personnalisées — pour celles qui sont autonomes.</p>
-        <ul class="mesure-points">
-          <li>Bilan complet offert avant démarrage</li>
-          <li>Programme 8 semaines 100% sur-mesure</li>
-          <li>Vidéos de démonstration incluses</li>
-          <li>Jusqu'à 4 séances par semaine</li>
-          <li>Livré sous 7 jours ouvrés</li>
-        </ul>
-        <div class="mesure-note">Sans suivi mensuel — pour celles qui sont autonomes et n'ont pas besoin d'ajustements réguliers.</div>
-      </div>
-      <div class="mesure-cta-wrap">
-        <a href="https://buy.stripe.com/8x26oHas9f8n5o9cmh8Vi03" class="mesure-cta" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:79,currency:'EUR'})">🎯 Je veux mon programme unique — 79€ →</a>
-        <p class="mesure-cta-note">Livré sous 7 jours ouvrés · Paiement sécurisé</p>
-        <p style="margin:8px 0 0;text-align:center;"><a href="programme-sur-mesure.html" style="font-size:.85rem;color:var(--accent);font-weight:700;">Voir le détail et des exemples →</a></p>
-        <div style="margin-top:16px;padding:16px;background:var(--cream);border-radius:14px;text-align:center;">
-          <p style="font-size:.78rem;color:var(--brown);margin-bottom:10px;">Tu veux le suivi en plus ?</p>
-          <a href="offres.html" style="font-size:.85rem;color:var(--accent);font-weight:700;text-decoration:none;">Voir le coaching distanciel →</a>
-        </div>
-      </div>
-    </div>
 
-  </div>
-</section>
-
-<!-- PROGRAMME VS COACHING -->
-<section class="prog-section alt">
-  <div class="prog-inner">
-    <p class="section-eyebrow" style="text-align:center">Une question fréquente</p>
-    <h2 class="section-heading" style="text-align:center">Programme digital ou coaching<br><em>— lequel choisir ?</em></h2>
-    <div style="gap:20px;margin-top:24px;" class="clem-grid">
-      <div style="background:#fff;border:1.5px solid var(--sand);border-radius:18px;padding:26px 24px;">
-        <p style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--dark);margin-bottom:12px;">📦 Programme digital</p>
-        <ul class="clem-points">
-          <li>Économique — dès 7€</li>
-          <li>Accès immédiat, à ton rythme</li>
-          <li>Autonomie totale, où que tu sois</li>
-          <li>Idéal si tu sais te motiver seule</li>
-        </ul>
-      </div>
-      <div style="background:#fff;border:1.5px solid rgba(201,99,88,.3);border-radius:18px;padding:26px 24px;">
-        <p style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--accent);margin-bottom:12px;">👩‍💼 Coaching avec suivi</p>
-        <ul class="clem-points">
-          <li>Un vrai accompagnement humain</li>
-          <li>Corrections de technique en direct</li>
-          <li>Ajustements réguliers selon tes progrès</li>
-          <li>Idéal si tu as besoin d'être portée</li>
-        </ul>
-      </div>
-    </div>
-    <p style="text-align:center;margin-top:20px;font-size:.88rem;color:var(--text-mid);">Pas sûre ? <a href="offres.html" style="color:var(--accent);font-weight:700;text-decoration:none;">Découvre le coaching →</a></p>
-  </div>
-</section>
-
-<!-- PASSERELLE VERS LE COACHING -->
-<div class="gw-strip">
-  <div class="gw-inner">
-    <p>🔁 Tu veux passer au coaching avec suivi ? <strong>Le prix de ton programme est déduit de ton 1er mois</strong> si tu passes en coaching dans les 30 jours.</p>
-    <a href="offres.html" class="gw-btn">Voir le coaching →</a>
+<div class="sticky" id="sticky-bar">
+  <div class="sticky2">
+    <a href="#trouver-programme" class="btn" id="sticky-main-cta">Trouver mon programme</a>
+    <a href="https://wa.me/33756834626" class="btn btn--ghost" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 </div>
-
-<!-- TABLEAU COMPARATIF -->
-<style>
-/* Comparatif repliable : secondaire, consultable à la demande (après les choix) */
-.comp-fold{margin-top:22px}
-.comp-fold>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;max-width:440px;margin:0 auto;background:var(--white);border:1.5px solid var(--sand);border-radius:50px;padding:14px 22px;font:700 .9rem/1.3 'DM Sans',sans-serif;color:var(--accent);text-align:center}
-.comp-fold>summary::-webkit-details-marker{display:none}
-.comp-fold>summary::marker{content:''}
-.comp-fold .cf-chev{transition:transform .25s;font-size:.7rem}
-.comp-fold[open]>summary .cf-chev{transform:rotate(180deg)}
-.comp-fold>div{margin-top:20px}
-</style>
-<section class="comp-section">
-  <div class="prog-inner">
-    <p class="section-eyebrow" style="text-align:center">Comparatif</p>
-    <h2 class="section-heading" style="text-align:center">Quelle formule est<br><em>faite pour toi ?</em></h2>
-    <details class="comp-fold">
-    <summary>Voir le comparatif complet (prix &amp; ce qui est inclus) <span class="cf-chev">▾</span></summary>
-    <div style="overflow-x:auto">
-    <table class="comp-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Clé en main</th>
-          <th>Fit Dans Ta Vie</th>
-          <th>Iron Girl</th>
-          <th>Sur-mesure</th>
-          <th class="comp-star">Coaching suivi<span class="comp-star-badge">★ Le plus complet</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Prix</td><td data-label="Clé en main">12–19€</td><td data-label="Fit Dans Ta Vie">49€</td><td data-label="Iron Girl">49€</td><td data-label="Sur-mesure">79€</td><td data-label="Coaching suivi" class="comp-star">dès 89€/mois</td></tr>
-        <tr><td>Personnalisé</td><td data-label="Clé en main"><span class="cross">✗</span></td><td data-label="Fit Dans Ta Vie"><span class="cross">✗</span></td><td data-label="Iron Girl"><span class="cross">✗</span></td><td data-label="Sur-mesure"><span class="tick">✓</span></td><td data-label="Coaching suivi" class="comp-star"><span class="tick">✓</span></td></tr>
-        <tr><td>Programme salle</td><td data-label="Clé en main"><span class="cross">✗</span></td><td data-label="Fit Dans Ta Vie"><span class="cross">✗</span></td><td data-label="Iron Girl"><span class="tick">✓</span></td><td data-label="Sur-mesure"><span class="tick">✓</span></td><td data-label="Coaching suivi" class="comp-star"><span class="tick">✓</span></td></tr>
-        <tr><td>Guide nutrition</td><td data-label="Clé en main"><span class="tick">✓</span></td><td data-label="Fit Dans Ta Vie"><span class="tick">✓</span></td><td data-label="Iron Girl"><span class="tick">✓</span></td><td data-label="Sur-mesure"><span class="tick">✓</span></td><td data-label="Coaching suivi" class="comp-star"><span class="tick">✓</span></td></tr>
-        <tr><td>Suivi WhatsApp</td><td data-label="Clé en main"><span class="cross">✗</span></td><td data-label="Fit Dans Ta Vie"><span class="cross">✗</span></td><td data-label="Iron Girl"><span class="cross">✗</span></td><td data-label="Sur-mesure"><span class="cross">✗</span></td><td data-label="Coaching suivi" class="comp-star"><span class="tick">✓</span></td></tr>
-        <tr><td>Ajustements</td><td data-label="Clé en main"><span class="cross">✗</span></td><td data-label="Fit Dans Ta Vie"><span class="cross">✗</span></td><td data-label="Iron Girl"><span class="cross">✗</span></td><td data-label="Sur-mesure"><span class="cross">✗</span></td><td data-label="Coaching suivi" class="comp-star"><span class="tick">✓</span></td></tr>
-        <tr><td>Pour qui</td><td data-label="Clé en main" style="font-size:.78rem">Maison · démarrer</td><td data-label="Fit Dans Ta Vie" style="font-size:.78rem">Maison · méthode</td><td data-label="Iron Girl" style="font-size:.78rem">Salle · sérieuse</td><td data-label="Sur-mesure" style="font-size:.78rem">Autonome</td><td data-label="Coaching suivi" class="comp-star" style="font-size:.78rem">Accompagnée</td></tr>
-      </tbody>
-    </table>
-    </div>
-    </details>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq-section" id="faq">
-  <div class="faq-inner">
-    <p class="section-eyebrow" style="text-align:center">FAQ</p>
-    <h2 class="section-heading" style="text-align:center;margin-bottom:28px">Tes questions,<br><em>mes réponses.</em></h2>
-
-    <details class="faq-item">
-      <summary>Combien coûte un programme de musculation personnalisé en ligne ?</summary>
-      <div class="faq-body">Mon programme sur-mesure coûte <strong>79 € en paiement unique</strong>, sans abonnement. 8 semaines, jusqu'à 4 séances par semaine, vidéos de démonstration incluses. Il est construit après un bilan complet offert et livré sous 7 jours ouvrés sur ton téléphone. <a href="#sur-mesure">Voir le programme sur-mesure →</a></div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Le programme est-il adapté au matériel que j'ai à la maison ?</summary>
-      <div class="faq-body">Oui. Le programme sur-mesure est construit selon ton matériel : sans matériel, avec élastiques, haltères, ou en salle équipée. Tu me dis ce que tu as lors du bilan, et chaque exercice est choisi en fonction.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Y a-t-il un abonnement ou un engagement ?</summary>
-      <div class="faq-body">Non. Tous mes programmes digitaux et le programme sur-mesure à 79 € sont en <strong>paiement unique</strong>, sans abonnement. Si tu veux un suivi avec ajustements réguliers, le <a href="offres.html">coaching distanciel</a> existe dès 89 €/mois.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Quelle différence entre le programme sur-mesure et le coaching distanciel ?</summary>
-      <div class="faq-body">Le programme sur-mesure (79 €) est construit pour toi, puis tu avances en autonomie, sans suivi ni ajustements. Le coaching distanciel (dès 89 €/mois) inclut un programme sur-mesure, un suivi WhatsApp et des ajustements réguliers selon tes progrès — pour celles qui veulent être accompagnées.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Je suis débutante, c'est pour moi ?</summary>
-      <div class="faq-body">Oui, totalement. Chaque programme propose des adaptations et des variantes pour débuter en sécurité, quel que soit ton niveau de départ. Tu commences là où tu en es et tu progresses à ton rythme — pas besoin d'avoir déjà de l'expérience.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Combien de temps par jour ?</summary>
-      <div class="faq-body">Selon le programme, compte entre 15 et 45 minutes par séance, 3 à 5 fois par semaine. Certains programmes (comme Fit Dans Ta Vie) proposent plusieurs formats — 20, 30 ou 45 min — pour t'adapter même aux semaines chargées.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Comment je reçois mon programme ?</summary>
-      <div class="faq-body">En accès immédiat après le paiement. Tu ouvres ton programme directement sur ton téléphone (installable comme une application), et tu y as accès à vie — tu peux le refaire autant de fois que tu veux.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Je peux être remboursée ?</summary>
-      <div class="faq-body">Garantie 48 h : tu changes d'avis dans les 48 h après ton achat et tu n'as pas encore ouvert ton programme ? Écris-moi sur <a href="https://wa.me/33756834626" target="_blank" rel="noopener">WhatsApp</a>, je te rembourse. Une fois le programme ouvert, c'est un contenu numérique non remboursable (voir <a href="cgv.html">CGV</a>). Je reste disponible pour t'envoyer des variantes d'exercices si quelque chose ne te convient pas.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Programme ou coaching, je choisis quoi ?</summary>
-      <div class="faq-body">Un programme digital est idéal si tu es autonome et que tu sais te motiver seule. Le coaching avec suivi est fait pour toi si tu as besoin d'un accompagnement humain, de corrections et d'ajustements réguliers. Pas sûre ? <a href="quiz.html">Fais le quiz d'orientation (1 min)</a> ou <a href="offres.html">découvre les formules de coaching</a>.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Avez-vous un programme pour perdre du ventre ?</summary>
-      <div class="faq-body">Oui. <strong>Ventre Plat 14 jours</strong> (12 €) : 15 minutes par jour, sans matériel, avec plan nutrition et liste de courses. Pour un plan plus complet, <strong>Fit Dans Ta Vie</strong> (49 €) : une méthode de 28 jours à la maison avec nutrition sans régime.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Avez-vous un programme pour les fessiers ?</summary>
-      <div class="faq-body">Oui. <strong>Booty Sculpt</strong> (19 €) : 8 semaines, 12 séances vidéo filmées avec moi, avec ou sans élastiques, plan nutrition inclus. Il existe aussi en <a href="bundle.html">bundle avec Ventre Plat à 25 €</a>.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Avez-vous un programme post-partum ?</summary>
-      <div class="faq-body">Oui. <strong>Post-partum — 8 semaines</strong> (17 €) : 8 semaines progressives pour reprendre le sport et renforcer ta sangle abdominale en douceur, en complément de ta rééducation, compatible allaitement. Le post-partum est ma spécialité : j'ai moi-même reconstruit mon corps après une grossesse difficile.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Avez-vous un programme de musculation en salle pour femme ?</summary>
-      <div class="faq-body">Oui. <strong>Iron Girl</strong> (49 €) : 8 semaines en salle, 5 séances par semaine, 3 phases progressives, 74 exercices détaillés, guide nutrition et tracker de charges inclus.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Qui crée les programmes ?</summary>
-      <div class="faq-body">Moi, Ornella : éducatrice sportive diplômée d'État (carte professionnelle n° 09126ED0021, vérifiable sur recherche-educateur.sports.gouv.fr), ancienne compétitrice en Bikini Fitness, coach à domicile en Essonne (91) et Hauts-de-Seine (92) et en ligne partout en France. 5,0 ★ sur Google (26 avis).</div>
-    </details>
-  </div>
-</section>
-
-<!-- CTA FINAL -->
-<section class="cta-final-section">
-  <div style="max-width:560px;margin:0 auto">
-    <h2>Tu hésites encore ?</h2>
-    <p>Écris-moi — je t'oriente en 2 minutes vers la formule faite pour toi.</p>
-    <a href="https://wa.me/33756834626" class="cta-wa" target="_blank">💬 M'écrire sur WhatsApp →</a>
-    <p class="cta-final-note">Sans engagement · Réponse rapide</p>
-    <p class="cta-final-note">🎁 Envie de l'offrir&nbsp;? <a href="carte-cadeau.html" style="color:inherit;font-weight:700;text-decoration:underline;">Offrir en carte cadeau →</a></p>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-logo">
-    <img src="images/logo.png" alt="Ornella Fit Coaching" class="footer-logo-img" loading="lazy" width="3135" height="793">
-  </div>
-  <p class="footer-slogan">« Ton plus bel investissement, c'est toi. »</p>
-  <div class="footer-links">
-    <a href="/">Accueil</a>
-    <a href="offres.html">Coaching</a>
-    <a href="programmes.html">Programmes digitaux</a>
-    <a href="transformations.html">Transformations</a>
-    <a href="apropos.html">À propos</a>
-    <a href="faq.html">FAQ</a>
-    <a href="booty-sculpt.html">Booty Sculpt</a>
-    <a href="ventre-plat.html">Ventre Plat</a>
-    <a href="guide-recettes-vente.html">Guide Recettes</a>
-    <a href="challenge-ventre-plat.html">Challenge gratuit</a>
-    <a href="programme-fidelite.html">Programme fidélité</a>
-    <a href="carte-marraine.html">Parrainage</a>
-    <a href="https://wa.me/33756834626" target="_blank">WhatsApp</a>
-  </div>
-  <div class="footer-social">
-    <a href="https://www.instagram.com/coach.ornella" target="_blank">📷 Instagram</a>
-    <a href="mailto:ornellafit.coaching@gmail.com">✉️ Email</a>
-    <a href="https://www.ornellafitcoaching.com/links.html">🔗 Mes liens</a>
-  </div>
-  <p class="footer-info">Ornella · Coach sportive Essonne (91) · Île-de-France · ornellafit.coaching@gmail.com</p>
-  <p class="footer-info footer-zones">Coach sportive à domicile : <a href="/coach-sportif-domicile-saulx-les-chartreux.html">Saulx-les-Chartreux</a> · <a href="/coach-sportif-domicile-massy.html">Massy</a> · <a href="/coach-sportif-domicile-palaiseau.html">Palaiseau</a> · <a href="/coach-sportif-domicile-longjumeau.html">Longjumeau</a> · <a href="/coach-sportif-domicile-champlan.html">Champlan</a> · <a href="/coach-sportif-domicile-villebon-sur-yvette.html">Villebon-sur-Yvette</a> · <a href="/coach-sportif-domicile-chilly-mazarin.html">Chilly-Mazarin</a> · <a href="/coach-sportif-domicile-epinay-sur-orge.html">Épinay-sur-Orge</a> · <a href="/coach-sportif-domicile-antony.html">Antony</a></p>
-  <p class="footer-copy">© 2026 Ornella Fit Coaching — Tous droits réservés</p>
-  <p class="footer-legal"><a href="mentions-legales.html">Mentions légales</a> · <a href="cgv.html">CGV</a> · <a href="mentions-legales.html#rgpd">Politique de confidentialité</a></p>
-</footer>
-
-<!-- STICKY MOBILE : trouver mon programme -->
-<div class="prog-sticky" id="progSticky">
-  <a href="#trouver-programme">🎯 Trouver mon programme</a>
-</div>
-
-<a href="https://wa.me/33756834626" class="floating-wa" target="_blank" title="WhatsApp">💬</a>
 
 <script>
-
-(function(){
-  var cue=document.querySelector('.scroll-cue');
-  if(!cue)return;
-  window.addEventListener('scroll',function(){
-    if(window.scrollY>80){cue.classList.add('scroll-cue-hidden')}else{cue.classList.remove('scroll-cue-hidden')}
-  },{passive:true});
-})();
-
-/* Sticky mobile "Trouver mon programme" : masqué en haut de page et quand la FAQ/footer est visible */
-(function(){
-  var sticky=document.getElementById('progSticky');
-  if(!sticky)return;
-  var faq=document.getElementById('faq');
-  var footer=document.querySelector('footer');
-  var nearBottom=false;
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(entries){
-      nearBottom=entries.some(function(e){return e.isIntersecting;});
-      apply();
-    },{rootMargin:'0px 0px -10% 0px'});
-    if(faq)io.observe(faq);
-    if(footer)io.observe(footer);
-  }
-  function apply(){
-    if(window.scrollY<120||nearBottom){sticky.classList.add('hide');}
-    else{sticky.classList.remove('hide');}
-  }
-  window.addEventListener('scroll',apply,{passive:true});
-  apply();
-})();
-
-</script>
-<script>window.OFC_ROUE_DISCREET=true;/* page d'achat : roue en mode discret (exit-intent + filet tardif, pas d'interruption au scroll) */</script>
-<script defer src="roue-chance.js"></script>
-<script>
-/* Tracker de scroll : "ou les gens s'arretent" -> Pixel Meta (si present) + dataLayer GTM. Aucun compte externe. */
 (function(){var PAGE=location.pathname.replace(/^\//,'').replace(/\.html$/,'')||'accueil';var M=[25,50,75,90,100],done={},t=false;function depth(){var d=document.documentElement,b=document.body,top=d.scrollTop||b.scrollTop,max=(d.scrollHeight||b.scrollHeight)-d.clientHeight;return max>0?Math.min(100,Math.round(top/max*100)):100;}function fire(m){if(done[m])return;done[m]=1;if(typeof fbq!=='undefined')fbq('trackCustom','ScrollDepth',{page:PAGE,percent:m});(window.dataLayer=window.dataLayer||[]).push({event:'scroll_depth',page:PAGE,percent:m});}function chk(){var p=depth();M.forEach(function(m){if(p>=m)fire(m);});t=false;}window.addEventListener('scroll',function(){if(t)return;t=true;setTimeout(chk,300);},{passive:true});window.addEventListener('load',chk);})();
 </script>
-<script src="panier.js" defer></script>
 <script defer src="/suivi-clics.js"></script>
 <script>
-(function(){var tabs=[].slice.call(document.querySelectorAll('#objTabs a'));if(!tabs.length||!('IntersectionObserver' in window))return;
-var map={};tabs.forEach(function(t){var el=document.querySelector(t.getAttribute('href'));if(el)map[el.id]=t;});
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&map[e.target.id]){tabs.forEach(function(t){t.classList.remove('on')});var t=map[e.target.id];t.classList.add('on');t.scrollIntoView({block:'nearest',inline:'center'});}});},{rootMargin:'-130px 0px -60% 0px'});
-Object.keys(map).forEach(function(id){io.observe(document.getElementById(id));});})();
+{
+  const nav=document.querySelector('.nav');
+  const onScroll=()=>nav.classList.toggle('is-scrolled',scrollY>8);
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  /* Trouve ton programme (mêmes recommandations qu'avant) */
+  const PF={
+    ventre:{title:"Ventre Plat, 14 jours",sub:"Le plan structuré jour par jour pour un ventre plus plat et moins de ballonnements, 15 min/jour sans matériel.",href:"ventre-plat.html",cta:"Voir Ventre Plat · 12 €"},
+    fessiers:{title:"Booty Sculpt, 8 semaines",sub:"8 semaines de séances vidéo guidées pour galber et raffermir tes fessiers, à la maison.",href:"booty-sculpt.html",cta:"Voir Booty Sculpt · 19 €"},
+    postpartum:{title:"Post-partum, 8 semaines",sub:"Reprendre le sport et renforcer ta sangle abdominale en douceur, en complément de ta rééducation, même en allaitant.",href:"programme-postpartum.html",cta:"Voir le programme post-partum · 17 €"},
+    ageless:{title:"Ageless Girl, corps ferme 30-50 ans",sub:"La méthode complète pour te raffermir et ralentir le vieillissement : muscu, nutrition, hormones, sommeil.",href:"ageless-girl-sales.html",cta:"Voir Ageless Girl · 17 €"},
+    salle:{title:"Iron Girl, programme salle 8 semaines",sub:"3 phases progressives, 74 exercices détaillés et un tracker de charges, pour progresser vraiment en salle.",href:"iron-girl-sales.html",cta:"Voir Iron Girl · 49 €"},
+    methode:{title:"Fit Dans Ta Vie, la méthode",sub:"Le programme phare : une méthode complète (sport + nutrition + organisation) pensée pour tenir dans ta vraie vie.",href:"fit-dans-ta-vie.html",cta:"Voir Fit Dans Ta Vie · 49 €"}
+  };
+  const q=document.getElementById('pf-question'),res=document.getElementById('pf-result'),cta=document.getElementById('pf-cta');
+  const BASE=cta.getAttribute('data-base')||'';
+  q.addEventListener('click',e=>{
+    const b=e.target.closest('[data-pf]');if(!b)return;
+    const d=PF[b.dataset.pf];
+    document.getElementById('pf-title').textContent=d.title;
+    document.getElementById('pf-sub').textContent=d.sub;
+    cta.setAttribute('href',BASE+d.href);cta.textContent=d.cta;
+    q.hidden=true;res.hidden=false;
+    if(typeof fbq!=='undefined')fbq('trackCustom','ProgramFinder',{choice:b.dataset.pf,program:d.title});
+  });
+  document.getElementById('pf-restart').addEventListener('click',()=>{res.hidden=true;q.hidden=false});
+
+  /* Carrousel des avis */
+  document.querySelectorAll('[data-rail]').forEach(rail=>{
+    const items=[...rail.children];
+    const dots=document.createElement('div');dots.className='dots';
+    items.forEach((it,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Avis '+(i+1));b.addEventListener('click',()=>rail.scrollTo({left:it.offsetLeft-rail.offsetLeft-22,behavior:'smooth'}));dots.appendChild(b)});
+    rail.after(dots);
+    let raf=0;
+    const sync=()=>{raf=0;const x=rail.scrollLeft;let best=0,d=1e9;
+      if(x+rail.clientWidth>=rail.scrollWidth-4)best=items.length-1;
+      else items.forEach((it,i)=>{const v=Math.abs(it.offsetLeft-rail.offsetLeft-22-x);if(v<d){d=v;best=i}});
+      [...dots.children].forEach((b,i)=>b.setAttribute('aria-current',i===best?'true':'false'))};
+    rail.addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(sync)},{passive:true});
+    addEventListener('resize',sync);sync();
+  });
+  document.querySelectorAll('.quote').forEach(qq=>{
+    const p=qq.querySelector('p'),b=qq.querySelector('button');if(!p||!b)return;
+    if(p.scrollHeight>p.clientHeight+2)b.hidden=false;
+    b.addEventListener('click',()=>{const o=qq.classList.toggle('is-open');b.textContent=o?'Réduire':'Lire la suite'});
+  });
+
+  /* Barre basse : après le haut de page, masquée près du dernier bouton */
+  const bar=document.getElementById('sticky-bar');
+  if('IntersectionObserver' in window){
+    const seen={'hero-cta':true,'cta-final':false};
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{seen[e.target.id]=e.isIntersecting});bar.classList.toggle('show',!seen['hero-cta']&&!seen['cta-final'])},{threshold:0});
+    ['hero-cta','cta-final'].forEach(id=>io.observe(document.getElementById(id)));
+  }
+}
 </script>
 </body>
 </html>
