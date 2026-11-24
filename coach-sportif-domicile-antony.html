@@ -27,8 +27,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:site_name" content="Ornella Fit Coaching">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -91,6 +90,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "areaServedNote": "Coaching à domicile à Antony (92160), Hauts-de-Seine (92), et à distance partout en France."
 }
 </script>
+<!-- Meta Pixel -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1233548507794099");fbq("track","PageView");</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1233548507794099&ev=PageView&noscript=1"/></noscript>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -148,167 +150,471 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 </script>
 <style>
-.city-pill{display:inline-block;background:#fff;border:1px solid rgba(201,185,154,0.4);border-radius:50px;padding:8px 16px;margin:5px 4px;font-weight:600;color:#5A4A42;font-size:.9rem;box-shadow:0 2px 12px rgba(139,111,94,0.06);}
-.city-section{max-width:860px;margin:0 auto;padding:36px 22px;}
-.city-faq{background:#fff;border:1px solid rgba(201,185,154,0.3);border-radius:14px;padding:16px 20px;margin-bottom:12px;}
-.city-faq summary{font-weight:700;color:#1E1616;cursor:pointer;}
-.city-faq p{color:#5A4A42;margin:10px 0 0;line-height:1.7;}
-.city-voisines{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px;}
-.city-voisines a{background:#FBF8F4;border:1px solid rgba(201,185,154,0.35);border-radius:50px;padding:9px 16px;font-weight:600;color:#C96358;text-decoration:none;font-size:.88rem;}
-.city-voisines a:hover{background:#fff;}
-.city-transfo{display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:center;background:#FBF8F4;border-radius:24px;padding:26px;}
-.city-transfo img{width:260px;max-width:100%;border-radius:16px;height:auto;box-shadow:0 10px 30px rgba(44,31,26,0.14);}
-.city-transfo .ct-txt{flex:1;min-width:240px;}
-.city-prix{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:22px;}
-.city-prix .pc{background:#fff;border:1px solid rgba(201,185,154,0.3);border-radius:16px;padding:20px;box-shadow:0 4px 16px rgba(139,111,94,0.06);}
-.city-prix .pc h3{margin:0 0 4px;color:#C96358;font-family:'Cormorant Garamond',serif;font-size:1.3rem;}
-.city-prix .pc .amt{font-weight:800;color:#1E1616;}
-.city-prix .pc p{margin:6px 0 0;color:#5A4A42;font-size:.9rem;line-height:1.6;}
+
+/* VOICE  : calme, haut de gamme, une idée par écran, phrases courtes.
+   IDEA   : une fiche de coach bien tenue : la photo, les preuves, le prix, une question, un message.
+   PICTURE: la photo en pied d'Ornella, puis les avant/après réels des clientes.
+   COLOUR+TYPE : un bloc de couleur par partie (ivoire, rose poudré, sauge, brun, sable, corail) ; texte courant d'une seule couleur ;
+                 titres Cormorant Garamond 700 droit avec la fin en couleur ; DM Sans pour le texte.
+   LAYOUT : mobile d'abord, 6 blocs au lieu de 11, 3 boutons de contact + barre basse. */
+:root{--ivory:#FBF7F2;--sand:#F3EBE2;--blush:#F5E2DA;--blush2:#FBEEE9;--sage:#E4E8DB;--sage-d:#5F7258;--coral2:#C35F50;--peach:#F2A796;--ink:#2B201C;--line:rgba(43,32,28,.14);--coral:#B4513F;--coral-d:#9A4232;--night:#2B201C;--night2:#221916;--cream:#F6EFE8;
+--serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;--sans:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;color-scheme:light}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ivory);color:var(--ink);font:400 16.5px/1.6 var(--sans);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.06;margin:0;text-wrap:balance;letter-spacing:-.005em;font-variant-numeric:lining-nums}
+h1{font-size:clamp(2.2rem,7vw,3.7rem)}
+h2{font-size:clamp(2rem,5.6vw,2.9rem)}
+h3{font-size:1.55rem}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.band{padding:60px 0}
+.band--sand{background:var(--sand)}
+.band--white{background:#fff}
+.band--blush{background:var(--blush)}
+.band--sage{background:var(--sage)}
+.band--night{background:var(--night);color:var(--cream)}
+.band--coral{background:var(--coral2);color:#fff}
+.hl{color:var(--coral)}
+.band--night .hl{color:var(--peach)}
+.band--coral .hl{color:var(--night)}
+.band--sage .hl{color:var(--sage-d)}
+.head{max-width:640px;margin-bottom:32px}
+.head p{margin-top:14px;font-size:1.04rem}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:58px;padding:0 30px;border-radius:999px;background:var(--coral);color:#fff;font:600 1.03rem/1.2 var(--sans);text-decoration:none;box-shadow:0 10px 24px -14px rgba(154,66,50,.7);transition:background .2s,transform .2s}
+.btn:hover{background:var(--coral-d);transform:translateY(-1px)}
+.btn svg{flex:none}
+.btn:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+.link{display:inline-block;padding:10px 0;font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.link:hover{text-decoration-thickness:2px}
+.small{font-size:.92rem}
+@media(min-width:620px){.btn{display:inline-flex;width:auto}}
+@media(min-width:900px){.band{padding:108px 0}}
+
+/* Bandeau + navigation */
+.topbar{background:var(--night);color:var(--cream);font-size:.82rem;text-align:center;padding:8px 16px;line-height:1.35}
+.topbar:empty{display:none}
+.nav{position:sticky;top:0;z-index:60;background:rgba(251,247,242,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .25s}
+.nav.is-scrolled{border-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1120px;margin:0 auto;padding:0 22px;position:relative}
+.nav-logo img{height:38px;width:auto}
+.nav-toggle{appearance:none;border:0;background:none;width:46px;height:46px;margin-right:-12px;font-size:25px;line-height:1;color:var(--ink);cursor:pointer}
+#navMenu{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--ivory);padding:4px 22px 22px;border-bottom:1px solid var(--line);box-shadow:0 18px 30px -24px rgba(43,32,28,.4)}
+#navMenu.open{display:flex}
+#navMenu a{padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:500}
+#navMenu a.nav-cta{margin-top:16px;border:0;padding:0}
+@media(min-width:1040px){
+  .nav-toggle{display:none}
+  #navMenu{display:flex;position:static;flex-direction:row;align-items:center;gap:28px;padding:0;background:none;border:0;box-shadow:none}
+  #navMenu a{border:0;padding:6px 0;font-size:.95rem}
+  #navMenu a.nav-cta{margin:0}
+  #navMenu .btn{min-height:46px;padding:0 22px;font-size:.95rem}
+}
+
+/* Hero */
+.hero{padding:14px 0 60px}
+.hero-grid{display:grid;gap:26px}
+.hero-photo{width:100%;max-width:520px;margin:0 auto;border-radius:22px;overflow:hidden;background:#E8DDD2;box-shadow:0 24px 40px -30px rgba(43,32,28,.55)}
+.hero-photo img{width:100%;height:auto}
+.hero-sub{margin-top:16px;font-size:1.06rem;max-width:520px}
+.hero-act{margin-top:26px}
+.hero-note{margin-top:12px;font-size:.9rem}
+.hero-quiz{margin-top:2px;font-size:.95rem}
+.trust{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:34px 0 0;padding:20px 0 0;list-style:none;border-top:1px solid var(--line);text-align:center}
+.trust li{padding:0 8px;font-size:.84rem;line-height:1.35}
+.trust li+li{border-left:1px solid var(--line)}
+.trust b{display:block;font-size:.92rem;margin-bottom:3px}
+@media(min-width:900px){
+  .hero{padding:40px 0 96px}
+  .hero-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:64px;align-items:center}
+  .hero-photo{order:2;max-width:470px;margin:0 0 0 auto}
+  .trust{text-align:left;max-width:560px}
+  .trust li{padding:0 16px}.trust li:first-child{padding-left:0}
+}
+
+/* Carrousels (avant/après, avis) */
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:84%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -22px;padding:2px 22px 6px;scroll-padding:0 22px}
+.rail::-webkit-scrollbar{display:none}
+.rail>*{scroll-snap-align:start}
+.dots{display:flex;justify-content:center;gap:7px;margin-top:16px}
+.dots button{width:8px;height:8px;padding:0;border:0;border-radius:99px;background:rgba(43,32,28,.22);cursor:pointer;transition:width .25s,background .25s}
+.dots button[aria-current=true]{width:22px;background:var(--ink)}
+@media(min-width:900px){
+  .rail{grid-auto-flow:row;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;margin:0;padding:0}
+  .rail--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dots{display:none}
+}
+.case{display:block;background:#fff;border-radius:20px;overflow:hidden;text-decoration:none}
+.case img{width:100%;aspect-ratio:1;object-fit:cover;background:#E8DDD2}
+.case-b{padding:18px 20px 22px}
+.case-n{font-weight:700}
+.case-r{font-variant-numeric:lining-nums;font-family:var(--serif);font-weight:600;font-size:1.55rem;line-height:1.12;margin:4px 0 8px}
+.case-c{font-size:.92rem}
+.more{margin-top:18px;text-align:center}
+
+.rating{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 18px;margin-bottom:22px}
+.rating h2{font-size:clamp(2rem,5.6vw,2.9rem)}
+.stars{color:#C58B2A;letter-spacing:2px;font-size:1rem;margin-left:6px;vertical-align:2px}
+.quote{background:#fff;border-radius:20px;padding:24px 22px 20px;margin:0;display:flex;flex-direction:column}
+.quote p{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;font-size:1rem}
+.quote.is-open p{-webkit-line-clamp:unset;display:block}
+.quote footer{margin-top:auto;padding-top:14px;font-size:.88rem}
+.quote footer b{font-size:.95rem}
+.quote button{align-self:flex-start;margin-top:8px;padding:8px 0;border:0;background:none;color:var(--ink);font:600 .9rem var(--sans);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+
+/* Formules */
+.offers{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.offer{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 18px;align-items:center;padding:22px 22px;text-decoration:none;transition:background .2s}
+.offer+.offer{border-top:1px solid var(--line)}
+.offer:hover{background:#FDFAF7}
+.offer h3{font-size:1.6rem;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.offer p{font-size:.93rem;margin-top:4px}
+.tag{font:700 .72rem/1 var(--sans);background:var(--coral);color:#fff;border-radius:99px;padding:6px 10px;letter-spacing:.01em}
+.price{text-align:right;white-space:nowrap;font-size:.86rem;line-height:1.2}
+.price b{display:block;font-variant-numeric:lining-nums;font-family:var(--serif);font-size:1.75rem;font-weight:600}
+.offer--top{background:var(--blush2)}
+.incl{margin-top:22px;display:grid;gap:10px;font-size:.95rem}
+.offers-act{margin-top:30px;display:flex;flex-direction:column;gap:6px;align-items:stretch;text-align:center}
+.solo{margin-top:40px;padding-top:26px;border-top:1px solid var(--line);font-size:.98rem}
+.solo a{font-weight:600;text-underline-offset:4px}
+@media(min-width:620px){.offers-act{flex-direction:row;align-items:center;gap:26px;text-align:left}}
+@media(min-width:900px){.split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:start}.split>.head{position:sticky;top:110px;margin-bottom:0}}
+
+/* Histoire */
+.story p{font-size:1.06rem}
+.story p+p{margin-top:16px}
+.story .cred{font-size:.92rem;margin-top:22px}
+.story .cred a{text-underline-offset:4px}
+.band--night .link,.band--night a{color:var(--cream)}
+
+/* FAQ */
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:20px 0;font-weight:600;font-size:1.03rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;font:400 1.6rem/1 var(--sans);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 0 22px;display:grid;gap:10px}
+.faq .a a{text-underline-offset:4px}
+
+/* Final + pied de page */
+.final{text-align:center}
+.final .btn{background:#fff;color:var(--coral-d);box-shadow:0 14px 28px -16px rgba(43,32,28,.6)}
+.final .btn:hover{background:var(--cream)}
+.final p{margin:16px auto 0;max-width:520px;font-size:1.05rem}
+.final .btn{margin-top:30px}
+.final .small{margin-top:16px}
+.final a:not(.btn){text-underline-offset:4px}
+.foot{background:var(--night2);color:var(--cream);padding:56px 0 calc(96px + env(safe-area-inset-bottom));font-size:.93rem}
+.foot img{height:34px;width:auto;filter:brightness(0) invert(1);opacity:.9}
+.foot-slogan{margin-top:12px}
+.foot nav{display:flex;flex-wrap:wrap;gap:4px 22px;margin-top:28px}
+.foot nav a,.foot .contact a{display:inline-block;padding:7px 0;text-decoration:none}
+.foot nav a:hover,.foot .contact a:hover{text-decoration:underline;text-underline-offset:4px}
+.contact{display:flex;flex-wrap:wrap;gap:4px 22px;margin-top:10px;padding-top:12px;border-top:1px solid rgba(246,239,232,.16)}
+.foot details{margin-top:18px;border-top:1px solid rgba(246,239,232,.16)}
+.foot summary{cursor:pointer;padding:16px 0;font-weight:600}
+.foot details div{display:flex;flex-wrap:wrap;gap:2px 18px;padding-bottom:10px}
+.foot details a{padding:6px 0;text-underline-offset:3px}
+.legal{margin-top:20px;font-size:.84rem;display:flex;flex-wrap:wrap;gap:4px 16px}
+.legal a{text-underline-offset:3px}
+@media(min-width:900px){.foot{padding-bottom:56px}}
+
+/* Barre de contact en bas (téléphone) */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(251,247,242,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s ease}
+.sticky.show{transform:none}
+.sticky .btn{min-height:52px}
+@media(min-width:900px){.sticky{display:none}}
+
+/* Pop-up guide */
+#lead-popup{display:none;position:fixed;inset:0;z-index:100;align-items:flex-end;justify-content:center;padding:14px}
+#lead-popup.active{display:flex}
+#lead-overlay{position:absolute;inset:0;background:rgba(34,25,22,.55)}
+#lead-box{position:relative;width:100%;max-width:440px;background:var(--ivory);border-radius:24px;padding:30px 24px 24px}
+#lead-box h2{font-size:1.9rem;padding-right:26px}
+#lead-box p{margin-top:10px}
+#lead-close{position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;background:none;font-size:26px;color:var(--ink);cursor:pointer}
+#lead-form{display:grid;gap:10px;margin-top:18px}
+#lead-email{width:100%;min-height:54px;border:1px solid var(--line);border-radius:14px;padding:0 16px;font:16px var(--sans);background:#fff;color:var(--ink)}
+#lead-submit{border:0;cursor:pointer;width:100%}
+#lead-success{display:none;margin-top:16px;font-weight:600}
+@media(min-width:620px){#lead-popup{align-items:center}}
+
+/* ===== Code couleur (effet « repère visuel ») =====
+   Formules : domicile = miel, hybride = corail, à distance = bleu doux, programmes = sauge.
+   Dans un groupe .cc, chaque carte prend la couleur suivante. */
+:root{--c1:#B4513F;--t1:#F8E1D9;--c2:#5F7258;--t2:#E3EADF;--c3:#A06E22;--t3:#F6E8CF;--c4:#3F6A85;--t4:#E1EBF1;--c5:#2B201C;--t5:#EDE6E0}
+.cc>*{--acc:var(--c1);--tint:var(--t1)}
+.cc>*:nth-child(4n+2){--acc:var(--c2);--tint:var(--t2)}
+.cc>*:nth-child(4n+3){--acc:var(--c3);--tint:var(--t3)}
+.cc>*:nth-child(4n+4){--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-hyb,.is-hyb{--acc:var(--c1);--tint:var(--t1)}
+.cc>.is-prog,.is-prog{--acc:var(--c2);--tint:var(--t2)}
+.cc>.is-dom,.is-dom{--acc:var(--c3);--tint:var(--t3)}
+.cc>.is-dist,.is-dist{--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-ink,.is-ink{--acc:var(--c5);--tint:var(--t5)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.tcard,.act,.fcard,.box,.quote,.sm,.panel,.hero-prog,.mind>div,.solo-card){border-top:5px solid var(--acc,transparent)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.act,.fcard,.box,.sm,.panel,.hero-prog,.solo-card) :is(h3,h4){color:var(--acc,inherit)}
+.case-r,.tb h3,.mind .to,.obj b{color:var(--acc,inherit)}
+.trust b{color:var(--acc,inherit)}
+.trust.cc li{position:relative}
+.offer{border-left:5px solid var(--acc,transparent)}
+.offer h3,.offer .price b{color:var(--acc,inherit)}
+.steps li::before{background:var(--acc,var(--sage-d))!important}
+.faq.cc>details>summary::after,.faq .cc>details>summary::after{content:"+";width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--acc);color:#fff;font:600 1.2rem/1 var(--sans)}
+.faq.cc>details[open]>summary,.faq .cc>details[open]>summary{color:var(--acc)}
+.stats.cc>div,.tstats>div{background:var(--tint,transparent)}
+.stats.cc b,.tstats b{color:var(--acc,inherit)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+
+.kick{font:700 .86rem/1.3 var(--sans);color:var(--coral);margin-bottom:10px}
+.band--night .kick{color:var(--peach)}
+.band--sage .kick{color:var(--sage-d)}
+.hero .kick{margin-bottom:0}
+.hero h1{margin-top:12px}
+.rate{margin-top:14px;font-size:.92rem;font-weight:600}
+.rate .st{color:#C58B2A;letter-spacing:1px;margin-right:4px}
+.story p{font-size:1.06rem}
+.story p+p{margin-top:14px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills span{background:#fff;border-left:5px solid var(--acc);border-radius:12px;padding:10px 14px;font-weight:600;font-size:.95rem}
+.note{margin-top:20px;font-size:.98rem;max-width:640px}
+.step3{display:grid;gap:12px}
+@media(min-width:760px){.step3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.step3>div{background:#fff;border-radius:18px;padding:20px 18px;border-top:5px solid var(--acc)}
+.step3 .n{font-family:var(--serif);font-weight:700;font-size:2.1rem;color:var(--acc);line-height:1}
+.step3 h3{font-size:1.35rem;margin-top:6px;color:var(--acc)}
+.step3 p{font-size:.95rem;margin-top:6px}
+.fcards{display:grid;gap:12px}
+@media(min-width:900px){.fcards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.fcard{background:#fff;border-radius:20px;padding:22px 20px}
+.fcard h3{font-size:1.5rem}
+.fcard .amt{display:block;margin:8px 0 10px;padding:10px 12px;border-radius:12px;background:var(--tint);font-family:var(--serif);font-weight:700;font-size:1.7rem;line-height:1.1;color:var(--acc)}
+.fcard p{font-size:.95rem}
+.links2{margin-top:22px;display:flex;flex-wrap:wrap;justify-content:center;gap:0 24px}
+.tr-txt .kick{margin-bottom:8px}
+.tr-txt p{font-size:1.06rem}
+.tr-photo{max-width:520px;width:100%}
+.band--night .center p{margin:14px auto 0;max-width:560px}
+.band--night .btn{margin-top:24px}
+.vlinks{display:grid;gap:10px}
+@media(min-width:620px){.vlinks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:900px){.vlinks{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.vlinks a{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border-radius:14px;padding:15px 16px;border-left:5px solid var(--acc);font-weight:600;text-decoration:none}
+.vlinks a::after{content:"→";color:var(--acc)}
+.back{margin-top:20px;text-align:center}
+
 </style>
-<!-- Meta Pixel -->
-<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1233548507794099");fbq("track","PageView");</script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1233548507794099&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- NAV -->
-<nav>
-  <a href="/" class="nav-logo"><img src="images/logo.png" alt="Ornella Fit Coaching" class="nav-logo-img" width="3135" height="793"></a>
-  <button type="button" class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Menu">☰</button>
-  <div class="nav-menu" id="navMenu">
-    <a href="offres.html" class="nav-link">Tarifs coaching</a>
-    <a href="transformations.html" class="nav-link">Transformations</a>
-    <a href="programmes.html" class="nav-link">Programmes digitaux</a>
-    <a href="entreprise.html" class="nav-link">Entreprise</a>
-    <a href="apropos.html" class="nav-link">À propos</a>
-    <a href="https://www.ornellafitcoaching.com/quiz.html" class="nav-link">Quelle formule pour moi ?</a>
-    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="nav-cta" target="_blank">Mon bilan gratuit 15 min →</a>
+<!-- End Google Tag Manager (noscript) -->
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="nav-logo"><img src="images/logo.png" alt="Ornella Fit Coaching" width="3135" height="793" decoding="async"></a>
+    <button type="button" class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Menu">☰</button>
+    <nav id="navMenu" aria-label="Menu principal">
+      <a href="offres.html">Tarifs coaching</a>
+      <a href="transformations.html">Transformations</a>
+      <a href="programmes.html">Programmes</a>
+      <a href="entreprise.html">Entreprise</a>
+      <a href="apropos.html">À propos</a>
+      <a href="quiz.html">Quelle formule pour moi ?</a>
+      <a href="https://wa.me/33756834626" class="nav-cta" target="_blank" rel="noopener"><span class="btn">M'écrire</span></a>
+    </nav>
   </div>
-</nav>
+</header>
 
-<!-- HEADER -->
-<div class="page-header">
-  <span class="section-label">Coach sportive à domicile · Antony · Hauts-de-Seine (92)</span>
-  <h1 class="section-title">Coach sportive à domicile à Antony</h1>
-  <p class="section-subtitle">Coach sportive diplômée d'État, je me déplace à domicile à Antony (Hauts-de-Seine) pour accompagner les femmes vers une vraie transformation. Antony est à deux pas de mon secteur de l'Essonne, donc j'y interviens régulièrement. Coaching sur-mesure <strong>dès 240€/mois</strong>, <strong>bilan gratuit de 15 minutes</strong> inclus.</p>
-  <div class="cta-buttons" style="margin-top:26px;">
-    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn-main" target="_blank" rel="noopener">Mon bilan gratuit 15 min →</a>
-  </div>
-  <p style="margin-top:12px;font-size:.9rem;color:#8A7060;">★ 5,0 · 26 avis Google</p>
-</div>
-
-<!-- POURQUOI -->
-<section class="city-section">
-  <h2 class="section-title">Un vrai accompagnement, <em>chez toi</em></h2>
-  <p class="section-subtitle" style="text-align:left;">Du centre à la Croix de Berny en passant par les Baconnets, Antony compte beaucoup de femmes actives qui veulent un accompagnement sérieux près de chez elles. Je viens à domicile pour supprimer la contrainte des trajets.</p>
-  <p class="section-subtitle" style="text-align:left;">Perte de gras, fessiers, ventre plat, post-partum : un programme ciblé sur ton objectif, avec un suivi réel entre les séances.</p>
-</section>
-
-<!-- QUARTIERS -->
-<section class="city-section" style="text-align:center;">
-  <h2 class="section-title">Je me déplace dans <em>tout Antony</em></h2>
-  <div style="margin-top:16px;"><span class="city-pill">Centre-ville</span><span class="city-pill">Croix de Berny</span><span class="city-pill">Les Baconnets</span><span class="city-pill">Pajeaud</span><span class="city-pill">La Fontaine</span></div>
-  <p class="section-subtitle" style="font-size:.98rem;margin-top:18px;">Tu préfères t'entraîner en salle ? Je peux aussi t'accompagner dans ton club <strong>On Air</strong> ou combiner domicile et salle selon ton envie.</p>
-</section>
-
-<!-- DEROULE -->
-<section class="city-section">
-  <h2 class="section-title" style="text-align:center;">Comment on démarre <em>à Antony</em></h2>
-  <div class="city-prix">
-    <div class="pc"><h3>1 · Bilan offert</h3><p>15 minutes par appel, ou directement par messages WhatsApp si tu préfères écrire. On parle de ton objectif et de ce qui a bloqué jusqu'ici.</p></div>
-    <div class="pc"><h3>2 · Séance d'essai</h3><p>Chez toi à Antony, avec le petit matériel que j'apporte — un salon suffit. 50€, déduits si tu continues.</p></div>
-    <div class="pc"><h3>3 · Ton parcours</h3><p>3 mois pour de vrais résultats, avec ton suivi WhatsApp et ton espace cliente (mensurations, photos, évolution).</p></div>
+<main>
+<!-- 1. HÉROS -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kick">Coach sportive à domicile · Antony · Hauts-de-Seine (92)</p>
+      <h1>Coach sportive à domicile <span class="hl">à Antony</span></h1>
+      <p class="hero-sub">Coach sportive diplômée d'État, je me déplace à domicile à Antony (Hauts-de-Seine) pour accompagner les femmes vers une vraie transformation. Antony est à deux pas de mon secteur de l'Essonne, donc j'y interviens régulièrement. Coaching sur-mesure <strong>dès 240€/mois</strong>, <strong>bilan gratuit de 15 minutes</strong> inclus.</p>
+      <div class="hero-act"><a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn" id="hero-cta" target="_blank" rel="noopener">Mon bilan gratuit 15 min</a></div>
+      <p class="rate"><span class="st" aria-hidden="true">★★★★★</span> 5,0 · 26 avis Google</p>
+    </div>
+    <div class="hero-photo"><img src="images/ornella-photo-bleue-originale.webp" alt="Ornella, coach sportive diplômée d'État, à domicile en Essonne" width="1080" height="1350" fetchpriority="high"></div>
   </div>
 </section>
 
-<!-- PRIX -->
-<section class="city-section">
-  <h2 class="section-title" style="text-align:center;">Formules & <em>tarifs</em></h2>
-  <div class="city-prix">
-    <div class="pc"><h3>Domicile</h3><span class="amt">dès 240€/mois</span><p>1 séance/semaine chez toi à Antony, tout inclus. Essai 50€ pour tester (déduit si tu continues).</p></div>
-    <div class="pc"><h3>Hybride</h3><span class="amt">149€/mois</span><p>1 séance avec moi par mois + programme sur-mesure & suivi WhatsApp toute la semaine.</p></div>
-    <div class="pc"><h3>À distance</h3><span class="amt">dès 89€/mois</span><p>Programme seul dès 79€, ou avec suivi dès 89€/mois — partout en France.</p></div>
-  </div>
-  <p style="text-align:center;margin-top:18px;"><a href="prix-coach-sportif-domicile-essonne.html" style="color:#C96358;font-weight:700;">Voir le détail des prix →</a> · <a href="offres.html" style="color:#C96358;font-weight:700;">Toutes les formules →</a></p>
-</section>
-
-<!-- TRANSFO -->
-<section class="city-section">
-  <div class="city-transfo">
-    <img src="images/louise-face.webp?v=2" alt="Transformation Louise — coaching sportif à domicile Essonne" loading="lazy" width="1080" height="1080">
-    <div class="ct-txt">
-      <span class="section-label" style="color:#C96358;">Résultat réel</span>
-      <p class="section-subtitle" style="text-align:left;margin-top:8px;">Louise a obtenu <strong>−9 cm de tour de taille et −5 kg en 9 mois</strong> à domicile, 2 fois par semaine. Des résultats mesurés, sur une vraie cliente, pas un avant/après retouché.</p>
-      <a href="transformations.html" style="color:#C96358;font-weight:700;">Voir toutes les transformations →</a>
+<!-- 2. POURQUOI -->
+<section class="band band--blush">
+  <div class="wrap">
+    <div class="head"><h2>Un vrai accompagnement, <span class="hl">chez toi</span></h2></div>
+    <div class="story">
+      <p>Du centre à la Croix de Berny en passant par les Baconnets, Antony compte beaucoup de femmes actives qui veulent un accompagnement sérieux près de chez elles. Je viens à domicile pour supprimer la contrainte des trajets.</p>
+      <p>Perte de gras, fessiers, ventre plat, post-partum : un programme ciblé sur ton objectif, avec un suivi réel entre les séances.</p>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="city-section">
-  <h2 class="section-title" style="text-align:center;">Questions fréquentes à <em>Antony</em></h2>
-  <div style="margin-top:22px;">
-<details class="city-faq"><summary>Tu interviens bien à Antony, dans le 92 ?</summary><p>Oui. Antony est juste à côté de mon secteur de l'Essonne, j'y viens régulièrement : centre, Croix de Berny, Les Baconnets, Pajeaud, La Fontaine.</p></details>
-<details class="city-faq"><summary>Quel est le tarif d&#x27;un coach à domicile à Antony ?</summary><p>Coaching à domicile dès 240€/mois (1 séance/semaine, tout inclus). Séance d'essai à 50€ possible, déduite si tu continues.</p></details>
-<details class="city-faq"><summary>Fais-tu aussi du post-partum à Antony ?</summary><p>Oui, c'est une de mes spécialités. Reprise progressive, respect du périnée et du diastasis, pour retrouver ton corps en sécurité après bébé.</p></details>
-<details class="city-faq"><summary>Et si j&#x27;habite une commune voisine (Sceaux, Bourg-la-Reine) ?</summary><p>Dis-moi ton adresse au moment du bilan gratuit : j'interviens à Antony et dans plusieurs communes limitrophes selon les créneaux.</p></details>
-<details class="city-faq"><summary>Je n&#x27;aime pas téléphoner, je peux faire le bilan par message ?</summary><p>Oui, bien sûr. Tu peux faire ton bilan directement par messages sur WhatsApp : tu m&#x27;expliques ton objectif, je te réponds et je te propose la formule la plus adaptée.</p></details>
-<details class="city-faq"><summary>Peut-on faire les séances à deux à Antony ?</summary><p>Oui, je propose le coaching en duo à domicile : avec une amie, ta mère ou ta sœur, chez l&#x27;une de vous deux. Demande-moi le tarif duo pendant ton bilan offert.</p></details>
+<!-- 3. QUARTIERS -->
+<section class="band band--sage">
+  <div class="wrap">
+    <div class="head"><h2>Je me déplace dans <span class="hl">tout Antony</span></h2></div>
+    <div class="pills cc"><span>Centre-ville</span><span>Croix de Berny</span><span>Les Baconnets</span><span>Pajeaud</span><span>La Fontaine</span></div>
+    <p class="note">Tu préfères t'entraîner en salle ? Je peux aussi t'accompagner dans ton club <strong>On Air</strong> ou combiner domicile et salle selon ton envie.</p>
   </div>
 </section>
 
-<!-- DUO -->
-<section class="city-section" style="text-align:center;">
-  <h2 class="section-title">À deux, <em>c'est encore mieux</em></h2>
-  <p class="section-subtitle">Le coaching en duo à domicile marche très bien à Antony : avec une amie, ta sœur, ta mère ou une voisine. Même séance, chez l'une de vous deux, et deux fois plus de motivation pour ne rien lâcher.</p>
-  <div class="cta-buttons" style="margin-top:20px;">
-    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20%21%20Je%20suis%20int%C3%A9ress%C3%A9e%20par%20le%20coaching%20en%20duo%20%C3%A0%20Antony%20%F0%9F%98%8A" class="btn-main" target="_blank" rel="noopener">Demander le tarif duo →</a>
+<!-- 4. COMMENT ON DÉMARRE -->
+<section class="band">
+  <div class="wrap">
+    <div class="head"><h2>Comment on démarre <span class="hl">à Antony</span></h2></div>
+    <div class="step3 cc">
+      <div><span class="n">1</span><h3>Bilan offert</h3><p>15 minutes par appel, ou directement par messages WhatsApp si tu préfères écrire. On parle de ton objectif et de ce qui a bloqué jusqu'ici.</p></div>
+      <div><span class="n">2</span><h3>Séance d'essai</h3><p>Chez toi à Antony, avec le petit matériel que j'apporte — un salon suffit. 50€, déduits si tu continues.</p></div>
+      <div><span class="n">3</span><h3>Ton parcours</h3><p>3 mois pour de vrais résultats, avec ton suivi WhatsApp et ton espace cliente (mensurations, photos, évolution).</p></div>
+    </div>
   </div>
 </section>
 
-<!-- VOISINES -->
-<section class="city-section" style="text-align:center;">
-  <h2 class="section-title">J'interviens aussi <em>à côté</em></h2>
-  <div class="city-voisines"><a href="coach-sportif-domicile-massy.html">Coach à domicile à Massy →</a><a href="coach-sportif-domicile-chilly-mazarin.html">Coach à domicile à Chilly-Mazarin →</a><a href="coach-sportif-domicile-champlan.html">Coach à domicile à Champlan →</a><a href="coach-sportif-domicile-longjumeau.html">Coach à domicile à Longjumeau →</a><a href="coach-sportif-domicile-saulx-les-chartreux.html">Coach à domicile à Saulx-les-Chartreux →</a></div>
-  <p style="margin-top:16px;"><a href="coach-sportif-essonne.html" style="color:#8A7060;font-weight:600;">← Toutes mes zones en Essonne (91) & Hauts-de-Seine (92)</a></p>
-</section>
-
-<!-- CTA FINAL -->
-<section class="city-section" style="text-align:center;">
-  <h2 class="section-title">Prête à commencer à <em>Antony</em> ?</h2>
-  <p class="section-subtitle">Dis-moi ton objectif lors du bilan gratuit (15 min), je te propose la formule la plus adaptée — à domicile, hybride ou à distance.</p>
-  <div class="cta-buttons" style="margin-top:22px;">
-    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn-main" target="_blank" rel="noopener">Mon bilan gratuit 15 min →</a>
+<!-- 5. FORMULES & TARIFS -->
+<section class="band band--sand">
+  <div class="wrap">
+    <div class="head"><h2>Formules & <span class="hl">tarifs</span></h2></div>
+    <div class="fcards">
+      <div class="fcard is-dom"><h3>Domicile</h3><span class="amt">dès 240€/mois</span><p>1 séance/semaine chez toi à Antony, tout inclus. Essai 50€ pour tester (déduit si tu continues).</p></div>
+      <div class="fcard is-hyb"><h3>Hybride</h3><span class="amt">149€/mois</span><p>1 séance avec moi par mois + programme sur-mesure & suivi WhatsApp toute la semaine.</p></div>
+      <div class="fcard is-dist"><h3>À distance</h3><span class="amt">dès 89€/mois</span><p>Programme seul dès 79€, ou avec suivi dès 89€/mois — partout en France.</p></div>
+    </div>
+    <p class="links2"><a class="link" href="prix-coach-sportif-domicile-essonne.html">Voir le détail des prix</a><a class="link" href="offres.html">Toutes les formules</a></p>
   </div>
 </section>
 
-<footer>
-  <div class="footer-logo"><img src="images/logo.png" alt="Ornella Fit Coaching" class="footer-logo-img" loading="lazy" width="3135" height="793"></div>
-  <p class="footer-slogan">« Ton plus bel investissement, c'est toi. »</p>
-  <div class="footer-links">
-    <a href="/">Accueil</a>
-    <a href="offres.html">Coaching</a>
-    <a href="prix-coach-sportif-domicile-essonne.html">Prix coach à domicile</a>
-    <a href="coach-sportif-essonne.html">Coach sportif Essonne</a>
-    <a href="transformations.html">Transformations</a>
-    <a href="apropos.html">À propos</a>
-    <a href="faq.html">FAQ</a>
-    <a href="https://wa.me/33756834626" target="_blank">WhatsApp</a>
+<!-- 6. RÉSULTAT RÉEL -->
+<section class="band band--white">
+  <div class="wrap duo">
+    <div class="photo tr-photo"><img loading="lazy" src="images/louise-face.webp?v=2" alt="Transformation Louise — coaching sportif à domicile Essonne" width="1080" height="1080"></div>
+    <div class="tr-txt">
+      <p class="kick">Résultat réel</p>
+      <p>Louise a obtenu <strong>−9 cm de tour de taille et −5 kg en 9 mois</strong> à domicile, 2 fois par semaine. Des résultats mesurés, sur une vraie cliente, pas un avant/après retouché.</p>
+      <a class="link" href="transformations.html">Voir toutes les transformations</a>
+    </div>
   </div>
-  <p class="footer-info">Ornella · Coach sportive Hauts-de-Seine (92) · Île-de-France · ornellafit.coaching@gmail.com</p>
-  <p class="footer-info footer-zones">Coach sportive à domicile : <a href="/coach-sportif-domicile-saulx-les-chartreux.html">Saulx-les-Chartreux</a> · <a href="/coach-sportif-domicile-massy.html">Massy</a> · <a href="/coach-sportif-domicile-palaiseau.html">Palaiseau</a> · <a href="/coach-sportif-domicile-longjumeau.html">Longjumeau</a> · <a href="/coach-sportif-domicile-champlan.html">Champlan</a> · <a href="/coach-sportif-domicile-villebon-sur-yvette.html">Villebon-sur-Yvette</a> · <a href="/coach-sportif-domicile-chilly-mazarin.html">Chilly-Mazarin</a> · <a href="/coach-sportif-domicile-epinay-sur-orge.html">Épinay-sur-Orge</a> · Antony</p>
-  <p class="footer-copy">© 2026 Ornella Fit Coaching — Tous droits réservés</p>
-  <p class="footer-legal"><a href="mentions-legales.html">Mentions légales</a> · <a href="cgv.html">CGV</a></p>
+</section>
+
+<!-- 7. FAQ -->
+<section class="band band--blush">
+  <div class="wrap faqw">
+    <div class="head"><h2>Questions fréquentes à <span class="hl">Antony</span></h2></div>
+    <div class="faq cc">
+      <details><summary>Tu interviens bien à Antony, dans le 92 ?</summary><div class="a"><p>Oui. Antony est juste à côté de mon secteur de l'Essonne, j'y viens régulièrement : centre, Croix de Berny, Les Baconnets, Pajeaud, La Fontaine.</p></div></details>
+      <details><summary>Quel est le tarif d&#x27;un coach à domicile à Antony ?</summary><div class="a"><p>Coaching à domicile dès 240€/mois (1 séance/semaine, tout inclus). Séance d'essai à 50€ possible, déduite si tu continues.</p></div></details>
+      <details><summary>Fais-tu aussi du post-partum à Antony ?</summary><div class="a"><p>Oui, c'est une de mes spécialités. Reprise progressive, respect du périnée et du diastasis, pour retrouver ton corps en sécurité après bébé.</p></div></details>
+      <details><summary>Et si j&#x27;habite une commune voisine (Sceaux, Bourg-la-Reine) ?</summary><div class="a"><p>Dis-moi ton adresse au moment du bilan gratuit : j'interviens à Antony et dans plusieurs communes limitrophes selon les créneaux.</p></div></details>
+      <details><summary>Je n&#x27;aime pas téléphoner, je peux faire le bilan par message ?</summary><div class="a"><p>Oui, bien sûr. Tu peux faire ton bilan directement par messages sur WhatsApp : tu m&#x27;expliques ton objectif, je te réponds et je te propose la formule la plus adaptée.</p></div></details>
+      <details><summary>Peut-on faire les séances à deux à Antony ?</summary><div class="a"><p>Oui, je propose le coaching en duo à domicile : avec une amie, ta mère ou ta sœur, chez l&#x27;une de vous deux. Demande-moi le tarif duo pendant ton bilan offert.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- 8. DUO -->
+<section class="band band--night">
+  <div class="wrap center" style="text-align:center">
+    <h2>À deux, <span class="hl">c'est encore mieux</span></h2>
+    <p>Le coaching en duo à domicile marche très bien à Antony : avec une amie, ta sœur, ta mère ou une voisine. Même séance, chez l'une de vous deux, et deux fois plus de motivation pour ne rien lâcher.</p>
+    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20%21%20Je%20suis%20int%C3%A9ress%C3%A9e%20par%20le%20coaching%20en%20duo%20%C3%A0%20Antony%20%F0%9F%98%8A" class="btn" target="_blank" rel="noopener">Demander le tarif duo</a>
+  </div>
+</section>
+
+<!-- 9. VILLES VOISINES -->
+<section class="band">
+  <div class="wrap">
+    <div class="head"><h2>J'interviens aussi <span class="hl">à côté</span></h2></div>
+    <div class="vlinks cc"><a href="coach-sportif-domicile-massy.html">Coach à domicile à Massy</a><a href="coach-sportif-domicile-chilly-mazarin.html">Coach à domicile à Chilly-Mazarin</a><a href="coach-sportif-domicile-champlan.html">Coach à domicile à Champlan</a><a href="coach-sportif-domicile-longjumeau.html">Coach à domicile à Longjumeau</a><a href="coach-sportif-domicile-saulx-les-chartreux.html">Coach à domicile à Saulx-les-Chartreux</a></div>
+    <p class="back"><a class="link" href="coach-sportif-essonne.html">Toutes mes zones en Essonne (91) & Hauts-de-Seine (92)</a></p>
+  </div>
+</section>
+
+<!-- 10. APPEL FINAL -->
+<section id="cta-final" class="band band--coral final">
+  <div class="wrap">
+    <h2>Prête à commencer à <span class="hl">Antony</span> ?</h2>
+    <p>Dis-moi ton objectif lors du bilan gratuit (15 min), je te propose la formule la plus adaptée — à domicile, hybride ou à distance.</p>
+    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn" target="_blank" rel="noopener">Mon bilan gratuit 15 min</a>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <img src="images/logo.png" alt="Ornella Fit Coaching" width="3135" height="793" loading="lazy">
+    <p class="foot-slogan">« Ton plus bel investissement, c'est toi. »</p>
+    <nav aria-label="Pages du site">
+      <a href="offres.html">Coaching et tarifs</a>
+      <a href="programmes.html">Programmes digitaux</a>
+      <a href="transformations.html">Transformations</a>
+      <a href="entreprise.html">Entreprise</a>
+      <a href="apropos.html">À propos</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <div class="contact">
+      <a href="https://wa.me/33756834626" target="_blank" rel="noopener">WhatsApp 07 56 83 46 26</a>
+      <a href="https://www.instagram.com/coach.ornella" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:ornellafit.coaching@gmail.com">ornellafit.coaching@gmail.com</a>
+      <a href="links.html">Mes liens</a>
+    </div>
+    <details>
+      <summary>Coach sportive à domicile près de chez toi</summary>
+      <div>
+        <a href="coach-sportif-domicile-saulx-les-chartreux.html">Saulx-les-Chartreux</a>
+        <a href="coach-sportif-domicile-massy.html">Massy</a>
+        <a href="coach-sportif-domicile-palaiseau.html">Palaiseau</a>
+        <a href="coach-sportif-domicile-longjumeau.html">Longjumeau</a>
+        <a href="coach-sportif-domicile-champlan.html">Champlan</a>
+        <a href="coach-sportif-domicile-villebon-sur-yvette.html">Villebon-sur-Yvette</a>
+        <a href="coach-sportif-domicile-chilly-mazarin.html">Chilly-Mazarin</a>
+        <a href="coach-sportif-domicile-epinay-sur-orge.html">Épinay-sur-Orge</a>
+        <a href="coach-sportif-domicile-antony.html">Antony</a>
+        <a href="coach-sportif-essonne.html">Coach sportif Essonne</a>
+        <a href="prix-coach-sportif-domicile-essonne.html">Prix coach à domicile</a>
+      </div>
+    </details>
+    <details>
+      <summary>Ressources et bonus</summary>
+      <div>
+        <a href="coach-perte-de-poids.html">Coach perte de poids</a>
+        <a href="coach-sportif-ou-salle-de-sport.html">Salle ou coach : le comparatif</a>
+        <a href="blog.html">Blog</a>
+        <a href="booty-sculpt.html">Booty Sculpt</a>
+        <a href="ventre-plat.html">Ventre Plat</a>
+        <a href="challenge-ventre-plat.html">Challenge gratuit</a>
+        <a href="guide-9-erreurs.html?src=site-footer">Guide gratuit</a>
+        <a href="programme-fidelite.html">Programme fidélité</a>
+        <a href="carte-marraine.html">Parrainage</a>
+      </div>
+    </details>
+    <p class="legal"><span>© 2026 Ornella Fit Coaching</span><a href="mentions-legales.html">Mentions légales</a><a href="cgv.html">CGV</a><a href="mentions-legales.html#rgpd">Confidentialité</a></p>
+  </div>
 </footer>
 
-<!-- STICKY MOBILE BAR — même bouton que sur l'accueil -->
-<div class="mobile-sticky-bar">
-  <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="sticky-cta-main" target="_blank" rel="noopener">💬 Échange gratuit de 15 min →</a>
+<div class="sticky" id="sticky-bar">
+  <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn" id="sticky-main-cta" target="_blank" rel="noopener">Échange gratuit de 15 min</a>
 </div>
 
-<a href="https://wa.me/33756834626" class="floating-wa" target="_blank" title="WhatsApp" aria-label="WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-
 <script defer src="/suivi-clics.js"></script>
+<script>
+{
+  const nav=document.querySelector('.nav');
+  const onScroll=()=>nav.classList.toggle('is-scrolled',scrollY>8);
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+  const bar=document.getElementById('sticky-bar');
+  if('IntersectionObserver' in window){
+    const seen={'hero-cta':true,'cta-final':false};
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{seen[e.target.id]=e.isIntersecting});bar.classList.toggle('show',!seen['hero-cta']&&!seen['cta-final'])},{threshold:0});
+    ['hero-cta','cta-final'].forEach(id=>io.observe(document.getElementById(id)));
+  }
+}
+</script>
 </body>
 </html>
