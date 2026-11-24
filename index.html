@@ -40,8 +40,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="images/logo.png">
-<link rel="preload" as="image" href="images/ornella-ext-arbre.webp" type="image/webp" fetchpriority="high">
-<link rel="stylesheet" href="style.css">
+<link rel="preload" as="image" href="images/ornella-photo-bleue-originale.webp" type="image/webp" fetchpriority="high">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -129,2099 +128,610 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     },
     {
       "@type": "Question",
-      "name": "Quand est-ce que je vais voir les premiers résultats ?",
+      "name": "Combien ça coûte ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Plus d'énergie et un meilleur sommeil dès la 2e ou 3e semaine. Les changements visibles sur la silhouette arrivent généralement entre 4 et 8 semaines, selon ton point de départ et ta régularité."
+        "text": "Une salle que tu n'utilises pas coûte plus cher qu'un coaching qui marche. Programme sur-mesure et suivi sont inclus dans chaque formule, à partir de 89 €/mois à distance. Tout le détail est sur la page tarifs."
       }
     },
     {
       "@type": "Question",
-      "name": "Faut-il une salle de sport ou du matériel ?",
+      "name": "Je n'ai ni le temps ni le matériel : c'est possible ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Non. Un tapis de sol suffit pour commencer, des élastiques peuvent venir ensuite. Si tu as accès à une salle, on peut l'intégrer, mais ce n'est jamais obligatoire."
+        "text": "Oui. Ton programme s'adapte à ton planning, pas l'inverse : à domicile, je viens chez toi, zéro trajet ; à distance, tu t'entraînes quand tu peux. Un tapis de sol suffit pour commencer, des élastiques peuvent venir ensuite. Si tu as accès à une salle, on peut l'intégrer, mais ce n'est jamais obligatoire."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Je débute, ou je ne suis plus toute jeune : c'est pour moi ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui. Celles qui partent de zéro progressent le plus vite : je pars de ton niveau réel, sans jugement. Et à domicile, personne ne te regarde. Mes clientes ont de 25 à 55 ans. Ton corps change avec l'âge, il ne s'arrête pas d'évoluer : il lui faut juste un programme adapté."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Je n'habite pas en Essonne : comment on fait ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Je viens à domicile en Essonne (91) et dans le sud du 92. Partout ailleurs, on travaille à distance : même programme sur-mesure, même suivi WhatsApp."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Je suis enceinte ou en post-partum : c'est adapté ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "C'est ma spécialité, je l'ai vécu. Reprise en sécurité : périnée, diastasis, progression à ton rythme. Je travaille en complément de ta rééducation périnéale, validée par ta sage-femme ou ton kiné."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quand vais-je voir les premiers résultats ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Plus d'énergie et un meilleur sommeil dès la 2e ou 3e semaine. Les changements visibles sur la silhouette arrivent généralement entre 4 et 8 semaines, selon ton point de départ et ta régularité. Je ne promets ni résultats sans effort, ni programme copié-collé, ni transformation en 2 semaines. Je promets un programme pour ta vraie vie, un suivi honnête chaque semaine et des ajustements jusqu'au résultat."
       }
     }
   ]
 }
 </script>
-<style>
-/* ===== NAV HOMEPAGE — logo centré & agrandi ===== */
-nav {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  z-index: 450;
-  top: 42px; /* CSS fallback — JS ajuste dynamiquement */
-}
-nav .nav-logo { grid-column: 2; justify-content: center; }
-/* nav-menu est position:fixed, pas de grid-column pour éviter l'overflow */
-nav .nav-toggle { grid-column: 3; justify-self: flex-end; }
-.nav-logo-img { height: 56px; }
-@media (max-width: 768px) {
-  nav { grid-template-columns: auto 1fr; top: 72px; }
-  nav .nav-logo { grid-column: 1; }
-  nav .nav-toggle { grid-column: 2; }
-  .nav-logo-img { height: 46px; }
-  /* Menu ouvert : z-index maximal, position sous la nav mobile */
-  .nav-menu { top: 136px !important; z-index: 9999 !important; }
-}
-
-/* ===== HERO ===== */
-#hero {
-  min-height: 100vh; padding: 130px 40px 72px;
-  display: flex; flex-direction: column;
-  justify-content: center; align-items: center;
-  position: relative;
-  background: linear-gradient(165deg, #FAF7F2 0%, #F5EDE4 40%, #EDD9C8 100%);
-  overflow: hidden;
-}
-#hero::before {
-  content: ''; position: absolute;
-  top: -80px; right: -80px; width: 500px; height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(212,165,165,0.22) 0%, transparent 70%);
-  pointer-events: none;
-}
-#hero::after {
-  content: ''; position: absolute;
-  bottom: -60px; left: -60px; width: 320px; height: 320px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,169,110,0.14) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-split {
-  display: flex; align-items: center; gap: 64px;
-  max-width: 1120px; width: 100%; margin: 0 auto;
-  position: relative; z-index: 1;
-}
-.hero-content { flex: 1; text-align: left; }
-.hero-photo-col { flex-shrink: 0; width: 360px; }
-.hero-photo-frame {
-  border-radius: 32px; overflow: hidden;
-  box-shadow: 0 24px 64px rgba(44,31,26,0.18), 0 8px 24px rgba(44,31,26,0.1);
-  position: relative;
-}
-.hero-photo-frame::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 55%, rgba(44,31,26,0.12) 100%);
-  pointer-events: none;
-}
-.hero-photo-frame img,
-.hero-photo-frame video {
-  width: 100%; height: 580px;
-  object-fit: cover; object-position: center top;
-  display: block;
-}
-@media (max-width: 1024px) {
-  .hero-split { gap: 32px; }
-  .hero-photo-col { width: 280px; }
-  .hero-photo-frame img, .hero-photo-frame video { height: 460px; }
-}
-@media (max-width: 768px) {
-  .hero-split { flex-direction: column; gap: 24px; }
-  .hero-photo-col { width: 100%; }
-  .hero-photo-frame { border-radius: 20px; }
-  .hero-photo-frame img { height: 320px; }
-  .hero-photo-frame video {
-    height: auto !important;
-    max-height: 360px;
-    object-fit: contain;
-    background: #1A110E;
-  }
-}
-.hero-badge {
-  display: inline-block;
-  background: rgba(201,169,110,0.18); border: 1px solid rgba(201,169,110,0.38);
-  color: var(--brown); padding: 6px 18px; border-radius: 50px;
-  font-size: 0.76rem; font-weight: 500; letter-spacing: 0.09em;
-  text-transform: uppercase; margin-bottom: 22px;
-}
-.hero-story {
-  font-size: 1rem; font-style: italic; color: var(--brown);
-  max-width: 500px; margin-bottom: 20px; line-height: 1.6;
-  border-left: 3px solid var(--accent); padding-left: 14px;
-}
-.hero-title {
-  font-size: clamp(2.8rem, 6.2vw, 5.2rem);
-  font-weight: 600; line-height: 1.05;
-  color: var(--dark); margin-bottom: 24px; max-width: 600px;
-}
-.hero-title em { font-style: italic; color: var(--accent); font-weight: 600; }
-.hero-title-mobile { display: none; }
-.hero-video-mobile { display: none; }
-.hero-sub-mobile { display: none; }
-.hero-targets-mobile {
-  display: flex; flex-wrap: wrap; gap: 8px;
-  margin-bottom: 20px;
-}
-.hero-targets-mobile span {
-  background: rgba(201,99,88,0.08);
-  border: 1px solid rgba(201,99,88,0.2);
-  color: var(--dark); font-size: 0.8rem;
-  font-weight: 500; padding: 6px 14px; border-radius: 50px;
-}
-.hero-sub {
-  font-size: 1.08rem; color: var(--text-mid);
-  max-width: 500px; margin-bottom: 22px;
-  font-weight: 400; line-height: 1.78;
-}
-.hero-benefit {
-  font-size: 1.02rem; color: var(--dark);
-  max-width: 480px; margin-bottom: 18px;
-  font-weight: 600; line-height: 1.6;
-}
-.hero-stats {
-  display: flex; gap: 0; margin-bottom: 28px;
-  background: white; border: 1px solid rgba(201,99,88,0.18);
-  border-radius: 16px; overflow: hidden; max-width: 460px;
-}
-.hero-stat-item {
-  flex: 1; padding: 14px 10px; text-align: center;
-  border-right: 1px solid rgba(201,185,154,0.25);
-}
-.hero-stat-item:last-child { border-right: none; }
-.hero-stat-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem; font-weight: 600; color: var(--accent);
-  line-height: 1;
-}
-.hero-stat-label { font-size: 0.68rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.07em; margin-top: 4px; }
-.hero-global {
-  background: rgba(255,255,255,0.65);
-  border-left: 3px solid var(--rose-deep);
-  border-radius: 0 12px 12px 0;
-  padding: 14px 18px; margin-bottom: 18px; max-width: 500px;
-}
-.hero-global p { font-size: 0.9rem; color: var(--dark); line-height: 1.6; }
-.hero-global p:first-child { font-weight: 600; margin-bottom: 4px; }
-.hero-postpartum {
-  font-size: 0.88rem; color: var(--text-mid); font-style: italic;
-  margin-bottom: 18px; max-width: 460px; line-height: 1.65;
-}
-.hero-projection {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem; color: var(--brown); font-style: italic;
-  margin-bottom: 28px; font-weight: 400; line-height: 1.5;
-}
-.hero-note {
-  font-size: 0.81rem; color: var(--text-light);
-  margin-top: 10px; margin-bottom: 0;
-}
-.hero-goal-picker {
-  margin-bottom: 20px; padding: 18px 20px; max-width: 500px;
-  background: rgba(255,255,255,0.6); border: 1px solid rgba(201,99,88,0.18);
-  border-radius: 16px;
-}
-.hero-goal-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
-.hero-goal-label { font-size: 0.84rem; font-weight: 400; color: var(--text-mid); margin-bottom: 12px; line-height: 1.5; }
-.hero-goal-options { display: flex; flex-wrap: wrap; gap: 8px; }
-.hero-goal-btn {
-  background: white; border: 1.5px solid rgba(201,99,88,0.3);
-  color: var(--dark); font-size: 0.82rem; font-weight: 600;
-  padding: 9px 16px; border-radius: 50px; cursor: pointer;
-  font-family: 'DM Sans', sans-serif; transition: all 0.2s;
-}
-.hero-goal-btn:hover, .hero-goal-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
-.hero-goal-result { display: none; gap: 12px; flex-wrap: wrap; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(201,99,88,0.18); }
-.hero-goal-result.visible { display: flex; }
-.hero-goal-result-card { flex: 1; min-width: 180px; }
-.hero-goal-result-link {
-  display: inline-block; padding: 10px 18px; border-radius: 50px;
-  font-size: 0.82rem; font-weight: 700; text-decoration: none;
-}
-.hero-goal-result-digital { background: rgba(201,99,88,0.1); color: var(--accent); border: 1.5px solid rgba(201,99,88,0.3); }
-.hero-goal-result-coaching { background: var(--accent); color: white; }
-.hero-goal-result-sub { font-size: 0.76rem; color: var(--text-light); margin-top: 6px; line-height: 1.4; }
-.hero-price-day {
-  margin-top: 22px; padding: 14px 18px;
-  background: rgba(201,169,110,0.11);
-  border: 1px solid rgba(201,169,110,0.28);
-  border-radius: 12px; max-width: 460px;
-}
-.hero-price-day span { font-size: 0.88rem; color: var(--dark); display: block; line-height: 1.5; }
-.hero-price-day strong { color: var(--gold); font-weight: 600; }
-.hero-price-compare { font-size: 0.81rem !important; color: var(--text-light) !important; font-style: italic; margin-top: 5px !important; }
-
-/* ===== HERO PROOF BLOCK ===== */
-.hero-proof {
-  display: flex; gap: 0;
-  background: white;
-  border-radius: 16px; overflow: hidden;
-  margin-bottom: 22px; max-width: 460px;
-  border: 1px solid rgba(201,99,88,0.2);
-  box-shadow: 0 4px 20px rgba(139,111,94,0.08);
-}
-.hero-proof-item {
-  flex: 1; padding: 14px 10px; text-align: center;
-  border-right: 1px solid rgba(201,185,154,0.25);
-}
-.hero-proof-item:last-child { border-right: none; }
-.hero-proof-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.55rem; font-weight: 700; color: #C96358;
-  display: block; line-height: 1;
-}
-.hero-proof-label { font-size: 0.67rem; color: #8A7060; margin-top: 5px; display: block; line-height: 1.3; text-transform: uppercase; letter-spacing: 0.05em; }
-
-/* ===== IDENTIFICATION ===== */
-#identification { background: linear-gradient(180deg, #FAF7F4 0%, #F5EDE5 100%); }
-#identification .inner { max-width: 900px; margin: 0 auto; text-align: center; }
-.pain-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; margin-top: 48px; }
-.pain-card {
-  background: var(--cream); border: 1px solid rgba(201,185,154,0.3);
-  border-radius: 20px; padding: 28px 24px; text-align: left;
-  transition: all 0.3s ease; position: relative; overflow: hidden;
-}
-.pain-card::before {
-  content: ''; position: absolute; top: 0; left: 0;
-  width: 3px; height: 100%;
-  background: linear-gradient(to bottom, var(--rose), var(--rose-deep));
-}
-.pain-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(139,111,94,0.12); }
-.pain-icon { font-size: 1.8rem; margin-bottom: 12px; }
-.pain-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-.pain-text { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; font-weight: 400; }
-
-/* ===== PROJECTION ===== */
-#projection { background: linear-gradient(150deg, var(--cream) 0%, #F2E8DF 100%); }
-#projection .inner { max-width: 900px; margin: 0 auto; }
-.projection-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; margin-top: 48px; }
-.proj-card {
-  background: white; border-radius: 24px; padding: 32px 26px;
-  box-shadow: 0 4px 24px rgba(139,111,94,0.08);
-  display: flex; flex-direction: column; gap: 10px; transition: transform 0.3s ease;
-}
-.proj-card:hover { transform: translateY(-4px); }
-.proj-emoji { font-size: 2rem; }
-.proj-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--dark); }
-.proj-text { font-size: 0.88rem; color: var(--text-mid); line-height: 1.9; font-weight: 400; }
-
-/* ===== TEASER APROPOS ===== */
-#teaser-apropos {
-  background: linear-gradient(150deg, #2C1F1A 0%, #3D2B24 100%);
-  color: white; position: relative; overflow: hidden;
-}
-#teaser-apropos::before {
-  content: ''; position: absolute; top: -80px; right: -80px;
-  width: 400px; height: 400px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(212,165,165,0.1) 0%, transparent 70%);
-}
-#teaser-apropos .inner { position: relative; z-index: 1; display: flex; gap: 60px; align-items: center; }
-.teaser-story { flex: 1; }
-.teaser-story .section-label { color: var(--gold); }
-.teaser-story .section-title { color: white; font-size: clamp(1.6rem, 4vw, 2.4rem); }
-.teaser-story .section-title em { color: var(--rose); }
-.teaser-text { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 28px; }
-.teaser-quote {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem; font-style: italic;
-  color: rgba(255,255,255,0.9); line-height: 1.5;
-  border-left: 2px solid var(--gold); padding-left: 20px;
-  margin-bottom: 28px;
-}
-.teaser-link {
-  display: inline-flex; align-items: center; gap: 8px;
-  color: var(--gold); text-decoration: none;
-  font-size: 0.9rem; font-weight: 500;
-  border-bottom: 1px solid rgba(201,169,110,0.4);
-  padding-bottom: 2px; transition: all 0.2s;
-}
-.teaser-link:hover { color: white; border-color: white; }
-
-/* ===== APERÇU OFFRES ===== */
-#apercu-offres { background: var(--cream); }
-#apercu-offres .inner { max-width: 1000px; margin: 0 auto; text-align: center; }
-.apercu-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
-.apercu-card {
-  background: white; border-radius: 24px; padding: 32px 24px;
-  border: 1px solid rgba(201,185,154,0.2);
-  box-shadow: 0 4px 20px rgba(139,111,94,0.07);
-  display: flex; flex-direction: column; text-align: left;
-  transition: all 0.3s ease; text-decoration: none; color: inherit;
-}
-.apercu-card:hover { transform: translateY(-6px); box-shadow: 0 16px 50px rgba(139,111,94,0.14); }
-.apercu-card.featured {
-  background: linear-gradient(150deg, #2C1F1A 0%, #3D2B24 100%);
-  border-color: rgba(201,169,110,0.4);
-  transform: translateY(-8px);
-  box-shadow: 0 28px 70px rgba(44,31,26,0.22);
-}
-.apercu-card.featured:hover { transform: translateY(-14px); box-shadow: 0 36px 80px rgba(44,31,26,0.28); }
-.apercu-card.secondary {
-  background: white;
-  border-color: rgba(201,185,154,0.2);
-  opacity: 0.82;
-}
-.apercu-badge {
-  display: inline-flex; align-items: center; gap: 5px;
-  background: rgba(201,169,110,0.15); color: var(--gold);
-  border: 1px solid rgba(201,169,110,0.35); border-radius: 999px;
-  padding: 4px 12px; font-size: 0.68rem; font-weight: 700;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  margin-bottom: 14px; width: fit-content;
-}
-.apercu-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.5rem; font-weight: 400; color: var(--accent);
-  line-height: 1; margin-bottom: 12px;
-}
-.apercu-card.featured .apercu-num { color: rgba(212,165,165,0.6); }
-.apercu-type {
-  font-size: 0.72rem; text-transform: uppercase;
-  letter-spacing: 0.1em; color: var(--gold); font-weight: 600; margin-bottom: 8px;
-}
-.apercu-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem; font-weight: 600; color: var(--dark); margin-bottom: 10px;
-}
-.apercu-card.featured .apercu-title { color: white; }
-.apercu-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.65; flex: 1; margin-bottom: 20px; }
-.apercu-card.featured .apercu-desc { color: rgba(255,255,255,0.65); }
-.apercu-hook { font-size: 0.8rem; color: rgba(201,169,110,0.9); font-style: italic; line-height: 1.5; margin-bottom: 20px; margin-top: -14px; }
-.apercu-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem; font-weight: 600; color: var(--dark); margin-bottom: 16px;
-}
-.apercu-card.featured .apercu-price { color: var(--gold); }
-.apercu-cta {
-  font-size: 0.84rem; color: var(--rose-deep); font-weight: 600;
-  display: flex; align-items: center; gap: 6px;
-}
-.apercu-card.featured .apercu-cta {
-  background: linear-gradient(135deg, #C96358, #C9957A);
-  color: white; padding: 12px 20px; border-radius: 50px;
-  justify-content: center; font-size: 0.88rem;
-}
-.apercu-note { margin-top: 28px; font-size: 0.85rem; color: var(--text-light); font-style: italic; }
-.apercu-quiz-nudge {
-  margin-top: 20px; font-size: 0.92rem; color: var(--text-mid);
-}
-.apercu-quiz-nudge a {
-  color: var(--rose-deep); font-weight: 700; text-decoration: none;
-  border-bottom: 1px solid currentColor; padding-bottom: 1px;
-}
-.apercu-cta-btn {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  background: linear-gradient(135deg, #C96358, #C9957A);
-  color: white; padding: 13px 20px; border-radius: 50px;
-  font-size: 0.88rem; font-weight: 700; text-decoration: none;
-  margin-top: auto; transition: opacity 0.2s;
-}
-.apercu-cta-btn:hover { opacity: 0.85; color: white; }
-.apercu-card.featured .apercu-cta-btn {
-  background: linear-gradient(135deg, #F0E4D8, #E4D0BE);
-  color: #1E1616;
-}
-.apercu-card-mini {
-  background: white; border-radius: 20px; padding: 26px 18px;
-  border: 1px solid rgba(201,185,154,0.25);
-  box-shadow: 0 4px 20px rgba(139,111,94,0.07);
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-  text-align: center; text-decoration: none; color: inherit;
-  transition: all 0.3s ease;
-}
-.apercu-card-mini:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(139,111,94,0.14); }
-.apercu-card-mini.featured {
-  background: linear-gradient(150deg, #2C1F1A 0%, #3D2B24 100%);
-  border-color: rgba(201,169,110,0.4);
-}
-.apercu-mini-icon { font-size: 1.8rem; line-height: 1; }
-.apercu-mini-name {
-  font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
-  font-weight: 600; color: var(--dark);
-}
-.apercu-card-mini.featured .apercu-mini-name { color: white; }
-.apercu-mini-price { font-size: 0.85rem; color: var(--gold); font-weight: 600; }
-.apercu-card-mini.featured .apercu-mini-price { color: #E4C89A; }
-
-/* ===== VALEUR ===== */
-#valeur { background: linear-gradient(150deg, #F5EDE4 0%, #EDD9C8 100%); text-align: center; }
-#valeur .inner { max-width: 820px; margin: 0 auto; }
-.valeur-compare {
-  display: grid; grid-template-columns: 1fr auto 1fr;
-  gap: 20px; align-items: center;
-  margin-top: 48px; margin-bottom: 32px;
-}
-.valeur-col { background: white; border-radius: 24px; padding: 32px 24px; }
-.valeur-col.good {
-  background: linear-gradient(150deg, #2C1F1A, #3D2B24);
-  border: 1px solid rgba(201,169,110,0.3);
-}
-.valeur-col.bad .col-title { color: var(--text-light); }
-.valeur-col.good .col-title { color: var(--gold); }
-.valeur-col.good .col-item { color: rgba(255,255,255,0.75); }
-.col-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; }
-.col-items { display: flex; flex-direction: column; gap: 12px; }
-.col-item { font-size: 0.88rem; color: var(--text-mid); display: flex; align-items: center; gap: 10px; text-align: left; }
-.col-item span { font-size: 1rem; }
-.valeur-vs { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-style: italic; color: var(--rose-deep); text-align: center; }
-.valeur-alert {
-  background: var(--dark); color: white;
-  border-radius: 16px; padding: 18px 24px;
-  font-size: 0.95rem; line-height: 1.6; margin: 0 auto 28px;
-  max-width: 600px; text-align: center;
-}
-.valeur-alert em { color: var(--gold); font-style: italic; }
-.valeur-msg {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
-  font-style: italic; color: var(--dark);
-  line-height: 1.6; max-width: 600px; margin: 0 auto;
-}
-
-/* ===== LONGEVITE ===== */
-#longevite { background: white; }
-#longevite .inner { max-width: 900px; margin: 0 auto; }
-.long-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
-.long-card {
-  background: var(--cream); border-radius: 24px; padding: 32px 24px;
-  border: 1px solid rgba(201,185,154,0.2);
-  text-align: center; transition: transform 0.3s ease;
-}
-.long-card:hover { transform: translateY(-4px); }
-.long-icon { font-size: 2.2rem; margin-bottom: 16px; }
-.long-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--dark); margin-bottom: 10px; }
-.long-text { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; font-weight: 400; }
-
-/* ===== TÉMOIGNAGES ===== */
-#temoignages { background: linear-gradient(150deg, var(--cream) 0%, #F2E8DF 100%); text-align: center; }
-#temoignages .inner { max-width: 1000px; margin: 0 auto; }
-.temo-msg {
-  background: white; border-radius: 20px; padding: 40px;
-  border: 2px dashed rgba(201,185,154,0.4);
-  max-width: 600px; margin: 48px auto 0;
-}
-.temo-msg-icon { font-size: 2.5rem; margin-bottom: 16px; }
-.temo-msg-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem; font-style: italic;
-  color: var(--dark); line-height: 1.6; margin-bottom: 10px;
-}
-.temo-msg-sub { font-size: 0.85rem; color: var(--text-light); }
-.temo-cta-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  color: var(--rose-deep); font-size: 0.88rem; font-weight: 600;
-  text-decoration: none; margin-top: 20px;
-  border-bottom: 1px solid rgba(192,128,128,0.3); padding-bottom: 2px;
-}
-
-/* ===== TRANSFORMATION PROOF ===== */
-#transfo-proof { background: linear-gradient(150deg, var(--cream) 0%, #F0E4D8 100%); }
-#transfo-proof .inner { max-width: 900px; margin: 0 auto; text-align: center; }
-
-/* Photos grid */
-.transfo-photos-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin: 36px 0 28px;
-}
-.transfo-img-wrap {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 14px 44px rgba(44,31,26,0.16);
-}
-.transfo-img-wrap img {
-  width: 100%;
-  display: block;
-  object-fit: cover; height:auto;}
-.transfo-img-label {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: rgba(44,31,26,0.78);
-  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
-  color: rgba(255,255,255,0.92);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 5px 11px;
-  border-radius: 50px;
-}
-.transfo-img-tag {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(201,99,88,0.88);
-  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
-  color: white;
-  font-size: 0.67rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 5px 14px;
-  border-radius: 50px;
-  white-space: nowrap;
-}
-
-/* Stats pills */
-.transfo-stats-row {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 28px;
-}
-.transfo-stat-pill {
-  background: white;
-  border-radius: 16px;
-  padding: 14px 20px;
-  text-align: center;
-  box-shadow: 0 4px 16px rgba(139,111,94,0.1);
-  border: 1px solid rgba(201,185,154,0.25);
-  min-width: 88px;
-  flex: 1;
-  max-width: 140px;
-}
-.transfo-stat-pill.accent {
-  background: linear-gradient(135deg, #2C1F1A, #3D2B24);
-  border-color: rgba(201,169,110,0.3);
-}
-.transfo-stat-big {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--accent);
-  line-height: 1;
-}
-.transfo-stat-pill.accent .transfo-stat-big { color: #C9A96E; }
-.transfo-stat-desc {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #9A8878;
-  margin-top: 5px;
-  line-height: 1.3;
-}
-.transfo-stat-pill.accent .transfo-stat-desc { color: rgba(245,237,228,0.5); }
-
-/* Story block */
-.transfo-story {
-  background: white;
-  border-radius: 18px;
-  padding: 22px 24px;
-  border-left: 3px solid var(--accent);
-  box-shadow: 0 4px 16px rgba(139,111,94,0.08);
-  max-width: 620px;
-  margin: 0 auto 24px;
-  text-align: left;
-}
-.transfo-story-name {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 10px;
-}
-.transfo-story-text {
-  font-size: 0.9rem;
-  color: var(--text-mid);
-  line-height: 1.8;
-  font-style: italic;
-}
-.transfo-story-text strong { font-style: normal; color: var(--dark); }
-
-.transfo-link {
-  display: inline-flex; align-items: center; gap: 8px;
-  color: var(--accent); font-weight: 600; font-size: 0.9rem;
-  text-decoration: none; border-bottom: 2px solid rgba(201,99,88,0.3); padding-bottom: 2px;
-  transition: all 0.2s; margin-top: 8px;
-}
-.transfo-link:hover { border-color: var(--accent); }
-
-/* ===== FAQ HOME ===== */
-#faq-home { background: white; }
-#faq-home .inner { max-width: 750px; margin: 0 auto; }
-#faq-home .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; }
-#faq-home .faq-item {
-  background: var(--cream); border: 1px solid rgba(201,185,154,0.35);
-  border-radius: 18px; overflow: hidden; transition: box-shadow 0.2s;
-}
-#faq-home .faq-item.open { box-shadow: 0 6px 24px rgba(139,111,94,0.1); }
-#faq-home .faq-q {
-  padding: 20px 24px; cursor: pointer;
-  display: flex; justify-content: space-between; align-items: center; gap: 16px;
-  font-weight: 600; font-size: 0.97rem; color: var(--dark); user-select: none;
-}
-#faq-home .faq-q:hover { background: rgba(201,99,88,0.04); }
-#faq-home .faq-arrow {
-  width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
-  background: var(--accent); color: white;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem; transition: transform 0.3s ease; line-height: 1;
-}
-#faq-home .faq-item.open .faq-arrow { transform: rotate(45deg); }
-#faq-home .faq-a {
-  padding: 0 24px; max-height: 0; overflow: hidden;
-  transition: all 0.4s ease; font-size: 0.92rem;
-  color: var(--text-mid); line-height: 1.85; font-weight: 400;
-}
-#faq-home .faq-item.open .faq-a { max-height: 400px; padding: 4px 24px 22px; }
-
-/* ===== LEAD POPUP ===== */
-#lead-popup { display:none; position:fixed; inset:0; z-index:9999; align-items:center; justify-content:center; padding:20px; }
-#lead-popup.active { display:flex; }
-#lead-overlay { position:absolute; inset:0; background:rgba(30,22,22,0.72); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
-#lead-box {
-  position:relative; z-index:1; background:white; border-radius:28px;
-  padding:40px 36px; max-width:480px; width:100%;
-  box-shadow:0 32px 80px rgba(44,31,26,0.3); text-align:center;
-  animation:leadIn 0.35s ease;
-}
-@keyframes leadIn { from { opacity:0; transform:translateY(24px) scale(0.97); } to { opacity:1; transform:none; } }
-#lead-close { position:absolute; top:14px; right:18px; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--text-light); line-height:1; padding:4px; }
-.lead-badge { display:inline-block; background:rgba(201,99,88,0.1); color:var(--accent); border:1px solid rgba(201,99,88,0.22); padding:5px 16px; border-radius:50px; font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px; }
-.lead-title { font-family:'Cormorant Garamond',serif; font-size:1.65rem; font-weight:600; color:var(--dark); line-height:1.25; margin-bottom:10px; }
-.lead-title em { color:var(--accent); font-style:italic; }
-.lead-sub { font-size:0.88rem; color:var(--text-mid); line-height:1.65; margin-bottom:18px; }
-.lead-pills { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:22px; }
-.lead-pill { background:var(--cream); border:1px solid rgba(201,185,154,0.3); border-radius:50px; padding:5px 12px; font-size:0.75rem; color:var(--dark); font-weight:500; }
-#lead-form { display:flex; flex-direction:column; gap:10px; }
-#lead-email { width:100%; padding:16px 20px; border:1.5px solid rgba(201,185,154,0.4); border-radius:14px; font-size:0.95rem; font-family:'DM Sans',sans-serif; outline:none; transition:border-color 0.2s; box-sizing:border-box; }
-#lead-email:focus { border-color:var(--accent); }
-#lead-submit { width:100%; padding:17px; background:#C96358; color:white; border:none; border-radius:14px; font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:700; cursor:pointer; transition:all 0.2s; }
-#lead-submit:hover { background:#b85348; transform:translateY(-1px); }
-#lead-submit:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
-.lead-note { font-size:0.77rem; color:var(--text-light); margin-top:8px; }
-#lead-success { display:none; padding:20px; background:rgba(37,211,102,0.07); border:1px solid rgba(37,211,102,0.2); border-radius:14px; margin-top:14px; }
-#lead-success p { font-size:0.95rem; color:var(--dark); font-weight:600; margin-bottom:12px; }
-#lead-success a { display:inline-block; background:#C96358; color:white; padding:13px 28px; border-radius:50px; font-weight:700; font-size:0.9rem; text-decoration:none; }
-@media(max-width:768px) { #lead-box { padding:30px 20px; border-radius:22px; } .lead-title { font-size:1.35rem; } }
-
-
-/* ===== MOBILE INDEX ===== */
-@media (max-width: 768px) {
-  /* HERO — compact, sans vide en haut, photo dans le 1er écran */
-  #hero { padding: 22px 18px 30px; min-height: auto; justify-content: flex-start; }
-  .hero-split { flex-direction: column; gap: 0; }
-  .hero-content { text-align: center; }
-  /* Hero plus court sur mobile : photo recadrée en bannière (au lieu d'un plein écran) */
-  #hero .hero-bg { position: relative; height: 288px; min-height: 0; overflow: hidden; border-radius: 0 0 22px 22px; }
-  #hero .hero-bg img, #hero .hero-bg video { position: absolute; inset: 0; width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: top center !important; left: 0 !important; right: auto !important; }
-  /* Carte Maria retirée du hero sur mobile (déjà présente dans les transformations) */
-  #hero .hero-maria { display: none; }
-  /* Photo d'Ornella remontée au-dessus du texte sur mobile */
-  .hero-photo-col { order: -1; display: block; width: 100%; max-width: 230px; margin: 0 auto 16px; }
-  .hero-mosaic { grid-template-columns: 1fr !important; }
-  .hero-mosaic .photo-small { display: none; }
-  .hero-mosaic .photo-main { grid-column: 1 / 1 !important; }
-  .hero-mosaic .photo-main img { height: 210px !important; }
-  /* Cacher éléments répétitifs */
-  .hero-proof { display: none; }
-  .hero-postpartum { display: none; }
-  .hero-extras { display: none; }
-  /* Sous-titre mobile court */
-  .hero-sub-desktop { display: none; }
-  .hero-sub-mobile { display: inline; }
-  /* Pills cibles */
-  .hero-targets-mobile {
-    display: flex; flex-wrap: wrap; gap: 7px;
-    justify-content: center; margin: 14px 0 16px;
-  }
-  .hero-targets-mobile span {
-    background: rgba(201,99,88,0.08);
-    border: 1px solid rgba(201,99,88,0.2);
-    color: var(--dark); font-size: 0.75rem;
-    font-weight: 500; padding: 5px 12px; border-radius: 50px;
-  }
-  .hero-photo-frame video { height: 300px; }
-  .hero-photo-frame img { height: auto !important; object-fit: unset !important; }
-  .hero-badge { font-size: 0.64rem; white-space: nowrap; letter-spacing: 0.06em; line-height: 1.4; text-align: center; margin-bottom: 14px; padding: 5px 14px; }
-  .hero-title { max-width: 100%; margin-left: auto; margin-right: auto; margin-bottom: 14px; font-size: clamp(1.85rem, 7vw, 2.4rem); line-height: 1.1; }
-  .hero-title-desktop { display: none; }
-  .hero-title-mobile { display: block; }
-  .hero-proof { max-width: 100%; }
-  .hero-proof-num { font-size: 1.3rem; }
-  .hero-sub { max-width: 100%; text-align: left; }
-  .hero-stats { max-width: 100%; }
-  .hero-stat-num { font-size: 1.25rem; }
-  .hero-stat-label { font-size: 0.6rem; }
-  .hero-global { max-width: 100%; text-align: left; }
-  .hero-postpartum { max-width: 100%; text-align: left; }
-  .hero-cta { width: 100%; justify-content: center; font-size: 0.95rem; padding: 18px 24px; }
-  .hero-note { text-align: center; }
-  .hero-secondary-link { display: block; text-align: center; margin-top: 8px; }
-  .hero-price-day { max-width: 100%; text-align: left; }
-
-  /* IDENTIFICATION — grille 2x2 compacte */
-  .pain-grid { grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 32px; }
-  .pain-card { padding: 16px 14px; border-radius: 14px; }
-  .pain-title { font-size: 1.02rem; margin-bottom: 6px; }
-  .pain-text { font-size: 0.8rem; line-height: 1.5; }
-  .id-dual-blocs { grid-template-columns: 1fr !important; gap: 14px !important; }
-
-  /* PROJECTION */
-  .projection-grid { grid-template-columns: 1fr; gap: 14px; }
-
-  /* TEASER */
-  #teaser-apropos .inner { flex-direction: column; gap: 28px; }
-
-  /* OFFRES */
-  .apercu-grid { grid-template-columns: 1fr; gap: 16px; }
-  .apercu-card.featured { transform: none; box-shadow: 0 8px 32px rgba(44,31,26,0.18); }
-  .apercu-card.featured:hover { transform: translateY(-4px); }
-  .apercu-card.secondary { opacity: 1; }
-  .apercu-card-distance { order: -1; }
-
-  /* VALEUR */
-  .valeur-compare { grid-template-columns: 1fr; gap: 12px; }
-  .valeur-vs { display: none; }
-  .valeur-col.bad { order: 2; }
-  .valeur-col.good { order: 1; }
-
-  /* LONGEVITÉ */
-  .long-grid { grid-template-columns: 1fr; gap: 14px; }
-
-  /* SPACING GLOBAL MOBILE */
-  section { padding-left: 20px !important; padding-right: 20px !important; }
-  .section-title { font-size: clamp(1.7rem, 7vw, 2.4rem) !important; }
-  .section-subtitle { font-size: 0.9rem; line-height: 1.7; }
-  .pain-card, .avis-card { padding: 22px 18px; }
-  .inner { padding-left: 0 !important; padding-right: 0 !important; }
-
-  /* TRANSFORMATION */
-  .transfo-photos-grid { grid-template-columns: 1fr; gap: 14px; }
-  .transfo-stat-big { font-size: 1.65rem; }
-  .transfo-stat-pill { padding: 12px 14px; min-width: 76px; }
-  .transfo-story { padding: 18px 18px; }
-
-  /* FAQ HOME */
-  #faq-home .faq-q { font-size: 0.9rem; padding: 16px 18px; }
-  #faq-home .faq-a { font-size: 0.88rem; }
-  #faq-home .faq-item.open .faq-a { padding: 4px 18px 18px; }
-
-  /* Grilles inline non couverts — ciblage via classes ajoutées */
-  .mini-programs-grid { grid-template-columns: 1fr 1fr !important; }
-  .grid-2col-mobile-stack {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 12px !important;
-  }
-}
-
-/* ===== SECTION GUIDE GRATUIT ===== */
-#guide-gratuit {
-  background: linear-gradient(135deg, #1E120F 0%, #2E1A14 60%, #3A2218 100%);
-  padding: 72px 24px;
-  position: relative; overflow: hidden;
-}
-#guide-gratuit::before {
-  content: '';
-  position: absolute; top: -120px; right: -80px;
-  width: 500px; height: 500px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,99,88,.14) 0%, transparent 70%);
-  pointer-events: none;
-}
-.guide-inner {
-  max-width: 920px; margin: 0 auto;
-  display: flex; align-items: center; gap: 56px; flex-wrap: wrap;
-}
-.guide-book-mockup {
-  flex-shrink: 0; width: 190px;
-  background: linear-gradient(160deg, #C96358 0%, #8B3028 100%);
-  border-radius: 4px 14px 14px 4px;
-  padding: 32px 24px;
-  box-shadow: -6px 6px 0 #7a2520, 8px 18px 40px -16px rgba(123,37,32,.4);
-  position: relative;
-  min-height: 260px;
-  display: flex; flex-direction: column; justify-content: space-between;
-}
-.guide-book-mockup::before {
-  content: '';
-  position: absolute; left: 0; top: 0; bottom: 0; width: 10px;
-  background: rgba(0,0,0,.25); border-radius: 4px 0 0 4px;
-}
-.guide-book-label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 9px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: rgba(255,255,255,.7);
-  margin-bottom: 12px;
-}
-.guide-book-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.35rem; font-weight: 600; color: white;
-  line-height: 1.25; margin-bottom: 10px;
-}
-.guide-book-sub {
-  font-size: 0.72rem; color: rgba(255,255,255,.65);
-  font-style: italic; line-height: 1.5;
-}
-.guide-book-author {
-  font-size: 0.7rem; font-weight: 600; letter-spacing: 1px;
-  text-transform: uppercase; color: rgba(255,255,255,.55);
-  margin-top: 14px;
-}
-.guide-book-free {
-  position: absolute; top: -12px; right: -12px;
-  background: #F5C842; color: #1E120F;
-  font-size: 0.68rem; font-weight: 800; letter-spacing: 0.5px;
-  text-transform: uppercase; padding: 6px 14px; border-radius: 50px;
-  box-shadow: 0 4px 12px rgba(245,200,66,.4);
-}
-.guide-content { flex: 1; min-width: 280px; }
-.guide-eyebrow {
-  display: inline-block; font-size: 0.72rem; font-weight: 700;
-  letter-spacing: 2px; text-transform: uppercase;
-  color: #C96358; margin-bottom: 14px;
-}
-.guide-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
-  font-weight: 600; color: white; line-height: 1.2; margin-bottom: 16px;
-}
-.guide-title em { font-style: italic; color: #e8ada6; }
-.guide-desc { font-size: 0.92rem; color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 22px; }
-.guide-promises { list-style: none; padding: 0; margin: 0 0 28px; }
-.guide-promises li {
-  font-size: 0.88rem; color: rgba(255,255,255,.8); line-height: 1.6;
-  padding: 4px 0 4px 24px; position: relative;
-}
-.guide-promises li::before {
-  content: '✓'; position: absolute; left: 0;
-  color: #C96358; font-weight: 700;
-}
-.guide-form { display: flex; flex-direction: column; gap: 10px; max-width: 440px; }
-.guide-form-row { display: flex; gap: 10px; flex-wrap: wrap; }
-.guide-input {
-  flex: 1; min-width: 150px;
-  padding: 14px 18px; border-radius: 12px;
-  border: 1.5px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.07); color: white;
-  font-size: 0.9rem; font-family: 'DM Sans', sans-serif; outline: none;
-  transition: border-color .2s;
-}
-.guide-input::placeholder { color: rgba(255,255,255,.3); }
-.guide-input:focus { border-color: rgba(201,99,88,.6); }
-.guide-submit {
-  width: 100%; padding: 16px 24px;
-  background: linear-gradient(135deg, #C96358 0%, #a84e44 100%);
-  color: white; border: none; border-radius: 12px;
-  font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 700;
-  cursor: pointer; transition: transform .4s cubic-bezier(0.22,1,0.36,1), box-shadow .4s cubic-bezier(0.22,1,0.36,1);
-  box-shadow: 0 10px 26px -14px rgba(168,78,69,.42);
-}
-.guide-submit:hover { transform: translateY(-2px); box-shadow: 0 18px 38px -18px rgba(168,78,69,.46); }
-.guide-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
-.guide-note { font-size: 0.76rem; color: rgba(255,255,255,.35); text-align: center; }
-.guide-success {
-  display: none; text-align: center; padding: 18px;
-  background: rgba(37,211,102,.1); border: 1px solid rgba(37,211,102,.25);
-  border-radius: 12px; color: rgba(255,255,255,.88); font-size: 0.9rem; line-height: 1.6;
-}
-@media (max-width: 680px) {
-  .guide-inner { flex-direction: column; align-items: center; gap: 36px; }
-  .guide-book-mockup { width: 160px; min-height: 220px; }
-  .guide-content { width: 100%; }
-  .guide-form-row { flex-direction: column; }
-  .guide-input { min-width: unset; }
-}
-
-/* ===== LEAD CAPTURES INLINE ===== */
-.lead-capture-bar { background: linear-gradient(135deg, #2C1F1A 0%, #3D2B24 100%); padding: 36px 24px; }
-.lead-capture-cream { background: #FAF7F2; border-top: 1px solid rgba(201,185,154,0.28); border-bottom: 1px solid rgba(201,185,154,0.28); padding: 36px 24px; }
-.lc-bar-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
-.lc-bar-text { flex: 1; min-width: 200px; }
-.lc-bar-title { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: white; margin-bottom: 6px; line-height: 1.35; }
-.lead-capture-cream .lc-bar-title { color: var(--dark); }
-.lc-bar-sub { display: block; font-size: 0.83rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
-.lead-capture-cream .lc-bar-sub { color: var(--text-mid); }
-.lc-form-wrap { flex-shrink: 0; }
-.lc-inline-form { display: flex; gap: 8px; flex-wrap: wrap; }
-.li-email { padding: 14px 18px; border-radius: 12px; border: 1.5px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); color: white; font-size: 0.9rem; font-family: 'DM Sans', sans-serif; outline: none; width: 220px; transition: border-color 0.2s; }
-.li-email::placeholder { color: rgba(255,255,255,0.35); }
-.li-email:focus { border-color: rgba(201,99,88,0.7); }
-.lead-capture-cream .li-email { border-color: rgba(201,185,154,0.5); background: white; color: var(--dark); }
-.lead-capture-cream .li-email::placeholder { color: var(--text-light); }
-.lead-capture-cream .li-email:focus { border-color: var(--accent); }
-.li-btn { padding: 14px 22px; background: #C96358; color: white; border: none; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
-.li-btn:hover { background: #b85348; }
-.li-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-.li-success-inline { display: none; font-size: 0.88rem; padding: 12px 16px; background: rgba(37,211,102,0.12); border-radius: 10px; border: 1px solid rgba(37,211,102,0.25); margin-top: 8px; color: rgba(255,255,255,0.9); }
-.li-success-inline a { color: #D4A5A5; text-decoration: none; font-weight: 600; }
-.lead-capture-cream .li-success-inline { color: var(--dark); background: rgba(37,211,102,0.07); border-color: rgba(37,211,102,0.2); }
-.lead-capture-cream .li-success-inline a { color: var(--accent); }
-.footer-lead { padding: 22px 24px; text-align: center; border-top: 1px solid rgba(201,185,154,0.2); }
-.footer-lead p { font-size: 0.85rem; color: var(--text-mid); margin-bottom: 14px; }
-.footer-lead .lc-inline-form { justify-content: center; }
-.footer-lead .li-email { background: white; border-color: rgba(201,185,154,0.45); color: var(--dark); width: 200px; }
-.footer-lead .li-email::placeholder { color: var(--text-light); }
-.footer-lead .li-email:focus { border-color: var(--accent); }
-.footer-lead .li-success-inline { color: var(--dark); background: rgba(37,211,102,0.07); border-color: rgba(37,211,102,0.2); }
-.footer-lead .li-success-inline a { color: var(--accent); }
-@media (max-width: 768px) {
-  .lc-bar-inner { flex-direction: column; gap: 20px; align-items: stretch; }
-  .lc-form-wrap { width: 100%; }
-  .lc-inline-form { flex-direction: column; }
-  .li-email { width: 100%; }
-  .li-btn { width: 100%; }
-  .footer-lead .lc-inline-form { flex-direction: column; align-items: stretch; max-width: 320px; margin: 0 auto; }
-}
-
-/* ===== BANDEAU SAISONNIER FÊTES (fermable) ===== */
-#xmas-bar {
-  background: #1B3A2D;
-  color: #F5EFE6;
-  padding: 8px 40px 8px 16px;
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  text-align: center;
-  position: sticky; top: 0; width: 100%; z-index: 520;
-  transition: transform .3s ease;
-}
-#xmas-bar .xb-msg {
-  color: #F5EFE6; text-decoration: none;
-  font-size: .8rem; font-weight: 600; letter-spacing: .01em; line-height: 1.3;
-}
-#xmas-bar .xb-msg u { text-underline-offset: 2px; }
-#xmas-bar .xb-msg:hover u { text-decoration: none; }
-#xmas-bar .xb-full { display: inline; }
-#xmas-bar .xb-short { display: none; }
-#xmas-bar .xb-close {
-  position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
-  background: none; border: 0; color: rgba(245,239,230,.7);
-  font-size: 1.4rem; line-height: 1; cursor: pointer; padding: 2px 8px;
-}
-#xmas-bar .xb-close:hover { color: #F5EFE6; }
-@media (max-width: 480px) {
-  #xmas-bar { padding: 7px 36px 7px 12px; }
-  #xmas-bar .xb-full { display: none; }
-  #xmas-bar .xb-short { display: inline; }
-}
-
-/* ===== TOP ANNOUNCEMENT BAR ===== */
-#top-bar {
-  background: linear-gradient(90deg, #2C1F1A 0%, #3D2B24 50%, #2C1F1A 100%);
-  padding: 10px 20px;
-  display: flex; align-items: center; justify-content: center;
-  gap: 16px; flex-wrap: wrap; text-align: center;
-  position: sticky; top: var(--xmas-h, 0px); width: 100%; z-index: 500;
-}
-.top-bar-urgency {
-  font-size: 0.82rem; color: rgba(255,255,255,0.88);
-  font-weight: 500; letter-spacing: 0.01em;
-}
-.top-bar-urgency strong { color: #D4A5A5; }
-.top-bar-divider { color: rgba(255,255,255,0.2); font-size: 0.9rem; }
-.top-bar-btn {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #C96358; color: white; text-decoration: none;
-  padding: 7px 16px; border-radius: 50px;
-  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.02em;
-  transition: background 0.2s, transform 0.2s;
-  white-space: nowrap;
-}
-.top-bar-btn:hover { background: #b85348; transform: translateY(-1px); }
-.top-bar-reviews {
-  display: inline-flex; align-items: center; gap: 5px;
-  color: rgba(255,255,255,0.65); text-decoration: none;
-  font-size: 0.8rem; transition: color 0.2s;
-  white-space: nowrap;
-  border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 1px;
-}
-.top-bar-reviews:hover { color: #FBBC05; border-color: #FBBC05; }
-.top-bar-stars { color: #FBBC05; letter-spacing: 1px; font-size: 0.75rem; }
-@media (max-width: 768px) {
-  /* Fusion des bandeaux sur mobile : un seul bandeau en haut = la rareté « places ».
-     Le bandeau fêtes est masqué (son CTA « échange gratuit » reste en bas d'écran + héros)
-     et les avis Google sont retirés du bandeau (déjà répétés plus bas sur la page). */
-  #xmas-bar { display: none !important; }
-  #top-bar { gap: 8px; padding: 9px 14px; flex-wrap: nowrap; }
-  .top-bar-divider { display: none; }
-  .top-bar-reviews { display: none; }
-  .top-bar-urgency { font-size: 0.76rem; width: auto; line-height: 1.35; }
-  .top-bar-btn { font-size: 0.76rem; }
-}
-
-/* ===== OBJECTIONS ===== */
-.obj-btn {
-  padding: 12px 20px; border-radius: 50px;
-  border: 2px solid rgba(201,185,154,0.4); background: var(--cream);
-  font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600;
-  color: var(--dark); cursor: pointer; transition: all .2s;
-  -webkit-appearance: none; touch-action: manipulation;
-}
-.obj-btn:hover, .obj-btn.active {
-  background: var(--accent); color: white; border-color: var(--accent);
-}
-.obj-reply {
-  background: var(--cream); border-radius: 20px; padding: 24px 28px;
-  text-align: left; border-left: 3px solid var(--accent); margin-top: 4px;
-}
-.obj-reply-title {
-  font-size: 1rem; font-weight: 700; color: var(--dark); margin: 0 0 10px;
-}
-.obj-reply-body {
-  font-size: 0.92rem; color: var(--text-mid); line-height: 1.8; margin: 0 0 16px;
-}
-.obj-reply-cta {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: linear-gradient(135deg, #C96358, #C9957A); color: white;
-  font-weight: 700; font-size: 0.88rem; padding: 12px 22px;
-  border-radius: 50px; text-decoration: none;
-}
-.hero-maria{display:inline-flex;align-items:center;gap:10px;margin-top:12px;padding:5px 16px 5px 5px;background:#fff;border:1px solid rgba(201,99,88,.28);border-radius:999px;text-decoration:none;color:var(--dark);box-shadow:0 4px 16px rgba(139,111,94,.12);max-width:100%;text-align:left;-webkit-tap-highlight-color:transparent;}
-.hero-maria img{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #fff;box-shadow:0 0 0 1px rgba(201,99,88,.3);}
-.hero-maria span{display:flex;flex-direction:column;line-height:1.25;min-width:0;}
-.hero-maria b{font-size:.9rem;color:var(--accent);font-weight:700;}
-.hero-maria small{font-size:.74rem;color:var(--text-mid);}
-
-/* ===== ACCUEIL v2 — version courte, mobile d'abord ===== */
-:root { --ofc-vert: #1B3A2D; --ofc-creme: #F5EFE6; --tb-h: 72px; }
-
-/* En-tête : le bandeau disparaît après 50 px de scroll, la nav remonte et rétrécit */
-#top-bar { transition: transform .3s ease; }
-nav { transition: top .3s ease, height .3s ease; }
-.nav-logo-img { transition: height .3s ease; }
-body.is-scrolled #xmas-bar { transform: translateY(-100%); }
-body.is-scrolled #top-bar { top: 0; transform: translateY(-100%); }
-body.is-scrolled nav { top: 0 !important; height: 56px; box-shadow: 0 4px 18px -12px rgba(44,31,26,.25); }
-body.is-scrolled .nav-logo-img { height: 40px; }
-@media (max-width: 768px) {
-  nav { top: var(--tb-h); }
-  .nav-menu { top: calc(var(--tb-h) + 64px) !important; }
-  body.is-scrolled .nav-logo-img { height: 36px; }
-  body.is-scrolled .nav-menu { top: 56px !important; }
-}
-
-/* H1 unique : retour à la ligne seulement sur ordi */
-.hero-title .br-desk { display: none; }
-@media (min-width: 769px) { .hero-title .br-desk { display: inline; } }
-
-/* Sections : rythme plus serré */
-#identification, .svc-home, #transfo-proof, #avis-clients, #teaser-apropos, #micro-quiz-obj,
-#promesses, #apercu-offres, #faq-home, #cta-final { padding: 72px 24px; }
-#identification .inner, #transfo-proof .inner, #avis-clients .inner, #micro-quiz-obj .inner,
-#promesses .inner, #apercu-offres .inner, #faq-home .inner, #cta-final .inner { max-width: 960px; margin: 0 auto; text-align: center; }
-#identification .section-title, #transfo-proof .section-title, #avis-clients .section-title, #teaser-apropos .section-title,
-#micro-quiz-obj .section-title, #promesses .section-title, #apercu-offres .section-title, #faq-home .section-title {
-  font-size: clamp(1.75rem, 4vw, 2.8rem); margin-bottom: 14px;
-}
-#cta-final .section-title { font-size: clamp(2.1rem, 5vw, 3.8rem); }
-.link-discret { display: inline-block; margin-top: 14px; font-size: .88rem; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; padding: 6px 0; }
-.cta-block { margin-top: 22px; }
-.cta-block .btn-main, .cta-buttons .btn-main { font-weight: 700; }
-
-/* Barre de preuve */
-#preuve { background: var(--ofc-creme); padding: 18px 16px 16px; border-bottom: 1px solid rgba(201,185,154,.3); }
-.preuve-bar { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.preuve-item { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; gap: 3px;
-  background: #fff; border: 1px solid rgba(201,185,154,.35); border-radius: 14px; padding: 12px 6px 10px; text-decoration: none; color: var(--dark); min-width: 0; }
-.preuve-item svg { color: var(--ofc-vert); height: 26px; }
-.preuve-num { font-variant-numeric: lining-nums; font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 700; color: var(--ofc-vert); line-height: 26px; white-space: nowrap; }
-.preuve-num span { color: #E3A33A; font-size: 1.1rem; margin-left: 2px; }
-.preuve-item b { font-size: .8rem; font-weight: 700; line-height: 1.2; }
-.preuve-item small { font-size: .66rem; color: var(--text-light); line-height: 1.3; }
-.preuve-zone { max-width: 760px; margin: 10px auto 0; text-align: center; font-size: .72rem; line-height: 1.5; color: var(--text-light); }
-
-/* Tu te reconnais ? — grille 2x2 compacte */
-#identification .pain-grid { margin-top: 26px; gap: 12px; }
-#identification .pain-card { padding: 20px 18px; }
-
-/* Salle vs coaching — version courte */
-.svc-home { background: #F6EFE8; }
-.svc-home-grid { max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(24px,5vw,52px); align-items: center; }
-.svc-home h2 { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: clamp(1.75rem,4.2vw,2.8rem); line-height: 1.1; letter-spacing: -.015em; color: #231A16; margin: 0 0 .45em; text-wrap: balance; }
-.svc-home h2 em { font-style: italic; color: #C0574A; }
-.svc-home-txt { font-size: 1rem; line-height: 1.65; color: #5B4A42; margin: 0 0 10px; }
-.svc-home-link { font-size: .84rem; color: var(--text-light); text-decoration: underline; text-underline-offset: 3px; }
-.svc-home-img { width: 100%; max-width: 360px; height: auto; display: block; border-radius: 22px; box-shadow: 0 20px 50px rgba(42,30,26,.16); justify-self: center; }
-
-/* Carrousels (transformations + avis) — scroll-snap natif, aucune librairie */
-.ofc-carousel { position: relative; margin: 26px -24px 0; }
-.ofc-track { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 24px; padding: 4px 24px 10px;
-  -webkit-overflow-scrolling: touch; scrollbar-width: none; overscroll-behavior-x: contain; outline: none; }
-.ofc-track::-webkit-scrollbar { display: none; }
-.ofc-track > * { flex: 0 0 82%; max-width: 340px; scroll-snap-align: start; text-align: left; }
-.ofc-dots { display: flex; justify-content: center; gap: 7px; margin-top: 10px; min-height: 8px; }
-.ofc-dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(201,99,88,.25); transition: background .2s, width .2s; }
-.ofc-dots span.on { background: var(--accent); width: 18px; border-radius: 4px; }
-.ofc-carousel.no-scroll .ofc-dots { display: none; }
-
-/* Cartes transformation */
-#transfo-proof { background: linear-gradient(150deg, var(--cream) 0%, #F0E4D8 100%); }
-.transfo-card { background: #fff; border-radius: 20px; overflow: hidden; border: 1px solid rgba(201,185,154,.25); box-shadow: 0 8px 26px rgba(44,31,26,.09); display: flex; flex-direction: column; }
-.transfo-card-img { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: #EFE6DF; }
-.transfo-card-img img { width: 100%; aspect-ratio: 1 / 1; height: auto; object-fit: cover; display: block; }
-.transfo-card-tag { position: absolute; top: 10px; left: 10px; background: rgba(201,99,88,.92); color: #fff; font-size: .64rem; font-weight: 700; letter-spacing: .08em; padding: 4px 10px; border-radius: 50px; text-transform: uppercase; }
-.transfo-card-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 9px; }
-.transfo-card-name { font-size: .74rem; text-transform: uppercase; letter-spacing: .09em; color: var(--accent); font-weight: 700; }
-.transfo-card-stats { display: flex; gap: 6px; flex-wrap: wrap; }
-.transfo-card-stats span { background: rgba(201,149,122,.12); border-radius: 8px; padding: 4px 9px; font-size: .76rem; font-weight: 700; color: var(--dark); }
-.transfo-card-text { font-size: .86rem; color: var(--text-mid); line-height: 1.6; margin: 0; }
-
-/* Avis */
-.avis-note-g { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; background: #fff; border: 1px solid rgba(201,185,154,.3);
-  border-radius: 16px; padding: 12px 18px; text-decoration: none; color: var(--dark); box-shadow: 0 4px 18px rgba(139,111,94,.08); margin-top: 4px; }
-.avis-note-num { font-size: 1.6rem; font-weight: 800; line-height: 1; }
-.avis-note-stars { color: #FBBC05; font-size: 1.05rem; letter-spacing: 1px; }
-.avis-note-link { font-size: .78rem; color: var(--text-light); text-decoration: underline; text-underline-offset: 2px; }
-#avis-clients .avis-card { background: #fff; border-radius: 18px; padding: 18px; border: 1px solid rgba(201,185,154,.28); box-shadow: 0 6px 22px rgba(139,111,94,.08); display: flex; flex-direction: column; }
-#avis-clients .avis-card:hover { transform: none; }
-#avis-clients .ofc-track { align-items: flex-start; }
-#avis-clients .avis-header { margin-bottom: 6px; }
-#avis-clients .avis-stars { margin-left: auto; color: #FBBC05; font-size: .82rem; }
-#avis-clients .avis-text { margin: 0; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; line-clamp: 4; overflow: hidden; }
-#avis-clients .avis-card.is-open .avis-text { -webkit-line-clamp: unset; line-clamp: unset; display: block; }
-.avis-more { align-self: flex-start; margin-top: 6px; background: none; border: 0; padding: 6px 0; font: 700 .8rem/1 'DM Sans', sans-serif; color: var(--accent); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
-.avis-card-video { padding: 10px !important; align-items: center; justify-content: center; gap: 8px; }
-.avis-card-video .vid { --vid-max: 150px; width: 150px; box-shadow: none; border-radius: 14px; }
-.avis-video-cap { font-size: .78rem; font-weight: 700; color: var(--text-mid); margin: 0; }
-#avis-clients .ofc-track > .avis-card-video { flex-basis: 190px; }
-
-/* Mon histoire */
-#teaser-apropos .teaser-text { margin-bottom: 14px; }
-.teaser-postpartum { margin: 0 0 16px; display: inline-block; padding: 11px 18px; border-left: 3px solid #C9A96E; background: rgba(255,255,255,.07); border-radius: 0 12px 12px 0; font-style: italic; font-weight: 600; color: #F4E9DF; font-size: 1rem; line-height: 1.45; text-align: left; }
-
-/* Objections */
-#micro-quiz-obj { background: #fff; }
-#micro-quiz-obj .inner { max-width: 640px; }
-.obj-intro { font-size: .92rem; color: var(--text-mid); margin: 0 0 18px; }
-.obj-btns { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 16px; }
-#micro-quiz-obj .obj-btn { padding: 9px 14px; font-size: .82rem; }
-.obj-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-.obj-reply { padding: 16px 18px; border-radius: 16px; margin: 0 0 14px; }
-.obj-reply p { margin: 0; font-size: .92rem; line-height: 1.6; color: var(--text-mid); }
-.obj-reply p strong { color: var(--dark); }
-#micro-quiz-obj .obj-reply-cta { display: inline-block; margin-top: 4px; background: none; color: var(--accent); padding: 8px 0; font-size: .92rem; text-decoration: underline; text-underline-offset: 3px; }
-
-/* Promesses (compact) */
-#promesses { background: var(--ofc-creme); }
-#promesses .inner { max-width: 720px; }
-.prom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; text-align: left; }
-.prom-col { border-radius: 16px; padding: 16px 14px; }
-.prom-non { background: rgba(201,99,88,.07); }
-.prom-oui { background: rgba(27,58,45,.06); border: 1px solid rgba(27,58,45,.18); }
-.prom-head { font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; margin: 0 0 10px; }
-.prom-non .prom-head { color: var(--accent); }
-.prom-oui .prom-head { color: var(--ofc-vert); }
-.prom-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
-.prom-col li { font-size: .84rem; line-height: 1.4; color: var(--text-mid); }
-
-/* Offres */
-.offre-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 22px; text-align: left; }
-.offre-row { display: flex; flex-direction: column; gap: 10px; background: #fff; border: 1px solid rgba(201,185,154,.35); border-radius: 18px; padding: 20px; text-decoration: none; color: var(--dark); transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
-.offre-row:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(139,111,94,.12); }
-.offre-featured { background: linear-gradient(145deg, #2C1F1A, #3D2B24); color: #fff; border-color: transparent; }
-.offre-icon { color: var(--accent); display: flex; }
-.offre-featured .offre-icon { color: #E4C89A; }
-.offre-txt { display: flex; flex-direction: column; gap: 3px; flex: 1; }
-.offre-txt b { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; line-height: 1.15; }
-.offre-txt small { font-size: .78rem; color: var(--text-light); line-height: 1.4; }
-.offre-featured .offre-txt small { color: rgba(255,255,255,.65); }
-.offre-price { font-weight: 800; font-size: 1.02rem; color: var(--gold-text); white-space: nowrap; }
-.offre-price small { font-weight: 500; font-size: .74rem; }
-.offre-featured .offre-price { color: #E4C89A; }
-.offre-inclus { max-width: 560px; margin: 16px auto 0; font-size: .84rem; color: var(--text-mid); line-height: 1.55; }
-.offre-inclus strong { color: var(--dark); }
-.fdtv-line { margin: 18px auto 0; padding-top: 16px; border-top: 1px solid rgba(201,185,154,.35); max-width: 520px; font-size: .9rem; color: var(--text-mid); }
-.fdtv-line a { color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
-
-/* FAQ — accordéon natif <details> */
-#faq-home { background: #fff; }
-#faq-home .inner { max-width: 750px; }
-#faq-home .faq-list { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; text-align: left; }
-#faq-home .faq-item { border-radius: 14px; border: 1px solid rgba(201,185,154,.35); background: var(--cream); overflow: hidden; }
-#faq-home .faq-q { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 16px 18px; font-weight: 600; font-size: .94rem; color: var(--dark); }
-#faq-home .faq-q::-webkit-details-marker { display: none; }
-#faq-home .faq-arrow { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(201,99,88,.1); color: var(--accent); font-size: 1.1rem; transition: transform .25s; }
-#faq-home .faq-item[open] .faq-arrow { transform: rotate(45deg); }
-#faq-home .faq-a { max-height: none; overflow: visible; padding: 0 18px 16px; }
-#faq-home .faq-a p { margin: 0; font-size: .9rem; line-height: 1.65; color: var(--text-mid); }
-
-/* CTA final */
-#cta-final .section-subtitle { margin: 0 auto 26px; }
-.cta-reassure { margin-top: 16px; }
-.cta-quiz { margin-top: 10px; font-size: .86rem; color: rgba(255,255,255,.7); }
-.cta-quiz a { color: #F6C9BF; text-decoration: underline; text-underline-offset: 3px; }
-
-/* Desktop : les 3 cartes visibles d'un coup, pas de points */
-@media (min-width: 900px) {
-  .ofc-carousel { margin: 30px 0 0; }
-  .ofc-track { padding: 4px 2px 10px; scroll-padding: 0; }
-  #transfo-proof .ofc-track > * { flex: 1 1 0; max-width: none; }
-  #avis-clients .inner { max-width: 1100px; }
-  #avis-clients .ofc-track > .avis-card { flex: 1 1 0; max-width: none; }
-  #avis-clients .ofc-track > .avis-card-video { flex: 0 0 190px; }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  #identification, .svc-home, #transfo-proof, #avis-clients, #teaser-apropos, #micro-quiz-obj,
-  #promesses, #apercu-offres, #faq-home, #cta-final { padding: 46px 20px; }
-  .ofc-carousel { margin-left: -20px; margin-right: -20px; }
-  .ofc-track { padding-left: 20px; padding-right: 20px; scroll-padding: 0 20px; }
-  #identification .pain-grid { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 18px; }
-  #identification .pain-card { padding: 14px 12px; border-radius: 14px; text-align: left; }
-  #identification .pain-title { font-size: 1rem; margin-bottom: 4px; line-height: 1.15; }
-  #identification .pain-text { font-size: .78rem; line-height: 1.45; }
-  .svc-home-grid { grid-template-columns: 1fr; text-align: center; }
-  .svc-home-img { display: none; }
-  .section-subtitle { font-size: .9rem; }
-  #teaser-apropos .inner { gap: 0; }
-  #teaser-apropos .teaser-text { font-size: .92rem; line-height: 1.6; }
-  .offre-list { grid-template-columns: 1fr; gap: 8px; margin-top: 16px; }
-  .offre-row { flex-direction: row; align-items: center; gap: 12px; padding: 13px 14px; border-radius: 14px; }
-  .offre-txt b { font-size: 1.12rem; }
-  .offre-txt small { font-size: .72rem; }
-  .offre-price { text-align: right; font-size: .9rem; display: flex; flex-direction: column; line-height: 1.15; }
-  #cta-final .section-subtitle { font-size: .92rem; }
-  #cta-final .btn-main { width: 100%; justify-content: center; padding: 18px 20px; }
-  .cta-block .btn-main { width: 100%; justify-content: center; }
-  footer { padding-top: 40px !important; padding-bottom: 28px !important; }
-}
-@media (max-width: 380px) {
-  .preuve-item small { font-size: .62rem; }
-  .preuve-num { font-size: 1.35rem; }
-}
-</style>
 <!-- Meta Pixel -->
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1233548507794099");fbq("track","PageView");</script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1233548507794099&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
-<link rel="stylesheet" href="ofc-clarte.css?v=2">
+<style>
+/* VOICE  : calme, haut de gamme, une idée par écran, phrases courtes.
+   IDEA   : une fiche de coach bien tenue : la photo, les preuves, le prix, une question, un message.
+   PICTURE: la photo en pied d'Ornella, puis les avant/après réels des clientes.
+   COLOUR+TYPE : un bloc de couleur par partie (ivoire, rose poudré, sauge, brun, sable, corail) ; texte courant d'une seule couleur ;
+                 titres Cormorant Garamond 700 droit avec la fin en couleur ; DM Sans pour le texte.
+   LAYOUT : mobile d'abord, 6 blocs au lieu de 11, 3 boutons de contact + barre basse. */
+:root{--ivory:#FBF7F2;--sand:#F3EBE2;--blush:#F5E2DA;--blush2:#FBEEE9;--sage:#E4E8DB;--sage-d:#5F7258;--coral2:#C35F50;--peach:#F2A796;--ink:#2B201C;--line:rgba(43,32,28,.14);--coral:#B4513F;--coral-d:#9A4232;--night:#2B201C;--night2:#221916;--cream:#F6EFE8;
+--serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;--sans:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;color-scheme:light}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ivory);color:var(--ink);font:400 16.5px/1.6 var(--sans);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.06;margin:0;text-wrap:balance;letter-spacing:-.005em;font-variant-numeric:lining-nums}
+h1{font-size:clamp(2.2rem,7vw,3.7rem)}
+h2{font-size:clamp(2rem,5.6vw,2.9rem)}
+h3{font-size:1.55rem}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.band{padding:60px 0}
+.band--sand{background:var(--sand)}
+.band--white{background:#fff}
+.band--blush{background:var(--blush)}
+.band--sage{background:var(--sage)}
+.band--night{background:var(--night);color:var(--cream)}
+.band--coral{background:var(--coral2);color:#fff}
+.hl{color:var(--coral)}
+.band--night .hl{color:var(--peach)}
+.band--coral .hl{color:var(--night)}
+.band--sage .hl{color:var(--sage-d)}
+.head{max-width:640px;margin-bottom:32px}
+.head p{margin-top:14px;font-size:1.04rem}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:58px;padding:0 30px;border-radius:999px;background:var(--coral);color:#fff;font:600 1.03rem/1.2 var(--sans);text-decoration:none;box-shadow:0 10px 24px -14px rgba(154,66,50,.7);transition:background .2s,transform .2s}
+.btn:hover{background:var(--coral-d);transform:translateY(-1px)}
+.btn svg{flex:none}
+.btn:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+.link{display:inline-block;padding:10px 0;font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.link:hover{text-decoration-thickness:2px}
+.small{font-size:.92rem}
+@media(min-width:620px){.btn{display:inline-flex;width:auto}}
+@media(min-width:900px){.band{padding:108px 0}}
+
+/* Bandeau + navigation */
+.topbar{background:var(--night);color:var(--cream);font-size:.82rem;text-align:center;padding:8px 16px;line-height:1.35}
+.topbar:empty{display:none}
+.nav{position:sticky;top:0;z-index:60;background:rgba(251,247,242,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .25s}
+.nav.is-scrolled{border-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1120px;margin:0 auto;padding:0 22px;position:relative}
+.nav-logo img{height:38px;width:auto}
+.nav-toggle{appearance:none;border:0;background:none;width:46px;height:46px;margin-right:-12px;font-size:25px;line-height:1;color:var(--ink);cursor:pointer}
+#navMenu{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--ivory);padding:4px 22px 22px;border-bottom:1px solid var(--line);box-shadow:0 18px 30px -24px rgba(43,32,28,.4)}
+#navMenu.open{display:flex}
+#navMenu a{padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:500}
+#navMenu a.nav-cta{margin-top:16px;border:0;padding:0}
+@media(min-width:1040px){
+  .nav-toggle{display:none}
+  #navMenu{display:flex;position:static;flex-direction:row;align-items:center;gap:28px;padding:0;background:none;border:0;box-shadow:none}
+  #navMenu a{border:0;padding:6px 0;font-size:.95rem}
+  #navMenu a.nav-cta{margin:0}
+  #navMenu .btn{min-height:46px;padding:0 22px;font-size:.95rem}
+}
+
+/* Hero */
+.hero{padding:14px 0 60px}
+.hero-grid{display:grid;gap:26px}
+.hero-photo{width:100%;max-width:520px;margin:0 auto;border-radius:22px;overflow:hidden;background:#E8DDD2;box-shadow:0 24px 40px -30px rgba(43,32,28,.55)}
+.hero-photo img{width:100%;height:auto}
+.hero-sub{margin-top:16px;font-size:1.06rem;max-width:520px}
+.hero-act{margin-top:26px}
+.hero-note{margin-top:12px;font-size:.9rem}
+.hero-quiz{margin-top:2px;font-size:.95rem}
+.trust{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:34px 0 0;padding:20px 0 0;list-style:none;border-top:1px solid var(--line);text-align:center}
+.trust li{padding:0 8px;font-size:.84rem;line-height:1.35}
+.trust li+li{border-left:1px solid var(--line)}
+.trust b{display:block;font-size:.92rem;margin-bottom:3px}
+@media(min-width:900px){
+  .hero{padding:40px 0 96px}
+  .hero-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:64px;align-items:center}
+  .hero-photo{order:2;max-width:470px;margin:0 0 0 auto}
+  .trust{text-align:left;max-width:560px}
+  .trust li{padding:0 16px}.trust li:first-child{padding-left:0}
+}
+
+/* Carrousels (avant/après, avis) */
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:84%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -22px;padding:2px 22px 6px;scroll-padding:0 22px}
+.rail::-webkit-scrollbar{display:none}
+.rail>*{scroll-snap-align:start}
+.dots{display:flex;justify-content:center;gap:7px;margin-top:16px}
+.dots button{width:8px;height:8px;padding:0;border:0;border-radius:99px;background:rgba(43,32,28,.22);cursor:pointer;transition:width .25s,background .25s}
+.dots button[aria-current=true]{width:22px;background:var(--ink)}
+@media(min-width:900px){
+  .rail{grid-auto-flow:row;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;margin:0;padding:0}
+  .rail--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dots{display:none}
+}
+.case{display:block;background:#fff;border-radius:20px;overflow:hidden;text-decoration:none}
+.case img{width:100%;aspect-ratio:1;object-fit:cover;background:#E8DDD2}
+.case-b{padding:18px 20px 22px}
+.case-n{font-weight:700}
+.case-r{font-variant-numeric:lining-nums;font-family:var(--serif);font-weight:600;font-size:1.55rem;line-height:1.12;margin:4px 0 8px}
+.case-c{font-size:.92rem}
+.more{margin-top:18px;text-align:center}
+
+.rating{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 18px;margin-bottom:22px}
+.rating h2{font-size:clamp(2rem,5.6vw,2.9rem)}
+.stars{color:#C58B2A;letter-spacing:2px;font-size:1rem;margin-left:6px;vertical-align:2px}
+.quote{background:#fff;border-radius:20px;padding:24px 22px 20px;margin:0;display:flex;flex-direction:column}
+.quote p{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;font-size:1rem}
+.quote.is-open p{-webkit-line-clamp:unset;display:block}
+.quote footer{margin-top:auto;padding-top:14px;font-size:.88rem}
+.quote footer b{font-size:.95rem}
+.quote button{align-self:flex-start;margin-top:8px;padding:8px 0;border:0;background:none;color:var(--ink);font:600 .9rem var(--sans);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+
+/* Formules */
+.offers{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.offer{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 18px;align-items:center;padding:22px 22px;text-decoration:none;transition:background .2s}
+.offer+.offer{border-top:1px solid var(--line)}
+.offer:hover{background:#FDFAF7}
+.offer h3{font-size:1.6rem;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.offer p{font-size:.93rem;margin-top:4px}
+.tag{font:700 .72rem/1 var(--sans);background:var(--coral);color:#fff;border-radius:99px;padding:6px 10px;letter-spacing:.01em}
+.price{text-align:right;white-space:nowrap;font-size:.86rem;line-height:1.2}
+.price b{display:block;font-variant-numeric:lining-nums;font-family:var(--serif);font-size:1.75rem;font-weight:600}
+.offer--top{background:var(--blush2)}
+.incl{margin-top:22px;display:grid;gap:10px;font-size:.95rem}
+.offers-act{margin-top:30px;display:flex;flex-direction:column;gap:6px;align-items:stretch;text-align:center}
+.solo{margin-top:40px;padding-top:26px;border-top:1px solid var(--line);font-size:.98rem}
+.solo a{font-weight:600;text-underline-offset:4px}
+@media(min-width:620px){.offers-act{flex-direction:row;align-items:center;gap:26px;text-align:left}}
+@media(min-width:900px){.split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:start}.split>.head{position:sticky;top:110px;margin-bottom:0}}
+
+/* Histoire */
+.story p{font-size:1.06rem}
+.story p+p{margin-top:16px}
+.story .cred{font-size:.92rem;margin-top:22px}
+.story .cred a{text-underline-offset:4px}
+.band--night .link,.band--night a{color:var(--cream)}
+
+/* FAQ */
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:20px 0;font-weight:600;font-size:1.03rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;font:400 1.6rem/1 var(--sans);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 0 22px;display:grid;gap:10px}
+.faq .a a{text-underline-offset:4px}
+
+/* Final + pied de page */
+.final{text-align:center}
+.final .btn{background:#fff;color:var(--coral-d);box-shadow:0 14px 28px -16px rgba(43,32,28,.6)}
+.final .btn:hover{background:var(--cream)}
+.final p{margin:16px auto 0;max-width:520px;font-size:1.05rem}
+.final .btn{margin-top:30px}
+.final .small{margin-top:16px}
+.final a:not(.btn){text-underline-offset:4px}
+.foot{background:var(--night2);color:var(--cream);padding:56px 0 calc(96px + env(safe-area-inset-bottom));font-size:.93rem}
+.foot img{height:34px;width:auto;filter:brightness(0) invert(1);opacity:.9}
+.foot-slogan{margin-top:12px}
+.foot nav{display:flex;flex-wrap:wrap;gap:4px 22px;margin-top:28px}
+.foot nav a,.foot .contact a{display:inline-block;padding:7px 0;text-decoration:none}
+.foot nav a:hover,.foot .contact a:hover{text-decoration:underline;text-underline-offset:4px}
+.contact{display:flex;flex-wrap:wrap;gap:4px 22px;margin-top:10px;padding-top:12px;border-top:1px solid rgba(246,239,232,.16)}
+.foot details{margin-top:18px;border-top:1px solid rgba(246,239,232,.16)}
+.foot summary{cursor:pointer;padding:16px 0;font-weight:600}
+.foot details div{display:flex;flex-wrap:wrap;gap:2px 18px;padding-bottom:10px}
+.foot details a{padding:6px 0;text-underline-offset:3px}
+.legal{margin-top:20px;font-size:.84rem;display:flex;flex-wrap:wrap;gap:4px 16px}
+.legal a{text-underline-offset:3px}
+@media(min-width:900px){.foot{padding-bottom:56px}}
+
+/* Barre de contact en bas (téléphone) */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(251,247,242,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s ease}
+.sticky.show{transform:none}
+.sticky .btn{min-height:52px}
+@media(min-width:900px){.sticky{display:none}}
+
+/* Pop-up guide */
+#lead-popup{display:none;position:fixed;inset:0;z-index:100;align-items:flex-end;justify-content:center;padding:14px}
+#lead-popup.active{display:flex}
+#lead-overlay{position:absolute;inset:0;background:rgba(34,25,22,.55)}
+#lead-box{position:relative;width:100%;max-width:440px;background:var(--ivory);border-radius:24px;padding:30px 24px 24px}
+#lead-box h2{font-size:1.9rem;padding-right:26px}
+#lead-box p{margin-top:10px}
+#lead-close{position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;background:none;font-size:26px;color:var(--ink);cursor:pointer}
+#lead-form{display:grid;gap:10px;margin-top:18px}
+#lead-email{width:100%;min-height:54px;border:1px solid var(--line);border-radius:14px;padding:0 16px;font:16px var(--sans);background:#fff;color:var(--ink)}
+#lead-submit{border:0;cursor:pointer;width:100%}
+#lead-success{display:none;margin-top:16px;font-weight:600}
+@media(min-width:620px){#lead-popup{align-items:center}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<!-- BANDEAU SAISONNIER FÊTES (fermable) -->
-<div id="xmas-bar" role="region" aria-label="Offre de Noël">
-  <a class="xb-msg" href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" target="_blank" rel="noopener">
-    <span class="xb-full">🎄 Envie d'attaquer les fêtes en pleine forme ? On construit ton programme ensemble → <u>Échange gratuit 15 min</u></span>
-    <span class="xb-short">🎄 En forme pour les fêtes → <u>Échange gratuit 15 min</u></span>
-  </a>
-  <button type="button" class="xb-close" aria-label="Fermer ce bandeau" onclick="closeXmasBar()">×</button>
-</div>
+<div class="topbar" data-ofc-places></div>
 
-<!-- TOP ANNOUNCEMENT BAR -->
-<div id="top-bar">
-  <span class="top-bar-urgency">
-    <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#C96358;margin-right:8px;vertical-align:middle;"></span><strong style="color:#D4A5A5;" data-ofc-places></strong>
-  </span>
-</div>
-
-<!-- NAV -->
-<nav>
-  <a href="/" class="nav-logo">
-    <img src="images/logo.png" alt="Ornella Fit Coaching" class="nav-logo-img" decoding="async" width="3135" height="793">
-  </a>
-  <button type="button" class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Menu">☰</button>
-  <div class="nav-menu" id="navMenu">
-    <a href="offres.html" class="nav-link">Tarifs coaching</a>
-    <a href="transformations.html" class="nav-link">Transformations</a>
-    <a href="programmes.html" class="nav-link">Programmes digitaux</a>
-    <a href="entreprise.html" class="nav-link">Entreprise</a>
-    <a href="apropos.html" class="nav-link">À propos</a>
-    <a href="https://www.ornellafitcoaching.com/quiz.html" class="nav-link">Quelle formule pour moi ?</a>
-    <a href="https://wa.me/33756834626" class="nav-cta" target="_blank">M'écrire →</a>
+<header class="nav" id="top">
+  <div class="nav-in">
+    <a href="/" class="nav-logo"><img src="images/logo.png" alt="Ornella Fit Coaching" width="3135" height="793" decoding="async"></a>
+    <button type="button" class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Menu">☰</button>
+    <nav id="navMenu" aria-label="Menu principal">
+      <a href="offres.html">Tarifs coaching</a>
+      <a href="transformations.html">Transformations</a>
+      <a href="programmes.html">Programmes</a>
+      <a href="entreprise.html">Entreprise</a>
+      <a href="apropos.html">À propos</a>
+      <a href="quiz.html">Quelle formule pour moi ?</a>
+      <a href="https://wa.me/33756834626" class="nav-cta" target="_blank" rel="noopener"><span class="btn">M'écrire</span></a>
+    </nav>
   </div>
-</nav>
+</header>
 
-<!-- HERO -->
-<style>
-/* Vidéos (js/videos.js) : taille réservée = zéro décalage, jamais > 70 % de l'écran */
-.vid{--vid-max:340px;--vid-r:.5625;position:relative;overflow:hidden;border-radius:20px;background:#EFE6DF;box-shadow:0 12px 32px rgba(44,31,26,.14);aspect-ratio:9/16;width:min(100%,var(--vid-max),calc(70vh*var(--vid-r)));margin:0 auto}
-@supports (height:1svh){.vid{width:min(100%,var(--vid-max),calc(70svh*var(--vid-r)))}}
-.vid--1x1{aspect-ratio:1/1;--vid-r:1}
-.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-/* HERO — photo d'Ornella prioritaire (LCP). Vidéo désactivable : HERO_VIDEO dans js/videos.js.
-   Ordi : photo sur la droite, dégradé seulement côté texte. Mobile : photo en haut, visage dégagé. */
-#hero.hero--video{background:#1E1616}
-#hero.hero--video::before,#hero.hero--video::after{display:none}
-.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
-.hero-bg img,.hero-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.hero-bg video{opacity:0;transition:opacity .6s ease}
-.hero-bg.is-playing video{opacity:1}
-.hero-bg img{left:auto;right:0;width:48%;object-fit:contain;object-position:right bottom}
-.hero-bg::after{content:'';position:absolute;top:0;bottom:0;right:0;width:48%;background:linear-gradient(90deg,#1E1616 0%,rgba(30,22,22,.55) 16%,rgba(30,22,22,0) 42%)}
-#hero.hero--video .hero-content{max-width:56%}
-@media(min-width:769px){#hero.hero--video .hero-title{font-size:clamp(2.4rem,3.9vw,3.6rem);line-height:1.08}}
-#hero.hero--video .hero-badge{color:#fff;background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.32)}
-#hero.hero--video .hero-title{color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.25)}
-#hero.hero--video .hero-title{max-width:820px}
-#hero.hero--video .hero-sub{max-width:560px}
-#hero.hero--video .hero-title em{color:var(--rose)}
-#hero.hero--video .hero-sub{color:rgba(255,255,255,.9)}
-#hero.hero--video .hero-proof-line{color:#fff!important}
-#hero.hero--video .hero-alt{color:rgba(255,255,255,.86)!important}
-#hero.hero--video .hero-alt a{color:#F6C9BF!important}
-#hero.hero--video .hero-note{color:rgba(255,255,255,.8)}
-@media(max-width:768px){
-  .hero-bg{position:relative;inset:auto;flex-shrink:0;align-self:center;width:100vw;height:auto;aspect-ratio:4/5;max-height:72vh;margin:-16px 0 8px}
-  .hero-bg img{position:relative;right:auto;left:0;width:100%;height:100%;object-fit:contain;object-position:center bottom}
-  .hero-bg::after{left:0;width:100%;background:linear-gradient(180deg,rgba(30,22,22,0) 0%,rgba(30,22,22,0) 48%,rgba(30,22,22,.75) 78%,#1E1616 100%)}
-  #hero.hero--video .hero-content{max-width:100%}
-  #hero.hero--video{padding-top:30px;padding-bottom:36px}
-}
-/* AVIS : vidéo + titre (2 colonnes sur ordi) */
-.avis-intro{display:grid;gap:28px;margin-bottom:8px}
-.avis-intro .vid{--vid-max:360px}
-.avis-intro-txt{order:-1}
-@media(min-width:900px){
-  .avis-intro{grid-template-columns:360px 1fr;gap:56px;align-items:center;max-width:960px;margin:0 auto 8px}
-  .avis-intro-txt{order:0;text-align:left}
-  .avis-intro-txt .section-subtitle{margin:0!important}
-  .avis-intro-txt .avis-note-g{margin:32px 0 0!important}
-}
-</style>
-<style>
-/* Accueil — resserre l'espacement vertical des sections sur mobile : page plus courte à parcourir, aucun contenu retiré */
-@media(max-width:768px){
-  #identification,#svc-home,#apercu-offres,#transfo-proof,#zones-home,
-  #avis-clients,#teaser-apropos,#micro-quiz-obj,#promesses,#faq-home{
-    padding-top:42px;padding-bottom:42px;
-  }
-}
-</style>
-<section id="hero" class="hero--video">
-  <div class="hero-bg" aria-hidden="true">
-    <img src="images/ornella-photo-bleue-originale.webp" alt="" width="1080" height="1350" fetchpriority="high" decoding="async">
-    <video muted playsinline loop preload="none" aria-hidden="true" data-attente="interaction" data-src-mobile="images/video/site_hero_mobile.mp4" data-src-ordi="images/video/site_hero_ordi.mp4"></video>
-  </div>
-  <div class="hero-split">
-
-    <!-- TEXTE -->
-    <div class="hero-content">
-      <div class="hero-badge">Coach diplômée d'État · Domicile 91/92 ou en ligne</div>
-
-      <h1 class="hero-title">Retrouve un ventre plat et ton énergie —<br class="br-desk"> <em>même avec des enfants et zéro temps.</em></h1>
-
-      <p class="hero-sub">Coach sportive à domicile en Essonne (91) et Hauts-de-Seine (92) ou à distance partout en France. Programme 100 % construit pour toi.</p>
-
-      <div style="margin-top:24px;">
-        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A"
-           target="_blank"
-           class="btn-main"
-           style="display:inline-flex;font-size:1.02rem;padding:18px 34px;">💬 Échange gratuit de 15 min →</a>
-        <a href="transformations.html#transfo-maria" class="hero-maria" aria-label="Voir la transformation de Maria : −10 kg en 8 mois">
-          <img src="images/avis/maria.webp?v=5" alt="Avant / après de Maria" width="44" height="44" loading="eager" decoding="async">
-          <span><b>Maria −10 kg en 8 mois</b><small>100 % à distance · voir sa transformation →</small></span>
-        </a>
-        <p class="hero-alt" style="margin-top:8px;font-size:0.9rem;color:var(--text-mid);">
-          ou <a href="quiz.html" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;display:inline-block;padding:10px 6px;margin:-10px -6px;">🎯 trouve ta formule en 2 min</a>
-        </p>
-      </div>
-
-      <p class="hero-note">✓ Par WhatsApp · sans engagement · tu choisis ta formule après</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- BARRE DE PREUVE — diplôme vérifiable + note Google + résultat phare (fusion carte pro + chiffres réels) -->
-<section id="preuve" aria-label="Pourquoi me faire confiance">
-  <div class="preuve-bar">
-    <a class="preuve-item" href="https://recherche-educateur.sports.gouv.fr" target="_blank" rel="noopener">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><circle cx="8" cy="11" r="2.2"/><path d="M5.5 16.2c.5-1.4 1.4-2 2.5-2s2 .6 2.5 2"/><path d="M14 10h5"/><path d="M14 13.5h4"/></svg>
-      <b>Diplômée d'État</b>
-      <small>Carte pro n° 09126ED0021 ✓</small>
-    </a>
-    <a class="preuve-item" href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" rel="noopener">
-      <span class="preuve-num">5,0<span aria-hidden="true">★</span></span>
-      <b>26 avis Google</b>
-      <small>Note moyenne</small>
-    </a>
-    <a class="preuve-item" href="apropos.html">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.35-7-9.5a4 4 0 0 1 7-2.6 4 4 0 0 1 7 2.6C19 16.65 12 21 12 21z"/></svg>
-      <b>Spécialité post-partum</b>
-      <small>Périnée · diastasis · reprise en sécurité</small>
-    </a>
-  </div>
-  <p class="preuve-zone">Domicile : Saulx-les-Chartreux, Massy, Palaiseau, Longjumeau, Champlan, Villebon-sur-Yvette, Chilly-Mazarin, Épinay-sur-Orge, Antony · partout ailleurs à distance.</p>
-</section>
-
-<!-- TRANSFORMATIONS — carrousel swipeable (scroll-snap) -->
-<section id="transfo-proof">
-  <div class="inner">
-    <span class="section-label">Résultats réels · Photos non retouchées</span>
-    <h2 class="section-title">Elles ont transformé leur corps.<br><em>Vraiment.</em></h2>
-
-    <div class="ofc-carousel" data-carousel>
-      <div class="ofc-track" tabindex="0" aria-label="Transformations de clientes, faire défiler">
-
-        <!-- MARIA — 100 % à distance -->
-        <article class="transfo-card">
-          <a class="transfo-card-img" href="transformations.html#transfo-maria" aria-label="Voir la transformation de Maria">
-            <img src="images/maria-face.webp?v=5" alt="Transformation Maria face — coaching 100 % à distance Ornella Fit" loading="lazy" decoding="async" width="1200" height="1200">
-            <img src="images/maria-dos.webp?v=5" alt="Transformation Maria dos — coaching 100 % à distance Ornella Fit" loading="lazy" decoding="async" width="1080" height="1080">
-            <span class="transfo-card-tag">Avant → après</span>
-          </a>
-          <div class="transfo-card-body">
-            <div class="transfo-card-name">Maria · maman de 2 enfants</div>
-            <div class="transfo-card-stats"><span>Perte de poids</span><span>8 mois</span><span>100 % à distance</span></div>
-            <p class="transfo-card-text">Jamais une séance en face à face : programme sur-mesure, alimentation ajustée chaque mois, suivi WhatsApp. <strong>Ventre affiné, fessiers redessinés.</strong></p>
-          </div>
-        </article>
-
-        <!-- EMELINE — 2 mois -->
-        <article class="transfo-card">
-          <a class="transfo-card-img" href="transformations.html#transfo-emeline" aria-label="Voir la transformation d’Emeline">
-            <img src="images/avant-apres-emeline-2.webp?v=2" alt="Transformation Emeline face 2 mois — coaching Ornella Fit" loading="lazy" decoding="async" width="4319" height="4319">
-            <img src="images/avant-apres-emeline-dos.webp?v=2" alt="Transformation Emeline dos 2 mois — coaching Ornella Fit" loading="lazy" decoding="async" width="4319" height="4319">
-            <span class="transfo-card-tag">Avant → après</span>
-          </a>
-          <div class="transfo-card-body">
-            <div class="transfo-card-name">Emeline · Présentiel → hybride → à distance · maman de 2 enfants</div>
-            <div class="transfo-card-stats"><span>Fessiers galbés</span><span>Taille affinée</span><span>2 mois</span></div>
-            <p class="transfo-card-text">Peu de temps pour elle : programme sur-mesure et ajustements réguliers. <strong>Fessiers redessinés, taille fine en 2 mois.</strong></p>
-          </div>
-        </article>
-
-        <!-- LOUISE — à domicile -->
-        <article class="transfo-card">
-          <a class="transfo-card-img" href="transformations.html#transfo-louise" aria-label="Voir la transformation de Louise">
-            <img src="images/louise-face.webp?v=2" alt="Transformation Louise face — coaching à domicile Ornella Fit Essonne" loading="lazy" decoding="async" width="4319" height="4319">
-            <img src="images/louise-dos-avant-apres.webp?v=2" alt="Transformation Louise dos — coaching à domicile Ornella Fit Essonne" loading="lazy" decoding="async" width="4319" height="4319">
-            <span class="transfo-card-tag">Avant → après</span>
-          </a>
-          <div class="transfo-card-body">
-            <div class="transfo-card-name">Louise · à domicile · Essonne (91)</div>
-            <div class="transfo-card-stats"><span>−9 cm de taille</span><span>−5 kg</span><span>9 mois</span></div>
-            <p class="transfo-card-text">Maman de 2 enfants, 2 séances par semaine chez elle. <strong>Dos redessiné, silhouette transformée.</strong></p>
-          </div>
-        </article>
-
-      </div>
-      <div class="ofc-dots" aria-hidden="true"></div>
-    </div>
-
-    <a href="transformations.html" class="link-discret">Voir toutes les transformations →</a>
-
-    <div class="cta-block">
-      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn-main" target="_blank">Échange gratuit de 15 min →</a>
-    </div>
-  </div>
-</section>
-
-<!-- AVIS CLIENTS — carrousel swipeable -->
-<section id="avis-clients">
-  <div class="inner">
-    <span class="section-label">Avis Google vérifiés</span>
-    <h2 class="section-title">Ce qu'elles disent<br><em>après quelques semaines avec moi.</em></h2>
-
-    <!-- BLOC NOTE GOOGLE -->
-    <a class="avis-note-g" href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" rel="noopener">
-      <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-      <span class="avis-note-num">5,0</span>
-      <span class="avis-note-stars" aria-label="5 étoiles sur 5">★★★★★</span>
-      <span class="avis-note-link">Voir les avis Google →</span>
-    </a>
-
-    <div class="ofc-carousel" data-carousel>
-      <div class="ofc-track" tabindex="0" aria-label="Avis Google de clientes, faire défiler">
-
-        <article class="avis-card">
-          <div class="avis-header">
-            <div class="avis-avatar" style="background:linear-gradient(135deg,#C96358,#C9957A);">C</div>
-            <div class="avis-meta">
-              <div class="avis-name">Charlotte C.</div>
-              <div class="avis-date">Avis Google vérifié</div>
-            </div>
-            <span class="avis-stars" aria-label="5 étoiles">★★★★★</span>
-          </div>
-          <p class="avis-text">Je ne suis pas du tout sportive à la base et pourtant Ornella réussit à me motiver à chaque séance. Elle est bienveillante, drôle et toujours encourageante. Elle s'adapte au niveau de chacun, prend le temps d'expliquer, de corriger, et célèbre les petites victoires. On progresse dans la bonne humeur et sans jugement. Si j'aime (presque) le sport, c'est grâce à elle ! Je recommande à 1000% ! 🫶🏻</p>
-          <button type="button" class="avis-more" hidden>Lire la suite</button>
-        </article>
-
-        <article class="avis-card">
-          <div class="avis-header">
-            <div class="avis-avatar" style="background:#C96358;">A</div>
-            <div class="avis-meta">
-              <div class="avis-name">Anne-C.</div>
-              <div class="avis-date">Local Guide · Google</div>
-            </div>
-            <span class="avis-stars" aria-label="5 étoiles">★★★★★</span>
-          </div>
-          <p class="avis-text">Soucieuse de rester en forme et d'entretenir mes muscles de quarantenaire, j'ai fait appel à Ornella pour quelques séances en groupe; je recherchais des exercices faciles à refaire seule et Ornella a parfaitement répondu à ma demande. J'ai beaucoup apprécié la variété des entraînements, ses encouragements et surtout le fait qu'elle fait très attention à notre posture et à la façon dont on réalise les exercices. En 4 séances je commence déjà à constater les bénéfices d'un entraînement regulier et adapté. Merci Ornella !</p>
-          <button type="button" class="avis-more" hidden>Lire la suite</button>
-        </article>
-
-        <article class="avis-card avis-card-video">
-          <div class="vid">
-            <video muted playsinline loop preload="none" aria-hidden="true" poster="images/video/site_avis_clientes_poster.jpg?v=3" data-src="images/video/site_avis_clientes.mp4?v=3"></video>
-          </div>
-          <p class="avis-video-cap">Elles en parlent en vidéo</p>
-        </article>
-
-      </div>
-      <div class="ofc-dots" aria-hidden="true"></div>
-    </div>
-
-    <a href="transformations.html" class="link-discret">Voir tous les avis →</a>
-  </div>
-</section>
-
-<!-- SALLE VS COACHING (version courte) -->
-<section class="svc-home" id="svc-home">
-  <div class="svc-home-grid">
+<main>
+<!-- 1. HERO -->
+<section id="hero" class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-photo"><img src="images/ornella-photo-bleue-originale.webp" alt="Ornella, coach sportive diplômée d'État en Essonne" width="1080" height="1350" fetchpriority="high" decoding="async"></div>
     <div>
-      <h2>À la salle, tu paies un accès. <em>Avec moi, un vrai accompagnement.</em></h2>
-      <p class="svc-home-txt">Salle, cours collectifs, applis… Ce qui te manquait, ce n'est pas la volonté : c'est un plan fait pour toi et quelqu'un qui te suit.</p>
-      <a href="coach-sportif-ou-salle-de-sport.html" class="svc-home-link">Salle ou coach : le comparatif</a>
+      <h1>Retrouve un ventre plat et ton énergie, <span class="hl">même avec des enfants et zéro temps.</span></h1>
+      <p class="hero-sub">À domicile en Essonne (91) et Hauts-de-Seine (92), ou à distance partout en France. Un programme 100 % construit pour toi.</p>
+      <div class="hero-act">
+        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn" id="hero-cta" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20l1.2-3.7A8.5 8.5 0 1 1 20 11.5z"/></svg>Échange gratuit de 15 min</a>
+        <p class="hero-note">Par WhatsApp · sans engagement · tu choisis ta formule après</p>
+        <p class="hero-quiz">Pas sûre ? <a href="quiz.html" class="link">Trouve ta formule en 2 min</a></p>
+      </div>
+      <ul class="trust">
+        <li><b>Diplômée d'État</b>carte pro vérifiable</li>
+        <li><a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" rel="noopener" style="text-decoration:none"><b>5,0 ★ Google</b>26 avis</a></li>
+        <li><b>Post-partum</b>reprise en sécurité</li>
+      </ul>
     </div>
-    <img class="svc-home-img" src="images/salle-vs-coaching.webp" alt="À la salle tu paies un accès, avec Ornella Fit Coaching un vrai accompagnement – coach sportive femme Essonne" loading="lazy" decoding="async" width="1080" height="1350">
   </div>
 </section>
 
-<!-- APERÇU DES 3 OFFRES -->
-<section id="apercu-offres">
-  <div class="inner">
-    <span class="section-label">Coaching sur mesure</span>
-    <h2 class="section-title">L'accompagnement <em>fait pour toi</em></h2>
-    <div class="offre-list">
-      <a href="offres.html" class="offre-row">
-        <span class="offre-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5 12 4l8.5 6.5"/><path d="M5.5 9.5V19a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/><path d="M10 20v-5h4v5"/></svg></span>
-        <span class="offre-txt"><b>Domicile</b><small>Je viens chez toi · séance découverte 50 €</small></span>
-        <span class="offre-price">dès 240 €<small>/mois</small></span>
+<!-- 2. RÉSULTATS + AVIS -->
+<section id="transfo-proof" class="band band--blush">
+  <div class="wrap">
+    <div class="head">
+      <h2>Elles ont <span class="hl">transformé leur corps.</span></h2>
+      <p>Des mamans avec peu de temps, comme toi. Photos non retouchées, publiées avec leur accord.</p>
+    </div>
+    <div class="rail" data-rail aria-label="Avant / après de clientes">
+      <a class="case" href="transformations.html#transfo-maria">
+        <img src="images/maria-face.webp?v=5" alt="Avant / après de Maria, coaching 100 % à distance" width="1200" height="1200" loading="lazy" decoding="async">
+        <div class="case-b"><div class="case-n">Maria</div><div class="case-r">−10 kg en 8 mois</div><div class="case-c">Maman de 2 enfants · 100 % à distance</div></div>
       </a>
-      <a href="offres.html" class="offre-row offre-featured">
-        <span class="offre-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M18 7v6"/><path d="M15 10h6"/></svg></span>
-        <span class="offre-txt"><b>Hybride</b><small>Séances avec moi + suivi à distance</small></span>
-        <span class="offre-price">dès 149 €<small>/mois</small></span>
+      <a class="case" href="transformations.html#transfo-emeline">
+        <img src="images/avant-apres-emeline-2.webp?v=2" alt="Avant / après d'Emeline en 2 mois" width="1080" height="1080" loading="lazy" decoding="async">
+        <div class="case-b"><div class="case-n">Emeline</div><div class="case-r">Fessiers galbés, taille affinée en 2 mois</div><div class="case-c">Maman de 2 enfants · présentiel, puis hybride et à distance</div></div>
       </a>
-      <a href="offres.html" class="offre-row">
-        <span class="offre-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12" rx="1.5"/><path d="M2 20h20"/></svg></span>
-        <span class="offre-txt"><b>Distanciel</b><small>Programme sur-mesure + suivi WhatsApp</small></span>
-        <span class="offre-price">dès 89 €<small>/mois</small></span>
+      <a class="case" href="transformations.html#transfo-louise">
+        <img src="images/louise-face.webp?v=2" alt="Avant / après de Louise, coaching à domicile en Essonne" width="1080" height="1080" loading="lazy" decoding="async">
+        <div class="case-b"><div class="case-n">Louise</div><div class="case-r">−9 cm de taille et −5 kg en 9 mois</div><div class="case-c">Maman de 2 enfants · à domicile en Essonne, 2 séances par semaine</div></div>
       </a>
     </div>
-    <p class="offre-inclus"><strong>Inclus partout :</strong> ton espace de suivi privé (séances, bilans, mensurations, photos) sur ton téléphone.</p>
-    <div class="cta-block">
-      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn-main" target="_blank">Échange gratuit de 15 min →</a>
-    </div>
-    <a href="offres.html" class="link-discret">Voir toutes les offres en détail →</a>
-    <p class="fdtv-line"><b style="color:var(--dark);">Tu préfères avancer à ton rythme, sans coaching&nbsp;?</b><br>Mes programmes à suivre seule, accès immédiat&nbsp;: <a href="fit-dans-ta-vie.html" onclick="if(typeof fbq!=='undefined')fbq('track','ViewContent',{value:49,currency:'EUR',content_name:'Fit Dans Ta Vie'})">⭐ Fit Dans Ta Vie</a> · <a href="programmes.html">voir tous mes programmes →</a></p>
+    <div class="more"><a href="transformations.html" class="link">Voir toutes les transformations</a></div>
   </div>
 </section>
 
-<!-- ZONES — silhouette cliquable, ouvre le quiz avec la zone déjà cochée -->
-<section id="zones-home">
-  <div class="inner">
-    <span class="section-label">Ton objectif</span>
-    <h2 class="section-title">Quelle zone tu veux <em>changer ?</em></h2>
-    <p class="zh-sub">Touche-la sur la silhouette : je te dis en 2 minutes ce qu'il te faut.</p>
-    <div class="zh-map">
-      <svg viewBox="0 0 120 262" role="group" aria-label="Silhouette de face">
-        <defs>
-          <path id="zhArmL" d="M37 49 Q27 52 25 68 L20 126 Q21 134 28 132 L33 92 L40 64 Z"/>
-          <path id="zhLegL" d="M38 140 L59 142 L57 196 L55 246 Q50 254 45 247 L42 196 Z"/>
-          <path id="zhThighL" d="M38 140 L59 142 L58 190 L43 190 Z"/>
-          <path id="zhTorso" d="M38 46 Q60 40 82 46 L86 70 Q80 98 76 110 Q86 128 84 142 L36 142 Q34 128 44 110 Q40 98 34 70 Z"/>
-        </defs>
-        <ellipse class="zh-base" cx="60" cy="22" rx="13" ry="15"/>
-        <rect class="zh-base" x="54" y="34" width="12" height="12" rx="3"/>
-        <use href="#zhTorso" class="zh-base"/>
-        <use href="#zhLegL" class="zh-base"/><use href="#zhLegL" class="zh-base" transform="translate(120 0) scale(-1 1)"/>
-        <use href="#zhArmL" class="zh-zone" data-z="bras"/><use href="#zhArmL" class="zh-zone" data-z="bras" transform="translate(120 0) scale(-1 1)"/>
-        <ellipse class="zh-zone" data-z="ventre" cx="60" cy="101" rx="14" ry="17"/>
-        <use href="#zhThighL" class="zh-zone" data-z="cuisses"/><use href="#zhThighL" class="zh-zone" data-z="cuisses" transform="translate(120 0) scale(-1 1)"/>
-      </svg>
-      <svg viewBox="0 0 120 262" role="group" aria-label="Silhouette de dos">
-        <ellipse class="zh-base" cx="60" cy="22" rx="13" ry="15"/>
-        <rect class="zh-base" x="54" y="34" width="12" height="12" rx="3"/>
-        <use href="#zhTorso" class="zh-base"/>
-        <use href="#zhLegL" class="zh-base"/><use href="#zhLegL" class="zh-base" transform="translate(120 0) scale(-1 1)"/>
-        <use href="#zhArmL" class="zh-zone" data-z="bras"/><use href="#zhArmL" class="zh-zone" data-z="bras" transform="translate(120 0) scale(-1 1)"/>
-        <path class="zh-zone" data-z="dos" d="M41 50 Q60 45 79 50 L82 70 Q74 96 60 100 Q46 96 38 70 Z"/>
-        <ellipse class="zh-zone zh-pulse" data-z="fessiers" cx="49" cy="126" rx="11.5" ry="13"/>
-        <ellipse class="zh-zone zh-pulse" data-z="fessiers" cx="71" cy="126" rx="11.5" ry="13"/>
-        <use href="#zhThighL" class="zh-zone" data-z="cuisses" transform="translate(0 4)"/><use href="#zhThighL" class="zh-zone" data-z="cuisses" transform="translate(120 4) scale(-1 1)"/>
-      </svg>
-    </div>
-    <div class="zh-chips">
-      <a href="quiz.html?zones=ventre">Ventre plat</a>
-      <a href="quiz.html?zones=fessiers">Fessiers</a>
-      <a href="quiz.html?zones=postpartum">Après grossesse</a>
-      <a href="quiz.html?zones=tout">Tout le corps</a>
-    </div>
+<!-- 3. AVIS -->
+<section id="avis-clients" class="band band--sage">
+  <div class="wrap">
+      <div class="rating">
+        <h2><span class="hl">5,0</span> sur Google <span class="stars" aria-label="5 étoiles sur 5">★★★★★</span></h2>
+        <a href="https://share.google/NcyAyWaS3WMZgQ4B6" class="link" target="_blank" rel="noopener">Lire les 26 avis</a>
+      </div>
+      <div class="rail rail--2" data-rail aria-label="Avis Google de clientes">
+        <figure class="quote">
+          <p>Je ne suis pas du tout sportive à la base et pourtant Ornella réussit à me motiver à chaque séance. Elle est bienveillante, drôle et toujours encourageante. Elle s'adapte au niveau de chacun, prend le temps d'expliquer, de corriger, et célèbre les petites victoires. On progresse dans la bonne humeur et sans jugement. Si j'aime (presque) le sport, c'est grâce à elle ! Je recommande à 1000% ! 🫶🏻</p>
+          <button type="button" hidden>Lire la suite</button>
+          <footer><b>Charlotte C.</b> · avis Google vérifié</footer>
+        </figure>
+        <figure class="quote">
+          <p>Soucieuse de rester en forme et d'entretenir mes muscles de quarantenaire, j'ai fait appel à Ornella pour quelques séances en groupe; je recherchais des exercices faciles à refaire seule et Ornella a parfaitement répondu à ma demande. J'ai beaucoup apprécié la variété des entraînements, ses encouragements et surtout le fait qu'elle fait très attention à notre posture et à la façon dont on réalise les exercices. En 4 séances je commence déjà à constater les bénéfices d'un entraînement regulier et adapté. Merci Ornella !</p>
+          <button type="button" hidden>Lire la suite</button>
+          <footer><b>Anne-C.</b> · Local Guide Google</footer>
+        </figure>
+      </div>
   </div>
 </section>
-<style>
-#zones-home { background: white; padding: 64px 24px; }
-#zones-home .inner { max-width: 560px; margin: 0 auto; text-align: center; }
-#zones-home .section-title { font-size: clamp(1.75rem, 4vw, 2.8rem); margin-bottom: 10px; }
-.zh-sub { font-size: .95rem; color: var(--text-light); margin: 0 auto 22px; max-width: 34ch; line-height: 1.55; }
-.zh-map { display: flex; justify-content: center; gap: 18px; margin-bottom: 18px; }
-.zh-map svg { width: 42%; max-width: 140px; height: auto; }
-.zh-base { fill: #F3EAE3; stroke: #D9C7B8; stroke-width: 1; }
-.zh-zone { fill: #F3EAE3; stroke: #D9C7B8; stroke-width: 1; cursor: pointer; transition: fill .2s; -webkit-tap-highlight-color: transparent; }
-.zh-zone:hover, .zh-zone:focus-visible { fill: var(--accent); stroke: #A94E44; outline: none; }
-.zh-pulse { animation: zhPulse 2.6s ease-in-out infinite; }
-@keyframes zhPulse { 0%, 100% { fill: #F3EAE3; } 50% { fill: rgba(201,99,88,.35); } }
-.zh-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-.zh-chips a { font-size: .86rem; font-weight: 500; padding: 9px 15px; border-radius: 50px; border: 1.5px solid rgba(201,185,154,.45); background: white; color: var(--text); text-decoration: none; }
-.zh-chips a:hover { border-color: var(--accent); color: var(--accent); }
-@media (max-width: 640px) { #zones-home { padding: 52px 20px; } }
-@media (prefers-reduced-motion: reduce) { .zh-pulse { animation: none; } }
-</style>
-<script>
-(function () {
-  var labels = { ventre: 'Ventre', fessiers: 'Fessiers', cuisses: 'Cuisses', bras: 'Bras', dos: 'Dos' };
-  document.querySelectorAll('#zones-home .zh-zone').forEach(function (el) {
-    var z = el.getAttribute('data-z');
-    el.setAttribute('tabindex', '0');
-    el.setAttribute('role', 'link');
-    el.setAttribute('aria-label', labels[z] + ' : commencer le quiz');
-    function go() {
-      if (window.ofcGA) try { ofcGA('zone_accueil', { zone: z }); } catch (e) {}
-      location.href = 'quiz.html?zones=' + z;
-    }
-    el.addEventListener('click', go);
-    el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
-  });
-})();
-</script>
 
-<!-- MON HISTOIRE (teaser court) -->
-<section id="teaser-apropos">
-  <div class="inner">
-    <div class="teaser-story">
-      <span class="section-label">Mon histoire</span>
-      <h2 class="section-title">Je suis passée par <em>là, moi aussi.</em></h2>
-      <p class="teaser-text">Ado en surpoids, demi-finaliste du Championnat de France de Bikini Fitness, puis une grossesse difficile et un corps à reconstruire de zéro. <strong>Ce que je t'enseigne, je l'ai vécu.</strong></p>
-      <p class="teaser-postpartum">Post-partum ? Je reconstruis ton corps comme j'ai reconstruit le mien.</p>
-      <a href="apropos.html" class="teaser-link">Découvrir mon parcours →</a>
+<!-- 3. FORMULES -->
+<section id="apercu-offres" class="band">
+  <div class="wrap split">
+    <div class="head">
+      <h2>À la salle, tu paies un accès. <span class="hl">Avec moi, un vrai accompagnement.</span></h2>
+      <p>Ce qui te manquait, ce n'est pas la volonté : c'est un plan fait pour toi et quelqu'un qui te suit.</p>
+    </div>
+    <div>
+      <div class="offers">
+        <a class="offer" href="offres.html">
+          <div><h3>Domicile</h3><p>Je viens chez toi · séance découverte 50 €</p></div>
+          <div class="price">dès<b>240 €</b>par mois</div>
+        </a>
+        <a class="offer offer--top" href="offres.html">
+          <div><h3>Hybride <span class="tag">Le plus choisi</span></h3><p>Séances avec moi + programme et suivi à distance</p></div>
+          <div class="price">dès<b>149 €</b>par mois</div>
+        </a>
+        <a class="offer" href="offres.html">
+          <div><h3>Distanciel</h3><p>Programme sur-mesure + suivi WhatsApp, partout en France</p></div>
+          <div class="price">dès<b>89 €</b>par mois</div>
+        </a>
+      </div>
+      <div class="incl">
+        <p><b>Dans chaque formule :</b> ton espace de suivi privé sur ton téléphone (séances, bilans, mensurations, photos).</p>
+        <p><b>À domicile :</b> Saulx-les-Chartreux, Massy, Palaiseau, Longjumeau, Champlan, Villebon-sur-Yvette, Chilly-Mazarin, Épinay-sur-Orge, Antony. Ailleurs, à distance.</p>
+      </div>
+      <div class="offers-act">
+        <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn" target="_blank" rel="noopener">Échange gratuit de 15 min</a>
+        <a href="offres.html" class="link">Voir les tarifs en détail</a>
+      </div>
+      <p class="solo"><b>Tu préfères avancer seule, sans coaching ?</b> Mes programmes en accès immédiat : <a href="fit-dans-ta-vie.html" data-fdtv>Fit Dans Ta Vie</a> · <a href="programmes.html">tous les programmes</a></p>
     </div>
   </div>
 </section>
 
-<!-- MICRO-QUIZ OBJECTIONS -->
-<section id="micro-quiz-obj">
-  <div class="inner">
-    <span class="section-label">Soyons honnêtes</span>
-    <h2 class="section-title">Qu'est-ce qui t'arrête <em>vraiment ?</em></h2>
-    <p class="obj-intro">Choisis, je te réponds franchement.</p>
-
-    <div class="obj-btns">
-      <button type="button" class="obj-btn" onclick="showObjReply(this,'prix')">Le prix</button>
-      <button type="button" class="obj-btn" onclick="showObjReply(this,'temps')">Le temps</button>
-      <button type="button" class="obj-btn" onclick="showObjReply(this,'postpartum')">Enceinte / post-partum</button>
-      <button type="button" class="obj-btn" onclick="showObjReply(this,'lieu')">Je n'habite pas en Essonne</button>
-      <button type="button" class="obj-btn" onclick="showObjReply(this,'debutante')">Je suis trop débutante</button>
-      <button type="button" class="obj-btn" onclick="showObjReply(this,'age')">Je suis trop âgée</button>
+<!-- 4. MON HISTOIRE -->
+<section id="teaser-apropos" class="band band--night">
+  <div class="wrap split">
+    <div class="head"><h2>Je suis passée par <span class="hl">là, moi aussi.</span></h2></div>
+    <div class="story">
+    <p>Ado en surpoids, demi-finaliste du Championnat de France de Bikini Fitness, puis une grossesse difficile et un corps à reconstruire de zéro. <b>Ce que je t'enseigne, je l'ai vécu.</b></p>
+    <p>Post-partum ? Je reconstruis ton corps comme j'ai reconstruit le mien.</p>
+    <p class="cred">Coach diplômée d'État · <a href="https://recherche-educateur.sports.gouv.fr" target="_blank" rel="noopener">carte pro n° 09126ED0021</a></p>
+    <a href="apropos.html" class="link">Découvrir mon parcours</a>
     </div>
-
-    <div id="obj-reply-prix" class="obj-reply" hidden><p><strong>Une salle que tu n'utilises pas coûte plus cher qu'un coaching qui marche.</strong> Programme sur-mesure et suivi inclus, dès 89 €/mois. Le détail des trois formules est juste au-dessus.</p></div>
-    <div id="obj-reply-temps" class="obj-reply" hidden><p><strong>30 minutes suffisent.</strong> À distance, tes séances durent 30 à 40 min chez toi. À domicile, je viens : zéro trajet. Ton programme s'adapte à ton planning, pas l'inverse.</p></div>
-    <div id="obj-reply-debutante" class="obj-reply" hidden><p><strong>Celles qui partent de zéro progressent le plus vite.</strong> Je pars de ton niveau réel, sans jugement. Et à domicile, personne ne te regarde.</p></div>
-    <div id="obj-reply-lieu" class="obj-reply" hidden><p><strong>Domicile en Essonne (91) et dans le sud du 92.</strong> Partout ailleurs : coaching à distance, même programme sur-mesure, même suivi WhatsApp.</p></div>
-    <div id="obj-reply-postpartum" class="obj-reply" hidden><p><strong>C'est ma spécialité, je l'ai vécu.</strong> Reprise en sécurité : périnée, diastasis, progression à ton rythme. Je travaille en complément de ta rééducation périnéale, validée par ta sage-femme ou ton kiné.</p></div>
-    <div id="obj-reply-age" class="obj-reply" hidden><p><strong>Mes clientes ont de 25 à 55 ans.</strong> Ton corps change avec l'âge, il ne s'arrête pas d'évoluer : il lui faut juste un programme adapté à lui.</p></div>
-
-    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="obj-reply-cta" target="_blank">On en parle ? Échange gratuit de 15 min →</a>
   </div>
 </section>
 
-<!-- FAQ ACCUEIL — accordéon fermé, 4 questions -->
-<section id="faq-home">
-  <div class="inner">
-    <span class="section-label">Questions fréquentes</span>
-    <h2 class="section-title">Tu te poses des questions.<br><em>Voici les réponses.</em></h2>
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary class="faq-q">Comment se passe l'échange gratuit de 15 min ?<span class="faq-arrow" aria-hidden="true">+</span></summary>
-        <div class="faq-a"><p>Tu m'écris sur WhatsApp et on fait le point en 15 minutes — par messages, ou par téléphone si tu préfères. On parle de ton objectif, de ton niveau et de ton emploi du temps, puis je te dis honnêtement quelle formule te convient. Sans engagement.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">Quand est-ce que je vais voir les premiers résultats ?<span class="faq-arrow" aria-hidden="true">+</span></summary>
-        <div class="faq-a"><p>Plus d'énergie et un meilleur sommeil dès la 2e ou 3e semaine. Les changements visibles sur la silhouette arrivent généralement entre 4 et 8 semaines, selon ton point de départ et ta régularité.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">Faut-il une salle de sport ou du matériel ?<span class="faq-arrow" aria-hidden="true">+</span></summary>
-        <div class="faq-a"><p>Non. Un tapis de sol suffit pour commencer, des élastiques peuvent venir ensuite. Si tu as accès à une salle, on peut l'intégrer, mais ce n'est jamais obligatoire.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">Qu'est-ce que tu promets, et qu'est-ce que tu ne promets pas ?<span class="faq-arrow" aria-hidden="true">+</span></summary>
-        <div class="faq-a"><p><strong>Ce que je ne promets pas :</strong> des résultats sans effort, un programme copié-collé, une transformation en 2 semaines, des promesses intenables.</p><p><strong>Ce que je promets :</strong> un programme pour ta vraie vie, un suivi honnête chaque semaine, ma dispo quand tu en as besoin, des ajustements jusqu'au résultat.</p></div>
-      </details>
+<!-- 5. FAQ -->
+<section id="faq-home" class="band band--sand">
+  <div class="wrap split">
+    <div class="head"><h2>Tes questions, <span class="hl">mes réponses franches.</span></h2></div>
+    <div class="faq">
+    <details>
+      <summary>Comment se passe l'échange gratuit de 15 min ?</summary>
+      <div class="a"><p>Tu m'écris sur WhatsApp et on fait le point en 15 minutes — par messages, ou par téléphone si tu préfères. On parle de ton objectif, de ton niveau et de ton emploi du temps, puis je te dis honnêtement quelle formule te convient. Sans engagement.</p></div>
+    </details>
+    <details>
+      <summary>Combien ça coûte ?</summary>
+      <div class="a"><p>Une salle que tu n'utilises pas coûte plus cher qu'un coaching qui marche. Programme sur-mesure et suivi sont inclus dans chaque formule, à partir de 89 €/mois à distance. Tout le détail est sur la <a href="offres.html">page tarifs</a>.</p></div>
+    </details>
+    <details>
+      <summary>Je n'ai ni le temps ni le matériel : c'est possible ?</summary>
+      <div class="a"><p>Oui. Ton programme s'adapte à ton planning, pas l'inverse : à domicile, je viens chez toi, zéro trajet ; à distance, tu t'entraînes quand tu peux.</p><p>Un tapis de sol suffit pour commencer, des élastiques peuvent venir ensuite. Si tu as accès à une salle, on peut l'intégrer, mais ce n'est jamais obligatoire.</p></div>
+    </details>
+    <details>
+      <summary>Je débute, ou je ne suis plus toute jeune : c'est pour moi ?</summary>
+      <div class="a"><p>Oui. Celles qui partent de zéro progressent le plus vite : je pars de ton niveau réel, sans jugement. Et à domicile, personne ne te regarde.</p><p>Mes clientes ont de 25 à 55 ans. Ton corps change avec l'âge, il ne s'arrête pas d'évoluer : il lui faut juste un programme adapté.</p></div>
+    </details>
+    <details>
+      <summary>Je n'habite pas en Essonne : comment on fait ?</summary>
+      <div class="a"><p>Je viens à domicile en Essonne (91) et dans le sud du 92. Partout ailleurs, on travaille à distance : même programme sur-mesure, même suivi WhatsApp.</p></div>
+    </details>
+    <details>
+      <summary>Je suis enceinte ou en post-partum : c'est adapté ?</summary>
+      <div class="a"><p>C'est ma spécialité, je l'ai vécu. Reprise en sécurité : périnée, diastasis, progression à ton rythme. Je travaille en complément de ta rééducation périnéale, validée par ta sage-femme ou ton kiné.</p></div>
+    </details>
+    <details>
+      <summary>Quand vais-je voir les premiers résultats ?</summary>
+      <div class="a"><p>Plus d'énergie et un meilleur sommeil dès la 2e ou 3e semaine. Les changements visibles sur la silhouette arrivent généralement entre 4 et 8 semaines, selon ton point de départ et ta régularité.</p><p>Je ne promets ni résultats sans effort, ni programme copié-collé, ni transformation en 2 semaines. Je promets un programme pour ta vraie vie, un suivi honnête chaque semaine et des ajustements jusqu'au résultat.</p></div>
+    </details>
+    <div class="more" style="text-align:left"><a href="faq.html" class="link">Toutes les questions</a></div>
     </div>
-    <a href="faq.html" class="link-discret">Voir toutes les questions →</a>
   </div>
 </section>
 
-<!-- CTA FINAL -->
-<section id="cta-final">
-  <div class="inner">
-    <span class="section-label" style="color:var(--gold);">C'est maintenant</span>
-    <h2 class="section-title">La seule décision<br><em>qui change tout.</em></h2>
-    <p class="section-subtitle">Ventre plus plat. Fessiers galbés. Énergie retrouvée.<br>Tout commence par un simple message (par téléphone si tu préfères).</p>
-    <div class="cta-buttons">
-      <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn-main" target="_blank">Échange gratuit de 15 min →</a>
-    </div>
-    <p class="cta-reassure">✓ Sans engagement · Même si tu débutes · <span data-ofc-places-dom>Places à domicile limitées ce mois-ci</span></p>
-    <p class="cta-quiz">Pas encore sûre ? <a href="quiz.html">Trouve ta formule en 2 min</a></p>
+<!-- 6. CTA FINAL -->
+<section id="cta-final" class="band band--coral final">
+  <div class="wrap">
+    <h2>La seule décision <span class="hl">qui change tout.</span></h2>
+    <p>Ventre plus plat, fessiers galbés, énergie retrouvée : tout commence par un simple message, ou un appel si tu préfères.</p>
+    <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn" target="_blank" rel="noopener">Échange gratuit de 15 min</a>
+    <p class="small">Sans engagement · même si tu débutes · <span data-ofc-places-dom>places à domicile limitées ce mois-ci</span></p>
+    <p class="small">Pas encore sûre ? <a href="quiz.html">Trouve ta formule en 2 min</a></p>
   </div>
 </section>
+</main>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">
-    <img src="images/logo.png" alt="Ornella Fit Coaching" class="footer-logo-img" loading="lazy" width="3135" height="793">
+<footer class="foot">
+  <div class="wrap">
+    <img src="images/logo.png" alt="Ornella Fit Coaching" width="3135" height="793" loading="lazy">
+    <p class="foot-slogan">« Ton plus bel investissement, c'est toi. »</p>
+    <nav aria-label="Pages du site">
+      <a href="offres.html">Coaching et tarifs</a>
+      <a href="programmes.html">Programmes digitaux</a>
+      <a href="transformations.html">Transformations</a>
+      <a href="entreprise.html">Entreprise</a>
+      <a href="apropos.html">À propos</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <div class="contact">
+      <a href="https://wa.me/33756834626" target="_blank" rel="noopener">WhatsApp 07 56 83 46 26</a>
+      <a href="https://www.instagram.com/coach.ornella" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:ornellafit.coaching@gmail.com">ornellafit.coaching@gmail.com</a>
+      <a href="links.html">Mes liens</a>
+    </div>
+    <details>
+      <summary>Coach sportive à domicile près de chez toi</summary>
+      <div>
+        <a href="coach-sportif-domicile-saulx-les-chartreux.html">Saulx-les-Chartreux</a>
+        <a href="coach-sportif-domicile-massy.html">Massy</a>
+        <a href="coach-sportif-domicile-palaiseau.html">Palaiseau</a>
+        <a href="coach-sportif-domicile-longjumeau.html">Longjumeau</a>
+        <a href="coach-sportif-domicile-champlan.html">Champlan</a>
+        <a href="coach-sportif-domicile-villebon-sur-yvette.html">Villebon-sur-Yvette</a>
+        <a href="coach-sportif-domicile-chilly-mazarin.html">Chilly-Mazarin</a>
+        <a href="coach-sportif-domicile-epinay-sur-orge.html">Épinay-sur-Orge</a>
+        <a href="coach-sportif-domicile-antony.html">Antony</a>
+        <a href="coach-sportif-essonne.html">Coach sportif Essonne</a>
+        <a href="prix-coach-sportif-domicile-essonne.html">Prix coach à domicile</a>
+      </div>
+    </details>
+    <details>
+      <summary>Ressources et bonus</summary>
+      <div>
+        <a href="coach-perte-de-poids.html">Coach perte de poids</a>
+        <a href="coach-sportif-ou-salle-de-sport.html">Salle ou coach : le comparatif</a>
+        <a href="blog.html">Blog</a>
+        <a href="booty-sculpt.html">Booty Sculpt</a>
+        <a href="ventre-plat.html">Ventre Plat</a>
+        <a href="challenge-ventre-plat.html">Challenge gratuit</a>
+        <a href="guide-9-erreurs.html?src=site-footer">Guide gratuit</a>
+        <a href="programme-fidelite.html">Programme fidélité</a>
+        <a href="carte-marraine.html">Parrainage</a>
+      </div>
+    </details>
+    <p class="legal"><span>© 2026 Ornella Fit Coaching</span><a href="mentions-legales.html">Mentions légales</a><a href="cgv.html">CGV</a><a href="mentions-legales.html#rgpd">Confidentialité</a></p>
   </div>
-  <p class="footer-slogan">« Ton plus bel investissement, c'est toi. »</p>
-  <div class="footer-links">
-    <a href="/">Accueil</a>
-    <a href="offres.html">Coaching</a>
-    <a href="programmes.html">Programmes digitaux</a>
-    <a href="transformations.html">Transformations</a>
-    <a href="apropos.html">À propos</a>
-    <a href="coach-sportif-essonne.html">Coach sportif Essonne</a>
-    <a href="prix-coach-sportif-domicile-essonne.html">Prix coach à domicile</a>
-    <a href="coach-perte-de-poids.html">Coach perte de poids</a>
-    <a href="faq.html">FAQ</a>
-    <a href="booty-sculpt.html">Booty Sculpt</a>
-    <a href="ventre-plat.html">Ventre Plat</a>
-    <a href="challenge-ventre-plat.html">Challenge gratuit</a>
-    <a href="guide-9-erreurs.html?src=site-footer">Guide gratuit</a>
-    <a href="programme-fidelite.html">Programme fidélité</a>
-    <a href="carte-marraine.html">Parrainage</a>
-    <a href="https://wa.me/33756834626" target="_blank">WhatsApp</a>
-  </div>
-  <div class="footer-social">
-    <a href="https://www.instagram.com/coach.ornella" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:5px;"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>Instagram</a>
-    <a href="mailto:ornellafit.coaching@gmail.com"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:5px;"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg>Email</a>
-    <a href="https://www.ornellafitcoaching.com/links.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:5px;"><path d="M9 15 15 9"/><path d="M11 6.5 13 4.5a4 4 0 0 1 6 6l-2 2"/><path d="M13 17.5 11 19.5a4 4 0 0 1-6-6l2-2"/></svg>Mes liens</a>
-  </div>
-  <p class="footer-info">Ornella · Coach sportive Essonne (91) · Île-de-France · ornellafit.coaching@gmail.com</p>
-  <p class="footer-info footer-zones">Coach sportive à domicile : <a href="/coach-sportif-domicile-saulx-les-chartreux.html">Saulx-les-Chartreux</a> · <a href="/coach-sportif-domicile-massy.html">Massy</a> · <a href="/coach-sportif-domicile-palaiseau.html">Palaiseau</a> · <a href="/coach-sportif-domicile-longjumeau.html">Longjumeau</a> · <a href="/coach-sportif-domicile-champlan.html">Champlan</a> · <a href="/coach-sportif-domicile-villebon-sur-yvette.html">Villebon-sur-Yvette</a> · <a href="/coach-sportif-domicile-chilly-mazarin.html">Chilly-Mazarin</a> · <a href="/coach-sportif-domicile-epinay-sur-orge.html">Épinay-sur-Orge</a> · <a href="/coach-sportif-domicile-antony.html">Antony</a></p>
-  <p class="footer-copy">© 2026 Ornella Fit Coaching — Tous droits réservés</p>
-  <p class="footer-legal"><a href="mentions-legales.html">Mentions légales</a> · <a href="cgv.html">CGV</a> · <a href="mentions-legales.html#rgpd">Politique de confidentialité</a></p>
 </footer>
 
-<!-- LEAD POPUP -->
-<div id="lead-popup">
-  <div id="lead-overlay" onclick="closeLead()"></div>
+<div class="sticky" id="sticky-bar">
+  <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn" id="sticky-main-cta" target="_blank" rel="noopener">Échange gratuit de 15 min</a>
+</div>
+
+<div id="lead-popup" role="dialog" aria-modal="true" aria-labelledby="lead-title">
+  <div id="lead-overlay"></div>
   <div id="lead-box">
-    <button id="lead-close" onclick="closeLead()">×</button>
-    <div class="lead-badge">Guide offert · 100% gratuit</div>
-    <h2 class="lead-title">Pourquoi tu n'as pas de résultats<br><em>malgré tous tes efforts</em></h2>
-    <p class="lead-sub">Les 9 erreurs silencieuses qui sabotent ta transformation — et la méthode concrète pour en sortir définitivement.</p>
-    <div class="lead-pills">
-      <span class="lead-pill">6 chapitres</span>
-      <span class="lead-pill">Plan d'action inclus</span>
-      <span class="lead-pill">Basé sur la science</span>
-    </div>
-    <form id="lead-form" onsubmit="submitLead(event)">
-      <input type="hidden" id="lead-prenom" value="">
-      <input type="email" id="lead-email" placeholder="Ton adresse email" required autocomplete="email">
-      <button type="submit" id="lead-submit">Recevoir le guide gratuitement →</button>
+    <button type="button" id="lead-close" aria-label="Fermer">×</button>
+    <h2 id="lead-title">Pourquoi tu n'as pas de résultats malgré tes efforts</h2>
+    <p>Mon guide gratuit : les 9 erreurs silencieuses qui sabotent ta transformation, et le plan pour en sortir.</p>
+    <form id="lead-form">
+      <input type="email" id="lead-email" placeholder="Ton adresse email" required autocomplete="email" aria-label="Ton adresse email">
+      <button type="submit" id="lead-submit" class="btn">Recevoir le guide</button>
     </form>
-    <p class="lead-note">Pas de spam. Désabonnement en 1 clic.</p>
-    <div id="lead-success">
-      <p>Guide envoyé ! Vérifie ta boîte mail dans 2 minutes.<br><small style="font-weight:400;color:#5C7A5C;">Pense à regarder dans tes spams.</small></p>
-    </div>
+    <p class="small">Pas de spam. Désabonnement en 1 clic.</p>
+    <p id="lead-success">Guide envoyé ! Regarde ta boîte mail dans 2 minutes (et tes spams).</p>
   </div>
 </div>
 
-<!-- STICKY MOBILE BAR — un seul CTA : "Échange gratuit de 15 min" (WhatsApp) -->
-<div class="mobile-sticky-bar">
-  <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="sticky-cta-main" id="sticky-main-cta" target="_blank">💬 Échange gratuit de 15 min →</a>
-</div>
-
-<a href="https://wa.me/33756834626" class="floating-wa" target="_blank" title="WhatsApp" aria-label="WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-
-<script>
-// ============================================================
-// 🔑 CLÉ API BREVO — remplace par ta clé (brevo.com > Paramètres > Clés API)
-const BREVO_API_KEY = 'via-proxy-securise'+''+'';
-// ============================================================
-// NB : le compteur de places de la barre du haut est désormais géré par /data/places.js
-// (span data-ofc-places). L'ancien bloc PLACES_DISPO/MOIS_ACTUEL='mai' a été retiré (code mort).
-
-/* Floating WA — apparaît après 300px de scroll sur desktop */
-(function() {
-  var wa = document.querySelector('.floating-wa');
-  if (!wa) return;
-  var on = null;
-  window.addEventListener('scroll', function() {
-    var v = window.scrollY > 300;
-    if (v !== on) { on = v; wa.classList.toggle('wa-visible', v); }
-  }, { passive: true });
-})();
-
-/* En-tête : la nav est fixée sous le bandeau (top-bar sticky). Au-delà de 50 px de scroll,
-   le bandeau disparaît (body.is-scrolled), la nav remonte en haut et passe à 56 px. */
-function syncNavPosition() {
-  var tb = document.getElementById('top-bar');
-  var nav = document.querySelector('nav');
-  if (!tb || !nav) return;
-  var xb = document.getElementById('xmas-bar');
-  var xmasH = (xb && xb.offsetParent !== null) ? xb.offsetHeight : 0;
-  document.documentElement.style.setProperty('--xmas-h', xmasH + 'px');
-  var tbH = tb.offsetHeight;
-  document.documentElement.style.setProperty('--tb-h', tbH + 'px');
-  nav.style.top = (xmasH + tbH) + 'px';
-  var hero = document.getElementById('hero');
-  if (hero) {
-    // IMPORTANT : formule indépendante du scroll (offsetHeight, pas getBoundingClientRect)
-    // — sinon un resize déclenché par la barre d'URL mobile pendant le défilement
-    // recalcule une marge énorme et la page « saute/remonte ». Hauteur de la nav non réduite : 64 px.
-    hero.style.paddingTop = (64 + 16) + 'px';
-  }
-}
-/* Bandeau fêtes : masqué définitivement une fois fermé (par navigateur). */
-function closeXmasBar() {
-  var xb = document.getElementById('xmas-bar');
-  if (xb) xb.style.display = 'none';
-  try { localStorage.setItem('ofc_xmas_dismissed', '1'); } catch (e) {}
-  syncNavPosition();
-}
-(function() {
-  var dismissed = false;
-  try { dismissed = localStorage.getItem('ofc_xmas_dismissed') === '1'; } catch (e) {}
-  if (dismissed) {
-    var xb = document.getElementById('xmas-bar');
-    if (xb) xb.style.display = 'none';
-  }
-})();
-document.addEventListener('DOMContentLoaded', syncNavPosition);
-window.addEventListener('resize', syncNavPosition);
-(function() {
-  var on = null;
-  function onScrollHeader() {
-    var v = (window.scrollY || document.documentElement.scrollTop) > 50;
-    if (v !== on) { on = v; document.body.classList.toggle('is-scrolled', v); }
-  }
-  window.addEventListener('scroll', onScrollHeader, { passive: true });
-  document.addEventListener('DOMContentLoaded', onScrollHeader);
-})();
-
-/* Carrousels (transformations + avis) : points indicateurs synchronisés sur le scroll-snap */
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('[data-carousel]').forEach(function(c) {
-    var track = c.querySelector('.ofc-track');
-    var dotsBox = c.querySelector('.ofc-dots');
-    if (!track || !dotsBox) return;
-    var items = Array.prototype.slice.call(track.children);
-    var dots = items.map(function() { var d = document.createElement('span'); dotsBox.appendChild(d); return d; });
-    var raf = 0;
-    function update() {
-      raf = 0;
-      c.classList.toggle('no-scroll', track.scrollWidth <= track.clientWidth + 2);
-      var x = track.scrollLeft, best = 0, bestD = Infinity;
-      if (x + track.clientWidth >= track.scrollWidth - 4) best = items.length - 1;
-      else items.forEach(function(it, i) {
-        var d = Math.abs(it.offsetLeft - track.offsetLeft - parseFloat(getComputedStyle(track).paddingLeft) - x);
-        if (d < bestD) { bestD = d; best = i; }
-      });
-      dots.forEach(function(d, i) { d.classList.toggle('on', i === best); });
-    }
-    track.addEventListener('scroll', function() { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
-    window.addEventListener('resize', update);
-    update();
-  });
-  /* Avis tronqués à 4 lignes : bouton « Lire la suite » seulement si le texte dépasse */
-  document.querySelectorAll('#avis-clients .avis-card').forEach(function(card) {
-    var txt = card.querySelector('.avis-text'), btn = card.querySelector('.avis-more');
-    if (!txt || !btn) return;
-    if (txt.scrollHeight > txt.clientHeight + 2) btn.hidden = false;
-    btn.addEventListener('click', function() {
-      var open = card.classList.toggle('is-open');
-      btn.textContent = open ? 'Réduire' : 'Lire la suite';
-    });
-  });
-});
-
-var HERO_GOAL_DIGITAL = {
-  gras: 'ventre-plat.html',
-  fessiers: 'booty-sculpt.html',
-  postpartum: 'programme-postpartum.html',
-  muscle: 'iron-girl-sales.html',
-  antiage: 'ageless-girl-sales.html'
-};
-function selectHeroGoal(goal) {
-  document.querySelectorAll('.hero-goal-btn').forEach(function(b) { b.classList.remove('active'); });
-  event.currentTarget.classList.add('active');
-  document.getElementById('hero-goal-digital').href = HERO_GOAL_DIGITAL[goal];
-  var result = document.getElementById('hero-goal-result');
-  result.classList.add('visible');
-  result.scrollIntoView({behavior:'smooth', block:'nearest'});
-}
-// LEAD POPUP (guide gratuit) — SEULE pop-up du site. Jamais à l'arrivée.
-// Desktop : intention de sortie uniquement. Mobile : 60 % de scroll ET 30 s sur la page.
-// Une seule fois par visiteuse (mémorisé dans localStorage, lectures/écritures protégées par try/catch).
-var LEAD_POPUP_KEY = 'leadPopupSeenAt';
-function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
-function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
-function leadPopupAutorise() {
-  if (lsGet('ornella_lead_email') || lsGet('leadDone')) return false; // déjà inscrite
-  return !lsGet(LEAD_POPUP_KEY); // déjà vue une fois : plus jamais
-}
-var _leadShown = false;
-function showLead() {
-  if (_leadShown || !leadPopupAutorise()) return;
-  _leadShown = true;
-  lsSet(LEAD_POPUP_KEY, String(Date.now()));
-  document.getElementById('lead-popup').classList.add('active');
-}
-function closeLead() {
-  document.getElementById('lead-popup').classList.remove('active');
-}
-if (window.matchMedia && window.matchMedia('(min-width: 769px)').matches) {
-  document.addEventListener('mouseleave', function(e) {
-    if (e.clientY > 10) return;
-    showLead();
-  });
-} else {
-  (function() {
-    var scrollOk = false, timeOk = false;
-    function tryShow() { if (scrollOk && timeOk) showLead(); }
-    setTimeout(function() { timeOk = true; tryShow(); }, 30000);
-    function onScrollLead() {
-      var d = document.documentElement, b = document.body;
-      var top = d.scrollTop || b.scrollTop;
-      var max = (d.scrollHeight || b.scrollHeight) - d.clientHeight;
-      if (max > 0 && top / max >= 0.6) {
-        scrollOk = true;
-        window.removeEventListener('scroll', onScrollLead);
-        tryShow();
-      }
-    }
-    window.addEventListener('scroll', onScrollLead, { passive: true });
-  })();
-}
-
-async function submitLead(e) {
-  e.preventDefault();
-  var email  = document.getElementById('lead-email').value.trim();
-  var prenom = (document.getElementById('lead-prenom').value || '').trim();
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    document.getElementById('lead-email').focus(); return;
-  }
-  var btn = document.getElementById('lead-submit');
-  btn.disabled = true; btn.textContent = 'Envoi en cours…';
-
-  if (!BREVO_API_KEY || BREVO_API_KEY === 'REMPLACE_PAR_TA_CLÉ') {
-    // Clé non configurée — affiche quand même le succès en mode démo
-    document.getElementById('lead-form').style.display = 'none';
-    document.getElementById('lead-success').style.display = 'block';
-    localStorage.setItem('leadDone', '1');
-    return;
-  }
-
-  try {
-    document.getElementById('list15Email').value = email;
-    document.getElementById('list15Form').submit();
-  } catch(err) {}
-
-  if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'Guide 9 Erreurs'});
-  document.getElementById('lead-form').style.display = 'none';
-  document.getElementById('lead-success').style.display = 'block';
-  localStorage.setItem('leadDone', '1');
-  localStorage.setItem('ornella_lead_email', email);
-}
-
-async function submitLeadInline(e, source) {
-  e.preventDefault();
-  var form = e.target;
-  var btn = form.querySelector('.li-btn');
-  var email = form.querySelector('.li-email').value.trim();
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
-  btn.disabled = true; btn.textContent = 'Envoi…';
-  if (!BREVO_API_KEY || BREVO_API_KEY === 'REMPLACE_PAR_TA_CLÉ') {
-    btn.textContent = '✅ Reçu !'; return;
-  }
-  try {
-    document.getElementById('list15Email').value = email;
-    document.getElementById('list15Form').submit();
-  } catch(err) {}
-
-  if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'Guide 9 Erreurs'});
-  form.style.display = 'none';
-  var successEl = form.parentElement.querySelector('.li-success-inline');
-  if (successEl) successEl.style.display = 'block';
-  localStorage.setItem('leadDone', '1');
-  localStorage.setItem('ornella_lead_email', email);
-}
-
-// MICRO-QUIZ OBJECTIONS
-function showObjReply(btn, type) {
-  document.querySelectorAll('.obj-reply').forEach(function(el) { el.hidden = true; });
-  document.querySelectorAll('.obj-btn').forEach(function(el) { el.classList.remove('active'); });
-  var reply = document.getElementById('obj-reply-' + type);
-  if (reply) { reply.hidden = false; setTimeout(function(){ reply.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50); }
-  if (btn) btn.classList.add('active');
-}
-
-// STICKY CTA — libellé unique "Échange gratuit de 15 min" (WhatsApp), pas de réécriture contextuelle.
-
-// STAT COUNTER ANIMATION
-(function() {
-  if (!('IntersectionObserver' in window)) return;
-  var counters = document.querySelectorAll('.stat-count');
-  if (!counters.length) return;
-  var obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (!e.isIntersecting) return;
-      var el = e.target;
-      var target = parseInt(el.getAttribute('data-target'));
-      var suffix = el.getAttribute('data-suffix') || '';
-      var start = null;
-      function step(ts) {
-        if (!start) start = ts;
-        var p = Math.min((ts - start) / 1200, 1);
-        el.textContent = Math.floor(p * target) + suffix;
-        if (p < 1) requestAnimationFrame(step);
-        else el.textContent = target + suffix;
-      }
-      requestAnimationFrame(step);
-      obs.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  counters.forEach(function(c) { obs.observe(c); });
-})();
-
-var ua = navigator.userAgent || '';
-var isWebView = /Instagram|FBAN|FBAV|FB_IAB|Line|Twitter|Snapchat/.test(ua);
-if (!isWebView && 'IntersectionObserver' in window) {
-  document.documentElement.classList.add('js-anim');
-  var obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
-}
-
-// WhatsApp « Contact » : géré une seule fois par suivi-clics.js
-
-// Meta Pixel — clics "bilan gratuit" (WhatsApp) et comparatif, par emplacement
-document.addEventListener('click', function(e) {
-  var a = e.target.closest('a[href*="bilan%20gratuit%2015%20min"], a[href*="coach-sportif-ou-salle-de-sport"]');
-  if (!a) return;
-  var sec = a.closest('section');
-  var zone = !sec ? 'BarreBas' : sec.id === 'hero' ? 'Hero' : sec.classList.contains('svc-home') ? 'SalleVsCoaching' : sec.id === 'transfo-proof' ? 'Transformations' : sec.id === 'apercu-offres' ? 'Offres' : sec.id === 'micro-quiz-obj' ? 'Objections' : sec.id === 'cta-final' ? 'Final' : 'Autre';
-  var evt = a.href.indexOf('wa.me/') !== -1 ? 'ClicBilan_' + zone : 'ClicComparatif';
-  if (typeof fbq !== 'undefined') fbq('trackCustom', evt);
-  (window.dataLayer = window.dataLayer || []).push({event: 'clic_cta', cta: evt});
-});
-</script>
-
-
-<!-- Formulaires natifs Brevo — soumis en arrière-plan via iframes cachées -->
-<iframe name="list15Frame" style="display:none"></iframe>
+<!-- Formulaire natif Brevo (liste du guide) — soumis en arrière-plan -->
+<iframe name="list15Frame" style="display:none" title="Brevo"></iframe>
 <form id="list15Form" method="POST" target="list15Frame" action="https://e605324b.sibforms.com/serve/MUIFALoL1fcMVo0ja25kWMtYWzSqwAywgjRBpUj5ZvwYNzLwrB9rHaDmrlfePrdBh56VbztE-9CF2otkSiflgd8BfQyfpe1oRInSR756--DIIrCBh2QwHnMs_EA61TA_qZvdV_43IDbmR2FXAtovfd2QIObZZhwYeoYA8R4_lGR-Kv-d6snW-06f0R3-niv-huUnbbPPZcmpqp1x_w==" style="display:none">
   <input type="text" name="EMAIL" id="list15Email">
   <input type="text" name="email_address_check" value="" class="input--hidden">
   <input type="hidden" name="locale" value="fr">
 </form>
-<iframe name="list2Frame" style="display:none"></iframe>
-<form id="list2Form" method="POST" target="list2Frame" action="https://e605324b.sibforms.com/serve/MUIFAHOEdRv2DgTw9P1NiduCCh7hR8SC_Vr2ukviBgfKXjyrM5LOWLzkfK49M5482LClihKJ7ACb9L9Btz5uYjly5touBPx-NMs0DeIeiPc8TrYzU8Zfci7Uv1bT__nMdatfFRiJ-62YHjHWcnfT29DmROWdBN0Hhf3nSei0cDs4GhzS5G_CFTWJ8-TexsprnUd5oFsfuG3IKql7rA==" style="display:none">
-  <input type="text" name="EMAIL" id="list2Email">
-  <input type="text" name="email_address_check" value="" class="input--hidden">
-  <input type="hidden" name="locale" value="fr">
-</form>
 <script>
-/* Tracker de scroll : "ou les gens s'arretent" -> Pixel Meta (si present) + dataLayer GTM. Aucun compte externe. */
+/* Tracker de scroll -> Pixel Meta + dataLayer GTM (identique à l'ancienne accueil) */
 (function(){var PAGE=location.pathname.replace(/^\//,'').replace(/\.html$/,'')||'accueil';var M=[25,50,75,90,100],done={},t=false;function depth(){var d=document.documentElement,b=document.body,top=d.scrollTop||b.scrollTop,max=(d.scrollHeight||b.scrollHeight)-d.clientHeight;return max>0?Math.min(100,Math.round(top/max*100)):100;}function fire(m){if(done[m])return;done[m]=1;if(typeof fbq!=='undefined')fbq('trackCustom','ScrollDepth',{page:PAGE,percent:m});(window.dataLayer=window.dataLayer||[]).push({event:'scroll_depth',page:PAGE,percent:m});}function chk(){var p=depth();M.forEach(function(m){if(p>=m)fire(m);});t=false;}window.addEventListener('scroll',function(){if(t)return;t=true;setTimeout(chk,300);},{passive:true});window.addEventListener('load',chk);})();
+/* Clics « échange gratuit » par emplacement (mêmes noms d'événements qu'avant) + Fit Dans Ta Vie */
+document.addEventListener('click',function(e){
+  var f=e.target.closest('a[data-fdtv]');
+  if(f&&typeof fbq!=='undefined')fbq('track','ViewContent',{value:49,currency:'EUR',content_name:'Fit Dans Ta Vie'});
+  var a=e.target.closest('a[href*="bilan%20gratuit%2015%20min"], a[href*="coach-sportif-ou-salle-de-sport"]');
+  if(!a)return;
+  var sec=a.closest('section');
+  var zone=!sec?'BarreBas':sec.id==='hero'?'Hero':sec.id==='transfo-proof'?'Transformations':sec.id==='apercu-offres'?'Offres':sec.id==='cta-final'?'Final':'Autre';
+  var evt=a.href.indexOf('wa.me/')!==-1?'ClicBilan_'+zone:'ClicComparatif';
+  if(typeof fbq!=='undefined')fbq('trackCustom',evt);
+  (window.dataLayer=window.dataLayer||[]).push({event:'clic_cta',cta:evt});
+});
 </script>
 <script src="/data/places.js" defer></script>
 <script defer src="/suivi-clics.js"></script>
-<script src="js/videos.js" defer></script>
+<script>
+{
+  /* Nav : filet sous l'en-tête au défilement */
+  const nav=document.querySelector('.nav');
+  const onScroll=()=>nav.classList.toggle('is-scrolled',scrollY>8);
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  /* Carrousels : points synchronisés, cliquables */
+  document.querySelectorAll('[data-rail]').forEach(rail=>{
+    const items=[...rail.children];
+    const dots=document.createElement('div');dots.className='dots';
+    items.forEach((it,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Élément '+(i+1));b.addEventListener('click',()=>rail.scrollTo({left:it.offsetLeft-rail.offsetLeft-22,behavior:'smooth'}));dots.appendChild(b)});
+    rail.after(dots);
+    let raf=0;
+    const sync=()=>{raf=0;const x=rail.scrollLeft;let best=0,d=1e9;
+      if(x+rail.clientWidth>=rail.scrollWidth-4)best=items.length-1;
+      else items.forEach((it,i)=>{const v=Math.abs(it.offsetLeft-rail.offsetLeft-22-x);if(v<d){d=v;best=i}});
+      [...dots.children].forEach((b,i)=>b.setAttribute('aria-current',i===best?'true':'false'))};
+    rail.addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(sync)},{passive:true});
+    addEventListener('resize',sync);sync();
+  });
+
+  /* Avis : « Lire la suite » seulement si le texte dépasse */
+  document.querySelectorAll('.quote').forEach(q=>{
+    const p=q.querySelector('p'),b=q.querySelector('button');
+    if(p.scrollHeight>p.clientHeight+2)b.hidden=false;
+    b.addEventListener('click',()=>{const o=q.classList.toggle('is-open');b.textContent=o?'Réduire':'Lire la suite'});
+  });
+
+  /* Barre basse : visible dès que le bouton du haut n'est pas à l'écran, masquée près du bouton final */
+  const bar=document.getElementById('sticky-bar');
+  if('IntersectionObserver' in window){
+    const seen={'hero-cta':true,'cta-final':false};
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{seen[e.target.id]=e.isIntersecting});bar.classList.toggle('show',!seen['hero-cta']&&!seen['cta-final'])},{threshold:0});
+    io.observe(document.getElementById('hero-cta'));io.observe(document.getElementById('cta-final'));
+  }
+
+  /* Pop-up guide gratuit : une seule fois, jamais à l'arrivée.
+     Ordi : intention de sortie. Téléphone : 60 % de défilement ET 30 s sur la page. */
+  const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+  const pop=document.getElementById('lead-popup');
+  let shown=false;
+  const allowed=()=>!(ls.get('ornella_lead_email')||ls.get('leadDone')||ls.get('leadPopupSeenAt'));
+  const showLead=()=>{if(shown||!allowed())return;shown=true;ls.set('leadPopupSeenAt',String(Date.now()));pop.classList.add('active')};
+  const closeLead=()=>pop.classList.remove('active');
+  document.getElementById('lead-close').addEventListener('click',closeLead);
+  /* Liens « /#guide-gratuit » des pages programmes : ouvrent directement le guide */
+  const fromLink=()=>{if(location.hash==='#guide-gratuit'){shown=true;pop.classList.add('active')}};
+  fromLink();addEventListener('hashchange',fromLink);
+  document.getElementById('lead-overlay').addEventListener('click',closeLead);
+  addEventListener('keydown',e=>{if(e.key==='Escape')closeLead()});
+  if(matchMedia('(min-width: 769px)').matches){
+    document.addEventListener('mouseleave',e=>{if(e.clientY<=10)showLead()});
+  }else{
+    let sOk=false,tOk=false;const tryShow=()=>{if(sOk&&tOk)showLead()};
+    setTimeout(()=>{tOk=true;tryShow()},30000);
+    const onS=()=>{const d=document.documentElement,max=d.scrollHeight-d.clientHeight;if(max>0&&scrollY/max>=.6){sOk=true;removeEventListener('scroll',onS);tryShow()}};
+    addEventListener('scroll',onS,{passive:true});
+  }
+  document.getElementById('lead-form').addEventListener('submit',e=>{
+    e.preventDefault();
+    const em=document.getElementById('lead-email').value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em))return;
+    try{const f=document.getElementById('list15Form');if(f){document.getElementById('list15Email').value=em;f.submit()}}catch(err){}
+    if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Guide 9 Erreurs'});
+    document.getElementById('lead-form').style.display='none';
+    document.getElementById('lead-success').style.display='block';
+    ls.set('leadDone','1');ls.set('ornella_lead_email',em);
+  });
+}
+</script>
 </body>
 </html>
