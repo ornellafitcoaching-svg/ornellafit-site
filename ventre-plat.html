@@ -28,292 +28,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700;800;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --cream:#FEFBF8;
-  --cream2:#F9F4EF;
-  --white:#FFFFFF;
-  --accent:#C96358;
-  --sage:#3D7A6A;
-  --sage-light:#EBF4F1;
-  --dark:#1C1210;
-  --text:#2C1F1A;
-  --muted:#6F5B52;
-  --gold:#C9A96E;
-  --border:#EAD9D1;
-  --r:18px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);-webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%}
-a{text-decoration:none;color:inherit}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px}
-
-/* ── NAV ── */
-nav{background:rgba(254,251,248,.95);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo img{height:36px;width:auto}
-.nav-cta{background:var(--accent);color:white;border-radius:999px;padding:10px 22px;font-size:.85rem;font-weight:700;transition:background .2s}
-.nav-cta:hover{background:#b54c41}
-
-/* ── HERO ── */
-.hero{background:#FAF7F4;overflow:hidden}
-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,6vw,4.4rem);font-weight:600;line-height:1.06;color:var(--dark)}
-h1 em{font-style:italic;font-weight:300;color:var(--accent)}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-
-/* Mobile-first */
-.hero-text{padding:40px 24px 0;text-align:center}
-.eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(201,99,88,.08);border:1px solid rgba(201,99,88,.2);color:var(--accent);border-radius:999px;padding:6px 16px;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
-.eyebrow-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:blink 1.5s ease infinite;flex-shrink:0}
-.hero-problem{font-size:.98rem;color:var(--muted);line-height:1.6;margin-bottom:16px;font-style:italic}
-.hero-h1{margin-bottom:12px}
-.hero-sub{font-size:.9rem;color:var(--muted);line-height:1.75;max-width:440px;margin:0 auto 20px}
-.hero-benefits{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0 auto 0;max-width:380px;text-align:left}
-.hero-benefits li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--text);line-height:1.45}
-.hero-benefits li::before{content:"✔";color:var(--sage);font-weight:800;flex-shrink:0;font-size:.85rem;margin-top:1px}
-
-/* Cover */
-.hero-cover{margin:32px 0 0;padding:0 20px}
-.hero-cover img{width:100%;max-width:440px;margin:0 auto;display:block;border-radius:24px;box-shadow:0 24px 64px rgba(44,31,26,.18); height:auto;}
-
-/* Form zone */
-.hero-form-zone{padding:36px 20px 56px;background:#FAF7F4}
-
-/* Stats bar mobile */
-.hero-stats-bar{display:flex;margin:28px 20px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:white;}
-.hero-stat-item{flex:1;padding:14px 8px;text-align:center;border-right:1px solid var(--border);}
-.hero-stat-item:last-child{border-right:none}
-.hero-stat-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--accent);line-height:1}
-.hero-stat-label{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:3px}
-
-/* Pills — desktop only */
-.hero-pills{display:none}
-.pill{background:white;border:1px solid var(--border);border-radius:999px;padding:8px 14px;font-size:.82rem;color:var(--text);font-weight:500}
-
-.btn-primary{background:var(--accent);color:white;border-radius:999px;padding:18px 32px;font-size:1rem;font-weight:700;text-align:center;transition:all .2s;box-shadow:0 8px 28px rgba(201,99,88,.32);display:block}
-.btn-primary:hover{background:#b54c41;transform:translateY(-2px)}
-.btn-secondary{background:white;color:var(--accent);border:2px solid var(--accent);border-radius:999px;padding:15px 28px;font-size:.92rem;font-weight:600;text-align:center;transition:all .2s;display:block}
-
-/* Desktop : 2 colonnes */
-@media(min-width:769px){
-  .hero-inner-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:52px;align-items:start;padding:64px 40px}
-  .hero-text{padding:0;text-align:left}
-  .hero-problem{margin-bottom:14px}
-  .hero-sub{margin:0 0 20px;max-width:100%}
-  .hero-benefits{margin:0 0 24px;max-width:100%}
-  .hero-stats-bar{display:none}
-  .hero-cover{margin:24px 0 0;padding:0}
-  .hero-cover img{max-width:100%;border-radius:20px}
-  .hero-form-zone{display:none}
-  .hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-  .hero-h1{font-size:clamp(2.2rem,3.2vw,3.4rem)}
-  #hero-desktop{display:grid!important}
-  #hero-mobile{display:none}
-}
-
-/* ── PROOF BAR ── */
-.proof-bar{background:var(--dark);padding:16px 20px}
-.proof-bar-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}
-.proof-item{}
-.proof-num{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:white;line-height:1}
-.proof-label{font-size:.7rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
-
-/* ── SECTIONS ── */
-.sec{padding:64px 20px}
-.sec-alt{background:var(--cream2)}
-.sec-white{background:var(--white)}
-.sec-dark{background:var(--dark)}
-.sec-label{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:10px}
-.sec-label-sage{color:var(--sage)}
-.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,4vw,3rem);font-weight:600;color:var(--dark);line-height:1.1;margin-bottom:14px}
-.sec-title em{font-style:italic;font-weight:300;color:var(--accent)}
-.sec-title-white{color:white}
-.sec-sub{font-size:.95rem;color:var(--muted);line-height:1.78;max-width:580px;margin-bottom:32px}
-.sec-sub-white{color:rgba(255,255,255,.65)}
-.text-center{text-align:center}
-.text-center .sec-sub{margin-left:auto;margin-right:auto}
-
-/* ── PROBLÈME ── */
-.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
-.problem-card{background:white;border:1px solid var(--border);border-radius:var(--r);padding:22px;display:flex;gap:14px;align-items:flex-start}
-.problem-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
-.problem-card h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--dark);margin-bottom:5px}
-.problem-card p{font-size:.83rem;color:var(--muted);line-height:1.6}
-.problem-conclusion{margin-top:24px;background:linear-gradient(135deg,rgba(201,99,88,.07),rgba(201,99,88,.03));border:1.5px solid rgba(201,99,88,.2);border-radius:var(--r);padding:22px 24px;font-size:.92rem;color:var(--text);line-height:1.7}
-.problem-conclusion strong{color:var(--accent)}
-
-/* ── PROGRAMME CONTENU ── */
-.chapters{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
-.chapter{display:flex;align-items:center;gap:16px;padding:18px 22px;background:white;border-bottom:1px solid var(--border);transition:background .15s}
-.chapter:last-child{border-bottom:none}
-.chapter:hover{background:#FDF8F5}
-.chap-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:rgba(201,99,88,.2);min-width:36px;line-height:1;flex-shrink:0}
-.chap-info{flex:1}
-.chap-info h4{font-family:'Cormorant Garamond',serif;font-size:1.08rem;font-weight:600;color:var(--dark);margin-bottom:2px}
-.chap-info p{font-size:.8rem;color:var(--muted);line-height:1.5}
-.chap-tag{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 11px;border-radius:999px;flex-shrink:0}
-.chap-tag-red{color:var(--accent);background:rgba(201,99,88,.09)}
-.chap-tag-green{color:var(--sage);background:rgba(61,122,106,.1)}
-.chap-tag-gold{color:#9A7A20;background:rgba(201,169,80,.12)}
-
-.bonus-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
-.bonus-card{background:white;border:1.5px solid var(--border);border-radius:var(--r);padding:18px;text-align:center}
-.bonus-icon{font-size:1.6rem;margin-bottom:8px}
-.bonus-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--dark);margin-bottom:4px;line-height:1.2}
-.bonus-desc{font-size:.77rem;color:var(--muted);line-height:1.55}
-.bonus-pill{display:inline-block;background:rgba(201,169,80,.12);color:#9A7A20;border-radius:999px;padding:3px 10px;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
-
-/* ── AVANT APRÈS ── */
-.transfo-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.transfo-card{border-radius:24px;overflow:hidden;box-shadow:0 12px 40px rgba(44,31,26,.1);border:1px solid var(--border)}
-.transfo-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
-.transfo-img-placeholder{width:100%;aspect-ratio:3/4;background:linear-gradient(160deg,#F0E4DE,#E0CCC4);display:flex;align-items:center;justify-content:center;font-size:3rem}
-.transfo-caption{background:white;padding:16px 18px}
-.transfo-caption h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--dark);margin-bottom:3px}
-.transfo-caption p{font-size:.78rem;color:var(--muted);line-height:1.5}
-.transfo-result{display:inline-block;background:rgba(61,122,106,.1);color:var(--sage);border-radius:999px;padding:4px 12px;font-size:.72rem;font-weight:700;margin-top:6px}
-
-/* ── FEATURES ── */
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.feat{background:white;border:1px solid var(--border);border-radius:var(--r);padding:24px 20px;text-align:center}
-.feat-icon{font-size:1.8rem;margin-bottom:12px}
-.feat-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--dark);margin-bottom:6px}
-.feat-text{font-size:.82rem;color:var(--muted);line-height:1.6}
-
-/* ── MOCKUP MULTI-DEVICE ── */
-.device-scene{display:flex;align-items:flex-end;justify-content:center;gap:-20px;padding:40px 0 0;position:relative}
-.device-phone{width:200px;background:var(--dark);border-radius:36px;padding:10px;box-shadow:0 24px 56px rgba(28,18,16,.3);flex-shrink:0;z-index:2}
-.device-phone-screen{border-radius:28px;overflow:hidden;background:#FAF7F4;aspect-ratio:9/19}
-.device-tablet{width:320px;background:var(--dark);border-radius:24px;padding:10px;box-shadow:0 24px 56px rgba(28,18,16,.25);flex-shrink:0;margin:0 -24px}
-.device-tablet-screen{border-radius:16px;overflow:hidden;background:#FAF7F4;aspect-ratio:4/3}
-.device-img{width:100%;height:100%;object-fit:cover;display:block}
-.device-img-placeholder{width:100%;height:100%;background:linear-gradient(135deg,#F5EDE8,#EDD9D0);display:flex;align-items:center;justify-content:center;font-size:2rem}
-.device-label{position:absolute;bottom:-36px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:.75rem;color:var(--muted);text-align:center}
-
-/* ── COACH ── */
-.coach-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.coach-photo{border-radius:24px;overflow:hidden;box-shadow:0 16px 48px rgba(44,31,26,.14);width:100%;max-width:300px;height:auto;display:block;margin:0 auto}
-.coach-photo-placeholder{border-radius:24px;background:linear-gradient(160deg,#F0E4DE,#E0CCBF);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;font-size:4rem}
-.coach-stats{display:grid;grid-template-columns:1fr;max-width:220px;gap:10px;margin-bottom:24px}
-.coach-stat{background:var(--cream2);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}
-.coach-stat-num{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--accent);line-height:1}
-.coach-stat-label{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:3px}
-.coach-bio{font-size:.9rem;color:var(--muted);line-height:1.78;margin-bottom:20px}
-.coach-badge-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-.coach-badge{background:white;border:1px solid var(--border);border-radius:999px;padding:7px 14px;font-size:.8rem;color:var(--text);font-weight:500}
-
-/* ── AVIS ── */
-.avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.avis-card{background:white;border:1px solid var(--border);border-radius:var(--r);padding:22px}
-.avis-stars{color:#F5B942;font-size:1rem;margin-bottom:10px}
-.avis-text{font-size:.86rem;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:12px}
-.avis-author{font-size:.78rem;font-weight:700;color:var(--dark)}
-.avis-detail{font-size:.72rem;color:var(--muted)}
-
-/* ── PRIX / CTA ── */
-.pricing-wrap{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.price-card{background:white;border:1.5px solid var(--border);border-radius:24px;padding:32px 28px;display:flex;flex-direction:column}
-.price-card.featured{border-color:var(--accent);box-shadow:0 16px 48px rgba(201,99,88,.16)}
-.price-tag-badge{display:inline-block;background:rgba(201,99,88,.09);color:var(--accent);border-radius:999px;padding:5px 16px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;align-self:flex-start}
-.price-tag-badge.featured{background:var(--accent);color:white}
-.price-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--dark);margin-bottom:4px}
-.price-desc{font-size:.83rem;color:var(--muted);margin-bottom:20px;line-height:1.55}
-.price-amount{display:flex;align-items:baseline;gap:6px;margin-bottom:6px}
-.price-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;color:var(--dark);line-height:1}
-.price-unit{font-size:.85rem;color:var(--muted)}
-.price-old{font-size:.82rem;color:var(--muted);text-decoration:line-through;margin-bottom:20px}
-.price-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px;flex:1}
-.price-list li{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:var(--text);line-height:1.5}
-.price-list li::before{content:"✓";color:var(--sage);font-weight:800;flex-shrink:0;margin-top:1px}
-.price-list li.accent::before{content:"✦";color:var(--accent)}
-.btn-buy{background:var(--accent);color:white;border-radius:999px;padding:17px;font-size:.97rem;font-weight:700;text-align:center;display:block;transition:all .2s;box-shadow:0 8px 24px rgba(201,99,88,.28);margin-top:auto}
-.btn-buy:hover{background:#b54c41;transform:translateY(-2px)}
-.btn-buy-outline{background:white;color:var(--accent);border:2px solid var(--accent);border-radius:999px;padding:15px;font-size:.93rem;font-weight:600;text-align:center;display:block;transition:all .2s;margin-top:auto}
-.btn-buy-outline:hover{background:rgba(201,99,88,.04)}
-.price-reassure{font-size:.75rem;color:var(--muted);text-align:center;margin-top:10px;line-height:1.5}
-.pricing-note{max-width:520px;margin:28px auto 0;text-align:center;font-size:.82rem;color:var(--muted);line-height:1.65}
-
-/* ── FAQ ── */
-.faq{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:4px}
-.faq-item{background:white;border:1px solid var(--border);border-radius:14px;overflow:hidden}
-.faq-q{padding:18px 22px;font-size:.93rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;list-style:none}
-.faq-q::after{content:"+";font-size:1.3rem;color:var(--accent);flex-shrink:0;transition:transform .2s;line-height:1}
-.faq-item.open .faq-q::after{transform:rotate(45deg)}
-.faq-a{padding:0 22px 18px;font-size:.88rem;color:var(--muted);line-height:1.72;display:none}
-.faq-item.open .faq-a{display:block}
-
-/* ── CTA FINAL DARK ── */
-.cta-dark{background:linear-gradient(150deg,#2C1F1A,#1C1210);padding:64px 20px;text-align:center}
-.cta-dark h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:600;color:white;line-height:1.1;margin-bottom:14px}
-.cta-dark h2 em{font-style:italic;color:var(--gold)}
-.cta-dark p{font-size:.95rem;color:rgba(255,255,255,.6);max-width:480px;margin:0 auto 32px;line-height:1.7}
-.cta-dark .btn-primary{max-width:360px;margin:0 auto}
-.cta-timer{font-size:.78rem;color:rgba(255,255,255,.4);margin-top:14px}
-
-/* ── WA FLOATING ── */
-.floating-wa{position:fixed;bottom:24px;right:20px;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,.4);z-index:300;transition:transform .2s}
-.floating-wa:hover{transform:scale(1.08)}
-
-/* ── FOOTER ── */
-footer{padding:28px 20px;text-align:center;border-top:1px solid var(--border)}
-footer p{font-size:.8rem;color:var(--muted);line-height:1.6}
-footer a{color:var(--muted)}
-footer a:hover{color:var(--accent)}
-
-/* ── DIVIDER ── */
-.divider{width:48px;height:2.5px;background:linear-gradient(90deg,var(--accent),rgba(201,99,88,.15));border-radius:2px;margin:14px 0 28px}
-.divider-center{margin-left:auto;margin-right:auto}
-
-/* ── NUTRITION HIGHLIGHT ── */
-.nutri-highlight{background:var(--sage-light);border:1.5px solid rgba(61,122,106,.2);border-radius:var(--r);padding:24px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:flex-start;margin-top:24px}
-.nutri-icon{font-size:2rem}
-.nutri-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--sage);margin-bottom:5px}
-.nutri-text{font-size:.85rem;color:#3D5E58;line-height:1.65}
-
-/* ── FORM BOX ── */
-.form-box{background:white;border:1.5px solid var(--border);border-radius:24px;padding:28px 24px}
-.form-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--dark);margin-bottom:16px}
-.form-input{width:100%;background:var(--cream2);border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;font-family:'DM Sans',sans-serif;font-size:.95rem;color:var(--text);margin-bottom:12px;outline:none;transition:border-color .2s}
-.form-input:focus{border-color:var(--accent)}
-.form-btn{width:100%;background:var(--accent);color:white;border:none;border-radius:999px;padding:17px 24px;font-family:'DM Sans',sans-serif;font-size:.97rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 8px 24px rgba(201,99,88,.28);margin-top:4px}
-.form-btn:hover{background:#b54c41;transform:translateY(-2px)}
-.form-note{font-size:.74rem;color:var(--muted);text-align:center;margin-top:10px;line-height:1.55}
-.form-success{display:none;background:rgba(61,122,106,.1);border:1px solid rgba(61,122,106,.3);border-radius:10px;padding:12px 16px;margin-top:12px;text-align:center;font-size:.88rem;color:var(--sage)}
-
-/* Mobile/desktop hero toggle — pure CSS, no JS needed */
-#hero-desktop{display:none}
-#hero-mobile{display:block}
-
-/* ── RESPONSIVE ── */
-@media(max-width:768px){
-  .hero-inner{grid-template-columns:1fr;gap:0}
-  .hero-right{padding-bottom:0}
-  .hero-left{padding-bottom:32px}
-  .hero-mockup-css{max-width:240px;margin:0 auto -20px}
-  .mockup-phone{border-radius:32px}
-  .proof-bar-inner{grid-template-columns:repeat(2,1fr)}
-  .problem-grid{grid-template-columns:1fr}
-  .features-grid{grid-template-columns:1fr}
-  .coach-inner{grid-template-columns:1fr}
-  .coach-photo, .coach-photo-placeholder{max-height:unset;width:100%}
-  .avis-grid{grid-template-columns:1fr}
-  .pricing-wrap{grid-template-columns:1fr}
-  .transfo-grid{grid-template-columns:1fr}
-  .bonus-strip{grid-template-columns:1fr}
-  .device-scene{display:none}
-  .hero-cta-group{max-width:100%}
-  .btn-primary,.btn-secondary{padding:16px 24px}
-}
-@media(min-width:769px) and (max-width:1024px){
-  .avis-grid{grid-template-columns:1fr 1fr}
-  .features-grid{grid-template-columns:1fr 1fr}
-}
-.vp-garantie{font-size:.8rem;color:rgba(255,255,255,.75);line-height:1.5;max-width:460px;margin:12px auto 0;text-align:center;}
-.vp-garantie-light{color:var(--muted);}
-.vp-variable{font-size:.72rem;color:var(--muted);font-style:italic;margin-top:6px;text-align:center;}
-</style>
 <!-- Meta Pixel -->
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1233548507794099");fbq("track","PageView");fbq('track','ViewContent',{value:12,currency:'EUR',content_ids:['ventre-plat-14j'],content_type:'product'});</script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1233548507794099&ev=PageView&noscript=1"/></noscript>
@@ -344,736 +58,771 @@ footer a:hover{color:var(--accent)}
 }
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Combien de temps avant de voir des résultats ?","acceptedAnswer":{"@type":"Answer","text":"Ça dépend de ton point de départ et de ta régularité. Les sensations (moins de ballonnements, plus d'énergie) arrivent souvent dans les premières semaines si tu appliques la partie nutrition. Le renforcement du core profond se remarque plutôt vers la semaine 3-4, avec de la régularité. Pas de magie, et des résultats variables selon chaque personne."}},
-{"@type":"Question","name":"Est-ce que ça marche sans salle de sport ?","acceptedAnswer":{"@type":"Answer","text":"Oui — et c'est justement fait pour ça. Zéro matériel, zéro abonnement. Tu peux faire les séances dans ton salon, ta chambre, en voyage. Les exercices ciblent le transverse et le core profond, des muscles de stabilisation. Pas besoin de charges pour les activer correctement."}},
-{"@type":"Question","name":"Ça marche aussi après une grossesse ?","acceptedAnswer":{"@type":"Answer","text":"Oui, après le feu vert médical à ta visite post-natale et une rééducation périnéale validée par ta sage-femme ou ton kiné. La méthode travaille le transverse en douceur. Pour un programme pensé spécialement pour l'après-accouchement, regarde plutôt Post-partum — 8 semaines."}},
-{"@type":"Question","name":"Je suis débutante, c'est accessible ?","acceptedAnswer":{"@type":"Answer","text":"Complètement. Chaque exercice est expliqué avec des sensations concrètes. Le programme démarre doucement et progresse semaine par semaine. Tu n'as pas besoin d'expérience, juste de te lancer."}},
-{"@type":"Question","name":"Quelle est la différence avec le Booty Sculpt et le coaching sur mesure ?","acceptedAnswer":{"@type":"Answer","text":"Ventre Plat (12€) est un programme digital centré sur le ventre en autonomie. Booty Sculpt (19€) est un programme digital fessiers et cuisses de 8 semaines avec vidéos de démonstration. Le coaching sur mesure est un accompagnement personnalisé par Ornella, à domicile ou à distance, jusqu'à 4 séances par semaine."}},
-{"@type":"Question","name":"Comment j'accède au programme après l'achat ?","acceptedAnswer":{"@type":"Answer","text":"Immédiatement. Dès ton paiement, tu arrives sur une page de confirmation où tu entres ton email pour recevoir le lien. Le programme s'installe en 30 secondes sur ton iPhone ou Android comme une mini-appli. Accès à vie."}}
-]}
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Combien de temps avant de voir des résultats ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ça dépend de ton point de départ et de ta régularité. Les sensations (moins de ballonnements, plus d'énergie) arrivent souvent dans les premières semaines si tu appliques la partie nutrition. Le renforcement du core profond se remarque plutôt vers la semaine 3-4, avec de la régularité. Pas de magie, et des résultats variables selon chaque personne."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Est-ce que ça marche sans salle de sport ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, et c'est justement fait pour ça. Zéro matériel, zéro abonnement. Tu peux faire les séances dans ton salon, ta chambre, en voyage. Les exercices ciblent le transverse et le core profond : ce sont des muscles de stabilisation, pas de force brute. Pas besoin de charges pour les activer correctement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ça marche aussi après une grossesse ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, après le feu vert médical à ta visite post-natale et une rééducation périnéale validée par ta sage-femme ou ton kiné. La méthode travaille le transverse en douceur. Pour un programme pensé spécialement pour l'après-accouchement, regarde plutôt Post-partum — 8 semaines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Je suis débutante — c'est accessible ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Complètement. Chaque exercice est expliqué avec des sensations concrètes : tu sauras exactement ce que tu dois ressentir pour savoir si tu le fais bien. Le programme démarre doucement et progresse semaine par semaine. Tu n'as pas besoin d'expérience, juste de te lancer. Tout est expliqué, fais-toi confiance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quelle est la différence avec le Booty Sculpt et le coaching sur mesure ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ventre Plat (12€) : programme digital centré sur le ventre : comprendre les vraies causes, exercices de core profond, nutrition anti-ballonnements, plan repas 7 jours. Tu travailles en autonomie, à ton rythme. Booty Sculpt (19€) : programme digital fessiers & cuisses : 8 semaines, 12 séances guidées, vidéos de démonstration, conseils nutrition, bonus guide \"Les 9 erreurs\" offert. Les deux se complètent parfaitement si tu veux transformer tout le bas du corps. Coaching sur mesure : Ornella t'accompagne personnellement, à domicile ou à distance. Programme 100% créé pour toi selon tes habitudes, ton lieu d'entraînement, jusqu'à 4 séances/semaine. L'accompagnement le plus complet pour des résultats durables, à ton rythme."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment j'accède au programme après l'achat ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Immédiatement. Dès ton paiement, tu arrives sur une page de confirmation où tu entres ton email : tu reçois alors le lien dans ta boîte mail en quelques secondes. Le programme s'ouvre dans ton navigateur et s'installe en 30 secondes sur ton iPhone ou Android comme une vraie mini-appli. Accès à vie, depuis n'importe où."
+      }
+    }
+  ]
+}
 </script>
-<link rel="stylesheet" href="ofc-clarte.css?v=2">
+<style>
+
+/* VOICE  : calme, haut de gamme, une idée par écran, phrases courtes.
+   IDEA   : une fiche de coach bien tenue : la photo, les preuves, le prix, une question, un message.
+   PICTURE: la photo en pied d'Ornella, puis les avant/après réels des clientes.
+   COLOUR+TYPE : un bloc de couleur par partie (ivoire, rose poudré, sauge, brun, sable, corail) ; texte courant d'une seule couleur ;
+                 titres Cormorant Garamond 700 droit avec la fin en couleur ; DM Sans pour le texte.
+   LAYOUT : mobile d'abord, 6 blocs au lieu de 11, 3 boutons de contact + barre basse. */
+:root{--ivory:#FBF7F2;--sand:#F3EBE2;--blush:#F5E2DA;--blush2:#FBEEE9;--sage:#E4E8DB;--sage-d:#5F7258;--coral2:#C35F50;--peach:#F2A796;--ink:#2B201C;--line:rgba(43,32,28,.14);--coral:#B4513F;--coral-d:#9A4232;--night:#2B201C;--night2:#221916;--cream:#F6EFE8;
+--serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;--sans:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;color-scheme:light}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ivory);color:var(--ink);font:400 16.5px/1.6 var(--sans);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.06;margin:0;text-wrap:balance;letter-spacing:-.005em;font-variant-numeric:lining-nums}
+h1{font-size:clamp(2.2rem,7vw,3.7rem)}
+h2{font-size:clamp(2rem,5.6vw,2.9rem)}
+h3{font-size:1.55rem}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.band{padding:60px 0}
+.band--sand{background:var(--sand)}
+.band--white{background:#fff}
+.band--blush{background:var(--blush)}
+.band--sage{background:var(--sage)}
+.band--night{background:var(--night);color:var(--cream)}
+.band--coral{background:var(--coral2);color:#fff}
+.hl{color:var(--coral)}
+.band--night .hl{color:var(--peach)}
+.band--coral .hl{color:var(--night)}
+.band--sage .hl{color:var(--sage-d)}
+.head{max-width:640px;margin-bottom:32px}
+.head p{margin-top:14px;font-size:1.04rem}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:58px;padding:0 30px;border-radius:999px;background:var(--coral);color:#fff;font:600 1.03rem/1.2 var(--sans);text-decoration:none;box-shadow:0 10px 24px -14px rgba(154,66,50,.7);transition:background .2s,transform .2s}
+.btn:hover{background:var(--coral-d);transform:translateY(-1px)}
+.btn svg{flex:none}
+.btn:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+.link{display:inline-block;padding:10px 0;font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.link:hover{text-decoration-thickness:2px}
+.small{font-size:.92rem}
+@media(min-width:620px){.btn{display:inline-flex;width:auto}}
+@media(min-width:900px){.band{padding:108px 0}}
+
+/* Bandeau + navigation */
+.topbar{background:var(--night);color:var(--cream);font-size:.82rem;text-align:center;padding:8px 16px;line-height:1.35}
+.topbar:empty{display:none}
+.nav{position:sticky;top:0;z-index:60;background:rgba(251,247,242,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .25s}
+.nav.is-scrolled{border-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1120px;margin:0 auto;padding:0 22px;position:relative}
+.nav-logo img{height:38px;width:auto}
+.nav-toggle{appearance:none;border:0;background:none;width:46px;height:46px;margin-right:-12px;font-size:25px;line-height:1;color:var(--ink);cursor:pointer}
+#navMenu{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--ivory);padding:4px 22px 22px;border-bottom:1px solid var(--line);box-shadow:0 18px 30px -24px rgba(43,32,28,.4)}
+#navMenu.open{display:flex}
+#navMenu a{padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:500}
+#navMenu a.nav-cta{margin-top:16px;border:0;padding:0}
+@media(min-width:1040px){
+  .nav-toggle{display:none}
+  #navMenu{display:flex;position:static;flex-direction:row;align-items:center;gap:28px;padding:0;background:none;border:0;box-shadow:none}
+  #navMenu a{border:0;padding:6px 0;font-size:.95rem}
+  #navMenu a.nav-cta{margin:0}
+  #navMenu .btn{min-height:46px;padding:0 22px;font-size:.95rem}
+}
+
+/* Hero */
+.hero{padding:14px 0 60px}
+.hero-grid{display:grid;gap:26px}
+.hero-photo{width:100%;max-width:520px;margin:0 auto;border-radius:22px;overflow:hidden;background:#E8DDD2;box-shadow:0 24px 40px -30px rgba(43,32,28,.55)}
+.hero-photo img{width:100%;height:auto}
+.hero-sub{margin-top:16px;font-size:1.06rem;max-width:520px}
+.hero-act{margin-top:26px}
+.hero-note{margin-top:12px;font-size:.9rem}
+.hero-quiz{margin-top:2px;font-size:.95rem}
+.trust{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:34px 0 0;padding:20px 0 0;list-style:none;border-top:1px solid var(--line);text-align:center}
+.trust li{padding:0 8px;font-size:.84rem;line-height:1.35}
+.trust li+li{border-left:1px solid var(--line)}
+.trust b{display:block;font-size:.92rem;margin-bottom:3px}
+@media(min-width:900px){
+  .hero{padding:40px 0 96px}
+  .hero-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:64px;align-items:center}
+  .hero-photo{order:2;max-width:470px;margin:0 0 0 auto}
+  .trust{text-align:left;max-width:560px}
+  .trust li{padding:0 16px}.trust li:first-child{padding-left:0}
+}
+
+/* Carrousels (avant/après, avis) */
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:84%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -22px;padding:2px 22px 6px;scroll-padding:0 22px}
+.rail::-webkit-scrollbar{display:none}
+.rail>*{scroll-snap-align:start}
+.dots{display:flex;justify-content:center;gap:7px;margin-top:16px}
+.dots button{width:8px;height:8px;padding:0;border:0;border-radius:99px;background:rgba(43,32,28,.22);cursor:pointer;transition:width .25s,background .25s}
+.dots button[aria-current=true]{width:22px;background:var(--ink)}
+@media(min-width:900px){
+  .rail{grid-auto-flow:row;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;margin:0;padding:0}
+  .rail--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dots{display:none}
+}
+.case{display:block;background:#fff;border-radius:20px;overflow:hidden;text-decoration:none}
+.case img{width:100%;aspect-ratio:1;object-fit:cover;background:#E8DDD2}
+.case-b{padding:18px 20px 22px}
+.case-n{font-weight:700}
+.case-r{font-variant-numeric:lining-nums;font-family:var(--serif);font-weight:600;font-size:1.55rem;line-height:1.12;margin:4px 0 8px}
+.case-c{font-size:.92rem}
+.more{margin-top:18px;text-align:center}
+
+.rating{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 18px;margin-bottom:22px}
+.rating h2{font-size:clamp(2rem,5.6vw,2.9rem)}
+.stars{color:#C58B2A;letter-spacing:2px;font-size:1rem;margin-left:6px;vertical-align:2px}
+.quote{background:#fff;border-radius:20px;padding:24px 22px 20px;margin:0;display:flex;flex-direction:column}
+.quote p{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;font-size:1rem}
+.quote.is-open p{-webkit-line-clamp:unset;display:block}
+.quote footer{margin-top:auto;padding-top:14px;font-size:.88rem}
+.quote footer b{font-size:.95rem}
+.quote button{align-self:flex-start;margin-top:8px;padding:8px 0;border:0;background:none;color:var(--ink);font:600 .9rem var(--sans);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+
+/* Formules */
+.offers{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.offer{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 18px;align-items:center;padding:22px 22px;text-decoration:none;transition:background .2s}
+.offer+.offer{border-top:1px solid var(--line)}
+.offer:hover{background:#FDFAF7}
+.offer h3{font-size:1.6rem;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.offer p{font-size:.93rem;margin-top:4px}
+.tag{font:700 .72rem/1 var(--sans);background:var(--coral);color:#fff;border-radius:99px;padding:6px 10px;letter-spacing:.01em}
+.price{text-align:right;white-space:nowrap;font-size:.86rem;line-height:1.2}
+.price b{display:block;font-variant-numeric:lining-nums;font-family:var(--serif);font-size:1.75rem;font-weight:600}
+.offer--top{background:var(--blush2)}
+.incl{margin-top:22px;display:grid;gap:10px;font-size:.95rem}
+.offers-act{margin-top:30px;display:flex;flex-direction:column;gap:6px;align-items:stretch;text-align:center}
+.solo{margin-top:40px;padding-top:26px;border-top:1px solid var(--line);font-size:.98rem}
+.solo a{font-weight:600;text-underline-offset:4px}
+@media(min-width:620px){.offers-act{flex-direction:row;align-items:center;gap:26px;text-align:left}}
+@media(min-width:900px){.split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:start}.split>.head{position:sticky;top:110px;margin-bottom:0}}
+
+/* Histoire */
+.story p{font-size:1.06rem}
+.story p+p{margin-top:16px}
+.story .cred{font-size:.92rem;margin-top:22px}
+.story .cred a{text-underline-offset:4px}
+.band--night .link,.band--night a{color:var(--cream)}
+
+/* FAQ */
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:20px 0;font-weight:600;font-size:1.03rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;font:400 1.6rem/1 var(--sans);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 0 22px;display:grid;gap:10px}
+.faq .a a{text-underline-offset:4px}
+
+/* Final + pied de page */
+.final{text-align:center}
+.final .btn{background:#fff;color:var(--coral-d);box-shadow:0 14px 28px -16px rgba(43,32,28,.6)}
+.final .btn:hover{background:var(--cream)}
+.final p{margin:16px auto 0;max-width:520px;font-size:1.05rem}
+.final .btn{margin-top:30px}
+.final .small{margin-top:16px}
+.final a:not(.btn){text-underline-offset:4px}
+.foot{background:var(--night2);color:var(--cream);padding:56px 0 calc(96px + env(safe-area-inset-bottom));font-size:.93rem}
+.foot img{height:34px;width:auto;filter:brightness(0) invert(1);opacity:.9}
+.foot-slogan{margin-top:12px}
+.foot nav{display:flex;flex-wrap:wrap;gap:4px 22px;margin-top:28px}
+.foot nav a,.foot .contact a{display:inline-block;padding:7px 0;text-decoration:none}
+.foot nav a:hover,.foot .contact a:hover{text-decoration:underline;text-underline-offset:4px}
+.contact{display:flex;flex-wrap:wrap;gap:4px 22px;margin-top:10px;padding-top:12px;border-top:1px solid rgba(246,239,232,.16)}
+.foot details{margin-top:18px;border-top:1px solid rgba(246,239,232,.16)}
+.foot summary{cursor:pointer;padding:16px 0;font-weight:600}
+.foot details div{display:flex;flex-wrap:wrap;gap:2px 18px;padding-bottom:10px}
+.foot details a{padding:6px 0;text-underline-offset:3px}
+.legal{margin-top:20px;font-size:.84rem;display:flex;flex-wrap:wrap;gap:4px 16px}
+.legal a{text-underline-offset:3px}
+@media(min-width:900px){.foot{padding-bottom:56px}}
+
+/* Barre de contact en bas (téléphone) */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(251,247,242,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s ease}
+.sticky.show{transform:none}
+.sticky .btn{min-height:52px}
+@media(min-width:900px){.sticky{display:none}}
+
+/* Pop-up guide */
+#lead-popup{display:none;position:fixed;inset:0;z-index:100;align-items:flex-end;justify-content:center;padding:14px}
+#lead-popup.active{display:flex}
+#lead-overlay{position:absolute;inset:0;background:rgba(34,25,22,.55)}
+#lead-box{position:relative;width:100%;max-width:440px;background:var(--ivory);border-radius:24px;padding:30px 24px 24px}
+#lead-box h2{font-size:1.9rem;padding-right:26px}
+#lead-box p{margin-top:10px}
+#lead-close{position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;background:none;font-size:26px;color:var(--ink);cursor:pointer}
+#lead-form{display:grid;gap:10px;margin-top:18px}
+#lead-email{width:100%;min-height:54px;border:1px solid var(--line);border-radius:14px;padding:0 16px;font:16px var(--sans);background:#fff;color:var(--ink)}
+#lead-submit{border:0;cursor:pointer;width:100%}
+#lead-success{display:none;margin-top:16px;font-weight:600}
+@media(min-width:620px){#lead-popup{align-items:center}}
+
+/* ===== Code couleur (effet « repère visuel ») =====
+   Formules : domicile = miel, hybride = corail, à distance = bleu doux, programmes = sauge.
+   Dans un groupe .cc, chaque carte prend la couleur suivante. */
+:root{--c1:#B4513F;--t1:#F8E1D9;--c2:#5F7258;--t2:#E3EADF;--c3:#A06E22;--t3:#F6E8CF;--c4:#3F6A85;--t4:#E1EBF1;--c5:#2B201C;--t5:#EDE6E0}
+.cc>*{--acc:var(--c1);--tint:var(--t1)}
+.cc>*:nth-child(4n+2){--acc:var(--c2);--tint:var(--t2)}
+.cc>*:nth-child(4n+3){--acc:var(--c3);--tint:var(--t3)}
+.cc>*:nth-child(4n+4){--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-hyb,.is-hyb{--acc:var(--c1);--tint:var(--t1)}
+.cc>.is-prog,.is-prog{--acc:var(--c2);--tint:var(--t2)}
+.cc>.is-dom,.is-dom{--acc:var(--c3);--tint:var(--t3)}
+.cc>.is-dist,.is-dist{--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-ink,.is-ink{--acc:var(--c5);--tint:var(--t5)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.tcard,.act,.fcard,.box,.quote,.sm,.panel,.hero-prog,.mind>div,.solo-card){border-top:5px solid var(--acc,transparent)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.act,.fcard,.box,.sm,.panel,.hero-prog,.solo-card) :is(h3,h4){color:var(--acc,inherit)}
+.case-r,.tb h3,.mind .to,.obj b{color:var(--acc,inherit)}
+.trust b{color:var(--acc,inherit)}
+.trust.cc li{position:relative}
+.offer{border-left:5px solid var(--acc,transparent)}
+.offer h3,.offer .price b{color:var(--acc,inherit)}
+.steps li::before{background:var(--acc,var(--sage-d))!important}
+.faq.cc>details>summary::after,.faq .cc>details>summary::after{content:"+";width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--acc);color:#fff;font:600 1.2rem/1 var(--sans)}
+.faq.cc>details[open]>summary,.faq .cc>details[open]>summary{color:var(--acc)}
+.stats.cc>div,.tstats>div{background:var(--tint,transparent)}
+.stats.cc b,.tstats b{color:var(--acc,inherit)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* ===== Pages de vente : composants communs (même charte que le site) ===== */
+.snav{position:sticky;top:0;z-index:60;background:rgba(251,247,242,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .25s}
+.snav.is-scrolled{border-color:var(--line)}
+.snav-in{display:flex;align-items:center;justify-content:space-between;gap:14px;height:62px;max-width:1120px;margin:0 auto;padding:0 18px}
+.snav img{height:34px;width:auto}
+.snav .cta{display:inline-flex;align-items:center;min-height:42px;padding:0 18px;border-radius:999px;background:var(--coral);color:#fff;font-weight:600;font-size:.92rem;text-decoration:none;white-space:nowrap}
+.kick{font:700 .86rem/1.2 var(--sans);color:var(--coral);margin-bottom:10px}
+.band--sage .kick{color:var(--sage-d)}
+.band--night .kick{color:var(--peach)}
+.band--coral .kick{color:#fff}
+.lead{margin-top:14px;font-size:1.04rem}
+.head .lead{margin-top:14px}
+.chip{display:inline-flex;align-items:center;gap:8px;font:700 .82rem/1.3 var(--sans);background:var(--sage);border-radius:999px;padding:7px 14px}
+.chip::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--coral)}
+.shero{padding:18px 0 54px}
+.shero-grid{display:grid;gap:24px}
+.shero .pb{margin-top:16px;font-size:1.03rem;font-weight:500}
+.shero h1{margin-top:12px}
+.shero .sub{margin-top:14px}
+.sh-cover{max-width:300px;margin:0 auto;width:100%}
+@media(min-width:900px){
+  .shero{padding:40px 0 90px}
+  .shero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);grid-template-areas:"text buy" "cover buy";gap:30px 60px;align-items:start}
+  .sh-text{grid-area:text}.sh-cover{grid-area:cover;margin:0;max-width:340px}.sh-buy{grid-area:buy;position:sticky;top:84px}
+}
+.ticks{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:9px}
+.ticks li{position:relative;padding-left:31px;line-height:1.45}
+.ticks li::before{content:"✓";position:absolute;left:0;top:1px;width:21px;height:21px;border-radius:50%;background:var(--acc,var(--coral));color:#fff;font:700 .72rem/21px var(--sans);text-align:center}
+.cover{border-radius:20px;overflow:hidden;background:#E8DDD2;box-shadow:0 24px 40px -30px rgba(43,32,28,.6)}
+.cover img{width:100%}
+.buy{background:#fff;border-radius:22px;border-top:5px solid var(--coral);padding:22px 20px;box-shadow:0 24px 44px -34px rgba(43,32,28,.55);scroll-margin-top:80px}
+.who{display:flex;gap:12px;align-items:center;padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid var(--line);font-size:.86rem;line-height:1.35}
+.who img{width:50px;height:50px;border-radius:50%;object-fit:cover;object-position:50% 18%;flex:none}
+.who b{display:block;font-size:.95rem}
+.buy h2{font-size:1.75rem}
+.pr{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0 16px;padding:12px 14px;border-radius:14px;background:var(--blush2)}
+.pr b{font-family:var(--serif);font-variant-numeric:lining-nums;font-size:2.4rem;line-height:1;color:var(--coral)}
+.pr span{font-size:.85rem;font-weight:600;text-align:right}
+.inp{display:block;width:100%;min-height:52px;border:1px solid rgba(43,32,28,.22);border-radius:12px;padding:12px 14px;font:16px/1.4 var(--sans);background:var(--ivory);color:var(--ink);margin:0 0 10px}
+.inp:focus{outline:2px solid var(--coral);outline-offset:1px;background:#fff}
+.bbtn{display:flex;align-items:center;justify-content:center;width:100%;min-height:58px;padding:0 22px;border:0;border-radius:999px;background:var(--coral);color:#fff;font:600 1.03rem/1.2 var(--sans);text-align:center;cursor:pointer;text-decoration:none;box-shadow:0 10px 24px -14px rgba(154,66,50,.7);transition:background .2s}
+.bbtn:hover{background:var(--coral-d)}
+.bbtn:disabled{opacity:.7;cursor:wait}
+.buy .note{margin-top:10px;font-size:.86rem;text-align:center}
+.form-success{display:none;margin-top:10px;text-align:center;font-weight:600}
+.stats4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:14px}
+.stats4>div{background:var(--tint);border-radius:14px;padding:12px 4px;text-align:center;font-size:.76rem;line-height:1.25;font-weight:600}
+.stats4 b{display:block;font-family:var(--serif);font-variant-numeric:lining-nums;font-size:1.55rem;line-height:1.05;color:var(--acc);margin-bottom:3px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{background:var(--tint);border-radius:999px;padding:8px 13px;font-weight:600;font-size:.88rem;line-height:1.2}
+.cards{display:grid;gap:12px}
+@media(min-width:760px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1000px){.cards--3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.card{background:#fff;border-radius:18px;padding:20px 18px;border-top:5px solid var(--acc,var(--coral))}
+.card h3{font-size:1.35rem;color:var(--acc,inherit);margin-bottom:8px}
+.card p{font-size:.95rem}
+.card p+p{margin-top:8px}
+.card .pill{display:inline-block;margin-bottom:10px;font:700 .74rem/1 var(--sans);color:#fff;background:var(--acc);border-radius:999px;padding:6px 10px}
+.concl{margin-top:16px;background:var(--night);color:var(--cream);border-radius:20px;padding:22px 20px;font-size:1.02rem}
+.concl strong{color:var(--peach)}
+.chaps{list-style:none;padding:0;margin:0;display:grid;gap:10px;counter-reset:c}
+.chaps li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;background:#fff;border-radius:18px;padding:16px 16px 18px}
+.chaps li::before{counter-increment:c;content:counter(c);width:38px;height:38px;border-radius:50%;background:var(--acc);color:#fff;display:grid;place-items:center;font-weight:700}
+.chaps h3{font-size:1.25rem;color:var(--acc)}
+.chaps p{font-size:.93rem;margin-top:4px}
+.chaps .lab{display:inline-block;margin-top:8px;font:700 .74rem/1 var(--sans);color:var(--acc);background:var(--tint);border-radius:999px;padding:6px 10px}
+.chaps .mini{font-size:.82rem;margin-top:6px}
+@media(min-width:900px){.chaps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.sub3{margin-top:34px;font-size:clamp(1.6rem,4.4vw,2.1rem)}
+.duo{display:grid;gap:26px;align-items:center}
+@media(min-width:900px){.duo{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px}}
+.photo{border-radius:20px;overflow:hidden;background:#E8DDD2;box-shadow:0 24px 40px -30px rgba(43,32,28,.55)}
+.photo img{width:100%}
+.cap{margin-top:12px;font-size:.92rem}
+.cap b{display:block;font-size:1rem}
+.more-link{display:inline-block;margin-top:16px;font-weight:600;text-underline-offset:4px}
+.install{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:24px}
+.install>div{background:rgba(246,239,232,.08);border-top:5px solid var(--acc);border-radius:16px;padding:16px 14px}
+.install>div:nth-child(1){--acc:var(--peach)}
+.install>div:nth-child(2){--acc:#B9C9AE}
+.install b{display:block;color:var(--acc);font-size:1rem}
+.install ol{margin:8px 0 0;padding-left:18px;font-size:.9rem;line-height:1.6}
+.install strong{color:#fff}
+.devices{margin-top:26px;border-radius:18px;overflow:hidden}
+.devices img{width:100%}
+.band--night .small{opacity:1}
+.coach-img{max-width:360px;width:100%;margin:0 auto}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.badges span{background:var(--tint);border-left:4px solid var(--acc);border-radius:10px;padding:8px 12px;font-weight:600;font-size:.88rem}
+.bio p+p{margin-top:12px}
+.pricebox{background:#fff;border-radius:24px;border-top:6px solid var(--coral);padding:24px 20px;max-width:540px;margin:0 auto;box-shadow:0 24px 44px -34px rgba(43,32,28,.55)}
+.pricebox .name{font-family:var(--serif);font-weight:700;font-size:2rem;line-height:1.1;color:var(--coral)}
+.pricebox .desc{margin-top:6px;font-size:.95rem}
+.pricebox .amt{margin-top:14px;font-family:var(--serif);font-variant-numeric:lining-nums;font-weight:700;font-size:3.2rem;line-height:1}
+.pricebox .amt small{font:600 .95rem var(--sans)}
+.pricebox .ticks{margin:18px 0 22px;font-size:.95rem}
+.reas{margin-top:12px;font-size:.88rem;text-align:center}
+.oks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:10px;font-size:.86rem;font-weight:600}
+.oks span::before{content:"✓ ";color:var(--sage-d)}
+.band--coral .oks span::before{color:#fff}
+.guar{margin-top:16px;background:var(--sage);border-radius:14px;padding:14px 16px;font-size:.88rem;text-align:left}
+.guar b{color:var(--sage-d)}
+.band--coral .guar{background:rgba(255,255,255,.14);color:#fff}
+.band--coral .guar b{color:#fff}
+.ask{margin-top:18px;text-align:center;font-size:.95rem}
+.ask a{font-weight:700;text-underline-offset:4px}
+.compare{display:grid;gap:18px}
+@media(min-width:900px){.compare{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}}
+.cmp{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:22px;border-top:5px solid var(--acc);padding:26px 20px 22px}
+.cmp.here{box-shadow:0 0 0 2px var(--acc)}
+.cmp .tag{position:absolute;top:-13px;left:18px;background:var(--acc)}
+.cmp h3{font-size:1.6rem;color:var(--acc)}
+.cmp>p{font-size:.93rem;margin-top:8px}
+.cmp .ticks{margin:14px 0 0;font-size:.92rem}
+.cmp .amt{margin-top:auto;padding-top:18px;font-family:var(--serif);font-variant-numeric:lining-nums;font-weight:700;font-size:2.1rem;line-height:1.05;color:var(--acc)}
+.cmp .amt small{display:block;margin-top:4px;font:500 .84rem var(--sans);color:var(--ink)}
+.cmp .go{margin-top:14px;display:flex;justify-content:center;align-items:center;min-height:50px;border-radius:999px;background:var(--acc);color:#fff;font-weight:600;text-decoration:none}
+.faqw{max-width:780px}
+.final .guar{max-width:520px;margin:20px auto 0}
+.final .oks{margin-top:14px}
+.final .small{margin-top:12px}
+.bundle{text-align:center}
+.bundle h2{font-size:clamp(1.9rem,5vw,2.5rem)}
+.bundle p{margin-top:10px}
+.bundle .btn{margin-top:22px;background:var(--sage-d);box-shadow:0 10px 24px -14px rgba(60,80,55,.7)}
+.bundle .btn:hover{background:#4C5C46}
+.floating-wa{position:fixed;right:16px;bottom:18px;z-index:80;width:54px;height:54px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;font-size:24px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(0,0,0,.45)}
+@media(min-width:900px){.floating-wa{right:24px;bottom:24px}}
+.band--coral .buy .guar{background:var(--sage);color:var(--ink)}
+.band--coral .buy .guar b{color:var(--sage-d)}
+.band--coral .buy .oks span::before{color:var(--sage-d)}
+.ofc-preuve .l1,.ofc-preuve .l2{white-space:normal!important}
+
+.quotes{display:grid;gap:12px;margin-top:26px}
+@media(min-width:760px){.quotes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.quotes .quote p{-webkit-line-clamp:unset;display:block}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- ══ NAV ══ -->
-<nav>
-  <a href="https://www.ornellafitcoaching.com" class="nav-logo">
-    <img src="images/logo.png" alt="Ornella Fit Coaching" width="3135" height="793">
-  </a>
-  <a href="#achat" class="nav-cta">Je commence — 12€ →</a>
-</nav>
-
-<!-- ══ HERO ══ -->
-<section class="hero" id="achat">
-
-  <!-- DESKTOP : grille 2 colonnes -->
-  <div class="hero-inner-grid" id="hero-desktop">
-    <div>
-      <div class="hero-text" style="padding:0;">
-        <div class="eyebrow"><span class="eyebrow-dot"></span>✨ Accès immédiat · À vie · 12€</div>
-        <p class="hero-problem">Tu fais attention à ce que tu manges, tu fais du sport… mais ton ventre reste gonflé et difficile à affiner ?</p>
-        <h1 class="hero-h1">La méthode pour un ventre plus plat —<br><em>même si tu as déjà tout essayé</em></h1>
-        <p class="hero-sub">Anti-ballonnements · Exercices ciblés · Nutrition · Compléments alimentaires · Routine réaliste · Ce programme t'explique exactement ce qui bloque — et te donne les outils pour le débloquer.</p>
-        <ul class="hero-benefits">
-          <li>Programme 14 jours (6 séances guidées) + plan pour continuer 4 semaines</li>
-          <li>Nutrition anti-ballonnements + plan repas 7 jours</li>
-          <li>Exercices ciblés transverse & ventre plat</li>
-          <li>Compléments alimentaires — lesquels valent vraiment le coup</li>
-          <li>Bonus : sommeil, cortisol, cycle hormonal</li>
-          <li>📲 Mini-appli incluse avec le programme — installe-le sur ton téléphone en 30 sec</li>
-        </ul>
-        <div class="hero-cover" style="padding:0;margin-top:24px;">
-          <img src="vp-cover.png" alt="Programme Ventre Plat" width="1600" height="2000">
-        </div>
-      </div>
-    </div>
-    <div class="hero-form-desktop" style="position:sticky;top:80px;">
-      <div class="form-box">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border);">
-          <img src="images/ornella-profil-studio.webp" alt="Ornella" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0;" width="1023" height="1537" loading="lazy">
-          <div>
-            <div style="font-size:.9rem;font-weight:700;color:var(--dark);">Ornella</div>
-            <div style="font-size:.75rem;color:var(--muted);line-height:1.4;">Coach diplômée d'État · Demi-finaliste du Championnat de France de Bikini Fitness</div>
-          </div>
-        </div>
-        <div class="form-title">🚀 Commence ta transformation</div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-          <span style="font-size:1.6rem;font-weight:800;color:var(--accent);">12€</span>
-          <span style="font-size:.75rem;color:var(--muted);margin-left:auto;">paiement unique · accès à vie</span>
-        </div>
-        
-        <input type="text" id="hero-fname-d" class="form-input" placeholder="Ton prénom" autocomplete="given-name">
-        <input type="email" id="hero-email-d" class="form-input" placeholder="Ton adresse email" autocomplete="email">
-        <button class="form-btn" onclick="handlePurchaseDesktop()" style="font-size:1rem;padding:18px;">🚀 Commencer ma transformation →</button>
-        <p class="form-note">⚡ Accès <strong>immédiat</strong> après paiement · 🔒 Sécurisé · À vie sur tous tes appareils</p>
-        <div class="ofc-preuve" data-ordre="maria,lise,lucie,louise,emeline,chantal" style="margin:12px 0 0;text-align:center"></div>
-      </div>
-    </div>
+<header class="snav">
+  <div class="snav-in">
+    <a href="https://www.ornellafitcoaching.com" class="nav-logo"><img src="images/logo.png" alt="Ornella Fit Coaching" width="3135" height="793"></a>
+    <a href="#achat" class="cta">Je commence · 12 €</a>
   </div>
+</header>
 
-  <!-- MOBILE : linéaire, aéré, premium -->
-  <div id="hero-mobile">
-    <!-- 1. Eyebrow + Accroche + Titre -->
-    <div class="hero-text">
-      <div class="eyebrow"><span class="eyebrow-dot"></span>✨ Accès immédiat · À vie · 12€</div>
-      <p class="hero-problem">Tu fais attention à ce que tu manges, tu fais du sport… mais ton ventre reste gonflé et difficile à affiner ?</p>
-      <p class="hero-h1" role="heading" aria-level="1">La méthode pour un ventre plus plat —<br><em>même si tu as déjà tout essayé</em></p>
-      <p class="hero-sub">Anti-ballonnements · Exercices ciblés · Nutrition · Compléments · Routine réaliste.</p>
-      <!-- Bénéfices visibles immédiatement -->
-      <ul class="hero-benefits" style="margin:0 auto 0;max-width:340px;">
+<main>
+<!-- 1. HÉROS + ACHAT -->
+<section class="shero">
+  <div class="wrap shero-grid">
+    <div class="sh-text">
+      <span class="chip">Accès immédiat · À vie · 12 €</span>
+      <p class="pb">Tu fais attention à ce que tu manges, tu fais du sport… mais ton ventre reste gonflé et difficile à affiner ?</p>
+      <h1>La méthode pour un ventre plus plat, <span class="hl">même si tu as déjà tout essayé</span></h1>
+      <p class="sub">Anti-ballonnements · Exercices ciblés · Nutrition · Compléments alimentaires · Routine réaliste. Ce programme t'explique exactement ce qui bloque, et te donne les outils pour le débloquer.</p>
+      <ul class="ticks cc">
         <li>Programme 14 jours (6 séances guidées) + plan pour continuer 4 semaines</li>
         <li>Nutrition anti-ballonnements + plan repas 7 jours</li>
-        <li>Exercices ciblés transverse & ventre plat</li>
-        <li>Compléments alimentaires — lesquels valent vraiment le coup</li>
+        <li>Exercices ciblés transverse &amp; ventre plat</li>
+        <li>Compléments alimentaires : lesquels valent vraiment le coup</li>
         <li>Bonus : sommeil, cortisol, cycle hormonal</li>
-        <li>📲 Mini-appli incluse avec le programme — installe-le sur ton téléphone en 30 sec</li>
+        <li>Mini-appli incluse avec le programme : installe-le sur ton téléphone en 30 sec</li>
       </ul>
     </div>
-
-    <!-- 2. Cover -->
-    <div class="hero-cover">
-      <img src="vp-cover.png" alt="Programme Ventre Plat — Ornella Fit Coaching" width="1600" height="2000" loading="lazy">
-    </div>
-
-    <!-- 3. Stats bar transformation -->
-    <div class="hero-stats-bar">
-      <div class="hero-stat-item">
-        <div class="hero-stat-num">14j</div>
-        <div class="hero-stat-label">programme</div>
-      </div>
-      <div class="hero-stat-item">
-        <div class="hero-stat-num">+4 sem.</div>
-        <div class="hero-stat-label">plan pour continuer</div>
-      </div>
-      <div class="hero-stat-item">
-        <div class="hero-stat-num">5★</div>
-        <div style="font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:3px;">avis Google</div>
-      </div>
-    </div>
-
-    <!-- 4. Formulaire achat -->
-    <div class="hero-form-zone">
-      <div class="form-box" style="max-width:480px;margin:0 auto;">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border);">
-          <img src="images/ornella-profil-studio.webp" alt="Ornella" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0;" width="1023" height="1537" loading="lazy">
-          <div>
-            <div style="font-size:.88rem;font-weight:700;color:var(--dark);">Ornella</div>
-            <div style="font-size:.72rem;color:var(--muted);line-height:1.4;">Coach diplômée d'État · Demi-finaliste du Championnat de France de Bikini Fitness</div>
-          </div>
+    <div class="sh-cover cover"><img src="vp-cover.png" alt="Programme Ventre Plat — Ornella Fit Coaching" width="1600" height="2000" fetchpriority="high"></div>
+    <div class="sh-buy">
+      <div class="buy" id="achat">
+        <div class="who">
+          <img src="images/ornella-photo-bleue-originale.webp" alt="Ornella" width="1080" height="1350" loading="lazy">
+          <div><b>Ornella</b>Coach diplômée d'État · Demi-finaliste du Championnat de France de Bikini Fitness</div>
         </div>
-        <div class="form-title" style="margin-bottom:14px;">🚀 Commence ta transformation</div>
-        
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;padding:12px 14px;background:rgba(201,99,88,.05);border-radius:12px;border:1px solid rgba(201,99,88,.12);">
-          <span style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--accent);line-height:1;">12€</span>
-          <span style="font-size:.72rem;color:var(--muted);margin-left:auto;font-weight:600;">paiement unique · accès à vie</span>
-        </div>
-        <input type="text" id="hero-fname" class="form-input" placeholder="Ton prénom" autocomplete="given-name">
-        <input type="email" id="hero-email" class="form-input" placeholder="Ton adresse email" autocomplete="email">
-        <button class="form-btn" onclick="handlePurchase()" style="font-size:1rem;padding:18px;letter-spacing:.01em;">🚀 Commencer ma transformation →</button>
-        <p class="form-note">⚡ Accès <strong>immédiat</strong> après paiement · 🔒 Sécurisé · À vie sur tous tes appareils</p>
+        <h2>Commence ta <span class="hl">transformation</span></h2>
+        <div class="pr"><b>12 €</b><span>paiement unique<br>accès à vie</span></div>
+        <input type="text" id="hero-fname" class="inp" placeholder="Ton prénom" autocomplete="given-name">
+        <input type="email" id="hero-email" class="inp" placeholder="Ton adresse email" autocomplete="email">
+        <button class="bbtn" onclick="handlePurchase()">Commencer ma transformation</button>
+        <p class="note">Accès <strong>immédiat</strong> après paiement · Sécurisé · À vie sur tous tes appareils</p>
         <div class="ofc-preuve" data-ordre="maria,lise,lucie,louise,emeline,chantal" style="margin:12px 0 0;text-align:center"></div>
-        <div class="form-success" id="hero-success"><p>✅ Redirection en cours...</p></div>
+        <div class="form-success" id="hero-success"><p>Redirection en cours...</p></div>
+      </div>
+      <div class="stats4 cc">
+        <div><b>8</b>chapitres complets</div>
+        <div><b>6</b>séances guidées</div>
+        <div><b>14 j</b>+ plan 4 semaines</div>
+        <div><b>5★</b>avis Google</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ BADGE CRÉDIBILITÉ ══ -->
-<div style="background:var(--dark);padding:13px 20px;text-align:center;overflow:hidden;">
-  <p style="font-size:.82rem;color:rgba(255,255,255,.7);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">⭐⭐⭐⭐⭐ · <strong style="color:#C9A96E;">Coach diplômée d'État</strong> · Demi-finaliste du Championnat de France de Bikini Fitness</p>
-</div>
-
-<!-- ══ PROOF BAR ══ -->
-<div class="proof-bar">
-  <div class="proof-bar-inner">
-    <div class="proof-item">
-      <div class="proof-num">8</div>
-      <div class="proof-label">chapitres complets</div>
-    </div>
-    <div class="proof-item">
-      <div class="proof-num">6</div>
-      <div class="proof-label">séances guidées</div>
-    </div>
-    <div class="proof-item">
-      <div class="proof-num">14j</div>
-      <div class="proof-label">programme maison</div>
-    </div>
-    <div class="proof-item">
-      <div class="proof-num">5★</div>
-      <div class="proof-label">avis Google</div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ BANNIÈRE ══ -->
-<div style="width:100%;overflow:hidden;line-height:0;">
-  <img src="vp-banniere.png" alt="Ventre Plat — Ornella Fit Coaching" style="width:100%;height:auto;display:block;" width="1920" height="1080" loading="lazy">
-</div>
-
-<!-- PREUVE SOCIALE (remontée sous le héros) -->
-<section id="avis-photos" style="background:#FBF6F2">
-  <div class="ofc-avis" data-ordre="maria,lise,lucie,louise,emeline,anonyme,chantal,ornella" data-kicker="Mes clientes coachées · Photos réelles" data-titre="La méthode de ce programme, en vrai" data-note="Ces résultats sont ceux de clientes accompagnées en coaching (sur plusieurs mois) avec la même méthode que ce programme. Photos publiées avec leur accord, sans retouche. Les résultats varient selon chacune."></div>
-</section>
-
-<!-- ══ AVIS ══ -->
-<section class="sec sec-white">
+<!-- 2. PREUVES -->
+<section id="avis-photos" class="band band--blush">
   <div class="wrap">
-    <span class="sec-label text-center">Elles l'ont fait</span>
-    <h2 class="sec-title text-center">Leurs mots —<br><em>pas les miens</em></h2>
-    <div class="divider divider-center"></div>
-    <div class="avis-grid">
-      <div class="avis-card">
-        <div class="avis-stars">★★★★★</div>
-        <p class="avis-text">"J'ai essayé plein de choses avant. C'est la première fois que je comprends vraiment pourquoi mon ventre ne changeait pas. En 3 semaines j'ai déjà moins de ballonnements et je me sens plus légère."</p>
-        <div class="avis-author">Mathilde, 32 ans</div>
-        <div class="avis-detail">Programme digital — résultat semaine 3</div>
-      </div>
-            <div class="avis-card">
-        <div class="avis-stars">★★★★★</div>
-        <p class="avis-text">"Après ma grossesse je pensais que c'était foutu. Ornella m'a montré que non. Les exercices ciblent exactement les bons muscles. Je referais l'investissement les yeux fermés."</p>
-        <div class="avis-author">Sarah, 35 ans</div>
-        <div class="avis-detail">Post-partum · −4 cm en 8 semaines</div>
-      </div>
+    <div class="ofc-avis" data-accent="#B4513F" data-ordre="maria,lise,lucie,louise,emeline,anonyme,chantal,ornella" data-kicker="Mes clientes coachées · Photos réelles" data-titre="La méthode de ce programme, en vrai" data-note="Ces résultats sont ceux de clientes accompagnées en coaching (sur plusieurs mois) avec la même méthode que ce programme. Photos publiées avec leur accord, sans retouche. Les résultats varient selon chacune."></div>
+    <h2 class="sub3">Leurs mots, <span class="hl">pas les miens</span></h2>
+    <div class="quotes cc">
+      <figure class="quote">
+        <p>« J'ai essayé plein de choses avant. C'est la première fois que je comprends vraiment pourquoi mon ventre ne changeait pas. En 3 semaines j'ai déjà moins de ballonnements et je me sens plus légère. »</p>
+        <footer><b>Mathilde, 32 ans</b> · Programme digital, résultat semaine 3</footer>
+      </figure>
+      <figure class="quote">
+        <p>« Après ma grossesse je pensais que c'était foutu. Ornella m'a montré que non. Les exercices ciblent exactement les bons muscles. Je referais l'investissement les yeux fermés. »</p>
+        <footer><b>Sarah, 35 ans</b> · Post-partum · −4 cm en 8 semaines</footer>
+      </figure>
     </div>
-    <p style="text-align:center;margin-top:20px;font-size:.82rem;color:var(--muted);">
-      <a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" style="color:var(--accent);font-weight:600;">Voir tous les avis Google →</a>
-    </p>
+    <a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" rel="noopener" class="more-link">Voir tous les avis Google</a>
   </div>
 </section>
 
-<!-- ══ PROBLÈME ══ -->
-<section class="sec sec-alt">
+<!-- 3. LE PROBLÈME -->
+<section class="band band--sand">
   <div class="wrap">
-    <span class="sec-label">Je te comprends</span>
-    <h2 class="sec-title">Tu fais tout bien —<br><em>et pourtant rien ne bouge</em></h2>
-    <div class="divider"></div>
-    <p class="sec-sub">Tu manges sainement. Tu fais du sport. Tu t'es privée. Et ce ventre est encore là, comme s'il refusait de partir. Ce n'est pas ta faute. Personne ne t'a donné les bonnes informations.</p>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="problem-icon">😤</div>
-        <div>
-          <h4>Tu fais des abdos — et tu te demandes pourquoi ça ne change pas</h4>
-          <p>Les crunches ne font pas le ventre plat. Le secret, c'est le transverse — le muscle profond que beaucoup de programmes oublient.</p>
-        </div>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">🫥</div>
-        <div>
-          <h4>Tu te sens gonflée même les jours où tu as bien mangé</h4>
-          <p>Certains aliments "sains" fermentent dans l'intestin et gonflent le ventre en 2h. Ce n'est pas de la graisse — c'est corrigeable très vite.</p>
-        </div>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">😴</div>
-        <div>
-          <h4>Tu te prives — et ton corps stocke encore plus</h4>
-          <p>Le stress et les restrictions font monter le cortisol. Et le cortisol ordonne à ton corps de stocker exactement là où tu ne veux pas : autour du ventre.</p>
-        </div>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">🔄</div>
-        <div>
-          <h4>Tu tournes en rond depuis des mois</h4>
-          <p>Le corps s'adapte. Sans progression structurée et sans ciblage précis, les résultats stagnent — peu importe les efforts. Il te faut une méthode, pas de la volonté.</p>
-        </div>
-      </div>
+    <div class="head">
+      <p class="kick">Je te comprends</p>
+      <h2>Tu fais tout bien, <span class="hl">et pourtant rien ne bouge</span></h2>
+      <p>Tu manges sainement. Tu fais du sport. Tu t'es privée. Et ce ventre est encore là, comme s'il refusait de partir. Ce n'est pas ta faute. Personne ne t'a donné les bonnes informations.</p>
     </div>
-    <div class="problem-conclusion">
-      Ce programme t'explique exactement ce qui bloque — et te donne les outils pour le débloquer. Des exercices qui ciblent les bons muscles, une nutrition anti-ballonnements, un plan qui progresse. <strong>Pas de miracle. Une méthode.</strong> Celle que j'ai utilisée sur moi-même.
+    <div class="cards cc">
+      <div class="card"><h3>Tu fais des abdos, et tu te demandes pourquoi ça ne change pas</h3><p>Les crunches ne font pas le ventre plat. Le secret, c'est le transverse : le muscle profond que beaucoup de programmes oublient.</p></div>
+      <div class="card"><h3>Tu te sens gonflée même les jours où tu as bien mangé</h3><p>Certains aliments "sains" fermentent dans l'intestin et gonflent le ventre en 2h. Ce n'est pas de la graisse : c'est corrigeable très vite.</p></div>
+      <div class="card"><h3>Tu te prives, et ton corps stocke encore plus</h3><p>Le stress et les restrictions font monter le cortisol. Et le cortisol ordonne à ton corps de stocker exactement là où tu ne veux pas : autour du ventre.</p></div>
+      <div class="card"><h3>Tu tournes en rond depuis des mois</h3><p>Le corps s'adapte. Sans progression structurée et sans ciblage précis, les résultats stagnent, peu importe les efforts. Il te faut une méthode, pas de la volonté.</p></div>
     </div>
+    <p class="concl">Ce programme t'explique exactement ce qui bloque, et te donne les outils pour le débloquer. Des exercices qui ciblent les bons muscles, une nutrition anti-ballonnements, un plan qui progresse. <strong>Pas de miracle. Une méthode.</strong> Celle que j'ai utilisée sur moi-même.</p>
   </div>
 </section>
 
-<!-- ══ TOUT CE QUI EST INCLUS ══ -->
-<section class="sec sec-white">
+<!-- 4. CE QUI EST INCLUS + CONTENU -->
+<section class="band" id="programme">
   <div class="wrap">
-    <span class="sec-label text-center">Le programme complet</span>
-    <h2 class="sec-title text-center">Tout ce qui est<br><em>inclus pour 12€</em></h2>
-    <div class="divider divider-center"></div>
-
-    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:36px;">
-      <span style="display:inline-flex;align-items:center;gap:7px;background:#FDF8F4;border:1.5px solid var(--border);border-radius:999px;padding:9px 16px;font-size:.84rem;color:var(--text);font-weight:500;">🏆 Ex-compétitrice fitness</span>
-      <span style="display:inline-flex;align-items:center;gap:7px;background:#FDF8F4;border:1.5px solid var(--border);border-radius:999px;padding:9px 16px;font-size:.84rem;color:var(--text);font-weight:500;">🎯 6 erreurs décryptées</span>
-      <span style="display:inline-flex;align-items:center;gap:7px;background:#FDF8F4;border:1.5px solid var(--border);border-radius:999px;padding:9px 16px;font-size:.84rem;color:var(--text);font-weight:500;">💪 Exercices + métaphores sensations</span>
-      <span style="display:inline-flex;align-items:center;gap:7px;background:#FDF8F4;border:1.5px solid var(--border);border-radius:999px;padding:9px 16px;font-size:.84rem;color:var(--text);font-weight:500;">🥗 Nutrition + journée type complète</span>
-      <span style="display:inline-flex;align-items:center;gap:7px;background:#FDF8F4;border:1.5px solid var(--border);border-radius:999px;padding:9px 16px;font-size:.84rem;color:var(--text);font-weight:500;">📅 Plan pour continuer 4 semaines</span>
-      <span style="display:inline-flex;align-items:center;gap:7px;background:#FDF8F4;border:1.5px solid var(--border);border-radius:999px;padding:9px 16px;font-size:.84rem;color:var(--text);font-weight:500;">🏋️ Programme séances 2 semaines</span>
-      <span style="display:inline-flex;align-items:center;gap:7px;background:#FDF8F4;border:1.5px solid var(--border);border-radius:999px;padding:9px 16px;font-size:.84rem;color:var(--text);font-weight:500;">💊 Compléments alimentaires détaillés</span>
-      <span style="display:inline-flex;align-items:center;gap:7px;background:#FDF8F4;border:1.5px solid var(--border);border-radius:999px;padding:9px 16px;font-size:.84rem;color:var(--text);font-weight:500;">🍽️ Plan repas 7 jours anti-ballonné</span>
-      <span style="display:inline-flex;align-items:center;gap:7px;background:#FDF8F4;border:1.5px solid var(--border);border-radius:999px;padding:9px 16px;font-size:.84rem;color:var(--text);font-weight:500;">🌅 Routine matin ventre plat</span>
-      <span style="display:inline-flex;align-items:center;gap:7px;background:#FDF8F4;border:1.5px solid var(--border);border-radius:999px;padding:9px 16px;font-size:.84rem;color:var(--text);font-weight:500;">📋 Tableau de suivi + tracker</span>
+    <div class="head">
+      <p class="kick">Le programme complet</p>
+      <h2>Tout ce qui est inclus <span class="hl">pour 12 €</span></h2>
+      <p>Pas un PDF générique copié-collé d'internet. Un programme construit par une coach qui a elle-même vécu la transformation : 8 chapitres complets, un programme de 14 jours (6 séances guidées) et un plan pour continuer 4 semaines.</p>
     </div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;max-width:680px;margin:0 auto;">
-      <div style="background:var(--dark);border-radius:16px;padding:20px 12px;text-align:center;">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:white;line-height:1;">8</div>
-        <div style="font-size:.65rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-top:4px;">Chapitres complets</div>
-      </div>
-      <div style="background:var(--dark);border-radius:16px;padding:20px 12px;text-align:center;">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:white;line-height:1;">6</div>
-        <div style="font-size:.65rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-top:4px;">Séances guidées</div>
-      </div>
-      <div style="background:var(--dark);border-radius:16px;padding:20px 12px;text-align:center;">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:white;line-height:1;">4 sem.</div>
-        <div style="font-size:.65rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-top:4px;">Programme inclus</div>
-      </div>
-      <div style="background:linear-gradient(135deg,#C96358,#C9957A);border-radius:16px;padding:20px 12px;text-align:center;">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:white;line-height:1;">12€</div>
-        <div style="font-size:.65rem;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.08em;margin-top:4px;">Accès à vie</div>
-      </div>
+    <ol class="chaps cc">
+      <li><div><h3>Pourquoi le ventre est si difficile à changer ?</h3><p>Cortisol, transverse, diastasis, grossesse : les vraies raisons que personne ne t'explique.</p><span class="lab">Comprendre</span></div></li>
+      <li><div><h3>Les 6 erreurs qui sabotent ton ventre plat</h3><p>Trop de cardio, restriction calorique, mauvais exercices, alcool, sommeil, stress : les pièges à éviter.</p><span class="lab">Identifier</span></div></li>
+      <li><div><h3>Les exercices qui font vraiment la différence</h3><p>Dead bug, vacuum abdominal, gainage profond, respiration diaphragmatique, avec métaphores de sensations pour bien les ressentir.</p><span class="lab">S'entraîner</span></div></li>
+      <li><div><h3>La nutrition anti-ventre ballonné</h3><p>Journée type complète + 5 aliments qui gonflent le ventre sans que tu le saches + les règles d'or de la digestion.</p><span class="lab">Nutrition</span></div></li>
+      <li><div><h3>Ton plan d'action dès demain matin</h3><p>Routine matin ventre plat + les étapes concrètes pour démarrer immédiatement.</p><span class="lab">Agir</span></div></li>
+      <li><div><h3>Programme pratique : 2 semaines à la maison</h3><p>6 séances guidées progressives, sans matériel. Plan semaine par semaine détaillé.</p><span class="lab">Programme</span></div></li>
+      <li><div><h3>Les compléments alimentaires</h3><p>Magnésium, probiotiques, collagène, thé vert, oméga-3, whey, créatine, eau de coco : lesquels valent vraiment le coup et pourquoi.</p><p class="mini">Informations générales et non médicales. Demande l'avis de ton médecin ou de ton pharmacien avant tout complément, en particulier en cas de grossesse, d'allaitement, de pathologie ou de traitement en cours.</p><span class="lab">Compléments</span></div></li>
+      <li><div><h3>Plan repas 7 jours anti-ballonnements</h3><p>Menu complet, liste de courses, recettes simples. Zéro privation, juste les bons choix.</p><span class="lab">Repas</span></div></li>
+    </ol>
+    <h2 class="sub3">Inclus <span class="hl">en bonus</span></h2>
+    <div class="cards cards--3 cc" style="margin-top:20px">
+      <div class="card"><span class="pill">Inclus</span><h3>Sommeil, stress &amp; ventre</h3><p>Le lien direct entre cortisol, nuits courtes et ventre gonflé, et comment le corriger.</p></div>
+      <div class="card"><span class="pill">Inclus</span><h3>Cycle hormonal &amp; rétention</h3><p>Adapter son programme à son cycle pour maximiser les résultats semaine par semaine.</p></div>
+      <div class="card"><span class="pill">Inclus</span><h3>Tableau de suivi interactif</h3><p>Coche chaque séance, note tes ressentis et mesure ta progression semaine par semaine.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ══ PROGRAMME CONTENU ══ -->
-<section class="sec sec-white" id="programme">
+<!-- 5. AVANT / APRÈS -->
+<section class="band band--blush" id="transformations">
+  <div class="wrap duo">
+    <div>
+      <p class="kick">La preuve</p>
+      <h2>Ça marche, <span class="hl">la photo ne ment pas</span></h2>
+      <p class="lead">Après une grossesse, tout était à reconstruire. Ces exercices, c'est exactement ce que j'ai appliqué sur moi-même. Le résultat, tu le vois.</p>
+      <a href="https://www.ornellafitcoaching.com/transformations.html" class="more-link">Voir toutes les transformations</a>
+    </div>
+    <figure style="margin:0">
+      <div class="photo"><img src="ornella-avant-apres-ventre.jpg" alt="Avant après ventre plat — Ornella après grossesse" width="4319" height="4319" loading="lazy"></div>
+      <figcaption class="cap"><b>Ornella, après grossesse</b>Ex-compétitrice en musculation. Reconstruction complète du core post-partum avec les exercices de ce programme.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 6. POURQUOI ÇA FONCTIONNE -->
+<section class="band band--sage">
   <div class="wrap">
-    <span class="sec-label">À l'intérieur du programme</span>
-    <h2 class="sec-title">Tout ce qu'il faut<br><em>pour vraiment changer</em></h2>
-    <div class="divider"></div>
-    <p class="sec-sub">Pas un PDF générique copié-collé d'internet. Un programme construit par une coach qui a elle-même vécu la transformation — avec 8 chapitres complets, un programme de 14 jours (6 séances guidées) et un plan pour continuer 4 semaines.</p>
-    <div class="chapters">
-      <div class="chapter">
-        <div class="chap-num">1</div>
-        <div class="chap-info">
-          <h4>Pourquoi le ventre est si difficile à changer ?</h4>
-          <p>Cortisol, transverse, diastasis, grossesse — les vraies raisons que personne ne t'explique.</p>
-        </div>
-        <div class="chap-tag chap-tag-red">Comprendre</div>
-      </div>
-      <div class="chapter">
-        <div class="chap-num">2</div>
-        <div class="chap-info">
-          <h4>Les 6 erreurs qui sabotent ton ventre plat</h4>
-          <p>Trop de cardio, restriction calorique, mauvais exercices, alcool, sommeil, stress — les pièges à éviter.</p>
-        </div>
-        <div class="chap-tag chap-tag-red">Identifier</div>
-      </div>
-      <div class="chapter">
-        <div class="chap-num">3</div>
-        <div class="chap-info">
-          <h4>Les exercices qui font vraiment la différence</h4>
-          <p>Dead bug, vacuum abdominal, gainage profond, respiration diaphragmatique — avec métaphores de sensations pour bien les ressentir.</p>
-        </div>
-        <div class="chap-tag chap-tag-red">S'entraîner</div>
-      </div>
-      <div class="chapter">
-        <div class="chap-num">4</div>
-        <div class="chap-info">
-          <h4>La nutrition anti-ventre ballonné</h4>
-          <p>Journée type complète + 5 aliments qui gonflent le ventre sans que tu le saches + les règles d'or de la digestion.</p>
-        </div>
-        <div class="chap-tag chap-tag-green">Nutrition</div>
-      </div>
-      <div class="chapter">
-        <div class="chap-num">5</div>
-        <div class="chap-info">
-          <h4>Ton plan d'action dès demain matin</h4>
-          <p>Routine matin ventre plat + les étapes concrètes pour démarrer immédiatement.</p>
-        </div>
-        <div class="chap-tag chap-tag-red">Agir</div>
-      </div>
-      <div class="chapter">
-        <div class="chap-num">6</div>
-        <div class="chap-info">
-          <h4>Programme pratique — 2 semaines à la maison</h4>
-          <p>6 séances guidées progressives, sans matériel. Plan semaine par semaine détaillé.</p>
-        </div>
-        <div class="chap-tag chap-tag-red">Programme</div>
-      </div>
-      <div class="chapter">
-        <div class="chap-num">7</div>
-        <div class="chap-info">
-          <h4>Les compléments alimentaires</h4>
-          <p>Magnésium, probiotiques, collagène, thé vert, oméga-3, whey, créatine, eau de coco — lesquels valent vraiment le coup et pourquoi.</p>
-          <p style="font-size:.76rem;color:var(--muted);line-height:1.5;margin-top:6px;">Informations générales et non médicales. Demande l'avis de ton médecin ou de ton pharmacien avant tout complément, en particulier en cas de grossesse, d'allaitement, de pathologie ou de traitement en cours.</p>
-        </div>
-        <div class="chap-tag chap-tag-green">Compléments</div>
-      </div>
-      <div class="chapter">
-        <div class="chap-num">8</div>
-        <div class="chap-info">
-          <h4>Plan repas 7 jours anti-ballonnements</h4>
-          <p>Menu complet, liste de courses, recettes simples. Zéro privation — juste les bons choix.</p>
-        </div>
-        <div class="chap-tag chap-tag-green">Repas</div>
-      </div>
+    <div class="head">
+      <p class="kick">Pourquoi ça fonctionne</p>
+      <h2>Ce que les autres <span class="hl">ne t'ont jamais dit</span></h2>
     </div>
-
-    <div class="bonus-strip">
-      <div class="bonus-card">
-        <span class="bonus-pill">Inclus</span>
-        <div class="bonus-icon">😴</div>
-        <div class="bonus-title">Sommeil, stress & ventre</div>
-        <p class="bonus-desc">Le lien direct entre cortisol, nuits courtes et ventre gonflé — et comment le corriger.</p>
-      </div>
-      <div class="bonus-card">
-        <span class="bonus-pill">Inclus</span>
-        <div class="bonus-icon">🔄</div>
-        <div class="bonus-title">Cycle hormonal & rétention</div>
-        <p class="bonus-desc">Adapter son programme à son cycle pour maximiser les résultats semaine par semaine.</p>
-      </div>
-      <div class="bonus-card">
-        <span class="bonus-pill">Inclus</span>
-        <div class="bonus-icon">📋</div>
-        <div class="bonus-title">Tableau de suivi interactif</div>
-        <p class="bonus-desc">Coche chaque séance, note tes ressentis et mesure ta progression semaine par semaine.</p>
-      </div>
+    <div class="cards cards--3 cc">
+      <div class="card"><h3>Tu travailles enfin le bon muscle</h3><p>Dead bug, vacuum, gainage profond : des exercices qui activent le transverse. C'est lui qui aplatit le ventre. Pas les crunches que tout le monde te fait faire.</p></div>
+      <div class="card"><h3>Une assiette qui te fait du bien</h3><p>Journée type complète + plan repas 7 jours anti-ballonnements. Des repères simples pour moins te sentir gonflée, sans te priver.</p></div>
+      <div class="card"><h3>Tu sais exactement quoi faire chaque jour</h3><p>14 jours de séances, puis un plan pour continuer 4 semaines. Tu ouvres le programme, tu suis. Pas de question, pas d'improvisation, pas de temps perdu à chercher.</p></div>
+      <div class="card"><h3>On s'attaque aux vraies causes</h3><p>Cortisol, manque de sommeil, cycle hormonal : ce sont souvent eux les coupables. Des chapitres entiers pour comprendre et corriger ce que les autres ignorent.</p></div>
+      <div class="card"><h3>Tu arrêtes de jeter de l'argent</h3><p>Magnésium, probiotiques, collagène, thé vert, oméga-3, whey, créatine, eau de coco : lesquels valent vraiment le coup, et lesquels ne servent à rien.</p></div>
+      <div class="card"><h3>Toujours avec toi, partout</h3><p>En 30 secondes, le programme s'installe sur ton iPhone ou Android comme une vraie appli. Tu t'entraînes n'importe où (cuisine, salon, hôtel) sans connexion.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ══ AVANT APRÈS ══ -->
-<section class="sec sec-alt" id="transformations">
+<!-- 7. MINI-APPLI + TOUS LES APPAREILS -->
+<section class="band band--night">
   <div class="wrap">
-    <span class="sec-label text-center">La preuve</span>
-    <h2 class="sec-title text-center">Ça marche —<br><em>la photo ne ment pas</em></h2>
-    <div class="divider divider-center"></div>
-    <p class="sec-sub text-center">Après une grossesse, tout était à reconstruire. Ces exercices, c'est exactement ce que j'ai appliqué sur moi-même. Le résultat, tu le vois.</p>
-    <div style="max-width:420px;margin:0 auto;">
-      <div class="transfo-card">
-        <img src="ornella-avant-apres-ventre.jpg" alt="Avant après ventre plat — Ornella après grossesse" style="width:100%;height:auto;display:block;object-fit:unset;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" width="4319" height="4319" loading="lazy">
-        <div class="transfo-img-placeholder" style="display:none">📸</div>
-        <div class="transfo-caption">
-          <h4>Ornella — après grossesse</h4>
-          <p>Ex-compétitrice en musculation. Reconstruction complète du core post-partum avec les exercices de ce programme.</p>
-        </div>
-      </div>
+    <div class="head">
+      <p class="kick">Fonctionnalité exclusive</p>
+      <h2>Installe-le comme <span class="hl">une vraie appli</span></h2>
+      <p>En 30 secondes, ton programme Ventre Plat devient une mini-application sur ton téléphone. Accès en 1 tap, même sans connexion internet, comme une vraie appli, sans passer par l'App Store.</p>
     </div>
-    <p style="text-align:center;margin-top:20px;font-size:.82rem;color:var(--muted);">
-      <a href="https://www.ornellafitcoaching.com/transformations.html" style="color:var(--accent);font-weight:600;">Voir toutes les transformations →</a>
-    </p>
+    <div class="install">
+      <div><b>Sur iPhone</b><ol><li>Ouvre le lien dans <strong>Safari</strong></li><li>Appuie sur le bouton partager <strong>↗</strong></li><li>Sélectionne <strong>« Sur l'écran d'accueil »</strong></li><li>Appuie sur <strong>Ajouter</strong></li></ol></div>
+      <div><b>Sur Android</b><ol><li>Ouvre le lien dans <strong>Chrome</strong></li><li>Appuie sur le menu <strong>⋮</strong></li><li>Sélectionne <strong>« Ajouter à l'écran d'accueil »</strong></li><li>Appuie sur <strong>Ajouter</strong></li></ol></div>
+    </div>
+    <div class="devices"><img src="vp-mockup.png" alt="Programme Ventre Plat sur tous les appareils" width="1920" height="1080" loading="lazy"></div>
+    <p class="small" style="margin-top:12px">Smartphone, tablette, ordinateur : le programme s'affiche parfaitement sur chaque écran. Compatible iPhone · Android · iPad · Ordinateur.</p>
+    <div style="margin-top:26px"><a href="#achat" class="btn">Je veux ma mini-appli · 12 €</a><p class="small" style="margin-top:10px">Accès immédiat · À vie · Sans abonnement</p></div>
   </div>
 </section>
 
-<!-- ══ FEATURES ══ -->
-<section class="sec sec-white">
+<!-- 8. TA COACH -->
+<section class="band band--sand">
+  <div class="wrap duo">
+    <div class="photo coach-img"><img src="images/ornella-photo-bleue-originale.webp" alt="Ornella — Coach fitness féminin" width="1080" height="1350" loading="lazy"></div>
+    <div class="bio">
+      <p class="kick">Ta coach</p>
+      <h2>Ornella, <span class="hl">ex-compétitrice</span></h2>
+      <p style="margin-top:16px">J'ai été compétitrice en fitness et en musculation. J'ai appris à transformer un corps, le mien d'abord. Après ma grossesse, tout était à reconstruire : le ventre, le core, la confiance. Ce programme, c'est exactement ce que j'ai utilisé. Pas de la théorie. Du vécu.</p>
+      <p>Aujourd'hui j'accompagne des femmes qui veulent arrêter de tourner en rond. À domicile dans l'Essonne ou à distance partout en France, avec une seule règle : des méthodes qui fonctionnent vraiment, pas des tendances Instagram.</p>
+      <div class="badges cc"><span>Ex-compétitrice</span><span>Post-partum expert</span><span>Essonne (91)</span><span>Coaching à distance</span></div>
+      <p style="margin-top:16px"><a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" rel="noopener" class="link">5★ sur Google</a> · <a href="https://www.ornellafitcoaching.com/apropos.html" class="link">En savoir plus sur Ornella</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- 9. PRIX -->
+<section class="band" id="prix">
   <div class="wrap">
-    <span class="sec-label text-center">Pourquoi ça fonctionne</span>
-    <h2 class="sec-title text-center">Ce que les autres<br><em>ne t'ont jamais dit</em></h2>
-    <div class="divider divider-center"></div>
-    <div class="features-grid">
-      <div class="feat">
-        <div class="feat-icon">🎯</div>
-        <div class="feat-title">Tu travailles enfin le bon muscle</div>
-        <p class="feat-text">Dead bug, vacuum, gainage profond — des exercices qui activent le transverse. C'est lui qui aplatit le ventre. Pas les crunches que tout le monde te fait faire.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">🥗</div>
-        <div class="feat-title">Une assiette qui te fait du bien</div>
-        <p class="feat-text">Journée type complète + plan repas 7 jours anti-ballonnements. Des repères simples pour moins te sentir gonflée, sans te priver.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">📅</div>
-        <div class="feat-title">Tu sais exactement quoi faire chaque jour</div>
-        <p class="feat-text">14 jours de séances, puis un plan pour continuer 4 semaines. Tu ouvres le programme, tu suis. Pas de question, pas d'improvisation, pas de temps perdu à chercher.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">😴</div>
-        <div class="feat-title">On s'attaque aux vraies causes</div>
-        <p class="feat-text">Cortisol, manque de sommeil, cycle hormonal — ce sont souvent eux les coupables. Des chapitres entiers pour comprendre et corriger ce que les autres ignorent.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">💊</div>
-        <div class="feat-title">Tu arrêtes de jeter de l'argent</div>
-        <p class="feat-text">Magnésium, probiotiques, collagène, thé vert, oméga-3, whey, créatine, eau de coco — lesquels valent vraiment le coup, et lesquels ne servent à rien.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">📱</div>
-        <div class="feat-title">Toujours avec toi, partout</div>
-        <p class="feat-text">En 30 secondes, le programme s'installe sur ton iPhone ou Android comme une vraie appli. Tu t'entraînes n'importe où — cuisine, salon, hôtel — sans connexion.</p>
-      </div>
+    <div class="head center" style="text-align:center">
+      <p class="kick">C'est le moment</p>
+      <h2>Dans 4 semaines, <span class="hl">tu te regardes différemment</span></h2>
+      <p>Accès immédiat. Pas demain, pas après les vacances. Maintenant. Dans 4 semaines, tu sauras si tu l'as fait, ou si tu es encore là à te dire que tu commenceras bientôt.</p>
     </div>
+    <div class="pricebox">
+      <span class="tag">Le programme complet</span>
+      <p class="name" style="margin-top:12px">Ventre Plat</p>
+      <p class="desc">Le programme digital complet pour aplatir ton ventre durablement : exercices, nutrition, plan repas, bonus.</p>
+      <p class="amt">12 €<small> · paiement unique</small></p>
+      <p class="small" style="margin-top:6px">Accès à vie · Aucun abonnement</p>
+      <ul class="ticks cc">
+        <li>8 chapitres complets</li>
+        <li>Programme 14 jours à la maison (6 séances guidées)</li>
+        <li>+ plan pour continuer 4 semaines et routine matin ventre plat</li>
+        <li>Plan repas 7 jours anti-ballonnements</li>
+        <li>Guide compléments alimentaires (magnésium, probiotiques, collagène…)</li>
+        <li>Tableau de suivi interactif</li>
+        <li>Chapitres bonus : sommeil, cycle hormonal, ventre gonflé vs graisse</li>
+        <li>Accès immédiat · À vie · Sur tous tes appareils</li>
+      </ul>
+      <a href="#achat" class="bbtn">Je veux mon programme à 12 €</a>
+      <div class="ofc-preuve" data-ordre="maria,lise,lucie,louise" data-google="non" style="margin:16px auto 0;text-align:center"></div>
+      <p class="reas"><strong>Paiement sécurisé par Stripe</strong><br>Paiement en 3 fois disponible via <strong>Klarna</strong> : soit 3 × 4,00 €</p>
+      <div class="oks"><span>Accès immédiat</span><span>Sans abonnement</span><span>Accès à vie</span></div>
+      <p class="reas">Tu reçois ton accès immédiatement après confirmation.</p>
+      <p class="guar"><b>Garantie 48 h :</b> tu changes d'avis dans les 48 h après ton achat et tu n'as pas encore ouvert ton programme ? Écris-moi sur WhatsApp, je te rembourse. Une fois le programme ouvert, c'est un contenu numérique non remboursable (voir CGV).</p>
+      <p class="reas">Résultats variables selon chaque personne.</p>
+    </div>
+    <p class="ask">Une question avant de commencer ? <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20en%20savoir%20plus%20sur%20le%20programme%20Ventre%20Plat." target="_blank" rel="noopener">Écris-moi sur WhatsApp</a></p>
   </div>
 </section>
 
-<!-- ══ MINI APP ══ -->
-<section class="sec" style="background:linear-gradient(135deg,#1C1210,#2A1410);padding:56px 20px;">
+<!-- 10. QUELLE OFFRE POUR TOI -->
+<section class="band band--blush">
   <div class="wrap">
-    <div style="max-width:680px;margin:0 auto;text-align:center;">
-      <span style="font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C9A96E;display:block;margin-bottom:12px;">📱 Fonctionnalité exclusive</span>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,4vw,2.8rem);font-weight:600;color:#fff;line-height:1.1;margin-bottom:14px;">Installe-le comme<br><em style="font-weight:300;color:#C9A96E;">une vraie appli</em></h2>
-      <p style="font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:32px;">En 30 secondes, ton programme Ventre Plat devient une mini-application sur ton téléphone. Accès en 1 tap, même sans connexion internet — comme une vraie appli, sans passer par l'App Store.</p>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;text-align:left;">
-        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(232,180,160,.15);border-radius:14px;padding:20px;">
-          <div style="font-size:1.4rem;margin-bottom:10px;">🍎</div>
-          <div style="font-size:.8rem;font-weight:700;color:#C9A96E;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;">Sur iPhone</div>
-          <ol style="font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.8;padding-left:16px;margin:0;">
-            <li>Ouvre le lien dans <strong style="color:#fff;">Safari</strong></li>
-            <li>Appuie sur le bouton partager <strong style="color:#fff;">↗</strong></li>
-            <li>Sélectionne <strong style="color:#fff;">« Sur l'écran d'accueil »</strong></li>
-            <li>Appuie sur <strong style="color:#fff;">Ajouter</strong></li>
-          </ol>
-        </div>
-        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(232,180,160,.15);border-radius:14px;padding:20px;">
-          <div style="font-size:1.4rem;margin-bottom:10px;">🤖</div>
-          <div style="font-size:.8rem;font-weight:700;color:#C9A96E;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;">Sur Android</div>
-          <ol style="font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.8;padding-left:16px;margin:0;">
-            <li>Ouvre le lien dans <strong style="color:#fff;">Chrome</strong></li>
-            <li>Appuie sur le menu <strong style="color:#fff;">⋮</strong></li>
-            <li>Sélectionne <strong style="color:#fff;">« Ajouter à l'écran d'accueil »</strong></li>
-            <li>Appuie sur <strong style="color:#fff;">Ajouter</strong></li>
-          </ol>
-        </div>
+    <div class="head">
+      <p class="kick">Tu veux en savoir plus ?</p>
+      <h2>Quelle offre <span class="hl">est faite pour toi ?</span></h2>
+      <p>Trois façons de travailler avec Ornella, selon ton objectif, ton budget et le niveau d'accompagnement dont tu as besoin.</p>
+    </div>
+    <div class="compare">
+      <div class="cmp here is-hyb">
+        <span class="tag">Tu es ici</span>
+        <h3>Ventre Plat</h3>
+        <p>Programme digital 100% dédié au ventre. Tu comprends pourquoi ça bloque, tu suis les exercices de core profond, la nutrition anti-ballonnements et le plan repas 7 jours. <strong>Entièrement en autonomie.</strong></p>
+        <ul class="ticks"><li>8 chapitres complets</li><li>6 séances guidées à la maison</li><li>Plan repas + compléments + tracker</li><li>Mini-appli iPhone / Android</li><li>Accès à vie · Zéro matériel</li></ul>
+        <p class="amt">12 €<small>Paiement unique · Accès immédiat</small></p>
+        <a href="#achat" class="go">Je commence</a>
       </div>
-
-      <a href="#achat" style="display:inline-block;background:linear-gradient(135deg,#C9957A,#C96358);color:#fff;font-weight:700;font-size:.95rem;padding:17px 36px;border-radius:999px;text-decoration:none;box-shadow:0 8px 24px rgba(201,99,88,.35);">📲 Je veux ma mini-appli — 12€ →</a>
-      <p style="font-size:.75rem;color:rgba(255,255,255,.35);margin-top:12px;">Accès immédiat · À vie · Sans abonnement</p>
+      <div class="cmp is-prog">
+        <h3>Booty Sculpt</h3>
+        <p>Programme digital dédié aux <strong>fessiers et cuisses</strong>. Plus complet en termes de séances : 8 semaines complètes avec vidéos de démonstration pour chaque exercice. Idéal en complément du Ventre Plat.</p>
+        <ul class="ticks"><li>8 semaines · 12 séances guidées</li><li>Vidéos de démonstration incluses</li><li>Conseils nutrition inclus</li><li>Bonus guide "9 erreurs" offert</li><li>Autonomie totale · Zéro matériel</li></ul>
+        <p class="amt">19 €<small>Paiement unique · Accès immédiat</small></p>
+        <a href="booty-sculpt.html" class="go">Voir le programme</a>
+      </div>
+      <div class="cmp is-dist">
+        <h3>Coaching sur mesure</h3>
+        <p>Ornella t'accompagne <strong>personnellement</strong>, à domicile en Essonne ou à distance partout en France. Programme créé pour toi selon tes habitudes de vie, ton lieu d'entraînement. Suivi continu, ajustements en temps réel.</p>
+        <ul class="ticks"><li>Programme 100% créé pour toi</li><li>Jusqu'à 4 séances/semaine</li><li>Suivi WhatsApp + bilans mensuels</li><li>Domicile (91) ou distanciel France</li></ul>
+        <p class="amt">Dès 79 €<small>Programme · Coaching · Hybride</small></p>
+        <a href="offres.html" class="go">Voir les offres</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══ MOCKUP MULTI-DEVICE ══ -->
-<section class="sec sec-alt" style="padding-bottom:80px;overflow:hidden">
-  <div class="wrap text-center">
-    <span class="sec-label text-center">Disponible partout</span>
-    <h2 class="sec-title text-center">Sur tous<br><em>tes appareils</em></h2>
-    <div class="divider divider-center"></div>
-    <p class="sec-sub text-center">Smartphone, tablette, ordinateur. Le programme s'affiche parfaitement sur chaque écran — où que tu sois, quand tu veux.</p>
-    <div style="margin-top:16px;">
-      <img src="vp-mockup.png" alt="Programme Ventre Plat sur tous les appareils" style="width:100%;max-width:860px;margin:0 auto;display:block;border-radius:16px;filter:drop-shadow(0 16px 40px rgba(44,31,26,.15));height:auto;" width="1920" height="1080" loading="lazy">
+<!-- 11. FAQ -->
+<section class="band">
+  <div class="wrap faqw">
+    <div class="head">
+      <p class="kick">FAQ</p>
+      <h2>Questions <span class="hl">fréquentes</span></h2>
     </div>
-    <p style="font-size:.8rem;color:var(--muted);margin-top:12px;">Compatible iPhone · Android · iPad · Ordinateur</p>
+    <div class="faq cc">
+      <details open><summary>Combien de temps avant de voir des résultats ?</summary><div class="a"><p>Ça dépend de ton point de départ et de ta régularité. Les sensations (moins de ballonnements, plus d'énergie) arrivent souvent dans les premières semaines si tu appliques la partie nutrition. Le renforcement du core profond se remarque plutôt <strong>vers la semaine 3-4</strong>, avec de la régularité. Pas de magie, et des résultats variables selon chaque personne.</p></div></details>
+      <details><summary>Est-ce que ça marche sans salle de sport ?</summary><div class="a"><p>Oui, et c'est justement fait pour ça. Zéro matériel, zéro abonnement. Tu peux faire les séances dans ton salon, ta chambre, en voyage. Les exercices ciblent le transverse et le core profond : ce sont des muscles de stabilisation, pas de force brute. Pas besoin de charges pour les activer correctement.</p></div></details>
+      <details><summary>Ça marche aussi après une grossesse ?</summary><div class="a"><p>Oui, <strong>après le feu vert médical</strong> à ta visite post-natale et une rééducation périnéale validée par ta sage-femme ou ton kiné. La méthode travaille le transverse en douceur. Pour un programme pensé spécialement pour l'après-accouchement, regarde plutôt <a href="programme-postpartum.html">Post-partum — 8 semaines</a>.</p></div></details>
+      <details><summary>Je suis débutante — c'est accessible ?</summary><div class="a"><p>Complètement. Chaque exercice est expliqué avec des sensations concrètes : tu sauras exactement ce que tu dois ressentir pour savoir si tu le fais bien. Le programme démarre doucement et progresse semaine par semaine. Tu n'as pas besoin d'expérience, juste de te lancer. Tout est expliqué, fais-toi confiance.</p></div></details>
+      <details><summary>Quelle est la différence avec le Booty Sculpt et le coaching sur mesure ?</summary><div class="a"><p><strong>Ventre Plat (12€)</strong> : programme digital centré sur le ventre : comprendre les vraies causes, exercices de core profond, nutrition anti-ballonnements, plan repas 7 jours. Tu travailles en autonomie, à ton rythme.</p><p><strong>Booty Sculpt (19€)</strong> : programme digital fessiers &amp; cuisses : 8 semaines, 12 séances guidées, vidéos de démonstration, conseils nutrition, bonus guide "Les 9 erreurs" offert. Les deux se complètent parfaitement si tu veux transformer tout le bas du corps.</p><p><strong>Coaching sur mesure</strong> : Ornella t'accompagne personnellement, à domicile ou à distance. Programme 100% créé pour toi selon tes habitudes, ton lieu d'entraînement, jusqu'à 4 séances/semaine. <strong>L'accompagnement le plus complet pour des résultats durables, à ton rythme.</strong></p></div></details>
+      <details><summary>Comment j'accède au programme après l'achat ?</summary><div class="a"><p>Immédiatement. Dès ton paiement, tu arrives sur une page de confirmation où tu entres ton email : tu reçois alors le lien dans ta boîte mail en quelques secondes. Le programme s'ouvre dans ton navigateur et s'installe en 30 secondes sur ton iPhone ou Android comme une vraie mini-appli. Accès à vie, depuis n'importe où.</p></div></details>
+    </div>
   </div>
 </section>
 
-<!-- ══ COACH ══ -->
-<section class="sec sec-white">
+<!-- 12. DERNIER APPEL -->
+<section class="band band--coral final">
   <div class="wrap">
-    <div class="coach-inner">
+    <h2>Tu mérites de te sentir <span class="hl">bien dans ton corps</span></h2>
+    <p>Pas dans 6 mois. Pas "quand tu auras le temps". Maintenant. D'autres femmes ont déjà fait le premier pas, il ne manque plus que toi.</p>
+    <a href="#achat" class="btn">Je commence maintenant · 12 €</a>
+    <p class="guar"><b>Garantie 48 h :</b> tu changes d'avis dans les 48 h après ton achat et tu n'as pas encore ouvert ton programme ? Écris-moi sur WhatsApp, je te rembourse. Une fois le programme ouvert, c'est un contenu numérique non remboursable (voir CGV).</p>
+    <p class="small">Paiement sécurisé par Stripe · 3 fois sans frais via <strong>Klarna</strong> : 3 × 4,00 €</p>
+    <div class="oks"><span>Accès immédiat</span><span>Sans abonnement</span><span>Accès à vie</span></div>
+  </div>
+</section>
+
+<!-- 13. OFFRE GROUPÉE -->
+<section class="band band--sage bundle">
+  <div class="wrap">
+    <p class="kick">Offre groupée</p>
+    <h2>Tu veux <span class="hl">les 2 programmes ?</span></h2>
+    <p><strong>Booty Sculpt + Ventre Plat</strong></p>
+    <p>Au lieu de 31 €, récupère les deux pour <strong>25 €</strong> : tu économises 6 €.</p>
+    <a href="bundle.html" class="btn">Voir l'offre groupée · 25 €</a>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <img src="images/logo.png" alt="Ornella Fit Coaching" width="3135" height="793" loading="lazy">
+    <p class="foot-slogan">« Ton plus bel investissement, c'est toi. »</p>
+    <nav aria-label="Pages du site">
+      <a href="offres.html">Coaching et tarifs</a>
+      <a href="programmes.html">Programmes digitaux</a>
+      <a href="transformations.html">Transformations</a>
+      <a href="entreprise.html">Entreprise</a>
+      <a href="apropos.html">À propos</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <div class="contact">
+      <a href="https://wa.me/33756834626" target="_blank" rel="noopener">WhatsApp 07 56 83 46 26</a>
+      <a href="https://www.instagram.com/coach.ornella" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:ornellafit.coaching@gmail.com">ornellafit.coaching@gmail.com</a>
+      <a href="links.html">Mes liens</a>
+    </div>
+    <details>
+      <summary>Coach sportive à domicile près de chez toi</summary>
       <div>
-        <img src="images/ornella-profil-studio.webp" alt="Ornella — Coach fitness féminin" class="coach-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" width="1023" height="1537" loading="lazy">
-        <div class="coach-photo-placeholder" style="display:none">🏆</div>
+        <a href="coach-sportif-domicile-saulx-les-chartreux.html">Saulx-les-Chartreux</a>
+        <a href="coach-sportif-domicile-massy.html">Massy</a>
+        <a href="coach-sportif-domicile-palaiseau.html">Palaiseau</a>
+        <a href="coach-sportif-domicile-longjumeau.html">Longjumeau</a>
+        <a href="coach-sportif-domicile-champlan.html">Champlan</a>
+        <a href="coach-sportif-domicile-villebon-sur-yvette.html">Villebon-sur-Yvette</a>
+        <a href="coach-sportif-domicile-chilly-mazarin.html">Chilly-Mazarin</a>
+        <a href="coach-sportif-domicile-epinay-sur-orge.html">Épinay-sur-Orge</a>
+        <a href="coach-sportif-domicile-antony.html">Antony</a>
+        <a href="coach-sportif-essonne.html">Coach sportif Essonne</a>
+        <a href="prix-coach-sportif-domicile-essonne.html">Prix coach à domicile</a>
       </div>
+    </details>
+    <details>
+      <summary>Ressources et bonus</summary>
       <div>
-        <span class="sec-label">Ta coach</span>
-        <h2 class="sec-title">Ornella —<br><em>ex-compétitrice</em></h2>
-        <div class="divider"></div>
-        <div class="coach-stats">
-          <div class="coach-stat">
-            <div class="coach-stat-num">5★</div>
-            <div class="coach-stat-label"><a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" style="color:var(--accent);font-weight:600;">Avis Google</a></div>
-          </div>
-        </div>
-        <p class="coach-bio">J'ai été compétitrice en fitness et en musculation. J'ai appris à transformer un corps — le mien d'abord. Après ma grossesse, tout était à reconstruire : le ventre, le core, la confiance. Ce programme, c'est exactement ce que j'ai utilisé. Pas de la théorie. Du vécu.</p>
-        <p class="coach-bio">Aujourd'hui j'accompagne des femmes qui veulent arrêter de tourner en rond. À domicile dans l'Essonne ou à distance partout en France — avec une seule règle : des méthodes qui fonctionnent vraiment, pas des tendances Instagram.</p>
-        <div class="coach-badge-list">
-          <span class="coach-badge">💪 Ex-compétitrice</span>
-          <span class="coach-badge">🤰 Post-partum expert</span>
-          <span class="coach-badge">📍 Essonne (91)</span>
-          <span class="coach-badge">🌍 Coaching à distance</span>
-        </div>
-        <a href="https://www.ornellafitcoaching.com/apropos.html" style="font-size:.85rem;color:var(--accent);font-weight:600;">En savoir plus sur Ornella →</a>
+        <a href="coach-perte-de-poids.html">Coach perte de poids</a>
+        <a href="coach-sportif-ou-salle-de-sport.html">Salle ou coach : le comparatif</a>
+        <a href="blog.html">Blog</a>
+        <a href="booty-sculpt.html">Booty Sculpt</a>
+        <a href="ventre-plat.html">Ventre Plat</a>
+        <a href="challenge-ventre-plat.html">Challenge gratuit</a>
+        <a href="guide-9-erreurs.html?src=site-footer">Guide gratuit</a>
+        <a href="programme-fidelite.html">Programme fidélité</a>
+        <a href="carte-marraine.html">Parrainage</a>
       </div>
-    </div>
+    </details>
+    <p class="legal"><span>© 2026 Ornella Fit Coaching</span><a href="mentions-legales.html">Mentions légales</a><a href="cgv.html">CGV</a><a href="mentions-legales.html#rgpd">Confidentialité</a></p>
   </div>
-</section>
-
-<!-- ══ PRIX / ACHAT ══ -->
-<section class="sec sec-white" id="prix">
-  <div class="wrap text-center">
-    <span class="sec-label text-center">C'est le moment</span>
-    <h2 class="sec-title text-center">Dans 4 semaines,<br><em>tu te regardes différemment</em></h2>
-    <div class="divider divider-center"></div>
-    <p class="sec-sub text-center">Accès immédiat. Pas demain, pas après les vacances. Maintenant. Dans 4 semaines, tu sauras si tu l'as fait — ou si tu es encore là à te dire que tu commenceras bientôt.</p>
-
-    <div style="max-width:460px;margin:0 auto;">
-      <div class="price-card featured" style="text-align:left;">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
-          <span class="price-tag-badge featured" style="margin-bottom:0;">🌿 Le programme complet</span>
-        </div>
-        <div class="price-name">Ventre Plat</div>
-        <div class="price-desc">Le programme digital complet pour aplatir ton ventre durablement — exercices, nutrition, plan repas, bonus.</div>
-        <div class="price-amount" style="margin-bottom:4px;">
-          <span class="price-num">12</span>
-          <span class="price-unit">€ · paiement unique</span>
-        </div>
-        <div style="font-size:.78rem;color:var(--muted);margin-bottom:20px;">Accès à vie · Aucun abonnement</div>
-        <ul class="price-list">
-          <li>8 chapitres complets</li>
-          <li>Programme 14 jours à la maison (6 séances guidées)</li>
-          <li>+ plan pour continuer 4 semaines et routine matin ventre plat</li>
-          <li>Plan repas 7 jours anti-ballonnements</li>
-          <li>Guide compléments alimentaires (magnésium, probiotiques, collagène…)</li>
-          <li>Tableau de suivi interactif</li>
-          <li>Chapitres bonus : sommeil, cycle hormonal, ventre gonflé vs graisse</li>
-          <li>Accès immédiat · À vie · Sur tous tes appareils</li>
-        </ul>
-        <a href="#achat" class="btn-buy">🔥 Je veux mon programme à 12€ →</a>
-    <div class="ofc-preuve" data-ordre="maria,lise,lucie,louise" data-google="non" style="margin:16px auto 0;text-align:center"></div>
-        <p style="font-size:.8rem;color:var(--muted);text-align:center;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:5px;">🔒 <strong>Paiement sécurisé par Stripe</strong></p>
-        <p style="font-size:.76rem;color:var(--muted);text-align:center;margin-top:4px;">💳 Paiement en 3 fois disponible via <strong>Klarna</strong> — soit 3 × 4,00€</p>
-        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-top:10px;">
-          <span style="font-size:.75rem;color:var(--muted);">✅ Accès immédiat</span>
-          <span style="font-size:.75rem;color:var(--muted);">✅ Sans abonnement</span>
-          <span style="font-size:.75rem;color:var(--muted);">✅ Accès à vie</span>
-        </div>
-        <p class="price-reassure">Tu reçois ton accès immédiatement après confirmation.</p>
-        <p class="vp-garantie vp-garantie-light">🛡️ Garantie 48 h : tu changes d'avis dans les 48 h après ton achat et tu n'as pas encore ouvert ton programme ? Écris-moi sur WhatsApp, je te rembourse. Une fois le programme ouvert, c'est un contenu numérique non remboursable (voir CGV).</p>
-        <p class="vp-variable">Résultats variables selon chaque personne.</p>
-      </div>
-      <div class="pricing-note">
-        Une question avant de commencer ? <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20en%20savoir%20plus%20sur%20le%20programme%20Ventre%20Plat." target="_blank" style="color:var(--accent);font-weight:600;">Écris-moi sur WhatsApp →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ COMPARAISON OFFRES ══ -->
-<section class="sec sec-alt">
-  <div class="wrap">
-    <span class="sec-label text-center">Tu veux en savoir plus ?</span>
-    <h2 class="sec-title text-center">Quelle offre<br><em>est faite pour toi ?</em></h2>
-    <div class="divider divider-center"></div>
-    <p class="sec-sub text-center" style="margin-bottom:32px;">Trois façons de travailler avec Ornella — selon ton objectif, ton budget et le niveau d'accompagnement dont tu as besoin.</p>
-
-    <div class="compare-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:0 auto;">
-
-      <!-- Ventre Plat -->
-      <div style="background:white;border:2px solid var(--accent);border-radius:20px;padding:28px 22px;display:flex;flex-direction:column;position:relative;">
-        <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:white;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:999px;white-space:nowrap;">Tu es ici ✦</div>
-        <div style="font-size:1.6rem;margin-bottom:10px;">🫙</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--dark);margin-bottom:6px;">Ventre Plat</div>
-        <div style="font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:16px;flex:1;">Programme digital 100% dédié au ventre. Tu comprends pourquoi ça bloque, tu suis les exercices de core profond, la nutrition anti-ballonnements et le plan repas 7 jours. <strong style="color:var(--dark);">Entièrement en autonomie.</strong></div>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:20px;">
-          <li style="font-size:.8rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>8 chapitres complets</li>
-          <li style="font-size:.8rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>6 séances guidées à la maison</li>
-          <li style="font-size:.8rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Plan repas + compléments + tracker</li>
-          <li style="font-size:.8rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Mini-appli iPhone / Android</li>
-          <li style="font-size:.8rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Accès à vie · Zéro matériel</li>
-        </ul>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--accent);margin-bottom:6px;">12€</div>
-        <div style="font-size:.72rem;color:var(--muted);margin-bottom:14px;">Paiement unique · Accès immédiat</div>
-        <a href="#achat" style="display:block;background:var(--accent);color:white;text-align:center;padding:13px;border-radius:999px;font-size:.88rem;font-weight:700;text-decoration:none;">Je commence →</a>
-      </div>
-
-      <!-- Booty Sculpt -->
-      <div style="background:white;border:1.5px solid var(--border);border-radius:20px;padding:28px 22px;display:flex;flex-direction:column;">
-        <div style="font-size:1.6rem;margin-bottom:10px;">🍑</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--dark);margin-bottom:6px;">Booty Sculpt</div>
-        <div style="font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:16px;flex:1;">Programme digital dédié aux <strong style="color:var(--dark);">fessiers et cuisses</strong>. Plus complet en termes de séances : 8 semaines complètes avec vidéos de démonstration pour chaque exercice. Idéal en complément du Ventre Plat.</div>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:20px;">
-          <li style="font-size:.8rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>8 semaines · 12 séances guidées</li>
-          <li style="font-size:.8rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Vidéos de démonstration incluses</li>
-          <li style="font-size:.8rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Conseils nutrition inclus</li>
-          <li style="font-size:.8rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Bonus guide "9 erreurs" offert</li>
-          <li style="font-size:.8rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Autonomie totale · Zéro matériel</li>
-        </ul>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--dark);margin-bottom:6px;">19€</div>
-        <div style="font-size:.72rem;color:var(--muted);margin-bottom:14px;">Paiement unique · Accès immédiat</div>
-        <a href="https://www.ornellafitcoaching.com/booty-sculpt.html" style="display:block;background:var(--dark);color:white;text-align:center;padding:13px;border-radius:999px;font-size:.88rem;font-weight:700;text-decoration:none;">Voir le programme →</a>
-      </div>
-
-      <!-- Coaching sur mesure -->
-      <div style="background:white;border:1.5px solid var(--border);border-radius:20px;padding:28px 22px;display:flex;flex-direction:column;">
-        <div style="font-size:1.6rem;margin-bottom:10px;">👑</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--dark);margin-bottom:6px;">Coaching sur mesure</div>
-        <div style="font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:16px;flex:1;">Ornella t'accompagne <strong style="color:var(--dark);">personnellement</strong> — à domicile en Essonne ou à distance partout en France. Programme créé pour toi selon tes habitudes de vie, ton lieu d'entraînement. Suivi continu, ajustements en temps réel.</div>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:20px;">
-          <li style="font-size:.8rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Programme 100% créé pour toi</li>
-          <li style="font-size:.8rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Jusqu'à 4 séances/semaine</li>
-          <li style="font-size:.8rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Suivi WhatsApp + bilans mensuels</li>
-          <li style="font-size:.8rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Domicile (91) ou distanciel France</li>
-        </ul>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--dark);margin-bottom:6px;">Dès 79€</div>
-        <div style="font-size:.72rem;color:var(--muted);margin-bottom:14px;">Programme · Coaching · Hybride</div>
-        <a href="https://www.ornellafitcoaching.com/offres.html" style="display:block;background:var(--dark);color:white;text-align:center;padding:13px;border-radius:999px;font-size:.88rem;font-weight:700;text-decoration:none;">Voir les offres →</a>
-      </div>
-
-    </div>
-
-    <!-- Mobile : empilé -->
-    <style>
-      @media(max-width:768px){
-        .compare-grid{grid-template-columns:1fr !important;}
-      }
-    </style>
-  </div>
-</section>
-
-<!-- ══ FAQ ══ -->
-<section class="sec sec-alt">
-  <div class="wrap">
-    <span class="sec-label text-center">FAQ</span>
-    <h2 class="sec-title text-center">Questions<br><em>fréquentes</em></h2>
-    <div class="divider divider-center"></div>
-    <div class="faq">
-      <div class="faq-item open">
-        <div class="faq-q" onclick="toggleFaq(this)">Combien de temps avant de voir des résultats ?</div>
-        <div class="faq-a">Ça dépend de ton point de départ et de ta régularité. Les sensations (moins de ballonnements, plus d'énergie) arrivent souvent dans les premières semaines si tu appliques la partie nutrition. Le renforcement du core profond se remarque plutôt <strong>vers la semaine 3-4</strong>, avec de la régularité. Pas de magie, et des résultats variables selon chaque personne.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Est-ce que ça marche sans salle de sport ?</div>
-        <div class="faq-a">Oui — et c'est justement fait pour ça. Zéro matériel, zéro abonnement. Tu peux faire les séances dans ton salon, ta chambre, en voyage. Les exercices ciblent le transverse et le core profond — ce sont des muscles de stabilisation, pas de force brute. Pas besoin de charges pour les activer correctement.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Ça marche aussi après une grossesse ?</div>
-        <div class="faq-a">Oui, <strong>après le feu vert médical</strong> à ta visite post-natale et une rééducation périnéale validée par ta sage-femme ou ton kiné. La méthode travaille le transverse en douceur. Pour un programme pensé spécialement pour l'après-accouchement, regarde plutôt <a href="programme-postpartum.html">Post-partum — 8 semaines</a>.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Je suis débutante — c'est accessible ?</div>
-        <div class="faq-a">Complètement. Chaque exercice est expliqué avec des sensations concrètes — tu sauras exactement ce que tu dois ressentir pour savoir si tu le fais bien. Le programme démarre doucement et progresse semaine par semaine. Tu n'as pas besoin d'expérience, juste de te lancer. Tout est expliqué — fais-toi confiance.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Quelle est la différence avec le Booty Sculpt et le coaching sur mesure ?</div>
-        <div class="faq-a"><strong>Ventre Plat (12€)</strong> — programme digital centré sur le ventre : comprendre les vraies causes, exercices de core profond, nutrition anti-ballonnements, plan repas 7 jours. Tu travailles en autonomie, à ton rythme.<br><br><strong>Booty Sculpt (19€)</strong> — programme digital fessiers & cuisses : 8 semaines, 12 séances guidées, vidéos de démonstration, conseils nutrition, bonus guide "Les 9 erreurs" offert. Les deux se complètent parfaitement si tu veux transformer tout le bas du corps.<br><br><strong>Coaching sur mesure</strong> — Ornella t'accompagne personnellement, à domicile ou à distance. Programme 100% créé pour toi selon tes habitudes, ton lieu d'entraînement, jusqu'à 4 séances/semaine. <strong>L'accompagnement le plus complet pour des résultats durables, à ton rythme.</strong></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Comment j'accède au programme après l'achat ?</div>
-        <div class="faq-a">Immédiatement. Dès ton paiement, tu arrives sur une page de confirmation où tu entres ton email — tu reçois alors le lien dans ta boîte mail en quelques secondes. Le programme s'ouvre dans ton navigateur et s'installe en 30 secondes sur ton iPhone ou Android comme une vraie mini-appli. Accès à vie, depuis n'importe où.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ CTA FINAL ══ -->
-<div class="cta-dark">
-  <h2>Tu mérites de te sentir<br><em>bien dans ton corps</em></h2>
-  <p>Pas dans 6 mois. Pas "quand tu auras le temps". Maintenant. D'autres femmes ont déjà fait le premier pas — il ne manque plus que toi.</p>
-  <a href="#achat" class="btn-primary" style="max-width:360px;margin:0 auto;display:block;">✨ Je commence maintenant — 12€</a>
-  <p class="vp-garantie">🛡️ Garantie 48 h : tu changes d'avis dans les 48 h après ton achat et tu n'as pas encore ouvert ton programme ? Écris-moi sur WhatsApp, je te rembourse. Une fois le programme ouvert, c'est un contenu numérique non remboursable (voir CGV).</p>
-  <p style="font-size:.8rem;color:rgba(255,255,255,.4);margin-top:12px;display:flex;align-items:center;justify-content:center;gap:5px;">🔒 Paiement sécurisé par Stripe</p>
-  <p style="font-size:.76rem;color:rgba(255,255,255,.4);text-align:center;margin-top:4px;">💳 3 fois sans frais via <strong>Klarna</strong> — 3 × 4,00€</p>
-  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px 20px;margin-top:10px;">
-    <span style="font-size:.75rem;color:rgba(255,255,255,.45);">✅ Accès immédiat</span>
-    <span style="font-size:.75rem;color:rgba(255,255,255,.45);">✅ Sans abonnement</span>
-    <span style="font-size:.75rem;color:rgba(255,255,255,.45);">✅ Accès à vie</span>
-  </div>
-  <p class="cta-timer">Accès immédiat · Paiement unique · Accès à vie</p>
-</div>
-
-<!-- ══ FOOTER ══ -->
-<!-- BUNDLE CROSS-SELL -->
-<section style="background:linear-gradient(135deg,#EAF2EA,#F6E6DF);padding:48px 20px;text-align:center;">
-  <div style="max-width:600px;margin:0 auto;">
-    <p style="font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#4A6741;margin-bottom:10px;">OFFRE GROUPÉE</p>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:#1C1210;margin-bottom:12px;">Tu veux les 2 programmes ?</h2>
-    <p style="color:#C96358;font-size:1rem;margin-bottom:6px;font-weight:600;">🍑 Booty Sculpt + 🌿 Ventre Plat</p>
-    <p style="color:#6F5B52;font-size:.95rem;margin-bottom:24px;">Au lieu de 31€, récupère les deux pour <strong style="color:#4A6741;">25€</strong> — tu économises 6€.</p>
-    <a href="https://ornellafitcoaching-svg.github.io/ornellafit-site/bundle.html" style="display:inline-block;background:linear-gradient(135deg,#4A6741,#3d5736);color:#fff;font-weight:700;font-size:.95rem;padding:16px 36px;border-radius:999px;text-decoration:none;box-shadow:0 8px 24px rgba(74,103,65,.3);">Voir l'offre bundle — 25€ →</a>
-  </div>
-</section>
-
-<footer>
-  <p>
-    <a href="https://www.ornellafitcoaching.com">Accueil</a> ·
-    <a href="https://www.ornellafitcoaching.com/offres.html">Coaching</a> ·
-    <a href="https://www.ornellafitcoaching.com/programmes.html">Programmes digitaux</a> ·
-    <a href="https://www.ornellafitcoaching.com/transformations.html">Transformations</a> ·
-    <a href="https://www.ornellafitcoaching.com/apropos.html">À propos</a> ·
-    <a href="https://www.ornellafitcoaching.com/faq.html">FAQ</a> ·
-    <a href="https://wa.me/33756834626">WhatsApp</a> ·
-    <a href="https://www.ornellafitcoaching.com/mentions-legales.html">Mentions légales</a>
-  </p>
-  <p style="margin-top:8px;">© 2026 Ornella Fit Coaching · ornellafitcoaching.com</p>
 </footer>
 
-<!-- WA Floating -->
 <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20en%20savoir%20plus%20sur%20le%20programme%20Ventre%20Plat." class="floating-wa" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 
 <script>
@@ -1175,5 +924,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 </script>
 <script src="data/temoignages.js" defer></script>
 <script src="avis-carrousel.js" defer></script>
+
+<script>
+{const n=document.querySelector('.snav');const f=()=>n.classList.toggle('is-scrolled',scrollY>8);addEventListener('scroll',f,{passive:true});f();}
+</script>
 </body>
 </html>
