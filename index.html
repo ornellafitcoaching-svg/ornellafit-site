@@ -113,6 +113,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   ]
 }
 </script>
+<!-- Meta Pixel -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1233548507794099");fbq("track","PageView");</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1233548507794099&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -177,10 +181,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   ]
 }
 </script>
-<!-- Meta Pixel -->
-<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1233548507794099");fbq("track","PageView");</script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1233548507794099&ev=PageView&noscript=1"/></noscript>
-<!-- End Meta Pixel -->
 <style>
 /* VOICE  : calme, haut de gamme, une idée par écran, phrases courtes.
    IDEA   : une fiche de coach bien tenue : la photo, les preuves, le prix, une question, un message.
@@ -373,6 +373,32 @@ p{margin:0}
 #lead-submit{border:0;cursor:pointer;width:100%}
 #lead-success{display:none;margin-top:16px;font-weight:600}
 @media(min-width:620px){#lead-popup{align-items:center}}
+
+/* ===== Code couleur (effet « repère visuel ») =====
+   Formules : domicile = miel, hybride = corail, à distance = bleu doux, programmes = sauge.
+   Dans un groupe .cc, chaque carte prend la couleur suivante. */
+:root{--c1:#B4513F;--t1:#F8E1D9;--c2:#5F7258;--t2:#E3EADF;--c3:#A06E22;--t3:#F6E8CF;--c4:#3F6A85;--t4:#E1EBF1;--c5:#2B201C;--t5:#EDE6E0}
+.cc>*{--acc:var(--c1);--tint:var(--t1)}
+.cc>*:nth-child(4n+2){--acc:var(--c2);--tint:var(--t2)}
+.cc>*:nth-child(4n+3){--acc:var(--c3);--tint:var(--t3)}
+.cc>*:nth-child(4n+4){--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-hyb,.is-hyb{--acc:var(--c1);--tint:var(--t1)}
+.cc>.is-prog,.is-prog{--acc:var(--c2);--tint:var(--t2)}
+.cc>.is-dom,.is-dom{--acc:var(--c3);--tint:var(--t3)}
+.cc>.is-dist,.is-dist{--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-ink,.is-ink{--acc:var(--c5);--tint:var(--t5)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.tcard,.act,.fcard,.box,.quote,.sm,.panel,.hero-prog,.mind>div,.solo-card){border-top:5px solid var(--acc,transparent)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.act,.fcard,.box,.sm,.panel,.hero-prog,.solo-card) :is(h3,h4){color:var(--acc,inherit)}
+.case-r,.tb h3,.mind .to,.obj b{color:var(--acc,inherit)}
+.trust b{color:var(--acc,inherit)}
+.trust.cc li{position:relative}
+.offer{border-left:5px solid var(--acc,transparent)}
+.offer h3,.offer .price b{color:var(--acc,inherit)}
+.steps li::before{background:var(--acc,var(--sage-d))!important}
+.faq.cc>details>summary::after,.faq .cc>details>summary::after{content:"+";width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--acc);color:#fff;font:600 1.2rem/1 var(--sans)}
+.faq.cc>details[open]>summary,.faq .cc>details[open]>summary{color:var(--acc)}
+.stats.cc>div,.tstats>div{background:var(--tint,transparent)}
+.stats.cc b,.tstats b{color:var(--acc,inherit)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -412,7 +438,7 @@ p{margin:0}
         <p class="hero-note">Par WhatsApp · sans engagement · tu choisis ta formule après</p>
         <p class="hero-quiz">Pas sûre ? <a href="quiz.html" class="link">Trouve ta formule en 2 min</a></p>
       </div>
-      <ul class="trust">
+      <ul class="trust cc">
         <li><b>Diplômée d'État</b>carte pro vérifiable</li>
         <li><a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" rel="noopener" style="text-decoration:none"><b>5,0 ★ Google</b>26 avis</a></li>
         <li><b>Post-partum</b>reprise en sécurité</li>
@@ -429,15 +455,15 @@ p{margin:0}
       <p>Des mamans avec peu de temps, comme toi. Photos non retouchées, publiées avec leur accord.</p>
     </div>
     <div class="rail" data-rail aria-label="Avant / après de clientes">
-      <a class="case" href="transformations.html#transfo-maria">
+      <a class="case is-dist" href="transformations.html#transfo-maria">
         <img src="images/maria-face.webp?v=5" alt="Avant / après de Maria, coaching 100 % à distance" width="1200" height="1200" loading="lazy" decoding="async">
         <div class="case-b"><div class="case-n">Maria</div><div class="case-r">−10 kg en 8 mois</div><div class="case-c">Maman de 2 enfants · 100 % à distance</div></div>
       </a>
-      <a class="case" href="transformations.html#transfo-emeline">
+      <a class="case is-hyb" href="transformations.html#transfo-emeline">
         <img src="images/avant-apres-emeline-2.webp?v=2" alt="Avant / après d'Emeline en 2 mois" width="1080" height="1080" loading="lazy" decoding="async">
         <div class="case-b"><div class="case-n">Emeline</div><div class="case-r">Fessiers galbés, taille affinée en 2 mois</div><div class="case-c">Maman de 2 enfants · présentiel, puis hybride et à distance</div></div>
       </a>
-      <a class="case" href="transformations.html#transfo-louise">
+      <a class="case is-dom" href="transformations.html#transfo-louise">
         <img src="images/louise-face.webp?v=2" alt="Avant / après de Louise, coaching à domicile en Essonne" width="1080" height="1080" loading="lazy" decoding="async">
         <div class="case-b"><div class="case-n">Louise</div><div class="case-r">−9 cm de taille et −5 kg en 9 mois</div><div class="case-c">Maman de 2 enfants · à domicile en Essonne, 2 séances par semaine</div></div>
       </a>
@@ -453,7 +479,7 @@ p{margin:0}
         <h2><span class="hl">5,0</span> sur Google <span class="stars" aria-label="5 étoiles sur 5">★★★★★</span></h2>
         <a href="https://share.google/NcyAyWaS3WMZgQ4B6" class="link" target="_blank" rel="noopener">Lire les 26 avis</a>
       </div>
-      <div class="rail rail--2" data-rail aria-label="Avis Google de clientes">
+      <div class="rail rail--2 cc" data-rail aria-label="Avis Google de clientes">
         <figure class="quote">
           <p>Je ne suis pas du tout sportive à la base et pourtant Ornella réussit à me motiver à chaque séance. Elle est bienveillante, drôle et toujours encourageante. Elle s'adapte au niveau de chacun, prend le temps d'expliquer, de corriger, et célèbre les petites victoires. On progresse dans la bonne humeur et sans jugement. Si j'aime (presque) le sport, c'est grâce à elle ! Je recommande à 1000% ! 🫶🏻</p>
           <button type="button" hidden>Lire la suite</button>
@@ -477,15 +503,15 @@ p{margin:0}
     </div>
     <div>
       <div class="offers">
-        <a class="offer" href="offres.html">
+        <a class="offer is-dom" href="offres.html#tarif-domicile">
           <div><h3>Domicile</h3><p>Je viens chez toi · séance découverte 50 €</p></div>
           <div class="price">dès<b>240 €</b>par mois</div>
         </a>
-        <a class="offer offer--top" href="offres.html">
+        <a class="offer offer--top is-hyb" href="offres.html#tarif-hybride">
           <div><h3>Hybride <span class="tag">Le plus choisi</span></h3><p>Séances avec moi + programme et suivi à distance</p></div>
           <div class="price">dès<b>149 €</b>par mois</div>
         </a>
-        <a class="offer" href="offres.html">
+        <a class="offer is-dist" href="offres.html#tarif-distanciel">
           <div><h3>Distanciel</h3><p>Programme sur-mesure + suivi WhatsApp, partout en France</p></div>
           <div class="price">dès<b>89 €</b>par mois</div>
         </a>
@@ -520,7 +546,7 @@ p{margin:0}
 <section id="faq-home" class="band band--sand">
   <div class="wrap split">
     <div class="head"><h2>Tes questions, <span class="hl">mes réponses franches.</span></h2></div>
-    <div class="faq">
+    <div class="faq cc">
     <details>
       <summary>Comment se passe l'échange gratuit de 15 min ?</summary>
       <div class="a"><p>Tu m'écris sur WhatsApp et on fait le point en 15 minutes — par messages, ou par téléphone si tu préfères. On parle de ton objectif, de ton niveau et de ton emploi du temps, puis je te dis honnêtement quelle formule te convient. Sans engagement.</p></div>

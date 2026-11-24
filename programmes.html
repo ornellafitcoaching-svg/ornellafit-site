@@ -380,6 +380,32 @@ p{margin:0}
 #lead-submit{border:0;cursor:pointer;width:100%}
 #lead-success{display:none;margin-top:16px;font-weight:600}
 @media(min-width:620px){#lead-popup{align-items:center}}
+
+/* ===== Code couleur (effet « repère visuel ») =====
+   Formules : domicile = miel, hybride = corail, à distance = bleu doux, programmes = sauge.
+   Dans un groupe .cc, chaque carte prend la couleur suivante. */
+:root{--c1:#B4513F;--t1:#F8E1D9;--c2:#5F7258;--t2:#E3EADF;--c3:#A06E22;--t3:#F6E8CF;--c4:#3F6A85;--t4:#E1EBF1;--c5:#2B201C;--t5:#EDE6E0}
+.cc>*{--acc:var(--c1);--tint:var(--t1)}
+.cc>*:nth-child(4n+2){--acc:var(--c2);--tint:var(--t2)}
+.cc>*:nth-child(4n+3){--acc:var(--c3);--tint:var(--t3)}
+.cc>*:nth-child(4n+4){--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-hyb,.is-hyb{--acc:var(--c1);--tint:var(--t1)}
+.cc>.is-prog,.is-prog{--acc:var(--c2);--tint:var(--t2)}
+.cc>.is-dom,.is-dom{--acc:var(--c3);--tint:var(--t3)}
+.cc>.is-dist,.is-dist{--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-ink,.is-ink{--acc:var(--c5);--tint:var(--t5)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.tcard,.act,.fcard,.box,.quote,.sm,.panel,.hero-prog,.mind>div,.solo-card){border-top:5px solid var(--acc,transparent)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.act,.fcard,.box,.sm,.panel,.hero-prog,.solo-card) :is(h3,h4){color:var(--acc,inherit)}
+.case-r,.tb h3,.mind .to,.obj b{color:var(--acc,inherit)}
+.trust b{color:var(--acc,inherit)}
+.trust.cc li{position:relative}
+.offer{border-left:5px solid var(--acc,transparent)}
+.offer h3,.offer .price b{color:var(--acc,inherit)}
+.steps li::before{background:var(--acc,var(--sage-d))!important}
+.faq.cc>details>summary::after,.faq .cc>details>summary::after{content:"+";width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--acc);color:#fff;font:600 1.2rem/1 var(--sans)}
+.faq.cc>details[open]>summary,.faq .cc>details[open]>summary{color:var(--acc)}
+.stats.cc>div,.tstats>div{background:var(--tint,transparent)}
+.stats.cc b,.tstats b{color:var(--acc,inherit)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
 /* ===== Page programmes : même charte que l'accueil et les tarifs ===== */
@@ -404,7 +430,7 @@ details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
 .finder{background:#fff;border-radius:24px;padding:24px 20px}
 .finder-q{font-weight:700;font-size:1.05rem;margin-bottom:14px}
 .fopts{display:grid;gap:8px}
-.fopts button{display:flex;align-items:center;min-height:52px;padding:10px 16px;border:1.5px solid var(--line);border-radius:14px;background:#fff;font:600 .98rem/1.3 var(--sans);color:var(--ink);text-align:left;cursor:pointer;transition:border-color .2s,background .2s}
+.fopts button{border-left:5px solid var(--acc,var(--line))!important;display:flex;align-items:center;min-height:52px;padding:10px 16px;border:1.5px solid var(--line);border-radius:14px;background:#fff;font:600 .98rem/1.3 var(--sans);color:var(--ink);text-align:left;cursor:pointer;transition:border-color .2s,background .2s}
 .fopts button:hover{border-color:var(--coral);background:var(--blush2)}
 .fres h3{font-size:1.8rem;margin-top:4px}
 .fres p{margin-top:8px}
@@ -428,25 +454,25 @@ details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
 .group{margin-top:34px}
 .group:first-of-type{margin-top:6px}
 .group-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
-.group-h h3{font-size:1.65rem}
+.group-h h3{font-size:1.65rem;color:var(--acc,inherit)}
 .group-h span{font-size:.92rem}
 .cards{display:grid;gap:12px}
 @media(min-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}}
 .pcard{background:#fff;border-radius:20px;padding:16px;scroll-margin-top:90px}
 .pcard-top{display:grid;grid-template-columns:84px minmax(0,1fr);gap:14px;align-items:start}
 .pcard-top img{width:84px;height:106px;object-fit:cover;border-radius:12px;background:#E8DDD2}
-.pbadge{font:700 .74rem/1 var(--sans);color:var(--coral);margin-bottom:6px}
+.pbadge{font:700 .74rem/1 var(--sans);color:var(--acc,var(--coral));margin-bottom:6px}
 .pcard h4{font-family:var(--serif);font-weight:700;font-variant-numeric:lining-nums;font-size:1.4rem;line-height:1.1;margin:0}
 .pdesc{font-size:.92rem;margin-top:6px;line-height:1.45}
 .pmeta{font-size:.82rem;margin-top:6px;font-weight:600}
 .pfoot{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:14px;margin-top:14px}
 .pfoot .btn{width:100%;min-height:50px;padding:6px 14px;font-size:.9rem;line-height:1.2;text-align:center}
 .pprice{font-size:.84rem;line-height:1.2}
-.pprice b{font-family:var(--serif);font-variant-numeric:lining-nums;font-size:1.75rem;display:block}
+.pprice b{font-family:var(--serif);font-variant-numeric:lining-nums;font-size:1.75rem;display:block;color:var(--acc,inherit)}
 .pcard .acc{margin-top:12px}
 .pack-link{margin-top:10px;font-size:.92rem}
 .pack-link a{font-weight:700;text-underline-offset:3px}
-.reassure{margin-top:30px;background:#fff;border-radius:20px;padding:20px;display:grid;gap:10px;font-size:.93rem}
+.reassure{margin-top:30px;background:#fff;border-top:5px solid var(--c2);border-radius:20px;padding:20px;display:grid;gap:10px;font-size:.93rem}
 
 /* Packs */
 .packs{display:grid;gap:14px}
@@ -515,7 +541,7 @@ details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
       <a href="#trouver-programme" class="btn" id="hero-cta">Trouve ton programme en 1 question</a>
       <p class="hero-quiz"><a href="#cle-en-main" class="link">Voir tous les programmes</a></p>
     </div>
-    <ul class="trust">
+    <ul class="trust cc">
       <li><a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" rel="noopener" style="text-decoration:none"><b>5,0 ★ Google</b>26 avis</a></li>
       <li><b>Diplômée d'État</b>ancienne compétitrice fitness</li>
       <li><b>50+ femmes</b>accompagnées</li>
@@ -533,7 +559,7 @@ details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
     <div class="finder">
       <div id="pf-question">
         <p class="finder-q">C'est quoi ton objectif n°1 en ce moment ?</p>
-        <div class="fopts">
+        <div class="fopts cc">
           <button type="button" data-pf="ventre">Un ventre plat, moins de ballonnements</button>
           <button type="button" data-pf="fessiers">Des fessiers plus galbés</button>
           <button type="button" data-pf="postpartum">Retrouver mon corps après bébé</button>
@@ -558,7 +584,7 @@ details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
 <section id="par-ou-commencer" class="band band--white sec-scroll">
   <div class="wrap">
     <div class="head"><h2>Tu ne sais pas par où commencer ? <span class="hl">C'est ici.</span></h2></div>
-    <article class="hero-prog" id="fit-dans-ta-vie">
+    <article class="hero-prog is-prog" id="fit-dans-ta-vie">
       <img src="images/ornella-fente.webp" alt="Fit Dans Ta Vie, programme phare 28 jours" width="1023" height="1537" loading="lazy" decoding="async">
       <div class="in">
         <p class="pbadge">Le programme phare · le point de départ recommandé</p>
@@ -591,7 +617,7 @@ details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
       <p>À la maison ou en salle, en vacances, partout : tu ouvres ton téléphone, ton programme est là.</p>
     </div>
 
-    <div class="group sec-scroll" id="obj-ventre">
+    <div class="group sec-scroll is-hyb" id="obj-ventre">
       <div class="group-h"><h3>Ventre</h3><span>plus plat, moins de ballonnements</span></div>
       <div class="cards">
         <article class="pcard" id="ventre-plat">
@@ -624,7 +650,7 @@ details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
       </div>
     </div>
 
-    <div class="group sec-scroll" id="obj-fessiers">
+    <div class="group sec-scroll is-dom" id="obj-fessiers">
       <div class="group-h"><h3>Fessiers</h3><span>plus galbés</span></div>
       <div class="cards">
         <article class="pcard" id="booty-sculpt">
@@ -641,7 +667,7 @@ details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
       </div>
     </div>
 
-    <div class="group sec-scroll" id="obj-postpartum">
+    <div class="group sec-scroll is-prog" id="obj-postpartum">
       <div class="group-h"><h3>Après bébé</h3><span>reprendre après l'accouchement</span></div>
       <div class="cards">
         <article class="pcard" id="post-partum">
@@ -658,7 +684,7 @@ details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
       </div>
     </div>
 
-    <div class="group sec-scroll" id="obj-3050">
+    <div class="group sec-scroll is-dist" id="obj-3050">
       <div class="group-h"><h3>30-50 ans</h3><span>te raffermir, à ton âge</span></div>
       <div class="cards">
         <article class="pcard" id="ageless-girl">
@@ -674,7 +700,7 @@ details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
       </div>
     </div>
 
-    <div class="group sec-scroll" id="obj-salle">
+    <div class="group sec-scroll is-ink" id="obj-salle">
       <div class="group-h"><h3>En salle</h3><span>progresser vraiment</span></div>
       <div class="cards">
         <article class="pcard" id="iron-girl">
@@ -701,7 +727,7 @@ details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
 <section id="packs" class="band band--blush sec-scroll">
   <div class="wrap">
     <div class="head"><h2>Deux programmes, <span class="hl">un prix malin.</span></h2></div>
-    <div class="packs">
+    <div class="packs cc">
       <div class="pack">
         <h3>Bundle Ventre Plat + Booty Sculpt</h3>
         <p>Le duo pour un ventre plat et des fessiers galbés : les deux programmes réunis.</p>
@@ -725,11 +751,11 @@ details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
       <h2>Pas un programme générique. <span class="hl">Un plan fait pour toi.</span></h2>
       <p>Tu remplis un questionnaire détaillé. Je construis ton programme 8 semaines de A à Z : exercices, vidéos, nutrition, tout est pensé pour ton corps, ton niveau et ton quotidien. Livré sur ton téléphone, où que tu sois en France.</p>
     </div>
-    <div class="sm">
+    <div class="sm is-dist">
       <p class="pbadge">100 % à distance · toute la France</p>
       <h3 style="font-size:1.8rem">Programme sur-mesure, sans suivi</h3>
       <div class="price-line"><b>79 €</b> paiement unique · livré sous 7 jours ouvrés</div>
-      <ol class="steps">
+      <ol class="steps cc">
         <li><span><b>Bilan complet offert :</b> questionnaire, objectifs, niveau.</span></li>
         <li><span><b>Je construis tout :</b> 8 semaines, exercices, vidéos, nutrition.</span></li>
         <li><span><b>Livré sous 7 jours ouvrés</b> sur ton téléphone.</span></li>
@@ -758,7 +784,7 @@ details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
       <h3 style="font-size:clamp(1.7rem,4.6vw,2.2rem)"><span class="hl">5,0</span> sur Google <span class="stars" aria-label="5 étoiles sur 5">★★★★★</span></h3>
       <a href="https://share.google/NcyAyWaS3WMZgQ4B6" class="link" target="_blank" rel="noopener">Lire les 26 avis</a>
     </div>
-    <div class="rail" data-rail aria-label="Avis Google" style="align-items:start">
+    <div class="rail cc" data-rail aria-label="Avis Google" style="align-items:start">
       <figure class="quote">
         <p>Je ne suis pas du tout sportive à la base et pourtant Ornella réussit à me motiver à chaque séance. Elle est bienveillante, drôle et toujours encourageante. Elle s'adapte au niveau de chacun, prend le temps d'expliquer, de corriger, et célèbre les petites victoires. On progresse dans la bonne humeur et sans jugement. Si j'aime (presque) le sport, c'est grâce à elle ! Je recommande à 1000% ! 🫶🏻</p>
         <button type="button" hidden>Lire la suite</button>
@@ -783,12 +809,12 @@ details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
   <div class="wrap">
     <div class="head"><h2>Programme ou coaching : <span class="hl">lequel choisir ?</span></h2></div>
     <div class="vs">
-      <div class="vs-card">
+      <div class="vs-card is-prog">
         <h3>Programme digital</h3>
         <p class="sub">Économique, dès 7 €</p>
         <ul class="ticks"><li>Accès immédiat, à ton rythme</li><li>Autonomie totale, où que tu sois</li><li>Idéal si tu sais te motiver seule</li></ul>
       </div>
-      <div class="vs-card vs-card--coach">
+      <div class="vs-card vs-card--coach is-hyb">
         <h3>Coaching avec suivi</h3>
         <p class="sub">Un vrai accompagnement humain</p>
         <ul class="ticks"><li>Corrections de technique en direct</li><li>Ajustements réguliers selon tes progrès</li><li>Idéal si tu as besoin d'être portée</li></ul>
@@ -820,7 +846,7 @@ details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
 <section id="faq" class="band band--sage sec-scroll">
   <div class="wrap split">
     <div class="head"><h2>Tes questions, <span class="hl">mes réponses.</span></h2></div>
-    <div class="faq">
+    <div class="faq cc">
       <details><summary>Combien coûte un programme de musculation personnalisé en ligne ?</summary><div class="a"><p>Mon programme sur-mesure coûte 79 € en paiement unique, sans abonnement. 8 semaines, jusqu'à 4 séances par semaine, vidéos de démonstration incluses. Il est construit après un bilan complet offert et livré sous 7 jours ouvrés sur ton téléphone. <a href="#sur-mesure">Voir le programme sur-mesure</a></p></div></details>
       <details><summary>Le programme est-il adapté au matériel que j'ai à la maison ?</summary><div class="a"><p>Oui. Le programme sur-mesure est construit selon ton matériel : sans matériel, avec élastiques, haltères, ou en salle équipée. Tu me dis ce que tu as lors du bilan, et chaque exercice est choisi en fonction.</p></div></details>
       <details><summary>Y a-t-il un abonnement ou un engagement ?</summary><div class="a"><p>Non. Tous mes programmes digitaux et le programme sur-mesure à 79 € sont en paiement unique, sans abonnement. Si tu veux un suivi avec ajustements réguliers, le <a href="offres.html">coaching distanciel</a> existe dès 89 €/mois.</p></div></details>
@@ -828,7 +854,7 @@ details.acc>div{padding-bottom:12px;display:grid;gap:10px;font-size:.94rem}
       <details><summary>Je suis débutante, c'est pour moi ?</summary><div class="a"><p>Oui, totalement. Chaque programme propose des adaptations et des variantes pour débuter en sécurité, quel que soit ton niveau de départ. Tu commences là où tu en es et tu progresses à ton rythme, pas besoin d'avoir déjà de l'expérience.</p></div></details>
       <details><summary>Combien de temps par jour ?</summary><div class="a"><p>Selon le programme, compte entre 15 et 45 minutes par séance, 3 à 5 fois par semaine. Certains programmes (comme Fit Dans Ta Vie) proposent plusieurs formats, 20, 30 ou 45 min, pour t'adapter même aux semaines chargées.</p></div></details>
       <details class="acc" style="border-bottom:0"><summary>Voir les 8 autres questions</summary>
-      <div style="display:block">
+      <div style="display:block" class="cc">
       <details><summary>Comment je reçois mon programme ?</summary><div class="a"><p>En accès immédiat après le paiement. Tu ouvres ton programme directement sur ton téléphone (installable comme une application), et tu y as accès à vie : tu peux le refaire autant de fois que tu veux.</p></div></details>
       <details><summary>Je peux être remboursée ?</summary><div class="a"><p>Garantie 48 h : tu changes d'avis dans les 48 h après ton achat et tu n'as pas encore ouvert ton programme ? Écris-moi sur <a href="https://wa.me/33756834626" target="_blank" rel="noopener">WhatsApp</a>, je te rembourse. Une fois le programme ouvert, c'est un contenu numérique non remboursable (voir <a href="cgv.html">CGV</a>). Je reste disponible pour t'envoyer des variantes d'exercices si quelque chose ne te convient pas.</p></div></details>
       <details><summary>Programme ou coaching, je choisis quoi ?</summary><div class="a"><p>Un programme digital est idéal si tu es autonome et que tu sais te motiver seule. Le coaching avec suivi est fait pour toi si tu as besoin d'un accompagnement humain, de corrections et d'ajustements réguliers. Pas sûre ? <a href="quiz.html">Fais le quiz d'orientation (1 min)</a> ou <a href="offres.html">découvre les formules de coaching</a>.</p></div></details>

@@ -55,6 +55,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="images/logo.png">
+<!-- Meta Pixel -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1233548507794099");fbq("track","PageView");</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1233548507794099&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
+<meta name="facebook-domain-verification" content="q0lravv1bfmhpq3dob5d559cyidqq1" />
+<meta name="facebook-domain-verification" content="4npql1iz6n380yye9bsydf16pnj20x" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -111,12 +117,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   ]
 }
 </script>
-<!-- Meta Pixel -->
-<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1233548507794099");fbq("track","PageView");</script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1233548507794099&ev=PageView&noscript=1"/></noscript>
-<!-- End Meta Pixel -->
-<meta name="facebook-domain-verification" content="q0lravv1bfmhpq3dob5d559cyidqq1" />
-<meta name="facebook-domain-verification" content="4npql1iz6n380yye9bsydf16pnj20x" />
 <style>
 
 /* VOICE  : calme, haut de gamme, une idée par écran, phrases courtes.
@@ -310,6 +310,32 @@ p{margin:0}
 #lead-submit{border:0;cursor:pointer;width:100%}
 #lead-success{display:none;margin-top:16px;font-weight:600}
 @media(min-width:620px){#lead-popup{align-items:center}}
+
+/* ===== Code couleur (effet « repère visuel ») =====
+   Formules : domicile = miel, hybride = corail, à distance = bleu doux, programmes = sauge.
+   Dans un groupe .cc, chaque carte prend la couleur suivante. */
+:root{--c1:#B4513F;--t1:#F8E1D9;--c2:#5F7258;--t2:#E3EADF;--c3:#A06E22;--t3:#F6E8CF;--c4:#3F6A85;--t4:#E1EBF1;--c5:#2B201C;--t5:#EDE6E0}
+.cc>*{--acc:var(--c1);--tint:var(--t1)}
+.cc>*:nth-child(4n+2){--acc:var(--c2);--tint:var(--t2)}
+.cc>*:nth-child(4n+3){--acc:var(--c3);--tint:var(--t3)}
+.cc>*:nth-child(4n+4){--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-hyb,.is-hyb{--acc:var(--c1);--tint:var(--t1)}
+.cc>.is-prog,.is-prog{--acc:var(--c2);--tint:var(--t2)}
+.cc>.is-dom,.is-dom{--acc:var(--c3);--tint:var(--t3)}
+.cc>.is-dist,.is-dist{--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-ink,.is-ink{--acc:var(--c5);--tint:var(--t5)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.tcard,.act,.fcard,.box,.quote,.sm,.panel,.hero-prog,.mind>div,.solo-card){border-top:5px solid var(--acc,transparent)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.act,.fcard,.box,.sm,.panel,.hero-prog,.solo-card) :is(h3,h4){color:var(--acc,inherit)}
+.case-r,.tb h3,.mind .to,.obj b{color:var(--acc,inherit)}
+.trust b{color:var(--acc,inherit)}
+.trust.cc li{position:relative}
+.offer{border-left:5px solid var(--acc,transparent)}
+.offer h3,.offer .price b{color:var(--acc,inherit)}
+.steps li::before{background:var(--acc,var(--sage-d))!important}
+.faq.cc>details>summary::after,.faq .cc>details>summary::after{content:"+";width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--acc);color:#fff;font:600 1.2rem/1 var(--sans)}
+.faq.cc>details[open]>summary,.faq .cc>details[open]>summary{color:var(--acc)}
+.stats.cc>div,.tstats>div{background:var(--tint,transparent)}
+.stats.cc b,.tstats b{color:var(--acc,inherit)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
 /* ===== Page tarifs : mêmes règles que l'accueil (blocs de couleur, titres gras avec accent, texte d'une couleur) ===== */
@@ -334,7 +360,7 @@ p{margin:0}
 .fcard{background:#fff;border-radius:22px;padding:26px 22px 22px;display:flex;flex-direction:column;gap:14px;border:1px solid var(--line);scroll-snap-align:center}
 .fcard--top{border:2px solid var(--coral)}
 .fcard h3{font-size:1.85rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.fcard .tagline{font-family:var(--serif);font-weight:700;font-size:1.3rem;line-height:1.15;color:var(--coral)}
+.fcard .tagline{font-family:var(--serif);font-weight:700;font-size:1.3rem;line-height:1.15;color:var(--acc,var(--coral))}
 .fcard .forwho{font-size:.93rem}
 .fcard .ticks{font-size:.93rem}
 .fprice{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:.88rem;line-height:1.35}
@@ -382,7 +408,7 @@ p{margin:0}
 .test-line{margin-top:14px;font-size:.95rem}
 .tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px;margin:28px 0 18px}
 .tabs button{min-height:46px;border:0;border-radius:999px;background:none;font:600 .93rem/1.1 var(--sans);color:var(--ink);cursor:pointer;padding:0 6px}
-.tabs button[aria-selected=true]{background:var(--ink);color:#fff}
+.tabs button[aria-selected=true]{background:var(--acc,var(--ink));color:#fff}
 .panel{background:#fff;border-radius:24px;padding:26px 20px 24px;scroll-margin-top:84px}
 .panel[hidden]{display:none}
 .panel h3{font-size:2rem}
@@ -392,7 +418,7 @@ p{margin:0}
 .dur{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .dur label{position:relative;display:block;border:1.5px solid var(--line);border-radius:14px;padding:11px 4px 10px;text-align:center;cursor:pointer;font-weight:700;font-size:.92rem;line-height:1.2;background:#fff}
 .dur input{position:absolute;opacity:0;pointer-events:none}
-.dur label.on{border-color:var(--coral);background:var(--blush2)}
+.dur label.on{border-color:var(--acc,var(--coral));background:var(--tint,var(--blush2))}
 .dur label:focus-within{outline:2px solid var(--coral);outline-offset:2px}
 .dur small{display:block;font-weight:500;font-size:.72rem;margin-top:4px}
 .nudge{margin-top:10px;font-size:.88rem}
@@ -402,14 +428,14 @@ p{margin:0}
 .prow .pn{font-weight:700}
 .prow .ps{font-size:.84rem;line-height:1.35}
 .pp{text-align:right;white-space:nowrap;font-size:.82rem;line-height:1.25}
-.pp b{font-family:var(--serif);font-variant-numeric:lining-nums;font-size:1.95rem;line-height:1}
+.pp b{font-family:var(--serif);font-variant-numeric:lining-nums;font-size:1.95rem;line-height:1;color:var(--acc,inherit)}
 .pp .eco{display:block;font-weight:700;color:var(--sage-d)}
 .pp .inc{display:block}
-.gift{margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--blush2);font-size:.9rem}
+.gift{margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--tint,var(--blush2));font-size:.9rem}
 .opts{display:grid;gap:8px}
 .opt{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:12px;align-items:center;padding:13px 14px;border:1.5px solid var(--line);border-radius:14px;cursor:pointer;font-size:.93rem;line-height:1.3}
 .opt input{width:20px;height:20px;margin:0;accent-color:var(--coral)}
-.opt.on{border-color:var(--coral);background:var(--blush2)}
+.opt.on{border-color:var(--acc,var(--coral));background:var(--tint,var(--blush2))}
 .opt .op{font-weight:700;white-space:nowrap;text-align:right}
 .opt small{display:block;font-size:.8rem}
 .panel .btn{margin-top:22px;width:100%}
@@ -486,7 +512,7 @@ details.acc>div{padding-bottom:16px;display:grid;gap:12px;font-size:.95rem}
       <p class="hero-note">Par WhatsApp · sans engagement · tu décides après</p>
       <p class="hero-quiz"><a href="#tarifs" class="link" data-tab="hyb">Voir les tarifs</a> · ou <a href="quiz.html?utm_source=site&amp;utm_medium=offres&amp;utm_content=hero" class="link">fais le quiz en 2 min</a></p>
     </div>
-    <ul class="trust">
+    <ul class="trust cc">
       <li><a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" rel="noopener" style="text-decoration:none"><b>5,0 ★ Google</b>26 avis</a></li>
       <li><b>Diplômée d'État</b>ancienne compétitrice fitness</li>
       <li><b>Post-partum</b>ma spécialité</li>
@@ -508,21 +534,21 @@ details.acc>div{padding-bottom:16px;display:grid;gap:12px;font-size:.95rem}
       <p>Celle que je recommande le plus : l'hybride, l'équilibre entre un rendez-vous avec moi et une autonomie guidée. Repère celle qui te ressemble, les tarifs détaillés sont juste en dessous.</p>
     </div>
     <div class="rail" data-rail data-start="1" aria-label="Les 3 formules">
-      <article class="fcard" id="domicile">
+      <article class="fcard is-dom" id="domicile">
         <h3>À domicile</h3>
         <p class="tagline">Je viens chez toi. Tu n'as qu'à être là, je m'occupe du reste.</p>
         <p class="forwho"><b>Pour qui :</b> tu es en Essonne (91) ou dans le sud du 92, et tu veux être guidée et corrigée en direct, sans salle ni trajet.</p>
         <div class="fprice">À partir de<b>240 €/mois</b>soit 60 € la séance · 1 séance par semaine<br>Essai 50 € · déduit si tu continues</div>
         <a href="#tarifs" class="btn btn--ghost" data-tab="dom">Voir les tarifs</a>
       </article>
-      <article class="fcard fcard--top" id="hybride">
+      <article class="fcard fcard--top is-hyb" id="hybride">
         <h3>Hybride <span class="tag">Le plus choisi</span></h3>
         <p class="tagline">Progresse toute la semaine, pas seulement le jour de la séance.</p>
         <p class="forwho"><b>Pour qui :</b> tu veux de vrais résultats sans y passer tes journées : un rendez-vous avec moi + des séances guidées en autonomie, pour un budget maîtrisé.</p>
         <div class="fprice">Tout compris<b>149 €/mois</b>soit moins de 5 € par jour · 1 séance avec moi + programme et suivi</div>
         <a href="#tarifs" class="btn" data-tab="hyb">Voir les tarifs</a>
       </article>
-      <article class="fcard" id="distanciel">
+      <article class="fcard is-dist" id="distanciel">
         <h3>À distance</h3>
         <p class="tagline">Un coaching construit pour toi, où que tu sois en France.</p>
         <p class="forwho"><b>Pour qui :</b> tu es hors Essonne, ou tu aimes gérer ton emploi du temps, et tu veux un vrai suivi (pas un PDF générique), partout en France.</p>
@@ -546,10 +572,10 @@ details.acc>div{padding-bottom:16px;display:grid;gap:12px;font-size:.95rem}
     <div class="head">
       <h2>Quelle que soit ta formule, <span class="hl">tu es suivie de près.</span></h2>
     </div>
-    <div class="two">
+    <div class="two cc">
       <div class="box" style="margin-top:0">
         <h3>Comment ça marche</h3>
-        <ol class="steps">
+        <ol class="steps cc">
           <li><span><b>Bilan :</b> on fait le point sur ton corps, ton rythme et tes objectifs.</span></li>
           <li><span><b>Programme :</b> je construis tes séances rien que pour toi. Programme des jours sans moi : inclus en hybride et à distance, en Boost à domicile.</span></li>
           <li><span><b>Suivi :</b> je te corrige, je te motive, j'ajuste au fil des semaines.</span></li>
@@ -591,13 +617,13 @@ details.acc>div{padding-bottom:16px;display:grid;gap:12px;font-size:.95rem}
     </div>
 
     <div class="tabs" role="tablist" aria-label="Choisis ta formule">
-      <button type="button" role="tab" id="tab-dom" aria-controls="tarif-domicile" aria-selected="false" data-tab="dom">Domicile</button>
-      <button type="button" role="tab" id="tab-hyb" aria-controls="tarif-hybride" aria-selected="true" data-tab="hyb">Hybride</button>
-      <button type="button" role="tab" id="tab-dist" aria-controls="tarif-distanciel" aria-selected="false" data-tab="dist">À distance</button>
+      <button type="button" class="is-dom" role="tab" id="tab-dom" aria-controls="tarif-domicile" aria-selected="false" data-tab="dom">Domicile</button>
+      <button type="button" class="is-hyb" role="tab" id="tab-hyb" aria-controls="tarif-hybride" aria-selected="true" data-tab="hyb">Hybride</button>
+      <button type="button" class="is-dist" role="tab" id="tab-dist" aria-controls="tarif-distanciel" aria-selected="false" data-tab="dist">À distance</button>
     </div>
 
     <!-- DOMICILE -->
-    <div class="panel" id="tarif-domicile" role="tabpanel" aria-labelledby="tab-dom" hidden>
+    <div class="panel is-dom" id="tarif-domicile" role="tabpanel" aria-labelledby="tab-dom" hidden>
       <h3>À domicile</h3>
       <p class="panel-sub">Présentiel Essonne · abonnement mensuel ou pack · matériel inclus</p>
       <p class="lede">Tu n'as pas simplement un programme : tu es accompagnée, corrigée et guidée. Je construis et j'adapte ton coaching selon ton niveau, tes objectifs et ton évolution.</p>
@@ -662,10 +688,10 @@ details.acc>div{padding-bottom:16px;display:grid;gap:12px;font-size:.95rem}
     </div>
 
     <!-- HYBRIDE -->
-    <div class="panel" id="tarif-hybride" role="tabpanel" aria-labelledby="tab-hyb">
+    <div class="panel is-hyb" id="tarif-hybride" role="tabpanel" aria-labelledby="tab-hyb">
       <h3>Hybride <span class="tag">Le plus choisi</span></h3>
       <p class="panel-sub">1 rendez-vous en présentiel par mois + suivi toute la semaine · Essonne</p>
-      <ol class="steps" style="margin-top:20px">
+      <ol class="steps cc" style="margin-top:20px">
         <li><span><b>Avec moi, en présentiel :</b> on s'entraîne ensemble, je te corrige et j'ajuste ton programme à chaque rendez-vous mensuel.</span></li>
         <li><span><b>Entre nos rendez-vous :</b> tu continues seule avec un programme sur-mesure et interactif, guidé en vidéo, mis à jour toutes les 4 semaines.</span></li>
         <li><span><b>Résultat :</b> tu t'entraînes toute la semaine, pas seulement le jour du coaching, et tu n'es jamais livrée à toi-même.</span></li>
@@ -712,7 +738,7 @@ details.acc>div{padding-bottom:16px;display:grid;gap:12px;font-size:.95rem}
     </div>
 
     <!-- À DISTANCE -->
-    <div class="panel" id="tarif-distanciel" role="tabpanel" aria-labelledby="tab-dist" hidden>
+    <div class="panel is-dist" id="tarif-distanciel" role="tabpanel" aria-labelledby="tab-dist" hidden>
       <h3>À distance</h3>
       <p class="panel-sub">Partout en France · programme 100 % sur-mesure après bilan · dès 79 €</p>
       <p class="lede">Ce n'est pas un programme générique : je le construis après ton bilan, adapté à ton lieu d'entraînement (domicile ou salle), ton niveau et tes contraintes. Deux façons :</p>
@@ -775,7 +801,7 @@ details.acc>div{padding-bottom:16px;display:grid;gap:12px;font-size:.95rem}
       <summary>Les 2 Boosts : Entraînement et Nutrition</summary>
       <div>
         <p>Ce ne sont pas des gadgets : ce sont les deux leviers qui soutiennent ta progression. Selon ta formule, ils sont déjà inclus ou tu les coches dans les tarifs ci-dessus, et le prix s'ajuste tout seul. Rien n'est imposé.</p>
-        <div class="boost-grid">
+        <div class="boost-grid cc">
       <div class="boost-card">
         <h3>Boost Entraînement</h3>
         <p class="sub">T'entraîner les jours sans moi</p>
@@ -832,7 +858,7 @@ details.acc>div{padding-bottom:16px;display:grid;gap:12px;font-size:.95rem}
       <h3 style="font-size:clamp(1.7rem,4.6vw,2.2rem)"><span class="hl">5,0</span> sur Google <span class="stars" aria-label="5 étoiles sur 5">★★★★★</span></h3>
       <a href="https://share.google/NcyAyWaS3WMZgQ4B6" class="link" target="_blank" rel="noopener">Lire les 26 avis</a>
     </div>
-    <div class="rail" data-rail aria-label="Avis de clientes" style="align-items:start">
+    <div class="rail cc" data-rail aria-label="Avis de clientes" style="align-items:start">
       <figure class="quote">
         <p>Je ne suis pas du tout sportive à la base et pourtant Ornella réussit à me motiver à chaque séance. Elle est bienveillante, drôle et toujours encourageante. Elle s'adapte au niveau de chacun, prend le temps d'expliquer, de corriger, et célèbre les petites victoires. On progresse dans la bonne humeur et sans jugement. Si j'aime (presque) le sport, c'est grâce à elle ! Je recommande à 1000% ! 🫶🏻</p>
         <button type="button" hidden>Lire la suite</button>
@@ -864,14 +890,14 @@ details.acc>div{padding-bottom:16px;display:grid;gap:12px;font-size:.95rem}
     <p class="hero-note">Réponse perso · aucune carte bancaire · tu décides après</p>
     <p class="lbl" style="margin-top:34px">Tu préfères déjà tester concrètement ? Deux formules d'essai, déduites si tu continues :</p>
     <div class="essai">
-      <div class="essai-card">
+      <div class="essai-card is-dom">
         <h3>Séance d'essai à domicile</h3>
         <p>Tu es en Essonne : je vois ton niveau, on pose les bases ensemble.</p>
         <p class="big">50 €</p>
         <p class="small">Déduite si tu continues : parcours 3 mois ou pack de 6 séances</p>
         <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20suis%20en%20Essonne%2C%20j'aimerais%20r%C3%A9server%20une%20s%C3%A9ance%20d'essai%20%C3%A0%20domicile%20(50%E2%82%AC).%20On%20en%20parle%20%3F" class="btn btn--ghost" target="_blank" rel="noopener">Je réserve mon essai · 50 €</a>
       </div>
-      <div class="essai-card">
+      <div class="essai-card is-dist">
         <h3>Consultation 45 min · visio ou téléphone</h3>
         <p>Hors secteur, ou tu veux faire le point : on trouve ce qui te bloque, tu repars avec ta feuille de route, que tu continues ou non.</p>
         <p class="big">49 €</p>
@@ -887,7 +913,7 @@ details.acc>div{padding-bottom:16px;display:grid;gap:12px;font-size:.95rem}
 <section id="faq-offres" class="band band--sage">
   <div class="wrap split">
     <div class="head"><h2>Tes questions, <span class="hl">les derniers doutes.</span></h2></div>
-    <div class="faq">
+    <div class="faq cc">
       <details>
         <summary>Pourquoi 3 mois ?</summary>
         <div class="a"><p>Parce qu'un mois ne suffit pas pour des résultats durables (ventre, perte de poids, fessiers, post-partum) : ton corps a besoin de temps pour changer vraiment. Les 3 mois, c'est le minimum pour installer une routine et voir de vrais résultats. Ce n'est pas pour te bloquer, c'est pour que tu obtiennes ce pour quoi tu es venue.</p></div>

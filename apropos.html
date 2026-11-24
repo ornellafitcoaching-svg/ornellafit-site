@@ -258,6 +258,32 @@ p{margin:0}
 #lead-submit{border:0;cursor:pointer;width:100%}
 #lead-success{display:none;margin-top:16px;font-weight:600}
 @media(min-width:620px){#lead-popup{align-items:center}}
+
+/* ===== Code couleur (effet « repère visuel ») =====
+   Formules : domicile = miel, hybride = corail, à distance = bleu doux, programmes = sauge.
+   Dans un groupe .cc, chaque carte prend la couleur suivante. */
+:root{--c1:#B4513F;--t1:#F8E1D9;--c2:#5F7258;--t2:#E3EADF;--c3:#A06E22;--t3:#F6E8CF;--c4:#3F6A85;--t4:#E1EBF1;--c5:#2B201C;--t5:#EDE6E0}
+.cc>*{--acc:var(--c1);--tint:var(--t1)}
+.cc>*:nth-child(4n+2){--acc:var(--c2);--tint:var(--t2)}
+.cc>*:nth-child(4n+3){--acc:var(--c3);--tint:var(--t3)}
+.cc>*:nth-child(4n+4){--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-hyb,.is-hyb{--acc:var(--c1);--tint:var(--t1)}
+.cc>.is-prog,.is-prog{--acc:var(--c2);--tint:var(--t2)}
+.cc>.is-dom,.is-dom{--acc:var(--c3);--tint:var(--t3)}
+.cc>.is-dist,.is-dist{--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-ink,.is-ink{--acc:var(--c5);--tint:var(--t5)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.tcard,.act,.fcard,.box,.quote,.sm,.panel,.hero-prog,.mind>div,.solo-card){border-top:5px solid var(--acc,transparent)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.act,.fcard,.box,.sm,.panel,.hero-prog,.solo-card) :is(h3,h4){color:var(--acc,inherit)}
+.case-r,.tb h3,.mind .to,.obj b{color:var(--acc,inherit)}
+.trust b{color:var(--acc,inherit)}
+.trust.cc li{position:relative}
+.offer{border-left:5px solid var(--acc,transparent)}
+.offer h3,.offer .price b{color:var(--acc,inherit)}
+.steps li::before{background:var(--acc,var(--sage-d))!important}
+.faq.cc>details>summary::after,.faq .cc>details>summary::after{content:"+";width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--acc);color:#fff;font:600 1.2rem/1 var(--sans)}
+.faq.cc>details[open]>summary,.faq .cc>details[open]>summary{color:var(--acc)}
+.stats.cc>div,.tstats>div{background:var(--tint,transparent)}
+.stats.cc b,.tstats b{color:var(--acc,inherit)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
 /* ===== Page À propos : même charte (blocs de couleur, titres gras avec accent) ===== */
@@ -270,7 +296,7 @@ p{margin:0}
 .acts{display:grid;gap:16px}
 .act{background:#fff;border-radius:22px;overflow:hidden}
 .act .in{padding:22px 20px 20px}
-.act .lab{font:700 .78rem/1.2 var(--sans);color:var(--coral)}
+.act .lab{font:700 .78rem/1.2 var(--sans);color:var(--acc,var(--coral))}
 .act h3{font-size:1.7rem;margin-top:6px}
 .act p{margin-top:12px}
 .act .media{display:grid;gap:10px;padding:0 20px 20px}
@@ -291,7 +317,7 @@ details.acc>div{padding:4px 0 2px}
 .sculpt{display:grid;gap:22px;align-items:center}
 .sculpt img{width:100%;border-radius:20px}
 .sculpt .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:18px}
-.sculpt .stats div{background:#fff;border-radius:14px;padding:12px;font-size:.85rem}
+.sculpt .stats div{background:var(--tint,#fff);border-radius:14px;padding:12px;font-size:.85rem}
 .sculpt .stats b{display:block;font-family:var(--serif);font-variant-numeric:lining-nums;font-size:1.4rem;line-height:1.1}
 @media(min-width:900px){.sculpt{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px}}
 .items{display:grid;gap:12px}
@@ -340,7 +366,7 @@ details.acc>div{padding:4px 0 2px}
       <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn" id="hero-cta" target="_blank" rel="noopener">Échange gratuit de 15 min</a>
       <p class="hero-quiz"><a href="#story" class="link">Lire mon parcours</a></p>
     </div>
-    <ul class="trust">
+    <ul class="trust cc">
       <li><b>Bikini Fitness</b>demi-finaliste, Championnat de France</li>
       <li><b>Police nationale</b>ancienne gardienne de la paix</li>
       <li><b>Diplômée d'État</b>coach sportive</li>
@@ -358,7 +384,7 @@ details.acc>div{padding:4px 0 2px}
 <section id="story" class="band band--blush" style="scroll-margin-top:64px">
   <div class="wrap">
     <div class="head"><h2>De là où je venais… <span class="hl">à ce que je suis devenue.</span></h2></div>
-    <div class="acts">
+    <div class="acts cc">
       <article class="act">
         <div class="in">
           <p class="lab">Acte I · Le point de départ</p>
@@ -433,7 +459,7 @@ details.acc>div{padding:4px 0 2px}
     <div>
       <h2>Je pratique <span class="hl">ce que j'enseigne.</span></h2>
       <p style="margin-top:14px">Phase de sculpture, affinage ciblé. Ce n'est pas ma transformation la plus spectaculaire : c'est quelque chose de plus discret, du travail de détails, des corrections ciblées, un peaufinage de silhouette. 2 mois, 4 séances par semaine, sur moi-même. Parce que je ne te demande jamais de faire quelque chose que je ne fais pas moi-même.</p>
-      <div class="stats">
+      <div class="stats cc">
         <div><b>2 mois</b>de travail</div>
         <div><b>4 séances</b>par semaine</div>
         <div><b>Corrections</b>ciblées</div>
@@ -450,7 +476,7 @@ details.acc>div{padding:4px 0 2px}
       <h2>Ma méthode : <span class="hl">ce que je fais différemment.</span></h2>
       <p>Je ne vends pas un programme. Je construis un accompagnement sur-mesure, ancré dans le réel de ta vie.</p>
     </div>
-    <div class="items">
+    <div class="items cc">
       <div class="item"><h3>Le bilan avant tout</h3><p>Chaque accompagnement commence par un bilan personnalisé, offert dès que tu démarres un accompagnement : analyse de tes objectifs, de ton niveau, de ton mode de vie, prise de mensurations. Je construis à partir de toi, pas d'un modèle générique.</p></div>
       <div class="item"><h3>L'adaptation constante</h3><p>Ton programme évolue avec toi. Ce qui marchait en semaine 1 n'est pas forcément ce qu'il faut en semaine 8. J'ajuste selon ta progression, ta fatigue, tes contraintes. Tu n'es jamais livrée à un plan figé.</p></div>
       <div class="item"><h3>L'accompagnement humain</h3><p>Je suis là. Par message, par bilan mensuel, par ajustement de programme. Tu ne travailles pas seule. Et cette présence, c'est ce qui fait la différence entre celles qui abandonnent et celles qui transforment leur corps.</p></div>
@@ -466,7 +492,7 @@ details.acc>div{padding:4px 0 2px}
       <h2>Pourquoi moi ? <span class="hl">Pas juste une coach fitness.</span></h2>
       <p>Ce que tu trouves ici, tu ne le trouves pas partout.</p>
     </div>
-    <div class="items">
+    <div class="items cc">
       <div class="item"><h3>Je suis passée par là, vraiment</h3><p>Surpoids, reconstruction post-partum, championnat : je connais toutes les facettes de la transformation corporelle féminine de l'intérieur. Ce n'est pas de la théorie. C'est mon vécu.</p></div>
       <div class="item"><h3>Spécialisée post-partum et reconstruction</h3><p>Diastasis, périnée, fatigue chronique, corps qui ne répond plus : je connais ces réalités et je sais comment travailler en toute sécurité. Je travaille en complément de ta rééducation périnéale, validée par ta sage-femme ou ton kiné.</p></div>
       <div class="item"><h3>Le corps modulable à tout âge</h3><p>30 ans, 45 ans, 55 ans : il n'est jamais trop tard. Le corps réagit différemment à chaque décennie, et je sais adapter le travail à chaque étape pour obtenir des résultats concrets.</p></div>
@@ -479,7 +505,7 @@ details.acc>div{padding:4px 0 2px}
 <section id="valeurs" class="band band--sand">
   <div class="wrap">
     <div class="head"><h2>Mes engagements : <span class="hl">ce sur quoi tu peux compter.</span></h2></div>
-    <div class="items items--3">
+    <div class="items items--3 cc">
       <div class="item"><h3>Honnêteté totale</h3><p>Si je ne suis pas la bonne personne pour toi, je te le dirai. Pas de promesses impossibles, pas de vente forcée. Je préfère perdre une cliente que lui mentir sur ce que je peux faire.</p></div>
       <div class="item"><h3>Résultats concrets</h3><p>Mon objectif n'est pas que tu te sentes bien pendant une séance. C'est que dans 3 mois, tu te regardes dans le miroir et tu sois fière. Les résultats sont ma responsabilité autant que la tienne.</p></div>
       <div class="item"><h3>Accompagnement réel</h3><p>Je suis là entre les séances. Par message, par bilan, par ajustement. Tu n'es pas seule. Et cette disponibilité, ce n'est pas un bonus : c'est le cœur de mon accompagnement.</p></div>

@@ -245,6 +245,32 @@ p{margin:0}
 #lead-submit{border:0;cursor:pointer;width:100%}
 #lead-success{display:none;margin-top:16px;font-weight:600}
 @media(min-width:620px){#lead-popup{align-items:center}}
+
+/* ===== Code couleur (effet « repère visuel ») =====
+   Formules : domicile = miel, hybride = corail, à distance = bleu doux, programmes = sauge.
+   Dans un groupe .cc, chaque carte prend la couleur suivante. */
+:root{--c1:#B4513F;--t1:#F8E1D9;--c2:#5F7258;--t2:#E3EADF;--c3:#A06E22;--t3:#F6E8CF;--c4:#3F6A85;--t4:#E1EBF1;--c5:#2B201C;--t5:#EDE6E0}
+.cc>*{--acc:var(--c1);--tint:var(--t1)}
+.cc>*:nth-child(4n+2){--acc:var(--c2);--tint:var(--t2)}
+.cc>*:nth-child(4n+3){--acc:var(--c3);--tint:var(--t3)}
+.cc>*:nth-child(4n+4){--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-hyb,.is-hyb{--acc:var(--c1);--tint:var(--t1)}
+.cc>.is-prog,.is-prog{--acc:var(--c2);--tint:var(--t2)}
+.cc>.is-dom,.is-dom{--acc:var(--c3);--tint:var(--t3)}
+.cc>.is-dist,.is-dist{--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-ink,.is-ink{--acc:var(--c5);--tint:var(--t5)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.tcard,.act,.fcard,.box,.quote,.sm,.panel,.hero-prog,.mind>div,.solo-card){border-top:5px solid var(--acc,transparent)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.act,.fcard,.box,.sm,.panel,.hero-prog,.solo-card) :is(h3,h4){color:var(--acc,inherit)}
+.case-r,.tb h3,.mind .to,.obj b{color:var(--acc,inherit)}
+.trust b{color:var(--acc,inherit)}
+.trust.cc li{position:relative}
+.offer{border-left:5px solid var(--acc,transparent)}
+.offer h3,.offer .price b{color:var(--acc,inherit)}
+.steps li::before{background:var(--acc,var(--sage-d))!important}
+.faq.cc>details>summary::after,.faq .cc>details>summary::after{content:"+";width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--acc);color:#fff;font:600 1.2rem/1 var(--sans)}
+.faq.cc>details[open]>summary,.faq .cc>details[open]>summary{color:var(--acc)}
+.stats.cc>div,.tstats>div{background:var(--tint,transparent)}
+.stats.cc b,.tstats b{color:var(--acc,inherit)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
 /* ===== Page transformations : même charte (blocs de couleur, titres gras avec accent) ===== */
@@ -276,7 +302,10 @@ p{margin:0}
 .tph-dots span{width:7px;height:7px;border-radius:99px;background:rgba(43,32,28,.22);transition:width .25s,background .25s}
 .tph-dots span.on{width:18px;background:var(--ink)}
 .tb{padding:16px 20px 20px}
-.tobj{font:700 .76rem/1.2 var(--sans);color:var(--coral)}
+.tobj{font:700 .76rem/1.2 var(--sans);color:var(--acc,var(--coral))}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:16px;font-size:.88rem;font-weight:600}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{width:14px;height:14px;border-radius:50%;background:var(--acc)}
 .tb h3{font-size:1.9rem;margin-top:4px}
 .tctx{font-size:.86rem;margin-top:4px}
 .tstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -359,7 +388,7 @@ details.acc>div{padding:8px 0 4px;display:grid;gap:10px;font-size:.95rem}
       <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J'ai%20vu%20tes%20transformations%2C%20je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn" id="hero-cta" target="_blank" rel="noopener">Je veux mon échange gratuit 15 min</a>
       <p class="hero-note">Par WhatsApp · sans engagement</p>
     </div>
-    <ul class="trust">
+    <ul class="trust cc">
       <li><b>−9 cm</b>tour de taille · Louise</li>
       <li><b>4 semaines</b>bilan et ajustements</li>
       <li><a href="https://share.google/NcyAyWaS3WMZgQ4B6" target="_blank" rel="noopener" style="text-decoration:none"><b>5,0 ★ Google</b>26 avis</a></li>
@@ -389,10 +418,11 @@ details.acc>div{padding:8px 0 4px;display:grid;gap:10px;font-size:.95rem}
     <div class="head">
       <h2>Des femmes comme toi. <span class="hl">Des résultats réels.</span></h2>
       <p>Pas des athlètes. Pas des femmes avec du temps libre. Des mamans, des actives, des femmes qui avaient déjà tout essayé. Glisse les photos pour voir les autres angles.</p>
+      <p class="legend" aria-label="Code couleur des formules"><span class="is-dom"><i></i>À domicile</span><span class="is-hyb"><i></i>Hybride</span><span class="is-dist"><i></i>À distance</span><span class="is-prog"><i></i>Coaching sur-mesure</span></p>
     </div>
     <div class="tgrid">
 
-      <article class="tcard" id="transfo-louise">
+      <article class="tcard is-dom" id="transfo-louise">
         <div class="tph" data-tph>
           <figure><img src="images/louise-face-1080.webp" alt="Avant / après de Louise, vue de face" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>Vue de face · avant → après</figcaption></figure>
           <figure><img src="images/louise-dos.webp" alt="Avant / après de Louise, vue de dos" width="4319" height="4319" loading="lazy" decoding="async"><figcaption>Vue de dos · avant → après</figcaption></figure>
@@ -407,7 +437,7 @@ details.acc>div{padding:8px 0 4px;display:grid;gap:10px;font-size:.95rem}
         </div>
       </article>
 
-      <article class="tcard" id="transfo-maria">
+      <article class="tcard is-dist" id="transfo-maria">
         <div class="tph" data-tph>
           <figure><img src="images/maria-face.webp?v=5" alt="Avant / après de Maria, vue de face" width="1200" height="1200" loading="lazy" decoding="async"><figcaption>Vue de face · avant → après</figcaption></figure>
           <figure><img src="images/maria-dos.webp?v=5" alt="Avant / après de Maria, vue de dos" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>Vue de dos · avant → après</figcaption></figure>
@@ -422,7 +452,7 @@ details.acc>div{padding:8px 0 4px;display:grid;gap:10px;font-size:.95rem}
         </div>
       </article>
 
-      <article class="tcard" id="transfo-lise">
+      <article class="tcard is-hyb" id="transfo-lise">
         <div class="tph" data-tph>
           <figure><img src="images/lise-face.webp?v=2" alt="Avant / après de Lise, vue de face" width="1191" height="1191" loading="lazy" decoding="async"><figcaption>Vue de face · avant → après</figcaption></figure>
           <figure><img src="images/lise-profil.webp?v=2" alt="Avant / après de Lise, vue de profil" width="1015" height="1015" loading="lazy" decoding="async"><figcaption>Vue de profil · avant → après</figcaption></figure>
@@ -437,7 +467,7 @@ details.acc>div{padding:8px 0 4px;display:grid;gap:10px;font-size:.95rem}
         </div>
       </article>
 
-      <article class="tcard" id="transfo-monya">
+      <article class="tcard is-dom" id="transfo-monya">
         <div class="tph" data-tph>
           <figure><img src="images/monya-profil.webp?v=2" alt="Avant / après de Monya, vue de profil" width="1080" height="952" loading="lazy" decoding="async"><figcaption>Profil · avant → après</figcaption></figure>
           <figure><img src="images/monya-face.webp" alt="Avant / après de Monya, vue de face" width="1080" height="952" loading="lazy" decoding="async"><figcaption>Face · avant → après</figcaption></figure>
@@ -453,7 +483,7 @@ details.acc>div{padding:8px 0 4px;display:grid;gap:10px;font-size:.95rem}
         </div>
       </article>
 
-      <article class="tcard" id="transfo-melina">
+      <article class="tcard is-prog" id="transfo-melina">
         <div class="tph"><figure><img src="images/melina.webp" alt="Avant / après de Melina" width="1086" height="1080" loading="lazy" decoding="async"><figcaption>Avant → après</figcaption></figure></div>
         <div class="tb">
           <p class="tobj">Objectif : ventre et taille</p>
@@ -466,7 +496,7 @@ details.acc>div{padding:8px 0 4px;display:grid;gap:10px;font-size:.95rem}
         </div>
       </article>
 
-      <article class="tcard" id="transfo-lucie">
+      <article class="tcard is-hyb" id="transfo-lucie">
         <div class="tph"><figure><img src="images/avis/lucie.webp" alt="Avant / après de Lucie, vue de profil" width="720" height="720" loading="lazy" decoding="async"><figcaption>Profil · avant → après</figcaption></figure></div>
         <div class="tb">
           <p class="tobj">Objectif : ventre et fessiers · suivi en cours</p>
@@ -478,7 +508,7 @@ details.acc>div{padding:8px 0 4px;display:grid;gap:10px;font-size:.95rem}
         </div>
       </article>
 
-      <article class="tcard" id="transfo-emeline">
+      <article class="tcard is-hyb" id="transfo-emeline">
         <div class="tph" data-tph>
           <figure><img src="images/avis/emeline.webp" alt="Avant / après d'Emeline, mois 1" width="720" height="720" loading="lazy" decoding="async"><figcaption>Mois 1 · −3 cm de taille</figcaption></figure>
           <figure><img src="images/avant-apres-emeline-2.webp?v=2" alt="Avant / après d'Emeline, mois 2" width="1080" height="1080" loading="lazy" decoding="async"><figcaption>Mois 2 · fessiers redessinés</figcaption></figure>
@@ -497,7 +527,7 @@ details.acc>div{padding:8px 0 4px;display:grid;gap:10px;font-size:.95rem}
         </div>
       </article>
 
-      <article class="tcard" id="transfo-isabelle">
+      <article class="tcard is-prog" id="transfo-isabelle">
         <div class="tph"><figure><img src="images/isabelle.webp" alt="Avant / après d'Isabelle, 48 ans" width="1275" height="1000" loading="lazy" decoding="async"><figcaption>Avant → après</figcaption></figure></div>
         <div class="tb">
           <p class="tobj">Objectif : ventre et silhouette</p>
@@ -510,7 +540,7 @@ details.acc>div{padding:8px 0 4px;display:grid;gap:10px;font-size:.95rem}
         </div>
       </article>
 
-      <article class="tcard" id="transfo-anonyme">
+      <article class="tcard is-dom" id="transfo-anonyme">
         <div class="tph" data-tph>
           <figure><img src="images/avis/anonyme.webp" alt="Avant / après d'une cliente anonyme, vue de face" width="720" height="720" loading="lazy" decoding="async"><figcaption>Face · avant → après</figcaption></figure>
           <figure><img src="images/avant-apres-profil-anonyme-1080.webp" alt="Avant / après d'une cliente anonyme, vue de profil" width="1075" height="1080" loading="lazy" decoding="async"><figcaption>Profil · avant → après</figcaption></figure>
@@ -525,7 +555,7 @@ details.acc>div{padding:8px 0 4px;display:grid;gap:10px;font-size:.95rem}
         </div>
       </article>
 
-      <article class="tcard" id="transfo-anonyme-8kg">
+      <article class="tcard is-hyb" id="transfo-anonyme-8kg">
         <div class="tph"><figure><img src="images/avant-apres-anonyme-8kg.webp?v=2" alt="Avant / après d'une cliente anonyme, −8 kg en 6 mois" width="1080" height="1012" loading="lazy" decoding="async"><figcaption>Avant → après</figcaption></figure></div>
         <div class="tb">
           <p class="tobj">Résultat réel</p>
@@ -537,7 +567,7 @@ details.acc>div{padding:8px 0 4px;display:grid;gap:10px;font-size:.95rem}
         </div>
       </article>
 
-      <article class="tcard" id="transfo-anonyme-hybride">
+      <article class="tcard is-hyb" id="transfo-anonyme-hybride">
         <div class="tph"><figure><img src="images/avant-apres-anonyme-hybride.webp" alt="Avant / après d'une cliente anonyme, 4 mois de coaching hybride" width="1080" height="1009" loading="lazy" decoding="async"><figcaption>Avant → après</figcaption></figure></div>
         <div class="tb">
           <p class="tobj">Résultat réel</p>
@@ -549,7 +579,7 @@ details.acc>div{padding:8px 0 4px;display:grid;gap:10px;font-size:.95rem}
         </div>
       </article>
 
-      <article class="tcard" id="transfo-chantal">
+      <article class="tcard is-prog" id="transfo-chantal">
         <div class="tph"><figure><img src="images/avis/chantal.webp" alt="Avant / après de Chantal, −4 kg en 3 mois" width="720" height="720" loading="lazy" decoding="async"><figcaption>Aucune retouche</figcaption></figure></div>
         <div class="tb">
           <p class="tobj">Objectif : perte de poids</p>
@@ -591,7 +621,7 @@ details.acc>div{padding:8px 0 4px;display:grid;gap:10px;font-size:.95rem}
 <section id="objections" class="band band--sand">
   <div class="wrap">
     <div class="head"><h2>Les vraies raisons pour lesquelles <span class="hl">tu n'as pas encore commencé.</span></h2></div>
-    <div class="objs">
+    <div class="objs cc">
       <div class="obj"><b>Je n'ai pas le temps</b>On construit autour de ta vraie vie, pas autour d'un idéal : quelques séances bien pensées par semaine, calées sur ton planning.</div>
       <div class="obj"><b>Je ne suis pas sportive</b>Parfait : on part de là où tu es. Mes clientes débutantes obtiennent les mêmes résultats.</div>
       <div class="obj"><b>Mon corps a changé après la grossesse</b>Je suis passée par là. Le post-partum, c'est ma spécialité. Ton corps peut se reconstruire.</div>
@@ -607,7 +637,7 @@ details.acc>div{padding:8px 0 4px;display:grid;gap:10px;font-size:.95rem}
       <h2>Au-delà du miroir : <span class="hl">ce qui change vraiment.</span></h2>
       <p>Le physique, c'est ce qu'on voit en premier. Mais ce qui dure, c'est ce que tu ressens à l'intérieur.</p>
     </div>
-    <div class="mind">
+    <div class="mind cc">
       <div><p class="from">Fatigue permanente, épuisement au réveil</p><p class="to">Tu te lèves avec l'envie de bouger</p><p>L'énergie ne revient pas tout de suite, mais quand elle revient, elle change tout. Tu redeviens présente pour toi et pour tes enfants.</p></div>
       <div><p class="from">Tu te caches, tu évites les photos</p><p class="to">Tu assumes ton reflet. Tu rayonnes.</p><p>Pas parce que tu es parfaite, mais parce que tu avances. Ça se voit. Ça s'entend dans ta façon de parler de toi.</p></div>
       <div><p class="from">Tu commences, tu arrêtes, tu recommences</p><p class="to">Une routine qui tient, enfin.</p><p>Tenir un engagement envers toi-même, ça change quelque chose en profondeur. Cette discipline déborde dans toute ta vie.</p></div>
@@ -629,7 +659,7 @@ details.acc>div{padding:8px 0 4px;display:grid;gap:10px;font-size:.95rem}
       <h3 style="font-size:clamp(1.7rem,4.6vw,2.2rem)"><span class="hl">5,0</span> sur Google <span class="stars" aria-label="5 étoiles sur 5">★★★★★</span></h3>
       <a href="https://share.google/NcyAyWaS3WMZgQ4B6" class="link" target="_blank" rel="noopener">Lire les 26 avis vérifiés</a>
     </div>
-    <div class="rail" data-rail aria-label="Avis Google" style="align-items:start">
+    <div class="rail cc" data-rail aria-label="Avis Google" style="align-items:start">
       <figure class="quote">
         <p>Je ne suis pas du tout sportive à la base et pourtant Ornella réussit à me motiver à chaque séance. Elle est bienveillante, drôle et toujours encourageante. Elle s'adapte au niveau de chacun, prend le temps d'expliquer, de corriger, et célèbre les petites victoires. On progresse dans la bonne humeur et sans jugement. Si j'aime (presque) le sport, c'est grâce à elle ! Je recommande à 1000% ! 🫶🏻</p>
         <button type="button" hidden>Lire la suite</button>
