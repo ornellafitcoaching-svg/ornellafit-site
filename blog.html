@@ -76,443 +76,546 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="images/logo.png">
-<link rel="stylesheet" href="style.css">
-<style>
-.blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 48px; }
-.blog-card { background: white; border-radius: 20px; overflow: hidden; border: 1px solid rgba(201,185,154,0.22); box-shadow: 0 4px 20px rgba(139,111,94,0.07); transition: transform 0.3s ease; text-decoration: none; display: block; }
-.blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(139,111,94,0.13); }
-.blog-card-cat { background: var(--cream); padding: 28px 24px 20px; }
-.blog-card-tag { font-size: 0.69rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 700; margin-bottom: 10px; }
-.blog-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--dark); line-height: 1.35; }
-.blog-card-body { padding: 20px 24px 24px; }
-.blog-card-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 16px; }
-.blog-card-link { font-size: 0.82rem; color: var(--accent); font-weight: 600; }
-@media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr; gap: 20px; } }
-</style>
 <!-- Meta Pixel -->
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1233548507794099");fbq("track","PageView");</script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1233548507794099&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
 <meta name="facebook-domain-verification" content="q0lravv1bfmhpq3dob5d559cyidqq1" />
 <meta name="facebook-domain-verification" content="4npql1iz6n380yye9bsydf16pnj20x" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": []
+}
+</script>
+<style>
+
+/* VOICE  : calme, haut de gamme, une idée par écran, phrases courtes.
+   IDEA   : une fiche de coach bien tenue : la photo, les preuves, le prix, une question, un message.
+   PICTURE: la photo en pied d'Ornella, puis les avant/après réels des clientes.
+   COLOUR+TYPE : un bloc de couleur par partie (ivoire, rose poudré, sauge, brun, sable, corail) ; texte courant d'une seule couleur ;
+                 titres Cormorant Garamond 700 droit avec la fin en couleur ; DM Sans pour le texte.
+   LAYOUT : mobile d'abord, 6 blocs au lieu de 11, 3 boutons de contact + barre basse. */
+:root{--ivory:#FBF7F2;--sand:#F3EBE2;--blush:#F5E2DA;--blush2:#FBEEE9;--sage:#E4E8DB;--sage-d:#5F7258;--coral2:#C35F50;--peach:#F2A796;--ink:#2B201C;--line:rgba(43,32,28,.14);--coral:#B4513F;--coral-d:#9A4232;--night:#2B201C;--night2:#221916;--cream:#F6EFE8;
+--serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;--sans:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;color-scheme:light}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ivory);color:var(--ink);font:400 16.5px/1.6 var(--sans);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.06;margin:0;text-wrap:balance;letter-spacing:-.005em;font-variant-numeric:lining-nums}
+h1{font-size:clamp(2.2rem,7vw,3.7rem)}
+h2{font-size:clamp(2rem,5.6vw,2.9rem)}
+h3{font-size:1.55rem}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.band{padding:60px 0}
+.band--sand{background:var(--sand)}
+.band--white{background:#fff}
+.band--blush{background:var(--blush)}
+.band--sage{background:var(--sage)}
+.band--night{background:var(--night);color:var(--cream)}
+.band--coral{background:var(--coral2);color:#fff}
+.hl{color:var(--coral)}
+.band--night .hl{color:var(--peach)}
+.band--coral .hl{color:var(--night)}
+.band--sage .hl{color:var(--sage-d)}
+.head{max-width:640px;margin-bottom:32px}
+.head p{margin-top:14px;font-size:1.04rem}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:58px;padding:0 30px;border-radius:999px;background:var(--coral);color:#fff;font:600 1.03rem/1.2 var(--sans);text-decoration:none;box-shadow:0 10px 24px -14px rgba(154,66,50,.7);transition:background .2s,transform .2s}
+.btn:hover{background:var(--coral-d);transform:translateY(-1px)}
+.btn svg{flex:none}
+.btn:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+.link{display:inline-block;padding:10px 0;font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.link:hover{text-decoration-thickness:2px}
+.small{font-size:.92rem}
+@media(min-width:620px){.btn{display:inline-flex;width:auto}}
+@media(min-width:900px){.band{padding:108px 0}}
+
+/* Bandeau + navigation */
+.topbar{background:var(--night);color:var(--cream);font-size:.82rem;text-align:center;padding:8px 16px;line-height:1.35}
+.topbar:empty{display:none}
+.nav{position:sticky;top:0;z-index:60;background:rgba(251,247,242,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .25s}
+.nav.is-scrolled{border-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1120px;margin:0 auto;padding:0 22px;position:relative}
+.nav-logo img{height:38px;width:auto}
+.nav-toggle{appearance:none;border:0;background:none;width:46px;height:46px;margin-right:-12px;font-size:25px;line-height:1;color:var(--ink);cursor:pointer}
+#navMenu{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--ivory);padding:4px 22px 22px;border-bottom:1px solid var(--line);box-shadow:0 18px 30px -24px rgba(43,32,28,.4)}
+#navMenu.open{display:flex}
+#navMenu a{padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:500}
+#navMenu a.nav-cta{margin-top:16px;border:0;padding:0}
+@media(min-width:1040px){
+  .nav-toggle{display:none}
+  #navMenu{display:flex;position:static;flex-direction:row;align-items:center;gap:28px;padding:0;background:none;border:0;box-shadow:none}
+  #navMenu a{border:0;padding:6px 0;font-size:.95rem}
+  #navMenu a.nav-cta{margin:0}
+  #navMenu .btn{min-height:46px;padding:0 22px;font-size:.95rem}
+}
+
+/* Hero */
+.hero{padding:14px 0 60px}
+.hero-grid{display:grid;gap:26px}
+.hero-photo{width:100%;max-width:520px;margin:0 auto;border-radius:22px;overflow:hidden;background:#E8DDD2;box-shadow:0 24px 40px -30px rgba(43,32,28,.55)}
+.hero-photo img{width:100%;height:auto}
+.hero-sub{margin-top:16px;font-size:1.06rem;max-width:520px}
+.hero-act{margin-top:26px}
+.hero-note{margin-top:12px;font-size:.9rem}
+.hero-quiz{margin-top:2px;font-size:.95rem}
+.trust{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:34px 0 0;padding:20px 0 0;list-style:none;border-top:1px solid var(--line);text-align:center}
+.trust li{padding:0 8px;font-size:.84rem;line-height:1.35}
+.trust li+li{border-left:1px solid var(--line)}
+.trust b{display:block;font-size:.92rem;margin-bottom:3px}
+@media(min-width:900px){
+  .hero{padding:40px 0 96px}
+  .hero-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:64px;align-items:center}
+  .hero-photo{order:2;max-width:470px;margin:0 0 0 auto}
+  .trust{text-align:left;max-width:560px}
+  .trust li{padding:0 16px}.trust li:first-child{padding-left:0}
+}
+
+/* Carrousels (avant/après, avis) */
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:84%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -22px;padding:2px 22px 6px;scroll-padding:0 22px}
+.rail::-webkit-scrollbar{display:none}
+.rail>*{scroll-snap-align:start}
+.dots{display:flex;justify-content:center;gap:7px;margin-top:16px}
+.dots button{width:8px;height:8px;padding:0;border:0;border-radius:99px;background:rgba(43,32,28,.22);cursor:pointer;transition:width .25s,background .25s}
+.dots button[aria-current=true]{width:22px;background:var(--ink)}
+@media(min-width:900px){
+  .rail{grid-auto-flow:row;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;margin:0;padding:0}
+  .rail--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dots{display:none}
+}
+.case{display:block;background:#fff;border-radius:20px;overflow:hidden;text-decoration:none}
+.case img{width:100%;aspect-ratio:1;object-fit:cover;background:#E8DDD2}
+.case-b{padding:18px 20px 22px}
+.case-n{font-weight:700}
+.case-r{font-variant-numeric:lining-nums;font-family:var(--serif);font-weight:600;font-size:1.55rem;line-height:1.12;margin:4px 0 8px}
+.case-c{font-size:.92rem}
+.more{margin-top:18px;text-align:center}
+
+.rating{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 18px;margin-bottom:22px}
+.rating h2{font-size:clamp(2rem,5.6vw,2.9rem)}
+.stars{color:#C58B2A;letter-spacing:2px;font-size:1rem;margin-left:6px;vertical-align:2px}
+.quote{background:#fff;border-radius:20px;padding:24px 22px 20px;margin:0;display:flex;flex-direction:column}
+.quote p{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;font-size:1rem}
+.quote.is-open p{-webkit-line-clamp:unset;display:block}
+.quote footer{margin-top:auto;padding-top:14px;font-size:.88rem}
+.quote footer b{font-size:.95rem}
+.quote button{align-self:flex-start;margin-top:8px;padding:8px 0;border:0;background:none;color:var(--ink);font:600 .9rem var(--sans);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+
+/* Formules */
+.offers{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.offer{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 18px;align-items:center;padding:22px 22px;text-decoration:none;transition:background .2s}
+.offer+.offer{border-top:1px solid var(--line)}
+.offer:hover{background:#FDFAF7}
+.offer h3{font-size:1.6rem;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.offer p{font-size:.93rem;margin-top:4px}
+.tag{font:700 .72rem/1 var(--sans);background:var(--coral);color:#fff;border-radius:99px;padding:6px 10px;letter-spacing:.01em}
+.price{text-align:right;white-space:nowrap;font-size:.86rem;line-height:1.2}
+.price b{display:block;font-variant-numeric:lining-nums;font-family:var(--serif);font-size:1.75rem;font-weight:600}
+.offer--top{background:var(--blush2)}
+.incl{margin-top:22px;display:grid;gap:10px;font-size:.95rem}
+.offers-act{margin-top:30px;display:flex;flex-direction:column;gap:6px;align-items:stretch;text-align:center}
+.solo{margin-top:40px;padding-top:26px;border-top:1px solid var(--line);font-size:.98rem}
+.solo a{font-weight:600;text-underline-offset:4px}
+@media(min-width:620px){.offers-act{flex-direction:row;align-items:center;gap:26px;text-align:left}}
+@media(min-width:900px){.split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:start}.split>.head{position:sticky;top:110px;margin-bottom:0}}
+
+/* Histoire */
+.story p{font-size:1.06rem}
+.story p+p{margin-top:16px}
+.story .cred{font-size:.92rem;margin-top:22px}
+.story .cred a{text-underline-offset:4px}
+.band--night .link,.band--night a{color:var(--cream)}
+
+/* FAQ */
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:20px 0;font-weight:600;font-size:1.03rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;font:400 1.6rem/1 var(--sans);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 0 22px;display:grid;gap:10px}
+.faq .a a{text-underline-offset:4px}
+
+/* Final + pied de page */
+.final{text-align:center}
+.final .btn{background:#fff;color:var(--coral-d);box-shadow:0 14px 28px -16px rgba(43,32,28,.6)}
+.final .btn:hover{background:var(--cream)}
+.final p{margin:16px auto 0;max-width:520px;font-size:1.05rem}
+.final .btn{margin-top:30px}
+.final .small{margin-top:16px}
+.final a:not(.btn){text-underline-offset:4px}
+.foot{background:var(--night2);color:var(--cream);padding:56px 0 calc(96px + env(safe-area-inset-bottom));font-size:.93rem}
+.foot img{height:34px;width:auto;filter:brightness(0) invert(1);opacity:.9}
+.foot-slogan{margin-top:12px}
+.foot nav{display:flex;flex-wrap:wrap;gap:4px 22px;margin-top:28px}
+.foot nav a,.foot .contact a{display:inline-block;padding:7px 0;text-decoration:none}
+.foot nav a:hover,.foot .contact a:hover{text-decoration:underline;text-underline-offset:4px}
+.contact{display:flex;flex-wrap:wrap;gap:4px 22px;margin-top:10px;padding-top:12px;border-top:1px solid rgba(246,239,232,.16)}
+.foot details{margin-top:18px;border-top:1px solid rgba(246,239,232,.16)}
+.foot summary{cursor:pointer;padding:16px 0;font-weight:600}
+.foot details div{display:flex;flex-wrap:wrap;gap:2px 18px;padding-bottom:10px}
+.foot details a{padding:6px 0;text-underline-offset:3px}
+.legal{margin-top:20px;font-size:.84rem;display:flex;flex-wrap:wrap;gap:4px 16px}
+.legal a{text-underline-offset:3px}
+@media(min-width:900px){.foot{padding-bottom:56px}}
+
+/* Barre de contact en bas (téléphone) */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(251,247,242,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s ease}
+.sticky.show{transform:none}
+.sticky .btn{min-height:52px}
+@media(min-width:900px){.sticky{display:none}}
+
+/* Pop-up guide */
+#lead-popup{display:none;position:fixed;inset:0;z-index:100;align-items:flex-end;justify-content:center;padding:14px}
+#lead-popup.active{display:flex}
+#lead-overlay{position:absolute;inset:0;background:rgba(34,25,22,.55)}
+#lead-box{position:relative;width:100%;max-width:440px;background:var(--ivory);border-radius:24px;padding:30px 24px 24px}
+#lead-box h2{font-size:1.9rem;padding-right:26px}
+#lead-box p{margin-top:10px}
+#lead-close{position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;background:none;font-size:26px;color:var(--ink);cursor:pointer}
+#lead-form{display:grid;gap:10px;margin-top:18px}
+#lead-email{width:100%;min-height:54px;border:1px solid var(--line);border-radius:14px;padding:0 16px;font:16px var(--sans);background:#fff;color:var(--ink)}
+#lead-submit{border:0;cursor:pointer;width:100%}
+#lead-success{display:none;margin-top:16px;font-weight:600}
+@media(min-width:620px){#lead-popup{align-items:center}}
+
+/* ===== Code couleur (effet « repère visuel ») =====
+   Formules : domicile = miel, hybride = corail, à distance = bleu doux, programmes = sauge.
+   Dans un groupe .cc, chaque carte prend la couleur suivante. */
+:root{--c1:#B4513F;--t1:#F8E1D9;--c2:#5F7258;--t2:#E3EADF;--c3:#A06E22;--t3:#F6E8CF;--c4:#3F6A85;--t4:#E1EBF1;--c5:#2B201C;--t5:#EDE6E0}
+.cc>*{--acc:var(--c1);--tint:var(--t1)}
+.cc>*:nth-child(4n+2){--acc:var(--c2);--tint:var(--t2)}
+.cc>*:nth-child(4n+3){--acc:var(--c3);--tint:var(--t3)}
+.cc>*:nth-child(4n+4){--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-hyb,.is-hyb{--acc:var(--c1);--tint:var(--t1)}
+.cc>.is-prog,.is-prog{--acc:var(--c2);--tint:var(--t2)}
+.cc>.is-dom,.is-dom{--acc:var(--c3);--tint:var(--t3)}
+.cc>.is-dist,.is-dist{--acc:var(--c4);--tint:var(--t4)}
+.cc>.is-ink,.is-ink{--acc:var(--c5);--tint:var(--t5)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.tcard,.act,.fcard,.box,.quote,.sm,.panel,.hero-prog,.mind>div,.solo-card){border-top:5px solid var(--acc,transparent)}
+:is(.item,.obj,.boost-card,.essai-card,.pack,.vs-card,.case,.pcard,.act,.fcard,.box,.sm,.panel,.hero-prog,.solo-card) :is(h3,h4){color:var(--acc,inherit)}
+.case-r,.tb h3,.mind .to,.obj b{color:var(--acc,inherit)}
+.trust b{color:var(--acc,inherit)}
+.trust.cc li{position:relative}
+.offer{border-left:5px solid var(--acc,transparent)}
+.offer h3,.offer .price b{color:var(--acc,inherit)}
+.steps li::before{background:var(--acc,var(--sage-d))!important}
+.faq.cc>details>summary::after,.faq .cc>details>summary::after{content:"+";width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--acc);color:#fff;font:600 1.2rem/1 var(--sans)}
+.faq.cc>details[open]>summary,.faq .cc>details[open]>summary{color:var(--acc)}
+.stats.cc>div,.tstats>div{background:var(--tint,transparent)}
+.stats.cc b,.tstats b{color:var(--acc,inherit)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+
+.kick{font:700 .86rem/1.3 var(--sans);color:var(--coral);margin-bottom:10px}
+.band--night .kick{color:var(--peach)}
+.band--sage .kick{color:var(--sage-d)}
+.hero .kick{margin-bottom:0}
+.hero h1{margin-top:12px}
+.rate{margin-top:14px;font-size:.92rem;font-weight:600}
+.rate .st{color:#C58B2A;letter-spacing:1px;margin-right:4px}
+.story p{font-size:1.06rem}
+.story p+p{margin-top:14px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills span{background:#fff;border-left:5px solid var(--acc);border-radius:12px;padding:10px 14px;font-weight:600;font-size:.95rem}
+.note{margin-top:20px;font-size:.98rem;max-width:640px}
+.step3{display:grid;gap:12px}
+@media(min-width:760px){.step3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.step3>div{background:#fff;border-radius:18px;padding:20px 18px;border-top:5px solid var(--acc)}
+.step3 .n{font-family:var(--serif);font-weight:700;font-size:2.1rem;color:var(--acc);line-height:1}
+.step3 h3{font-size:1.35rem;margin-top:6px;color:var(--acc)}
+.step3 p{font-size:.95rem;margin-top:6px}
+.fcards{display:grid;gap:12px}
+@media(min-width:900px){.fcards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.fcard{background:#fff;border-radius:20px;padding:22px 20px}
+.fcard h3{font-size:1.5rem}
+.fcard .amt{display:block;margin:8px 0 10px;padding:10px 12px;border-radius:12px;background:var(--tint);font-family:var(--serif);font-weight:700;font-size:1.7rem;line-height:1.1;color:var(--acc)}
+.fcard p{font-size:.95rem}
+.links2{margin-top:22px;display:flex;flex-wrap:wrap;justify-content:center;gap:0 24px}
+.tr-txt .kick{margin-bottom:8px}
+.tr-txt p{font-size:1.06rem}
+.tr-photo{max-width:520px;width:100%}
+.band--night .center p{margin:14px auto 0;max-width:560px}
+.band--night .btn{margin-top:24px}
+.vlinks{display:grid;gap:10px}
+@media(min-width:620px){.vlinks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:900px){.vlinks{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.vlinks a{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border-radius:14px;padding:15px 16px;border-left:5px solid var(--acc);font-weight:600;text-decoration:none}
+.vlinks a::after{content:"→";color:var(--acc)}
+.back{margin-top:20px;text-align:center}
+
+/* ===== Pages SEO : composants en plus des pages villes ===== */
+.hero-act{display:flex;flex-direction:column;gap:4px}
+@media(min-width:620px){.hero-act{flex-direction:row;align-items:center;gap:24px}}
+.ticks{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.ticks li{position:relative;padding-left:34px;line-height:1.5}
+.ticks li::before{content:"✓";position:absolute;left:0;top:1px;width:23px;height:23px;border-radius:50%;background:var(--acc,var(--coral));color:#fff;font:700 .76rem/23px var(--sans);text-align:center}
+.ticks.cards{gap:10px}
+.ticks.cards li{background:#fff;border-radius:16px;padding:16px 16px 16px 50px}
+.ticks.cards li::before{left:16px;top:17px}
+.cities{display:flex;flex-wrap:wrap;gap:8px}
+.cities a{background:#fff;border-left:5px solid var(--acc);border-radius:12px;padding:10px 14px;font-weight:600;font-size:.95rem;text-decoration:none}
+.fcard .small{margin-top:8px;font-size:.88rem}
+.fcard a{font-weight:600;text-underline-offset:4px}
+.fcard.top{box-shadow:0 0 0 2px var(--acc)}
+.fcard .tag{display:inline-block;margin-bottom:10px;background:var(--acc)}
+.cards5{display:grid;gap:12px}
+@media(min-width:760px){.cards5{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1000px){.cards5{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.stepg{display:grid;gap:12px}
+@media(min-width:760px){.stepg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stepg>div{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;background:#fff;border-radius:18px;padding:18px;border-left:5px solid var(--acc)}
+.stepg .n{font-family:var(--serif);font-weight:700;font-size:2.2rem;line-height:1;color:var(--acc)}
+.stepg b{display:block;color:var(--acc);font-size:1.03rem}
+.stepg p{font-size:.95rem;margin-top:4px}
+.big{display:block;font-family:var(--serif);font-weight:700;font-size:clamp(2.6rem,9vw,3.6rem);line-height:1;color:var(--coral)}
+.band--night .big{color:var(--peach)}
+.tr-txt p+p{margin-top:12px}
+.tr-txt .small{font-size:.92rem}
+.trust3{display:grid;gap:10px}
+@media(min-width:760px){.trust3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.trust3>div{background:rgba(246,239,232,.08);border-top:5px solid var(--acc);border-radius:16px;padding:16px}
+.trust3 b{display:block;color:var(--acc);font-size:1.05rem}
+.trust3>div:nth-child(1){--acc:var(--peach)}
+.trust3>div:nth-child(2){--acc:#B9C9AE}
+.trust3>div:nth-child(3){--acc:#E9C98F}
+.mednote{margin-top:18px;font-size:.92rem;max-width:720px}
+.band--night .story a{color:var(--cream)}
+.okline{margin-top:16px;font-size:.92rem}
+.qa-cta{margin-top:28px;text-align:center}
+/* Héros « prix » : la carte du tarif */
+.pricecard{background:#fff;border-radius:24px;border-top:6px solid var(--coral);padding:26px 22px;box-shadow:0 24px 44px -34px rgba(43,32,28,.55);max-width:460px;width:100%;margin:0 auto}
+.pricecard .k{font-weight:700;font-size:.9rem;color:var(--coral)}
+.pricecard .amt{display:block;margin-top:6px;font-family:var(--serif);font-weight:700;font-size:3.4rem;line-height:1;color:var(--ink)}
+.pricecard .amt small{font:600 1rem var(--sans)}
+.pricecard ul{margin:16px 0 0}
+@media(min-width:900px){.pricecard{order:2;margin:0 0 0 auto}}
+/* Tableau des tarifs : tableau sur ordinateur, cartes sur téléphone */
+.ptable{width:100%;border-collapse:separate;border-spacing:0 10px}
+.ptable th{text-align:left;font-size:.85rem;padding:0 16px 2px}
+.ptable td{background:#fff;padding:16px;vertical-align:top}
+.ptable td:first-child{border-radius:14px 0 0 14px;border-left:6px solid var(--acc);font-weight:700;color:var(--acc)}
+.ptable td:last-child{border-radius:0 14px 14px 0;font-size:.95rem}
+.ptable .prix-amt{font-family:var(--serif);font-weight:700;font-size:1.5rem;line-height:1.1;white-space:nowrap;color:var(--acc)}
+@media(max-width:699px){
+  .ptable,.ptable tbody,.ptable tr,.ptable td{display:block;width:100%}
+  .ptable thead{display:none}
+  .ptable tr{background:#fff;border-radius:16px;border-left:6px solid var(--acc);padding:16px;margin-bottom:10px}
+  .ptable td{background:none;padding:0;border-radius:0!important;border:0!important}
+  .ptable td+td{margin-top:4px}
+}
+.pnote{margin-top:14px;text-align:center;font-size:.92rem}
+.pnote a,.links2 a{text-underline-offset:4px}
+.incl{display:grid;gap:10px}
+@media(min-width:760px){.incl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1000px){.incl{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.incl>div{background:#fff;border-radius:16px;padding:16px 16px 16px 50px;position:relative;line-height:1.5}
+.incl>div::before{content:"✓";position:absolute;left:16px;top:17px;width:23px;height:23px;border-radius:50%;background:var(--acc);color:#fff;font:700 .76rem/23px var(--sans);text-align:center}
+.incl strong{color:var(--acc)}
+/* Coach ou salle */
+.notes2{display:grid;gap:10px;margin-top:22px}
+@media(min-width:760px){.notes2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.notes2 p{background:var(--tint);border-left:5px solid var(--acc);border-radius:14px;padding:14px 16px;font-size:.97rem}
+.cmp4{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:20px;overflow:hidden;font-size:.93rem}
+.cmp4 th,.cmp4 td{padding:14px;vertical-align:top;text-align:left;border-bottom:1px solid var(--line)}
+.cmp4 thead th{font-size:.9rem;background:var(--sand)}
+.cmp4 tbody th{font-family:var(--serif);font-size:1.25rem;font-weight:700}
+.cmp4 .sv-us{background:var(--blush2);color:var(--ink);font-weight:600}
+.cmp4 thead .sv-us{background:var(--coral);color:#fff}
+@media(max-width:899px){
+  .cmp4,.cmp4 tbody,.cmp4 tr,.cmp4 th,.cmp4 td{display:block;width:100%}
+  .cmp4{background:none;border-radius:0}
+  .cmp4 thead{display:none}
+  .cmp4 tr{background:#fff;border-radius:18px;padding:16px;margin-bottom:12px}
+  .cmp4 tbody th{padding:0 0 8px;border:0;color:var(--coral)}
+  .cmp4 td{padding:10px 0;border:0;border-top:1px solid var(--line)}
+  .cmp4 td::before{content:attr(data-label);display:block;font:700 .78rem/1.3 var(--sans);margin-bottom:2px}
+  .cmp4 td.sv-us{background:var(--blush2);border-radius:12px;padding:10px 12px;margin-top:6px;border:0}
+}
+.closing{margin-top:20px;font-family:var(--serif);font-weight:700;font-size:clamp(1.4rem,4.4vw,1.8rem);line-height:1.2}
+.why3{display:grid;gap:16px}
+.whyc{background:#fff;border-radius:22px;border-top:6px solid var(--acc);padding:22px 18px}
+.whyc h3{color:var(--acc);font-size:1.6rem}
+.whyc .good0{margin-top:8px;background:var(--tint);border-radius:12px;padding:10px 12px;font-size:.95rem}
+.whyc .cols{display:grid;gap:14px;margin-top:16px}
+@media(min-width:900px){.whyc .cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}}
+.whyc h4{font:700 1rem var(--sans);margin:0 0 10px}
+.whyc ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:.95rem}
+.whyc li{position:relative;padding-left:30px;line-height:1.5}
+.whyc li::before{position:absolute;left:0;top:1px;width:21px;height:21px;border-radius:50%;color:#fff;font:700 .72rem/21px var(--sans);text-align:center}
+.whyc .bad li::before{content:"✕";background:#9C8F88}
+.whyc .good li::before{content:"✓";background:var(--sage-d)}
+.whyc .good h4{color:var(--sage-d)}
+.act2{margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+@media(min-width:620px){.act2{flex-direction:row;justify-content:center;gap:24px}}
+.band--night .lead{margin-top:14px}
+.band--night .lead a{color:var(--cream);text-underline-offset:4px}
+.band--coral .act2 .link{color:#fff}
+.lead{margin-top:14px;font-size:1.04rem}
+@media(min-width:760px){.cards4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1100px){.cards4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.trust3 span{font-size:.92rem}
+
+/* Blog */
+.bhero{padding-bottom:46px}
+.posts{display:grid;gap:14px}
+@media(min-width:760px){.posts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1040px){.posts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.post{display:flex;flex-direction:column;background:#fff;border-radius:20px;border-top:5px solid var(--acc);padding:20px 18px;text-decoration:none;transition:transform .2s}
+.post:hover{transform:translateY(-2px)}
+.post .ptag{align-self:flex-start;background:var(--tint);color:var(--acc);font:700 .78rem/1.2 var(--sans);border-radius:999px;padding:6px 11px}
+.post h2{font-size:1.45rem;line-height:1.15;margin-top:12px}
+.post p{font-size:.94rem;margin-top:8px}
+.post .more{margin-top:auto;padding-top:14px;font-weight:700;font-size:.92rem;color:var(--acc)}
+.post .more::after{content:" →"}
+.final .kick{color:#fff}
+
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7C2RGHG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<nav>
-  <a href="/" class="nav-logo">
-    <img src="images/logo.png" alt="Ornella Fit Coaching" class="nav-logo-img" width="3135" height="793">
-  </a>
-  <button type="button" class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Menu">☰</button>
-  <div class="nav-menu" id="navMenu">
-    <a href="offres.html" class="nav-link">Tarifs coaching</a>
-    <a href="transformations.html" class="nav-link">Transformations</a>
-    <a href="programmes.html" class="nav-link">Programmes digitaux</a>
-    <a href="entreprise.html" class="nav-link">Entreprise</a>
-    <a href="apropos.html" class="nav-link">À propos</a>
-    <a href="https://www.ornellafitcoaching.com/quiz.html" class="nav-link">Quelle formule pour moi ?</a>
-    <a href="https://wa.me/33756834626" class="nav-cta" target="_blank">M'écrire →</a>
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="nav-logo"><img src="images/logo.png" alt="Ornella Fit Coaching" width="3135" height="793" decoding="async"></a>
+    <button type="button" class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Menu">☰</button>
+    <nav id="navMenu" aria-label="Menu principal">
+      <a href="offres.html">Tarifs coaching</a>
+      <a href="transformations.html">Transformations</a>
+      <a href="programmes.html">Programmes</a>
+      <a href="entreprise.html">Entreprise</a>
+      <a href="apropos.html">À propos</a>
+      <a href="quiz.html">Quelle formule pour moi ?</a>
+      <a href="https://wa.me/33756834626" class="nav-cta" target="_blank" rel="noopener"><span class="btn">M'écrire</span></a>
+    </nav>
   </div>
-</nav>
+</header>
 
-<div class="page-header">
-  <span class="section-label">Conseils & ressources</span>
-  <h1 class="section-title">Le blog <em>Ornella Fit</em></h1>
-  <p class="section-subtitle">Exercices, nutrition, post-partum, motivation — des conseils concrets par une coach qui est passée par là.</p>
-</div>
-
-<section style="background:var(--cream);padding:72px 24px;">
-  <div class="inner" style="max-width:1000px;margin:0 auto;">
-
-    <div class="blog-grid fade-in">
-      <a href="blog/graisse-ventre-ou-cuisses-gynoide-androide.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Nouveau · Ventre &amp; Santé</div>
-          <div class="blog-card-title">Graisse sur le ventre ou les cuisses : gynoïde ou androïde ?</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Profil poire ou pomme, graisse viscérale, tour de taille idéal chez la femme : pourquoi ton corps stocke là, et ce qui marche vraiment pour perdre du ventre.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-
-      <a href="blog/combien-de-calories-par-jour-femme.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Nutrition · Calories</div>
-          <div class="blog-card-title">Combien de calories par jour pour une femme ?</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Métabolisme de base, niveau d'activité, déficit pour maigrir sans te priver : la méthode pour calculer TES besoins selon ton objectif, sans descendre trop bas.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/reequilibrage-alimentaire-femme.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Nutrition · Rééquilibrage</div>
-          <div class="blog-card-title">Rééquilibrage alimentaire : par où commencer (sans régime)</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Pas un régime de plus. La méthode simple en 5 étapes pour manger mieux durablement, sans frustration ni interdits absolus.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/jeune-intermittent-femme.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Nutrition · Hormones</div>
-          <div class="blog-card-title">Jeûne intermittent femme : ce qu'il faut vraiment savoir</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Bénéfices réels, risques, impact sur le cycle et les hormones : pour qui ça marche, pour qui c'est déconseillé, et comment bien démarrer.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/sport-pendant-grossesse.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Grossesse · Sport</div>
-          <div class="blog-card-title">Sport pendant la grossesse : que faire en toute sécurité ?</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Peur de mal faire, peur pour bébé : ce que dit vraiment la science sur le sport pendant la grossesse, trimestre par trimestre.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/cellulite-culotte-de-cheval-sport.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Cellulite · Silhouette</div>
-          <div class="blog-card-title">Cellulite et culotte de cheval : le sport peut-il vraiment agir ?</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Crèmes, appareils, exercices ciblés : ce qui marche vraiment contre la cellulite, expliqué sans promesse miracle.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/reprise-sport-apres-accouchement.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Post-partum</div>
-          <div class="blog-card-title">Reprise du sport après l'accouchement : quand et comment ?</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Voie basse ou césarienne : les vrais délais, les signaux d'alerte, et par où commencer sans se mettre en danger.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/perinee-sport-post-partum.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Post-partum</div>
-          <div class="blog-card-title">Périnée et sport post-partum : ce qu'il faut savoir</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Quels exercices éviter, lesquels privilégier, et comment savoir si ton périnée est prêt à encaisser un effort.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/cardio-ou-musculation-cuisses.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Musculation · Cardio</div>
-          <div class="blog-card-title">Cardio ou musculation pour perdre des cuisses ?</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">La vraie réponse : pourquoi le cardio seul ne suffit pas, et comment combiner les deux pour de vrais résultats.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/ventre-menopause-que-faire.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Ménopause · Ventre</div>
-          <div class="blog-card-title">Ventre et ménopause : pourquoi il s'installe, et que faire</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Pourquoi le ventre s'arrondit même sans manger plus, et les 5 leviers qui marchent vraiment, sans régime.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/musculation-menopause-programme.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Ménopause · Musculation</div>
-          <div class="blog-card-title">Musculation à la ménopause : le programme type</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Pourquoi la musculation devient prioritaire après 45 ans, et une semaine type de 3 séances à adapter à ton niveau.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/coach-sportif-domicile-apres-50-ans.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Après 50 ans · Coaching</div>
-          <div class="blog-card-title">Coach sportif à domicile après 50 ans : pour qui, quel prix</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Comment se passe un coaching à domicile après 50 ans, ce qu'il coûte et les résultats à attendre.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/menopause-sport-guide.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Ménopause · Hormones</div>
-          <div class="blog-card-title">Sport et ménopause : comment adapter ton entraînement</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Prise de poids au ventre, perte de muscle, bouffées de chaleur : ce que la ménopause change vraiment, et comment adapter musculation, cardio et récupération.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/musculation-salle-femme-debutante.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Musculation · Débutante</div>
-          <div class="blog-card-title">Musculation en salle pour femme débutante : par où commencer</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Quels exercices apprendre en premier, combien de séances par semaine, comment choisir sa charge — le guide complet pour démarrer sans se perdre.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/combien-temps-resultats-sport-femme.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Résultats · Motivation</div>
-          <div class="blog-card-title">Combien de temps pour voir des résultats en sport ?</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Semaine par semaine, ce qui se passe réellement dans ton corps quand tu commences à t'entraîner — et pourquoi la balance n'est pas le bon indicateur.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/morphologie-femme-guide.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Morphologie · Entraînement</div>
-          <div class="blog-card-title">Morphologie femme : quelle est la tienne ? (A, H, O, V, X)</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">A, H, O, V ou X : les 5 morphologies féminines expliquées, comment identifier la tienne, et pourquoi t'entraîner pour la mauvaise morphologie explique tes efforts sans résultats.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/remise-en-forme-apres-grossesse.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Post-partum · Remise en forme</div>
-          <div class="blog-card-title">Remise en forme après grossesse : le guide complet</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Par où commencer, quels exercices éviter, combien de temps ça prend vraiment. Tout ce qu'il faut savoir pour reprendre sereinement après accouchement.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/exercices-fessiers-femme.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Musculation · Fessiers</div>
-          <div class="blog-card-title">5 exercices pour muscler les fessiers (sans matériel)</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Les vrais exercices qui fonctionnent, avec la technique exacte. Fini les squats qui ne ciblent que les quadriceps — voilà ce qui marche vraiment.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/combien-de-seances-sport-par-semaine.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Entraînement · Fréquence</div>
-          <div class="blog-card-title">Combien de séances de sport par semaine pour des résultats ?</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">2, 3 ou 4 fois ? La fréquence idéale selon ton objectif, et pourquoi la régularité compte plus que le nombre de séances.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/choisir-son-coach-sportif.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Coaching · Bien s'entourer</div>
-          <div class="blog-card-title">Comment choisir son coach sportif quand on est une femme ?</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Diplôme, spécialisation, suivi, feeling, présentiel ou en ligne : les vrais critères pour ne pas te tromper, les questions à poser et les signaux d'alerte.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/coach-sportif-en-ligne.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Coaching · En ligne</div>
-          <div class="blog-card-title">Coach sportif en ligne : comment ça marche (et est-ce efficace) ?</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Le coaching à distance, ça marche vraiment ? Comment ça se passe, pour qui c'est fait, ce que ça inclut et les résultats à en attendre — sans blabla.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/coaching-sportif-domicile-vs-salle.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Coaching · Organisation</div>
-          <div class="blog-card-title">Coach à domicile vs salle de sport : que choisir ?</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Comparaison honnête des avantages et inconvénients de chaque option. Pour quel profil, quel budget, quels objectifs ? La réponse sans langue de bois.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/sport-femme-40-ans.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Femme 40 ans · Hormones</div>
-          <div class="blog-card-title">Sport femme après 40 ans : ce qui change (et comment s'adapter)</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Après 40 ans, le corps féminin change : hormones, métabolisme, récupération. Comment adapter ton entraînement pour rester forte et en forme.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/diastase-abdominale-exercices.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Post-partum · Diastase</div>
-          <div class="blog-card-title">Diastase abdominale : exercices à faire (et à éviter) après accouchement</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">La diastase abdominale touche 60% des femmes après l'accouchement. Les exercices qui referment la diastase, ceux à éviter absolument, et comment reprendre le sport en sécurité.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/ventre-plat-femme-conseils.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Ventre plat · Nutrition</div>
-          <div class="blog-card-title">Ventre plat femme : pourquoi ça ne vient pas (et ce qui marche vraiment)</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Tu fais du sport, tu manges bien, mais ton ventre ne change pas ? Les vraies raisons (cortisol, ballonnements, transverse) et la méthode pour un ventre plat durable.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/fessiers-femme-programme.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Musculation · Fessiers</div>
-          <div class="blog-card-title">Comment avoir de beaux fessiers : le guide complet pour femme</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Squats, hip thrust, fentes — comment vraiment développer ses fessiers ? Guide complet : exercices, fréquence, nutrition, erreurs à éviter.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/perdre-du-ventre-trouver-son-pourquoi.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Mental · Perte de poids</div>
-          <div class="blog-card-title">Pourquoi tu n’arrives pas à perdre du ventre (et ce n’est pas qu’une question d’assiette)</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Ton « pourquoi », ton sommeil, ton stress : les trois blocages dont on ne te parle jamais, et comment les lever.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/sport-effets-psychologiques-femme.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Mental · Motivation</div>
-          <div class="blog-card-title">Ce que le sport change dans ta tête (et pas seulement dans ton corps)</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Stress, confiance, image du corps : ce que disent les études sur les effets du sport sur le mental des femmes, et comment en profiter.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/pas-le-temps-de-faire-du-sport.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Organisation · Motivation</div>
-          <div class="blog-card-title">Pas le temps de faire du sport ? Le vrai problème n'est pas ton emploi du temps</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">« Je n'ai pas le temps » cache presque toujours un problème d'organisation, pas de temps. Voici la méthode pour intégrer 3 séances par semaine dans une vraie vie chargée.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <a href="blog/meal-prep-femme-guide.html" class="blog-card">
-        <div class="blog-card-cat">
-          <div class="blog-card-tag">Nutrition · Organisation</div>
-          <div class="blog-card-title">Meal prep femme : comment préparer ses repas sans y passer des heures</div>
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-card-desc">Le meal prep classique décourage la plupart des femmes. La méthode des bases pour préparer plusieurs repas différents en 45 minutes, sans cuisiner 14 plats.</p>
-          <span class="blog-card-link">Lire l'article →</span>
-        </div>
-      </a>
-
-    </div>
-
+<main>
+<!-- 1. HÉROS -->
+<section class="hero bhero">
+  <div class="wrap">
+    <p class="kick">Conseils &amp; ressources</p>
+    <h1>Le blog <span class="hl">Ornella Fit</span></h1>
+    <p class="hero-sub">Exercices, nutrition, post-partum, motivation — des conseils concrets par une coach qui est passée par là.</p>
+    <div class="hero-act"><a href="https://wa.me/33756834626" class="btn" id="hero-cta" target="_blank" rel="noopener">J'écris à Ornella</a><a href="offres.html" class="link">Voir les offres</a></div>
   </div>
 </section>
 
-<section id="cta-final">
-  <div class="inner">
-    <span class="section-label" style="color:var(--gold);">Prête à passer à l'action ?</span>
-    <h2 class="section-title">Un programme <em>construit pour toi</em></h2>
-    <p class="section-subtitle">Les articles c'est bien. Un accompagnement sur-mesure, c'est mieux.</p>
-    <div class="cta-buttons">
-      <a href="https://wa.me/33756834626" class="btn-main" target="_blank">💬 Je m'écris à Ornella →</a>
-      <a href="offres.html" class="btn-outline" style="color:white;border-color:rgba(255,255,255,0.55);">Voir les offres →</a>
+<!-- 2. ARTICLES -->
+<section class="band band--sand">
+  <div class="wrap">
+    <div class="posts cc">
+      <a href="blog/graisse-ventre-ou-cuisses-gynoide-androide.html" class="post"><span class="ptag">Nouveau · Ventre &amp; Santé</span><h2>Graisse sur le ventre ou les cuisses : gynoïde ou androïde ?</h2><p>Profil poire ou pomme, graisse viscérale, tour de taille idéal chez la femme : pourquoi ton corps stocke là, et ce qui marche vraiment pour perdre du ventre.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/combien-de-calories-par-jour-femme.html" class="post"><span class="ptag">Nutrition · Calories</span><h2>Combien de calories par jour pour une femme ?</h2><p>Métabolisme de base, niveau d'activité, déficit pour maigrir sans te priver : la méthode pour calculer TES besoins selon ton objectif, sans descendre trop bas.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/reequilibrage-alimentaire-femme.html" class="post"><span class="ptag">Nutrition · Rééquilibrage</span><h2>Rééquilibrage alimentaire : par où commencer (sans régime)</h2><p>Pas un régime de plus. La méthode simple en 5 étapes pour manger mieux durablement, sans frustration ni interdits absolus.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/jeune-intermittent-femme.html" class="post"><span class="ptag">Nutrition · Hormones</span><h2>Jeûne intermittent femme : ce qu'il faut vraiment savoir</h2><p>Bénéfices réels, risques, impact sur le cycle et les hormones : pour qui ça marche, pour qui c'est déconseillé, et comment bien démarrer.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/sport-pendant-grossesse.html" class="post"><span class="ptag">Grossesse · Sport</span><h2>Sport pendant la grossesse : que faire en toute sécurité ?</h2><p>Peur de mal faire, peur pour bébé : ce que dit vraiment la science sur le sport pendant la grossesse, trimestre par trimestre.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/cellulite-culotte-de-cheval-sport.html" class="post"><span class="ptag">Cellulite · Silhouette</span><h2>Cellulite et culotte de cheval : le sport peut-il vraiment agir ?</h2><p>Crèmes, appareils, exercices ciblés : ce qui marche vraiment contre la cellulite, expliqué sans promesse miracle.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/reprise-sport-apres-accouchement.html" class="post"><span class="ptag">Post-partum</span><h2>Reprise du sport après l'accouchement : quand et comment ?</h2><p>Voie basse ou césarienne : les vrais délais, les signaux d'alerte, et par où commencer sans se mettre en danger.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/perinee-sport-post-partum.html" class="post"><span class="ptag">Post-partum</span><h2>Périnée et sport post-partum : ce qu'il faut savoir</h2><p>Quels exercices éviter, lesquels privilégier, et comment savoir si ton périnée est prêt à encaisser un effort.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/cardio-ou-musculation-cuisses.html" class="post"><span class="ptag">Musculation · Cardio</span><h2>Cardio ou musculation pour perdre des cuisses ?</h2><p>La vraie réponse : pourquoi le cardio seul ne suffit pas, et comment combiner les deux pour de vrais résultats.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/ventre-menopause-que-faire.html" class="post"><span class="ptag">Ménopause · Ventre</span><h2>Ventre et ménopause : pourquoi il s'installe, et que faire</h2><p>Pourquoi le ventre s'arrondit même sans manger plus, et les 5 leviers qui marchent vraiment, sans régime.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/musculation-menopause-programme.html" class="post"><span class="ptag">Ménopause · Musculation</span><h2>Musculation à la ménopause : le programme type</h2><p>Pourquoi la musculation devient prioritaire après 45 ans, et une semaine type de 3 séances à adapter à ton niveau.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/coach-sportif-domicile-apres-50-ans.html" class="post"><span class="ptag">Après 50 ans · Coaching</span><h2>Coach sportif à domicile après 50 ans : pour qui, quel prix</h2><p>Comment se passe un coaching à domicile après 50 ans, ce qu'il coûte et les résultats à attendre.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/menopause-sport-guide.html" class="post"><span class="ptag">Ménopause · Hormones</span><h2>Sport et ménopause : comment adapter ton entraînement</h2><p>Prise de poids au ventre, perte de muscle, bouffées de chaleur : ce que la ménopause change vraiment, et comment adapter musculation, cardio et récupération.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/musculation-salle-femme-debutante.html" class="post"><span class="ptag">Musculation · Débutante</span><h2>Musculation en salle pour femme débutante : par où commencer</h2><p>Quels exercices apprendre en premier, combien de séances par semaine, comment choisir sa charge — le guide complet pour démarrer sans se perdre.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/combien-temps-resultats-sport-femme.html" class="post"><span class="ptag">Résultats · Motivation</span><h2>Combien de temps pour voir des résultats en sport ?</h2><p>Semaine par semaine, ce qui se passe réellement dans ton corps quand tu commences à t'entraîner — et pourquoi la balance n'est pas le bon indicateur.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/morphologie-femme-guide.html" class="post"><span class="ptag">Morphologie · Entraînement</span><h2>Morphologie femme : quelle est la tienne ? (A, H, O, V, X)</h2><p>A, H, O, V ou X : les 5 morphologies féminines expliquées, comment identifier la tienne, et pourquoi t'entraîner pour la mauvaise morphologie explique tes efforts sans résultats.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/remise-en-forme-apres-grossesse.html" class="post"><span class="ptag">Post-partum · Remise en forme</span><h2>Remise en forme après grossesse : le guide complet</h2><p>Par où commencer, quels exercices éviter, combien de temps ça prend vraiment. Tout ce qu'il faut savoir pour reprendre sereinement après accouchement.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/exercices-fessiers-femme.html" class="post"><span class="ptag">Musculation · Fessiers</span><h2>5 exercices pour muscler les fessiers (sans matériel)</h2><p>Les vrais exercices qui fonctionnent, avec la technique exacte. Fini les squats qui ne ciblent que les quadriceps — voilà ce qui marche vraiment.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/combien-de-seances-sport-par-semaine.html" class="post"><span class="ptag">Entraînement · Fréquence</span><h2>Combien de séances de sport par semaine pour des résultats ?</h2><p>2, 3 ou 4 fois ? La fréquence idéale selon ton objectif, et pourquoi la régularité compte plus que le nombre de séances.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/choisir-son-coach-sportif.html" class="post"><span class="ptag">Coaching · Bien s'entourer</span><h2>Comment choisir son coach sportif quand on est une femme ?</h2><p>Diplôme, spécialisation, suivi, feeling, présentiel ou en ligne : les vrais critères pour ne pas te tromper, les questions à poser et les signaux d'alerte.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/coach-sportif-en-ligne.html" class="post"><span class="ptag">Coaching · En ligne</span><h2>Coach sportif en ligne : comment ça marche (et est-ce efficace) ?</h2><p>Le coaching à distance, ça marche vraiment ? Comment ça se passe, pour qui c'est fait, ce que ça inclut et les résultats à en attendre — sans blabla.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/coaching-sportif-domicile-vs-salle.html" class="post"><span class="ptag">Coaching · Organisation</span><h2>Coach à domicile vs salle de sport : que choisir ?</h2><p>Comparaison honnête des avantages et inconvénients de chaque option. Pour quel profil, quel budget, quels objectifs ? La réponse sans langue de bois.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/sport-femme-40-ans.html" class="post"><span class="ptag">Femme 40 ans · Hormones</span><h2>Sport femme après 40 ans : ce qui change (et comment s'adapter)</h2><p>Après 40 ans, le corps féminin change : hormones, métabolisme, récupération. Comment adapter ton entraînement pour rester forte et en forme.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/diastase-abdominale-exercices.html" class="post"><span class="ptag">Post-partum · Diastase</span><h2>Diastase abdominale : exercices à faire (et à éviter) après accouchement</h2><p>La diastase abdominale touche 60% des femmes après l'accouchement. Les exercices qui referment la diastase, ceux à éviter absolument, et comment reprendre le sport en sécurité.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/ventre-plat-femme-conseils.html" class="post"><span class="ptag">Ventre plat · Nutrition</span><h2>Ventre plat femme : pourquoi ça ne vient pas (et ce qui marche vraiment)</h2><p>Tu fais du sport, tu manges bien, mais ton ventre ne change pas ? Les vraies raisons (cortisol, ballonnements, transverse) et la méthode pour un ventre plat durable.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/fessiers-femme-programme.html" class="post"><span class="ptag">Musculation · Fessiers</span><h2>Comment avoir de beaux fessiers : le guide complet pour femme</h2><p>Squats, hip thrust, fentes — comment vraiment développer ses fessiers ? Guide complet : exercices, fréquence, nutrition, erreurs à éviter.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/perdre-du-ventre-trouver-son-pourquoi.html" class="post"><span class="ptag">Mental · Perte de poids</span><h2>Pourquoi tu n’arrives pas à perdre du ventre (et ce n’est pas qu’une question d’assiette)</h2><p>Ton « pourquoi », ton sommeil, ton stress : les trois blocages dont on ne te parle jamais, et comment les lever.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/sport-effets-psychologiques-femme.html" class="post"><span class="ptag">Mental · Motivation</span><h2>Ce que le sport change dans ta tête (et pas seulement dans ton corps)</h2><p>Stress, confiance, image du corps : ce que disent les études sur les effets du sport sur le mental des femmes, et comment en profiter.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/pas-le-temps-de-faire-du-sport.html" class="post"><span class="ptag">Organisation · Motivation</span><h2>Pas le temps de faire du sport ? Le vrai problème n'est pas ton emploi du temps</h2><p>« Je n'ai pas le temps » cache presque toujours un problème d'organisation, pas de temps. Voici la méthode pour intégrer 3 séances par semaine dans une vraie vie chargée.</p><span class="more">Lire l'article</span></a>
+      <a href="blog/meal-prep-femme-guide.html" class="post"><span class="ptag">Nutrition · Organisation</span><h2>Meal prep femme : comment préparer ses repas sans y passer des heures</h2><p>Le meal prep classique décourage la plupart des femmes. La méthode des bases pour préparer plusieurs repas différents en 45 minutes, sans cuisiner 14 plats.</p><span class="more">Lire l'article</span></a>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="footer-logo">
-    <img src="images/logo.png" alt="Ornella Fit Coaching" class="footer-logo-img" loading="lazy" width="3135" height="793">
+<!-- 3. APPEL FINAL -->
+<section id="cta-final" class="band band--coral final">
+  <div class="wrap">
+    <p class="kick">Prête à passer à l'action ?</p>
+    <h2>Un programme <span class="hl">construit pour toi</span></h2>
+    <p>Les articles c'est bien. Un accompagnement sur-mesure, c'est mieux.</p>
+    <a href="https://wa.me/33756834626" class="btn" target="_blank" rel="noopener">J'écris à Ornella</a>
+    <p class="small"><a href="offres.html">Voir les offres</a></p>
   </div>
-  <p class="footer-slogan">« Ton plus bel investissement, c'est toi. »</p>
-  <div class="footer-links">
-    <a href="/">Accueil</a>
-    <a href="offres.html">Coaching</a>
-    <a href="programmes.html">Programmes digitaux</a>
-    <a href="transformations.html">Transformations</a>
-    <a href="apropos.html">À propos</a>
-    <a href="faq.html">FAQ</a>
-    <a href="booty-sculpt.html">Booty Sculpt</a>
-    <a href="ventre-plat.html">Ventre Plat</a>
-    <a href="challenge-ventre-plat.html">Challenge gratuit</a>
-    <a href="programme-fidelite.html">Programme fidélité</a>
-    <a href="carte-marraine.html">Parrainage</a>
-    <a href="https://wa.me/33756834626" target="_blank">WhatsApp</a>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <img src="images/logo.png" alt="Ornella Fit Coaching" width="3135" height="793" loading="lazy">
+    <p class="foot-slogan">« Ton plus bel investissement, c'est toi. »</p>
+    <nav aria-label="Pages du site">
+      <a href="offres.html">Coaching et tarifs</a>
+      <a href="programmes.html">Programmes digitaux</a>
+      <a href="transformations.html">Transformations</a>
+      <a href="entreprise.html">Entreprise</a>
+      <a href="apropos.html">À propos</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <div class="contact">
+      <a href="https://wa.me/33756834626" target="_blank" rel="noopener">WhatsApp 07 56 83 46 26</a>
+      <a href="https://www.instagram.com/coach.ornella" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:ornellafit.coaching@gmail.com">ornellafit.coaching@gmail.com</a>
+      <a href="links.html">Mes liens</a>
+    </div>
+    <details>
+      <summary>Coach sportive à domicile près de chez toi</summary>
+      <div>
+        <a href="coach-sportif-domicile-saulx-les-chartreux.html">Saulx-les-Chartreux</a>
+        <a href="coach-sportif-domicile-massy.html">Massy</a>
+        <a href="coach-sportif-domicile-palaiseau.html">Palaiseau</a>
+        <a href="coach-sportif-domicile-longjumeau.html">Longjumeau</a>
+        <a href="coach-sportif-domicile-champlan.html">Champlan</a>
+        <a href="coach-sportif-domicile-villebon-sur-yvette.html">Villebon-sur-Yvette</a>
+        <a href="coach-sportif-domicile-chilly-mazarin.html">Chilly-Mazarin</a>
+        <a href="coach-sportif-domicile-epinay-sur-orge.html">Épinay-sur-Orge</a>
+        <a href="coach-sportif-domicile-antony.html">Antony</a>
+        <a href="coach-sportif-essonne.html">Coach sportif Essonne</a>
+        <a href="prix-coach-sportif-domicile-essonne.html">Prix coach à domicile</a>
+      </div>
+    </details>
+    <details>
+      <summary>Ressources et bonus</summary>
+      <div>
+        <a href="coach-perte-de-poids.html">Coach perte de poids</a>
+        <a href="coach-sportif-ou-salle-de-sport.html">Salle ou coach : le comparatif</a>
+        <a href="blog.html">Blog</a>
+        <a href="booty-sculpt.html">Booty Sculpt</a>
+        <a href="ventre-plat.html">Ventre Plat</a>
+        <a href="challenge-ventre-plat.html">Challenge gratuit</a>
+        <a href="guide-9-erreurs.html?src=site-footer">Guide gratuit</a>
+        <a href="programme-fidelite.html">Programme fidélité</a>
+        <a href="carte-marraine.html">Parrainage</a>
+      </div>
+    </details>
+    <p class="legal"><span>© 2026 Ornella Fit Coaching</span><a href="mentions-legales.html">Mentions légales</a><a href="cgv.html">CGV</a><a href="mentions-legales.html#rgpd">Confidentialité</a></p>
   </div>
-  <div class="footer-social">
-    <a href="https://www.instagram.com/coach.ornella" target="_blank">📷 Instagram</a>
-    <a href="mailto:ornellafit.coaching@gmail.com">✉️ Email</a>
-    <a href="https://www.ornellafitcoaching.com/links.html">🔗 Mes liens</a>
-  </div>
-  <p class="footer-info footer-zones">Coach sportive à domicile : <a href="/coach-sportif-domicile-saulx-les-chartreux.html">Saulx-les-Chartreux</a> · <a href="/coach-sportif-domicile-massy.html">Massy</a> · <a href="/coach-sportif-domicile-palaiseau.html">Palaiseau</a> · <a href="/coach-sportif-domicile-longjumeau.html">Longjumeau</a> · <a href="/coach-sportif-domicile-champlan.html">Champlan</a> · <a href="/coach-sportif-domicile-villebon-sur-yvette.html">Villebon-sur-Yvette</a> · <a href="/coach-sportif-domicile-chilly-mazarin.html">Chilly-Mazarin</a> · <a href="/coach-sportif-domicile-epinay-sur-orge.html">Épinay-sur-Orge</a> · <a href="/coach-sportif-domicile-antony.html">Antony</a></p>
-  <p class="footer-copy">© 2026 Ornella Fit Coaching — Tous droits réservés</p>
-  <p class="footer-legal"><a href="mentions-legales.html">Mentions légales</a> · <a href="mentions-legales.html#rgpd">Politique de confidentialité</a></p>
 </footer>
 
-<!-- STICKY MOBILE BAR — même bouton que sur l'accueil -->
-<div class="mobile-sticky-bar">
-  <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="sticky-cta-main" target="_blank" rel="noopener">💬 Échange gratuit de 15 min →</a>
+<div class="sticky" id="sticky-bar">
+  <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20veux%20mon%20bilan%20gratuit%2015%20min%20%F0%9F%98%8A" class="btn" id="sticky-main-cta" target="_blank" rel="noopener">Échange gratuit de 15 min</a>
 </div>
 
-<a href="https://wa.me/33756834626" class="floating-wa" target="_blank" title="WhatsApp">💬</a>
 <script>
 var ua = navigator.userAgent || '';
 var isWebView = /Instagram|FBAN|FBAV|FB_IAB|Line|Twitter|Snapchat/.test(ua);
@@ -548,5 +651,18 @@ if (!isWebView && 'IntersectionObserver' in window) {
 (function(){var PAGE=location.pathname.replace(/^\//,'').replace(/\.html$/,'')||'accueil';var M=[25,50,75,90,100],done={},t=false;function depth(){var d=document.documentElement,b=document.body,top=d.scrollTop||b.scrollTop,max=(d.scrollHeight||b.scrollHeight)-d.clientHeight;return max>0?Math.min(100,Math.round(top/max*100)):100;}function fire(m){if(done[m])return;done[m]=1;if(typeof fbq!=='undefined')fbq('trackCustom','ScrollDepth',{page:PAGE,percent:m});(window.dataLayer=window.dataLayer||[]).push({event:'scroll_depth',page:PAGE,percent:m});}function chk(){var p=depth();M.forEach(function(m){if(p>=m)fire(m);});t=false;}window.addEventListener('scroll',function(){if(t)return;t=true;setTimeout(chk,300);},{passive:true});window.addEventListener('load',chk);})();
 </script>
 <script defer src="/suivi-clics.js"></script>
+<script>
+{
+  const nav=document.querySelector('.nav');
+  const onScroll=()=>nav.classList.toggle('is-scrolled',scrollY>8);
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+  const bar=document.getElementById('sticky-bar');
+  if('IntersectionObserver' in window){
+    const seen={'hero-cta':true,'cta-final':false};
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{seen[e.target.id]=e.isIntersecting});bar.classList.toggle('show',!seen['hero-cta']&&!seen['cta-final'])},{threshold:0});
+    ['hero-cta','cta-final'].forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el)});
+  }
+}
+</script>
 </body>
 </html>
